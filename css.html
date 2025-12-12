@@ -48,6 +48,7 @@
                 <a href="#s8" class="toc-item"><span class="toc-num">08</span>Responsive</a>
                 <a href="#s9" class="toc-item"><span class="toc-num">09</span>Variables</a>
                 <a href="#s10" class="toc-item"><span class="toc-num">10</span>Référence</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Galerie Démos</a>
             </div>
         </div>
     </div>
@@ -485,7 +486,8 @@
             </div>
 
             <div class="tip"><strong>💡 Centrer parfaitement</strong>
-                <code>display: flex; justify-content: center; align-items: center;</code></div>
+                <code>display: flex; justify-content: center; align-items: center;</code>
+            </div>
         </div>
     </section>
 
@@ -938,14 +940,475 @@
                 </div>
             </div>
 
-            <div class="tip" style="margin-top:24px"><strong>💡 100+ propriétés CSS</strong> — Cette référence couvre
+            <div class="tip" style="margin-top:24px"><strong>💡 150+ propriétés CSS</strong> — Cette référence couvre
                 les propriétés les plus utilisées en CSS moderne.</div>
+        </div>
+    </section>
+
+    <!-- S11: GALERIE DEMOS -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Galerie de Démos Visuelles</h2>
+                    <p class="sec-sub">50+ effets CSS en action</p>
+                </div>
+            </div>
+
+            <h3>Borders & Border-Radius</h3>
+            <div class="demo">
+                <div class="demo-title">Variations de border-radius</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:0" title="0"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:8px" title="8px"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:16px" title="16px"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:50%" title="50%"></div>
+                    <div style="width:80px;height:60px;background:var(--accent);border-radius:30px 0" title="30px 0">
+                    </div>
+                    <div style="width:80px;height:60px;background:var(--green);border-radius:50% 0 50% 0"
+                        title="50% 0 50% 0"></div>
+                </div>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Styles de bordure</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div style="padding:16px 24px;border:3px solid var(--primary)">solid</div>
+                    <div style="padding:16px 24px;border:3px dashed var(--accent)">dashed</div>
+                    <div style="padding:16px 24px;border:3px dotted var(--green)">dotted</div>
+                    <div style="padding:16px 24px;border:3px double var(--purple)">double</div>
+                    <div style="padding:16px 24px;border:3px groove var(--pink)">groove</div>
+                    <div style="padding:16px 24px;border:3px ridge var(--orange)">ridge</div>
+                </div>
+            </div>
+
+            <h3>Box-Shadow</h3>
+            <div class="demo">
+                <div class="demo-title">Variations d'ombres</div>
+                <div style="display:flex;gap:30px;flex-wrap:wrap">
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        subtle</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        elevated</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 0 20px var(--primary);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        glow</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:inset 0 4px 10px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        inset</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:5px 5px 0 var(--accent);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        offset</div>
+                </div>
+            </div>
+
+            <h3>Gradients</h3>
+            <div class="demo">
+                <div class="demo-title">Types de dégradés</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(to right,var(--primary),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        linear →</div>
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        135deg</div>
+                    <div
+                        style="width:120px;height:80px;background:radial-gradient(circle,var(--accent),var(--bg));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        radial</div>
+                    <div
+                        style="width:120px;height:80px;background:conic-gradient(var(--primary),var(--accent),var(--green),var(--primary));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        conic</div>
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(90deg,var(--primary) 50%,var(--accent) 50%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        hard stop</div>
+                </div>
+            </div>
+
+            <h3>Transform</h3>
+            <div class="demo">
+                <div class="demo-title">Transformations (survolez)</div>
+                <style>
+                    .tr-box {
+                        width: 70px;
+                        height: 70px;
+                        background: var(--primary);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .65rem;
+                        transition: transform .3s
+                    }
+
+                    .tr-scale:hover {
+                        transform: scale(1.3)
+                    }
+
+                    .tr-rotate:hover {
+                        transform: rotate(45deg)
+                    }
+
+                    .tr-skew:hover {
+                        transform: skewX(20deg)
+                    }
+
+                    .tr-translate:hover {
+                        transform: translateY(-15px)
+                    }
+
+                    .tr-combo:hover {
+                        transform: rotate(10deg) scale(1.1) translateY(-5px)
+                    }
+                </style>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;padding:20px 0">
+                    <div class="tr-box tr-scale">scale</div>
+                    <div class="tr-box tr-rotate" style="background:var(--accent)">rotate</div>
+                    <div class="tr-box tr-skew" style="background:var(--green)">skewX</div>
+                    <div class="tr-box tr-translate" style="background:var(--purple)">translateY</div>
+                    <div class="tr-box tr-combo" style="background:var(--pink)">combo</div>
+                </div>
+            </div>
+
+            <h3>Filters</h3>
+            <div class="demo">
+                <div class="demo-title">Filtres CSS</div>
+                <style>
+                    .filter-box {
+                        width: 80px;
+                        height: 80px;
+                        background: linear-gradient(135deg, var(--primary), var(--accent));
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .65rem;
+                        text-align: center
+                    }
+                </style>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div class="filter-box">normal</div>
+                    <div class="filter-box" style="filter:blur(2px)">blur(2px)</div>
+                    <div class="filter-box" style="filter:brightness(1.5)">brightness</div>
+                    <div class="filter-box" style="filter:contrast(1.5)">contrast</div>
+                    <div class="filter-box" style="filter:grayscale(100%)">grayscale</div>
+                    <div class="filter-box" style="filter:sepia(100%)">sepia</div>
+                    <div class="filter-box" style="filter:saturate(2)">saturate</div>
+                    <div class="filter-box" style="filter:hue-rotate(90deg)">hue-rotate</div>
+                    <div class="filter-box" style="filter:invert(100%)">invert</div>
+                    <div class="filter-box" style="filter:drop-shadow(4px 4px 4px rgba(0,0,0,0.5))">drop-shadow</div>
+                </div>
+            </div>
+
+            <h3>Animations</h3>
+            <div class="demo">
+                <div class="demo-title">Animations variées</div>
+                <style>
+                    @keyframes bounce {
+
+                        0%,
+                        100% {
+                            transform: translateY(0)
+                        }
+
+                        50% {
+                            transform: translateY(-20px)
+                        }
+                    }
+
+                    @keyframes spin {
+                        to {
+                            transform: rotate(360deg)
+                        }
+                    }
+
+                    @keyframes shake {
+
+                        0%,
+                        100% {
+                            transform: translateX(0)
+                        }
+
+                        25% {
+                            transform: translateX(-5px)
+                        }
+
+                        75% {
+                            transform: translateX(5px)
+                        }
+                    }
+
+                    @keyframes fade {
+
+                        0%,
+                        100% {
+                            opacity: 1
+                        }
+
+                        50% {
+                            opacity: 0.3
+                        }
+                    }
+
+                    @keyframes grow {
+
+                        0%,
+                        100% {
+                            transform: scale(1)
+                        }
+
+                        50% {
+                            transform: scale(1.2)
+                        }
+                    }
+
+                    .anim-box {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .6rem;
+                        text-align: center
+                    }
+                </style>
+                <div style="display:flex;gap:30px;flex-wrap:wrap;padding:20px 0">
+                    <div>
+                        <div class="anim-box" style="background:var(--primary);animation:bounce 1s infinite">bounce
+                        </div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--accent);animation:spin 2s linear infinite">spin
+                        </div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--green);animation:shake 0.5s infinite">shake</div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--purple);animation:fade 2s infinite">fade</div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--pink);animation:grow 1s infinite">grow</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Cursors</h3>
+            <div class="demo">
+                <div class="demo-title">Types de curseurs</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:default">default</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:pointer">pointer</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:text">text</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:move">move</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:not-allowed">not-allowed
+                    </div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:wait">wait</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:crosshair">crosshair
+                    </div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:grab">grab</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:zoom-in">zoom-in</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:col-resize">col-resize
+                    </div>
+                </div>
+            </div>
+
+            <h3>Text Effects</h3>
+            <div class="demo">
+                <div class="demo-title">Effets de texte</div>
+                <p style="font-size:1.5rem;text-shadow:2px 2px 4px rgba(0,0,0,0.5)">text-shadow</p>
+                <p
+                    style="font-size:1.5rem;background:linear-gradient(90deg,var(--primary),var(--accent),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
+                    gradient text</p>
+                <p style="font-size:1.5rem;-webkit-text-stroke:1px var(--accent);-webkit-text-fill-color:transparent">
+                    text stroke</p>
+                <p style="font-size:1.5rem;letter-spacing:10px">letter-spacing</p>
+                <p style="font-size:1.5rem;word-spacing:20px">word spacing demo</p>
+                <p style="width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Text très long avec
+                    ellipsis automatique...</p>
+            </div>
+
+            <h3>Aspect-Ratio</h3>
+            <div class="demo">
+                <div class="demo-title">Ratios automatiques</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+                    <div
+                        style="width:120px;aspect-ratio:1/1;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        1:1</div>
+                    <div
+                        style="width:120px;aspect-ratio:16/9;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        16:9</div>
+                    <div
+                        style="width:120px;aspect-ratio:4/3;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        4:3</div>
+                    <div
+                        style="width:120px;aspect-ratio:21/9;background:var(--purple);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        21:9</div>
+                </div>
+            </div>
+
+            <h3>Overflow & Scroll</h3>
+            <div class="demo">
+                <div class="demo-title">Comportement du scroll</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap">
+                    <div
+                        style="width:150px;height:80px;overflow:hidden;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: hidden - Le contenu qui dépasse est masqué complètement.</p>
+                    </div>
+                    <div
+                        style="width:150px;height:80px;overflow:auto;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: auto - Scroll automatique si nécessaire.</p>
+                    </div>
+                    <div
+                        style="width:150px;height:80px;overflow:scroll;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: scroll - Toujours afficher les scrollbars.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Object-Fit (images)</h3>
+            <div class="demo">
+                <div class="demo-title">Recadrage d'images</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">cover</span>
+                        <div style="width:100px;height:100px;background:var(--bg);border-radius:8px;overflow:hidden">
+                            <div
+                                style="width:100%;height:100%;background:linear-gradient(45deg,var(--primary),var(--accent));background-size:150% 150%">
+                            </div>
+                        </div>
+                    </div>
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">contain</span>
+                        <div
+                            style="width:100px;height:100px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center">
+                            <div
+                                style="width:60px;height:80px;background:linear-gradient(45deg,var(--green),var(--accent))">
+                            </div>
+                        </div>
+                    </div>
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">fill</span>
+                        <div
+                            style="width:100px;height:100px;background:linear-gradient(45deg,var(--purple),var(--pink));border-radius:8px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Mix-Blend-Mode</h3>
+            <div class="demo">
+                <div class="demo-title">Modes de fusion</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:multiply">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">multiply</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:screen">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">screen</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:overlay">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">overlay</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:difference">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">difference</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Outline</h3>
+            <div class="demo">
+                <div class="demo-title">Outline vs Border</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap">
+                    <div style="padding:16px 24px;border:3px solid var(--primary)">border</div>
+                    <div style="padding:16px 24px;outline:3px solid var(--accent)">outline</div>
+                    <div style="padding:16px 24px;outline:3px dashed var(--green);outline-offset:5px">outline-offset
+                    </div>
+                </div>
+            </div>
+
+            <h3>Clip-Path</h3>
+            <div class="demo">
+                <div class="demo-title">Formes CSS</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;padding:10px 0">
+                    <div style="width:80px;height:80px;background:var(--primary);clip-path:circle(50%)"></div>
+                    <div
+                        style="width:80px;height:80px;background:var(--accent);clip-path:polygon(50% 0%, 100% 100%, 0% 100%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--green);clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--purple);clip-path:polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--pink);clip-path:polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Backdrop-Filter</h3>
+            <div class="demo">
+                <div class="demo-title">Effet verre (glassmorphism)</div>
+                <div
+                    style="position:relative;height:150px;background:linear-gradient(135deg,var(--primary),var(--accent),var(--green));border-radius:12px;display:flex;align-items:center;justify-content:center">
+                    <div
+                        style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:20px 40px;border-radius:10px;border:1px solid rgba(255,255,255,0.2)">
+                        <span style="font-weight:500">Glassmorphism</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Writing-Mode</h3>
+            <div class="demo">
+                <div class="demo-title">Direction du texte</div>
+                <div style="display:flex;gap:30px;align-items:flex-start">
+                    <div style="background:var(--bg);padding:10px;border-radius:6px"><span
+                            style="font-size:.7rem;color:var(--dim)">horizontal-tb</span>
+                        <p style="margin:8px 0 0">Texte normal</p>
+                    </div>
+                    <div style="background:var(--bg);padding:10px;border-radius:6px;height:120px"><span
+                            style="font-size:.7rem;color:var(--dim)">vertical-rl</span>
+                        <p style="margin:8px 0 0;writing-mode:vertical-rl">Texte vertical</p>
+                    </div>
+                    <div style="background:var(--bg);padding:10px;border-radius:6px;height:120px"><span
+                            style="font-size:.7rem;color:var(--dim)">vertical-lr</span>
+                        <p style="margin:8px 0 0;writing-mode:vertical-lr">Texte vertical</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 50+ démos interactives</strong> — Survolez les éléments
+                pour voir les effets en action!</div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo CSS3 Complet</strong> • 100+ propriétés • 2025</p>
+            <p style="margin-bottom:8px"><strong>Mémo CSS3 Complet</strong> • 150+ propriétés • 2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
                 faciliter l'apprentissage des autres.</p>

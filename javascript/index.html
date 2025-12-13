@@ -216,7 +216,8 @@
             </div>
 
             <div class="warning"><strong>⚠️ Important</strong> Utilisez toujours <code>===</code> au lieu de
-                <code>==</code> pour éviter les surprises!</div>
+                <code>==</code> pour éviter les surprises!
+            </div>
         </div>
     </section>
 
@@ -802,38 +803,416 @@
                 <div id="demo-string-output" class="demo-output" style="margin-top:12px">Résultat</div>
             </div>
 
-            <h3>Référence rapide</h3>
+            <h3>Référence complète Array</h3>
+            <table>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Paramètres</th>
+                    <th>Description</th>
+                    <th>Retour</th>
+                </tr>
+                <tr>
+                    <td><code>map()</code></td>
+                    <td><code>(el, idx, arr) => newValue</code></td>
+                    <td>Transforme chaque élément</td>
+                    <td>New Array</td>
+                </tr>
+                <tr>
+                    <td><code>filter()</code></td>
+                    <td><code>(el, idx, arr) => boolean</code></td>
+                    <td>Filtre les éléments</td>
+                    <td>New Array</td>
+                </tr>
+                <tr>
+                    <td><code>reduce()</code></td>
+                    <td><code>(acc, el, idx, arr) => newAcc, initVal</code></td>
+                    <td>Réduit à une valeur</td>
+                    <td>Any</td>
+                </tr>
+                <tr>
+                    <td><code>find()</code></td>
+                    <td><code>(el, idx, arr) => boolean</code></td>
+                    <td>Trouve le premier match</td>
+                    <td>Element | undefined</td>
+                </tr>
+                <tr>
+                    <td><code>findIndex()</code></td>
+                    <td><code>(el, idx, arr) => boolean</code></td>
+                    <td>Index du premier match</td>
+                    <td>Number (-1 si non trouvé)</td>
+                </tr>
+                <tr>
+                    <td><code>some()</code></td>
+                    <td><code>(el, idx, arr) => boolean</code></td>
+                    <td>Au moins un match?</td>
+                    <td>Boolean</td>
+                </tr>
+                <tr>
+                    <td><code>every()</code></td>
+                    <td><code>(el, idx, arr) => boolean</code></td>
+                    <td>Tous matchent?</td>
+                    <td>Boolean</td>
+                </tr>
+                <tr>
+                    <td><code>forEach()</code></td>
+                    <td><code>(el, idx, arr) => void</code></td>
+                    <td>Itère sans retour</td>
+                    <td>undefined</td>
+                </tr>
+                <tr>
+                    <td><code>includes()</code></td>
+                    <td><code>value, fromIndex?</code></td>
+                    <td>Contient la valeur?</td>
+                    <td>Boolean</td>
+                </tr>
+                <tr>
+                    <td><code>indexOf()</code></td>
+                    <td><code>value, fromIndex?</code></td>
+                    <td>Index de la valeur</td>
+                    <td>Number (-1 si non trouvé)</td>
+                </tr>
+                <tr>
+                    <td><code>slice()</code></td>
+                    <td><code>start?, end?</code></td>
+                    <td>Extrait portion (sans modifier)</td>
+                    <td>New Array</td>
+                </tr>
+                <tr>
+                    <td><code>splice()</code></td>
+                    <td><code>start, deleteCount?, ...items</code></td>
+                    <td>Modifie le tableau</td>
+                    <td>Deleted elements</td>
+                </tr>
+                <tr>
+                    <td><code>concat()</code></td>
+                    <td><code>...arrays</code></td>
+                    <td>Fusionne tableaux</td>
+                    <td>New Array</td>
+                </tr>
+                <tr>
+                    <td><code>join()</code></td>
+                    <td><code>separator?</code></td>
+                    <td>Tableau → String</td>
+                    <td>String</td>
+                </tr>
+                <tr>
+                    <td><code>reverse()</code></td>
+                    <td>—</td>
+                    <td>Inverse l'ordre (modifie)</td>
+                    <td>Array</td>
+                </tr>
+                <tr>
+                    <td><code>sort()</code></td>
+                    <td><code>(a, b) => number</code></td>
+                    <td>Trie (modifie)</td>
+                    <td>Array</td>
+                </tr>
+                <tr>
+                    <td><code>flat()</code></td>
+                    <td><code>depth?</code></td>
+                    <td>Aplatit les sous-tableaux</td>
+                    <td>New Array</td>
+                </tr>
+                <tr>
+                    <td><code>flatMap()</code></td>
+                    <td><code>(el, idx, arr) => newValue</code></td>
+                    <td>map + flat(1)</td>
+                    <td>New Array</td>
+                </tr>
+            </table>
+
+            <h3>Référence complète String</h3>
+            <table>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Paramètres</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>length</code></td>
+                    <td>—</td>
+                    <td>Propriété: nombre de caractères</td>
+                </tr>
+                <tr>
+                    <td><code>charAt()</code></td>
+                    <td><code>index</code></td>
+                    <td>Caractère à l'index</td>
+                </tr>
+                <tr>
+                    <td><code>charCodeAt()</code></td>
+                    <td><code>index</code></td>
+                    <td>Code Unicode du caractère</td>
+                </tr>
+                <tr>
+                    <td><code>slice()</code></td>
+                    <td><code>start, end?</code></td>
+                    <td>Extrait une portion</td>
+                </tr>
+                <tr>
+                    <td><code>substring()</code></td>
+                    <td><code>start, end?</code></td>
+                    <td>Extrait (pas d'index négatif)</td>
+                </tr>
+                <tr>
+                    <td><code>substr()</code></td>
+                    <td><code>start, length?</code></td>
+                    <td>Extrait par longueur (déprécié)</td>
+                </tr>
+                <tr>
+                    <td><code>split()</code></td>
+                    <td><code>separator, limit?</code></td>
+                    <td>String → Array</td>
+                </tr>
+                <tr>
+                    <td><code>replace()</code></td>
+                    <td><code>search, replacement</code></td>
+                    <td>Remplace première occurrence</td>
+                </tr>
+                <tr>
+                    <td><code>replaceAll()</code></td>
+                    <td><code>search, replacement</code></td>
+                    <td>Remplace toutes occurrences</td>
+                </tr>
+                <tr>
+                    <td><code>toUpperCase()</code></td>
+                    <td>—</td>
+                    <td>MAJUSCULES</td>
+                </tr>
+                <tr>
+                    <td><code>toLowerCase()</code></td>
+                    <td>—</td>
+                    <td>minuscules</td>
+                </tr>
+                <tr>
+                    <td><code>trim()</code></td>
+                    <td>—</td>
+                    <td>Supprime espaces début/fin</td>
+                </tr>
+                <tr>
+                    <td><code>trimStart()</code></td>
+                    <td>—</td>
+                    <td>Supprime espaces au début</td>
+                </tr>
+                <tr>
+                    <td><code>trimEnd()</code></td>
+                    <td>—</td>
+                    <td>Supprime espaces à la fin</td>
+                </tr>
+                <tr>
+                    <td><code>padStart()</code></td>
+                    <td><code>length, pad?</code></td>
+                    <td>Rembourre au début</td>
+                </tr>
+                <tr>
+                    <td><code>padEnd()</code></td>
+                    <td><code>length, pad?</code></td>
+                    <td>Rembourre à la fin</td>
+                </tr>
+                <tr>
+                    <td><code>includes()</code></td>
+                    <td><code>search, position?</code></td>
+                    <td>Contient la sous-chaîne?</td>
+                </tr>
+                <tr>
+                    <td><code>startsWith()</code></td>
+                    <td><code>search, position?</code></td>
+                    <td>Commence par?</td>
+                </tr>
+                <tr>
+                    <td><code>endsWith()</code></td>
+                    <td><code>search, length?</code></td>
+                    <td>Finit par?</td>
+                </tr>
+                <tr>
+                    <td><code>repeat()</code></td>
+                    <td><code>count</code></td>
+                    <td>Répète n fois</td>
+                </tr>
+                <tr>
+                    <td><code>match()</code></td>
+                    <td><code>regex</code></td>
+                    <td>Trouve les correspondances regex</td>
+                </tr>
+                <tr>
+                    <td><code>search()</code></td>
+                    <td><code>regex</code></td>
+                    <td>Index de la première correspondance</td>
+                </tr>
+            </table>
+
+            <h3>Référence DOM</h3>
+            <table>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>getElementById(id)</code></td>
+                    <td>Sélectionne par ID unique</td>
+                </tr>
+                <tr>
+                    <td><code>querySelector(css)</code></td>
+                    <td>Premier élément matching le sélecteur CSS</td>
+                </tr>
+                <tr>
+                    <td><code>querySelectorAll(css)</code></td>
+                    <td>Tous les éléments (NodeList)</td>
+                </tr>
+                <tr>
+                    <td><code>getElementsByClassName(class)</code></td>
+                    <td>HTMLCollection par classe</td>
+                </tr>
+                <tr>
+                    <td><code>getElementsByTagName(tag)</code></td>
+                    <td>HTMLCollection par tag</td>
+                </tr>
+                <tr>
+                    <td><code>createElement(tag)</code></td>
+                    <td>Crée un nouvel élément</td>
+                </tr>
+                <tr>
+                    <td><code>createTextNode(text)</code></td>
+                    <td>Crée un nœud texte</td>
+                </tr>
+                <tr>
+                    <td><code>appendChild(node)</code></td>
+                    <td>Ajoute enfant à la fin</td>
+                </tr>
+                <tr>
+                    <td><code>insertBefore(new, ref)</code></td>
+                    <td>Insère avant un élément</td>
+                </tr>
+                <tr>
+                    <td><code>removeChild(node)</code></td>
+                    <td>Supprime un enfant</td>
+                </tr>
+                <tr>
+                    <td><code>replaceChild(new, old)</code></td>
+                    <td>Remplace un enfant</td>
+                </tr>
+                <tr>
+                    <td><code>cloneNode(deep?)</code></td>
+                    <td>Clone l'élément (deep=enfants inclus)</td>
+                </tr>
+                <tr>
+                    <td><code>getAttribute(name)</code></td>
+                    <td>Lit un attribut</td>
+                </tr>
+                <tr>
+                    <td><code>setAttribute(name, value)</code></td>
+                    <td>Définit un attribut</td>
+                </tr>
+                <tr>
+                    <td><code>removeAttribute(name)</code></td>
+                    <td>Supprime un attribut</td>
+                </tr>
+                <tr>
+                    <td><code>classList.add/remove/toggle/contains</code></td>
+                    <td>Gestion des classes CSS</td>
+                </tr>
+            </table>
+
+            <h3>Événements JavaScript</h3>
             <div class="ref-grid">
                 <div class="ref-card">
-                    <h4>Date</h4><code>new Date()</code> <code>getFullYear()</code> <code>getMonth()</code>
-                    <code>getDate()</code> <code>getDay()</code> <code>getTime()</code>
-                    <code>toLocaleDateString()</code>
+                    <h4>Souris</h4><code>click</code> <code>dblclick</code> <code>mousedown</code> <code>mouseup</code>
+                    <code>mousemove</code> <code>mouseenter</code> <code>mouseleave</code> <code>mouseover</code>
+                    <code>mouseout</code> <code>contextmenu</code> <code>wheel</code>
                 </div>
                 <div class="ref-card">
-                    <h4>Math</h4><code>Math.PI</code> <code>random()</code> <code>floor()</code> <code>ceil()</code>
-                    <code>round()</code> <code>max()</code> <code>min()</code> <code>sqrt()</code> <code>pow()</code>
-                    <code>abs()</code>
+                    <h4>Clavier</h4><code>keydown</code> <code>keyup</code> <code>keypress</code> — Props:
+                    <code>e.key</code> <code>e.code</code> <code>e.ctrlKey</code> <code>e.shiftKey</code>
+                    <code>e.altKey</code>
                 </div>
                 <div class="ref-card">
-                    <h4>String</h4><code>length</code> <code>toUpperCase()</code> <code>toLowerCase()</code>
-                    <code>includes()</code> <code>split()</code> <code>slice()</code> <code>replace()</code>
-                    <code>trim()</code> <code>padStart()</code>
+                    <h4>Formulaire</h4><code>submit</code> <code>reset</code> <code>input</code> <code>change</code>
+                    <code>focus</code> <code>blur</code> <code>select</code> <code>invalid</code>
                 </div>
                 <div class="ref-card">
-                    <h4>Array</h4><code>map()</code> <code>filter()</code> <code>reduce()</code> <code>find()</code>
-                    <code>some()</code> <code>every()</code> <code>forEach()</code> <code>push()</code>
-                    <code>pop()</code> <code>slice()</code> <code>splice()</code>
+                    <h4>Document</h4><code>DOMContentLoaded</code> <code>load</code> <code>beforeunload</code>
+                    <code>unload</code> <code>scroll</code> <code>resize</code> <code>hashchange</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Touch (mobile)</h4><code>touchstart</code> <code>touchmove</code> <code>touchend</code>
+                    <code>touchcancel</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Drag & Drop</h4><code>dragstart</code> <code>drag</code> <code>dragend</code>
+                    <code>dragenter</code> <code>dragover</code> <code>dragleave</code> <code>drop</code>
                 </div>
             </div>
 
-            <div class="tip" style="margin-top:24px"><strong>💡 Vanilla JS complet</strong> — Ce mémo couvre toutes les
-                fonctionnalités essentielles de JavaScript moderne (ES6+) côté front-end!</div>
+            <h3>Console & Debug</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Console</div>
+                <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Message"</span>);           <span class="c">// Affiche message</span>
+<span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"Erreur!"</span>);         <span class="c">// Affiche erreur (rouge)</span>
+<span class="fn">console</span>.<span class="fn">warn</span>(<span class="str">"Attention"</span>);        <span class="c">// Affiche warning (jaune)</span>
+<span class="fn">console</span>.<span class="fn">info</span>(<span class="str">"Info"</span>);             <span class="c">// Affiche info</span>
+<span class="fn">console</span>.<span class="fn">table</span>([{<span class="prop">a</span>:<span class="num">1</span>}, {<span class="prop">a</span>:<span class="num">2</span>}]);   <span class="c">// Affiche en tableau</span>
+<span class="fn">console</span>.<span class="fn">dir</span>(<span class="var">object</span>);              <span class="c">// Inspecte objet</span>
+<span class="fn">console</span>.<span class="fn">group</span>(<span class="str">"Groupe"</span>);          <span class="c">// Ouvre groupe</span>
+<span class="fn">console</span>.<span class="fn">groupEnd</span>();               <span class="c">// Ferme groupe</span>
+<span class="fn">console</span>.<span class="fn">time</span>(<span class="str">"timer"</span>);            <span class="c">// Démarre chrono</span>
+<span class="fn">console</span>.<span class="fn">timeEnd</span>(<span class="str">"timer"</span>);         <span class="c">// Affiche durée</span>
+<span class="fn">console</span>.<span class="fn">count</span>(<span class="str">"label"</span>);           <span class="c">// Compte les appels</span>
+<span class="fn">console</span>.<span class="fn">clear</span>();                  <span class="c">// Efface console</span></pre>
+            </div>
+
+            <h3>JSON</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>JSON</div>
+                <pre><span class="c">// Object → String JSON</span>
+<span class="kw">const</span> <span class="var">jsonStr</span> = <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">obj</span>);
+<span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">obj</span>, <span class="kw">null</span>, <span class="num">2</span>);  <span class="c">// Formaté avec indentation</span>
+
+<span class="c">// String JSON → Object</span>
+<span class="kw">const</span> <span class="var">obj</span> = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="var">jsonStr</span>);
+
+<span class="c">// Deep clone</span>
+<span class="kw">const</span> <span class="var">clone</span> = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">original</span>));</pre>
+            </div>
+
+            <h3>Regex (Expressions Régulières)</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Regex</div>
+                <pre><span class="kw">const</span> <span class="var">regex</span> = /<span class="str">pattern</span>/<span class="var">flags</span>;
+<span class="kw">const</span> <span class="var">regex</span> = <span class="kw">new</span> <span class="fn">RegExp</span>(<span class="str">"pattern"</span>, <span class="str">"flags"</span>);
+
+<span class="c">// Flags</span>
+<span class="var">g</span>  <span class="c">// global (toutes occurrences)</span>
+<span class="var">i</span>  <span class="c">// insensible à la casse</span>
+<span class="var">m</span>  <span class="c">// multilignes</span>
+
+<span class="c">// Méthodes</span>
+<span class="var">regex</span>.<span class="fn">test</span>(<span class="var">str</span>);        <span class="c">// true/false</span>
+<span class="var">regex</span>.<span class="fn">exec</span>(<span class="var">str</span>);        <span class="c">// match object</span>
+<span class="var">str</span>.<span class="fn">match</span>(<span class="var">regex</span>);       <span class="c">// array de matches</span>
+<span class="var">str</span>.<span class="fn">replace</span>(<span class="var">regex</span>, <span class="str">""</span>); <span class="c">// remplacer</span>
+
+<span class="c">// Patterns courants</span>
+/<span class="str">\d</span>/       <span class="c">// chiffre</span>
+/<span class="str">\w</span>/       <span class="c">// lettre/chiffre/_</span>
+/<span class="str">\s</span>/       <span class="c">// espace/tab/newline</span>
+/<span class="str">.</span>/        <span class="c">// n'importe quel caractère</span>
+/<span class="str">^</span>/        <span class="c">// début de chaîne</span>
+/<span class="str">$</span>/        <span class="c">// fin de chaîne</span>
+/<span class="str">[a-z]</span>/    <span class="c">// plage de caractères</span>
+/<span class="str">(group)</span>/  <span class="c">// groupe de capture</span></pre>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 200+ méthodes référencées</strong> — Ce mémo couvre
+                toutes les fonctionnalités essentielles de JavaScript moderne (ES6+) côté front-end!</div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo JavaScript Complet</strong> • Vanilla JS ES6+ • 2025</p>
+            <p style="margin-bottom:8px"><strong>Mémo JavaScript Complet</strong> • 200+ méthodes • Vanilla JS ES6+ •
+                2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
                 faciliter l'apprentissage des autres.</p>

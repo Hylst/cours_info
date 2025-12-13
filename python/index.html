@@ -159,6 +159,19 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comprendre les structures de contrôle</summary>
+                <div>
+                    <p>Les structures de contrôle permettent de diriger l'exécution du programme. Python utilise
+                        l'<strong>indentation</strong> (espaces) pour délimiter les blocs de code, contrairement aux
+                        accolades dans d'autres langages.</p>
+                    <p>La structure <code>if/elif/else</code> permet les branchements conditionnels. L'opérateur
+                        ternaire <code>x if condition else y</code> est une forme compacte pour les cas simples.</p>
+                    <p>Python 3.10 introduit <code>match/case</code> (pattern matching), plus puissant que switch/case
+                        car il peut déconstruire des structures complexes.</p>
+                </div>
+            </details>
+
             <div class="grid2">
                 <div class="code">
                     <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -220,6 +233,20 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comprendre les fonctions</summary>
+                <div>
+                    <p>Les fonctions permettent de regrouper du code réutilisable. En Python, elles sont définies avec
+                        <code>def</code> et peuvent retourner une valeur avec <code>return</code>.</p>
+                    <p><code>*args</code> collecte les arguments positionnels en tuple, <code>**kwargs</code> collecte
+                        les arguments nommés en dictionnaire. Les <strong>lambdas</strong> sont des fonctions anonymes
+                        sur une ligne.</p>
+                    <p>Les <strong>décorateurs</strong> (@decorator) modifient le comportement d'une fonction sans
+                        changer son code source. Ils sont très utilisés pour le logging, caching, authentification, etc.
+                    </p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Fonctions</div>
@@ -276,6 +303,19 @@
                     <p class="sec-sub">list, dict, tuple, set</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Comprendre les collections</summary>
+                <div>
+                    <p><strong>List</strong> : séquence ordonnée et modifiable. <strong>Tuple</strong> : séquence
+                        ordonnée et immuable. <strong>Set</strong> : collection non-ordonnée de valeurs uniques.
+                        <strong>Dict</strong> : paires clé-valeur.</p>
+                    <p>Les <strong>comprehensions</strong> permettent de créer des collections de manière concise :
+                        <code>[x**2 for x in range(10)]</code> est plus pythonique que la boucle équivalente.</p>
+                    <p>Choisissez le bon type : list pour l'ordre, set pour l'unicité et les opérations ensemblistes,
+                        dict pour les associations clé-valeur, tuple pour les données immuables.</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div class="code">
@@ -371,6 +411,19 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comprendre la POO</summary>
+                <div>
+                    <p>La Programmation Orientée Objet permet de modéliser des entités avec leurs attributs (données) et
+                        méthodes (comportements). <code>self</code> représente l'instance courante.</p>
+                    <p>L'<strong>héritage</strong> permet de créer des classes spécialisées. <code>@property</code> crée
+                        des getters/setters élégants. <code>@staticmethod</code> et <code>@classmethod</code>
+                        définissent des méthodes de classe.</p>
+                    <p>Les <strong>dataclasses</strong> (Python 3.7+) génèrent automatiquement __init__, __repr__,
+                        __eq__ pour les classes de données simples.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Classes</div>
@@ -433,6 +486,20 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comprendre les exceptions</summary>
+                <div>
+                    <p>Les exceptions permettent de gérer les erreurs de manière élégante. <code>try</code> contient le
+                        code risqué, <code>except</code> attrape les erreurs, <code>finally</code> s'exécute toujours.
+                    </p>
+                    <p>Python distingue de nombreux types d'exceptions : <code>ValueError</code>,
+                        <code>TypeError</code>, <code>KeyError</code>, <code>IndexError</code>, etc. Capturez toujours
+                        l'exception la plus spécifique possible.</p>
+                    <p>Créez vos propres exceptions en héritant de <code>Exception</code> pour des erreurs métier
+                        spécifiques à votre application.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Exceptions</div>
@@ -473,6 +540,19 @@
                     <p class="sec-sub">Lecture, écriture, JSON</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Comprendre les fichiers</summary>
+                <div>
+                    <p>Utilisez toujours <code>with open()</code> pour garantir la fermeture automatique du fichier,
+                        même en cas d'erreur. C'est le pattern "context manager".</p>
+                    <p>Les modes : <code>'r'</code> lecture, <code>'w'</code> écriture (écrase), <code>'a'</code>
+                        append, <code>'b'</code> binaire. Spécifiez toujours <code>encoding='utf-8'</code> pour le
+                        texte.</p>
+                    <p><code>pathlib.Path</code> (Python 3.4+) est l'approche moderne pour manipuler les chemins de
+                        manière portable entre Windows/Linux/Mac.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -524,6 +604,18 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comprendre les modules</summary>
+                <div>
+                    <p>Les modules organisent le code en fichiers réutilisables. Un package est un dossier contenant un
+                        <code>__init__.py</code>. Python cherche les modules dans <code>sys.path</code>.</p>
+                    <p>Utilisez des <strong>environnements virtuels</strong> (venv) pour isoler les dépendances de
+                        chaque projet. C'est une bonne pratique essentielle.</p>
+                    <p><code>pip</code> est le gestionnaire de packages. <code>requirements.txt</code> liste les
+                        dépendances pour reproduire l'environnement sur une autre machine.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Imports</div>
@@ -574,6 +666,20 @@ python -m module</pre>
                     <p class="sec-sub">Méthodes, formatage</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Comprendre les chaînes</summary>
+                <div>
+                    <p>Les strings Python sont <strong>immuables</strong> : chaque modification crée une nouvelle
+                        chaîne. Les méthodes comme <code>upper()</code> retournent une nouvelle string sans modifier
+                        l'originale.</p>
+                    <p>Les <strong>f-strings</strong> (Python 3.6+) sont la méthode recommandée pour le formatage :
+                        <code>f"Hello {name}"</code>. Elles sont plus lisibles et plus rapides que
+                        <code>.format()</code>.</p>
+                    <p>Pour la manipulation intensive de strings, utilisez <code>str.join()</code> plutôt que la
+                        concaténation répétée + qui crée de nombreux objets intermédiaires.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -712,7 +818,8 @@ re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="
                     <p>L'avantage principal est la <strong>mémoire</strong> : un générateur ne stocke pas toutes les
                         valeurs en mémoire. Idéal pour traiter de gros fichiers ou des séquences infinies.</p>
                     <p>Les <strong>generator expressions</strong> sont la version compacte :
-                        <code>(x**2 for x in range(10))</code> au lieu d'une list comprehension.</p>
+                        <code>(x**2 for x in range(10))</code> au lieu d'une list comprehension.
+                    </p>
                 </div>
             </details>
 

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Python Complet - Guide 2025</title>
+    <meta name="description" content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="theme-color" content="#3776ab">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">🐍</div>Python
+            </div>
+            <nav>
+                <a href="#s1">Variables</a>
+                <a href="#s3">Fonctions</a>
+                <a href="#s5">POO</a>
+                <a href="#s7">Fichiers</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Python Complet</h1>
+            <p>Guide pratique Python avec exemples concrets. Programmation moderne et efficace.</p>
+        </div>
+    </section>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Variables</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Structures</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Fonctions</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Collections</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>POO</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Exceptions</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Fichiers</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Modules</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Strings</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Regex</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Générateurs</a>
+                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Async</a>
+                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Tests</a>
+                <a href="#s14" class="toc-item"><span class="toc-num">14</span>Référence</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- S1: VARIABLES -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Variables & Types</h2>
+                    <p class="sec-sub">Déclaration, types, opérateurs</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre les variables en Python</summary>
+                <div>
+                    <p>En Python, les variables sont des "étiquettes" qui pointent vers des objets en mémoire.
+                        Contrairement à d'autres langages, vous n'avez pas besoin de déclarer le type : Python utilise
+                        le <strong>typage dynamique</strong>. Le type est déterminé automatiquement lors de
+                        l'affectation.</p>
+                    <p>Python distingue les types <strong>mutables</strong> (list, dict, set) des types
+                        <strong>immuables</strong> (int, float, str, tuple). Les objets immuables ne peuvent pas être
+                        modifiés après création : toute "modification" crée en réalité un nouvel objet.
+                    </p>
+                    <p>Depuis Python 3.5, les <strong>type hints</strong> permettent d'annoter les types attendus. Ils
+                        n'affectent pas l'exécution mais améliorent la lisibilité et permettent aux outils comme mypy de
+                        détecter des erreurs.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Variables</div>
+                <pre><span class="c"># Variables (typage dynamique)</span>
+<span class="var">name</span> = <span class="str">"Alice"</span>        <span class="c"># str</span>
+<span class="var">age</span> = <span class="num">25</span>               <span class="c"># int</span>
+<span class="var">price</span> = <span class="num">19.99</span>          <span class="c"># float</span>
+<span class="var">is_active</span> = <span class="kw">True</span>       <span class="c"># bool</span>
+<span class="var">nothing</span> = <span class="kw">None</span>         <span class="c"># NoneType</span>
+
+<span class="c"># Type hints (Python 3.5+)</span>
+<span class="var">name</span>: <span class="cls">str</span> = <span class="str">"Alice"</span>
+<span class="var">age</span>: <span class="cls">int</span> = <span class="num">25</span>
+<span class="var">prices</span>: <span class="cls">list</span>[<span class="cls">float</span>] = [<span class="num">9.99</span>, <span class="num">19.99</span>]
+<span class="var">user</span>: <span class="cls">dict</span>[<span class="cls">str</span>, <span class="cls">int</span>] = {<span class="str">"age"</span>: <span class="num">25</span|}
+
+<span class="c"># Vérification de type</span>
+<span class="fn">type</span>(<span class="var">name</span>)             <span class="c"># &lt;class 'str'&gt;</span>
+<span class="fn">isinstance</span>(<span class="var">age</span>, <span class="cls">int</span>)  <span class="c"># True</span>
+<span class="fn">isinstance</span>(<span class="var">age</span>, (<span class="cls">int</span>, <span class="cls">float</span>))  <span class="c"># True</span>
+
+<span class="c"># Conversion (casting)</span>
+<span class="fn">str</span>(<span class="num">42</span>)                <span class="c"># "42"</span>
+<span class="fn">int</span>(<span class="str">"42"</span>)              <span class="c"># 42</span>
+<span class="fn">float</span>(<span class="str">"3.14"</span>)          <span class="c"># 3.14</span>
+<span class="fn">bool</span>(<span class="num">0</span>)                <span class="c"># False</span>
+<span class="fn">list</span>(<span class="str">"abc"</span>)            <span class="c"># ['a', 'b', 'c']</span>
+
+<span class="c"># Opérateurs arithmétiques</span>
+<span class="num">5</span> + <span class="num">3</span>    <span class="c"># 8  (addition)</span>
+<span class="num">5</span> - <span class="num">3</span>    <span class="c"># 2  (soustraction)</span>
+<span class="num">5</span> * <span class="num">3</span>    <span class="c"># 15 (multiplication)</span>
+<span class="num">5</span> / <span class="num">3</span>    <span class="c"># 1.666... (division)</span>
+<span class="num">5</span> // <span class="num">3</span>   <span class="c"># 1  (division entière)</span>
+<span class="num">5</span> % <span class="num">3</span>    <span class="c"># 2  (modulo)</span>
+<span class="num">5</span> ** <span class="num">3</span>   <span class="c"># 125 (puissance)</span>
+
+<span class="c"># Opérateurs de comparaison</span>
+<span class="num">5</span> == <span class="num">5</span>   <span class="c"># True (égalité)</span>
+<span class="num">5</span> != <span class="num">3</span>   <span class="c"># True (différent)</span>
+<span class="num">5</span> > <span class="num">3</span>    <span class="c"># True (supérieur)</span>
+<span class="num">5</span> >= <span class="num">5</span>   <span class="c"># True (supérieur ou égal)</span>
+
+<span class="c"># Opérateurs logiques</span>
+<span class="kw">True</span> <span class="kw">and</span> <span class="kw">False</span>  <span class="c"># False</span>
+<span class="kw">True</span> <span class="kw">or</span> <span class="kw">False</span>   <span class="c"># True</span>
+<span class="kw">not</span> <span class="kw">True</span>        <span class="c"># False</span></pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Résultat attendu</div>
+                <div class="demo-output">name = Alice (type: str)
+                    age = 25 (type: int)
+                    5 ** 3 = 125
+                    isinstance(25, int) = True</div>
+            </div>
+
+            <div class="tip"><strong>💡 f-strings</strong> Utilisez <code>f"Hello {name}"</code> pour l'interpolation de
+                chaînes. C'est la méthode la plus lisible et performante depuis Python 3.6.</div>
+        </div>
+    </section>
+
+    <!-- S2: STRUCTURES -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Structures de contrôle</h2>
+                    <p class="sec-sub">Conditions, boucles</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Conditions</div>
+                    <pre><span class="c"># if / elif / else</span>
+<span class="kw">if</span> <span class="var">age</span> < <span class="num">18</span>:
+    <span class="fn">print</span>(<span class="str">"Mineur"</span>)
+<span class="kw">elif</span> <span class="var">age</span> < <span class="num">65</span>:
+    <span class="fn">print</span>(<span class="str">"Adulte"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">"Senior"</span>)
+
+<span class="c"># Ternaire</span>
+<span class="var">status</span> = <span class="str">"Majeur"</span> <span class="kw">if</span> <span class="var">age</span> >= <span class="num">18</span> <span class="kw">else</span> <span class="str">"Mineur"</span>
+
+<span class="c"># Match (Python 3.10+)</span>
+<span class="kw">match</span> <span class="var">code</span>:
+    <span class="kw">case</span> <span class="num">200</span>:
+        <span class="fn">print</span>(<span class="str">"OK"</span>)
+    <span class="kw">case</span> <span class="num">404</span>:
+        <span class="fn">print</span>(<span class="str">"Not Found"</span>)
+    <span class="kw">case</span> _:
+        <span class="fn">print</span>(<span class="str">"Error"</span>)</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Boucles</div>
+                    <pre><span class="c"># for avec range</span>
+<span class="kw">for</span> <span class="var">i</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>):
+    <span class="fn">print</span>(<span class="var">i</span>)  <span class="c"># 0, 1, 2, 3, 4</span>
+
+<span class="c"># for sur itérable</span>
+<span class="kw">for</span> <span class="var">fruit</span> <span class="kw">in</span> <span class="var">fruits</span>:
+    <span class="fn">print</span>(<span class="var">fruit</span>)
+
+<span class="c"># for avec enumerate</span>
+<span class="kw">for</span> <span class="var">i</span>, <span class="var">val</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="var">lst</span>):
+    <span class="fn">print</span>(<span class="str">f"</span>{<span class="var">i</span>}: {<span class="var">val</span>}<span class="str">"</span>)
+
+<span class="c"># while</span>
+<span class="kw">while</span> <span class="var">condition</span>:
+    <span class="c"># ...</span>
+    <span class="kw">break</span>     <span class="c"># sortir</span>
+    <span class="kw">continue</span>  <span class="c"># suivant</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: FONCTIONS -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Fonctions</h2>
+                    <p class="sec-sub">def, lambda, décorateurs</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Fonctions</div>
+                <pre><span class="c"># Fonction simple</span>
+<span class="kw">def</span> <span class="fn">greet</span>(<span class="var">name</span>):
+    <span class="kw">return</span> <span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">!"</span>
+
+<span class="c"># Valeur par défaut</span>
+<span class="kw">def</span> <span class="fn">power</span>(<span class="var">base</span>, <span class="var">exp</span>=<span class="num">2</span>):
+    <span class="kw">return</span> <span class="var">base</span> ** <span class="var">exp</span>
+
+<span class="c"># Type hints</span>
+<span class="kw">def</span> <span class="fn">add</span>(<span class="var">a</span>: <span class="cls">int</span>, <span class="var">b</span>: <span class="cls">int</span>) -> <span class="cls">int</span>:
+    <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>
+
+<span class="c"># *args et **kwargs</span>
+<span class="kw">def</span> <span class="fn">func</span>(*<span class="var">args</span>, **<span class="var">kwargs</span>):
+    <span class="fn">print</span>(<span class="var">args</span>)    <span class="c"># tuple</span>
+    <span class="fn">print</span>(<span class="var">kwargs</span>)  <span class="c"># dict</span>
+
+<span class="c"># Lambda</span>
+<span class="var">double</span> = <span class="kw">lambda</span> <span class="var">x</span>: <span class="var">x</span> * <span class="num">2</span>
+
+<span class="c"># Décorateur</span>
+<span class="kw">def</span> <span class="fn">decorator</span>(<span class="var">func</span>):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*<span class="var">args</span>):
+        <span class="fn">print</span>(<span class="str">"Before"</span>)
+        <span class="var">result</span> = <span class="var">func</span>(*<span class="var">args</span>)
+        <span class="fn">print</span>(<span class="str">"After"</span>)
+        <span class="kw">return</span> <span class="var">result</span>
+    <span class="kw">return</span> <span class="var">wrapper</span>
+
+<span class="dec">@decorator</span>
+<span class="kw">def</span> <span class="fn">say_hello</span>():
+    <span class="fn">print</span>(<span class="str">"Hello!"</span>)</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Résultat attendu</div>
+                <div class="demo-output">greet("Python") → "Hello Python!"
+                    power(2, 8) → 256
+                    double(5) → 10</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S4: COLLECTIONS -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Collections</h2>
+                    <p class="sec-sub">list, dict, tuple, set</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>List</div>
+                    <pre><span class="c"># Création</span>
+<span class="var">fruits</span> = [<span class="str">"pomme"</span>, <span class="str">"banane"</span>, <span class="str">"orange"</span>]
+<span class="var">nums</span> = <span class="fn">list</span>(<span class="fn">range</span>(<span class="num">5</span>))
+
+<span class="c"># Accès</span>
+<span class="var">fruits</span>[<span class="num">0</span>]     <span class="c"># "pomme"</span>
+<span class="var">fruits</span>[-<span class="num">1</span>]    <span class="c"># "orange"</span>
+<span class="var">fruits</span>[<span class="num">1</span>:<span class="num">3</span>]   <span class="c"># ["banane", "orange"]</span>
+
+<span class="c"># Méthodes</span>
+<span class="var">fruits</span>.<span class="fn">append</span>(<span class="str">"kiwi"</span>)
+<span class="var">fruits</span>.<span class="fn">insert</span>(<span class="num">0</span>, <span class="str">"mangue"</span>)
+<span class="var">fruits</span>.<span class="fn">remove</span>(<span class="str">"banane"</span>)
+<span class="var">fruits</span>.<span class="fn">pop</span>()
+<span class="var">fruits</span>.<span class="fn">sort</span>()
+<span class="var">fruits</span>.<span class="fn">reverse</span>()
+
+<span class="c"># List comprehension</span>
+<span class="var">squares</span> = [<span class="var">x</span>**<span class="num">2</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>)]
+<span class="var">evens</span> = [<span class="var">x</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">nums</span> <span class="kw">if</span> <span class="var">x</span> % <span class="num">2</span> == <span class="num">0</span>]</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Dict</div>
+                    <pre><span class="c"># Création</span>
+<span class="var">user</span> = {
+    <span class="str">"name"</span>: <span class="str">"Alice"</span>,
+    <span class="str">"age"</span>: <span class="num">25</span>,
+    <span class="str">"email"</span>: <span class="str">"alice@example.com"</span>
+}
+
+<span class="c"># Accès</span>
+<span class="var">user</span>[<span class="str">"name"</span>]        <span class="c"># "Alice"</span>
+<span class="var">user</span>.<span class="fn">get</span>(<span class="str">"age"</span>, <span class="num">0</span>)  <span class="c"># 25 (défaut: 0)</span>
+
+<span class="c"># Méthodes</span>
+<span class="var">user</span>.<span class="fn">keys</span>()         <span class="c"># clés</span>
+<span class="var">user</span>.<span class="fn">values</span>()       <span class="c"># valeurs</span>
+<span class="var">user</span>.<span class="fn">items</span>()        <span class="c"># (clé, valeur)</span>
+<span class="var">user</span>.<span class="fn">update</span>({<span class="str">"city"</span>: <span class="str">"Paris"</span>})
+
+<span class="c"># Dict comprehension</span>
+<span class="var">squares</span> = {<span class="var">x</span>: <span class="var">x</span>**<span class="num">2</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>)}</pre>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Tuple</div>
+                    <pre><span class="c"># Immuable</span>
+<span class="var">point</span> = (<span class="num">10</span>, <span class="num">20</span>)
+<span class="var">x</span>, <span class="var">y</span> = <span class="var">point</span>  <span class="c"># unpacking</span>
+
+<span class="c"># Named tuple</span>
+<span class="kw">from</span> collections <span class="kw">import</span> namedtuple
+<span class="var">Point</span> = <span class="fn">namedtuple</span>(<span class="str">'Point'</span>, [<span class="str">'x'</span>, <span class="str">'y'</span>])
+<span class="var">p</span> = <span class="var">Point</span>(<span class="num">10</span>, <span class="num">20</span>)
+<span class="var">p</span>.<span class="prop">x</span>  <span class="c"># 10</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Set</div>
+                    <pre><span class="c"># Valeurs uniques</span>
+<span class="var">s</span> = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>}
+<span class="var">s</span>.<span class="fn">add</span>(<span class="num">4</span>)
+<span class="var">s</span>.<span class="fn">remove</span>(<span class="num">1</span>)
+
+<span class="c"># Opérations</span>
+<span class="var">a</span> | <span class="var">b</span>  <span class="c"># union</span>
+<span class="var">a</span> & <span class="var">b</span>  <span class="c"># intersection</span>
+<span class="var">a</span> - <span class="var">b</span>  <span class="c"># différence</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5: POO -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Programmation Orientée Objet</h2>
+                    <p class="sec-sub">Classes, héritage, dataclass</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Classes</div>
+                <pre><span class="kw">class</span> <span class="cls">User</span>:
+    <span class="c"># Attribut de classe</span>
+    <span class="var">count</span> = <span class="num">0</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>, <span class="var">name</span>: <span class="cls">str</span>, <span class="var">age</span>: <span class="cls">int</span> = <span class="num">0</span>):
+        <span class="var">self</span>.<span class="prop">name</span> = <span class="var">name</span>         <span class="c"># public</span>
+        <span class="var">self</span>.<span class="prop">_age</span> = <span class="var">age</span>          <span class="c"># protected</span>
+        <span class="var">self</span>.<span class="prop">__secret</span> = <span class="str">"..."</span>   <span class="c"># private</span>
+        <span class="cls">User</span>.<span class="var">count</span> += <span class="num">1</span>
+
+    <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span class="cls">str</span>:
+        <span class="kw">return</span> <span class="str">f"Hello, I'm </span>{<span class="var">self</span>.<span class="prop">name</span>}<span class="str">"</span>
+
+    <span class="dec">@property</span>
+    <span class="kw">def</span> <span class="fn">age</span>(<span class="var">self</span>) -> <span class="cls">int</span>:
+        <span class="kw">return</span> <span class="var">self</span>.<span class="prop">_age</span>
+
+    <span class="dec">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">info</span>():
+        <span class="kw">return</span> <span class="str">"User class"</span>
+
+    <span class="dec">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">get_count</span>(<span class="var">cls</span>) -> <span class="cls">int</span>:
+        <span class="kw">return</span> <span class="var">cls</span>.<span class="var">count</span>
+
+<span class="c"># Héritage</span>
+<span class="kw">class</span> <span class="cls">Admin</span>(<span class="cls">User</span>):
+    <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span class="cls">str</span>:
+        <span class="kw">return</span> <span class="fn">super</span>().<span class="fn">greet</span>() + <span class="str">" (Admin)"</span>
+
+<span class="c"># Dataclass (Python 3.7+)</span>
+<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
+
+<span class="dec">@dataclass</span>
+<span class="kw">class</span> <span class="cls">Point</span>:
+    <span class="var">x</span>: <span class="cls">float</span>
+    <span class="var">y</span>: <span class="cls">float</span></pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Résultat attendu</div>
+                <div class="demo-output">alice = User("Alice", 25)
+                    alice.greet() → "Hello, I'm Alice"
+                    User.count → 1</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: EXCEPTIONS -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Gestion des exceptions</h2>
+                    <p class="sec-sub">try/except, raise</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Exceptions</div>
+                <pre><span class="c"># try / except / else / finally</span>
+<span class="kw">try</span>:
+    <span class="var">result</span> = <span class="num">10</span> / <span class="var">x</span>
+<span class="kw">except</span> <span class="cls">ZeroDivisionError</span>:
+    <span class="fn">print</span>(<span class="str">"Division par zéro!"</span>)
+<span class="kw">except</span> (<span class="cls">TypeError</span>, <span class="cls">ValueError</span>) <span class="kw">as</span> <span class="var">e</span>:
+    <span class="fn">print</span>(<span class="str">f"Erreur: </span>{<span class="var">e</span>}<span class="str">"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">"Succès!"</span>)  <span class="c"># si pas d'erreur</span>
+<span class="kw">finally</span>:
+    <span class="fn">print</span>(<span class="str">"Nettoyage"</span>)  <span class="c"># toujours</span>
+
+<span class="c"># Lancer une exception</span>
+<span class="kw">raise</span> <span class="cls">ValueError</span>(<span class="str">"Message d'erreur"</span>)
+<span class="kw">raise</span> <span class="cls">Exception</span>(<span class="str">"Erreur générique"</span>)
+
+<span class="c"># Exception personnalisée</span>
+<span class="kw">class</span> <span class="cls">UserNotFoundError</span>(<span class="cls">Exception</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>, <span class="var">user_id</span>: <span class="cls">int</span>):
+        <span class="fn">super</span>().<span class="fn">__init__</span>(<span class="str">f"User </span>{<span class="var">user_id</span>}<span class="str"> not found"</span>)
+
+<span class="c"># Assert (debug)</span>
+<span class="kw">assert</span> <span class="var">x</span> > <span class="num">0</span>, <span class="str">"x doit être positif"</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S7: FICHIERS -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Fichiers</h2>
+                    <p class="sec-sub">Lecture, écriture, JSON</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Fichiers</div>
+                <pre><span class="c"># Lecture (with = fermeture auto)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"file.txt"</span>, <span class="str">"r"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">content</span> = <span class="var">f</span>.<span class="fn">read</span>()        <span class="c"># tout</span>
+    <span class="var">lines</span> = <span class="var">f</span>.<span class="fn">readlines</span>()     <span class="c"># liste</span>
+    <span class="kw">for</span> <span class="var">line</span> <span class="kw">in</span> <span class="var">f</span>:            <span class="c"># itérer</span>
+        <span class="fn">print</span>(<span class="var">line</span>.<span class="fn">strip</span>())
+
+<span class="c"># Écriture</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"file.txt"</span>, <span class="str">"w"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">f</span>.<span class="fn">write</span>(<span class="str">"Hello\n"</span>)
+
+<span class="c"># Append</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"file.txt"</span>, <span class="str">"a"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">f</span>.<span class="fn">write</span>(<span class="str">"New line\n"</span>)
+
+<span class="c"># JSON</span>
+<span class="kw">import</span> json
+
+<span class="c"># Sauvegarder</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"data.json"</span>, <span class="str">"w"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    json.<span class="fn">dump</span>(<span class="var">data</span>, <span class="var">f</span>, indent=<span class="num">2</span>)
+
+<span class="c"># Charger</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"data.json"</span>, <span class="str">"r"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">data</span> = json.<span class="fn">load</span>(<span class="var">f</span>)
+
+<span class="c"># Pathlib (moderne)</span>
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+<span class="var">p</span> = <span class="cls">Path</span>(<span class="str">"folder/file.txt"</span>)
+<span class="var">p</span>.<span class="fn">exists</span>()
+<span class="var">p</span>.<span class="fn">read_text</span>()
+<span class="var">p</span>.<span class="fn">write_text</span>(<span class="str">"content"</span>)</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: MODULES -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Modules & Packages</h2>
+                    <p class="sec-sub">import, pip, venv</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Imports</div>
+                <pre><span class="c"># Import standard</span>
+<span class="kw">import</span> os
+<span class="kw">import</span> sys
+<span class="kw">import</span> json
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+<span class="kw">from</span> pathlib <span class="kw">import</span> Path
+<span class="kw">from</span> typing <span class="kw">import</span> List, Dict, Optional
+
+<span class="c"># Alias</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="c"># Depuis un module local</span>
+<span class="kw">from</span> mypackage.module <span class="kw">import</span> function
+<span class="kw">from</span> . <span class="kw">import</span> sibling  <span class="c"># relatif</span></pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Terminal</div>
+                <pre><span class="c"># Virtual environment</span>
+python -m venv venv
+source venv/bin/activate  <span class="c"># Linux/Mac</span>
+venv\Scripts\activate     <span class="c"># Windows</span>
+
+<span class="c"># Pip</span>
+pip install package
+pip install -r requirements.txt
+pip freeze > requirements.txt
+
+<span class="c"># Exécution</span>
+python script.py
+python -m module</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S9: STRINGS -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Chaînes de caractères</h2>
+                    <p class="sec-sub">Méthodes, formatage</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Strings</div>
+                <pre><span class="var">s</span> = <span class="str">"Hello World"</span>
+
+<span class="c"># Méthodes</span>
+<span class="var">s</span>.<span class="fn">upper</span>()             <span class="c"># "HELLO WORLD"</span>
+<span class="var">s</span>.<span class="fn">lower</span>()             <span class="c"># "hello world"</span>
+<span class="var">s</span>.<span class="fn">title</span>()             <span class="c"># "Hello World"</span>
+<span class="var">s</span>.<span class="fn">strip</span>()             <span class="c"># supprime espaces</span>
+<span class="var">s</span>.<span class="fn">split</span>(<span class="str">" "</span>)          <span class="c"># ["Hello", "World"]</span>
+<span class="str">"-"</span>.<span class="fn">join</span>([<span class="str">"a"</span>, <span class="str">"b"</span>])  <span class="c"># "a-b"</span>
+<span class="var">s</span>.<span class="fn">replace</span>(<span class="str">"o"</span>, <span class="str">"0"</span>)   <span class="c"># "Hell0 W0rld"</span>
+<span class="var">s</span>.<span class="fn">startswith</span>(<span class="str">"He"</span>)   <span class="c"># True</span>
+<span class="var">s</span>.<span class="fn">endswith</span>(<span class="str">"ld"</span>)     <span class="c"># True</span>
+<span class="var">s</span>.<span class="fn">find</span>(<span class="str">"o"</span>)           <span class="c"># 4 (index)</span>
+<span class="var">s</span>.<span class="fn">count</span>(<span class="str">"o"</span>)          <span class="c"># 2</span>
+<span class="var">s</span>.<span class="fn">isdigit</span>()           <span class="c"># False</span>
+<span class="var">s</span>.<span class="fn">isalpha</span>()           <span class="c"># False</span>
+
+<span class="c"># Formatage</span>
+<span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">"</span>                    <span class="c"># f-string</span>
+<span class="str">f"</span>{<span class="var">price</span>:.2f}<span class="str">"</span>                     <span class="c"># "19.99"</span>
+<span class="str">f"</span>{<span class="var">n</span>:05d}<span class="str">"</span>                         <span class="c"># "00042"</span>
+<span class="str">"Hello {}"</span>.<span class="fn">format</span>(<span class="var">name</span>)           <span class="c"># ancien</span>
+<span class="str">"Hello {name}"</span>.<span class="fn">format</span>(name=<span class="str">"Alice"</span>)</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S10: REGEX -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Expressions régulières</h2>
+                    <p class="sec-sub">Patterns, recherche, validation</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre les expressions régulières</summary>
+                <div>
+                    <p>Les expressions régulières (regex) sont des séquences de caractères définissant un motif de
+                        recherche. Elles sont utilisées pour la validation (emails, téléphones), l'extraction de
+                        données, le remplacement de texte et le parsing.</p>
+                    <p>En Python, le module <code>re</code> fournit toutes les fonctionnalités regex. Les patterns sont
+                        généralement définis avec des <strong>raw strings</strong> (r"pattern") pour éviter les
+                        problèmes d'échappement avec les backslashes.</p>
+                    <p>Les méthodes principales sont <code>match()</code> (début de chaîne), <code>search()</code>
+                        (première occurrence), <code>findall()</code> (toutes les occurrences) et <code>sub()</code>
+                        (remplacement).</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Regex</div>
+                <pre><span class="kw">import</span> re
+
+<span class="c"># Patterns de base</span>
+<span class="var">pattern</span> = <span class="str">r"\d+"</span>          <span class="c"># chiffres</span>
+<span class="var">pattern</span> = <span class="str">r"[a-zA-Z]+"</span>    <span class="c"># lettres</span>
+<span class="var">pattern</span> = <span class="str">r"\w+"</span>          <span class="c"># alphanumérique</span>
+<span class="var">pattern</span> = <span class="str">r"\s+"</span>          <span class="c"># espaces</span>
+
+<span class="c"># Méthodes principales</span>
+re.<span class="fn">match</span>(<span class="var">pattern</span>, <span class="var">text</span>)    <span class="c"># début seulement</span>
+re.<span class="fn">search</span>(<span class="var">pattern</span>, <span class="var">text</span>)   <span class="c"># première occurrence</span>
+re.<span class="fn">findall</span>(<span class="var">pattern</span>, <span class="var">text</span>)  <span class="c"># liste de toutes</span>
+re.<span class="fn">finditer</span>(<span class="var">pattern</span>, <span class="var">text</span>) <span class="c"># itérateur</span>
+re.<span class="fn">sub</span>(<span class="var">pattern</span>, <span class="var">repl</span>, <span class="var">text</span>) <span class="c"># remplacer</span>
+re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="var">text</span>)   <span class="c"># découper</span>
+
+<span class="c"># Exemple: extraire emails</span>
+<span class="var">text</span> = <span class="str">"Contact: alice@mail.com, bob@test.fr"</span>
+<span class="var">emails</span> = re.<span class="fn">findall</span>(<span class="str">r"[\w.]+@[\w.]+\.\w+"</span>, <span class="var">text</span>)
+<span class="c"># ['alice@mail.com', 'bob@test.fr']</span>
+
+<span class="c"># Groupes de capture</span>
+<span class="var">m</span> = re.<span class="fn">search</span>(<span class="str">r"(\d{2})/(\d{2})/(\d{4})"</span>, <span class="str">"Date: 25/12/2025"</span>)
+<span class="var">m</span>.<span class="fn">group</span>(<span class="num">0</span>)    <span class="c"># "25/12/2025" (tout)</span>
+<span class="var">m</span>.<span class="fn">group</span>(<span class="num">1</span>)    <span class="c"># "25" (jour)</span>
+<span class="var">m</span>.<span class="fn">groups</span>()   <span class="c"># ('25', '12', '2025')</span>
+
+<span class="c"># Groupes nommés</span>
+<span class="var">pattern</span> = <span class="str">r"(?P&lt;day>\d{2})/(?P&lt;month>\d{2})/(?P&lt;year>\d{4})"</span>
+<span class="var">m</span> = re.<span class="fn">search</span>(<span class="var">pattern</span>, <span class="str">"25/12/2025"</span>)
+<span class="var">m</span>.<span class="fn">group</span>(<span class="str">"year"</span>)  <span class="c"># "2025"</span>
+
+<span class="c"># Compilation (performance)</span>
+<span class="var">regex</span> = re.<span class="fn">compile</span>(<span class="str">r"\d+"</span>)
+<span class="var">regex</span>.<span class="fn">findall</span>(<span class="var">text</span>)</pre>
+            </div>
+
+            <h3>Syntaxe Regex</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Caractères</h4><code>\d</code> chiffre <code>\D</code> non-chiffre <code>\w</code> mot
+                    <code>\W</code> non-mot <code>\s</code> espace <code>\S</code> non-espace <code>.</code> tout
+                </div>
+                <div class="ref-card">
+                    <h4>Quantificateurs</h4><code>*</code> 0+ <code>+</code> 1+ <code>?</code> 0-1 <code>{n}</code>
+                    exactement n <code>{m,n}</code> m à n fois
+                </div>
+                <div class="ref-card">
+                    <h4>Ancres</h4><code>^</code> début <code>$</code> fin <code>\b</code> limite de mot
+                </div>
+                <div class="ref-card">
+                    <h4>Groupes</h4><code>()</code> capture <code>(?:)</code> non-capture <code>(?P&lt;name>)</code>
+                    nommé <code>|</code> ou
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S11: GÉNÉRATEURS -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Générateurs & Itérateurs</h2>
+                    <p class="sec-sub">yield, itertools, performances</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre les générateurs</summary>
+                <div>
+                    <p>Les générateurs sont des fonctions qui produisent une séquence de valeurs paresseusement (lazy
+                        evaluation). Au lieu de retourner toutes les valeurs d'un coup, ils les "génèrent" une à une
+                        avec <code>yield</code>.</p>
+                    <p>L'avantage principal est la <strong>mémoire</strong> : un générateur ne stocke pas toutes les
+                        valeurs en mémoire. Idéal pour traiter de gros fichiers ou des séquences infinies.</p>
+                    <p>Les <strong>generator expressions</strong> sont la version compacte :
+                        <code>(x**2 for x in range(10))</code> au lieu d'une list comprehension.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Générateurs</div>
+                <pre><span class="c"># Fonction générateur</span>
+<span class="kw">def</span> <span class="fn">countdown</span>(<span class="var">n</span>):
+    <span class="kw">while</span> <span class="var">n</span> > <span class="num">0</span>:
+        <span class="kw">yield</span> <span class="var">n</span>
+        <span class="var">n</span> -= <span class="num">1</span>
+
+<span class="kw">for</span> <span class="var">i</span> <span class="kw">in</span> <span class="fn">countdown</span>(<span class="num">5</span>):
+    <span class="fn">print</span>(<span class="var">i</span>)  <span class="c"># 5, 4, 3, 2, 1</span>
+
+<span class="c"># Generator expression</span>
+<span class="var">squares</span> = (<span class="var">x</span>**<span class="num">2</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1000000</span>))  <span class="c"># économe en mémoire</span>
+
+<span class="c"># Générateur infini</span>
+<span class="kw">def</span> <span class="fn">infinite_counter</span>():
+    <span class="var">n</span> = <span class="num">0</span>
+    <span class="kw">while</span> <span class="kw">True</span>:
+        <span class="kw">yield</span> <span class="var">n</span>
+        <span class="var">n</span> += <span class="num">1</span>
+
+<span class="c"># yield from (délégation)</span>
+<span class="kw">def</span> <span class="fn">flatten</span>(<span class="var">nested</span>):
+    <span class="kw">for</span> <span class="var">item</span> <span class="kw">in</span> <span class="var">nested</span>:
+        <span class="kw">if</span> <span class="fn">isinstance</span>(<span class="var">item</span>, <span class="cls">list</span>):
+            <span class="kw">yield from</span> <span class="fn">flatten</span>(<span class="var">item</span>)
+        <span class="kw">else</span>:
+            <span class="kw">yield</span> <span class="var">item</span>
+
+<span class="c"># itertools</span>
+<span class="kw">from</span> itertools <span class="kw">import</span> count, cycle, repeat, chain, islice
+
+<span class="fn">count</span>(<span class="num">10</span>)           <span class="c"># 10, 11, 12, ...</span>
+<span class="fn">cycle</span>([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>])      <span class="c"># 1, 2, 3, 1, 2, 3, ...</span>
+<span class="fn">repeat</span>(<span class="str">"A"</span>, <span class="num">5</span>)      <span class="c"># A, A, A, A, A</span>
+<span class="fn">chain</span>([<span class="num">1</span>], [<span class="num">2</span>,<span class="num">3</span>])   <span class="c"># 1, 2, 3</span>
+<span class="fn">islice</span>(<span class="var">gen</span>, <span class="num">10</span>)     <span class="c"># 10 premiers éléments</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S12: ASYNC -->
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Programmation asynchrone</h2>
+                    <p class="sec-sub">async/await, asyncio, concurrence</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre async/await</summary>
+                <div>
+                    <p>La programmation asynchrone permet d'exécuter des opérations I/O (réseau, fichiers) de manière
+                        non-bloquante. Pendant qu'une tâche attend une réponse, d'autres tâches peuvent s'exécuter.</p>
+                    <p><code>async def</code> définit une coroutine. <code>await</code> suspend l'exécution jusqu'à ce
+                        que le résultat soit disponible. C'est idéal pour les applications web, les APIs et le scraping.
+                    </p>
+                    <p>Le module <code>asyncio</code> gère la boucle d'événements et l'orchestration des tâches
+                        concurrentes.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Async</div>
+                <pre><span class="kw">import</span> asyncio
+
+<span class="c"># Coroutine</span>
+<span class="kw">async def</span> <span class="fn">fetch_data</span>(<span class="var">url</span>):
+    <span class="fn">print</span>(<span class="str">f"Fetching </span>{<span class="var">url</span>}<span class="str">"</span>)
+    <span class="kw">await</span> asyncio.<span class="fn">sleep</span>(<span class="num">1</span>)  <span class="c"># simule I/O</span>
+    <span class="kw">return</span> <span class="str">f"Data from </span>{<span class="var">url</span>}<span class="str">"</span>
+
+<span class="c"># Exécution séquentielle</span>
+<span class="kw">async def</span> <span class="fn">main</span>():
+    <span class="var">result1</span> = <span class="kw">await</span> <span class="fn">fetch_data</span>(<span class="str">"url1"</span>)
+    <span class="var">result2</span> = <span class="kw">await</span> <span class="fn">fetch_data</span>(<span class="str">"url2"</span>)
+    <span class="kw">return</span> [<span class="var">result1</span>, <span class="var">result2</span>]
+
+<span class="c"># Exécution parallèle</span>
+<span class="kw">async def</span> <span class="fn">main_parallel</span>():
+    <span class="var">tasks</span> = [
+        <span class="fn">fetch_data</span>(<span class="str">"url1"</span>),
+        <span class="fn">fetch_data</span>(<span class="str">"url2"</span>),
+        <span class="fn">fetch_data</span>(<span class="str">"url3"</span>)
+    ]
+    <span class="var">results</span> = <span class="kw">await</span> asyncio.<span class="fn">gather</span>(*<span class="var">tasks</span>)
+    <span class="kw">return</span> <span class="var">results</span>
+
+<span class="c"># Lancer</span>
+asyncio.<span class="fn">run</span>(<span class="fn">main</span>())
+
+<span class="c"># Avec timeout</span>
+<span class="kw">try</span>:
+    <span class="var">result</span> = <span class="kw">await</span> asyncio.<span class="fn">wait_for</span>(<span class="fn">fetch_data</span>(<span class="str">"url"</span>), timeout=<span class="num">5.0</span>)
+<span class="kw">except</span> asyncio.<span class="cls">TimeoutError</span>:
+    <span class="fn">print</span>(<span class="str">"Timeout!"</span>)
+
+<span class="c"># HTTP avec aiohttp</span>
+<span class="kw">import</span> aiohttp
+
+<span class="kw">async def</span> <span class="fn">fetch_url</span>(<span class="var">session</span>, <span class="var">url</span>):
+    <span class="kw">async with</span> <span class="var">session</span>.<span class="fn">get</span>(<span class="var">url</span>) <span class="kw">as</span> <span class="var">response</span>:
+        <span class="kw">return await</span> <span class="var">response</span>.<span class="fn">text</span>()</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S13: TESTS -->
+    <section id="s13">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">Tests unitaires</h2>
+                    <p class="sec-sub">pytest, unittest, assertions</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre les tests unitaires</summary>
+                <div>
+                    <p>Les tests unitaires vérifient que chaque composant de votre code fonctionne correctement de
+                        manière isolée. Ils permettent de détecter les régressions et de documenter le comportement
+                        attendu.</p>
+                    <p><code>pytest</code> est le framework de test le plus populaire en Python. Il découvre
+                        automatiquement les tests et offre des assertions riches et lisibles.</p>
+                    <p>Une bonne pratique est de tester les cas normaux, les cas limites et les erreurs attendues.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>pytest</div>
+                    <pre><span class="c"># test_math.py</span>
+<span class="kw">import</span> pytest
+
+<span class="kw">def</span> <span class="fn">add</span>(<span class="var">a</span>, <span class="var">b</span>):
+    <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>
+
+<span class="c"># Test simple</span>
+<span class="kw">def</span> <span class="fn">test_add</span>():
+    <span class="kw">assert</span> <span class="fn">add</span>(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span>
+    <span class="kw">assert</span> <span class="fn">add</span>(-<span class="num">1</span>, <span class="num">1</span>) == <span class="num">0</span>
+
+<span class="c"># Test d'exception</span>
+<span class="kw">def</span> <span class="fn">test_error</span>():
+    <span class="kw">with</span> pytest.<span class="fn">raises</span>(<span class="cls">ValueError</span>):
+        <span class="fn">int</span>(<span class="str">"abc"</span>)
+
+<span class="c"># Paramétrage</span>
+<span class="dec">@pytest.mark.parametrize</span>(<span class="str">"a,b,expected"</span>, [
+    (<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>),
+    (<span class="num">0</span>, <span class="num">0</span>, <span class="num">0</span>),
+    (-<span class="num">1</span>, -<span class="num">1</span>, -<span class="num">2</span>),
+])
+<span class="kw">def</span> <span class="fn">test_add_param</span>(<span class="var">a</span>, <span class="var">b</span>, <span class="var">expected</span>):
+    <span class="kw">assert</span> <span class="fn">add</span>(<span class="var">a</span>, <span class="var">b</span>) == <span class="var">expected</span>
+
+<span class="c"># Fixture (setup)</span>
+<span class="dec">@pytest.fixture</span>
+<span class="kw">def</span> <span class="fn">sample_data</span>():
+    <span class="kw">return</span> [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+
+<span class="kw">def</span> <span class="fn">test_with_fixture</span>(<span class="var">sample_data</span>):
+    <span class="kw">assert</span> <span class="fn">len</span>(<span class="var">sample_data</span>) == <span class="num">3</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>unittest</div>
+                    <pre><span class="kw">import</span> unittest
+
+<span class="kw">class</span> <span class="cls">TestMath</span>(unittest.<span class="cls">TestCase</span>):
+    <span class="kw">def</span> <span class="fn">setUp</span>(<span class="var">self</span>):
+        <span class="c"># Avant chaque test</span>
+        <span class="var">self</span>.<span class="prop">data</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+
+    <span class="kw">def</span> <span class="fn">test_sum</span>(<span class="var">self</span>):
+        <span class="var">self</span>.<span class="fn">assertEqual</span>(
+            <span class="fn">sum</span>(<span class="var">self</span>.<span class="prop">data</span>), <span class="num">6</span>
+        )
+
+    <span class="kw">def</span> <span class="fn">test_len</span>(<span class="var">self</span>):
+        <span class="var">self</span>.<span class="fn">assertEqual</span>(
+            <span class="fn">len</span>(<span class="var">self</span>.<span class="prop">data</span>), <span class="num">3</span>
+        )
+
+    <span class="kw">def</span> <span class="fn">test_error</span>(<span class="var">self</span>):
+        <span class="kw">with</span> <span class="var">self</span>.<span class="fn">assertRaises</span>(<span class="cls">IndexError</span>):
+            <span class="var">self</span>.<span class="prop">data</span>[<span class="num">10</span>]
+
+<span class="kw">if</span> <span class="var">__name__</span> == <span class="str">"__main__"</span>:
+    unittest.<span class="fn">main</span>()</pre>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Terminal</div>
+                <pre><span class="c"># Exécuter les tests</span>
+pytest                     <span class="c"># tous les tests</span>
+pytest test_file.py        <span class="c"># un fichier</span>
+pytest -v                  <span class="c"># verbose</span>
+pytest -k "test_add"       <span class="c"># par nom</span>
+pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S14: RÉFÉRENCE -->
+    <section id="s14">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">Référence complète</h2>
+                    <p class="sec-sub">Fonctions built-in, modules, dunder methods</p>
+                </div>
+            </div>
+
+            <h3>Fonctions built-in</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Conversion</h4><code>int()</code> <code>float()</code> <code>str()</code> <code>bool()</code>
+                    <code>list()</code> <code>dict()</code> <code>tuple()</code> <code>set()</code> <code>bytes()</code>
+                    <code>complex()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Itérables</h4><code>len()</code> <code>range()</code> <code>enumerate()</code>
+                    <code>zip()</code> <code>map()</code> <code>filter()</code> <code>sorted()</code>
+                    <code>reversed()</code> <code>iter()</code> <code>next()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Math</h4><code>abs()</code> <code>min()</code> <code>max()</code> <code>sum()</code>
+                    <code>round()</code> <code>pow()</code> <code>divmod()</code> <code>bin()</code> <code>hex()</code>
+                    <code>oct()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>I/O</h4><code>print()</code> <code>input()</code> <code>open()</code> <code>format()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Objets</h4><code>type()</code> <code>isinstance()</code> <code>issubclass()</code>
+                    <code>hasattr()</code> <code>getattr()</code> <code>setattr()</code> <code>delattr()</code>
+                    <code>dir()</code> <code>vars()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Autres</h4><code>all()</code> <code>any()</code> <code>id()</code> <code>hash()</code>
+                    <code>callable()</code> <code>repr()</code> <code>eval()</code> <code>exec()</code>
+                    <code>compile()</code> <code>globals()</code> <code>locals()</code>
+                </div>
+            </div>
+
+            <h3>Modules standard essentiels</h3>
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Description</th>
+                    <th>Fonctions clés</th>
+                </tr>
+                <tr>
+                    <td><code>os</code></td>
+                    <td>Système d'exploitation</td>
+                    <td>getcwd, listdir, mkdir, remove, environ</td>
+                </tr>
+                <tr>
+                    <td><code>sys</code></td>
+                    <td>Paramètres système</td>
+                    <td>argv, exit, path, version</td>
+                </tr>
+                <tr>
+                    <td><code>json</code></td>
+                    <td>JSON</td>
+                    <td>load, dump, loads, dumps</td>
+                </tr>
+                <tr>
+                    <td><code>re</code></td>
+                    <td>Expressions régulières</td>
+                    <td>match, search, findall, sub</td>
+                </tr>
+                <tr>
+                    <td><code>datetime</code></td>
+                    <td>Dates et heures</td>
+                    <td>datetime, date, time, timedelta</td>
+                </tr>
+                <tr>
+                    <td><code>pathlib</code></td>
+                    <td>Chemins modernes</td>
+                    <td>Path, exists, read_text, write_text</td>
+                </tr>
+                <tr>
+                    <td><code>collections</code></td>
+                    <td>Types avancés</td>
+                    <td>Counter, defaultdict, namedtuple, deque</td>
+                </tr>
+                <tr>
+                    <td><code>itertools</code></td>
+                    <td>Itérateurs</td>
+                    <td>count, cycle, chain, islice, groupby</td>
+                </tr>
+                <tr>
+                    <td><code>functools</code></td>
+                    <td>Fonctions</td>
+                    <td>lru_cache, partial, reduce, wraps</td>
+                </tr>
+                <tr>
+                    <td><code>random</code></td>
+                    <td>Aléatoire</td>
+                    <td>random, randint, choice, shuffle</td>
+                </tr>
+                <tr>
+                    <td><code>math</code></td>
+                    <td>Mathématiques</td>
+                    <td>sqrt, ceil, floor, sin, cos, pi</td>
+                </tr>
+                <tr>
+                    <td><code>logging</code></td>
+                    <td>Journalisation</td>
+                    <td>debug, info, warning, error, critical</td>
+                </tr>
+            </table>
+
+            <h3>Dunder methods (méthodes magiques)</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Initialisation</h4><code>__init__</code> <code>__new__</code> <code>__del__</code>
+                    <code>__repr__</code> <code>__str__</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Comparaison</h4><code>__eq__</code> <code>__ne__</code> <code>__lt__</code> <code>__le__</code>
+                    <code>__gt__</code> <code>__ge__</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Opérations</h4><code>__add__</code> <code>__sub__</code> <code>__mul__</code>
+                    <code>__truediv__</code> <code>__floordiv__</code> <code>__mod__</code> <code>__pow__</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Conteneur</h4><code>__len__</code> <code>__getitem__</code> <code>__setitem__</code>
+                    <code>__delitem__</code> <code>__contains__</code> <code>__iter__</code> <code>__next__</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Contexte</h4><code>__enter__</code> <code>__exit__</code> <code>__call__</code>
+                    <code>__hash__</code> <code>__bool__</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Attributs</h4><code>__getattr__</code> <code>__setattr__</code> <code>__delattr__</code>
+                    <code>__getattribute__</code> <code>__dir__</code>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 Mémo Python Complet</strong> — 14 chapitres couvrant
+                Python moderne avec type hints, dataclasses, match/case, async/await et plus!</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo Python Complet</strong> • 14 chapitres • Python 3.10+ • 2025</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
+                cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
+                faciliter l'apprentissage des autres.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

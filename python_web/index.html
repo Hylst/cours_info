@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Python Web - Guide 2025</title>
+    <meta name="description" content="Guide complet Python pour le Web : Flask, Django, FastAPI, Déploiement Docker.">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="theme-color" content="#10b981">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">🌐</div>Python Web
+            </div>
+            <nav>
+                <a href="#s0">Intro</a>
+                <a href="#s2">Flask</a>
+                <a href="#s4">Django</a>
+                <a href="#s5">FastAPI</a>
+                <a href="#s7">Docker</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Python Web Complet</h1>
+            <p>Guide moderne du développement Back-end : Micro-frameworks, APIs robustes et Déploiement professionnel.
+            </p>
+        </div>
+    </section>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s0" class="toc-item"><span class="toc-num">00</span>Panorama Web</a>
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Environnement</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Flask (Micro)</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>SQLAlchemy</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Django (Full)</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>FastAPI (Modern)</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>API REST / JSON</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Serveurs App</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Docker & Cloud</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Référence</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- S0: PANORAMA -->
+    <section id="s0">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">00</div>
+                <div>
+                    <h2 class="sec-title">Le Python dans le Web</h2>
+                    <p class="sec-sub">Mise en situation et architectures</p>
+                </div>
+            </div>
+
+            <details open>
+                <summary>📖 Comprendre le rôle de Python sur le Web</summary>
+                <div>
+                    <p>Python n'est pas exécuté nativement par les navigateurs (contrairement à JavaScript). Son rôle se
+                        situe côté <strong>Serveur (Back-end)</strong>.</p>
+                    <p>Il reçoit les requêtes HTTP, traite la logique métier, interagit avec la base de données, et
+                        renvoie une réponse (HTML ou JSON).</p>
+                    <p>Pour communiquer avec les serveurs web (comme Nginx ou Apache), Python utilise des standards :
+                        <strong>WSGI</strong> (synchrone, classique) ou <strong>ASGI</strong> (asynchrone, moderne).
+                    </p>
+                </div>
+            </details>
+
+            <div class="grid3" style="margin-top:20px;">
+                <div class="framework-card">
+                    <h4>Flask</h4>
+                    <span class="badge flask">Micro-framework</span>
+                    <p>Minimaliste, flexible. Vous choisissez vos outils. Idéal pour débuter ou pour des micro-services.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4>Django</h4>
+                    <span class="badge django">Batteries included</span>
+                    <p>Tout inclus (ORM, Admin, Auth). Robuste et sécurisé. Idéal pour des projets complexes rapides.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4>FastAPI</h4>
+                    <span class="badge fastapi">Haute performance</span>
+                    <p>Moderne, asynchrone, typé. Génère automatiquement la doc API. Le nouveau standard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S1: ENVIRONNEMENT -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Environnement Pro</h2>
+                    <p class="sec-sub">Virtualenv, Pip, Structure</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre l'isolation des environnements</summary>
+                <div>
+                    <p>En développement web, il est CRITIQUE d'isoler les dépendances de chaque projet pour éviter les
+                        conflits de versions.</p>
+                    <p>On utilise un <strong>Virtual Environment (venv)</strong>. C'est un dossier local qui contient
+                        une copie de l'interpréteur Python et des bibliothèques installées.</p>
+                    <p>Le fichier <code>requirements.txt</code> est la "carte d'identité" de votre projet : il liste
+                        toutes les librairies nécessaires.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Setup Projet</div>
+                <pre><span class="c"># 1. Créer le dossier projet</span>
+mkdir mon_projet
+cd mon_projet
+
+<span class="c"># 2. Créer l'environnement virtuel</span>
+python -m venv venv
+
+<span class="c"># 3. Activer l'environnement</span>
+<span class="c"># Windows :</span>
+venv\Scripts\activate
+<span class="c"># Mac/Linux :</span>
+source venv/bin/activate
+
+<span class="c"># 4. Installer les dépendances</span>
+pip install flask sqlalchemy python-dotenv
+
+<span class="c"># 5. Figer les versions</span>
+pip freeze > requirements.txt</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S2: FLASK -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Flask : L'essentiel</h2>
+                    <p class="sec-sub">Micro-framework WSGI</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Flask avancé</summary>
+                <div>
+                    <p>Pour dépasser le stade du prototype, il faut structurer son application.</p>
+                    <p>Le pattern <strong>Application Factory</strong> (<code>create_app</code>) permet de créer
+                        l'application dans une fonction, facilitant les tests et le changement de configuration
+                        (Dev/Prod).</p>
+                    <p>Les <strong>Blueprints</strong> découpent l'application en modules (ex: Auth, Admin, API). Chaque
+                        Blueprint a ses propres routes et templates.</p>
+                </div>
+            </details>
+
+            <h3 style="margin-top:30px">Structure "Pro" & Blueprints</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Structure de Dossiers</div>
+                    <pre>/mon_projet
+│
+├── /app                <span class="c"># Package Python</span>
+│   ├── __init__.py     <span class="c"># create_app()</span>
+│   ├── models.py       <span class="c"># Base de données</span>
+│   ├── /templates      <span class="c"># HTML</span>
+│   ├── /static         <span class="c"># CSS, JS, Images</span>
+│   │
+│   ├── /auth           <span class="c"># Module Auth</span>
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   └── /main           <span class="c"># Module Principal</span>
+│       ├── __init__.py
+│       └── routes.py
+│
+├── config.py           <span class="c"># Variables Config</span>
+├── wsgi.py             <span class="c"># Point entrée Prod</span>
+└── requirements.txt</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>app/__init__.py (Factory)</div>
+                    <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
+<span class="kw">from</span> .models <span class="kw">import</span> db
+
+<span class="kw">def</span> <span class="fn">create_app</span>(<span class="var">config_name</span>=<span class="str">'default'</span>):
+    <span class="var">app</span> = <span class="cls">Flask</span>(<span class="var">__name__</span>)
+    
+    <span class="c"># Chargement config</span>
+    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">f'config.Config'</span>)
+
+    <span class="c"># Init extensions</span>
+    <span class="var">db</span>.<span class="fn">init_app</span>(<span class="var">app</span>)
+
+    <span class="c"># Enregistrement Blueprints</span>
+    <span class="kw">from</span> .auth <span class="kw">import</span> <span class="var">auth_bp</span>
+    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>)
+
+    <span class="kw">from</span> .main <span class="kw">import</span> <span class="var">main_bp</span>
+    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">main_bp</span>)
+
+    <span class="kw">return</span> <span class="var">app</span></pre>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px">Extensions Indispensables</h3>
+            <div class="grid3">
+                <div class="code">
+                    <div class="code-head">Flask-Login</div>
+                    <pre><span class="c"># Gestion Session User</span>
+<span class="kw">from</span> flask_login <span class="kw">import</span> login_required
+
+<span class="dec">@app.route</span>(<span class="str">"/dashboard"</span>)
+<span class="dec">@login_required</span>
+<span class="kw">def</span> <span class="fn">dashboard</span>():
+    <span class="kw">return</span> <span class="var">current_user</span>.<span class="prop">email</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head">Flask-Migrate</div>
+                    <pre><span class="c"># Mises à jour BDD</span>
+<span class="c"># Terminal commandes:</span>
+
+flask db init
+flask db migrate -m "Ajout table"
+flask db upgrade</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head">Flask-WTF</div>
+                    <pre><span class="c"># Gestion Formulaires Securisés</span>
+<span class="var">form</span> = <span class="cls">LoginForm</span>()
+<span class="kw">if</span> <span class="var">form</span>.<span class="fn">validate_on_submit</span>():
+    <span class="c"># CSRF protection incluse</span>
+    <span class="fn">login_user</span>(<span class="var">user</span>)</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: ORM -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">SQLAlchemy</h2>
+                    <p class="sec-sub">Interaction Base de Données (ORM)</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre les ORM</summary>
+                <div>
+                    <p>Un <strong>ORM</strong> (Object Relational Mapper) permet de manipuler la base de données (SQL)
+                        en utilisant des classes et des objets Python.</p>
+                    <p>SQLAlchemy est le standard de l'industrie. Vous définissez des <strong>Modèles</strong> (Classes)
+                        qui correspondent aux tables.</p>
+                    <p>Cela sécurise les requêtes (protection Injection SQL) et rend le code agnostique à la base de
+                        données (SQLite en dev, PostgreSQL en prod).</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>models.py</div>
+                <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+
+<span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
+
+<span class="kw">class</span> <span class="cls">User</span>(<span class="var">db</span>.<span class="cls">Model</span>):
+    <span class="var">id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, primary_key=<span class="kw">True</span>)
+    <span class="var">username</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">80</span>), unique=<span class="kw">True</span>, nullable=<span class="kw">False</span>)
+    <span class="var">email</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">120</span>), unique=<span class="kw">True</span>)
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="var">self</span>):
+        <span class="kw">return</span> <span class="str">f'&lt;User </span>{<span class="var">self</span>.<span class="prop">username</span>}<span class="str">&gt;'</span>
+
+<span class="c"># Utilisation</span>
+<span class="c"># Créer:</span>
+<span class="var">new_user</span> = <span class="cls">User</span>(username=<span class="str">"admin"</span>, email=<span class="str">"admin@test.com"</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">new_user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+
+<span class="c"># Lire:</span>
+<span class="var">user</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">"admin"</span>).<span class="fn">first</span>()</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S4: DJANGO -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Django</h2>
+                    <p class="sec-sub">Le Framework "Batteries Included"</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Django avancé</summary>
+                <div>
+                    <p>Le cycle de vie Django : <strong>Requête HTTP → urls.py → views.py → models.py / templates →
+                            Réponse HTTP</strong>.</p>
+                    <p>On distingue le <strong>Projet</strong> (configuration globale, settings.py, urls.py) des
+                        <strong>Apps</strong> (modules fonctionnels réutilisables).
+                    </p>
+                    <p>L'<strong>Admin</strong> n'est pas un gadget : c'est un outil puissant qui peut servir de
+                        back-office complet avec peu d'efforts.</p>
+                </div>
+            </details>
+
+            <h3 style="margin-top:20px">Structure & Settings</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>settings.py (Extraits)</div>
+                    <pre><span class="c"># Sécurité</span>
+<span class="var">DEBUG</span> = <span class="kw">False</span>  <span class="c"># True en dev uniquement</span>
+<span class="var">ALLOWED_HOSTS</span> = [<span class="str">'monsite.com'</span>]
+
+<span class="c"># Applications activées</span>
+<span class="var">INSTALLED_APPS</span> = [
+    <span class="str">'django.contrib.admin'</span>,
+    <span class="str">'django.contrib.auth'</span>,
+    <span class="str">'rest_framework'</span>,  <span class="c"># DRF (API)</span>
+    <span class="str">'blog'</span>,            <span class="c"># Mon App</span>
+]
+
+<span class="c"># Base de données (PostgreSQL)</span>
+<span class="var">DATABASES</span> = {
+    <span class="str">'default'</span>: {
+        <span class="str">'ENGINE'</span>: <span class="str">'django.db.backends.postgresql'</span>,
+        <span class="str">'NAME'</span>: <span class="str">'mydb'</span>,
+        <span class="str">'USER'</span>: <span class="str">'user'</span>,
+        <span class="str">'PASSWORD'</span>: <span class="str">'secret'</span>,
+    }
+}</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head">Function vs Class Views</div>
+                    <pre><span class="c"># Function-Based View (Simple)</span>
+<span class="kw">def</span> <span class="fn">post_list</span>(<span class="var">request</span>):
+    <span class="var">posts</span> = <span class="cls">Post</span>.<span class="prop">objects</span>.<span class="fn">all</span>()
+    <span class="kw">return</span> <span class="fn">render</span>(<span class="var">request</span>, <span class="str">'list.html'</span>, {<span class="str">'posts'</span>: <span class="var">posts</span>})
+
+<span class="c"># Class-Based View (Puissant)</span>
+<span class="kw">from</span> django.views.generic <span class="kw">import</span> ListView
+
+<span class="kw">class</span> <span class="cls">PostListView</span>(<span class="cls">ListView</span>):
+    <span class="var">model</span> = <span class="cls">Post</span>
+    <span class="var">template_name</span> = <span class="str">'list.html'</span>
+    <span class="var">context_object_name</span> = <span class="str">'posts'</span>
+    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination auto !</span></pre>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px">L'Admin Django (admin.py)</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Customisation Admin</div>
+                <pre><span class="kw">from</span> django.contrib <span class="kw">import</span> admin
+<span class="kw">from</span> .models <span class="kw">import</span> Post
+
+<span class="dec">@admin.register</span>(<span class="cls">Post</span>)
+<span class="kw">class</span> <span class="cls">PostAdmin</span>(<span class="var">admin</span>.<span class="cls">ModelAdmin</span>):
+    <span class="var">list_display</span> = (<span class="str">'title'</span>, <span class="str">'author'</span>, <span class="str">'created_at'</span>, <span class="str">'status'</span>)
+    <span class="var">list_filter</span> = (<span class="str">'status'</span>, <span class="str">'created_at'</span>)
+    <span class="var">search_fields</span> = (<span class="str">'title'</span>, <span class="str">'content'</span>)
+    <span class="var">prepopulated_fields</span> = {<span class="str">'slug'</span>: (<span class="str">'title'</span>,)}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5: FASTAPI -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">FastAPI</h2>
+                    <p class="sec-sub">APIs Modernes & Asynchrones</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre FastAPI avancé</summary>
+                <div>
+                    <p>FastAPI repose sur Pydantic (validation de données) et Starlette (serveur asynchrone
+                        ultra-rapide).</p>
+                    <p>La <strong>Dependency Injection</strong> ("Depends") est un concept clé : elle permet de
+                        réutiliser de la logique (auth, connexion DB) simplement en la déclarant comme paramètre de
+                        fonction.</p>
+                    <p>Pour structurer une API, on utilise des <strong>APIRouter</strong> que l'on include dans
+                        l'application principale.</p>
+                </div>
+            </details>
+
+            <h3 style="margin-top:20px">Validation Avancée & Pydantic</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>main.py (Validation)</div>
+                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, Query, Path, Body
+<span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, Field, EmailStr
+
+<span class="var">app</span> = <span class="cls">FastAPI</span>()
+
+<span class="c"># Modèle Pydantic V2</span>
+<span class="kw">class</span> <span class="cls">UserCreate</span>(<span class="cls">BaseModel</span>):
+    <span class="var">username</span>: <span class="cls">str</span> = <span class="fn">Field</span>(min_length=<span class="num">3</span>, max_length=<span class="num">50</span>)
+    <span class="var">email</span>: <span class="cls">EmailStr</span>
+    <span class="var">age</span>: <span class="cls">int</span> | <span class="kw">None</span> = <span class="fn">Field</span>(default=<span class="kw">None</span>, gt=<span class="num">0</span>, lt=<span class="num">120</span>)
+
+<span class="dec">@app.post</span>(<span class="str">"/users/"</span>)
+<span class="kw">async def</span> <span class="fn">create_user</span>(
+    <span class="var">user</span>: <span class="cls">UserCreate</span>,
+    <span class="var">q</span>: <span class="cls">str</span> | <span class="kw">None</span> = <span class="fn">Query</span>(default=<span class="kw">None</span>, max_length=<span class="num">10</span>),    <span class="c"># Param ?q=...</span>
+    <span class="var">token</span>: <span class="cls">str</span> = <span class="fn">Body</span>(embed=<span class="kw">True</span>)                         <span class="c"># JSON body</span>
+):
+    <span class="c"># Tout est validé ici !</span>
+    <span class="kw">return</span> {<span class="str">"user"</span>: <span class="var">user</span>, <span class="str">"query"</span>: <span class="var">q</span>}</pre>
+            </div>
+
+            <h3 style="margin-top:30px">Dependency Injection & Structure</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Système "Depends"</div>
+                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, HTTPException
+
+<span class="c"># Dépendance réutilisable</span>
+<span class="kw">async def</span> <span class="fn">get_current_user</span>(<span class="var">token</span>: <span class="cls">str</span>):
+    <span class="kw">if</span> <span class="var">token</span> != <span class="str">"secret"</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
+    <span class="kw">return</span> {<span class="str">"username"</span>: <span class="str">"admin"</span>}
+
+<span class="c"># Injection dans la route</span>
+<span class="dec">@app.get</span>(<span class="str">"/me"</span>)
+<span class="kw">async def</span> <span class="fn">read_me</span>(
+    <span class="var">user</span>: <span class="cls">dict</span> = <span class="fn">Depends</span>(<span class="fn">get_current_user</span>)
+):
+    <span class="kw">return</span> <span class="var">user</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>APIRouter Structure</div>
+                    <pre>/src
+  ├── main.py  <span class="c"># app.include_router(users.router)</span>
+  └── /routers
+      ├── users.py
+      └── items.py
+
+<span class="c"># users.py</span>
+<span class="var">router</span> = <span class="cls">APIRouter</span>(tags=[<span class="str">"users"</span>])
+
+<span class="dec">@router.get</span>(<span class="str">"/users/"</span>)
+<span class="kw">async def</span> <span class="fn">read_users</span>():
+    <span class="kw">return</span> [{<span class="str">"name"</span>: <span class="str">"Rick"</span>}]</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: API REST -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Concepts API REST</h2>
+                    <p class="sec-sub">Méthodes, Codes, JSON</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre REST</summary>
+                <div>
+                    <p>Les APIs modernes communiquent majoritairement en <strong>JSON</strong>. REST est une
+                        architecture standardisée.</p>
+                    <p>Verbes HTTP clés : <strong>GET</strong> (Lire), <strong>POST</strong> (Créer),
+                        <strong>PUT/PATCH</strong> (Modifier), <strong>DELETE</strong> (Supprimer).
+                    </p>
+                    <p>Codes de statut : <strong>2xx</strong> (Succès), <strong>4xx</strong> (Erreur client - ex: 404,
+                        401), <strong>5xx</strong> (Erreur serveur).</p>
+                </div>
+            </details>
+
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>200 OK</h4>
+                    <p>Requête réussie (GET standard).</p>
+                </div>
+                <div class="ref-card">
+                    <h4>201 Created</h4>
+                    <p>Ressource créée avec succès (POST).</p>
+                </div>
+                <div class="ref-card">
+                    <h4>400 Bad Request</h4>
+                    <p>Données envoyées invalides.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>401 Unauthorized</h4>
+                    <p>Non connecté / Token invalide.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>403 Forbidden</h4>
+                    <p>Connecté mais pas les droits.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>500 Server Error</h4>
+                    <p>Crash du code Python.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S7: SERVEURS APP -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Le Serveur d'Application</h2>
+                    <p class="sec-sub">Gunicorn, Uvicorn (Prod)</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le déploiement Python</summary>
+                <div>
+                    <p>⚠️ <strong>NE JAMAIS UTILISER</strong> <code>python app.py</code> (serveur de dev) en production
+                        ! Il n'est pas sécurisé et ne gère pas la charge.</p>
+                    <p>On utilise un <strong>Serveur WSGI/ASGI</strong> dédié : <strong>Gunicorn</strong> (pour
+                        Flask/Django) ou <strong>Uvicorn</strong> (pour FastAPI).</p>
+                    <p>Devant eux, on place souvent un <strong>Reverse Proxy</strong> (Nginx) pour gérer le SSL, les
+                        fichiers statiques et la sécurité.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Commandes Production</div>
+                <pre><span class="c"># Lancer Flask/Django avec Gunicorn</span>
+<span class="c"># -w 4 : 4 workers (processus)</span>
+gunicorn -w 4 src.app:app
+
+<span class="c"># Lancer FastAPI avec Uvicorn</span>
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+
+<span class="c"># Utiliser un Procfile (Heroku style)</span>
+web: gunicorn app:app</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: DOCKER -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Dockerisation</h2>
+                    <p class="sec-sub">Containeriser son app Python</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Docker pour Python</summary>
+                <div>
+                    <p>Docker permet d'emballer votre application, ses dépendances et sa version de Python dans une
+                        boite isolée.</p>
+                    <p>Plus de "ça marche chez moi". On utilise une image légère (ex: <code>python:3.10-slim</code>).
+                    </p>
+                    <p><code>docker-compose</code> permet de lancer l'app ET la base de données (Postgres, Redis) en une
+                        seule commande.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Dockerfile</div>
+                    <pre><span class="c"># Image de base légère</span>
+<span class="kw">FROM</span> python:3.10-slim
+
+<span class="c"># Dossier de travail</span>
+<span class="kw">WORKDIR</span> /app
+
+<span class="c"># 1. Copier requirements d'abord (cache)</span>
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
+
+<span class="c"># 2. Copier le code</span>
+<span class="kw">COPY</span> . .
+
+<span class="c"># 3. Commande de lancement</span>
+<span class="kw">CMD</span> ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Terminal</div>
+                    <pre><span class="c"># Construire l'image</span>
+docker build -t mon-app-python .
+
+<span class="c"># Lancer le container</span>
+<span class="c"># -p 8000:8000 : Map port machine -> container</span>
+docker run -p 8000:8000 mon-app-python
+
+<span class="c"># Voir les logs</span>
+docker logs [container_id]</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S9: REFERENCE -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Référence Web</h2>
+                    <p class="sec-sub">Outils et Librairies clés</p>
+                </div>
+            </div>
+
+            <h3>Librairies Indispensables</h3>
+            <table>
+                <tr>
+                    <th>Domaine</th>
+                    <th>Librairie</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td><strong>Web Framework</strong></td>
+                    <td>Flask, Django, FastAPI</td>
+                    <td>Base du site</td>
+                </tr>
+                <tr>
+                    <td><strong>Serveur</strong></td>
+                    <td>Gunicorn, Uvicorn</td>
+                    <td>Production WSGI/ASGI</td>
+                </tr>
+                <tr>
+                    <td><strong>HTTP Client</strong></td>
+                    <td>Requests, Httpx (async)</td>
+                    <td>Appeler des APIs externes</td>
+                </tr>
+                <tr>
+                    <td><strong>Validation</strong></td>
+                    <td>Pydantic, Marshmallow</td>
+                    <td>Valider forms/JSON</td>
+                </tr>
+                <tr>
+                    <td><strong>Sécurité</strong></td>
+                    <td>Passlib, BCrypt, PyJWT</td>
+                    <td>Mots de passe, Tokens</td>
+                </tr>
+                <tr>
+                    <td><strong>Testing</strong></td>
+                    <td>Pytest, Playwright</td>
+                    <td>Tests unitaires / E2E</td>
+                </tr>
+                <tr>
+                    <td><strong>Tâches fond</strong></td>
+                    <td>Celery, Redis Queue</td>
+                    <td>Emails, traitements lourds</td>
+                </tr>
+                <tr>
+                    <td><strong>Scraping</strong></td>
+                    <td>BeautifulSoup, Selenium</td>
+                    <td>Extraire données web</td>
+                </tr>
+            </table>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 Cloud Ready</strong> — Les apps Python containerisées se
+                déploient facilement sur AWS, Azure, Google Cloud ou des PaaS comme Render/Railway.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo Python Web</strong> • Flask / Django / FastAPI • 2025</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Guide complet pour le développement
+                Back-end moderne.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

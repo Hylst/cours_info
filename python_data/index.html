@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Python Data Science - Guide 2025</title>
+    <meta name="description"
+        content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="theme-color" content="#3b82f6">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">📊</div>Python Data
+            </div>
+            <nav>
+                <a href="#s0">Intro</a>
+                <a href="#s1">Numpy</a>
+                <a href="#s2">Pandas</a>
+                <a href="#s3">Viz</a>
+                <a href="#s4">ML</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Python Data Science</h1>
+            <p>Le guide ultime pour manipuler, analyser et visualiser les données avec l'écosystème Python scientifique.
+            </p>
+        </div>
+    </section>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s0" class="toc-item"><span class="toc-num">00</span>Écosystème Data</a>
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Numpy (Calculs)</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Pandas (Analyses)</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Visualisation</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Machine Learning</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Référence</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- S0: INTRO -->
+    <section id="s0">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">00</div>
+                <div>
+                    <h2 class="sec-title">L'Écosystème Data</h2>
+                    <p class="sec-sub">Jupyter, Anaconda, Colab</p>
+                </div>
+            </div>
+
+            <details open>
+                <summary>📖 Comprendre l'environnement Data</summary>
+                <div>
+                    <p>En Data Science, on n'écrit pas le code comme pour le Web. On explore les données de manière
+                        interactive.</p>
+                    <p>L'outil roi est le <strong>Notebook Jupyter</strong> (fichier `.ipynb`). Il alterne cellules de
+                        code (exécutables indépendamment) et cellules de texte (Markdown).</p>
+                    <p>La distribution <strong>Anaconda</strong> est recommandée car elle pré-installe toutes les
+                        librairies scientifiques complexes (qui nécessitent parfois de la compilation C/C++).</p>
+                </div>
+            </details>
+
+            <div class="grid3" style="margin-top:20px;">
+                <div class="tool-card">
+                    <span class="tool-icon">🪐</span>
+                    <h3>Jupyter Lab</h3>
+                    <p>L'IDE interactif standard. Parfait pour l'exploration et la visualisation.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">🐍</span>
+                    <h3>Anaconda</h3>
+                    <p>Gestionnaire d'environnement robuste. Isole vos projets Data.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">☁️</span>
+                    <h3>Google Colab</h3>
+                    <p>Jupyter hébergé dans le cloud avec accès GPU gratuit. Idéal pour partager.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S1: NUMPY -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Numpy : Le Socle</h2>
+                    <p class="sec-sub">Tableaux multidimensionnels & Calcul matriciel</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Numpy (Numerical Python)</summary>
+                <div>
+                    <p>Les listes Python sont trop lentes pour des millions de calculs. Numpy introduit les
+                        <strong>Arrays</strong> (tableaux).</p>
+                    <p>Un array Numpy force le même type de données partout (ex: que des `float64`), ce qui permet une
+                        optimisation mémoire extrême.</p>
+                    <p>Le <strong>Broadcasting</strong> permet de faire des opérations mathématiques sur tout le tableau
+                        sans boucle `for` explicite. C'est la vectorisation.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Création & Dimensions</div>
+                    <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="c"># Vecteur (1D)</span>
+<span class="var">arr</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+
+<span class="c"># Matrice (2D) - 2 lignes, 3 colonnes</span>
+<span class="var">mat</span> = <span class="var">np</span>.<span class="fn">array</span>([
+    [<span class="num">1.5</span>, <span class="num">2.0</span>, <span class="num">3.0</span>],
+    [<span class="num">4.5</span>, <span class="num">5.0</span>, <span class="num">6.0</span>]
+])
+
+<span class="fn">print</span>(<span class="var">mat</span>.<span class="prop">shape</span>)  <span class="c"># (2, 3)</span>
+<span class="fn">print</span>(<span class="var">mat</span>.<span class="prop">dtype</span>)  <span class="c"># float64</span>
+
+<span class="c"># Générateurs</span>
+<span class="var">zeros</span> = <span class="var">np</span>.<span class="fn">zeros</span>((<span class="num">3</span>, <span class="num">3</span>))
+<span class="var">rand</span> = <span class="var">np</span>.<span class="prop">random</span>.<span class="fn">rand</span>(<span class="num">100</span>)  <span class="c"># 100 nb aléatoires</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Vectorisation (Pas de boucle !)</div>
+                    <pre><span class="var">a</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>])
+<span class="var">b</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+
+<span class="c"># Opérations élément par élément</span>
+<span class="var">add</span> = <span class="var">a</span> + <span class="var">b</span>      <span class="c"># [11, 22, 33]</span>
+<span class="var">mult</span> = <span class="var">a</span> * <span class="num">2</span>     <span class="c"># [20, 40, 60]</span>
+
+<span class="c"># Masque booléen (slicing conditionnel)</span>
+<span class="var">filter</span> = <span class="var">a</span> > <span class="num">15</span>
+<span class="fn">print</span>(<span class="var">a</span>[<span class="var">filter</span>]) <span class="c"># [20, 30]</span>
+
+<span class="c"># Statistiques rapides</span>
+<span class="var">mean</span> = <span class="var">a</span>.<span class="fn">mean</span>()
+<span class="var">max_val</span> = <span class="var">a</span>.<span class="fn">max</span>()</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S2: PANDAS -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Pandas : L'Analyse</h2>
+                    <p class="sec-sub">DataFrames, Séries & Manipulation</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Pandas</summary>
+                <div>
+                    <p>Si Numpy est la calculatrice, Pandas est le <strong>Excel sur stéroïdes</strong>.</p>
+                    <p>L'objet central est le <strong>DataFrame</strong> : un tableau avec des noms de colonnes et un
+                        index de lignes. Une colonne seule est une <strong>Series</strong>.</p>
+                    <p>Pandas excelle dans le nettoyage de données (gestion des vides), le filtrage complexe, les
+                        agrégations (`groupby`) et la fusion de tables (`merge`/`join`).</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot y"></span>Chargement & Inspection</div>
+                    <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="c"># Charger un CSV</span>
+<span class="var">df</span> = <span class="var">pd</span>.<span class="fn">read_csv</span>(<span class="str">"data.csv"</span>)
+
+<span class="c"># Aperçu</span>
+<span class="var">df</span>.<span class="fn">head</span>(<span class="num">5</span>)       <span class="c"># 5 premières lignes</span>
+<span class="var">df</span>.<span class="fn">info</span>()        <span class="c"># Types et valeurs nulles</span>
+<span class="var">df</span>.<span class="fn">describe</span>()    <span class="c"># Stats (moyenne, écart-type...)</span>
+
+<span class="c"># Sélection</span>
+<span class="var">age</span> = <span class="var">df</span>[<span class="str">"Age"</span>]            <span class="c"># Colonne (Series)</span>
+<span class="var">subset</span> = <span class="var">df</span>[[<span class="str">"Nom"</span>, <span class="str">"Age"</span>]] <span class="c"># Sous-DataFrame</span>
+
+<span class="c"># Accès par index (loc/iloc)</span>
+<span class="c"># loc[ligne, col] (labels)</span>
+<span class="var">val</span> = <span class="var">df</span>.<span class="fn">loc</span>[<span class="num">0</span>, <span class="str">"Nom"</span>]</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot y"></span>Manipulation Avancée</div>
+                    <pre><span class="c"># Filtrage</span>
+<span class="var">adults</span> = <span class="var">df</span>[ <span class="var">df</span>[<span class="str">"Age"</span>] >= <span class="num">18</span> ]
+
+<span class="c"># Nettoyage (Data Cleaning)</span>
+<span class="var">df</span>.<span class="fn">dropna</span>()                <span class="c"># Suppr lignes vides</span>
+<span class="var">df</span>.<span class="fn">fillna</span>(<span class="num">0</span>)               <span class="c"># Remplacer vides par 0</span>
+
+<span class="c"># Création colonne</span>
+<span class="var">df</span>[<span class="str">"Total"</span>] = <span class="var">df</span>[<span class="str">"Prix"</span>] * <span class="var">df</span>[<span class="str">"Qte"</span>]
+
+<span class="c"># Agrégation (Pivot Tables)</span>
+<span class="c"># Moyenne des prix par Catégorie</span>
+<span class="var">stats</span> = <span class="var">df</span>.<span class="fn">groupby</span>(<span class="str">"Categorie"</span>)[<span class="str">"Prix"</span>].<span class="fn">mean</span>()
+
+<span class="c"># Sauvegarde</span>
+<span class="var">df</span>.<span class="fn">to_excel</span>(<span class="str">"resultat.xlsx"</span>)</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: VIZ -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Visualisation de Données</h2>
+                    <p class="sec-sub">Matplotlib & Seaborn</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre la Dataviz</summary>
+                <div>
+                    <p>Un graphique vaut 1000 lignes de tableau. <strong>Matplotlib</strong> est la librairie
+                        historique, puissante mais verbeuse.</p>
+                    <p><strong>Seaborn</strong> est une surcouche moderne qui crée des graphiques statistiques
+                        magnifiques en une ligne de code.</p>
+                    <p>Workflow standard : Préparer les données avec Pandas → Visualiser avec Seaborn → Personnaliser
+                        avec Matplotlib (`plt`).</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div>
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span>Code Viz</div>
+                        <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">import</span> seaborn <span class="kw">as</span> sns
+
+<span class="c"># Nuage de points (Scatter)</span>
+<span class="var">sns</span>.<span class="fn">scatterplot</span>(
+    data=<span class="var">df</span>,
+    x=<span class="str">"Surface"</span>,
+    y=<span class="str">"Prix"</span>,
+    hue=<span class="str">"Quartier"</span>    <span class="c"># Couleur par groupe</span>
+)
+<span class="var">plt</span>.<span class="fn">title</span>(<span class="str">"Prix vs Surface"</span>)
+<span class="var">plt</span>.<span class="fn">show</span>()
+
+<span class="c"># Matrice de corrélation (Heatmap)</span>
+<span class="var">corr</span> = <span class="var">df</span>.<span class="fn">corr</span>()
+<span class="var">sns</span>.<span class="fn">heatmap</span>(<span class="var">corr</span>, annot=<span class="kw">True</span>, cmap=<span class="str">"coolwarm"</span>)</pre>
+                    </div>
+                </div>
+                <div>
+                    <!-- Visual Placeholders created by JS -->
+                    <div class="viz-container">
+                        <div class="viz-placeholder" data-type="scatter"></div>
+                        <p style="margin-top:10px; font-size:0.8rem">Exemple de Scatter Plot multiclasse</p>
+                    </div>
+                    <div class="viz-container">
+                        <div class="viz-placeholder" data-type="heatmap"></div>
+                        <p style="margin-top:10px; font-size:0.8rem">Exemple de Heatmap de corrélation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S4: MACHINE LEARNING -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Machine Learning</h2>
+                    <p class="sec-sub">Scikit-Learn (Sklearn)</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le Machine Learning avec Sklearn</summary>
+                <div>
+                    <p>Le ML consiste à créer un modèle capable d'apprendre des données passées pour prédire le futur.
+                    </p>
+                    <p>Scikit-Learn propose une API unifiée géniale : 3 étapes pour TOUS les modèles (Régression,
+                        Classification, Clustering).</p>
+                    <p>1. <strong>Instancier</strong> (`model = LinearRegression()`)<br>2. <strong>Entraîner</strong>
+                        (`model.fit(X, y)`)<br>3. <strong>Prédire</strong> (`model.predict(new_data)`).</p>
+                </div>
+            </details>
+
+            <div class="tip"><strong>💡 Workflow Type ML</strong> : Nettoyage → Séparation Train/Test → Choix Modèle →
+                Entraînement → Évaluation (Score).</div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot y"></span>Workflow Complet de Classification</div>
+                <pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.ensemble <span class="kw">import</span> RandomForestClassifier
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> accuracy_score
+
+<span class="c"># 1. Préparer Features (X) et Target (y)</span>
+<span class="var">X</span> = <span class="var">df</span>.<span class="fn">drop</span>(columns=[<span class="str">"Survie"</span>])  <span class="c"># Données</span>
+<span class="var">y</span> = <span class="var">df</span>[<span class="str">"Survie"</span>]                 <span class="c"># Cible à prédire</span>
+
+<span class="c"># 2. Séparer Train (80%) / Test (20%)</span>
+<span class="var">X_train</span>, <span class="var">X_test</span>, <span class="var">y_train</span>, <span class="var">y_test</span> = <span class="fn">train_test_split</span>(<span class="var">X</span>, <span class="var">y</span>, test_size=<span class="num">0.2</span>)
+
+<span class="c"># 3. Choisir et Entraîner le modèle</span>
+<span class="var">model</span> = <span class="cls">RandomForestClassifier</span>(n_estimators=<span class="num">100</span>)
+<span class="var">model</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>)  <span class="c"># C'est ici que la magie opère 🧠</span>
+
+<span class="c"># 4. Évaluer</span>
+<span class="var">prediction</span> = <span class="var">model</span>.<span class="fn">predict</span>(<span class="var">X_test</span>)
+<span class="var">score</span> = <span class="fn">accuracy_score</span>(<span class="var">y_test</span>, <span class="var">prediction</span>)
+
+<span class="fn">print</span>(<span class="str">f"Précision du modèle : </span>{<span class="var">score</span>*<span class="num">100</span>}<span class="str">%"</span>)</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5: RÉFÉRENCE -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Référence Rapide</h2>
+                    <p class="sec-sub">Cheat Sheet des commandes vitales</p>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Librairie</th>
+                    <th>Code commun</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><strong>Pandas</strong></td>
+                    <td><code>pd.read_csv('file.csv')</code></td>
+                    <td>Lire un fichier de données</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>df.groupby('col').mean()</code></td>
+                    <td>Agrégation style tableau croisé</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>df.plot()</code></td>
+                    <td>Plot rapide intégré</td>
+                </tr>
+                <tr>
+                    <td><strong>Numpy</strong></td>
+                    <td><code>np.array([1, 2, 3])</code></td>
+                    <td>Créer un vecteur</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>np.random.normal()</code></td>
+                    <td>Générer données aléatoires (Gauss)</td>
+                </tr>
+                <tr>
+                    <td><strong>Sklearn</strong></td>
+                    <td><code>model.fit(X, y)</code></td>
+                    <td>Entraîner le modèle</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>model.predict(X)</code></td>
+                    <td>Faire des prédictions</td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top:30px">Deep Learning (Pour aller plus loin)</h4>
+            <div class="grid2">
+                <div class="code" style="border:1px solid #ea580c">
+                    <div class="code-head" style="color:#f97316">TensorFlow / Keras</div>
+                    <pre><span class="c"># Standard Google (Prod)</span>
+<span class="var">model</span> = <span class="var">keras</span>.<span class="cls">Sequential</span>([
+    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">64</span>, activation=<span class="str">'relu'</span>),
+    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">10</span>)
+])</pre>
+                </div>
+                <div class="code" style="border:1px solid #ef4444">
+                    <div class="code-head" style="color:#ef4444">PyTorch</div>
+                    <pre><span class="c"># Standard Recherche (Meta)</span>
+<span class="kw">class</span> <span class="cls">Net</span>(<span class="var">nn</span>.<span class="cls">Module</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):
+        <span class="var">super</span>().<span class="fn">__init__</span>()
+        <span class="var">self</span>.<span class="var">fc1</span> = <span class="var">nn</span>.<span class="cls">Linear</span>(<span class="num">10</span>, <span class="num">64</span>)</pre>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo Python Data Science</strong> • Numpy / Pandas / Sklearn</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Guide pour l'analyse et l'IA.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

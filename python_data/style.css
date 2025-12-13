@@ -1,0 +1,560 @@
+/* =====================================================
+   COURS PYTHON DATA - STYLESHEET
+   Créé par Geoffroy Streit - 2025
+   Thème Data Science (Bleu Sci-Fi & Orange)
+   ===================================================== */
+
+:root {
+    --primary: #3b82f6;
+    /* Bleu vibrant */
+    --secondary: #f97316;
+    /* Orange Peps */
+    --accent: #60a5fa;
+    /* Bleu clair */
+    --bg: #0f172a;
+    /* Bleu nuit très sombre */
+    --bg2: #1e293b;
+    /* Bleu nuit plus clair */
+    --card: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --dim: #64748b;
+    --border: #334155;
+
+    --green: #10b981;
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --yellow: #eab308;
+    --red: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* === HEADER === */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 16px 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    gap: 4px;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+nav a:hover {
+    background: var(--card);
+    color: var(--text);
+}
+
+/* === HERO === */
+.hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--text), var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* === TOC === */
+.toc {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.toc-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.toc-num {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* === SECTIONS === */
+section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sec-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.sec-num {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* Color variations for sections */
+section:nth-child(odd) .sec-num {
+    background: linear-gradient(135deg, var(--secondary), #ea580c);
+}
+
+section:nth-child(3n) .sec-num {
+    background: linear-gradient(135deg, var(--purple), #7c3aed);
+}
+
+.sec-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.sec-sub {
+    color: var(--dim);
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 30px 0 15px;
+    color: var(--accent);
+}
+
+h4 {
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0 0 8px;
+}
+
+p,
+li {
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding-left: 24px;
+    position: relative;
+}
+
+li::before {
+    content: '•';
+    position: absolute;
+    left: 6px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* === CODE BLOCKS === */
+.code {
+    background: #0b1120;
+    /* Very dark blue */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 16px 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.code-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #111827;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--dim);
+    font-weight: 500;
+}
+
+/* Mac-style dots */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.r {
+    background: #ef4444;
+}
+
+.dot.y {
+    background: #eab308;
+}
+
+.dot.g {
+    background: #22c55e;
+}
+
+pre {
+    padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+/* Syntax Highlighting - Data Science Theme */
+.kw {
+    color: var(--purple);
+    font-weight: bold;
+}
+
+/* import, def */
+.fn {
+    color: var(--primary);
+}
+
+/* functions */
+.str {
+    color: var(--green);
+}
+
+/* strings */
+.num {
+    color: var(--secondary);
+}
+
+/* numbers */
+.c {
+    color: var(--dim);
+    font-style: italic;
+}
+
+/* comments */
+.var {
+    color: var(--text);
+}
+
+/* variables */
+.prop {
+    color: var(--accent);
+}
+
+/* properties/methods */
+.cls {
+    color: var(--yellow);
+}
+
+/* classes/types */
+
+/* === DEMOS / VIZ === */
+.viz-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.viz-placeholder {
+    background: var(--bg);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dim);
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+/* === GRIDS === */
+.grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* === TIP BOX === */
+.tip {
+    background: rgba(59, 130, 246, 0.08);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 0 12px 12px 0;
+    margin: 16px 0;
+}
+
+.tip strong {
+    color: var(--primary);
+}
+
+/* === TABLES === */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: rgba(30, 41, 59, 0.8);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+td code {
+    color: var(--secondary);
+    background: rgba(249, 115, 22, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+}
+
+/* === COLLAPSIBLE DETAILS === */
+details {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+details summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(30, 41, 59, 0.5);
+    transition: background 0.2s;
+    user-select: none;
+}
+
+details summary:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+details summary::before {
+    content: '▶';
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details>div {
+    padding: 20px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.3);
+}
+
+details p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+/* === TOOL CARD === */
+.tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.tool-card:hover {
+    border-color: var(--secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* === FOOTER === */
+footer {
+    padding: 50px 0;
+    text-align: center;
+    color: var(--dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+}
+
+footer strong {
+    color: var(--muted);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .sec-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toc-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

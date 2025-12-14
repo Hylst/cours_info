@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo PHP Complet - 200+ fonctions avec exemples | Guide 2025</title>
+    <title>Mémo PHP - 200+ fonctions avec exemples | Guide 2025</title>
     <meta name="description" content="Guide PHP complet : variables, tableaux, fonctions, POO, fichiers, sessions, PDO. Exemples pratiques vanilla PHP.">
     <meta name="keywords" content="PHP, programmation, backend, POO, MySQL, PDO, sessions, fichiers, tutoriel, guide, mémo">
     <meta name="author" content="Geoffroy Streit">
@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#777bb4">
     <link rel="canonical" href="index.php">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo PHP Complet">
+    <meta property="og:title" content="Mémo PHP">
     <meta property="og:description" content="Guide PHP avec exemples : POO, PDO, fichiers, sessions.">
     <meta property="og:locale" content="fr_FR">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,10 +34,25 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Mémo PHP Complet</h1>
+        <h1>Mémo PHP</h1>
         <p>Guide pratique PHP vanilla avec exemples concrets. Backend moderne sans framework.</p>
     </div>
 </section>
+
+<!-- INTRO GENERAL -->
+<div class="intro-box" style="background:var(--card-bg); border-bottom:1px solid var(--border-color); padding:30px 0;">
+    <div class="container">
+        <h3 style="margin-top:0; color:var(--text-color)">Pourquoi PHP ?</h3>
+        <p style="color:#c9d1d9; max-width:800px;">
+            PHP (Hypertext Preprocessor) est un langage de script côté serveur, conçu spécialement pour le développement web.
+            Il propulse plus de <strong>75% du web</strong> (WordPress, Facebook, Laravel).
+        </p>
+        <p style="color:#8b949e; font-size:0.95rem; margin-top:10px;">
+            Simple à apprendre mais puissant, PHP a énormément évolué (version 8+) : Typage fort, JIT Compiler, Attributs, Enums...
+            C'est le langage idéal pour le backend rapide et robuste.
+        </p>
+    </div>
+</div>
 
 <div class="toc">
     <div class="container">
@@ -65,6 +80,14 @@
             <div class="sec-num">01</div>
             <div><h2 class="sec-title">Variables & Types</h2><p class="sec-sub">Déclaration, types, constantes</p></div>
         </div>
+
+        <details>
+            <summary>📖 Les Bases du Langage</summary>
+            <div>
+                <p>En PHP, toutes les variables commencent par un <strong>$</strong>.</p>
+                <p>C'est un langage <strong>dynamiquement typé</strong> (le type est déduit), mais on peut (et on doit !) utiliser le typage strict dans les fonctions modernes.</p>
+            </div>
+        </details>
 
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Variables</div>
 <pre><span class="tag">&lt;?php</span>
@@ -118,6 +141,14 @@ echo "Type de \$age: " . gettype($age);
             <div><h2 class="sec-title">Tableaux</h2><p class="sec-sub">Arrays indexés et associatifs</p></div>
         </div>
 
+        <details>
+            <summary>📖 La Structure de Donnée Reine</summary>
+            <div>
+                <p>En PHP, le tableau (Array) est une structure universelle : il peut être à la fois une liste ordonnée (Vector) et une map clé-valeur (Dictionary).</p>
+                <p>C'est la structure la plus utilisée pour manipuler des données.</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Arrays</div>
 <pre><span class="c">// Tableau indexé</span>
 <span class="var">$fruits</span> = [<span class="str">"pomme"</span>, <span class="str">"banane"</span>, <span class="str">"orange"</span>];
@@ -169,6 +200,14 @@ echo "User: " . json_encode($user);
             <div class="sec-num">03</div>
             <div><h2 class="sec-title">Structures de contrôle</h2><p class="sec-sub">Conditions, boucles</p></div>
         </div>
+
+         <details>
+            <summary>💡 Syntaxe Alternative</summary>
+            <div>
+                <p>Dans les vues HTML (templates), on utilise souvent la syntaxe alternative pour la lisibilité :</p>
+                <p><code>if ($a): ... endif;</code> ou <code>foreach ($a as $b): ... endforeach;</code></p>
+            </div>
+        </details>
 
         <div class="grid2">
             <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Conditions</div>
@@ -226,6 +265,14 @@ echo "User: " . json_encode($user);
             <div class="sec-num">04</div>
             <div><h2 class="sec-title">Fonctions</h2><p class="sec-sub">Déclaration, arguments, closures</p></div>
         </div>
+
+        <details>
+            <summary>📖 Typage & Rigueur</summary>
+            <div>
+                <p>Depuis PHP 7, le typage des arguments et du retour est fortement encouragé.</p>
+                <p>Utiliser <code>declare(strict_types=1);</code> permet d'éviter les conversions silencieuses (ex: passer "5" à une fonction attendant un int provoquera une erreur).</p>
+            </div>
+        </details>
 
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Fonctions</div>
 <pre><span class="c">// Fonction simple</span>
@@ -287,6 +334,14 @@ echo "double(5) = " . $double(5);
             <div><h2 class="sec-title">Chaînes de caractères</h2><p class="sec-sub">Manipulation de strings</p></div>
         </div>
 
+        <details>
+            <summary>📖 Guillemets Simples vs Doubles</summary>
+            <div>
+                <p><strong>'Simple quotes'</strong> : Littéral (rapide). <code>$a</code> n'est PAS interprété.</p>
+                <p><strong>"Double quotes"</strong> : Interprété. On peut y mettre des variables <code>"Bonjour $nom"</code> et des caractères spéciaux <code>\n \t</code>.</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Strings</div>
 <pre><span class="c">// Déclaration</span>
 <span class="var">$str</span> = <span class="str">"Hello World"</span>;
@@ -324,6 +379,14 @@ HTML</span>;
             <div class="sec-num">06</div>
             <div><h2 class="sec-title">Programmation Orientée Objet</h2><p class="sec-sub">Classes, héritage, interfaces</p></div>
         </div>
+
+        <details>
+            <summary>📖 Le Modèle Objet</summary>
+            <div>
+                <p>PHP possède un modèle objet complet similaire à Java.</p>
+                <p>Il supporte l'héritage simple, les interfaces multiples, les classes abstraites, les traits, et depuis PHP 8.1, les <strong>Enums</strong>.</p>
+            </div>
+        </details>
 
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Classes</div>
 <pre><span class="kw">class</span> <span class="fn">User</span> {
@@ -409,6 +472,14 @@ echo "Total users: " . User::$count;
             <div><h2 class="sec-title">Gestion des erreurs</h2><p class="sec-sub">Exceptions, try/catch</p></div>
         </div>
 
+        <details>
+            <summary>📖 Exceptions vs Erreurs</summary>
+            <div>
+                <p>Avant, PHP utilisait beaucoup les erreurs fatales. Aujourd'hui, la plupart des problèmes lancent des <strong>Exceptions</strong> (interceptables).</p>
+                <p>Le bloc <code>try...catch</code> est indispensable pour sécuriser les opérations risquées (DB, Fichiers, API).</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Exceptions</div>
 <pre><span class="c">// Try / Catch / Finally</span>
 <span class="kw">try</span> {
@@ -447,6 +518,14 @@ echo "Total users: " . User::$count;
             <div class="sec-num">08</div>
             <div><h2 class="sec-title">PDO / MySQL</h2><p class="sec-sub">Base de données</p></div>
         </div>
+
+        <details>
+            <summary>📖 Pourquoi PDO ?</summary>
+            <div>
+                <p><strong>PDO</strong> (PHP Data Objects) est une couche d'abstraction.</p>
+                <p>Elle permet de changer de base de données (MySQL, PostgreSQL, SQLite) sans réécrire tout le code, et protège nativement contre les injections SQL via les requêtes préparées.</p>
+            </div>
+        </details>
 
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>PDO</div>
 <pre><span class="c">// Connexion</span>
@@ -502,6 +581,14 @@ echo "Total users: " . User::$count;
             <div><h2 class="sec-title">Sessions & Cookies</h2><p class="sec-sub">État côté serveur</p></div>
         </div>
 
+        <details>
+            <summary>📖 HTTP est sans état</summary>
+            <div>
+                <p>Le protocole web (HTTP) ne se "souvient" pas de vous entre deux pages.</p>
+                <p>Les <strong>Sessions</strong> permettent de stocker des données sur le serveur (via un ID de session), tandis que les <strong>Cookies</strong> stockent des données sur le navigateur du client.</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Sessions</div>
 <pre><span class="c">// Démarrer la session (en premier!)</span>
 <span class="fn">session_start</span>();
@@ -554,6 +641,14 @@ echo "Total users: " . User::$count;
             <div><h2 class="sec-title">Fichiers</h2><p class="sec-sub">Lecture, écriture, upload</p></div>
         </div>
 
+        <details>
+            <summary>📖 Manipulation de Fichiers</summary>
+            <div>
+                <p>PHP est né pour manipuler des fichiers textes et HTML.</p>
+                <p>Les fonctions comme <code>file_get_contents</code> sont ultra-rapides pour lire tout un fichier d'un coup. Pour les gros fichiers, préférez les pointeurs (fopen/fread).</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Fichiers</div>
 <pre><span class="c">// Lecture</span>
 <span class="var">$content</span> = <span class="fn">file_get_contents</span>(<span class="str">"file.txt"</span>);
@@ -595,6 +690,14 @@ echo "Total users: " . User::$count;
             <div><h2 class="sec-title">Formulaires</h2><p class="sec-sub">$_GET, $_POST, validation</p></div>
         </div>
 
+        <details>
+            <summary>⚠️ Sécurité Absolue</summary>
+            <div>
+                <p>Une règle d'or : <strong>Ne jamais faire confiance à l'utilisateur</strong>.</p>
+                <p>Toujours valider les types (filter_var) et échapper les affichages (htmlspecialchars) pour éviter les failles XSS, et utiliser PDO pour éviter les injections SQL.</p>
+            </div>
+        </details>
+
         <div class="code"><div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Formulaires</div>
 <pre><span class="c">// Récupérer les données</span>
 <span class="var">$name</span> = <span class="var">$_POST</span>[<span class="str">'name'</span>] ?? <span class="str">''</span>;
@@ -627,6 +730,14 @@ echo "Total users: " . User::$count;
             <div class="sec-num">12</div>
             <div><h2 class="sec-title">Référence complète</h2><p class="sec-sub">200+ fonctions essentielles</p></div>
         </div>
+
+        <details>
+            <summary>📖 La Bibliothèque Standard</summary>
+            <div>
+                <p>La force de PHP est sa bibliothèque standard immense (> 1000 fonctions).</p>
+                <p>Pas besoin d'installer des paquets pour manipuler des dates, du JSON, des fichiers, des URL ou des hashs : tout est inclus de base.</p>
+            </div>
+        </details>
 
         <h3>Fonctions Array</h3>
         <table>
@@ -734,7 +845,7 @@ echo "Total users: " . User::$count;
 
 <footer>
     <div class="container">
-        <p style="margin-bottom:8px"><strong>Mémo PHP Complet</strong> • 200+ fonctions • PHP 8+ • 2025</p>
+        <p style="margin-bottom:8px"><strong>Mémo PHP</strong> • 200+ fonctions • PHP 8+ • 2025</p>
         <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.</p>
     </div>
 </footer>

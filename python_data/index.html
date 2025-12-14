@@ -35,7 +35,8 @@
     <section class="hero">
         <div class="container">
             <h1>Python Data Science</h1>
-            <p>Le guide ultime pour manipuler, analyser et visualiser les données avec l'écosystème Python scientifique.
+            <p>Le mémo de l'essentiel pour manipuler, analyser et visualiser les données.
+                <br><em>Votre antisèche pour les projets et entretiens techniques.</em>
             </p>
         </div>
     </section>
@@ -45,10 +46,11 @@
             <div class="toc-grid">
                 <a href="#s0" class="toc-item"><span class="toc-num">00</span>Écosystème Data</a>
                 <a href="#s1" class="toc-item"><span class="toc-num">01</span>Numpy (Calculs)</a>
-                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Pandas (Analyses)</a>
-                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Visualisation</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Pandas (Expert)</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Visualisation Pro</a>
                 <a href="#s4" class="toc-item"><span class="toc-num">04</span>Machine Learning</a>
-                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Référence</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Deep Learning</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Référence</a>
             </div>
         </div>
     </div>
@@ -108,55 +110,51 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre Numpy (Numerical Python)</summary>
+                <summary>📖 Comprendre Numpy (Avancé)</summary>
                 <div>
                     <p>Les listes Python sont trop lentes pour des millions de calculs. Numpy introduit les
-                        <strong>Arrays</strong> (tableaux).</p>
-                    <p>Un array Numpy force le même type de données partout (ex: que des `float64`), ce qui permet une
-                        optimisation mémoire extrême.</p>
-                    <p>Le <strong>Broadcasting</strong> permet de faire des opérations mathématiques sur tout le tableau
-                        sans boucle `for` explicite. C'est la vectorisation.</p>
+                        <strong>Arrays</strong> (tableaux) typés.
+                    </p>
+                    <p>Le <strong>Reshaping</strong> est critique pour le Deep Learning (ex: transformer une image 28x28
+                        en vecteur 784).</p>
+                    <p>Le <strong>Broadcasting</strong> permet des opérations matrice-vecteur ultra-rapides sans
+                        boucles.</p>
                 </div>
             </details>
 
             <div class="grid2">
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Création & Dimensions</div>
+                    <div class="code-head"><span class="dot g"></span>Indexing, Types & Performance</div>
                     <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
 
-<span class="c"># Vecteur (1D)</span>
-<span class="var">arr</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+<span class="c"># 1. Optimisation Mémoire (Critical Big Data)</span>
+<span class="c"># int8 : -128 à 127 (1 octet) vs int64 (8 octets)</span>
+<span class="var">arr_opt</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">100</span>], dtype=<span class="str">'int8'</span>)
 
-<span class="c"># Matrice (2D) - 2 lignes, 3 colonnes</span>
-<span class="var">mat</span> = <span class="var">np</span>.<span class="fn">array</span>([
-    [<span class="num">1.5</span>, <span class="num">2.0</span>, <span class="num">3.0</span>],
-    [<span class="num">4.5</span>, <span class="num">5.0</span>, <span class="num">6.0</span>]
-])
+<span class="c"># 2. Performance (Vectorisation vs Boucle)</span>
+<span class="c"># %timeit [i**2 for i in range(1000000)]  -> 300ms</span>
+<span class="c"># %timeit np.arange(1000000)**2           -> 3ms (x100 !)</span>
 
-<span class="fn">print</span>(<span class="var">mat</span>.<span class="prop">shape</span>)  <span class="c"># (2, 3)</span>
-<span class="fn">print</span>(<span class="var">mat</span>.<span class="prop">dtype</span>)  <span class="c"># float64</span>
-
-<span class="c"># Générateurs</span>
-<span class="var">zeros</span> = <span class="var">np</span>.<span class="fn">zeros</span>((<span class="num">3</span>, <span class="num">3</span>))
-<span class="var">rand</span> = <span class="var">np</span>.<span class="prop">random</span>.<span class="fn">rand</span>(<span class="num">100</span>)  <span class="c"># 100 nb aléatoires</span></pre>
+<span class="c"># 3. Slicing Avancé (Boolean Masking)</span>
+<span class="var">arr</span> = <span class="var">np</span>.<span class="fn">arange</span>(<span class="num">12</span>).<span class="fn">reshape</span>(<span class="num">3</span>, <span class="num">4</span>)
+<span class="var">mask</span> = (<span class="var">arr</span> > <span class="num">5</span>) & (<span class="var">arr</span> < <span class="num">10</span>)
+<span class="var">filtered</span> = <span class="var">arr</span>[<span class="var">mask</span>]  <span class="c"># Filtre immédiat sans boucle</span></pre>
                 </div>
 
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Vectorisation (Pas de boucle !)</div>
-                    <pre><span class="var">a</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>])
-<span class="var">b</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+                    <div class="code-head"><span class="dot g"></span>Opérations Matricielles</div>
+                    <pre><span class="var">A</span> = <span class="var">np</span>.<span class="fn">array</span>([[<span class="num">1</span>, <span class="num">2</span>], [<span class="num">3</span>, <span class="num">4</span>]])
+<span class="var">B</span> = <span class="var">np</span>.<span class="fn">array</span>([[<span class="num">0</span>, <span class="num">1</span>], [<span class="num">1</span>, <span class="num">0</span>]])
 
-<span class="c"># Opérations élément par élément</span>
-<span class="var">add</span> = <span class="var">a</span> + <span class="var">b</span>      <span class="c"># [11, 22, 33]</span>
-<span class="var">mult</span> = <span class="var">a</span> * <span class="num">2</span>     <span class="c"># [20, 40, 60]</span>
+<span class="c"># Produit Matriciel (Dot Product)</span>
+<span class="var">dot</span> = <span class="var">A</span> @ <span class="var">B</span>      <span class="c"># [[2 1], [4 3]]</span>
 
-<span class="c"># Masque booléen (slicing conditionnel)</span>
-<span class="var">filter</span> = <span class="var">a</span> > <span class="num">15</span>
-<span class="fn">print</span>(<span class="var">a</span>[<span class="var">filter</span>]) <span class="c"># [20, 30]</span>
+<span class="c"># Transposition</span>
+<span class="var">trans</span> = <span class="var">A</span>.<span class="prop">T</span>      <span class="c"># [[1 3], [2 4]]</span>
 
-<span class="c"># Statistiques rapides</span>
-<span class="var">mean</span> = <span class="var">a</span>.<span class="fn">mean</span>()
-<span class="var">max_val</span> = <span class="var">a</span>.<span class="fn">max</span>()</pre>
+<span class="c"># Statistique sur axe</span>
+<span class="c"># axis=0 (colonne), axis=1 (ligne)</span>
+<span class="var">avg_cols</span> = <span class="var">A</span>.<span class="fn">mean</span>(axis=<span class="num">0</span>)</pre>
                 </div>
             </div>
         </div>
@@ -174,56 +172,56 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre Pandas</summary>
+                <summary>📖 Comprendre Pandas (Expert)</summary>
                 <div>
-                    <p>Si Numpy est la calculatrice, Pandas est le <strong>Excel sur stéroïdes</strong>.</p>
-                    <p>L'objet central est le <strong>DataFrame</strong> : un tableau avec des noms de colonnes et un
-                        index de lignes. Une colonne seule est une <strong>Series</strong>.</p>
-                    <p>Pandas excelle dans le nettoyage de données (gestion des vides), le filtrage complexe, les
-                        agrégations (`groupby`) et la fusion de tables (`merge`/`join`).</p>
+                    <p>Au-delà du chargement CSV, Pandas gère les <strong>Time Series</strong> (dates), les jointures
+                        SQL-style (merge) et les agrégations complexes.</p>
+                    <p>Le nettoyage de données (Data Cleaning) représente 80% du travail d'un Data Scientist.</p>
                 </div>
             </details>
 
             <div class="grid2">
                 <div class="code">
-                    <div class="code-head"><span class="dot y"></span>Chargement & Inspection</div>
+                    <div class="code-head"><span class="dot y"></span>Manipulation Temporelle</div>
                     <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-<span class="c"># Charger un CSV</span>
-<span class="var">df</span> = <span class="var">pd</span>.<span class="fn">read_csv</span>(<span class="str">"data.csv"</span>)
+<span class="c"># Création index temporel</span>
+<span class="var">df</span>[<span class="str">'Date'</span>] = <span class="var">pd</span>.<span class="fn">to_datetime</span>(<span class="var">df</span>[<span class="str">'Date'</span>])
+<span class="var">df</span>.<span class="fn">set_index</span>(<span class="str">'Date'</span>, inplace=<span class="kw">True</span>)
 
-<span class="c"># Aperçu</span>
-<span class="var">df</span>.<span class="fn">head</span>(<span class="num">5</span>)       <span class="c"># 5 premières lignes</span>
-<span class="var">df</span>.<span class="fn">info</span>()        <span class="c"># Types et valeurs nulles</span>
-<span class="var">df</span>.<span class="fn">describe</span>()    <span class="c"># Stats (moyenne, écart-type...)</span>
+<span class="c"># Resampling (Agrégation par Période)</span>
+<span class="c"># Moyenne mensuelle 'M', Hebdo 'W'</span>
+<span class="var">monthly</span> = <span class="var">df</span>.<span class="fn">resample</span>(<span class="str">'M'</span>).<span class="fn">mean</span>()
 
-<span class="c"># Sélection</span>
-<span class="var">age</span> = <span class="var">df</span>[<span class="str">"Age"</span>]            <span class="c"># Colonne (Series)</span>
-<span class="var">subset</span> = <span class="var">df</span>[[<span class="str">"Nom"</span>, <span class="str">"Age"</span>]] <span class="c"># Sous-DataFrame</span>
-
-<span class="c"># Accès par index (loc/iloc)</span>
-<span class="c"># loc[ligne, col] (labels)</span>
-<span class="var">val</span> = <span class="var">df</span>.<span class="fn">loc</span>[<span class="num">0</span>, <span class="str">"Nom"</span>]</pre>
+<span class="c"># Glissement (Rolling)</span>
+<span class="c"># Moyenne mobile sur 7 jours</span>
+<span class="var">roll</span> = <span class="var">df</span>[<span class="str">'Prix'</span>].<span class="fn">rolling</span>(<span class="num">7</span>).<span class="fn">mean</span>()</pre>
                 </div>
 
                 <div class="code">
-                    <div class="code-head"><span class="dot y"></span>Manipulation Avancée</div>
-                    <pre><span class="c"># Filtrage</span>
-<span class="var">adults</span> = <span class="var">df</span>[ <span class="var">df</span>[<span class="str">"Age"</span>] >= <span class="num">18</span> ]
+                    <div class="code-head"><span class="dot y"></span>Pivot Tables & Optimisation</div>
+                    <pre><span class="c"># Optimisation String -> Category (Gain RAM x10)</span>
+<span class="var">df</span>[<span class="str">'Ville'</span>] = <span class="var">df</span>[<span class="str">'Ville'</span>].<span class="fn">astype</span>(<span class="str">'category'</span>)
 
-<span class="c"># Nettoyage (Data Cleaning)</span>
-<span class="var">df</span>.<span class="fn">dropna</span>()                <span class="c"># Suppr lignes vides</span>
-<span class="var">df</span>.<span class="fn">fillna</span>(<span class="num">0</span>)               <span class="c"># Remplacer vides par 0</span>
+<span class="c"># Manipulation de Textes Vectorisée</span>
+<span class="c"># .str accessor est beaucoup plus rapide que apply()</span>
+<span class="var">df</span>[<span class="str">'Nom_Maj'</span>] = <span class="var">df</span>[<span class="str">'Nom'</span>].<span class="prop">str</span>.<span class="fn">upper</span>().<span class="prop">str</span>.<span class="fn">strip</span>()
 
-<span class="c"># Création colonne</span>
-<span class="var">df</span>[<span class="str">"Total"</span>] = <span class="var">df</span>[<span class="str">"Prix"</span>] * <span class="var">df</span>[<span class="str">"Qte"</span>]
+<span class="c"># Pivot Table (Style Excel Croisé Dynamique)</span>
+<span class="var">pivot</span> = <span class="var">df</span>.<span class="fn">pivot_table</span>(
+    values=<span class="str">'Ventes'</span>, 
+    index=<span class="str">'Region'</span>, 
+    columns=<span class="str">'Annee'</span>, 
+    aggfunc=<span class="str">'sum'</span>
+)
 
-<span class="c"># Agrégation (Pivot Tables)</span>
-<span class="c"># Moyenne des prix par Catégorie</span>
-<span class="var">stats</span> = <span class="var">df</span>.<span class="fn">groupby</span>(<span class="str">"Categorie"</span>)[<span class="str">"Prix"</span>].<span class="fn">mean</span>()
-
-<span class="c"># Sauvegarde</span>
-<span class="var">df</span>.<span class="fn">to_excel</span>(<span class="str">"resultat.xlsx"</span>)</pre>
+<span class="c"># Merge Avancé (Proche du SQL)</span>
+<span class="var">full_data</span> = <span class="var">pd</span>.<span class="fn">merge</span>(
+    <span class="var">commandes</span>, <span class="var">clients</span>, 
+    on=<span class="str">'client_id'</span>, 
+    how=<span class="str">'inner'</span>, 
+    validate=<span class="str">'m:1'</span>  <span class="c"># Vérifie intégrité des données</span>
+)</pre>
                 </div>
             </div>
         </div>
@@ -241,48 +239,48 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre la Dataviz</summary>
+                <summary>📖 Comprendre la Dataviz (OO API)</summary>
                 <div>
-                    <p>Un graphique vaut 1000 lignes de tableau. <strong>Matplotlib</strong> est la librairie
-                        historique, puissante mais verbeuse.</p>
-                    <p><strong>Seaborn</strong> est une surcouche moderne qui crée des graphiques statistiques
-                        magnifiques en une ligne de code.</p>
-                    <p>Workflow standard : Préparer les données avec Pandas → Visualiser avec Seaborn → Personnaliser
-                        avec Matplotlib (`plt`).</p>
+                    <p>Pour des graphiques simples, `plt.plot()` suffit. Pour du professionnel, utilisez l'API Orientée
+                        Objet : `fig, ax = plt.subplots()`.</p>
+                    <p>Cela permet de gérer plusieurs graphiques (subplots) et de contrôler chaque axe indépendamment.
+                    </p>
                 </div>
             </details>
 
             <div class="grid2">
                 <div>
                     <div class="code">
-                        <div class="code-head"><span class="dot r"></span>Code Viz</div>
+                        <div class="code-head"><span class="dot r"></span>Viz Professionnelle</div>
                         <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
 <span class="kw">import</span> seaborn <span class="kw">as</span> sns
 
-<span class="c"># Nuage de points (Scatter)</span>
-<span class="var">sns</span>.<span class="fn">scatterplot</span>(
-    data=<span class="var">df</span>,
-    x=<span class="str">"Surface"</span>,
-    y=<span class="str">"Prix"</span>,
-    hue=<span class="str">"Quartier"</span>    <span class="c"># Couleur par groupe</span>
-)
-<span class="var">plt</span>.<span class="fn">title</span>(<span class="str">"Prix vs Surface"</span>)
-<span class="var">plt</span>.<span class="fn">show</span>()
+<span class="c"># Style Global</span>
+<span class="var">sns</span>.<span class="fn">set_theme</span>(style=<span class="str">"darkgrid"</span>)
 
-<span class="c"># Matrice de corrélation (Heatmap)</span>
-<span class="var">corr</span> = <span class="var">df</span>.<span class="fn">corr</span>()
-<span class="var">sns</span>.<span class="fn">heatmap</span>(<span class="var">corr</span>, annot=<span class="kw">True</span>, cmap=<span class="str">"coolwarm"</span>)</pre>
+<span class="c"># Création Figure et Axes (2 graphiques)</span>
+<span class="var">fig</span>, (<span class="var">ax1</span>, <span class="var">ax2</span>) = <span class="var">plt</span>.<span class="fn">subplots</span>(<span class="num">1</span>, <span class="num">2</span>, figsize=(<span class="num">12</span>, <span class="num">5</span>))
+
+<span class="c"># Graph 1 : Distribution (Violin)</span>
+<span class="var">sns</span>.<span class="fn">violinplot</span>(data=<span class="var">df</span>, x=<span class="str">"Class"</span>, y=<span class="str">"Age"</span>, ax=<span class="var">ax1</span>)
+<span class="var">ax1</span>.<span class="fn">set_title</span>(<span class="str">"Distribution Age par Classe"</span>)
+
+<span class="c"># Graph 2 : Relation (Scatter)</span>
+<span class="var">sns</span>.<span class="fn">scatterplot</span>(data=<span class="var">df</span>, x=<span class="str">"Prix"</span>, y=<span class="str">"Age"</span>, hue=<span class="str">"Survie"</span>, ax=<span class="var">ax2</span>)
+<span class="var">ax2</span>.<span class="fn">set_title</span>(<span class="str">"Prix vs Age"</span>)
+
+<span class="var">plt</span>.<span class="fn">tight_layout</span>()
+<span class="var">plt</span>.<span class="fn">show</span>()</pre>
                     </div>
                 </div>
                 <div>
-                    <!-- Visual Placeholders created by JS -->
                     <div class="viz-container">
                         <div class="viz-placeholder" data-type="scatter"></div>
-                        <p style="margin-top:10px; font-size:0.8rem">Exemple de Scatter Plot multiclasse</p>
+                        <p style="margin-top:10px; font-size:0.8rem">Scatter Plot Avancé</p>
                     </div>
                     <div class="viz-container">
                         <div class="viz-placeholder" data-type="heatmap"></div>
-                        <p style="margin-top:10px; font-size:0.8rem">Exemple de Heatmap de corrélation</p>
+                        <p style="margin-top:10px; font-size:0.8rem">Heatmap Corrélation</p>
                     </div>
                 </div>
             </div>
@@ -301,51 +299,204 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre le Machine Learning avec Sklearn</summary>
+                <summary>📖 Comprendre le Workflow ML (Preprocessing & Pipelines)</summary>
                 <div>
-                    <p>Le ML consiste à créer un modèle capable d'apprendre des données passées pour prédire le futur.
+                    <p>Un modèle ne comprend que les chiffres. Il faut <strong>Encoder</strong> le texte (H/F -> 0/1) et
+                        <strong>Scaler</strong> les données numériques (mettre à la même échelle).
                     </p>
-                    <p>Scikit-Learn propose une API unifiée géniale : 3 étapes pour TOUS les modèles (Régression,
-                        Classification, Clustering).</p>
-                    <p>1. <strong>Instancier</strong> (`model = LinearRegression()`)<br>2. <strong>Entraîner</strong>
-                        (`model.fit(X, y)`)<br>3. <strong>Prédire</strong> (`model.predict(new_data)`).</p>
+                    <p>Les <strong>Pipelines</strong> encapsulent ces étapes pour éviter la fuite de données (Data
+                        Leakage) et simplifier le déploiement.</p>
+                    <p>Pour optimiser, on utilise <strong>GridSearchCV</strong> qui teste toutes les combinaisons
+                        d'hyperparamètres.</p>
                 </div>
             </details>
 
-            <div class="tip"><strong>💡 Workflow Type ML</strong> : Nettoyage → Séparation Train/Test → Choix Modèle →
-                Entraînement → Évaluation (Score).</div>
+            <details>
+                <summary>📖 Concepts Clés (Overfitting, Biais/Variance)</summary>
+                <div>
+                    <p><strong>Overfitting (Surapprentissage)</strong> : Le modèle apprend "par coeur" le train set mais
+                        échoue sur le test set (High Variance). Solution : Plus de données, simplifier le modèle,
+                        régularisation.</p>
+                    <p><strong>Cross-Validation</strong> : Découper les données en K parties (Folds) pour entrainer K
+                        fois le modèle et avoir un score robuste.</p>
+                </div>
+            </details>
+
+            <!-- Tableau des Métriques -->
+            <table>
+                <tr>
+                    <th>Métrique</th>
+                    <th>Cas d'usage</th>
+                    <th>Formule Intuitive</th>
+                </tr>
+                <tr>
+                    <td><strong>Accuracy</strong></td>
+                    <td>Classes équilibrées</td>
+                    <td>(Vrai Pos + Vrai Neg) / Total</td>
+                </tr>
+                <tr>
+                    <td><strong>Recall (Rappel)</strong></td>
+                    <td>Détection fraude/maladie (Ne rien rater)</td>
+                    <td>Vrai Pos / (Vrai Pos + Faux Neg)</td>
+                </tr>
+                <tr>
+                    <td><strong>Precision</strong></td>
+                    <td>Anti-Spam (Ne pas filtrer les bons emails)</td>
+                    <td>Vrai Pos / (Vrai Pos + Faux Pos)</td>
+                </tr>
+                <tr>
+                    <td><strong>F1-Score</strong></td>
+                    <td>Compromis Précision/Rappel (Généraliste)</td>
+                    <td>Moyenne harmonique</td>
+                </tr>
+            </table>
 
             <div class="code">
-                <div class="code-head"><span class="dot y"></span>Workflow Complet de Classification</div>
-                <pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+                <div class="code-head"><span class="dot y"></span>Validation Robuste (Cross-Validation)</div>
+                <pre><span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> cross_val_score, KFold
+
+<span class="c"># Preprocessing Pipeline (Déjà vu : Scaler + OneHot)</span>
+<span class="var">model_pipe</span> = <span class="var">...</span> 
+
+<span class="c"># Stratégie de découpage (5 Folds, mélange préalable)</span>
+<span class="var">cv</span> = <span class="cls">KFold</span>(n_splits=<span class="num">5</span>, shuffle=<span class="kw">True</span>, random_state=<span class="num">42</span>)
+
+<span class="c"># Évaluation sur 5 rounds</span>
+<span class="var">scores</span> = <span class="fn">cross_val_score</span>(<span class="var">model_pipe</span>, <span class="var">X</span>, <span class="var">y</span>, cv=<span class="var">cv</span>, scoring=<span class="str">'f1'</span>)
+
+<span class="fn">print</span>(<span class="str">f"Score Moyen : </span>{<span class="var">scores</span>.<span class="fn">mean</span>():.3f}<span class="str"> (+/- </span>{<span class="var">scores</span>.<span class="fn">std</span>()}<span class="str">)"</span>)</pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot y"></span>Pipeline Complet : Nettoyage → Scaling → Modèle</div>
+                <pre><span class="kw">from</span> sklearn.pipeline <span class="kw">import</span> Pipeline
+<span class="kw">from</span> sklearn.preprocessing <span class="kw">import</span> StandardScaler, OneHotEncoder
+<span class="kw">from</span> sklearn.compose <span class="kw">import</span> ColumnTransformer
 <span class="kw">from</span> sklearn.ensemble <span class="kw">import</span> RandomForestClassifier
-<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> accuracy_score
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> GridSearchCV
 
-<span class="c"># 1. Préparer Features (X) et Target (y)</span>
-<span class="var">X</span> = <span class="var">df</span>.<span class="fn">drop</span>(columns=[<span class="str">"Survie"</span>])  <span class="c"># Données</span>
-<span class="var">y</span> = <span class="var">df</span>[<span class="str">"Survie"</span>]                 <span class="c"># Cible à prédire</span>
+<span class="c"># 1. Preprocessing Colonnes</span>
+<span class="var">numeric_transformer</span> = <span class="cls">Pipeline</span>(steps=[(<span class="str">'scaler'</span>, <span class="cls">StandardScaler</span>())])
+<span class="var">categorical_transformer</span> = <span class="cls">Pipeline</span>(steps=[(<span class="str">'onehot'</span>, <span class="cls">OneHotEncoder</span>())])
 
-<span class="c"># 2. Séparer Train (80%) / Test (20%)</span>
-<span class="var">X_train</span>, <span class="var">X_test</span>, <span class="var">y_train</span>, <span class="var">y_test</span> = <span class="fn">train_test_split</span>(<span class="var">X</span>, <span class="var">y</span>, test_size=<span class="num">0.2</span>)
+<span class="var">preprocessor</span> = <span class="cls">ColumnTransformer</span>(
+    transformers=[
+        (<span class="str">'num'</span>, <span class="var">numeric_transformer</span>, [<span class="str">'age'</span>, <span class="str">'fare'</span>]),
+        (<span class="str">'cat'</span>, <span class="var">categorical_transformer</span>, [<span class="str">'embarked'</span>, <span class="str">'sex'</span>])
+    ])
 
-<span class="c"># 3. Choisir et Entraîner le modèle</span>
-<span class="var">model</span> = <span class="cls">RandomForestClassifier</span>(n_estimators=<span class="num">100</span>)
-<span class="var">model</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>)  <span class="c"># C'est ici que la magie opère 🧠</span>
+<span class="c"># 2. Pipeline Global</span>
+<span class="var">pipe</span> = <span class="cls">Pipeline</span>(steps=[
+    (<span class="str">'preprocessor'</span>, <span class="var">preprocessor</span>),
+    (<span class="str">'classifier'</span>, <span class="cls">RandomForestClassifier</span>())
+])
 
-<span class="c"># 4. Évaluer</span>
-<span class="var">prediction</span> = <span class="var">model</span>.<span class="fn">predict</span>(<span class="var">X_test</span>)
-<span class="var">score</span> = <span class="fn">accuracy_score</span>(<span class="var">y_test</span>, <span class="var">prediction</span>)
+<span class="c"># 3. Grid Search (Optimisation)</span>
+<span class="var">param_grid</span> = {
+    <span class="str">'classifier__n_estimators'</span>: [<span class="num">50</span>, <span class="num">100</span>],
+    <span class="str">'classifier__max_depth'</span>: [<span class="kw">None</span>, <span class="num">10</span>, <span class="num">20</span>]
+}
 
-<span class="fn">print</span>(<span class="str">f"Précision du modèle : </span>{<span class="var">score</span>*<span class="num">100</span>}<span class="str">%"</span>)</pre>
+<span class="var">grid</span> = <span class="cls">GridSearchCV</span>(<span class="var">pipe</span>, <span class="var">param_grid</span>, cv=<span class="num">5</span>)
+<span class="var">grid</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>)
+
+<span class="fn">print</span>(<span class="str">"Best score:"</span>, <span class="var">grid</span>.<span class="prop">best_score_</span>)</pre>
             </div>
         </div>
     </section>
 
-    <!-- S5: RÉFÉRENCE -->
+    <!-- S5: DEEP LEARNING -->
     <section id="s5">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Deep Learning</h2>
+                    <p class="sec-sub">Réseaux de Neurones & Keras</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le Deep Learning</summary>
+                <div>
+                    <p>Neurone artificiel = <strong>Somme pondérée</strong> des entrées + Biais -> <strong>Fonction
+                            d'activation</strong> (Non-linéarité).</p>
+                    <p>L'apprentissage consiste à ajuster ces poids (Backpropagation) pour minimiser une fonction de
+                        coût (Loss).</p>
+                </div>
+            </details>
+
+            <h4 style="margin-top:20px">Cheat Sheet Architecture DL</h4>
+            <table>
+                <tr>
+                    <th>Type Problème</th>
+                    <th>Dernière Couche (Activation)</th>
+                    <th>Loss Function (Erreur)</th>
+                </tr>
+                <tr>
+                    <td><strong>Régression</strong> (Prix)</td>
+                    <td><code>Linear</code> (Pas d'activ)</td>
+                    <td><code>MSE</code> (Mean Squared Error)</td>
+                </tr>
+                <tr>
+                    <td><strong>Binaires</strong> (Oui/Non)</td>
+                    <td><code>Sigmoid</code> (Proba 0-1)</td>
+                    <td><code>Binary Crossentropy</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Multiclasse</strong> (Chien/Chat/Oiseau)</td>
+                    <td><code>Softmax</code> (Somme probas = 1)</td>
+                    <td><code>Categorical Crossentropy</code></td>
+                </tr>
+            </table>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Classification Image (Keras)</div>
+                    <pre><span class="kw">import</span> tensorflow <span class="kw">as</span> tf
+<span class="kw">from</span> tensorflow <span class="kw">import</span> keras
+<span class="kw">from</span> tensorflow.keras <span class="kw">import</span> layers
+
+<span class="c"># Modèle Séquentiel</span>
+<span class="var">model</span> = <span class="var">keras</span>.<span class="cls">Sequential</span>([
+    <span class="c"># Input: Image 28x28 (Flatten -> Vecteur 784)</span>
+    <span class="var">layers</span>.<span class="cls">Flatten</span>(input_shape=(<span class="num">28</span>, <span class="num">28</span>)),
+    
+    <span class="c"># Hidden Layer 1 (Dense = Fully Connected)</span>
+    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">128</span>, activation=<span class="str">'relu'</span>),
+    <span class="var">layers</span>.<span class="cls">Dropout</span>(<span class="num">0.2</span>),  <span class="c"># Evite overfitting</span>
+    
+    <span class="c"># Output Layer (10 classes probabilités)</span>
+    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">10</span>, activation=<span class="str">'softmax'</span>)
+])
+
+<span class="c"># Compilation</span>
+<span class="var">model</span>.<span class="fn">compile</span>(
+    optimizer=<span class="str">'adam'</span>,
+    loss=<span class="str">'sparse_categorical_crossentropy'</span>,
+    metrics=[<span class="str">'accuracy'</span>]
+)
+
+<span class="c"># Entrainement</span>
+<span class="var">model</span>.<span class="fn">fit</span>(<span class="var">x_train</span>, <span class="var">y_train</span>, epochs=<span class="num">5</span>)</pre>
+                </div>
+                <div>
+                    <div class="tip"><strong>Epoch</strong> : Un passage complet de toutes les données dans le réseau.
+                    </div>
+                    <div class="tip" style="margin-top:20px"><strong>Loss</strong> : L'erreur que le réseau essaie de
+                        minimiser (ex: MSE pour régression).</div>
+                    <div class="tip" style="margin-top:20px"><strong>Optimizer</strong> : L'algorithme qui met à jour
+                        les poids pour réduire la Loss (Adam est le standard).</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: RÉFÉRENCE -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
                 <div>
                     <h2 class="sec-title">Référence Rapide</h2>
                     <p class="sec-sub">Cheat Sheet des commandes vitales</p>

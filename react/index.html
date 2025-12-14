@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo React.js - Les Bases Essentielles | Guide 2025</title>
+    <meta name="description"
+        content="Guide React.js : JSX, Components, Hooks, State, Effect, Events. Démos interactives et syntaxe moderne.">
+    <meta name="keywords"
+        content="React, React.js, Hooks, useState, useEffect, JSX, Components, Front-end, JavaScript, Framework">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="theme-color" content="#20232a">
+    <link rel="canonical" href="index.html">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">⚛</div>React.js
+            </div>
+            <nav>
+                <a href="#s1">JSX</a>
+                <a href="#s2">Components</a>
+                <a href="#s4">Hooks</a>
+                <a href="#s6">Events</a>
+                <a href="#s10">Custom Hooks</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo React.js</h1>
+            <p>La bibliothèque UI moderne. Composants, Hooks et Virtual DOM.</p>
+        </div>
+    </section>
+
+    <div class="intro-box" style="background:var(--card); border-bottom:1px solid var(--border); padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--primary)">Qu'est-ce que React ?</h3>
+            <p style="color:var(--text); max-width:800px;">
+                React est une bibliothèque JavaScript créée par Facebook pour construire des interfaces utilisateur
+                (UI).
+                Contrairement au JS classique où l'on manipule le DOM manuellement
+                (<code>document.querySelector</code>),
+                React utilise une approche <strong>déclarative</strong> : vous décrivez à quoi l'interface doit
+                ressembler en fonction de l'état (State),
+                et React s'occupe de mettre à jour le DOM efficacement.
+            </p>
+            <p style="color:var(--muted); font-size:0.95rem; margin-top:10px">
+                Son cœur repose sur les <strong>Composants</strong> (blocs réutilisables) et le <strong>Virtual
+                    DOM</strong> (optimisation des performances).
+            </p>
+        </div>
+    </div>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>JSX & Intro</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Components</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Props</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>State (useState)</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Effect (useEffect)</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Events</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Listes & Keys</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Forms</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Règles des Hooks</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Custom Hooks</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Context API</a>
+                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Refs (useRef)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- S1: JSX -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">JSX</h2>
+                    <p class="sec-sub">JavaScript XML</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Comprendre le JSX</summary>
+                <div class="details-content">
+                    <p>Le <strong>JSX</strong> (JavaScript XML) n'est pas du HTML valide. C'est du "sucre syntaxique"
+                        qui est compilé (par Babel ou SWC) en appels de fonction JavaScript standards.</p>
+                    <p>Au lieu d'écrire <code>React.createElement('div', { id: 'app' }, 'Content')</code>, vous écrivez
+                        simplement <code>&lt;div id="app"&gt;Content&lt;/div&gt;</code>.</p>
+                    <p><strong>Différences clés avec HTML :</strong></p>
+                    <ul>
+                        <li>Les balises doivent toujours être fermées (ex: <code>&lt;img /&gt;</code>).</li>
+                        <li>Un composant ne peut retourner qu'un seul élément parent (ou un Fragment
+                            <code>&lt;&gt;...&lt;/&gt;</code>).
+                        </li>
+                        <li>On utilise <code>camelCase</code> pour les attributs (<code>onclick</code> →
+                            <code>onClick</code>).
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Syntaxe</div>
+                <pre><span class="c">// JSX permet d'écrire du HTML dans le JS</span>
+<span class="kw">const</span> <span class="var">element</span> = <span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span>;
+
+<span class="c">// Interpolation avec {}</span>
+<span class="kw">const</span> <span class="var">name</span> = <span class="str">"Alice"</span>;
+<span class="kw">const</span> <span class="var">title</span> = <span class="tag">&lt;h2&gt;</span>Bonjour {<span class="var">name</span>}<span class="tag">&lt;/h2&gt;</span>;
+
+<span class="c">// Classes et Styles</span>
+<span class="kw">const</span> <span class="var">box</span> = (
+    <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="str">"container"</span> <span class="attr">style</span>={{ <span class="prop">color</span>: <span class="str">'red'</span> }}<span class="tag">&gt;</span>
+        Contenu
+    <span class="tag">&lt;/div&gt;</span>
+);</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo Virtual DOM</div>
+                <button class="demo-btn" onclick="demoJSX()">Voir la structure JS</button>
+                <div id="demo-jsx-output" class="demo-output" style="margin-top:12px">Cliquez pour voir</div>
+            </div>
+
+            <div class="warning"><strong>⚠️ Attention</strong> Utilisez <code>className</code> au lieu de
+                <code>class</code>, et <code>htmlFor</code> au lieu de <code>for</code>.
+            </div>
+        </div>
+    </section>
+
+    <!-- S2: COMPONENTS -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Components</h2>
+                    <p class="sec-sub">Fonctions vs Classes</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Logique des Composants</summary>
+                <div class="details-content">
+                    <p>Un composant React est comme une fonction JavaScript qui retourne des éléments d'interface (JSX).
+                    </p>
+                    <p>Ils permettent de découper l'interface en petits morceaux indépendants, réutilisables et isolés.
+                        Par exemple, un bouton, un formulaire, ou une carte utilisateur.</p>
+                    <p><strong>Note :</strong> Les noms de composants doivent obligatoirement commencer par une
+                        <strong>majuscule</strong> (ex: <code>UserCard</code>). Si ça commence par une minuscule, React
+                        pense que c'est une balise HTML standard.
+                    </p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Function Component (Moderne)</div>
+                    <pre><span class="kw">function</span> <span class="fn">Welcome</span>() {
+    <span class="kw">return</span> <span class="tag">&lt;h1&gt;</span>Bonjour<span class="tag">&lt;/h1&gt;</span>;
+}
+
+<span class="c">// Arrow Function</span>
+<span class="kw">const</span> <span class="fn">Welcome</span> = () => <span class="tag">&lt;h1&gt;</span>Hi<span class="tag">&lt;/h1&gt;</span>;
+
+<span class="c">// Utilisation</span>
+<span class="tag">&lt;Welcome /&gt;</span></pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Class Component (Legacy)</div>
+                    <pre><span class="kw">class</span> <span class="fn">Welcome</span> <span class="kw">extends</span> <span class="fn">React.Component</span> {
+    <span class="fn">render</span>() {
+        <span class="kw">return</span> <span class="tag">&lt;h1&gt;</span>Bonjour<span class="tag">&lt;/h1&gt;</span>;
+    }
+}</pre>
+                </div>
+            </div>
+
+            <div class="tip"><strong>💡 Conseil</strong> : Utilisez toujours les <strong>Function Components</strong>
+                avec les Hooks. Les classes sont tolérées mais plus recommandées.</div>
+        </div>
+    </section>
+
+    <!-- S3: PROPS -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Props</h2>
+                    <p class="sec-sub">Passer des données</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Communication Parent-Enfant</summary>
+                <div class="details-content">
+                    <p>Les <strong>Props</strong> (propriétés) sont le moyen de passer des données d'un composant parent
+                        vers un enfant. C'est un flux de données <strong>unidirectionnel</strong> (vers le bas).</p>
+                    <p>Une règle absolue : les props sont <strong>immuables</strong> (read-only). Un composant enfant ne
+                        peut pas modifier les props qu'il reçoit. S'il a besoin de communiquer un changement vers le
+                        haut, le parent doit lui passer une fonction (callback) via les props.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Props</div>
+                <pre><span class="c">// Définition (Destructuring immédiat recommandé)</span>
+<span class="kw">function</span> <span class="fn">UserCard</span>({ <span class="var">name</span>, <span class="var">age</span> }) {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;div&gt;</span>
+            <span class="tag">&lt;h3&gt;</span>{<span class="var">name</span>}<span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p&gt;</span>Age: {<span class="var">age</span>}<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    );
+}
+
+<span class="c">// Utilisation</span>
+<span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="str">"Alice"</span> <span class="attr">age</span>={25} <span class="tag">/&gt;</span></pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo Props</div>
+                <button class="demo-btn" onclick="demoProps()">Générer composants</button>
+                <div id="demo-props-output" class="demo-output" style="margin-top:12px">Résultat</div>
+            </div>
+
+            <div class="info"><strong>ℹ️ Note</strong> Les Props sont en <strong>lecture seule</strong> (Read-Only). Un
+                composant ne doit jamais modifier ses propres props.</div>
+        </div>
+    </section>
+
+    <!-- S4: STATE -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">State (État)</h2>
+                    <p class="sec-sub">useState Hook</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Pourquoi le State ?</summary>
+                <div class="details-content">
+                    <p>En JS standard, changer une variable (<code>let x = 1</code>) ne met pas à jour l'écran
+                        automatiquement. React a besoin de savoir quand les données changent pour relancer le rendu.</p>
+                    <p>Le <strong>State</strong> est la "mémoire" du composant. Quand vous appelez la fonction de mise à
+                        jour (<code>setCount</code>), React planifie un nouveau rendu du composant avec la nouvelle
+                        valeur. C'est ce qui rend l'interface <strong>réactive</strong>.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>useState</div>
+                <pre><span class="kw">import</span> { <span class="fn">useState</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">Counter</span>() {
+    <span class="c">// [étatActuel, fonctionDeMiseAJour] = useState(valeurInitiale)</span>
+    <span class="kw">const</span> [<span class="var">count</span>, <span class="fn">setCount</span>] = <span class="fn">useState</span>(<span class="num">0</span>);
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;button</span> <span class="attr">onClick</span>={() => <span class="fn">setCount</span>(<span class="var">count</span> + <span class="num">1</span>)}<span class="tag">&gt;</span>
+            Clics : {<span class="var">count</span>}
+        <span class="tag">&lt;/button&gt;</span>
+    );
+}</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo State (Simulé)</div>
+                <div style="font-size:1.5rem; margin-bottom:10px; font-weight:bold; color:var(--primary)"
+                    id="state-count">0</div>
+                <button class="demo-btn" onclick="demoState()">Incrémenter (+1)</button>
+                <div id="demo-state-output" class="demo-output" style="margin-top:12px">Log cycle de vie</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5: EFFECTS -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Effect (Effets)</h2>
+                    <p class="sec-sub">useEffect Hook</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Effets de bord et Cycle de vie</summary>
+                <div class="details-content">
+                    <p>Les composants doivent être purs (mêmes entrées = même sortie). Mais parfois, on doit interagir
+                        avec l'extérieur : appel API, modification du titre du document, abonnement à un WebSocket.
+                        C'est ce qu'on appelle des <strong>effets de bord</strong>.</p>
+                    <p><code>useEffect</code> permet d'isoler ce code. Le tableau de dépendances <code>[]</code> à la
+                        fin contrôle quand l'effet se déclenche :</p>
+                    <ul>
+                        <li><code>[]</code> (vide) : Uniquement au montage (apparition).</li>
+                        <li><code>[count]</code> : Au montage ET quand 'count' change.</li>
+                        <li>Pas de tableau : À CHAQUE rendu (dangereux).</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>useEffect</div>
+                <pre><span class="kw">import</span> { <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">App</span>() {
+    <span class="fn">useEffect</span>(() => {
+        <span class="c">// Code exécuté après chaque rendu</span>
+        <span class="fn">document</span>.<span class="prop">title</span> = <span class="str">"Chargé !"</span>;
+        
+        <span class="c">// Fonction de nettoyage optionnelle (ex: clearInterval)</span>
+        <span class="kw">return</span> () => { <span class="c">/* Cleanup */</span> };
+    }, []); <span class="c">// [] = Exécuter une SEULE fois (mount)</span>
+    
+    <span class="c">// [prop] = Ré-exécuter si 'prop' change</span>
+}</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo Effect</div>
+                <button class="demo-btn" onclick="demoEffect()">Lancer un effet</button>
+                <div id="demo-effect-output" class="demo-output" style="margin-top:12px">En attente...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: EVENTS -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Events</h2>
+                    <p class="sec-sub">onClick, onSubmit...</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Synthetic Events</summary>
+                <div class="details-content">
+                    <p>React n'utilise pas directement les événements natifs du navigateur. Il utilise une couche
+                        d'abstraction appelée <strong>SyntheticEvent</strong>.</p>
+                    <p>Cela garantit que votre gestion des événements fonctionne de manière identique sur tous les
+                        navigateurs (IE, Chrome, Firefox). Pour vous, c'est transparent, vous utilisez
+                        <code>e.preventDefault()</code> comme d'habitude.
+                    </p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Synthetic Events</div>
+                <pre><span class="c">// CamelCase obligatoire (onClick, pas onclick)</span>
+<span class="kw">function</span> <span class="fn">Button</span>() {
+    <span class="kw">const</span> <span class="fn">handleClick</span> = (<span class="var">e</span>) => {
+        <span class="var">e</span>.<span class="fn">preventDefault</span>();
+        <span class="fn">alert</span>(<span class="str">"Click!"</span>);
+    };
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span> <span class="attr">onClick</span>={ <span class="fn">handleClick</span> }<span class="tag">&gt;</span>
+            Clique-moi
+        <span class="tag">&lt;/a&gt;</span>
+    );
+}</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo Events</div>
+                <button class="demo-btn" onclick="demoEventClick(event)">Cliquez moi !</button>
+                <div id="demo-event-output" class="demo-output" style="margin-top:12px">En attente...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S7: LISTS -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Listes & Keys</h2>
+                    <p class="sec-sub">Rendu de tableaux</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 L'importance des Keys</summary>
+                <div class="details-content">
+                    <p>Quand React met à jour une liste, il a besoin d'identifier quel élément a changé, a été ajouté ou
+                        supprimé. La prop <code>key</code> sert d'identifiant unique.</p>
+                    <p>Si vous utilisez l'index du tableau (0, 1, 2) comme key et que vous supprimez le premier élément,
+                        React va se mélanger les pinceaux et réutiliser le DOM du premier élément pour le second,
+                        causant des bugs d'affichage ou de performance.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Map & Key</div>
+                <pre><span class="kw">const</span> <span class="var">users</span> = [
+    { <span class="prop">id</span>: <span class="num">1</span>, <span class="prop">name</span>: <span class="str">"Alice"</span> },
+    { <span class="prop">id</span>: <span class="num">2</span>, <span class="prop">name</span>: <span class="str">"Bob"</span> }
+];
+
+<span class="kw">function</span> <span class="fn">UserList</span>() {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;ul&gt;</span>
+            {<span class="var">users</span>.<span class="fn">map</span>(<span class="var">user</span> => (
+                <span class="c">// KEY est obligatoire et doit être unique (ID)</span>
+                <span class="tag">&lt;li</span> <span class="attr">key</span>={ <span class="var">user</span>.<span class="prop">id</span> }<span class="tag">&gt;</span>
+                    { <span class="var">user</span>.<span class="prop">name</span> }
+                <span class="tag">&lt;/li&gt;</span>
+            ))}
+        <span class="tag">&lt;/ul&gt;</span>
+    );
+}</pre>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Démo Listes</div>
+                <button class="demo-btn" onclick="demoLists()">Afficher la liste</button>
+                <div id="demo-lists-output" class="demo-output" style="margin-top:12px">Résultat</div>
+            </div>
+
+            <div class="warning"><strong>⚠️ Erreur Classique</strong> Ne pas utiliser l'index du tableau comme
+                <code>key</code> si la liste peut changer (tri, ajout, suppression). Utilisez un ID unique.
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: FORMS -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Formulaires</h2>
+                    <p class="sec-sub">Controlled Components</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Single Source of Truth</summary>
+                <div class="details-content">
+                    <p>Dans un formulaire HTML classique, l'input garde son propre état interne. En React, on veut que
+                        le <strong>State</strong> soit la seule source de vérité.</p>
+                    <p>C'est le pattern "Composant Contrôlé" :</p>
+                    <ol>
+                        <li>L'input affiche la valeur du State (<code>value={state}</code>).</li>
+                        <li>L'input déclenche un changement (<code>onChange</code>).</li>
+                        <li>Le handler met à jour le State (<code>setState</code>).</li>
+                        <li>React re-render l'input avec la nouvelle valeur.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Input contrôlé</div>
+                <pre><span class="kw">function</span> <span class="fn">Form</span>() {
+    <span class="kw">const</span> [<span class="var">text</span>, <span class="fn">setText</span>] = <span class="fn">useState</span>(<span class="str">""</span>);
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;input</span>
+            <span class="attr">type</span>=<span class="str">"text"</span>
+            <span class="attr">value</span>={ <span class="var">text</span> }  <span class="c">// Source de vérité = State</span>
+            <span class="attr">onChange</span>={ <span class="var">e</span> => <span class="fn">setText</span>(<span class="var">e</span>.<span class="prop">target</span>.<span class="prop">value</span>) }
+        <span class="tag">/&gt;</span>
+    );
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S9: HOOK RULES -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Règles des Hooks</h2>
+                    <p class="sec-sub">À respecter impérativement</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 La "Magie" des Hooks</summary>
+                <div class="details-content">
+                    <p>React ne scanne pas votre code pour trouver les Hooks. Il compte simplement l'ordre d'appel.</p>
+                    <p>"Au premier rendu, le 1er Hook est un useState(0). Le 2ème est un useEffect..."</p>
+                    <p>Si vous mettez un Hook dans un <code>if</code>, l'ordre des appels change au rendu suivant, et
+                        React perd le fil ("Attends, le 2ème Hook était un useEffect, pourquoi c'est un useState
+                        maintenant ?"). C'est pour ça que l'ordre doit être stable.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>1. Top Level Uniquement</h4>
+                    <p>Ne jamais appeler un Hook dans une boucle, une condition ou une fonction imbriquée.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>2. React Functions Uniquement</h4>
+                    <p>Appeler les Hooks seulement depuis des composants React ou des Custom Hooks.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>3. Nommage</h4>
+                    <p>Les Custom Hooks doivent toujours commencer par <code>use...</code> (ex: <code>useAuth</code>).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S10: CUSTOM HOOKS -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Custom Hooks</h2>
+                    <p class="sec-sub">Réutiliser la logique</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Pourquoi créer des Custom Hooks ?</summary>
+                <div class="details-content">
+                    <p>Les Custom Hooks permettent d'extraire de la <strong>logique d'état</strong> (pas de l'UI) pour
+                        la réutiliser.</p>
+                    <p>Par exemple, si plusieurs composants doivent savoir si l'utilisateur est en ligne ou hors ligne,
+                        au lieu de copier-coller les <code>useState</code> et <code>useEffect</code> d'écouteur
+                        d'événement, vous créez un hook <code>useOnlineStatus</code> simple à utiliser.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>useFetch (Exemple)</div>
+                <pre><span class="c">// Extraction de la logique</span>
+<span class="kw">function</span> <span class="fn">useFetch</span>(<span class="var">url</span>) {
+    <span class="kw">const</span> [<span class="var">data</span>, <span class="fn">setData</span>] = <span class="fn">useState</span>(<span class="kw">null</span>);
+
+    <span class="fn">useEffect</span>(() => {
+        <span class="fn">fetch</span>(<span class="var">url</span>)
+            .<span class="fn">then</span>(<span class="var">res</span> => <span class="var">res</span>.<span class="fn">json</span>())
+            .<span class="fn">then</span>(<span class="var">d</span> => <span class="fn">setData</span>(<span class="var">d</span>));
+    }, [<span class="var">url</span>]);
+
+    <span class="kw">return</span> <span class="var">data</span>;
+}
+
+<span class="c">// Utilisation</span>
+<span class="kw">function</span> <span class="fn">App</span>() {
+    <span class="kw">const</span> <span class="var">user</span> = <span class="fn">useFetch</span>(<span class="str">"/api/user"</span>);
+    <span class="kw">return</span> <span class="var">user</span> && <span class="tag">&lt;div&gt;</span>{<span class="var">user</span>.<span class="prop">name</span>}<span class="tag">&lt;/div&gt;</span>;
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S11: CONTEXT -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Context API</h2>
+                    <p class="sec-sub">Éviter le Prop Drilling</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Prop Drilling vs Context</summary>
+                <div class="details-content">
+                    <p>Le "Prop Drilling", c'est quand vous devez passer une donnée du Grand-Parent -> Parent -> Enfant
+                        -> Petit-Enfant, alors que seul le Petit-Enfant en a besoin. C'est lourd.</p>
+                    <p>Le <strong>Context</strong> permet de "téléporter" la donnée directement. Attention : n'en abusez
+                        pas, car cela rend les composants moins réutilisables (ils deviennent dépendants du contexte).
+                    </p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>useContext</div>
+                <pre><span class="c">// 1. Création</span>
+<span class="kw">const</span> <span class="var">ThemeContext</span> = <span class="fn">createContext</span>(<span class="str">"light"</span>);
+
+<span class="c">// 2. Provider (Parent)</span>
+<span class="tag">&lt;ThemeContext.Provider</span> <span class="attr">value</span>=<span class="str">"dark"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;App /&gt;</span>
+<span class="tag">&lt;/ThemeContext.Provider&gt;</span>
+
+<span class="c">// 3. Consumer (Enfant, n'importe où)</span>
+<span class="kw">function</span> <span class="fn">ThemedButton</span>() {
+    <span class="kw">const</span> <span class="var">theme</span> = <span class="fn">useContext</span>(<span class="var">ThemeContext</span>);
+    <span class="kw">return</span> <span class="tag">&lt;button</span> <span class="attr">className</span>={ <span class="var">theme</span> }<span class="tag">&gt;</span>OK<span class="tag">&lt;/button&gt;</span>;
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S12: REFS -->
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Refs</h2>
+                    <p class="sec-sub">useRef Hook</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Échapper au cycle React</summary>
+                <div class="details-content">
+                    <p>Parfois, on a besoin de sortir du modèle "State -> UI". Par exemple pour mettre le focus sur un
+                        champ, lire la position de scroll, ou intégrer une librairie tierce (D3.js, Maps).</p>
+                    <p><code>useRef</code> est parfait pour ça : il crée un objet persistant (comme state) mais qui
+                        <strong>ne déclenche pas de re-render</strong> quand on le modifie. C'est souvent utilisé pour
+                        stocker une référence vers un élément DOM réel.
+                    </p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Accès direct au DOM</div>
+                <pre><span class="kw">function</span> <span class="fn">TextInput</span>() {
+    <span class="kw">const</span> <span class="var">inputRef</span> = <span class="fn">useRef</span>(<span class="kw">null</span>);
+
+    <span class="kw">const</span> <span class="fn">focus</span> = () => {
+        <span class="c">// Accès direct à l'élément DOM</span>
+        <span class="var">inputRef</span>.<span class="prop">current</span>.<span class="fn">focus</span>();
+    };
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;&gt;</span>
+            <span class="tag">&lt;input</span> <span class="attr">ref</span>={ <span class="var">inputRef</span> } <span class="tag">/&gt;</span>
+            <span class="tag">&lt;button</span> <span class="attr">onClick</span>={ <span class="fn">focus</span> }<span class="tag">&gt;</span>Focus<span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/&gt;</span>
+    );
+}</pre>
+            </div>
+
+            <div class="info"><strong>ℹ️ Note</strong> <code>useRef</code> permet aussi de stocker une valeur mutable
+                qui ne déclenche <strong>pas</strong> de re-render quand on la modifie.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Mémo React.js</strong> • 2025 Edition</p>
+            <p style="font-size:0.9rem; margin-top:12px; line-height:1.6; opacity:0.8;">
+                Créé par Geoffroy Streit — Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais
+                aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

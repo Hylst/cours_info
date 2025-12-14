@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Java Expert - Guide 2025</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">☕</div>Mémo Java
+            </div>
+            <nav>
+                <a href="#c1">Bases</a>
+                <a href="#c6">POO</a>
+                <a href="#c11">Collections</a>
+                <a href="#c16">Avancé</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Java</h1>
+            <p>L'antisèche technique pour le développement Java.<br><em>Syntaxe, Types, Collections et POO.</em></p>
+        </div>
+    </section>
+
+    <!-- CHAPTER 1: Ecosystème -->
+    <section id="c1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">L'Écosystème Java</h2>
+                    <p class="sec-sub">JVM, JDK, JRE & Bytecode</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le fonctionnement "Write Once, Run Anywhere"</summary>
+                <div>
+                    <p>Java ne compile pas en code machine (comme C++), mais en <strong>Bytecode</strong> (fichiers
+                        <code>.class</code>).
+                    </p>
+                    <p>Ce Bytecode est exécuté par la <strong>JVM</strong> (Java Virtual Machine), qui l'adapte à la
+                        machine hôte (Windows, Linux, Mac).</p>
+                    <p><strong>JDK</strong> (Kit de Dev) contient le compilateur (<code>javac</code>) + la
+                        <strong>JRE</strong> (Runtime) pour exécuter.
+                    </p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Main.java</div>
+                    <pre><span class="kw">public class</span> <span class="type">Main</span> {
+    <span class="kw">public static void</span> <span class="mt">main</span>(<span class="type">String</span>[] <span class="var">args</span>) {
+        <span class="type">System</span>.out.println(<span class="str">"Hello Java World!"</span>);
+    }
+}</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Terminal</div>
+                    <pre><span class="com"># 1. Compilation -> Main.class</span>
+javac Main.java
+
+<span class="com"># 2. Exécution (JVM)</span>
+java Main
+<span class="str">"Hello Java World!"</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 2: Syntaxe & Types -->
+    <section id="c2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Types de Données</h2>
+                    <p class="sec-sub">Primitifs, Wrappers & Math</p>
+                </div>
+            </div>
+
+            <!-- Tableau des Primitifs -->
+            <h3>1. Les 8 Types Primitifs</h3>
+            <p style="margin-bottom:15px">Stockés en mémoire Stack (Rapide, par valeur, non-nullable).</p>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Taille</th>
+                    <th>Description / Valeur</th>
+                </tr>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td>1 bit</td>
+                    <td><code>true</code> ou <code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>char</code></td>
+                    <td>16 bits</td>
+                    <td>Caractère Unicode unique <code>'A'</code></td>
+                </tr>
+                <tr>
+                    <td><code>byte</code></td>
+                    <td>8 bits</td>
+                    <td>Entier très court (-128 à 127)</td>
+                </tr>
+                <tr>
+                    <td><code>int</code></td>
+                    <td>32 bits</td>
+                    <td>Entier standard (défaut)</td>
+                </tr>
+                <tr>
+                    <td><code>long</code></td>
+                    <td>64 bits</td>
+                    <td>Grand entier (suffixe <code>L</code>)</td>
+                </tr>
+                <tr>
+                    <td><code>double</code></td>
+                    <td>64 bits</td>
+                    <td>Décimale précise (défaut)</td>
+                </tr>
+                <tr>
+                    <td><code>float</code></td>
+                    <td>32 bits</td>
+                    <td>Décimale (suffixe <code>f</code>)</td>
+                </tr>
+            </table>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Déclaration & Casting</div>
+                    <pre><span class="com">// Déclaration explicite</span>
+<span class="kw">int</span> <span class="var">age</span> = <span class="num">25</span>;
+<span class="kw">long</span> <span class="var">population</span> = <span class="num">7_000_000_000L</span>; <span class="com">// _ pour lisibilité</span>
+<span class="kw">double</span> <span class="var">price</span> = <span class="num">19.99</span>;
+<span class="kw">float</span> <span class="var">pi</span> = <span class="num">3.14f</span>;
+<span class="kw">char</span> <span class="var">grade</span> = <span class="str">'A'</span>; <span class="com">// Simple quotes ' '</span>
+
+<span class="com">// CASTING (Conversion)</span>
+<span class="com">// Implicite (Petit -> Grand)</span>
+<span class="kw">double</span> <span class="var">d</span> = <span class="num">100</span>; <span class="com">// devient 100.0</span>
+
+<span class="com">// Explicite (Grand -> Petit) : Risque perte de données</span>
+<span class="kw">int</span> <span class="var">i</span> = (<span class="kw">int</span>) <span class="num">9.99</span>; <span class="com">// devient 9 (tronqué)</span></pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Classe Math (Utilitaires)</div>
+                    <pre><span class="kw">import</span> <span class="type">java.lang.Math</span>;
+
+<span class="type">Math</span>.<span class="fn">abs</span>(-<span class="num">10</span>);      <span class="com">// 10 (Valeur absolue)</span>
+<span class="type">Math</span>.<span class="fn">max</span>(<span class="num">5</span>, <span class="num">10</span>);    <span class="com">// 10</span>
+<span class="type">Math</span>.<span class="fn">min</span>(<span class="num">5</span>, <span class="num">10</span>);    <span class="com">// 5</span>
+<span class="type">Math</span>.<span class="fn">pow</span>(<span class="num">2</span>, <span class="num">3</span>);     <span class="com">// 8.0 (Puissance)</span>
+<span class="type">Math</span>.<span class="fn">sqrt</span>(<span class="num">16</span>);      <span class="com">// 4.0 (Racine carrée)</span>
+<span class="type">Math</span>.<span class="fn">random</span>();      <span class="com">// 0.0 à 1.0</span>
+<span class="type">Math</span>.<span class="fn">round</span>(<span class="num">3.6</span>);    <span class="com">// 4 (Arrondi)</span>
+
+<span class="com">// Constantes</span>
+<span class="type">Math</span>.<span class="var">PI</span>;            <span class="com">// 3.14159...</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 3: Flux de Contrôle -->
+    <section id="c3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Contrôle de Flux</h2>
+                    <p class="sec-sub">Switch Expression & Boucles</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Les Nouveautés (Switch Expression)</summary>
+                <div>
+                    <p>Depuis Java 14, le <code>switch</code> peut être utilisé comme une expression (retourne une
+                        valeur) et utilise la syntaxe flèche <code>-></code> (plus de <code>break</code> oubliés !).</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Switch Moderne (Java 14+)</div>
+                    <pre><span class="type">String</span> <span class="var">dayType</span> = <span class="kw">switch</span> (<span class="var">day</span>) {
+    <span class="kw">case</span> MONDAY, FRIDAY -> <span class="str">"Work"</span>;
+    <span class="kw">case</span> SATURDAY, SUNDAY -> <span class="str">"Weekend"</span>;
+    <span class="kw">default</span> -> <span class="str">"Mid-week"</span>;
+};</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Boucle For-Each</div>
+                    <pre><span class="type">String</span>[] <span class="var">frameworks</span> = {<span class="str">"Spring"</span>, <span class="str">"Quarkus"</span>};
+
+<span class="kw">for</span> (<span class="type">String</span> <span class="var">fw</span> : <span class="var">frameworks</span>) {
+    <span class="type">System</span>.out.println(<span class="var">fw</span>);
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 4: Strings & Tableaux -->
+    <section id="c4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Strings & Arrays</h2>
+                    <p class="sec-sub">Manipulations usuelles (Cheat Sheet)</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Méthodes String Utiles</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem; color:#8b949e">String est <strong>IMMUABLE</strong>
+                        (ne change jamais).</p>
+                    <table>
+                        <tr>
+                            <th>Méthode</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code>.length()</code></td>
+                            <td>Taille de la chaîne</td>
+                        </tr>
+                        <tr>
+                            <td><code>.charAt(i)</code></td>
+                            <td>Caractère à l'index i</td>
+                        </tr>
+                        <tr>
+                            <td><code>.substring(start, end)</code></td>
+                            <td>Extrait une partie</td>
+                        </tr>
+                        <tr>
+                            <td><code>.contains("text")</code></td>
+                            <td>Vérifie présence (true/false)</td>
+                        </tr>
+                        <tr>
+                            <td><code>.indexOf("text")</code></td>
+                            <td>Position première occurrence</td>
+                        </tr>
+                        <tr>
+                            <td><code>.replace("old", "new")</code></td>
+                            <td>Remplace texte (Crée nouveau String)</td>
+                        </tr>
+                        <tr>
+                            <td><code>.trim()</code> / <code>.strip()</code></td>
+                            <td>Enlève espaces début/fin</td>
+                        </tr>
+                        <tr>
+                            <td><code>.toUpperCase()</code></td>
+                            <td>Met en MAJUSCULES</td>
+                        </tr>
+                        <tr>
+                            <td><code>.split(",")</code></td>
+                            <td>Découpe en Tableau de String</td>
+                        </tr>
+                        <tr>
+                            <td><code>.equals(s2)</code></td>
+                            <td>Comparaison de contenu (!= ==)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Manipulation Tableaux & String</div>
+                    <pre><span class="com">// --- STRING ---</span>
+<span class="type">String</span> <span class="var">s</span> = <span class="str">" Hello Java "</span>;
+<span class="var">s</span> = <span class="var">s</span>.trim().toUpperCase(); <span class="com">// "HELLO JAVA"</span>
+
+<span class="com">// Comparaison (CRITIQUE !)</span>
+<span class="kw">if</span> (<span class="var">s</span>.equals(<span class="str">"HELLO JAVA"</span>)) { ... }
+
+<span class="com">// Text Blocks (Java 15)</span>
+<span class="type">String</span> <span class="var">json</span> = <span class="str">"""
+    { "id": 1 }
+    """</span>;
+
+<span class="com">// --- ARRAYS (Tableaux fixes) ---</span>
+<span class="kw">int</span>[] <span class="var">nums</span> = {<span class="num">5</span>, <span class="num">1</span>, <span class="num">3</span>};
+<span class="kw">int</span> <span class="var">len</span> = <span class="var">nums</span>.<span class="var">length</span>; <span class="com">// Attribut, pas méthode ()</span>
+
+<span class="com">// Utilitaires de la classe Arrays</span>
+<span class="kw">import</span> <span class="type">java.util.Arrays</span>;
+
+<span class="type">Arrays</span>.sort(<span class="var">nums</span>);           <span class="com">// Tri -> {1, 3, 5}</span>
+<span class="type">String</span> <span class="var">txt</span> = <span class="type">Arrays</span>.toString(<span class="var">nums</span>); <span class="com">// "[1, 3, 5]"</span>
+
+<span class="com">// Copie</span>
+<span class="kw">int</span>[] <span class="var">copy</span> = <span class="type">Arrays</span>.copyOf(<span class="var">nums</span>, <span class="var">nums</span>.<span class="var">length</span>);</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 5: Méthodes -->
+    <section id="c5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Méthodes</h2>
+                    <p class="sec-sub">Scope, Overloading & Varargs</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Passage par Valeur</summary>
+                <div>
+                    <p>Java passe toujours les arguments <strong>par valeur</strong>.</p>
+                    <p>Pour un objet, la "valeur" passée est la copie de la <strong>référence</strong> (l'adresse
+                        mémoire). Donc modifier l'objet dans la méthode affecte l'original, mais réassigner la variable
+                        locale n'a aucun effet dehors.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Overloading (Surcharge)</div>
+                <pre><span class="com">// Même nom, signatures différentes</span>
+<span class="kw">public int</span> <span class="mt">add</span>(<span class="kw">int</span> <span class="var">a</span>, <span class="kw">int</span> <span class="var">b</span>) {
+    <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>;
+}
+
+<span class="kw">public double</span> <span class="mt">add</span>(<span class="kw">double</span> <span class="var">a</span>, <span class="kw">double</span> <span class="var">b</span>) {
+    <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>;
+}
+
+<span class="com">// Varargs (Nombre variable d'arguments)</span>
+<span class="kw">public void</span> <span class="mt">log</span>(<span class="type">String</span>... <span class="var">messages</span>) {
+    <span class="kw">for</span> (<span class="type">String</span> <span class="var">m</span> : <span class="var">messages</span>) <span class="type">System</span>.out.println(<span class="var">m</span>);
+}
+
+<span class="mt">log</span>(<span class="str">"Erreur 404"</span>, <span class="str">"Not Found"</span>, <span class="str">"Critical"</span>);</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 6: Classes & Objets -->
+    <section id="c6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Classes & Objets</h2>
+                    <p class="sec-sub">Encapsulation, Static & Instantiation</p>
+                </div>
+            </div>
+
+            <!-- GRID 1: Concepts & Tables -->
+            <div class="grid2">
+                <div>
+                    <h3>1. Modificateurs d'Accès</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Qui peut voir quoi ? (Encapsulation)</p>
+                    <table>
+                        <tr>
+                            <th>Modifier</th>
+                            <th>Class</th>
+                            <th>Package</th>
+                            <th>Subclass</th>
+                            <th>World</th>
+                        </tr>
+                        <tr>
+                            <td><code>public</code></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><code>protected</code></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>(défaut)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><code>private</code></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>2. Static vs Instance</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Contexte d'exécution</p>
+                    <table>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Instance (Objet)</th>
+                            <th>Static (Classe)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Appartient à</strong></td>
+                            <td>L'objet créé (new)</td>
+                            <td>La Classe elle-même</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mémoire</strong></td>
+                            <td>Heap (Tas)</td>
+                            <td>Metaspace (Permanent)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accès</strong></td>
+                            <td>Via <code>obj.field</code></td>
+                            <td>Via <code>Class.field</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Le mot clé "this"</strong></td>
+                            <td>✅ Disponible</td>
+                            <td>❌ Interdit</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- GRID 2: Code -->
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Définition de Classe</div>
+                    <pre><span class="kw">public class</span> <span class="type">User</span> {
+    <span class="com">// -- CHAMPS (Fields) --</span>
+    <span class="com">// (private = encapsulation)</span>
+    <span class="kw">private</span> <span class="type">String</span> <span class="var">name</span>;
+    <span class="kw">private static int</span> <span class="var">count</span> = <span class="num">0</span>; <span class="com">// Partagé</span>
+
+    <span class="com">// -- CONSTRUCTEUR --</span>
+    <span class="kw">public</span> <span class="type">User</span>(<span class="type">String</span> <span class="var">name</span>) {
+        <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>; <span class="com">// this = l'objet courant</span>
+        <span class="type">User</span>.<span class="var">count</span>++;     <span class="com">// Accès static via Classe</span>
+    }
+
+    <span class="com">// -- MÉTHODES --</span>
+    <span class="kw">public void</span> <span class="mt">sayHi</span>() {
+        <span class="type">System</span>.out.println(<span class="str">"Hi, I'm "</span> + <span class="kw">this</span>.<span class="var">name</span>);
+    }
+
+    <span class="com">// Static = utilitaire, pas de 'this'</span>
+    <span class="kw">public static int</span> <span class="mt">getCount</span>() {
+        <span class="kw">return</span> <span class="var">count</span>;
+    }
+}</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Cycle de Vie & Usage</div>
+                    <pre><span class="com">// 1. INSTANTIATION (Mémoire Heap)</span>
+<span class="type">User</span> <span class="var">u1</span> = <span class="kw">new</span> <span class="type">User</span>(<span class="str">"Alice"</span>);
+<span class="type">User</span> <span class="var">u2</span> = <span class="kw">new</span> <span class="type">User</span>(<span class="str">"Bob"</span>);
+
+<span class="com">// 2. APPEL DE MÉTHODES D'INSTANCE</span>
+<span class="var">u1</span>.<span class="mt">sayHi</span>(); <span class="com">// "Hi, I'm Alice"</span>
+
+<span class="com">// 3. APPEL STATIC (Via Classe)</span>
+<span class="com">// u1.getCount(); // A ÉVITER (Bad Practice)</span>
+<span class="kw">int</span> <span class="var">total</span> = <span class="type">User</span>.<span class="mt">getCount</span>(); <span class="com">// 2</span>
+
+<span class="com">// 4. NULL POINTER EXCEPTION</span>
+<span class="type">User</span> <span class="var">u3</span> = <span class="kw">null</span>;
+<span class="com">// u3.sayHi(); // CRASH ! (NullPointerException)</span>
+<span class="kw">if</span> (<span class="var">u3</span> != <span class="kw">null</span>) <span class="var">u3</span>.<span class="mt">sayHi</span>();</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 7: Héritage -->
+    <section id="c7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Héritage</h2>
+                    <p class="sec-sub">Extends, Super & Polymorphisme</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>1. Concepts Clés</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;"><code>extends</code> (Une seule classe mère)</p>
+                    <table>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code>super()</code></td>
+                            <td>Appel au constructeur parent (1ere ligne)</td>
+                        </tr>
+                        <tr>
+                            <td><code>super.meth()</code></td>
+                            <td>Appel méthode parent (si override)</td>
+                        </tr>
+                        <tr>
+                            <td><code>final class</code></td>
+                            <td>Interdit l'héritage (Immuabilité)</td>
+                        </tr>
+                        <tr>
+                            <td><code>final meth</code></td>
+                            <td>Interdit l'Override</td>
+                        </tr>
+                        <tr>
+                            <td><code>Object</code></td>
+                            <td>Ancêtre commun de TOUT (implicite)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <h3>2. Overloading vs Overriding</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Surcharge vs Redéfinition</p>
+                    <table>
+                        <tr>
+                            <th>Caractéristique</th>
+                            <th>Overloading (Surcharge)</th>
+                            <th>Overriding (Redéfinition)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Scope</strong></td>
+                            <td>Dans la même classe</td>
+                            <td>Dans une sous-classe</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Signature</strong></td>
+                            <td>Paramètres DIFFÉRENTS</td>
+                            <td>Signature IDENTIQUE</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Résolution</strong></td>
+                            <td>Compile-time (Static)</td>
+                            <td>Runtime (Dynamique)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Annotation</strong></td>
+                            <td>(Aucune)</td>
+                            <td><code>@Override</code> (Requis)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot b"></span>Exemple Complet & Pattern Matching</div>
+                <pre><span class="kw">public class</span> <span class="type">Admin</span> <span class="kw">extends</span> <span class="type">User</span> {
+    
+    <span class="kw">public</span> <span class="type">Admin</span>(<span class="type">String</span> <span class="var">name</span>) {
+        <span class="kw">super</span>(<span class="var">name</span>); <span class="com">// Obligatoire si parent n'a pas de constr. vide</span>
+    }
+
+    <span class="anno">@Override</span>
+    <span class="kw">public void</span> <span class="mt">login</span>() {
+        <span class="kw">super</span>.<span class="mt">login</span>(); <span class="com">// Exécute code parent</span>
+        <span class="type">System</span>.out.println(<span class="str">"Dashboard Admin chargé."</span>);
+    }
+}
+
+<span class="com">// --- UTILISATION & POLYMORPHISME ---</span>
+<span class="type">User</span> <span class="var">user</span> = <span class="kw">new</span> <span class="type">Admin</span>(<span class="str">"Root"</span>); <span class="com">// Type déclaré User, instance Admin</span>
+<span class="var">user</span>.<span class="mt">login</span>(); <span class="com">// Appelle version Admin (Runtime)</span>
+
+<span class="com">// Pattern Matching for instanceof (Java 16+)</span>
+<span class="com">// Plus besoin de cast manuel : (Admin) user</span>
+<span class="kw">if</span> (<span class="var">user</span> <span class="kw">instanceof</span> <span class="type">Admin</span> <span class="var">a</span>) {
+    <span class="var">a</span>.<span class="mt">checkLogs</span>(); <span class="com">// 'a' est déjà typé Admin ici</span>
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 8: Interfaces -->
+    <section id="c8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Interfaces & Abstraction</h2>
+                    <p class="sec-sub">Contrats, Default Methods & Lambdas</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Abstract Class vs Interface</h3>
+                    <table style="width:100%">
+                        <tr>
+                            <th>Critère</th>
+                            <th>Abstract Class</th>
+                            <th>Interface</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Relation</strong></td>
+                            <td><strong>IS-A</strong> (Est un)</td>
+                            <td><strong>CAN-DO</strong> (Sait faire)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Héritage</strong></td>
+                            <td>Unique (extends)</td>
+                            <td><strong>Multiple</strong> (implements)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Champs</strong></td>
+                            <td>Tous types (état)</td>
+                            <td>Constants (static final) uniquement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Constructeur</strong></td>
+                            <td>✅ Oui</td>
+                            <td>❌ Non</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Usage</strong></td>
+                            <td>Partager du code/état</td>
+                            <td>Définir un contrat/API</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Interface Moderne (Java 9+)</div>
+                    <pre><span class="anno">@FunctionalInterface</span> <span class="com">// (1 seule methode abstraite)</span>
+<span class="kw">public interface</span> <span class="type">Logger</span> {
+    
+    <span class="com">// 1. Contrat (Abstrait)</span>
+    <span class="kw">void</span> <span class="mt">log</span>(<span class="type">String</span> <span class="var">msg</span>);
+
+    <span class="com">// 2. Méthode par Défaut (Implémentation)</span>
+    <span class="kw">default void</span> <span class="mt">error</span>(<span class="type">String</span> <span class="var">msg</span>) {
+        <span class="mt">log</span>(<span class="str">"ERROR: "</span> + <span class="var">msg</span>);
+        <span class="mt">sendAlert</span>();
+    }
+
+    <span class="com">// 3. Méthode Static (Utilitaire)</span>
+    <span class="kw">static</span> <span class="type">Logger</span> <span class="mt">console</span>() {
+        <span class="kw">return</span> <span class="type">System</span>.out::println;
+    }
+
+    <span class="com">// 4. Private (Helper interne, Java 9)</span>
+    <span class="kw">private void</span> <span class="mt">sendAlert</span>() { ... }
+}
+
+<span class="com">// Usage Lambda (car FunctionalInterface)</span>
+<span class="type">Logger</span> <span class="var">l</span> = <span class="var">msg</span> -> <span class="type">System</span>.out.println(<span class="var">msg</span>);</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 9: Records & Enums -->
+    <section id="c9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Records & Enums</h2>
+                    <p class="sec-sub">Data Modeling Moderne & Types Énumérés</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Record (Java 14+) vs Class</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Le "Data Carrier" idéal</p>
+                    <table>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Class (Bean/POJO)</th>
+                            <th>Record</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Verbosité</strong></td>
+                            <td>Haute (Getter/Setter/HasC...)</td>
+                            <td>Nulle (1 ligne)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Immuabilité</strong></td>
+                            <td>Manuelle (final fields)</td>
+                            <td><strong>Par défaut</strong> (Immuable)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Héritage</strong></td>
+                            <td>Oui (extends)</td>
+                            <td>Non (final implicite)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accesseurs</strong></td>
+                            <td><code>getX()</code></td>
+                            <td><code>x()</code></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Record & Compact Constructor</div>
+                    <pre><span class="com">// Déclaration + Constructeur Compact</span>
+<span class="kw">public record</span> <span class="type">Point</span>(<span class="kw">int</span> <span class="var">x</span>, <span class="kw">int</span> <span class="var">y</span>) {
+    
+    <span class="com">// Validation sans répéter les params !</span>
+    <span class="kw">public</span> <span class="type">Point</span> {
+        <span class="kw">if</span> (<span class="var">x</span> < <span class="num">0</span> || <span class="var">y</span> < <span class="num">0</span>) {
+            <span class="kw">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="str">"Positif only"</span>);
+        }
+    } <span class="com">// x et y assignés auto après ce bloc</span>
+    
+    <span class="com">// Méthode custom possible</span>
+    <span class="kw">public int</span> <span class="mt">sum</span>() { <span class="kw">return</span> <span class="var">x</span> + <span class="var">y</span>; }
+}
+
+<span class="var">var</span> <span class="var">p</span> = <span class="kw">new</span> <span class="type">Point</span>(<span class="num">10</span>, <span class="num">20</span>);
+<span class="type">System</span>.out.println(<span class="var">p</span>.<span class="mt">x</span>()); <span class="com">// 10</span></pre>
+                </div>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span>Rich Enum (Avec état et comportement)</div>
+                <pre><span class="kw">public enum</span> <span class="type">Status</span> {
+    PENDING(<span class="num">1</span>, <span class="str">"En attente"</span>),
+    ACTIVE(<span class="num">2</span>, <span class="str">"Actif"</span>),
+    ERROR(<span class="num">99</span>, <span class="str">"Erreur"</span>);
+
+    <span class="kw">private final int</span> <span class="var">code</span>;
+    <span class="kw">private final String</span> <span class="var">label</span>;
+
+    <span class="com">// Constructeur toujours privé (interne)</span>
+    <span class="type">Status</span>(<span class="kw">int</span> <span class="var">c</span>, <span class="type">String</span> <span class="var">l</span>) {
+        <span class="kw">this</span>.<span class="var">code</span> = <span class="var">c</span>;
+        <span class="kw">this</span>.<span class="var">label</span> = <span class="var">l</span>;
+    }
+
+    <span class="kw">public boolean</span> <span class="mt">isOk</span>() { <span class="kw">return</span> <span class="kw">this</span> != ERROR; }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 10: Exceptions -->
+    <section id="c10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Exceptions</h2>
+                    <p class="sec-sub">Checked, Unchecked & Try-with-resources</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Hierarchy of Throwables</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Héritage : <code>Object</code> ->
+                        <code>Throwable</code>
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Type</th>
+                            <th>Base Class</th>
+                            <th>Obligatoire ?</th>
+                            <th>Exemple</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Error</strong></td>
+                            <td><code>Error</code></td>
+                            <td>NON (Fatal)</td>
+                            <td><code>OutOfMemoryError</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Checked</strong></td>
+                            <td><code>Exception</code></td>
+                            <td><strong>OUI</strong> (try/catch)</td>
+                            <td><code>IOException</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unchecked</strong></td>
+                            <td><code>RuntimeExcept.</code></td>
+                            <td>NON (Bug code)</td>
+                            <td><code>NullPointerExcept.</code></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Gestion Moderne (Multi-Catch)</div>
+                    <pre><span class="kw">try</span> {
+    <span class="com">// Code risqué</span>
+    <span class="var">data</span>.<span class="mt">parse</span>();
+} <span class="kw">catch</span> (<span class="type">NullPointerException</span> | <span class="type">IllegalArgumentException</span> <span class="var">e</span>) {
+    <span class="com">// Multi-catch (Java 7+) : Grouper les erreurs similaires</span>
+    <span class="type">System</span>.err.println(<span class="str">"Bad data: "</span> + <span class="var">e</span>.<span class="mt">getMessage</span>());
+} <span class="kw">catch</span> (<span class="type">Exception</span> <span class="var">e</span>) {
+    <span class="com">// Catch-all (en dernier recours)</span>
+    <span class="kw">throw new</span> <span class="type">RuntimeException</span>(<span class="str">"Fatal"</span>, <span class="var">e</span>);
+}</pre>
+                </div>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot g"></span>Try-with-Resources & Custom Exception</div>
+                <pre><span class="com">// 1. Custom Unchecked Exception</span>
+<span class="kw">public class</span> <span class="type">AppException</span> <span class="kw">extends</span> <span class="type">RuntimeException</span> {
+    <span class="kw">public</span> <span class="type">AppException</span>(<span class="type">String</span> <span class="var">msg</span>) { <span class="kw">super</span>(<span class="var">msg</span>); }
+}
+
+<span class="com">// 2. Try-with-resources (Auto-closeable)</span>
+<span class="com">// Ferme 'res' AUTOMATIQUEMENT à la fin (ou si crash)</span>
+<span class="kw">try</span> (<span class="var">var</span> <span class="var">writer</span> = <span class="kw">new</span> <span class="type">FileWriter</span>(<span class="str">"log.txt"</span>)) {
+    <span class="var">writer</span>.write(<span class="str">"Start"</span>);
+    <span class="kw">if</span> (<span class="kw">true</span>) <span class="kw">throw new</span> <span class="type">AppException</span>(<span class="str">"Oups"</span>);
+} <span class="kw">catch</span> (<span class="type">IOException</span> <span class="var">e</span>) {
+    <span class="var">e</span>.printStackTrace();
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 11: Generics -->
+    <section id="c11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Generics</h2>
+                    <p class="sec-sub">Type Safety & Flexibilité</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Pourquoi les <> ?</summary>
+                <div>
+                    <p>Les Generics permettent de créer des classes/méthodes qui fonctionnent avec n'importe quel type,
+                        tout en gardant la sécurité du typage à la compilation.</p>
+                    <p>Avant Java 5, les collections contenaient des <code>Object</code>, obligeant à faire des casts
+                        dangereux.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Classe Générique</div>
+                <pre><span class="kw">public class</span> <span class="type">Box</span>&lt;<span class="type">T</span>&gt; {
+    <span class="kw">private</span> <span class="type">T</span> <span class="var">content</span>;
+
+    <span class="kw">public void</span> <span class="mt">set</span>(<span class="type">T</span> <span class="var">content</span>) { <span class="kw">this</span>.<span class="var">content</span> = <span class="var">content</span>; }
+    <span class="kw">public</span> <span class="type">T</span> <span class="mt">get</span>() { <span class="kw">return</span> <span class="var">content</span>; }
+}
+
+<span class="type">Box</span>&lt;<span class="type">String</span>&gt; <span class="var">sBox</span> = <span class="kw">new</span> <span class="type">Box</span>&lt;&gt;();
+<span class="var">sBox</span>.<span class="mt">set</span>(<span class="str">"Hello"</span>);
+<span class="com">// sBox.set(123); // Erreur compilation ! Sécurité assurée</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 12: Collections -->
+    <section id="c12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Collections</h2>
+                    <p class="sec-sub">List, Set & Map (L'essentiel)</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Méthodes Courantes</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Interface <code>List&lt;E&gt;</code> (ArrayList)
+                    </p>
+                    <table>
+                        <tr>
+                            <td><code>.add(element)</code></td>
+                            <td>Ajoute à la fin</td>
+                        </tr>
+                        <tr>
+                            <td><code>.get(index)</code></td>
+                            <td>Récupère l'élément</td>
+                        </tr>
+                        <tr>
+                            <td><code>.remove(index)</code></td>
+                            <td>Supprime l'élément</td>
+                        </tr>
+                        <tr>
+                            <td><code>.size()</code></td>
+                            <td>Taille de la liste</td>
+                        </tr>
+                        <tr>
+                            <td><code>.contains(obj)</code></td>
+                            <td>Vérifie présence</td>
+                        </tr>
+                        <tr>
+                            <td><code>.clear()</code></td>
+                            <td>Vide la liste</td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top:15px; margin-bottom:10px; font-size:0.9rem;">Interface
+                        <code>Map&lt;K,V&gt;</code> (HashMap)
+                    </p>
+                    <table>
+                        <tr>
+                            <td><code>.put(key, val)</code></td>
+                            <td>Ajoute/Remplace paire</td>
+                        </tr>
+                        <tr>
+                            <td><code>.get(key)</code></td>
+                            <td>Récupère valeur (ou null)</td>
+                        </tr>
+                        <tr>
+                            <td><code>.remove(key)</code></td>
+                            <td>Supprime la clé</td>
+                        </tr>
+                        <tr>
+                            <td><code>.keySet()</code></td>
+                            <td>Set des clés</td>
+                        </tr>
+                        <tr>
+                            <td><code>.values()</code></td>
+                            <td>Collection des valeurs</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Utilisation Concrète</div>
+                    <pre><span class="kw">import</span> <span class="type">java.util</span>.*;
+
+<span class="com">// --- LIST (ArrayList) ---</span>
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">todo</span> = <span class="kw">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+<span class="var">todo</span>.add(<span class="str">"Code"</span>);
+<span class="var">todo</span>.add(<span class="str">"Sleep"</span>);
+<span class="var">todo</span>.add(1, <span class="str">"Eat"</span>); <span class="com">// Insert à l'index 1</span>
+
+<span class="kw">if</span> (<span class="var">todo</span>.contains(<span class="str">"Code"</span>)) {
+    <span class="type">System</span>.out.println(<span class="var">todo</span>.get(0));
+}
+
+<span class="com">// --- MAP (HashMap) ---</span>
+<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; <span class="var">scores</span> = <span class="kw">new</span> <span class="type">HashMap</span>&lt;&gt;();
+<span class="var">scores</span>.put(<span class="str">"Mario"</span>, <span class="num">100</span>);
+<span class="var">scores</span>.put(<span class="str">"Luigi"</span>, <span class="num">95</span>);
+
+<span class="com">// Itération moderne</span>
+<span class="var">scores</span>.forEach((name, score) -> {
+    <span class="type">System</span>.out.println(name + <span class="str">" : "</span> + score);
+});</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 13: Streams & Lambdas -->
+    <section id="c13">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">Streams & Lambdas</h2>
+                    <p class="sec-sub">Programmation Fonctionnelle</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 La révolution Java 8</summary>
+                <div>
+                    <p>Les <strong>Streams</strong> permettent de traiter les collections de manière déclarative
+                        (SQL-like) : filter, map, reduce.</p>
+                    <p>Les opérations intermédiaires (filter, map) sont <strong>lazy</strong> : elles ne s'exécutent que
+                        si une opération terminale (collect, forEach) est appelée.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Pipeline Stream</div>
+                <pre><span class="var">var</span> <span class="var">names</span> = <span class="type">List</span>.of(<span class="str">"Alice"</span>, <span class="str">"Bob"</span>, <span class="str">"Anna"</span>, <span class="str">"Charles"</span>);
+
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">result</span> = <span class="var">names</span>.stream()
+    .filter(name -> name.startsWith(<span class="str">"A"</span>))  <span class="com">// Garde Alice, Anna</span>
+    .map(<span class="type">String</span>::toUpperCase)            <span class="com">// ALICE, ANNA</span>
+    .sorted()                            <span class="com">// Tri</span>
+    .collect(<span class="type">Collectors</span>.toList());       <span class="com">// Reconvertit en Liste</span>
+
+<span class="type">System</span>.out.println(<span class="var">result</span>);</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 14: Optional -->
+    <section id="c14">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">Optional</h2>
+                    <p class="sec-sub">Tuer le NullPointerException</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Ne retournez plus jamais null</summary>
+                <div>
+                    <p><code>Optional&lt;T&gt;</code> est un conteneur qui peut ou non contenir une valeur non-nulle.
+                    </p>
+                    <p>Il oblige l'appelant à gérer le cas "vide" explicitement, évitant les crashs surprise.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Gestion propre des valeurs</div>
+                <pre><span class="kw">public</span> <span class="type">Optional</span>&lt;<span class="type">User</span>&gt; <span class="mt">findUser</span>(<span class="type">String</span> <span class="var">id</span>) {
+    <span class="kw">return</span> <span class="var">db</span>.exists(<span class="var">id</span>) ? <span class="type">Optional</span>.of(<span class="var">db</span>.get(<span class="var">id</span>)) : <span class="type">Optional</span>.empty();
+}
+
+<span class="com">// Utilisation élégante</span>
+<span class="var">String</span> <span class="var">name</span> = <span class="mt">findUser</span>(<span class="str">"123"</span>)
+    .map(<span class="type">User</span>::getName)
+    .orElse(<span class="str">"Inconnu"</span>);</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 15: I/O Files -->
+    <section id="c15">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Files I/O (NIO.2)</h2>
+                    <p class="sec-sub">Lectures et Écritures Modernes</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Files et Path</summary>
+                <div>
+                    <p>Oubliez la classe <code>File</code>. Utilisez <code>Path</code> (le chemin) et <code>Files</code>
+                        (les opérations).</p>
+                    <p>Ce package (NIO.2) est plus rapide et offre de meilleurs outils de manipulation de système de
+                        fichiers.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Lire/Écrire facilement</div>
+                <pre><span class="com">// Lire tout un fichier</span>
+<span class="type">Path</span> <span class="var">path</span> = <span class="type">Path</span>.of(<span class="str">"data.txt"</span>);
+<span class="type">String</span> <span class="var">content</span> = <span class="type">Files</span>.readString(<span class="var">path</span>);
+
+<span class="com">// Écrire</span>
+<span class="type">Files</span>.writeString(<span class="var">path</span>, <span class="str">"Nouveau contenu"</span>, <span class="type">StandardOpenOption</span>.APPEND);
+
+<span class="com">// Copier</span>
+<span class="type">Files</span>.copy(<span class="var">src</span>, <span class="var">dest</span>, <span class="type">StandardCopyOption</span>.REPLACE_EXISTING);</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 16: Concurrence -->
+    <section id="c16">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Concurrence & Threads</h2>
+                    <p class="sec-sub">Virtual Threads (Loom) & Executor</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Platform vs Virtual Threads</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">La révolution Java 21</p>
+                    <table>
+                        <tr>
+                            <th>Caractéristique</th>
+                            <th>Platform Thread (OS)</th>
+                            <th>Virtual Thread (JVM)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Mapping</strong></td>
+                            <td>1:1 avec Thread OS</td>
+                            <td>M:N (Pool ForkJoin)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coût Mémoire</strong></td>
+                            <td>~2 MB / thread</td>
+                            <td>~bytes (quelques octets)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre Max</strong></td>
+                            <td>~5 000 (limite OS)</td>
+                            <td><strong>Millions</strong> (infini)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Blocage I/O</strong></td>
+                            <td>Bloque le Thread OS</td>
+                            <td>Libère le Thread OS (Non-blocking)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>La Démo "1 Million"</div>
+                    <pre><span class="com">// Lancer 100 000 threads ? Facile.</span>
+<span class="kw">try</span> (<span class="var">var</span> <span class="var">executor</span> = <span class="type">Executors</span>.newVirtualThreadPerTaskExecutor()) {
+    
+    <span class="type">IntStream</span>.range(<span class="num">0</span>, <span class="num">100_000</span>).forEach(<span class="var">i</span> -> {
+        <span class="var">executor</span>.submit(() -> {
+            <span class="type">Thread</span>.sleep(<span class="type">Duration</span>.ofSeconds(<span class="num">1</span>));
+            <span class="kw">return</span> <span class="var">i</span>;
+        });
+    });
+    
+} <span class="com">// .close() attend la fin de TOUTES les tâches auto (Java 19+)</span>
+<span class="type">System</span>.out.println(<span class="str">"Fini en ~1 seconde !"</span>);</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 17: Date Time API -->
+    <section id="c17">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">17</div>
+                <div>
+                    <h2 class="sec-title">Date & Time API</h2>
+                    <p class="sec-sub">LocalDate, ZonedDateTime & Duration</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Java Time Cheat Sheet</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;"><code>java.time.*</code> (Since Java 8)</p>
+                    <table>
+                        <tr>
+                            <th>Classe</th>
+                            <th>Description</th>
+                            <th>Exemple</th>
+                        </tr>
+                        <tr>
+                            <td><code>Instant</code></td>
+                            <td>Temps machine (GMT/UTC)</td>
+                            <td><code>2023-10-05T14:00:00Z</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>LocalDate</code></td>
+                            <td>Date (Sans heure/zone)</td>
+                            <td><code>2023-10-05</code> (Anniv)</td>
+                        </tr>
+                        <tr>
+                            <td><code>LocalTime</code></td>
+                            <td>Heure (Sans date)</td>
+                            <td><code>14:30:00</code> (Reveil)</td>
+                        </tr>
+                        <tr>
+                            <td><code>LocalDateTime</code></td>
+                            <td>Date + Heure (Sans zone)</td>
+                            <td><code>2023-10-05T14:30</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>ZonedDateTime</code></td>
+                            <td>Date + Heure + <strong>Zone</strong></td>
+                            <td><code>...T14:30+02:00[Paris]</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>Duration</code></td>
+                            <td>Quantité de temps (Temps)</td>
+                            <td><code>PT20M</code> (20 mins)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Manipulation & Formatting</div>
+                    <pre><span class="com">// Parsing & Formatting</span>
+<span class="type">String</span> <span class="var">text</span> = <span class="str">"2025-12-25 15:00"</span>;
+<span class="type">DateTimeFormatter</span> <span class="var">fmt</span> = <span class="type">DateTimeFormatter</span>.ofPattern(<span class="str">"yyyy-MM-dd HH:mm"</span>);
+<span class="type">LocalDateTime</span> <span class="var">dt</span> = <span class="type">LocalDateTime</span>.parse(<span class="var">text</span>, <span class="var">fmt</span>);
+
+<span class="com">// Calculs (Immuable = Retourne une copie)</span>
+<span class="type">var</span> <span class="var">tomorrow</span> = <span class="type">LocalDate</span>.now().plusDays(<span class="num">1</span>);
+
+<span class="com">// Zoned Conversion</span>
+<span class="type">ZonedDateTime</span> <span class="var">paris</span> = <span class="type">ZonedDateTime</span>.now(<span class="type">ZoneId</span>.of(<span class="str">"Europe/Paris"</span>));
+<span class="type">ZonedDateTime</span> <span class="var">ny</span> = <span class="var">paris</span>.withZoneSameInstant(<span class="type">ZoneId</span>.of(<span class="str">"America/New_York"</span>));</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 18: Annotations & Reflection -->
+    <section id="c18">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">18</div>
+                <div>
+                    <h2 class="sec-title">Annotations</h2>
+                    <p class="sec-sub">Métadonnées & Magie des Frameworks</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Annotations Standard</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">À connaître par coeur</p>
+                    <table>
+                        <tr>
+                            <th>Annotation</th>
+                            <th>Usage</th>
+                        </tr>
+                        <tr>
+                            <td><code>@Override</code></td>
+                            <td>Vérifie la redéfinition (Sécurité)</td>
+                        </tr>
+                        <tr>
+                            <td><code>@Deprecated</code></td>
+                            <td>Marque obsolète (Avertissement)</td>
+                        </tr>
+                        <tr>
+                            <td><code>@SuppressWarnings</code></td>
+                            <td>Cache un warning compiler</td>
+                        </tr>
+                        <tr>
+                            <td><code>@FunctionalInterface</code></td>
+                            <td>Force 1 seule méthode abstraite</td>
+                        </tr>
+                        <tr>
+                            <td><code>@SafeVarargs</code></td>
+                            <td>Supprime warning Heap Pollution</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Annotation Personnalisée</div>
+                    <pre><span class="com">// Définition</span>
+<span class="anno">@Retention</span>(<span class="type">RetentionPolicy</span>.RUNTIME) <span class="com">// Dispo au Runtime</span>
+<span class="anno">@Target</span>(<span class="type">ElementType</span>.METHOD)         <span class="com">// Uniquement sur méthodes</span>
+<span class="kw">public @interface</span> <span class="type">Test</span> {
+    <span class="type">String</span> <span class="mt">desc</span>() <span class="kw">default</span> <span class="str">"No desc"</span>;
+}
+
+<span class="com">// Utilisation</span>
+<span class="kw">class</span> <span class="type">AppTest</span> {
+    
+    <span class="anno">@Test</span>(desc = <span class="str">"Vérifie le login"</span>)
+    <span class="anno">@Deprecated</span>(since = <span class="str">"v2.0"</span>)
+    <span class="kw">void</span> <span class="mt">testLogin</span>() { ... }
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 19: Build & Modules -->
+    <section id="c19">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">19</div>
+                <div>
+                    <h2 class="sec-title">Build Tools</h2>
+                    <p class="sec-sub">Maven & Gestion de Dépendances</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Maven Scopes</h3>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Quand la lib est-elle présente ?</p>
+                    <table>
+                        <tr>
+                            <th>Scope</th>
+                            <th>Compile</th>
+                            <th>Test</th>
+                            <th>Runtime</th>
+                            <th>Exemple</th>
+                        </tr>
+                        <tr>
+                            <td><code>compile</code> (def)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>Spring Core</td>
+                        </tr>
+                        <tr>
+                            <td><code>test</code></td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>JUnit / Mockito</td>
+                        </tr>
+                        <tr>
+                            <td><code>provided</code></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>Lombok / Servlet</td>
+                        </tr>
+                        <tr>
+                            <td><code>runtime</code></td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>Driver JDBC</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Maven pom.xml</div>
+                    <pre>&lt;<span class="kw">dependencies</span>&gt;
+    &lt;!-- JSON Lib (Compile scope) --&gt;
+    &lt;<span class="kw">dependency</span>&gt;
+        &lt;<span class="kw">groupId</span>&gt;com.fasterxml.jackson.core&lt;/<span class="kw">groupId</span>&gt;
+        &lt;<span class="kw">artifactId</span>&gt;jackson-databind&lt;/<span class="kw">artifactId</span>&gt;
+        &lt;<span class="kw">version</span>&gt;2.15.2&lt;/<span class="kw">version</span>&gt;
+    &lt;/<span class="kw">dependency</span>&gt;
+
+    &lt;!-- Test Only --&gt;
+    &lt;<span class="kw">dependency</span>&gt;
+        &lt;<span class="kw">groupId</span>&gt;org.junit.jupiter&lt;/<span class="kw">groupId</span>&gt;
+        &lt;<span class="kw">artifactId</span>&gt;junit-jupiter&lt;/<span class="kw">artifactId</span>&gt;
+        &lt;<span class="kw">version</span>&gt;5.9.2&lt;/<span class="kw">version</span>&gt;
+        &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;
+    &lt;/<span class="kw">dependency</span>&gt;
+&lt;/<span class="kw">dependencies</span>&gt;</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 20: Java 21+ Futures -->
+    <section id="c20">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">20</div>
+                <div>
+                    <h2 class="sec-title">Le Futur Immédiat</h2>
+                    <p class="sec-sub">Features Java 21+</p>
+                </div>
+            </div>
+
+            <div class="grid3">
+                <div class="tool-card">
+                    <span class="tool-icon">🧵</span>
+                    <h3>Structured Concurrency</h3>
+                    <p>Gérer des groupes de tâches threads comme une unité atomique de travail.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">🧩</span>
+                    <h3>Pattern Matching</h3>
+                    <p>Switch expressions surpuissants avec déstructuration de Records.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">📦</span>
+                    <h3>Foreign Function API</h3>
+                    <p>(Project Panama) : Remplaçant moderne de JNI pour appeler du code C/C++.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo Java Expert</strong> • JDK 21 Edition</p>
+            <p style="font-size:.8rem">Créé par <strong>Antigravity</strong> — Excellence Technique.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

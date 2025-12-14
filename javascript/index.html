@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo JavaScript Complet - Vanilla JS avec démos interactives | Guide 2025</title>
+    <title>Mémo JavaScript - Vanilla JS avec démos interactives | Guide 2025</title>
     <meta name="description"
-        content="Guide JavaScript complet : variables, fonctions, arrays, DOM, events, async/await, fetch. Démos interactives vanilla JS front-end.">
+        content="Guide JavaScript : variables, fonctions, arrays, DOM, events, async/await, fetch. Démos interactives vanilla JS front-end.">
     <meta name="keywords"
         content="JavaScript, JS, vanilla JavaScript, DOM, events, arrays, fonctions, async, fetch, tutoriel, guide, mémo, front-end">
     <meta name="author" content="Geoffroy Streit">
@@ -16,13 +16,13 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo JavaScript Complet - Vanilla JS">
+    <meta property="og:title" content="Mémo JavaScript - Vanilla JS">
     <meta property="og:description" content="Guide JavaScript avec démos interactives : DOM, events, async, fetch API.">
     <meta property="og:locale" content="fr_FR">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mémo JavaScript Complet">
+    <meta name="twitter:title" content="Mémo JavaScript">
     <meta name="twitter:description"
         content="Guide JavaScript avec démos interactives : DOM, events, async, fetch API.">
 
@@ -51,10 +51,27 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Mémo JavaScript Complet</h1>
+            <h1>Mémo JavaScript</h1>
             <p>Guide pratique Vanilla JS avec démos interactives. Front-end moderne sans framework.</p>
         </div>
     </section>
+
+    <!-- INTRO GENERAL -->
+    <div class="intro-box" style="background:var(--card); border-bottom:1px solid var(--border); padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--primary)">Qu'est-ce que JavaScript ?</h3>
+            <p style="color:var(--text); max-width:800px;">
+                JavaScript est le langage de programmation du Web. C'est un langage <strong>interprété</strong>, orienté
+                <strong>prototype</strong> et <strong>asynchrone</strong> (via l'Event Loop).
+                Il permet de rendre les pages web interactives en manipulant le DOM et en réagissant aux actions de
+                l'utilisateur.
+            </p>
+            <p style="color:var(--muted); font-size:0.95rem; margin-top:10px">
+                Contrairement à Java (aucun lien de parenté !), JS est dynamiquement typé et extrêmement flexible.
+                Aujourd'hui, il s'exécute aussi côté serveur grâce à Node.js.
+            </p>
+        </div>
+    </div>
 
     <div class="toc">
         <div class="container">
@@ -89,6 +106,18 @@
                     <p class="sec-sub">let, const, var</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Portée et Constantes</summary>
+                <div class="details-content">
+                    <p>En JS moderne (ES6+), on n'utilise presque plus <code>var</code> (qui a une portée fonction et
+                        subit le "hoisting").</p>
+                    <p>On privilégie <strong>const</strong> par défaut pour éviter les réassignations accidentelles, et
+                        <strong>let</strong> uniquement si la variable doit changer.
+                    </p>
+                    <p>Attention : <code>const</code> sur un objet n'empêche pas de modifier ses propriétés !</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -129,6 +158,18 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Typage Dynamique</summary>
+                <div class="details-content">
+                    <p>JavaScript est <strong>dynamiquement typé</strong> : une variable peut changer de type au cours
+                        du temps.</p>
+                    <p>Les types primitifs (String, Number, Boolean...) sont passés par <strong>valeur</strong> (copie).
+                    </p>
+                    <p>Les objets (Object, Array, Function) sont passés par <strong>référence</strong> (adresse
+                        mémoire).</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Types primitifs</div>
@@ -165,6 +206,16 @@
                     <p class="sec-sub">Arithmétiques, comparaison, logiques</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Coercition de Type</summary>
+                <div class="details-content">
+                    <p>JS tente souvent de convertir les types automatiquement (Coercition) : <code>"5" - 1 = 4</code>
+                        mais <code>"5" + 1 = "51"</code>.</p>
+                    <p>C'est pourquoi il faut TOUJOURS utiliser l'égalité stricte <code>===</code> qui vérifie le type
+                        ET la valeur, contrairement à <code>==</code> qui convertit les types.</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div class="code">
@@ -232,6 +283,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Truthy & Falsy</summary>
+                <div class="details-content">
+                    <p>Dans une condition, n'importe quelle valeur est évaluée comme booléen.</p>
+                    <p>Sont <strong>Falsy</strong> (faux) : <code>false, 0, "", null, undefined, NaN</code>.</p>
+                    <p>Tout le reste est <strong>Truthy</strong> (vrai), y compris <code>[]</code> et <code>{}</code>.
+                    </p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Conditions</div>
@@ -274,6 +335,17 @@
                     <p class="sec-sub">for, while, for...of</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Itérables</summary>
+                <div class="details-content">
+                    <p>La boucle <code>for...of</code> est la façon moderne de parcourir tout ce qui est "itérable"
+                        (Arrays, Strings, Maps, Sets, NodeLists).</p>
+                    <p>Pour les objets littéraux, on utilise plutôt <code>for...in</code> (qui parcourt les clés) ou
+                        <code>Object.entries()</code>.
+                    </p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -320,6 +392,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Fonctions fléchées (Arrow Functions)</summary>
+                <div class="details-content">
+                    <p>Les <strong>Arrow Functions</strong> <code>() => {}</code> sont plus concises mais ont une
+                        différence majeure : elles ne lient pas leur propre <code>this</code>.</p>
+                    <p>Elles héritent du <code>this</code> du contexte parent. Idéal pour les callbacks, mais à éviter
+                        pour les méthodes d'objet qui utilisent <code>this</code>.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Fonctions</div>
@@ -363,6 +445,16 @@
                     <p class="sec-sub">map, filter, reduce, find</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Programmation Fonctionnelle</summary>
+                <div class="details-content">
+                    <p>Les méthodes modernes (<code>map, filter, reduce</code>) sont immutables : elles retournent un
+                        <strong>nouveau tableau</strong> sans modifier l'original.
+                    </p>
+                    <p>C'est essentiel dans les frameworks modernes (React/Vue) pour la détection de changements.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -415,6 +507,18 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Référence mémoire</summary>
+                <div class="details-content">
+                    <p>En JS, comparer deux objets compare leur <strong>adresse mémoire</strong> :
+                        <code>{} === {}</code> est <code>false</code> !
+                    </p>
+                    <p>Pour copier un objet, utilisez le Spread Operator <code>{...obj}</code> (copie superficielle) ou
+                        <code>structuredClone(obj)</code> (copie profonde).
+                    </p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Objects</div>
@@ -462,6 +566,17 @@
                     <p class="sec-sub">Sélection, modification, création</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 DOM Tree</summary>
+                <div class="details-content">
+                    <p>Le <strong>Document Object Model</strong> représente la page comme un arbre de nœuds.</p>
+                    <p>Modifier le DOM est coûteux en performance : il faut minimiser les accès et les modifications
+                        (Reflow/Repaint).</p>
+                    <p>Les méthodes comme <code>querySelector</code> sont flexibles mais légèrement plus lentes que
+                        <code>getElementById</code>.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -516,6 +631,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Bubbling & Capturing</summary>
+                <div class="details-content">
+                    <p>Les événements se propagent en deux phases : <strong>Capturing</strong> (haut vers bas) et
+                        <strong>Bubbling</strong> (bas vers haut).</p>
+                    <p>Par défaut, on écoute le bubbling. Utilisez <code>e.stopPropagation()</code> pour empêcher
+                        l'événement de remonter aux parents.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Events</div>
@@ -562,6 +687,15 @@
                     <p class="sec-sub">Promises, setTimeout, async</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 L'enfer des Callbacks vs Async/Await</summary>
+                <div class="details-content">
+                    <p>Historiquement, on gérait l'asynchrone avec des callbacks imbriqués ("Callback Hell").</p>
+                    <p>Les <strong>Promises</strong> ont aplati le code, et <strong>async/await</strong> (ES8) permet
+                        d'écrire de l'asynchrone comme du synchrone, rendant le code beaucoup plus lisible.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -611,6 +745,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 LocalStorage vs Cookies</summary>
+                <div class="details-content">
+                    <p><strong>LocalStorage</strong> : Stockage persistant (~5-10MB), non envoyé au serveur.</p>
+                    <p><strong>SessionStorage</strong> : Stockage temporaire (disparaît à la fermeture de l'onglet).</p>
+                    <p><strong>Cookies</strong> : Petites données (~4KB) envoyées à chaque requête HTTP (utile pour
+                        l'auth).</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Storage</div>
@@ -652,6 +796,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Shallow vs Deep Copy</summary>
+                <div class="details-content">
+                    <p>Le spread operator <code>[...]</code> fait une <strong>copie superficielle</strong>.</p>
+                    <p>Si le tableau contient des objets, ces objets sont toujours référencés. Modifier l'objet dans la
+                        copie affecte l'original !</p>
+                    <p>Pour une copie profonde, utilisez <code>structuredClone()</code>.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Spread / Rest</div>
@@ -692,6 +846,16 @@
                     <p class="sec-sub">POO en JavaScript</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Sucre syntaxique</summary>
+                <div class="details-content">
+                    <p>JavaScript reste un langage orienté <strong>Prototype</strong>. Le mot-clé <code>class</code> est
+                        principalement du "sucre syntaxique" pour rendre la syntaxe familière aux développeurs Java/C#.
+                    </p>
+                    <p>Sous le capot, c'est toujours la chaîne de prototypes qui fonctionne.</p>
+                </div>
+            </details>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -741,6 +905,16 @@
                 </div>
             </div>
 
+            <details>
+                <summary>💡 Fetch vs Axios</summary>
+                <div class="details-content">
+                    <p><code>fetch()</code> est natif mais bas niveau (ne throw pas d'erreur sur 404/500, nécessite deux
+                        <code>await</code> pour le JSON).</p>
+                    <p>C'est pourquoi beaucoup utilisent des librairies comme <strong>Axios</strong> qui simplifient la
+                        syntaxe, gèrent les timeouts et les erreurs automatiquement.</p>
+                </div>
+            </details>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Fetch</div>
@@ -783,6 +957,16 @@
                     <p class="sec-sub">Utilitaires natifs</p>
                 </div>
             </div>
+
+            <details>
+                <summary>💡 Gestion des dates</summary>
+                <div class="details-content">
+                    <p>L'objet <code>Date</code> natif est notoirement maladroit. Pour des manipulations complexes, on
+                        recommande souvent <strong>date-fns</strong> ou <strong>Day.js</strong>.</p>
+                    <p>Toutefois, <code>Intl.DateTimeFormat</code> permet un formatage puissant et localisé nativement.
+                    </p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div class="demo">
@@ -1211,7 +1395,7 @@
 
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo JavaScript Complet</strong> • 200+ méthodes • Vanilla JS ES6+ •
+            <p style="margin-bottom:8px"><strong>Mémo JavaScript</strong> • 200+ méthodes • Vanilla JS ES6+ •
                 2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et

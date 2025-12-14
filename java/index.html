@@ -34,6 +34,25 @@
         </div>
     </section>
 
+
+
+    <!-- INTRO GENERAL -->
+    <div class="intro-box"
+        style="background:var(--card-bg); border-bottom:1px solid var(--border-color); padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--text-color)">Pourquoi Java ?</h3>
+            <p style="color:#c9d1d9; max-width:800px;">
+                Java est un langage <strong>robuste</strong>, <strong>orienté objet</strong> et fortement typé.
+                Célèbre pour sa fiabilité ("Write Once, Run Anywhere"), il alimente une énorme partie du backend mondial
+                (Spring Boot, Quarkus, Android).
+            </p>
+            <p style="color:#8b949e; font-size:0.95rem; margin-top:10px">
+                Malgré son âge, Java évolue très vite (nouveau cycle de 6 mois) : var, records, switch expressions,
+                virtual threads... Il est plus moderne que jamais.
+            </p>
+        </div>
+    </div>
+
     <!-- CHAPTER 1: Ecosystème -->
     <section id="c1">
         <div class="container">
@@ -91,6 +110,16 @@ java Main
                     <p class="sec-sub">Primitifs, Wrappers & Math</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Valeur vs Référence</summary>
+                <div>
+                    <p>Java est un langage <strong>fortement typé</strong>.</p>
+                    <p>Les 8 types primitifs stockent directement la <strong>valeur</strong> (rapide, pile).</p>
+                    <p>Tous les autres types (Classes, Tableaux) sont des objets stockés par <strong>référence</strong>
+                        (adresse mémoire, tas).</p>
+                </div>
+            </details>
 
             <!-- Tableau des Primitifs -->
             <h3>1. Les 8 Types Primitifs</h3>
@@ -224,6 +253,16 @@ java Main
                     <p class="sec-sub">Manipulations usuelles (Cheat Sheet)</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 String Pool & Immuabilité</summary>
+                <div>
+                    <p>Les <code>String</code> sont immuables : on ne peut pas les modifier une fois créées (toute
+                        modification crée une nouvelle String).</p>
+                    <p>Cela permet à Java d'optimiser la mémoire via le <strong>String Pool</strong> : deux chaînes
+                        identiques partagent souvent la même adresse mémoire.</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div>
@@ -362,6 +401,16 @@ java Main
                 </div>
             </div>
 
+            <details>
+                <summary>📖 L'Encapsulation</summary>
+                <div>
+                    <p>C'est le principe de cacher les détails d'implémentation.</p>
+                    <p>En Java, on utilise les modificateurs (private, public...) pour protéger l'état interne d'un
+                        objet et
+                        ne l'exposer que via des méthodes contrôlées (Getters/Setters).</p>
+                </div>
+            </details>
+
             <!-- GRID 1: Concepts & Tables -->
             <div class="grid2">
                 <div>
@@ -498,6 +547,16 @@ java Main
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Héritage Simple</summary>
+                <div>
+                    <p>Java ne supporte que l'<strong>héritage simple</strong> (une classe n'étend qu'une seule classe)
+                        pour
+                        éviter les conflits (Problème du Diamant).</p>
+                    <p>Pour hériter de plusieurs comportements, on utilise les <strong>Interfaces</strong>.</p>
+                </div>
+            </details>
+
             <div class="grid2">
                 <div>
                     <h3>1. Concepts Clés</h3>
@@ -602,6 +661,17 @@ java Main
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Interface vs Contrat</summary>
+                <div>
+                    <p>Une interface définit un <strong>contrat</strong> : "Si tu implémentes cette interface, tu DOIS
+                        savoir faire X et Y".</p>
+                    <p>Depuis Java 8, elles peuvent contenir du code (méthodes <code>default</code> et
+                        <code>static</code>),
+                        réduisant l'écart avec les classes abstraites.</p>
+                </div>
+            </details>
+
             <div class="grid2">
                 <div>
                     <h3>Abstract Class vs Interface</h3>
@@ -678,6 +748,16 @@ java Main
                     <p class="sec-sub">Data Modeling Moderne & Types Énumérés</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 La fin du Boilerplate</summary>
+                <div>
+                    <p>Avant les Records (Java 14), créer un simple objet de données (DTO) demandait 50 lignes (Getters,
+                        Equals, HashCode, ToString...).</p>
+                    <p>Le <strong>Record</strong> fait tout ça en 1 ligne. Il est <strong>immuable</strong> par défaut.
+                    </p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div>
@@ -765,6 +845,17 @@ java Main
                     <p class="sec-sub">Checked, Unchecked & Try-with-resources</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Checked vs Unchecked</summary>
+                <div>
+                    <p><strong>Checked Exception</strong> (ex: IOException) : Le compilateur vous OBLIGE à gérer
+                        l'erreur
+                        (try/catch).</p>
+                    <p><strong>Unchecked Exception</strong> (ex: NullPointerException) : Erreur de logique, survient au
+                        runtime. Pas de try/catch obligatoire (il faut fixer le bug).</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div>
@@ -881,6 +972,17 @@ java Main
                     <p class="sec-sub">List, Set & Map (L'essentiel)</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 List vs Set vs Map</summary>
+                <div>
+                    <p><strong>List</strong> (ArrayList) : Ordonné, accepte les doublons.</p>
+                    <p><strong>Set</strong> (HashSet) : Non ordonné, <strong>pas de doublons</strong> (utilise
+                        hashCode).
+                    </p>
+                    <p><strong>Map</strong> (HashMap) : Paires Clé/Valeur. Clés uniques.</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div>
@@ -1086,6 +1188,16 @@ java Main
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Threads Virtuels (Project Loom)</summary>
+                <div>
+                    <p>Avant Java 21, 1 Thread Java = 1 Thread OS (lourd, limité à ~5000).</p>
+                    <p>Les <strong>Virtual Threads</strong> sont gérés par la JVM. Ils sont ultra-légers (on peut en
+                        avoir
+                        des millions). Idéal pour les applis web (I/O) !</p>
+                </div>
+            </details>
+
             <div class="grid2">
                 <div>
                     <h3>Platform vs Virtual Threads</h3>
@@ -1147,6 +1259,16 @@ java Main
                     <p class="sec-sub">LocalDate, ZonedDateTime & Duration</p>
                 </div>
             </div>
+
+            <details>
+                <summary>📖 Java Time vs Old Date</summary>
+                <div>
+                    <p>L'ancienne classe <code>Date</code> était mutable et mal conçue (les mois commençaient à 0...).
+                    </p>
+                    <p>L'API <strong>java.time</strong> (Java 8+) est moderne, immuable, thread-safe et inspirée de
+                        Joda-Time.</p>
+                </div>
+            </details>
 
             <div class="grid2">
                 <div>
@@ -1219,6 +1341,16 @@ java Main
                 </div>
             </div>
 
+            <details>
+                <summary>📖 La Magie des Annotations</summary>
+                <div>
+                    <p>Les annotations ne font rien par elles-mêmes. Elles sont des étiquettes.</p>
+                    <p>C'est le compilateur ou un framework (comme Spring au démarrage) qui lit ces étiquettes et
+                        injecte du
+                        code ou change le comportement (Réflexion).</p>
+                </div>
+            </details>
+
             <div class="grid2">
                 <div>
                     <h3>Annotations Standard</h3>
@@ -1283,52 +1415,62 @@ java Main
                 </div>
             </div>
 
-            <div class="grid2">
-                <div>
-                    <h3>Maven Scopes</h3>
-                    <p style="margin-bottom:10px; font-size:0.9rem;">Quand la lib est-elle présente ?</p>
-                    <table>
-                        <tr>
-                            <th>Scope</th>
-                            <th>Compile</th>
-                            <th>Test</th>
-                            <th>Runtime</th>
-                            <th>Exemple</th>
-                        </tr>
-                        <tr>
-                            <td><code>compile</code> (def)</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>Spring Core</td>
-                        </tr>
-                        <tr>
-                            <td><code>test</code></td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>JUnit / Mockito</td>
-                        </tr>
-                        <tr>
-                            <td><code>provided</code></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>Lombok / Servlet</td>
-                        </tr>
-                        <tr>
-                            <td><code>runtime</code></td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>Driver JDBC</td>
-                        </tr>
-                    </table>
-                </div>
+        </div>
 
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Maven pom.xml</div>
-                    <pre>&lt;<span class="kw">dependencies</span>&gt;
+        <details>
+            <summary>📖 Convention over Configuration</summary>
+            <div>
+                <p>Maven standardise la structure du projet (src/main/java, pom.xml).</p>
+                <p>Il gère automatiquement le téléchargement des librairies (depuis Maven Central) et le Classpath.</p>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div>
+                <h3>Maven Scopes</h3>
+                <p style="margin-bottom:10px; font-size:0.9rem;">Quand la lib est-elle présente ?</p>
+                <table>
+                    <tr>
+                        <th>Scope</th>
+                        <th>Compile</th>
+                        <th>Test</th>
+                        <th>Runtime</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td><code>compile</code> (def)</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>Spring Core</td>
+                    </tr>
+                    <tr>
+                        <td><code>test</code></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>JUnit / Mockito</td>
+                    </tr>
+                    <tr>
+                        <td><code>provided</code></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>Lombok / Servlet</td>
+                    </tr>
+                    <tr>
+                        <td><code>runtime</code></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>Driver JDBC</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Maven pom.xml</div>
+                <pre>&lt;<span class="kw">dependencies</span>&gt;
     &lt;!-- JSON Lib (Compile scope) --&gt;
     &lt;<span class="kw">dependency</span>&gt;
         &lt;<span class="kw">groupId</span>&gt;com.fasterxml.jackson.core&lt;/<span class="kw">groupId</span>&gt;
@@ -1344,8 +1486,8 @@ java Main
         &lt;<span class="kw">scope</span>&gt;test&lt;/<span class="kw">scope</span>&gt;
     &lt;/<span class="kw">dependency</span>&gt;
 &lt;/<span class="kw">dependencies</span>&gt;</pre>
-                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -1360,30 +1502,44 @@ java Main
                 </div>
             </div>
 
-            <div class="grid3">
-                <div class="tool-card">
-                    <span class="tool-icon">🧵</span>
-                    <h3>Structured Concurrency</h3>
-                    <p>Gérer des groupes de tâches threads comme une unité atomique de travail.</p>
-                </div>
-                <div class="tool-card">
-                    <span class="tool-icon">🧩</span>
-                    <h3>Pattern Matching</h3>
-                    <p>Switch expressions surpuissants avec déstructuration de Records.</p>
-                </div>
-                <div class="tool-card">
-                    <span class="tool-icon">📦</span>
-                    <h3>Foreign Function API</h3>
-                    <p>(Project Panama) : Remplaçant moderne de JNI pour appeler du code C/C++.</p>
-                </div>
+        </div>
+
+        <details>
+            <summary>📖 Release Cadence</summary>
+            <div>
+                <p>Java sort une nouvelle version tous les <strong>6 mois</strong>.</p>
+                <p>Les versions <strong>LTS</strong> (Long Term Support, ex: 17, 21) sont supportées plusieurs années et
+                    recommandées pour la prod.</p>
             </div>
+        </details>
+
+        <div class="grid3">
+            <div class="tool-card">
+                <span class="tool-icon">🧵</span>
+                <h3>Structured Concurrency</h3>
+                <p>Gérer des groupes de tâches threads comme une unité atomique de travail.</p>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">🧩</span>
+                <h3>Pattern Matching</h3>
+                <p>Switch expressions surpuissants avec déstructuration de Records.</p>
+            </div>
+            <div class="tool-card">
+                <span class="tool-icon">📦</span>
+                <h3>Foreign Function API</h3>
+                <p>(Project Panama) : Remplaçant moderne de JNI pour appeler du code C/C++.</p>
+            </div>
+        </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo Java Expert</strong> • JDK 21 Edition</p>
-            <p style="font-size:.8rem">Créé par <strong>Antigravity</strong> — Excellence Technique.</p>
+            <p><strong>Mémo Java</strong> • 2025 Edition</p>
+            <p style="font-size:0.9rem; margin-top:12px; line-height:1.6; opacity:0.8;">
+                Créé par Geoffroy Streit — Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais
+                aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
+            </p>
         </div>
     </footer>
 

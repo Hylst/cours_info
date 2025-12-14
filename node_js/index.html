@@ -33,6 +33,7 @@
                 <a href="#s4">Events</a>
                 <a href="#s5">HTTP</a>
                 <a href="#s6">Express</a>
+                <a href="#s9">Avancé</a>
             </nav>
         </div>
     </header>
@@ -72,6 +73,9 @@
                 <a href="#s6" class="toc-item"><span class="toc-num">06</span>Express.js</a>
                 <a href="#s7" class="toc-item"><span class="toc-num">07</span>NPM & Scripts</a>
                 <a href="#s8" class="toc-item"><span class="toc-num">08</span>Variables d'Env</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Streams & Buffers</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Error Handling</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>OS & Process</a>
             </div>
         </div>
     </div>
@@ -97,6 +101,16 @@
                         libuv), et Node continue d'exécuter le reste du code.</p>
                     <p>Une fois l'opération finie, le Callback est placé dans une file d'attente pour être exécuté dès
                         que le fil principal est libre.</p>
+
+                    <h4 style="margin-top:15px; color:var(--accent)">Les Phases (Simplifié)</h4>
+                    <ul>
+                        <li><strong>Timers</strong> : <code>setTimeout()</code>, <code>setInterval()</code></li>
+                        <li><strong>Poll</strong> : I/O (lecture fichier, réseau)</li>
+                        <li><strong>Check</strong> : <code>setImmediate()</code></li>
+                        <li><strong>Microtasks</strong> (Prioritaire) : <code>Promise</code>,
+                            <code>process.nextTick()</code>
+                        </li>
+                    </ul>
                 </div>
             </details>
 
@@ -149,6 +163,34 @@
                         (<code>import/export</code>), le standard du web moderne.</p>
                     <p>Pour utiliser ESM, ajoutez <code>"type": "module"</code> dans votre <code>package.json</code> ou
                         utilisez l'extension <code>.mjs</code>.</p>
+
+                    <table style="margin-top:15px; width:100%">
+                        <tr>
+                            <th>Feature</th>
+                            <th>CommonJS (CJS)</th>
+                            <th>ES Modules (ESM)</th>
+                        </tr>
+                        <tr>
+                            <td>Syntaxe</td>
+                            <td><code>require</code> / <code>module.exports</code></td>
+                            <td><code>import</code> / <code>export</code></td>
+                        </tr>
+                        <tr>
+                            <td>Chargement</td>
+                            <td>Synchrone (Dynamique)</td>
+                            <td>Asynchrone (Statique)</td>
+                        </tr>
+                        <tr>
+                            <td>Scope</td>
+                            <td>Wrapper function (exports, require...)</td>
+                            <td>Global lexical scope</td>
+                        </tr>
+                        <tr>
+                            <td>Top-level await</td>
+                            <td>❌ Non</td>
+                            <td>✅ Oui</td>
+                        </tr>
+                    </table>
                 </div>
             </details>
 
@@ -201,6 +243,11 @@
                             <code>async/await</code>.
                         </li>
                     </ol>
+
+                    <h4 style="margin-top:15px; color:var(--accent)">Le Buffer</h4>
+                    <p>Node.js gère les données binaires via la classe <code>Buffer</code>. C'est un tableau d'octets de
+                        taille fixe. Les méthodes <code>fs</code> retournent souvent des Buffers si aucun encodage n'est
+                        spécifié.</p>
                 </div>
             </details>
 
@@ -296,9 +343,13 @@
     <span class="kw">if</span> (<span class="var">req</span>.<span class="var">url</span> === <span class="str">'/'</span>) {
         <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'text/plain'</span> });
         <span class="var">res</span>.<span class="fn">end</span>(<span class="str">'Accueil'</span>);
-    } <span class="kw">else</span> <span class="kw">if</span> (<span class="var">req</span>.<span class="var">url</span> === <span class="str">'/api'</span>) {
+    } <span class="kw">else</span> <span class="kw">if</span> (<span class="var">req</span>.<span class="var">url</span>.<span class="fn">startsWith</span>(<span class="str">'/api'</span>)) {
+        <span class="c">// Parse URL moderne</span>
+        <span class="kw">const</span> <span class="var">url</span> = <span class="kw">new</span> <span class="fn">URL</span>(<span class="var">req</span>.<span class="var">url</span>, <span class="str">`http://${req.headers.host}`</span>);
+        <span class="kw">const</span> <span class="var">id</span> = <span class="var">url</span>.<span class="var">searchParams</span>.<span class="fn">get</span>(<span class="str">'id'</span>);
+
         <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> });
-        <span class="var">res</span>.<span class="fn">end</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="var">data</span>: <span class="num">42</span> }));
+        <span class="var">res</span>.<span class="fn">end</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="var">data</span>: <span class="num">42</span>, <span class="var">queryId</span>: <span class="var">id</span> }));
     }
 });
 
@@ -331,6 +382,11 @@
                     <p>Express simplifie drastiquement le code HTTP natif.</p>
                     <p>Il introduit le concept de <strong>Middleware</strong> : des fonctions qui s'exécutent les unes
                         après les autres (ex: logger -> vérifier auth -> parser JSON -> controller).</p>
+
+                    <div
+                        style="background:var(--code-bg); padding:10px; border-radius:4px; margin-top:10px; font-family:monospace; font-size:0.85rem;">
+                        Request ➡️ Middleware 1 (Log) ➡️ Middleware 2 (Auth) ➡️ Route Handler ➡️ Response
+                    </div>
                 </div>
             </details>
 
@@ -426,6 +482,121 @@ API_KEY=12345secret
 <span class="kw">import</span> <span class="str">'dotenv/config'</span>;
 
 <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">process</span>.<span class="var">env</span>.<span class="var">DB_HOST</span>); <span class="c">// "localhost"</span></pre>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- S9: STREAMS -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Streams & Buffers</h2>
+                    <p class="sec-sub">Performance et gros volumes</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💡 Pourquoi les Streams ?</summary>
+                <div class="details-content">
+                    <p>Pour lire un fichier de 10 Go, impossible de tout charger en mémoire (RAM). On utilise des
+                        <strong>Streams</strong> pour lire/écrire morceau par morceau (chunks).
+                    </p>
+                    <p>Le <strong>Pipe</strong> (<code>|</code>) connecte une source (ex: lecture fichier) à une
+                        destination (ex: réponse HTTP) sans surcharge mémoire.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Pipeline Optimisé</div>
+                <pre><span class="kw">import</span> { <span class="fn">pipeline</span> } <span class="kw">from</span> <span class="str">'node:stream/promises'</span>;
+<span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+<span class="kw">import</span> <span class="var">zlib</span> <span class="kw">from</span> <span class="str">'node:zlib'</span>;
+
+<span class="kw">async</span> <span class="kw">function</span> <span class="fn">compressBigFile</span>() {
+    <span class="kw">await</span> <span class="fn">pipeline</span>(
+        <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'bigfile.txt'</span>), <span class="c">// Source</span>
+        <span class="var">zlib</span>.<span class="fn">createGzip</span>(),                  <span class="c">// Transform (Zip)</span>
+        <span class="var">fs</span>.<span class="fn">createWriteStream</span>(<span class="str">'bigfile.txt.gz'</span>) <span class="c">// Destination</span>
+    );
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Compression finie sans exploser la RAM !'</span>);
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S10: ERROR HANDLING -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Gestion d'Erreurs</h2>
+                    <p class="sec-sub">Best Practices</p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Règle d'or</strong> Ne jamais "avaler" une erreur silencieusement. Logguez-la toujours
+                (console.error ou monitoring) et informez l'utilisateur (code 500).
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Express Global Handler</div>
+                <pre><span class="c">// 1. Wrapper pour Async (ou utiliser 'express-async-errors')</span>
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/async'</span>, <span class="kw">async</span> (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="kw">try</span> {
+        <span class="kw">await</span> <span class="fn">someRiskyAction</span>();
+    } <span class="kw">catch</span> (<span class="var">err</span>) {
+        <span class="fn">next</span>(<span class="var">err</span>); <span class="c">// Passe l'erreur à Express</span>
+    }
+});
+
+<span class="c">// 2. Middleware d'erreur (à la fin de app.js)</span>
+<span class="var">app</span>.<span class="fn">use</span>((<span class="var">err</span>, <span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"🔥 Crash:"</span>, <span class="var">err</span>.<span class="var">stack</span>);
+    <span class="var">res</span>.<span class="fn">status</span>(<span class="num">500</span>).<span class="fn">json</span>({ <span class="var">error</span>: <span class="str">"Erreur interne"</span> });
+});</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S11: PROCESS OS -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Process & OS</h2>
+                    <p class="sec-sub">Intéractions Système</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>Infos Système (os)</h3>
+                    <p style="margin-bottom:10px;">Module natif pour monitorer le serveur.</p>
+                    <ul style="line-height:1.8; color:var(--muted);">
+                        <li><code>os.cpus()</code> : Coeurs CPU (pour Cluster)</li>
+                        <li><code>os.freemem()</code> : RAM libre</li>
+                        <li><code>os.homedir()</code> : Dossier utilisateur</li>
+                    </ul>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Graceful Shutdown</div>
+                    <pre><span class="c">// Intercepter l'arrêt (CTRL+C ou Docker stop)</span>
+<span class="var">process</span>.<span class="fn">on</span>(<span class="str">'SIGTERM'</span>, () => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'🛑 Arrêt demandé...'</span>);
+    
+    <span class="var">server</span>.<span class="fn">close</span>(() => {
+        <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'✅ Connexions fermées. Bye !'</span>);
+        <span class="var">process</span>.<span class="fn">exit</span>(<span class="num">0</span>);
+    });
+});</pre>
+                </div>
             </div>
         </div>
     </section>

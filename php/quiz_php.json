@@ -1,11 +1,23 @@
 {
     "meta": {
-        "title": "Quiz PHP Expert",
-        "total": 20
+        "title": "Quiz PHP Modern Expert - 100 Questions",
+        "total": 100
     },
     "questions": [
         {
             "id": 1,
+            "question": "Que signifie PHP ?",
+            "options": [
+                "PHP: Hypertext Preprocessor",
+                "Personal Home Page",
+                "Program High Performance",
+                "People Hate Python"
+            ],
+            "answer": 0,
+            "explanation": "Acronyme récursif (historiquement Personal Home Page)."
+        },
+        {
+            "id": 2,
             "question": "Comment déclarer une variable ?",
             "options": [
                 "$variable",
@@ -17,232 +29,1180 @@
             "explanation": "Toujours préfixé par $."
         },
         {
-            "id": 2,
-            "question": "Afficher du texte ?",
-            "options": [
-                "print",
-                "echo",
-                "display",
-                "console.log"
-            ],
-            "answer": 1,
-            "explanation": "echo 'Hello';"
-        },
-        {
             "id": 3,
-            "question": "PHP est exécuté côté...",
+            "question": "Quelle version a introduit le typage fort optionnel ?",
             "options": [
-                "Serveur",
-                "Client",
-                "Navigateur",
-                "Base de données"
+                "PHP 7",
+                "PHP 5",
+                "PHP 4",
+                "PHP 8"
             ],
             "answer": 0,
-            "explanation": "C'est un langage Backend."
+            "explanation": "declare(strict_types=1);"
         },
         {
             "id": 4,
-            "question": "Comment concaténer ?",
+            "question": "Comment afficher du texte ?",
             "options": [
-                "+",
-                ".",
-                "&",
-                ","
+                "echo ou print",
+                "write",
+                "display",
+                "out"
             ],
-            "answer": 1,
-            "explanation": "$a . $b"
+            "answer": 0,
+            "explanation": "echo est un constructeur de langage (pas une fonction)."
         },
         {
             "id": 5,
-            "question": "Accéder à un paramètre URL (GET) ?",
+            "question": "Quel est le gestionnaire de dépendances standard ?",
             "options": [
-                "$_GET['param']",
-                "$_POST['param']",
-                "$_REQUEST",
-                "$GET"
+                "Composer",
+                "NPM",
+                "Pip",
+                "Gem"
             ],
             "answer": 0,
-            "explanation": "Superglobale $_GET."
+            "explanation": "composer.json / composer.lock."
         },
         {
             "id": 6,
-            "question": "Démarrer une session ?",
+            "question": "Comment concaténer deux chaînes ?",
             "options": [
-                "session_start()",
-                "start_session()",
-                "init_session()",
-                "session()"
+                ". (point)",
+                "+ (plus)",
+                "&",
+                "concat()"
             ],
             "answer": 0,
-            "explanation": "Doit être au tout début du fichier."
+            "explanation": "$a . $b (Le + fait une addition numérique)."
         },
         {
             "id": 7,
-            "question": "Connecteur BDD recommandé ?",
+            "question": "Quel framework est le plus populaire ?",
             "options": [
-                "mysql_",
-                "mysqli",
-                "PDO",
-                "ODBC"
+                "Laravel / Symfony",
+                "Django",
+                "Spring",
+                "Rails"
             ],
-            "answer": 2,
-            "explanation": "PDO (PHP Data Objects) est universel et sécurisé."
+            "answer": 0,
+            "explanation": "Symfony est la base de nombreux projets, Laravel est très utilisé."
         },
         {
             "id": 8,
             "question": "Comment définir une constante ?",
             "options": [
-                "define('CTE', 1)",
-                "const CTE = 1",
-                "let CTE = 1",
-                "Les deux premiers"
+                "const NAME = 'Val' ou define()",
+                "final $NAME",
+                "static $NAME",
+                "let NAME"
             ],
-            "answer": 3,
-            "explanation": "define() ancienne méthode, const mot-clé moderne."
+            "answer": 0,
+            "explanation": "const dans une classe, define() en global."
         },
         {
             "id": 9,
-            "question": "Opérateur de comparaison stricte ?",
+            "question": "Quelle superglobale contient les données GET ?",
             "options": [
-                "==",
-                "===",
-                "=",
-                "eq"
+                "$_GET",
+                "$GET",
+                "$_REQUEST",
+                "$query"
             ],
-            "answer": 1,
-            "explanation": "Vérifie valeur ET type."
+            "answer": 0,
+            "explanation": "Tableau associatif."
         },
         {
             "id": 10,
-            "question": "Boucle pour parcourir un tableau ?",
+            "question": "Comment démarrer une session ?",
             "options": [
-                "foreach",
-                "for",
-                "while",
-                "loop"
+                "session_start()",
+                "start_session()",
+                "Session::start()",
+                "new Session()"
             ],
             "answer": 0,
-            "explanation": "foreach ($array as $key => $value)."
+            "explanation": "Doit être au tout début du script."
         },
         {
             "id": 11,
-            "question": "Inclure un fichier obligatoirement ?",
+            "question": "Quelle nouveauté majeure en PHP 8.0 ?",
             "options": [
-                "include",
-                "require",
-                "import",
-                "load"
+                "JIT Compiler + Union Types",
+                "Traits",
+                "Namespaces",
+                "Classes"
             ],
-            "answer": 1,
-            "explanation": "require déclenche une erreur fatale si le fichier manque. include juste un warning."
+            "answer": 0,
+            "explanation": "Just-In-Time compilation pour la perf CPU."
         },
         {
             "id": 12,
-            "question": "Composer est...",
+            "question": "Comment vérifier si une variable est définie ?",
             "options": [
-                "Un gestionnaire de dépendances",
-                "Un éditeur",
-                "Un serveur",
-                "Un framework"
+                "isset($var)",
+                "empty($var)",
+                "defined($var)",
+                "check($var)"
             ],
             "answer": 0,
-            "explanation": "L'équivalent de NPM pour PHP."
+            "explanation": "Retourne false si null."
         },
         {
             "id": 13,
-            "question": "Comment déboguer une variable ?",
+            "question": "Quel opérateur pour la fusion null (Null Coalescing) ?",
             "options": [
-                "var_dump()",
-                "print_r()",
-                "debug()",
-                "console()"
+                "??",
+                "?:",
+                "||",
+                "&&"
             ],
             "answer": 0,
-            "explanation": "var_dump() donne type et valeur. print_r() est plus lisible pour les arrays."
+            "explanation": "$a ?? $b (équivaut à isset($a) ? $a : $b)."
         },
         {
             "id": 14,
-            "question": "POO : variable de l'instance courante ?",
+            "question": "Comment inclure un fichier obligatoire ?",
             "options": [
-                "this",
-                "$this",
-                "self",
-                "me"
+                "require",
+                "include",
+                "import",
+                "load"
             ],
-            "answer": 1,
-            "explanation": "$this->propriete."
+            "answer": 0,
+            "explanation": "Arrête le script si erreur fatal, contrairement à include."
         },
         {
             "id": 15,
-            "question": "Fonction pour la longueur d'un string ?",
+            "question": "Quelle fonction pour hasher un mot de passe ?",
             "options": [
-                "strlen()",
-                "str_len()",
-                "length()",
-                "count()"
+                "password_hash()",
+                "md5()",
+                "sha1()",
+                "crypt()"
             ],
             "answer": 0,
-            "explanation": "strlen($str)."
+            "explanation": "Avec password_verify(). MD5/SHA1 sont obsolètes."
         },
         {
             "id": 16,
-            "question": "Comment hacher un mot de passe ?",
+            "question": "Qu'est-ce que PSR ?",
             "options": [
-                "md5()",
-                "sha1()",
-                "password_hash()",
-                "crypt()"
+                "PHP Standard Recommendation (FIG)",
+                "PHP Source Rule",
+                "Public Static Return",
+                "Rien"
             ],
-            "answer": 2,
-            "explanation": "password_hash($pass, PASSWORD_DEFAULT)."
+            "answer": 0,
+            "explanation": "Standards d'interopérabilité (PSR-4 Autoloading, PSR-12 Style...)."
         },
         {
             "id": 17,
-            "question": "Superglobale des fichiers uploadés ?",
+            "question": "Comment typer le retour d'une fonction ?",
             "options": [
-                "$_FILES",
-                "$_UPLOAD",
-                "$_POST",
-                "$_input"
+                "function f(): int {}",
+                "function int f() {}",
+                "int f() {}",
+                "def f() -> int"
             ],
             "answer": 0,
-            "explanation": "Contient nom, type, tmp_name, error, size."
+            "explanation": "Le type est après les deux-points."
         },
         {
             "id": 18,
-            "question": "Comment hériter d'une classe ?",
+            "question": "Quel est l'opérateur 'Spaceship' ?",
             "options": [
-                "extends",
-                "implements",
-                "inherits",
-                "child"
+                "<=>",
+                "===",
+                "<>",
+                "><"
             ],
             "answer": 0,
-            "explanation": "class B extends A."
+            "explanation": "Retourne -1, 0, 1 pour la comparaison (tri)."
         },
         {
             "id": 19,
-            "question": "Vérifier si une variable existe ?",
+            "question": "Dans quel dossier Composer installe-t-il les libs ?",
             "options": [
-                "exists()",
-                "isset()",
-                "defined()",
-                "check()"
+                "vendor",
+                "libs",
+                "node_modules",
+                "packages"
             ],
-            "answer": 1,
-            "explanation": "isset($var) retourne true si définie et pas null."
+            "answer": 0,
+            "explanation": "Et génère vendor/autoload.php."
         },
         {
             "id": 20,
-            "question": "Espace de noms (Namespace) ?",
+            "question": "Comment parser du JSON ?",
             "options": [
-                "namespace App;",
-                "package App;",
-                "use App;",
-                "module App;"
+                "json_decode()",
+                "json_parse()",
+                "JSON.parse()",
+                "decode()"
             ],
             "answer": 0,
-            "explanation": "Permet d'organiser le code et d'éviter les collisions."
+            "explanation": "json_encode() pour l'inverse."
+        },
+        {
+            "id": 21,
+            "question": "Qu'est-ce qu'un Trait ?",
+            "options": [
+                "Mécanisme de réutilisation de code (héritage multiple horizontal)",
+                "Une interface",
+                "Une classe abstraite",
+                "Une variable"
+            ],
+            "answer": 0,
+            "explanation": "use MyTrait;"
+        },
+        {
+            "id": 22,
+            "question": "Comment accéder à une propriété statique ?",
+            "options": [
+                "Class::$prop",
+                "Class->$prop",
+                "Class.prop",
+                "this->$prop"
+            ],
+            "answer": 0,
+            "explanation": "Opérateur de résolution de portée :: (Paamayim Nekudotayim)."
+        },
+        {
+            "id": 23,
+            "question": "Quelle fonction pour filtrer un tableau ?",
+            "options": [
+                "array_filter()",
+                "array_map()",
+                "filter()",
+                "foreach"
+            ],
+            "answer": 0,
+            "explanation": "Supprime les éléments faux ou selon callback."
+        },
+        {
+            "id": 24,
+            "question": "Quel est le port par défaut de PHP-FPM ?",
+            "options": [
+                "9000",
+                "80",
+                "8080",
+                "3306"
+            ],
+            "answer": 0,
+            "explanation": "FastCGI Process Manager."
+        },
+        {
+            "id": 25,
+            "question": "Comment empêcher l'héritage d'une classe ?",
+            "options": [
+                "final class",
+                "static class",
+                "private class",
+                "sealed class"
+            ],
+            "answer": 0,
+            "explanation": "Empêche extends."
+        },
+        {
+            "id": 26,
+            "question": "Qu'est-ce que PDO ?",
+            "options": [
+                "PHP Data Objects (Abstraction BDD)",
+                "PHP Database Object",
+                "Public Data",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Interface unifiée pour MySQL, PostgreSQL, etc."
+        },
+        {
+            "id": 27,
+            "question": "Comment créer un tableau associatif ?",
+            "options": [
+                "['key' => 'val']",
+                "{'key': 'val'}",
+                "['key', 'val']",
+                "new Map()"
+            ],
+            "answer": 0,
+            "explanation": "Utilise la flèche =>."
+        },
+        {
+            "id": 28,
+            "question": "Quelle fonction compte les éléments d'un tableau ?",
+            "options": [
+                "count()",
+                "size()",
+                "length()",
+                "sizeof()"
+            ],
+            "answer": 0,
+            "explanation": "sizeof est un alias de count."
+        },
+        {
+            "id": 29,
+            "question": "Quel mot-clé pour le constructeur ?",
+            "options": [
+                "__construct()",
+                "ClassName()",
+                "construct()",
+                "init()"
+            ],
+            "answer": 0,
+            "explanation": "Magic method."
+        },
+        {
+            "id": 30,
+            "question": "Comment vérifier une condition stricte (type + valeur) ?",
+            "options": [
+                "===",
+                "==",
+                "=",
+                "is"
+            ],
+            "answer": 0,
+            "explanation": "Évite les conversions implicites dangereuses."
+        },
+        {
+            "id": 31,
+            "question": "Comment récupérer l'IP du visiteur ?",
+            "options": [
+                "$_SERVER['REMOTE_ADDR']",
+                "$_ENV['IP']",
+                "get_ip()",
+                "None"
+            ],
+            "answer": 0,
+            "explanation": "Variable serveur."
+        },
+        {
+            "id": 32,
+            "question": "Qu'est-ce que `match` (PHP 8) ?",
+            "options": [
+                "Version améliorée du switch (expression qui retourne une valeur)",
+                "Une regex",
+                "Un jeu",
+                "Un if"
+            ],
+            "answer": 0,
+            "explanation": "Comparaison stricte, pas de break nécessaire."
+        },
+        {
+            "id": 33,
+            "question": "Quel est le moteur de template de Symfony ?",
+            "options": [
+                "Twig",
+                "Blade",
+                "Smarty",
+                "PHP"
+            ],
+            "answer": 0,
+            "explanation": "Blade est celui de Laravel."
+        },
+        {
+            "id": 34,
+            "question": "Comment définir une fonction anonyme (Closure) ?",
+            "options": [
+                "function($x) { ... }",
+                "lambda($x)",
+                "($x) => ...",
+                "def($x)"
+            ],
+            "answer": 0,
+            "explanation": "Ou les Arrow Functions fn($x) => $x (PHP 7.4+)."
+        },
+        {
+            "id": 35,
+            "question": "Comment importer une variable externe dans une Closure ?",
+            "options": [
+                "use ($var)",
+                "global $var",
+                "import $var",
+                "with $var"
+            ],
+            "answer": 0,
+            "explanation": "function() use ($a) { ... }."
+        },
+        {
+            "id": 36,
+            "question": "Quelle fonction arrête le script ?",
+            "options": [
+                "exit() ou die()",
+                "stop()",
+                "break",
+                "return"
+            ],
+            "answer": 0,
+            "explanation": "Affiche optionnellement un message."
+        },
+        {
+            "id": 37,
+            "question": "Comment accéder à une méthode parente ?",
+            "options": [
+                "parent::method()",
+                "super.method()",
+                "base.method()",
+                "this.parent"
+            ],
+            "answer": 0,
+            "explanation": "Résolution de portée statique."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce qu'une Enum (PHP 8.1) ?",
+            "options": [
+                "Type énuméré natif",
+                "Classe statique",
+                "Tableau",
+                "Constante"
+            ],
+            "answer": 0,
+            "explanation": "Peut avoir des méthodes et des valeurs (Backed Enum)."
+        },
+        {
+            "id": 39,
+            "question": "Comment échapper les caractères HTML ?",
+            "options": [
+                "htmlspecialchars()",
+                "htmlentities()",
+                "escape()",
+                "encode()"
+            ],
+            "answer": 0,
+            "explanation": "Protection XSS de base."
+        },
+        {
+            "id": 40,
+            "question": "Quel est le fichier de config principal de PHP ?",
+            "options": [
+                "php.ini",
+                "config.php",
+                "settings.json",
+                ".env"
+            ],
+            "answer": 0,
+            "explanation": "Gère memory_limit, upload_max_filesize..."
+        },
+        {
+            "id": 41,
+            "question": "Comment cloner un objet ?",
+            "options": [
+                "clone $obj",
+                "$obj.clone()",
+                "copy($obj)",
+                "dup($obj)"
+            ],
+            "answer": 0,
+            "explanation": "Appelle __clone() si défini."
+        },
+        {
+            "id": 42,
+            "question": "Qu'est-ce qu'un Generator ?",
+            "options": [
+                "Fonction qui utilise `yield` pour retourner des valeurs une par une",
+                "Une usine",
+                "Un moteur",
+                "Une classe"
+            ],
+            "answer": 0,
+            "explanation": "Économise la mémoire lors de l'itération."
+        },
+        {
+            "id": 43,
+            "question": "Comment gérer les exceptions ?",
+            "options": [
+                "try / catch / finally",
+                "try / except",
+                "begin / rescue",
+                "do / check"
+            ],
+            "answer": 0,
+            "explanation": "throw new Exception()."
+        },
+        {
+            "id": 44,
+            "question": "Quelle fonction vérifie si un fichier existe ?",
+            "options": [
+                "file_exists()",
+                "is_file()",
+                "exists()",
+                "check_file()"
+            ],
+            "answer": 0,
+            "explanation": "Valide aussi les dossiers."
+        },
+        {
+            "id": 45,
+            "question": "Comment rediriger l'utilisateur ?",
+            "options": [
+                "header('Location: url'); exit;",
+                "redirect('url')",
+                "move('url')",
+                "goto url"
+            ],
+            "answer": 0,
+            "explanation": "Envoie un header HTTP 302 par défaut."
+        },
+        {
+            "id": 46,
+            "question": "Quelle superglobale contient les fichiers uploadés ?",
+            "options": [
+                "$_FILES",
+                "$_POST",
+                "$_UPLOAD",
+                "$_DATA"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite enctype='multipart/form-data'."
+        },
+        {
+            "id": 47,
+            "question": "Comment faire un autoloading automatique ?",
+            "options": [
+                "Utiliser Composer (require 'vendor/autoload.php')",
+                "__autoload",
+                "spl_autoload",
+                "include_all"
+            ],
+            "answer": 0,
+            "explanation": "Standard PSR-4."
+        },
+        {
+            "id": 48,
+            "question": "Quel mode d'erreur PDO est recommandé ?",
+            "options": [
+                "PDO::ERRMODE_EXCEPTION",
+                "PDO::ERRMODE_SILENT",
+                "PDO::ERRMODE_WARNING",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'utiliser try/catch."
+        },
+        {
+            "id": 49,
+            "question": "Qu'est-ce que `__toString()` ?",
+            "options": [
+                "Méthode magique appelée quand l'objet est converti en string",
+                "Conversion",
+                "Print",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: echo $obj."
+        },
+        {
+            "id": 50,
+            "question": "Comment fusionner deux tableaux ?",
+            "options": [
+                "array_merge($a, $b) ou $a + $b (clés)",
+                "concat()",
+                "append()",
+                "join()"
+            ],
+            "answer": 0,
+            "explanation": "+ préserve les clés numériques, merge les réindexe."
+        },
+        {
+            "id": 51,
+            "question": "Que signifie ORM ?",
+            "options": [
+                "Object-Relational Mapping (Doctrine/Eloquent)",
+                "Object Real Management",
+                "Only Read Memory",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de manipuler la BDD via des objets."
+        },
+        {
+            "id": 52,
+            "question": "Comment déclarer des arguments nommés (PHP 8) ?",
+            "options": [
+                "func(param: $val)",
+                "func(param => $val)",
+                "func($param = $val)",
+                "func({param: $val})"
+            ],
+            "answer": 0,
+            "explanation": "Permet sauter des arguments optionnels."
+        },
+        {
+            "id": 53,
+            "question": "Quel est le but de `declare(strict_types=1)` ?",
+            "options": [
+                "Forcer le respect des types scalaires (int, string...)",
+                "Rien",
+                "Activer les erreurs",
+                "Optimiser"
+            ],
+            "answer": 0,
+            "explanation": "Évite les coercitions automatiques foireuses."
+        },
+        {
+            "id": 54,
+            "question": "Comment définir une propriété promue dans le constructeur (PHP 8) ?",
+            "options": [
+                "public function __construct(public int $id) {}",
+                "this.id = id",
+                "auto $id",
+                "prop $id"
+            ],
+            "answer": 0,
+            "explanation": "Déclare et initialise la propriété en une fois."
+        },
+        {
+            "id": 55,
+            "question": "Qu'est-ce que PHP-GTK ?",
+            "options": [
+                "Extension pour créer des apps desktop (GUI)",
+                "Un framework web",
+                "Un CMS",
+                "Un outil"
+            ],
+            "answer": 0,
+            "explanation": "PHP n'est pas que pour le web (CLI, Desktop...)."
+        },
+        {
+            "id": 56,
+            "question": "Comment lire tout le contenu d'un fichier ?",
+            "options": [
+                "file_get_contents()",
+                "read_file()",
+                "open()",
+                "cat()"
+            ],
+            "answer": 0,
+            "explanation": "Retourne une string."
+        },
+        {
+            "id": 57,
+            "question": "Quelle fonction pour exploser une string en array ?",
+            "options": [
+                "explode()",
+                "split()",
+                "array_split()",
+                "cut()"
+            ],
+            "answer": 0,
+            "explanation": "implode() fait l'inverse."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce qu'une interface ?",
+            "options": [
+                "Contrat définissant des méthodes publiques sans corps",
+                "Une classe",
+                "Un objet",
+                "Un trait"
+            ],
+            "answer": 0,
+            "explanation": "Une classe 'implements' une ou plusieurs interfaces."
+        },
+        {
+            "id": 59,
+            "question": "Comment obtenir le timestamp actuel ?",
+            "options": [
+                "time()",
+                "now()",
+                "date()",
+                "timestamp()"
+            ],
+            "answer": 0,
+            "explanation": "Secondes depuis l'époque Unix (1970)."
+        },
+        {
+            "id": 60,
+            "question": "Quelle classe gère les dates (moderne) ?",
+            "options": [
+                "DateTime / DateTimeImmutable",
+                "Date",
+                "Time",
+                "Clock"
+            ],
+            "answer": 0,
+            "explanation": "Plus robuste que les fonctions date()."
+        },
+        {
+            "id": 61,
+            "question": "Comment supprimer une variable ?",
+            "options": [
+                "unset($var)",
+                "delete $var",
+                "rm $var",
+                "null $var"
+            ],
+            "answer": 0,
+            "explanation": "Détruit la référence."
+        },
+        {
+            "id": 62,
+            "question": "Quelle est la visibilité par défaut des méthodes ?",
+            "options": [
+                "public",
+                "private",
+                "protected",
+                "friend"
+            ],
+            "answer": 0,
+            "explanation": "En PHP 4 c'était var, maintenant public par défaut."
+        },
+        {
+            "id": 63,
+            "question": "Comment arrêter une boucle foreach ?",
+            "options": [
+                "break",
+                "stop",
+                "exit",
+                "end"
+            ],
+            "answer": 0,
+            "explanation": "continue passe à l'itération suivante."
+        },
+        {
+            "id": 64,
+            "question": "Que retourne `__get()` ?",
+            "options": [
+                "La valeur d'une propriété inaccessible",
+                "Rien",
+                "L'objet",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Surcharge magique de l'accès aux propriétés."
+        },
+        {
+            "id": 65,
+            "question": "Comment supprimer les espaces début/fin ?",
+            "options": [
+                "trim()",
+                "strip()",
+                "clean()",
+                "delete_spaces()"
+            ],
+            "answer": 0,
+            "explanation": "ltrim, rtrim existent aussi."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce que Xdebug ?",
+            "options": [
+                "Extension de débogage et profiling",
+                "Un IDE",
+                "Un virus",
+                "Un framework"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour step-by-step debug."
+        },
+        {
+            "id": 67,
+            "question": "Comment vérifier si une clé existe dans un array ?",
+            "options": [
+                "array_key_exists() ou isset()",
+                "in_array()",
+                "has_key()",
+                "key()"
+            ],
+            "answer": 0,
+            "explanation": "in_array cherche une valeur."
+        },
+        {
+            "id": 68,
+            "question": "Quel est le tag d'ouverture PHP ?",
+            "options": [
+                "<?php",
+                "<%",
+                "<?",
+                "<script>"
+            ],
+            "answer": 0,
+            "explanation": "Le short tag <? est déconseillé."
+        },
+        {
+            "id": 69,
+            "question": "Comment écrire dans un fichier ?",
+            "options": [
+                "file_put_contents()",
+                "write()",
+                "save()",
+                "push()"
+            ],
+            "answer": 0,
+            "explanation": "Version simplifiée de fopen/fwrite/fclose."
+        },
+        {
+            "id": 70,
+            "question": "Qu'est-ce que `stdClass` ?",
+            "options": [
+                "Classe générique vide par défaut",
+                "Standard",
+                "Static",
+                "String"
+            ],
+            "answer": 0,
+            "explanation": "Objet générique (bag of properties)."
+        },
+        {
+            "id": 71,
+            "question": "Comment faire une regex ?",
+            "options": [
+                "preg_match()",
+                "ereg()",
+                "regex()",
+                "match()"
+            ],
+            "answer": 0,
+            "explanation": "PCRE (Perl Compatible Regular Expressions)."
+        },
+        {
+            "id": 72,
+            "question": "Quelle superglobale contient les cookies ?",
+            "options": [
+                "$_COOKIE",
+                "$_SESSION",
+                "$_SERVER",
+                "$data"
+            ],
+            "answer": 0,
+            "explanation": "Envoyés par le navigateur."
+        },
+        {
+            "id": 73,
+            "question": "Autoloading: Qu'est-ce que PSR-4 ?",
+            "options": [
+                "Standard de mappage Namespace <-> Dossier",
+                "Une classe",
+                "Une erreur",
+                "Un fichier"
+            ],
+            "answer": 0,
+            "explanation": "Ex: App\\User => src/User.php."
+        },
+        {
+            "id": 74,
+            "question": "Comment protéger une requête SQL (PDO) ?",
+            "options": [
+                "prepare() + execute()",
+                "query()",
+                "quote()",
+                "exec()"
+            ],
+            "answer": 0,
+            "explanation": "Requêtes préparées anti-injection."
+        },
+        {
+            "id": 75,
+            "question": "Que fait `yield` ?",
+            "options": [
+                "Retourne une valeur d'un générateur sans arrêter la fonction",
+                "Pause",
+                "Stop",
+                "Yield"
+            ],
+            "answer": 0,
+            "explanation": "Permet de générer de grandes séquences sans mémoire."
+        },
+        {
+            "id": 76,
+            "question": "Comment changer la limite de mémoire ?",
+            "options": [
+                "ini_set('memory_limit', '256M')",
+                "set_memory()",
+                "config()",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Ou dans php.ini."
+        },
+        {
+            "id": 77,
+            "question": "Quelle fonction trie un tableau par valeur ?",
+            "options": [
+                "sort()",
+                "ksort() (clé)",
+                "asort() (garde index)",
+                "order()"
+            ],
+            "answer": 0,
+            "explanation": "rsort pour inversé."
+        },
+        {
+            "id": 78,
+            "question": "Qu'est-ce qu'une Abstract Class ?",
+            "options": [
+                "Classe non instanciable, base pour héritage",
+                "Interface",
+                "Trait",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Force les enfants à implémenter les méthodes abstraites."
+        },
+        {
+            "id": 79,
+            "question": "Comment appeler une méthode sur null sans erreur (PHP 8) ?",
+            "options": [
+                "Nullsafe operator (?->)",
+                "try/catch",
+                "if",
+                "@"
+            ],
+            "answer": 0,
+            "explanation": "$obj?->method(). Si obj null, retourne null."
+        },
+        {
+            "id": 80,
+            "question": "Quelle fonction remplace dans une string ?",
+            "options": [
+                "str_replace()",
+                "replace()",
+                "preg_replace()",
+                "sub()"
+            ],
+            "answer": 0,
+            "explanation": "Case sensitive."
+        },
+        {
+            "id": 81,
+            "question": "Comment accéder au dossier actuel ?",
+            "options": [
+                "__DIR__",
+                "__FILE__",
+                "getcwd()",
+                "dir()"
+            ],
+            "answer": 0,
+            "explanation": "Constante magique."
+        },
+        {
+            "id": 82,
+            "question": "Qu'est-ce que `call_user_func` ?",
+            "options": [
+                "Appelle une fonction de rappel (callback)",
+                "Appelle user",
+                "Login",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Souvent remplacé par $func() ou Closure."
+        },
+        {
+            "id": 83,
+            "question": "Comment débugger proprement une variable ?",
+            "options": [
+                "var_dump() ou print_r()",
+                "echo",
+                "log()",
+                "debug()"
+            ],
+            "answer": 0,
+            "explanation": "var_dump donne le type et la valeur."
+        },
+        {
+            "id": 84,
+            "question": "Quel design pattern est `Singleton` ?",
+            "options": [
+                "Classe instanciée une seule fois (via getInstance)",
+                "MVC",
+                "Factory",
+                "Decorator"
+            ],
+            "answer": 0,
+            "explanation": "Anti-pattern controversé, mais classique."
+        },
+        {
+            "id": 85,
+            "question": "Comment crypter en base64 ?",
+            "options": [
+                "base64_encode()",
+                "crypt()",
+                "encode()",
+                "b64()"
+            ],
+            "answer": 0,
+            "explanation": "Ce n'est pas du chiffrement (réversible)."
+        },
+        {
+            "id": 86,
+            "question": "Que fait `list($a, $b) = $array` ?",
+            "options": [
+                "Déstructuration de tableau (assigne variables)",
+                "Liste",
+                "Erreur",
+                "Print"
+            ],
+            "answer": 0,
+            "explanation": "Syntaxe courte [$a, $b] = $array aussi possible."
+        },
+        {
+            "id": 87,
+            "question": "Quelle est la différence entre `self` et `static` ?",
+            "options": [
+                "static permet le Late Static Binding (classe appelante)",
+                "self est la classe courante",
+                "Aucune",
+                "static est une variable"
+            ],
+            "answer": 0,
+            "explanation": "static::method() vs self::method()."
+        },
+        {
+            "id": 88,
+            "question": "Comment générer un ID unique ?",
+            "options": [
+                "uniqid()",
+                "uuid()",
+                "id()",
+                "rand()"
+            ],
+            "answer": 0,
+            "explanation": "Basé sur l'heure en microsecondes."
+        },
+        {
+            "id": 89,
+            "question": "Quel header pour le content-type JSON ?",
+            "options": [
+                "header('Content-Type: application/json')",
+                "json",
+                "type: json",
+                "mime"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour les API."
+        },
+        {
+            "id": 90,
+            "question": "Comment forcer le téléchargement d'un fichier ?",
+            "options": [
+                "header('Content-Disposition: attachment')",
+                "download()",
+                "get()",
+                "force"
+            ],
+            "answer": 0,
+            "explanation": "Informe le navigateur."
+        },
+        {
+            "id": 91,
+            "question": "Qu'est-ce qu'une Fiber (PHP 8.1) ?",
+            "options": [
+                "Primitives pour la concurrence coopérative (Green Threads)",
+                "Fibre",
+                "Internet",
+                "Cable"
+            ],
+            "answer": 0,
+            "explanation": "Base pour l'async en PHP (comme ReactPHP/Amphp)."
+        },
+        {
+            "id": 92,
+            "question": "Comment valider un email ?",
+            "options": [
+                "filter_var($email, FILTER_VALIDATE_EMAIL)",
+                "regex",
+                "check",
+                "mail()"
+            ],
+            "answer": 0,
+            "explanation": "Fonction native filter_var."
+        },
+        {
+            "id": 93,
+            "question": "Quel est l'opérateur de concaténation assignation ?",
+            "options": [
+                ".=",
+                "+=",
+                "=&",
+                "=. "
+            ],
+            "answer": 0,
+            "explanation": "$str .= 'suite'."
+        },
+        {
+            "id": 94,
+            "question": "Comment définir une méthode finale ?",
+            "options": [
+                "final public function",
+                "static",
+                "const",
+                "end"
+            ],
+            "answer": 0,
+            "explanation": "Ne peut pas être surchargée."
+        },
+        {
+            "id": 95,
+            "question": "Qu'est-ce que `extract()` ?",
+            "options": [
+                "Importe les variables d'un tableau dans la table des symboles",
+                "Extrait",
+                "Zip",
+                "Unzip"
+            ],
+            "answer": 0,
+            "explanation": "Dangereux si données non fiables."
+        },
+        {
+            "id": 96,
+            "question": "Comment inverser une chaîne ?",
+            "options": [
+                "strrev()",
+                "reverse()",
+                "inv()",
+                "flip()"
+            ],
+            "answer": 0,
+            "explanation": "Fonction simple (attention unicode)."
+        },
+        {
+            "id": 97,
+            "question": "Quel est le rôle de `.htaccess` (Apache) ?",
+            "options": [
+                "Configuration serveur par dossier (URL rewriting...)",
+                "Fichier HTML",
+                "Script",
+                "Log"
+            ],
+            "answer": 0,
+            "explanation": "Souvent utilisé pour router vers index.php."
+        },
+        {
+            "id": 98,
+            "question": "Comment savoir si c'est une requête AJAX ?",
+            "options": [
+                "Headers (X-Requested-With)",
+                "is_ajax()",
+                "ajax()",
+                "Non"
+            ],
+            "answer": 0,
+            "explanation": "Souvent envoyé par les libs JS."
+        },
+        {
+            "id": 99,
+            "question": "Qu'est-ce que `__invoke()` ?",
+            "options": [
+                "Permet d'utiliser un objet comme une fonction",
+                "Invoke",
+                "Call",
+                "Magie"
+            ],
+            "answer": 0,
+            "explanation": "$obj()."
+        },
+        {
+            "id": 100,
+            "question": "PHP est-il mort ?",
+            "options": [
+                "Non, il propulse 75%+ du web",
+                "Oui",
+                "Peut-être",
+                "Juin"
+            ],
+            "answer": 0,
+            "explanation": "Toujours très vivant, performant et évolutif."
         }
     ]
 }

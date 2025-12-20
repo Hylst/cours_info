@@ -1,248 +1,1208 @@
 {
     "meta": {
-        "title": "Quiz Python Data Science",
-        "total": 20
+        "title": "Quiz Python Data Expert - 100 Questions",
+        "total": 100
     },
     "questions": [
         {
             "id": 1,
-            "question": "Bibliothèque principale pour les tableaux numériques ?",
+            "question": "Quelle est la librairie standard pour la manipulation de données ?",
             "options": [
                 "Pandas",
-                "Numpy",
-                "Scipy",
-                "Matplotlib"
+                "NumPy",
+                "Matplotlib",
+                "Scikit"
             ],
-            "answer": 1,
-            "explanation": "Numpy (Numerical Python) est la base."
+            "answer": 0,
+            "explanation": "Panel Data => Pandas. Structure DataFrame."
         },
         {
             "id": 2,
-            "question": "Structure de données principale de Pandas ?",
+            "question": "Quelle est la structure de base de NumPy ?",
             "options": [
+                "ndarray (n-dimensional array)",
+                "List",
                 "Matrix",
-                "DataFrame",
-                "Table",
-                "Grid"
+                "Tensor"
             ],
-            "answer": 1,
-            "explanation": "DataFrame est un tableau 2D avec labels."
+            "answer": 0,
+            "explanation": "Plus efficace que les listes Python (mémoire contiguë)."
         },
         {
             "id": 3,
             "question": "Comment charger un CSV avec Pandas ?",
             "options": [
-                "pd.read_csv()",
-                "pd.load_csv()",
-                "pd.import()",
-                "pd.open()"
+                "pd.read_csv('file.csv')",
+                "pd.load_csv('file.csv')",
+                "pd.import_csv('file.csv')",
+                "csv.read('file.csv')"
             ],
             "answer": 0,
-            "explanation": "pd.read_csv('file.csv')."
+            "explanation": "Fonction très puissante avec de nombreuses options."
         },
         {
             "id": 4,
-            "question": "Afficher les 5 premières lignes d'un DataFrame df ?",
+            "question": "Qu'est-ce qu'une Series dans Pandas ?",
             "options": [
-                "df.top()",
-                "df.start()",
-                "df.head()",
-                "df.first()"
+                "Une colonne (1D)",
+                "Un tableau (2D)",
+                "Une cellule",
+                "Un graphique"
             ],
-            "answer": 2,
-            "explanation": "df.head() affiche les 5 premières par défaut."
+            "answer": 0,
+            "explanation": "DataFrame est une collection de Series."
         },
         {
             "id": 5,
-            "question": "Bibliothèque pour la visualization (graphiques) ?",
+            "question": "Comment afficher les 5 premières lignes d'un DataFrame ?",
             "options": [
-                "Matplotlib",
-                "Request",
-                "Flask",
-                "PyGame"
+                "df.head()",
+                "df.top()",
+                "df.first()",
+                "df.show()"
             ],
             "answer": 0,
-            "explanation": "Matplotlib (et Seaborn) est le standard."
+            "explanation": "df.tail() pour les dernières."
         },
         {
             "id": 6,
-            "question": "Bibliothèque pour le Machine Learning ?",
+            "question": "Quel outil est utilisé pour la Data Visualization de base ?",
             "options": [
-                "Scikit-Learn",
-                "Django",
-                "Pillow",
-                "Numpy"
+                "Matplotlib",
+                "Seaborn",
+                "Plotly",
+                "Tous"
             ],
-            "answer": 0,
-            "explanation": "Scikit-Learn (sklearn) contient tous les algos classiques."
+            "answer": 3,
+            "explanation": "Matplotlib est la base, Seaborn est une surcouche plus belle."
         },
         {
             "id": 7,
-            "question": "Comment sélectionner une colonne 'A' dans df ?",
+            "question": "Comment gérer les valeurs manquantes (NaN) ?",
             "options": [
-                "df['A']",
-                "df.get('A')",
-                "df.col('A')",
-                "df.select('A')"
+                "df.dropna() ou df.fillna()",
+                "df.delete()",
+                "df.ignore()",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "df['A'] retourne une Series."
+            "explanation": "Nettoyage de données essentiel."
         },
         {
             "id": 8,
-            "question": "Que fait `df.describe()` ?",
+            "question": "Quelle librairie est spécialisée dans le Machine Learning ?",
             "options": [
-                "Décrit la structure",
-                "Donne des stats descriptives (moyenne, min, max...)",
-                "Affiche le type",
-                "Rien"
+                "Scikit-learn",
+                "Pandas",
+                "NumPy",
+                "Flask"
             ],
-            "answer": 1,
-            "explanation": "Résumé statistique rapide des colonnes numériques."
+            "answer": 0,
+            "explanation": "Contient les algorithmes classiques (Régression, Classification...)."
         },
         {
             "id": 9,
-            "question": "Comment gérer les valeurs manquantes ?",
+            "question": "Qu'est-ce qu'un DataFrame ?",
             "options": [
-                "df.fillna()",
-                "df.ignore()",
-                "df.empty()",
-                "df.fix()"
+                "Tableau 2D avec labels (lignes/colonnes)",
+                "Une liste",
+                "Un cube",
+                "Un fichier"
             ],
             "answer": 0,
-            "explanation": "df.fillna(0) remplace les NaN par 0."
+            "explanation": "Structure centrale de Pandas."
         },
         {
             "id": 10,
-            "question": "Qu'est-ce que Jupyter ?",
+            "question": "Comment sélectionner une colonne 'Age' ?",
             "options": [
-                "Une planète",
-                "Un environnement de notebook interactif",
-                "Une lib",
-                "Un langage"
+                "df['Age']",
+                "df.Age",
+                "Les deux",
+                "Aucun"
             ],
-            "answer": 1,
-            "explanation": "Très utilisé pour l'exploration de données."
+            "answer": 2,
+            "explanation": "Notation pointée possible si le nom est valide."
         },
         {
             "id": 11,
-            "question": "Comment filtrer `df` où la col 'X' > 10 ?",
+            "question": "Quelle fonction donne les statistiques descriptives ?",
             "options": [
-                "df[df['X'] > 10]",
-                "df.filter('X' > 10)",
-                "df.where('X' > 10)",
-                "df.get(X > 10)"
+                "df.describe()",
+                "df.stats()",
+                "df.info()",
+                "df.mean()"
             ],
             "answer": 0,
-            "explanation": "Boolean indexing."
+            "explanation": "Moyenne, écart-type, min, max, quartiles..."
         },
         {
             "id": 12,
-            "question": "Quelle lib pour le Deep Learning ?",
+            "question": "Quel est l'avantage de Jupyter Notebook ?",
             "options": [
-                "TensorFlow / PyTorch",
-                "Pandas",
-                "Scikit",
-                "Requests"
+                "Interactif (Code + Texte + Graphiques)",
+                "Compilation",
+                "Vitesse",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Les deux géants du Deep Learning."
+            "explanation": "Standard en Data Science pour l'exploration."
         },
         {
             "id": 13,
-            "question": "Comment trier un DataFrame ?",
+            "question": "Comment filtrer les lignes où Age > 18 ?",
             "options": [
-                "df.sort_values()",
-                "df.order()",
-                "df.arrange()",
-                "df.sort()"
+                "df[df['Age'] > 18]",
+                "df.filter('Age > 18')",
+                "df.where('Age > 18')",
+                "Select"
             ],
             "answer": 0,
-            "explanation": "df.sort_values(by='col')."
+            "explanation": "Boolean Indexing (Masque)."
         },
         {
             "id": 14,
-            "question": "Que fait `df.groupby('A').mean()` ?",
+            "question": "Quelle librairie pour le Deep Learning ?",
             "options": [
-                "Groupe par A et calcule la moyenne",
-                "Trie par A",
-                "Erreur",
-                "Affiche A"
+                "TensorFlow / PyTorch",
+                "Scikit",
+                "Pandas",
+                "Requests"
+            ],
+            "answer": 0,
+            "explanation": "Réseaux de neurones profonds."
+        },
+        {
+            "id": 15,
+            "question": "Que fait `df.groupby('Col').mean()` ?",
+            "options": [
+                "Groupe par 'Col' et calcule la moyenne des autres",
+                "Trie",
+                "Filtre",
+                "Rien"
             ],
             "answer": 0,
             "explanation": "Opération Split-Apply-Combine."
         },
         {
-            "id": 15,
-            "question": "Extension classique d'un notebook ?",
-            "options": [
-                ".py",
-                ".ipynb",
-                ".txt",
-                ".json"
-            ],
-            "answer": 1,
-            "explanation": "IPython Notebook."
-        },
-        {
             "id": 16,
-            "question": "Comment supprimer une colonne ?",
+            "question": "Comment fusionner deux DataFrames (SQL JOIN) ?",
             "options": [
-                "df.drop()",
-                "df.remove()",
-                "df.delete()",
-                "del df"
+                "pd.merge(df1, df2)",
+                "pd.concat([df1, df2])",
+                "pd.join()",
+                "df1 + df2"
             ],
             "answer": 0,
-            "explanation": "df.drop(columns=['A'])."
+            "explanation": "Avec options on='col', how='inner/left/...'."
         },
         {
             "id": 17,
-            "question": "Quelle fonction Numpy crée un tableau de zéros ?",
+            "question": "Quelle est la dimension d'un vecteur (1D) ?",
             "options": [
-                "np.zeros()",
-                "np.empty()",
-                "np.null()",
-                "np.void()"
+                "(n,)",
+                "(n, 1)",
+                "(1, n)",
+                "1"
             ],
             "answer": 0,
-            "explanation": "np.zeros((3,3))."
+            "explanation": "Shape numpy."
         },
         {
             "id": 18,
-            "question": "Comment lire un fichier Excel ?",
+            "question": "Comment appliquer une fonction à chaque élément d'une colonne ?",
             "options": [
-                "pd.read_excel()",
-                "pd.read_xls()",
-                "pd.excel()",
-                "impossible"
+                "df['A'].apply(func)",
+                "df['A'].map(func)",
+                "df.applymap(func)",
+                "Tous"
             ],
-            "answer": 0,
-            "explanation": "Nécessite souvent la lib `openpyxl`."
+            "answer": 3,
+            "explanation": "apply est le plus générique."
         },
         {
             "id": 19,
-            "question": "Qu'est-ce qu'une Series ?",
+            "question": "Qu'est-ce que Matplotlib ?",
             "options": [
-                "Un tableau 1D (colonne)",
-                "Un film",
-                "Une liste",
-                "Un index"
+                "Librairie de traçage graphique 2D",
+                "Un jeu",
+                "Un calcul",
+                "Une BDD"
             ],
             "answer": 0,
-            "explanation": "Composant de base d'un DataFrame."
+            "explanation": "pyplot est le module principal."
         },
         {
             "id": 20,
-            "question": "Comment faire un graphique en ligne ?",
+            "question": "Quel format de fichier est optimisé pour Pandas ?",
             "options": [
-                "plt.plot()",
-                "plt.line()",
-                "plt.show()",
-                "plt.draw()"
+                "Parquet / Feather",
+                "CSV",
+                "JSON",
+                "TXT"
             ],
             "answer": 0,
-            "explanation": "Avec Matplotlib: plt.plot(x, y)."
+            "explanation": "Formats binaires columnaires très rapides."
+        },
+        {
+            "id": 21,
+            "question": "Comment trier un DataFrame ?",
+            "options": [
+                "df.sort_values(by='Col')",
+                "df.sort()",
+                "df.order()",
+                "sort(df)"
+            ],
+            "answer": 0,
+            "explanation": "Ascending ou descending."
+        },
+        {
+            "id": 22,
+            "question": "Opération vectorisée NumPy vs Boucle For ?",
+            "options": [
+                "NumPy est beaucoup plus rapide (C implementation)",
+                "Pareil",
+                "Python est plus rapide",
+                "On ne sait pas"
+            ],
+            "answer": 0,
+            "explanation": "Éviter les boucles for en Data Science !"
+        },
+        {
+            "id": 23,
+            "question": "Qu'est-ce que l'Overfitting (Surapprentissage) ?",
+            "options": [
+                "Modèle trop complexe qui apprend le bruit",
+                "Modèle trop simple",
+                "Erreur de code",
+                "Bon modèle"
+            ],
+            "answer": 0,
+            "explanation": "Performance excellente en training, mauvaise en test."
+        },
+        {
+            "id": 24,
+            "question": "Comment séparer les données pour le ML ?",
+            "options": [
+                "train_test_split (sklearn)",
+                "split()",
+                "random()",
+                "coupure manuelle"
+            ],
+            "answer": 0,
+            "explanation": "Train set (80%) / Test set (20%)."
+        },
+        {
+            "id": 25,
+            "question": "À quoi sert `.loc` ?",
+            "options": [
+                "Sélection par Label (nom)",
+                "Sélection par Position (index)",
+                "Localisation",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": ".iloc est pour la Position (integer)."
+        },
+        {
+            "id": 26,
+            "question": "Quelle librairie gère les tableaux multidimensionnels ?",
+            "options": [
+                "NumPy",
+                "Pandas",
+                "Matplotlib",
+                "Requests"
+            ],
+            "answer": 0,
+            "explanation": "La base de tout l'écosystème SciPy."
+        },
+        {
+            "id": 27,
+            "question": "Comment supprimer une colonne ?",
+            "options": [
+                "df.drop('Col', axis=1)",
+                "del df['Col']",
+                "Les deux",
+                "df.remove('Col')"
+            ],
+            "answer": 2,
+            "explanation": "axis=1 désigne les colonnes."
+        },
+        {
+            "id": 28,
+            "question": "Qu'est-ce qu'une matrice de corrélation ?",
+            "options": [
+                "Mesure les liens linéaires entre variables",
+                "Un graphique",
+                "Une erreur",
+                "Un tableau"
+            ],
+            "answer": 0,
+            "explanation": "df.corr(). Valeurs entre -1 et 1."
+        },
+        {
+            "id": 29,
+            "question": "Quel type de graphique pour une distribution ?",
+            "options": [
+                "Histogramme (hist)",
+                "Pie Chart",
+                "Line Plot",
+                "Scatter"
+            ],
+            "answer": 0,
+            "explanation": "Montre la fréquence des valeurs."
+        },
+        {
+            "id": 30,
+            "question": "Comment rendre un graphique interactif ?",
+            "options": [
+                "Plotly / Bokeh",
+                "Matplotlib",
+                "Seaborn",
+                "Pil"
+            ],
+            "answer": 0,
+            "explanation": "HTML/JS generated."
+        },
+        {
+            "id": 31,
+            "question": "Qu'est-ce que la régression linéaire ?",
+            "options": [
+                "Prédire une valeur continue (y = ax+b)",
+                "Classer",
+                "Grouper",
+                "Dessiner"
+            ],
+            "answer": 0,
+            "explanation": "Algorithme ML de base."
+        },
+        {
+            "id": 32,
+            "question": "Comment calculer la somme cumulative ?",
+            "options": [
+                "df.cumsum()",
+                "df.sum()",
+                "df.add()",
+                "df.total()"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour les séries temporelles."
+        },
+        {
+            "id": 33,
+            "question": "Quel objet pour les séries temporelles ?",
+            "options": [
+                "DatetimeIndex",
+                "TimeSeries",
+                "Date",
+                "Clock"
+            ],
+            "answer": 0,
+            "explanation": "Pandas excelle dans la manipulation de dates."
+        },
+        {
+            "id": 34,
+            "question": "Comment convertir un type de colonne ?",
+            "options": [
+                "df['A'].astype(type)",
+                "df.convert(type)",
+                "cast(df)",
+                "type(df)"
+            ],
+            "answer": 0,
+            "explanation": "Ex: .astype(int), .astype(float)."
+        },
+        {
+            "id": 35,
+            "question": "Qu'est-ce que 'One-Hot Encoding' ?",
+            "options": [
+                "Convertir catégories en colonnes binaires (0/1)",
+                "Encoder en chaud",
+                "Mélanger",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "pd.get_dummies(). Nécessaire pour le ML."
+        },
+        {
+            "id": 36,
+            "question": "Comment compter les valeurs uniques ?",
+            "options": [
+                "df['Col'].value_counts()",
+                "df['Col'].count()",
+                "df['Col'].unique()",
+                "size()"
+            ],
+            "answer": 0,
+            "explanation": "Retourne la fréquence de chaque valeur."
+        },
+        {
+            "id": 37,
+            "question": "Quel est le but du Clustering (K-Means) ?",
+            "options": [
+                "Regrouper des données similaires sans étiquettes",
+                "Prédire",
+                "Classer",
+                "Trier"
+            ],
+            "answer": 0,
+            "explanation": "Apprentissage non supervisé."
+        },
+        {
+            "id": 38,
+            "question": "Comment sauvegarder en Excel ?",
+            "options": [
+                "df.to_excel('f.xlsx')",
+                "save_excel",
+                "export",
+                "xlsx()"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite openpyxl."
+        },
+        {
+            "id": 39,
+            "question": "Qu'est-ce que la Cross-Validation ?",
+            "options": [
+                "Valider le modèle sur plusieurs découpes de données",
+                "Vérifier 2 fois",
+                "Croiser",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Plus robuste que train/test split simple."
+        },
+        {
+            "id": 40,
+            "question": "Comment réinitialiser l'index ?",
+            "options": [
+                "df.reset_index()",
+                "df.index = 0",
+                "df.reindex()",
+                "new_index()"
+            ],
+            "answer": 0,
+            "explanation": "Transforme l'index actuel en colonne."
+        },
+        {
+            "id": 41,
+            "question": "Quel axe représente les lignes (rows) ?",
+            "options": [
+                "axis=0",
+                "axis=1",
+                "axis=2",
+                "x"
+            ],
+            "answer": 0,
+            "explanation": "axis=1 pour les colonnes."
+        },
+        {
+            "id": 42,
+            "question": "Quelle librairie pour le traitement d'images ?",
+            "options": [
+                "Pillow (PIL) / OpenCV",
+                "Pandas",
+                "Requests",
+                "Flask"
+            ],
+            "answer": 0,
+            "explanation": "OpenCV est le standard vision."
+        },
+        {
+            "id": 43,
+            "question": "Comment concaténer verticalement (empiler) ?",
+            "options": [
+                "pd.concat([df1, df2], axis=0)",
+                "pd.merge()",
+                "df.append()",
+                "stack()"
+            ],
+            "answer": 0,
+            "explanation": "Ajoute des lignes."
+        },
+        {
+            "id": 44,
+            "question": "Qu'est-ce que Kaggle ?",
+            "options": [
+                "Plateforme de compétitions Data Science",
+                "Une librairie",
+                "Un langage",
+                "Un outil"
+            ],
+            "answer": 0,
+            "explanation": "Source de datasets et notebooks."
+        },
+        {
+            "id": 45,
+            "question": "Comment transposer un DataFrame (inverser lignes/cols) ?",
+            "options": [
+                "df.T",
+                "df.transpose()",
+                "Les deux",
+                "invers()"
+            ],
+            "answer": 2,
+            "explanation": "Propriété T."
+        },
+        {
+            "id": 46,
+            "question": "Quel algo pour la classification binaire ?",
+            "options": [
+                "Régression Logistique",
+                "Régression Linéaire",
+                "K-Means",
+                "PCA"
+            ],
+            "answer": 0,
+            "explanation": "Malgré son nom, c'est pour classer (0 ou 1)."
+        },
+        {
+            "id": 47,
+            "question": "Comment créer une série temporelle ?",
+            "options": [
+                "pd.date_range()",
+                "pd.time()",
+                "range()",
+                "date()"
+            ],
+            "answer": 0,
+            "explanation": "Génère une séquence de dates."
+        },
+        {
+            "id": 48,
+            "question": "Quel est le format 'Pickle' ?",
+            "options": [
+                "Sérialisation binaire Python",
+                "Un légume",
+                "Texte",
+                "JSON"
+            ],
+            "answer": 0,
+            "explanation": "Pour sauvegarder des objets Python complexes."
+        },
+        {
+            "id": 49,
+            "question": "Comment remplacer les valeurs ?",
+            "options": [
+                "df.replace()",
+                "df.sub()",
+                "df.switch()",
+                "df.change()"
+            ],
+            "answer": 0,
+            "explanation": "Par dictionnaire ou scalaires."
+        },
+        {
+            "id": 50,
+            "question": "Quelle méthode pour le scraping statique ?",
+            "options": [
+                "BeautifulSoup",
+                "Selenium",
+                "Scrapy",
+                "Pandas"
+            ],
+            "answer": 0,
+            "explanation": "Parse le HTML."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que PCA (ACP) ?",
+            "options": [
+                "Analyse en Composantes Principales (Réduction de dimension)",
+                "Un club",
+                "Algorithme de tri",
+                "Base de données"
+            ],
+            "answer": 0,
+            "explanation": "Projette les données sur des axes principaux pour simplifier."
+        },
+        {
+            "id": 52,
+            "question": "Comment faire un pivot table (TCD) ?",
+            "options": [
+                "df.pivot_table()",
+                "df.pivot()",
+                "df.table()",
+                "df.xlsx()"
+            ],
+            "answer": 0,
+            "explanation": "Comme dans Excel."
+        },
+        {
+            "id": 53,
+            "question": "Quelle fonction pour un graphique en nuage de points ?",
+            "options": [
+                "plt.scatter()",
+                "plt.plot()",
+                "plt.bar()",
+                "plt.hist()"
+            ],
+            "answer": 0,
+            "explanation": "Scatter plot."
+        },
+        {
+            "id": 54,
+            "question": "Que signifie EDA ?",
+            "options": [
+                "Exploratory Data Analysis",
+                "Electronic Data Assoc",
+                "Error Data Area",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Étape cruciale avant le ML."
+        },
+        {
+            "id": 55,
+            "question": "Comment lire un fichier JSON ?",
+            "options": [
+                "pd.read_json()",
+                "json.load()",
+                "pd.load()",
+                "pd.import()"
+            ],
+            "answer": 0,
+            "explanation": "Pandas gère nativement le JSON."
+        },
+        {
+            "id": 56,
+            "question": "Quel est l'avantage de Polars ?",
+            "options": [
+                "Alternative ultra-rapide à Pandas (Rust)",
+                "Une bière",
+                "Un animal",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Gagne en popularité pour les gros datasets."
+        },
+        {
+            "id": 57,
+            "question": "Qu'est-ce qu'un Pipeline Scikit-learn ?",
+            "options": [
+                "Enchaînement d'étapes de transformation et modèle",
+                "Un tuyau",
+                "Un script",
+                "Un graphe"
+            ],
+            "answer": 0,
+            "explanation": "Assure que les mêmes transfos sont appliquées au train et test."
+        },
+        {
+            "id": 58,
+            "question": "Comment faire un échantillonnage aléatoire ?",
+            "options": [
+                "df.sample()",
+                "df.random()",
+                "df.take()",
+                "df.shuffle()"
+            ],
+            "answer": 0,
+            "explanation": "Avec n= ou frac=."
+        },
+        {
+            "id": 59,
+            "question": "Quelle librairie NLP (Traitement Langage Naturel) ?",
+            "options": [
+                "Spacy / NLTK",
+                "OpenCV",
+                "Pandas",
+                "Requests"
+            ],
+            "answer": 0,
+            "explanation": "Tokenization, POS tagging..."
+        },
+        {
+            "id": 60,
+            "question": "Qu'est-ce que le Big Data ?",
+            "options": [
+                "Volume, Vélocité, Variété (3V)",
+                "Gros fichier",
+                "Base SQL",
+                "Internet"
+            ],
+            "answer": 0,
+            "explanation": "Données massives ingérables par outils classiques."
+        },
+        {
+            "id": 61,
+            "question": "Comment détecter les outliers (aberrations) ?",
+            "options": [
+                "Boxplot / Z-score",
+                "Moyenne",
+                "Tri",
+                "Regarder"
+            ],
+            "answer": 0,
+            "explanation": "Points loin de la distribution."
+        },
+        {
+            "id": 62,
+            "question": "Quel framework pour le Big Data distribué (Python) ?",
+            "options": [
+                "PySpark (Apache Spark)",
+                "Hadoop",
+                "Dask",
+                "Tous"
+            ],
+            "answer": 3,
+            "explanation": "PySpark et Dask permettent de paralléliser sur un cluster."
+        },
+        {
+            "id": 63,
+            "question": "Comment renommer des colonnes ?",
+            "options": [
+                "df.rename(columns={'old': 'new'})",
+                "df.col = new",
+                "df.names()",
+                "df.header()"
+            ],
+            "answer": 0,
+            "explanation": "Retourne un nouveau DF sauf si inplace=True."
+        },
+        {
+            "id": 64,
+            "question": "Quelle métrique pour la classification ?",
+            "options": [
+                "Accuracy / F1-Score / ROC-AUC",
+                "RMSE",
+                "MAE",
+                "R2"
+            ],
+            "answer": 0,
+            "explanation": "RMSE est pour la régression."
+        },
+        {
+            "id": 65,
+            "question": "Qu'est-ce que `broadcasting` en NumPy ?",
+            "options": [
+                "Opérations entre tableaux de tailles différentes",
+                "Diffusion TV",
+                "Message",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Ex: array + 1 ajoute 1 à tous les éléments."
+        },
+        {
+            "id": 66,
+            "question": "Comment tracer une Heatmap ?",
+            "options": [
+                "sns.heatmap()",
+                "plt.heat()",
+                "df.heat()",
+                "map()"
+            ],
+            "answer": 0,
+            "explanation": "Très utilisé avec la matrice de corrélation."
+        },
+        {
+            "id": 67,
+            "question": "Quel est le type des données catégorielles ?",
+            "options": [
+                "category / object",
+                "int",
+                "float",
+                "bool"
+            ],
+            "answer": 0,
+            "explanation": "Optimise la mémoire si peu de valeurs uniques."
+        },
+        {
+            "id": 68,
+            "question": "Comment formatter une date string en datetime ?",
+            "options": [
+                "pd.to_datetime()",
+                "date()",
+                "format()",
+                "cast()"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour manipuler le temps."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce que Streamlit ?",
+            "options": [
+                "Framework pour créer des Data Apps web rapidement",
+                "Un stream",
+                "Une lib ML",
+                "Un IDE"
+            ],
+            "answer": 0,
+            "explanation": "Transforme un script Python en app web interactive."
+        },
+        {
+            "id": 70,
+            "question": "Comment supprimer les doublons ?",
+            "options": [
+                "df.drop_duplicates()",
+                "df.unique()",
+                "df.clean()",
+                "df.distinct()"
+            ],
+            "answer": 0,
+            "explanation": "Garde la première occurrence par défaut."
+        },
+        {
+            "id": 71,
+            "question": "Quelle est la différence entre `bar` et `hist` ?",
+            "options": [
+                "Bar = Catégorique, Hist = Distribution (Continu)",
+                "Inverse",
+                "Aucune",
+                "Couleur"
+            ],
+            "answer": 0,
+            "explanation": "Histogramme groupe les valeurs en 'bins'."
+        },
+        {
+            "id": 72,
+            "question": "Comment changer l'index ?",
+            "options": [
+                "df.set_index('Col')",
+                "df.index = col",
+                "df.move()",
+                "df.change()"
+            ],
+            "answer": 0,
+            "explanation": "Définit une colonne comme index."
+        },
+        {
+            "id": 73,
+            "question": "Qu'est-ce qu'un Tensor ?",
+            "options": [
+                "Tableau multidimensionnel (généralisation de matrice) pour GPU",
+                "Un muscle",
+                "Un nombre",
+                "Une liste"
+            ],
+            "answer": 0,
+            "explanation": "Base de TensorFlow et PyTorch."
+        },
+        {
+            "id": 74,
+            "question": "Comment installer Pandas ?",
+            "options": [
+                "pip install pandas",
+                "npm install pandas",
+                "get pandas",
+                "load pandas"
+            ],
+            "answer": 0,
+            "explanation": "Standard pip."
+        },
+        {
+            "id": 75,
+            "question": "Quel format conserve les types de données ?",
+            "options": [
+                "Parquet",
+                "CSV",
+                "TXT",
+                "Aucun"
+            ],
+            "answer": 0,
+            "explanation": "CSV perd souvent les types (tout devient string/object et doit être re-parsé)."
+        },
+        {
+            "id": 76,
+            "question": "Comment faire une rolling average (moyenne mobile) ?",
+            "options": [
+                "df.rolling(window=7).mean()",
+                "df.mean(7)",
+                "df.moving()",
+                "df.smooth()"
+            ],
+            "answer": 0,
+            "explanation": "Lisse les courbes."
+        },
+        {
+            "id": 77,
+            "question": "Que fait `df.iloc[0]` ?",
+            "options": [
+                "Sélectionne la première ligne",
+                "La colonne 0",
+                "L'élément 0,0",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Indexation par position zéro (0)."
+        },
+        {
+            "id": 78,
+            "question": "Comment fusionner gauche (Left Join) ?",
+            "options": [
+                "pd.merge(df1, df2, how='left')",
+                "left_join()",
+                "df1.left(df2)",
+                "join()"
+            ],
+            "answer": 0,
+            "explanation": "Garde toutes les clés de gauche."
+        },
+        {
+            "id": 79,
+            "question": "Quelle fonction applique une aggregation ?",
+            "options": [
+                "df.agg() / df.aggregate()",
+                "df.sum()",
+                "df.calc()",
+                "df.group()"
+            ],
+            "answer": 0,
+            "explanation": "Permet plusieurs fonctions: .agg(['sum', 'mean'])."
+        },
+        {
+            "id": 80,
+            "question": "Qu'est-ce que JupyterLab ?",
+            "options": [
+                "Evolution moderne de Jupyter Notebook",
+                "Un labo",
+                "Un test",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "IDE web extensible."
+        },
+        {
+            "id": 81,
+            "question": "Comment créer un DataFrame manuel ?",
+            "options": [
+                "pd.DataFrame({'A': [1,2], 'B': [3,4]})",
+                "pd.create()",
+                "df()",
+                "table()"
+            ],
+            "answer": 0,
+            "explanation": "À partir d'un dictionnaire de listes."
+        },
+        {
+            "id": 82,
+            "question": "Quel est l'axe des colonnes dans `drop` ?",
+            "options": [
+                "axis=1",
+                "axis=0",
+                "axis='index'",
+                "axis='rows'"
+            ],
+            "answer": 0,
+            "explanation": "Il faut spécifier axis=1 pour drop une colonne."
+        },
+        {
+            "id": 83,
+            "question": "Comment convertir en liste Python ?",
+            "options": [
+                "df.values.tolist()",
+                "list(df)",
+                "df.to_list()",
+                "df.convert()"
+            ],
+            "answer": 0,
+            "explanation": "list(df) donne juste les noms de colonnes."
+        },
+        {
+            "id": 84,
+            "question": "Qu'est-ce que `idxmax()` ?",
+            "options": [
+                "Index de la valeur maximale",
+                "Valeur max",
+                "ID",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Argmax."
+        },
+        {
+            "id": 85,
+            "question": "Comment remplir les NaNs par la moyenne ?",
+            "options": [
+                "df.fillna(df.mean())",
+                "df.mean()",
+                "df.replace(NaN, mean)",
+                "df.fix()"
+            ],
+            "answer": 0,
+            "explanation": "Imputation simple."
+        },
+        {
+            "id": 86,
+            "question": "Quel module pour les stats avancées (tests t, p-values) ?",
+            "options": [
+                "scipy.stats / statsmodels",
+                "numpy",
+                "pandas",
+                "math"
+            ],
+            "answer": 0,
+            "explanation": "Complète NumPy/Pandas."
+        },
+        {
+            "id": 87,
+            "question": "Comment extraire l'année d'une colonne date ?",
+            "options": [
+                "df['date'].dt.year",
+                "year(df)",
+                "df.year",
+                "df['date'].year"
+            ],
+            "answer": 0,
+            "explanation": "Accesseur .dt."
+        },
+        {
+            "id": 88,
+            "question": "Quel est le principal défaut de Pandas ?",
+            "options": [
+                "Gourmand en mémoire (tout en RAM)",
+                "Lent",
+                "Moche",
+                "Payant"
+            ],
+            "answer": 0,
+            "explanation": "Pour les données > RAM, utiliser Dask ou Polars."
+        },
+        {
+            "id": 89,
+            "question": "Comment inverser l'ordre ?",
+            "options": [
+                "df.iloc[::-1]",
+                "df.reverse()",
+                "df.flip()",
+                "df.back()"
+            ],
+            "answer": 0,
+            "explanation": "Slicing numpy."
+        },
+        {
+            "id": 90,
+            "question": "Qu'est-ce que Anaconda ?",
+            "options": [
+                "Distribution Python incluant Data Science packs + Conda",
+                "Un serpent",
+                "Un IDE",
+                "Un virus"
+            ],
+            "answer": 0,
+            "explanation": "Simplifie l'installation de l'environnement scientifique."
+        },
+        {
+            "id": 91,
+            "question": "Comment faire un histogramme rapide ?",
+            "options": [
+                "df.hist()",
+                "df.plot()",
+                "df.show()",
+                "hist(df)"
+            ],
+            "answer": 0,
+            "explanation": "Utilise matplotlib backend."
+        },
+        {
+            "id": 92,
+            "question": "Quel argument pour lire seulement 10 lignes CSV ?",
+            "options": [
+                "nrows=10",
+                "lines=10",
+                "limit=10",
+                "head=10"
+            ],
+            "answer": 0,
+            "explanation": "pd.read_csv(..., nrows=10)."
+        },
+        {
+            "id": 93,
+            "question": "Comment calculer la covariance ?",
+            "options": [
+                "df.cov()",
+                "df.var()",
+                "df.std()",
+                "df.cor()"
+            ],
+            "answer": 0,
+            "explanation": "Non normalisée contrairement à la corrélation."
+        },
+        {
+            "id": 94,
+            "question": "Quel est le format natif HDF5 ?",
+            "options": [
+                "Hiérarchique, pour gros datasets num",
+                "Texte",
+                "Image",
+                "Son"
+            ],
+            "answer": 0,
+            "explanation": "pd.HDFStore."
+        },
+        {
+            "id": 95,
+            "question": "Comment styliser un DataFrame (couleurs) dans Jupyter ?",
+            "options": [
+                "df.style",
+                "df.css",
+                "df.color",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Retourne un objet Styler (background_gradient, etc)."
+        },
+        {
+            "id": 96,
+            "question": "Quelle fonction pour 'exploser' une liste en lignes ?",
+            "options": [
+                "df.explode('col')",
+                "df.expand()",
+                "df.split()",
+                "df.list()"
+            ],
+            "answer": 0,
+            "explanation": "Transforme [1,2] en 2 lignes."
+        },
+        {
+            "id": 97,
+            "question": "Qu'est-ce que 'Method Chaining' ?",
+            "options": [
+                "df.dropna().groupby().mean()",
+                "Fonctions imbriquées",
+                "Boucles",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Style fluide pandas."
+        },
+        {
+            "id": 98,
+            "question": "Comment accéder aux valeurs NumPy sous-jacentes ?",
+            "options": [
+                "df.values ou df.to_numpy()",
+                "df.np",
+                "df.array",
+                "df.data"
+            ],
+            "answer": 0,
+            "explanation": "Renvoie un ndarray."
+        },
+        {
+            "id": 99,
+            "question": "Quel paramètre pour gérer les séparateurs CSV différents ?",
+            "options": [
+                "sep=';'",
+                "delimiter=','",
+                "split=';'",
+                "char=';'"
+            ],
+            "answer": 0,
+            "explanation": "Par défaut ','."
+        },
+        {
+            "id": 100,
+            "question": "Pourquoi Python domine la Data Science ?",
+            "options": [
+                "Simplicité + Puissance des librairies (C/C++ backend)",
+                "Vitesse pure",
+                "Marketing",
+                "Hasard"
+            ],
+            "answer": 0,
+            "explanation": "Le 'Glue Language' parfait."
         }
     ]
 }

@@ -1,248 +1,1208 @@
 {
     "meta": {
-        "title": "Quiz Java Expert",
-        "total": 20
+        "title": "Quiz Java Expert - 100 Questions",
+        "total": 100
     },
     "questions": [
         {
             "id": 1,
-            "question": "Quel est le point d'entrée d'un programme Java ?",
+            "question": "Qui a créé Java ?",
             "options": [
-                "public static void main(String[] args)",
-                "start()",
-                "init()",
-                "run()"
+                "James Gosling",
+                "Bjarne Stroustrup",
+                "Guido van Rossum",
+                "Dennis Ritchie"
             ],
             "answer": 0,
-            "explanation": "Signature obligatoire pour la méthode principale."
+            "explanation": "Chez Sun Microsystems en 1995."
         },
         {
             "id": 2,
-            "question": "Java est-il compilé ou interprété ?",
+            "question": "Quelle est la taille d'un int en Java ?",
             "options": [
-                "Compilé",
-                "Interprété",
-                "Les deux (Bytecode + JVM)",
-                "Transpilé"
+                "32 bits",
+                "16 bits",
+                "64 bits",
+                "Dépend de l'OS"
             ],
-            "answer": 2,
-            "explanation": "Compilé en Bytecode (.class), puis interprété/JIT par la JVM."
+            "answer": 0,
+            "explanation": "Les types primitifs ont une taille fixe (contrairement au C)."
         },
         {
             "id": 3,
-            "question": "Quel mot-clé pour l'héritage ?",
+            "question": "Comment déclarer une constante ?",
             "options": [
-                "implements",
-                "extends",
-                "inherits",
-                "super"
-            ],
-            "answer": 1,
-            "explanation": "class Enfant extends Parent."
-        },
-        {
-            "id": 4,
-            "question": "Quelle collection ne contient pas de doublons ?",
-            "options": [
-                "List",
-                "Set",
-                "Map",
-                "Queue"
-            ],
-            "answer": 1,
-            "explanation": "Set (ex: HashSet) garantit l'unicité."
-        },
-        {
-            "id": 5,
-            "question": "Comment comparer le contenu de deux Strings ?",
-            "options": [
-                "s1 == s2",
-                "s1.equals(s2)",
-                "s1.compare(s2)",
-                "s1 = s2"
-            ],
-            "answer": 1,
-            "explanation": "== compare les références mémoire. .equals() compare le contenu."
-        },
-        {
-            "id": 6,
-            "question": "Quel mot-clé définit une constante ?",
-            "options": [
-                "const",
                 "final",
+                "const",
                 "static",
                 "immutable"
             ],
-            "answer": 1,
-            "explanation": "final int MAX = 10;"
+            "answer": 0,
+            "explanation": "Mot-clé final."
         },
         {
-            "id": 7,
-            "question": "Qu'est-ce qu'une Interface ?",
+            "id": 4,
+            "question": "Quel est le point d'entrée d'un programme ?",
             "options": [
-                "Une classe abstraite pure",
-                "Une fenêtre graphique",
-                "Un pointeur",
-                "Un module"
+                "public static void main(String[] args)",
+                "void main()",
+                "public void main()",
+                "Start()"
             ],
             "answer": 0,
-            "explanation": "Contrat définissant des méthodes sans implémentation (avant Java 8)."
+            "explanation": "Signature exacte requise par la JVM."
         },
         {
-            "id": 8,
-            "question": "Comment gérer les exceptions ?",
+            "id": 5,
+            "question": "Java est-il 100% orienté objet ?",
             "options": [
-                "try/catch/finally",
-                "if/error",
-                "try/except",
-                "do/rescue"
+                "Non (types primitifs)",
+                "Oui",
+                "Seulement Java 8+",
+                "Je ne sais pas"
             ],
             "answer": 0,
-            "explanation": "Standard Java."
+            "explanation": "int, boolean, etc. ne sont pas des objets."
         },
         {
-            "id": 9,
-            "question": "La classe racine de toutes les classes ?",
+            "id": 6,
+            "question": "Quelle classe est la racine de tous les objets ?",
             "options": [
-                "Class",
                 "Object",
                 "Root",
-                "Java"
+                "Class",
+                "Main"
             ],
-            "answer": 1,
+            "answer": 0,
             "explanation": "java.lang.Object."
         },
         {
-            "id": 10,
-            "question": "Que sont les Generics ?",
+            "id": 7,
+            "question": "Comment comparer le contenu de deux Strings ?",
             "options": [
-                "Des types paramétrés <T>",
-                "Des fonctions générales",
-                "Des classes publiques",
-                "Des variables"
+                "s1.equals(s2)",
+                "s1 == s2",
+                "s1.compare(s2)",
+                "s1 = s2"
             ],
             "answer": 0,
-            "explanation": "Permet de créer des classes/méthodes fonctionnant sur divers types avec sécurité."
+            "explanation": "== compare les références mémoire."
+        },
+        {
+            "id": 8,
+            "question": "Quel mot-clé pour l'héritage ?",
+            "options": [
+                "extends",
+                "implements",
+                "inherits",
+                ":"
+            ],
+            "answer": 0,
+            "explanation": "implements est pour les interfaces."
+        },
+        {
+            "id": 9,
+            "question": "Peut-on hériter de plusieurs classes ?",
+            "options": [
+                "Non (Héritage simple)",
+                "Oui",
+                "Seulement des classes abstraites",
+                "Oui en Java 15"
+            ],
+            "answer": 0,
+            "explanation": "Pour éviter le problème du diamant. Mais implementer plusieurs interfaces oui."
+        },
+        {
+            "id": 10,
+            "question": "Quel est le rôle du Garage Collector (GC) ?",
+            "options": [
+                "Libérer la mémoire inutilisée",
+                "Compacter le code",
+                "Compiler",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Gestion automatique de la mémoire."
         },
         {
             "id": 11,
-            "question": "Quel flux pour lire un fichier texte ?",
+            "question": "Quelle collection ne contient pas de doublons ?",
             "options": [
-                "FileReader / BufferedReader",
-                "FileInputStream",
-                "FileScanner",
-                "FileLoader"
+                "Set",
+                "List",
+                "ArrayList",
+                "Map"
             ],
             "answer": 0,
-            "explanation": "BufferedReader offre de meilleures perfs pour le texte."
+            "explanation": "Interface Set (HashSet, TreeSet...)."
         },
         {
             "id": 12,
-            "question": "Qu'est-ce que le constructeur ?",
+            "question": "Comment convertir un String '123' en int ?",
             "options": [
-                "Une méthode appelée à la création",
-                "Un outil de build",
-                "Un ouvrier",
-                "Une variable"
-            ],
-            "answer": 0,
-            "explanation": "Même nom que la classe, pas de retour."
-        },
-        {
-            "id": 13,
-            "question": "Mot-clé pour une variable de classe (partagée) ?",
-            "options": [
-                "static",
-                "shared",
-                "global",
-                "public"
-            ],
-            "answer": 0,
-            "explanation": "static appartient à la classe, pas à l'instance."
-        },
-        {
-            "id": 14,
-            "question": "Quelle API gère les traitements fonctionnels (map, filter) ?",
-            "options": [
-                "Stream API",
-                "Function API",
-                "Collection API",
-                "List API"
-            ],
-            "answer": 0,
-            "explanation": "Depuis Java 8. list.stream().filter(...)"
-        },
-        {
-            "id": 15,
-            "question": "Visibilité par défaut (package-private) ?",
-            "options": [
-                "public",
-                "private",
-                "protected",
-                "(aucune)"
-            ],
-            "answer": 3,
-            "explanation": "Si aucun modificateur n'est mis, c'est visible dans le package uniquement."
-        },
-        {
-            "id": 16,
-            "question": "Comment créer un Thread ?",
-            "options": [
-                "new Thread()",
-                "extends Thread ou implements Runnable",
-                "start Thread",
-                "create Process"
-            ],
-            "answer": 1,
-            "explanation": "Implémenter Runnable est souvent préféré."
-        },
-        {
-            "id": 17,
-            "question": "Qu'est-ce que le Garbage Collector ?",
-            "options": [
-                "Nettoyeur de mémoire automatique",
-                "Un éboueur",
-                "Un destructeur",
-                "Un virus"
-            ],
-            "answer": 0,
-            "explanation": "Libère la mémoire des objets qui ne sont plus référencés."
-        },
-        {
-            "id": 18,
-            "question": "Maven est...",
-            "options": [
-                "Un outil de build et gestion de dépendances",
-                "Un serveur",
-                "Une classe",
-                "Un IDE"
-            ],
-            "answer": 0,
-            "explanation": "Utilise pom.xml."
-        },
-        {
-            "id": 19,
-            "question": "Comment convertir String '10' en int ?",
-            "options": [
-                "Integer.parseInt('10')",
-                "(int)'10'",
-                "Int('10')",
-                "Convert.toInt('10')"
+                "Integer.parseInt('123')",
+                "String.toInt('123')",
+                "(int)'123'",
+                "Int.parse('123')"
             ],
             "answer": 0,
             "explanation": "Méthode statique de la classe Wrapper Integer."
         },
         {
-            "id": 20,
-            "question": "Quel mot-clé empêche l'héritage ?",
+            "id": 13,
+            "question": "Quelle interface fonctionnelle pour une fonction sans retour ?",
             "options": [
-                "final",
-                "stop",
-                "sealed",
-                "static"
+                "Runnable / Consumer",
+                "Supplier",
+                "Function",
+                "Predicate"
             ],
             "answer": 0,
-            "explanation": "public final class MaClasse { ... }"
+            "explanation": "Consumer<T> prend un T et renvoie void."
+        },
+        {
+            "id": 14,
+            "question": "Que fait `super()` ?",
+            "options": [
+                "Appelle le constructeur parent",
+                "Appelle une méthode statique",
+                "Crée un objet",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Doit être la première ligne du constructeur."
+        },
+        {
+            "id": 15,
+            "question": "Quel est le scope par défaut (package-private) ?",
+            "options": [
+                "Aucun mot-clé",
+                "protected",
+                "private",
+                "public"
+            ],
+            "answer": 0,
+            "explanation": "Visible dans le même package seulement."
+        },
+        {
+            "id": 16,
+            "question": "Comment créer un thread ?",
+            "options": [
+                "Extends Thread ou Implements Runnable",
+                "New Thread()",
+                "Start()",
+                "Run()"
+            ],
+            "answer": 0,
+            "explanation": "Puis appeler .start()."
+        },
+        {
+            "id": 17,
+            "question": "Qu'est-ce qu'une interface fonctionnelle ?",
+            "options": [
+                "Interface avec EXACTEMENT une méthode abstraite",
+                "Interface vide",
+                "Interface avec code",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Cible pour les Lambdas."
+        },
+        {
+            "id": 18,
+            "question": "Quelle nouveauté Java 8 a révolutionné le langage ?",
+            "options": [
+                "Lambdas & Streams",
+                "Generics",
+                "Enums",
+                "Var"
+            ],
+            "answer": 0,
+            "explanation": "Programmation fonctionnelle."
+        },
+        {
+            "id": 19,
+            "question": "Que retourne `Optional.empty()` ?",
+            "options": [
+                "Un conteneur vide",
+                "null",
+                "Void",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Évite les NullPointerExceptions."
+        },
+        {
+            "id": 20,
+            "question": "Quel mot-clé empêche la modification d'une méthode ?",
+            "options": [
+                "final",
+                "static",
+                "locked",
+                "sealed"
+            ],
+            "answer": 0,
+            "explanation": "Une méthode final ne peut pas être surchargée (@Override)."
+        },
+        {
+            "id": 21,
+            "question": "Dans une Map, comment sont stockées les données ?",
+            "options": [
+                "Paires Clé-Valeur",
+                "Liste",
+                "Index",
+                "Arbre"
+            ],
+            "answer": 0,
+            "explanation": "HashMap, TreeMap..."
+        },
+        {
+            "id": 22,
+            "question": "Quelle boucle pour itérer sur une collection (Java 5+) ?",
+            "options": [
+                "for (Type item : collection)",
+                "foreach item in collection",
+                "loop collection",
+                "iterate"
+            ],
+            "answer": 0,
+            "explanation": "Enhanced for-loop."
+        },
+        {
+            "id": 23,
+            "question": "Comment gérer les exceptions ?",
+            "options": [
+                "try / catch / finally",
+                "try / except",
+                "do / catch",
+                "begin / rescue"
+            ],
+            "answer": 0,
+            "explanation": "Checked et Unchecked exceptions."
+        },
+        {
+            "id": 24,
+            "question": "Quel outil de build est le plus ancien ?",
+            "options": [
+                "Ant",
+                "Maven",
+                "Gradle",
+                "Make"
+            ],
+            "answer": 0,
+            "explanation": "Ant (XML procédural), puis Maven (déclaratif), puis Gradle."
+        },
+        {
+            "id": 25,
+            "question": "Comment rendre une classe immuable ?",
+            "options": [
+                "Champs private final, pas de setters, classe final",
+                "Mot-clé immutable",
+                "Uniquement des getters",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Comme String."
+        },
+        {
+            "id": 26,
+            "question": "Qu'est-ce qu'un Record (Java 14+) ?",
+            "options": [
+                "Une classe de données immuable concise",
+                "Un tableau",
+                "Un fichier",
+                "Une musique"
+            ],
+            "answer": 0,
+            "explanation": "public record Point(int x, int y) {}"
+        },
+        {
+            "id": 27,
+            "question": "Quel mot-clé pour définir des variables locales sans type (Java 10+) ?",
+            "options": [
+                "var",
+                "val",
+                "let",
+                "auto"
+            ],
+            "answer": 0,
+            "explanation": "Inférence de type locale."
+        },
+        {
+            "id": 28,
+            "question": "Quelle classe pour les chaînes modifiables ?",
+            "options": [
+                "StringBuilder / StringBuffer",
+                "String",
+                "CharList",
+                "Text"
+            ],
+            "answer": 0,
+            "explanation": "String est immuable. Utiliser StringBuilder pour concaténer."
+        },
+        {
+            "id": 29,
+            "question": "Quelle est la visibilité de `protected` ?",
+            "options": [
+                "Package + Sous-classes",
+                "Package seulement",
+                "Tout le monde",
+                "Classe"
+            ],
+            "answer": 0,
+            "explanation": "Plus large que package-private."
+        },
+        {
+            "id": 30,
+            "question": "Comment appeler une méthode statique ?",
+            "options": [
+                "Classe.method()",
+                "Instance.method()",
+                "New Classe.method()",
+                "method()"
+            ],
+            "answer": 0,
+            "explanation": "Appartient à la classe, pas à l'instance."
+        },
+        {
+            "id": 31,
+            "question": "Qu'est-ce que le bytecode ?",
+            "options": [
+                "Code intermédiaire (.class) exécuté par la JVM",
+                "Code machine",
+                "Code source",
+                "Binaire"
+            ],
+            "answer": 0,
+            "explanation": "Write Once, Run Anywhere."
+        },
+        {
+            "id": 32,
+            "question": "Quel type de polymorphisme utilise @Override ?",
+            "options": [
+                "Polymorphisme d'inclusion (Runtime)",
+                "Ad-hoc (Surcharge)",
+                "Paramétrique",
+                "Aucun"
+            ],
+            "answer": 0,
+            "explanation": "Dynamic Dispatch."
+        },
+        {
+            "id": 33,
+            "question": "Comment trier une liste ?",
+            "options": [
+                "Collections.sort(list) ou list.sort()",
+                "Array.sort()",
+                "Sort(list)",
+                "Order()"
+            ],
+            "answer": 0,
+            "explanation": "Utilise l'interface Comparable ou Comparator."
+        },
+        {
+            "id": 34,
+            "question": "Qu'est-ce que `this` ?",
+            "options": [
+                "Référence à l'instance courante",
+                "La classe",
+                "Le parent",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'accéder aux champs de l'objet."
+        },
+        {
+            "id": 35,
+            "question": "Quelle exception si on divise par zéro (entier) ?",
+            "options": [
+                "ArithmeticException",
+                "NullPointerException",
+                "ZeroDivisionError",
+                "MathError"
+            ],
+            "answer": 0,
+            "explanation": "Pour les flottants, donne Infinity."
+        },
+        {
+            "id": 36,
+            "question": "Comment définir une constante de classe ?",
+            "options": [
+                "static final",
+                "const static",
+                "final static",
+                "const"
+            ],
+            "answer": 0,
+            "explanation": "public static final double PI = 3.14;"
+        },
+        {
+            "id": 37,
+            "question": "Quel est le type de retour du constructeur ?",
+            "options": [
+                "Aucun (pas même void)",
+                "void",
+                "La classe",
+                "Object"
+            ],
+            "answer": 0,
+            "explanation": "C'est une méthode spéciale."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce qu'une Classe Abstraite ?",
+            "options": [
+                "Classe qu'on ne peut pas instancier",
+                "Interface",
+                "Classe vide",
+                "Concept"
+            ],
+            "answer": 0,
+            "explanation": "Peut contenir du code et des méthodes abstraites."
+        },
+        {
+            "id": 39,
+            "question": "Comment forcer l'exécution du GC ?",
+            "options": [
+                "System.gc() (suggestion)",
+                "Runtime.gc()",
+                "gc()",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "C'est juste une suggestion à la JVM."
+        },
+        {
+            "id": 40,
+            "question": "Quel Design Pattern est utilisé par `StringBuilder` ?",
+            "options": [
+                "Builder",
+                "Factory",
+                "Singleton",
+                "Adapter"
+            ],
+            "answer": 0,
+            "explanation": "Chaînage de méthodes (.append().append())."
+        },
+        {
+            "id": 41,
+            "question": "Quelle méthode est appelée quand un objet est imprimé ?",
+            "options": [
+                "toString()",
+                "print()",
+                "string()",
+                "display()"
+            ],
+            "answer": 0,
+            "explanation": "Renvoie le hashcode par défaut, à redéfinir."
+        },
+        {
+            "id": 42,
+            "question": "Comment vérifier si `obj` est de type `String` ?",
+            "options": [
+                "obj instanceof String",
+                "type(obj) == String",
+                "obj.class == String",
+                "isObject(obj)"
+            ],
+            "answer": 0,
+            "explanation": "Pattern matching moderne: if (obj instanceof String s) ..."
+        },
+        {
+            "id": 43,
+            "question": "Quelle est la classe parente des Exceptions ?",
+            "options": [
+                "Throwable",
+                "Exception",
+                "Error",
+                "Object"
+            ],
+            "answer": 0,
+            "explanation": "Throwable a deux fils: Error et Exception."
+        },
+        {
+            "id": 44,
+            "question": "Comment concaténer des streams ?",
+            "options": [
+                "Stream.concat(a, b)",
+                "a + b",
+                "a.add(b)",
+                "a.concat(b)"
+            ],
+            "answer": 0,
+            "explanation": "Méthode statique."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que Javadoc ?",
+            "options": [
+                "Outil de documentation standard",
+                "Un docteur",
+                "Un fichier",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Commentaires /** ... */."
+        },
+        {
+            "id": 46,
+            "question": "Quel flag active le mode preview ?",
+            "options": [
+                "--enable-preview",
+                "-preview",
+                "--beta",
+                "--future"
+            ],
+            "answer": 0,
+            "explanation": "Pour tester les features expérimentales."
+        },
+        {
+            "id": 47,
+            "question": "Quelle collection est Thread-Safe ?",
+            "options": [
+                "Vector / ConcurrentHashMap",
+                "ArrayList",
+                "HashMap",
+                "HashSet"
+            ],
+            "answer": 0,
+            "explanation": "Vector est vieux, préférer les classes de java.util.concurrent."
+        },
+        {
+            "id": 48,
+            "question": "Que fait `list.stream().map(...)` ?",
+            "options": [
+                "Transforme chaque élément",
+                "Filtre",
+                "Trie",
+                "Réduit"
+            ],
+            "answer": 0,
+            "explanation": "Opération intermédiaire."
+        },
+        {
+            "id": 49,
+            "question": "Comment lire un fichier (Java 11+) ?",
+            "options": [
+                "Files.readString(path)",
+                "File.read()",
+                "FileReader",
+                "Scanner"
+            ],
+            "answer": 0,
+            "explanation": "Très simple désormais."
+        },
+        {
+            "id": 50,
+            "question": "Quel mot-clé interrompt une itération ?",
+            "options": [
+                "continue",
+                "break",
+                "return",
+                "stop"
+            ],
+            "answer": 0,
+            "explanation": "break sort de la boucle, continue passe à la suivante."
+        },
+        {
+            "id": 51,
+            "question": "Que signifie API ?",
+            "options": [
+                "Application Programming Interface",
+                "App In Java",
+                "Apple Pie Isgood",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Interface pour interagir avec un système."
+        },
+        {
+            "id": 52,
+            "question": "Quelle est la complexité d'accès HashMap ?",
+            "options": [
+                "O(1) en moyenne",
+                "O(n)",
+                "O(log n)",
+                "O(n^2)"
+            ],
+            "answer": 0,
+            "explanation": "Grâce au hashing."
+        },
+        {
+            "id": 53,
+            "question": "Comment définir une Enum ?",
+            "options": [
+                "enum Color { RED, GREEN }",
+                "class Enum",
+                "const Enum",
+                "type Enum"
+            ],
+            "answer": 0,
+            "explanation": "Type spécial pour liste de constantes."
+        },
+        {
+            "id": 54,
+            "question": "Qu'est-ce que l'Autoboxing ?",
+            "options": [
+                "Conversion auto primitif <-> Wrapper (int -> Integer)",
+                "Boxe",
+                "Emballage",
+                "Livraison"
+            ],
+            "answer": 0,
+            "explanation": "Pratique mais coûteux en performance."
+        },
+        {
+            "id": 55,
+            "question": "Quel mot-clé pour synchroniser un bloc ?",
+            "options": [
+                "synchronized",
+                "lock",
+                "async",
+                "atomic"
+            ],
+            "answer": 0,
+            "explanation": "Gère l'accès concurrent aux ressources (moniteur)."
+        },
+        {
+            "id": 56,
+            "question": "Comment créer une liste immuable (Java 9+) ?",
+            "options": [
+                "List.of(1, 2, 3)",
+                "Arrays.asList()",
+                "new List()",
+                "Collections.unmodifiableList()"
+            ],
+            "answer": 0,
+            "explanation": "List.of() retourne une liste non-modifiable."
+        },
+        {
+            "id": 57,
+            "question": "Quelle est l'unité de compilation ?",
+            "options": [
+                "Le fichier .java",
+                "La méthode",
+                "Le package",
+                "La classe"
+            ],
+            "answer": 0,
+            "explanation": "Contient généralement une classe publique."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce que `transient` ?",
+            "options": [
+                "Champ non sérialisé",
+                "Variable temporaire",
+                "Court",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ignoré lors de la sérialisation."
+        },
+        {
+            "id": 59,
+            "question": "Comment cloner un objet ?",
+            "options": [
+                "Implementer Cloneable + override clone()",
+                "obj.copy()",
+                "obj.duplicate()",
+                "new Obj(obj)"
+            ],
+            "answer": 0,
+            "explanation": "Mécanisme complexe, souvent remplacé par un copy constructor."
+        },
+        {
+            "id": 60,
+            "question": "Quel est l'avantage du `PreparedStatement` JDBC ?",
+            "options": [
+                "Protège contre l'injection SQL + Performance (cache)",
+                "Plus court",
+                "Rien",
+                "Gratuit"
+            ],
+            "answer": 0,
+            "explanation": "Compile la requête SQL."
+        },
+        {
+            "id": 61,
+            "question": "Qu'est-ce que Spring Boot ?",
+            "options": [
+                "Framework pour simplifier le démarrage d'apps Spring",
+                "Une chaussure",
+                "Un serveur",
+                "Java 20"
+            ],
+            "answer": 0,
+            "explanation": "Convention over Configuration, Tomcat embarqué."
+        },
+        {
+            "id": 62,
+            "question": "Comment définir une méthode abstraite ?",
+            "options": [
+                "abstract void method();",
+                "void method() {}",
+                "virtual void method()",
+                "void method() abstract"
+            ],
+            "answer": 0,
+            "explanation": "Sans corps {}."
+        },
+        {
+            "id": 63,
+            "question": "Quelle méthode permet d'attendre la fin d'un thread ?",
+            "options": [
+                "join()",
+                "wait()",
+                "stop()",
+                "yield()"
+            ],
+            "answer": 0,
+            "explanation": "Bloque jusqu'à la mort du thread."
+        },
+        {
+            "id": 64,
+            "question": "Quel est le pool de strings ?",
+            "options": [
+                "Zone mémoire où Java stocke les littéraux String uniques",
+                "Piscine",
+                "Liste",
+                "Heap"
+            ],
+            "answer": 0,
+            "explanation": "Permet de réutiliser les chaînes identiques."
+        },
+        {
+            "id": 65,
+            "question": "Comment faire un Cast ?",
+            "options": [
+                "(Type) objet",
+                "Type(objet)",
+                "objet.toType()",
+                "cast(objet)"
+            ],
+            "answer": 0,
+            "explanation": "Peut lever ClassCastException."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce qu'une Inner Class ?",
+            "options": [
+                "Une classe définie dans une autre",
+                "Une classe privée",
+                "Une sous-classe",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "A accès aux membres de la classe externe."
+        },
+        {
+            "id": 67,
+            "question": "Quelle annotation pour déprécier ?",
+            "options": [
+                "@Deprecated",
+                "@Old",
+                "@Obsolete",
+                "@Remove"
+            ],
+            "answer": 0,
+            "explanation": "Indique qu'il ne faut plus utiliser cet élément."
+        },
+        {
+            "id": 68,
+            "question": "Comment itérer clé+valeur d'une Map ?",
+            "options": [
+                "entrySet()",
+                "keySet()",
+                "values()",
+                "map()"
+            ],
+            "answer": 0,
+            "explanation": "for (Map.Entry<K,V> entry : map.entrySet())."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce que la réflexion (Reflection) ?",
+            "options": [
+                "Capacité à inspecter et modifier le code au runtime",
+                "Un miroir",
+                "La pensée",
+                "Une ombre"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé par les frameworks (Spring, Hibernate)."
+        },
+        {
+            "id": 70,
+            "question": "Comment garantir qu'une variable n'est pas mise en cache cpu ?",
+            "options": [
+                "volatile",
+                "synchronized",
+                "transient",
+                "atomic"
+            ],
+            "answer": 0,
+            "explanation": "Force la lecture/écriture en mémoire principale (visibilité)."
+        },
+        {
+            "id": 71,
+            "question": "Quel est le résultat de `1.0 / 0.0` ?",
+            "options": [
+                "Infinity",
+                "ArithmeticException",
+                "NaN",
+                "0"
+            ],
+            "answer": 0,
+            "explanation": "Standard IEEE 754."
+        },
+        {
+            "id": 72,
+            "question": "Comment créer un Stream parallèle ?",
+            "options": [
+                "list.parallelStream()",
+                "list.stream().parallel()",
+                "Les deux",
+                "Impossible"
+            ],
+            "answer": 2,
+            "explanation": "Utilise le ForkJoinPool commun."
+        },
+        {
+            "id": 73,
+            "question": "Quelle méthode lance une exception ?",
+            "options": [
+                "throw new Ex()",
+                "raise new Ex()",
+                "throws new Ex()",
+                "error()"
+            ],
+            "answer": 0,
+            "explanation": "throws est pour la signature de la méthode."
+        },
+        {
+            "id": 74,
+            "question": "Qu'est-ce que JVM ?",
+            "options": [
+                "Java Virtual Machine",
+                "Java Very Much",
+                "Java Visual Model",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Machine abstraite qui exécute le bytecode."
+        },
+        {
+            "id": 75,
+            "question": "Comment trier avec une Lambda ?",
+            "options": [
+                "list.sort((a,b) -> a - b)",
+                "list.sort()",
+                "sort(list)",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Implémente Comparator concise."
+        },
+        {
+            "id": 76,
+            "question": "Quel package est importé automatiquement ?",
+            "options": [
+                "java.lang",
+                "java.util",
+                "java.io",
+                "java.net"
+            ],
+            "answer": 0,
+            "explanation": "Contient String, System, Object..."
+        },
+        {
+            "id": 77,
+            "question": "Qu'est-ce que `varargs` ?",
+            "options": [
+                "Arguments variables (String... args)",
+                "Variable",
+                "Args",
+                "Tableau"
+            ],
+            "answer": 0,
+            "explanation": "Traités comme un tableau dans la méthode."
+        },
+        {
+            "id": 78,
+            "question": "Comment lire une entrée clavier facile ?",
+            "options": [
+                "Scanner sc = new Scanner(System.in)",
+                "System.in.read()",
+                "Console.read()",
+                "Input()"
+            ],
+            "answer": 0,
+            "explanation": "Plus simple que BufferedReader."
+        },
+        {
+            "id": 79,
+            "question": "Quelle est la classe des grands nombres entiers ?",
+            "options": [
+                "BigInteger",
+                "BigDecimal",
+                "Long",
+                "Huge"
+            ],
+            "answer": 0,
+            "explanation": "Taille arbitraire."
+        },
+        {
+            "id": 80,
+            "question": "Comment remplacer dans une String ?",
+            "options": [
+                "s.replace()",
+                "s.swap()",
+                "s.change()",
+                "s.sub()"
+            ],
+            "answer": 0,
+            "explanation": "Crée une nouvelle String."
+        },
+        {
+            "id": 81,
+            "question": "Quel est le raccourci pour `System.out.println` ?",
+            "options": [
+                "sout (IntelliJ)",
+                "sysout (Eclipse)",
+                "Les deux",
+                "print"
+            ],
+            "answer": 2,
+            "explanation": "Live templates."
+        },
+        {
+            "id": 82,
+            "question": "Qu'est-ce que le Classpath ?",
+            "options": [
+                "Chemin où la JVM cherche les classes/packages",
+                "Chemin système",
+                "Path Windows",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "-cp ou CLASSPATH env."
+        },
+        {
+            "id": 83,
+            "question": "Comment appeler le constructeur d'une autre classe ?",
+            "options": [
+                "new Classe()",
+                "Classe()",
+                "call Classe()",
+                "create Classe()"
+            ],
+            "answer": 0,
+            "explanation": "Instanciation."
+        },
+        {
+            "id": 84,
+            "question": "Quelle nouveauté pour Switch en Java 14+ ?",
+            "options": [
+                "Switch Expressions (->) et yield",
+                "Rien",
+                "Switch Loop",
+                "Pattern"
+            ],
+            "answer": 0,
+            "explanation": "Plus concis, peut retourner une valeur."
+        },
+        {
+            "id": 85,
+            "question": "Comment exécuter du code à la fermeture ?",
+            "options": [
+                "Runtime.getRuntime().addShutdownHook()",
+                "atexit()",
+                "close()",
+                "end()"
+            ],
+            "answer": 0,
+            "explanation": "Permet de nettoyer les ressources proprement."
+        },
+        {
+            "id": 86,
+            "question": "Qu'est-ce qu'une méthode 'default' Interface ?",
+            "options": [
+                "Méthode avec corps dans une interface (Java 8)",
+                "Méthode par défaut",
+                "Erreur",
+                "Abstraite"
+            ],
+            "answer": 0,
+            "explanation": "Permet l'évolution des interfaces sans casser l'existant."
+        },
+        {
+            "id": 87,
+            "question": "Quel outil pour tester le code (Unit Test) ?",
+            "options": [
+                "JUnit / TestNG",
+                "Jest",
+                "PyTest",
+                "Mocha"
+            ],
+            "answer": 0,
+            "explanation": "Standards de l'industrie."
+        },
+        {
+            "id": 88,
+            "question": "Pourquoi utiliser BigDecimal ?",
+            "options": [
+                "Pour la précision financière exacte",
+                "Pour la vitesse",
+                "Pour les entiers",
+                "Pour rien"
+            ],
+            "answer": 0,
+            "explanation": "double a des erreurs d'arrondi binaire."
+        },
+        {
+            "id": 89,
+            "question": "Comment passer des paramètres à la JVM ?",
+            "options": [
+                "-Dname=value -Xmx...",
+                "param=value",
+                "config",
+                "args"
+            ],
+            "answer": 0,
+            "explanation": "System properties et options mémoire."
+        },
+        {
+            "id": 90,
+            "question": "Quelle classe pour manipuler les chemins fichiers ?",
+            "options": [
+                "Path / Paths (NIO.2)",
+                "File (Legacy)",
+                "Les deux",
+                "Dir"
+            ],
+            "answer": 0,
+            "explanation": "Path est plus moderne que File."
+        },
+        {
+            "id": 91,
+            "question": "Qu'est-ce que Lombok ?",
+            "options": [
+                "Lib qui génère du code via annotations (@Getter @Setter)",
+                "Une île",
+                "Un framework web",
+                "Un jeu"
+            ],
+            "answer": 0,
+            "explanation": "Réduit le boilerplate code."
+        },
+        {
+            "id": 92,
+            "question": "Comment générer un nombre aléatoire Thread-safe ?",
+            "options": [
+                "ThreadLocalRandom.current().nextInt()",
+                "Random",
+                "Math.random()",
+                "Rand()"
+            ],
+            "answer": 0,
+            "explanation": "Meilleure perf que Random en multithread."
+        },
+        {
+            "id": 93,
+            "question": "Quel Design Pattern est 'Singleton' ?",
+            "options": [
+                "Une seule instance unique de la classe",
+                "Plein d'instances",
+                "Aucune",
+                "Static"
+            ],
+            "answer": 0,
+            "explanation": " getInstance()."
+        },
+        {
+            "id": 94,
+            "question": "Comment écrire dans un fichier facile ?",
+            "options": [
+                "Files.writeString()",
+                "Writer",
+                "Output",
+                "Print"
+            ],
+            "answer": 0,
+            "explanation": "Java 11+."
+        },
+        {
+            "id": 95,
+            "question": "Quelle méthode est appelée avant que l'objet soit GC ?",
+            "options": [
+                "finalize() (Déprécié)",
+                "destroy()",
+                "clean()",
+                "delete()"
+            ],
+            "answer": 0,
+            "explanation": "Ne jamais utiliser, utiliser `try-with-resources`."
+        },
+        {
+            "id": 96,
+            "question": "Quel opérateur pour le décalage de bits ?",
+            "options": [
+                "<< >> >>>",
+                "+ -",
+                "* /",
+                "& |"
+            ],
+            "answer": 0,
+            "explanation": ">>> est le décalage non signé."
+        },
+        {
+            "id": 97,
+            "question": "Comment inverser une liste ?",
+            "options": [
+                "Collections.reverse(list)",
+                "list.reverse()",
+                "reverse()",
+                "inv()"
+            ],
+            "answer": 0,
+            "explanation": "Modifie la liste in-place."
+        },
+        {
+            "id": 98,
+            "question": "Qu'est-ce qu'une `NullPointerException` ?",
+            "options": [
+                "Accès à un membre d'une référence null",
+                "Erreur math",
+                "Erreur IO",
+                "Erreur réseau"
+            ],
+            "answer": 0,
+            "explanation": "L'exception la plus célèbre."
+        },
+        {
+            "id": 99,
+            "question": "Comment mettre en pause le thread courant ?",
+            "options": [
+                "Thread.sleep(ms)",
+                "wait()",
+                "pause()",
+                "stop()"
+            ],
+            "answer": 0,
+            "explanation": "Peut lancer InterruptedException."
+        },
+        {
+            "id": 100,
+            "question": "Java est-il compilé ou interprété ?",
+            "options": [
+                "Les deux (Compilé en Bytecode, Interprété/JIT par JVM)",
+                "Compilé natif",
+                "Interprété pur",
+                "Script"
+            ],
+            "answer": 0,
+            "explanation": "Hybride puissant."
         }
     ]
 }

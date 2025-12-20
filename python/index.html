@@ -4,13 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Python Complet - Guide 2025</title>
+    <title>Mémo Python - Guide 2025</title>
     <meta name="description" content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
+    <meta name="keywords"
+        content="Python, programmation, dev, scripting, POO, listes, fonctions, tutoriel, mémo, guide, cheat sheet">
     <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#3776ab">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo Python - Guide complet">
+    <meta property="og:description"
+        content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/python/index.html">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo Python - Guide complet">
+    <meta name="twitter:description"
+        content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,7 +51,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Mémo Python Complet</h1>
+            <h1>Mémo Python</h1>
             <p>Guide pratique Python avec exemples concrets. Programmation moderne et efficace.</p>
         </div>
     </section>
@@ -237,7 +256,8 @@
                 <summary>📖 Comprendre les fonctions</summary>
                 <div>
                     <p>Les fonctions permettent de regrouper du code réutilisable. En Python, elles sont définies avec
-                        <code>def</code> et peuvent retourner une valeur avec <code>return</code>.</p>
+                        <code>def</code> et peuvent retourner une valeur avec <code>return</code>.
+                    </p>
                     <p><code>*args</code> collecte les arguments positionnels en tuple, <code>**kwargs</code> collecte
                         les arguments nommés en dictionnaire. Les <strong>lambdas</strong> sont des fonctions anonymes
                         sur une ligne.</p>
@@ -309,9 +329,11 @@
                 <div>
                     <p><strong>List</strong> : séquence ordonnée et modifiable. <strong>Tuple</strong> : séquence
                         ordonnée et immuable. <strong>Set</strong> : collection non-ordonnée de valeurs uniques.
-                        <strong>Dict</strong> : paires clé-valeur.</p>
+                        <strong>Dict</strong> : paires clé-valeur.
+                    </p>
                     <p>Les <strong>comprehensions</strong> permettent de créer des collections de manière concise :
-                        <code>[x**2 for x in range(10)]</code> est plus pythonique que la boucle équivalente.</p>
+                        <code>[x**2 for x in range(10)]</code> est plus pythonique que la boucle équivalente.
+                    </p>
                     <p>Choisissez le bon type : list pour l'ordre, set pour l'unicité et les opérations ensemblistes,
                         dict pour les associations clé-valeur, tuple pour les données immuables.</p>
                 </div>
@@ -494,7 +516,8 @@
                     </p>
                     <p>Python distingue de nombreux types d'exceptions : <code>ValueError</code>,
                         <code>TypeError</code>, <code>KeyError</code>, <code>IndexError</code>, etc. Capturez toujours
-                        l'exception la plus spécifique possible.</p>
+                        l'exception la plus spécifique possible.
+                    </p>
                     <p>Créez vos propres exceptions en héritant de <code>Exception</code> pour des erreurs métier
                         spécifiques à votre application.</p>
                 </div>
@@ -608,7 +631,8 @@
                 <summary>📖 Comprendre les modules</summary>
                 <div>
                     <p>Les modules organisent le code en fichiers réutilisables. Un package est un dossier contenant un
-                        <code>__init__.py</code>. Python cherche les modules dans <code>sys.path</code>.</p>
+                        <code>__init__.py</code>. Python cherche les modules dans <code>sys.path</code>.
+                    </p>
                     <p>Utilisez des <strong>environnements virtuels</strong> (venv) pour isoler les dépendances de
                         chaque projet. C'est une bonne pratique essentielle.</p>
                     <p><code>pip</code> est le gestionnaire de packages. <code>requirements.txt</code> liste les
@@ -675,7 +699,8 @@ python -m module</pre>
                         l'originale.</p>
                     <p>Les <strong>f-strings</strong> (Python 3.6+) sont la méthode recommandée pour le formatage :
                         <code>f"Hello {name}"</code>. Elles sont plus lisibles et plus rapides que
-                        <code>.format()</code>.</p>
+                        <code>.format()</code>.
+                    </p>
                     <p>Pour la manipulation intensive de strings, utilisez <code>str.join()</code> plutôt que la
                         concaténation répétée + qui crée de nombreux objets intermédiaires.</p>
                 </div>
@@ -1178,14 +1203,37 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                 </div>
             </div>
 
-            <div class="tip" style="margin-top:24px"><strong>💡 Mémo Python Complet</strong> — 14 chapitres couvrant
+            <div class="tip" style="margin-top:24px"><strong>💡 Mémo Python</strong> — 14 chapitres couvrant
                 Python moderne avec type hints, dataclasses, match/case, async/await et plus!</div>
         </div>
     </section>
 
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_python.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_python.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo Python Complet</strong> • 14 chapitres • Python 3.10+ • 2025</p>
+            <p style="margin-bottom:8px"><strong>Mémo Python</strong> • 14 chapitres • Python 3.10+ • 2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
                 faciliter l'apprentissage des autres.</p>

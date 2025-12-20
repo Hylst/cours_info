@@ -1,0 +1,608 @@
+{
+    "meta": {
+        "title": "Quiz Python Web Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quel framework Python est le plus populaire pour le web ?",
+            "options": [
+                "Django",
+                "Flask",
+                "FastAPI",
+                "Tous"
+            ],
+            "answer": 3,
+            "explanation": "Django (complet), Flask (micro), FastAPI (moderne/rapide)."
+        },
+        {
+            "id": 2,
+            "question": "Que signifie WSGI ?",
+            "options": [
+                "Web Server Gateway Interface",
+                "Web Socket Gateway",
+                "World Standard Gateway",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Standard historique pour la communication serveur web <-> app Python."
+        },
+        {
+            "id": 3,
+            "question": "Quel est le successeur asynchrone de WSGI ?",
+            "options": [
+                "ASGI",
+                "BSGI",
+                "WSGI 2",
+                "AsyncWSGI"
+            ],
+            "answer": 0,
+            "explanation": "Asynchronous Server Gateway Interface (utilisé par FastAPI, Django Channels)."
+        },
+        {
+            "id": 4,
+            "question": "Quel framework est connu pour être 'Batteries Included' ?",
+            "options": [
+                "Django",
+                "Flask",
+                "Pyramid",
+                "Bottle"
+            ],
+            "answer": 0,
+            "explanation": "Vient avec ORM, Admin, Auth, etc."
+        },
+        {
+            "id": 5,
+            "question": "Quel framework est un 'Micro-framework' ?",
+            "options": [
+                "Flask",
+                "Django",
+                "Zope",
+                "Plone"
+            ],
+            "answer": 0,
+            "explanation": "Juste le routage et les templates, le reste est en extensions."
+        },
+        {
+            "id": 6,
+            "question": "Quel serveur ASGI est très performant ?",
+            "options": [
+                "Uvicorn",
+                "Gunicorn",
+                "Apache",
+                "Nginx"
+            ],
+            "answer": 0,
+            "explanation": "Souvent utilisé avec FastAPI. Gunicorn est WSGI (mais peut manager Uvicorn)."
+        },
+        {
+            "id": 7,
+            "question": "Quel moteur de template est par défaut dans Flask ?",
+            "options": [
+                "Jinja2",
+                "Django Templates",
+                "Mako",
+                "Chameleon"
+            ],
+            "answer": 0,
+            "explanation": "Puissant et sécurisé (échappement auto)."
+        },
+        {
+            "id": 8,
+            "question": "Comment valider des données avec FastAPI ?",
+            "options": [
+                "Pydantic",
+                "Marshmallow",
+                "Cerberus",
+                "Validator"
+            ],
+            "answer": 0,
+            "explanation": "Utilise les Type Hints Python standard."
+        },
+        {
+            "id": 9,
+            "question": "Quelle commande lance le serveur de dev Django ?",
+            "options": [
+                "python manage.py runserver",
+                "django-admin run",
+                "python start.py",
+                "flask run"
+            ],
+            "answer": 0,
+            "explanation": "A ne pas utiliser en production."
+        },
+        {
+            "id": 10,
+            "question": "Quel fichier liste les dépendances ?",
+            "options": [
+                "requirements.txt",
+                "package.json",
+                "Gemfile",
+                "pom.xml"
+            ],
+            "answer": 0,
+            "explanation": "Généré souvent par pip freeze."
+        },
+        {
+            "id": 11,
+            "question": "Qu'est-ce que l'ORM de Django ?",
+            "options": [
+                "Object-Relational Mapping",
+                "Object-Role Modeling",
+                "Other Resource Manager",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de manipuler la BDD avec des classes Python."
+        },
+        {
+            "id": 12,
+            "question": "Quel est l'avantage de FastAPI ?",
+            "options": [
+                "Rapidité, Async, Doc auto (Swagger), Typage",
+                "Vieux",
+                "Lent",
+                "Compliqué"
+            ],
+            "answer": 0,
+            "explanation": "Basé sur Starlette et Pydantic."
+        },
+        {
+            "id": 13,
+            "question": "Comment définir une route dynamique avec Flask ?",
+            "options": [
+                "@app.route('/user/<id>')",
+                "@app.route('/user/{id}')",
+                "@app.get('/user/:id')",
+                "route('/user')"
+            ],
+            "answer": 0,
+            "explanation": "FastAPI utilise {id}."
+        },
+        {
+            "id": 14,
+            "question": "Quel statut HTTP pour 'Créé avec succès' ?",
+            "options": [
+                "201",
+                "200",
+                "204",
+                "301"
+            ],
+            "answer": 0,
+            "explanation": "201 Created."
+        },
+        {
+            "id": 15,
+            "question": "Quel outil permet de gérer les migrations BDD (Flask) ?",
+            "options": [
+                "Alembic (Flask-Migrate)",
+                "Django ORM",
+                "Evolution",
+                "MigrationTool"
+            ],
+            "answer": 0,
+            "explanation": "Alembic est l'outil de migration de SQLAlchemy."
+        },
+        {
+            "id": 16,
+            "question": "Dans Django, où configure-t-on la BDD ?",
+            "options": [
+                "settings.py",
+                "config.py",
+                "database.py",
+                "urls.py"
+            ],
+            "answer": 0,
+            "explanation": "Variable DATABASES."
+        },
+        {
+            "id": 17,
+            "question": "Quelle méthode HTTP est Idempotente ?",
+            "options": [
+                "PUT",
+                "POST",
+                "PATCH (souvent)",
+                "CONNECT"
+            ],
+            "answer": 0,
+            "explanation": "PUT, GET, DELETE sont idempotents (plusieurs appels = même état)."
+        },
+        {
+            "id": 18,
+            "question": "Comment sécuriser les mots de passe ?",
+            "options": [
+                "Hachage avec sel (bcrypt, argon2)",
+                "Texte clair",
+                "Cryptage simple",
+                "Base64"
+            ],
+            "answer": 0,
+            "explanation": "Jamais en clair !"
+        },
+        {
+            "id": 19,
+            "question": "Quel décorateur protège une vue Django (login required) ?",
+            "options": [
+                "@login_required",
+                "@auth",
+                "@protect",
+                "@secure"
+            ],
+            "answer": 0,
+            "explanation": "Renvoie vers la page de login si non connecté."
+        },
+        {
+            "id": 20,
+            "question": "Lequel est un serveur Web de production ?",
+            "options": [
+                "Nginx / Apache",
+                "Flask run",
+                "Django runserver",
+                "LiveServer"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé comme Reverse Proxy devant Gunicorn/Uvicorn."
+        },
+        {
+            "id": 21,
+            "question": "Que signifie API REST ?",
+            "options": [
+                "Representational State Transfer",
+                "Remote Execution State",
+                "Real Standard",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Style d'architecture."
+        },
+        {
+            "id": 22,
+            "question": "Quel module Python permet de faire des requêtes HTTP ?",
+            "options": [
+                "requests (ou httpx)",
+                "http",
+                "fetch",
+                "curl"
+            ],
+            "answer": 0,
+            "explanation": "Requests est la librairie la plus téléchargée."
+        },
+        {
+            "id": 23,
+            "question": "Qu'est-ce que SQLAlchemy ?",
+            "options": [
+                "Un ORM et Toolkit SQL puissant",
+                "Une base de données",
+                "Un serveur",
+                "Un framework"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé avec Flask, FastAPI..."
+        },
+        {
+            "id": 24,
+            "question": "Comment activer le mode debug dans Flask ?",
+            "options": [
+                "app.run(debug=True)",
+                "flask --debug run",
+                "export FLASK_DEBUG=1",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Permet le rechargement auto et le debugger interactif."
+        },
+        {
+            "id": 25,
+            "question": "Quel est le nom du panel admin de Django ?",
+            "options": [
+                "Django Admin",
+                "Control Panel",
+                "Dashboard",
+                "Manager"
+            ],
+            "answer": 0,
+            "explanation": "Généré automatiquement."
+        },
+        {
+            "id": 26,
+            "question": "Comment générer de la documentation API auto avec FastAPI ?",
+            "options": [
+                "Aller sur /docs (Swagger UI)",
+                "Aller sur /redoc",
+                "Les deux",
+                "Impossible"
+            ],
+            "answer": 2,
+            "explanation": "Grâce à OpenAPI."
+        },
+        {
+            "id": 27,
+            "question": "Quel statut HTTP pour 'Non trouvé' ?",
+            "options": [
+                "404",
+                "400",
+                "500",
+                "401"
+            ],
+            "answer": 0,
+            "explanation": "Not Found."
+        },
+        {
+            "id": 28,
+            "question": "Quel est l'équivalent des Sessions côté client ?",
+            "options": [
+                "Cookies / LocalStorage",
+                "Server Session",
+                "Cache",
+                "Database"
+            ],
+            "answer": 0,
+            "explanation": "Les données sont stockées dans le navigateur."
+        },
+        {
+            "id": 29,
+            "question": "Comment envoyer du JSON avec Flask ?",
+            "options": [
+                "jsonify(data)",
+                "json.dumps(data)",
+                "return data",
+                "send_json(data)"
+            ],
+            "answer": 0,
+            "explanation": "Ajoute le header application/json."
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce que CORS ?",
+            "options": [
+                "Cross-Origin Resource Sharing",
+                "Code Of Remote Server",
+                "Core System",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Sécurité navigateur qui bloque les requêtes entre domaines différents."
+        },
+        {
+            "id": 31,
+            "question": "Comment gérer les tâches d'arrière-plan (Background Tasks) ?",
+            "options": [
+                "Celery (avec Redis/RabbitMQ)",
+                "Cron",
+                "Thread",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Celery est la solution robuste standard."
+        },
+        {
+            "id": 32,
+            "question": "Quel est le fichier d'entrée standard d'une app Flask ?",
+            "options": [
+                "app.py",
+                "main.py",
+                "index.py",
+                "server.py"
+            ],
+            "answer": 0,
+            "explanation": "Convention commune."
+        },
+        {
+            "id": 33,
+            "question": "Dans Django, qu'est-ce qu'une 'App' ?",
+            "options": [
+                "Un composant modulaire du projet (Auth, Blog...)",
+                "Le projet entier",
+                "Un fichier",
+                "Le serveur"
+            ],
+            "answer": 0,
+            "explanation": "Un projet Django contient plusieurs Apps."
+        },
+        {
+            "id": 34,
+            "question": "Quel type de base de données Redis est-il ?",
+            "options": [
+                "In-Memory Key-Value Store",
+                "Relationnel",
+                "Document",
+                "Graph"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé pour le cache, les sessions, les queues."
+        },
+        {
+            "id": 35,
+            "question": "Quelle commande crée un projet Django ?",
+            "options": [
+                "django-admin startproject name",
+                "django init",
+                "pip install django",
+                "new django"
+            ],
+            "answer": 0,
+            "explanation": "Et startapp pour créer une app."
+        },
+        {
+            "id": 36,
+            "question": "Comment tester une API Python ?",
+            "options": [
+                "Pytest + Requests",
+                "Unittest",
+                "Postman",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Pytest est très apprécié pour sa simplicité."
+        },
+        {
+            "id": 37,
+            "question": "Quel est le gestionnaire de paquets moderne (alternative à pip) ?",
+            "options": [
+                "Poetry",
+                "Pipenv",
+                "Conda",
+                "Tous"
+            ],
+            "answer": 3,
+            "explanation": "Poetry gère bien les dépendances et le packaging."
+        },
+        {
+            "id": 38,
+            "question": "Que fait `gunicorn -w 4` ?",
+            "options": [
+                "Lance 4 workers",
+                "Attend 4 secondes",
+                "Écrit 4 logs",
+                "Version 4"
+            ],
+            "answer": 0,
+            "explanation": "Permet de paralléliser les requêtes."
+        },
+        {
+            "id": 39,
+            "question": "Quel est le danger de l'injection SQL ?",
+            "options": [
+                "Exécution de commandes SQL malveillantes",
+                "Rien",
+                "Perte de CSS",
+                "Bug UI"
+            ],
+            "answer": 0,
+            "explanation": "Utiliser toujours les requêtes paramétrées ou un ORM."
+        },
+        {
+            "id": 40,
+            "question": "Comment récupérer des paramètres GET (?q=search) dans Flask ?",
+            "options": [
+                "request.args.get('q')",
+                "request.q",
+                "request.form['q']",
+                "args['q']"
+            ],
+            "answer": 0,
+            "explanation": "request.form est pour le POST."
+        },
+        {
+            "id": 41,
+            "question": "Quel middleware gère les fichiers statiques en dev Django ?",
+            "options": [
+                "django.contrib.staticfiles",
+                "WhiteNoise",
+                "Nginx",
+                "Apache"
+            ],
+            "answer": 0,
+            "explanation": "En prod, on utilise souvent WhiteNoise ou Nginx."
+        },
+        {
+            "id": 42,
+            "question": "Quel est l'avantage de Docker pour le web ?",
+            "options": [
+                "Environnement iso/reproductible",
+                "Vitesse",
+                "Rien",
+                "Graphisme"
+            ],
+            "answer": 0,
+            "explanation": "Fini le 'ça marche chez moi'."
+        },
+        {
+            "id": 43,
+            "question": "Qu'est-ce que GraphQL ?",
+            "options": [
+                "Langage de requête pour API (alternative à REST)",
+                "Base de données",
+                "Graphique",
+                "Python"
+            ],
+            "answer": 0,
+            "explanation": "Permet de demander exactement les champs voulus."
+        },
+        {
+            "id": 44,
+            "question": "Quelle librairie gère GraphQL en Python ?",
+            "options": [
+                "Graphene / Strawberry",
+                "GraphPy",
+                "QLPy",
+                "Apollo"
+            ],
+            "answer": 0,
+            "explanation": "Strawberry est basée sur les dataclasses/type hints modernes."
+        },
+        {
+            "id": 45,
+            "question": "Comment déployer facilement une app Python (PaaS) ?",
+            "options": [
+                "Heroku, Railway, Render, PythonAnywhere",
+                "FTP",
+                "Disquette",
+                "CD"
+            ],
+            "answer": 0,
+            "explanation": "Déploiement souvent basé sur git push."
+        },
+        {
+            "id": 46,
+            "question": "Quel est le port par défaut de Django ?",
+            "options": [
+                "8000",
+                "5000",
+                "3000",
+                "80"
+            ],
+            "answer": 0,
+            "explanation": "Flask est 5000."
+        },
+        {
+            "id": 47,
+            "question": "Qu'est-ce que JWT ?",
+            "options": [
+                "JSON Web Token",
+                "Java Web Tool",
+                "Join Web Table",
+                "Just Web Things"
+            ],
+            "answer": 0,
+            "explanation": "Standard pour l'authentification stateles."
+        },
+        {
+            "id": 48,
+            "question": "Comment définir un modèle (Table) dans Django ?",
+            "options": [
+                "class MonModele(models.Model):",
+                "def MonModele():",
+                "table MonModele:",
+                "struct MonModele"
+            ],
+            "answer": 0,
+            "explanation": "Hérite de models.Model."
+        },
+        {
+            "id": 49,
+            "question": "Quel fichier configure les logs ?",
+            "options": [
+                "settings.py (Django) / logging.conf",
+                "logs.txt",
+                "config.log",
+                "debug.log"
+            ],
+            "answer": 0,
+            "explanation": "Python utilise le module standard logging."
+        },
+        {
+            "id": 50,
+            "question": "Quelle est la commande pour créer une migration Django ?",
+            "options": [
+                "makemigrations",
+                "migrate",
+                "sqlmigrate",
+                "showmigrations"
+            ],
+            "answer": 0,
+            "explanation": "Génère le fichier de migration. 'migrate' l'applique."
+        }
+    ]
+}

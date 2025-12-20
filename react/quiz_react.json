@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz React Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Qu'est-ce que React ?",
+            "options": [
+                "Une bibliothèque JS pour créer des UI",
+                "Un framework MVC complet",
+                "Un langage de programmation",
+                "Un serveur web"
+            ],
+            "answer": 0,
+            "explanation": "Développé par Facebook, React se concentre sur la vue (View)."
+        },
+        {
+            "id": 2,
+            "question": "Que signifie JSX ?",
+            "options": [
+                "JavaScript XML",
+                "Java Syntax Extension",
+                "JSON Xchange",
+                "JavaScript X"
+            ],
+            "answer": 0,
+            "explanation": "Une extension syntaxique permettant d'écrire du HTML dans le JavaScript."
+        },
+        {
+            "id": 3,
+            "question": "Quel Hook permet de gérer l'état local ?",
+            "options": [
+                "useState",
+                "useEffect",
+                "useContext",
+                "useReducer"
+            ],
+            "answer": 0,
+            "explanation": "const [state, setState] = useState(initialValue)."
+        },
+        {
+            "id": 4,
+            "question": "Comment passer des données d'un parent à un enfant ?",
+            "options": [
+                "Via les Props",
+                "Via le State",
+                "Via le Context",
+                "Via Redux"
+            ],
+            "answer": 0,
+            "explanation": "Les props sont en lecture seule pour l'enfant."
+        },
+        {
+            "id": 5,
+            "question": "Quel Hook remplace `componentDidMount` et `componentDidUpdate` ?",
+            "options": [
+                "useEffect",
+                "useState",
+                "useLifecycle",
+                "useMemo"
+            ],
+            "answer": 0,
+            "explanation": "useEffect combine les cycles de vie des composants de classe."
+        },
+        {
+            "id": 6,
+            "question": "Qu'est-ce que le Virtual DOM ?",
+            "options": [
+                "Une copie légère du DOM en mémoire",
+                "Un navigateur virtuel",
+                "Un plugin Chrome",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "React compare le Virtual DOM avec le précédent pour mettre à jour efficacement le vrai DOM."
+        },
+        {
+            "id": 7,
+            "question": "Comment optimiser un composant fonctionnel qui se re-rend inutilement ?",
+            "options": [
+                "React.memo",
+                "React.pure",
+                "shouldComponentUpdate",
+                "useOptimization"
+            ],
+            "answer": 0,
+            "explanation": "Mémorise le composant si ses props n'ont pas changé."
+        },
+        {
+            "id": 8,
+            "question": "Quel Hook permet d'accéder à un contexte ?",
+            "options": [
+                "useContext",
+                "useProvider",
+                "useGlobal",
+                "useState"
+            ],
+            "answer": 0,
+            "explanation": "const value = useContext(MyContext)."
+        },
+        {
+            "id": 9,
+            "question": "Une liste d'éléments doit toujours avoir...",
+            "options": [
+                "Une clé unique (key)",
+                "Un ID CSS",
+                "Une classe",
+                "Un index"
+            ],
+            "answer": 0,
+            "explanation": "Permet à React d'identifier quels éléments ont changé/ajouté/supprimé."
+        },
+        {
+            "id": 10,
+            "question": "Comment créer une référence mutable qui ne déclenche pas de re-render ?",
+            "options": [
+                "useRef",
+                "useState",
+                "useEffect",
+                "useMemo"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour accéder au DOM ou stocker une valeur persistante hors state."
+        },
+        {
+            "id": 11,
+            "question": "Quel est le deuxième argument de `useEffect` ?",
+            "options": [
+                "Le tableau de dépendances",
+                "La fonction de nettoyage",
+                "Le state initial",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contrôle quand l'effet doit s'exécuter."
+        },
+        {
+            "id": 12,
+            "question": "Que retourne `useState` ?",
+            "options": [
+                "Un tableau avec la valeur et le setter",
+                "Un objet",
+                "La valeur seule",
+                "Une promesse"
+            ],
+            "answer": 0,
+            "explanation": "Destructuration : const [val, setVal] = useState(0)."
+        },
+        {
+            "id": 13,
+            "question": "Comment empêcher le comportement par défaut d'un événement ?",
+            "options": [
+                "e.preventDefault()",
+                "return false",
+                "e.stopPropagation()",
+                "stop()"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour les formulaires SPA."
+        },
+        {
+            "id": 14,
+            "question": "Quel Hook est utilisé pour des calculs coûteux ?",
+            "options": [
+                "useMemo",
+                "useCallback",
+                "useEffect",
+                "useRef"
+            ],
+            "answer": 0,
+            "explanation": "Mémorise le résultat d'une fonction tant que les dépendances ne changent pas."
+        },
+        {
+            "id": 15,
+            "question": "Quel Hook mémorise une définition de fonction ?",
+            "options": [
+                "useCallback",
+                "useMemo",
+                "useEffect",
+                "useFunction"
+            ],
+            "answer": 0,
+            "explanation": "Évite de recréer la fonction à chaque rendu (utile pour les props enfants)."
+        },
+        {
+            "id": 16,
+            "question": "Qu'est-ce qu'un Fragment ?",
+            "options": [
+                "Un conteneur invisible (<>...</>)",
+                "Un div vide",
+                "Une erreur",
+                "Un composant cassé"
+            ],
+            "answer": 0,
+            "explanation": "Permet de grouper des éléments sans ajouter de noeud au DOM."
+        },
+        {
+            "id": 17,
+            "question": "Comment conditionner l'affichage d'un composant ?",
+            "options": [
+                "condition && <Composant />",
+                "if (condition) return <Composant />",
+                "condition ? <A/> : <B/>",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Le rendu conditionnel est flexible en JSX."
+        },
+        {
+            "id": 18,
+            "question": "Où peut-on appeler les Hooks ?",
+            "options": [
+                "Uniquement au top niveau d'un composant fonctionnel",
+                "Dans les boucles",
+                "Dans les conditions",
+                "Partout"
+            ],
+            "answer": 0,
+            "explanation": "Règle des Hooks : pas dans des boucles, conditions ou fonctions imbriquées."
+        },
+        {
+            "id": 19,
+            "question": "Comment instancier un composant 'Welcome' ?",
+            "options": [
+                "<Welcome />",
+                "new Welcome()",
+                "Welcome()",
+                "react.render(Welcome)"
+            ],
+            "answer": 0,
+            "explanation": "Syntaxe JSX."
+        },
+        {
+            "id": 20,
+            "question": "Que se passe-t-il si on modifie le state directement (this.state.x = 2) ?",
+            "options": [
+                "Le composant ne se re-rend pas",
+                "Ça marche",
+                "Erreur",
+                "Warning"
+            ],
+            "answer": 0,
+            "explanation": "Toujours utiliser setState (ou le setter du Hook)."
+        },
+        {
+            "id": 21,
+            "question": "Quel outil permet de créer une app React configurée ?",
+            "options": [
+                "Create React App (ou Vite)",
+                "React CLI",
+                "React Maker",
+                "NPM Start"
+            ],
+            "answer": 0,
+            "explanation": "Vite est aujourd'hui recommandé pour sa rapidité."
+        },
+        {
+            "id": 22,
+            "question": "Quelle est la méthode de cycle de vie pour le montage (Classe) ?",
+            "options": [
+                "componentDidMount",
+                "componentWillMount",
+                "mounted",
+                "onMount"
+            ],
+            "answer": 0,
+            "explanation": "Équivalent à useEffect(() => {}, [])."
+        },
+        {
+            "id": 23,
+            "question": "Comment définir des types pour les props ?",
+            "options": [
+                "PropTypes",
+                "PropsCheck",
+                "TypeCheck",
+                "Validate"
+            ],
+            "answer": 0,
+            "explanation": "Ou utiliser TypeScript."
+        },
+        {
+            "id": 24,
+            "question": "Qu'est-ce que React Router ?",
+            "options": [
+                "Une librairie de routage standard",
+                "Un module natif",
+                "Un serveur",
+                "Un GPS"
+            ],
+            "answer": 0,
+            "explanation": "Gère la navigation SPA (Single Page Application)."
+        },
+        {
+            "id": 25,
+            "question": "Comment accéder aux enfants d'un composant ?",
+            "options": [
+                "props.children",
+                "props.content",
+                "props.inner",
+                "this.children"
+            ],
+            "answer": 0,
+            "explanation": "Contenu imbriqué entre les balises d'ouverture et fermeture."
+        },
+        {
+            "id": 26,
+            "question": "Quelle fonction permet de créer un portail (hors hiérarchie DOM) ?",
+            "options": [
+                "ReactDOM.createPortal",
+                "React.portal",
+                "Portal.create",
+                "usePortal"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour les modales, tooltips qui doivent sortir du conteneur parent."
+        },
+        {
+            "id": 27,
+            "question": "Quel est le pattern pour partager de la logique entre composants (avant Hooks) ?",
+            "options": [
+                "HOC (Higher Order Component)",
+                "Inheritance",
+                "Copy Paste",
+                "Mixins"
+            ],
+            "answer": 0,
+            "explanation": "Et Render Props. Les Hooks ont simplifié cela."
+        },
+        {
+            "id": 28,
+            "question": "Que permet `useReducer` ?",
+            "options": [
+                "Gérer un état complexe avec des actions",
+                "Réduire la taille du code",
+                "Optimiser",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Similaire à Redux mais local au composant."
+        },
+        {
+            "id": 29,
+            "question": "Comment faire un Lazy Loading de composant ?",
+            "options": [
+                "React.lazy et Suspense",
+                "LazyComponent",
+                "importLazy",
+                "AsyncComponent"
+            ],
+            "answer": 0,
+            "explanation": "const OtherComponent = React.lazy(() => import('./OtherComponent'));"
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce qu'un composant contrôlé ?",
+            "options": [
+                "Un input dont la valeur est gérée par le state React",
+                "Un composant vérifié",
+                "Un composant admin",
+                "Un test"
+            ],
+            "answer": 0,
+            "explanation": "La source de vérité est le state React, pas le DOM."
+        },
+        {
+            "id": 31,
+            "question": "Peut-on utiliser React sans JSX ?",
+            "options": [
+                "Oui, avec React.createElement",
+                "Non",
+                "Oui mais c'est déprécié",
+                "Uniquement en prod"
+            ],
+            "answer": 0,
+            "explanation": "JSX est juste du sucre syntaxique compilé en createElement."
+        },
+        {
+            "id": 32,
+            "question": "Comment appliquer une classe CSS conditionnelle ?",
+            "options": [
+                "`btn ${isActive ? 'active' : ''}`",
+                "class.active={isActive}",
+                "if(active) class='active'",
+                "style={{active: true}}"
+            ],
+            "answer": 0,
+            "explanation": "Ou via des utilitaires comme 'clsx' ou 'classnames'."
+        },
+        {
+            "id": 33,
+            "question": "Quelle propriété HTML `class` devient en JSX ?",
+            "options": [
+                "className",
+                "class",
+                "styleClass",
+                "css"
+            ],
+            "answer": 0,
+            "explanation": "'class' est un mot réservé en JS."
+        },
+        {
+            "id": 34,
+            "question": "Comment faire une boucle dans JSX ?",
+            "options": [
+                "items.map(item => <Li/>)",
+                "for(item in items)",
+                "while(items)",
+                "foreach(items)"
+            ],
+            "answer": 0,
+            "explanation": "JSX attend une expression qui retourne un tableau d'éléments."
+        },
+        {
+            "id": 35,
+            "question": "Quel Hook permet de créer un effet layout synchrone ?",
+            "options": [
+                "useLayoutEffect",
+                "useEffectSync",
+                "useSync",
+                "useDraw"
+            ],
+            "answer": 0,
+            "explanation": "S'exécute après les mutations du DOM mais avant que le navigateur peigne."
+        },
+        {
+            "id": 36,
+            "question": "Qu'est-ce que le 'Prop Drilling' ?",
+            "options": [
+                "Passer des props à travers plusieurs niveaux de composants",
+                "Une méthode de perçage",
+                "Une erreur",
+                "Un outil"
+            ],
+            "answer": 0,
+            "explanation": "Problème résolu par Context ou State Manager."
+        },
+        {
+            "id": 37,
+            "question": "Comment définir une valeur par défaut pour une prop ?",
+            "options": [
+                "Dans la déstructuration ou defaultProps",
+                "Au hasard",
+                "Impossible",
+                "Prop.default"
+            ],
+            "answer": 0,
+            "explanation": "function Comp({ val = 10 }) { ... }"
+        },
+        {
+            "id": 38,
+            "question": "Quelle bibliothèque de gestion d'état est la plus populaire ?",
+            "options": [
+                "Redux",
+                "MobX",
+                "Recoil",
+                "Zustand"
+            ],
+            "answer": 0,
+            "explanation": "Bien que Zustand et Context soient de plus en plus utilisés."
+        },
+        {
+            "id": 39,
+            "question": "Comment nettoyer un effet (cleanup) ?",
+            "options": [
+                "Retourner une fonction dans useEffect",
+                "Appeler clean()",
+                "return null",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "useEffect(() => { return () => { ... } }, [])"
+        },
+        {
+            "id": 40,
+            "question": "Qu'est-ce que React Fiber ?",
+            "options": [
+                "Le nouveau moteur de réconciliation (depuis v16)",
+                "Une marque de céréales",
+                "Un câble",
+                "Un composant"
+            ],
+            "answer": 0,
+            "explanation": "Permet le découpage du rendu en chunks (Time Slicing)."
+        },
+        {
+            "id": 41,
+            "question": "Comment utiliser des styles inline ?",
+            "options": [
+                "style={{ color: 'red' }}",
+                "style='color: red'",
+                "css='color: red'",
+                "style={color: 'red'}"
+            ],
+            "answer": 0,
+            "explanation": "Objet JS avec propriétés en camelCase."
+        },
+        {
+            "id": 42,
+            "question": "Quel est le point d'entrée pour monter une app React (v18) ?",
+            "options": [
+                "createRoot(container).render(<App/>)",
+                "ReactDOM.render(<App/>)",
+                "React.mount()",
+                "App.start()"
+            ],
+            "answer": 0,
+            "explanation": "ReactDOM.render est déprécié en v18."
+        },
+        {
+            "id": 43,
+            "question": "Peut-on retourner plusieurs éléments adjacents sans div ?",
+            "options": [
+                "Oui, avec Fragment (<>...<>)",
+                "Non",
+                "Jamais",
+                "Seulement des strings"
+            ],
+            "answer": 0,
+            "explanation": "Évite la 'div soup'."
+        },
+        {
+            "id": 44,
+            "question": "Comment forcer un re-render (mauvaise pratique) ?",
+            "options": [
+                "Modifier une prop clé ou state factice",
+                "forceUpdate() (classe)",
+                "Refresh page",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "En général, si on doit forcer, c'est qu'on a mal conçu l'architecture."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que SSR ?",
+            "options": [
+                "Server Side Rendering",
+                "Super Site React",
+                "Server State React",
+                "Simple Side Render"
+            ],
+            "answer": 0,
+            "explanation": "Rendu côté serveur pour le SEO et la perf (Next.js)."
+        },
+        {
+            "id": 46,
+            "question": "Quel est l'équivalent de `ng-if` (Angular) en React ?",
+            "options": [
+                "{ condition && <El/> }",
+                "v-if",
+                "ng-if",
+                "react-if"
+            ],
+            "answer": 0,
+            "explanation": "On utilise le JavaScript standard."
+        },
+        {
+            "id": 47,
+            "question": "Comment créer un Custom Hook ?",
+            "options": [
+                "Une fonction commençant par `use`",
+                "Une classe",
+                "Un composant",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Convention obligatoire pour que le linter vérifie les règles des hooks."
+        },
+        {
+            "id": 48,
+            "question": "Que fait `React.StrictMode` ?",
+            "options": [
+                "Active des vérifications supplémentaires en dév",
+                "Rend l'app plus stricte",
+                "Bloque les erreurs",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Provoque notamment le double appel des effets en dev pour détecter les effets impurs."
+        },
+        {
+            "id": 49,
+            "question": "Quelle est la différence entre State et Props ?",
+            "options": [
+                "State est interne/mutable, Props sont externes/immuables",
+                "C'est pareil",
+                "Props sont mutables",
+                "State est global"
+            ],
+            "answer": 0,
+            "explanation": "Concept fondamental."
+        },
+        {
+            "id": 50,
+            "question": "Comment gérer les erreurs dans une partie de l'UI ?",
+            "options": [
+                "Error Boundaries (Classes)",
+                "try/catch",
+                "useError",
+                "ErrorBoundary Hook"
+            ],
+            "answer": 0,
+            "explanation": "Il n'y a pas encore d'équivalent Hook officiel pour Error Boundaries."
+        },
+        {
+            "id": 51,
+            "question": "Quelle bibliothèque permet de tester React ?",
+            "options": [
+                "React Testing Library",
+                "Jest",
+                "Enzyme",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "RTL est la recommandation moderne."
+        },
+        {
+            "id": 52,
+            "question": "Comment accéder au DOM réel ?",
+            "options": [
+                "ref.current",
+                "this.dom",
+                "document.get",
+                "realDOM"
+            ],
+            "answer": 0,
+            "explanation": "Via useRef ou callback ref."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que l'Hydration ?",
+            "options": [
+                "Attacher les écouteurs d'événements au HTML généré par le serveur",
+                "Boire de l'eau",
+                "Compiler",
+                "Minifier"
+            ],
+            "answer": 0,
+            "explanation": "Processus critique en SSR."
+        },
+        {
+            "id": 54,
+            "question": "Quelle est la taille approximative de React (prod, gzippé) ?",
+            "options": [
+                "~40kb (react + dom)",
+                "~100kb",
+                "~500kb",
+                "~5mo"
+            ],
+            "answer": 0,
+            "explanation": "Relativement léger comparé à Angular."
+        },
+        {
+            "id": 55,
+            "question": "Comment importer React dans un fichier (avant React 17) ?",
+            "options": [
+                "import React from 'react'",
+                "require('react')",
+                "include react",
+                "use react"
+            ],
+            "answer": 0,
+            "explanation": "Depuis React 17, l'import n'est plus obligatoire si on n'utilise pas les Hooks."
+        },
+        {
+            "id": 56,
+            "question": "Que signifie SPA ?",
+            "options": [
+                "Single Page Application",
+                "Simple Page App",
+                "Super Power App",
+                "Site Public Access"
+            ],
+            "answer": 0,
+            "explanation": "Une seule page HTML chargée, le reste est géré par JS."
+        },
+        {
+            "id": 57,
+            "question": "Quel pattern d'architecture est souvent associé à React ?",
+            "options": [
+                "Flux (unidirectional data flow)",
+                "MVC",
+                "MVVM",
+                "Singleton"
+            ],
+            "answer": 0,
+            "explanation": "Les données descendent, les actions remontent."
+        },
+        {
+            "id": 58,
+            "question": "Quelle méthode permet de cloner un élément ?",
+            "options": [
+                "React.cloneElement",
+                "Element.clone",
+                "Clone()",
+                "Copy()"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour modifier les props d'un enfant passé en props."
+        },
+        {
+            "id": 59,
+            "question": "Comment passer une ref à un composant enfant ?",
+            "options": [
+                "forwardRef",
+                "passRef",
+                "refProp",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "React.forwardRef((props, ref) => ...)"
+        },
+        {
+            "id": 60,
+            "question": "Qu'est-ce que `useContext` évite ?",
+            "options": [
+                "Prop Drilling",
+                "State",
+                "Hooks",
+                "Rendu"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'accéder à une valeur globale sans la passer manuellement."
+        },
+        {
+            "id": 61,
+            "question": "Quand `useEffect` s'exécute-t-il ?",
+            "options": [
+                "Après le rendu",
+                "Avant le rendu",
+                "Pendant le rendu",
+                "Jamais"
+            ],
+            "answer": 0,
+            "explanation": "Asynchrone, ne bloque pas l'affichage."
+        },
+        {
+            "id": 62,
+            "question": "Comment définir une route avec React Router v6 ?",
+            "options": [
+                "<Route path='/' element={<Home/>} />",
+                "<Route path='/' component={Home} />",
+                "<Route url='/' />",
+                "<Link to='/' />"
+            ],
+            "answer": 0,
+            "explanation": "La prop 'element' remplace 'component' ou les enfants."
+        },
+        {
+            "id": 63,
+            "question": "Quel hook pour la traduction (i18n) ?",
+            "options": [
+                "useTranslation (react-i18next)",
+                "useLang",
+                "useText",
+                "useT"
+            ],
+            "answer": 0,
+            "explanation": "Standard communautaire."
+        },
+        {
+            "id": 64,
+            "question": "Comment optimiser une liste immense ?",
+            "options": [
+                "Virtualisation (react-window)",
+                "Pagination",
+                "Tout ça",
+                "Rien"
+            ],
+            "answer": 2,
+            "explanation": "Rendre seulement les éléments visibles."
+        },
+        {
+            "id": 65,
+            "question": "Quel est l'algorithme de diffing de React ?",
+            "options": [
+                "Reconciliation",
+                "DiffEngine",
+                "ReactDiff",
+                "Compare"
+            ],
+            "answer": 0,
+            "explanation": "Basé sur des heuristiques (O(n))."
+        },
+        {
+            "id": 66,
+            "question": "Que fait `useImperativeHandle` ?",
+            "options": [
+                "Personnalise l'instance exposée au parent via ref",
+                "Gère les erreurs",
+                "Hook impératif",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Rarement utilisé, sauf pour bibliothèques."
+        },
+        {
+            "id": 67,
+            "question": "Comment faire un composant asynchrone (Server Component) ?",
+            "options": [
+                "async function Component() {}",
+                "useAsync",
+                "useEffect",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Nouveauté React Server Components (Next.js 13+)."
+        },
+        {
+            "id": 68,
+            "question": "Quel attribut HTML `for` devient en JSX ?",
+            "options": [
+                "htmlFor",
+                "for",
+                "labelFor",
+                "inputFor"
+            ],
+            "answer": 0,
+            "explanation": "Car 'for' est une boucle en JS."
+        },
+        {
+            "id": 69,
+            "question": "Comment empêcher XSS dans React ?",
+            "options": [
+                "React échappe auto les variables",
+                "Rien à faire",
+                "Sanitize manuel",
+                "Filtre"
+            ],
+            "answer": 0,
+            "explanation": "Sauf si on utilise dangerouslySetInnerHTML."
+        },
+        {
+            "id": 70,
+            "question": "À quoi sert `dangerouslySetInnerHTML` ?",
+            "options": [
+                "Insérer du HTML brut",
+                "Créer une erreur",
+                "Hacker",
+                "Tester"
+            ],
+            "answer": 0,
+            "explanation": "L'équivalent de innerHTML."
+        },
+        {
+            "id": 71,
+            "question": "Comment faire un toggle booléen simple ?",
+            "options": [
+                "setIsActive(prev => !prev)",
+                "setIsActive(!isActive)",
+                "toggle()",
+                "switch()"
+            ],
+            "answer": 0,
+            "explanation": "La forme fonctionnelle set(prev => ...) est plus sûre pour les mises à jour basées sur l'état précédent."
+        },
+        {
+            "id": 72,
+            "question": "Quelle est la convention de nommage des composants ?",
+            "options": [
+                "PascalCase",
+                "camelCase",
+                "snake_case",
+                "kebab-case"
+            ],
+            "answer": 0,
+            "explanation": "Pour que React les distingue des balises HTML natives (div, span...)."
+        },
+        {
+            "id": 73,
+            "question": "Comment récupérer les paramètres d'URL (Router) ?",
+            "options": [
+                "useParams",
+                "useRoute",
+                "useUrl",
+                "useQuery"
+            ],
+            "answer": 0,
+            "explanation": "const { id } = useParams()."
+        },
+        {
+            "id": 74,
+            "question": "Quel outil permet de documenter les composants (Storybook) ?",
+            "options": [
+                "Storybook",
+                "Docz",
+                "Styleguidist",
+                "Tous"
+            ],
+            "answer": 3,
+            "explanation": "Storybook est le leader."
+        },
+        {
+            "id": 75,
+            "question": "Comment faire un style conditionnel inline ?",
+            "options": [
+                "style={{ display: show ? 'block' : 'none' }}",
+                "if(show)",
+                "css-in-js",
+                "class"
+            ],
+            "answer": 0,
+            "explanation": "Logique ternaire dans l'objet style."
+        },
+        {
+            "id": 76,
+            "question": "Qu'est-ce que Next.js ?",
+            "options": [
+                "Un framework React fullstack",
+                "Une librairie",
+                "Un langage",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "Apporte SSR, Routing, API Routes..."
+        },
+        {
+            "id": 77,
+            "question": "Comment valider un formulaire ?",
+            "options": [
+                "React Hook Form / Formik",
+                "Manuellement",
+                "HTML5",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "React Hook Form est très performant (minimise les re-renders)."
+        },
+        {
+            "id": 78,
+            "question": "Quel est l'effet de `useEffect(() => {}, [])` ?",
+            "options": [
+                "S'exécute une seule fois au montage (mount)",
+                "À chaque rendu",
+                "Jamais",
+                "Au démontage"
+            ],
+            "answer": 0,
+            "explanation": "Tableau de dépendances vide."
+        },
+        {
+            "id": 79,
+            "question": "Quelle fonction permet de memoïzer un calcul ?",
+            "options": [
+                "useMemo",
+                "React.memo",
+                "useCallback",
+                "memo()"
+            ],
+            "answer": 0,
+            "explanation": "Pour les valeurs. React.memo pour les composants."
+        },
+        {
+            "id": 80,
+            "question": "Comment appeler une API ?",
+            "options": [
+                "Dans useEffect",
+                "Dans le render",
+                "Dans une boucle",
+                "Dans le HTML"
+            ],
+            "answer": 0,
+            "explanation": "Pour éviter les appels infinis/boucles."
+        },
+        {
+            "id": 81,
+            "question": "Qu'est-ce que le 'Key Prop' ?",
+            "options": [
+                "Identifiant unique stable pour les listes",
+                "Un mot de passe",
+                "Une clé API",
+                "Un index"
+            ],
+            "answer": 0,
+            "explanation": "Ne pas utiliser l'index du tableau si l'ordre peut changer."
+        },
+        {
+            "id": 82,
+            "question": "Comment partager du code JS pur ?",
+            "options": [
+                "Modules / Fonctions utilitaires",
+                "Hooks",
+                "Composants",
+                "Context"
+            ],
+            "answer": 0,
+            "explanation": "Pas besoin d'un Hook si ça n'utilise pas de Hook."
+        },
+        {
+            "id": 83,
+            "question": "Quelle est la différence React vs React Native ?",
+            "options": [
+                "React = Web (DOM), Native = Mobile (Android/iOS)",
+                "Aucune",
+                "Native est plus rapide",
+                "React est obsolète"
+            ],
+            "answer": 0,
+            "explanation": "React Native utilise des composants natifs au lieu de div/span."
+        },
+        {
+            "id": 84,
+            "question": "Comment gérer le Dark Mode ?",
+            "options": [
+                "Context + CSS Variables / Styled Components",
+                "Impossible",
+                "Nativement",
+                "Plugin"
+            ],
+            "answer": 0,
+            "explanation": "Un Context 'Theme' qui wrap l'app."
+        },
+        {
+            "id": 85,
+            "question": "Quel est l'ordre des Hooks ?",
+            "options": [
+                "Doit être constant entre les rendus",
+                "Aléatoire",
+                "Peu importe",
+                "Alphabétique"
+            ],
+            "answer": 0,
+            "explanation": "React s'appuie sur l'ordre d'appel pour associer les états."
+        },
+        {
+            "id": 86,
+            "question": "Comment simuler `componentWillUnmount` ?",
+            "options": [
+                "Retourner une fonction dans useEffect",
+                "useUnmount",
+                "useEffect(..., [unmount])",
+                "delete()"
+            ],
+            "answer": 0,
+            "explanation": "Le cleanup function."
+        },
+        {
+            "id": 87,
+            "question": "Quelle est la version actuelle majeure de React (2024/2025) ?",
+            "options": [
+                "v18 / v19",
+                "v15",
+                "v20",
+                "v10"
+            ],
+            "answer": 0,
+            "explanation": "v19 introduit le compilateur React et les Server Actions stables."
+        },
+        {
+            "id": 88,
+            "question": "Comment faire un 'debounced' input ?",
+            "options": [
+                "Utiliser un hook useDebounce ou lodash",
+                "setTimeout manuel",
+                "Tout ça",
+                "Impossible"
+            ],
+            "answer": 2,
+            "explanation": "Pour ne pas appeler l'API à chaque frappe."
+        },
+        {
+            "id": 89,
+            "question": "Qu'est-ce que Zustand ?",
+            "options": [
+                "Un gestionnaire d'état minimaliste",
+                "Un pays",
+                "Une fonction",
+                "Un router"
+            ],
+            "answer": 0,
+            "explanation": "Trés populaire pour sa simplicité vs Redux."
+        },
+        {
+            "id": 90,
+            "question": "Comment définir une constante globale sans re-render ?",
+            "options": [
+                "En dehors du composant",
+                "Dans le state",
+                "Dans un ref",
+                "Dans un effet"
+            ],
+            "answer": 0,
+            "explanation": "const STATIC_DATA = ...; function App() ..."
+        },
+        {
+            "id": 91,
+            "question": "Quel est le but de `useDeferredValue` ?",
+            "options": [
+                "Différer la mise à jour d'une partie de l'UI non critique",
+                "Attendre",
+                "Promesse",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Améliore la réactivité de l'input utilisateur."
+        },
+        {
+            "id": 92,
+            "question": "Comment faire un focus sur un input ?",
+            "options": [
+                "inputRef.current.focus()",
+                "document.getElementById().focus()",
+                "focus()",
+                "autoFocus"
+            ],
+            "answer": 0,
+            "explanation": "La méthode React-way avec useRef."
+        },
+        {
+            "id": 93,
+            "question": "Qu'est-ce que le 'SyntheticEvent' ?",
+            "options": [
+                "Le wrapper cross-browser des événements natifs",
+                "Un faux événement",
+                "Un test",
+                "Une simulation"
+            ],
+            "answer": 0,
+            "explanation": "Garantit que e.stopPropagation() fonctionne partout pareil."
+        },
+        {
+            "id": 94,
+            "question": "Comment annuler une requête HTTP au démontage ?",
+            "options": [
+                "AbortController signal dans useEffect cleanup",
+                "Impossible",
+                "cancel()",
+                "stop()"
+            ],
+            "answer": 0,
+            "explanation": "Pour éviter 'Set state on unmounted component'."
+        },
+        {
+            "id": 95,
+            "question": "Peut-on utiliser plusieurs `useEffect` ?",
+            "options": [
+                "Oui, autant que nécessaire",
+                "Non, un seul",
+                "Max 3",
+                "Lent"
+            ],
+            "answer": 0,
+            "explanation": "Séparer les préoccupations (un pour le titre, un pour l'API...)."
+        },
+        {
+            "id": 96,
+            "question": "Comment détecter un clic en dehors (click outside) ?",
+            "options": [
+                "Event listener sur document dans useEffect + ref check",
+                "onClickOutside",
+                "hook magique",
+                "css"
+            ],
+            "answer": 0,
+            "explanation": "if (ref.current && !ref.current.contains(e.target)) close()."
+        },
+        {
+            "id": 97,
+            "question": "Quel est l'avantage de TypeScript avec React ?",
+            "options": [
+                "Auto-complétion et sécurité des props",
+                "Vitesse",
+                "Rien",
+                "Style"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour les gros projets."
+        },
+        {
+            "id": 98,
+            "question": "Comment rendre du Markdown ?",
+            "options": [
+                "Librairie tierce (react-markdown)",
+                "Nativement",
+                "innerHTML",
+                "JSON"
+            ],
+            "answer": 0,
+            "explanation": "Transforme le MD en composants React."
+        },
+        {
+            "id": 99,
+            "question": "Qu'est-ce que le mode 'Concurrent' ?",
+            "options": [
+                "Capacité de React à interrompre le rendu pour rester fluide",
+                "Parallélisme",
+                "Threads",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Base des transitions et de Suspense."
+        },
+        {
+            "id": 100,
+            "question": "Pourquoi aimer React ?",
+            "options": [
+                "Écosystème immense, composabilité, emploi",
+                "C'est Facebook",
+                "C'est bleu",
+                "C'est lent"
+            ],
+            "answer": 0,
+            "explanation": "Standard de l'industrie."
+        }
+    ]
+}

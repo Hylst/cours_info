@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo HTML Complet - 85+ balises HTML5 avec exemples visuels | Guide 2025</title>
+    <title>Mémo HTML5 - 85+ balises avec exemples visuels | Guide 2025</title>
     <meta name="description"
         content="Guide complet HTML5 : 85+ balises avec exemples visuels. Structure, formulaires, tableaux, médias, sémantique. Mémo pratique et interactif.">
     <meta name="keywords"
@@ -29,6 +29,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/quiz-style.css">
     <style>
         :root {
             --primary: #e44d26;
@@ -514,7 +515,9 @@
                 <a href="#s6" class="toc-item"><span class="toc-num">06</span>Listes & Tableaux</a>
                 <a href="#s7" class="toc-item"><span class="toc-num">07</span>Formulaires</a>
                 <a href="#s8" class="toc-item"><span class="toc-num">08</span>Sémantique</a>
-                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Référence 80+ balises</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Accessibilité (A11y)</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>SEO & Performance</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Référence 80+ balises</a>
             </div>
         </div>
     </div>
@@ -1078,17 +1081,89 @@
         </div>
     </section>
 
-    <!-- SECTION 9 - RÉFÉRENCE -->
+
+
+    <!-- SECTION 9 - ACCESSIBILITÉ -->
     <section id="s9">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">09</div>
                 <div>
-                    <h2 class="sec-title">Référence complète</h2>
-                    <p class="sec-sub">80+ balises HTML</p>
+                    <h2 class="sec-title">Accessibilité (A11y)</h2>
+                    <p class="sec-sub">Rendre le web utilisable par tous</p>
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Les 3 règles d'or</summary>
+                <div>
+                    <p>1. <strong>Contraste</strong> : Le texte et le fond doivent avoir un contraste suffisant
+                        (ratio 4.5:1).</p>
+                    <p>2. <strong>Structure</strong> : Utiliser les balises sémantiques (<code>h1-h6</code>,
+                        <code>nav</code>, <code>button</code>) pour que les lecteurs d'écran comprennent la
+                        page.
+                    </p>
+                    <p>3. <strong>Clavier</strong> : Tout doit être accessible sans souris (Tabulation).</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Bonnes pratiques</div>
+                <pre><span class="c">&lt;!-- Alt pour images --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"cat.jpg"</span> <span class="a">alt=</span><span class="v">"Chat noir qui dort sur un canapé"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- Label pour formulaires --&gt;</span>
+<span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"email"</span><span class="t">&gt;</span>Email<span class="t">&lt;/label&gt;</span>
+<span class="t">&lt;input</span> <span class="a">id=</span><span class="v">"email"</span> <span class="a">type=</span><span class="v">"email"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- ARIA (si HTML ne suffit pas) --&gt;</span>
+<span class="t">&lt;div</span> <span class="a">role=</span><span class="v">"alert"</span> <span class="a">aria-live=</span><span class="v">"polite"</span><span class="t">&gt;</span>Erreur de connexion<span class="t">&lt;/div&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10 - SEO -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">SEO & Performance</h2>
+                    <p class="sec-sub">Optimisation pour les moteurs</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Open Graph (Social)</div>
+                    <pre><span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:title"</span> <span class="a">content=</span><span class="v">"Mon Article"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:image"</span> <span class="a">content=</span><span class="v">"https://site.com/thumb.jpg"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:description"</span> <span class="a">content=</span><span class="v">"Résumé..."</span><span class="t">&gt;</span></pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Performance</div>
+                    <pre><span class="c">&lt;!-- Lazy loading --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">loading=</span><span class="v">"lazy"</span> ...<span class="t">&gt;</span>
+<span class="t">&lt;iframe</span> <span class="a">loading=</span><span class="v">"lazy"</span> ...<span class="t">&gt;&lt;/iframe&gt;</span>
+
+<span class="c">&lt;!-- Preload (Police critique) --&gt;</span>
+<span class="t">&lt;link</span> <span class="a">rel=</span><span class="v">"preload"</span> <span class="a">href=</span><span class="v">"font.woff2"</span> <span class="a">as=</span><span class="v">"font"</span><span class="t">&gt;</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11 - REFERENCE -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Référence Complète</h2>
+                    <p class="sec-sub">80+ balises HTML5</p>
+                </div>
+            </div>
             <h3>Structure</h3>
             <div class="ref-grid">
                 <div class="ref-card">
@@ -1160,10 +1235,12 @@
             <div class="ref-grid">
                 <div class="ref-card">
                     <h4>Listes</h4><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;li&gt;</code>
-                    <code>&lt;dl&gt;</code> <code>&lt;dt&gt;</code> <code>&lt;dd&gt;</code> <code>&lt;menu&gt;</code>
+                    <code>&lt;dl&gt;</code> <code>&lt;dt&gt;</code> <code>&lt;dd&gt;</code>
+                    <code>&lt;menu&gt;</code>
                 </div>
                 <div class="ref-card">
-                    <h4>Tableaux</h4><code>&lt;table&gt;</code> <code>&lt;caption&gt;</code> <code>&lt;thead&gt;</code>
+                    <h4>Tableaux</h4><code>&lt;table&gt;</code> <code>&lt;caption&gt;</code>
+                    <code>&lt;thead&gt;</code>
                     <code>&lt;tbody&gt;</code> <code>&lt;tfoot&gt;</code> <code>&lt;tr&gt;</code>
                     <code>&lt;th&gt;</code> <code>&lt;td&gt;</code> <code>&lt;colgroup&gt;</code>
                     <code>&lt;col&gt;</code>
@@ -1177,7 +1254,8 @@
                     <code>&lt;legend&gt;</code> <code>&lt;label&gt;</code>
                 </div>
                 <div class="ref-card">
-                    <h4>Inputs</h4><code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code> <code>&lt;select&gt;</code>
+                    <h4>Inputs</h4><code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code>
+                    <code>&lt;select&gt;</code>
                     <code>&lt;option&gt;</code> <code>&lt;optgroup&gt;</code> <code>&lt;datalist&gt;</code>
                 </div>
                 <div class="ref-card">
@@ -1200,22 +1278,62 @@
                     <code>&lt;template&gt;</code> <code>&lt;slot&gt;</code>
                 </div>
                 <div class="ref-card">
-                    <h4>Ruby (annotations)</h4><code>&lt;ruby&gt;</code> <code>&lt;rt&gt;</code> <code>&lt;rp&gt;</code>
+                    <h4>Ruby (annotations)</h4><code>&lt;ruby&gt;</code> <code>&lt;rt&gt;</code>
+                    <code>&lt;rp&gt;</code>
                 </div>
                 <div class="ref-card">
                     <h4>Bidirectionnel</h4><code>&lt;bdi&gt;</code> <code>&lt;bdo&gt;</code>
                 </div>
             </div>
 
-            <div class="tip" style="margin-top:24px"><strong>💡 Total : 85+ balises HTML</strong> - Cette référence
+            <div class="tip" style="margin-top:24px"><strong>💡 Total : 85+ balises HTML</strong> - Cette
+                référence
                 couvre toutes les balises HTML5 courantes et leur usage.</div>
         </div>
     </section>
 
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app">
+                <!-- Injecté par JS -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import 'assets/js/quiz-engine.js';
+
+        // Init Quiz
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({
+                containerId: 'quiz-app',
+                jsonPath: 'quiz_html.json',
+                questionsPerSession: 10
+            });
+        });
+    </script>
+    <!-- Fallback if module import fails or separate script needed -->
+    <script src="assets/js/quiz-engine.js"></script>
+    <script>
+        // Simple init check
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: 'quiz_html.json',
+                    questionsPerSession: 10
+                });
+            }
+        });
+    </script>
+
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo HTML Complet</strong> • 85+ balises • 2025</p>
-            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
+            <p style="margin-bottom:8px"><strong>Mémo HTML5</strong> • 85+ balises • 2025</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire
+                avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
                 faciliter l'apprentissage des autres.</p>
         </div>

@@ -1,0 +1,248 @@
+{
+    "meta": {
+        "title": "Quiz PHP Expert",
+        "total": 20
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Comment déclarer une variable ?",
+            "options": [
+                "$variable",
+                "var variable",
+                "let variable",
+                "variable"
+            ],
+            "answer": 0,
+            "explanation": "Toujours préfixé par $."
+        },
+        {
+            "id": 2,
+            "question": "Afficher du texte ?",
+            "options": [
+                "print",
+                "echo",
+                "display",
+                "console.log"
+            ],
+            "answer": 1,
+            "explanation": "echo 'Hello';"
+        },
+        {
+            "id": 3,
+            "question": "PHP est exécuté côté...",
+            "options": [
+                "Serveur",
+                "Client",
+                "Navigateur",
+                "Base de données"
+            ],
+            "answer": 0,
+            "explanation": "C'est un langage Backend."
+        },
+        {
+            "id": 4,
+            "question": "Comment concaténer ?",
+            "options": [
+                "+",
+                ".",
+                "&",
+                ","
+            ],
+            "answer": 1,
+            "explanation": "$a . $b"
+        },
+        {
+            "id": 5,
+            "question": "Accéder à un paramètre URL (GET) ?",
+            "options": [
+                "$_GET['param']",
+                "$_POST['param']",
+                "$_REQUEST",
+                "$GET"
+            ],
+            "answer": 0,
+            "explanation": "Superglobale $_GET."
+        },
+        {
+            "id": 6,
+            "question": "Démarrer une session ?",
+            "options": [
+                "session_start()",
+                "start_session()",
+                "init_session()",
+                "session()"
+            ],
+            "answer": 0,
+            "explanation": "Doit être au tout début du fichier."
+        },
+        {
+            "id": 7,
+            "question": "Connecteur BDD recommandé ?",
+            "options": [
+                "mysql_",
+                "mysqli",
+                "PDO",
+                "ODBC"
+            ],
+            "answer": 2,
+            "explanation": "PDO (PHP Data Objects) est universel et sécurisé."
+        },
+        {
+            "id": 8,
+            "question": "Comment définir une constante ?",
+            "options": [
+                "define('CTE', 1)",
+                "const CTE = 1",
+                "let CTE = 1",
+                "Les deux premiers"
+            ],
+            "answer": 3,
+            "explanation": "define() ancienne méthode, const mot-clé moderne."
+        },
+        {
+            "id": 9,
+            "question": "Opérateur de comparaison stricte ?",
+            "options": [
+                "==",
+                "===",
+                "=",
+                "eq"
+            ],
+            "answer": 1,
+            "explanation": "Vérifie valeur ET type."
+        },
+        {
+            "id": 10,
+            "question": "Boucle pour parcourir un tableau ?",
+            "options": [
+                "foreach",
+                "for",
+                "while",
+                "loop"
+            ],
+            "answer": 0,
+            "explanation": "foreach ($array as $key => $value)."
+        },
+        {
+            "id": 11,
+            "question": "Inclure un fichier obligatoirement ?",
+            "options": [
+                "include",
+                "require",
+                "import",
+                "load"
+            ],
+            "answer": 1,
+            "explanation": "require déclenche une erreur fatale si le fichier manque. include juste un warning."
+        },
+        {
+            "id": 12,
+            "question": "Composer est...",
+            "options": [
+                "Un gestionnaire de dépendances",
+                "Un éditeur",
+                "Un serveur",
+                "Un framework"
+            ],
+            "answer": 0,
+            "explanation": "L'équivalent de NPM pour PHP."
+        },
+        {
+            "id": 13,
+            "question": "Comment déboguer une variable ?",
+            "options": [
+                "var_dump()",
+                "print_r()",
+                "debug()",
+                "console()"
+            ],
+            "answer": 0,
+            "explanation": "var_dump() donne type et valeur. print_r() est plus lisible pour les arrays."
+        },
+        {
+            "id": 14,
+            "question": "POO : variable de l'instance courante ?",
+            "options": [
+                "this",
+                "$this",
+                "self",
+                "me"
+            ],
+            "answer": 1,
+            "explanation": "$this->propriete."
+        },
+        {
+            "id": 15,
+            "question": "Fonction pour la longueur d'un string ?",
+            "options": [
+                "strlen()",
+                "str_len()",
+                "length()",
+                "count()"
+            ],
+            "answer": 0,
+            "explanation": "strlen($str)."
+        },
+        {
+            "id": 16,
+            "question": "Comment hacher un mot de passe ?",
+            "options": [
+                "md5()",
+                "sha1()",
+                "password_hash()",
+                "crypt()"
+            ],
+            "answer": 2,
+            "explanation": "password_hash($pass, PASSWORD_DEFAULT)."
+        },
+        {
+            "id": 17,
+            "question": "Superglobale des fichiers uploadés ?",
+            "options": [
+                "$_FILES",
+                "$_UPLOAD",
+                "$_POST",
+                "$_input"
+            ],
+            "answer": 0,
+            "explanation": "Contient nom, type, tmp_name, error, size."
+        },
+        {
+            "id": 18,
+            "question": "Comment hériter d'une classe ?",
+            "options": [
+                "extends",
+                "implements",
+                "inherits",
+                "child"
+            ],
+            "answer": 0,
+            "explanation": "class B extends A."
+        },
+        {
+            "id": 19,
+            "question": "Vérifier si une variable existe ?",
+            "options": [
+                "exists()",
+                "isset()",
+                "defined()",
+                "check()"
+            ],
+            "answer": 1,
+            "explanation": "isset($var) retourne true si définie et pas null."
+        },
+        {
+            "id": 20,
+            "question": "Espace de noms (Namespace) ?",
+            "options": [
+                "namespace App;",
+                "package App;",
+                "use App;",
+                "module App;"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'organiser le code et d'éviter les collisions."
+        }
+    ]
+}

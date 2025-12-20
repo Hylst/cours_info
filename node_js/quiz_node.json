@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz Node.js Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quel moteur JavaScript Node.js utilise-t-il ?",
+            "options": [
+                "SpiderMonkey",
+                "V8",
+                "Chakra",
+                "JavaScriptCore"
+            ],
+            "answer": 1,
+            "explanation": "Le même moteur que Chrome, développé par Google en C++."
+        },
+        {
+            "id": 2,
+            "question": "Quelle commande initialise un projet Node.js ?",
+            "options": [
+                "npm init",
+                "node init",
+                "npm start",
+                "npm install"
+            ],
+            "answer": 0,
+            "explanation": "Crée le fichier package.json."
+        },
+        {
+            "id": 3,
+            "question": "Quel module gère le système de fichiers ?",
+            "options": [
+                "system",
+                "fs",
+                "file",
+                "disk"
+            ],
+            "answer": 1,
+            "explanation": "Le module 'fs' (File System) est natif."
+        },
+        {
+            "id": 4,
+            "question": "Comment importer un module CommonJS ?",
+            "options": [
+                "import lib from 'lib'",
+                "require('lib')",
+                "include 'lib'",
+                "use 'lib'"
+            ],
+            "answer": 1,
+            "explanation": "require() est la syntaxe historique. import ... from est ES Modules."
+        },
+        {
+            "id": 5,
+            "question": "Quel est l'objet global dans Node.js ?",
+            "options": [
+                "window",
+                "global",
+                "document",
+                "root"
+            ],
+            "answer": 1,
+            "explanation": "Il n'y a pas de window ou document côté serveur."
+        },
+        {
+            "id": 6,
+            "question": "Que signifie npm ?",
+            "options": [
+                "Node Package Manager",
+                "Node Project Manager",
+                "New Package Module",
+                "No Problem Man"
+            ],
+            "answer": 0,
+            "explanation": "Le gestionnaire de paquets par défaut."
+        },
+        {
+            "id": 7,
+            "question": "Quel événement est émis quand une erreur non capturée survient ?",
+            "options": [
+                "uncaughtException",
+                "error",
+                "fail",
+                "crash"
+            ],
+            "answer": 0,
+            "explanation": "process.on('uncaughtException', ...). À utiliser avec prudence."
+        },
+        {
+            "id": 8,
+            "question": "Quel module permet de créer un serveur HTTP ?",
+            "options": [
+                "net",
+                "http",
+                "server",
+                "web"
+            ],
+            "answer": 1,
+            "explanation": "http.createServer()."
+        },
+        {
+            "id": 9,
+            "question": "Comment lire les arguments de la ligne de commande ?",
+            "options": [
+                "process.argv",
+                "process.args",
+                "node.arguments",
+                "arguments"
+            ],
+            "answer": 0,
+            "explanation": "argv[0] est node, argv[1] le script, argv[2+] les arguments."
+        },
+        {
+            "id": 10,
+            "question": "Quelle librairie est populaire pour gérer les routes HTTP ?",
+            "options": [
+                "Express",
+                "Fastify",
+                "Koa",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "Express est la plus ancienne, mais toutes sont populaires."
+        },
+        {
+            "id": 11,
+            "question": "Quelle méthode de 'fs' est asynchrone ?",
+            "options": [
+                "fs.readFile",
+                "fs.readFileSync",
+                "fs.read",
+                "fs.readSync"
+            ],
+            "answer": 0,
+            "explanation": "Les méthodes *Sync sont bloquantes. readFile utilise un callback ou une promesse."
+        },
+        {
+            "id": 12,
+            "question": "Que retourne `__dirname` ?",
+            "options": [
+                "Le dossier du script courant",
+                "Le dossier racine",
+                "Le dossier utilisateur",
+                "Le nom du fichier"
+            ],
+            "answer": 0,
+            "explanation": "Chemin absolu vers le répertoire contenant le fichier exécuté."
+        },
+        {
+            "id": 13,
+            "question": "Quel est le rôle de package-lock.json ?",
+            "options": [
+                "Verrouiller les versions exactes des dépendances",
+                "Empêcher l'installation",
+                "Sécuriser le code",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Assure que tout le monde installe exactement le même arbre de dépendances."
+        },
+        {
+            "id": 14,
+            "question": "Comment exporter une fonction en CommonJS ?",
+            "options": [
+                "module.exports = fn",
+                "export fn",
+                "exports default fn",
+                "return fn"
+            ],
+            "answer": 0,
+            "explanation": "Ou exports.fn = fn."
+        },
+        {
+            "id": 15,
+            "question": "Quel module permet de gérer les chemins de fichiers ?",
+            "options": [
+                "path",
+                "url",
+                "dir",
+                "route"
+            ],
+            "answer": 0,
+            "explanation": "path.join(), path.resolve() gèrent proprement les séparateurs OS slash/backendslash."
+        },
+        {
+            "id": 16,
+            "question": "Qu'est-ce que l'Event Loop ?",
+            "options": [
+                "La boucle qui gère l'asynchronicité",
+                "Une boucle infinie buggée",
+                "Un plugin",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "Permet à Node (single-threaded) de faire des I/O non bloquants."
+        },
+        {
+            "id": 17,
+            "question": "Comment installer une dépendance uniquement pour le développement ?",
+            "options": [
+                "npm i -D pkg",
+                "npm i --save-dev pkg",
+                "Les deux",
+                "npm i --dev pkg"
+            ],
+            "answer": 2,
+            "explanation": "-D est l'alias de --save-dev."
+        },
+        {
+            "id": 18,
+            "question": "Quel objet gère les flux de données (Streams) ?",
+            "options": [
+                "Stream",
+                "Buffer",
+                "Flow",
+                "Data"
+            ],
+            "answer": 0,
+            "explanation": "Readable, Writable, Duplex, Transform."
+        },
+        {
+            "id": 19,
+            "question": "Que contient `process.env` ?",
+            "options": [
+                "Les variables d'environnement",
+                "Le code source",
+                "La configuration NPM",
+                "Les modules"
+            ],
+            "answer": 0,
+            "explanation": "Ex: process.env.PORT."
+        },
+        {
+            "id": 20,
+            "question": "Quel framework de test est très utilisé avec Node ?",
+            "options": [
+                "Jest",
+                "Mocha",
+                "Vitest",
+                "Tous"
+            ],
+            "answer": 3,
+            "explanation": "Jest est souvent le standard de facto."
+        },
+        {
+            "id": 21,
+            "question": "Comment arrêter le processus Node manuellement ?",
+            "options": [
+                "process.exit()",
+                "stop()",
+                "exit()",
+                "die()"
+            ],
+            "answer": 0,
+            "explanation": "process.exit(0) pour succès, 1 pour erreur."
+        },
+        {
+            "id": 22,
+            "question": "Quelle classe est utilisée pour gérer les événements ?",
+            "options": [
+                "EventEmitter",
+                "EventTarget",
+                "EventBus",
+                "Listener"
+            ],
+            "answer": 0,
+            "explanation": "const EventEmitter = require('events');"
+        },
+        {
+            "id": 23,
+            "question": "Quel module crypto est natif ?",
+            "options": [
+                "crypto",
+                "bcrypt",
+                "md5",
+                "ssl"
+            ],
+            "answer": 0,
+            "explanation": "Permet le hachage, chiffrement, signature..."
+        },
+        {
+            "id": 24,
+            "question": "Que fait `npm audit` ?",
+            "options": [
+                "Analyse les vulnérabilités de sécurité",
+                "Met à jour les paquets",
+                "Nettoie le cache",
+                "Liste les paquets"
+            ],
+            "answer": 0,
+            "explanation": "Vérifie les CVE connus dans les dépendances."
+        },
+        {
+            "id": 25,
+            "question": "Quel est le nom du fichier principal par défaut dans package.json ?",
+            "options": [
+                "index.js",
+                "main.js",
+                "app.js",
+                "server.js"
+            ],
+            "answer": 0,
+            "explanation": "Si non spécifié, Node cherche index.js."
+        },
+        {
+            "id": 26,
+            "question": "Comment exécuter un script défini dans package.json ?",
+            "options": [
+                "npm run scriptname",
+                "npm start scriptname",
+                "node scriptname",
+                "exec scriptname"
+            ],
+            "answer": 0,
+            "explanation": "Sauf pour 'start' et 'test' qui peuvent s'écrire 'npm start'."
+        },
+        {
+            "id": 27,
+            "question": "Quel module permet de lancer des processus enfants ?",
+            "options": [
+                "child_process",
+                "subprocess",
+                "os",
+                "cluster"
+            ],
+            "answer": 0,
+            "explanation": "exec(), spawn(), fork()."
+        },
+        {
+            "id": 28,
+            "question": "Qu'est-ce qu'un Middleware (Express) ?",
+            "options": [
+                "Une fonction qui accès à req, res, et next",
+                "Un logiciel milieu de gamme",
+                "Un virus",
+                "Une base de données"
+            ],
+            "answer": 0,
+            "explanation": "Permet de traiter la requête avant d'arriver à la route finale."
+        },
+        {
+            "id": 29,
+            "question": "Quelle est la différence entre `setImmediate` et `process.nextTick` ?",
+            "options": [
+                "nextTick est plus prioritaire (exécuté avant la phase I/O)",
+                "setImmediate est plus rapide",
+                "C'est pareil",
+                "nextTick est déprécié"
+            ],
+            "answer": 0,
+            "explanation": "nextTick s'exécute immédiatement après l'opération courante, avant que l'Event Loop continue."
+        },
+        {
+            "id": 30,
+            "question": "Quel outil permet de redémarrer Node automatiquement au changement de fichier ?",
+            "options": [
+                "nodemon",
+                "forever",
+                "pm2",
+                "node-watch"
+            ],
+            "answer": 0,
+            "explanation": "Outil de dev très populaire."
+        },
+        {
+            "id": 31,
+            "question": "Comment parser le corps d'une requête JSON (Express 4.16+) ?",
+            "options": [
+                "express.json()",
+                "bodyParser.json()",
+                "json.parse()",
+                "app.useJson()"
+            ],
+            "answer": 0,
+            "explanation": "Middleware intégré (basé sur body-parser)."
+        },
+        {
+            "id": 32,
+            "question": "Quel est le port HTTP par défaut ?",
+            "options": [
+                "80",
+                "8080",
+                "3000",
+                "443"
+            ],
+            "answer": 0,
+            "explanation": "Mais en dev on utilise souvent 3000 ou 8080 car 80 nécessite root."
+        },
+        {
+            "id": 33,
+            "question": "Quel module permet d'infos sur le système d'exploitation ?",
+            "options": [
+                "os",
+                "system",
+                "sys",
+                "machine"
+            ],
+            "answer": 0,
+            "explanation": "os.cpus(), os.freemem(), etc."
+        },
+        {
+            "id": 34,
+            "question": "Dans quel dossier vont les paquets installés ?",
+            "options": [
+                "node_modules",
+                "vendor",
+                "lib",
+                "packages"
+            ],
+            "answer": 0,
+            "explanation": "Dossier souvent très lourd, à exclure de git."
+        },
+        {
+            "id": 35,
+            "question": "Que signifie le versioning sémantique 1.2.3 ?",
+            "options": [
+                "Major.Minor.Patch",
+                "Year.Month.Day",
+                "V1.Mod2.Rev3",
+                "Alpha.Beta.RC"
+            ],
+            "answer": 0,
+            "explanation": "Changement Major = Breaking changes."
+        },
+        {
+            "id": 36,
+            "question": "Comment supprimer un paquet ?",
+            "options": [
+                "npm uninstall pkg",
+                "npm remove pkg",
+                "npm rm pkg",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "Plusieurs alias."
+        },
+        {
+            "id": 37,
+            "question": "Quel est l'équivalent de `localStorage` côté serveur ?",
+            "options": [
+                "Il n'y en a pas par défaut",
+                "serverStorage",
+                "session",
+                "cache"
+            ],
+            "answer": 0,
+            "explanation": "On utilise des bases de données (Redis, Mongo) ou fichiers."
+        },
+        {
+            "id": 38,
+            "question": "Quel est le type de données brut pour les fichiers binaires ?",
+            "options": [
+                "Buffer",
+                "String",
+                "Binary",
+                "Blob"
+            ],
+            "answer": 0,
+            "explanation": "Gère les allocations mémoire hors du tas V8."
+        },
+        {
+            "id": 39,
+            "question": "Comment debugger une appli Node ?",
+            "options": [
+                "node --inspect",
+                "console.log",
+                "VS Code Debugger",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Le protocole Inspector permet de connecter les DevTools Chrome."
+        },
+        {
+            "id": 40,
+            "question": "Quel verbe HTTP pour créer une ressource ?",
+            "options": [
+                "POST",
+                "GET",
+                "PUT",
+                "DELETE"
+            ],
+            "answer": 0,
+            "explanation": "Convention REST."
+        },
+        {
+            "id": 41,
+            "question": "Quel outil permet de gérer plusieurs versions de Node ?",
+            "options": [
+                "nvm",
+                "npm",
+                "node-v",
+                "nvmn"
+            ],
+            "answer": 0,
+            "explanation": "Node Version Manager."
+        },
+        {
+            "id": 42,
+            "question": "Que fait `cluster` module ?",
+            "options": [
+                "Permet d'utiliser tous les coeurs CPU",
+                "Crée des serveurs distants",
+                "Groupe des fichiers",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Lance plusieurs workers pour paralléliser le traitement."
+        },
+        {
+            "id": 43,
+            "question": "Comment lire une variable d'environnement depuis un fichier .env ?",
+            "options": [
+                "dotenv",
+                "env-file",
+                "config",
+                "read-env"
+            ],
+            "answer": 0,
+            "explanation": "require('dotenv').config()."
+        },
+        {
+            "id": 44,
+            "question": "Quel status code indique un succès ?",
+            "options": [
+                "200",
+                "404",
+                "500",
+                "301"
+            ],
+            "answer": 0,
+            "explanation": "OK."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que le Callback Hell ?",
+            "options": [
+                "Imbrication excessive de callbacks",
+                "Une erreur fatale",
+                "Une chanson",
+                "Un bug V8"
+            ],
+            "answer": 0,
+            "explanation": "Pyramide of doom. Résolu avec Promises et Async/Await."
+        },
+        {
+            "id": 46,
+            "question": "Quelle méthode permet d'envoyer une réponse JSON avec Express ?",
+            "options": [
+                "res.json()",
+                "res.send()",
+                "res.write()",
+                "res.end()"
+            ],
+            "answer": 0,
+            "explanation": "Ajoute automatiquement le header Content-Type application/json."
+        },
+        {
+            "id": 47,
+            "question": "Comment servir des fichiers statiques avec Express ?",
+            "options": [
+                "express.static()",
+                "express.public()",
+                "express.files()",
+                "express.assets()"
+            ],
+            "answer": 0,
+            "explanation": "app.use(express.static('public'))."
+        },
+        {
+            "id": 48,
+            "question": "Quel est l'interpréteur par défaut de Node ?",
+            "options": [
+                "REPL",
+                "Bash",
+                "Python",
+                "Compiler"
+            ],
+            "answer": 0,
+            "explanation": "Read Eval Print Loop (quand on tape `node` sans fichier)."
+        },
+        {
+            "id": 49,
+            "question": "Comment gérer les CORS ?",
+            "options": [
+                "Middleware cors",
+                "Header manuel",
+                "Proxy",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Le paquet 'cors' est le plus simple."
+        },
+        {
+            "id": 50,
+            "question": "Quel est l'avantage de Node.js ?",
+            "options": [
+                "I/O non bloquant, rapide, même langage front/back",
+                "Multithreading natif",
+                "Typage fort",
+                "Compilation"
+            ],
+            "answer": 0,
+            "explanation": "Idéal pour les applis temps réel et I/O intensive."
+        },
+        {
+            "id": 51,
+            "question": "Quelle alternative à npm est développée par Facebook ?",
+            "options": [
+                "Yarn",
+                "Pnpm",
+                "Bower",
+                "Cargo"
+            ],
+            "answer": 0,
+            "explanation": "Connue pour sa rapidité et son cache déterministe."
+        },
+        {
+            "id": 52,
+            "question": "Que signifie API ?",
+            "options": [
+                "Application Programming Interface",
+                "App Private Interface",
+                "Associated Program Index",
+                "Apple Pie Inc"
+            ],
+            "answer": 0,
+            "explanation": "Interface pour que deux logiciels communiquent."
+        },
+        {
+            "id": 53,
+            "question": "Quel header permet l'authentification Bearer ?",
+            "options": [
+                "Authorization",
+                "Auth",
+                "Token",
+                "X-API-Key"
+            ],
+            "answer": 0,
+            "explanation": "Authorization: Bearer <token>."
+        },
+        {
+            "id": 54,
+            "question": "Quelle bibliothèque permet de valider des schémas de données ?",
+            "options": [
+                "Joi",
+                "Zod",
+                "Yup",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "Joi est historique, Zod très populaire avec TypeScript."
+        },
+        {
+            "id": 55,
+            "question": "Comment hasher un mot de passe ?",
+            "options": [
+                "bcrypt.hash()",
+                "crypto.hash()",
+                "password.hash()",
+                "md5()"
+            ],
+            "answer": 0,
+            "explanation": "Bcrypt ajoute un sel (salt) automatiquement pour sécuriser."
+        },
+        {
+            "id": 56,
+            "question": "Quel est le rôle de JWT ?",
+            "options": [
+                "Transmettre des infos sécurisées (authentification)",
+                "Chiffrer la BDD",
+                "Gérer les sockets",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "JSON Web Token."
+        },
+        {
+            "id": 57,
+            "question": "Quelle base de données est NoSQL ?",
+            "options": [
+                "MongoDB",
+                "MySQL",
+                "PostgreSQL",
+                "SQLite"
+            ],
+            "answer": 0,
+            "explanation": "Stocke les données sous forme de documents JSON-like."
+        },
+        {
+            "id": 58,
+            "question": "Quel ORM est populaire pour SQL avec Node ?",
+            "options": [
+                "Sequelize",
+                "Mongoose",
+                "Prisma",
+                "TypeORM"
+            ],
+            "answer": 2,
+            "explanation": "Prisma, Sequelize, TypeORM. Mongoose est pour MongoDB (ODM)."
+        },
+        {
+            "id": 59,
+            "question": "Comment écouter sur un port ?",
+            "options": [
+                "app.listen(port)",
+                "app.start(port)",
+                "server.run(port)",
+                "http.bind(port)"
+            ],
+            "answer": 0,
+            "explanation": "Démarre le serveur."
+        },
+        {
+            "id": 60,
+            "question": "Quel est le gestionnaire de processus de production recommandé ?",
+            "options": [
+                "PM2",
+                "Nodemon",
+                "Systemd",
+                "Forever"
+            ],
+            "answer": 0,
+            "explanation": "PM2 gère le restart, logs, monitoring, cluster mode."
+        },
+        {
+            "id": 61,
+            "question": "Comment faire du temps réel bidirectionnel ?",
+            "options": [
+                "WebSockets (Socket.io)",
+                "AJAX",
+                "Fetch",
+                "REST"
+            ],
+            "answer": 0,
+            "explanation": "Permet au serveur de pousser des données vers le client."
+        },
+        {
+            "id": 62,
+            "question": "Qu'est-ce que le Semantic Versioning (SemVer) ?",
+            "options": [
+                "Standard de numérotation de version",
+                "Un framework",
+                "Un outil",
+                "Une licence"
+            ],
+            "answer": 0,
+            "explanation": "MAJ.MIN.PATCH."
+        },
+        {
+            "id": 63,
+            "question": "Quelle commande met à jour les paquets mineurs ?",
+            "options": [
+                "npm update",
+                "npm upgrade",
+                "npm install",
+                "npm refresh"
+            ],
+            "answer": 0,
+            "explanation": "Respecte les carets (^) dans package.json."
+        },
+        {
+            "id": 64,
+            "question": "Que fait `npm ci` ?",
+            "options": [
+                "Clean Install (pour CI/CD)",
+                "Check Install",
+                "Create Index",
+                "Correct Issues"
+            ],
+            "answer": 0,
+            "explanation": "Installe exactement depuis package-lock.json, supprime node_modules, plus rapide."
+        },
+        {
+            "id": 65,
+            "question": "Quel module gère la compression HTTP ?",
+            "options": [
+                "compression",
+                "gzip",
+                "zip",
+                "compress"
+            ],
+            "answer": 0,
+            "explanation": "Middleware Express pour Gzip/Brotli."
+        },
+        {
+            "id": 66,
+            "question": "Comment logger proprement en production ?",
+            "options": [
+                "Winston / Morgan",
+                "console.log",
+                "alert",
+                "print"
+            ],
+            "answer": 0,
+            "explanation": "Permet de gérer les niveaux de logs, transports fichiers, rotation..."
+        },
+        {
+            "id": 67,
+            "question": "Qu'est-ce qu'un Stream 'Pipe' ?",
+            "options": [
+                "Connecte un Readable à un Writable",
+                "Un tube de données",
+                "Un pipeline",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "readStream.pipe(writeStream)."
+        },
+        {
+            "id": 68,
+            "question": "Quelle bibliothèque gère l'upload de fichiers (multipart) ?",
+            "options": [
+                "Multer",
+                "BodyParser",
+                "Uploader",
+                "Formidable"
+            ],
+            "answer": 0,
+            "explanation": "Middleware pour express."
+        },
+        {
+            "id": 69,
+            "question": "Comment scheduler une tâche (cron) ?",
+            "options": [
+                "node-cron",
+                "setTimeout",
+                "setInterval",
+                "scheduler"
+            ],
+            "answer": 0,
+            "explanation": "Syntaxe cron standard * * * * *."
+        },
+        {
+            "id": 70,
+            "question": "Quel est le risque du `eval()` ?",
+            "options": [
+                "Injection de code",
+                "Lenteur",
+                "Débogage difficile",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Ne jamais utiliser eval()."
+        },
+        {
+            "id": 71,
+            "question": "Quel module natif gère les URLs ?",
+            "options": [
+                "url",
+                "link",
+                "href",
+                "http"
+            ],
+            "answer": 0,
+            "explanation": "new URL('Wait...')."
+        },
+        {
+            "id": 72,
+            "question": "Comment récupérer l'IP du client avec Express ?",
+            "options": [
+                "req.ip",
+                "req.remoteAddress",
+                "req.connection.ip",
+                "req.header('ip')"
+            ],
+            "answer": 0,
+            "explanation": "Attention si derrière un proxy (trust proxy)."
+        },
+        {
+            "id": 73,
+            "question": "Quelle commande checke le style du code ?",
+            "options": [
+                "ESLint",
+                "Prettier",
+                "CheckStyle",
+                "StyleLint"
+            ],
+            "answer": 0,
+            "explanation": "Linter standard JS."
+        },
+        {
+            "id": 74,
+            "question": "Que signifie `process.cwd()` ?",
+            "options": [
+                "Current Working Directory",
+                "Create Working Dir",
+                "Change Working Dir",
+                "Command Work Data"
+            ],
+            "answer": 0,
+            "explanation": "Dossier d'où la commande a été lancée."
+        },
+        {
+            "id": 75,
+            "question": "Quel framework est basé sur Node mais typé et modulaire ?",
+            "options": [
+                "NestJS",
+                "NextJS",
+                "Nuxt",
+                "Noop"
+            ],
+            "answer": 0,
+            "explanation": "NestJS utilise TypeScript et l'injection de dépendances (style Angular)."
+        },
+        {
+            "id": 76,
+            "question": "Comment savoir si le script tourne en prod ?",
+            "options": [
+                "process.env.NODE_ENV === 'production'",
+                "isProd()",
+                "checkEnv()",
+                "debug == false"
+            ],
+            "answer": 0,
+            "explanation": "Convention standard."
+        },
+        {
+            "id": 77,
+            "question": "Quel outil permet de transpiler le code (de TS/ES6+ vers JS) ?",
+            "options": [
+                "Babel / TSC",
+                "Webpack",
+                "Gulp",
+                "Grunt"
+            ],
+            "answer": 0,
+            "explanation": "TypeScript Compiler ou Babel."
+        },
+        {
+            "id": 78,
+            "question": "Quelle est la limite de mémoire par défaut de V8 ?",
+            "options": [
+                "Environ 1.5 - 2 Go (64-bit)",
+                "512 Mo",
+                "Illimité",
+                "8 Go"
+            ],
+            "answer": 0,
+            "explanation": "Ajustable avec --max-old-space-size."
+        },
+        {
+            "id": 79,
+            "question": "Que fait `npm start` ?",
+            "options": [
+                "Lance la commande définie dans scripts.start",
+                "Lance node server.js",
+                "Rien",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Si pas défini, essaie node server.js."
+        },
+        {
+            "id": 80,
+            "question": "Quel protocole sécurise HTTP ?",
+            "options": [
+                "HTTPS (TLS/SSL)",
+                "SSH",
+                "FTPS",
+                "SFTP"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite des certificats."
+        },
+        {
+            "id": 81,
+            "question": "Qu'est-ce qu'un EventEmitter ?",
+            "options": [
+                "Un objet qui émet et écoute des événements",
+                "Une erreur",
+                "Un client",
+                "Une DB"
+            ],
+            "answer": 0,
+            "explanation": "Pattern Observer."
+        },
+        {
+            "id": 82,
+            "question": "Quel status 401 signifie ?",
+            "options": [
+                "Unauthorized (Non authentifié)",
+                "Forbidden",
+                "Not Found",
+                "Error"
+            ],
+            "answer": 0,
+            "explanation": "L'utilisateur n'est pas connecté. 403 = Interdit (même si connecté)."
+        },
+        {
+            "id": 83,
+            "question": "Comment envoyer un cookie ?",
+            "options": [
+                "res.cookie()",
+                "res.setCookie()",
+                "req.cookie()",
+                "res.sendCookie()"
+            ],
+            "answer": 0,
+            "explanation": "Méthode Express."
+        },
+        {
+            "id": 84,
+            "question": "Que fait `path.resolve()` ?",
+            "options": [
+                "Résout une suite de chemins en chemin absolu",
+                "Joint des chemins",
+                "Supprime le chemin",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Simule une suite de commandes 'cd'."
+        },
+        {
+            "id": 85,
+            "question": "Quel module permet de faire des tests unitaires natifs (Node 20+) ?",
+            "options": [
+                "node:test",
+                "jest",
+                "mocha",
+                "jasmine"
+            ],
+            "answer": 0,
+            "explanation": "Nouveau runner de test stable intégré."
+        },
+        {
+            "id": 86,
+            "question": "Quand utiliser `readFileSync` ?",
+            "options": [
+                "Au démarrage de l'appli (chargement config)",
+                "À chaque requête",
+                "Jamais",
+                "Toujours"
+            ],
+            "answer": 0,
+            "explanation": "Bloquer l'Event Loop est acceptable au boot, mais catastrophique au runtime."
+        },
+        {
+            "id": 87,
+            "question": "Quelle est l'alternative moderne à `request` (déprécié) ?",
+            "options": [
+                "fetch (natif), axios, got",
+                "http.get",
+                "curl",
+                "wget"
+            ],
+            "answer": 0,
+            "explanation": "Node 18+ intègre fetch."
+        },
+        {
+            "id": 88,
+            "question": "Qu'est-ce que le 'shaking' ou 'tree shaking' ?",
+            "options": [
+                "Suppression du code mort au build",
+                "Optimisation image",
+                "Secouer l'arbre DOM",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Fait par les bundlers comme Webpack/Rollup."
+        },
+        {
+            "id": 89,
+            "question": "Comment créer un UUID ?",
+            "options": [
+                "crypto.randomUUID()",
+                "uuid.generate()",
+                "Math.random()",
+                "id()"
+            ],
+            "answer": 0,
+            "explanation": "Natif depuis Node 14.17."
+        },
+        {
+            "id": 90,
+            "question": "Quel format de module utilise `require` ?",
+            "options": [
+                "CommonJS (CJS)",
+                "ESM",
+                "AMD",
+                "UMD"
+            ],
+            "answer": 0,
+            "explanation": "Le standard historique de Node."
+        },
+        {
+            "id": 91,
+            "question": "Que retourne `promisify` de 'util' ?",
+            "options": [
+                "Une version Promise d'une fonction callback",
+                "Une erreur",
+                "Un string",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "util.promisify(fs.readFile) permet d'utiliser await."
+        },
+        {
+            "id": 92,
+            "question": "Quel flag active le mode expérimental ?",
+            "options": [
+                "--experimental-*",
+                "--beta",
+                "--dev",
+                "--test"
+            ],
+            "answer": 0,
+            "explanation": "Ex: --experimental-vm-modules."
+        },
+        {
+            "id": 93,
+            "question": "Comment lister les dépendances globales ?",
+            "options": [
+                "npm list -g --depth=0",
+                "npm list",
+                "npm global ls",
+                "ls npm"
+            ],
+            "answer": 0,
+            "explanation": "Affiche les paquets installés."
+        },
+        {
+            "id": 94,
+            "question": "Quel fichier configure les variables d'env ?",
+            "options": [
+                ".env",
+                "config.js",
+                "env.json",
+                "settings.env"
+            ],
+            "answer": 0,
+            "explanation": "Standard defacto."
+        },
+        {
+            "id": 95,
+            "question": "Comment récupérer les paramètres d'URL dynamique '/user/:id' ?",
+            "options": [
+                "req.params.id",
+                "req.query.id",
+                "req.body.id",
+                "req.id"
+            ],
+            "answer": 0,
+            "explanation": "req.query c'est pour ?id=...; req.body pour le POST."
+        },
+        {
+            "id": 96,
+            "question": "Quel framework SSR est populaire avec React ?",
+            "options": [
+                "Next.js",
+                "Nuxt",
+                "Angular",
+                "Svelte"
+            ],
+            "answer": 0,
+            "explanation": "Nuxt c'est Vue."
+        },
+        {
+            "id": 97,
+            "question": "Quelle méthode permet d'attendre 2 promesses en parallèle ?",
+            "options": [
+                "Promise.all([p1, p2])",
+                "await p1; await p2;",
+                "p1.then(p2)",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "Plus rapide que de les attendre séquentiellement."
+        },
+        {
+            "id": 98,
+            "question": "Comment valider un email simplement ?",
+            "options": [
+                "Regex ou librairie (validator)",
+                "typeof email",
+                "length > 5",
+                "checkEmail()"
+            ],
+            "answer": 0,
+            "explanation": "Les regex email sont complexes."
+        },
+        {
+            "id": 99,
+            "question": "A quoi sert `npm init -y` ?",
+            "options": [
+                "Crée package.json avec réponses par défaut (yes)",
+                "Annule",
+                "Casse tout",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Gagne du temps."
+        },
+        {
+            "id": 100,
+            "question": "Node.js est-il multi-threadé ?",
+            "options": [
+                "Non (Single Threaded Event Loop), mais peut spawner des workers",
+                "Oui nativement",
+                "Ça dépend de l'OS",
+                "Uniquement le matin"
+            ],
+            "answer": 0,
+            "explanation": "Le thread principal est unique. Les I/O sont gérés par libuv (pool de threads)."
+        }
+    ]
+}

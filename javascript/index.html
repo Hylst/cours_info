@@ -29,6 +29,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -574,7 +575,8 @@
                     <p>Modifier le DOM est coûteux en performance : il faut minimiser les accès et les modifications
                         (Reflow/Repaint).</p>
                     <p>Les méthodes comme <code>querySelector</code> sont flexibles mais légèrement plus lentes que
-                        <code>getElementById</code>.</p>
+                        <code>getElementById</code>.
+                    </p>
                 </div>
             </details>
 
@@ -635,7 +637,8 @@
                 <summary>💡 Bubbling & Capturing</summary>
                 <div class="details-content">
                     <p>Les événements se propagent en deux phases : <strong>Capturing</strong> (haut vers bas) et
-                        <strong>Bubbling</strong> (bas vers haut).</p>
+                        <strong>Bubbling</strong> (bas vers haut).
+                    </p>
                     <p>Par défaut, on écoute le bubbling. Utilisez <code>e.stopPropagation()</code> pour empêcher
                         l'événement de remonter aux parents.</p>
                 </div>
@@ -909,7 +912,8 @@
                 <summary>💡 Fetch vs Axios</summary>
                 <div class="details-content">
                     <p><code>fetch()</code> est natif mais bas niveau (ne throw pas d'erreur sur 404/500, nécessite deux
-                        <code>await</code> pour le JSON).</p>
+                        <code>await</code> pour le JSON).
+                    </p>
                     <p>C'est pourquoi beaucoup utilisent des librairies comme <strong>Axios</strong> qui simplifient la
                         syntaxe, gèrent les timeouts et les erreurs automatiquement.</p>
                 </div>
@@ -1392,6 +1396,29 @@
                 toutes les fonctionnalités essentielles de JavaScript moderne (ES6+) côté front-end!</div>
         </div>
     </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
 
     <footer>
         <div class="container">

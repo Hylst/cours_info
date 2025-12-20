@@ -1,0 +1,248 @@
+{
+    "meta": {
+        "title": "Quiz Python Data Science",
+        "total": 20
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Bibliothèque principale pour les tableaux numériques ?",
+            "options": [
+                "Pandas",
+                "Numpy",
+                "Scipy",
+                "Matplotlib"
+            ],
+            "answer": 1,
+            "explanation": "Numpy (Numerical Python) est la base."
+        },
+        {
+            "id": 2,
+            "question": "Structure de données principale de Pandas ?",
+            "options": [
+                "Matrix",
+                "DataFrame",
+                "Table",
+                "Grid"
+            ],
+            "answer": 1,
+            "explanation": "DataFrame est un tableau 2D avec labels."
+        },
+        {
+            "id": 3,
+            "question": "Comment charger un CSV avec Pandas ?",
+            "options": [
+                "pd.read_csv()",
+                "pd.load_csv()",
+                "pd.import()",
+                "pd.open()"
+            ],
+            "answer": 0,
+            "explanation": "pd.read_csv('file.csv')."
+        },
+        {
+            "id": 4,
+            "question": "Afficher les 5 premières lignes d'un DataFrame df ?",
+            "options": [
+                "df.top()",
+                "df.start()",
+                "df.head()",
+                "df.first()"
+            ],
+            "answer": 2,
+            "explanation": "df.head() affiche les 5 premières par défaut."
+        },
+        {
+            "id": 5,
+            "question": "Bibliothèque pour la visualization (graphiques) ?",
+            "options": [
+                "Matplotlib",
+                "Request",
+                "Flask",
+                "PyGame"
+            ],
+            "answer": 0,
+            "explanation": "Matplotlib (et Seaborn) est le standard."
+        },
+        {
+            "id": 6,
+            "question": "Bibliothèque pour le Machine Learning ?",
+            "options": [
+                "Scikit-Learn",
+                "Django",
+                "Pillow",
+                "Numpy"
+            ],
+            "answer": 0,
+            "explanation": "Scikit-Learn (sklearn) contient tous les algos classiques."
+        },
+        {
+            "id": 7,
+            "question": "Comment sélectionner une colonne 'A' dans df ?",
+            "options": [
+                "df['A']",
+                "df.get('A')",
+                "df.col('A')",
+                "df.select('A')"
+            ],
+            "answer": 0,
+            "explanation": "df['A'] retourne une Series."
+        },
+        {
+            "id": 8,
+            "question": "Que fait `df.describe()` ?",
+            "options": [
+                "Décrit la structure",
+                "Donne des stats descriptives (moyenne, min, max...)",
+                "Affiche le type",
+                "Rien"
+            ],
+            "answer": 1,
+            "explanation": "Résumé statistique rapide des colonnes numériques."
+        },
+        {
+            "id": 9,
+            "question": "Comment gérer les valeurs manquantes ?",
+            "options": [
+                "df.fillna()",
+                "df.ignore()",
+                "df.empty()",
+                "df.fix()"
+            ],
+            "answer": 0,
+            "explanation": "df.fillna(0) remplace les NaN par 0."
+        },
+        {
+            "id": 10,
+            "question": "Qu'est-ce que Jupyter ?",
+            "options": [
+                "Une planète",
+                "Un environnement de notebook interactif",
+                "Une lib",
+                "Un langage"
+            ],
+            "answer": 1,
+            "explanation": "Très utilisé pour l'exploration de données."
+        },
+        {
+            "id": 11,
+            "question": "Comment filtrer `df` où la col 'X' > 10 ?",
+            "options": [
+                "df[df['X'] > 10]",
+                "df.filter('X' > 10)",
+                "df.where('X' > 10)",
+                "df.get(X > 10)"
+            ],
+            "answer": 0,
+            "explanation": "Boolean indexing."
+        },
+        {
+            "id": 12,
+            "question": "Quelle lib pour le Deep Learning ?",
+            "options": [
+                "TensorFlow / PyTorch",
+                "Pandas",
+                "Scikit",
+                "Requests"
+            ],
+            "answer": 0,
+            "explanation": "Les deux géants du Deep Learning."
+        },
+        {
+            "id": 13,
+            "question": "Comment trier un DataFrame ?",
+            "options": [
+                "df.sort_values()",
+                "df.order()",
+                "df.arrange()",
+                "df.sort()"
+            ],
+            "answer": 0,
+            "explanation": "df.sort_values(by='col')."
+        },
+        {
+            "id": 14,
+            "question": "Que fait `df.groupby('A').mean()` ?",
+            "options": [
+                "Groupe par A et calcule la moyenne",
+                "Trie par A",
+                "Erreur",
+                "Affiche A"
+            ],
+            "answer": 0,
+            "explanation": "Opération Split-Apply-Combine."
+        },
+        {
+            "id": 15,
+            "question": "Extension classique d'un notebook ?",
+            "options": [
+                ".py",
+                ".ipynb",
+                ".txt",
+                ".json"
+            ],
+            "answer": 1,
+            "explanation": "IPython Notebook."
+        },
+        {
+            "id": 16,
+            "question": "Comment supprimer une colonne ?",
+            "options": [
+                "df.drop()",
+                "df.remove()",
+                "df.delete()",
+                "del df"
+            ],
+            "answer": 0,
+            "explanation": "df.drop(columns=['A'])."
+        },
+        {
+            "id": 17,
+            "question": "Quelle fonction Numpy crée un tableau de zéros ?",
+            "options": [
+                "np.zeros()",
+                "np.empty()",
+                "np.null()",
+                "np.void()"
+            ],
+            "answer": 0,
+            "explanation": "np.zeros((3,3))."
+        },
+        {
+            "id": 18,
+            "question": "Comment lire un fichier Excel ?",
+            "options": [
+                "pd.read_excel()",
+                "pd.read_xls()",
+                "pd.excel()",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite souvent la lib `openpyxl`."
+        },
+        {
+            "id": 19,
+            "question": "Qu'est-ce qu'une Series ?",
+            "options": [
+                "Un tableau 1D (colonne)",
+                "Un film",
+                "Une liste",
+                "Un index"
+            ],
+            "answer": 0,
+            "explanation": "Composant de base d'un DataFrame."
+        },
+        {
+            "id": 20,
+            "question": "Comment faire un graphique en ligne ?",
+            "options": [
+                "plt.plot()",
+                "plt.line()",
+                "plt.show()",
+                "plt.draw()"
+            ],
+            "answer": 0,
+            "explanation": "Avec Matplotlib: plt.plot(x, y)."
+        }
+    ]
+}

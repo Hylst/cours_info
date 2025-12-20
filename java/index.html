@@ -5,9 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mémo Java Expert - Guide 2025</title>
+    <meta name="description"
+        content="Guide Java Expert : Syntaxe, POO, Collections, Streams, Threads, JVM. Mémo technique pour développeurs.">
+    <meta name="keywords"
+        content="Java, JVM, POO, Collections, Streams, Threads, Spring Boot, Backend, Guide, Tutoriel, Mémo">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#b07219">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo Java Expert - Guide technique">
+    <meta property="og:description"
+        content="Guide Java complet : Syntaxe, POO, Collections, Streams. L'essentiel pour les experts.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/java/index.html">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo Java Expert - Guide technique">
+    <meta name="twitter:description" content="Guide Java complet : Syntaxe, POO, Collections, Streams.">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -668,7 +690,8 @@ java Main
                         savoir faire X et Y".</p>
                     <p>Depuis Java 8, elles peuvent contenir du code (méthodes <code>default</code> et
                         <code>static</code>),
-                        réduisant l'écart avec les classes abstraites.</p>
+                        réduisant l'écart avec les classes abstraites.
+                    </p>
                 </div>
             </details>
 
@@ -1532,6 +1555,29 @@ java Main
         </div>
         </div>
     </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_java.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_java.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
 
     <footer>
         <div class="container">

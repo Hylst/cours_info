@@ -1,0 +1,248 @@
+{
+    "meta": {
+        "title": "Quiz Java Expert",
+        "total": 20
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quel est le point d'entrée d'un programme Java ?",
+            "options": [
+                "public static void main(String[] args)",
+                "start()",
+                "init()",
+                "run()"
+            ],
+            "answer": 0,
+            "explanation": "Signature obligatoire pour la méthode principale."
+        },
+        {
+            "id": 2,
+            "question": "Java est-il compilé ou interprété ?",
+            "options": [
+                "Compilé",
+                "Interprété",
+                "Les deux (Bytecode + JVM)",
+                "Transpilé"
+            ],
+            "answer": 2,
+            "explanation": "Compilé en Bytecode (.class), puis interprété/JIT par la JVM."
+        },
+        {
+            "id": 3,
+            "question": "Quel mot-clé pour l'héritage ?",
+            "options": [
+                "implements",
+                "extends",
+                "inherits",
+                "super"
+            ],
+            "answer": 1,
+            "explanation": "class Enfant extends Parent."
+        },
+        {
+            "id": 4,
+            "question": "Quelle collection ne contient pas de doublons ?",
+            "options": [
+                "List",
+                "Set",
+                "Map",
+                "Queue"
+            ],
+            "answer": 1,
+            "explanation": "Set (ex: HashSet) garantit l'unicité."
+        },
+        {
+            "id": 5,
+            "question": "Comment comparer le contenu de deux Strings ?",
+            "options": [
+                "s1 == s2",
+                "s1.equals(s2)",
+                "s1.compare(s2)",
+                "s1 = s2"
+            ],
+            "answer": 1,
+            "explanation": "== compare les références mémoire. .equals() compare le contenu."
+        },
+        {
+            "id": 6,
+            "question": "Quel mot-clé définit une constante ?",
+            "options": [
+                "const",
+                "final",
+                "static",
+                "immutable"
+            ],
+            "answer": 1,
+            "explanation": "final int MAX = 10;"
+        },
+        {
+            "id": 7,
+            "question": "Qu'est-ce qu'une Interface ?",
+            "options": [
+                "Une classe abstraite pure",
+                "Une fenêtre graphique",
+                "Un pointeur",
+                "Un module"
+            ],
+            "answer": 0,
+            "explanation": "Contrat définissant des méthodes sans implémentation (avant Java 8)."
+        },
+        {
+            "id": 8,
+            "question": "Comment gérer les exceptions ?",
+            "options": [
+                "try/catch/finally",
+                "if/error",
+                "try/except",
+                "do/rescue"
+            ],
+            "answer": 0,
+            "explanation": "Standard Java."
+        },
+        {
+            "id": 9,
+            "question": "La classe racine de toutes les classes ?",
+            "options": [
+                "Class",
+                "Object",
+                "Root",
+                "Java"
+            ],
+            "answer": 1,
+            "explanation": "java.lang.Object."
+        },
+        {
+            "id": 10,
+            "question": "Que sont les Generics ?",
+            "options": [
+                "Des types paramétrés <T>",
+                "Des fonctions générales",
+                "Des classes publiques",
+                "Des variables"
+            ],
+            "answer": 0,
+            "explanation": "Permet de créer des classes/méthodes fonctionnant sur divers types avec sécurité."
+        },
+        {
+            "id": 11,
+            "question": "Quel flux pour lire un fichier texte ?",
+            "options": [
+                "FileReader / BufferedReader",
+                "FileInputStream",
+                "FileScanner",
+                "FileLoader"
+            ],
+            "answer": 0,
+            "explanation": "BufferedReader offre de meilleures perfs pour le texte."
+        },
+        {
+            "id": 12,
+            "question": "Qu'est-ce que le constructeur ?",
+            "options": [
+                "Une méthode appelée à la création",
+                "Un outil de build",
+                "Un ouvrier",
+                "Une variable"
+            ],
+            "answer": 0,
+            "explanation": "Même nom que la classe, pas de retour."
+        },
+        {
+            "id": 13,
+            "question": "Mot-clé pour une variable de classe (partagée) ?",
+            "options": [
+                "static",
+                "shared",
+                "global",
+                "public"
+            ],
+            "answer": 0,
+            "explanation": "static appartient à la classe, pas à l'instance."
+        },
+        {
+            "id": 14,
+            "question": "Quelle API gère les traitements fonctionnels (map, filter) ?",
+            "options": [
+                "Stream API",
+                "Function API",
+                "Collection API",
+                "List API"
+            ],
+            "answer": 0,
+            "explanation": "Depuis Java 8. list.stream().filter(...)"
+        },
+        {
+            "id": 15,
+            "question": "Visibilité par défaut (package-private) ?",
+            "options": [
+                "public",
+                "private",
+                "protected",
+                "(aucune)"
+            ],
+            "answer": 3,
+            "explanation": "Si aucun modificateur n'est mis, c'est visible dans le package uniquement."
+        },
+        {
+            "id": 16,
+            "question": "Comment créer un Thread ?",
+            "options": [
+                "new Thread()",
+                "extends Thread ou implements Runnable",
+                "start Thread",
+                "create Process"
+            ],
+            "answer": 1,
+            "explanation": "Implémenter Runnable est souvent préféré."
+        },
+        {
+            "id": 17,
+            "question": "Qu'est-ce que le Garbage Collector ?",
+            "options": [
+                "Nettoyeur de mémoire automatique",
+                "Un éboueur",
+                "Un destructeur",
+                "Un virus"
+            ],
+            "answer": 0,
+            "explanation": "Libère la mémoire des objets qui ne sont plus référencés."
+        },
+        {
+            "id": 18,
+            "question": "Maven est...",
+            "options": [
+                "Un outil de build et gestion de dépendances",
+                "Un serveur",
+                "Une classe",
+                "Un IDE"
+            ],
+            "answer": 0,
+            "explanation": "Utilise pom.xml."
+        },
+        {
+            "id": 19,
+            "question": "Comment convertir String '10' en int ?",
+            "options": [
+                "Integer.parseInt('10')",
+                "(int)'10'",
+                "Int('10')",
+                "Convert.toInt('10')"
+            ],
+            "answer": 0,
+            "explanation": "Méthode statique de la classe Wrapper Integer."
+        },
+        {
+            "id": 20,
+            "question": "Quel mot-clé empêche l'héritage ?",
+            "options": [
+                "final",
+                "stop",
+                "sealed",
+                "static"
+            ],
+            "answer": 0,
+            "explanation": "public final class MaClasse { ... }"
+        }
+    ]
+}

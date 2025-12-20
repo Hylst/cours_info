@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo CSS3 Complet - 150+ propriétés avec démos visuelles | Guide 2025</title>
+    <title>Mémo CSS3 - 150+ propriétés avec démos visuelles | Guide 2025</title>
     <meta name="description"
-        content="Guide CSS3 complet : 150+ propriétés avec démos interactives. Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
+        content="Guide CSS3 : 150+ propriétés avec démos interactives. Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
     <meta name="keywords"
         content="CSS, CSS3, Flexbox, Grid, animations, transitions, responsive design, variables CSS, tutoriel, guide, mémo, stylesheets">
     <meta name="author" content="Geoffroy Streit">
@@ -16,20 +16,21 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo CSS3 Complet - 150+ propriétés">
+    <meta property="og:title" content="Mémo CSS3 - 150+ propriétés">
     <meta property="og:description"
         content="Guide CSS3 avec démos visuelles : Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
     <meta property="og:locale" content="fr_FR">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mémo CSS3 Complet - 150+ propriétés">
+    <meta name="twitter:title" content="Mémo CSS3 - 150+ propriétés">
     <meta name="twitter:description"
         content="Guide CSS3 avec démos visuelles : Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="cours-css-style.css">
+    <link rel="stylesheet" href="assets/css/quiz-style.css">
 </head>
 
 <body>
@@ -41,20 +42,35 @@
             </div>
             <nav>
                 <a href="#s1">Syntaxe</a>
-                <a href="#s3">Box Model</a>
                 <a href="#s5">Flexbox</a>
-                <a href="#s7">Animations</a>
-                <a href="#s10">Référence</a>
+                <a href="#s6">Grid</a>
+                <a href="#s7">Anim</a>
+                <a href="#s12">Référence</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Mémo CSS3 Complet</h1>
+            <h1>Mémo CSS3</h1>
             <p>Guide pratique avec exemples visuels pour maîtriser les styles et la mise en page web moderne.</p>
         </div>
     </section>
+
+    <!-- INTRO GENERAL -->
+    <div class="intro-box" style="background:#1e293b; border-bottom:1px solid #334155; padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--primary)">La puissance du CSS moderne</h3>
+            <p style="color:var(--text); max-width:800px;">
+                Le <strong>CSS (Cascading Style Sheets)</strong> a énormément évolué. Fini les "hacks" avec des
+                flottants !
+                Aujourd'hui, avec <strong>Flexbox</strong> et <strong>Grid</strong>, la mise en page est robuste.
+                Les <strong>Variables CSS</strong>, les fonctions comme <code>clamp()</code> et les nesting natifs
+                apportent
+                une puissance proche des préprocesseurs (Sass) directement dans le navigateur.
+            </p>
+        </div>
+    </div>
 
     <div class="toc">
         <div class="container">
@@ -68,8 +84,10 @@
                 <a href="#s7" class="toc-item"><span class="toc-num">07</span>Animations</a>
                 <a href="#s8" class="toc-item"><span class="toc-num">08</span>Responsive</a>
                 <a href="#s9" class="toc-item"><span class="toc-num">09</span>Variables</a>
-                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Référence</a>
-                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Galerie Démos</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Architecture CSS</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>CSS Moderne</a>
+                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Référence</a>
+                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Galerie Démos</a>
             </div>
         </div>
     </div>
@@ -837,11 +855,113 @@
         </div>
     </section>
 
-    <!-- S10: RÉFÉRENCE -->
+    <!-- S10: ARCHITECTURE -->
     <section id="s10">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Architecture CSS</h2>
+                    <p class="sec-sub">Méthodologie et Organisation</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>BEM (Block Element Modifier)</div>
+                <pre><span class="c">/* Block */</span>
+<span class="sel">.card</span> { }
+
+<span class="c">/* Element (Enfant) */</span>
+<span class="sel">.card__title</span> { }
+<span class="sel">.card__image</span> { }
+
+<span class="c">/* Modifier (Variante) */</span>
+<span class="sel">.card--featured</span> { }
+<span class="sel">.card__btn--large</span> { }</pre>
+            </div>
+
+            <h3>Dark Mode Natif</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Thème Sombre</div>
+                <pre><span class="sel">:root</span> {
+    <span class="prop">--bg</span>: <span class="val">#ffffff</span>;
+    <span class="prop">--text</span>: <span class="val">#333333</span>;
+}
+
+<span class="sel">@media</span> (<span class="prop">prefers-color-scheme</span>: <span class="val">dark</span>) {
+    <span class="sel">:root</span> {
+        <span class="prop">--bg</span>: <span class="val">#1a1a1a</span>;
+        <span class="prop">--text</span>: <span class="val">#ffffff</span>;
+    }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S11: CSS MODERNE -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">CSS Moderne</h2>
+                    <p class="sec-sub">Nouvelles fonctionnalités puissantes</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Selecteurs Logiques</div>
+                    <pre><span class="c">/* :is() et :where() pour grouper */</span>
+<span class="sel">:is</span>(<span class="val">header, footer</span>) <span class="sel">p</span> {
+    <span class="prop">margin</span>: <span class="val">0</span>;
+}
+
+<span class="c">/* :has() - Le sélecteur parent ! */</span>
+<span class="sel">.card:has</span>(<span class="sel">img</span>) {
+    <span class="prop">grid-template-columns</span>: <span class="val">1fr 1fr</span>;
+}
+<span class="sel">form:has</span>(<span class="sel">input:invalid</span>) <span class="sel">button</span> {
+    <span class="prop">opacity</span>: <span class="val">0.5</span>;
+    <span class="prop">pointer-events</span>: <span class="val">none</span>;
+}</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Propriétés Logiques</div>
+                    <pre><span class="c">/* Mieux que left/right/top/bottom */</span>
+<span class="prop">margin-block</span>: <span class="val">10px</span>;  <span class="c">/* top & bottom */</span>
+<span class="prop">margin-inline</span>: <span class="val">auto</span>; <span class="c">/* left & right */</span>
+
+<span class="prop">padding-block-start</span>: <span class="val">20px</span>; <span class="c">/* padding-top */</span>
+<span class="prop">text-align</span>: <span class="val">start</span>;       <span class="c">/* left (ou right en RTL) */</span></pre>
+                </div>
+            </div>
+
+            <h3>Container Queries</h3>
+            <p style="margin-bottom:10px">Le composant s'adapte à son conteneur, pas à l'écran.</p>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>@container</div>
+                <pre><span class="sel">.sidebar</span> {
+    <span class="prop">container-type</span>: <span class="val">inline-size</span>;
+}
+
+<span class="sel">@container</span> (<span class="prop">min-width</span>: <span class="val">400px</span>) {
+    <span class="sel">.card</span> {
+        <span class="prop">display</span>: <span class="val">flex</span>;
+    }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S12: RÉFÉRENCE -->
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
                 <div>
                     <h2 class="sec-title">Référence rapide</h2>
                     <p class="sec-sub">Propriétés essentielles</p>
@@ -966,11 +1086,11 @@
         </div>
     </section>
 
-    <!-- S11: GALERIE DEMOS -->
-    <section id="s11">
+    <!-- S13: GALERIE DEMOS -->
+    <section id="s13">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">11</div>
+                <div class="sec-num">13</div>
                 <div>
                     <h2 class="sec-title">Galerie de Démos Visuelles</h2>
                     <p class="sec-sub">50+ effets CSS en action</p>
@@ -1427,9 +1547,36 @@
         </div>
     </section>
 
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import 'assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({
+                containerId: 'quiz-app',
+                jsonPath: 'quiz_css.json',
+                questionsPerSession: 10
+            });
+        });
+    </script>
+    <script src="assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_css.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo CSS3 Complet</strong> • 150+ propriétés • 2025</p>
+            <p style="margin-bottom:8px"><strong>Mémo CSS3</strong> • 150+ propriétés • 2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
                 faciliter l'apprentissage des autres.</p>

@@ -16,10 +16,17 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="Mémo PHP">
     <meta property="og:description" content="Guide PHP avec exemples : POO, PDO, fichiers, sessions.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/php/index.html">
     <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo PHP - 200+ fonctions">
+    <meta name="twitter:description" content="Guide PHP avec exemples : POO, PDO, fichiers, sessions.">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -1050,6 +1057,29 @@ HTML</span>;
                 toutes les fonctionnalités essentielles de PHP moderne!</div>
         </div>
     </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_php.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_php.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
 
     <footer>
         <div class="container">

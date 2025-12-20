@@ -7,11 +7,30 @@
     <title>Mémo Python Data Science - Guide 2025</title>
     <meta name="description"
         content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
+    <meta name="keywords"
+        content="Python, Data Science, Numpy, Pandas, Matplotlib, Scikit-Learn, Machine Learning, IA, Analyse de données">
     <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#3b82f6">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo Python Data Science">
+    <meta property="og:description"
+        content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/python_data/index.html">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo Python Data Science">
+    <meta name="twitter:description"
+        content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,10 +43,10 @@
             </div>
             <nav>
                 <a href="#s0">Intro</a>
-                <a href="#s1">Numpy</a>
-                <a href="#s2">Pandas</a>
-                <a href="#s3">Viz</a>
-                <a href="#s4">ML</a>
+                <a href="#s2">Acquisition</a>
+                <a href="#s3">Pandas</a>
+                <a href="#s5">ML</a>
+                <a href="#s7">Prod</a>
             </nav>
         </div>
     </header>
@@ -41,16 +60,35 @@
         </div>
     </section>
 
+    <!-- INTRO GENERAL -->
+    <div class="intro-box"
+        style="background:var(--card-bg); border-bottom:1px solid var(--border-color); padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--text-color)">Pourquoi Python pour la Data ?</h3>
+            <p style="color:#c9d1d9; max-width:800px;">
+                Python s'est imposé comme le standard absolu de la Data Science, écrasant R et Matlab.
+                Sa force réside dans son écosystème unifié : une seule langue pour l'exploration (Pandas),
+                la visualisation (Matplotlib), le Machine Learning (Sklearn) et la mise en production (FastAPI).
+            </p>
+            <p style="color:#8b949e; font-size:0.95rem; margin-top:10px;">
+                C'est le couteau suisse ultime : vous pouvez extraire vos données d'une API, entrainer une IA complexe,
+                et la déployer sur un serveur web, le tout sans changer de langage.
+            </p>
+        </div>
+    </div>
+
     <div class="toc">
         <div class="container">
             <div class="toc-grid">
                 <a href="#s0" class="toc-item"><span class="toc-num">00</span>Écosystème Data</a>
                 <a href="#s1" class="toc-item"><span class="toc-num">01</span>Numpy (Calculs)</a>
-                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Pandas (Expert)</a>
-                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Visualisation Pro</a>
-                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Machine Learning</a>
-                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Deep Learning</a>
-                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Référence</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Acquisition (SQL/API)</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Pandas (Expert)</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Visualisation Pro</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Machine Learning</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Deep Learning</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Mise en Production</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Référence</a>
             </div>
         </div>
     </div>
@@ -66,7 +104,7 @@
                 </div>
             </div>
 
-            <details open>
+            <details>
                 <summary>📖 Comprendre l'environnement Data</summary>
                 <div>
                     <p>En Data Science, on n'écrit pas le code comme pour le Web. On explore les données de manière
@@ -160,11 +198,69 @@
         </div>
     </section>
 
-    <!-- S2: PANDAS -->
+    <!-- S2: ACQUISITION (NEW) -->
     <section id="s2">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Acquisition de Données</h2>
+                    <p class="sec-sub">SQL, APIs, Fichiers</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Se connecter au monde réel</summary>
+                <div>
+                    <p>En entreprise, la donnée n'arrive pas magiquement en CSV propre.</p>
+                    <p>Il faut aller la chercher : dans des bases de données relationnelles (SQL), via des APIs REST
+                        (JSON), ou dans des formats Big Data (Parquet).</p>
+                    <p><strong>Pandas</strong> travaille main dans la main avec <strong>SQLAlchemy</strong> pour
+                        lire/écrire en base de données.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot y"></span>SQL & Bases de Données</div>
+                    <pre><span class="kw">from</span> sqlalchemy <span class="kw">import</span> create_engine
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="c"># Connexion (URL: dialect://user:pass@host/db)</span>
+<span class="var">engine</span> = <span class="fn">create_engine</span>(<span class="str">"sqlite:///data.db"</span>)
+
+<span class="c"># Lire une table ou requête SQL</span>
+<span class="var">df</span> = <span class="var">pd</span>.<span class="fn">read_sql</span>(<span class="str">"SELECT * FROM users WHERE age > 18"</span>, <span class="var">engine</span>)
+
+<span class="c"># Écrire le DataFrame en table</span>
+<span class="var">df</span>.<span class="fn">to_sql</span>(<span class="str">"adults"</span>, <span class="var">engine</span>, if_exists=<span class="str">"replace"</span>)</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot y"></span>APIs & Formats</div>
+                    <pre><span class="kw">import</span> requests
+
+<span class="c"># Consommer une API REST</span>
+<span class="var">res</span> = <span class="var">requests</span>.<span class="fn">get</span>(<span class="str">"https://api.coincap.io/v2/assets"</span>)
+<span class="var">data</span> = <span class="var">res</span>.<span class="fn">json</span>()[<span class="str">'data'</span>]  <span class="c"># Liste de dicts</span>
+
+<span class="c"># Convertir JSON -> Pandas</span>
+<span class="var">df_crypto</span> = <span class="var">pd</span>.<span class="cls">DataFrame</span>(<span class="var">data</span>)
+
+<span class="c"># Formats de fichiers</span>
+<span class="var">df</span>.<span class="fn">to_csv</span>(<span class="str">"data.csv"</span>, index=<span class="kw">False</span>)     <span class="c"># Standard</span>
+<span class="var">df</span>.<span class="fn">to_parquet</span>(<span class="str">"data.parquet"</span>)          <span class="c"># Rapide & Compact (Pro)</span>
+<span class="var">df</span>.<span class="fn">to_excel</span>(<span class="str">"report.xlsx"</span>)             <span class="c"># Pour le business</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: PANDAS -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
                 <div>
                     <h2 class="sec-title">Pandas : L'Analyse</h2>
                     <p class="sec-sub">DataFrames, Séries & Manipulation</p>
@@ -227,11 +323,11 @@
         </div>
     </section>
 
-    <!-- S3: VIZ -->
-    <section id="s3">
+    <!-- S4: VIZ -->
+    <section id="s4">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">03</div>
+                <div class="sec-num">04</div>
                 <div>
                     <h2 class="sec-title">Visualisation de Données</h2>
                     <p class="sec-sub">Matplotlib & Seaborn</p>
@@ -287,11 +383,11 @@
         </div>
     </section>
 
-    <!-- S4: MACHINE LEARNING -->
-    <section id="s4">
+    <!-- S5: MACHINE LEARNING -->
+    <section id="s5">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">04</div>
+                <div class="sec-num">05</div>
                 <div>
                     <h2 class="sec-title">Machine Learning</h2>
                     <p class="sec-sub">Scikit-Learn (Sklearn)</p>
@@ -405,11 +501,11 @@
         </div>
     </section>
 
-    <!-- S5: DEEP LEARNING -->
-    <section id="s5">
+    <!-- S6: DEEP LEARNING -->
+    <section id="s6">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">05</div>
+                <div class="sec-num">06</div>
                 <div>
                     <h2 class="sec-title">Deep Learning</h2>
                     <p class="sec-sub">Réseaux de Neurones & Keras</p>
@@ -492,11 +588,69 @@
         </div>
     </section>
 
-    <!-- S6: RÉFÉRENCE -->
-    <section id="s6">
+    <!-- S7: MISE EN PRODUCTION (NEW) -->
+    <section id="s7">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">06</div>
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Mise en Production</h2>
+                    <p class="sec-sub">MLOps, Persistance, Streamlit</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Sortir du Notebook</summary>
+                <div>
+                    <p>Un modèle qui reste dans un Notebook n'a aucune valeur. Il faut l'exporter (Serialisation) pour
+                        pouvoir l'utiliser dans une application web ou une API.</p>
+                    <p><strong>Streamlit</strong> est l'outil parfait pour créer des démos web interactives en pur
+                        Python, sans toucher au HTML/CSS.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Sauvegarder un Modèle</div>
+                    <pre><span class="kw">import</span> joblib
+
+<span class="c"># 1. Sauvegarder (Serialisation)</span>
+<span class="var">joblib</span>.<span class="fn">dump</span>(<span class="var">model</span>, <span class="str">'mon_modele.pkl'</span>)
+
+<span class="c"># ... dans un autre script ...</span>
+
+<span class="c"># 2. Charger (Deserialisation)</span>
+<span class="var">loaded_model</span> = <span class="var">joblib</span>.<span class="fn">load</span>(<span class="str">'mon_modele.pkl'</span>)
+
+<span class="c"># 3. Prédiction</span>
+<span class="var">prediction</span> = <span class="var">loaded_model</span>.<span class="fn">predict</span>(<span class="var">new_data</span>)</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>App Streamlit (app.py)</div>
+                    <pre><span class="kw">import</span> streamlit <span class="kw">as</span> st
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="var">st</span>.<span class="fn">title</span>(<span class="str">"Démo IA Prix Immo"</span>)
+
+<span class="c"># Widgets Interactifs</span>
+<span class="var">surface</span> = <span class="var">st</span>.<span class="fn">slider</span>(<span class="str">"Surface (m2)"</span>, <span class="num">10</span>, <span class="num">200</span>, <span class="num">50</span>)
+<span class="var">quartier</span> = <span class="var">st</span>.<span class="fn">selectbox</span>(<span class="str">"Quartier"</span>, [<span class="str">"Centre"</span>, <span class="str">"Sud"</span>])
+
+<span class="kw">if</span> <span class="var">st</span>.<span class="fn">button</span>(<span class="str">"Estimer"</span>):
+    <span class="c"># Appel du modèle...</span>
+    <span class="var">prix</span> = <span class="num">250000</span>  <span class="c"># fake</span>
+    <span class="var">st</span>.<span class="fn">success</span>(<span class="str">f"Prix estimé : </span>{<span class="var">prix</span>}<span class="str"> €"</span>)</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: RÉFÉRENCE -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
                 <div>
                     <h2 class="sec-title">Référence Rapide</h2>
                     <p class="sec-sub">Cheat Sheet des commandes vitales</p>
@@ -544,6 +698,16 @@
                     <td><code>model.predict(X)</code></td>
                     <td>Faire des prédictions</td>
                 </tr>
+                <tr>
+                    <td><strong>SQL/Joblib</strong></td>
+                    <td><code>pd.read_sql(q, engine)</code></td>
+                    <td>Lire depuis une DB</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>joblib.dump(model, 'f.pkl')</code></td>
+                    <td>Sauvegarder le modèle</td>
+                </tr>
             </table>
 
             <h4 style="margin-top:30px">Deep Learning (Pour aller plus loin)</h4>
@@ -568,6 +732,29 @@
 
         </div>
     </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_data.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_data.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
 
     <footer>
         <div class="container">

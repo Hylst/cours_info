@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz Système Embarqué - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Qu'est-ce qu'un Microcontrôleur (MCU) ?",
+            "options": [
+                "Un ordinateur complet sur une seule puce (CPU+RAM+Rom+IO)",
+                "Un processeur",
+                "Une mémoire",
+                "Un capteur"
+            ],
+            "answer": 0,
+            "explanation": "Différent du microprocesseur qui a besoin de périphériques externes."
+        },
+        {
+            "id": 2,
+            "question": "Que signifie GPIO ?",
+            "options": [
+                "General Purpose Input Output",
+                "Global Pin Input Output",
+                "General Process IO",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Broche programmable en entrée ou sortie."
+        },
+        {
+            "id": 3,
+            "question": "Qu'est-ce que Arduino ?",
+            "options": [
+                "Plateforme de prototypage Open Source (Hardware + IDE)",
+                "Un langage",
+                "Une puce",
+                "Un robot"
+            ],
+            "answer": 0,
+            "explanation": "Basé sur des microcontrôleurs AVR."
+        },
+        {
+            "id": 4,
+            "question": "Qu'est-ce que le Raspberry Pi ?",
+            "options": [
+                "Un nano-ordinateur (SBC) tournant sous Linux",
+                "Un microcontrôleur",
+                "Un capteur",
+                "Un fruit"
+            ],
+            "answer": 0,
+            "explanation": "Single Board Computer."
+        },
+        {
+            "id": 5,
+            "question": "Quel est le voltage logique standard d'un Arduino Uno ?",
+            "options": [
+                "5V",
+                "3.3V",
+                "12V",
+                "220V"
+            ],
+            "answer": 0,
+            "explanation": "Attention, beaucoup de capteurs modernes sont en 3.3V."
+        },
+        {
+            "id": 6,
+            "question": "Quel est le voltage logique standard d'un ESP32 ou Raspberry Pi ?",
+            "options": [
+                "3.3V",
+                "5V",
+                "1.8V",
+                "12V"
+            ],
+            "answer": 0,
+            "explanation": "Mettre du 5V dessus peut les détruire."
+        },
+        {
+            "id": 7,
+            "question": "Que signifie PWM ?",
+            "options": [
+                "Pulse Width Modulation",
+                "Power Wave Mode",
+                "Pulse Wave Motion",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Simule une sortie analogique en hachant le signal numérique."
+        },
+        {
+            "id": 8,
+            "question": "A quoi sert une résistance de Pull-up ?",
+            "options": [
+                "Fixer l'état logique à HIGH quand le circuit est ouvert",
+                "Chauffer",
+                "Protéger",
+                "Baisser le courant"
+            ],
+            "answer": 0,
+            "explanation": "Évite l'état flottant (bruit) sur une entrée."
+        },
+        {
+            "id": 9,
+            "question": "Qu'est-ce que I2C ?",
+            "options": [
+                "Bus série synchrone à 2 fils (SDA, SCL)",
+                "Bus 4 fils",
+                "Bus rapide",
+                "Internet"
+            ],
+            "answer": 0,
+            "explanation": "Inter-Integrated Circuit."
+        },
+        {
+            "id": 10,
+            "question": "Qu'est-ce que SPI ?",
+            "options": [
+                "Serial Peripheral Interface (Bus 4 fils rapide)",
+                "Serial Port",
+                "Simple Pin Interface",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Full Duplex, plus rapide que I2C."
+        },
+        {
+            "id": 11,
+            "question": "Qu'est-ce que UART ?",
+            "options": [
+                "Universal Asynchronous Receiver-Transmitter (Série)",
+                "USB",
+                "Art",
+                "Bus"
+            ],
+            "answer": 0,
+            "explanation": "Utilise TX et RX. Asynchrone (pas d'horloge partagée)."
+        },
+        {
+            "id": 12,
+            "question": "Qu'est-ce qu'un ADC ?",
+            "options": [
+                "Analog to Digital Converter",
+                "Audio Digital Codec",
+                "Auto Direct Current",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Convertit un voltage (0-5V) en nombre (0-1023)."
+        },
+        {
+            "id": 13,
+            "question": "Qu'est-ce qu'un DAC ?",
+            "options": [
+                "Digital to Analog Converter",
+                "Direct Audio Code",
+                "Data Access Control",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Inverse de l'ADC. Produit un vrai voltage variable."
+        },
+        {
+            "id": 14,
+            "question": "Qu'est-ce que la Loi d'Ohm ?",
+            "options": [
+                "U = R * I",
+                "P = U * I",
+                "E = mc2",
+                "F = m*a"
+            ],
+            "answer": 0,
+            "explanation": "Tension = Résistance * Courant."
+        },
+        {
+            "id": 15,
+            "question": "A quoi sert une LED ?",
+            "options": [
+                "Emettre de la lumière quand le courant passe",
+                "Résister",
+                "Calculer",
+                "Sonner"
+            ],
+            "answer": 0,
+            "explanation": "Light Emitting Diode. A un sens (Anode/Cathode)."
+        },
+        {
+            "id": 16,
+            "question": "Pourquoi mettre une résistance en série avec une LED ?",
+            "options": [
+                "Limiter le courant pour ne pas la griller",
+                "Baisser la tension",
+                "Pour faire joli",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "La LED est un court-circuit virtuel."
+        },
+        {
+            "id": 17,
+            "question": "Qu'est-ce qu'un 'Sketch' en Arduino ?",
+            "options": [
+                "Le programme (code source)",
+                "Un dessin",
+                "Une librairie",
+                "Une carte"
+            ],
+            "answer": 0,
+            "explanation": "Fichier .ino."
+        },
+        {
+            "id": 18,
+            "question": "Quelle fonction Arduino tourne en boucle infinie ?",
+            "options": [
+                "loop()",
+                "setup()",
+                "main()",
+                "while()"
+            ],
+            "answer": 0,
+            "explanation": "Après l'exécution unique de setup()."
+        },
+        {
+            "id": 19,
+            "question": "Quelle fonction Arduino s'exécute une seule fois au démarrage ?",
+            "options": [
+                "setup()",
+                "init()",
+                "start()",
+                "loop()"
+            ],
+            "answer": 0,
+            "explanation": "Pour initialiser les pins et librairies."
+        },
+        {
+            "id": 20,
+            "question": "Qu'est-ce qu'un Capteur (Sensor) ?",
+            "options": [
+                "Convertit une grandeur physique en signal électrique",
+                "Afficheur",
+                "Calculateur",
+                "Moteur"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Température, Lumière, Pression."
+        },
+        {
+            "id": 21,
+            "question": "Qu'est-ce qu'un Actionneur (Actuator) ?",
+            "options": [
+                "Convertit un signal électrique en action physique",
+                "Capteur",
+                "Bouton",
+                "Fil"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Moteur, LED, Relais."
+        },
+        {
+            "id": 22,
+            "question": "Qu'est-ce que MQTT ?",
+            "options": [
+                "Protocole de messagerie léger pour l'IoT (Pub/Sub)",
+                "Message Quota",
+                "My Query",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Message Queuing Telemetry Transport."
+        },
+        {
+            "id": 23,
+            "question": "Qu'est-ce qu'un Broker MQTT ?",
+            "options": [
+                "Le serveur central qui redistribue les messages",
+                "Le client",
+                "Le capteur",
+                "Le code"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Mosquitto."
+        },
+        {
+            "id": 24,
+            "question": "Qu'est-ce que l'ESP8266 ?",
+            "options": [
+                "Microcontrôleur Wi-Fi pas cher",
+                "Ordinateur",
+                "Antenne",
+                "Processeur"
+            ],
+            "answer": 0,
+            "explanation": "Révolutionnaire pour l'IoT DIY, ancêtre de l'ESP32."
+        },
+        {
+            "id": 25,
+            "question": "Qu'est-ce qu'un Relais ?",
+            "options": [
+                "Interrupteur mécanique piloté électriquement",
+                "Course",
+                "Lumière",
+                "Moteur"
+            ],
+            "answer": 0,
+            "explanation": "Permet de piloter de la haute puissance avec un petit signal."
+        },
+        {
+            "id": 26,
+            "question": "Qu'est-ce qu'un Servomoteur ?",
+            "options": [
+                "Moteur capable de maintenir une position précise (angle)",
+                "Moteur qui sert",
+                "Ventilateur",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Piloté en PWM."
+        },
+        {
+            "id": 27,
+            "question": "Qu'est-ce qu'un Moteur Pas-à-pas (Stepper) ?",
+            "options": [
+                "Moteur qui tourne par crans précis",
+                "Moteur rapide",
+                "Moteur DC",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé dans les imprimantes 3D."
+        },
+        {
+            "id": 28,
+            "question": "A quoi sert une Breadboard ?",
+            "options": [
+                "Prototyper des circuits sans soudure",
+                "Couper du pain",
+                "Souder",
+                "Planter"
+            ],
+            "answer": 0,
+            "explanation": "Plaque d'essai."
+        },
+        {
+            "id": 29,
+            "question": "Qu'est-ce que le Baund Rate ?",
+            "options": [
+                "Vitesse de transmission série (bits par seconde)",
+                "Vitesse CPU",
+                "Fréquence",
+                "Taux"
+            ],
+            "answer": 0,
+            "explanation": "Ex: 9600, 115200."
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce qu'une Interruption (Interrupt) ?",
+            "options": [
+                "Signal qui stoppe le processeur pour traiter une urgence immediate",
+                "Pause",
+                "Bug",
+                "Arrêt"
+            ],
+            "answer": 0,
+            "explanation": "Plus efficace que le 'Polling' (vérification continue)."
+        },
+        {
+            "id": 31,
+            "question": "Qu'est-ce que le Debouncing (Anti-rebond) ?",
+            "options": [
+                "Filtrer les parasites mécaniques d'un bouton poussoir",
+                "Rebondir",
+                "Sauter",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Evite qu'un appui compte pour 10."
+        },
+        {
+            "id": 32,
+            "question": "Qu'est-ce que Zigbee ?",
+            "options": [
+                "Protocole radio basse consommation pour domotique (Mesh)",
+                "Abeille",
+                "Wi-Fi",
+                "Bluetooth"
+            ],
+            "answer": 0,
+            "explanation": "Concurrent de Z-Wave."
+        },
+        {
+            "id": 33,
+            "question": "Qu'est-ce que LoRaWAN ?",
+            "options": [
+                "Réseau longue portée et basse consommation (LPWAN)",
+                "Local Area",
+                "Wi-Fi",
+                "Lora"
+            ],
+            "answer": 0,
+            "explanation": "Pour l'IoT dans les villes ou champs (Km de portée)."
+        },
+        {
+            "id": 34,
+            "question": "Qu'est-ce qu'un PCB ?",
+            "options": [
+                "Printed Circuit Board (Carte électronique imprimée)",
+                "Processeur",
+                "Plastique",
+                "Cable"
+            ],
+            "answer": 0,
+            "explanation": "L'étape après la breadboard."
+        },
+        {
+            "id": 35,
+            "question": "Qu'est-ce que le firmware ?",
+            "options": [
+                "Logiciel bas niveau intégré dans le matériel",
+                "Hardware",
+                "Soft",
+                "OS"
+            ],
+            "answer": 0,
+            "explanation": "Le code qui tourne sur le MCU."
+        },
+        {
+            "id": 36,
+            "question": "Quelle est l'architecture des processeurs ARM (STM32, RP2040) ?",
+            "options": [
+                "RISC (Reduced Instruction Set Computer)",
+                "CISC",
+                "X86",
+                "Old"
+            ],
+            "answer": 0,
+            "explanation": "Optimisé pour la consommation d'énergie."
+        },
+        {
+            "id": 37,
+            "question": "Qu'est-ce qu'un Watchdog Timer ?",
+            "options": [
+                "Compteur qui reset le système si le programme plante",
+                "Chien de garde",
+                "Montre",
+                "Horloge"
+            ],
+            "answer": 0,
+            "explanation": "Sécurité critique en embarqué."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce que le Deep Sleep ?",
+            "options": [
+                "Mode veille ultra basse consommation",
+                "Dormir",
+                "Eteint",
+                "Pause"
+            ],
+            "answer": 0,
+            "explanation": "Permet de tenir des années sur batterie."
+        },
+        {
+            "id": 39,
+            "question": "A quoi sert un transistor (MOSFET) ?",
+            "options": [
+                "Commuter ou amplifier un courant",
+                "Résister",
+                "Stocker",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Interrupteur électronique puissant."
+        },
+        {
+            "id": 40,
+            "question": "Qu'est-ce qu'un condensateur ?",
+            "options": [
+                "Composant qui stocke de l'énergie (lisse la tension)",
+                "Pile",
+                "Moteur",
+                "Fil"
+            ],
+            "answer": 0,
+            "explanation": "Agit comme un petit réservoir tampon."
+        },
+        {
+            "id": 41,
+            "question": "Qu'est-ce qu'une Diode ?",
+            "options": [
+                "Composant qui ne laisse passer le courant que dans un sens",
+                "Fil",
+                "Lampe",
+                "Resistance"
+            ],
+            "answer": 0,
+            "explanation": "Clapet anti-retour électrique."
+        },
+        {
+            "id": 42,
+            "question": "Qu'est-ce que le 'Bitbanging' ?",
+            "options": [
+                "Simuler un protocole (ex: I2C) par logiciel via GPIO",
+                "Tape",
+                "Vitesse",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Utile quand on n'a pas le périphérique hardware dédié."
+        },
+        {
+            "id": 43,
+            "question": "Qu'est-ce qu'un Bootloader ?",
+            "options": [
+                "Petit programme qui permet de charger le code principal",
+                "Chaussure",
+                "Disque",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "C'est ce qui permet de flasher un Arduino via USB."
+        },
+        {
+            "id": 44,
+            "question": "Qu'est-ce que FPGA ?",
+            "options": [
+                "Field Programmable Gate Array (Puce reconfigurable)",
+                "Processeur",
+                "GPU",
+                "Ram"
+            ],
+            "answer": 0,
+            "explanation": "On programme le hardware lui-même (portes logiques)."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que RTOS ?",
+            "options": [
+                "Real-Time Operating System",
+                "Route OS",
+                "Right OS",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Garantit les temps de réponse (FreeRTOS)."
+        },
+        {
+            "id": 46,
+            "question": "Qu'est-ce qu'un Shield (Arduino) ou HAT (Pi) ?",
+            "options": [
+                "Carte d'extension qui s'empile sur la carte principale",
+                "Bouclier",
+                "Chapeau",
+                "Boitier"
+            ],
+            "answer": 0,
+            "explanation": "Ajoute des fonctionnalités (GPS, Ecran, Moteurs)."
+        },
+        {
+            "id": 47,
+            "question": "Qu'est-ce que l'IDE Arduino ?",
+            "options": [
+                "Logiciel pour écrire et téléverser le code",
+                "Carte",
+                "Langage",
+                "Site"
+            ],
+            "answer": 0,
+            "explanation": "Environnement de développement intégré."
+        },
+        {
+            "id": 48,
+            "question": "Qu'est-ce que le niveau logique HIGH en 5V ?",
+            "options": [
+                "5 Volts",
+                "0 Volts",
+                "2.5 Volts",
+                "10 Volts"
+            ],
+            "answer": 0,
+            "explanation": "C'est le '1' binaire."
+        },
+        {
+            "id": 49,
+            "question": "Qu'est-ce que le niveau logique LOW ?",
+            "options": [
+                "0 Volts (GND)",
+                "5 Volts",
+                "1 Volt",
+                "-5 Volts"
+            ],
+            "answer": 0,
+            "explanation": "C'est le '0' binaire."
+        },
+        {
+            "id": 50,
+            "question": "A quoi sert le Serial Monitor ?",
+            "options": [
+                "Afficher les messages envoyés par la carte via USB",
+                "Voir la télé",
+                "Surveiller",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour le débogage (Serial.print)."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que Bluetooth Low Energy (BLE) ?",
+            "options": [
+                "Version de Bluetooth optimisée pour la consommation (IoT)",
+                "Bluetooth rapide",
+                "Bleu",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de fonctionner sur pile bouton."
+        },
+        {
+            "id": 52,
+            "question": "A quoi sert une résistance de Pull-down ?",
+            "options": [
+                "Fixer l'état logique à LOW quand le circuit est ouvert",
+                "Pull-up",
+                "Baisser",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Inverse du Pull-up."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que la Flash Memory (dans un MCU) ?",
+            "options": [
+                "Mémoire non-volatile où est stocké le programme",
+                "RAM",
+                "EEPROM",
+                "Cache"
+            ],
+            "answer": 0,
+            "explanation": "Reste écrite même hors tension."
+        },
+        {
+            "id": 54,
+            "question": "Qu'est-ce que SRAM (dans un MCU) ?",
+            "options": [
+                "Mémoire volatile pour les variables (rapide)",
+                "Flash",
+                "Disque",
+                "ROM"
+            ],
+            "answer": 0,
+            "explanation": "Perdue à l'extinction."
+        },
+        {
+            "id": 55,
+            "question": "Qu'est-ce que EEPROM ?",
+            "options": [
+                "Mémoire non-volatile effaçable électriquement (petites données)",
+                "Flash",
+                "RAM",
+                "Rom"
+            ],
+            "answer": 0,
+            "explanation": "Pour les paramètres de configuration."
+        },
+        {
+            "id": 56,
+            "question": "Qu'est-ce qu'un Oscilloscope ?",
+            "options": [
+                "Instrument pour visualiser la tension en fonction du temps",
+                "Multimètre",
+                "Radar",
+                "Scope"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour voir les signaux (PWM, I2C...)."
+        },
+        {
+            "id": 57,
+            "question": "Qu'est-ce qu'un Multimètre ?",
+            "options": [
+                "Mesure Tension (V), Courant (A) et Résistance (Ohm)",
+                "Règle",
+                "Mètre",
+                "Compteur"
+            ],
+            "answer": 0,
+            "explanation": "L'outil de base de l'électronicien."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce que la soudure (Soldering) ?",
+            "options": [
+                "Assembler des composants avec de l'étain fondu",
+                "Colle",
+                "Scotch",
+                "Vis"
+            ],
+            "answer": 0,
+            "explanation": "Pour rendre le circuit permanent."
+        },
+        {
+            "id": 59,
+            "question": "Qu'est-ce qu'un schéma électronique (Schematic) ?",
+            "options": [
+                "Plan logique du circuit avec symboles",
+                "Dessin",
+                "PCB",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Avant de faire le PCB."
+        },
+        {
+            "id": 60,
+            "question": "Qu'est-ce que KiCad ou Eagle ?",
+            "options": [
+                "Logiciels de conception de circuits (EDA)",
+                "Jeu",
+                "Code",
+                "Simulateur"
+            ],
+            "answer": 0,
+            "explanation": "Electronic Design Automation."
+        },
+        {
+            "id": 61,
+            "question": "A quoi sert un régulateur de tension (LDO) ?",
+            "options": [
+                "Stabiliser une tension (ex: 9V -> 5V)",
+                "Régler",
+                "Couper",
+                "Augmenter"
+            ],
+            "answer": 0,
+            "explanation": "Chauffe en dissipant l'excédent."
+        },
+        {
+            "id": 62,
+            "question": "Qu'est-ce qu'un convertisseur Buck (Step-down) ?",
+            "options": [
+                "Abaisse la tension avec un bon rendement (découpage)",
+                "Régulateur",
+                "LDO",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ne chauffe pas (ou peu) contrairement au LDO."
+        },
+        {
+            "id": 63,
+            "question": "Qu'est-ce qu'un convertisseur Boost (Step-up) ?",
+            "options": [
+                "Augmente la tension (ex: 3.7V -> 5V)",
+                "Buck",
+                "LDO",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour alimenter du 5V avec une batterie LiPo."
+        },
+        {
+            "id": 64,
+            "question": "Qu'est-ce qu'une batterie LiPo ?",
+            "options": [
+                "Lithium Polymère (Légère, puissante)",
+                "Pile",
+                "Plomb",
+                "Alcaline"
+            ],
+            "answer": 0,
+            "explanation": "Attention aux risques d'incendie si percée."
+        },
+        {
+            "id": 65,
+            "question": "Quel est le voltage nominal d'une cellule LiPo ?",
+            "options": [
+                "3.7V",
+                "1.5V",
+                "9V",
+                "12V"
+            ],
+            "answer": 0,
+            "explanation": "4.2V chargée à fond."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce que le 'Polling' ?",
+            "options": [
+                "Vérifier l'état d'un capteur en boucle",
+                "Vote",
+                "Interrupt",
+                "Attendre"
+            ],
+            "answer": 0,
+            "explanation": "Consomme du CPU pour rien (vs Interruptions)."
+        },
+        {
+            "id": 67,
+            "question": "A quoi sert la broche GND ?",
+            "options": [
+                "La masse (0V), référence commune",
+                "Terre",
+                "Plus",
+                "VCC"
+            ],
+            "answer": 0,
+            "explanation": "Tous les GND doivent être reliés ensemble."
+        },
+        {
+            "id": 68,
+            "question": "A quoi sert la broche VCC / 5V ?",
+            "options": [
+                "L'alimentation positive",
+                "Masse",
+                "GND",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Source d'énergie."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce qu'un Moteur DC ?",
+            "options": [
+                "Moteur à courant continu simple (tourne quand alimenté)",
+                "Stepper",
+                "Servo",
+                "AC"
+            ],
+            "answer": 0,
+            "explanation": "Vitesse proportionnelle à la tension."
+        },
+        {
+            "id": 70,
+            "question": "Qu'est-ce qu'un pont en H (H-Bridge) ?",
+            "options": [
+                "Circuit pour inverser le sens de rotation d'un moteur DC",
+                "Pont",
+                "Route",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: L298N."
+        },
+        {
+            "id": 71,
+            "question": "Qu'est-ce qu'un Capteur à Ultrasons (HC-SR04) ?",
+            "options": [
+                "Mesure la distance par écho sonore",
+                "Lumière",
+                "Température",
+                "Son"
+            ],
+            "answer": 0,
+            "explanation": "Comme les chauves-souris."
+        },
+        {
+            "id": 72,
+            "question": "Qu'est-ce qu'un Accéléromètre (IMU) ?",
+            "options": [
+                "Mesure l'accélération et l'inclinaison",
+                "Vitesse",
+                "Position",
+                "GPS"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour les drones et téléphones."
+        },
+        {
+            "id": 73,
+            "question": "Qu'est-ce qu'un Module GPS ?",
+            "options": [
+                "Reçoit l'heure et la position via satellites",
+                "Carte",
+                "Boussole",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "NMEA est le format standard."
+        },
+        {
+            "id": 74,
+            "question": "Qu'est-ce que le code ASCII ?",
+            "options": [
+                "Standard de codage des caractères",
+                "Code",
+                "Langage",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "'A' = 65."
+        },
+        {
+            "id": 75,
+            "question": "Qu'est-ce que l'Hexadécimal ?",
+            "options": [
+                "Base 16 (0-9, A-F)",
+                "Base 10",
+                "Base 2",
+                "Base 8"
+            ],
+            "answer": 0,
+            "explanation": "Très utilisé pour noter les adresses mémoire et couleurs."
+        },
+        {
+            "id": 76,
+            "question": "Qu'est-ce qu'un Bit ?",
+            "options": [
+                "Unité de base (0 ou 1)",
+                "Octet",
+                "Byte",
+                "Pixel"
+            ],
+            "answer": 0,
+            "explanation": "Binary Digit."
+        },
+        {
+            "id": 77,
+            "question": "Qu'est-ce qu'un Octet (Byte) ?",
+            "options": [
+                "8 bits",
+                "4 bits",
+                "16 bits",
+                "10 bits"
+            ],
+            "answer": 0,
+            "explanation": "Peut coder 256 valeurs (0-255)."
+        },
+        {
+            "id": 78,
+            "question": "Qu'est-ce que le débordement d'entier (Overflow) ?",
+            "options": [
+                "Quand une variable dépasse sa capacité max et revient à zéro",
+                "Bug",
+                "Erreur",
+                "Fuite"
+            ],
+            "answer": 0,
+            "explanation": "Ex: byte 255 + 1 = 0."
+        },
+        {
+            "id": 79,
+            "question": "Qu'est-ce que 'Serial.begin(9600)' ?",
+            "options": [
+                "Initialise la communication série à 9600 bauds",
+                "Commence",
+                "Série",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Dans le setup()."
+        },
+        {
+            "id": 80,
+            "question": "Qu'est-ce que 'delay(1000)' ?",
+            "options": [
+                "Bloque le programme pendant 1000ms (1 seconde)",
+                "Attend",
+                "Stop",
+                "Pause"
+            ],
+            "answer": 0,
+            "explanation": "Bloquant (mauvais pour le multitâche)."
+        },
+        {
+            "id": 81,
+            "question": "Quelle est l'alternative non-bloquante à delay() ?",
+            "options": [
+                "Utiliser millis() et comparer le temps écoulé",
+                "sleep()",
+                "wait()",
+                "stop()"
+            ],
+            "answer": 0,
+            "explanation": "Permet de faire plusieurs choses 'en même temps'."
+        },
+        {
+            "id": 82,
+            "question": "Qu'est-ce qu'une librairie (Library) ?",
+            "options": [
+                "Code pré-écrit pour faciliter l'usage de composants",
+                "Bibliothèque",
+                "Livre",
+                "Dossier"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Adafruit_NeoPixel."
+        },
+        {
+            "id": 83,
+            "question": "Qu'est-ce que le 'High Level' vs 'Low Level' ?",
+            "options": [
+                "Abstraction (Python) vs Proche du métal (Assembleur/C)",
+                "Haut",
+                "Bas",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "L'embarqué est souvent Low Level."
+        },
+        {
+            "id": 84,
+            "question": "Qu'est-ce que C++ ?",
+            "options": [
+                "Langage utilisé par Arduino (Extension du C avec Objets)",
+                "C",
+                "Java",
+                "Python"
+            ],
+            "answer": 0,
+            "explanation": "Performant et proche du hardware."
+        },
+        {
+            "id": 85,
+            "question": "Qu'est-ce que MicroPython ?",
+            "options": [
+                "Version de Python optimisée pour les microcontrôleurs",
+                "Petit Python",
+                "Script",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Populaire sur ESP32 et RP2040."
+        },
+        {
+            "id": 86,
+            "question": "Qu'est-ce qu'un OLED ?",
+            "options": [
+                "Écran auto-émissif (pas de rétroéclairage)",
+                "LCD",
+                "LED",
+                "Ecran"
+            ],
+            "answer": 0,
+            "explanation": "Contraste infini, faible conso."
+        },
+        {
+            "id": 87,
+            "question": "A quoi sert le 'Reset' ?",
+            "options": [
+                "Redémarrer le microcontrôleur",
+                "Effacer",
+                "Formater",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Relance le programme depuis le début."
+        },
+        {
+            "id": 88,
+            "question": "Qu'est-ce que le Pinout ?",
+            "options": [
+                "Le schéma des broches d'un composant",
+                "Plan",
+                "Dessin",
+                "Sortie"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour brancher correctement."
+        },
+        {
+            "id": 89,
+            "question": "Qu'est-ce qu'une Datasheet ?",
+            "options": [
+                "Document technique officiel du composant (Le manuel)",
+                "Feuille",
+                "Donnée",
+                "Fiche"
+            ],
+            "answer": 0,
+            "explanation": "La bible de l'ingénieur."
+        },
+        {
+            "id": 90,
+            "question": "Qu'est-ce que ESD ?",
+            "options": [
+                "ElectroStatic Discharge (Décharge électrostatique)",
+                "Energie",
+                "Erreur",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Peut détruire les puces (toucher la terre avant de manipuler)."
+        },
+        {
+            "id": 91,
+            "question": "Qu'est-ce que 'Open Collector' / 'Open Drain' ?",
+            "options": [
+                "Sortie qui peut tirer vers la masse mais pas vers VCC",
+                "Collecteur",
+                "Drain",
+                "Ouvert"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite une résistance de pull-up (ex: I2C)."
+        },
+        {
+            "id": 92,
+            "question": "Qu'est-ce que le 'Cross-compilation' ?",
+            "options": [
+                "Compiler sur PC pour une architecture différente (ARM)",
+                "Croix",
+                "Compilation",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Car le MCU n'est pas assez puissant pour compiler son propre code."
+        },
+        {
+            "id": 93,
+            "question": "Qu'est-ce que JTAG / SWD ?",
+            "options": [
+                "Interfaces de débogage matériel avancées",
+                "Jeu",
+                "Tag",
+                "Debug"
+            ],
+            "answer": 0,
+            "explanation": "Pour mettre des points d'arrêt dans le code sur la puce."
+        },
+        {
+            "id": 94,
+            "question": "Qu'est-ce qu'un PCB multicouche ?",
+            "options": [
+                "Circuit imprimé avec des pistes à l'intérieur (Sandwich)",
+                "Couche",
+                "Multi",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet la miniaturisation."
+        },
+        {
+            "id": 95,
+            "question": "Qu'est-ce que 'SMD' / 'CMS' ?",
+            "options": [
+                "Surface Mount Device (Composants montés en surface)",
+                "Traversant",
+                "Petit",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contraire de 'Through-hole' (Traversant)."
+        },
+        {
+            "id": 96,
+            "question": "Qu'est-ce que le Footprint (Empreinte) ?",
+            "options": [
+                "La forme des pastilles de cuivre sur le PCB pour souder le composant",
+                "Pied",
+                "Trace",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Doit correspondre au boîtier du composant."
+        },
+        {
+            "id": 97,
+            "question": "Qu'est-ce que la BOM ?",
+            "options": [
+                "Bill of Materials (Liste des composants)",
+                "Bombe",
+                "Liste",
+                "Facture"
+            ],
+            "answer": 0,
+            "explanation": "Nécessaire pour la production."
+        },
+        {
+            "id": 98,
+            "question": "Qu'est-ce que Gerber ?",
+            "options": [
+                "Format de fichier standard pour la fabrication de PCB",
+                "Bébé",
+                "Fichier",
+                "Image"
+            ],
+            "answer": 0,
+            "explanation": "Envoyé à l'usine."
+        },
+        {
+            "id": 99,
+            "question": "Qu'est-ce qu'un Photocoupleur (Optocoupleur) ?",
+            "options": [
+                "Composant qui isole deux circuits grâce à la lumière",
+                "Photo",
+                "Couple",
+                "Lumière"
+            ],
+            "answer": 0,
+            "explanation": "Protège le MCU des hautes tensions."
+        },
+        {
+            "id": 100,
+            "question": "L'embarqué a-t-il un avenir ?",
+            "options": [
+                "Oui, avec l'IoT et l'IA (Edge Computing) c'est en explosion",
+                "Non",
+                "Bof",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Tout devient 'Smart'."
+        }
+    ]
+}

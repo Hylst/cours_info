@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Cybersécurité | Guide 2025</title>
+    <meta name="description" content="Guide Cybersécurité : CIA, Attaques Web, Cryptographie, Bonnes pratiques.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">CS</div>Cybersécurité
+            </div>
+            <nav>
+                <a href="#s1">CIA Triad</a>
+                <a href="#s2">Attaques</a>
+                <a href="#s3">Crypto</a>
+                <a href="#s4">Défense</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Cybersécurité</h1>
+            <p>Fondamentaux de la protection, attaques courantes et cryptographie.</p>
+        </div>
+    </section>
+
+    <div class="intro-box">
+        <div class="container">
+            <h3>Les 3 Piliers (CIA Framework)</h3>
+            <p>La sécurité de l'information repose sur ce triangle fondamental :</p>
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info">
+                    <strong>1. Confidentialité</strong><br>
+                    Seules les personnes autorisées ont accès aux données.<br>
+                    <em>Ex: Chiffrement, ACLs, 2FA.</em>
+                </div>
+                <div class="info">
+                    <strong>2. Intégrité</strong><br>
+                    La donnée n'a pas été altérée (volontairement ou accidentellement).<br>
+                    <em>Ex: Hashing (SHA-256), Signatures numériques.</em>
+                </div>
+                <div class="info">
+                    <strong>3. Disponibilité (Availability)</strong><br>
+                    Le service doit rester accessible.<br>
+                    <em>Ex: Redondance, backups, protection DDoS.</em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- S1: ATTACKS -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Attaques Web Courantes</h2>
+                    <p class="sec-sub">OWASP Top 10 Essentials</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>💉 SQL Injection (SQLi)</summary>
+                <div class="details-content">
+                    <p>L'attaquant injecte du code SQL malveillant via un champ de formulaire pour manipuler la base de
+                        données.</p>
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span>VULNÉRABLE</div>
+                        <pre><span class="c">// PHP Legacy (Mauvais)</span>
+<span class="var">$sql</span> = <span class="str">"SELECT * FROM users WHERE id = "</span> . <span class="var">$_GET</span>[<span class="str">'id'</span>];
+<span class="c">// Si id = "1 OR 1=1", l'attaquant voit tout !</span></pre>
+                    </div>
+                    <div class="code">
+                        <div class="code-head"><span class="dot g"></span>SÉCURISÉ</div>
+                        <pre><span class="c">// Requêtes préparées (PDO)</span>
+<span class="var">$stmt</span> = <span class="var">$pdo</span>.<span class="fn">prepare</span>(<span class="str">"SELECT * FROM users WHERE id = :id"</span>);
+<span class="var">$stmt</span>.<span class="fn">execute</span>([<span class="str">'id'</span> => <span class="var">$_GET</span>[<span class="str">'id'</span>]]);</pre>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>🎭 XSS (Cross-Site Scripting)</summary>
+                <div class="details-content">
+                    <p>Injection de scripts JavaScript malveillants exécutés par le navigateur de la victime.</p>
+                    <ul>
+                        <li><strong>Stored XSS</strong> : Le script est stocké en BDD (ex: commentaire).</li>
+                        <li><strong>Reflected XSS</strong> : Le script est dans l'URL.</li>
+                    </ul>
+                    <p class="tip"><strong>Solution :</strong> Toujours échapper les données affichées
+                        (<code>htmlspecialchars</code> en PHP, auto dans React/Vue).</p>
+                </div>
+            </details>
+            <details>
+                <summary>👺 CSRF (Cross-Site Request Forgery)</summary>
+                <div class="details-content">
+                    <p>Forcer un utilisateur connecté à exécuter une action à son insu.</p>
+                    <p class="tip"><strong>Solution :</strong> Utiliser des tokens Anti-CSRF dans les formulaires.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- S2: CRYPTO -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Cryptographie</h2>
+                    <p class="sec-sub">Protéger la donnée</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card"
+                    style="background:var(--card); padding:20px; border-radius:8px; border:1px solid var(--border);">
+                    <h4>Chiffrement (Encryption)</h4>
+                    <p>Bidirectionnel. Transforme un message en code illisible. Nécessite une clé pour déchiffrer.</p>
+                    <ul style="font-size:0.9rem; color:var(--muted); margin-top:10px">
+                        <li><strong>Symétrique</strong> : Même clé (AES). Rapide.</li>
+                        <li><strong>Asymétrique</strong> : Clé publique / Clé privée (RSA, ECC). Authentification.</li>
+                    </ul>
+                </div>
+                <div class="ref-card"
+                    style="background:var(--card); padding:20px; border-radius:8px; border:1px solid var(--border);">
+                    <h4>Hachage (Hashing)</h4>
+                    <p>Unidirectionnel. Empreinte numérique unique.</p>
+                    <ul style="font-size:0.9rem; color:var(--muted); margin-top:10px">
+                        <li><strong>Irréversible</strong> : On ne peut pas retrouver l'original.</li>
+                        <li><strong>Usages</strong> : Stockage mots de passe (avec Salt), Vérification intégrité
+                            fichiers.</li>
+                        <li><strong>Algo</strong> : SHA-256, Argon2, Bcrypt. (Éviter MD5/SHA1).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: DEFENSE -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Défense & Hygiène</h2>
+                    <p class="sec-sub">Bonnes pratiques</p>
+                </div>
+            </div>
+
+            <table style="width:100%; border-collapse:collapse; color:var(--muted);">
+                <tr style="border-bottom:1px solid var(--border); text-align:left;">
+                    <th style="padding:10px; color:var(--primary-bright);">Concept</th>
+                    <th style="padding:10px; color:var(--primary-bright);">Description</th>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                    <td style="padding:10px;"><strong>Zero Trust</strong></td>
+                    <td style="padding:10px;">"Ne jamais faire confiance, toujours vérifier". Segmentation réseau,
+                        moindre privilège.</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                    <td style="padding:10px;"><strong>2FA / MFA</strong></td>
+                    <td style="padding:10px;">Double facteur. Quelque chose que je sais (Pwd) + Quelque chose que j'ai
+                        (Tel).</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                    <td style="padding:10px;"><strong>HTTPS / TLS</strong></td>
+                    <td style="padding:10px;">Chiffrement du transport + Authentification du serveur (Certificat).</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                    <td style="padding:10px;"><strong>Sanitization</strong></td>
+                    <td style="padding:10px;">"Input Validation". Ne jamais faire confiance aux données utilisateur
+                        (GET/POST/Cookies).</td>
+                </tr>
+            </table>
+
+            <div class="warning" style="margin-top:30px">
+                <strong>⚠️ Ingénierie Sociale</strong>
+                La faille principale reste souvent l'humain (Phishing, Pretexting). La formation est la première ligne
+                de défense.
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_cyber.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <footer>
+        <div class="container">
+            <p><strong>Mémo Cybersécurité</strong> • 2025</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

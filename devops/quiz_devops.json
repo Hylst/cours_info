@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz DevOps - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Que signifie DevOps ?",
+            "options": [
+                "Development & Operations (Collaboration)",
+                "Developer Options",
+                "Device Operations",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Culture visant à unifier le développement et l'administration système."
+        },
+        {
+            "id": 2,
+            "question": "Quel est l'objectif principal du DevOps ?",
+            "options": [
+                "Accélérer la livraison de logiciels de qualité",
+                "Virer les admins",
+                "Coder plus vite",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Réduire le Time-to-Market et les échecs."
+        },
+        {
+            "id": 3,
+            "question": "Qu'est-ce que CI ?",
+            "options": [
+                "Continuous Integration",
+                "Code Integration",
+                "Cloud Internet",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Fusionner le code régulièrement et tester automatiquement."
+        },
+        {
+            "id": 4,
+            "question": "Qu'est-ce que CD ?",
+            "options": [
+                "Continuous Delivery / Deployment",
+                "Code Delivery",
+                "Cloud Drive",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Automatiser la mise en production."
+        },
+        {
+            "id": 5,
+            "question": "Qu'est-ce que Docker ?",
+            "options": [
+                "Plateforme de conteneurisation",
+                "Un bateau",
+                "Un OS",
+                "Un langage"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'empaqueter une app et ses dépendances."
+        },
+        {
+            "id": 6,
+            "question": "Quelle est la différence entre un Conteneur et une VM ?",
+            "options": [
+                "Le conteneur partage le noyau de l'OS hôte (plus léger)",
+                "Aucune",
+                "La VM est plus rapide",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "La VM virtualise le matériel, le conteneur virtualise l'OS."
+        },
+        {
+            "id": 7,
+            "question": "Qu'est-ce que Kubernetes (K8s) ?",
+            "options": [
+                "Orchestrateur de conteneurs",
+                "Un conteneur",
+                "Un langage",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "Gère le déploiement, la mise à l'échelle et la gestion des conteneurs."
+        },
+        {
+            "id": 8,
+            "question": "Qu'est-ce que IaC ?",
+            "options": [
+                "Infrastructure as Code",
+                "Internet as Code",
+                "Input as Code",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Gérer l'infra via des fichiers de configuration (Git)."
+        },
+        {
+            "id": 9,
+            "question": "Quel outil est célèbre pour l'IaC (Provisioning) ?",
+            "options": [
+                "Terraform",
+                "Word",
+                "Excel",
+                "Paint"
+            ],
+            "answer": 0,
+            "explanation": "Permet de créer des ressources Cloud (AWS, Azure...)."
+        },
+        {
+            "id": 10,
+            "question": "Quel outil est célèbre pour la Gestion de Configuration ?",
+            "options": [
+                "Ansible",
+                "Photoshop",
+                "Notepad",
+                "Chrome"
+            ],
+            "answer": 0,
+            "explanation": "Automatise l'installation de logiciels sur les serveurs."
+        },
+        {
+            "id": 11,
+            "question": "Qu'est-ce que Git ?",
+            "options": [
+                "Système de contrôle de version distribué",
+                "Un Cloud",
+                "Un langage",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour le travail collaboratif."
+        },
+        {
+            "id": 12,
+            "question": "Qu'est-ce qu'un Pipeline ?",
+            "options": [
+                "Suite d'étapes automatisées (Build -> Test -> Deploy)",
+                "Tuyau",
+                "Cable",
+                "Plan"
+            ],
+            "answer": 0,
+            "explanation": "Le cœur du CI/CD."
+        },
+        {
+            "id": 13,
+            "question": "Qu'est-ce que l'Idempotence ?",
+            "options": [
+                "Une opération répétée produit toujours le même résultat",
+                "Intelligence",
+                "Idée",
+                "Puissance"
+            ],
+            "answer": 0,
+            "explanation": "Clé en Ansible/Terraform : Ne pas refaire ce qui est déjà fait."
+        },
+        {
+            "id": 14,
+            "question": "Qu'est-ce qu'un Microservice ?",
+            "options": [
+                "Architecture découpant l'app en petits services indépendants",
+                "Petit service",
+                "Script",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contraire du Monolithe. Facilite le scaling."
+        },
+        {
+            "id": 15,
+            "question": "Qu'est-ce que le Blue/Green Deployment ?",
+            "options": [
+                "Technique de déploiement avec 2 environnements (Actif/Inactif)",
+                "Couleur",
+                "Peinture",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de switcher instantanément et revenir en arrière (Rollback)."
+        },
+        {
+            "id": 16,
+            "question": "Qu'est-ce que le Canary Deployment ?",
+            "options": [
+                "Déployer la nouvelle version à un petit % d'utilisateurs",
+                "Oiseau",
+                "Mine",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de tester en prod sans risque majeur."
+        },
+        {
+            "id": 17,
+            "question": "Qu'est-ce qu'une Image Docker ?",
+            "options": [
+                "Le modèle (template) en lecture seule pour créer des conteneurs",
+                "Une photo",
+                "Un dessin",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contruit via un Dockerfile."
+        },
+        {
+            "id": 18,
+            "question": "A quoi sert Docker Hub ?",
+            "options": [
+                "Registre public d'images Docker",
+                "Réseau social",
+                "Site",
+                "Hub"
+            ],
+            "answer": 0,
+            "explanation": "Comme GitHub mais pour les images."
+        },
+        {
+            "id": 19,
+            "question": "Qu'est-ce que Jenkins ?",
+            "options": [
+                "Serveur d'automatisation (CI/CD) open source",
+                "Majordome",
+                "Jeu",
+                "Client"
+            ],
+            "answer": 0,
+            "explanation": "Le vétéran du CI."
+        },
+        {
+            "id": 20,
+            "question": "Qu'est-ce que GitLab CI ?",
+            "options": [
+                "Outil de CI/CD intégré à GitLab",
+                "Lab",
+                "Git",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Défini dans .gitlab-ci.yml."
+        },
+        {
+            "id": 21,
+            "question": "Qu'est-ce que AWS ?",
+            "options": [
+                "Amazon Web Services (Cloud Provider)",
+                "Site",
+                "Magasin",
+                "Service"
+            ],
+            "answer": 0,
+            "explanation": "Leader du Cloud public."
+        },
+        {
+            "id": 22,
+            "question": "Qu'est-ce que 'Serverless' ?",
+            "options": [
+                "Exécuter du code sans gérer les serveurs (FaaS)",
+                "Sans serveur",
+                "Magie",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: AWS Lambda. On paie à l'exécution."
+        },
+        {
+            "id": 23,
+            "question": "Qu'est-ce qu'un Pod (Kubernetes) ?",
+            "options": [
+                "La plus petite unité déployable (un ou plusieurs conteneurs)",
+                "Pied",
+                "Boite",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Partage la même IP et stockage."
+        },
+        {
+            "id": 24,
+            "question": "Qu'est-ce que Prometheus ?",
+            "options": [
+                "Outil de monitoring et d'alerte",
+                "Dieu",
+                "Film",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Collecte les métriques."
+        },
+        {
+            "id": 25,
+            "question": "Qu'est-ce que Grafana ?",
+            "options": [
+                "Outil de visualisation de données (Dashboards)",
+                "Graphe",
+                "Dessin",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Souvent couplé à Prometheus."
+        },
+        {
+            "id": 26,
+            "question": "Qu'est-ce que le 'Shift Left' ?",
+            "options": [
+                "Intégrer les tests et la sécurité tôt dans le développement",
+                "Gauche",
+                "Politique",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Plus on détecte un bug tôt, moins il coûte cher."
+        },
+        {
+            "id": 27,
+            "question": "Qu'est-ce que ELK Stack ?",
+            "options": [
+                "Elasticsearch, Logstash, Kibana (Gestion de logs)",
+                "Animal",
+                "Pile",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Pour centraliser et analyser les logs."
+        },
+        {
+            "id": 28,
+            "question": "Qu'est-ce que Nginx ?",
+            "options": [
+                "Serveur Web et Reverse Proxy performant",
+                "Moteur",
+                "Site",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Très utilisé en frontend de services."
+        },
+        {
+            "id": 29,
+            "question": "Qu'est-ce que la Scalabilité Horizontale ?",
+            "options": [
+                "Ajouter plus de machines (Noeuds)",
+                "Ajouter de la RAM",
+                "Grossir",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contraire de Verticale (Ajouter du CPU/RAM)."
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce que la Haute Disponibilité (HA) ?",
+            "options": [
+                "Système conçu pour fonctionner sans interruption (99.99%)",
+                "Rapide",
+                "Haut",
+                "Dispo"
+            ],
+            "answer": 0,
+            "explanation": "Implique souvent la redondance."
+        },
+        {
+            "id": 31,
+            "question": "Qu'est-ce qu'un 'Artifact' ?",
+            "options": [
+                "Le résultat d'un build (ex: .jar, .exe, Image Docker)",
+                "Objet",
+                "Art",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Ce qui sera déployé."
+        },
+        {
+            "id": 32,
+            "question": "Qu'est-ce que le 'Provisioning' ?",
+            "options": [
+                "L'allocation de ressources informatiques (VMs, Stockage)",
+                "Provisions",
+                "Manger",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Étape avant la configuration."
+        },
+        {
+            "id": 33,
+            "question": "Qu'est-ce que YAML ?",
+            "options": [
+                "YAML Ain't Markup Language (Format de données lisible)",
+                "Code",
+                "Script",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Standard pour la config (K8s, Ansible, Docker Compose)."
+        },
+        {
+            "id": 34,
+            "question": "Qu'est-ce que Docker Compose ?",
+            "options": [
+                "Outil pour définir et lancer des applications multi-conteneurs",
+                "Musique",
+                "Ecrire",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Fichier docker-compose.yml."
+        },
+        {
+            "id": 35,
+            "question": "Qu'est-ce que le 'Rollback' ?",
+            "options": [
+                "Revenir à la version précédente en cas d'erreur",
+                "Rouler",
+                "Arrière",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Crucial en CD."
+        },
+        {
+            "id": 36,
+            "question": "Qu'est-ce que SRE ?",
+            "options": [
+                "Site Reliability Engineering (L'implémentation de DevOps par Google)",
+                "Site",
+                "Admin",
+                "Ops"
+            ],
+            "answer": 0,
+            "explanation": "Focus sur la fiabilité et l'automatisation."
+        },
+        {
+            "id": 37,
+            "question": "Qu'est-ce que le 'Chaos Engineering' ?",
+            "options": [
+                "Intuire volontairement des pannes pour tester la résilience",
+                "Chaos",
+                "Guerre",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Netflix Chaos Monkey."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce qu'un Load Balancer ?",
+            "options": [
+                "Répartiteur de charge",
+                "Balance",
+                "Poids",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Distribue le trafic entrant."
+        },
+        {
+            "id": 39,
+            "question": "Qu'est-ce que l'Orchestration ?",
+            "options": [
+                "Coordination et gestion automatisée des conteneurs/services",
+                "Musique",
+                "Chef",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ce que fait Kubernetes."
+        },
+        {
+            "id": 40,
+            "question": "Qu'est-ce que le 'Vendor Lock-in' ?",
+            "options": [
+                "Dépendance forte à un fournisseur Cloud spécifique",
+                "Verrou",
+                "Prison",
+                "Vendeur"
+            ],
+            "answer": 0,
+            "explanation": "Rend la migration difficile."
+        },
+        {
+            "id": 41,
+            "question": "Qu'est-ce que 'Bare Metal' ?",
+            "options": [
+                "Serveur physique sans virtualisation",
+                "Metal",
+                "Nu",
+                "Dur"
+            ],
+            "answer": 0,
+            "explanation": "Performance maximale."
+        },
+        {
+            "id": 42,
+            "question": "Qu'est-ce que le 'Versioning' sémantique (SemVer) ?",
+            "options": [
+                "Major.Minor.Patch (ex: 1.0.2)",
+                "Version",
+                "Date",
+                "Nom"
+            ],
+            "answer": 0,
+            "explanation": "Standard de versionnage."
+        },
+        {
+            "id": 43,
+            "question": "Qu'est-ce que 'Immutable Infrastructure' ?",
+            "options": [
+                "Ne jamais modifier un serveur en place, le remplacer par un nouveau",
+                "Immuable",
+                "Fixe",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Évite le 'Configuration Drift'."
+        },
+        {
+            "id": 44,
+            "question": "Qu'est-ce que Bash ?",
+            "options": [
+                "Shell Unix et langage de script",
+                "Frapper",
+                "Code",
+                "Jeu"
+            ],
+            "answer": 0,
+            "explanation": "L'outil de base de l'admin sys."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que 'Health Check' ?",
+            "options": [
+                "Vérification automatique de l'état de santé d'un service",
+                "Santé",
+                "Médecin",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Si fail, le Load Balancer arrête d'envoyer du trafic."
+        },
+        {
+            "id": 46,
+            "question": "Qu'est-ce que 'Uptime' ?",
+            "options": [
+                "Temps de disponibilité d'un système",
+                "Haut",
+                "Temps",
+                "Heure"
+            ],
+            "answer": 0,
+            "explanation": "L'objectif est d'atteindre 100%."
+        },
+        {
+            "id": 47,
+            "question": "Qu'est-ce que SLA ?",
+            "options": [
+                "Service Level Agreement (Contrat de niveau de service)",
+                "Super",
+                "Accord",
+                "Loi"
+            ],
+            "answer": 0,
+            "explanation": "Définit les pénalités si l'uptime n'est pas respecté."
+        },
+        {
+            "id": 48,
+            "question": "Qu'est-ce que 'Dark Launch' ?",
+            "options": [
+                "Déployer une fonctionnalité masquée (Feature Flag)",
+                "Noir",
+                "Lancement",
+                "Nuit"
+            ],
+            "answer": 0,
+            "explanation": "Permet de découpler déploiement et release."
+        },
+        {
+            "id": 49,
+            "question": "Qu'est-ce que 'Feature Toggles' ?",
+            "options": [
+                "Interrupteurs dans le code pour activer/désactiver des fonctions",
+                "Bouton",
+                "Flag",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Essentiel pour le Trunk Based Development."
+        },
+        {
+            "id": 50,
+            "question": "Qu'est-ce que le 'Trunk Based Development' ?",
+            "options": [
+                "Tout le monde commit sur la branche principale (main)",
+                "Arbre",
+                "Tronc",
+                "Git"
+            ],
+            "answer": 0,
+            "explanation": "Favorise l'intégration continue rapide."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que 'Pets vs Cattle' ?",
+            "options": [
+                "Analogie serveurs: Bétail (remplaçable) vs Animaux (unique)",
+                "Jeu",
+                "Ferme",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Traitez vos serveurs comme du bétail, pas des animaux de compagnie."
+        },
+        {
+            "id": 52,
+            "question": "Qu'est-ce que 'Drift Management' ?",
+            "options": [
+                "Détecter et corriger les écarts de configuration",
+                "Voiture",
+                "Drift",
+                "Gestion"
+            ],
+            "answer": 0,
+            "explanation": "Le but est de garder la prod synchro avec le code (IaC)."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que 'Post-Mortem' (ou Blameless Post-Mortem) ?",
+            "options": [
+                "Analyse d'un incident pour comprendre sans blâmer",
+                "Autopsie",
+                "Mort",
+                "Film"
+            ],
+            "answer": 0,
+            "explanation": "Focus sur l'amélioration des processus, pas la punition."
+        },
+        {
+            "id": 54,
+            "question": "Qu'est-ce que TOML ?",
+            "options": [
+                "Tom's Obvious, Minimal Language (Format de configuration)",
+                "Tom",
+                "Code",
+                "Web"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé par Rust, Go, etc."
+        },
+        {
+            "id": 55,
+            "question": "Qu'est-ce que JSON ?",
+            "options": [
+                "JavaScript Object Notation",
+                "Java Source Open Network",
+                "Just On",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Le standard du web pour les données."
+        },
+        {
+            "id": 56,
+            "question": "Qu'est-ce que XML ?",
+            "options": [
+                "Extensible Markup Language",
+                "X-Men",
+                "Xylophone",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Verbeux mais structuré (vieux standard)."
+        },
+        {
+            "id": 57,
+            "question": "Qu'est-ce que 'Technical Debt' (Dette technique) ?",
+            "options": [
+                "Coût futur du code mal écrit pour aller vite maintenant",
+                "Dette",
+                "Argent",
+                "Banque"
+            ],
+            "answer": 0,
+            "explanation": "Doit être remboursée (refactoring) sinon elle étouffe le projet."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce que 'Refactoring' ?",
+            "options": [
+                "Améliorer la structure du code sans changer son comportement",
+                "Réécrire",
+                "Effacer",
+                "Tests"
+            ],
+            "answer": 0,
+            "explanation": "Nettoyage nécessaire."
+        },
+        {
+            "id": 59,
+            "question": "Qu'est-ce que 'Integration Hell' ?",
+            "options": [
+                "Problèmes massifs lors de la fusion de branches après longtemps",
+                "Enfer",
+                "Chaud",
+                "Bug"
+            ],
+            "answer": 0,
+            "explanation": "Évité par la CI fréquente."
+        },
+        {
+            "id": 60,
+            "question": "Qu'est-ce que 'Golden Image' ?",
+            "options": [
+                "Image serveur/conteneur pré-configurée et validée",
+                "Or",
+                "Image",
+                "Photo"
+            ],
+            "answer": 0,
+            "explanation": "Accélère le déploiement."
+        },
+        {
+            "id": 61,
+            "question": "Qu'est-ce que 'Secret Management' ?",
+            "options": [
+                "Gestion sécurisée des mots de passe/clés (Vault)",
+                "Secret",
+                "Cacher",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ne jamais commiter de secrets dans Git !"
+        },
+        {
+            "id": 62,
+            "question": "Qu'est-ce que HashiCorp Vault ?",
+            "options": [
+                "Outil pour gérer les secrets",
+                "Coffre",
+                "Banque",
+                "Hash"
+            ],
+            "answer": 0,
+            "explanation": "Standard de l'industrie."
+        },
+        {
+            "id": 63,
+            "question": "Qu'est-ce que 'Unit Testing' ?",
+            "options": [
+                "Tester une petite partie du code isolément",
+                "Unité",
+                "Test",
+                "Global"
+            ],
+            "answer": 0,
+            "explanation": "La base de la pyramide de tests."
+        },
+        {
+            "id": 64,
+            "question": "Qu'est-ce que 'Integration Testing' ?",
+            "options": [
+                "Tester comment les modules fonctionnent ensemble",
+                "Mix",
+                "Tout",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Vérifie les interfaces."
+        },
+        {
+            "id": 65,
+            "question": "Qu'est-ce que 'E2E Testing' (End-to-End) ?",
+            "options": [
+                "Tester le flux utilisateur complet (De A à Z)",
+                "Fin",
+                "Bout",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Lent et coûteux, mais réaliste."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce que Selenium / Cypress ?",
+            "options": [
+                "Outils de test E2E pour le web",
+                "Chimie",
+                "Arbre",
+                "Code"
+            ],
+            "answer": 0,
+            "explanation": "Pilotent le navigateur comme un utilisateur."
+        },
+        {
+            "id": 67,
+            "question": "Qu'est-ce que 'Code Coverage' ?",
+            "options": [
+                "% de code exécuté par les tests",
+                "Couverture",
+                "Lit",
+                "Assurance"
+            ],
+            "answer": 0,
+            "explanation": "Indicateur qualité (ne prouve pas l'absence de bugs)."
+        },
+        {
+            "id": 68,
+            "question": "Qu'est-ce que SonarQube ?",
+            "options": [
+                "Outil de qualité de code (sécurité, bugs, code smells)",
+                "Sonar",
+                "Bateau",
+                "Cube"
+            ],
+            "answer": 0,
+            "explanation": "Analyse statique."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce que 'Linting' ?",
+            "options": [
+                "Vérification syntaxique et stylistique du code",
+                "Nettoyer",
+                "Laver",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: ESLint, Pylint."
+        },
+        {
+            "id": 70,
+            "question": "Qu'est-ce que 'Regression Testing' ?",
+            "options": [
+                "Vérifier qu'une modif n'a rien cassé qui marchait avant",
+                "Retour",
+                "Hier",
+                "Passé"
+            ],
+            "answer": 0,
+            "explanation": "Automatisé par la CI."
+        },
+        {
+            "id": 71,
+            "question": "Qu'est-ce que 'Smoke Testing' ?",
+            "options": [
+                "Test rapide pour voir si l'app démarre sans exploser",
+                "Fumée",
+                "Feu",
+                "Cigarette"
+            ],
+            "answer": 0,
+            "explanation": "Sanity check basique."
+        },
+        {
+            "id": 72,
+            "question": "Qu'est-ce que 'Mocking' ?",
+            "options": [
+                "Simuler un composant (ex: API, BDD) pour les tests",
+                "Moquerie",
+                "Faux",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de tester isolément."
+        },
+        {
+            "id": 73,
+            "question": "Qu'est-ce que TDD ?",
+            "options": [
+                "Test Driven Development (Ecrire le test avant le code)",
+                "Tout De Droit",
+                "Test",
+                "Dev"
+            ],
+            "answer": 0,
+            "explanation": "Red -> Green -> Refactor."
+        },
+        {
+            "id": 74,
+            "question": "Qu'est-ce que BDD ?",
+            "options": [
+                "Behavior Driven Development (Langage naturel)",
+                "Base De Données",
+                "Behavior",
+                "Bien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Cucumber (Given, When, Then)."
+        },
+        {
+            "id": 75,
+            "question": "Qu'est-ce que 'Three Amigos' ?",
+            "options": [
+                "Dev, QA et Product Owner discutent des specs avant de coder",
+                "Film",
+                "Amis",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Pour éviter les malentendus."
+        },
+        {
+            "id": 76,
+            "question": "Qu'est-ce que 'Bus Factor' ?",
+            "options": [
+                "Nombre de personnes clés qui, si écrasées par un bus, tuent le projet",
+                "Bus",
+                "Facteur",
+                "Transport"
+            ],
+            "answer": 0,
+            "explanation": "Il faut partager la connaissance (d'où la documentation)."
+        },
+        {
+            "id": 77,
+            "question": "Qu'est-ce qu'un 'Runbook' ?",
+            "options": [
+                "Manuel opératoire (Procédures d'admin)",
+                "Livre",
+                "Courir",
+                "Sport"
+            ],
+            "answer": 0,
+            "explanation": ""
+        },
+        {
+            "id": 78,
+            "question": "Qu'est-ce que 'ChatOps' ?",
+            "options": [
+                "Piloter les déploiements via un bot dans le chat (Slack/Teams)",
+                "Chat",
+                "Parler",
+                "Ops"
+            ],
+            "answer": 0,
+            "explanation": "Transparence et log des actions."
+        },
+        {
+            "id": 79,
+            "question": "Qu'est-ce que 'DevSecOps' ?",
+            "options": [
+                "Intégrer la sécurité dès le début du DevOps",
+                "Sécurité",
+                "Dev",
+                "Ops"
+            ],
+            "answer": 0,
+            "explanation": "Security is everyone's responsibility."
+        },
+        {
+            "id": 80,
+            "question": "Qu'est-ce que OWASP Top 10 ?",
+            "options": [
+                "Liste des 10 failles web les plus critiques",
+                "Top",
+                "Classement",
+                "Sécu"
+            ],
+            "answer": 0,
+            "explanation": "La bible de la sécu web."
+        },
+        {
+            "id": 81,
+            "question": "Qu'est-ce que SSH Agent Forwarding ?",
+            "options": [
+                "Utiliser sa clé locale sur un serveur distant sans la copier",
+                "Transfert",
+                "Agent",
+                "Secret"
+            ],
+            "answer": 0,
+            "explanation": "Pratique pour git pull depuis un serveur."
+        },
+        {
+            "id": 82,
+            "question": "Qu'est-ce que 'Configuration Drift' ?",
+            "options": [
+                "Quand les configurations des serveurs divergent avec le temps",
+                "Dérive",
+                "Bateau",
+                "Drift"
+            ],
+            "answer": 0,
+            "explanation": "L'ennemi de la stabilité."
+        },
+        {
+            "id": 83,
+            "question": "Qu'est-ce que 'Service Mesh' (Istio, Linkerd) ?",
+            "options": [
+                "Couche d'infrastructure pour gérer la communication inter-services (K8s)",
+                "Maillage",
+                "Filet",
+                "Service"
+            ],
+            "answer": 0,
+            "explanation": "Gère le trafic, la sécu, l'observabilité."
+        },
+        {
+            "id": 84,
+            "question": "Qu'est-ce que 'Sidecar Pattern' ?",
+            "options": [
+                "Attacher un conteneur auxiliaire au conteneur principal (Pod)",
+                "Moto",
+                "Voiture",
+                "Side"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Pour les logs ou le proxy."
+        },
+        {
+            "id": 85,
+            "question": "Qu'est-ce que 'Monolith First' ?",
+            "options": [
+                "Commencer par un monolithe avant de faire des microservices",
+                "Un seul",
+                "Pierre",
+                "Gros"
+            ],
+            "answer": 0,
+            "explanation": "Car les microservices ajoutent une complexité énorme."
+        },
+        {
+            "id": 86,
+            "question": "Qu'est-ce que '12-Factor App' ?",
+            "options": [
+                "Méthodologie pour créer des apps SaaS modernes",
+                "12 Règles",
+                "Facteur",
+                "App"
+            ],
+            "answer": 0,
+            "explanation": "Config dans l'environnement, sans état, etc."
+        },
+        {
+            "id": 87,
+            "question": "Qu'est-ce que 'Stateless' ?",
+            "options": [
+                "L'application ne garde pas d'état entre les requêtes",
+                "Sans état",
+                "Libre",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Facilite le scaling horizontal."
+        },
+        {
+            "id": 88,
+            "question": "Qu'est-ce que 'Stateful' ?",
+            "options": [
+                "L'application conserve des données (BDD, Session...)",
+                "Avec état",
+                "Mémoire",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Plus dur à gérer en conteneur."
+        },
+        {
+            "id": 89,
+            "question": "Qu'est-ce que 'Horizontal Pod Autoscaling' (HPA) ?",
+            "options": [
+                "Ajouter des Pods automatiquement selon la charge CPU/RAM",
+                "Auto",
+                "Scale",
+                "Kube"
+            ],
+            "answer": 0,
+            "explanation": "Fonctionnalité clé de K8s."
+        },
+        {
+            "id": 90,
+            "question": "Qu'est-ce que 'Vertical Pod Autoscaling' ?",
+            "options": [
+                "Donner plus de CPU/RAM à un Pod existant",
+                "Grandir",
+                "Scale",
+                "Kube"
+            ],
+            "answer": 0,
+            "explanation": "Redémarre souvent le Pod."
+        },
+        {
+            "id": 91,
+            "question": "Qu'est-ce que 'Namespace' (K8s) ?",
+            "options": [
+                "Cloisonnement logique au sein du cluster",
+                "Espace",
+                "Nom",
+                "Dossier"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'avoir plusieurs environnements (Dev, Prod) sur un cluster."
+        },
+        {
+            "id": 92,
+            "question": "Qu'est-ce que 'Ingress' (K8s) ?",
+            "options": [
+                "Point d'entrée HTTP/HTTPS vers le cluster",
+                "Entrée",
+                "Porte",
+                "Routeur"
+            ],
+            "answer": 0,
+            "explanation": "Remplace les Load Balancers multiples."
+        },
+        {
+            "id": 93,
+            "question": "Qu'est-ce que 'Helm' ?",
+            "options": [
+                "Gestionnaire de paquets pour Kubernetes (Charts)",
+                "Barre",
+                "Casque",
+                "Bateau"
+            ],
+            "answer": 0,
+            "explanation": "Le 'yum' ou 'apt' de K8s."
+        },
+        {
+            "id": 94,
+            "question": "Qu'est-ce que 'Minikube' ?",
+            "options": [
+                "Kubernetes local pour le développement",
+                "Mini",
+                "Micro",
+                "Petit"
+            ],
+            "answer": 0,
+            "explanation": "Tourne sur une seule machine."
+        },
+        {
+            "id": 95,
+            "question": "Qu'est-ce que 'Vagrant' ?",
+            "options": [
+                "Outil pour créer des environnements de dev virtuels portables",
+                "Voyageur",
+                "VM",
+                "Box"
+            ],
+            "answer": 0,
+            "explanation": "Gère les VMs (VirtualBox, etc.)."
+        },
+        {
+            "id": 96,
+            "question": "Qu'est-ce que Packer ?",
+            "options": [
+                "Outil pour créer des images machine identiques pour multiples plateformes",
+                "Paquet",
+                "Carton",
+                "Image"
+            ],
+            "answer": 0,
+            "explanation": "Par HashiCorp. Crée les Golden Images."
+        },
+        {
+            "id": 97,
+            "question": "Qu'est-ce que ELB (Elastic Load Balancer) ?",
+            "options": [
+                "Le Load Balancer d'AWS",
+                "Balance",
+                "Elastic",
+                "AWS"
+            ],
+            "answer": 0,
+            "explanation": "Service managé."
+        },
+        {
+            "id": 98,
+            "question": "Qu'est-ce que S3 ?",
+            "options": [
+                "Simple Storage Service (Stockage objet AWS)",
+                "Seau",
+                "Disque",
+                "Cloud"
+            ],
+            "answer": 0,
+            "explanation": "Incontournable pour stocker fichiers, backups, assets."
+        },
+        {
+            "id": 99,
+            "question": "Qu'est-ce que EC2 ?",
+            "options": [
+                "Elastic Compute Cloud (VMs chez AWS)",
+                "PC",
+                "Serveur",
+                "Cloud"
+            ],
+            "answer": 0,
+            "explanation": "Le service de base d'AWS."
+        },
+        {
+            "id": 100,
+            "question": "Le DevOps est-il un métier ou une culture ?",
+            "options": [
+                "Une culture avant tout (CAMS)",
+                "Juste un métier",
+                "Un diplôme",
+                "Un outil"
+            ],
+            "answer": 0,
+            "explanation": "Culture, Automation, Measurement, Sharing."
+        }
+    ]
+}

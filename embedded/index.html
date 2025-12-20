@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Embarqué | Guide 2025</title>
+    <meta name="description" content="Guide Embarqué : Microcontrôleurs, I2C, SPI, GPIO, IoT.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">EMB</div>Embarqué
+            </div>
+            <nav>
+                <a href="#s1">Microcontrôleurs</a>
+                <a href="#s2">Bus Com</a>
+                <a href="#s3">GPIO & PWM</a>
+                <a href="#s4">IoT & MQTT</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Électronique Embarquée</h1>
+            <p>Le pont entre le Hardware et le Software. Informatique Industrielle & IoT.</p>
+        </div>
+    </section>
+
+    <!-- S1: MCU -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Microcontrôleurs (MCU)</h2>
+                    <p class="sec-sub">Le cerveau du système</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>Arduino (AVR)</strong><br>
+                    8-bit. Simple. 5V. Pédagogique (ATMega328p).<br>
+                    <em>Ex: Prototypage rapide.</em>
+                </div>
+                <div class="info">
+                    <strong>ESP32 (Espressif)</strong><br>
+                    32-bit. Puissant (Dual Core). Wi-Fi + BT natifs. 3.3V.<br>
+                    <em>Ex: Objets connectés (IoT).</em>
+                </div>
+                <div class="info">
+                    <strong>STM32 (ARM Cortex-M)</strong><br>
+                    32-bit. Industriel. Très performant. Ecosystème complexe.<br>
+                    <em>Ex: Drones, Automobile.</em>
+                </div>
+                <div class="info">
+                    <strong>Raspberry Pi (SBC)</strong><br>
+                    Ce n'est pas un MCU mais un mini-PC (Linux).<br>
+                    <em>Ex: Serveur domotique, Caméra.</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S2: BUS -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Bus de Communication</h2>
+                    <p class="sec-sub">Parler aux capteurs</p>
+                </div>
+            </div>
+
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Bus</th>
+                    <th>Fils</th>
+                    <th>Vitesse</th>
+                    <th>Type</th>
+                    <th>Usage</th>
+                </tr>
+                <tr style="border-bottom:1px solid #333;">
+                    <td><strong>UART</strong></td>
+                    <td>2 (RX, TX)</td>
+                    <td>Lent</td>
+                    <td>Asynchrone</td>
+                    <td>Serial Monitor, GPS</td>
+                </tr>
+                <tr style="border-bottom:1px solid #333;">
+                    <td><strong>I2C</strong></td>
+                    <td>2 (SDA, SCK)</td>
+                    <td>Moyen</td>
+                    <td>Synchrone (Adresse)</td>
+                    <td>Capteurs, Ecrans OLED</td>
+                </tr>
+                <tr style="border-bottom:1px solid #333;">
+                    <td><strong>SPI</strong></td>
+                    <td>4 (MISO, MOSI...)</td>
+                    <td>Rapide</td>
+                    <td>Synchrone</td>
+                    <td>SD Card, Ecrans LCD</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- S3: GPIO -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">GPIO & IO</h2>
+                    <p class="sec-sub">General Purpose Input/Output</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h4 style="color:var(--primary-bright)">Digital (Tout ou Rien)</h4>
+                    <p>0 (0V) ou 1 (3.3V / 5V).</p>
+                    <div class="code">
+                        <pre><span class="fn">digitalWrite</span>(LED_PIN, HIGH);
+<span class="var">val</span> = <span class="fn">digitalRead</span>(BUTTON_PIN);</pre>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color:var(--primary-bright)">Analog (ADC/DAC)</h4>
+                    <p>Valeur variable (0-1023 ou 0-4095).</p>
+                    <div class="code">
+                        <pre><span class="var">sensorVal</span> = <span class="fn">analogRead</span>(A0);
+<span class="c">// Convertir voltage : val * (3.3 / 4095.0)</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;">
+                <strong>PWM (Pulse Width Modulation)</strong><br>
+                Simule un signal analogique en allumant/éteignant très vite une sortie digitale.<br>
+                <em>Usage : Varier luminosité LED, Vitesse moteur, Servomoteur.</em>
+            </div>
+        </div>
+    </section>
+
+    <!-- S4: IOT -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">IoT & MQTT</h2>
+                    <p class="sec-sub">Internet of Things</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📡 MQTT (Message Queuing Telemetry Transport)</summary>
+                <div class="details-content">
+                    <p>Le protocole standard de l'IoT. Léger et rapide.</p>
+                    <ul>
+                        <li><strong>Broker</strong> : Le serveur central (ex: Mosquitto).</li>
+                        <li><strong>Publisher</strong> : Envoie une donnée (ex: Capteur Température).</li>
+                        <li><strong>Subscriber</strong> : Reçoit la donnée (ex: Tableau de bord).</li>
+                        <li><strong>Topic</strong> : Le "canal" (ex: <code>maison/salon/temp</code>).</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_embedded.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <footer>
+        <div class="container">
+            <p><strong>Mémo Électronique Embarquée</strong> • 2025</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

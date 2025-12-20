@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz Réseaux - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Que signifie OSI ?",
+            "options": [
+                "Open Systems Interconnection",
+                "Operating System Interface",
+                "Open Source Internet",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Le modèle de référence en 7 couches."
+        },
+        {
+            "id": 2,
+            "question": "Combien de couches compte le modèle OSI ?",
+            "options": [
+                "7",
+                "4",
+                "5",
+                "10"
+            ],
+            "answer": 0,
+            "explanation": "Physique, Liaison, Réseau, Transport, Session, Présentation, Application."
+        },
+        {
+            "id": 3,
+            "question": "Quelle est la couche 1 ?",
+            "options": [
+                "Physique",
+                "Réseau",
+                "Application",
+                "Transport"
+            ],
+            "answer": 0,
+            "explanation": "Le matériel (câbles, ondes)."
+        },
+        {
+            "id": 4,
+            "question": "Quelle est la couche 3 ?",
+            "options": [
+                "Réseau",
+                "Transport",
+                "Liaison",
+                "Session"
+            ],
+            "answer": 0,
+            "explanation": "Gère le routage (IP)."
+        },
+        {
+            "id": 5,
+            "question": "Que signifie TCP ?",
+            "options": [
+                "Transmission Control Protocol",
+                "Transfer Control Protocol",
+                "Text Control Protocol",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Protocole orienté connexion et fiable."
+        },
+        {
+            "id": 6,
+            "question": "Que signifie UDP ?",
+            "options": [
+                "User Datagram Protocol",
+                "Unique Data Protocol",
+                "Ultra Data Protocol",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Protocole non connecté, rapide mais non fiable."
+        },
+        {
+            "id": 7,
+            "question": "Quel protocole est utilisé pour le Ping ?",
+            "options": [
+                "ICMP",
+                "TCP",
+                "UDP",
+                "HTTP"
+            ],
+            "answer": 0,
+            "explanation": "Internet Control Message Protocol."
+        },
+        {
+            "id": 8,
+            "question": "Quelle est l'adresse de Loopback (Localhost) en IPv4 ?",
+            "options": [
+                "127.0.0.1",
+                "192.168.1.1",
+                "10.0.0.1",
+                "0.0.0.0"
+            ],
+            "answer": 0,
+            "explanation": "Permet de tester la pile réseau locale."
+        },
+        {
+            "id": 9,
+            "question": "A quoi sert le DNS ?",
+            "options": [
+                "Traduire un nom de domaine en IP",
+                "Router les paquets",
+                "Chiffrer",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Domain Name System."
+        },
+        {
+            "id": 10,
+            "question": "Quel port standard utilise HTTP ?",
+            "options": [
+                "80",
+                "443",
+                "21",
+                "22"
+            ],
+            "answer": 0,
+            "explanation": "HTTPS utilise le 443."
+        },
+        {
+            "id": 11,
+            "question": "Quel équipement travaille au niveau de la couche 2 (Liaison) ?",
+            "options": [
+                "Switch (Commutateur)",
+                "Routeur",
+                "Hub",
+                "Câble"
+            ],
+            "answer": 0,
+            "explanation": "Il utilise les adresses MAC."
+        },
+        {
+            "id": 12,
+            "question": "Quel équipement travaille au niveau de la couche 3 (Réseau) ?",
+            "options": [
+                "Routeur",
+                "Switch",
+                "Hub",
+                "Répéteur"
+            ],
+            "answer": 0,
+            "explanation": "Il utilise les adresses IP pour router entre les réseaux."
+        },
+        {
+            "id": 13,
+            "question": "Que signifie MAC dans 'Adresse MAC' ?",
+            "options": [
+                "Media Access Control",
+                "Macintosh",
+                "Main Access Code",
+                "My Access Code"
+            ],
+            "answer": 0,
+            "explanation": "L'adresse physique unique de la carte réseau."
+        },
+        {
+            "id": 14,
+            "question": "Combien de bits compose une adresse IPv4 ?",
+            "options": [
+                "32 bits",
+                "64 bits",
+                "128 bits",
+                "16 bits"
+            ],
+            "answer": 0,
+            "explanation": "4 octets de 8 bits."
+        },
+        {
+            "id": 15,
+            "question": "Combien de bits compose une adresse IPv6 ?",
+            "options": [
+                "128 bits",
+                "32 bits",
+                "64 bits",
+                "256 bits"
+            ],
+            "answer": 0,
+            "explanation": "Nécessaire car IPv4 est saturé."
+        },
+        {
+            "id": 16,
+            "question": "Qu'est-ce que le DHCP ?",
+            "options": [
+                "Dynamic Host Configuration Protocol",
+                "Data Host Control Protocol",
+                "Domain Host Control Protocol",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Attribue automatiquement les IP."
+        },
+        {
+            "id": 17,
+            "question": "Que fait la commande 'tracert' ou 'traceroute' ?",
+            "options": [
+                "Affiche le chemin (routeurs) emprunté par les paquets",
+                "Trace un trait",
+                "Vitesse",
+                "Ping"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour diagnostiquer où ça bloque."
+        },
+        {
+            "id": 18,
+            "question": "Qu'est-ce qu'un Masque de Sous-Réseau (Subnet Mask) ?",
+            "options": [
+                "Définit quelle partie de l'IP est le réseau et quelle partie est l'hôte",
+                "Cache l'IP",
+                "Masque de sécurité",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: 255.255.255.0."
+        },
+        {
+            "id": 19,
+            "question": "Que signifie LAN ?",
+            "options": [
+                "Local Area Network",
+                "Large Area Network",
+                "Long Area Network",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Réseau local (maison, bureau)."
+        },
+        {
+            "id": 20,
+            "question": "Que signifie WAN ?",
+            "options": [
+                "Wide Area Network",
+                "Web Area Network",
+                "Wifi Area Network",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Réseau étendu (Internet)."
+        },
+        {
+            "id": 21,
+            "question": "Quel protocole est utilisé pour envoyer des emails ?",
+            "options": [
+                "SMTP",
+                "POP3",
+                "IMAP",
+                "HTTP"
+            ],
+            "answer": 0,
+            "explanation": "Simple Mail Transfer Protocol."
+        },
+        {
+            "id": 22,
+            "question": "Quel protocole est utilisé pour recevoir des emails (sans effacer du serveur) ?",
+            "options": [
+                "IMAP",
+                "POP3",
+                "SMTP",
+                "FTP"
+            ],
+            "answer": 0,
+            "explanation": "Internet Message Access Protocol."
+        },
+        {
+            "id": 23,
+            "question": "A quoi correspond l'adresse IP 0.0.0.0 ?",
+            "options": [
+                "Toutes les interfaces (Any)",
+                "Localhost",
+                "Erreur",
+                "Broadcast"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé souvent pour dire 'écoute sur tout'."
+        },
+        {
+            "id": 24,
+            "question": "Quelle est l'adresse de Broadcast d'un réseau 192.168.1.0/24 ?",
+            "options": [
+                "192.168.1.255",
+                "192.168.1.0",
+                "192.168.1.1",
+                "192.168.1.100"
+            ],
+            "answer": 0,
+            "explanation": "La dernière adresse de la plage."
+        },
+        {
+            "id": 25,
+            "question": "Qu'est-ce que le NAT ?",
+            "options": [
+                "Network Address Translation",
+                "Network Area Transport",
+                "Non Autorized Transport",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet à plusieurs IP privées de sortir avec une IP publique."
+        },
+        {
+            "id": 26,
+            "question": "Quel port utilise SSH ?",
+            "options": [
+                "22",
+                "21",
+                "23",
+                "25"
+            ],
+            "answer": 0,
+            "explanation": "Port standard pour l'administration sécurisée."
+        },
+        {
+            "id": 27,
+            "question": "Quel port utilise Telnet ?",
+            "options": [
+                "23",
+                "22",
+                "21",
+                "80"
+            ],
+            "answer": 0,
+            "explanation": "Non sécurisé (texte clair)."
+        },
+        {
+            "id": 28,
+            "question": "Quel est le débit théorique d'une connexion Gigabit Ethernet ?",
+            "options": [
+                "1000 Mbps",
+                "100 Mbps",
+                "10 Mbps",
+                "10 Gbps"
+            ],
+            "answer": 0,
+            "explanation": "1 Gb/s."
+        },
+        {
+            "id": 29,
+            "question": "Qu'est-ce qu'une trame (Frame) ?",
+            "options": [
+                "L'unité de données de la couche 2 (Liaison)",
+                "Couche 3",
+                "Couche 4",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contient les adresses MAC."
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce qu'un paquet (Packet) ?",
+            "options": [
+                "L'unité de données de la couche 3 (Réseau)",
+                "Couche 2",
+                "Couche 4",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Contient les adresses IP."
+        },
+        {
+            "id": 31,
+            "question": "Qu'est-ce qu'un segment ?",
+            "options": [
+                "L'unité de données de la couche 4 (Transport)",
+                "Couche 3",
+                "Couche 2",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "TCP segmente les données."
+        },
+        {
+            "id": 32,
+            "question": "Qu'est-ce que ARP ?",
+            "options": [
+                "Address Resolution Protocol",
+                "Adress Routing Protocol",
+                "Auto Routing Protocol",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Associe une adresse IP à une adresse MAC."
+        },
+        {
+            "id": 33,
+            "question": "Quelle classe d'IP commence par 10.x.x.x ?",
+            "options": [
+                "Classe A (Privée)",
+                "Classe B",
+                "Classe C",
+                "Classe D"
+            ],
+            "answer": 0,
+            "explanation": "Réservée pour les réseaux locaux (LAN)."
+        },
+        {
+            "id": 34,
+            "question": "Quelle classe d'IP commence par 192.168.x.x ?",
+            "options": [
+                "Classe C (Privée)",
+                "Classe A",
+                "Classe B",
+                "Classe E"
+            ],
+            "answer": 0,
+            "explanation": "Très courante pour les réseaux domestiques."
+        },
+        {
+            "id": 35,
+            "question": "Qu'est-ce que le Default Gateway (Passerelle par défaut) ?",
+            "options": [
+                "L'adresse du routeur pour sortir du réseau local",
+                "Le serveur DNS",
+                "Le switch",
+                "Moi"
+            ],
+            "answer": 0,
+            "explanation": "Sans elle, impossible de communiquer avec Internet."
+        },
+        {
+            "id": 36,
+            "question": "Que signifie TTL ?",
+            "options": [
+                "Time To Live",
+                "Time To Load",
+                "TCP To Live",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Durée de vie d'un paquet (évite qu'il tourne en boucle à l'infini)."
+        },
+        {
+            "id": 37,
+            "question": "Qu'est-ce que Wireshark ?",
+            "options": [
+                "Un analyseur de paquets réseau",
+                "Un antivirus",
+                "Un jeu",
+                "Un requin"
+            ],
+            "answer": 0,
+            "explanation": "Permet de voir tout ce qui passe sur le câble."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce qu'un VLAN ?",
+            "options": [
+                "Virtual Local Area Network",
+                "Video LAN",
+                "Voice LAN",
+                "Very LAN"
+            ],
+            "answer": 0,
+            "explanation": "Segmente logiquement un réseau physique."
+        },
+        {
+            "id": 39,
+            "question": "Quel est l'avantage de la fibre optique sur le cuivre ?",
+            "options": [
+                "Vitesse, distance et immunité électromagnétique",
+                "Moins cher",
+                "Plus solide",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Utilise la lumière."
+        },
+        {
+            "id": 40,
+            "question": "Qu'est-ce que le 'Three-Way Handshake' ?",
+            "options": [
+                "SYN, SYN-ACK, ACK",
+                "1 2 3",
+                "Hello",
+                "Connect"
+            ],
+            "answer": 0,
+            "explanation": "Processus d'établissement de connexion TCP."
+        },
+        {
+            "id": 41,
+            "question": "A quoi sert le port 53 ?",
+            "options": [
+                "DNS",
+                "HTTP",
+                "SSH",
+                "FTP"
+            ],
+            "answer": 0,
+            "explanation": "Utilise UDP (et TCP)."
+        },
+        {
+            "id": 42,
+            "question": "Qu'est-ce qu'une table de routage ?",
+            "options": [
+                "La carte des directions pour un routeur",
+                "Une table",
+                "Liste d'IP",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Indique par quelle interface envoyer le paquet."
+        },
+        {
+            "id": 43,
+            "question": "Qu'est-ce que le 'Full Duplex' ?",
+            "options": [
+                "Envoyer et recevoir en même temps",
+                "Un seul sens",
+                "Alterné",
+                "Double"
+            ],
+            "answer": 0,
+            "explanation": "Comme le téléphone (vs Talkie-Walkie)."
+        },
+        {
+            "id": 44,
+            "question": "Qu'est-ce que la Latence (Ping) ?",
+            "options": [
+                "Le temps que met un paquet pour faire l'aller-retour",
+                "Vitesse",
+                "Débit",
+                "Perte"
+            ],
+            "answer": 0,
+            "explanation": "Mesuré en millisecondes (ms)."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que la Bande Passante (Bandwidth) ?",
+            "options": [
+                "La capacité maximale de transport de données",
+                "Latence",
+                "Vitesse",
+                "Largeur"
+            ],
+            "answer": 0,
+            "explanation": "Comme la largeur d'un tuyau."
+        },
+        {
+            "id": 46,
+            "question": "Qu'est-ce qu'un Proxy ?",
+            "options": [
+                "Un intermédiaire entre le client et le serveur",
+                "Un virus",
+                "Un firewall",
+                "Un DNS"
+            ],
+            "answer": 0,
+            "explanation": "Peut cacher l'IP, filtrer, mettre en cache."
+        },
+        {
+            "id": 47,
+            "question": "Qu'est-ce que l'adresse 169.254.x.x (APIPA) ?",
+            "options": [
+                "Adresse auto-assignée quand le DHCP échoue",
+                "Adresse publique",
+                "Adresse privée",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Automatic Private IP Addressing."
+        },
+        {
+            "id": 48,
+            "question": "Combien de paires de fils dans un câble RJ45 standard ?",
+            "options": [
+                "4 paires (8 fils)",
+                "2 paires",
+                "6 paires",
+                "10 fils"
+            ],
+            "answer": 0,
+            "explanation": "Twisted Pair."
+        },
+        {
+            "id": 49,
+            "question": "Qu'est-ce que SNMP ?",
+            "options": [
+                "Simple Network Management Protocol",
+                "Super Network",
+                "Simple Name",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Pour surveiller les équipements réseaux."
+        },
+        {
+            "id": 50,
+            "question": "Qu'est-ce que FTP ?",
+            "options": [
+                "File Transfer Protocol",
+                "File Text Protocol",
+                "Fast Transfer Protocol",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Pour transférer des fichiers (Ports 20/21)."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que TFTP ?",
+            "options": [
+                "Trivial File Transfer Protocol",
+                "Tiny FTP",
+                "Transfer Fast",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Version simplifiée de FTP, utilise UDP (Port 69)."
+        },
+        {
+            "id": 52,
+            "question": "Qu'est-ce que NTP ?",
+            "options": [
+                "Network Time Protocol",
+                "New Time Protocol",
+                "Network Text",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Synchronise l'horloge des ordinateurs."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que QoS (Quality of Service) ?",
+            "options": [
+                "Prioriser certains trafics (VoIP, Vidéo) sur le réseau",
+                "Qualité",
+                "Vitesse",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Évite les coupures en cas de congestion."
+        },
+        {
+            "id": 54,
+            "question": "Qu'est-ce que 'Jitter' (Gigue) ?",
+            "options": [
+                "La variation de la latence dans le temps",
+                "Vitesse",
+                "Bruit",
+                "Perte"
+            ],
+            "answer": 0,
+            "explanation": "Mauvais pour la VoIP."
+        },
+        {
+            "id": 55,
+            "question": "Quel est le masque par défaut d'une classe C ?",
+            "options": [
+                "255.255.255.0",
+                "255.0.0.0",
+                "255.255.0.0",
+                "0.0.0.0"
+            ],
+            "answer": 0,
+            "explanation": "/24."
+        },
+        {
+            "id": 56,
+            "question": "Quel est le masque par défaut d'une classe A ?",
+            "options": [
+                "255.0.0.0",
+                "255.255.255.0",
+                "255.255.0.0",
+                "255.255.255.255"
+            ],
+            "answer": 0,
+            "explanation": "/8."
+        },
+        {
+            "id": 57,
+            "question": "Qu'est-ce que le CSMA/CD ?",
+            "options": [
+                "Carrier Sense Multiple Access / Collision Detection",
+                "Collision",
+                "Access",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Méthode d'accès d'Ethernet (historique)."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce qu'une adresse Unicast ?",
+            "options": [
+                "Communication d'un point à un autre (1 vers 1)",
+                "1 vers tous",
+                "1 vers groupe",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Le standard."
+        },
+        {
+            "id": 59,
+            "question": "Qu'est-ce qu'une adresse Multicast ?",
+            "options": [
+                "Communication d'un point vers un groupe (1 vers N)",
+                "1 vers 1",
+                "1 vers tous",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: IP TV."
+        },
+        {
+            "id": 60,
+            "question": "Qu'est-ce que WPA2 ?",
+            "options": [
+                "Protocole de sécurité pour Wi-Fi",
+                "Wi-Fi 2",
+                "Antenne",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Wi-Fi Protected Access 2."
+        },
+        {
+            "id": 61,
+            "question": "A quoi sert la commande 'netstat' ?",
+            "options": [
+                "Afficher les connexions réseau actives et les ports ouverts",
+                "Statistiques",
+                "Internet",
+                "Etat"
+            ],
+            "answer": 0,
+            "explanation": "Network Statistics."
+        },
+        {
+            "id": 62,
+            "question": "A quoi sert la commande 'nslookup' ?",
+            "options": [
+                "Interroger un serveur DNS",
+                "Chercher",
+                "Look",
+                "IP"
+            ],
+            "answer": 0,
+            "explanation": "Name Server Lookup."
+        },
+        {
+            "id": 63,
+            "question": "Qu'est-ce qu'un câble Croisé (Crossover) ?",
+            "options": [
+                "Câble pour relier deux équipements de même type (PC-PC)",
+                "Droit",
+                "Plat",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Moins utile aujourd'hui grâce à l'Auto-MDIX."
+        },
+        {
+            "id": 64,
+            "question": "Quelle est la distance max d'un câble Ethernet (CAT 5e/6) ?",
+            "options": [
+                "100 mètres",
+                "10 mètres",
+                "500 mètres",
+                "1 km"
+            ],
+            "answer": 0,
+            "explanation": "Après, il faut un répétiteur ou un switch."
+        },
+        {
+            "id": 65,
+            "question": "Qu'est-ce que POE ?",
+            "options": [
+                "Power Over Ethernet (Alimentation via le câble réseau)",
+                "Power",
+                "Ethernet",
+                "Energie"
+            ],
+            "answer": 0,
+            "explanation": "Pratique pour les caméras IP et téléphones VoIP."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce que le 'Load Balancing' ?",
+            "options": [
+                "Répartir la charge entre plusieurs serveurs",
+                "Equilibre",
+                "Poids",
+                "Balance"
+            ],
+            "answer": 0,
+            "explanation": "Améliore la performance et la disponibilité."
+        },
+        {
+            "id": 67,
+            "question": "Qu'est-ce que l'adresse 8.8.8.8 ?",
+            "options": [
+                "Serveur DNS public de Google",
+                "Localhost",
+                "Routeur",
+                "Broadcast"
+            ],
+            "answer": 0,
+            "explanation": "Très populaire avec 1.1.1.1 (Cloudflare)."
+        },
+        {
+            "id": 68,
+            "question": "Qu'est-ce que le MTU ?",
+            "options": [
+                "Maximum Transmission Unit (Taille max d'un paquet)",
+                "Max Time",
+                "Unit",
+                "Vitesse"
+            ],
+            "answer": 0,
+            "explanation": "Standard Ethernet : 1500 octets."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce qu'un SFP ?",
+            "options": [
+                "Module émetteur-récepteur optique pour switch (Fibre)",
+                "Port",
+                "Câble",
+                "Vitesse"
+            ],
+            "answer": 0,
+            "explanation": "Small Form-factor Pluggable."
+        },
+        {
+            "id": 70,
+            "question": "Qu'est-ce que BGP ?",
+            "options": [
+                "Border Gateway Protocol (Routage Internet)",
+                "Big Protocol",
+                "Gateway",
+                "Border"
+            ],
+            "answer": 0,
+            "explanation": "Gère les routes entre les fournisseurs d'accès (FAI)."
+        },
+        {
+            "id": 71,
+            "question": "Qu'est-ce qu'un 'Hop' (Saut) ?",
+            "options": [
+                "Le passage d'un routeur à l'autre",
+                "Sauter",
+                "Ping",
+                "Vitesse"
+            ],
+            "answer": 0,
+            "explanation": "Chaque saut décrémente le TTL."
+        },
+        {
+            "id": 72,
+            "question": "Qu'est-ce que le mode 'Promiscuous' ?",
+            "options": [
+                "Mode carte réseau qui capture tous les paquets (Sniffing)",
+                "Promis",
+                "Normal",
+                "Cache"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé par Wireshark."
+        },
+        {
+            "id": 73,
+            "question": "Qu'est-ce que OSPF ?",
+            "options": [
+                "Open Shortest Path First (Protocole de routage dynamique)",
+                "Open Source",
+                "Path",
+                "Route"
+            ],
+            "answer": 0,
+            "explanation": "Calcule le meilleur chemin en interne."
+        },
+        {
+            "id": 74,
+            "question": "Qu'est-ce que l'Hyperviseur de Type 1 ?",
+            "options": [
+                "Bare-Metal (Installé directement sur le matériel)",
+                "OS",
+                "Windows",
+                "Linux"
+            ],
+            "answer": 0,
+            "explanation": "Ex: ESXi, Proxmox."
+        },
+        {
+            "id": 75,
+            "question": "Qu'est-ce qu'un NAS ?",
+            "options": [
+                "Network Attached Storage (Serveur de stockage)",
+                "Disque",
+                "Réseau",
+                "Cloud"
+            ],
+            "answer": 0,
+            "explanation": "Partage de fichiers sur le réseau."
+        },
+        {
+            "id": 76,
+            "question": "Qu'est-ce que le 'Throughput' ?",
+            "options": [
+                "Débit réel constaté (contrairement à la bande passante théorique)",
+                "Vitesse",
+                "Ping",
+                "Test"
+            ],
+            "answer": 0,
+            "explanation": "Souvent inférieur à la bande passante."
+        },
+        {
+            "id": 77,
+            "question": "A quoi sert le fichier 'hosts' ?",
+            "options": [
+                "Résolution de noms locale prioritaire sur le DNS",
+                "Virus",
+                "Texte",
+                "Système"
+            ],
+            "answer": 0,
+            "explanation": "Permet de forcer une IP pour un nom de domaine."
+        },
+        {
+            "id": 78,
+            "question": "Qu'est-ce que l'ICMP Redirect ?",
+            "options": [
+                "Message signalant une meilleure route à l'expéditeur",
+                "Erreur",
+                "Redirection",
+                "Ping"
+            ],
+            "answer": 0,
+            "explanation": "Optimisation du routage."
+        },
+        {
+            "id": 79,
+            "question": "Qu'est-ce qu'un SSID caché ?",
+            "options": [
+                "Un réseau Wi-Fi qui ne diffuse pas son nom",
+                "Invisible",
+                "Securisé",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "N'améliore pas vraiment la sécurité."
+        },
+        {
+            "id": 80,
+            "question": "Qu'est-ce que le 'Port Forwarding' ?",
+            "options": [
+                "Rediriger un port extérieur vers une IP interne",
+                "Forward",
+                "Route",
+                "NAT"
+            ],
+            "answer": 0,
+            "explanation": "Nécessaire pour héberger un serveur chez soi."
+        },
+        {
+            "id": 81,
+            "question": "Qu'est-ce que l'adresse MAC FF:FF:FF:FF:FF:FF ?",
+            "options": [
+                "Broadcast MAC (Tout le monde)",
+                "Erreur",
+                "Vide",
+                "Moi"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé par ARP notamment."
+        },
+        {
+            "id": 82,
+            "question": "Qu'est-ce que VLAN Trunking (802.1Q) ?",
+            "options": [
+                "Faire passer plusieurs VLANs sur un seul lien",
+                "Trunk",
+                "VLAN",
+                "Switch"
+            ],
+            "answer": 0,
+            "explanation": "Entre deux switchs."
+        },
+        {
+            "id": 83,
+            "question": "Quel est le rôle du masque '255.255.0.0' (/16) ?",
+            "options": [
+                "16 bits réseau, 16 bits hôte (65534 hôtes)",
+                "Petit réseau",
+                "Grand réseau",
+                "Moyen"
+            ],
+            "answer": 0,
+            "explanation": "Classe B standard."
+        },
+        {
+            "id": 84,
+            "question": "Qu'est-ce que 'Half Duplex' ?",
+            "options": [
+                "Communication dans un seul sens à la fois (Talkie Walkie)",
+                "Double",
+                "Plein",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Les vieux Hubs fonctionnaient comme ça."
+        },
+        {
+            "id": 85,
+            "question": "Qu'est-ce qu'un SAN ?",
+            "options": [
+                "Storage Area Network (Réseau dédié stockage haut débit)",
+                "Disque",
+                "Serveur",
+                "Réseau"
+            ],
+            "answer": 0,
+            "explanation": "Utilise souvent Fibre Channel."
+        },
+        {
+            "id": 86,
+            "question": "Qu'est-ce que iSCSI ?",
+            "options": [
+                "Protocole de stockage sur IP",
+                "SCSI",
+                "Disque",
+                "Réseau"
+            ],
+            "answer": 0,
+            "explanation": "Alternative moins chère au Fibre Channel."
+        },
+        {
+            "id": 87,
+            "question": "Qu'est-ce que le 'Spanning Tree Protocol' (STP) ?",
+            "options": [
+                "Empêche les boucles (boucle de routage) dans le réseau",
+                "Arbre",
+                "Pont",
+                "Loop"
+            ],
+            "answer": 0,
+            "explanation": "Désactive les ports redondants."
+        },
+        {
+            "id": 88,
+            "question": "Qu'est-ce qu'une trame Jumbo ?",
+            "options": [
+                "Trame Ethernet > 1500 octets (jusqu'à 9000)",
+                "Grand",
+                "Gros",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Améliore les perfs pour les gros transferts."
+        },
+        {
+            "id": 89,
+            "question": "Qu'est-ce que RIP (Routing Protocol) ?",
+            "options": [
+                "Routing Information Protocol (Vieux, basé sur nombre de sauts)",
+                "Rest In Peace",
+                "Route",
+                "Protocole"
+            ],
+            "answer": 0,
+            "explanation": "Limité à 15 sauts."
+        },
+        {
+            "id": 90,
+            "question": "Qu'est-ce que le 'Gateway' ?",
+            "options": [
+                "Porte d'entrée/sortie vers un autre réseau",
+                "Portail",
+                "Routeur",
+                "Pont"
+            ],
+            "answer": 0,
+            "explanation": "Synonyme de routeur par défaut."
+        },
+        {
+            "id": 91,
+            "question": "Qu'est-ce qu'un Serveur Proxy Inverse (Reverse Proxy) ?",
+            "options": [
+                "Protège les serveurs internes et répartit la charge",
+                "Proxy",
+                "Inverse",
+                "Client"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Nginx devant un serveur Node."
+        },
+        {
+            "id": 92,
+            "question": "Qu'est-ce que l'Ethernet ?",
+            "options": [
+                "Technologie de réseau local filaire (Standard)",
+                "Internet",
+                "Wi-Fi",
+                "Câble"
+            ],
+            "answer": 0,
+            "explanation": "Norme IEEE 802.3."
+        },
+        {
+            "id": 93,
+            "question": "Qu'est-ce que le Wi-Fi ?",
+            "options": [
+                "Technologie de réseau local sans fil",
+                "Radio",
+                "Internet",
+                "Ethernet"
+            ],
+            "answer": 0,
+            "explanation": "Norme IEEE 802.11."
+        },
+        {
+            "id": 94,
+            "question": "Qu'est-ce qu'un point d'accès (AP) ?",
+            "options": [
+                "Borne émettant le Wi-Fi",
+                "Routeur",
+                "Switch",
+                "Antenne"
+            ],
+            "answer": 0,
+            "explanation": "Relie le Wi-Fi au réseau filaire."
+        },
+        {
+            "id": 95,
+            "question": "Qu'est-ce que la 5G ?",
+            "options": [
+                "5ème génération de réseau mobile",
+                "5 Grammes",
+                "Wi-Fi 5",
+                "Vitesse"
+            ],
+            "answer": 0,
+            "explanation": "Très haut débit et faible latence."
+        },
+        {
+            "id": 96,
+            "question": "Qu'est-ce que l'Intranet ?",
+            "options": [
+                "Réseau privé interne à une organisation",
+                "Internet",
+                "Web",
+                "Site"
+            ],
+            "answer": 0,
+            "explanation": "Non accessible du public."
+        },
+        {
+            "id": 97,
+            "question": "Qu'est-ce que l'Extranet ?",
+            "options": [
+                "Partie de l'intranet accessible aux partenaires externes",
+                "Internet",
+                "Dehors",
+                "Web"
+            ],
+            "answer": 0,
+            "explanation": "Accès sécurisé pour les tiers."
+        },
+        {
+            "id": 98,
+            "question": "Qu'est-ce que le 'Dark Fiber' (Fibre noire) ?",
+            "options": [
+                "Fibre optique installée mais pas encore activée",
+                "Noire",
+                "Cassée",
+                "Lente"
+            ],
+            "answer": 0,
+            "explanation": "Louée brute aux entreprises."
+        },
+        {
+            "id": 99,
+            "question": "Qu'est-ce qu'un CDN ?",
+            "options": [
+                "Content Delivery Network (Distribuer le contenu géographiquement)",
+                "Cloud",
+                "Data",
+                "Net"
+            ],
+            "answer": 0,
+            "explanation": "accélère le chargement des sites (Ex: Cloudflare)."
+        },
+        {
+            "id": 100,
+            "question": "Quel est l'avantage principale d'IPv6 ?",
+            "options": [
+                "Espace d'adressage quasi infini",
+                "Vitesse",
+                "Sécurité",
+                "Prix"
+            ],
+            "answer": 0,
+            "explanation": "340 undécillions d'adresses."
+        }
+    ]
+}

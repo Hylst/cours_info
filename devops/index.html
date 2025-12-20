@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo DevOps | Guide 2025</title>
+    <meta name="description" content="Guide DevOps : CI/CD, Docker, Kubernetes, IaC.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">OPS</div>DevOps
+            </div>
+            <nav>
+                <a href="#s1">Culture</a>
+                <a href="#s2">CI/CD</a>
+                <a href="#s3">Containers</a>
+                <a href="#s4">IaC</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo DevOps</h1>
+            <p>Unir le Développement (Dev) et les Opérations (Ops). Automatisation et Fiabilité.</p>
+        </div>
+    </section>
+
+    <!-- S1: CI/CD -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">CI / CD</h2>
+                    <p class="sec-sub">Continuous Integration / Delivery</p>
+                </div>
+            </div>
+
+            <div class="intro-box" style="background:transparent; padding:0; border:none;">
+                <p>L'objectif : Livrer du code en production rapidement et sans peur.</p>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card" style="background:var(--card); padding:20px; border-radius:8px;">
+                    <h4 style="color:var(--fn)">CI (Integration)</h4>
+                    <p>Fusionner le code régulièrement.</p>
+                    <ol style="margin-left:20px; font-size:0.9rem; margin-top:10px;">
+                        <li>Développeur pousse code (Git Push).</li>
+                        <li>Tests automatiques (Unit, Lint).</li>
+                        <li>Build (Compilation, Docker Image).</li>
+                    </ol>
+                </div>
+                <div class="ref-card" style="background:var(--card); padding:20px; border-radius:8px;">
+                    <h4 style="color:var(--num)">CD (Delivery/Deploy)</h4>
+                    <p>Déployer automatiquement.</p>
+                    <ol style="margin-left:20px; font-size:0.9rem; margin-top:10px;">
+                        <li>Déploiement en Staging (Pre-prod).</li>
+                        <li>Tests E2E / Validation.</li>
+                        <li>Déploiement en Production.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head">Exemple .gitlab-ci.yml (Pipeline)</div>
+                <pre><span class="kw">stages:</span>
+  - test
+  - build
+  - deploy
+
+<span class="fn">unit-test:</span>
+  <span class="kw">stage:</span> test
+  <span class="kw">script:</span> npm run test
+
+<span class="fn">build-image:</span>
+  <span class="kw">stage:</span> build
+  <span class="kw">script:</span> docker build -t myapp .
+
+<span class="fn">deploy-prod:</span>
+  <span class="kw">stage:</span> deploy
+  <span class="kw">script:</span> ./deploy.sh
+  <span class="kw">only:</span>
+    - main</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S2: CONTAINERS -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Conteneurisation</h2>
+                    <p class="sec-sub">Docker & Kubernetes</p>
+                </div>
+            </div>
+
+            <p style="margin-bottom:20px;">Le conteneur encapsule l'application et ses dépendances. "Ça marche chez moi"
+                -> "Ça marche partout".</p>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>Docker</strong><br>
+                    Le standard de création et d'exécution de conteneurs.
+                    <br><a href="../docker.html" style="color:var(--primary-bright); font-size:0.8rem;">Voir le cours
+                        Docker ></a>
+                </div>
+                <div class="info">
+                    <strong>Kubernetes (K8s)</strong><br>
+                    Orchestrateur. Gère des milliers de conteneurs (Scaling, Self-healing, Load balancing).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S3: IAC -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">IaC (Infrastructure as Code)</h2>
+                    <p class="sec-sub">Gérer l'infra comme du logiciel</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card" style="background:var(--card); padding:15px; border-radius:8px;">
+                    <h4 style="color:var(--primary-bright)">Provisioning</h4>
+                    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:5px;">Créer les serveurs (VM, VPC,
+                        DB).</p>
+                    <strong>Terraform</strong>, <strong>CloudFormation</strong>.
+                </div>
+                <div class="ref-card" style="background:var(--card); padding:15px; border-radius:8px;">
+                    <h4 style="color:var(--primary-bright)">Configuration</h4>
+                    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:5px;">Installer les logiciels sur les
+                        serveurs.</p>
+                    <strong>Ansible</strong>, <strong>Chef</strong>, <strong>Puppet</strong>.
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top:20px;">
+                <strong>💡 Idempotence</strong><br>
+                Concept clé : exécuter le script 1 fois ou 100 fois doit donner le même résultat final (pas de
+                duplication).
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_devops.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <footer>
+        <div class="container">
+            <p><strong>Mémo DevOps</strong> • 2025</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

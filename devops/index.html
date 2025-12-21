@@ -22,8 +22,11 @@
                 <div class="logo-icon">OPS</div>DevOps
             </div>
             <nav>
+                <a href="#m0">Réseaux</a>
                 <a href="#m1">Culture</a>
+                <a href="#m2">Git</a>
                 <a href="#m3">CI/CD</a>
+                <a href="#m5">Docker</a>
                 <a href="#m6">K8s</a>
                 <a href="#m7">IaC</a>
                 <a href="#m10">SRE</a>
@@ -54,12 +57,13 @@
     <div class="toc">
         <div class="container">
             <div class="toc-grid">
+                <a href="#m0" class="toc-item"><span class="toc-num">00</span>Réseaux & Cloud</a>
                 <a href="#m1" class="toc-item"><span class="toc-num">01</span>Culture & CALMS</a>
-                <a href="#m2" class="toc-item"><span class="toc-num">02</span>GitOps & Versioning</a>
+                <a href="#m2" class="toc-item"><span class="toc-num">02</span>Git Maîtrisé</a>
                 <a href="#m3" class="toc-item"><span class="toc-num">03</span>Continuous Integration</a>
                 <a href="#m4" class="toc-item"><span class="toc-num">04</span>Continuous Delivery</a>
-                <a href="#m5" class="toc-item"><span class="toc-num">05</span>Containers Advanced</a>
-                <a href="#m6" class="toc-item"><span class="toc-num">06</span>Kubernetes (K8s)</a>
+                <a href="#m5" class="toc-item"><span class="toc-num">05</span>Docker Deep Dive</a>
+                <a href="#m6" class="toc-item"><span class="toc-num">06</span>Kubernetes Avancé</a>
                 <a href="#m7" class="toc-item"><span class="toc-num">07</span>Infrastructure as Code</a>
                 <a href="#m8" class="toc-item"><span class="toc-num">08</span>Observabilité</a>
                 <a href="#m9" class="toc-item"><span class="toc-num">09</span>DevSecOps</a>
@@ -68,16 +72,250 @@
         </div>
     </div>
 
-    <!-- MODULE 01 -->
-    <section id="m1">
+    <!-- MODULE 00: RÉSEAUX & CLOUD ESSENTIELS -->
+    <section id="m0"
+        style="background: radial-gradient(circle at center, rgba(116, 185, 255, 0.08) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num" style="color:#74b9ff; border-color:#74b9ff;">00</div>
+                <div>
+                    <h2 class="sec-title" style="color:#74b9ff;">📡 Réseaux & Cloud Essentiels</h2>
+                    <p class="sec-sub">Les Fondations Invisibles</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:#74b9ff;">
+                <h4>📬 Analogie : Le Système Postal</h4>
+                <p>Internet est un système postal géant. Chaque paquet de données est une lettre avec une adresse
+                    (<strong>IP</strong>),
+                    un code postal (<strong>Port</strong>), et un chemin de distribution (<strong>Routage</strong>).
+                    Si l'adresse est mauvaise ou si le facteur (<strong>Router</strong>) ne connaît pas le chemin, la
+                    lettre est perdue.</p>
+            </div>
+
+            <!-- MODÈLE TCP/IP -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🗂️ A. Modèle TCP/IP (Simplifié)</h3>
+            <div class="net-diagram">
+                <div class="net-layer" style="border-color:#e17055;">
+                    <div class="layer-num">Couche 4</div>
+                    <div class="layer-name">Application</div>
+                    <div class="layer-proto">HTTP, HTTPS, SSH, DNS, FTP</div>
+                </div>
+                <div class="net-layer" style="border-color:#fdcb6e;">
+                    <div class="layer-num">Couche 3</div>
+                    <div class="layer-name">Transport</div>
+                    <div class="layer-proto">TCP, UDP</div>
+                </div>
+                <div class="net-layer" style="border-color:#00cec9;">
+                    <div class="layer-num">Couche 2</div>
+                    <div class="layer-name">Internet</div>
+                    <div class="layer-proto">IP, ICMP</div>
+                </div>
+                <div class="net-layer" style="border-color:#a29bfe;">
+                    <div class="layer-num">Couche 1</div>
+                    <div class="layer-name">Accès Réseau</div>
+                    <div class="layer-proto">Ethernet, Wifi</div>
+                </div>
+            </div>
+
+            <!-- PROTOCOLES CLÉS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔌 B. Protocoles Clés</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Protocole</th>
+                        <th>Port</th>
+                        <th>Rôle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="HyperText Transfer Protocol. Le langage du web. Version sécurisée: HTTPS (port 443).">HTTP/HTTPS</span>
+                        </td>
+                        <td><code>80 / 443</code></td>
+                        <td>Communication Web (Pages, APIs REST)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Secure Shell. Connexion chiffrée à un serveur distant. Utilise une paire de clés (publique/privée).">SSH</span>
+                        </td>
+                        <td><code>22</code></td>
+                        <td>Accès distant sécurisé aux serveurs</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Domain Name System. Traduit les noms (google.com) en adresses IP (142.250.x.x). L'annuaire d'internet.">DNS</span>
+                        </td>
+                        <td><code>53</code></td>
+                        <td>Résolution de noms de domaine</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Transmission Control Protocol. Fiable, ordonné, avec accusé de réception. Utilisé pour HTTP, SSH. 'La lettre recommandée'.">TCP</span>
+                        </td>
+                        <td>-</td>
+                        <td>Transport fiable (Connexion établie)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="User Datagram Protocol. Rapide mais sans garantie. Utilisé pour le streaming, les jeux. 'Le flyer jeté dans la boîte aux lettres'.">UDP</span>
+                        </td>
+                        <td>-</td>
+                        <td>Transport rapide (Sans connexion)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- CONCEPTS RÉSEAU -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🌐 C. Concepts Réseau Essentiels</h3>
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Adressage</h4>
+                    <ul class="dense-list">
+                        <li><span class="vocab-term"
+                                data-def="Internet Protocol address. L'adresse unique d'une machine sur le réseau. IPv4 (ex: 192.168.1.1) ou IPv6.">IP</span>
+                            : Adresse de la machine (ex: <code>192.168.1.1</code>)</li>
+                        <li><span class="vocab-term"
+                                data-def="Classless Inter-Domain Routing. Notation compacte pour définir une plage d'IPs. Ex: 10.0.0.0/24 = 256 adresses.">CIDR</span>
+                            : Notation de plage (<code>/24</code> = 256 IPs)</li>
+                        <li><span class="vocab-term"
+                                data-def="Un numéro (0-65535) qui identifie un service sur une machine. Ex: 80=HTTP, 22=SSH, 3306=MySQL.">Port</span>
+                            : Numéro du service (ex: <code>:8080</code>)</li>
+                        <li><span class="vocab-term"
+                                data-def="Système qui partage une IP publique entre plusieurs IPs privées. Utilisé par tous les routeurs domestiques.">NAT</span>
+                            : Traduction d'adresses (Privé ↔ Public)</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4>Sécurité</h4>
+                    <ul class="dense-list">
+                        <li><span class="vocab-term"
+                                data-def="Barrière qui filtre le trafic réseau selon des règles (autoriser/bloquer ports, IPs).">Firewall</span>
+                            : Filtre le trafic (Autoriser/Bloquer)</li>
+                        <li><span class="vocab-term"
+                                data-def="Time To Live. Nombre de sauts (routeurs) avant que le paquet soit abandonné. Évite les boucles infinies.">TTL</span>
+                            : Durée de vie du paquet (max sauts)</li>
+                        <li><span class="vocab-term"
+                                data-def="Transport Layer Security. Protocole de chiffrement qui sécurise HTTPS. Le cadenas dans votre navigateur.">TLS/SSL</span>
+                            : Chiffrement des échanges (HTTPS)</li>
+                        <li><span class="vocab-term"
+                                data-def="Mutual TLS. Les DEUX parties (client ET serveur) s'authentifient mutuellement. Standard en microservices.">mTLS</span>
+                            : Authentification mutuelle (K8s)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CLOUD ESSENTIALS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">☁️ D. Cloud Essentials (AWS/GCP/Azure)</h3>
+            <div class="grid3">
+                <div class="tool-card">
+                    <h4><span class="vocab-term"
+                            data-def="Virtual Private Cloud. Votre réseau privé isolé dans le cloud. Vous définissez les subnets, routes, et règles de sécurité.">VPC</span>
+                    </h4>
+                    <p>Réseau privé isolé. Contient vos Subnets (Public/Privé).</p>
+                </div>
+                <div class="tool-card">
+                    <h4><span class="vocab-term"
+                            data-def="Security Group. Firewall virtuel au niveau de l'instance. Règles: 'Autoriser SSH depuis 10.0.0.0/8'.">Security
+                            Group</span></h4>
+                    <p>Firewall au niveau de l'instance (Autoriser ports/IPs).</p>
+                </div>
+                <div class="tool-card">
+                    <h4><span class="vocab-term"
+                            data-def="Identity and Access Management. Gère QUI peut faire QUOI sur vos ressources cloud. Users, Roles, Policies.">IAM</span>
+                    </h4>
+                    <p>Gestion des identités et permissions (Rôles, Policies).</p>
+                </div>
+                <div class="tool-card">
+                    <h4><span class="vocab-term"
+                            data-def="Load Balancer. Répartit le trafic entre plusieurs serveurs. Types: ALB (HTTP), NLB (TCP), CLB (Legacy).">Load
+                            Balancer</span></h4>
+                    <p>Distribue le trafic. ALB (L7/HTTP), NLB (L4/TCP).</p>
+                </div>
+                <div class="tool-card">
+                    <h4>Region / AZ</h4>
+                    <p>Region = Zone géographique. AZ = Datacenter isolé dans la Region (Haute Dispo).</p>
+                </div>
+                <div class="tool-card">
+                    <h4><span class="vocab-term"
+                            data-def="Content Delivery Network. Réseau mondial de caches. Sert le contenu depuis le serveur le plus proche de l'utilisateur.">CDN</span>
+                    </h4>
+                    <p>Cache global (CloudFront, Cloudflare). Réduit la latence.</p>
+                </div>
+            </div>
+
+            <!-- CLI TOOLS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ E. Outils CLI Indispensables</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Usage</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ping</code></td>
+                        <td>Tester si un hôte répond (ICMP)</td>
+                        <td><code>ping google.com</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>traceroute</code></td>
+                        <td>Voir le chemin des paquets (chaque routeur)</td>
+                        <td><code>traceroute cloudflare.com</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>nslookup / dig</code></td>
+                        <td>Requête DNS (Nom → IP)</td>
+                        <td><code>dig github.com</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>curl</code></td>
+                        <td>Requête HTTP en ligne de commande</td>
+                        <td><code>curl -I https://api.github.com</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ssh</code></td>
+                        <td>Connexion distante sécurisée</td>
+                        <td><code>ssh user@192.168.1.100</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>netstat / ss</code></td>
+                        <td>Voir les ports ouverts et connexions</td>
+                        <td><code>ss -tulnp</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>openssl</code></td>
+                        <td>Vérifier certificats TLS</td>
+                        <td><code>openssl s_client -connect google.com:443</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Astuce Debug</strong> : Si une app ne marche pas, vérifiez dans l'ordre :
+                1) <code>ping</code> (réseau de base),
+                2) <code>curl</code> (HTTP),
+                3) <code>ss</code> (port ouvert ?),
+                4) Logs applicatifs.
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 01: CULTURE DEVOPS -->
+    <section id="m1"
+        style="background: radial-gradient(circle at center, rgba(130, 170, 255, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">01</div>
                 <div>
-                    <h2 class="sec-title">La Culture DevOps</h2>
-                    <p class="sec-sub">C.A.L.M.S & Feedback Loops</p>
+                    <h2 class="sec-title">🎭 La Culture DevOps</h2>
+                    <p class="sec-sub">C.A.L.M.S, 3 Ways & DORA Metrics</p>
                 </div>
             </div>
+
             <div class="analogy-box">
                 <h4>🧠 Analogie : Le Mur de la Confusion</h4>
                 <p>Imaginez un restaurant où les Cuisiniers (Dev) et les Serveurs (Ops) sont séparés par un mur en
@@ -88,53 +326,141 @@
                         mur.</strong></p>
             </div>
 
-            <details>
+            <!-- 3 WAYS OF DEVOPS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Les 3 Voies du DevOps</h3>
+            <div class="git-flow" style="justify-content:center;">
+                <div class="git-stage" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="stage-icon">➡️</div>
+                    <div class="stage-name">1. Flow</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Dev → Ops → Client</div>
+                </div>
+                <div class="git-stage" style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="stage-icon">⬅️</div>
+                    <div class="stage-name">2. Feedback</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Monitoring → Dev</div>
+                </div>
+                <div class="git-stage" style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="stage-icon">🔁</div>
+                    <div class="stage-name">3. Learning</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Expérimentation</div>
+                </div>
+            </div>
+
+            <details style="margin-top:20px;">
                 <summary>💡 C.A.L.M.S Framework (Détails)</summary>
                 <div class="details-content">
                     <ul class="dense-list">
-                        <li><strong>Culture</strong> : Responsabilité partagée (You build it, you run it). Fini le
-                            "C'est pas ma faute, c'est le réseau".</li>
-                        <li><strong>Automation</strong> : Si tu le fais 2 fois, automatise-le. Le labeur manuel est
-                            l'ennemi.</li>
-                        <li><strong>Lean</strong> : Inspiré de Toyota. Réduire le gaspillage, optimiser le flux de
-                            valeur.</li>
-                        <li><strong>Measurement</strong> : On ne peut pas améliorer ce qu'on ne mesure pas (Temps de
-                            cycle, Taux d'échec).</li>
-                        <li><strong>Sharing</strong> : Post-mortems sans blâme. Partage des connaissances pour éviter
-                            l'effet "Bus Factor".</li>
+                        <li><strong>Culture</strong> : Responsabilité partagée (You build it, you run it)</li>
+                        <li><strong>Automation</strong> : Si tu le fais 2 fois, automatise-le</li>
+                        <li><strong>Lean</strong> : Inspiré de Toyota. Réduire le gaspillage</li>
+                        <li><strong>Measurement</strong> : On ne peut pas améliorer ce qu'on ne mesure pas</li>
+                        <li><strong>Sharing</strong> : Post-mortems sans blâme. Partage des connaissances</li>
                     </ul>
                 </div>
             </details>
 
-            <div class="grid2">
+            <!-- DORA METRICS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 B. DORA Metrics (Mesurer la Performance)
+            </h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Métrique</th>
+                        <th>Elite</th>
+                        <th>High</th>
+                        <th>Medium</th>
+                        <th>Low</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Combien de fois on déploie en production. Elite = plusieurs fois par jour.">Deploy
+                                Frequency</span></td>
+                        <td style="color:#00cec9;">Plusieurs/jour</td>
+                        <td>1x/jour - 1x/sem</td>
+                        <td>1x/sem - 1x/mois</td>
+                        <td style="color:#ff7675;">&gt;1 mois</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Temps entre le commit et la mise en production. Mesure la vélocité du pipeline.">Lead
+                                Time for Changes</span></td>
+                        <td style="color:#00cec9;">&lt;1 heure</td>
+                        <td>1 jour - 1 sem</td>
+                        <td>1 sem - 1 mois</td>
+                        <td style="color:#ff7675;">&gt;1 mois</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Mean Time To Recovery. Temps pour restaurer le service après une panne.">MTTR</span>
+                        </td>
+                        <td style="color:#00cec9;">&lt;1 heure</td>
+                        <td>&lt;1 jour</td>
+                        <td>1 jour - 1 sem</td>
+                        <td style="color:#ff7675;">&gt;1 sem</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Pourcentage de déploiements qui causent une panne ou un rollback.">Change
+                                Failure Rate</span></td>
+                        <td style="color:#00cec9;">0-15%</td>
+                        <td>16-30%</td>
+                        <td>16-30%</td>
+                        <td style="color:#ff7675;">&gt;30%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- SILOS VS FLOW -->
+            <div class="grid2" style="margin-top:25px;">
                 <div class="info">
-                    <strong>Avant DevOps (Silos)</strong><br>
+                    <strong>❌ Avant DevOps (Silos)</strong><br>
                     Les Devs sont payés pour le <em>Changement</em> (Features).<br>
                     Les Ops sont payés pour la <em>Stabilité</em> (Uptime).<br>
                     <span style="color:var(--danger)">➔ Conflit d'intérêts structurel.</span>
                 </div>
                 <div class="info" style="border-left-color:var(--success)">
-                    <strong>Avec DevOps (Flow)</strong><br>
+                    <strong>✅ Avec DevOps (Flow)</strong><br>
                     Le "Mur" disparait. Une seule équipe "Produit".<br>
-                    Le monitoring de Prod informe le prochain Sprint Dev.<br>
+                    Le monitoring de Prod informe le prochain Sprint.<br>
                     <span style="color:var(--success)">➔ Alignement sur la valeur business.</span>
                 </div>
             </div>
+
+            <!-- ANTI-PATTERNS -->
+            <details style="margin-top:20px;">
+                <summary>⚠️ Anti-Patterns DevOps (À Éviter)</summary>
+                <div class="details-content">
+                    <ul class="dense-list">
+                        <li><strong>Blame Culture</strong> : Chercher des coupables au lieu d'améliorer les processus
+                        </li>
+                        <li><strong>DevOps Team</strong> : Créer une 3ème équipe "DevOps" au lieu d'intégrer la culture
+                        </li>
+                        <li><strong>Manual Gates</strong> : Approbations humaines obligatoires pour chaque déploiement
+                        </li>
+                        <li><strong>CI/CD Theater</strong> : Pipeline qui n'exécute que des tests triviaux</li>
+                        <li><strong>Snowflake Servers</strong> : Serveurs uniques configurés manuellement (Pets vs
+                            Cattle)</li>
+                    </ul>
+                </div>
+            </details>
         </div>
     </section>
 
-    <!-- MODULE 02 -->
-    <section id="m2">
+    <!-- MODULE 02: GIT MAÎTRISÉ -->
+    <section id="m2"
+        style="background: radial-gradient(circle at center, rgba(247, 140, 108, 0.08) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">02</div>
+                <div class="sec-num" style="color:#f78c6c; border-color:#f78c6c;">02</div>
                 <div>
-                    <h2 class="sec-title">Versioning & GitOps</h2>
-                    <p class="sec-sub">Single Source of Truth</p>
+                    <h2 class="sec-title" style="color:#f78c6c;">🌿 Git Maîtrisé</h2>
+                    <p class="sec-sub">Versioning, Branches & Scénarios Réels</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--num);">
+            <div class="analogy-box" style="border-left-color:#f78c6c;">
                 <h4>🛫 Analogie : La Tour de Contrôle</h4>
                 <p>Git est la tour de contrôle. Rien ne décolle (déploiement) et rien n'atterrit (merge) sans passer par
                     elle.
@@ -142,17 +468,173 @@
                     d'accident.</p>
             </div>
 
-            <div class="grid2">
+            <!-- GIT FLOW DIAGRAM -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Anatomie du Flux Git</h3>
+            <div class="git-flow">
+                <div class="git-stage">
+                    <div class="stage-icon">📂</div>
+                    <div class="stage-name">Working Dir</div>
+                    <div style="font-size:0.75rem; color:var(--muted);">Fichiers modifiés</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">📋</div>
+                    <div class="stage-name">Staging</div>
+                    <div style="font-size:0.75rem; color:var(--muted);">git add</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage active">
+                    <div class="stage-icon">💾</div>
+                    <div class="stage-name">Local Repo</div>
+                    <div style="font-size:0.75rem; color:var(--muted);">git commit</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">☁️</div>
+                    <div class="stage-name">Remote</div>
+                    <div style="font-size:0.75rem; color:var(--muted);">git push</div>
+                </div>
+            </div>
+
+            <!-- COMMANDES ESSENTIELLES -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ B. Commandes Essentielles</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Action</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>git clone</code></td>
+                        <td>Copier un repo distant en local</td>
+                        <td><code>git clone git@github.com:user/repo.git</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git add</code></td>
+                        <td>Ajouter au staging (préparer le commit)</td>
+                        <td><code>git add .</code> ou <code>git add fichier.js</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git commit</code></td>
+                        <td>Sauvegarder dans l'historique local</td>
+                        <td><code>git commit -m "feat: add login"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git push</code></td>
+                        <td>Envoyer les commits vers le remote</td>
+                        <td><code>git push origin main</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git pull</code></td>
+                        <td>Récupérer les changements du remote</td>
+                        <td><code>git pull origin main</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git branch</code></td>
+                        <td>Lister / Créer des branches</td>
+                        <td><code>git branch feature/login</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git checkout</code></td>
+                        <td>Changer de branche / Restaurer fichier</td>
+                        <td><code>git checkout -b feature/api</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git merge</code></td>
+                        <td>Fusionner une branche dans l'actuelle</td>
+                        <td><code>git merge feature/login</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git rebase</code></td>
+                        <td>Réécrire l'historique (plus propre que merge)</td>
+                        <td><code>git rebase main</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git stash</code></td>
+                        <td>Mettre de côté les modifs temporairement</td>
+                        <td><code>git stash</code> puis <code>git stash pop</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git log</code></td>
+                        <td>Voir l'historique des commits</td>
+                        <td><code>git log --oneline -10</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>git reset</code></td>
+                        <td>Annuler des commits (⚠️ Dangereux)</td>
+                        <td><code>git reset --soft HEAD~1</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- SCENARIOS -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🎬 C. Scénarios Réels (3 Cas)</h3>
+
+            <!-- Scénario 1: Solo Dev -->
+            <div class="scenario-box" style="border-left-color:#55efc4;">
+                <h4><span style="color:#55efc4;">🧑‍💻</span> Scénario 1 : Solo Developer</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Vous travaillez seul sur un projet
+                    perso.</p>
+                <div class="steps">
+                    <div class="step"><code>git clone</code> - Récupérer le repo</div>
+                    <div class="step"><code>git checkout -b feature/ma-fonctionnalité</code> - Créer une branche</div>
+                    <div class="step">Coder, tester...</div>
+                    <div class="step"><code>git add . && git commit -m "feat: ..."</code> - Commit</div>
+                    <div class="step"><code>git push origin feature/ma-fonctionnalité</code> - Push</div>
+                    <div class="step">Créer une PR sur GitHub → Merge → Supprimer la branche</div>
+                </div>
+            </div>
+
+            <!-- Scénario 2: Équipe -->
+            <div class="scenario-box" style="border-left-color:#74b9ff;">
+                <h4><span style="color:#74b9ff;">👥</span> Scénario 2 : Équipe (Feature Branch)</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Vous développez en parallèle avec
+                    d'autres devs.</p>
+                <div class="steps">
+                    <div class="step"><code>git pull origin main</code> - Toujours partir d'un main à jour</div>
+                    <div class="step"><code>git checkout -b feature/api-users</code> - Votre branche</div>
+                    <div class="step">Coder la feature (plusieurs commits)</div>
+                    <div class="step"><code>git fetch && git rebase origin/main</code> - Se resynchroniser AVANT la PR
+                    </div>
+                    <div class="step">Résoudre les conflits si nécessaire</div>
+                    <div class="step"><code>git push -f origin feature/api-users</code> - Force push après rebase</div>
+                    <div class="step">PR → Code Review → Merge (Squash ou Rebase)</div>
+                </div>
+                <div class="tip" style="margin-top:15px; font-size:0.85rem;">
+                    <strong>💡 Règle d'or :</strong> Rebaser AVANT de push, jamais après (sinon conflits pour les
+                    autres).
+                </div>
+            </div>
+
+            <!-- Scénario 3: Hotfix -->
+            <div class="scenario-box" style="border-left-color:#ff7675;">
+                <h4><span style="color:#ff7675;">🚨</span> Scénario 3 : Hotfix en Production</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Bug critique en prod, il faut
+                    corriger MAINTENANT.</p>
+                <div class="steps">
+                    <div class="step"><code>git checkout main && git pull</code> - Partir de la prod actuelle</div>
+                    <div class="step"><code>git checkout -b hotfix/fix-crash-login</code> - Branche hotfix</div>
+                    <div class="step">Corriger le bug (code minimal)</div>
+                    <div class="step"><code>git commit -m "fix: resolve crash on login"</code></div>
+                    <div class="step">PR prioritaire → Review express → Merge dans main</div>
+                    <div class="step">Déployer immédiatement (CI/CD)</div>
+                    <div class="step"><code>git cherry-pick &lt;commit-hash&gt;</code> - Reporter le fix sur les autres
+                        branches si nécessaire</div>
+                </div>
+            </div>
+
+            <!-- Git Flow vs Trunk Based -->
+            <div class="grid2" style="margin-top:30px;">
                 <div class="ref-card">
                     <h4>Git Flow vs Trunk Based</h4>
-                    <p style="margin-bottom:10px; font-size:0.9rem;">Comment organiser ses branches ?</p>
                     <ul class="dense-list">
-                        <li><strong>Trunk-Based (Moderne)</strong> : Une seule branche <code>main</code>. Les
-                            développeurs pushent directement dedans (ou font des PRs ultra-courtes de < 24h). Nécessite
-                                des tests solides.</li>
-                        <li><strong>GitFlow (Legacy)</strong> : Complexe. Branches <code>develop</code>,
-                            <code>release</code>, <code>hotfix</code>. Crée des "Merge Hells" si les branches vivent
-                            trop longtemps.
+                        <li><strong>Trunk-Based (Moderne)</strong> : Une seule branche <code>main</code>. PRs
+                            ultra-courtes (< 24h). Nécessite tests solides.</li>
+                        <li><strong>GitFlow (Legacy)</strong> : Branches <code>develop</code>, <code>release</code>,
+                            <code>hotfix</code>. Crée des "Merge Hells".
                         </li>
                     </ul>
                 </div>
@@ -169,7 +651,7 @@
                 </div>
             </div>
 
-            <details>
+            <details style="margin-top:20px;">
                 <summary>⚓ Deep Dive : GitOps (ArgoCD)</summary>
                 <div class="details-content">
                     <p>GitOps = <strong>IaC + PRs + Convergence Agent</strong>.</p>
@@ -186,18 +668,19 @@
         </div>
     </section>
 
-    <!-- MODULE 03 -->
-    <section id="m3">
+    <!-- MODULE 03: CONTINUOUS INTEGRATION -->
+    <section id="m3"
+        style="background: radial-gradient(circle at center, rgba(85, 239, 196, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">03</div>
+                <div class="sec-num" style="color:#55efc4; border-color:#55efc4;">03</div>
                 <div>
-                    <h2 class="sec-title">Continuous Integration (CI)</h2>
-                    <p class="sec-sub">Build, Test, Inspect</p>
+                    <h2 class="sec-title" style="color:#55efc4;">⚡ Continuous Integration (CI)</h2>
+                    <p class="sec-sub">Build, Test, Inspect - Automatiquement</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--fn);">
+            <div class="analogy-box" style="border-left-color:#55efc4;">
                 <h4>🛡️ Analogie : Le Portique de Sécurité</h4>
                 <p>Le CI est comme le portique de sécurité à l'aéroport. Chaque passager (Commit) doit passer au
                     scanner.
@@ -205,70 +688,138 @@
                     Cela garantit que l'avion (Branche Main) ne décolle qu'avec des passagers sûrs.</p>
             </div>
 
-            <div class="grid2">
+            <!-- CI PIPELINE SCHEMA -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Pipeline CI Typique</h3>
+            <div class="git-flow">
+                <div class="git-stage">
+                    <div class="stage-icon">📥</div>
+                    <div class="stage-name">Checkout</div>
+                    <div style="font-size:0.7rem; color:var(--muted);">Clone code</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">📦</div>
+                    <div class="stage-name">Install</div>
+                    <div style="font-size:0.7rem; color:var(--muted);">npm ci</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">🔨</div>
+                    <div class="stage-name">Build</div>
+                    <div style="font-size:0.7rem; color:var(--muted);">Compile</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">🧪</div>
+                    <div class="stage-name">Test</div>
+                    <div style="font-size:0.7rem; color:var(--muted);">Unit + E2E</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-name">Scan</div>
+                    <div style="font-size:0.7rem; color:var(--muted);">SAST/SCA</div>
+                </div>
+            </div>
+
+            <!-- TOOLS TABLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils CI Populaires</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Hébergement</th>
+                        <th>Forces</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GitHub Actions</strong></td>
+                        <td>Cloud (GitHub)</td>
+                        <td>Gratuit, intégré, marketplace riche</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GitLab CI</strong></td>
+                        <td>Cloud / Self-hosted</td>
+                        <td>Complet (CI+CD+Registry), YAML puissant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jenkins</strong></td>
+                        <td>Self-hosted</td>
+                        <td>Ultra flexible, plugins nombreux, complexe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CircleCI</strong></td>
+                        <td>Cloud</td>
+                        <td>Rapide, config simple, parallelism</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid2" style="margin-top:25px;">
                 <div class="code">
                     <div class="code-head"><span class="dot r"></span>.github/workflows/ci.yml</div>
-                    <pre><span class="kw">name:</span> CI
-<span class="kw">on:</span> [push]
+                    <pre><span class="kw">name:</span> CI Pipeline
+<span class="kw">on:</span> [push, pull_request]
 
 <span class="kw">jobs:</span>
-  <span class="fn">validate:</span>
+  <span class="fn">build-and-test:</span>
     <span class="kw">runs-on:</span> ubuntu-latest
     <span class="kw">steps:</span>
-      <span class="c"># 1. Récupérer le code</span>
-      - <span class="kw">uses:</span> actions/checkout@v3
-
-      <span class="c"># 2. Installer dépendances (avec Cache!)</span>
-      - <span class="kw">uses:</span> actions/setup-node@v3
+      - <span class="kw">uses:</span> actions/checkout@v4
+      - <span class="kw">uses:</span> actions/setup-node@v4
         <span class="kw">with:</span>
+          <span class="kw">node-version:</span> 20
           <span class="kw">cache:</span> 'npm'
       - <span class="kw">run:</span> npm ci
-
-      <span class="c"># 3. Qualité & Sécurité</span>
-      - <span class="kw">run:</span> npm run lint  <span class="c"># Style</span>
-      - <span class="kw">run:</span> npm test      <span class="c"># Logique</span>
-      - <span class="kw">run:</span> npx audit-ci  <span class="c"># Vulnerabilities</span></pre>
+      - <span class="kw">run:</span> npm run lint
+      - <span class="kw">run:</span> npm test -- --coverage
+      - <span class="kw">run:</span> npm run build</pre>
                 </div>
                 <div>
-                    <h4 style="color:var(--primary-bright); margin-bottom:15px;">Les Étapes Critiques</h4>
-                    <ul class="timeline-list">
-                        <li>
-                            <strong>Linting</strong>
-                            <p>Vérifie la syntaxe et le style (ESLint, Prettier). Évite les débats sur les tabulations
-                                en Code Review.</p>
-                        </li>
-                        <li>
-                            <strong>Unit Tests</strong>
-                            <p>Teste les fonctions isolément. Rapide (< 1min). Doit couvrir> 80% du code.</p>
-                        </li>
-                        <li>
-                            <strong>SAST (Static Application Security Testing)</strong>
-                            <p>Scan le code à la recherche de faiblesses connues (ex: SonarQube).</p>
-                        </li>
+                    <h4 style="color:#55efc4; margin-bottom:15px;">✅ Best Practices CI</h4>
+                    <ul class="dense-list">
+                        <li><strong>Fast Feedback</strong> : Pipeline &lt; 10 min (idéal &lt; 5 min)</li>
+                        <li><strong>Cache</strong> : Cacher node_modules, Maven repo, etc.</li>
+                        <li><strong>Parallélisation</strong> : Tests en parallèle (matrix)</li>
+                        <li><strong>Fail Fast</strong> : Arrêter dès le premier échec</li>
+                        <li><strong>No Flaky Tests</strong> : Tests instables = dette technique</li>
                     </ul>
+
+                    <div class="tip" style="margin-top:15px;">
+                        <strong>Shift Left</strong> : Bug en Prod = 100x plus cher qu'en Dev.
+                    </div>
                 </div>
             </div>
 
-            <div class="tip">
-                <strong>Shift Left Quality</strong><br>
-                Détecter un bug en Prod coûte <strong>100x plus cher</strong> qu'en phase de Design/Dev. Le CI sert à
-                repousser la détection le plus "à gauche" possible (le plus tôt).
-            </div>
+            <!-- CI ANTI-PATTERNS -->
+            <details style="margin-top:20px;">
+                <summary>⚠️ Anti-Patterns CI</summary>
+                <div class="details-content">
+                    <ul class="dense-list">
+                        <li><strong>Slow Pipeline</strong> : &gt;30 min = Devs commitent moins souvent</li>
+                        <li><strong>Flaky Tests</strong> : Tests qui passent "parfois" détruisent la confiance</li>
+                        <li><strong>Ignorer les échecs</strong> : "C'est pas grave, on merge quand même"</li>
+                        <li><strong>CI sans tests</strong> : "CI Theater" - juste du lint et build</li>
+                    </ul>
+                </div>
+            </details>
         </div>
     </section>
 
-    <!-- MODULE 04 -->
-    <section id="m4">
+    <!-- MODULE 04: CONTINUOUS DELIVERY -->
+    <section id="m4"
+        style="background: radial-gradient(circle at center, rgba(116, 185, 255, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">04</div>
+                <div class="sec-num" style="color:#74b9ff; border-color:#74b9ff;">04</div>
                 <div>
-                    <h2 class="sec-title">Continuous Delivery (CD)</h2>
-                    <p class="sec-sub">Deploy Strategies & ArgoCD</p>
+                    <h2 class="sec-title" style="color:#74b9ff;">🚀 Continuous Delivery (CD)</h2>
+                    <p class="sec-sub">Deploy Strategies & GitOps</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--primary-bright);">
+            <div class="analogy-box" style="border-left-color:#74b9ff;">
                 <h4>🚦 Analogie : Le Changement de Roue</h4>
                 <p><strong>Rolling Update</strong> : On change les roues (Pods) une par une pendant que la voiture
                     roule. Lent mais sûr.<br>
@@ -277,8 +828,60 @@
                 </p>
             </div>
 
+            <!-- STRATEGIES TABLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Comparatif des Stratégies</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Stratégie</th>
+                        <th>Risque</th>
+                        <th>Rollback</th>
+                        <th>Coût</th>
+                        <th>Cas d'usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Remplace les instances une par une. Zero-downtime mais rollback lent.">Rolling
+                                Update</span></td>
+                        <td style="color:#fdcb6e;">Moyen</td>
+                        <td>Lent</td>
+                        <td>Faible</td>
+                        <td>Défaut K8s</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="2 environnements identiques. Bascule instantanée du routeur.">Blue/Green</span>
+                        </td>
+                        <td style="color:#00cec9;">Faible</td>
+                        <td>Instant</td>
+                        <td style="color:#ff7675;">2x infra</td>
+                        <td>Critique, besoin rollback rapide</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Déploie sur un petit % d'users. Si OK, augmente progressivement.">Canary</span>
+                        </td>
+                        <td style="color:#00cec9;">Faible</td>
+                        <td>Rapide</td>
+                        <td>Moyen</td>
+                        <td>Test sur users réels</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Tout arrêter, tout redéployer. Downtime garanti.">Recreate</span></td>
+                        <td style="color:#ff7675;">Élevé</td>
+                        <td>Lent</td>
+                        <td>Faible</td>
+                        <td>Dev, non-prod</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- DEPLOYMENT SIMULATOR -->
             <div class="interactive-demo"
-                style="background:var(--bg2); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:25px;">
+                style="background:var(--bg2); padding:20px; border-radius:10px; border:1px solid var(--border); margin:25px 0;">
                 <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">🎮 Simulateur de Déploiement
                     <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(Cliquez pour tester)</span>
                 </h4>
@@ -289,31 +892,51 @@
                 </div>
                 <div id="sim-visual"
                     style="height:100px; background:#111; border-radius:6px; display:flex; align-items:center; justify-content:space-around; padding:10px;">
-                    <!-- JS will populate this -->
                     <div style="color:var(--muted);">Sélectionnez une stratégie...</div>
                 </div>
                 <div id="sim-status"
                     style="margin-top:10px; font-family:monospace; color:var(--primary-bright); font-size:0.9rem;">Prêt.
                 </div>
             </div>
+
+            <!-- ENVIRONMENT PROMOTION -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 B. Promotion d'Environnements</h3>
+            <div class="git-flow" style="justify-content:center;">
+                <div class="git-stage" style="background:#636e72;">
+                    <div class="stage-icon">🧪</div>
+                    <div class="stage-name">Dev</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-name">Staging</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#00b894;">
+                    <div class="stage-icon">🚀</div>
+                    <div class="stage-name">Production</div>
+                </div>
+            </div>
+            <div class="tip" style="margin-top:15px;">
+                <strong>Règle d'or :</strong> Ce qui marche en Staging DOIT marcher en Prod (même image, même config
+                externalisée).
+            </div>
         </div>
     </section>
 
-    <!-- MODULE 05 -->
-    <section id="m5">
+    <!-- MODULE 05: DOCKER DEEP DIVE -->
+    <section id="m5"
+        style="background: radial-gradient(circle at center, rgba(36, 150, 237, 0.08) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">05</div>
+                <div class="sec-num" style="color:#2496ed; border-color:#2496ed;">05</div>
                 <div>
-                    <h2 class="sec-title">Containers Advanced</h2>
-                    <p class="sec-sub">Security & Optimization</p>
+                    <h2 class="sec-title" style="color:#2496ed;">🐳 Docker Deep Dive</h2>
+                    <p class="sec-sub">Containers, Images & Orchestration Locale</p>
                 </div>
             </div>
-            <p>Pour la production, "ça marche" ne suffit pas. L'image doit être <strong>minimale</strong> et
-                <strong>sûre</strong>.
-            </p>
 
-            <div class="analogy-box" style="border-left-color:var(--kw);">
+            <div class="analogy-box" style="border-left-color:#2496ed;">
                 <h4>🍰 Analogie : Le Gâteau Mille-Feuille</h4>
                 <p>Une image Docker est un gâteau à étages (Layers). Chaque instruction <code>RUN</code>,
                     <code>COPY</code> ajoute une couche.
@@ -324,25 +947,118 @@
                 </p>
             </div>
 
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Best Practices (2025)</h4>
+            <!-- ARCHITECTURE DOCKER -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏗️ A. Architecture Docker</h3>
+            <div class="docker-arch">
+                <div class="docker-component">
+                    <div class="comp-icon">💻</div>
+                    <div class="comp-name">Docker CLI</div>
+                    <div class="comp-desc">Commandes utilisateur</div>
+                </div>
+                <div class="docker-component">
+                    <div class="comp-icon">⚙️</div>
+                    <div class="comp-name">Docker Daemon</div>
+                    <div class="comp-desc">dockerd (Processus en arrière-plan)</div>
+                </div>
+                <div class="docker-component">
+                    <div class="comp-icon">📦</div>
+                    <div class="comp-name">Image</div>
+                    <div class="comp-desc">Template read-only (Layers)</div>
+                </div>
+                <div class="docker-component">
+                    <div class="comp-icon">🚀</div>
+                    <div class="comp-name">Container</div>
+                    <div class="comp-desc">Instance en cours d'exécution</div>
+                </div>
+                <div class="docker-component">
+                    <div class="comp-icon">☁️</div>
+                    <div class="comp-name">Registry</div>
+                    <div class="comp-desc">Docker Hub, GHCR, ECR</div>
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="ref-card" style="border-color:#2496ed;">
+                    <h4>Image vs Container</h4>
                     <ul class="dense-list">
-                        <li><strong>Multi-Stage Builds</strong> : Utilisez une image "Grosse" pour compiler, et copiez
-                            le binaire dans une image "Minuscule" (Alpine/Distroless).</li>
-                        <li><strong>.dockerignore</strong> : Vital. Ne copiez pas <code>node_modules</code> ou
-                            <code>.git</code> dans l'image.
-                        </li>
-                        <li><strong>User 1001</strong> : <code>USER node</code>. Ne jamais lancer en root.</li>
+                        <li><strong>Image</strong> = Recette (figée, versionnée, partageable)</li>
+                        <li><strong>Container</strong> = Gâteau (instance vivante de l'image)</li>
+                        <li>1 Image → N Containers identiques</li>
                     </ul>
                 </div>
+                <div class="ref-card">
+                    <h4>Isolation vs Virtualisation</h4>
+                    <ul class="dense-list">
+                        <li><strong>VM</strong> : OS complet virtualisé (lourd, Go)</li>
+                        <li><strong>Container</strong> : Partage le kernel de l'hôte (léger, Mo)</li>
+                        <li>Démarrage : VM = minutes, Container = secondes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DOCKERFILE INSTRUCTIONS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📜 B. Instructions Dockerfile</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Instruction</th>
+                        <th>Rôle</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>FROM</code></td>
+                        <td>Image de base (obligatoire en 1er)</td>
+                        <td><code>FROM node:20-alpine</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>WORKDIR</code></td>
+                        <td>Définit le dossier de travail</td>
+                        <td><code>WORKDIR /app</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>COPY</code></td>
+                        <td>Copie fichiers locaux → image</td>
+                        <td><code>COPY package*.json ./</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>RUN</code></td>
+                        <td>Exécute une commande (Build Time)</td>
+                        <td><code>RUN npm install</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ENV</code></td>
+                        <td>Définit une variable d'environnement</td>
+                        <td><code>ENV NODE_ENV=production</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>EXPOSE</code></td>
+                        <td>Documente le port (ne l'ouvre pas !)</td>
+                        <td><code>EXPOSE 3000</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>CMD</code></td>
+                        <td>Commande par défaut au run</td>
+                        <td><code>CMD ["node", "server.js"]</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ENTRYPOINT</code></td>
+                        <td>Point d'entrée fixe (CMD = arguments)</td>
+                        <td><code>ENTRYPOINT ["python"]</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- MULTI-STAGE BUILD -->
+            <div class="grid2" style="margin-top:20px;">
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Dockerfile Optimisé (Node.js)</div>
+                    <div class="code-head"><span class="dot g"></span>Dockerfile Multi-Stage (Node.js)</div>
                     <pre><span class="c"># --- Build Stage ---</span>
 <span class="kw">FROM</span> node:20-slim <span class="kw">AS</span> builder
 <span class="kw">WORKDIR</span> /app
 <span class="kw">COPY</span> package*.json ./
-<span class="kw">RUN</span> npm ci               <span class="c"># Clean Install (Rapide)</span>
+<span class="kw">RUN</span> npm ci
 <span class="kw">COPY</span> . .
 <span class="kw">RUN</span> npm run build
 
@@ -352,250 +1068,925 @@
 <span class="kw">COPY</span> --from=builder /app/dist ./dist
 <span class="kw">CMD</span> ["dist/main.js"]</pre>
                 </div>
+                <div class="ref-card">
+                    <h4>Best Practices (2025)</h4>
+                    <ul class="dense-list">
+                        <li><strong>Multi-Stage</strong> : Compile dans une image "grosse", run dans une "minuscule"
+                        </li>
+                        <li><strong>.dockerignore</strong> : Exclure <code>node_modules</code>, <code>.git</code></li>
+                        <li><strong>USER</strong> : Ne jamais run en root (<code>USER 1001</code>)</li>
+                        <li><strong>Layers</strong> : Mettre les deps avant le code (cache)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DOCKER-COMPOSE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🎼 C. Docker Compose (Multi-Services)</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>docker-compose.yml</div>
+                    <pre><span class="kw">version</span>: '3.8'
+<span class="kw">services</span>:
+  <span class="fn">app</span>:
+    <span class="kw">build</span>: .
+    <span class="kw">ports</span>:
+      - "3000:3000"
+    <span class="kw">environment</span>:
+      - DATABASE_URL=postgres://db:5432
+    <span class="kw">depends_on</span>:
+      - db
+
+  <span class="fn">db</span>:
+    <span class="kw">image</span>: postgres:15
+    <span class="kw">volumes</span>:
+      - pgdata:/var/lib/postgresql/data
+    <span class="kw">environment</span>:
+      POSTGRES_PASSWORD: secret
+
+<span class="kw">volumes</span>:
+  pgdata:</pre>
+                </div>
+                <div>
+                    <h4 style="color:#2496ed; margin-bottom:15px;">Concepts Clés</h4>
+                    <ul class="dense-list">
+                        <li><span class="vocab-term"
+                                data-def="Un conteneur défini dans docker-compose. Peut être build ou image.">services</span>
+                            : Chaque conteneur est un service</li>
+                        <li><span class="vocab-term"
+                                data-def="Mappe les ports hôte:conteneur. Ex: 8080:80 = l'hôte écoute sur 8080, forward vers 80 du conteneur.">ports</span>
+                            : Mappage Hôte → Container</li>
+                        <li><span class="vocab-term"
+                                data-def="Stockage persistant. Survit à la destruction du conteneur. Named volumes recommandés.">volumes</span>
+                            : Persistence des données</li>
+                        <li><span class="vocab-term"
+                                data-def="Définit l'ordre de démarrage. Le service attend que la dépendance soit 'up' (pas forcément 'ready').">depends_on</span>
+                            : Ordre de démarrage</li>
+                    </ul>
+                    <div class="tip" style="margin-top:15px; font-size:0.85rem;">
+                        <strong>💡 Commande :</strong> <code>docker compose up -d</code> pour lancer en background.
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLI COMMANDS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ D. Commandes CLI Essentielles</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>docker build -t myapp .</code></td>
+                        <td>Construire une image depuis le Dockerfile</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker run -d -p 8080:80 nginx</code></td>
+                        <td>Lancer un container en arrière-plan</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker ps</code></td>
+                        <td>Lister les containers actifs</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker logs -f &lt;id&gt;</code></td>
+                        <td>Suivre les logs en temps réel</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker exec -it &lt;id&gt; sh</code></td>
+                        <td>Ouvrir un shell dans le container</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker stop &lt;id&gt;</code></td>
+                        <td>Arrêter un container</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker rm &lt;id&gt;</code></td>
+                        <td>Supprimer un container arrêté</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker system prune -a</code></td>
+                        <td>⚠️ Nettoyer tout (images, containers, volumes orphans)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- VOLUMES & NETWORKING -->
+            <div class="grid2" style="margin-top:20px;">
+                <div class="ref-card">
+                    <h4>📁 Volumes (Persistence)</h4>
+                    <ul class="dense-list">
+                        <li><strong>Bind Mount</strong> : <code>-v ./host:/container</code> (Dev)</li>
+                        <li><strong>Named Volume</strong> : <code>-v mydata:/data</code> (Prod)</li>
+                        <li>Les données survivent à la destruction du container</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4>🌐 Networking</h4>
+                    <ul class="dense-list">
+                        <li><strong>bridge</strong> : Réseau isolé par défaut</li>
+                        <li><strong>host</strong> : Partage le réseau de l'hôte</li>
+                        <li><strong>Custom</strong> : <code>docker network create mynet</code></li>
+                        <li>Les services compose partagent un réseau automatique</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- MODULE 06 -->
-    <section id="m6">
+    <!-- MODULE 06: KUBERNETES AVANCÉ -->
+    <section id="m6"
+        style="background: radial-gradient(circle at center, rgba(50, 110, 200, 0.08) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">06</div>
+                <div class="sec-num" style="color:#326de6; border-color:#326de6;">06</div>
                 <div>
-                    <h2 class="sec-title">Kubernetes (K8s)</h2>
+                    <h2 class="sec-title" style="color:#326de6;">☸️ Kubernetes Avancé</h2>
                     <p class="sec-sub">L'OS du Cloud</p>
                 </div>
             </div>
-            <div class="analogy-box" style="border-left-color:var(--num);">
+
+            <div class="analogy-box" style="border-left-color:#326de6;">
                 <h4>🎼 Analogie : Le Chef d'Orchestre</h4>
                 <p><strong>Docker</strong> est un musicien talentueux (il sait jouer).<br>
                     <strong>Kubernetes</strong> est le Chef d'Orchestre. Il ne joue pas, mais il dit qui joue, à quel
-                    volume (scaling), et remplace ceux qui s'évanouissent (self-healing).
+                    volume (scaling),
+                    et remplace ceux qui s'évanouissent (self-healing).
                 </p>
             </div>
 
-            <!-- INTERACTIVE K8S MAP -->
+            <!-- POURQUOI K8S -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">❓ A. Pourquoi Kubernetes ?</h3>
+            <div class="grid2">
+                <div class="ref-card" style="border-color:#ff7675;">
+                    <h4 style="color:#ff7675;">Docker seul ne suffit pas pour...</h4>
+                    <ul class="dense-list">
+                        <li>Lancer 100 containers sur 10 serveurs</li>
+                        <li>Remplacer automatiquement un container crashé</li>
+                        <li>Mettre à jour sans downtime (Rolling Update)</li>
+                        <li>Répartir le trafic entre les instances (Load Balancing)</li>
+                    </ul>
+                </div>
+                <div class="ref-card" style="border-color:#00cec9;">
+                    <h4 style="color:#00cec9;">K8s apporte...</h4>
+                    <ul class="dense-list">
+                        <li><span class="vocab-term"
+                                data-def="K8s maintient le nombre de Pods désiré. Si un Pod meurt, il le recrée immédiatement.">Self-Healing</span>
+                            : Recréation automatique</li>
+                        <li><span class="vocab-term"
+                                data-def="Augmenter ou réduire le nombre de Pods selon la charge (CPU, RAM, custom metrics).">Auto-Scaling</span>
+                            : HPA, VPA</li>
+                        <li><span class="vocab-term"
+                                data-def="Mise à jour progressive des Pods sans interruption de service.">Rolling
+                                Updates</span> : Zero-downtime</li>
+                        <li><span class="vocab-term"
+                                data-def="L'état désiré (YAML) est appliqué de manière idempotente. K8s converge vers cet état.">Déclaratif</span>
+                            : YAML = État souhaité</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- K8S ARCHITECTURE (keep existing interactive map) -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏗️ B. Architecture K8s</h3>
             <div class="k8s-map-container"
                 style="position:relative; border:1px solid var(--border); border-radius:10px; padding:20px; background:var(--bg2); margin-bottom:25px;">
-                <h4 style="text-align:center; margin-bottom:20px;">🗺️ Architecture K8s (Survolez les zones)</h4>
-
+                <h4 style="text-align:center; margin-bottom:20px;">🗺️ Survolez les composants</h4>
                 <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
-                    <!-- Control Plane -->
                     <div class="k8s-zone"
                         style="border:2px dashed var(--primary); padding:15px; border-radius:8px; width:45%;">
                         <div style="text-align:center; font-weight:bold; color:var(--primary); margin-bottom:10px;">
                             Control Plane (Cerveau)</div>
-                        <div class="k8s-comp" data-tooltip="API Server : Le portier. Tout passe par REST API.">API
-                            Server</div>
                         <div class="k8s-comp"
-                            data-tooltip="etcd : La mémoire. Stocke tout l'état du cluster (Key-Value).">etcd</div>
-                        <div class="k8s-comp" data-tooltip="Scheduler : Le Tetris. Décide sur quel Node lancer le Pod.">
+                            data-tooltip="API Server : Le portier. TOUT passe par lui (kubectl, CI, autres composants). REST API.">
+                            API Server</div>
+                        <div class="k8s-comp"
+                            data-tooltip="etcd : La base de données. Stocke tout l'état du cluster en Key-Value. Critique à sauvegarder.">
+                            etcd</div>
+                        <div class="k8s-comp"
+                            data-tooltip="Scheduler : Place les Pods sur les Nodes (comme Tetris). Respecte les contraintes (CPU, affinité).">
                             Scheduler</div>
                         <div class="k8s-comp"
-                            data-tooltip="Controller Mgr : La boucle de contrôle (ex: Réparer si Pod dead).">Controller
-                            Mgr</div>
+                            data-tooltip="Controller Manager : Boucle de contrôle. Vérifie: 'L'état réel == État désiré ?' et corrige.">
+                            Controller Mgr</div>
                     </div>
-
-                    <!-- Worker Nodes -->
                     <div class="k8s-zone"
                         style="border:2px dashed var(--num); padding:15px; border-radius:8px; width:45%;">
                         <div style="text-align:center; font-weight:bold; color:var(--num); margin-bottom:10px;">Worker
                             Node (Muscles)</div>
                         <div class="k8s-comp"
-                            data-tooltip="Kubelet : L'agent local. Parle au Control Plane et lance les conteneurs.">
+                            data-tooltip="Kubelet : L'agent sur chaque Node. Reçoit les ordres, lance/stoppe les containers via CRI.">
                             Kubelet</div>
                         <div class="k8s-comp"
-                            data-tooltip="Kube-Proxy : Le facteur. Gère les règles réseau (IPtables).">Kube-Proxy</div>
+                            data-tooltip="Kube-Proxy : Gère le réseau local du Node. Crée les règles iptables pour router le trafic.">
+                            Kube-Proxy</div>
+                        <div class="k8s-comp"
+                            data-tooltip="Container Runtime : Le moteur (containerd, CRI-O). Exécute réellement les containers.">
+                            Container Runtime</div>
                         <div
                             style="background:var(--card); padding:5px; margin-top:5px; text-align:center; font-size:0.8rem;">
-                            📦 Pods (Containers)
-                        </div>
+                            📦 Pods (Containers)</div>
                     </div>
                 </div>
                 <div id="k8s-tooltip"
                     style="margin-top:15px; text-align:center; height:1.5rem; color:var(--primary-bright); font-weight:bold;">
-                    Survolez un composant...
+                    Survolez un composant...</div>
+            </div>
+
+            <!-- OBJETS K8S -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📦 C. Objets Fondamentaux</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Objet</th>
+                        <th>Rôle</th>
+                        <th>Durée de vie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="L'unité atomique de K8s. 1 ou plusieurs containers partageant network et storage. Éphémère, ne pas y attacher de données.">Pod</span>
+                        </td>
+                        <td>Exécute 1+ containers (IP partagée)</td>
+                        <td>Éphémère (peut être recréé)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Gère un ensemble de Pods identiques (ReplicaSet). Assure le nombre désiré, permet rolling updates.">Deployment</span>
+                        </td>
+                        <td>Gère les Pods (répliques, updates)</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="IP stable et DNS pour accéder aux Pods. Types: ClusterIP (interne), NodePort, LoadBalancer.">Service</span>
+                        </td>
+                        <td>Expose les Pods (Load Balancing)</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Routeur HTTP/HTTPS L7. Route les requêtes vers les Services basé sur host/path.">Ingress</span>
+                        </td>
+                        <td>Routage HTTP externe</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Stocke des key-values en clair. Injecté dans les Pods comme variables d'env ou fichiers.">ConfigMap</span>
+                        </td>
+                        <td>Configuration (non-sensible)</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="vocab-term"
+                                data-def="Comme ConfigMap mais encodé base64. Pour mots de passe, tokens. Chiffrable avec SealedSecrets.">Secret</span>
+                        </td>
+                        <td>Données sensibles (base64)</td>
+                        <td>Permanent</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- YAML EXAMPLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📝 D. Exemple YAML Complet</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>deployment.yaml</div>
+                    <pre><span class="kw">apiVersion</span>: apps/v1
+<span class="kw">kind</span>: Deployment
+<span class="kw">metadata</span>:
+  <span class="kw">name</span>: my-app
+<span class="kw">spec</span>:
+  <span class="kw">replicas</span>: <span class="num">3</span>
+  <span class="kw">selector</span>:
+    <span class="kw">matchLabels</span>:
+      <span class="kw">app</span>: my-app
+  <span class="kw">template</span>:
+    <span class="kw">metadata</span>:
+      <span class="kw">labels</span>:
+        <span class="kw">app</span>: my-app
+    <span class="kw">spec</span>:
+      <span class="kw">containers</span>:
+      - <span class="kw">name</span>: app
+        <span class="kw">image</span>: myregistry/my-app:v1.0
+        <span class="kw">ports</span>:
+        - <span class="kw">containerPort</span>: <span class="num">3000</span>
+        <span class="kw">resources</span>:
+          <span class="kw">limits</span>:
+            <span class="kw">memory</span>: "256Mi"
+            <span class="kw">cpu</span>: "500m"</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>service.yaml</div>
+                    <pre><span class="kw">apiVersion</span>: v1
+<span class="kw">kind</span>: Service
+<span class="kw">metadata</span>:
+  <span class="kw">name</span>: my-app-svc
+<span class="kw">spec</span>:
+  <span class="kw">type</span>: ClusterIP
+  <span class="kw">selector</span>:
+    <span class="kw">app</span>: my-app
+  <span class="kw">ports</span>:
+  - <span class="kw">port</span>: <span class="num">80</span>
+    <span class="kw">targetPort</span>: <span class="num">3000</span></pre>
+                    <div style="padding:10px; font-size:0.85rem;">
+                        <strong>Flow :</strong><br>
+                        User → Ingress → Service → Pod
+                    </div>
                 </div>
             </div>
 
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Objets Clés</h4>
+            <!-- KUBECTL -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ E. Kubectl Essentiel</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>kubectl get pods</code></td>
+                        <td>Lister les pods (ajouter <code>-A</code> pour tous namespaces)</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl describe pod &lt;name&gt;</code></td>
+                        <td>Détails complets (events, status, volumes)</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl logs -f &lt;pod&gt;</code></td>
+                        <td>Suivre les logs en temps réel</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl exec -it &lt;pod&gt; -- sh</code></td>
+                        <td>Shell dans le pod</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl apply -f manifest.yaml</code></td>
+                        <td>Créer/Mettre à jour les ressources</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl delete -f manifest.yaml</code></td>
+                        <td>Supprimer les ressources</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl scale deploy &lt;name&gt; --replicas=5</code></td>
+                        <td>Scaler manuellement</td>
+                    </tr>
+                    <tr>
+                        <td><code>kubectl port-forward svc/my-svc 8080:80</code></td>
+                        <td>Accès local sans Ingress</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- HELM -->
+            <div class="grid2" style="margin-top:30px;">
+                <div class="ref-card" style="border-color:#0f1689;">
+                    <h4>🎩 Helm (Package Manager)</h4>
                     <ul class="dense-list">
-                        <li><strong>Pod</strong> : L'unité atomique (1+ conteneurs). Éphémère.</li>
-                        <li><strong>Deployment</strong> : Gère les répliques. Si un Pod meurt, il le recrée.</li>
-                        <li><strong>Service (ClusterIP)</strong> : IP stable interne.</li>
-                        <li><strong>Ingress</strong> : Routeur HTTP externe (mondaine.com/api -> Service -> Pod).</li>
+                        <li><strong>Chart</strong> = Package d'app K8s (templates + values)</li>
+                        <li><code>helm install myrelease bitnami/nginx</code></li>
+                        <li><code>helm upgrade myrelease . -f values-prod.yaml</code></li>
+                        <li>Gère les releases, rollbacks, et templating</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4>🚀 Stratégies de Déploiement</h4>
+                    <ul class="dense-list">
+                        <li><strong>RollingUpdate</strong> : Remplace progressivement (défaut)</li>
+                        <li><strong>Recreate</strong> : Kill all, then create new</li>
+                        <li><strong>Blue/Green</strong> : Via 2 Deployments + switch Service</li>
+                        <li><strong>Canary</strong> : Via Ingress weights ou Service Mesh</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;">
+                <strong>💡 Conseil :</strong> Utilisez <code>kubectl explain &lt;resource&gt;</code> pour découvrir les
+                champs YAML disponibles.
+                Ex: <code>kubectl explain deployment.spec.strategy</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 07: INFRASTRUCTURE AS CODE -->
+    <section id="m7"
+        style="background: radial-gradient(circle at center, rgba(108, 92, 231, 0.06) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num" style="color:#6c5ce7; border-color:#6c5ce7;">07</div>
+                <div>
+                    <h2 class="sec-title" style="color:#6c5ce7;">🏗️ Infrastructure as Code</h2>
+                    <p class="sec-sub">Terraform, Ansible & Automation</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:#6c5ce7;">
+                <h4>📐 Analogie : L'Architecte vs Le Maçon</h4>
+                <p><strong>ClickOps (Manuel)</strong> : Vous dites au maçon "Pose une brique ici, puis une autre là". Si
+                    le mur tombe, il faut tout redire.<br>
+                    <strong>IaC (Terraform)</strong> : Vous donnez le plan 3D (Code) au robot. Il construit tout seul.
+                    Si le mur tombe, il le reconstruit à l'identique.
+                </p>
+            </div>
+
+            <!-- IaC LIFECYCLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Cycle de vie IaC</h3>
+            <div class="git-flow" style="justify-content:center;">
+                <div class="git-stage" style="background:#6c5ce7;">
+                    <div class="stage-icon">📝</div>
+                    <div class="stage-name">Write</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">.tf / .yaml</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-name">Plan</div>
+                    <div style="font-size:0.7rem; color:rgba(0,0,0,0.6);">Dry-run</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#00b894;">
+                    <div class="stage-icon">🚀</div>
+                    <div class="stage-name">Apply</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Create/Update</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#ff7675;">
+                    <div class="stage-icon">💥</div>
+                    <div class="stage-name">Destroy</div>
+                    <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Cleanup</div>
+                </div>
+            </div>
+
+            <!-- TOOLS TABLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils IaC</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Type</th>
+                        <th>Language</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Terraform</strong></td>
+                        <td>Provisioning</td>
+                        <td>HCL</td>
+                        <td>Créer VPC, EC2, RDS, K8s...</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ansible</strong></td>
+                        <td>Configuration</td>
+                        <td>YAML</td>
+                        <td>Installer packages, configurer OS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pulumi</strong></td>
+                        <td>Provisioning</td>
+                        <td>Python/TS</td>
+                        <td>IaC en vrai langage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CloudFormation</strong></td>
+                        <td>Provisioning</td>
+                        <td>YAML/JSON</td>
+                        <td>AWS natif uniquement</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- CODE EXAMPLES -->
+            <div class="grid2" style="margin-top:25px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>main.tf (Terraform)</div>
+                    <pre><span class="kw">resource</span> <span class="str">"aws_vpc"</span> <span class="str">"main"</span> {
+  <span class="kw">cidr_block</span> = <span class="str">"10.0.0.0/16"</span>
+  <span class="kw">tags</span> = { Name = <span class="str">"prod-vpc"</span> }
+}
+
+<span class="kw">resource</span> <span class="str">"aws_instance"</span> <span class="str">"web"</span> {
+  <span class="kw">ami</span>           = <span class="str">"ami-0c55b159cbfafe1f0"</span>
+  <span class="kw">instance_type</span> = <span class="str">"t3.micro"</span>
+  <span class="kw">vpc_security_group_ids</span> = [
+    aws_security_group.web.id
+  ]
+}</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>playbook.yml (Ansible)</div>
+                    <pre><span class="kw">- name:</span> Configure Web Server
+  <span class="kw">hosts:</span> webservers
+  <span class="kw">become:</span> yes
+  <span class="kw">tasks:</span>
+    - <span class="kw">name:</span> Install Nginx
+      <span class="fn">apt:</span>
+        <span class="kw">name:</span> nginx
+        <span class="kw">state:</span> present
+    - <span class="kw">name:</span> Start Nginx
+      <span class="fn">service:</span>
+        <span class="kw">name:</span> nginx
+        <span class="kw">state:</span> started
+        <span class="kw">enabled:</span> yes</pre>
+                </div>
+            </div>
+
+            <!-- DRIFT WARNING -->
+            <div class="grid2" style="margin-top:25px;">
+                <div class="ref-card" style="border-color:#ff7675;">
+                    <h4 style="color:#ff7675;">⚠️ Le Danger : Drift</h4>
+                    <p>Si quelqu'un modifie l'infra manuellement dans la console AWS, le code et la réalité divergent.
+                    </p>
+                    <div style="background:#222; padding:8px; margin-top:8px; font-family:monospace; font-size:0.8rem;">
+                        $ terraform plan<br>
+                        <span style="color:#fdcb6e">~ update SG rule (Drift detected)</span>
+                    </div>
+                </div>
+                <div class="ref-card" style="border-color:#00b894;">
+                    <h4 style="color:#00b894;">✅ Best Practices</h4>
+                    <ul class="dense-list">
+                        <li><strong>Remote State</strong> : S3/GCS + Locking (DynamoDB)</li>
+                        <li><strong>Modules</strong> : Réutiliser via modules</li>
+                        <li><strong>Review</strong> : terraform plan dans PR</li>
+                        <li><strong>Immutable</strong> : Recréer plutôt que patcher</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODULE 07 -->
-    <section id="m7">
+    <!-- MODULE 08: OBSERVABILITY -->
+    <section id="m8"
+        style="background: radial-gradient(circle at center, rgba(253, 203, 110, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">07</div>
+                <div class="sec-num" style="color:#fdcb6e; border-color:#fdcb6e;">08</div>
                 <div>
-                    <h2 class="sec-title">Infrastructure as Code</h2>
-                    <p class="sec-sub">Terraform & Ansible</p>
+                    <h2 class="sec-title" style="color:#fdcb6e;">👁️ Observabilité</h2>
+                    <p class="sec-sub">Logs, Metrics, Traces - Les 3 Piliers</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--kw);">
-                <h4>🏗️ Analogie : L'Architecte vs Le Maçon</h4>
-                <p><strong>ClickOps (Manuel)</strong> : Vous dites au maçon "Pose une brique ici, puis une autre là". Si
-                    le mur tombe, il faut tout redire.<br>
-                    <strong>IaC (Terraform)</strong> : Vous donnez le plan 3D (Code) au robot. Il construit tout seul.
-                    Si le mur tombe, il le reconstruit à l'identique (Idempotence).
-                </p>
+            <div class="analogy-box" style="border-left-color:#fdcb6e;">
+                <h4>🏎️ Analogie : Le Tableau de Bord F1</h4>
+                <p>Le <strong>Monitoring</strong> vous dit "Le moteur fume" (C'est cassé).<br>
+                    L'<strong>Observabilité</strong> vous permet de demander "Pourquoi ?" en regardant la télémétrie
+                    complète.</p>
             </div>
 
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Terraform (Provisioning)</h4>
-                    <p>Déclare <em>QUOI</em> créer (VPC, VM, K8s Cluster).</p>
-                    <pre class="code-block hcl"
-                        style="background:#2d2d2d; padding:10px; border-radius:4px; font-family:monospace; margin-top:5px;">resource "aws_s3_bucket" "b" {
-  bucket = "my-bucket"
-}</pre>
+            <!-- 3 PILLARS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏛️ A. Les 3 Piliers</h3>
+            <div class="grid3">
+                <div class="tool-card" style="border-top:3px solid #00cec9;">
+                    <span class="tool-icon">📜</span>
+                    <h4>Logs</h4>
+                    <p><strong>Quoi ?</strong> Événements textuels horodatés<br>
+                        <strong>Usage :</strong> Debugging, audit trail<br>
+                        <em>Outils: ELK, Loki, CloudWatch</em>
+                    </p>
                 </div>
-                <!-- Drift Detection -->
-                <div class="ref-card" style="border-color:var(--danger);">
-                    <h4 style="color:var(--danger);">⚠️ Le Danger : Drift</h4>
-                    <p style="font-size:0.9rem;">Si quelqu'un modifie l'infra manuellement dans la console AWS ("juste
-                        pour voir"), le code et la réalité divergent.</p>
-                    <div style="background:#222; padding:5px; margin-top:5px; font-family:monospace; font-size:0.8rem;">
-                        $ terraform plan<br>
-                        <span style="color:var(--warning)">~ update SG rule (Drift detected)</span>
+                <div class="tool-card" style="border-top:3px solid #74b9ff;">
+                    <span class="tool-icon">📈</span>
+                    <h4>Metrics</h4>
+                    <p><strong>Quoi ?</strong> Chiffres agrégés dans le temps<br>
+                        <strong>Usage :</strong> Alerting, dashboards<br>
+                        <em>Outils: Prometheus, Datadog</em>
+                    </p>
+                </div>
+                <div class="tool-card" style="border-top:3px solid #a29bfe;">
+                    <span class="tool-icon">🕵️</span>
+                    <h4>Traces</h4>
+                    <p><strong>Quoi ?</strong> Suivi d'une requête multi-services<br>
+                        <strong>Usage :</strong> Latency, bottlenecks<br>
+                        <em>Outils: Jaeger, OpenTelemetry</em>
+                    </p>
+                </div>
+            </div>
+
+            <!-- STACKS TABLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Stacks Populaires</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Stack</th>
+                        <th>Logs</th>
+                        <th>Metrics</th>
+                        <th>Traces</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Open Source</strong></td>
+                        <td>Loki / ELK</td>
+                        <td>Prometheus + Grafana</td>
+                        <td>Jaeger</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Datadog</strong></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AWS</strong></td>
+                        <td>CloudWatch Logs</td>
+                        <td>CloudWatch Metrics</td>
+                        <td>X-Ray</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- PROMQL EXAMPLES -->
+            <div class="grid2" style="margin-top:25px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>PromQL Essentiels</div>
+                    <pre><span class="c"># Taux d'erreurs HTTP (5xx)</span>
+<span class="fn">rate</span>(http_requests_total{status=~"5.."}[5m])
+  / <span class="fn">rate</span>(http_requests_total[5m])
+
+<span class="c"># Latence P99</span>
+<span class="fn">histogram_quantile</span>(0.99,
+  <span class="fn">rate</span>(http_duration_seconds_bucket[5m]))
+
+<span class="c"># CPU usage par pod</span>
+<span class="fn">sum by</span>(pod)(rate(container_cpu_usage_seconds_total[5m]))</pre>
+                </div>
+                <div>
+                    <h4 style="color:#fdcb6e; margin-bottom:15px;">🚨 Alerting Best Practices</h4>
+                    <ul class="dense-list">
+                        <li><strong>SLO-based</strong> : Alerter sur Error Budget burn rate</li>
+                        <li><strong>Pas trop d'alertes</strong> : Alert fatigue = tout ignorer</li>
+                        <li><strong>Runbooks</strong> : Chaque alerte → action claire</li>
+                        <li><strong>Escalation</strong> : PagerDuty, OpsGenie</li>
+                    </ul>
+                    <div class="tip" style="margin-top:15px;">
+                        <strong>Correlation ID</strong> : Injectez un ID unique dans logs, metrics et traces pour les
+                        relier.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODULE 08 -->
-    <section id="m8">
+    <!-- MODULE 09: DEVSECOPS -->
+    <section id="m9"
+        style="background: radial-gradient(circle at center, rgba(255, 118, 117, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">08</div>
+                <div class="sec-num" style="color:#ff7675; border-color:#ff7675;">09</div>
                 <div>
-                    <h2 class="sec-title">Observabilité</h2>
-                    <p class="sec-sub">Logs, Metrics, Tracing</p>
+                    <h2 class="sec-title" style="color:#ff7675;">🔐 DevSecOps</h2>
+                    <p class="sec-sub">Security Shift-Left & Automation</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--fn);">
-                <h4>🏎️ Analogie : Le Tableau de Bord</h4>
-                <p>Le <strong>Monitoring</strong> vous dit "Le moteur fume" (C'est cassé).<br>
-                    L'<strong>Observabilité</strong> vous permet de demander "Pourquoi ?" en regardant la télémétrie
-                    complète (Pression, Température, Historique).</p>
-            </div>
-
-            <div class="grid3">
-                <div class="tool-card">
-                    <span class="tool-icon">📜</span>
-                    <h4>Logs</h4>
-                    <p>L'histoire textuelle. "2025-01-01 Error: NullPointer". <br><strong>Outils:</strong> ELK, Loki,
-                        Splunk.</p>
-                </div>
-                <div class="tool-card">
-                    <span class="tool-icon">📈</span>
-                    <h4>Metrics</h4>
-                    <p>Chiffres agrégés. "CPU Load: 80%". <br><strong>Outils:</strong> Prometheus, Datadog.</p>
-                </div>
-                <div class="tool-card">
-                    <span class="tool-icon">🕵️</span>
-                    <h4>Tracing</h4>
-                    <p>Suivi de requête. "La DB a mis 2s à répondre". <br><strong>Outils:</strong> Jaeger, Otel.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULE 09 -->
-    <section id="m9">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">09</div>
-                <div>
-                    <h2 class="sec-title">DevSecOps</h2>
-                    <p class="sec-sub">Shift Left Security</p>
-                </div>
-            </div>
-
-            <div class="analogy-box" style="border-left-color:var(--danger);">
+            <div class="analogy-box" style="border-left-color:#ff7675;">
                 <h4>👮 Analogie : Garde du Corps vs Police</h4>
                 <p>Sécurité traditionnelle = <strong>Police</strong> (Intervient après le crime/déploiement).<br>
-                    DevSecOps = <strong>Garde du Corps</strong> (Accompagne tout le trajet/développement pour éviter le
-                    problème).
-                </p>
+                    DevSecOps = <strong>Garde du Corps</strong> (Accompagne tout le trajet pour éviter le problème).</p>
             </div>
 
-            <div class="grid2">
-                <div class="info">
-                    <strong>SAST (Code Source)</strong><br>
-                    Analyse statique. Trouve <code>eval()</code> ou SQL Injection dans le code.<br>
-                    <em>Outil: SonarQube.</em>
+            <!-- SECURITY PIPELINE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Sécurité dans le Pipeline</h3>
+            <div class="git-flow">
+                <div class="git-stage" style="background:#636e72;">
+                    <div class="stage-icon">📝</div>
+                    <div class="stage-name">Code</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">Pre-commit hooks</div>
                 </div>
-                <div class="info">
-                    <strong>SCA (Dépendances)</strong><br>
-                    Analyse les libraires (npm, pip). "Votre version de lodash a une faille critique".<br>
-                    <em>Outil: Snyk, Dependabot.</em>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#ff7675;">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-name">SAST</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">SonarQube</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                    <div class="stage-icon">📦</div>
+                    <div class="stage-name">SCA</div>
+                    <div style="font-size:0.65rem; color:rgba(0,0,0,0.6);">Snyk</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#74b9ff;">
+                    <div class="stage-icon">🐳</div>
+                    <div class="stage-name">Image Scan</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">Trivy</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#a29bfe;">
+                    <div class="stage-icon">🚀</div>
+                    <div class="stage-name">DAST</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">OWASP ZAP</div>
                 </div>
             </div>
 
-            <div class="warning">
-                <strong>Secrets Management (Vault)</strong>
-                <br>Un <code>AWS_KEY</code> commité sur GitHub est piraté en 3 secondes. Utilisez un coffre-fort (Vault,
-                SealedSecrets) injecté au runtime.
+            <!-- TOOLS TABLE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils DevSecOps</h3>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Outil</th>
+                        <th>Cible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SAST</strong></td>
+                        <td>SonarQube, Semgrep</td>
+                        <td>Code source (White Box)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SCA</strong></td>
+                        <td>Snyk, Dependabot</td>
+                        <td>Dépendances (CVE)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Image Scan</strong></td>
+                        <td>Trivy, Clair</td>
+                        <td>Images Docker</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DAST</strong></td>
+                        <td>OWASP ZAP, Burp</td>
+                        <td>App en exécution (Black Box)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secrets</strong></td>
+                        <td>Vault, SealedSecrets</td>
+                        <td>Mots de passe, API keys</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid2" style="margin-top:25px;">
+                <div>
+                    <h4 style="color:#ff7675; margin-bottom:15px;">🛡️ Container Security</h4>
+                    <ul class="dense-list">
+                        <li><strong>Distroless</strong> : Images minimales (pas de shell)</li>
+                        <li><strong>Non-root</strong> : <code>USER 1000</code> dans Dockerfile</li>
+                        <li><strong>Read-only</strong> : <code>readOnlyRootFilesystem: true</code></li>
+                        <li><strong>Scan Base Images</strong> : Trivy dans CI</li>
+                    </ul>
+                </div>
+                <div class="ref-card" style="border-color:#ff7675;">
+                    <h4 style="color:#ff7675;">⚠️ OWASP Top 10 (2024)</h4>
+                    <ol class="dense-list" style="padding-left:18px;">
+                        <li>Broken Access Control</li>
+                        <li>Cryptographic Failures</li>
+                        <li>Injection (SQL, XSS)</li>
+                        <li>Insecure Design</li>
+                        <li>Security Misconfiguration</li>
+                    </ol>
+                    <p style="font-size:0.8rem; margin-top:8px; color:var(--muted);">Les 5 autres: SSRF, Vulnerable
+                        Components, Auth Failures, Logging Failures, Security Testing</p>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top:20px;">
+                <strong>⚡ Secrets Management</strong><br>
+                Un <code>AWS_KEY</code> commité sur GitHub est piraté en <strong>3 secondes</strong>. Utilisez un
+                coffre-fort (Vault, SealedSecrets) injecté au runtime.
             </div>
         </div>
     </section>
 
-    <!-- MODULE 10 -->
-    <section id="m10">
+    <!-- MODULE 10: SRE & FIABILITÉ -->
+    <section id="m10"
+        style="background: radial-gradient(circle at center, rgba(0, 206, 201, 0.06) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">10</div>
+                <div class="sec-num" style="color:#00cec9; border-color:#00cec9;">10</div>
                 <div>
-                    <h2 class="sec-title">SRE & Fiabilité</h2>
-                    <p class="sec-sub">SLI, SLO, SLA</p>
+                    <h2 class="sec-title" style="color:#00cec9;">⚙️ SRE & Fiabilité</h2>
+                    <p class="sec-sub">Site Reliability Engineering</p>
                 </div>
             </div>
 
-            <div class="analogy-box" style="border-left-color:var(--text); color:var(--text);">
-                <h4>📉 Analogie : Le "Budget d'Erreur"</h4>
-                <p>Imaginez que vous avez un budget de "minutes de panne" par mois. C'est votre monnaie d'échange.<br>
-                    Si vous n'avez plus de budget (trop de pannes), vous n'avez plus le droit de dépenser (déployer des
-                    nouveautés) tant que vous n'avez pas remboursé (stabilisé).</p>
+            <div class="analogy-box" style="border-left-color:#00cec9;">
+                <h4>📉 Analogie : Le Budget d'Erreur</h4>
+                <p>Imaginez un budget de "minutes de panne" par mois. Si vous le dépassez (trop de pannes), vous n'avez
+                    plus le droit de déployer des nouveautés tant que vous n'avez pas stabilisé.</p>
             </div>
 
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Le Calculateur SLO</h4>
-                    <p style="margin-bottom:10px;">Combien de temps de panne autorisé (Error Budget) ?</p>
+            <!-- SLI/SLO/SLA FLOW -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. La Chaîne SLI → SLO → SLA</h3>
+            <div class="git-flow" style="justify-content:center;">
+                <div class="git-stage" style="background:#74b9ff;">
+                    <div class="stage-icon">📏</div>
+                    <div class="stage-name">SLI</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">Mesure (99.95%)</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#00cec9;">
+                    <div class="stage-icon">🎯</div>
+                    <div class="stage-name">SLO</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">Objectif (99.9%)</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                    <div class="stage-icon">📜</div>
+                    <div class="stage-name">SLA</div>
+                    <div style="font-size:0.65rem; color:rgba(0,0,0,0.6);">Contrat (99.5%)</div>
+                </div>
+                <div class="git-arrow">→</div>
+                <div class="git-stage" style="background:#ff7675;">
+                    <div class="stage-icon">💰</div>
+                    <div class="stage-name">Error Budget</div>
+                    <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">0.1% = 8.76h/an</div>
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:25px;">
+                <div class="ref-card" style="border-color:#00cec9;">
+                    <h4>🧮 Calculateur SLO</h4>
+                    <p style="margin-bottom:10px;">Combien de downtime autorisé (Error Budget) ?</p>
                     <div style="background:#222; padding:15px; border-radius:8px; border:1px solid var(--border);">
                         Disponibilité (%) : <input type="number" id="slo-input" class="calc-input" value="99.9"
                             step="0.1"><br>
                         <button class="btn-strategy"
-                            style="background:var(--primary); color:white; margin-top:10px; padding:6px 12px; border:none;"
+                            style="background:#00cec9; color:#2d3436; margin-top:10px; padding:6px 12px; border:none;"
                             onclick="calcSLO()">Calculer</button>
-                        <div id="slo-res" style="margin-top:15px; font-weight:bold; color:var(--primary-bright);">
-                            Downtime/An : --
+                        <div id="slo-res" style="margin-top:15px; font-weight:bold; color:#00cec9;">Downtime/An : --
                         </div>
                     </div>
                 </div>
-                <div class="info" style="border-left-color:var(--text); color:#d4d4d4;">
-                    <h4>Définitions</h4>
-                    <ul style="margin-top:10px; font-size:0.9rem;">
-                        <li><strong>SLI</strong> (Indicator) : Le thermomètre (Vitesse réelle).</li>
-                        <li><strong>SLO</strong> (Objective) : La limite de vitesse (90km/h).</li>
-                        <li><strong>SLA</strong> (Agreement) : L'amende si on dépasse (Contrat).</li>
+                <div>
+                    <h4 style="color:#00cec9; margin-bottom:15px;">📋 Exemples SLOs Réels</h4>
+                    <table class="cmd-table" style="font-size:0.85rem;">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>SLI</th>
+                                <th>SLO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>API</td>
+                                <td>Latency P99</td>
+                                <td>&lt; 200ms</td>
+                            </tr>
+                            <tr>
+                                <td>Web</td>
+                                <td>Availability</td>
+                                <td>99.9%</td>
+                            </tr>
+                            <tr>
+                                <td>DB</td>
+                                <td>Error Rate</td>
+                                <td>&lt; 0.1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- INCIDENT + TOIL -->
+            <div class="grid2" style="margin-top:25px;">
+                <div class="ref-card">
+                    <h4>🔥 Incident Management</h4>
+                    <ul class="dense-list">
+                        <li><strong>Severity Levels</strong> : P1 (critique), P2, P3, P4</li>
+                        <li><strong>On-Call</strong> : Rotation équitable (PagerDuty)</li>
+                        <li><strong>Post-Mortem</strong> : Blameless, focus sur le process</li>
+                        <li><strong>Runbooks</strong> : Procédures documentées</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4>⚡ Réduire le Toil</h4>
+                    <p style="font-size:0.9rem; margin-bottom:10px;"><span class="vocab-term"
+                            data-def="Travail répétitif, manuel, sans valeur ajoutée. L'ennemi du SRE.">Toil</span> =
+                        Travail manuel répétitif sans valeur</p>
+                    <ul class="dense-list">
+                        <li>Automatiser les tâches &gt; 2 fois</li>
+                        <li>Self-service pour les devs</li>
+                        <li>Objectif : &lt;50% du temps en Toil</li>
                     </ul>
                 </div>
             </div>
+
+            <!-- CHAOS ENGINEERING -->
+            <details style="margin-top:20px;">
+                <summary>🎲 Chaos Engineering</summary>
+                <div class="details-content">
+                    <p><strong>Principe :</strong> Introduire des pannes volontaires en production pour tester la
+                        résilience.</p>
+                    <ul class="dense-list" style="margin-top:10px;">
+                        <li><strong>Chaos Monkey</strong> (Netflix) : Tue des instances aléatoirement</li>
+                        <li><strong>Litmus</strong> : Chaos pour Kubernetes</li>
+                        <li><strong>Gremlin</strong> : Plateforme Chaos as a Service</li>
+                    </ul>
+                    <p style="margin-top:10px; color:var(--warning);">⚠️ À faire en production, avec "Blast Radius"
+                        contrôlé !</p>
+                </div>
+            </details>
         </div>
     </section>
 

@@ -567,3 +567,296 @@ pre {
     width: 100px;
     font-family: inherit;
 }
+
+/* === VOCABULARY TERMS (Click for Definition) === */
+.vocab-term {
+    display: inline-block;
+    background: rgba(130, 170, 255, 0.15);
+    border: 1px solid rgba(130, 170, 255, 0.4);
+    color: var(--fn);
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: help;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.vocab-term:hover {
+    background: rgba(130, 170, 255, 0.3);
+    border-color: var(--fn);
+    transform: translateY(-1px);
+}
+
+.vocab-term.active {
+    background: var(--fn);
+    color: var(--bg);
+}
+
+/* Vocabulary Modal */
+#vocab-modal {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card);
+    border: 1px solid var(--fn);
+    padding: 15px 25px;
+    border-radius: 10px;
+    z-index: 1000;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+#vocab-modal.show {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+#vocab-modal .vocab-title {
+    color: var(--fn);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+#vocab-modal .vocab-def {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+#vocab-modal .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* === COMMAND TABLES === */
+.cmd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    background: var(--bg2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cmd-table th {
+    background: var(--card);
+    color: var(--primary-bright);
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+}
+
+.cmd-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.cmd-table tr:last-child td {
+    border-bottom: none;
+}
+
+.cmd-table tr:hover {
+    background: rgba(104, 160, 99, 0.1);
+}
+
+.cmd-table code {
+    background: var(--bg);
+    color: var(--str);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+}
+
+/* === NETWORK DIAGRAM === */
+.net-diagram {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.net-layer {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 15px 20px;
+    text-align: center;
+    min-width: 120px;
+    transition: all 0.2s;
+}
+
+.net-layer:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.net-layer .layer-num {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+}
+
+.net-layer .layer-name {
+    font-weight: 700;
+    color: var(--primary-bright);
+}
+
+.net-layer .layer-proto {
+    font-size: 0.8rem;
+    color: var(--text);
+    margin-top: 5px;
+}
+
+/* === GIT FLOW DIAGRAM === */
+.git-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background: var(--bg2);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.git-stage {
+    text-align: center;
+    padding: 15px;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+.git-stage.active {
+    border-color: var(--primary);
+    background: rgba(104, 160, 99, 0.1);
+}
+
+.git-stage .stage-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.git-stage .stage-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.git-arrow {
+    color: var(--muted);
+    font-size: 1.5rem;
+}
+
+/* === SCENARIO CARDS === */
+.scenario-box {
+    background: var(--bg2);
+    border-left: 4px solid var(--primary);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.scenario-box h4 {
+    color: var(--primary-bright);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scenario-box .steps {
+    counter-reset: step;
+}
+
+.scenario-box .step {
+    counter-increment: step;
+    padding-left: 30px;
+    position: relative;
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+.scenario-box .step::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* === DOCKER ARCHITECTURE === */
+.docker-arch {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.docker-component {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.docker-component:hover {
+    border-color: #2496ed;
+    transform: translateY(-3px);
+}
+
+.docker-component .comp-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.docker-component .comp-name {
+    font-weight: 700;
+    color: #2496ed;
+    font-size: 0.95rem;
+}
+
+.docker-component .comp-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 5px;
+}

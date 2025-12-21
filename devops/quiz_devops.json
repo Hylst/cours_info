@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "Quiz DevOps - 100 Questions (Premium)",
-        "total": 100
+        "title": "Quiz DevOps - 115 Questions (Premium)",
+        "total": 115
     },
     "questions": [
         {
@@ -1203,6 +1203,186 @@
             ],
             "answer": 0,
             "explanation": "Un backup non testé (restauration) n'existe pas."
+        },
+        {
+            "id": 101,
+            "question": "Quelle est la différence entre TCP et UDP ?",
+            "options": [
+                "TCP = Fiable avec accusé de réception; UDP = Rapide sans garantie",
+                "TCP est plus rapide que UDP",
+                "UDP est pour le web, TCP pour les jeux",
+                "Aucune différence"
+            ],
+            "answer": 0,
+            "explanation": "TCP = Lettre recommandée (HTTP, SSH). UDP = Flyer (Streaming, DNS)."
+        },
+        {
+            "id": 102,
+            "question": "Quel est le rôle du DNS ?",
+            "options": [
+                "Traduire les noms de domaine en adresses IP",
+                "Protéger contre les virus",
+                "Compresser les fichiers",
+                "Gérer les mots de passe"
+            ],
+            "answer": 0,
+            "explanation": "google.com → 142.250.x.x. C'est l'annuaire d'Internet."
+        },
+        {
+            "id": 103,
+            "question": "Que signifie TTL (Time To Live) en réseau ?",
+            "options": [
+                "Le nombre de sauts avant que le paquet soit abandonné",
+                "Le temps avant expiration du mot de passe",
+                "La durée de vie du serveur",
+                "Le temps de réponse"
+            ],
+            "answer": 0,
+            "explanation": "Évite les boucles infinies. Chaque routeur décrémente le TTL."
+        },
+        {
+            "id": 104,
+            "question": "Que signifie CIDR /24 ?",
+            "options": [
+                "Un bloc de 256 adresses IP (subnet mask 255.255.255.0)",
+                "24 serveurs dans le cluster",
+                "Une latence de 24ms",
+                "Un port TCP"
+            ],
+            "answer": 0,
+            "explanation": "Notation compacte pour définir une plage d'IPs."
+        },
+        {
+            "id": 105,
+            "question": "Qu'est-ce qu'un VPC (Virtual Private Cloud) ?",
+            "options": [
+                "Un réseau privé isolé dans le cloud",
+                "Une machine virtuelle",
+                "Un type de base de données",
+                "Un outil de monitoring"
+            ],
+            "answer": 0,
+            "explanation": "Vous y définissez vos subnets, routes et règles de sécurité."
+        },
+        {
+            "id": 106,
+            "question": "Que fait 'git rebase' ?",
+            "options": [
+                "Réécrit l'historique en rejouant les commits sur une nouvelle base",
+                "Supprime la branche courante",
+                "Fusionne deux branches comme merge",
+                "Annule tous les commits"
+            ],
+            "answer": 0,
+            "explanation": "Crée un historique plus linéaire que merge. À utiliser AVANT de push."
+        },
+        {
+            "id": 107,
+            "question": "Que fait 'git stash' ?",
+            "options": [
+                "Met de côté les modifications non commitées temporairement",
+                "Supprime les fichiers",
+                "Crée une nouvelle branche",
+                "Envoie le code au serveur"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour changer de branche sans perdre son travail en cours."
+        },
+        {
+            "id": 108,
+            "question": "Que fait 'git cherry-pick' ?",
+            "options": [
+                "Applique un commit spécifique d'une autre branche sur la branche courante",
+                "Supprime un commit",
+                "Crée une copie du repo",
+                "Affiche les différences"
+            ],
+            "answer": 0,
+            "explanation": "Idéal pour reporter un hotfix sans merger toute la branche."
+        },
+        {
+            "id": 109,
+            "question": "Que fait 'docker exec -it <container> sh' ?",
+            "options": [
+                "Ouvre un shell interactif dans le conteneur en cours d'exécution",
+                "Arrête le conteneur",
+                "Construit une nouvelle image",
+                "Supprime le conteneur"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour débugger un conteneur en cours d'exécution."
+        },
+        {
+            "id": 110,
+            "question": "Que fait 'docker logs -f <container>' ?",
+            "options": [
+                "Affiche et suit les logs du conteneur en temps réel",
+                "Supprime les logs",
+                "Envoie les logs par email",
+                "Compresse les logs"
+            ],
+            "answer": 0,
+            "explanation": "Le -f (follow) permet de voir les nouveaux logs en continu."
+        },
+        {
+            "id": 111,
+            "question": "Que fait 'docker compose up -d' ?",
+            "options": [
+                "Lance tous les services en arrière-plan (detached mode)",
+                "Arrête tous les conteneurs",
+                "Supprime les volumes",
+                "Construit les images sans lancer"
+            ],
+            "answer": 0,
+            "explanation": "La commande standard pour démarrer une stack multi-conteneurs."
+        },
+        {
+            "id": 112,
+            "question": "Que fait 'kubectl describe pod <nom>' ?",
+            "options": [
+                "Affiche les détails complets du Pod (events, status, volumes)",
+                "Supprime le Pod",
+                "Crée un nouveau Pod",
+                "Redémarre le Pod"
+            ],
+            "answer": 0,
+            "explanation": "Essentiel pour débugger pourquoi un Pod ne démarre pas."
+        },
+        {
+            "id": 113,
+            "question": "Que fait 'kubectl apply -f manifest.yaml' ?",
+            "options": [
+                "Crée ou met à jour les ressources définies dans le fichier YAML",
+                "Supprime les ressources",
+                "Valide la syntaxe sans appliquer",
+                "Affiche le contenu du fichier"
+            ],
+            "answer": 0,
+            "explanation": "Approche déclarative : K8s fera converger l'état réel vers l'état désiré."
+        },
+        {
+            "id": 114,
+            "question": "Que fait 'kubectl port-forward svc/my-svc 8080:80' ?",
+            "options": [
+                "Crée un tunnel pour accéder au service depuis localhost:8080",
+                "Ouvre le port 80 sur internet",
+                "Bloque le port 8080",
+                "Supprime le service"
+            ],
+            "answer": 0,
+            "explanation": "Permet de tester un service sans configurer d'Ingress."
+        },
+        {
+            "id": 115,
+            "question": "Quel port utilise SSH par défaut ?",
+            "options": [
+                "22",
+                "80",
+                "443",
+                "3306"
+            ],
+            "answer": 0,
+            "explanation": "Port 22 = SSH, 80 = HTTP, 443 = HTTPS, 3306 = MySQL."
         }
     ]
 }

@@ -21,174 +21,664 @@
                 <div class="logo-icon">CS</div>Cybersécurité
             </div>
             <nav>
-                <a href="#s1">CIA Triad</a>
-                <a href="#s2">Attaques</a>
-                <a href="#s3">Crypto</a>
-                <a href="#s4">Défense</a>
+                <a href="#m0">Bases</a>
+                <a href="#m1">Web</a>
+                <a href="#m2">Crypto</a>
+                <a href="#m3">Réseau</a>
+                <a href="#m7">Cloud</a>
+                <a href="#quiz-section">Quiz</a>
             </nav>
         </div>
     </header>
     <section class="hero">
         <div class="container">
             <h1>Mémo Cybersécurité</h1>
-            <p>Fondamentaux de la protection, attaques courantes et cryptographie.</p>
+            <p>Fondamentaux, Attaques, Cloud & Défense — Guide 2025</p>
         </div>
     </section>
 
-    <div class="intro-box">
-        <div class="container">
-            <h3>Les 3 Piliers (CIA Framework)</h3>
-            <p>La sécurité de l'information repose sur ce triangle fondamental :</p>
-            <div class="grid2" style="margin-top:20px;">
-                <div class="info">
-                    <strong>1. Confidentialité</strong><br>
-                    Seules les personnes autorisées ont accès aux données.<br>
-                    <em>Ex: Chiffrement, ACLs, 2FA.</em>
-                </div>
-                <div class="info">
-                    <strong>2. Intégrité</strong><br>
-                    La donnée n'a pas été altérée (volontairement ou accidentellement).<br>
-                    <em>Ex: Hashing (SHA-256), Signatures numériques.</em>
-                </div>
-                <div class="info">
-                    <strong>3. Disponibilité (Availability)</strong><br>
-                    Le service doit rester accessible.<br>
-                    <em>Ex: Redondance, backups, protection DDoS.</em>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- S1: ATTACKS -->
-    <section id="s2">
+    <!-- MODULE 00: FONDAMENTAUX -->
+    <section id="m0"
+        style="background: radial-gradient(circle at center, rgba(104, 160, 99, 0.05) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">01</div>
+                <div class="sec-num">00</div>
                 <div>
-                    <h2 class="sec-title">Attaques Web Courantes</h2>
-                    <p class="sec-sub">OWASP Top 10 Essentials</p>
+                    <h2 class="sec-title">Fondamentaux</h2>
+                    <p class="sec-sub">CIA, AAA & Defense in Depth</p>
                 </div>
             </div>
 
-            <details>
-                <summary>💉 SQL Injection (SQLi)</summary>
-                <div class="details-content">
-                    <p>L'attaquant injecte du code SQL malveillant via un champ de formulaire pour manipuler la base de
-                        données.</p>
-                    <div class="code">
-                        <div class="code-head"><span class="dot r"></span>VULNÉRABLE</div>
-                        <pre><span class="c">// PHP Legacy (Mauvais)</span>
-<span class="var">$sql</span> = <span class="str">"SELECT * FROM users WHERE id = "</span> . <span class="var">$_GET</span>[<span class="str">'id'</span>];
-<span class="c">// Si id = "1 OR 1=1", l'attaquant voit tout !</span></pre>
-                    </div>
-                    <div class="code">
-                        <div class="code-head"><span class="dot g"></span>SÉCURISÉ</div>
-                        <pre><span class="c">// Requêtes préparées (PDO)</span>
-<span class="var">$stmt</span> = <span class="var">$pdo</span>.<span class="fn">prepare</span>(<span class="str">"SELECT * FROM users WHERE id = :id"</span>);
-<span class="var">$stmt</span>.<span class="fn">execute</span>([<span class="str">'id'</span> => <span class="var">$_GET</span>[<span class="str">'id'</span>]]);</pre>
-                    </div>
+            <!-- CIA TRIAD -->
+            <h3 style="color:#fff; margin-bottom:15px;">🔺 Le Triangle CIA</h3>
+            <div class="grid3">
+                <div class="analogy-box" style="margin:0; border-left-color:#ff7675;">
+                    <h4>1. Confidentialité</h4>
+                    <p>Seuls les autorisés voient.<br><em>Ex: Chiffrement (AES), ACLs.</em></p>
                 </div>
-            </details>
+                <div class="analogy-box" style="margin:0; border-left-color:#74b9ff;">
+                    <h4>2. Intégrité</h4>
+                    <p>La donnée est authentique.<br><em>Ex: Hashing (SHA256), Signatures.</em></p>
+                </div>
+                <div class="analogy-box" style="margin:0; border-left-color:#fab1a0;">
+                    <h4>3. Disponibilité</h4>
+                    <p>Le service est accessible.<br><em>Ex: Redondance, Anti-DDoS.</em></p>
+                </div>
+            </div>
 
-            <details>
-                <summary>🎭 XSS (Cross-Site Scripting)</summary>
-                <div class="details-content">
-                    <p>Injection de scripts JavaScript malveillants exécutés par le navigateur de la victime.</p>
-                    <ul>
-                        <li><strong>Stored XSS</strong> : Le script est stocké en BDD (ex: commentaire).</li>
-                        <li><strong>Reflected XSS</strong> : Le script est dans l'URL.</li>
+            <!-- AAA & DEFENSE IN DEPTH -->
+            <div class="grid2" style="margin-top:30px;">
+                <div class="ref-card"
+                    style="border:1px solid var(--border); padding:20px; border-radius:8px; background:var(--card);">
+                    <h4 style="color:var(--primary-bright); margin-bottom:15px;">🔑 Framework AAA</h4>
+                    <ul class="dense-list">
+                        <li><strong>Authentication</strong> : Qui êtes-vous ? (Login)</li>
+                        <li><strong>Authorization</strong> : Que pouvez-vous faire ? (Permissions)</li>
+                        <li><strong>Accounting</strong> : Qu'avez-vous fait ? (Logs/Audit)</li>
                     </ul>
-                    <p class="tip"><strong>Solution :</strong> Toujours échapper les données affichées
-                        (<code>htmlspecialchars</code> en PHP, auto dans React/Vue).</p>
                 </div>
-            </details>
-            <details>
-                <summary>👺 CSRF (Cross-Site Request Forgery)</summary>
-                <div class="details-content">
-                    <p>Forcer un utilisateur connecté à exécuter une action à son insu.</p>
-                    <p class="tip"><strong>Solution :</strong> Utiliser des tokens Anti-CSRF dans les formulaires.</p>
+                <div class="ref-card"
+                    style="border:1px solid var(--border); padding:20px; border-radius:8px; background:var(--card);">
+                    <h4 style="color:var(--primary-bright); margin-bottom:15px;">🛡️ Defense in Depth</h4>
+                    <div class="net-flow" style="margin:0; flex-wrap:wrap; justify-content:center;">
+                        <span
+                            style="border:1px solid #555; padding:4px 8px; border-radius:4px; font-size:0.8rem;">Data</span>
+                        <span style="color:var(--muted)">⊂</span>
+                        <span
+                            style="border:1px solid #666; padding:4px 8px; border-radius:4px; font-size:0.8rem;">App</span>
+                        <span style="color:var(--muted)">⊂</span>
+                        <span
+                            style="border:1px solid #777; padding:4px 8px; border-radius:4px; font-size:0.8rem;">Host</span>
+                        <span style="color:var(--muted)">⊂</span>
+                        <span
+                            style="border:1px solid #888; padding:4px 8px; border-radius:4px; font-size:0.8rem;">Network</span>
+                        <span style="color:var(--muted)">⊂</span>
+                        <span
+                            style="border:1px solid #999; padding:4px 8px; border-radius:4px; font-size:0.8rem;">Physical</span>
+                    </div>
+                    <p style="font-size:0.85rem; margin-top:10px; color:var(--muted);">Plusieurs couches de sécurité
+                        sont nécessaires. Si une échoue, l'autre protège.</p>
                 </div>
-            </details>
+            </div>
+
+            <!-- VOCABULARY -->
+            <div class="tip" style="margin-top:25px;">
+                <strong>📚 Vocabulaire Essentiel :</strong><br>
+                <div style="margin-top:10px; display:flex; gap:15px; flex-wrap:wrap;">
+                    <span class="vocab-term" data-def="Une cause potentielle d'incident (Hacker, Virus, Panne).">Threat
+                        (Menace)</span>
+                    <span class="vocab-term" data-def="Une faiblesse dans le système (Bug, Port ouvert).">Vulnerability
+                        (Vuln)</span>
+                    <span class="vocab-term" data-def="Probabilité qu'une Menace exploite une Vulnérabilité.">Risk
+                        (Risque)</span>
+                    <span class="vocab-term" data-def="Code qui profite d'une vulnérabilité.">Exploit</span>
+                    <span class="vocab-term"
+                        data-def="Vulnérabilité publique connue (Common Vulnerabilities and Exposures).">CVE</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- S2: CRYPTO -->
-    <section id="s3">
+    <!-- MODULE 01: ATTAQUES WEB ÉTENDUES -->
+    <section id="m1"
+        style="background: radial-gradient(circle at center, rgba(255, 118, 117, 0.05) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">02</div>
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #d63031, #ff7675); border-color:#d63031;">01</div>
                 <div>
-                    <h2 class="sec-title">Cryptographie</h2>
-                    <p class="sec-sub">Protéger la donnée</p>
+                    <h2 class="sec-title" style="color:#d63031;">Attaques Web</h2>
+                    <p class="sec-sub">OWASP Top 10 & Exploits</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>🏆 OWASP Top 10 (2024 Essentials)</h3>
+                    <table class="cmd-table">
+                        <thead>
+                            <tr>
+                                <th>Vuln</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Broken Access Control</strong></td>
+                                <td>Accès données non-autorisées (IDOR).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cryptographic Failures</strong></td>
+                                <td>Données claires, algo faible.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Injection</strong></td>
+                                <td>SQLi, Command Injection.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Insecure Design</strong></td>
+                                <td>Architecture non sécurisée.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security Misconfig</strong></td>
+                                <td>Default passwords, verbose errors.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="attack-card">
+                        <div class="attack-title">
+                            <span>💉 SQL Injection (SQLi)</span>
+                            <span style="font-size:0.8rem;">Critique</span>
+                        </div>
+                        <p style="font-size:0.9rem; color:var(--text); margin-bottom:8px;">
+                            L'attaquant manipule la requête BDD via une entrée utilisateur non assainie.
+                        </p>
+                        <div class="code" style="margin:5px 0;">
+                            <pre><span class="c">-- Payload</span>
+' OR 1=1 --
+<span class="c">-- Résultat</span>
+SELECT * FROM users WHERE id = '' OR 1=1 --'</pre>
+                        </div>
+                        <div class="remediation-box">
+                            <strong>🛡️ Fix:</strong> Utiliser des <code>Prepared Statements</code> (PDO/ORM) qui
+                            séparent code et données.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAILED ATTACKS -->
+            <div class="grid2" style="margin-top:20px;">
+                <details>
+                    <summary>🎭 XSS (Cross-Site Scripting)</summary>
+                    <div class="details-content">
+                        <p>Execution de JS dans le navigateur de la victime.</p>
+                        <ul class="dense-list">
+                            <li><strong>Reflected</strong> : Payload dans l'URL (Phishing).</li>
+                            <li><strong>Stored</strong> : Payload en BDD (Commentaires, Profils).</li>
+                            <li><strong>DOM-based</strong> : JS client vulnérable.</li>
+                        </ul>
+                        <div class="code">
+                            <div class="code-head"><span class="dot g"></span>Remediation</div>
+                            <pre><span class="c">// 1. Escape Output</span>
+&lt;div&gt;{{ user_input }}&lt;/div&gt; <span class="c">(Auto in React/Vue)</span>
+
+<span class="c">// 2. Content Security Policy (CSP)</span>
+Header set Content-Security-Policy "default-src 'self';"</pre>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>👺 SSRF (Server-Side Request Forgery)</summary>
+                    <div class="details-content">
+                        <p>Le serveur effectue une requête vers une ressource interne non accessible de l'extérieur (ex:
+                            AWS Metadata).</p>
+                        <div class="code">
+                            <pre><span class="c"># Attack</span>
+GET /fetch?url=http://169.254.169.254/latest/meta-data/</pre>
+                        </div>
+                        <div class="remediation-box"><strong>🛡️ Fix:</strong> Allowlist de domaines, désactiver les
+                            redirections internes, isoler le réseau.</div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🆔 IDOR (Insecure Direct Object Ref)</summary>
+                    <div class="details-content">
+                        <p>Changer un ID dans l'URL permet d'accéder aux données d'un autre utilisateur.</p>
+                        <code>GET /invoice/123</code> ➔ <code>GET /invoice/124</code>
+                        <div class="remediation-box"><strong>🛡️ Fix:</strong> Vérifier les permissions côté serveur à
+                            chaque requête. Utiliser des UUID.</div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>📡 RCE (Remote Code Execution)</summary>
+                    <div class="details-content">
+                        <p>L'attaquant exécute des commandes système (Shell) sur le serveur. Souvent via Upload de
+                            fichier ou Deserialization.</p>
+                        <div class="remediation-box"><strong>🛡️ Fix:</strong> Ne jamais utiliser <code>eval()</code>,
+                            <code>exec()</code>, <code>system()</code> sur des inputs.
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 02: CRYPTOGRAPHIE -->
+    <section id="m2"
+        style="background: radial-gradient(circle at center, rgba(162, 155, 254, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #6c5ce7, #a29bfe); border-color:#6c5ce7;">02</div>
+                <div>
+                    <h2 class="sec-title" style="color:#6c5ce7;">Cryptographie</h2>
+                    <p class="sec-sub">Confidentialité & Intégrité</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card" style="border-top:3px solid #74b9ff;">
+                    <h4 style="margin-bottom:10px;">🔐 Symétrique vs Asymétrique</h4>
+                    <ul class="dense-list">
+                        <li><strong>Symétrique (AES)</strong> : 1 seule clé pour chiffrer/déchiffrer. Rapide. Idéal pour
+                            les données (Data at rest).</li>
+                        <li><strong>Asymétrique (RSA/ECC)</strong> : Clé Publique (Cadenas) / Clé Privée (Clé). Lent.
+                            Idéal pour l'échange de clés (Handshake) et Signature.</li>
+                    </ul>
+                </div>
+                <div class="ref-card" style="border-top:3px solid #ff7675;">
+                    <h4 style="margin-bottom:10px;">🧬 Hachage (Hashing)</h4>
+                    <p style="font-size:0.9rem;">Empreinte unique irréversible.</p>
+                    <table class="cmd-table" style="margin:5px 0;">
+                        <thead>
+                            <tr>
+                                <th>Algo</th>
+                                <th>Statut</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MD5/SHA1</td>
+                                <td><span style="color:#ff7675">Cassé</span></td>
+                                <td>Legacy uniquement</td>
+                            </tr>
+                            <tr>
+                                <td>SHA-256</td>
+                                <td><span style="color:#badc58">Standard</span></td>
+                                <td>Signatures, Blockchain</td>
+                            </tr>
+                            <tr>
+                                <td>Bcrypt/Argon2</td>
+                                <td><span style="color:#badc58">Fort</span></td>
+                                <td>Stockage Mots de passe</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TLS HANDSHAKE -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🤝 TLS Handshake (Simplifié)</h3>
+            <div class="net-flow" style="justify-content:center;">
+                <div class="net-node" style="min-width:100px;">
+                    <span class="net-icon">💻</span>Client
+                </div>
+                <div class="net-arrow" style="font-size:1rem;">
+                    1. Hello<br>
+                    <span style="color:#6c5ce7">➜</span><br><br>
+                    <span style="color:#6c5ce7">⬅</span><br>
+                    2. Certificat + PubKey
+                </div>
+                <div class="net-node" style="min-width:100px;">
+                    <span class="net-icon">☁️</span>Serveur
+                </div>
+                <div class="net-arrow" style="font-size:1rem;">
+                    3. Key Exch<br>
+                    <span style="color:#fdcb6e">➜</span><br><br>
+                    <span style="color:#00b894">⇄</span><br>
+                    4. Encrypted Data (Session Key)
+                </div>
+            </div>
+            <p style="text-align:center; font-size:0.85rem; color:var(--muted); margin-top:-10px;">Le serveur prouve son
+                identité (Certificat), puis ils négocient une clé symétrique temporaire.</p>
+        </div>
+    </section>
+
+    <!-- MODULE 03: SÉCURITÉ RÉSEAU -->
+    <section id="m3"
+        style="background: radial-gradient(circle at center, rgba(9, 132, 227, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #0984e3, #74b9ff); border-color:#0984e3;">03</div>
+                <div>
+                    <h2 class="sec-title" style="color:#0984e3;">Sécurité Réseau</h2>
+                    <p class="sec-sub">Firewall, VPN & Segmentation</p>
+                </div>
+            </div>
+
+            <div class="grid3">
+                <div class="tool-card">
+                    <h4>🧱 Firewall</h4>
+                    <p>Filtre le trafic (Port/IP).<br>
+                        <strong>Stateless:</strong> Regarde juste le paquet.<br>
+                        <strong>Stateful:</strong> Se souvient de la connexion.
+                    </p>
+                </div>
+                <div class="tool-card">
+                    <h4>🚨 IDS / IPS</h4>
+                    <p><strong>IDS:</strong> Détecte et alerte (Caméra).<br>
+                        <strong>IPS:</strong> Bloque l'attaque (Vigile).<br>
+                        <em>Outils: Suricata, Snort.</em>
+                    </p>
+                </div>
+                <div class="tool-card">
+                    <h4>🔒 VPN</h4>
+                    <p>Tunnel chiffré.<br>
+                        <strong>IPSec:</strong> Robuste, complexe (Site-to-Site).<br>
+                        <strong>WireGuard:</strong> Moderne, rapide, simple.
+                    </p>
+                </div>
+            </div>
+
+            <!-- NETWORK ATTACKS -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">☠️ Attaques Réseau</h3>
+            <div class="grid2">
+                <div class="attack-card" style="border-color:#e17055;">
+                    <div class="attack-title" style="color:#e17055;">MITM (Man-in-the-Middle)</div>
+                    <p>L'attaquant s'intercepte entre Client et Serveur.</p>
+                    <div class="net-flow" style="margin:10px 0; justify-content:center; gap:5px;">
+                        <span style="font-size:1.2rem">🧑</span>
+                        <span style="color:#e17055">➔ 🕵️ ➔</span>
+                        <span style="font-size:1.2rem">☁️</span>
+                    </div>
+                </div>
+                <div class="attack-card" style="border-color:#e17055;">
+                    <div class="attack-title" style="color:#e17055;">Denial of Service (DDoS)</div>
+                    <p>Submerger le serveur pour le rendre indisponible.</p>
+                    <div class="remediation-box"><strong>🛡️ Fix:</strong> CDN (Cloudflare), Rate Limiting.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 04: AUTH & IDENTITÉ -->
+    <section id="m4"
+        style="background: radial-gradient(circle at center, rgba(253, 203, 110, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #e1b12c, #fdcb6e); border-color:#e1b12c;">04</div>
+                <div>
+                    <h2 class="sec-title" style="color:#e1b12c;">Auth & Identité</h2>
+                    <p class="sec-sub">IAM, OAuth 2.0 & MFA</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div>
+                    <h3>🔑 Les 3 Facteurs (MFA)</h3>
+                    <ul class="dense-list" style="margin-top:15px;">
+                        <li><strong>Knowledge</strong> (Ce que je sais) : Mot de passe, PIN.</li>
+                        <li><strong>Possession</strong> (Ce que j'ai) : Téléphone (TOTP), YubiKey.</li>
+                        <li><strong>Inherence</strong> (Ce que je suis) : Biométrie (FaceID, Empreinte).</li>
+                    </ul>
+                    <div class="tip"
+                        style="margin-top:15px; border-left-color:#fdcb6e; background:rgba(253, 203, 110, 0.1);">
+                        <strong>Conseil:</strong> Préférez TOTP (Google Auth) au SMS (vulnérable au SIM Swapping).
+                    </div>
+                </div>
+                <div>
+                    <h3>🌐 OAuth 2.0 & OIDC</h3>
+                    <p style="font-size:0.9rem;">Protocole standard pour l'autorisation (accès délégué).</p>
+                    <div class="net-flow" style="margin-top:10px; font-size:0.8rem; justify-content:center;">
+                        <span style="border:1px solid #666; padding:5px;">App</span>
+                        <span style="color:#aaa">➔ Auth?</span>
+                        <span style="border:1px solid #e1b12c; padding:5px;">Google</span>
+                        <span style="color:#aaa">⬅ Token</span>
+                        <span style="border:1px solid #666; padding:5px;">App</span>
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">L'utilisateur ne donne jamais son
+                        mot de passe Google à l'App. Il utilise un Token.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 05: ACTIVE DIRECTORY -->
+    <section id="m5"
+        style="background: radial-gradient(circle at center, rgba(0, 184, 148, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #00b894, #55efc4); border-color:#00b894;">05</div>
+                <div>
+                    <h2 class="sec-title" style="color:#00b894;">Active Directory</h2>
+                    <p class="sec-sub">Kerberos & Windows Security</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="margin-top:0; border-left-color:#00b894;">
+                <h4>🎟️ Kerberos = Ticket de Cinéma</h4>
+                <p>
+                    1. <strong>TGT (Ticket Granting Ticket)</strong> : Vous prouvez votre identité à l'entrée (KDC).<br>
+                    2. <strong>Service Ticket</strong> : Vous échangez votre TGT contre un ticket pour un film
+                    spécifique (Serveur de fichiers).<br>
+                    3. <strong>Session</strong> : Vous entrez dans la salle. Le mot de passe ne voyage jamais sur le
+                    réseau.
+                </p>
+            </div>
+
+            <h3 style="color:#fff; margin-top:25px;">⚔️ Attaques AD Courantes</h3>
+            <div class="grid3">
+                <div class="attack-card" style="border-color:#00b894; background:rgba(0, 184, 148, 0.05);">
+                    <div class="attack-title" style="color:#00b894;">Pass-the-Hash</div>
+                    <p style="font-size:0.9rem;">Voler le hash (NTLM) d'un admin et l'utiliser pour s'authentifier sans
+                        connaître le mot de passe.</p>
+                </div>
+                <div class="attack-card" style="border-color:#00b894; background:rgba(0, 184, 148, 0.05);">
+                    <div class="attack-title" style="color:#00b894;">Kerberoasting</div>
+                    <p style="font-size:0.9rem;">Demander un ticket pour un service, le récupérer et le cracker offline
+                        (Brute force).</p>
+                </div>
+                <div class="attack-card" style="border-color:#00b894; background:rgba(0, 184, 148, 0.05);">
+                    <div class="attack-title" style="color:#00b894;">Golden Ticket</div>
+                    <p style="font-size:0.9rem;">Compromission totale (Compte KRBTGT). Création de tickets valides pour
+                        n'importe quel service à vie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 06: MALWARES & MENACES -->
+    <section id="m6"
+        style="background: radial-gradient(circle at center, rgba(178, 190, 195, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #636e72, #b2bec3); border-color:#636e72;">06</div>
+                <div>
+                    <h2 class="sec-title" style="color:#636e72;">Malwares & Menaces</h2>
+                    <p class="sec-sub">Kill Chain & Ransomware</p>
+                </div>
+            </div>
+
+            <!-- KILL CHAIN -->
+            <h3 style="color:#fff; margin-bottom:15px;">🔗 Cyber Kill Chain (Simplifiée)</h3>
+            <div class="net-flow" style="margin-top:0; justify-content:center; flex-wrap:wrap; gap:5px;">
+                <div class="net-node" style="min-width:100px; padding:10px;">🔎 Recon</div>
+                <span class="net-arrow" style="font-size:1rem;">➔</span>
+                <div class="net-node" style="min-width:100px; padding:10px;">🔫 Weaponization</div>
+                <span class="net-arrow" style="font-size:1rem;">➔</span>
+                <div class="net-node" style="min-width:100px; padding:10px;">📨 Delivery</div>
+                <span class="net-arrow" style="font-size:1rem;">➔</span>
+                <div class="net-node" style="min-width:100px; padding:10px;">💥 Exploitation</div>
+                <span class="net-arrow" style="font-size:1rem;">➔</span>
+                <div class="net-node" style="min-width:100px; padding:10px;">📡 C2</div>
+                <span class="net-arrow" style="font-size:1rem;">➔</span>
+                <div class="net-node" style="min-width:100px; padding:10px;">💰 Action</div>
+            </div>
+
+            <div class="grid2" style="margin-top:25px;">
+                <div class="tool-card">
+                    <h4>🦠 Types de Malwares</h4>
+                    <ul class="dense-list">
+                        <li><strong>Ransomware</strong> : Chiffre les données et demande rançon (WannaCry).</li>
+                        <li><strong>Trojan</strong> : Cheval de Troie (se cache dans logiciel légitime).</li>
+                        <li><strong>Spyware</strong> : Espionne (Keylogger).</li>
+                        <li><strong>Botnet</strong> : PC Zombi pour DDoS.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="warning" style="margin-top:0;">
+                        <strong>⚠️ Ingénierie Sociale</strong>
+                        <p style="font-size:0.9rem; margin-top:5px;">La faille principale est souvent humaine.</p>
+                        <ul style="font-size:0.85rem; padding-left:20px; color:var(--muted); margin-top:5px;">
+                            <li><strong>Phishing</strong> : Email frauduleux.</li>
+                            <li><strong>Pretexting</strong> : Scénario inventé (Faux support info).</li>
+                            <li><strong>Vishing</strong> : Phishing par téléphone.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 07: CLOUD SECURITY -->
+    <section id="m7"
+        style="background: radial-gradient(circle at center, rgba(116, 185, 255, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #0984e3, #74b9ff); border-color:#0984e3;">07</div>
+                <div>
+                    <h2 class="sec-title" style="color:#0984e3;">Cloud Security</h2>
+                    <p class="sec-sub">AWS/Azure & Responsabilité Partagée</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="margin-top:0; border-left-color:#0984e3;">
+                <h4>🤝 Modèle de Responsabilité Partagée</h4>
+                <p>Le Cloud Provider sécurise <strong>LE</strong> Cloud (Datacenter, Réseau physique).<br>
+                    Le Client sécurise <strong>DANS</strong> le Cloud (Données, OS, App).</p>
+            </div>
+
+            <div class="grid3">
+                <div class="ref-card"
+                    style="border:1px solid var(--border); background:var(--card); padding:15px; border-radius:8px;">
+                    <h4 style="color:#74b9ff;">IaaS (EC2)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted);">Vous gérez l'OS, les patchs, le firewall host.</p>
+                </div>
+                <div class="ref-card"
+                    style="border:1px solid var(--border); background:var(--card); padding:15px; border-radius:8px;">
+                    <h4 style="color:#74b9ff;">PaaS (RDS)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted);">Vous gérez juste la data et le code.</p>
+                </div>
+                <div class="ref-card"
+                    style="border:1px solid var(--border); background:var(--card); padding:15px; border-radius:8px;">
+                    <h4 style="color:#74b9ff;">SaaS (Gmail)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted);">Vous gérez juste l'accès et la configuration.</p>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;">
+                <strong>💡 Quick Wins Cloud :</strong>
+                <ul class="dense-list" style="margin-top:5px;">
+                    <li>Activer le MFA sur le compte Root (Toujours !).</li>
+                    <li>Ne jamais commiter de clés d'accès (AK/SK) sur Git.</li>
+                    <li>S3 Buckets : Privés par défaut.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 08: FORENSICS & INCIDENT RESPONSE -->
+    <section id="m8"
+        style="background: radial-gradient(circle at center, rgba(223, 230, 233, 0.05) 0%, transparent 60%);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #2d3436, #636e72); border-color:#2d3436;">08</div>
+                <div>
+                    <h2 class="sec-title" style="color:#2d3436;">Forensics & Response</h2>
+                    <p class="sec-sub">NIST Framework & Investigation</p>
                 </div>
             </div>
 
             <div class="grid2">
                 <div class="ref-card"
-                    style="background:var(--card); padding:20px; border-radius:8px; border:1px solid var(--border);">
-                    <h4>Chiffrement (Encryption)</h4>
-                    <p>Bidirectionnel. Transforme un message en code illisible. Nécessite une clé pour déchiffrer.</p>
-                    <ul style="font-size:0.9rem; color:var(--muted); margin-top:10px">
-                        <li><strong>Symétrique</strong> : Même clé (AES). Rapide.</li>
-                        <li><strong>Asymétrique</strong> : Clé publique / Clé privée (RSA, ECC). Authentification.</li>
+                    style="border:1px solid var(--border); background:var(--card); padding:20px; border-radius:8px;">
+                    <h4 style="margin-bottom:15px; color:#a4b0be;">🚨 Incident Response (NIST)</h4>
+                    <ul class="dense-list">
+                        <li><strong>1. Preparation</strong> : Outils, Plan, Formation.</li>
+                        <li><strong>2. Detection & Analysis</strong> : Alerts, Triage, Scope.</li>
+                        <li><strong>3. Containment</strong> : Isoler la machine (Débrancher câble).</li>
+                        <li><strong>4. Eradication</strong> : Supprimer le malware, images neuves.</li>
+                        <li><strong>5. Recovery</strong> : Restauration backups, monitoring.</li>
+                        <li><strong>6. Post-Incident</strong> : Lessons Learned (Retex).</li>
                     </ul>
                 </div>
-                <div class="ref-card"
-                    style="background:var(--card); padding:20px; border-radius:8px; border:1px solid var(--border);">
-                    <h4>Hachage (Hashing)</h4>
-                    <p>Unidirectionnel. Empreinte numérique unique.</p>
-                    <ul style="font-size:0.9rem; color:var(--muted); margin-top:10px">
-                        <li><strong>Irréversible</strong> : On ne peut pas retrouver l'original.</li>
-                        <li><strong>Usages</strong> : Stockage mots de passe (avec Salt), Vérification intégrité
-                            fichiers.</li>
-                        <li><strong>Algo</strong> : SHA-256, Argon2, Bcrypt. (Éviter MD5/SHA1).</li>
-                    </ul>
+                <div>
+                    <div class="analogy-box" style="margin-top:0; border-left-color:#636e72;">
+                        <h4>🕵️ Digital Forensics</h4>
+                        <p>Comme une scène de crime :</p>
+                        <p style="margin-top:10px;">
+                            <strong>Chain of Custody</strong> : Prouver que la preuve n'a pas été altérée.<br>
+                            <strong>Order of Volatility</strong> : Collecter du plus volatile au plus stable (RAM ➔
+                            Disque ➔ Cloud).
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- S3: DEFENSE -->
-    <section id="s4">
+    <!-- MODULE 09: OUTILS -->
+    <section id="m9"
+        style="background: radial-gradient(circle at center, rgba(162, 155, 254, 0.05) 0%, transparent 60%);">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">03</div>
+                <div class="sec-num"
+                    style="background:linear-gradient(135deg, #6c5ce7, #a29bfe); border-color:#6c5ce7;">09</div>
                 <div>
-                    <h2 class="sec-title">Défense & Hygiène</h2>
-                    <p class="sec-sub">Bonnes pratiques</p>
+                    <h2 class="sec-title" style="color:#6c5ce7;">Boîte à Outils</h2>
+                    <p class="sec-sub">Red Team & Blue Team</p>
                 </div>
             </div>
 
-            <table style="width:100%; border-collapse:collapse; color:var(--muted);">
-                <tr style="border-bottom:1px solid var(--border); text-align:left;">
-                    <th style="padding:10px; color:var(--primary-bright);">Concept</th>
-                    <th style="padding:10px; color:var(--primary-bright);">Description</th>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:10px;"><strong>Zero Trust</strong></td>
-                    <td style="padding:10px;">"Ne jamais faire confiance, toujours vérifier". Segmentation réseau,
-                        moindre privilège.</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:10px;"><strong>2FA / MFA</strong></td>
-                    <td style="padding:10px;">Double facteur. Quelque chose que je sais (Pwd) + Quelque chose que j'ai
-                        (Tel).</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:10px;"><strong>HTTPS / TLS</strong></td>
-                    <td style="padding:10px;">Chiffrement du transport + Authentification du serveur (Certificat).</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:10px;"><strong>Sanitization</strong></td>
-                    <td style="padding:10px;">"Input Validation". Ne jamais faire confiance aux données utilisateur
-                        (GET/POST/Cookies).</td>
-                </tr>
+            <table class="cmd-table">
+                <thead>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Type</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nmap</strong></td>
+                        <td>Reconnaissance</td>
+                        <td>Scanner de ports, découverte OS/Services.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wireshark</strong></td>
+                        <td>Analyse</td>
+                        <td>Capture et analyse de paquets réseau (Pcap).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Burp Suite</strong></td>
+                        <td>Web Proxy</td>
+                        <td>Scanner vulnérabilités Web, modifier requêtes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metasploit</strong></td>
+                        <td>Exploitation</td>
+                        <td>Framework de création/exécution d'exploits.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hashcat</strong></td>
+                        <td>Cracking</td>
+                        <td>Cassage de mots de passe (Hash) par GPU.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Splunk / ELK</strong></td>
+                        <td>SIEM</td>
+                        <td>Centralisation et analyse des Logs (Blue Team).</td>
+                    </tr>
+                </tbody>
             </table>
 
-            <div class="warning" style="margin-top:30px">
-                <strong>⚠️ Ingénierie Sociale</strong>
-                La faille principale reste souvent l'humain (Phishing, Pretexting). La formation est la première ligne
-                de défense.
+            <div class="tip" style="margin-top:25px;">
+                <strong>🎓 Se former (CTF) :</strong>
+                TryHackMe (Débutant), HackTheBox (Avancé), Root-Me (Francophone). Pratiquez légalement dans des
+                environnements isolés !
             </div>
         </div>
     </section>
@@ -210,8 +700,8 @@
     <script src="../../assets/js/quiz-engine.js"></script>
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo Cybersécurité</strong> • CIA Triad • Attaques Web • Crypto • 2025
-            </p>
+            <p style="margin-bottom:8px"><strong>Mémo Cybersécurité</strong> • Fondamentaux • Attaques • Cloud • Ops •
+                2025</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
                 mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et

@@ -93,3 +93,53 @@ window.calcSLO = function () {
 
     res.innerHTML = `Downtime/An autorisé : <br><span style="font-size:1.4rem; color:var(--danger)">${hours}h ${minutes}m</span>`;
 }
+
+    // === VOCABULARY MODAL SYSTEM ===
+    (function () {
+        // Create modal element
+        const modal = document.createElement('div');
+        modal.id = 'vocab-modal';
+        modal.innerHTML = `
+        <button class="close-btn" onclick="closeVocabModal()">&times;</button>
+        <div class="vocab-title"></div>
+        <div class="vocab-def"></div>
+    `;
+        document.body.appendChild(modal);
+
+        // Attach click handlers to all vocab terms
+        document.querySelectorAll('.vocab-term').forEach(term => {
+            term.addEventListener('click', (e) => {
+                const title = e.target.textContent;
+                const def = e.target.getAttribute('data-def');
+
+                modal.querySelector('.vocab-title').textContent = title;
+                modal.querySelector('.vocab-def').textContent = def;
+                modal.classList.add('show');
+
+                // Remove active from all, add to clicked
+                document.querySelectorAll('.vocab-term').forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+            });
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('vocab-term') && !modal.contains(e.target)) {
+                closeVocabModal();
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVocabModal();
+        });
+    })();
+
+window.closeVocabModal = function () {
+    const modal = document.getElementById('vocab-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        document.querySelectorAll('.vocab-term').forEach(t => t.classList.remove('active'));
+    }
+}
+

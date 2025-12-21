@@ -378,25 +378,192 @@ pre {
     color: var(--primary-bright);
 }
 
-/* === FOOTER === */
-footer {
-    padding: 40px 0;
-    text-align: center;
-    color: var(--dim);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border);
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
+.ref-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, border-color 0.2s;
+}
 
-    nav {
-        display: none;
-    }
+.ref-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
 
-    .sec-header {
-        flex-direction: column;
-    }
+.ref-card h4 {
+    margin-bottom: 10px;
+    color: var(--primary-bright);
+}
+
+.tool-card {
+    background: var(--bg2);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    background: rgba(104, 160, 99, 0.05);
+    border-color: var(--primary-bright);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tool-card .tool-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.dense-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.dense-list li {
+    margin-bottom: 6px;
+    color: var(--muted);
+}
+
+.dense-list li strong {
+    color: var(--text);
+}
+
+/* === DEEP ENRICHMENT STYLES === */
+
+.analogy-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border-left: 4px solid var(--primary);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin: 25px 0;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.analogy-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.02) 10px,
+            rgba(255, 255, 255, 0.02) 20px);
+    pointer-events: none;
+}
+
+.analogy-box h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--primary-bright);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timeline-list {
+    list-style: none;
+    border-left: 2px solid var(--border);
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.timeline-list li {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.timeline-list li::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(104, 160, 99, 0.2);
+}
+
+.timeline-list li strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+
+/* === INTERACTIVE DEMO (Simulator) === */
+.btn-strategy {
+    padding: 10px 16px;
+    background: var(--bg);
+    border: 1px solid var(--primary);
+    color: var(--primary-bright);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-strategy:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* === K8S MAP === */
+.k8s-comp {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 8px;
+    margin: 5px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.85rem;
+    cursor: help;
+    transition: all 0.2s;
+    color: var(--muted);
+}
+
+.k8s-comp:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-bright);
+    transform: scale(1.05);
+}
+
+.k8s-anim-pod {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-bright);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px var(--primary);
+    transition: all 0.5s ease;
+}
+
+/* === IaC & SRE CALCULATORS === */
+.calc-input {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px;
+    border-radius: 4px;
+    width: 100px;
+    font-family: inherit;
 }

@@ -846,7 +846,7 @@ echo "Total users: " . User::$count;
 <footer>
     <div class="container">
         <p style="margin-bottom:8px"><strong>Mémo PHP</strong> • 200+ fonctions • PHP 8+ • 2025</p>
-        <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong> — Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.</p>
+        <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.</p>
     </div>
 </footer>
 

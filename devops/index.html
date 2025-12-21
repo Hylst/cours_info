@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo DevOps | Guide 2025</title>
-    <meta name="description" content="Guide DevOps : CI/CD, Docker, Kubernetes, IaC.">
+    <title>Mémo DevOps Expert | Guide 2025</title>
+    <meta name="description"
+        content="Guide DevOps Expert : Culture, GitOps, CI/CD, Kubernetes, IaC, Observabilité, SRE.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -21,139 +22,579 @@
                 <div class="logo-icon">OPS</div>DevOps
             </div>
             <nav>
-                <a href="#s1">Culture</a>
-                <a href="#s2">CI/CD</a>
-                <a href="#s3">Containers</a>
-                <a href="#s4">IaC</a>
+                <a href="#m1">Culture</a>
+                <a href="#m3">CI/CD</a>
+                <a href="#m6">K8s</a>
+                <a href="#m7">IaC</a>
+                <a href="#m10">SRE</a>
             </nav>
         </div>
     </header>
+
     <section class="hero">
         <div class="container">
             <h1>Mémo DevOps</h1>
-            <p>Unir le Développement (Dev) et les Opérations (Ops). Automatisation et Fiabilité.</p>
+            <p>L'Art de livrer du logiciel. De la Culture à la Prod.</p>
         </div>
     </section>
 
-    <!-- S1: CI/CD -->
-    <section id="s2">
+    <!-- INTRO BOÎTE -->
+    <div class="intro-box">
+        <div class="container">
+            <h3>DevOps en 2025</h3>
+            <p>
+                Ce n'est pas un poste, c'est une <strong>philosophie</strong>. C'est réduire la friction entre l'idée
+                (Dev) et la valeur client (Ops).
+                C'est automatiser tout ce qui peut l'être pour se concentrer sur l'innovation.
+            </p>
+        </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#m1" class="toc-item"><span class="toc-num">01</span>Culture & CALMS</a>
+                <a href="#m2" class="toc-item"><span class="toc-num">02</span>GitOps & Versioning</a>
+                <a href="#m3" class="toc-item"><span class="toc-num">03</span>Continuous Integration</a>
+                <a href="#m4" class="toc-item"><span class="toc-num">04</span>Continuous Delivery</a>
+                <a href="#m5" class="toc-item"><span class="toc-num">05</span>Containers Advanced</a>
+                <a href="#m6" class="toc-item"><span class="toc-num">06</span>Kubernetes (K8s)</a>
+                <a href="#m7" class="toc-item"><span class="toc-num">07</span>Infrastructure as Code</a>
+                <a href="#m8" class="toc-item"><span class="toc-num">08</span>Observabilité</a>
+                <a href="#m9" class="toc-item"><span class="toc-num">09</span>DevSecOps</a>
+                <a href="#m10" class="toc-item"><span class="toc-num">10</span>SRE & Reliability</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 01 -->
+    <section id="m1">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">01</div>
                 <div>
-                    <h2 class="sec-title">CI / CD</h2>
-                    <p class="sec-sub">Continuous Integration / Delivery</p>
+                    <h2 class="sec-title">La Culture DevOps</h2>
+                    <p class="sec-sub">C.A.L.M.S & Feedback Loops</p>
                 </div>
             </div>
-
-            <div class="intro-box" style="background:transparent; padding:0; border:none;">
-                <p>L'objectif : Livrer du code en production rapidement et sans peur.</p>
+            <div class="analogy-box">
+                <h4>🧠 Analogie : Le Mur de la Confusion</h4>
+                <p>Imaginez un restaurant où les Cuisiniers (Dev) et les Serveurs (Ops) sont séparés par un mur en
+                    béton.
+                    Les cuisiniers lancent les plats par-dessus le mur sans savoir s'il y a des clients. Les serveurs
+                    reçoivent
+                    des assiettes cassées et se font hurler dessus par les clients. <strong>DevOps, c'est casser ce
+                        mur.</strong></p>
             </div>
+
+            <details>
+                <summary>💡 C.A.L.M.S Framework (Détails)</summary>
+                <div class="details-content">
+                    <ul class="dense-list">
+                        <li><strong>Culture</strong> : Responsabilité partagée (You build it, you run it). Fini le
+                            "C'est pas ma faute, c'est le réseau".</li>
+                        <li><strong>Automation</strong> : Si tu le fais 2 fois, automatise-le. Le labeur manuel est
+                            l'ennemi.</li>
+                        <li><strong>Lean</strong> : Inspiré de Toyota. Réduire le gaspillage, optimiser le flux de
+                            valeur.</li>
+                        <li><strong>Measurement</strong> : On ne peut pas améliorer ce qu'on ne mesure pas (Temps de
+                            cycle, Taux d'échec).</li>
+                        <li><strong>Sharing</strong> : Post-mortems sans blâme. Partage des connaissances pour éviter
+                            l'effet "Bus Factor".</li>
+                    </ul>
+                </div>
+            </details>
 
             <div class="grid2">
-                <div class="ref-card" style="background:var(--card); padding:20px; border-radius:8px;">
-                    <h4 style="color:var(--fn)">CI (Integration)</h4>
-                    <p>Fusionner le code régulièrement.</p>
-                    <ol style="margin-left:20px; font-size:0.9rem; margin-top:10px;">
-                        <li>Développeur pousse code (Git Push).</li>
-                        <li>Tests automatiques (Unit, Lint).</li>
-                        <li>Build (Compilation, Docker Image).</li>
-                    </ol>
+                <div class="info">
+                    <strong>Avant DevOps (Silos)</strong><br>
+                    Les Devs sont payés pour le <em>Changement</em> (Features).<br>
+                    Les Ops sont payés pour la <em>Stabilité</em> (Uptime).<br>
+                    <span style="color:var(--danger)">➔ Conflit d'intérêts structurel.</span>
                 </div>
-                <div class="ref-card" style="background:var(--card); padding:20px; border-radius:8px;">
-                    <h4 style="color:var(--num)">CD (Delivery/Deploy)</h4>
-                    <p>Déployer automatiquement.</p>
-                    <ol style="margin-left:20px; font-size:0.9rem; margin-top:10px;">
-                        <li>Déploiement en Staging (Pre-prod).</li>
-                        <li>Tests E2E / Validation.</li>
-                        <li>Déploiement en Production.</li>
-                    </ol>
+                <div class="info" style="border-left-color:var(--success)">
+                    <strong>Avec DevOps (Flow)</strong><br>
+                    Le "Mur" disparait. Une seule équipe "Produit".<br>
+                    Le monitoring de Prod informe le prochain Sprint Dev.<br>
+                    <span style="color:var(--success)">➔ Alignement sur la valeur business.</span>
                 </div>
-            </div>
-
-            <div class="code">
-                <div class="code-head">Exemple .gitlab-ci.yml (Pipeline)</div>
-                <pre><span class="kw">stages:</span>
-  - test
-  - build
-  - deploy
-
-<span class="fn">unit-test:</span>
-  <span class="kw">stage:</span> test
-  <span class="kw">script:</span> npm run test
-
-<span class="fn">build-image:</span>
-  <span class="kw">stage:</span> build
-  <span class="kw">script:</span> docker build -t myapp .
-
-<span class="fn">deploy-prod:</span>
-  <span class="kw">stage:</span> deploy
-  <span class="kw">script:</span> ./deploy.sh
-  <span class="kw">only:</span>
-    - main</pre>
             </div>
         </div>
     </section>
 
-    <!-- S2: CONTAINERS -->
-    <section id="s3">
+    <!-- MODULE 02 -->
+    <section id="m2">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">02</div>
                 <div>
-                    <h2 class="sec-title">Conteneurisation</h2>
-                    <p class="sec-sub">Docker & Kubernetes</p>
+                    <h2 class="sec-title">Versioning & GitOps</h2>
+                    <p class="sec-sub">Single Source of Truth</p>
                 </div>
             </div>
 
-            <p style="margin-bottom:20px;">Le conteneur encapsule l'application et ses dépendances. "Ça marche chez moi"
-                -> "Ça marche partout".</p>
+            <div class="analogy-box" style="border-left-color:var(--num);">
+                <h4>🛫 Analogie : La Tour de Contrôle</h4>
+                <p>Git est la tour de contrôle. Rien ne décolle (déploiement) et rien n'atterrit (merge) sans passer par
+                    elle.
+                    L'historique Git est la <strong>boîte noire</strong> qui permet de rejouer le crash en cas
+                    d'accident.</p>
+            </div>
 
             <div class="grid2">
-                <div class="info">
-                    <strong>Docker</strong><br>
-                    Le standard de création et d'exécution de conteneurs.
-                    <br><a href="../docker.html" style="color:var(--primary-bright); font-size:0.8rem;">Voir le cours
-                        Docker ></a>
+                <div class="ref-card">
+                    <h4>Git Flow vs Trunk Based</h4>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Comment organiser ses branches ?</p>
+                    <ul class="dense-list">
+                        <li><strong>Trunk-Based (Moderne)</strong> : Une seule branche <code>main</code>. Les
+                            développeurs pushent directement dedans (ou font des PRs ultra-courtes de < 24h). Nécessite
+                                des tests solides.</li>
+                        <li><strong>GitFlow (Legacy)</strong> : Complexe. Branches <code>develop</code>,
+                            <code>release</code>, <code>hotfix</code>. Crée des "Merge Hells" si les branches vivent
+                            trop longtemps.
+                        </li>
+                    </ul>
                 </div>
-                <div class="info">
-                    <strong>Kubernetes (K8s)</strong><br>
-                    Orchestrateur. Gère des milliers de conteneurs (Scaling, Self-healing, Load balancing).
+                <div class="ref-card">
+                    <h4>Conventional Commits</h4>
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Standardiser les messages pour automatiser le
+                        Changelog.</p>
+                    <div class="code-block"
+                        style="background:#222; padding:10px; font-family:monospace; font-size:0.85rem;">
+                        <span style="color:var(--kw)">feat</span>(auth): add google oauth login<br>
+                        <span style="color:var(--num)">fix</span>(api): resolve timeout on user fetch<br>
+                        <span style="color:var(--c)">chore</span>: update dependencies
+                    </div>
+                </div>
+            </div>
+
+            <details>
+                <summary>⚓ Deep Dive : GitOps (ArgoCD)</summary>
+                <div class="details-content">
+                    <p>GitOps = <strong>IaC + PRs + Convergence Agent</strong>.</p>
+                    <p>Au lieu de faire <code>kubectl apply -f file.yaml</code> (impératif, manuel), vous commitez le
+                        fichier yaml dans Git.</p>
+                    <p><strong>ArgoCD</strong> (l'agent dans le cluster) voit le changement Git, compare avec l'état
+                        réel, et force la synchronisation.</p>
+                    <div
+                        style="background:rgba(0,0,0,0.2); padding:10px; border-radius:6px; margin-top:10px; border:1px solid var(--border);">
+                        <code>Git (Désiré) == Cluster (Réel)</code>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- MODULE 03 -->
+    <section id="m3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Continuous Integration (CI)</h2>
+                    <p class="sec-sub">Build, Test, Inspect</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:var(--fn);">
+                <h4>🛡️ Analogie : Le Portique de Sécurité</h4>
+                <p>Le CI est comme le portique de sécurité à l'aéroport. Chaque passager (Commit) doit passer au
+                    scanner.
+                    Si ça bippe (Test échoué, Faille sécu), le passager n'embarque pas.
+                    Cela garantit que l'avion (Branche Main) ne décolle qu'avec des passagers sûrs.</p>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>.github/workflows/ci.yml</div>
+                    <pre><span class="kw">name:</span> CI
+<span class="kw">on:</span> [push]
+
+<span class="kw">jobs:</span>
+  <span class="fn">validate:</span>
+    <span class="kw">runs-on:</span> ubuntu-latest
+    <span class="kw">steps:</span>
+      <span class="c"># 1. Récupérer le code</span>
+      - <span class="kw">uses:</span> actions/checkout@v3
+
+      <span class="c"># 2. Installer dépendances (avec Cache!)</span>
+      - <span class="kw">uses:</span> actions/setup-node@v3
+        <span class="kw">with:</span>
+          <span class="kw">cache:</span> 'npm'
+      - <span class="kw">run:</span> npm ci
+
+      <span class="c"># 3. Qualité & Sécurité</span>
+      - <span class="kw">run:</span> npm run lint  <span class="c"># Style</span>
+      - <span class="kw">run:</span> npm test      <span class="c"># Logique</span>
+      - <span class="kw">run:</span> npx audit-ci  <span class="c"># Vulnerabilities</span></pre>
+                </div>
+                <div>
+                    <h4 style="color:var(--primary-bright); margin-bottom:15px;">Les Étapes Critiques</h4>
+                    <ul class="timeline-list">
+                        <li>
+                            <strong>Linting</strong>
+                            <p>Vérifie la syntaxe et le style (ESLint, Prettier). Évite les débats sur les tabulations
+                                en Code Review.</p>
+                        </li>
+                        <li>
+                            <strong>Unit Tests</strong>
+                            <p>Teste les fonctions isolément. Rapide (< 1min). Doit couvrir> 80% du code.</p>
+                        </li>
+                        <li>
+                            <strong>SAST (Static Application Security Testing)</strong>
+                            <p>Scan le code à la recherche de faiblesses connues (ex: SonarQube).</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>Shift Left Quality</strong><br>
+                Détecter un bug en Prod coûte <strong>100x plus cher</strong> qu'en phase de Design/Dev. Le CI sert à
+                repousser la détection le plus "à gauche" possible (le plus tôt).
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 04 -->
+    <section id="m4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Continuous Delivery (CD)</h2>
+                    <p class="sec-sub">Deploy Strategies & ArgoCD</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:var(--primary-bright);">
+                <h4>🚦 Analogie : Le Changement de Roue</h4>
+                <p><strong>Rolling Update</strong> : On change les roues (Pods) une par une pendant que la voiture
+                    roule. Lent mais sûr.<br>
+                    <strong>Blue/Green</strong> : On prépare une 2ème voiture identique, on transfère les passagers, et
+                    on détruit la 1ère.
+                </p>
+            </div>
+
+            <div class="interactive-demo"
+                style="background:var(--bg2); padding:20px; border-radius:10px; border:1px solid var(--border); margin-bottom:25px;">
+                <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">🎮 Simulateur de Déploiement
+                    <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(Cliquez pour tester)</span>
+                </h4>
+                <div class="strategy-controls" style="display:flex; gap:10px; margin-bottom:20px;">
+                    <button class="btn-strategy" onclick="simDeploy('rolling')">Rolling Update</button>
+                    <button class="btn-strategy" onclick="simDeploy('bluegreen')">Blue / Green</button>
+                    <button class="btn-strategy" onclick="simDeploy('canary')">Canary</button>
+                </div>
+                <div id="sim-visual"
+                    style="height:100px; background:#111; border-radius:6px; display:flex; align-items:center; justify-content:space-around; padding:10px;">
+                    <!-- JS will populate this -->
+                    <div style="color:var(--muted);">Sélectionnez une stratégie...</div>
+                </div>
+                <div id="sim-status"
+                    style="margin-top:10px; font-family:monospace; color:var(--primary-bright); font-size:0.9rem;">Prêt.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- S3: IAC -->
-    <section id="s4">
+    <!-- MODULE 05 -->
+    <section id="m5">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">03</div>
+                <div class="sec-num">05</div>
                 <div>
-                    <h2 class="sec-title">IaC (Infrastructure as Code)</h2>
-                    <p class="sec-sub">Gérer l'infra comme du logiciel</p>
+                    <h2 class="sec-title">Containers Advanced</h2>
+                    <p class="sec-sub">Security & Optimization</p>
+                </div>
+            </div>
+            <p>Pour la production, "ça marche" ne suffit pas. L'image doit être <strong>minimale</strong> et
+                <strong>sûre</strong>.
+            </p>
+
+            <div class="analogy-box" style="border-left-color:var(--kw);">
+                <h4>🍰 Analogie : Le Gâteau Mille-Feuille</h4>
+                <p>Une image Docker est un gâteau à étages (Layers). Chaque instruction <code>RUN</code>,
+                    <code>COPY</code> ajoute une couche.
+                    Si vous changez la cerise (code), on ne recuit pas tout le gâteau, on change juste la dernière
+                    couche.
+                    <strong>L'optimisation, c'est mettre les ingrédients lourds (OS, Deps) en bas, et les légers (Code)
+                        en haut.</strong>
+                </p>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Best Practices (2025)</h4>
+                    <ul class="dense-list">
+                        <li><strong>Multi-Stage Builds</strong> : Utilisez une image "Grosse" pour compiler, et copiez
+                            le binaire dans une image "Minuscule" (Alpine/Distroless).</li>
+                        <li><strong>.dockerignore</strong> : Vital. Ne copiez pas <code>node_modules</code> ou
+                            <code>.git</code> dans l'image.
+                        </li>
+                        <li><strong>User 1001</strong> : <code>USER node</code>. Ne jamais lancer en root.</li>
+                    </ul>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Dockerfile Optimisé (Node.js)</div>
+                    <pre><span class="c"># --- Build Stage ---</span>
+<span class="kw">FROM</span> node:20-slim <span class="kw">AS</span> builder
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> package*.json ./
+<span class="kw">RUN</span> npm ci               <span class="c"># Clean Install (Rapide)</span>
+<span class="kw">COPY</span> . .
+<span class="kw">RUN</span> npm run build
+
+<span class="c"># --- Run Stage (Distroless) ---</span>
+<span class="kw">FROM</span> gcr.io/distroless/nodejs20-debian12
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> --from=builder /app/dist ./dist
+<span class="kw">CMD</span> ["dist/main.js"]</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 06 -->
+    <section id="m6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Kubernetes (K8s)</h2>
+                    <p class="sec-sub">L'OS du Cloud</p>
+                </div>
+            </div>
+            <div class="analogy-box" style="border-left-color:var(--num);">
+                <h4>🎼 Analogie : Le Chef d'Orchestre</h4>
+                <p><strong>Docker</strong> est un musicien talentueux (il sait jouer).<br>
+                    <strong>Kubernetes</strong> est le Chef d'Orchestre. Il ne joue pas, mais il dit qui joue, à quel
+                    volume (scaling), et remplace ceux qui s'évanouissent (self-healing).
+                </p>
+            </div>
+
+            <!-- INTERACTIVE K8S MAP -->
+            <div class="k8s-map-container"
+                style="position:relative; border:1px solid var(--border); border-radius:10px; padding:20px; background:var(--bg2); margin-bottom:25px;">
+                <h4 style="text-align:center; margin-bottom:20px;">🗺️ Architecture K8s (Survolez les zones)</h4>
+
+                <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+                    <!-- Control Plane -->
+                    <div class="k8s-zone"
+                        style="border:2px dashed var(--primary); padding:15px; border-radius:8px; width:45%;">
+                        <div style="text-align:center; font-weight:bold; color:var(--primary); margin-bottom:10px;">
+                            Control Plane (Cerveau)</div>
+                        <div class="k8s-comp" data-tooltip="API Server : Le portier. Tout passe par REST API.">API
+                            Server</div>
+                        <div class="k8s-comp"
+                            data-tooltip="etcd : La mémoire. Stocke tout l'état du cluster (Key-Value).">etcd</div>
+                        <div class="k8s-comp" data-tooltip="Scheduler : Le Tetris. Décide sur quel Node lancer le Pod.">
+                            Scheduler</div>
+                        <div class="k8s-comp"
+                            data-tooltip="Controller Mgr : La boucle de contrôle (ex: Réparer si Pod dead).">Controller
+                            Mgr</div>
+                    </div>
+
+                    <!-- Worker Nodes -->
+                    <div class="k8s-zone"
+                        style="border:2px dashed var(--num); padding:15px; border-radius:8px; width:45%;">
+                        <div style="text-align:center; font-weight:bold; color:var(--num); margin-bottom:10px;">Worker
+                            Node (Muscles)</div>
+                        <div class="k8s-comp"
+                            data-tooltip="Kubelet : L'agent local. Parle au Control Plane et lance les conteneurs.">
+                            Kubelet</div>
+                        <div class="k8s-comp"
+                            data-tooltip="Kube-Proxy : Le facteur. Gère les règles réseau (IPtables).">Kube-Proxy</div>
+                        <div
+                            style="background:var(--card); padding:5px; margin-top:5px; text-align:center; font-size:0.8rem;">
+                            📦 Pods (Containers)
+                        </div>
+                    </div>
+                </div>
+                <div id="k8s-tooltip"
+                    style="margin-top:15px; text-align:center; height:1.5rem; color:var(--primary-bright); font-weight:bold;">
+                    Survolez un composant...
                 </div>
             </div>
 
             <div class="grid2">
-                <div class="ref-card" style="background:var(--card); padding:15px; border-radius:8px;">
-                    <h4 style="color:var(--primary-bright)">Provisioning</h4>
-                    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:5px;">Créer les serveurs (VM, VPC,
-                        DB).</p>
-                    <strong>Terraform</strong>, <strong>CloudFormation</strong>.
+                <div class="ref-card">
+                    <h4>Objets Clés</h4>
+                    <ul class="dense-list">
+                        <li><strong>Pod</strong> : L'unité atomique (1+ conteneurs). Éphémère.</li>
+                        <li><strong>Deployment</strong> : Gère les répliques. Si un Pod meurt, il le recrée.</li>
+                        <li><strong>Service (ClusterIP)</strong> : IP stable interne.</li>
+                        <li><strong>Ingress</strong> : Routeur HTTP externe (mondaine.com/api -> Service -> Pod).</li>
+                    </ul>
                 </div>
-                <div class="ref-card" style="background:var(--card); padding:15px; border-radius:8px;">
-                    <h4 style="color:var(--primary-bright)">Configuration</h4>
-                    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:5px;">Installer les logiciels sur les
-                        serveurs.</p>
-                    <strong>Ansible</strong>, <strong>Chef</strong>, <strong>Puppet</strong>.
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 07 -->
+    <section id="m7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Infrastructure as Code</h2>
+                    <p class="sec-sub">Terraform & Ansible</p>
                 </div>
             </div>
 
-            <div class="warning" style="margin-top:20px;">
-                <strong>💡 Idempotence</strong><br>
-                Concept clé : exécuter le script 1 fois ou 100 fois doit donner le même résultat final (pas de
-                duplication).
+            <div class="analogy-box" style="border-left-color:var(--kw);">
+                <h4>🏗️ Analogie : L'Architecte vs Le Maçon</h4>
+                <p><strong>ClickOps (Manuel)</strong> : Vous dites au maçon "Pose une brique ici, puis une autre là". Si
+                    le mur tombe, il faut tout redire.<br>
+                    <strong>IaC (Terraform)</strong> : Vous donnez le plan 3D (Code) au robot. Il construit tout seul.
+                    Si le mur tombe, il le reconstruit à l'identique (Idempotence).
+                </p>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Terraform (Provisioning)</h4>
+                    <p>Déclare <em>QUOI</em> créer (VPC, VM, K8s Cluster).</p>
+                    <pre class="code-block hcl"
+                        style="background:#2d2d2d; padding:10px; border-radius:4px; font-family:monospace; margin-top:5px;">resource "aws_s3_bucket" "b" {
+  bucket = "my-bucket"
+}</pre>
+                </div>
+                <!-- Drift Detection -->
+                <div class="ref-card" style="border-color:var(--danger);">
+                    <h4 style="color:var(--danger);">⚠️ Le Danger : Drift</h4>
+                    <p style="font-size:0.9rem;">Si quelqu'un modifie l'infra manuellement dans la console AWS ("juste
+                        pour voir"), le code et la réalité divergent.</p>
+                    <div style="background:#222; padding:5px; margin-top:5px; font-family:monospace; font-size:0.8rem;">
+                        $ terraform plan<br>
+                        <span style="color:var(--warning)">~ update SG rule (Drift detected)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 08 -->
+    <section id="m8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Observabilité</h2>
+                    <p class="sec-sub">Logs, Metrics, Tracing</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:var(--fn);">
+                <h4>🏎️ Analogie : Le Tableau de Bord</h4>
+                <p>Le <strong>Monitoring</strong> vous dit "Le moteur fume" (C'est cassé).<br>
+                    L'<strong>Observabilité</strong> vous permet de demander "Pourquoi ?" en regardant la télémétrie
+                    complète (Pression, Température, Historique).</p>
+            </div>
+
+            <div class="grid3">
+                <div class="tool-card">
+                    <span class="tool-icon">📜</span>
+                    <h4>Logs</h4>
+                    <p>L'histoire textuelle. "2025-01-01 Error: NullPointer". <br><strong>Outils:</strong> ELK, Loki,
+                        Splunk.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">📈</span>
+                    <h4>Metrics</h4>
+                    <p>Chiffres agrégés. "CPU Load: 80%". <br><strong>Outils:</strong> Prometheus, Datadog.</p>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">🕵️</span>
+                    <h4>Tracing</h4>
+                    <p>Suivi de requête. "La DB a mis 2s à répondre". <br><strong>Outils:</strong> Jaeger, Otel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 09 -->
+    <section id="m9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">DevSecOps</h2>
+                    <p class="sec-sub">Shift Left Security</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:var(--danger);">
+                <h4>👮 Analogie : Garde du Corps vs Police</h4>
+                <p>Sécurité traditionnelle = <strong>Police</strong> (Intervient après le crime/déploiement).<br>
+                    DevSecOps = <strong>Garde du Corps</strong> (Accompagne tout le trajet/développement pour éviter le
+                    problème).
+                </p>
+            </div>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>SAST (Code Source)</strong><br>
+                    Analyse statique. Trouve <code>eval()</code> ou SQL Injection dans le code.<br>
+                    <em>Outil: SonarQube.</em>
+                </div>
+                <div class="info">
+                    <strong>SCA (Dépendances)</strong><br>
+                    Analyse les libraires (npm, pip). "Votre version de lodash a une faille critique".<br>
+                    <em>Outil: Snyk, Dependabot.</em>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>Secrets Management (Vault)</strong>
+                <br>Un <code>AWS_KEY</code> commité sur GitHub est piraté en 3 secondes. Utilisez un coffre-fort (Vault,
+                SealedSecrets) injecté au runtime.
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 10 -->
+    <section id="m10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">SRE & Fiabilité</h2>
+                    <p class="sec-sub">SLI, SLO, SLA</p>
+                </div>
+            </div>
+
+            <div class="analogy-box" style="border-left-color:var(--text); color:var(--text);">
+                <h4>📉 Analogie : Le "Budget d'Erreur"</h4>
+                <p>Imaginez que vous avez un budget de "minutes de panne" par mois. C'est votre monnaie d'échange.<br>
+                    Si vous n'avez plus de budget (trop de pannes), vous n'avez plus le droit de dépenser (déployer des
+                    nouveautés) tant que vous n'avez pas remboursé (stabilisé).</p>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Le Calculateur SLO</h4>
+                    <p style="margin-bottom:10px;">Combien de temps de panne autorisé (Error Budget) ?</p>
+                    <div style="background:#222; padding:15px; border-radius:8px; border:1px solid var(--border);">
+                        Disponibilité (%) : <input type="number" id="slo-input" class="calc-input" value="99.9"
+                            step="0.1"><br>
+                        <button class="btn-strategy"
+                            style="background:var(--primary); color:white; margin-top:10px; padding:6px 12px; border:none;"
+                            onclick="calcSLO()">Calculer</button>
+                        <div id="slo-res" style="margin-top:15px; font-weight:bold; color:var(--primary-bright);">
+                            Downtime/An : --
+                        </div>
+                    </div>
+                </div>
+                <div class="info" style="border-left-color:var(--text); color:#d4d4d4;">
+                    <h4>Définitions</h4>
+                    <ul style="margin-top:10px; font-size:0.9rem;">
+                        <li><strong>SLI</strong> (Indicator) : Le thermomètre (Vitesse réelle).</li>
+                        <li><strong>SLO</strong> (Objective) : La limite de vitesse (90km/h).</li>
+                        <li><strong>SLA</strong> (Agreement) : L'amende si on dépasse (Contrat).</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -173,11 +614,18 @@
         });
     </script>
     <script src="../../assets/js/quiz-engine.js"></script>
+
     <footer>
         <div class="container">
-            <p><strong>Mémo DevOps</strong> • 2025</p>
+            <p><strong>Mémo DevOps</strong> • 2025 Edition</p>
+            <p style="font-size:0.9rem; margin-top:12px; line-height:1.6; opacity:0.8;">
+                Créé par Geoffroy Streit, assisté par IA — Pour consolider sa mémoire avec un cours concis, graphique et
+                structuré, mais
+                aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
+            </p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 

@@ -1,1208 +1,1208 @@
 {
     "meta": {
-        "title": "Quiz Automation & NoCode - 100 Questions",
+        "title": "Quiz Automation & IA - 100 Questions (Premium)",
         "total": 100
     },
     "questions": [
         {
             "id": 1,
-            "question": "Qu'est-ce que le 'Vibe Coding' permet principalement de faire ?",
+            "question": "Qu'est-ce que le 'Vibe Coding' ?",
             "options": [
-                "Utiliser le langage naturel pour générer et manipuler du code complexe via une IA",
-                "Écrire du code binaire manuellement plus vite",
-                "Créer des interfaces graphiques sans ordinateur",
-                "Rien"
+                "Utiliser l'IA pour générer du code complexe via des instructions en langage naturel",
+                "Coder en écoutant de la musique",
+                "Une technique de cryptographie",
+                "Un framework JavaScript"
             ],
             "answer": 0,
-            "explanation": "On ne code plus, on dirige une IA."
+            "explanation": "C'est l'évolution du Low-Code : l'humain dirige, l'IA (LLM) écrit la syntaxe."
         },
         {
             "id": 2,
-            "question": "Dans n8n, sous quel format les données sont-elles transmises d'un nœud à l'autre ?",
+            "question": "Quel est le format standard d'échange de données dans n8n ?",
             "options": [
-                "JSON",
-                "PDF",
-                "Excel (XLSX)",
-                "XML"
+                "JSON (JavaScript Object Notation)",
+                "XML",
+                "CSV",
+                "Binary"
             ],
             "answer": 0,
-            "explanation": "Le format universel du web (Clé:Valeur)."
+            "explanation": "Tout dans n8n est un objet JSON. Les fichiers sont traités à part (Binary)."
         },
         {
             "id": 3,
-            "question": "Quel est le but principal du protocole MCP (Model Context Protocol) ?",
+            "question": "Qu'est-ce que le protocole MCP (Model Context Protocol) ?",
             "options": [
-                "Standardiser la façon dont les modèles d'IA se connectent aux données et outils externes",
-                "Remplacer le langage Python",
-                "Créer des images génératives plus rapidement",
-                "Rien"
+                "Un standard pour connecter les modèles d'IA aux données/outils externes",
+                "Un protocole réseau pour le Wifi",
+                "Une méthode de gestion de projet",
+                "Un format d'image"
             ],
             "answer": 0,
-            "explanation": "Une 'prise USB universelle' pour l'IA."
+            "explanation": "C'est l''USB de l'IA', permettant à Claude/ChatGPT d'accéder à vos fichiers locaux ou bases de données."
         },
         {
             "id": 4,
-            "question": "Pourquoi une entreprise choisirait-elle Baserow ou NocoDB plutôt qu'Airtable ?",
+            "question": "Quelle est la différence principale entre Zapier et n8n ?",
             "options": [
-                "Pour pouvoir héberger les données sur ses propres serveurs (Open Source)",
-                "Pour payer plus cher",
-                "Parce qu'ils n'ont pas besoin d'API",
-                "Pour rien"
+                "n8n est 'fair-code' (hébergé soi-même) et basé sur des workflows complexes, Zapier est SaaS linéaire",
+                "Zapier est gratuit, n8n est payant",
+                "n8n ne gère pas les APIs",
+                "Zapier nécessite de savoir coder"
             ],
             "answer": 0,
-            "explanation": "Souveraineté des données et absence de limites de lignes."
+            "explanation": "n8n offre une puissance quasi-illimitée (boucles, code JS) pour une fraction du prix si self-hosted."
         },
         {
             "id": 5,
-            "question": "Quel outil est un éditeur de code 'AI-first' permettant de générer des scripts entiers via un tchat intégré ?",
+            "question": "Qu'est-ce qu'un Webhook ?",
             "options": [
-                "Cursor AI",
-                "Notepad",
-                "Google Sheets",
-                "Paint"
+                "Un moyen pour une app d'envoyer des données en temps réel à une autre (Push)",
+                "Un hameçon pour la pêche",
+                "Un site web statique",
+                "Une requête manuelle"
             ],
             "answer": 0,
-            "explanation": "L'éditeur qui change la donne."
+            "explanation": "Contrairement au Polling (demander 't'as du nouveau ?' toutes les 5min), le Webhook notifie immédiatement."
         },
         {
             "id": 6,
-            "question": "Qu'est-ce que Zapier ?",
+            "question": "Dans une API REST, quelle méthode HTTP est utilisée pour CRÉER une ressource ?",
             "options": [
-                "Outil d'automatisation populaire (connecte des apps)",
-                "Zap",
-                "Eclair",
-                "Site"
+                "POST",
+                "GET",
+                "PUT",
+                "DELETE"
             ],
             "answer": 0,
-            "explanation": "Leader du marché grand public."
+            "explanation": "GET=Lire, POST=Créer, PUT/PATCH=Modifier, DELETE=Supprimer."
         },
         {
             "id": 7,
-            "question": "Qu'est-ce que Make (anciennement Integromat) ?",
+            "question": "Qu'est-ce que Cursor ?",
             "options": [
-                "Outil d'automatisation visuel puissant et complexe",
-                "Faire",
-                "Site",
-                "Rien"
+                "Un éditeur de code (IDE) intégrant l'IA nativement (Fork de VS Code)",
+                "Une souris",
+                "Un pointeur laser",
+                "Une base de données"
             ],
             "answer": 0,
-            "explanation": "Permet des scénarios très avancés."
+            "explanation": "Permet de générer, refactoriser et débugger du code via chat."
         },
         {
             "id": 8,
-            "question": "Qu'est-ce que n8n ?",
+            "question": "Pourquoi utiliser Python pour l'automatisation ?",
             "options": [
-                "Outil d'automatisation open-source (Workflow)",
-                "Huit",
-                "Infini",
-                "Code"
+                "Pour sa syntaxe simple et ses milliers de librairies (Pandas, Selenium, Requests)",
+                "Parce que c'est le langage le plus rapide (C++)",
+                "Pour faire des animations 3D",
+                "Pour créer des drivers"
             ],
             "answer": 0,
-            "explanation": "Autohébergeable, gratuit et très puissant."
+            "explanation": "Le couteau suisse de la data et du script."
         },
         {
             "id": 9,
-            "question": "Qu'est-ce qu'une API ?",
+            "question": "Qu'est-ce que Selenium ?",
             "options": [
-                "Application Programming Interface (Pont entre logiciels)",
-                "App",
-                "Programme",
-                "Internet"
+                "Un outil pour automatiser les navigateurs web (Scraping/Tests)",
+                "Un élément chimique",
+                "Une planète",
+                "Un serveur web"
             ],
             "answer": 0,
-            "explanation": "Le langage universel pour connecter les services."
+            "explanation": "Permet de piloter Chrome/Firefox comme un robot (cliquer, remplir des formulaires)."
         },
         {
             "id": 10,
-            "question": "Qu'est-ce qu'un Webhook ?",
+            "question": "Dans n8n, a quoi sert le noeud 'Code' ?",
             "options": [
-                "Notification HTTP envoyée d'un serveur à un autre (Push)",
-                "Crochet",
-                "Web",
-                "Lien"
+                "Exécuter du JavaScript (ou Python) pour manipuler les données de façon complexe",
+                "Afficher du code à l'écran",
+                "Compiler du C++",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Permet le temps réel (contrairement au Polling)."
+            "explanation": "Indispensable quand les noeuds standard ne suffisent plus."
         },
         {
             "id": 11,
-            "question": "Qu'est-ce que JSON ?",
+            "question": "Qu'est-ce que Make (ex-Integromat) ?",
             "options": [
-                "Format de données standard pour les API",
-                "Jason",
-                "Code",
-                "Texte"
+                "Une plateforme d'automatisation visuelle (No-Code)",
+                "Un logiciel de dessin",
+                "Une commande Linux",
+                "Une marque d'ordinateur"
             ],
             "answer": 0,
-            "explanation": "Structure Clé:Valeur."
+            "explanation": "Concurrent de Zapier/n8n, très fort pour les scénarios visuels."
         },
         {
             "id": 12,
-            "question": "Qu'est-ce que Airtable ?",
+            "question": "Qu'est-ce que l'API Key ?",
             "options": [
-                "Base de données relationnelle vue comme un tableur",
-                "Air",
-                "Table",
-                "Excel"
+                "Un jeton (token) unique pour authentifier une application auprès d'une API",
+                "Une clé physique",
+                "Un mot de passe admin",
+                "Une adresse IP"
             ],
             "answer": 0,
-            "explanation": "Le backend préféré du NoCode."
+            "explanation": "Ne jamais partager sa clé API publiquement !"
         },
         {
             "id": 13,
-            "question": "Qu'est-ce que Notion ?",
+            "question": "Qu'est-ce que 'Polling' (Sondage) ?",
             "options": [
-                "Espace de travail tout-en-un (Notes, BDD, Gestion de projet)",
-                "Note",
-                "Idée",
-                "Livre"
+                "Vérifier périodiquement si une donnée a changé",
+                "Voter",
+                "Tirer une carte",
+                "Pousser des données"
             ],
             "answer": 0,
-            "explanation": "Outil 'Lego' très flexible."
+            "explanation": "Moins efficace que les Webhooks, mais parfois nécessaire."
         },
         {
             "id": 14,
-            "question": "Qu'est-ce que Bubble ?",
+            "question": "Qu'est-ce que JSON ?",
             "options": [
-                "Plateforme pour créer des Web Apps complexes sans code",
-                "Bulle",
-                "Savon",
-                "Jeu"
+                "JavaScript Object Notation (Format texte léger pour données)",
+                "Java System Over Network",
+                "Just Some Objects",
+                "Joint Server Operation"
             ],
             "answer": 0,
-            "explanation": "Permet de faire des clones de Uber, Airbnb..."
+            "explanation": "La structure : { 'cle': 'valeur' }."
         },
         {
             "id": 15,
-            "question": "Qu'est-ce que Softr ?",
+            "question": "Qu'est-ce que Cron ?",
             "options": [
-                "Constructeur de sites/portails à partir de Airtable",
-                "Mou",
-                "Logiciel",
-                "App"
+                "Un planificateur de tâches basé sur le temps (ex: tous les  jours à 8h)",
+                "Un dieu grec",
+                "Un virus",
+                "Un navigateur"
             ],
             "answer": 0,
-            "explanation": "Très simple pour faire des portails clients."
+            "explanation": "Le métronome de l'automatisation. Syntaxe : '0 8 * * *'."
         },
         {
             "id": 16,
-            "question": "Qu'est-ce que Webflow ?",
+            "question": "A quoi sert Pandas en Python ?",
             "options": [
-                "Constructeur de sites web professionnels (Design visuel)",
-                "Web",
-                "Flux",
-                "Site"
+                "Manipuler et analyser des données structurées (Excel, CSV, SQL)",
+                "Nourrir des animaux",
+                "Faire des sites web",
+                "Créer des jeux"
             ],
             "answer": 0,
-            "explanation": "Génère du code propre (HTML/CSS)."
+            "explanation": "Le standard pour la Data Science et l'automatisation Excel."
         },
         {
             "id": 17,
-            "question": "Qu'est-ce que RPA ?",
+            "question": "Qu'est-ce que le 'RPA' (Robotic Process Automation) ?",
             "options": [
-                "Robotic Process Automation (Robots logiciels qui imitent l'humain)",
-                "Robot",
-                "Process",
-                "Auto"
+                "Automatiser des tâches répétitives d'interface utilisateur (souris/clavier)",
+                "Réparer des PC",
+                "Robotique industrielle",
+                "Réseau Privé"
             ],
             "answer": 0,
-            "explanation": "Ex: UiPath. Clique sur les boutons d'une vieille app."
+            "explanation": "Utilisé pour les vieux logiciels sans API (Legacy)."
         },
         {
             "id": 18,
-            "question": "Qu'est-ce que le 'Polling' en automation ?",
+            "question": "Qu'est-ce que 'Baserow' ou 'NocoDB' ?",
             "options": [
-                "Vérifier régulièrement s'il y a des nouvelles données (Toutes les 15min)",
-                "Vote",
-                "Question",
-                "Rien"
+                "Des alternatives Open Source à Airtable (Base de données Hybride)",
+                "Des jeux vidéo",
+                "Des langages de code",
+                "Des navigateurs"
             ],
             "answer": 0,
-            "explanation": "Moins efficace que le Webhook."
+            "explanation": "Permettent de transformer une BDD SQL en tableur intelligent."
         },
         {
             "id": 19,
-            "question": "Qu'est-ce qu'une Variable ?",
+            "question": "Qu'est-ce que 'Hugging Face' ?",
             "options": [
-                "Un conteneur pour stocker une donnée qui change",
-                "X",
-                "Inconnue",
-                "Boite"
+                "La plateforme communautaire de référence pour les modèles d'IA (Open Source)",
+                "Un emoji",
+                "Un réseau social",
+                "Un filtre photo"
             ],
             "answer": 0,
-            "explanation": "Essentiel pour passer l'info d'une étape à l'autre."
+            "explanation": "Le 'GitHub de l'IA'."
         },
         {
             "id": 20,
-            "question": "Qu'est-ce que le format CSV ?",
+            "question": "Qu'est-ce qu'un LLM ?",
             "options": [
-                "Comma Separated Values (Tableur simple)",
-                "Texte",
-                "Excel",
-                "Code"
+                "Large Language Model (ex: GPT-4, Claude)",
+                "Low Level Machine",
+                "Little Learning Model",
+                "Large Logic Module"
             ],
             "answer": 0,
-            "explanation": "Universel pour l'échange de données tabulaires."
+            "explanation": "Le moteur derrière l'IA générative textuelle."
         },
         {
             "id": 21,
-            "question": "Quel est le code HTTP pour 'Succès' ?",
+            "question": "Qu'est-ce qu'un 'Agent IA' ?",
             "options": [
-                "200 OK",
-                "404",
-                "500",
-                "201"
+                "Un système capable de raisonner, planifier et utiliser des outils pour atteindre un but",
+                "Un chatbot simple",
+                "Un script Python",
+                "Un espion"
             ],
             "answer": 0,
-            "explanation": "Tout s'est bien passé."
+            "explanation": "Plus autonome qu'un simple chatbot."
         },
         {
             "id": 22,
-            "question": "Quel est le code HTTP pour 'Non trouvé' ?",
+            "question": "A quoi servent les 'Embeddings' en IA ?",
             "options": [
-                "404 Not Found",
-                "200",
-                "500",
-                "403"
+                "Transformer du texte en vecteurs (nombres) pour mesurer la similarité sémantique",
+                "Intégrer des vidéos",
+                "Cacher du texte",
+                "Traduire"
             ],
             "answer": 0,
-            "explanation": "Page ou ressource introuvable."
+            "explanation": "Essentiel pour le RAG (Retrieval Augmented Generation)."
         },
         {
             "id": 23,
-            "question": "Quel est le code HTTP pour 'Erreur Serveur' ?",
+            "question": "Qu'est-ce que le RAG ?",
             "options": [
-                "500 Internal Server Error",
-                "200",
-                "404",
-                "503"
+                "Retrieval Augmented Generation (Donner des documents à l'IA pour qu'elle réponde)",
+                "Red Amber Green",
+                "Random Access Generator",
+                "Really Awesome Guy"
             ],
             "answer": 0,
-            "explanation": "Le problème vient de l'API, pas de vous."
+            "explanation": "Permet à l'IA de connaître VOS données privées."
         },
         {
             "id": 24,
-            "question": "Qu'est-ce que 'Mapping' (Mappage) ?",
+            "question": "Qu'est-ce que 'BeautifulSoup' en Python ?",
             "options": [
-                "Relier les données de sortie d'une étape à l'entrée de la suivante",
-                "Carte",
-                "Plan",
-                "Route"
+                "Une librairie pour parser le HTML (Scraping)",
+                "Une soupe",
+                "Un framework CSS",
+                "Un éditeur d'images"
             ],
             "answer": 0,
-            "explanation": "Dire 'Le champ Email va dans la case Destinataire'."
+            "explanation": "Utilisé pour extraire des données de pages web statiques."
         },
         {
             "id": 25,
-            "question": "Qu'est-ce qu'un 'Cron Job' ?",
+            "question": "Dans n8n, qu'est-ce que le noeud 'Switch' (ou If) ?",
             "options": [
-                "Une tâche planifiée qui s'exécute à heure fixe",
-                "Temps",
-                "Horloge",
-                "Job"
-            ],
-            "answer": 0,
-            "explanation": "Ex: Tous les lundis à 9h00."
-        },
-        {
-            "id": 26,
-            "question": "Qu'est-ce que OpenAI API ?",
-            "options": [
-                "Permet d'intégrer l'IA (GPT) dans les automations",
-                "ChatGPT",
-                "IA",
-                "Bot"
-            ],
-            "answer": 0,
-            "explanation": "Révolutionne l'automatisation intelligente."
-        },
-        {
-            "id": 27,
-            "question": "Qu'est-ce que Stripe ?",
-            "options": [
-                "Plateforme de paiement en ligne (API first)",
-                "Banque",
-                "Carte",
-                "Argent"
-            ],
-            "answer": 0,
-            "explanation": "Standard pour encaisser de l'argent sur le web."
-        },
-        {
-            "id": 28,
-            "question": "Qu'est-ce qu'un 'Formulaire' (Typeform, Tally) ?",
-            "options": [
-                "Interface pour collecter des données structurées",
-                "Papier",
-                "Questionnaire",
-                "Exam"
-            ],
-            "answer": 0,
-            "explanation": "Souvent le point de départ d'une automation."
-        },
-        {
-            "id": 29,
-            "question": "Qu'est-ce que CRM ?",
-            "options": [
-                "Customer Relationship Management (Gestion clients)",
-                "Vente",
-                "Logiciel",
-                "Commercial"
-            ],
-            "answer": 0,
-            "explanation": "Ex: Salesforce, HubSpot, Pipedrive."
-        },
-        {
-            "id": 30,
-            "question": "Qu'est-ce que 'Iterateur' (Iterator) ?",
-            "options": [
-                "Outil pour traiter une liste d'éléments un par un",
-                "Boucle",
-                "Liste",
-                "Répéter"
-            ],
-            "answer": 0,
-            "explanation": "Pour chaque ligne du fichier, faire..."
-        },
-        {
-            "id": 31,
-            "question": "Qu'est-ce que 'Agregateur' (Aggregator) ?",
-            "options": [
-                "Outil pour regrouper plusieurs éléments en une seule liste",
-                "Groupe",
-                "Somme",
-                "Total"
-            ],
-            "answer": 0,
-            "explanation": "Inverse de l'itérateur."
-        },
-        {
-            "id": 32,
-            "question": "Qu'est-ce que le 'Router' (Filtre/Condition) ?",
-            "options": [
-                "Diriger le flux vers différents chemins selon une condition",
-                "Route",
-                "Chemin",
-                "Si"
-            ],
-            "answer": 0,
-            "explanation": "SI client VIP ALORS ... SINON ..."
-        },
-        {
-            "id": 33,
-            "question": "Qu'est-ce que IFTTT ?",
-            "options": [
-                "If This Then That (Pionnier de l'automatisation perso)",
-                "Si",
-                "Alors",
-                "Code"
-            ],
-            "answer": 0,
-            "explanation": "Très simple, pour la domotique notamment."
-        },
-        {
-            "id": 34,
-            "question": "Qu'est-ce que Glide ?",
-            "options": [
-                "Créer des applications mobiles à partir de Excel/Google Sheets",
-                "Glisser",
-                "Voler",
-                "App"
-            ],
-            "answer": 0,
-            "explanation": "Idéal pour des apps internes rapides."
-        },
-        {
-            "id": 35,
-            "question": "Qu'est-ce que FlutterFlow ?",
-            "options": [
-                "Constructeur d'applications mobiles natives (LowCode)",
-                "Flutter",
-                "Google",
-                "App"
-            ],
-            "answer": 0,
-            "explanation": "Génère du code Flutter (Dart)."
-        },
-        {
-            "id": 36,
-            "question": "Qu'est-ce que PhantomBuster ?",
-            "options": [
-                "Outil de Scraping et d'automatisation pour LinkedIn/Réseaux",
-                "Fantôme",
-                "Chasseur",
-                "Bot"
-            ],
-            "answer": 0,
-            "explanation": "Pour le 'Growth Hacking'."
-        },
-        {
-            "id": 37,
-            "question": "Qu'est-ce que le 'Scraping' ?",
-            "options": [
-                "Extraire automatiquement des données d'un site web",
-                "Gratter",
-                "Voler",
-                "Lire"
-            ],
-            "answer": 0,
-            "explanation": "Utile quand il n'y a pas d'API."
-        },
-        {
-            "id": 38,
-            "question": "Qu'est-ce que 'Regex' ?",
-            "options": [
-                "Regular Expression (Pour chercher/manipuler du texte complexe)",
-                "Texte",
-                "Code",
-                "Règle"
-            ],
-            "answer": 0,
-            "explanation": "Puissant pour extraire un email d'un texte."
-        },
-        {
-            "id": 39,
-            "question": "Qu'est-ce que OCR ?",
-            "options": [
-                "Optical Character Recognition (Lire du texte dans une image)",
-                "Vue",
-                "Scan",
-                "Texte"
-            ],
-            "answer": 0,
-            "explanation": "Pour automatiser la saisie de factures."
-        },
-        {
-            "id": 40,
-            "question": "Qu'est-ce que SMTP ?",
-            "options": [
-                "Protocole d'envoi d'emails",
-                "Mail",
-                "Poste",
-                "Lettre"
-            ],
-            "answer": 0,
-            "explanation": "Nécessaire pour envoyer des notifs custom."
-        },
-        {
-            "id": 41,
-            "question": "Qu'est-ce que IMAP ?",
-            "options": [
-                "Protocole de réception d'emails",
-                "Mail",
-                "Lire",
-                "Boite"
-            ],
-            "answer": 0,
-            "explanation": "Pour déclencher une automation à la réception d'un mail."
-        },
-        {
-            "id": 42,
-            "question": "A quoi sert une Clé API (API Key) ?",
-            "options": [
-                "Authentifier et autoriser l'accès à une API",
-                "Clé",
-                "Pass",
-                "Code"
-            ],
-            "answer": 0,
-            "explanation": "Comme un mot de passe pour les robots."
-        },
-        {
-            "id": 43,
-            "question": "Qu'est-ce que le 'Rate Limit' ?",
-            "options": [
-                "Limite du nombre de requêtes autorisées par minute/heure",
-                "Vitesse",
-                "Frein",
-                "Stop"
-            ],
-            "answer": 0,
-            "explanation": "Pour éviter les abus sur l'API."
-        },
-        {
-            "id": 44,
-            "question": "Qu'est-ce que 'Error Handling' ?",
-            "options": [
-                "Gestion des erreurs (Que faire si ça plante ?)",
-                "Erreur",
-                "Bug",
-                "Réparer"
-            ],
-            "answer": 0,
-            "explanation": "Prévoir le pire (Ignore, Retry, Notify)."
-        },
-        {
-            "id": 45,
-            "question": "Qu'est-ce que 'Ghost' ?",
-            "options": [
-                "Plateforme de blogging moderne (Alternative à WordPress)",
-                "Fantôme",
-                "Site",
-                "Blog"
-            ],
-            "answer": 0,
-            "explanation": "Headless CMS possible."
-        },
-        {
-            "id": 46,
-            "question": "Qu'est-ce que Shopify ?",
-            "options": [
-                "Plateforme E-commerce complète",
-                "Vente",
-                "Magasin",
-                "Site"
-            ],
-            "answer": 0,
-            "explanation": "Très automatisable."
-        },
-        {
-            "id": 47,
-            "question": "Qu'est-ce que Framer ?",
-            "options": [
-                "Outil de design et création de sites (Concurrent Webflow)",
-                "Cadre",
-                "Site",
-                "Design"
-            ],
-            "answer": 0,
-            "explanation": "Très populaire chez les designers."
-        },
-        {
-            "id": 48,
-            "question": "Qu'est-ce que Gumroad ?",
-            "options": [
-                "Plateforme simple pour vendre des produits numériques",
-                "Vente",
-                "Route",
-                "Gomme"
-            ],
-            "answer": 0,
-            "explanation": "Checkout facile."
-        },
-        {
-            "id": 49,
-            "question": "Qu'est-ce que 'Watcher' ?",
-            "options": [
-                "Processus qui surveille un dossier ou un état",
-                "Gardien",
-                "Vue",
-                "Oeil"
-            ],
-            "answer": 0,
-            "explanation": "Déclenche une action quand ça change."
-        },
-        {
-            "id": 50,
-            "question": "L'automatisation va-t-elle voler nos emplois ?",
-            "options": [
-                "Elle supprime les tâches répétitives pour se concentrer sur la valeur ajoutée",
-                "Oui",
-                "Non",
-                "Peut-être"
-            ],
-            "answer": 0,
-            "explanation": "L'humain reste superviseur et créateur."
-        },
-        {
-            "id": 51,
-            "question": "Qu'est-ce que 'Human-in-the-loop' ?",
-            "options": [
-                "L'automatisation marque une pause pour demander une validation humaine",
-                "Boucle",
-                "Humain",
-                "Erreur"
-            ],
-            "answer": 0,
-            "explanation": "Crucial pour les décisions sensibles."
-        },
-        {
-            "id": 52,
-            "question": "Qu'est-ce que 'Web Scraping' ?",
-            "options": [
-                "Extraction de données de sites web par robot",
-                "Toile",
-                "Aspirateur",
-                "Nettoyage"
-            ],
-            "answer": 0,
-            "explanation": "Attention aux CGU des sites."
-        },
-        {
-            "id": 53,
-            "question": "Qu'est-ce que 'Data Enrichment' ?",
-            "options": [
-                "Ajouter des infos à une donnée de base (ex: Email -> Linkedin + Tel + Société)",
-                "Rich",
-                "Argent",
-                "Donnée"
-            ],
-            "answer": 0,
-            "explanation": "Ex: Clearbit, Apollo."
-        },
-        {
-            "id": 54,
-            "question": "Qu'est-ce que 'Lead Scoring' ?",
-            "options": [
-                "Noter automatiquement les prospects selon leur intérêt",
-                "Score",
-                "Jeu",
-                "Vente"
-            ],
-            "answer": 0,
-            "explanation": "Pour prioriser les appels commerciaux."
-        },
-        {
-            "id": 55,
-            "question": "Qu'est-ce que 'Drip Campaign' ?",
-            "options": [
-                "Séquence d'emails automatiques envoyés au goutte-à-goutte",
-                "Fuite",
-                "Pluie",
-                "Marketing"
-            ],
-            "answer": 0,
-            "explanation": "Pour le 'Nurturing' des leads."
-        },
-        {
-            "id": 56,
-            "question": "Qu'est-ce que 'Cold Emailing' ?",
-            "options": [
-                "Envoyer des emails de prospection à des inconus (SPAM légal si B2B)",
-                "Froid",
-                "Glace",
-                "Mail"
-            ],
-            "answer": 0,
-            "explanation": "Doit être très ciblé et pertinent."
-        },
-        {
-            "id": 57,
-            "question": "Qu'est-ce que 'A/B Testing' ?",
-            "options": [
-                "Comparer 2 versions (ex: Objet de mail) pour voir la meilleure",
-                "Test",
-                "Alphabet",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Data Driven Marketing."
-        },
-        {
-            "id": 58,
-            "question": "Qu'est-ce que 'GDPR' / 'RGPD' ?",
-            "options": [
-                "Règlement sur la protection des données (Europe)",
-                "Loi",
-                "Police",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Attention à vos automations de scraping et emailing."
-        },
-        {
-            "id": 59,
-            "question": "Qu'est-ce que 'Klaviyo' ?",
-            "options": [
-                "Outil d'email marketing puissant pour l'e-commerce",
-                "Clavier",
-                "Mail",
-                "Site"
-            ],
-            "answer": 0,
-            "explanation": "Intégration profonde avec Shopify."
-        },
-        {
-            "id": 60,
-            "question": "Qu'est-ce que 'Calendly' ?",
-            "options": [
-                "Outil de prise de RDV automatique",
-                "Calendrier",
-                "Temps",
-                "Date"
-            ],
-            "answer": 0,
-            "explanation": "Fini les 'Tu es dispo quand ?'."
-        },
-        {
-            "id": 61,
-            "question": "Qu'est-ce que 'Loom' ?",
-            "options": [
-                "Enregistrement d'écran vidéo rapide pour communiquer en asynchrone",
-                "Tisser",
-                "Vidéo",
-                "Film"
-            ],
-            "answer": 0,
-            "explanation": "Remplace bien des réunions."
-        },
-        {
-            "id": 62,
-            "question": "Qu'est-ce que 'Slack' ?",
-            "options": [
-                "Messagerie d'équipe (Remplace l'email interne)",
-                "Mou",
-                "Chat",
-                "Travail"
-            ],
-            "answer": 0,
-            "explanation": "Cœur de l'automatisation ChatOps."
-        },
-        {
-            "id": 63,
-            "question": "Qu'est-ce que 'Discord' ?",
-            "options": [
-                "Messagerie communautaire (initialement gamers)",
-                "Chat",
-                "Vocal",
-                "Débat"
-            ],
-            "answer": 0,
-            "explanation": "De plus en plus utilisé par les communautés Web3/Tech."
-        },
-        {
-            "id": 64,
-            "question": "Qu'est-ce que 'Twilio' ?",
-            "options": [
-                "API pour envoyer des SMS et faire des appels",
-                "Téléphone",
-                "Radio",
-                "Com"
-            ],
-            "answer": 0,
-            "explanation": "Le standard pour la communication programmable."
-        },
-        {
-            "id": 65,
-            "question": "Qu'est-ce que 'SendGrid' ?",
-            "options": [
-                "API pour envoyer des emails transactionnels en masse",
-                "Envoi",
-                "Mail",
-                "Grille"
-            ],
-            "answer": 0,
-            "explanation": "Racheté par Twilio."
-        },
-        {
-            "id": 66,
-            "question": "Qu'est-ce qu'un 'Dashboard' ?",
-            "options": [
-                "Tableau de bord visualisant les KPIs",
-                "Planche",
-                "Tableau",
-                "Voiture"
-            ],
-            "answer": 0,
-            "explanation": "Pour piloter l'activité."
-        },
-        {
-            "id": 67,
-            "question": "Qu'est-ce que 'KPI' ?",
-            "options": [
-                "Key Performance Indicator (Indicateur clé)",
-                "Clé",
-                "Chiffre",
-                "Lettre"
-            ],
-            "answer": 0,
-            "explanation": "Ce qui se mesure s'améliore."
-        },
-        {
-            "id": 68,
-            "question": "Qu'est-ce que 'ROI' ?",
-            "options": [
-                "Return On Investment (Retour sur investissement)",
-                "Roi",
-                "Argent",
-                "Loi"
-            ],
-            "answer": 0,
-            "explanation": "Combien l'automatisation me rapporte vs me coûte."
-        },
-        {
-            "id": 69,
-            "question": "Qu'est-ce que 'SaaS' ?",
-            "options": [
-                "Software as a Service (Abonnement)",
-                "Logiciel",
-                "Service",
-                "Nuage"
-            ],
-            "answer": 0,
-            "explanation": "Le modèle économique du NoCode."
-        },
-        {
-            "id": 70,
-            "question": "Qu'est-ce que 'Vertical SaaS' ?",
-            "options": [
-                "Logiciel spécialisé pour un secteur (ex: Doctolib pour médecins)",
-                "Haut",
-                "Droit",
-                "App"
-            ],
-            "answer": 0,
-            "explanation": "Contraire de Horizontal (ex: Excel, Slack)."
-        },
-        {
-            "id": 71,
-            "question": "Qu'est-ce que 'Markdown' ?",
-            "options": [
-                "Langage de formatage de texte simple",
-                "Code",
-                "Marque",
-                "Bas"
-            ],
-            "answer": 0,
-            "explanation": "Utilisé dans Notion, GitHub, Discord."
-        },
-        {
-            "id": 72,
-            "question": "Qu'est-ce que 'Regular Expression Tester' (Regex101) ?",
-            "options": [
-                "Site pour tester ses regex",
-                "Test",
-                "Code",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Indispensable pour debugger."
-        },
-        {
-            "id": 73,
-            "question": "Qu'est-ce que 'Boolean' ?",
-            "options": [
-                "Vrai ou Faux (True/False)",
-                "Chiffre",
-                "Lettre",
-                "Peut-être"
+                "Diriger le flux de données selon des conditions (Vrai/Faux)",
+                "Éteindre n8n",
+                "Changer de couleur",
+                "Supprimer les données"
             ],
             "answer": 0,
             "explanation": "La base de la logique conditionnelle."
         },
         {
-            "id": 74,
-            "question": "Qu'est-ce que 'Array' (Tableau) ?",
+            "id": 26,
+            "question": "Qu'est-ce que l'authentification OAuth2 ?",
             "options": [
-                "Liste d'éléments",
-                "Table",
-                "Ligne",
-                "Variable"
+                "Un protocole permettant d'autoriser une app à accéder à un compte (ex: Google) sans donner son mot de passe",
+                "Un mot de passe à 2 lettres",
+                "Une connexion anonyme",
+                "Un logiciel de sécurité"
             ],
             "answer": 0,
-            "explanation": "[1, 2, 3]."
+            "explanation": "Le standard sécurisé (boutons 'Se connecter avec Google')."
+        },
+        {
+            "id": 27,
+            "question": "Qu'est-ce que 'Docker' pour l'automatisation ?",
+            "options": [
+                "Permet d'héberger ses outils (n8n, Baserow) de manière isolée et portable",
+                "Un bateau",
+                "Un langage",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "Essentiel pour le Self-Hosting."
+        },
+        {
+            "id": 28,
+            "question": "Qu'est-ce qu'une 'Cron Expression' : 0 9 * * 1 ?",
+            "options": [
+                "Tous les lundis à 9h00",
+                "Le 1er septembre",
+                "Toutes les 9 minutes",
+                "Jamais"
+            ],
+            "answer": 0,
+            "explanation": "Minute(0) Heure(9) JourMois(*) Mois(*) JourSemaine(1=Lundi)."
+        },
+        {
+            "id": 29,
+            "question": "Qu'est-ce que 'Playwright' ?",
+            "options": [
+                "Une alternative moderne à Selenium pour l'automatisation de navigateurs (par Microsoft)",
+                "Un dramaturge",
+                "Un jeu",
+                "Un éditeur de texte"
+            ],
+            "answer": 0,
+            "explanation": "Plus rapide et fiable que Selenium pour le scraping dynamique."
+        },
+        {
+            "id": 30,
+            "question": "Qu'est-ce que l'Idempotence dans un workflow ?",
+            "options": [
+                "Garantir que si le workflow s'exécute 2 fois avec les mêmes données, il ne crée pas de doublons",
+                "La puissance des idées",
+                "La rapidité",
+                "L'intelligence"
+            ],
+            "answer": 0,
+            "explanation": "Critique pour éviter d'envoyer 50 fois le même email."
+        },
+        {
+            "id": 31,
+            "question": "A quoi sert 'Postman' ou 'Insomnia' ?",
+            "options": [
+                "Tester et débugger des API manuellement",
+                "Envoyer des lettres",
+                "Dormir",
+                "Gérer des bases de données"
+            ],
+            "answer": 0,
+            "explanation": "L'interface graphique pour interroger des APIs."
+        },
+        {
+            "id": 32,
+            "question": "Qu'est-ce que 'RegEx' (Expression Régulière) ?",
+            "options": [
+                "Une syntaxe pour rechercher/manipuler des motifs complexes dans du texte",
+                "Une expression courante",
+                "Un règlement",
+                "Un type de variable"
+            ],
+            "answer": 0,
+            "explanation": "Puissant mais difficile à lire. Ex: ^[a-z]+@"
+        },
+        {
+            "id": 33,
+            "question": "Qu'est-ce qu'un 'Trigger' (Déclencheur) ?",
+            "options": [
+                "L'événement qui lance le workflow (ex: Mail reçu, Heure pile)",
+                "La fin du workflow",
+                "Une erreur",
+                "Une base de données"
+            ],
+            "answer": 0,
+            "explanation": "Tout commence par un Trigger."
+        },
+        {
+            "id": 34,
+            "question": "Qu'est-ce que 'Whisper' (OpenAI) ?",
+            "options": [
+                "Un modèle de reconnaissance vocale (Speech-to-Text) très performant",
+                "Un secret",
+                "Une IA d'image",
+                "Un chatbot"
+            ],
+            "answer": 0,
+            "explanation": "Permet de transcrire des réunions audio en texte automatiquement."
+        },
+        {
+            "id": 35,
+            "question": "Qu'est-ce que 'Stable Diffusion' ?",
+            "options": [
+                "Un modèle de génération d'images open source",
+                "Une théorie physique",
+                "Un logiciel de montage",
+                "Un cloud"
+            ],
+            "answer": 0,
+            "explanation": "Alternative libre à Midjourney."
+        },
+        {
+            "id": 36,
+            "question": "Qu'est-ce que 'Ollama' ?",
+            "options": [
+                "Un outil pour faire tourner des LLMs (Llama 3, Mistral) en local facilement",
+                "Un animal",
+                "Un site web",
+                "Un langage"
+            ],
+            "answer": 0,
+            "explanation": "L'IA privée, sans internet."
+        },
+        {
+            "id": 37,
+            "question": "Qu'est-ce qu'une Base Vectorielle (Vector DB) ?",
+            "options": [
+                "Une BDD optimisée pour stocker des Embeddings (pour le RAG)",
+                "Une base géométrique",
+                "Une base SQL",
+                "Un fichier Excel"
+            ],
+            "answer": 0,
+            "explanation": "Ex: Pinecone, Weaviate, pgvector."
+        },
+        {
+            "id": 38,
+            "question": "Qu'est-ce que 'LangChain' ?",
+            "options": [
+                "Un framework pour développer des applications basées sur les LLMs",
+                "Une chaîne de blocs",
+                "Un traducteur",
+                "Un langage"
+            ],
+            "answer": 0,
+            "explanation": "Facilite le chaînage d'appels à l'IA."
+        },
+        {
+            "id": 39,
+            "question": "Dans HTTP, que signifie le code 200 ?",
+            "options": [
+                "OK / Succès",
+                "Erreur Serveur",
+                "Non trouvé",
+                "Interdit"
+            ],
+            "answer": 0,
+            "explanation": "Tout va bien."
+        },
+        {
+            "id": 40,
+            "question": "Dans HTTP, que signifie le code 404 ?",
+            "options": [
+                "Not Found (Ressource introuvable)",
+                "Succès",
+                "Erreur Serveur",
+                "Paiement requis"
+            ],
+            "answer": 0,
+            "explanation": "L'URL est mauvaise."
+        },
+        {
+            "id": 41,
+            "question": "Dans HTTP, que signifie le code 500 ?",
+            "options": [
+                "Internal Server Error (Le serveur a planté)",
+                "OK",
+                "Non autorisé",
+                "Redirection"
+            ],
+            "answer": 0,
+            "explanation": "C'est la faute du serveur/code."
+        },
+        {
+            "id": 42,
+            "question": "Qu'est-ce que 'Streamlit' ?",
+            "options": [
+                "Une librairie Python pour créer des Web Apps de Data rapidement",
+                "Un service de streaming",
+                "Un jeu",
+                "Un outil de musique"
+            ],
+            "answer": 0,
+            "explanation": "Transforme un script Python en app interactive."
+        },
+        {
+            "id": 43,
+            "question": "Qu'est-ce que 'Airtable' ?",
+            "options": [
+                "Un hybride Tableur / Base de données avec interface riche",
+                "Une table à air",
+                "Un avion",
+                "Un logiciel de compta"
+            ],
+            "answer": 0,
+            "explanation": "Le standard du No-Code data."
+        },
+        {
+            "id": 44,
+            "question": "Qu'est-ce que 'Softr' ou 'Glide' ?",
+            "options": [
+                "Des outils pour créer des Frontends (Apps/Portails) par dessus Airtable/Google Sheets",
+                "Des logiciels de glisse",
+                "des éditeurs de texte",
+                "Des antivirus"
+            ],
+            "answer": 0,
+            "explanation": "Créer une app client sans coder."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que 'Bubble' ?",
+            "options": [
+                "Le leader du No-Code 'Full Stack' pour créer des web apps complexes",
+                "Une bulle",
+                "Un jeu",
+                "Un outil de chat"
+            ],
+            "answer": 0,
+            "explanation": "Courbe d'apprentissage raide, mais très puissant."
+        },
+        {
+            "id": 46,
+            "question": "Qu'est-ce que 'Figma' ?",
+            "options": [
+                "Outil de design d'interface collaboratif",
+                "Un outil de code",
+                "Une figurine",
+                "Un gestionnaire de tâches"
+            ],
+            "answer": 0,
+            "explanation": "Là où on dessine l'app avant de la faire."
+        },
+        {
+            "id": 47,
+            "question": "Qu'est-ce que 'Notion' ?",
+            "options": [
+                "Un espace de travail tout-en-un (Notes, BDD légères, Docs)",
+                "Une idée",
+                "Un site de news",
+                "Un outil de dessin"
+            ],
+            "answer": 0,
+            "explanation": "Très utilisé comme 'Second Cerveau' ou CMS léger."
+        },
+        {
+            "id": 48,
+            "question": "A quoi sert 'imap' en automatisation ?",
+            "options": [
+                "Protocole pour lire les emails",
+                "Carte interactive",
+                "Protocole web",
+                "Format d'image"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé pour déclencher des flows à la réception d'un mail."
+        },
+        {
+            "id": 49,
+            "question": "A quoi sert 'smtp' ?",
+            "options": [
+                "Protocole pour envoyer des emails",
+                "Protocole de sécurité",
+                "Service de SMS",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Simple Mail Transfer Protocol."
+        },
+        {
+            "id": 50,
+            "question": "Qu'est-ce que 'Twilio' ?",
+            "options": [
+                "API pour envoyer des SMS et passer des appels",
+                "Un jeu",
+                "Une marque de téléphone",
+                "Un réseau social"
+            ],
+            "answer": 0,
+            "explanation": "Le standard pour l'automatisation téléphonique/SMS."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que 'Stripe' ?",
+            "options": [
+                "API de paiement en ligne pour les développeurs",
+                "Une rayure",
+                "Un jeu",
+                "Un site de news"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'encaisser de l'argent via API."
+        },
+        {
+            "id": 52,
+            "question": "Qu'est-ce que l'OCR ?",
+            "options": [
+                "Reconnaissance Optique de Caractères (Image -> Texte)",
+                "Organisation Contre les Robots",
+                "Outil de Code Rapide",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Pour extraire les infos d'un PDF scanné (ex: facture)."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que 'ffmpeg' ?",
+            "options": [
+                "Outil ligne de commande surpuissant pour l'audio/vidéo",
+                "Un codec",
+                "Un lecteur mp3",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "L'outil de base pour convertir/couper des médias."
+        },
+        {
+            "id": 54,
+            "question": "Qu'est-ce que 'jq' ?",
+            "options": [
+                "Outil ligne de commande pour manipuler du JSON",
+                "Jquery",
+                "Un jeu",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Très utile dans les scripts shell pour parser des réponses API."
+        },
+        {
+            "id": 55,
+            "question": "Qu'est-ce que 'Puppeteer' ?",
+            "options": [
+                "Librairie Node.js pour contrôler Chrome (Headless)",
+                "Un marionnettiste",
+                "Un jeu",
+                "Un serveur"
+            ],
+            "answer": 0,
+            "explanation": "Alternative à Selenium/Playwright."
+        },
+        {
+            "id": 56,
+            "question": "Qu'est-ce que 'Headless Browser' ?",
+            "options": [
+                "Un navigateur sans interface graphique (tourne en fond)",
+                "Un navigateur cassé",
+                "Un virus",
+                "Un écran noir"
+            ],
+            "answer": 0,
+            "explanation": "Plus rapide pour l'automatisation."
+        },
+        {
+            "id": 57,
+            "question": "Qu'est-ce que 'AutoGPT' ?",
+            "options": [
+                "Une expérience d'agent IA autonome",
+                "Un jeu de voiture",
+                "Un correcteur auto",
+                "Un GPS"
+            ],
+            "answer": 0,
+            "explanation": "Il se fixe des sous-tâches pour atteindre l'objectif."
+        },
+        {
+            "id": 58,
+            "question": "Qu'est-ce que 'Midjourney' ?",
+            "options": [
+                "IA génératrice d'images artistiques de haute qualité",
+                "Un voyage",
+                "Un jeu",
+                "Un outil de texte"
+            ],
+            "answer": 0,
+            "explanation": "Accessible principalement via Discord."
+        },
+        {
+            "id": 59,
+            "question": "Qu'est-ce que 'ElevenLabs' ?",
+            "options": [
+                "IA de synthèse vocale (Text-to-Speech) ultra-réaliste",
+                "Un laboratoire",
+                "La série Stranger Things",
+                "Un code"
+            ],
+            "answer": 0,
+            "explanation": "Pour cloner des voix."
+        },
+        {
+            "id": 60,
+            "question": "A quoi sert le format 'CSV' ?",
+            "options": [
+                "Comma Separated Values (Tableur simple texte)",
+                "Format vidéo",
+                "Image",
+                "Code Compilé"
+            ],
+            "answer": 0,
+            "explanation": "Le format d'échange le plus basique."
+        },
+        {
+            "id": 61,
+            "question": "Qu'est-ce qu'une 'Variable d'environnement' ?",
+            "options": [
+                " Une valeur dynamique stockée par l'OS/App pour la config (ex: API_KEY)",
+                "La météo",
+                "Une variable mathématique",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Sert à ne pas hardcoder les secrets dans le code."
+        },
+        {
+            "id": 62,
+            "question": "Qu'est-ce que 'ngrok' ?",
+            "options": [
+                "Outil pour exposer un serveur local sur internet (Tunnel)",
+                "Un orc",
+                "Un serveur",
+                "Un jeu"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour tester des Webhooks en local."
+        },
+        {
+            "id": 63,
+            "question": "Qu'est-ce que 'JWT' (JSON Web Token) ?",
+            "options": [
+                "Un standard pour transmettre des infos de manière sécurisée (Auth)",
+                "Un format d'image",
+                "Un site",
+                "Un code"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé pour l'authentification dans les APIs modernes."
+        },
+        {
+            "id": 64,
+            "question": "Qu'est-ce que 'Rate Limit' ?",
+            "options": [
+                "La limite du nombre de requêtes autorisées par une API sur une période",
+                "La vitesse de la lumière",
+                "Un prix",
+                "Une note"
+            ],
+            "answer": 0,
+            "explanation": "Si on dépasse, on reçoit une erreur 429."
+        },
+        {
+            "id": 65,
+            "question": "Qu'est-ce que 'Pagination' dans une API ?",
+            "options": [
+                "Découper les résultats en pages pour ne pas tout envoyer d'un coup",
+                "Imprimer",
+                "Compter les pages",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Il faut souvent faire une boucle pour tout récupérer."
+        },
+        {
+            "id": 66,
+            "question": "Qu'est-ce que 'Git' pour l'automatisation ?",
+            "options": [
+                "Versionner ses scripts pour ne pas perdre son travail",
+                "Inutile",
+                "Un cloud",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "Même pour des scripts simples, c'est une bonne pratique."
+        },
+        {
+            "id": 67,
+            "question": "Qu'est-ce que 'Markdown' ?",
+            "options": [
+                "Langage de balisage léger pour formater du texte",
+                "Un prix bas",
+                "Un langage de code",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé pour les README et la documentation."
+        },
+        {
+            "id": 68,
+            "question": "Qu'est-ce que 'RSS' ?",
+            "options": [
+                "Flux standard pour syndiquer du contenu (News, Blogs)",
+                "Un parti politique",
+                "Rien Sans Savoir",
+                "Un code"
+            ],
+            "answer": 0,
+            "explanation": "Vieux mais très utile pour la veille automatisée."
+        },
+        {
+            "id": 69,
+            "question": "Qu'est-ce que 'IFTTT' ?",
+            "options": [
+                "If This Then That (Outil d'automatisation grand public simple)",
+                "Un code",
+                "Un site",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Le grand-père du No-Code (plus simple que Zapier)."
+        },
+        {
+            "id": 70,
+            "question": "Qu'est-ce que 'Typeform' / 'Tally' ?",
+            "options": [
+                "Outils de création de formulaires en ligne",
+                "Des polices d'écriture",
+                "Des jeux",
+                "Des sites"
+            ],
+            "answer": 0,
+            "explanation": "Souvent le point d'entrée d'une automatisation."
+        },
+        {
+            "id": 71,
+            "question": "Qu'est-ce que 'Calendly' ?",
+            "options": [
+                "Outil de planification de rendez-vous",
+                "Un calendrier papier",
+                "Une horloge",
+                "Un site"
+            ],
+            "answer": 0,
+            "explanation": "Automatise la prise de RDV."
+        },
+        {
+            "id": 72,
+            "question": "Qu'est-ce que 'Loom' ?",
+            "options": [
+                "Outil de capture vidéo d'écran pour la communication asynchrone",
+                "Un métier à tisser",
+                "Un jeu",
+                "Une lumière"
+            ],
+            "answer": 0,
+            "explanation": "Remplace une réunion par une vidéo."
+        },
+        {
+            "id": 73,
+            "question": "Qu'est-ce que 'Slack' / 'Discord' pour l'automatisation ?",
+            "options": [
+                "Le lieu où les notifications et alertes sont envoyées",
+                "Des jeux",
+                "Des sites de rencontre",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "L'interface humaine de vos robots."
+        },
+        {
+            "id": 74,
+            "question": "Qu'est-ce que 'UUID' ?",
+            "options": [
+                "Universally Unique Identifier (ID unique)",
+                "Un vaisseau spatial",
+                "Une université",
+                "Un code"
+            ],
+            "answer": 0,
+            "explanation": "Pour générer des IDs qui ne se collisionnent jamais."
         },
         {
             "id": 75,
-            "question": "Qu'est-ce que 'String' (Chaîne) ?",
+            "question": "Qu'est-ce que 'Hash' (Empreinte) ?",
             "options": [
-                "Du texte",
-                "Fil",
-                "Corde",
-                "Nombre"
+                "Résultat d'une fonction transformant une donnée en chaîne fixe unique",
+                "De la drogue",
+                "Un plat",
+                "Un tag"
             ],
             "answer": 0,
-            "explanation": "'Bonjour'."
+            "explanation": "Utilisé pour vérifier l'intégrité (MD5, SHA256)."
         },
         {
             "id": 76,
-            "question": "Qu'est-ce que 'Integer' (Entier) ?",
+            "question": "A quoi sert le noeud 'Merge' dans n8n ?",
             "options": [
-                "Nombre sans virgule",
-                "Nombre",
-                "Virgule",
-                "Texte"
+                "Fusionner deux flux de données",
+                "Supprimer",
+                "Diviser",
+                "Arrêter"
             ],
             "answer": 0,
-            "explanation": "42."
+            "explanation": "Pour rassembler des données venant de sources différentes."
         },
         {
             "id": 77,
-            "question": "Qu'est-ce que 'Float' ?",
+            "question": "Qu'est-ce que 'OpenAI API' ?",
             "options": [
-                "Nombre à virgule flottante",
-                "Bateau",
-                "Eau",
-                "Texte"
+                "L'interface pour utiliser GPT-4 dans son propre code",
+                "Un site gratuit",
+                "Un jeu",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "3.14."
+            "explanation": "La base de l'IA moderne."
         },
         {
             "id": 78,
-            "question": "Qu'est-ce que 'Null' ?",
+            "question": "Qu'est-ce que 'Temperature' dans les LLMs ?",
             "options": [
-                "Absence de valeur (Vide)",
-                "Zéro",
-                "Rien",
-                "Faux"
+                "Paramètre contrôlant la créativité/le hasard (0=Précis, 1=Créatif)",
+                "La chaleur du CPU",
+                "La météo",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Différent de 0 ou chaîne vide."
+            "explanation": "A 0, le modèle répond toujours la même chose."
         },
         {
             "id": 79,
-            "question": "Qu'est-ce que 'Epoch Time' (Unix Timestamp) ?",
+            "question": "Qu'est-ce que 'System Prompt' ?",
             "options": [
-                "Nombre de secondes écoulées depuis le 1er Janvier 1970",
-                "Temps",
-                "Date",
-                "Heure"
+                "L'instruction initiale qui définit le rôle et le comportement de l'IA",
+                "Une erreur système",
+                "Un terminal",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Facile à comparer pour les ordi."
+            "explanation": "Ex: 'Tu es un expert Python'."
         },
         {
             "id": 80,
-            "question": "Qu'est-ce que 'UTC' ?",
+            "question": "Qu'est-ce que 'Token' en IA ?",
             "options": [
-                "Temps Universel Coordonné (Standard mondial)",
-                "Heure",
-                "Zone",
-                "Pays"
+                "L'unité de base du texte pour le modèle (~3/4 d'un mot)",
+                "Une pièce de monnaie",
+                "Un mot entier",
+                "Une lettre"
             ],
             "answer": 0,
-            "explanation": "Toujours travailler en UTC dans les automations."
+            "explanation": "On paie au Token."
         },
         {
             "id": 81,
-            "question": "Qu'est-ce que 'ISO 8601' ?",
+            "question": "Qu'est-ce que 'Zero-Shot Learning' ?",
             "options": [
-                "Format de date standard (YYYY-MM-DD)",
-                "Date",
-                "Norme",
-                "Heure"
+                "L'IA réussit une tâche sans avoir vu d'exemple",
+                "Tirer sans viser",
+                "Apprendre vite",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "2023-10-25."
+            "explanation": "Force des LLMs."
         },
         {
             "id": 82,
-            "question": "Qu'est-ce que 'Onboarding' ?",
+            "question": "Qu'est-ce que 'Few-Shot Learning' ?",
             "options": [
-                "Processus d'accueil d'un nouveau client/employé",
-                "Bateau",
-                "Embarquement",
-                "Début"
+                "Donner quelques exemples dans le prompt pour guider l'IA",
+                "Boire des shots",
+                "Tirer plusieurs fois",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Moment critique à automatiser pour l'expérience."
+            "explanation": "Améliore grandement les résultats."
         },
         {
             "id": 83,
-            "question": "Qu'est-ce que 'Offboarding' ?",
+            "question": "Qu'est-ce que 'Chain of Thought' ?",
             "options": [
-                "Processus de départ (révoquer accès, etc.)",
-                "Départ",
-                "Débarquement",
-                "Fin"
+                "Demander à l'IA de 'penser étape par étape'",
+                "Une chaîne en métal",
+                "Une pensée unique",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Sécurité critique."
+            "explanation": "Réduit les hallucinations pour les tâches logiques."
         },
         {
             "id": 84,
-            "question": "Qu'est-ce que 'Legacy System' ?",
+            "question": "Qu'est-ce que 'Hallucination' en IA ?",
             "options": [
-                "Vieux système informatique hérité, difficile à changer",
-                "Héritage",
-                "Vieux",
-                "Ordi"
+                "L'IA invente des faits faux avec assurance",
+                "L'IA voit des fantômes",
+                "L'IA plante",
+                "L'IA rêve"
             ],
             "answer": 0,
-            "explanation": "Souvent la cible du RPA."
+            "explanation": "Le plus gros défaut des LLMs."
         },
         {
             "id": 85,
-            "question": "Qu'est-ce que 'Silo' ?",
+            "question": "Qu'est-ce que 'Pinecone' ?",
             "options": [
-                "Données isolées dans un service, inaccessibles aux autres",
-                "Tour",
-                "Ferme",
-                "Stock"
+                "Une base de données vectorielle (Vector DB) populaire",
+                "Une pomme de pin",
+                "Un fruit",
+                "Un arbre"
             ],
             "answer": 0,
-            "explanation": "L'automatisation casse les silos."
+            "explanation": "Pour le RAG."
         },
         {
             "id": 86,
-            "question": "Qu'est-ce que 'Citizen Developer' ?",
+            "question": "Qu'est-ce que 'Groq' ?",
             "options": [
-                "Employé non-tech qui crée ses propres apps/automations",
-                "Citoyen",
-                "Dev",
-                "Maire"
+                "Un fournisseur d'inférence IA ultra-rapide (LPUs)",
+                "Un monstre",
+                "Un son",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Grâce au NoCode."
+            "explanation": "Vitesse d'exécution impressionnante."
         },
         {
             "id": 87,
-            "question": "Qu'est-ce que 'Shadow IT' ?",
+            "question": "Qu'est-ce que 'Regular Expression' (Regex) ?",
             "options": [
-                "Logiciels utilisés par les employés sans l'aval de la DSI",
-                "Ombre",
-                "IT",
-                "Pirate"
+                "Une séquence de caractères définissant un motif de recherche",
+                "Une expression banale",
+                "Un code barre",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "Risque de sécurité (données fuient)."
+            "explanation": "Indispensable pour nettoyer des données textuelles."
         },
         {
             "id": 88,
-            "question": "Qu'est-ce que 'Scalabilité' ?",
+            "question": "Qu'est-ce que 'Xpath' ?",
             "options": [
-                "Capacité à grandir sans craquer",
-                "Echelle",
-                "Poids",
-                "Taille"
+                "Langage pour localiser des éléments dans un DOM XML/HTML",
+                "Un chemin de randonnée",
+                "Une carte au trésor",
+                "Une croix"
             ],
             "answer": 0,
-            "explanation": "Une automation doit tenir la charge."
+            "explanation": "Utilisé en Scraping."
         },
         {
             "id": 89,
-            "question": "Qu'est-ce que 'Bottleneck' (Goulot d'étranglement) ?",
+            "question": "Qu'est-ce que 'CSS Selector' ?",
             "options": [
-                "Le point lent qui ralentit tout le processus",
-                "Bouteille",
-                "Cou",
-                "Frein"
+                "Moyen de sélectionner des éléments HTML (ex: .class, #id)",
+                "Choisir une couleur",
+                "Un style",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "C'est là qu'il faut automatiser en priorité."
+            "explanation": "Plus simple que Xpath pour le scraping."
         },
         {
             "id": 90,
-            "question": "Qu'est-ce que 'MVP' ?",
+            "question": "Qu'est-ce que 'User Agent' ?",
             "options": [
-                "Minimum Viable Product (Produit minimum viable)",
-                "Sport",
-                "Joueur",
-                "Meilleur"
+                "Chaîne de caractères identifiant le navigateur/robot au serveur",
+                "Un espion",
+                "Un utilisateur",
+                "Un agent immobilier"
             ],
             "answer": 0,
-            "explanation": "Lancez vite, itérez ensuite."
+            "explanation": "A changer pour ne pas se faire bloquer en scraping."
         },
         {
             "id": 91,
-            "question": "Qu'est-ce que 'Proof of Concept' (POC) ?",
+            "question": "Qu'est-ce que 'Proxy' en Scraping ?",
             "options": [
-                "Preuve de concept (Test rapide pour valider la faisabilité)",
-                "Preuve",
-                "Test",
-                "Idée"
+                "Intermédiaire masquant votre adresse IP réelle",
+                "Un proche",
+                "Un serveur local",
+                "Une protection"
             ],
             "answer": 0,
-            "explanation": "Avant de tout construire."
+            "explanation": "Pour contourner les blocages par IP."
         },
         {
             "id": 92,
-            "question": "Qu'est-ce que 'Workflow' ?",
+            "question": "Qu'est-ce que 'Visual Regression Testing' ?",
             "options": [
-                "Flux de travail (Séquence de tâches)",
-                "Travail",
-                "Flux",
-                "Process"
+                "Comparer des screenshots avant/après pour détecter des changements visuels",
+                "Regarder l'écran",
+                "Tester sa vue",
+                "Rien"
             ],
             "answer": 0,
-            "explanation": "La base."
+            "explanation": "Automatisable."
         },
         {
             "id": 93,
-            "question": "Qu'est-ce que 'Template' ?",
+            "question": "Qu'est-ce que 'Webhook' vs 'API' ?",
             "options": [
-                "Modèle pré-rempli réutilisable",
-                "Exemple",
-                "Copie",
-                "Plan"
+                "Webhook = Le serveur vous appelle (Push). API = Vous appelez le serveur (Poll).",
+                "C'est pareil",
+                "Webhook c'est pour le web",
+                "API c'est pour les apps"
             ],
             "answer": 0,
-            "explanation": "Gagne temps."
+            "explanation": "Don't call us, we'll call you."
         },
         {
             "id": 94,
-            "question": "Qu'est-ce que 'Use Case' (Cas d'usage) ?",
+            "question": "Qu'est-ce que 'No-Code' ?",
             "options": [
-                "Scénario d'utilisation concret",
-                "Cas",
-                "Usage",
-                "Exemple"
+                "Créer des logiciels via des interfaces visuelles sans écrire de code",
+                "Interdiction de coder",
+                "Un mouvement politique",
+                "Coder en binaire"
             ],
             "answer": 0,
-            "explanation": "A quoi ça sert ?"
+            "explanation": "Démocratise la création."
         },
         {
             "id": 95,
-            "question": "Qu'est-ce que 'Pain Point' ?",
+            "question": "Qu'est-ce que 'Low-Code' ?",
             "options": [
-                "Problème douloureux pour l'utilisateur",
-                "Douleur",
-                "Point",
-                "Mal"
+                "Plateformes visuelles permettant d'ajouter du code manuel pour la complexité",
+                "Code bas niveau",
+                "Petit code",
+                "Code lent"
             ],
             "answer": 0,
-            "explanation": "Ce qu'on cherche à résoudre."
+            "explanation": "Le meilleur des deux mondes (Vitesse + Flexibilité)."
         },
         {
             "id": 96,
-            "question": "Qu'est-ce que 'Friction' ?",
+            "question": "Qu'est-ce que 'Vercel' / 'Netlify' ?",
             "options": [
-                "Résistance qui empêche l'utilisateur d'avancer fluide",
-                "Frotter",
-                "Dur",
-                "Blocage"
+                "Plateformes d'hébergement et déploiement Front-end/Serverless",
+                "Des navigateurs",
+                "Des frameworks",
+                "Des langages"
             ],
             "answer": 0,
-            "explanation": "L'automatisation réduit la friction."
+            "explanation": "Idéal pour déployer des apps Next.js / Static."
         },
         {
             "id": 97,
-            "question": "Qu'est-ce que 'User Experience' (UX) ?",
+            "question": "Qu'est-ce que 'Supabase' ?",
             "options": [
-                "Ressenti global de l'utilisateur face à l'outil",
-                "Design",
-                "Beau",
-                "Art"
+                "Alternative Open Source à Firebase (Backend-as-a-Service)",
+                "Une super base",
+                "Un outil de surf",
+                "Une database Oracle"
             ],
             "answer": 0,
-            "explanation": "Une bonne automation est invisible."
+            "explanation": "Basé sur PostgreSQL."
         },
         {
             "id": 98,
-            "question": "Qu'est-ce que 'User Interface' (UI) ?",
+            "question": "Qu'est-ce que 'PostgreSQL' ?",
             "options": [
-                "Ce que l'utilisateur voit et clique",
-                "Ecran",
-                "Bouton",
-                "Image"
+                "Système de gestion de base de données relationnelle objet (ORDBMS) avancé",
+                "Un service postal",
+                "Un langage",
+                "Un fichier texte"
             ],
             "answer": 0,
-            "explanation": "L'enveloppe du système."
+            "explanation": "Le moteur de BDD le plus aimé des développeurs."
         },
         {
             "id": 99,
-            "question": "Qu'est-ce que 'Knowledge Base' ?",
+            "question": "Qu'est-ce que 'Redis' ?",
             "options": [
-                "Base de connaissances (Documentation)",
-                "Savoir",
-                "Base",
-                "Wiki"
+                "Magasin de structure de données en mémoire (Cache, Message Broker)",
+                "Une couleur",
+                "Un site",
+                "Un disque dur"
             ],
             "answer": 0,
-            "explanation": "Pour que le bot puisse répondre."
+            "explanation": "Ultra rapide (RAM)."
         },
         {
             "id": 100,
-            "question": "Pourquoi automatiser ?",
+            "question": "Quelle est la compétence clé de l'automatisation en 2025 ?",
             "options": [
-                "Pour gagner du temps, de l'argent et de la sérénité",
-                "Pour faire cool",
-                "Pour rien",
-                "Pour les robots"
+                "L'orchestration des modèles d'IA (AI Engineering / Agentic Workflows)",
+                "Savoir taper vite",
+                "Connaître le C++",
+                "Réparer des imprimantes"
             ],
             "answer": 0,
-            "explanation": "La productivité au service de l'humain."
+            "explanation": "Ce n'est plus juste des 'If Then Else', c'est des agents intelligents."
         }
     ]
 }

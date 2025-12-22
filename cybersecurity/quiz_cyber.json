@@ -1,1208 +1,1328 @@
 {
     "meta": {
-        "title": "Quiz Cybersécurité - 100 Questions",
-        "total": 100
+        "title": "Quiz Cybersécurité Expert - 110 Questions",
+        "total": 110
     },
     "questions": [
         {
             "id": 1,
-            "question": "Que signifient les lettres CIA en sécurité ?",
+            "question": "Dans le modèle CIA, que garantit l'Intégrité ?",
             "options": [
-                "Confidentiality, Integrity, Availability",
-                "Central Intelligence Agency",
-                "Code, Input, Access",
-                "Computer Internal Audit"
+                "Que la donnée n'a pas été altérée",
+                "Que la donnée est chiffrée",
+                "Que le service est accessible",
+                "Que l'identité est prouvée"
             ],
             "answer": 0,
-            "explanation": "Le triangle fondamental de la sécurité de l'information."
+            "explanation": "L'intégrité assure que la donnée est authentique et non modifiée (hashing, signature)."
         },
         {
             "id": 2,
-            "question": "Qu'est-ce qu'une injection SQL (SQLi) ?",
+            "question": "Dans le framework AAA, à quoi correspond l'Accounting ?",
             "options": [
-                "Infection de code malveillant dans une requête BDD",
-                "Un virus",
-                "Une panne serveur",
-                "Un script JS"
+                "Tracer les actions (Logs)",
+                "Payer la facture",
+                "Vérifier le mot de passe",
+                "Définir les permissions"
             ],
             "answer": 0,
-            "explanation": "Permet de lire ou modifier la base de données via un champ non sécurisé."
+            "explanation": "Accounting (Traçabilité) permet de savoir 'qui a fait quoi'."
         },
         {
             "id": 3,
-            "question": "Quelle attaque cible l'utilisateur via son navigateur (Script) ?",
+            "question": "Quelle est la définition du Risque ?",
             "options": [
-                "XSS (Cross-Site Scripting)",
-                "DDoS",
-                "Brute Force",
-                "Phishing"
+                "Menace x Vulnérabilité",
+                "Menace + Impact",
+                "Vulnérabilité / Coût",
+                "Attaque x Dégâts"
             ],
             "answer": 0,
-            "explanation": "Injection de JavaScript malveillant (vol de cookies, redirection)."
+            "explanation": "Le risque est la probabilité qu'une Menace exploite une Vulnérabilité."
         },
         {
             "id": 4,
-            "question": "Quel principe signifie 'Ne donner que les accès nécessaires' ?",
+            "question": "Quel principe de défense préconise plusieurs couches de sécurité ?",
             "options": [
-                "Moindre Privilège (Least Privilege)",
-                "Zero Trust",
-                "Admin Access",
-                "Open Source"
+                "Defense in Depth",
+                "Keep It Simple",
+                "Security through Obscurity",
+                "Zero Trust"
             ],
             "answer": 0,
-            "explanation": "L'utilisateur ne doit avoir que les droits indispensables à sa tâche."
+            "explanation": "Si une couche échoue (ex: Firewall), une autre prend le relais (ex: Antivirus)."
         },
         {
             "id": 5,
-            "question": "Qu'est-ce que le Phishing (Hameçonnage) ?",
+            "question": "Dans la Cyber Kill Chain, quelle est la première étape ?",
             "options": [
-                "Email frauduleux imitant une entité de confiance",
-                "Pêche en ligne",
-                "Virus USB",
-                "Attaque WIFI"
+                "Reconnaissance",
+                "Exploitation",
+                "Delivery",
+                "Weaponization"
             ],
             "answer": 0,
-            "explanation": "Vise à voler des identifiants (Ingénierie Sociale)."
+            "explanation": "L'attaquant commence toujours par collecter des informations sur sa cible."
         },
         {
             "id": 6,
-            "question": "Quel algorithme est utilisé pour le Hachage sécurisé ?",
+            "question": "Quelle vulnérabilité permet à un attaquant de lire des fichiers système locaux (ex: /etc/passwd) ?",
             "options": [
-                "SHA-256",
-                "Base64",
-                "ROT13",
-                "Cleartext"
+                "LFI (Local File Inclusion) / Path Traversal",
+                "XSS",
+                "CSRF",
+                "SQL Injection"
             ],
             "answer": 0,
-            "explanation": "Irréversible, contrairement au chiffrement."
+            "explanation": "Souvent via des paramètres non assainis comme ?file=../../etc/passwd"
         },
         {
             "id": 7,
-            "question": "Que signifie DDoS ?",
+            "question": "Quel payload est typique d'une Injection SQL ?",
             "options": [
-                "Distributed Denial of Service",
-                "Direct Domain Server",
-                "Data Destruction OS",
-                "Rien"
+                "' OR 1=1 --",
+                "<script>alert(1)</script>",
+                "../../etc/passwd",
+                "{{ 7*7 }}"
             ],
             "answer": 0,
-            "explanation": "Saturer un service avec des requêtes provenant de multiples sources (Botnet)."
+            "explanation": "Cela rend la condition toujours vraie (1=1) et commente la fin de la requête (--)."
         },
         {
             "id": 8,
-            "question": "Qu'est-ce qu'un Firewall (Pare-feu) ?",
+            "question": "Quelle est la différence entre XSS Reflected et Stored ?",
             "options": [
-                "Système filtrant le trafic réseau entrant/sortant",
-                "Un antivirus",
-                "Un mot de passe",
-                "Un mur physique"
+                "Stored est persistant en BDD, Reflected est dans l'URL",
+                "Reflected touche le serveur, Stored le client",
+                "Stored est moins grave",
+                "Aucune différence"
             ],
             "answer": 0,
-            "explanation": "Bloque les connexions non autorisées selon des règles (Ports, IP)."
+            "explanation": "Stored XSS touche tous les visiteurs qui chargent la page infectée."
         },
         {
             "id": 9,
-            "question": "Quelle est la différence entre HTTP et HTTPS ?",
+            "question": "Contre quelle attaque le token Anti-CSRF protège-t-il ?",
             "options": [
-                "Le chiffrement (TLS/SSL)",
-                "La vitesse",
-                "Le prix",
-                "Aucune"
-            ],
-            "answer": 0,
-            "explanation": "Le 'S' signifie Secure. Protège contre l'écoute (Sniffing)."
-        },
-        {
-            "id": 10,
-            "question": "A quoi sert le 'Salt' dans le stockage des mots de passe ?",
-            "options": [
-                "Empêcher les attaques par Rainbow Tables",
-                "Saler le serveur",
-                "Accélérer le hash",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Ajoute une chaîne aléatoire au mot de passe avant de le hasher."
-        },
-        {
-            "id": 11,
-            "question": "Qu'est-ce qu'un Ransomware ?",
-            "options": [
-                "Malware qui chiffre les données et demande une rançon",
-                "Logiciel gratuit",
-                "Antivirus",
-                "Spyware"
-            ],
-            "answer": 0,
-            "explanation": "Menace majeure (WannaCry, Ryuk...)."
-        },
-        {
-            "id": 12,
-            "question": "Que signifie MFA ?",
-            "options": [
-                "Multi-Factor Authentication",
-                "My Final Answer",
-                "Main File Access",
-                "Master Function"
-            ],
-            "answer": 0,
-            "explanation": "Utiliser au moins 2 preuves d'identité (Mot de passe + Code SMS/App)."
-        },
-        {
-            "id": 13,
-            "question": "Qu'est-ce que le 'Zero Trust' ?",
-            "options": [
-                "Modèle où aucune confiance n'est accordée par défaut, même en interne",
-                "Ne croire personne",
-                "Pas de wifi",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Vérification continue (Never Trust, Always Verify)."
-        },
-        {
-            "id": 14,
-            "question": "Quelle attaque intercepte les communications entre deux parties ?",
-            "options": [
-                "Man-in-the-Middle (MitM)",
-                "DDoS",
-                "SQLi",
+                "Forcer l'utilisateur à soumettre un formulaire à son insu",
+                "Vol de cookies",
+                "Injection SQL",
                 "Brute Force"
             ],
             "answer": 0,
-            "explanation": "Souvent sur des réseaux Wi-Fi non sécurisés."
+            "explanation": "Le token garantit que le formulaire vient bien du site légitime."
+        },
+        {
+            "id": 10,
+            "question": "Que signifie SSRF ?",
+            "options": [
+                "Server-Side Request Forgery",
+                "Simple Service Request Fix",
+                "Secure Socket Relay Frame",
+                "Server Status Remote File"
+            ],
+            "answer": 0,
+            "explanation": "L'attaquant force le serveur à faire une requête vers une ressource interne."
+        },
+        {
+            "id": 11,
+            "question": "Quelle attaque exploite une référence d'objet directe non sécurisée (ex: /user/123) ?",
+            "options": [
+                "IDOR",
+                "XSS",
+                "RCE",
+                "DDoS"
+            ],
+            "answer": 0,
+            "explanation": "Insecure Direct Object Reference : changer l'ID permet d'accéder aux données d'autrui."
+        },
+        {
+            "id": 12,
+            "question": "Quel algorithme de chiffrement est SYMÉTRIQUE ?",
+            "options": [
+                "AES",
+                "RSA",
+                "ECC",
+                "Diffie-Hellman"
+            ],
+            "answer": 0,
+            "explanation": "AES utilise la même clé pour chiffrer et déchiffrer."
+        },
+        {
+            "id": 13,
+            "question": "Pourquoi préfère-t-on le chiffrement asymétrique pour l'échange de clés ?",
+            "options": [
+                "Il permet de partager un secret sans canal sécurisé préalable",
+                "Il est plus rapide",
+                "Il utilise des clés plus courtes",
+                "Il est incassable"
+            ],
+            "answer": 0,
+            "explanation": "Grâce au couple clé publique / clé privée."
+        },
+        {
+            "id": 14,
+            "question": "Quelle propriété est unique au Hachage (Hashing) ?",
+            "options": [
+                "Irréversible (One-way)",
+                "Nécessite une clé",
+                "Bidirectionnel",
+                "Lent"
+            ],
+            "answer": 0,
+            "explanation": "On ne peut pas retrouver le message original à partir du hash."
         },
         {
             "id": 15,
-            "question": "Qu'est-ce qu'un VPN ?",
+            "question": "À quoi sert le 'Salt' dans le stockage des mots de passe ?",
             "options": [
-                "Virtual Private Network (Tunnel chiffré)",
-                "Very Public Network",
-                "Virus Protection",
-                "Visual Ping"
+                "Empêcher les attaques par Rainbow Tables",
+                "Rendre le hash plus court",
+                "Chiffrer le hash",
+                "Accélérer la vérification"
             ],
             "answer": 0,
-            "explanation": "Permet de sécuriser la connexion et masquer l'IP."
+            "explanation": "Il ajoute une donnée aléatoire unique à chaque mot de passe avant le hachage."
         },
         {
             "id": 16,
-            "question": "Quel port est utilisé par HTTPS ?",
+            "question": "Dans le protocole TLS, qui envoie son Certificat en premier ?",
             "options": [
-                "443",
-                "80",
-                "22",
-                "21"
+                "Le Serveur",
+                "Le Client",
+                "L'Autorité de Certification",
+                "Personne"
             ],
             "answer": 0,
-            "explanation": "Le port 80 est pour HTTP."
+            "explanation": "Le serveur doit prouver son identité au client lors du Handshake."
         },
         {
             "id": 17,
-            "question": "Citez un outil d'analyse de vulnérabilités Web.",
+            "question": "Qu'est-ce qu'un certificat X.509 ?",
             "options": [
-                "OWASP ZAP / Burp Suite",
-                "Word",
-                "Paint",
-                "Calculator"
+                "Une carte d'identité numérique signée par une CA",
+                "Un mot de passe",
+                "Un algorithme de hachage",
+                "Un protocole VPN"
             ],
             "answer": 0,
-            "explanation": "Permet de scanner et tester la sécurité des apps."
+            "explanation": "Il lie une Clé Publique à une Identité (Domaine/Organisation)."
         },
         {
             "id": 18,
-            "question": "Qu'est-ce que l'Ingénierie Sociale (Social Engineering) ?",
+            "question": "Quelle est la différence entre un Firewall Stateless et Stateful ?",
             "options": [
-                "Manipulation psychologique pour obtenir des infos",
-                "Programmation sociale",
-                "Réseau social",
-                "Robot"
+                "Stateful se souvient de l'état des connexions",
+                "Stateless est plus lent",
+                "Stateful ne filtre que le port 80",
+                "Aucune"
             ],
             "answer": 0,
-            "explanation": "Exploite la faille humaine plutôt que technique."
+            "explanation": "Stateful Inspection permet de savoir si un paquet appartient à une session établie."
         },
         {
             "id": 19,
-            "question": "Quelle commande Linux permet de voir les permissions fichiers ?",
+            "question": "Quel outil réseau détecte les intrusions sans les bloquer ?",
             "options": [
-                "ls -l",
-                "show perm",
-                "dir",
-                "cat"
+                "IDS (Intrusion Detection System)",
+                "IPS (Intrusion Prevention System)",
+                "Firewall",
+                "VPN"
             ],
             "answer": 0,
-            "explanation": "Affiche rwx (Read, Write, Execute)."
+            "explanation": "L'IDS alerte (comme une caméra), l'IPS bloque (comme un vigile)."
         },
         {
             "id": 20,
-            "question": "Qu'est-ce qu'un Rootkit ?",
+            "question": "À quoi sert une DMZ (Demilitarized Zone) ?",
             "options": [
-                "Malware furtif qui maintient un accès admin caché",
-                "Kit de jardinage",
-                "Mot de passe root",
-                "Script"
+                "Isoler les services exposés à Internet (Web, Mail)",
+                "Stocker les mots de passe",
+                "Cacher le Wi-Fi",
+                "Accélérer le réseau"
             ],
             "answer": 0,
-            "explanation": "Très difficile à détecter car il modifie le système d'exploitation."
+            "explanation": "Elle agit comme une zone tampon entre Internet et le réseau interne."
         },
         {
             "id": 21,
-            "question": "Que signifie CSRF ?",
+            "question": "Quel protocole VPN est réputé pour sa simplicité et sa modernité ?",
             "options": [
-                "Cross-Site Request Forgery",
-                "Code Source Request File",
-                "Computer Security Rule",
-                "Rien"
+                "WireGuard",
+                "IPSec",
+                "PPTP",
+                "L2TP"
             ],
             "answer": 0,
-            "explanation": "Force l'utilisateur à exécuter une action non voulue."
+            "explanation": "WireGuard est plus performant et plus auditable qu'OpenVPN ou IPSec."
         },
         {
             "id": 22,
-            "question": "Qu'est-ce que le chiffrement Symétrique ?",
+            "question": "Dans une attaque MITM, que fait l'attaquant ?",
             "options": [
-                "Une seule clé pour chiffrer et déchiffrer (AES)",
-                "Deux clés",
-                "Pas de clé",
-                "Hachage"
+                "Il intercepte et relaye les communications",
+                "Il détruit le serveur",
+                "Il vole la base de données",
+                "Il chiffre les fichiers"
             ],
             "answer": 0,
-            "explanation": "Plus rapide que l'asymétrique, mais problème d'échange de clé."
+            "explanation": "Man-In-The-Middle : il se place entre le client et le serveur."
         },
         {
             "id": 23,
-            "question": "Qu'est-ce que le chiffrement Asymétrique ?",
+            "question": "Quel facteur d'authentification correspond à une empreinte digitale ?",
             "options": [
-                "Paire de clés (Publique / Privée) (RSA)",
-                "Une clé",
-                "Symétrique",
-                "Hash"
+                "Inherence (Ce que je suis)",
+                "Knowledge (Ce que je sais)",
+                "Possession (Ce que j'ai)",
+                "Location (Où je suis)"
             ],
             "answer": 0,
-            "explanation": "La clé publique chiffre, la privée déchiffre."
+            "explanation": "La biométrie est liée à l'individu."
         },
         {
             "id": 24,
-            "question": "Qu'est-ce qu'un 'Honeypot' ?",
+            "question": "Pourquoi le SMS n'est-il pas recommandé pour le MFA ?",
             "options": [
-                "Système leurre pour piéger et analyser les attaquants",
-                "Pot de miel",
-                "Mot de passe doux",
-                "Antivirus"
+                "Vulnérable au SIM Swapping",
+                "Trop cher",
+                "Nécessite un smartphone",
+                "Trop lent"
             ],
             "answer": 0,
-            "explanation": "Permet d'étudier les techniques d'attaque."
+            "explanation": "Un attaquant peut détourner le numéro de téléphone de la victime."
         },
         {
             "id": 25,
-            "question": "Que signifie GDPR (RGPD) ?",
+            "question": "Dans OAuth 2.0, qu'est-ce qu'un Access Token ?",
             "options": [
-                "Règlement Général sur la Protection des Données",
-                "Global Data Protection",
-                "Google Data Rule",
-                "Rien"
+                "Une clé temporaire pour accéder aux ressources",
+                "Le mot de passe de l'utilisateur",
+                "Un cookie de session",
+                "Un certificat SSL"
             ],
             "answer": 0,
-            "explanation": "Loi européenne sur la privacy."
+            "explanation": "Il permet à l'application cliente d'agir au nom de l'utilisateur."
         },
         {
             "id": 26,
-            "question": "Qu'est-ce qu'une attaque Brute Force ?",
+            "question": "Dans Active Directory, quel est le rôle du KDC (Key Distribution Center) ?",
             "options": [
-                "Tester toutes les combinaisons possibles de mot de passe",
-                "Casser l'ordi",
-                "Attaque physique",
-                "Virus"
+                "Délivrer les tickets Kerberos (TGT)",
+                "Stocker les fichiers",
+                "Scanner les virus",
+                "Gérer les mises à jour"
             ],
             "answer": 0,
-            "explanation": "Contre-mesure : Limiter les tentatives, Captcha, Fail2Ban."
+            "explanation": "C'est l'autorité de confiance centrale de Kerberos."
         },
         {
             "id": 27,
-            "question": "Quelle est la longueur recommandée pour un mot de passe ?",
+            "question": "Qu'est-ce qu'une attaque Pass-the-Hash ?",
             "options": [
-                "12+ caractères avec mixité",
-                "4 caractères",
-                "8 chiffres",
-                "Date de naissance"
+                "S'authentifier avec le hash NTLM sans connaître le mot de passe",
+                "Cracker le hash",
+                "Voler le mot de passe en clair",
+                "Injecter un faux hash"
             ],
             "answer": 0,
-            "explanation": "Plus c'est long, plus l'entropie est élevée."
+            "explanation": "Windows accepte souvent le hash directement pour l'authentification réseau."
         },
         {
             "id": 28,
-            "question": "Qu'est-ce qu'un IDS ?",
+            "question": "Quel est le danger d'un 'Golden Ticket' ?",
             "options": [
-                "Intrusion Detection System",
-                "Internet Data Source",
-                "Input Data Stream",
-                "ID System"
+                "Accès administrateur total et persistant au domaine",
+                "Accès à un seul serveur",
+                "Vol d'un seul compte utilisateur",
+                "Panne du contrôleur de domaine"
             ],
             "answer": 0,
-            "explanation": "Détecte les activités suspectes (Snort, Suricata)."
+            "explanation": "Forgé avec le compte KRBTGT, il permet de créer n'importe quel ticket valide."
         },
         {
             "id": 29,
-            "question": "Qu'est-ce qu'un IPS ?",
+            "question": "Quel type de malware demande un paiement pour débloquer les fichiers ?",
             "options": [
-                "Intrusion Prevention System (Bloque activement)",
-                "IP System",
-                "Image Process",
-                "Rien"
+                "Ransomware",
+                "Spyware",
+                "Adware",
+                "Rootkit"
             ],
             "answer": 0,
-            "explanation": "Contrairement à l'IDS qui alerte, l'IPS agit."
+            "explanation": "Il utilise le chiffrement pour prendre les données en otage."
         },
         {
             "id": 30,
-            "question": "Qu'est-ce qu'un exploit 'Zero-Day' ?",
+            "question": "Un malware qui se fait passer pour un logiciel légitime est un :",
             "options": [
-                "Faille exploitée avant que le correctif n'existe",
-                "Faille de 0 jour",
-                "Vieux virus",
-                "Bug"
+                "Cheval de Troie (Trojan)",
+                "Ver (Worm)",
+                "Virus",
+                "Backdoor"
             ],
             "answer": 0,
-            "explanation": "Très dangereux car aucune défense n'est prête."
+            "explanation": "Comme dans la mythologie, il cache sa charge malveillante."
         },
         {
             "id": 31,
-            "question": "Qu'est-ce que le 'Penetration Testing' (Pentest) ?",
+            "question": "Dans le Cloud (IaaS), qui est responsable de la sécurité de l'OS ?",
             "options": [
-                "Simulation d'attaque autorisée pour trouver les failles",
-                "Test de stylo",
-                "Piratage illégal",
-                "Audit financier"
+                "Le Client",
+                "Le Cloud Provider",
+                "Le FAI",
+                "Personne"
             ],
             "answer": 0,
-            "explanation": "White Hat Hacking."
+            "explanation": "Modèle de responsabilité partagée : Provider = Infrastructure, Client = OS/App."
         },
         {
             "id": 32,
-            "question": "Que signifie un code HTTP 403 ?",
+            "question": "Quelle est la règle d'or pour les buckets S3 AWS ?",
             "options": [
-                "Forbidden (Interdit)",
-                "Not Found",
-                "OK",
-                "Server Error"
+                "Bloquer l'accès public par défaut",
+                "Les mettre en lecture seule pour tous",
+                "Utiliser le compte root",
+                "Désactiver les logs"
             ],
             "answer": 0,
-            "explanation": "L'accès est refusé, même authentifié."
+            "explanation": "Les fuites de données viennent souvent de buckets configurés en 'Public Read'."
         },
         {
             "id": 33,
-            "question": "Qu'est-ce que la Stéganographie ?",
+            "question": "Dans la réponse à incident (NIST), quelle étape suit la Détection ?",
             "options": [
-                "Cacher un message dans un autre fichier (ex: image)",
-                "Chiffrer",
-                "Signer",
-                "Compresser"
+                "Containment (Endiguement)",
+                "Recovery (Restauration)",
+                "Preparation",
+                "Lessons Learned"
             ],
             "answer": 0,
-            "explanation": "Security through obscurity (partiel)."
+            "explanation": "Une fois détecté, il faut immédiatement limiter la propagation."
         },
         {
             "id": 34,
-            "question": "Qu'est-ce qu'un Botnet ?",
+            "question": "En Forensics, qu'est-ce que l'Ordre de Volatilité ?",
             "options": [
-                "Réseau de machines infectées contrôlées à distance",
-                "Robot Internet",
-                "Script",
-                "Réseau local"
+                "Collecter les preuves des plus volatiles aux plus stables",
+                "Collecter les disques durs d'abord",
+                "Éteindre la machine immédiatement",
+                "Copier les fichiers logs en premier"
             ],
             "answer": 0,
-            "explanation": "Utilisé pour les attaques DDoS."
+            "explanation": "Il faut capturer la RAM avant d'éteindre, sinon les données sont perdues."
         },
         {
             "id": 35,
-            "question": "Que signifie CVE ?",
+            "question": "Quel outil est la référence pour le scan de ports et la découverte réseau ?",
             "options": [
-                "Common Vulnerabilities and Exposures",
-                "Code Virus Error",
-                "Common Virus Entry",
-                "Rien"
+                "Nmap",
+                "Wireshark",
+                "Putty",
+                "Ncat"
             ],
             "answer": 0,
-            "explanation": "Liste publique des failles connues avec un ID (ex: CVE-2021-44228)."
+            "explanation": "Network Mapper."
         },
         {
             "id": 36,
-            "question": "Qu'est-ce qu'un Air Gap ?",
+            "question": "À quoi sert Burp Suite ?",
             "options": [
-                "Isoler physiquement un ordinateur de tout réseau",
-                "Espace d'air",
-                "Ventilation",
-                "Wi-Fi"
+                "Intercepter et modifier les requêtes Web (Proxy)",
+                "Scanner les virus",
+                "Cracker des mots de passe Wifi",
+                "Gérer les logs"
             ],
             "answer": 0,
-            "explanation": "Mesure extrême pour les données critiques."
+            "explanation": "Outil indispensable pour le Pentest Web (Test d'intrusion)."
         },
         {
             "id": 37,
-            "question": "Quel est le risque des réseaux Wi-Fi publics ?",
+            "question": "Quel outil permet d'analyser les paquets réseaux (fichier .pcap) ?",
             "options": [
-                "Interception des données (Sniffing, Evil Twin)",
-                "Virus",
-                "Lenteur",
-                "Rien"
+                "Wireshark",
+                "Nmap",
+                "Metasploit",
+                "John the Ripper"
             ],
             "answer": 0,
-            "explanation": "Toujours utiliser un VPN sur un Wi-Fi public."
+            "explanation": "Il dissèque chaque trame réseau pour l'analyse."
         },
         {
             "id": 38,
-            "question": "Qu'est-ce que le 'Sniffing' ?",
+            "question": "Qu'est-ce que Metasploit ?",
             "options": [
-                "Écoute passive du trafic réseau (Wireshark)",
-                "Sentir",
-                "Ping",
-                "Scan"
+                "Un framework pour développer et exécuter des exploits",
+                "Un antivirus",
+                "Un pare-feu",
+                "Un gestionnaire de mots de passe"
             ],
             "answer": 0,
-            "explanation": "Capture de paquets."
+            "explanation": "Utilisé par les Red Teams pour simuler des attaques réelles."
         },
         {
             "id": 39,
-            "question": "Qu'est-ce qu'un certificat SSL/TLS ?",
+            "question": "Quelle attaque vise à deviner un mot de passe en essayant toutes les combinaisons ?",
             "options": [
-                "Fichier numérique authentifiant l'identité d'un site",
-                "Un diplôme",
-                "Un antivirus",
-                "Un script"
+                "Brute Force",
+                "Dictionary Attack",
+                "Credential Stuffing",
+                "Phishing"
             ],
             "answer": 0,
-            "explanation": "Délivré par une CA (Certificate Authority)."
+            "explanation": "Méthode exhaustive, lente mais efficace sur les mots de passe courts."
         },
         {
             "id": 40,
-            "question": "Qu'est-ce que SSH ?",
+            "question": "Que signifie CVE ?",
             "options": [
-                "Secure Shell (Accès distant sécurisé)",
-                "Super Shell",
-                "Simple Shell",
-                "Script"
+                "Common Vulnerabilities and Exposures",
+                "Cyber Virus Elimination",
+                "Central Virtual Environment",
+                "Critical Verification Error"
             ],
             "answer": 0,
-            "explanation": "Remplace Telnet (non sécurisé)."
+            "explanation": "Liste publique de référence des vulnérabilités connues."
         },
         {
             "id": 41,
-            "question": "Qu'est-ce qu'une attaque par dictionnaire ?",
+            "question": "Quelle est la différence entre Red Team et Blue Team ?",
             "options": [
-                "Tester une liste de mots courants comme mot de passe",
-                "Lire le dictionnaire",
-                "Mots croisés",
-                "Rien"
+                "Red attaque (simulation), Blue défend",
+                "Red défend, Blue attaque",
+                "Red gère le réseau, Blue gère le cloud",
+                "Aucune"
             ],
             "answer": 0,
-            "explanation": "Variante plus intelligente du Brute Force."
+            "explanation": "Exercice de simulation d'attaque/défense."
         },
         {
             "id": 42,
+            "question": "Qu'est-ce qu'un Zero-Day ?",
+            "options": [
+                "Une vulnérabilité exploitée avant que le correctif n'existe",
+                "Un virus inoffensif",
+                "Un jour férié",
+                "Une sauvegarde complète"
+            ],
+            "answer": 0,
+            "explanation": "L'éditeur a 'zéro jour' pour corriger."
+        },
+        {
+            "id": 43,
+            "question": "Quel principe de sécurité vise à empêcher le déni d'une action ?",
+            "options": [
+                "Non-répudiation",
+                "Confidentialité",
+                "Disponibilité",
+                "Obfuscation"
+            ],
+            "answer": 0,
+            "explanation": "Assuré par la signature numérique (On ne peut pas nier avoir signé)."
+        },
+        {
+            "id": 44,
+            "question": "Quel header HTTP améliore la sécurité contre le XSS ?",
+            "options": [
+                "Content-Security-Policy (CSP)",
+                "X-Powered-By",
+                "Server",
+                "Cookie"
+            ],
+            "answer": 0,
+            "explanation": "CSP définit les sources de contenu autorisées (scripts, images...)."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que le Credential Stuffing ?",
+            "options": [
+                "Réutiliser des logins volés ailleurs pour se connecter",
+                "Voler des cookies",
+                "Forcer le mot de passe",
+                "Injecter du SQL"
+            ],
+            "answer": 0,
+            "explanation": "Exploite le fait que les gens réutilisent leurs mots de passe."
+        },
+        {
+            "id": 46,
+            "question": "Quel est l'objectif du 'Security through Obscurity' ?",
+            "options": [
+                "Cacher le fonctionnement pour sécuriser (Mauvaise pratique)",
+                "Chiffrer les données",
+                "Utiliser l'Open Source",
+                "Auditer le code"
+            ],
+            "answer": 0,
+            "explanation": "La sécurité ne doit pas reposer uniquement sur le secret de l'implémentation."
+        },
+        {
+            "id": 47,
+            "question": "Quel type de clé utilise-t-on pour la Signature Numérique ?",
+            "options": [
+                "Clé Privée de l'émetteur",
+                "Clé Publique de l'émetteur",
+                "Clé Privée du destinataire",
+                "Clé de session"
+            ],
+            "answer": 0,
+            "explanation": "Seul l'émetteur peut signer, tout le monde peut vérifier avec sa clé publique."
+        },
+        {
+            "id": 48,
+            "question": "Qu'est-ce qu'un HoneyPot (Pot de miel) ?",
+            "options": [
+                "Un système leurre pour attirer et étudier les attaquants",
+                "Un serveur de production",
+                "Un antivirus sucré",
+                "Une base de données"
+            ],
+            "answer": 0,
+            "explanation": "Permet de détourner l'attention et de collecter des IOC."
+        },
+        {
+            "id": 49,
+            "question": "Que signifie IOC ?",
+            "options": [
+                "Indicator of Compromise",
+                "Internal Operating Center",
+                "Input Output Cycle",
+                "Internet Over Cloud"
+            ],
+            "answer": 0,
+            "explanation": "Trace laissée par une attaque (IP, Hash fichier, Domaine malveillant)."
+        },
+        {
+            "id": 50,
+            "question": "Quel est le risque principal des réseaux Wi-Fi Publics ?",
+            "options": [
+                "Interception de trafic (Sniffing / MITM)",
+                "Virus instantané",
+                "Panne de batterie",
+                "Pas d'HTTPS"
+            ],
+            "answer": 0,
+            "explanation": "Sans VPN, le trafic non chiffré est visible par tous sur le réseau."
+        },
+        {
+            "id": 51,
+            "question": "Qu'est-ce que Hashcat ?",
+            "options": [
+                "Un outil de cassage de mots de passe",
+                "Un chat bot",
+                "Un générateur de hash",
+                "Un firewall"
+            ],
+            "answer": 0,
+            "explanation": "Utilise la puissance du GPU pour tester des millions de combinaisons."
+        },
+        {
+            "id": 52,
+            "question": "En cryptographie, qu'est-ce que la Forward Secrecy ?",
+            "options": [
+                "La compromission d'une clé n'affecte pas les sessions passées",
+                "Chiffrer vers le futur",
+                "Utiliser une clé statique",
+                "Cacher l'IP"
+            ],
+            "answer": 0,
+            "explanation": "Utilisation de clés de session éphémères (Diffie-Hellman Ephemeral)."
+        },
+        {
+            "id": 53,
+            "question": "Quelle commande permet de voir les connexions réseau actives sous Linux ?",
+            "options": [
+                "netstat -tulpn / ss",
+                "ls -la",
+                "ps aux",
+                "top"
+            ],
+            "answer": 0,
+            "explanation": "Affiche les ports ouverts et les processus associés."
+        },
+        {
+            "id": 54,
+            "question": "Quel est le rôle d'un WAF (Web Application Firewall) ?",
+            "options": [
+                "Protéger les applications Web contre les attaques (SQLi, XSS)",
+                "Filtrer les emails",
+                "Gérer les accès SSH",
+                "Chiffrer le disque"
+            ],
+            "answer": 0,
+            "explanation": "Il analyse le trafic HTTP/HTTPS spécifiquement."
+        },
+        {
+            "id": 55,
             "question": "Qu'est-ce que le 'Shoulder Surfing' ?",
             "options": [
-                "Regarder par dessus l'épaule de quelqu'un pour voir son code",
-                "Surf",
-                "Sport",
-                "Hacking"
+                "Regarder par-dessus l'épaule pour voler un mot de passe",
+                "Surfer sur internet au bureau",
+                "Une attaque Wifi",
+                "Un type de Phishing"
             ],
             "answer": 0,
             "explanation": "Attaque physique simple mais efficace."
         },
         {
-            "id": 43,
-            "question": "Que protège la confidentialité ?",
-            "options": [
-                "Le secret des données",
-                "L'accès",
-                "L'intégrité",
-                "La vitesse"
-            ],
-            "answer": 0,
-            "explanation": "Empêche la divulgation non autorisée."
-        },
-        {
-            "id": 44,
-            "question": "Que protège l'intégrité ?",
-            "options": [
-                "La non-altération des données",
-                "Le secret",
-                "L'accès",
-                "Le chiffrement"
-            ],
-            "answer": 0,
-            "explanation": "Garantit que la donnée est fiable et non modifiée."
-        },
-        {
-            "id": 45,
-            "question": "Qu'est-ce qu'un Keylogger ?",
-            "options": [
-                "Logiciel enregistrant les frappes au clavier",
-                "Clé USB",
-                "Logger",
-                "Admin"
-            ],
-            "answer": 0,
-            "explanation": "Spyware pour voler mots de passe et messages."
-        },
-        {
-            "id": 46,
-            "question": "Qu'est-ce qu'une DMZ (Demilitarized Zone) ?",
-            "options": [
-                "Sous-réseau exposé isolant les services publics du LAN interne",
-                "Zone de guerre",
-                "Zone morte",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Pour les serveurs Web, Mail, etc."
-        },
-        {
-            "id": 47,
-            "question": "Qu'est-ce que le 'Patch Management' ?",
-            "options": [
-                "Processus de mise à jour régulière des logiciels",
-                "Coudre",
-                "Réparer",
-                "Gérer"
-            ],
-            "answer": 0,
-            "explanation": "Critique pour combler les vulnérabilités connues."
-        },
-        {
-            "id": 48,
-            "question": "A quoi sert une sauvegarde (Backup) ?",
-            "options": [
-                "Restaurer les données en cas de perte ou attaque",
-                "Remplir le disque",
-                "Historique",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Doit être testée (Règle 3-2-1)."
-        },
-        {
-            "id": 49,
-            "question": "Qu'est-ce que l'authentification Biométrique ?",
-            "options": [
-                "Utiliser une caractéristique physique (Empreinte, Iris, Visage)",
-                "Bio",
-                "Mot de passe",
-                "Carte"
-            ],
-            "answer": 0,
-            "explanation": "Difficile à falsifier mais impossible à changer si compromis."
-        },
-        {
-            "id": 50,
-            "question": "Qu'est-ce qu'un Trojan (Cheval de Troie) ?",
-            "options": [
-                "Malware déguisé en logiciel légitime",
-                "Cheval",
-                "Cadeau",
-                "Virus"
-            ],
-            "answer": 0,
-            "explanation": "Nécessite souvent une action de l'utilisateur pour s'installer."
-        },
-        {
-            "id": 51,
-            "question": "Qu'est-ce que OWASP ?",
-            "options": [
-                "Open Web Application Security Project",
-                "Only Web App Security",
-                "Organization for Web",
-                "Rien"
-            ],
-            "answer": 0,
-            "explanation": "Communauté mondiale publiant le Top 10 des failles."
-        },
-        {
-            "id": 52,
-            "question": "Qu'est-ce que le Whitelisting ?",
-            "options": [
-                "Autoriser explicitement seulement ce qui est connu",
-                "Tout bloquer",
-                "Liste blanche",
-                "Liste noire"
-            ],
-            "answer": 0,
-            "explanation": "Plus sûr que le Blacklisting."
-        },
-        {
-            "id": 53,
-            "question": "Qu'est-ce que le Blacklisting ?",
-            "options": [
-                "Bloquer ce qui est connu comme mauvais",
-                "Tout autoriser",
-                "Liste noire",
-                "Liste blanche"
-            ],
-            "answer": 0,
-            "explanation": "Souvent insuffisant car les menaces changent."
-        },
-        {
-            "id": 54,
-            "question": "Quel est le rôle d'un SOC (Security Operations Center) ?",
-            "options": [
-                "Équipe surveillant la sécurité 24/7",
-                "Serveur",
-                "Socket",
-                "Social"
-            ],
-            "answer": 0,
-            "explanation": "Analyse les alertes et répond aux incidents."
-        },
-        {
-            "id": 55,
-            "question": "Qu'est-ce qu'un Hash collision ?",
-            "options": [
-                "Deux entrées différentes produisant le même hash",
-                "Accident",
-                "Bug",
-                "Erreur"
-            ],
-            "answer": 0,
-            "explanation": "Signe qu'un algorithme de hachage est affaibli (ex: MD5)."
-        },
-        {
             "id": 56,
-            "question": "Qu'est-ce que PGP (Pretty Good Privacy) ?",
+            "question": "Quel port est utilisé par défaut pour SSH ?",
             "options": [
-                "Logiciel de chiffrement pour e-mails et fichiers",
-                "Protocole",
-                "Jeu",
-                "Privé"
+                "22",
+                "80",
+                "443",
+                "3389"
             ],
             "answer": 0,
-            "explanation": "Utilise la crypto asymétrique."
+            "explanation": "Port standard pour Secure Shell."
         },
         {
             "id": 57,
-            "question": "Qu'est-ce que l'obfuscation ?",
+            "question": "Quel port est utilisé par défaut pour HTTPS ?",
             "options": [
-                "Rendre le code illisible pour compliquer le Reverse Engineering",
-                "Chiffrement",
-                "Compression",
-                "Effacement"
+                "443",
+                "80",
+                "21",
+                "25"
             ],
             "answer": 0,
-            "explanation": "Ne sécurise pas, mais ralentit l'analyse."
+            "explanation": "HTTP Secure."
         },
         {
             "id": 58,
-            "question": "Qu'est-ce qu'une 'Logic Bomb' ?",
+            "question": "Qu'est-ce qu'une attaque DoS (Denial of Service) ?",
             "options": [
-                "Code malveillant qui s'active sous certaines conditions",
-                "Bombe",
-                "Logique",
-                "Bug"
+                "Rendre un service indisponible",
+                "Voler des données",
+                "Modifier le site web",
+                "Espionner les utilisateurs"
             ],
             "answer": 0,
-            "explanation": "Ex: Si l'employé est viré, supprimer la BDD."
+            "explanation": "Saturer les ressources (CPU, Bande passante) de la cible."
         },
         {
             "id": 59,
-            "question": "Qu'est-ce que le Spoofing ?",
+            "question": "Quelle est la particularité d'un Botnet ?",
             "options": [
-                "Usurper une identité (IP, Email, ARP)",
-                "Moquerie",
-                "Sport",
-                "Spam"
+                "Réseau de machines infectées contrôlées par un attaquant",
+                "Un robot conversationnel",
+                "Un réseau local sécurisé",
+                "Un antivirus en ligne"
             ],
             "answer": 0,
-            "explanation": "Se faire passer pour quelqu'un d'autre."
+            "explanation": "Utilisé massivement pour les attaques DDoS."
         },
         {
             "id": 60,
-            "question": "Qu'est-ce qu'une attaque 'Man-in-the-Browser' ?",
+            "question": "Qu'est-ce que l'Air Gap ?",
             "options": [
-                "Cheval de Troie infectant le navigateur pour modifier les pages",
-                "MitM",
-                "Virus",
-                "Cookie"
+                "Isoler physiquement un ordinateur de tout réseau",
+                "Le Wifi",
+                "Un antivirus cloud",
+                "Un espace disque vide"
             ],
             "answer": 0,
-            "explanation": "Souvent utilisé contre les banques."
+            "explanation": "Mesure extrême pour les systèmes critiques (Centrales nucléaires, etc)."
         },
         {
             "id": 61,
-            "question": "Qu'est-ce que Tor ?",
+            "question": "Quel est le principe du 'Least Privilege' ?",
             "options": [
-                "Réseau d'anonymisation (The Onion Router)",
-                "Navigateur",
-                "Thor",
-                "Porte"
+                "Donner le minimum de droits nécessaires",
+                "Donner les droits admin à tous",
+                "Interdire tout accès",
+                "Ne pas utiliser de mot de passe"
             ],
             "answer": 0,
-            "explanation": "Fait rebondir le trafic via plusieurs nœuds."
+            "explanation": "Réduit l'impact en cas de compromission d'un compte."
         },
         {
             "id": 62,
-            "question": "Qu'est-ce qu'un VPN Split Tunneling ?",
+            "question": "Quelle attaque utilise des tables pré-calculées pour casser des hashs ?",
             "options": [
-                "Router une partie du trafic via VPN et l'autre via Internet direct",
-                "Tunnel coupé",
-                "Erreur",
-                "Vitesse"
+                "Rainbow Table",
+                "Brute Force",
+                "Dictionary",
+                "Phishing"
             ],
             "answer": 0,
-            "explanation": "Permet d'accéder aux ressources locales tout en étant connecté."
+            "explanation": "Permet de casser les hashs non salés très rapidement."
         },
         {
             "id": 63,
-            "question": "Qu'est-ce que la 2FA (Double Authentification) ?",
+            "question": "Qu'est-ce que le Whitelisting (Allowlisting) ?",
             "options": [
-                "Deux facteurs de vérification",
-                "2 Fois",
-                "Facebook",
-                "Auth"
+                "Autoriser explicitement seulement ce qui est connu",
+                "Interdire ce qui est mauvais",
+                "Une liste d'emails",
+                "Un filtre spam"
             ],
             "answer": 0,
-            "explanation": "Mot de passe (Savoir) + Téléphone (Posséder)."
+            "explanation": "Plus sécurisé que le Blacklisting (Interdire le mauvais)."
         },
         {
             "id": 64,
-            "question": "Qu'est-ce que le 'Shoulder Surfing' ?",
+            "question": "Quelle est la vulnérabilité exploitée par 'Log4Shell' ?",
             "options": [
-                "Regarder l'écran de quelqu'un pour voler des infos",
-                "Surf",
-                "Plage",
-                "Hack"
+                "RCE via injection JNDI dans les logs Java",
+                "SQL Injection",
+                "XSS",
+                "Buffer Overflow"
             ],
             "answer": 0,
-            "explanation": "Attaque physique."
+            "explanation": "Une des failles les plus critiques de l'histoire récente (Java)."
         },
         {
             "id": 65,
-            "question": "Qu'est-ce qu'un 'Script Kiddie' ?",
+            "question": "Qu'est-ce qu'un Rootkit ?",
             "options": [
-                "Pirate débutant utilisant des outils tout faits",
-                "Enfant",
-                "Scripteur",
-                "Expert"
+                "Un malware qui se cache au niveau du noyau/OS",
+                "Un kit de démarrage",
+                "Un outil admin",
+                "Un mot de passe root"
             ],
             "answer": 0,
-            "explanation": "Peu de compétences techniques réelles."
+            "explanation": "Très difficile à détecter car il contrôle ce que l'OS voit."
         },
         {
             "id": 66,
-            "question": "Qu'est-ce que le 'Dumpster Diving' ?",
+            "question": "À quoi sert un VPN ?",
             "options": [
-                "Fouiller les poubelles pour trouver des infos sensibles",
-                "Plongée",
-                "Sport",
-                "Hack"
+                "Créer un tunnel chiffré sur un réseau public",
+                "Naviguer plus vite",
+                "Bloquer les virus",
+                "Héberger un site web"
             ],
             "answer": 0,
-            "explanation": "Technique d'ingénierie sociale physique."
+            "explanation": "Garantit Confidentialité et Intégrité des données en transit."
         },
         {
             "id": 67,
-            "question": "A quoi sert une Politique de Sécurité (PSSI) ?",
+            "question": "Qu'est-ce que le Social Engineering ?",
             "options": [
-                "Définir les règles et procédures de sécurité de l'entreprise",
-                "Police",
-                "Papier",
-                "Rien"
+                "Manipuler psychologiquement les gens pour obtenir des infos",
+                "Coder en groupe",
+                "Gérer les réseaux sociaux",
+                "Une attaque technique"
             ],
             "answer": 0,
-            "explanation": "Document de référence."
+            "explanation": "Exploite la confiance, la peur ou l'urgence."
         },
         {
             "id": 68,
-            "question": "Qu'est-ce que l'Audit de sécurité ?",
+            "question": "Quel principe permet de garantir qu'une transaction a bien eu lieu ?",
             "options": [
-                "Évaluation méthodique de la sécurité",
-                "Examen",
-                "Test",
-                "Hack"
+                "Accounting (Imputabilité)",
+                "Authorization",
+                "Confidentiality",
+                "Anonymity"
             ],
             "answer": 0,
-            "explanation": "Vérifie la conformité et les failles."
+            "explanation": "Preuve technique de l'action."
         },
         {
             "id": 69,
-            "question": "Qu'est-ce qu'une Backdoor ?",
+            "question": "Quel est l'avantage de l'authentification FIDO2 / WebAuthn ?",
             "options": [
-                "Porte dérobée pour contourner l'authentification",
-                "Porte arrière",
-                "Bug",
-                "Sortie"
+                "Résistant au Phishing (Clé physique/Biométrie)",
+                "Plus simple à coder",
+                "Pas besoin de serveur",
+                "Moins sécurisé"
             ],
             "answer": 0,
-            "explanation": "Souvent installée par un malware pour revenir plus tard."
+            "explanation": "Le site Web ne peut pas être imité car l'échange cryptographique vérifie l'origine."
         },
         {
             "id": 70,
-            "question": "Qu'est-ce que le 'Drive-by Download' ?",
+            "question": "Quelle commande Linux change les permissions d'un fichier ?",
             "options": [
-                "Téléchargement involontaire de malware en visitant un site",
-                "Conduite",
-                "Téléchargement",
-                "Virus"
+                "chmod",
+                "chown",
+                "ls",
+                "rm"
             ],
             "answer": 0,
-            "explanation": "Exploite souvent des failles du navigateur."
+            "explanation": "Change Mode (Read, Write, Execute)."
         },
         {
             "id": 71,
-            "question": "Qu'est-ce qu'un WAF ?",
+            "question": "Qu'est-ce qu'un Buffer Overflow ?",
             "options": [
-                "Web Application Firewall",
-                "Wifi Access Free",
-                "Web Framework",
-                "Nothing"
+                "Écrire plus de données que la mémoire ne peut en contenir",
+                "Un disque plein",
+                "Une attaque réseau",
+                "Une boucle infinie"
             ],
             "answer": 0,
-            "explanation": "Protège spécifiquement les serveurs web (SQLi, XSS)."
+            "explanation": "Peut écraser la mémoire adjacente et exécuter du code arbitraire."
         },
         {
             "id": 72,
-            "question": "Qu'est-ce que la Non-Repudiation ?",
+            "question": "Quel type de backup protège le mieux contre les Ransomwares ?",
             "options": [
-                "Garantie qu'un expéditeur ne peut nier avoir envoyé un message",
-                "Preuve",
-                "Confiance",
-                "Signature"
+                "Backup hors-ligne (Offline / Tape)",
+                "Miroir RAID",
+                "Cloud Sync instantané",
+                "Copie sur le bureau"
             ],
             "answer": 0,
-            "explanation": "Assuré par la signature numérique."
+            "explanation": "Si le backup est connecté, le ransomware peut le chiffrer aussi."
         },
         {
             "id": 73,
-            "question": "Qu'est-ce qu'un Worm (Ver) ?",
+            "question": "Qu'est-ce que la Stéganographie ?",
             "options": [
-                "Malware qui se réplique seul via le réseau",
-                "Ver de terre",
-                "Virus",
-                "Trojan"
+                "Cacher un message dans un autre média (ex: image)",
+                "Chiffrer un message",
+                "Compresser un fichier",
+                "Signer un document"
             ],
             "answer": 0,
-            "explanation": "Pas besoin d'hôte ou d'action utilisateur."
+            "explanation": "L'art de la dissimulation."
         },
         {
             "id": 74,
-            "question": "Qu'est-ce que le 'Tailgating' ?",
+            "question": "Quel est le rôle d'un SIEM (Splunk, Sentinel) ?",
             "options": [
-                "Suivre quelqu'un de près pour entrer dans une zone sécurisée",
-                "Queue",
-                "Voiture",
-                "Porte"
+                "Centraliser et corréler les logs de sécurité",
+                "Bloquer les attaques",
+                "Scanner les vulnérabilités",
+                "Gérer les identités"
             ],
             "answer": 0,
-            "explanation": "Faille physique."
+            "explanation": "Permet de détecter des motifs suspects à travers tout le parc."
         },
         {
             "id": 75,
-            "question": "Qu'est-ce que le SSID ?",
+            "question": "Quelle attaque cible les résolutions de noms de domaine ?",
             "options": [
-                "Le nom du réseau Wi-Fi",
-                "Mot de passe",
-                "Clé",
-                "ID"
+                "DNS Poisoning / Spoofing",
+                "ARP Spoofing",
+                "DHCP Starvation",
+                "SQL Injection"
             ],
             "answer": 0,
-            "explanation": "Service Set Identifier."
+            "explanation": "Redirige les utilisateurs vers un faux site en falsifiant le cache DNS."
         },
         {
             "id": 76,
-            "question": "Pourquoi cacher le SSID est-il peu efficace ?",
+            "question": "Quelle est la différence entre Vulnerability Scanning et Pentesting ?",
             "options": [
-                "Il est toujours présent dans les trames de gestion",
-                "C'est bien",
-                "C'est sûr",
-                "Rien"
+                "Scan est automatisé, Pentest est manuel et exploite",
+                "C'est pareil",
+                "Scan est plus cher",
+                "Pentest est illégal"
             ],
             "answer": 0,
-            "explanation": "Sécurité par l'obscurité inutile."
+            "explanation": "Le Pentester vérifie si la faille est réelle et exploitable."
         },
         {
             "id": 77,
-            "question": "Qu'est-ce que MAC Spoofing ?",
+            "question": "Qu'est-ce que le 'Blue Team' ?",
             "options": [
-                "Changer son adresse MAC pour usurper un périphérique",
-                "Macintosh",
-                "Burger",
-                "Spoof"
+                "L'équipe défensive (SOC, IR)",
+                "L'équipe offensive",
+                "Les développeurs",
+                "La direction"
             ],
             "answer": 0,
-            "explanation": "Permet de contourner le filtrage MAC."
+            "explanation": "Ils surveillent, détectent et répondent aux attaques."
         },
         {
             "id": 78,
-            "question": "Qu'est-ce que 'Sandbox' ?",
+            "question": "Quel protocole sécurise l'envoi d'emails ?",
             "options": [
-                "Environnement isolé pour exécuter du code suspect",
-                "Bac à sable",
-                "Plage",
-                "Box"
+                "SPF / DKIM / DMARC",
+                "POP3",
+                "IMAP",
+                "FTP"
             ],
             "answer": 0,
-            "explanation": "Protège le système hôte."
+            "explanation": "Permettent d'authentifier l'émetteur et d'empêcher l'usurpation."
         },
         {
             "id": 79,
-            "question": "Qu'est-ce que 'Spyware' ?",
+            "question": "Quel est l'usage principal de PGP/GPG ?",
             "options": [
-                "Logiciel espion collectant des données utilisateur",
-                "Espion",
-                "Virus",
-                "Pub"
+                "Chiffrer et signer les emails/fichiers",
+                "Protéger le Wifi",
+                "Naviguer anonymement",
+                "Stocker des mots de passe"
             ],
             "answer": 0,
-            "explanation": "Souvent bundle avec des logiciels gratuits."
+            "explanation": "Pretty Good Privacy."
         },
         {
             "id": 80,
-            "question": "Qu'est-ce que 'Adware' ?",
+            "question": "Qu'est-ce que le TOR (The Onion Router) ?",
             "options": [
-                "Logiciel affichant des publicités intrusives",
-                "Pub",
-                "Virus",
-                "Malware"
+                "Un réseau d'anonymisation",
+                "Un navigateur web standard",
+                "Un protocole de mail",
+                "Un antivirus"
             ],
             "answer": 0,
-            "explanation": "Plus gênant que dangereux, mais peut tracer."
+            "explanation": "Fait rebondir le trafic à travers plusieurs nœuds chiffrés."
         },
         {
             "id": 81,
-            "question": "Qu'est-ce qu'un certificat racine (Root CA) ?",
+            "question": "Quel type d'attaque utilise des milliers d'objets connectés (IoT) mal sécurisés ?",
             "options": [
-                "Autorité de certification suprême de confiance",
-                "Racine",
-                "Arbre",
-                "Clé"
+                "IoT Botnet (ex: Mirai)",
+                "Cloud Attack",
+                "Phone hacking",
+                "Bluetooth Sniffing"
             ],
             "answer": 0,
-            "explanation": "Si compromis, toute la chaîne de confiance tombe."
+            "explanation": "Les caméras/routeurs par défaut sont des cibles faciles."
         },
         {
             "id": 82,
-            "question": "Qu'est-ce que PKI ?",
+            "question": "Qu'est-ce que l'Obfuscation de code ?",
             "options": [
-                "Public Key Infrastructure",
-                "Private Key",
-                "Public Kle",
-                "Info"
+                "Rendre le code illisible pour compliquer le Reverse Engineering",
+                "Optimiser le code",
+                "Supprimer le code",
+                "Commenter le code"
             ],
             "answer": 0,
-            "explanation": "Gère les certificats numériques."
+            "explanation": "Technique de protection de la propriété intellectuelle ou de dissimulation de malware."
         },
         {
             "id": 83,
-            "question": "Qu'est-ce que le 'Hardening' ?",
+            "question": "Quelle est la commande pour voir les processus sous Windows ?",
             "options": [
-                "Durcir la sécurité d'un système (désactiver services inutiles...)",
-                "Durcir",
-                "Compiler",
-                "Rien"
+                "tasklist",
+                "ls",
+                "ifconfig",
+                "grep"
             ],
             "answer": 0,
-            "explanation": "Réduire la surface d'attaque."
+            "explanation": "Affiche la liste des tâches (processus) en cours."
         },
         {
             "id": 84,
-            "question": "Quelle est la faille Heartbleed ?",
+            "question": "Que fait un Keylogger ?",
             "options": [
-                "Faille critique dans OpenSSL (lecture mémoire)",
-                "Cœur",
-                "Sang",
-                "Virus"
+                "Enregistre les frappes au clavier",
+                "Enregistre l'écran",
+                "Enregistre le son",
+                "Ouvre le lecteur CD"
             ],
             "answer": 0,
-            "explanation": "A permis de voler des clés privées massivement."
+            "explanation": "Souvent utilisé pour voler des mots de passe."
         },
         {
             "id": 85,
-            "question": "Qu'est-ce que la stéganographie ?",
+            "question": "Qu'est-ce que le Clickjacking ?",
             "options": [
-                "Cacher des données dans des images/audio",
-                "Coder",
-                "Chiffrer",
-                "Écrire"
+                "Piéger l'utilisateur pour qu'il clique sur un élément invisible",
+                "Voler la souris",
+                "Bloquer le clic",
+                " Changer la pub"
             ],
             "answer": 0,
-            "explanation": "Discrétion plutôt que protection mathématique."
+            "explanation": "Souvent via une iframe transparente superposée."
         },
         {
             "id": 86,
-            "question": "Qu'est-ce que l'attaque 'Evil Twin' ?",
+            "question": "Quel est le risque d'utiliser 'admin/admin' ?",
             "options": [
-                "Faux point d'accès Wi-Fi imitant un legitimate",
-                "Jumeau maléfique",
-                "Double",
-                "Wi-Fi"
+                "Default Credentials (Facile à deviner)",
+                "Trop long à taper",
+                "Aucun risque",
+                "C'est sécurisé"
             ],
             "answer": 0,
-            "explanation": "Pour intercepter le trafic."
+            "explanation": "Première chose testée par les attaquants et les bots."
         },
         {
             "id": 87,
-            "question": "A quoi sert Fail2Ban ?",
+            "question": "Quelle est la durée de validité recommandée pour une session web ?",
             "options": [
-                "Bannir les IP après X échecs de connexion",
-                "Banner",
-                "Fail",
-                "Interdire"
+                "Courte (ex: 15-30 min d'inactivité)",
+                "Illimitée",
+                "1 an",
+                "1 semaine"
             ],
             "answer": 0,
-            "explanation": "Protection contre Brute Force."
+            "explanation": "Réduit la fenêtre d'attaque en cas de vol de session."
         },
         {
             "id": 88,
-            "question": "Qu'est-ce que l'analyse statique (SAST) ?",
+            "question": "Quelle est la différence entre Virus et Ver ?",
             "options": [
-                "Analyser le code source sans l'exécuter",
-                "Statique",
-                "Dynamique",
-                "Test"
+                "Le Ver se propage seul via le réseau, le Virus a besoin d'un hôte",
+                "C'est pareil",
+                "Le virus est plus gentil",
+                "Le ver attaque le matériel"
             ],
             "answer": 0,
-            "explanation": "Cherche des patterns de vulnérabilités."
+            "explanation": "Le Ver (Worm) est autonome."
         },
         {
             "id": 89,
-            "question": "Qu'est-ce que l'analyse dynamique (DAST) ?",
+            "question": "Que signifie EDR ?",
             "options": [
-                "Tester l'application en cours d'exécution (boîte noire)",
-                "Dynamique",
-                "Statique",
-                "Code"
+                "Endpoint Detection and Response",
+                "Emergency Data Recovery",
+                "External Drive Reader",
+                "Encrypted Data Route"
             ],
             "answer": 0,
-            "explanation": "Simule des attaques réelles."
+            "explanation": "Antivirus nouvelle génération qui surveille le comportement."
         },
         {
             "id": 90,
-            "question": "Qu'est-ce que le principe de Kerckhoffs ?",
+            "question": "Dans le contexte RGPD, qu'est-ce qu'une Donnée Personnelle ?",
             "options": [
-                "La sécurité ne doit pas reposer sur le secret de l'algorithme",
-                "Secret",
-                "Crypto",
-                "Clé"
+                "Toute info identifiant une personne (Nom, IP, Mail...)",
+                "Seulement le nom",
+                "Seulement les données médicales",
+                "Les données d'entreprise"
             ],
             "answer": 0,
-            "explanation": "Seule la clé doit rester secrète."
+            "explanation": "Règlement Général sur la Protection des Données."
         },
         {
             "id": 91,
-            "question": "Qu'est-ce que le SSH Tunneling ?",
+            "question": "Qu'est-ce que le 'Security by Design' ?",
             "options": [
-                "Faire passer du trafic dans un tunnel SSH sécurisé",
-                "Tunnel",
-                "Pont",
-                "Route"
+                "Intégrer la sécurité dès la conception du logiciel",
+                "Ajouter la sécurité à la fin",
+                "Faire un joli design",
+                "Acheter un firewall"
             ],
             "answer": 0,
-            "explanation": "Permet d'accéder à des services bloqués."
+            "explanation": "Plus efficace et moins coûteux que de corriger après."
         },
         {
             "id": 92,
-            "question": "Qu'est-ce que le 'Credential Stuffing' ?",
+            "question": "Quel est le but d'un Audit de Sécurité ?",
             "options": [
-                "Réutiliser des identifiants volés ailleurs massivement",
-                "Bourrage",
-                "Stuff",
-                "Hack"
+                "Evaluer le niveau de sécurité et trouver des failles",
+                "Punir les développeurs",
+                "Dépenser du budget",
+                "Installer des logiciels"
             ],
             "answer": 0,
-            "explanation": "Efficace car les gens réutilisent leurs mots de passe."
+            "explanation": "Vérification méthodique par un tiers."
         },
         {
             "id": 93,
-            "question": "Qu'est-ce que 'Clickjacking' ?",
+            "question": "Qu'est-ce que la ségrégation des tâches (SoD) ?",
             "options": [
-                "Superposer des calques invisibles pour piéger le clic",
-                "Click",
-                "Vol",
-                "Jack"
+                "Séparer les rôles critiques (ex: Dev vs Prod)",
+                "Travailler seul",
+                "Tout le monde fait tout",
+                "Séparer les réseaux"
             ],
             "answer": 0,
-            "explanation": "L'utilisateur croit cliquer sur A mais clique sur B."
+            "explanation": "Empêche qu'une seule personne puisse compromettre tout le système."
         },
         {
             "id": 94,
-            "question": "Qu'est-ce que 'Session Hijacking' ?",
+            "question": "Quelle attaque cible les cookies de session ?",
             "options": [
-                "Voler le cookie de session pour usurper l'utilisateur",
-                "Vol de session",
-                "Pirate",
-                "Cookie"
+                "Session Hijacking",
+                "SQLi",
+                "DDoS",
+                "Brute Force"
             ],
             "answer": 0,
-            "explanation": "Après une connexion réussie."
+            "explanation": "Voler le cookie revient à voler l'identité de l'utilisateur connecté."
         },
         {
             "id": 95,
-            "question": "Qu'est-ce que l'IAM ?",
+            "question": "Que signifie BYOD ?",
             "options": [
-                "Identity and Access Management",
-                "I am",
-                "Identification",
-                "Accès"
+                "Bring Your Own Device",
+                "Build Your Own Defense",
+                "Buy Your Own Data",
+                "Bring Your Own Dog"
             ],
             "answer": 0,
-            "explanation": "Gère qui a le droit à quoi (AWS IAM)."
+            "explanation": "Utiliser ses appareils personnels au travail (Risque de sécurité)."
         },
         {
             "id": 96,
-            "question": "Qu'est-ce que le 'Buffer Overflow' ?",
+            "question": "Qu'est-ce que l'Escalade de Privilèges ?",
             "options": [
-                "Écrire plus de données que le tampon ne peut contenir",
-                "Débordement",
-                "Bug",
-                "Mémoire"
+                "Passer d'un compte utilisateur à un compte admin",
+                "Augmenter le salaire",
+                "Monter en version",
+                "Ajouter de la RAM"
             ],
             "answer": 0,
-            "explanation": "Peut écraser la mémoire adjacente et exécuter du code."
+            "explanation": "Verticale (User->Admin) ou Horizontale (User A -> User B)."
         },
         {
             "id": 97,
-            "question": "Qu'est-ce que 'Fuzzing' ?",
+            "question": "Quel est le principal défaut de Telnet ?",
             "options": [
-                "Envoyer des données aléatoires pour faire planter le programme",
-                "Bruit",
-                "Test",
-                "Fuzz"
+                "Tout circule en clair (Mots de passe inclus)",
+                "Il est trop lent",
+                "Il est payant",
+                "Il ne marche que sur Linux"
             ],
             "answer": 0,
-            "explanation": "Technique de découverte de bugs."
+            "explanation": "Remplacé par SSH."
         },
         {
             "id": 98,
-            "question": "Qu'est-ce que la Cryptanalyse ?",
+            "question": "A quoi sert une Politique de Sécurité (PSSI) ?",
             "options": [
-                "Étude des méthodes pour casser les codes chiffrés",
-                "Analyse",
-                "Maths",
-                "Crypto"
+                "Définir les règles et responsabilités en matière de sécurité",
+                "Faire joli",
+                "Bloquer Internet",
+                "Avoir un document"
             ],
             "answer": 0,
-            "explanation": "L'attaque de la cryptographie."
+            "explanation": "Document stratégique de référence."
         },
         {
             "id": 99,
-            "question": "Qu'est-ce que 'Rainbow Table' ?",
+            "question": "Qu'est-ce que le Fuzzing ?",
             "options": [
-                "Table de hashs pré-calculés pour casser les mots de passe",
-                "Arc en ciel",
-                "Tableau",
-                "Liste"
+                "Envoyer des données aléatoires pour faire planter le programme",
+                "Vérifier le style du code",
+                "Scanner les ports",
+                "Chiffrer les données"
             ],
             "answer": 0,
-            "explanation": "Rend l'attaque rapide contre les hashs sans sel."
+            "explanation": "Technique pour découvrir des bugs de gestion mémoire ou des crashs."
         },
         {
             "id": 100,
-            "question": "La sécurité est-elle un produit ou un processus ?",
+            "question": "Quel est le but d'une Backdoor (Porte dérobée) ?",
             "options": [
-                "Un processus continu",
-                "Un produit",
-                "Un logiciel",
-                "Une option"
+                "Garder un accès secret persistent au système",
+                "Sortir en cas d'incendie",
+                "Administrer légalement",
+                "Faire des backups"
             ],
             "answer": 0,
-            "explanation": "Il faut constamment s'adapter aux nouvelles menaces."
+            "explanation": "Installée par l'attaquant pour revenir plus tard."
+        },
+        {
+            "id": 101,
+            "question": "Qu'est-ce qu'un Supply Chain Attack ?",
+            "options": [
+                "Compromettre un fournisseur pour atteindre la cible finale",
+                "Attaquer une usine",
+                "Voler des colis",
+                "Attaquer la blockchain"
+            ],
+            "answer": 0,
+            "explanation": "Ex: SolarWinds. On infecte la mise à jour logicielle."
+        },
+        {
+            "id": 102,
+            "question": "Quel standard définit les niveaux de sécurité des applications Web ?",
+            "options": [
+                "OWASP ASVS",
+                "ISO 9001",
+                "RFC 1918",
+                "IEEE 802.11"
+            ],
+            "answer": 0,
+            "explanation": "Application Security Verification Standard."
+        },
+        {
+            "id": 103,
+            "question": "Dans Metasploit, qu'est-ce qu'un 'Payload' ?",
+            "options": [
+                "Le code exécuté une fois la faille exploitée (ex: Reverse Shell)",
+                "L'adresse IP",
+                "Le nom de l'exploit",
+                "La cible"
+            ],
+            "answer": 0,
+            "explanation": "C'est la charge utile qui donne le contrôle."
+        },
+        {
+            "id": 104,
+            "question": "Qu'est-ce que le 'Tunneling' DNS ?",
+            "options": [
+                "Exfiltrer des données via des requêtes DNS pour contourner le firewall",
+                "Configurer un DNS",
+                "Bloquer le DNS",
+                "Accélérer le DNS"
+            ],
+            "answer": 0,
+            "explanation": "Le firewall laisse souvent passer le DNS (port 53)."
+        },
+        {
+            "id": 105,
+            "question": "Quelle est la particularité d'une attaque 'Fileless' ?",
+            "options": [
+                "Elle s'exécute uniquement en mémoire (RAM) sans toucher le disque",
+                "Elle efface les fichiers",
+                "Elle n'utilise pas de réseau",
+                "Elle est invisible à l'écran"
+            ],
+            "answer": 0,
+            "explanation": "Évite la détection par les antivirus classiques basés sur les fichiers."
+        },
+        {
+            "id": 106,
+            "question": "Qu'est-ce que l'OSINT ?",
+            "options": [
+                "Open Source Intelligence (Rens. sources ouvertes)",
+                "Operating System Internal",
+                "Open Source Interface",
+                "On Site Intervention"
+            ],
+            "answer": 0,
+            "explanation": "Collecter des infos publiques (Google, LinkedIn, Whois) sur la cible."
+        },
+        {
+            "id": 107,
+            "question": "Quel est le risque d'un certificat SSL 'Self-Signed' ?",
+            "options": [
+                "Il ne garantit pas l'identité (Alerte navigateur)",
+                "Il ne chiffre pas",
+                "Il est trop fort",
+                "Il expire vite"
+            ],
+            "answer": 0,
+            "explanation": "N'importe qui peut en créer un. Il faut une CA de confiance."
+        },
+        {
+            "id": 108,
+            "question": "Qu'est-ce qu'une table de routage ?",
+            "options": [
+                "Une carte indiquant où envoyer les paquets réseaux",
+                "Une table de restaurant",
+                "Une base de données",
+                "Un fichier log"
+            ],
+            "answer": 0,
+            "explanation": "Indispensable pour que les paquets trouvent leur chemin."
+        },
+        {
+            "id": 109,
+            "question": "Quelle commande permet de vérifier l'intégrité d'un fichier téléchargé ?",
+            "options": [
+                "sha256sum / md5sum",
+                "cat",
+                "ls",
+                "touch"
+            ],
+            "answer": 0,
+            "explanation": "On compare le hash calculé avec celui fourni par l'éditeur."
+        },
+        {
+            "id": 110,
+            "question": "Quel est le meilleur moyen de se protéger contre l'Ingénierie Sociale ?",
+            "options": [
+                "Sensibilisation et Formation des utilisateurs",
+                "Un meilleur firewall",
+                "Un antivirus",
+                "Changer de mail"
+            ],
+            "answer": 0,
+            "explanation": "La technologie ne peut pas empêcher quelqu'un de se faire manipuler."
         }
     ]
 }

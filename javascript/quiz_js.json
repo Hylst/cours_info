@@ -783,427 +783,426 @@
             ],
             "answer": 0,
             "explanation": "load attend aussi les images/styles. DOMContentLoaded est plus rapide (juste HTML)."
+        },
+        {
+            "id": 66,
+            "question": "Comment définir une constante ?",
+            "options": [
+                "const X = 10",
+                "let X = 10",
+                "var X = 10",
+                "constant X = 10"
+            ],
+            "answer": 0,
+            "explanation": "Convention : majuscules pour les constantes globales/config."
+        },
+        {
+            "id": 67,
+            "question": "Quelle fonction permet d'exécuter du code après X ms ?",
+            "options": [
+                "setTimeout",
+                "setInterval",
+                "setDelay",
+                "wait"
+            ],
+            "answer": 0,
+            "explanation": "Une seule fois. setInterval répète."
+        },
+        {
+            "id": 68,
+            "question": "Quelle méthode permet d'aplatir un tableau de tableaux ?",
+            "options": [
+                "flat()",
+                "flatten()",
+                "merge()",
+                "collapse()"
+            ],
+            "answer": 0,
+            "explanation": "[[1,2], [3]].flat() donne [1,2,3]."
+        },
+        {
+            "id": 69,
+            "question": "Comment arrondir 4.7 au plus proche entier (5) ?",
+            "options": [
+                "Math.round(4.7)",
+                "Math.ceil(4.7)",
+                "Math.floor(4.7)",
+                "Math.near(4.7)"
+            ],
+            "answer": 0,
+            "explanation": "round=arrondi, ceil=plafond, floor=plancher."
+        },
+        {
+            "id": 70,
+            "question": "Quelle est la valeur initiale de `let x;` ?",
+            "options": [
+                "undefined",
+                "null",
+                "0",
+                "error"
+            ],
+            "answer": 0,
+            "explanation": "Undefined par défaut."
+        },
+        {
+            "id": 71,
+            "question": "Comment faire un héritage de classe ?",
+            "options": [
+                "class B extends A",
+                "class B inherits A",
+                "class B : A",
+                "class B super A"
+            ],
+            "answer": 0,
+            "explanation": "extends permet d'hériter méthodes et propriétés."
+        },
+        {
+            "id": 72,
+            "question": "Gérer les erreurs dans une Promesse ?",
+            "options": [
+                ".catch()",
+                ".error()",
+                ".fail()",
+                ".except()"
+            ],
+            "answer": 0,
+            "explanation": "myPromise.then().catch(err => ...)"
+        },
+        {
+            "id": 73,
+            "question": "Quelle instruction stoppe une boucle ?",
+            "options": [
+                "break",
+                "stop",
+                "exit",
+                "return"
+            ],
+            "answer": 0,
+            "explanation": "break sort de la boucle. continue passe à l'itération suivante."
+        },
+        {
+            "id": 74,
+            "question": "Comment vérifier si une variable est un tableau ?",
+            "options": [
+                "Array.isArray(v)",
+                "v.isArray()",
+                "typeof v == 'array'",
+                "v instanceof Array"
+            ],
+            "answer": 0,
+            "explanation": "La méthode la plus robuste. typeof renvoie 'object'."
+        },
+        {
+            "id": 75,
+            "question": "Quelle méthode supprime des éléments n'importe où dans le tableau ?",
+            "options": [
+                "splice()",
+                "slice()",
+                "remove()",
+                "cut()"
+            ],
+            "answer": 0,
+            "explanation": "splice(index, nbToDelete, ...toAdd) modifie le tableau en place."
+        },
+        {
+            "id": 76,
+            "question": "Que fait `document.createElement('div')` ?",
+            "options": [
+                "Crée un élément HTML en mémoire",
+                "L'ajoute à la page",
+                "Crée et ajoute",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Il faut ensuite l'ajouter avec appendChild()."
+        },
+        {
+            "id": 77,
+            "question": "Quelle nouveauté ES6 permet d'extraire des valeurs d'un objet ?",
+            "options": [
+                "Destructuring",
+                "Extracting",
+                "Unpacking",
+                "Spread"
+            ],
+            "answer": 0,
+            "explanation": "const { a, b } = obj;"
+        },
+        {
+            "id": 78,
+            "question": "Comment écrire une chaîne avec des variables (Template String) ?",
+            "options": [
+                "`Hello ${name}`",
+                "'Hello ' + name",
+                "\"Hello {name}\"",
+                "f'Hello {name}'"
+            ],
+            "answer": 0,
+            "explanation": "Backticks (accents graves) permettent l'interpolation."
+        },
+        {
+            "id": 79,
+            "question": "Quel mot-clé référence la classe parente ?",
+            "options": [
+                "super",
+                "parent",
+                "base",
+                "top"
+            ],
+            "answer": 0,
+            "explanation": "super() appelle le constructeur parent."
+        },
+        {
+            "id": 80,
+            "question": "Quel objet contient l'historique de navigation ?",
+            "options": [
+                "history",
+                "navigation",
+                "window.past",
+                "location"
+            ],
+            "answer": 0,
+            "explanation": "window.history (back, forward, pushState)."
+        },
+        {
+            "id": 81,
+            "question": "Quelle méthode permet de savoir si une chaîne commence par 'X' ?",
+            "options": [
+                "startsWith()",
+                "beginWith()",
+                "indexOf() == 0",
+                "match()"
+            ],
+            "answer": 0,
+            "explanation": "'abc'.startsWith('a') -> true."
+        },
+        {
+            "id": 82,
+            "question": "Comment ajouter une classe CSS à un élément ?",
+            "options": [
+                "el.classList.add('c')",
+                "el.className += ' c'",
+                "el.addClass('c')",
+                "Les deux 1ers"
+            ],
+            "answer": 3,
+            "explanation": "classList est l'API moderne."
+        },
+        {
+            "id": 83,
+            "question": "Quel est l'objet global dans le navigateur ?",
+            "options": [
+                "window",
+                "global",
+                "root",
+                "document"
+            ],
+            "answer": 0,
+            "explanation": "Dans Node.js c'est `global`."
+        },
+        {
+            "id": 84,
+            "question": "Comment faire une copie profonde d'un objet (simple) ?",
+            "options": [
+                "JSON.parse(JSON.stringify(obj))",
+                "{...obj}",
+                "Object.assign({}, obj)",
+                "obj.clone()"
+            ],
+            "answer": 0,
+            "explanation": "Les autres font des copies superficielles. StructuredClone() est la méthode moderne."
+        },
+        {
+            "id": 85,
+            "question": "Quelle fonction décode une URL ?",
+            "options": [
+                "decodeURI()",
+                "parseURI()",
+                "unscape()",
+                "decode()"
+            ],
+            "answer": 0,
+            "explanation": "Et encodeURI()."
+        },
+        {
+            "id": 86,
+            "question": "Comment définir une valeur par défaut dans une fonction ?",
+            "options": [
+                "function(a=1) {}",
+                "function(a || 1) {}",
+                "function(a:1) {}",
+                "def(a=1)"
+            ],
+            "answer": 0,
+            "explanation": "Paramètres par défaut ES6."
+        },
+        {
+            "id": 87,
+            "question": "Quel opérateur calcule la puissance ?",
+            "options": [
+                "**",
+                "^",
+                "pow",
+                "exp"
+            ],
+            "answer": 0,
+            "explanation": "2 ** 3 = 8."
+        },
+        {
+            "id": 88,
+            "question": "Quelle méthode vérifie si une chaîne contient un texte ?",
+            "options": [
+                "includes()",
+                "contains()",
+                "has()",
+                "inside()"
+            ],
+            "answer": 0,
+            "explanation": "String.prototype.includes()."
+        },
+        {
+            "id": 89,
+            "question": "Comment recharger la page ?",
+            "options": [
+                "location.reload()",
+                "window.refresh()",
+                "document.reload()",
+                "reload()"
+            ],
+            "answer": 0,
+            "explanation": "Force le rechargement."
+        },
+        {
+            "id": 90,
+            "question": "Quel est le résultat de `1 + 2 + '3'` ?",
+            "options": [
+                "'33'",
+                "'123'",
+                "6",
+                "Error"
+            ],
+            "answer": 0,
+            "explanation": "1+2=3, puis 3+'3' = '33'."
+        },
+        {
+            "id": 91,
+            "question": "Quelle méthode transforme un itérable en tableau ?",
+            "options": [
+                "Array.from()",
+                "Array.of()",
+                "toList()",
+                "makeArray()"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour NodeList ou arguments."
+        },
+        {
+            "id": 92,
+            "question": "Comment supprimer un écouteur d'événement ?",
+            "options": [
+                "removeEventListener",
+                "deleteEvent",
+                "off",
+                "unbind"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite la référence de la fonction callback."
+        },
+        {
+            "id": 93,
+            "question": "Quelle est la valeur de `undefined + 1` ?",
+            "options": [
+                "NaN",
+                "1",
+                "undefined",
+                "Error"
+            ],
+            "answer": 0,
+            "explanation": "Opération mathématique impossible."
+        },
+        {
+            "id": 94,
+            "question": "Quel mot-clé teste si une propriété est dans le prototype ?",
+            "options": [
+                "instanceof",
+                "in",
+                "typeof",
+                "is"
+            ],
+            "answer": 0,
+            "explanation": "obj instanceof Class."
+        },
+        {
+            "id": 95,
+            "question": "Comment obtenir les clés d'un objet sous forme de tableau ?",
+            "options": [
+                "Object.keys(obj)",
+                "obj.keys()",
+                "keys(obj)",
+                "Object.getNames(obj)"
+            ],
+            "answer": 0,
+            "explanation": "Et Object.values() pour les valeurs."
+        },
+        {
+            "id": 96,
+            "question": "Quelle fonction permet d'analyser un entier ?",
+            "options": [
+                "parseInt()",
+                "parseInteger()",
+                "toInt()",
+                "Integer()"
+            ],
+            "answer": 0,
+            "explanation": "parseInt(string, radix)."
+        },
+        {
+            "id": 97,
+            "question": "Comment faire une boucle infinie (à éviter) ?",
+            "options": [
+                "while(true)",
+                "for(;;)",
+                "Les deux",
+                "loop"
+            ],
+            "answer": 2,
+            "explanation": "Les 2 syntaxes bloquent le thread."
+        },
+        {
+            "id": 98,
+            "question": "Quel objet permet d'utiliser des expressions régulières ?",
+            "options": [
+                "RegExp",
+                "Regex",
+                "Pattern",
+                "Match"
+            ],
+            "answer": 0,
+            "explanation": "/pattern/ ou new RegExp('pattern')."
+        },
+        {
+            "id": 99,
+            "question": "Comment arrêter l'exécution d'une fonction ?",
+            "options": [
+                "return",
+                "stop",
+                "break",
+                "exit"
+            ],
+            "answer": 0,
+            "explanation": "Retourne éventuellement une valeur."
+        },
+        {
+            "id": 100,
+            "question": "Quelle année est sorti ES6 (ES2015) ?",
+            "options": [
+                "2015",
+                "2016",
+                "2014",
+                "2009"
+            ],
+            "answer": 0,
+            "explanation": "La plus grosse mise à jour de JS moderne."
         }
-    },
-    {
-        "id": 66,
-        "question": "Comment définir une constante ?",
-        "options": [
-            "const X = 10",
-            "let X = 10",
-            "var X = 10",
-            "constant X = 10"
-        ],
-        "answer": 0,
-        "explanation": "Convention : majuscules pour les constantes globales/config."
-    },
-    {
-        "id": 67,
-        "question": "Quelle fonction permet d'exécuter du code après X ms ?",
-        "options": [
-            "setTimeout",
-            "setInterval",
-            "setDelay",
-            "wait"
-        ],
-        "answer": 0,
-        "explanation": "Une seule fois. setInterval répète."
-    },
-    {
-        "id": 68,
-        "question": "Quelle méthode permet d'aplatir un tableau de tableaux ?",
-        "options": [
-            "flat()",
-            "flatten()",
-            "merge()",
-            "collapse()"
-        ],
-        "answer": 0,
-        "explanation": "[[1,2], [3]].flat() donne [1,2,3]."
-    },
-    {
-        "id": 69,
-        "question": "Comment arrondir 4.7 au plus proche entier (5) ?",
-        "options": [
-            "Math.round(4.7)",
-            "Math.ceil(4.7)",
-            "Math.floor(4.7)",
-            "Math.near(4.7)"
-        ],
-        "answer": 0,
-        "explanation": "round=arrondi, ceil=plafond, floor=plancher."
-    },
-    {
-        "id": 70,
-        "question": "Quelle est la valeur initiale de `let x;` ?",
-        "options": [
-            "undefined",
-            "null",
-            "0",
-            "error"
-        ],
-        "answer": 0,
-        "explanation": "Undefined par défaut."
-    },
-    {
-        "id": 71,
-        "question": "Comment faire un héritage de classe ?",
-        "options": [
-            "class B extends A",
-            "class B inherits A",
-            "class B : A",
-            "class B super A"
-        ],
-        "answer": 0,
-        "explanation": "extends permet d'hériter méthodes et propriétés."
-    },
-    {
-        "id": 72,
-        "question": "Gérer les erreurs dans une Promesse ?",
-        "options": [
-            ".catch()",
-            ".error()",
-            ".fail()",
-            ".except()"
-        ],
-        "answer": 0,
-        "explanation": "myPromise.then().catch(err => ...)"
-    },
-    {
-        "id": 73,
-        "question": "Quelle instruction stoppe une boucle ?",
-        "options": [
-            "break",
-            "stop",
-            "exit",
-            "return"
-        ],
-        "answer": 0,
-        "explanation": "break sort de la boucle. continue passe à l'itération suivante."
-    },
-    {
-        "id": 74,
-        "question": "Comment vérifier si une variable est un tableau ?",
-        "options": [
-            "Array.isArray(v)",
-            "v.isArray()",
-            "typeof v == 'array'",
-            "v instanceof Array"
-        ],
-        "answer": 0,
-        "explanation": "La méthode la plus robuste. typeof renvoie 'object'."
-    },
-    {
-        "id": 75,
-        "question": "Quelle méthode supprime des éléments n'importe où dans le tableau ?",
-        "options": [
-            "splice()",
-            "slice()",
-            "remove()",
-            "cut()"
-        ],
-        "answer": 0,
-        "explanation": "splice(index, nbToDelete, ...toAdd) modifie le tableau en place."
-    },
-    {
-        "id": 76,
-        "question": "Que fait `document.createElement('div')` ?",
-        "options": [
-            "Crée un élément HTML en mémoire",
-            "L'ajoute à la page",
-            "Crée et ajoute",
-            "Rien"
-        ],
-        "answer": 0,
-        "explanation": "Il faut ensuite l'ajouter avec appendChild()."
-    },
-    {
-        "id": 77,
-        "question": "Quelle nouveauté ES6 permet d'extraire des valeurs d'un objet ?",
-        "options": [
-            "Destructuring",
-            "Extracting",
-            "Unpacking",
-            "Spread"
-        ],
-        "answer": 0,
-        "explanation": "const { a, b } = obj;"
-    },
-    {
-        "id": 78,
-        "question": "Comment écrire une chaîne avec des variables (Template String) ?",
-        "options": [
-            "`Hello ${name}`",
-            "'Hello ' + name",
-            "\"Hello {name}\"",
-            "f'Hello {name}'"
-        ],
-        "answer": 0,
-        "explanation": "Backticks (accents graves) permettent l'interpolation."
-    },
-    {
-        "id": 79,
-        "question": "Quel mot-clé référence la classe parente ?",
-        "options": [
-            "super",
-            "parent",
-            "base",
-            "top"
-        ],
-        "answer": 0,
-        "explanation": "super() appelle le constructeur parent."
-    },
-    {
-        "id": 80,
-        "question": "Quel objet contient l'historique de navigation ?",
-        "options": [
-            "history",
-            "navigation",
-            "window.past",
-            "location"
-        ],
-        "answer": 0,
-        "explanation": "window.history (back, forward, pushState)."
-    },
-    {
-        "id": 81,
-        "question": "Quelle méthode permet de savoir si une chaîne commence par 'X' ?",
-        "options": [
-            "startsWith()",
-            "beginWith()",
-            "indexOf() == 0",
-            "match()"
-        ],
-        "answer": 0,
-        "explanation": "'abc'.startsWith('a') -> true."
-    },
-    {
-        "id": 82,
-        "question": "Comment ajouter une classe CSS à un élément ?",
-        "options": [
-            "el.classList.add('c')",
-            "el.className += ' c'",
-            "el.addClass('c')",
-            "Les deux 1ers"
-        ],
-        "answer": 3,
-        "explanation": "classList est l'API moderne."
-    },
-    {
-        "id": 83,
-        "question": "Quel est l'objet global dans le navigateur ?",
-        "options": [
-            "window",
-            "global",
-            "root",
-            "document"
-        ],
-        "answer": 0,
-        "explanation": "Dans Node.js c'est `global`."
-    },
-    {
-        "id": 84,
-        "question": "Comment faire une copie profonde d'un objet (simple) ?",
-        "options": [
-            "JSON.parse(JSON.stringify(obj))",
-            "{...obj}",
-            "Object.assign({}, obj)",
-            "obj.clone()"
-        ],
-        "answer": 0,
-        "explanation": "Les autres font des copies superficielles. StructuredClone() est la méthode moderne."
-    },
-    {
-        "id": 85,
-        "question": "Quelle fonction décode une URL ?",
-        "options": [
-            "decodeURI()",
-            "parseURI()",
-            "unscape()",
-            "decode()"
-        ],
-        "answer": 0,
-        "explanation": "Et encodeURI()."
-    },
-    {
-        "id": 86,
-        "question": "Comment définir une valeur par défaut dans une fonction ?",
-        "options": [
-            "function(a=1) {}",
-            "function(a || 1) {}",
-            "function(a:1) {}",
-            "def(a=1)"
-        ],
-        "answer": 0,
-        "explanation": "Paramètres par défaut ES6."
-    },
-    {
-        "id": 87,
-        "question": "Quel opérateur calcule la puissance ?",
-        "options": [
-            "**",
-            "^",
-            "pow",
-            "exp"
-        ],
-        "answer": 0,
-        "explanation": "2 ** 3 = 8."
-    },
-    {
-        "id": 88,
-        "question": "Quelle méthode vérifie si une chaîne contient un texte ?",
-        "options": [
-            "includes()",
-            "contains()",
-            "has()",
-            "inside()"
-        ],
-        "answer": 0,
-        "explanation": "String.prototype.includes()."
-    },
-    {
-        "id": 89,
-        "question": "Comment recharger la page ?",
-        "options": [
-            "location.reload()",
-            "window.refresh()",
-            "document.reload()",
-            "reload()"
-        ],
-        "answer": 0,
-        "explanation": "Force le rechargement."
-    },
-    {
-        "id": 90,
-        "question": "Quel est le résultat de `1 + 2 + '3'` ?",
-        "options": [
-            "'33'",
-            "'123'",
-            "6",
-            "Error"
-        ],
-        "answer": 0,
-        "explanation": "1+2=3, puis 3+'3' = '33'."
-    },
-    {
-        "id": 91,
-        "question": "Quelle méthode transforme un itérable en tableau ?",
-        "options": [
-            "Array.from()",
-            "Array.of()",
-            "toList()",
-            "makeArray()"
-        ],
-        "answer": 0,
-        "explanation": "Utile pour NodeList ou arguments."
-    },
-    {
-        "id": 92,
-        "question": "Comment supprimer un écouteur d'événement ?",
-        "options": [
-            "removeEventListener",
-            "deleteEvent",
-            "off",
-            "unbind"
-        ],
-        "answer": 0,
-        "explanation": "Nécessite la référence de la fonction callback."
-    },
-    {
-        "id": 93,
-        "question": "Quelle est la valeur de `undefined + 1` ?",
-        "options": [
-            "NaN",
-            "1",
-            "undefined",
-            "Error"
-        ],
-        "answer": 0,
-        "explanation": "Opération mathématique impossible."
-    },
-    {
-        "id": 94,
-        "question": "Quel mot-clé teste si une propriété est dans le prototype ?",
-        "options": [
-            "instanceof",
-            "in",
-            "typeof",
-            "is"
-        ],
-        "answer": 0,
-        "explanation": "obj instanceof Class."
-    },
-    {
-        "id": 95,
-        "question": "Comment obtenir les clés d'un objet sous forme de tableau ?",
-        "options": [
-            "Object.keys(obj)",
-            "obj.keys()",
-            "keys(obj)",
-            "Object.getNames(obj)"
-        ],
-        "answer": 0,
-        "explanation": "Et Object.values() pour les valeurs."
-    },
-    {
-        "id": 96,
-        "question": "Quelle fonction permet d'analyser un entier ?",
-        "options": [
-            "parseInt()",
-            "parseInteger()",
-            "toInt()",
-            "Integer()"
-        ],
-        "answer": 0,
-        "explanation": "parseInt(string, radix)."
-    },
-    {
-        "id": 97,
-        "question": "Comment faire une boucle infinie (à éviter) ?",
-        "options": [
-            "while(true)",
-            "for(;;)",
-            "Les deux",
-            "loop"
-        ],
-        "answer": 2,
-        "explanation": "Les 2 syntaxes bloquent le thread."
-    },
-    {
-        "id": 98,
-        "question": "Quel objet permet d'utiliser des expressions régulières ?",
-        "options": [
-            "RegExp",
-            "Regex",
-            "Pattern",
-            "Match"
-        ],
-        "answer": 0,
-        "explanation": "/pattern/ ou new RegExp('pattern')."
-    },
-    {
-        "id": 99,
-        "question": "Comment arrêter l'exécution d'une fonction ?",
-        "options": [
-            "return",
-            "stop",
-            "break",
-            "exit"
-        ],
-        "answer": 0,
-        "explanation": "Retourne éventuellement une valeur."
-    },
-    {
-        "id": 100,
-        "question": "Quelle année est sorti ES6 (ES2015) ?",
-        "options": [
-            "2015",
-            "2016",
-            "2014",
-            "2009"
-        ],
-        "answer": 0,
-        "explanation": "La plus grosse mise à jour de JS moderne."
-    }
-]
+    ]
 }

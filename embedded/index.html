@@ -520,69 +520,149 @@
                         <div class="sec-num">01</div>
                         <div>
                             <h2 class="sec-title">Le Cerveau (MCU)</h2>
-                            <p class="sec-sub">Microcontrôleur vs Microprocesseur</p>
+                            <p class="sec-sub">Architecture et Coeur du Système</p>
                         </div>
                     </div>
 
+                    <!-- ANATOMY OF A BOARD (CSS SCHEMATIC) -->
+                    <div class="intro-box" style="border-left-color:var(--primary); margin-bottom:40px;">
+                        <h4>🏗️ Anatomie d'une Carte Électronique</h4>
+                        <p>Avant de coder, il faut que le système vive. Tout système embarqué repose sur une "Sainte
+                            Trinité" matérielle. Si l'un de ces éléments manque, le MCU est une brique inerte.</p>
+
+                        <!-- CSS DIAGRAM BOARD -->
+                        <div
+                            style="background:#111; padding:20px; border-radius:10px; margin-top:20px; border:1px solid #333; position:relative; overflow:hidden;">
+                            <div style="position:absolute; top:10px; left:10px; font-family:monospace; color:#444;">PCB
+                                V1.0</div>
+
+                            <div
+                                style="display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap;">
+                                <!-- POWER -->
+                                <div style="text-align:center;">
+                                    <div
+                                        style="border:2px solid var(--str); padding:10px; border-radius:6px; color:var(--str); font-weight:bold; background:#1a1a1a;">
+                                        ⚡ Power<br><span style="font-size:0.7rem; color:#888;">LDO / Buck</span>
+                                    </div>
+                                    <div style="font-size:1.5rem; color:var(--str);">⬇️ 3.3V</div>
+                                </div>
+
+                                <!-- MCU CENTER -->
+                                <div
+                                    style="border:4px solid var(--primary); padding:30px; border-radius:12px; background:#000; position:relative; z-index:2; box-shadow:0 0 20px rgba(0,200,0,0.1);">
+                                    <div
+                                        style="color:var(--primary); font-weight:bold; font-size:1.2rem; margin-bottom:10px;">
+                                        MCU</div>
+                                    <div
+                                        style="font-size:0.7rem; color:#666; font-family:monospace; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                                        <span>[CPU Core]</span><span>[Flash]</span>
+                                        <span><span>[SRAM]</span><span>[GPIO]</span>
+                                    </div>
+                                    <div style="position:absolute; top:50%; left:-20px; color:var(--str);">➡️</div>
+                                    <div style="position:absolute; bottom:-20px; left:50%; color:var(--kw);">⬆️</div>
+                                    <div style="position:absolute; top:-20px; right:20%; color:var(--type);">⬇️</div>
+                                </div>
+
+                                <!-- CLOCK -->
+                                <div style="text-align:center;">
+                                    <div style="font-size:1.5rem; color:var(--kw);">⬅️ Clock</div>
+                                    <div
+                                        style="border:2px solid var(--kw); padding:10px; border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; margin:0 auto; color:var(--kw); font-weight:bold; background:#1a1a1a;">
+                                        ⏱️<br>XTAL
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; margin-top:20px; padding:0 40px;">
+                                <div
+                                    style="border:1px solid var(--var); padding:5px 10px; border-radius:4px; font-size:0.8rem; color:var(--var);">
+                                    🔴 RESET (Button/RC)</div>
+                                <div
+                                    style="border:1px dashed #666; padding:5px 10px; border-radius:4px; font-size:0.8rem; color:#888;">
+                                    🐞 DEBUG (SWD/JTAG)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THE HOLY TRINITY -->
+                    <div class="grid3" style="margin-bottom:40px;">
+                        <div class="ref-card">
+                            <strong style="color:var(--str);">1. Power (Alim)</strong>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">
+                                Le MCU a besoin d'une tension STABLE (ex: 3.3V). Une baisse (Brown-out) provoque un
+                                Reset aléatoire. On utilise des condensateurs de découplage partout (100nF).
+                            </p>
+                        </div>
+                        <div class="ref-card">
+                            <strong style="color:var(--kw);">2. Clock (Horloge)</strong>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">
+                                Le cœur bat à une fréquence précise. L'oscillateur interne (RC) est imprécis. Pour l'USB
+                                ou le RF, on utilise un <strong>Quartz Externe</strong>.
+                            </p>
+                        </div>
+                        <div class="ref-card">
+                            <strong style="color:var(--var);">3. Reset</strong>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">
+                                Pour démarrer proprement, le MCU doit être maintenu en "Reset" tant que la tension n'est
+                                pas stable. C'est le rôle du circuit RC ou du Brown-Out Detector.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3
+                        style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
+                        🧠 MCU vs MPU : Le match</h3>
                     <div class="grid2">
-                        <div class="ref-card">
-                            <h4>💾 Microcontrôleur (MCU)</h4>
-                            <p>Tout-en-un (SoC). Contient CPU + RAM + Flash + IO.</p>
-                            <ul class="dense-list" style="margin-top:10px;">
-                                <li><strong>Arduino (AVR)</strong> : 8-bit, 16MHz. Robuste.</li>
-                                <li><strong>STM32 / ESP32</strong> : 32-bit, 80-240MHz. Puissant.</li>
-                                <li><em>OS : Bare-metal ou RTOS.</em></li>
+                        <div class="code-block" style="margin:0; border-color:var(--primary);">
+                            <div style="color:var(--primary); font-weight:bold; margin-bottom:10px; font-size:1.1rem;">
+                                MCU (Microcontroller)</div>
+                            <div style="font-size:0.8rem; color:#ddd; margin-bottom:15px;"><em>"Tout-en-un" (SoC).</em>
+                            </div>
+                            <ul class="dense-list">
+                                <li>✅ <strong>Mémoire Intégrée</strong> : Flash + RAM dans la puce.</li>
+                                <li>✅ <strong>Temps Réel</strong> : Contrôle cycle par cycle (Bare-metal/RTOS).</li>
+                                <li>✅ <strong>Low Power</strong> : Quelques µA en sommeil.</li>
+                                <li>❌ <strong>Puissance</strong> : Limitée (MHz).</li>
+                                <li>➡️ <em>Ex: STM32, ESP32, Arduino.</em></li>
                             </ul>
                         </div>
-                        <div class="ref-card">
-                            <h4>🖥️ Microprocesseur (MPU)</h4>
-                            <p>Cerveau seul. A besoin de RAM/Flash externes.</p>
-                            <ul class="dense-list" style="margin-top:10px;">
-                                <li><strong>Raspberry Pi (BCM)</strong> : 1.5GHz+, Giga-octets de RAM.</li>
-                                <li><em>OS : Linux (Besoin de MMU).</em></li>
+                        <div class="code-block" style="margin:0; border-color:var(--num);">
+                            <div style="color:var(--num); font-weight:bold; margin-bottom:10px; font-size:1.1rem;">MPU
+                                (Microprocessor)</div>
+                            <div style="font-size:0.8rem; color:#ddd; margin-bottom:15px;"><em>"Cerveau pur".</em></div>
+                            <ul class="dense-list">
+                                <li>✅ <strong>Puissance</strong> : GHz. Traitement image/IA.</li>
+                                <li>❌ <strong>Complexité</strong> : RAM/Flash externes (DDR, PMIC).</li>
+                                <li>❌ <strong>OS Obligatoire</strong> : Besoin de Linux pour la MMU.</li>
+                                <li>❌ <strong>Gourmand</strong> : Consomme des Watts.</li>
+                                <li>➡️ <em>Ex: Raspberry Pi (Broadcom), Smartphone.</em></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="code-block">
-                        <div style="padding:10px 20px; border-bottom:1px solid #333; color:var(--type);">
-                            🧠 Von Neumann Architecture (Simplifiée)
-                        </div>
-                        <pre><span class="c">// Le CPU va chercher l'instruction (Fetch)</span>
-1. CPU -> Bus Adresse -> Flash (0x0800...) "Que faire ?"
-2. Flash -> Bus Data -> CPU "Instruction: ADD R1, R2"
-3. CPU exécute (Decode & Execute)
-4. Résultat stocké en RAM (0x2000...)
-
-<span class="k">while</span>(1) { Fetch(); Decode(); Execute(); } <span class="c">// C'est la vie d'un CPU.</span></pre>
-                    </div>
-
-                    <!-- VOCAB M01 -->
-                    <div class="tool-card" style="margin-top:20px; text-align:left;">
-                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                    <!-- BUS ARCHITECTURE -->
+                    <div class="tool-card" style="margin-top:40px; text-align:left;">
+                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">🚌 Architecture Interne & Bus</h4>
                         <div class="grid2" style="font-size:0.85rem;">
                             <div>
-                                <span class="vocab-term">Flash Memory</span>
-                                <p style="color:var(--muted);">Mémoire non-volatile. C'est le "Disque Dur" du MCU où est
-                                    stocké
-                                    votre code. (Lecture rapide, écriture lente).</p>
+                                <span class="vocab-term">Von Neumann</span>
+                                <p style="color:var(--muted);">Bus unique pour Code et Données. Facile à coder, mais
+                                    goulot d'étranglement.</p>
                             </div>
                             <div>
-                                <span class="vocab-term">SRAM</span>
-                                <p style="color:var(--muted);">Static Random Access Memory. Volatile. C'est la "Table de
-                                    travail" pour les variables. Perdue si coupure de courant.</p>
+                                <span class="vocab-term">Harvard</span>
+                                <p style="color:var(--muted);">Bus séparés. Lecture instruction + Lecture donnée en
+                                    simultané. Beaucoup plus rapide (Cortex-M).</p>
                             </div>
                             <div>
-                                <span class="vocab-term">Clock Speed (Hz)</span>
-                                <p style="color:var(--muted);">Le rythme cardiaque du CPU. 16MHz = 16 millions
-                                    d'opérations par
-                                    seconde.</p>
+                                <span class="vocab-term">Registers (Registres)</span>
+                                <p style="color:var(--muted);">La mémoire la plus rapide au monde. Située directement
+                                    dans l'ALU pour les calculs immédiats.</p>
                             </div>
                             <div>
-                                <span class="vocab-term">Registre</span>
-                                <p style="color:var(--muted);">Petite case mémoire ultra-rapide directement dans le CPU.
-                                    Tout
-                                    passe par là.</p>
+                                <span class="vocab-term">Pipeline</span>
+                                <p style="color:var(--muted);">Vitesse de traitement : Charger une instruction pendant
+                                    qu'on décode la précédente et qu'on exécute celle d'avant.</p>
                             </div>
                         </div>
                     </div>

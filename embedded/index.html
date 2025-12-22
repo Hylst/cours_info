@@ -1276,57 +1276,81 @@
                 <div class="sec-num">07</div>
                 <div>
                     <h2 class="sec-title">Puissance & Moteurs</h2>
-                    <p class="sec-sub">Sortir du monde 3.3V</p>
+                    <p class="sec-sub">Commander le Monde Réel</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:var(--num);">
-                <h4>⚡ Le Problème de Puissance</h4>
-                <p>Un MCU est un cerveau, pas un muscle. Ses broches sortent max 20mA. Si vous branchez un moteur
-                    directement, vous grillez le MCU.
-                    Il faut un <strong>étage de puissance</strong> pour amplifier le signal.</p>
+            <div class="intro-box" style="border-left-color:var(--num); margin-bottom:30px;">
+                <h4>⚡ Le MCU est un Cerveau, pas un Muscle</h4>
+                <p>Une broche GPIO sort au maximum 20mA à 3.3V. C'est suffisant pour allumer une LED, mais pas pour
+                    faire tourner un moteur. Pour commander de la puissance, il faut un **étage de puissance** (MOSFET,
+                    Relay, Driver).</p>
             </div>
 
             <div class="grid2">
+                <!-- POWER STAGE -->
                 <div class="ref-card">
-                    <h4 style="color:var(--num);">Le Transistor (MOSFET)</h4>
-                    <p>C'est un interrupteur électronique commandé par une tension (Gate).</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li><strong>Gate</strong> : La commande (connectée au MCU). Consommation quasi-nulle.</li>
-                        <li><strong>Drain/Source</strong> : Là où passe le gros courant (Puissance).</li>
-                        <li><em>Usage : Allumer une bande LED, chauffer une résistance, piloter un gros relais.</em>
-                        </li>
+                    <h4 style="color:var(--num);">🔌 Le MOSFET : L'Interrupteur Magique</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:10px;">
+                        C'est un interrupteur commandé par une tension minuscule.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.85rem;">
+                        <li><strong>Gate</strong> : La commande (MCU). Consommation quasi-nulle.</li>
+                        <li><strong>Drain / Source</strong> : Là où passe le gros courant (10A, 30A...).</li>
+                        <li>Alternative : <span class="vocab-term">Relais</span> (mécanique, clique, isolation
+                            galvanique).</li>
                     </ul>
                 </div>
+
+                <!-- FLYBACK -->
                 <div class="ref-card">
-                    <h4 style="color:var(--accent);">Le Pont en H (H-Bridge)</h4>
-                    <p>Pour faire tourner un moteur dans <strong>les deux sens</strong>.</p>
-                    <div style="font-size:0.8rem; background:#000; padding:10px; margin:5px 0;">
-                        [A] --(Moteur)-- [B]
+                    <h4 style="color:var(--error);">⚠️ La Diode de Roue Libre</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:10px;">
+                        Une bobine (moteur, relais) stocke de l'énergie. Quand on la coupe, elle génère une surtension
+                        destructrice (**Inductive Kickback**).
+                    </p>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; font-family:monospace; text-align:center;">
+                        Sans Diode → +60V → 💀 MOSFET mort
                     </div>
-                    <ul class="dense-list">
-                        <li>Fermer A(Top) + B(Bot) = Sens Horaire.</li>
-                        <li>Fermer B(Top) + A(Bot) = Sens Anti-Horaire.</li>
-                        <li>Usage: Robotique, Voitures RC.</li>
-                    </ul>
+                    <p style="font-size:0.8rem; color:#888; margin-top:5px;">Solution : Placer une diode en "roue libre"
+                        pour court-circuiter la surtension.</p>
                 </div>
             </div>
 
-            <!-- VOCAB M07 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Inductive Kickback</span>
-                        <p style="color:var(--muted);">Surtension destructrice créée par un moteur/bobine quand on le
-                            coupe brutalement. Il faut une <strong>Diode de Roue Libre</strong>.</p>
+            <!-- MOTOR TYPES -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🚗 Les Types de Moteurs</h3>
+                <div class="grid3">
+                    <div class="ref-card">
+                        <strong style="color:var(--primary);">Moteur DC</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            Simple : 2 fils. Tension = Vitesse. PWM pour varier. **H-Bridge** pour le sens.
+                        </p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Driver</span>
-                        <p style="color:var(--muted);">Puce spécialisée (ex: L298N, DRV8825) qui contient les MOSFETs et
-                            les protections. On ne fait plus de ponts en H discrets.</p>
+                    <div class="ref-card">
+                        <strong style="color:var(--accent);">Servomoteur</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            Contrôle d'**angle**. Signal PWM (1-2ms). Utilisé pour les bras robotiques, directions.
+                        </p>
+                    </div>
+                    <div class="ref-card">
+                        <strong style="color:var(--str);">Stepper (Pas-à-Pas)</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            Contrôle de **position précise** (200 pas/tour). Imprimantes 3D, CNC. Driver dédié (DRV8825,
+                            A4988).
+                        </p>
                     </div>
                 </div>
+            </div>
+
+            <!-- H-BRIDGE DIAGRAM -->
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--accent); margin-bottom:10px;">🌉 Le Pont en H (H-Bridge)</h4>
+                <p style="font-size:0.85rem; color:var(--muted);">
+                    4 interrupteurs (MOSFETs) pour inverser le sens du courant. Activer Q1+Q4 = Sens Horaire. Activer
+                    Q2+Q3 = Sens Anti. <strong>Ne jamais activer Q1+Q2 en même temps (court-circuit !).</strong>
+                </p>
             </div>
         </div>
     </section>

@@ -1704,52 +1704,63 @@
                 <div class="sec-num">13</div>
                 <div>
                     <h2 class="sec-title">Firmware Avancé & Robustesse</h2>
-                    <p class="sec-sub">Fiabilité industrielle</p>
+                    <p class="sec-sub">Construire un Produit qui Dure</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:#0984e3;">
-                <h4>🚀 Bootloaders & Mises à Jour</h4>
-                <p>Un produit IoT n'est jamais fini. Il doit pouvoir se mettre à jour à distance (OTA). Cela demande une
-                    architecture logicielle spéciale avec deux partitions : le Bootloader (Immuable) et l'Application
-                    (Mise à jour).</p>
+            <div class="intro-box" style="border-left-color:#0984e3; margin-bottom:30px;">
+                <h4>🚀 Le Firmware n'est Jamais Fini</h4>
+                <p>Un produit IoT doit se mettre à jour à distance (**OTA**). Cela demande une architecture avec un
+                    **Bootloader** immuable et une Application mise à jour. Le tout doit être **incassable**
+                    (anti-brick, rollback).</p>
             </div>
 
             <div class="grid2">
-                <div class="analogy-box">
-                    <h4>🐕 Le Watchdog Timer (Chien de Garde)</h4>
-                    <p>Un compteur matériel indépendant qui décrémente.</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li>Votre code doit le nourrir (Reset) régulièrement ("Tout va bien !").</li>
-                        <li>Si le code plante (boucle infinie) et oublie de nourrir le chien...</li>
-                        <li>...Le chien mord (Reset) et redémarre le MCU proprement.</li>
-                    </ul>
-                </div>
+                <!-- BOOTLOADER & OTA -->
                 <div class="ref-card">
-                    <h4>OTA (Over-The-Air)</h4>
-                    <p>Architecture Dual-Bank :</p>
-                    <ol style="margin-left:20px; font-size:0.85rem; color:var(--muted); margin-top:5px;">
-                        <li>L'app active tourne sur Banks A.</li>
-                        <li>Téléchargement de la Maj sur Bank B (en tâche de fond).</li>
-                        <li>Vérification (Signature, Checksum).</li>
-                        <li>Reboot -> Le Bootloader swap A et B.</li>
+                    <h4 style="color:#0984e3;">📦 Architecture OTA (Dual-Bank)</h4>
+                    <ol style="font-size:0.85rem; padding-left:18px; margin:10px 0 0 0; color:var(--muted);">
+                        <li>L'app active tourne sur **Bank A**.</li>
+                        <li>Téléchargement de la MAJ sur **Bank B** (en tâche de fond).</li>
+                        <li>Vérification (**Signature**, **Checksum**).</li>
+                        <li>Reboot → Bootloader swap A ↔ B.</li>
+                        <li>Si boot échoue → **Rollback** sur Bank A (Auto-recovery).</li>
                     </ol>
+                </div>
+
+                <!-- WATCHDOG -->
+                <div class="ref-card">
+                    <h4 style="color:var(--accent);">🐕 Le Watchdog Timer (Chien de Garde)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Un compteur **matériel indépendant** qui décrémente. Votre code doit le "nourrir" régulièrement.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                        <li>Si le code plante → Oublie de nourrir → <strong>Reset forcé</strong>.</li>
+                        <li><strong>IWDG</strong> (Independent) : Simple, robuste.</li>
+                        <li><strong>WWDG</strong> (Window) : Doit être nourri dans une fenêtre de temps précise (détecte
+                            les feedbacks trop rapides = bugs).</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- VOCAB M13 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Bootloader</span>
-                        <p style="color:var(--muted);">Petit programme au début de la Flash (0x0000) qui s'exécute au
-                            démarrage. Il décide si on lance l'app ou si on fait une mise à jour.</p>
+            <!-- DEFENSIVE PROGRAMMING -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🛡️ Programmation Défensive</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--fn);">assert()</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Vérifier les préconditions de chaque
+                            fonction. Si ça échoue = Bug détecté tôt.</p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Brick</span>
-                        <p style="color:var(--muted);">Un appareil rendu inutilisable (aussi utile qu'une brique) suite
-                            à une mise à jour ratée ou un fusible mal configuré.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--error);">Default Case</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Toujours gérer le `default:` dans un
+                            `switch`. Un état inconnu est un bug.</p>
+                    </div>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--str);">CRC / Checksum</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Vérifier l'intégrité des données
+                            critiques (Config en Flash, Trames reçues).</p>
                     </div>
                 </div>
             </div>
@@ -1766,41 +1777,63 @@
                 <div class="sec-num">14</div>
                 <div>
                     <h2 class="sec-title">Électronique Rapide</h2>
-                    <p class="sec-sub">Quand le fil devient une antenne</p>
+                    <p class="sec-sub">Quand Chaque Millimètre Compte</p>
                 </div>
             </div>
-            <div class="intro-box" style="border-left-color:var(--active);">
+
+            <div class="intro-box" style="border-left-color:var(--active); margin-bottom:30px;">
                 <h4>🏎️ Signal Integrity</h4>
-                <p>À basse vitesse (I2C, UART), un fil est un fil. À haute vitesse (USB 3.0, HDMI, DDR), un fil est une
-                    ligne de transmission complexe. Chaque virage compte, chaque millimètre compte.</p>
+                <p>À basse vitesse (I2C), un fil est un fil. À haute vitesse (USB 3.0, DDR4, PCIe), un fil est une
+                    **ligne de transmission**. Si mal conçue → réflexions, données corrompues.</p>
             </div>
+
             <div class="grid2">
+                <!-- IMPEDANCE -->
                 <div class="ref-card">
-                    <h4>Impedance Matching ( Adaptation )</h4>
-                    <p>Si la source fait 50Ω, le câble doit faire 50Ω et la charge 50Ω. Sinon ?
-                        <strong>Réflexion</strong>. Le signal rebondit et corrompt les données (comme un écho).
+                    <h4 style="color:var(--active);">⚡ Adaptation d'Impédance</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Si Source = 50Ω, Câble = 50Ω, Charge = 50Ω → **OK**.<br>
+                        Sinon → **Réflexion** (le signal rebondit comme un écho et corrompt les données).
                     </p>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace;">
+                        Solution : Résistance de **terminaison** (série ou parallèle) au bout de la piste.
+                    </div>
                 </div>
+
+                <!-- DIFFERENTIAL -->
                 <div class="ref-card">
-                    <h4>Paires Différentielles (LVDS)</h4>
-                    <p>On n'utilise pas 1 fil + GND, mais 2 fils (D+ et D-) avec des signaux opposés. Immunité totale au
-                        bruit externe (utilisé par USB, Ethernet, CAN).</p>
+                    <h4 style="color:var(--primary);">🔀 Paires Différentielles</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        On n'utilise plus 1 fil + GND, mais **2 fils (D+ et D-)** avec des signaux opposés. Le bruit
+                        externe s'annule (Mode Commun), seule la différence compte.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                        <li><strong>USB</strong> : D+ / D-</li>
+                        <li><strong>Ethernet</strong> : TX+/TX-, RX+/RX-</li>
+                        <li><strong>CAN</strong> : CANH / CANL</li>
+                    </ul>
                 </div>
             </div>
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div><span class="vocab-term">Skew</span>
-                        <p style="color:var(--muted);">Décalage temporel entre deux signaux qui devraient arriver en
-                            même temps (ex: Clock et Data).</p>
+
+            <!-- DIAGNOSTICS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🔬 Diagnostics</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--fn);">Eye Diagram</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Superposition de milliers de bits sur
+                            l'oscillo. "L'œil" doit être ouvert = signal propre.</p>
                     </div>
-                    <div><span class="vocab-term">Eye Diagram</span>
-                        <p style="color:var(--muted);">Outil d'oscilloscope pour visualiser la qualité ("l'ouverture")
-                            d'un signal rapide.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--error);">Jitter</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Tremblement de l'horloge. Une PLL
+                            instable provoque des erreurs de synchronisation.</p>
                     </div>
-                    <div><span class="vocab-term">Jitter</span>
-                        <p style="color:var(--muted);">Tremblement de l'horloge. Une horloge instable provoque des
-                            erreurs de transmission.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--accent);">Skew</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Décalage entre Clock et Data. Les
+                            pistes doivent avoir la même longueur ("length matching").</p>
                     </div>
                 </div>
             </div>
@@ -1814,47 +1847,60 @@
                 <div class="sec-num">15</div>
                 <div>
                     <h2 class="sec-title">Télécoms & RF</h2>
-                    <p class="sec-sub">La magie sans fil</p>
+                    <p class="sec-sub">La Magie Noire du Sans-Fil</p>
                 </div>
             </div>
-            <div class="intro-box" style="border-left-color:var(--str);">
+
+            <div class="intro-box" style="border-left-color:var(--str); margin-bottom:30px;">
                 <h4>📡 L'Art de la Radio</h4>
-                <p>Envoyer des données dans l'air demande de moduler une onde porteuse. C'est le domaine de la magie
-                    noire (RF) où la géométrie du cuivre définit la performance.</p>
+                <p>Envoyer des données dans l'air demande de **moduler** une onde porteuse. C'est le domaine de la
+                    "magie noire" où la géométrie du cuivre définit la performance.</p>
             </div>
-            <div class="grid3">
+
+            <div class="grid2">
+                <!-- RF BASICS -->
                 <div class="ref-card">
-                    <strong style="color:var(--fn);">Antenne</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Ce n'est pas juste un bout de
-                        métal. Sa longueur doit être accordée à la longueur d'onde (λ/4).</p>
+                    <h4 style="color:var(--str);">📻 Les Fondamentaux RF</h4>
+                    <ul class="dense-list" style="font-size:0.85rem; margin-top:10px;">
+                        <li><strong>Antenne</strong> : Sa longueur doit être accordée à λ/4 (ex: 2.4GHz → ~3cm).</li>
+                        <li><strong>dBm</strong> : Puissance logarithmique. 0dBm = 1mW. +3dBm = 2x la puissance.</li>
+                        <li><strong>RSSI</strong> : Puissance reçue (les "barres" de réseau).</li>
+                        <li><strong>Link Budget</strong> : Gains (Ampli) - Pertes (Air, Murs) = Marge de fonctionnement.
+                        </li>
+                    </ul>
                 </div>
+
+                <!-- PROTOCOLS -->
                 <div class="ref-card">
-                    <strong style="color:var(--accent);">Modulation</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Comment mettre des 0 et 1 sur une
-                        onde. ASK (Amplitude), FSK (Fréquence), LoRa (Chirp Spread Spectrum).</p>
-                </div>
-                <div class="ref-card">
-                    <strong style="color:var(--type);">Link Budget</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Le calcul comptable des gains
-                        (Ampli, Antenne) et des pertes (Air, Obstacles) pour savoir si "ça passe".</p>
+                    <h4 style="color:var(--accent);">📶 Protocoles Sans-Fil</h4>
+                    <div style="font-size:0.85rem; margin-top:10px;">
+                        <div style="margin-bottom:8px; border-left:2px solid var(--primary); padding-left:8px;">
+                            <strong style="color:var(--primary);">WiFi</strong> : Haut débit (Mbit/s), Haute conso. Pour
+                            vidéo/cloud.
+                        </div>
+                        <div style="margin-bottom:8px; border-left:2px solid var(--accent); padding-left:8px;">
+                            <strong style="color:var(--accent);">LoRa</strong> : Ultra longue portée (15km), Low Power,
+                            Bas débit. IoT agricole.
+                        </div>
+                        <div style="margin-bottom:8px; border-left:2px solid var(--var); padding-left:8px;">
+                            <strong style="color:var(--var);">Zigbee</strong> : Mesh, Low Power. Domotique (Philips
+                            Hue).
+                        </div>
+                        <div style="border-left:2px solid var(--str); padding-left:8px;">
+                            <strong style="color:var(--str);">NFC</strong> : Contact (~4cm). Paiement sans contact,
+                            badges.
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div><span class="vocab-term">dBm</span>
-                        <p style="color:var(--muted);">Unité de puissance logarithmique. 0dBm = 1mW. -120dBm = Signal
-                            très faible (limite LoRa).</p>
-                    </div>
-                    <div><span class="vocab-term">RSSI</span>
-                        <p style="color:var(--muted);">Received Signal Strength Indicator. La puissance reçue (les
-                            "barres" de réseau).</p>
-                    </div>
-                    <div><span class="vocab-term">VSWR</span>
-                        <p style="color:var(--muted);">Taux d'ondes stationnaires. Mesure si l'antenne est bien accordée
-                            (1:1 est parfait).</p>
-                    </div>
-                </div>
+
+            <!-- ANTENNA WARNING -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:var(--error);">
+                <h4 style="color:var(--error); margin-bottom:5px;">⚠️ Attention PCB RF</h4>
+                <p style="font-size:0.85rem; color:var(--muted);">
+                    Ne **jamais** router une piste sous l'antenne. Le plan de masse doit être parfait. Chaque mm de
+                    piste mal calculée = dB perdus = portée réduite.
+                </p>
             </div>
         </div>
     </section>

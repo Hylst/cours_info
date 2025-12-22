@@ -1854,53 +1854,164 @@
             <div class="intro-box" style="border-left-color:var(--str); margin-bottom:30px;">
                 <h4>📡 L'Art de la Radio</h4>
                 <p>Envoyer des données dans l'air demande de **moduler** une onde porteuse. C'est le domaine de la
-                    "magie noire" où la géométrie du cuivre définit la performance.</p>
+                    "magie noire" où la géométrie du cuivre définit la performance. 1mm de piste = dB perdus = portée
+                    réduite.</p>
             </div>
 
             <div class="grid2">
                 <!-- RF BASICS -->
                 <div class="ref-card">
-                    <h4 style="color:var(--str);">📻 Les Fondamentaux RF</h4>
+                    <h4 style="color:var(--str);">📻 Fondamentaux RF</h4>
                     <ul class="dense-list" style="font-size:0.85rem; margin-top:10px;">
-                        <li><strong>Antenne</strong> : Sa longueur doit être accordée à λ/4 (ex: 2.4GHz → ~3cm).</li>
-                        <li><strong>dBm</strong> : Puissance logarithmique. 0dBm = 1mW. +3dBm = 2x la puissance.</li>
-                        <li><strong>RSSI</strong> : Puissance reçue (les "barres" de réseau).</li>
-                        <li><strong>Link Budget</strong> : Gains (Ampli) - Pertes (Air, Murs) = Marge de fonctionnement.
-                        </li>
+                        <li><strong>λ (Lambda)</strong> : Longueur d'onde = c / f. À 2.4GHz → λ ≈ 12.5cm.</li>
+                        <li><strong>Antenne λ/4</strong> : La plus simple. Ex: 2.4GHz → 3.1cm de long.</li>
+                        <li><strong>dBm</strong> : Puissance absolue. 0dBm = 1mW. +3dBm = 2x, +10dBm = 10x.</li>
+                        <li><strong>dBi</strong> : Gain d'antenne vs isotrope. Plus = plus directionnel.</li>
+                        <li><strong>RSSI</strong> : Puissance reçue (les "barres" de réseau). -30dBm = Fort, -90dBm =
+                            Faible.</li>
                     </ul>
                 </div>
 
-                <!-- PROTOCOLS -->
+                <!-- MODULATION -->
                 <div class="ref-card">
-                    <h4 style="color:var(--accent);">📶 Protocoles Sans-Fil</h4>
+                    <h4 style="color:var(--accent);">🔊 Types de Modulation</h4>
                     <div style="font-size:0.85rem; margin-top:10px;">
+                        <div style="margin-bottom:8px; border-left:2px solid var(--fn); padding-left:8px;">
+                            <strong style="color:var(--fn);">ASK / OOK</strong> : On/Off. Simple mais sensible au bruit.
+                            Télécommandes basiques.
+                        </div>
                         <div style="margin-bottom:8px; border-left:2px solid var(--primary); padding-left:8px;">
-                            <strong style="color:var(--primary);">WiFi</strong> : Haut débit (Mbit/s), Haute conso. Pour
-                            vidéo/cloud.
+                            <strong style="color:var(--primary);">FSK</strong> : Fréquence varie. Robuste. 433MHz,
+                            Bluetooth Classic.
                         </div>
                         <div style="margin-bottom:8px; border-left:2px solid var(--accent); padding-left:8px;">
-                            <strong style="color:var(--accent);">LoRa</strong> : Ultra longue portée (15km), Low Power,
-                            Bas débit. IoT agricole.
+                            <strong style="color:var(--accent);">LoRa (CSS)</strong> : Chirp Spread Spectrum. Ultra
+                            longue portée, immunité au bruit.
                         </div>
-                        <div style="margin-bottom:8px; border-left:2px solid var(--var); padding-left:8px;">
-                            <strong style="color:var(--var);">Zigbee</strong> : Mesh, Low Power. Domotique (Philips
-                            Hue).
+                        <div style="border-left:2px solid var(--var); padding-left:8px;">
+                            <strong style="color:var(--var);">OFDM</strong> : Multi-porteuses. WiFi, LTE. Haut débit.
                         </div>
-                        <div style="border-left:2px solid var(--str); padding-left:8px;">
-                            <strong style="color:var(--str);">NFC</strong> : Contact (~4cm). Paiement sans contact,
-                            badges.
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LINK BUDGET -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">📊 Link Budget (Bilan de Liaison)</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">Le "calcul comptable" pour savoir si la liaison
+                        passera :</p>
+                    <div
+                        style="background:#111; padding:12px; border-radius:4px; font-family:monospace; font-size:0.85rem; margin:10px 0; text-align:center;">
+                        P<sub>RX</sub> = P<sub>TX</sub> + G<sub>TX</sub> - L<sub>path</sub> + G<sub>RX</sub> -
+                        L<sub>cables</sub>
+                    </div>
+                    <div class="grid2" style="gap:10px; font-size:0.8rem; margin-top:10px;">
+                        <div><strong>P<sub>TX</sub></strong> : Puissance émise (ex: +14dBm)</div>
+                        <div><strong>G<sub>TX</sub></strong> : Gain antenne TX (ex: +2dBi)</div>
+                        <div><strong>L<sub>path</sub></strong> : Pertes espace libre (FSPL) = 20×log(d) + 20×log(f) -
+                            27.55</div>
+                        <div><strong>Sensibilité RX</strong> : Seuil de réception (ex: -120dBm pour LoRa)</div>
+                    </div>
+                    <p style="font-size:0.8rem; color:#888; margin-top:10px;"><strong>Marge :</strong> P<sub>RX</sub> -
+                        Sensibilité = Marge de sécurité (15dB recommandé).</p>
+                </div>
+            </div>
+
+            <!-- PROTOCOLS TABLE -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">📶 Comparatif Protocoles</h3>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.05);">
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Proto</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Fréquence</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Portée</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Débit</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Conso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:8px; color:var(--primary);"><strong>WiFi</strong></td>
+                                <td>2.4/5GHz</td>
+                                <td>~50m</td>
+                                <td>Mbit/s</td>
+                                <td style="color:var(--error);">Haute</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; color:var(--accent);"><strong>BLE</strong></td>
+                                <td>2.4GHz</td>
+                                <td>~30m</td>
+                                <td>1Mbit/s</td>
+                                <td style="color:#27c93f;">Basse</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; color:var(--str);"><strong>LoRa</strong></td>
+                                <td>868/915MHz</td>
+                                <td>~15km</td>
+                                <td>0.3-50kbit/s</td>
+                                <td style="color:#27c93f;">Très Basse</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; color:var(--var);"><strong>Zigbee</strong></td>
+                                <td>2.4GHz</td>
+                                <td>~100m</td>
+                                <td>250kbit/s</td>
+                                <td style="color:#27c93f;">Basse</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; color:var(--fn);"><strong>NFC</strong></td>
+                                <td>13.56MHz</td>
+                                <td>~4cm</td>
+                                <td>424kbit/s</td>
+                                <td style="color:#27c93f;">Très Basse</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:8px; color:var(--num);"><strong>LTE-M</strong></td>
+                                <td>Cellulaire</td>
+                                <td>~10km</td>
+                                <td>1Mbit/s</td>
+                                <td style="color:var(--var);">Moyenne</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FREQUENCY BANDS -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🌍 Bandes de Fréquences ISM (Europe)</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--str);">433 MHz</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Télécommandes, capteurs simples. Bonne
+                            pénétration murs. Puissance limitée (10mW).</p>
+                    </div>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--accent);">868 MHz</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">LoRaWAN, Sigfox. Excellente portée.
+                            Duty Cycle réglementé (1%).</p>
+                    </div>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--primary);">2.4 GHz</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">WiFi, BLE, Zigbee. Encombré !
+                            Atténuation par l'eau (corps humain).</p>
                     </div>
                 </div>
             </div>
 
             <!-- ANTENNA WARNING -->
             <div class="tool-card" style="margin-top:20px; text-align:left; border-color:var(--error);">
-                <h4 style="color:var(--error); margin-bottom:5px;">⚠️ Attention PCB RF</h4>
-                <p style="font-size:0.85rem; color:var(--muted);">
-                    Ne **jamais** router une piste sous l'antenne. Le plan de masse doit être parfait. Chaque mm de
-                    piste mal calculée = dB perdus = portée réduite.
-                </p>
+                <h4 style="color:var(--error); margin-bottom:8px;">⚠️ Les 5 Erreurs Fatales en RF</h4>
+                <ol style="font-size:0.85rem; color:var(--muted); padding-left:18px; margin:0;">
+                    <li>Router une piste sous/près de l'antenne.</li>
+                    <li>Plan de masse incomplet ou découpé.</li>
+                    <li>Impédance de piste ≠ 50Ω (utiliser un calculateur PCB).</li>
+                    <li>Antenne trop proche du boîtier métallique.</li>
+                    <li>Condensateurs de découplage trop loin du module RF.</li>
+                </ol>
             </div>
         </div>
     </section>

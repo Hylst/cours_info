@@ -2030,14 +2030,14 @@
             <div class="intro-box" style="border-left-color:var(--var); margin-bottom:30px;">
                 <h4>👁️ Photons vs Électrons</h4>
                 <p>La lumière est **immunisée** aux parasites électromagnétiques. On l'utilise pour transporter de
-                    l'info (Fibre Optique) ou pour **isoler galvaniquement** deux circuits dangereux (Optocoupleur). Un
-                    photon ne conduit pas l'électricité !</p>
+                    l'info (Fibre Optique) ou pour **isoler galvaniquement** deux circuits dangereux. Un photon ne
+                    conduit pas l'électricité → isolation parfaite jusqu'à plusieurs kV !</p>
             </div>
 
             <div class="grid2">
                 <!-- OPTOCOUPLER -->
                 <div class="ref-card">
-                    <h4 style="color:var(--var);">🔌 Optocoupleur</h4>
+                    <h4 style="color:var(--var);">🔌 Optocoupleur (Isolation Galvanique)</h4>
                     <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
                         Une **LED** en face d'un **phototransistor** dans un boîtier opaque. La lumière traverse, pas
                         l'électricité.
@@ -2046,47 +2046,132 @@
                         style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace; text-align:center;">
                         MCU 3.3V → LED → (photons) → Phototransistor → Relais 220V
                     </div>
-                    <p style="font-size:0.75rem; color:#888; margin-top:8px;"><strong>Usage :</strong> Piloter du
-                        secteur, isolation industrielle, MIDI.</p>
+                    <ul class="dense-list" style="font-size:0.75rem; margin-top:10px;">
+                        <li><strong>CTR</strong> (Current Transfer Ratio) : Ratio sortie/entrée (~50-200%).</li>
+                        <li><strong>Isolation</strong> : Typiquement 3.75kV - 5kV.</li>
+                        <li><strong>Vitesse</strong> : µs (lent). Pour signaux rapides → optoisolateur numérique.</li>
+                    </ul>
                 </div>
 
                 <!-- LIDAR / TOF -->
                 <div class="ref-card">
                     <h4 style="color:var(--accent);">📏 LiDAR & ToF (Time of Flight)</h4>
                     <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
-                        On envoie une impulsion **laser IR** et on mesure le temps qu'elle met à revenir. Distance =
-                        (Temps × Vitesse de la lumière) / 2.
+                        On envoie une impulsion **laser IR** et on mesure le temps qu'elle met à revenir.
                     </p>
-                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
-                        <li><strong>Voitures autonomes</strong> : Cartographie 3D temps réel.</li>
-                        <li><strong>Aspirateurs robots</strong> : Évitement d'obstacles.</li>
-                        <li><strong>Téléphones</strong> : Autofocus, Face ID.</li>
+                    <div
+                        style="background:#111; padding:10px; border-radius:4px; font-size:0.85rem; margin:10px 0; font-family:monospace; text-align:center;">
+                        Distance = (Temps × c) / 2<br>
+                        <span style="color:#888; font-size:0.75rem;">c = 3×10⁸ m/s → 1ns ≈ 15cm</span>
+                    </div>
+                    <ul class="dense-list" style="font-size:0.75rem;">
+                        <li><strong>VL53L0X</strong> : ToF compact, 2m, I2C (drones, robots).</li>
+                        <li><strong>LiDAR rotatif</strong> : 360°, cartographie 3D (voitures autonomes).</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- COMPONENTS -->
+            <!-- SPECTRAL WAVELENGTHS -->
             <div style="margin-top:30px;">
-                <h3 style="margin-bottom:15px; color:var(--text);">💡 Composants Optiques</h3>
-                <div class="grid3">
-                    <div class="ref-card" style="padding:10px;">
-                        <strong style="color:var(--fn);">Photodiode</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Transforme lumière → courant. Très
-                            rapide (fibre optique, récepteurs IR).</p>
+                <h3 style="margin-bottom:15px; color:var(--text);">🌈 Longueurs d'Onde Courantes</h3>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.05);">
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">λ (nm)</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Couleur</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:6px; color:#ff6b6b;"><strong>630-660</strong></td>
+                                <td>Rouge</td>
+                                <td>LED indicatrices, laser pointeur</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:#27c93f;"><strong>520-530</strong></td>
+                                <td>Vert</td>
+                                <td>Rétroéclairage, laser visible puissant</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:#4dabf7;"><strong>450-470</strong></td>
+                                <td>Bleu</td>
+                                <td>LED blanches (avec phosphore), gravure laser</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--error);"><strong>850</strong></td>
+                                <td>IR proche</td>
+                                <td>Télécommandes TV, barrières IR</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--accent);"><strong>940</strong></td>
+                                <td>IR invisible</td>
+                                <td>Détection présence (capteurs PIR améliorés)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--str);"><strong>1550</strong></td>
+                                <td>IR télécom</td>
+                                <td>Fibre optique longue distance, sécurité oculaire</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FIBER OPTICS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🔗 Fibre Optique</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--primary);">Multimode (MMF)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Cœur large (50-62.5µm). LED comme
+                            source. Courtes distances (<2km). Data centers.</p>
                     </div>
-                    <div class="ref-card" style="padding:10px;">
-                        <strong style="color:var(--str);">Phototransistor</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Photodiode + Amplification intégrée.
-                            Plus sensible mais plus lent.</p>
-                    </div>
-                    <div class="ref-card" style="padding:10px;">
-                        <strong style="color:var(--accent);">LED IR (940nm)</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Invisible à l'œil. Télécommandes,
-                            barrières IR. Attention au soleil !</p>
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--str);">Monomode (SMF)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Cœur ultra-fin (9µm). Laser comme
+                            source. Longues distances (100+ km). Télécom.</p>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- COMPONENTS -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">💡 Composants Optiques</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--fn);">Photodiode (PIN)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Lumière → courant. Ultra rapide (ns).
+                            Fibre optique, récepteurs IR. Linéaire.</p>
+                    </div>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--str);">Phototransistor</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Photodiode + Gain intégré. Plus
+                            sensible mais plus lent (µs). Optocoupleurs.</p>
+                    </div>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--accent);">APD (Avalanche)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Gain interne ×100. Détection faible
+                            lumière. LiDAR longue portée. Coûteux.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LASER SAFETY -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:var(--error);">
+                <h4 style="color:var(--error); margin-bottom:8px;">⚠️ Classes de Sécurité Laser (IEC 60825)</h4>
+                <div class="grid2" style="font-size:0.8rem; gap:10px;">
+                    <div><strong style="color:#27c93f;">Classe 1</strong> : Sûr (CD/DVD players, souris laser).</div>
+                    <div><strong style="color:var(--var);">Classe 2</strong> : <1mW visible. Réflexe palpébral
+                            protège.</div>
+                            <div><strong style="color:var(--accent);">Classe 3R</strong> : 1-5mW. Pointeurs laser.
+                                Risque modéré.</div>
+                            <div><strong style="color:var(--error);">Classe 3B / 4</strong> : Dangereux ! Lunettes
+                                obligatoires. Brûlures.</div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <!-- MODULE 17: MECHATRONICS -->

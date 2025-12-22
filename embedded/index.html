@@ -36,6 +36,11 @@
                 <a href="#m11">DSP</a>
                 <a href="#m12">Secu</a>
                 <a href="#m13">FW</a>
+                <a href="#m14">HiSpd</a>
+                <a href="#m15">RF</a>
+                <a href="#m16">Opt</a>
+                <a href="#m17">Mech</a>
+                <a href="#m18">EMC</a>
                 <a href="#quiz-section">Quiz</a>
             </nav>
         </div>
@@ -44,479 +49,770 @@
     <section class="hero">
         <div class="container">
             <div class="hero-icon">⚡</div>
-            <h1>Le Pont entre le Code et le Réel</h1>
-            <p>Maîtrisez l'art de contrôler les électrons. Du transistor au Cloud.</p>
+            <h1>Maîtrisez l'Invisible. Domptez le Réel.</h1>
+            <p style="max-width:800px; margin:0 auto;">
+                L'ingénierie embarquée est l'art de donner une intelligence à la matière.<br>
+                C'est le point de fusion entre la rigidité du <strong>Hardware</strong> et la flexibilité du
+                <strong>Software</strong>.
+            </p>
+            <div style="margin-top:40px; text-align:center;">
+                <img src="img/embedded_ecosystem.png" alt="Embedded Ecosystem"
+                    style="max-width:300px; width:100%; border-radius:12px; border:1px solid #333; box-shadow:0 0 30px rgba(0,200,0,0.15);">
+                <p style="font-size:0.8rem; color:#888; margin-top:10px; font-style:italic;">Le Cœur du Système : CPU,
+                    Périphériques, et le Monde Extérieur.</p>
 
-            <div class="grid2" style="margin-top:40px; text-align:left;">
+                <div style="max-width:900px; margin:40px auto 0; text-align:left;">
+                    <h3
+                        style="color:var(--primary-bright); border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:20px;">
+                        1. La Boucle de Rétroaction (Feedback Loop)</h3>
+                    <p style="color:#bbb; line-height:1.6; margin-bottom:20px;">
+                        Contrairement à un PC qui attend passivement une entrée clavier, un système embarqué est
+                        <strong>vivant</strong>. Il scrute le monde physique en permanence via une variété infinie de
+                        <strong>Capteurs</strong> (LiDAR, Accéléromètre, Pression, Bio-signaux, Caméras thermiques...)
+                        et réagit immédiatemment via des <strong>Actionneurs</strong> (Moteurs Brushless, Relais de
+                        puissance, Écrans OLED, Retour Haptique, Vannes hydrauliques).
+                    </p>
+
+                    <h3
+                        style="color:var(--num); border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:20px;">
+                        2. Les Contraintes : L'Art du Compromis</h3>
+                    <p style="color:#bbb; line-height:1.6; margin-bottom:20px;">
+                        C'est ici que se joue la différence entre un développeur logiciel et un ingénieur embarqué. Nous
+                        devons faire tenir une intelligence complexe dans des contraintes drastiques :
+                    </p>
+                    <div class="grid3" style="margin-bottom:20px;">
+                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
+                            <strong style="color:var(--kw);">⚡ Énergie</strong>
+                            <p style="font-size:0.85rem; margin-top:5px; color:#aaa;">Fonctionner 5 ans sur une pile
+                                bouton (Coin Cell). Chaque micro-ampère (µA) compte.</p>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
+                            <strong style="color:var(--str);">💰 Coût</strong>
+                            <p style="font-size:0.85rem; margin-top:5px; color:#aaa;">Remplacer un chip à 1$ par un chip
+                                à 0.80$ économise 200k$ sur une production de 1M d'unités.</p>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
+                            <strong style="color:var(--type);">⏱️ Réactivité</strong>
+                            <p style="font-size:0.85rem; margin-top:5px; color:#aaa;">Temps Réel Dur (Hard Real-Time).
+                                L'airbag DOIT se déclencher en 20ms, pas 21ms.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="color:var(--fn); border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:20px;">
+                        3. Les Outils : Au plus près du silicum</h3>
+                    <p style="color:#bbb; line-height:1.6;">
+                        Pour atteindre ce niveau de performance, on oublie souvent Python ou Java. On parle le langage
+                        de la machine : <strong>C, C++ et Assembleur (ASM)</strong>. On manipule directement les
+                        registres du processeur, on gère les interruptions à la nanoseconde, et l'optimisation n'est pas
+                        une option, c'est une nécessité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEFINITIONS & SCOPE -->
+    <section style="background:var(--bg2); padding:60px 0;">
+        <div class="container">
+            <h3 style="text-align:center; font-size:2rem; margin-bottom:50px;">🌍 Les 3 piliers du Monde Connecté</h3>
+
+            <div class="grid3">
+                <!-- COL 1: EMBEDDED -->
+                <div class="ref-card" style="border-top:3px solid var(--primary);">
+                    <div style="height:150px; overflow:hidden; border-radius:8px; margin-bottom:15px;">
+                        <img src="img/embedded_ecosystem.png" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h4 style="color:var(--primary);">Électronique Embarquée</h4>
+                    <p style="font-size:0.9rem; color:#ddd; margin-bottom:10px;"><em>"Faire plus avec moins."</em></p>
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        Concevoir des systèmes autonomes, optimisés en taille, coût et énergie. C'est le domaine du
+                        FPGA, du Microcontrôleur (STM32, ESP32) et du code C/C++ proche du métal.
+                    </p>
+                    <ul class="dense-list" style="margin-top:15px; font-size:0.8rem;">
+                        <li><strong>Cible</strong> : Drônes, Dispositifs Médicaux, Objets Grand Public.</li>
+                        <li><strong>Enjeu</strong> : Autonomie, Temps Réel, Miniaturisation.</li>
+                    </ul>
+                </div>
+
+                <!-- COL 2: INDUSTRIAL -->
+                <div class="ref-card" style="border-top:3px solid var(--num);">
+                    <div style="height:150px; overflow:hidden; border-radius:8px; margin-bottom:15px;">
+                        <img src="img/industrial_robot.png" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h4 style="color:var(--num);">Informatique Industrielle</h4>
+                    <p style="font-size:0.9rem; color:#ddd; margin-bottom:10px;"><em>"La fiabilité avant tout."</em></p>
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        Automatiser des usines et des processus critiques. On utilise des Automates (PLC), des bus de
+                        terrain robustes (Modbus, Profinet) et des interfaces hommes-machines (SCADA).
+                    </p>
+                    <ul class="dense-list" style="margin-top:15px; font-size:0.8rem;">
+                        <li><strong>Cible</strong> : Lignes de prod, Centrales Nucléaires, Trains.</li>
+                        <li><strong>Enjeu</strong> : Robustesse (H24/7), Sécurité, Longévité (20 ans).</li>
+                    </ul>
+                </div>
+
+                <!-- COL 3: IOT -->
+                <div class="ref-card" style="border-top:3px solid var(--str);">
+                    <div style="height:150px; overflow:hidden; border-radius:8px; margin-bottom:15px;">
+                        <img src="img/iot_layers.png" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <h4 style="color:var(--str);">IoT (Internet of Things)</h4>
+                    <p style="font-size:0.9rem; color:#ddd; margin-bottom:10px;"><em>"Tout est donnée."</em></p>
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        Connecter le monde physique au Cloud. C'est la couche qui récupère la data (Capteurs), la
+                        transmet (LoRa, 5G, Wi-Fi) et l'analyse (Big Data, AI).
+                    </p>
+                    <ul class="dense-list" style="margin-top:15px; font-size:0.8rem;">
+                        <li><strong>Cible</strong> : Smart Home, Villes Connectées, Fleet Management.</li>
+                        <li><strong>Enjeu</strong> : Connectivité, Sécurité des données, Scalabilité.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRO HARDWARE/SOFTWARE -->
+    <section>
+        <div class="container">
+            <div class="grid2" style="text-align:left;">
                 <div class="intro-box"
                     style="margin:0; background:rgba(255,255,255,0.05); border-left-color:var(--primary);">
-                    <h4>🏗️ Le Hardware</h4>
-                    <p style="font-size:0.9rem; color:#ccc;">Contraintes physiques, timing réel, interruptions. Ici, un
-                        bug peut <em>littéralement</em> mettre le feu.</p>
+                    <h4>🏗️ Le Hardware (Physique)</h4>
+                    <p style="font-size:0.9rem; color:#ccc;">Tensions, Courants, Bruit, Chaleur. Ici, une erreur de code
+                        peut faire fondre le processeur.</p>
                 </div>
                 <div class="intro-box"
                     style="margin:0; background:rgba(255,255,255,0.05); border-left-color:var(--kw);">
-                    <h4>💻 Le Software</h4>
-                    <p style="font-size:0.9rem; color:#ccc;">Logique, algorithmes, machines à états. C'est
-                        l'intelligence qui pilote les muscles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULE 00: ELEC 101 (ENRICHED) -->
-    <section id="m0">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">00</div>
-                <div>
-                    <h2 class="sec-title">Physique & Électronique</h2>
-                    <p class="sec-sub">Les lois fondamentales de l'univers</p>
+                    <h4>💻 Le Firmware (Logique)</h4>
+                    <p style="font-size:0.9rem; color:#ccc;">Temps Réel, Optimisation binaire, Robustesse. C'est
+                        l'intelligence qui dompte la puissance brute.</p>
                 </div>
             </div>
 
-            <div class="intro-box">
-                <h4>⚡ Le Terrain de Jeu</h4>
-                <p>Avant de coder, il faut comprendre le terrain. L'électronique, c'est comme de la plomberie : on
-                    déplace des électrons (eau) dans des tuyaux (fils) à travers des composants (valves, réservoirs). Si
-                    vous ne respectez pas la pression (tension), les tuyaux explosent.</p>
-            </div>
-
-            <!-- INTERACTIVE OHM'S LAW -->
-            <div class="analogy-box"
-                style="background:linear-gradient(135deg, #2d3436, #000); border-left-color:var(--accent);">
-                <h4 style="color:var(--accent);">🎛️ Labo Interactif : La Loi d'Ohm (U = R × I)</h4>
-                <p style="margin-bottom:20px; font-size:0.9rem;">Bougez les curseurs pour voir l'impact sur le Courant
-                    (I).</p>
-
-                <div class="grid2">
-                    <div>
-                        <label
-                            style="display:block; font-weight:bold; color:var(--primary-bright); margin-bottom:5px;">Voltage
-                            (U) : <span id="val-u">5</span>V</label>
-                        <input type="range" min="1" max="24" value="5" class="slider" id="range-u" oninput="updateOhm()"
-                            style="width:100%; accent-color:var(--primary);">
-                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">La "Pression" (Hauteur du
-                            château d'eau).</p>
+            <!-- MODULE 00: ELEC 101 (ENRICHED) -->
+            <section id="m0">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">00</div>
+                        <div>
+                            <h2 class="sec-title">Physique & Électronique</h2>
+                            <p class="sec-sub">Les lois fondamentales de l'univers</p>
+                        </div>
                     </div>
-                    <div>
-                        <label style="display:block; font-weight:bold; color:var(--num); margin-bottom:5px;">Résistance
-                            (R) : <span id="val-r">220</span>Ω</label>
-                        <input type="range" min="10" max="2000" value="220" class="slider" id="range-r"
-                            oninput="updateOhm()" style="width:100%; accent-color:var(--num);">
-                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">Le "Frein" (Diamètre du tuyau).
-                        </p>
+
+                    <div class="intro-box">
+                        <h4>⚡ Le Terrain de Jeu</h4>
+                        <p>Avant de coder, il faut comprendre le terrain. L'électronique, c'est comme de la plomberie :
+                            on
+                            déplace des électrons (eau) dans des tuyaux (fils) à travers des composants (valves,
+                            réservoirs). Si
+                            vous ne respectez pas la pression (tension), les tuyaux explosent.</p>
+                    </div>
+
+                    <!-- INTERACTIVE OHM'S LAW -->
+                    <div class="analogy-box"
+                        style="background:linear-gradient(135deg, #2d3436, #000); border-left-color:var(--accent);">
+                        <h4 style="color:var(--accent);">🎛️ Labo Interactif : La Loi d'Ohm (U = R × I)</h4>
+                        <p style="margin-bottom:20px; font-size:0.9rem;">Bougez les curseurs pour voir l'impact sur le
+                            Courant
+                            (I).</p>
+
+                        <div class="grid2">
+                            <div>
+                                <label
+                                    style="display:block; font-weight:bold; color:var(--primary-bright); margin-bottom:5px;">Voltage
+                                    (U) : <span id="val-u">5</span>V</label>
+                                <input type="range" min="1" max="24" value="5" class="slider" id="range-u"
+                                    oninput="updateOhm()" style="width:100%; accent-color:var(--primary);">
+                                <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">La "Pression" (Hauteur
+                                    du
+                                    château d'eau).</p>
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-weight:bold; color:var(--num); margin-bottom:5px;">Résistance
+                                    (R) : <span id="val-r">220</span>Ω</label>
+                                <input type="range" min="10" max="2000" value="220" class="slider" id="range-r"
+                                    oninput="updateOhm()" style="width:100%; accent-color:var(--num);">
+                                <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">Le "Frein" (Diamètre du
+                                    tuyau).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background:#222; margin-top:20px; padding:15px; border-radius:8px; text-align:center; border:1px solid #444;">
+                            <div style="font-size:0.9rem; color:#aaa;">Résultat (Courant I)</div>
+                            <div style="font-size:2.5rem; font-weight:bold; color:#fff;" id="res-i">22.7 mA</div>
+                            <div style="font-size:0.8rem; color:var(--fn);" id="led-status">💡 La LED brille
+                                normalement.</div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function updateOhm() {
+                            const u = document.getElementById('range-u').value;
+                            const r = document.getElementById('range-r').value;
+                            document.getElementById('val-u').innerText = u;
+                            document.getElementById('val-r').innerText = r;
+
+                            const i_amp = u / r;
+                            const i_ma = (i_amp * 1000).toFixed(1);
+                            document.getElementById('res-i').innerText = i_ma + " mA";
+
+                            const status = document.getElementById('led-status');
+                            if (i_ma > 100) { status.innerText = "💥 BOOM ! La LED a explosé (Trop de courant)."; status.style.color = "#ff5f56"; }
+                            else if (i_ma > 20) { status.innerText = "⚠️ Attention, ça chauffe sévère !"; status.style.color = "var(--accent)"; }
+                            else if (i_ma < 1) { status.innerText = "🌑 C'est éteint (Pas assez de courant)."; status.style.color = "#555"; }
+                            else { status.innerText = "💡 La LED brille normalement."; status.style.color = "var(--primary-bright)"; }
+                        }
+                    </script>
+
+                    <h3
+                        style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
+                        🛠️ Les Composants (Le Bestiaire)</h3>
+
+                    <div class="grid2">
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">🛡️</div>
+                            <h4 style="color:var(--num);">La Résistance (R)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Le composant le plus courant. Il résiste
+                                au
+                                passage du courant.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Unité</strong> : Ohm (Ω).</li>
+                                <li><strong>Rôle</strong> : Limiter le courant, Diviser une tension.</li>
+                                <li><strong>Analogie</strong> : Un goulot d'étranglement.</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">🔋</div>
+                            <h4 style="color:var(--str);">Le Condensateur (C)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Il stocke des charges électriques (V). Il
+                                s'oppose
+                                aux variations de tension.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Unité</strong> : Farad (F, µF).</li>
+                                <li><strong>Rôle</strong> : Lisser l'alim (Découplage), Timing (RC).</li>
+                                <li><strong>Analogie</strong> : Un réservoir flexible / membrane.</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">🌀</div>
+                            <h4 style="color:var(--kw);">La Bobine (Inductance L)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Il stocke de l'énergie magnétique (I). Il
+                                s'oppose
+                                aux variations de courant.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Unité</strong> : Henry (H, µH).</li>
+                                <li><strong>Rôle</strong> : Filtrage, Convertisseurs DC-DC (Buck/Boost).</li>
+                                <li><strong>Analogie</strong> : Une roue à aube (Inertie de l'eau).</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">⛔</div>
+                            <h4 style="color:var(--var);">La Diode / LED</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Une valve anti-retour. Ne laisse passer
+                                que dans
+                                un sens.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Seuil</strong> : ~0.7V (Silicium), ~2V (LED Rouge).</li>
+                                <li><strong>Rôle</strong> : Redressement, Protection, Lumière.</li>
+                                <li><strong>Attention</strong> : Elle grille sans résistance de limitation !</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">🔌</div>
+                            <h4 style="color:var(--active);">Le Transistor (MOSFET)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Un interrupteur électronique commandé.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Rôle</strong> : Amplifier un signal ou Commuter (ON/OFF) une charge.</li>
+                                <li><strong>Note</strong> : C'est la brique de base de tout processeur.</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">💎</div>
+                            <h4 style="color:var(--kw);">Le Quartz (Crystal)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Le métronome du système.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Rôle</strong> : Donne la cadence (Clock) au MCU (ex: 16MHz).</li>
+                                <li><strong>Sans lui</strong> : Pas de notion de temps précise.</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <div style="font-size:2rem; margin-bottom:10px;">🔧</div>
+                            <h4 style="color:var(--fn);">Le Régulateur (LDO)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Convertit une tension sale en tension
+                                propre.</p>
+                            <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                                <li><strong>Exemple</strong> : 9V (Pile) -> 3.3V (MCU).</li>
+                                <li><strong>Attention</strong> : Un régulateur linéaire chauffe (perte en chaleur).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3
+                        style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
+                        ⚖️ Les Lois de Kirchoff</h3>
+                    <div class="grid2">
+                        <div class="intro-box" style="margin:0; border-left-color:var(--fn);">
+                            <h4>Loi des Nœuds (Courant)</h4>
+                            <p><em>"La somme des courants qui entrent est égale à la somme des courants qui
+                                    sortent."</em></p>
+                            <div style="font-family:monospace; margin-top:10px; color:var(--muted);">
+                                I_total = I1 + I2 + I3
+                            </div>
+                        </div>
+                        <div class="intro-box" style="margin:0; border-left-color:var(--accent);">
+                            <h4>Loi des Mailles (Tension)</h4>
+                            <p><em>"Dans une boucle fermée, la somme des tensions est nulle."</em></p>
+                            <div style="font-family:monospace; margin-top:10px; color:var(--muted);">
+                                V_pile = V_resistor + V_led
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3
+                        style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
+                        📉 Concepts Pratiques</h3>
+
+                    <div class="grid2">
+                        <div class="code-block" style="margin:0;">
+                            <div style="padding:10px; border-bottom:1px solid #444; color:var(--type);">➗ Pont Diviseur
+                                de
+                                Tension</div>
+                            <div style="padding:15px; font-size:0.9rem;">
+                                <p>Comment lire un capteur 5V sur un ESP32 (3.3V) sans le griller ?</p>
+                                <div
+                                    style="background:#000; padding:10px; margin:10px 0; font-weight:bold; text-align:center;">
+                                    Vout = Vin × [ R2 / (R1 + R2) ]
+                                </div>
+                                <p style="font-size:0.8rem; color:var(--muted);">
+                                    Ex: Vin=5V. R1=2k, R2=3k.<br>
+                                    Vout = 5 * (3 / 5) = <strong>3V</strong> (Safe !)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="code-block" style="margin:0;">
+                            <div style="padding:10px; border-bottom:1px solid #444; color:var(--str);">⏱️ Constante de
+                                Temps
+                                (Tau τ)</div>
+                            <div style="padding:15px; font-size:0.9rem;">
+                                <p>Rien n'est instantané. Un condensateur met du temps à se charger à travers une
+                                    résistance.
+                                </p>
+                                <div
+                                    style="background:#000; padding:10px; margin:10px 0; font-weight:bold; text-align:center;">
+                                    τ = R × C
+                                </div>
+                                <p style="font-size:0.8rem; color:var(--muted);">
+                                    Après 1τ, on est à 63%. Après 5τ, on est à 99%.<br>
+                                    <em>C'est ce qui crée les temps de montée/descente des signaux.</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3
+                        style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
+                        ⚡ Série vs Parallèle</h3>
+
+                    <div class="grid2">
+                        <div class="code-block" style="margin:0;">
+                            <div style="padding:10px; border-bottom:1px solid #444; color:var(--kw);">🔗 Circuit SÉRIE
+                            </div>
+                            <div style="padding:15px; text-align:center;">
+                                [Pile] -- [R1] -- [R2] -- [GND]
+                            </div>
+                            <div style="padding:15px; font-size:0.85rem;">
+                                <ul class="dense-list">
+                                    <li>Le <strong>Courant (I)</strong> est le même partout.</li>
+                                    <li>La <strong>Tension (U)</strong> se divise entre R1 et R2.</li>
+                                    <li><em>Si un composant casse, TOUT s'arrête (Guirlande de Noël).</em></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="code-block" style="margin:0;">
+                            <div style="padding:10px; border-bottom:1px solid #444; color:var(--fn);">🎋 Circuit
+                                PARALLÈLE</div>
+                            <div style="padding:15px; text-align:center;">
+                                [Pile] --+-- [R1] --+-- [GND]
+                                | |
+                                +-- [R2] --+
+                            </div>
+                            <div style="padding:15px; font-size:0.85rem;">
+                                <ul class="dense-list">
+                                    <li>La <strong>Tension (U)</strong> est la même pour tous.</li>
+                                    <li>Le <strong>Courant (I)</strong> se divise (Chacun tire ce qu'il veut).</li>
+                                    <li><em>C'est comme les prises de votre maison.</em></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VOCAB M00 -->
+                    <div class="tool-card" style="margin-top:20px; text-align:left;">
+                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                        <div class="grid2" style="font-size:0.85rem;">
+                            <div>
+                                <span class="vocab-term">Watt (P)</span>
+                                <p style="color:var(--muted);">La Puissance (Travail réel). <strong>P = U × I</strong>.
+                                    Si P est
+                                    trop grand pour le composant, il chauffe et brûle.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">AC/DC</span>
+                                <p style="color:var(--muted);">Alternating Current (Prise murale 220V) vs Direct Current
+                                    (Pile
+                                    5V). Nos MCUs vivent en DC. Attention à ne pas mélanger !</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">GND (Masse)</span>
+                                <p style="color:var(--muted);">Le sol commun. La référence 0V. Tous les composants d'un
+                                    système
+                                    doivent avoir leurs masses reliées pour communiquer.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Court-Circuit</span>
+                                <p style="color:var(--muted);">Chemin sans résistance entre le + et le -. Le courant
+                                    devient
+                                    infini. C'est la mort instantanée de l'alimentation.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Datasheet</span>
+                                <p style="color:var(--muted);">Le manuel technique du composant. La Bible. Tout y est
+                                    (Pinout,
+                                    Voltage Max, Exemples).</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Impedance (Z)</span>
+                                <p style="color:var(--muted);">Comme la Résistance, mais pour les signaux qui bougent
+                                    (AC).
+                                    Indispensable pour les antennes et l'audio.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Pull-Up / Pull-Down</span>
+                                <p style="color:var(--muted);">Une résistance qui force un état (High ou Low) quand rien
+                                    n'est
+                                    connecté. Évite les états "flottants".</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Floating (Flottant)</span>
+                                <p style="color:var(--muted);">Une broche non connectée. Elle capte le bruit ambiant et
+                                    change
+                                    d'état aléatoirement. Danger !</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Ripple (Ondulation)</span>
+                                <p style="color:var(--muted);">Le bruit résiduel sur une alimentation. Une alim instable
+                                    fait
+                                    planter le MCU.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div
-                    style="background:#222; margin-top:20px; padding:15px; border-radius:8px; text-align:center; border:1px solid #444;">
-                    <div style="font-size:0.9rem; color:#aaa;">Résultat (Courant I)</div>
-                    <div style="font-size:2.5rem; font-weight:bold; color:#fff;" id="res-i">22.7 mA</div>
-                    <div style="font-size:0.8rem; color:var(--fn);" id="led-status">💡 La LED brille normalement.</div>
-                </div>
-            </div>
-
-            <script>
-                function updateOhm() {
-                    const u = document.getElementById('range-u').value;
-                    const r = document.getElementById('range-r').value;
-                    document.getElementById('val-u').innerText = u;
-                    document.getElementById('val-r').innerText = r;
-
-                    const i_amp = u / r;
-                    const i_ma = (i_amp * 1000).toFixed(1);
-                    document.getElementById('res-i').innerText = i_ma + " mA";
-
-                    const status = document.getElementById('led-status');
-                    if (i_ma > 100) { status.innerText = "💥 BOOM ! La LED a explosé (Trop de courant)."; status.style.color = "#ff5f56"; }
-                    else if (i_ma > 20) { status.innerText = "⚠️ Attention, ça chauffe sévère !"; status.style.color = "var(--accent)"; }
-                    else if (i_ma < 1) { status.innerText = "🌑 C'est éteint (Pas assez de courant)."; status.style.color = "#555"; }
-                    else { status.innerText = "💡 La LED brille normalement."; status.style.color = "var(--primary-bright)"; }
-                }
-            </script>
-
-            <h3
-                style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
-                🛠️ Les Composants (Le Bestiaire)</h3>
-
-            <div class="grid3">
-                <div class="ref-card">
-                    <div style="font-size:2rem; margin-bottom:10px;">🛡️</div>
-                    <h4 style="color:var(--num);">La Résistance</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Le composant le plus courant. Il résiste au
-                        passage du courant.</p>
-                    <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
-                        <li><strong>Symbole</strong> : Zigzag ou Rectangle.</li>
-                        <li><strong>Rôle</strong> : Limiter le courant, Diviser une tension.</li>
-                        <li><strong>Analogie</strong> : Un goulot d'étranglement.</li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <div style="font-size:2rem; margin-bottom:10px;">🔋</div>
-                    <h4 style="color:var(--str);">Le Condensateur</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Une petite batterie ultra-rapide.</p>
-                    <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
-                        <li><strong>Symbole</strong> : Deux barres parallèles (-||-).</li>
-                        <li><strong>Rôle</strong> : Lisser une tension (découplage), stocker de l'énergie brièvement.
-                        </li>
-                        <li><strong>Analogie</strong> : Un réservoir d'eau tampon.</li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <div style="font-size:2rem; margin-bottom:10px;">⛔</div>
-                    <h4 style="color:var(--var);">La Diode / LED</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Une valve anti-retour + Lumière.</p>
-                    <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
-                        <li><strong>Symbole</strong> : Un triangle avec une barre (->|).</li>
-                        <li><strong>Rôle</strong> : Ne laisse passer le courant que dans un sens. La LED fait de la
-                            lumière en plus.</li>
-                        <li><strong>Attention</strong> : Tension de seuil (~2V pour LED Rouge).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3
-                style="margin:40px 0 20px; color:var(--text); border-bottom:1px solid var(--border); padding-bottom:10px;">
-                ⚡ Série vs Parallèle</h3>
-
-            <div class="grid2">
-                <div class="code-block" style="margin:0;">
-                    <div style="padding:10px; border-bottom:1px solid #444; color:var(--kw);">🔗 Circuit SÉRIE</div>
-                    <div style="padding:15px; text-align:center;">
-                        [Pile] -- [R1] -- [R2] -- [GND]
+            <!-- MODULE 01: ARCHITECTURE -->
+            <section id="m1" style="background:var(--bg2);">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">01</div>
+                        <div>
+                            <h2 class="sec-title">Le Cerveau (MCU)</h2>
+                            <p class="sec-sub">Microcontrôleur vs Microprocesseur</p>
+                        </div>
                     </div>
-                    <div style="padding:15px; font-size:0.85rem;">
-                        <ul class="dense-list">
-                            <li>Le <strong>Courant (I)</strong> est le même partout.</li>
-                            <li>La <strong>Tension (U)</strong> se divise entre R1 et R2.</li>
-                            <li><em>Si un composant casse, TOUT s'arrête (Guirlande de Noël).</em></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="code-block" style="margin:0;">
-                    <div style="padding:10px; border-bottom:1px solid #444; color:var(--fn);">🎋 Circuit PARALLÈLE</div>
-                    <div style="padding:15px; text-align:center;">
-                        [Pile] --+-- [R1] --+-- [GND]
-                        | |
-                        +-- [R2] --+
-                    </div>
-                    <div style="padding:15px; font-size:0.85rem;">
-                        <ul class="dense-list">
-                            <li>La <strong>Tension (U)</strong> est la même pour tous.</li>
-                            <li>Le <strong>Courant (I)</strong> se divise (Chacun tire ce qu'il veut).</li>
-                            <li><em>C'est comme les prises de votre maison.</em></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- VOCAB M00 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Watt (P)</span>
-                        <p style="color:var(--muted);">La Puissance (Travail réel). <strong>P = U × I</strong>. Si P est
-                            trop grand pour le composant, il chauffe et brûle.</p>
+                    <div class="grid2">
+                        <div class="ref-card">
+                            <h4>💾 Microcontrôleur (MCU)</h4>
+                            <p>Tout-en-un (SoC). Contient CPU + RAM + Flash + IO.</p>
+                            <ul class="dense-list" style="margin-top:10px;">
+                                <li><strong>Arduino (AVR)</strong> : 8-bit, 16MHz. Robuste.</li>
+                                <li><strong>STM32 / ESP32</strong> : 32-bit, 80-240MHz. Puissant.</li>
+                                <li><em>OS : Bare-metal ou RTOS.</em></li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <h4>🖥️ Microprocesseur (MPU)</h4>
+                            <p>Cerveau seul. A besoin de RAM/Flash externes.</p>
+                            <ul class="dense-list" style="margin-top:10px;">
+                                <li><strong>Raspberry Pi (BCM)</strong> : 1.5GHz+, Giga-octets de RAM.</li>
+                                <li><em>OS : Linux (Besoin de MMU).</em></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <span class="vocab-term">AC/DC</span>
-                        <p style="color:var(--muted);">Alternating Current (Prise murale 220V) vs Direct Current (Pile
-                            5V). Nos MCUs vivent en DC. Attention à ne pas mélanger !</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">GND (Masse)</span>
-                        <p style="color:var(--muted);">Le sol commun. La référence 0V. Tous les composants d'un système
-                            doivent avoir leurs masses reliées pour communiquer.</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Court-Circuit</span>
-                        <p style="color:var(--muted);">Chemin sans résistance entre le + et le -. Le courant devient
-                            infini. C'est la mort instantanée de l'alimentation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- MODULE 01: ARCHITECTURE -->
-    <section id="m1" style="background:var(--bg2);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">01</div>
-                <div>
-                    <h2 class="sec-title">Le Cerveau (MCU)</h2>
-                    <p class="sec-sub">Microcontrôleur vs Microprocesseur</p>
-                </div>
-            </div>
-
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>💾 Microcontrôleur (MCU)</h4>
-                    <p>Tout-en-un (SoC). Contient CPU + RAM + Flash + IO.</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li><strong>Arduino (AVR)</strong> : 8-bit, 16MHz. Robuste.</li>
-                        <li><strong>STM32 / ESP32</strong> : 32-bit, 80-240MHz. Puissant.</li>
-                        <li><em>OS : Bare-metal ou RTOS.</em></li>
-                    </ul>
-                </div>
-                <div class="ref-card">
-                    <h4>🖥️ Microprocesseur (MPU)</h4>
-                    <p>Cerveau seul. A besoin de RAM/Flash externes.</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li><strong>Raspberry Pi (BCM)</strong> : 1.5GHz+, Giga-octets de RAM.</li>
-                        <li><em>OS : Linux (Besoin de MMU).</em></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="code-block">
-                <div style="padding:10px 20px; border-bottom:1px solid #333; color:var(--type);">
-                    🧠 Von Neumann Architecture (Simplifiée)
-                </div>
-                <pre><span class="c">// Le CPU va chercher l'instruction (Fetch)</span>
+                    <div class="code-block">
+                        <div style="padding:10px 20px; border-bottom:1px solid #333; color:var(--type);">
+                            🧠 Von Neumann Architecture (Simplifiée)
+                        </div>
+                        <pre><span class="c">// Le CPU va chercher l'instruction (Fetch)</span>
 1. CPU -> Bus Adresse -> Flash (0x0800...) "Que faire ?"
 2. Flash -> Bus Data -> CPU "Instruction: ADD R1, R2"
 3. CPU exécute (Decode & Execute)
 4. Résultat stocké en RAM (0x2000...)
 
 <span class="k">while</span>(1) { Fetch(); Decode(); Execute(); } <span class="c">// C'est la vie d'un CPU.</span></pre>
-            </div>
-
-            <!-- VOCAB M01 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Flash Memory</span>
-                        <p style="color:var(--muted);">Mémoire non-volatile. C'est le "Disque Dur" du MCU où est stocké
-                            votre code. (Lecture rapide, écriture lente).</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">SRAM</span>
-                        <p style="color:var(--muted);">Static Random Access Memory. Volatile. C'est la "Table de
-                            travail" pour les variables. Perdue si coupure de courant.</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Clock Speed (Hz)</span>
-                        <p style="color:var(--muted);">Le rythme cardiaque du CPU. 16MHz = 16 millions d'opérations par
-                            seconde.</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Registre</span>
-                        <p style="color:var(--muted);">Petite case mémoire ultra-rapide directement dans le CPU. Tout
-                            passe par là.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULE 02: GPIO -->
-    <section id="m2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">GPIO & Digital Logic</h2>
-                    <p class="sec-sub">Les Mains du système</p>
-                </div>
-            </div>
-
-            <div class="grid2">
-                <div class="intro-box" style="margin-bottom:0;">
-                    <h4>General Purpose Input Output</h4>
-                    <p>Une broche (Pin) peut être soit une entrée (Lecteur), soit une sortie (Acteur).</p>
-                    <div style="margin-top:15px; display:flex; gap:10px;">
-                        <span
-                            style="background:#000; padding:5px 10px; border-radius:4px; color:var(--primary);">OUTPUT</span>
-                        <span>0V (LOW) ou 3.3V (HIGH)</span>
-                    </div>
-                    <div style="margin-top:5px; display:flex; gap:10px;">
-                        <span
-                            style="background:#000; padding:5px 10px; border-radius:4px; color:var(--accent);">INPUT</span>
-                        <span>Lit l'état (Bouton)</span>
-                    </div>
-                </div>
-
-                <!-- SIMULATEUR VIRTUEL -->
-                <div class="sim-container">
-                    <div style="position:absolute; top:10px; right:10px; color:#555; font-size:0.7rem;">VIRTUAL LAB
-                    </div>
-                    <div class="led" id="sim-led"></div>
-                    <div style="text-align:center; font-size:0.8rem; color:#777; margin-bottom:10px;">GP13 (Output)
-                    </div>
-                    <button class="push-btn" onclick="document.getElementById('sim-led').classList.toggle('on')">
-                        DIGITAL WRITE (High/Low)
-                    </button>
-                    <div style="margin-top:10px; font-size:0.8rem; color:#aaa;">
-                        <code>digitalWrite(13, !state);</code>
-                    </div>
-                </div>
-            </div>
-
-            <div class="analogy-box">
-                <h4>🎈 Pull-Up vs Pull-Down (Le Ballon)</h4>
-                <p>Une entrée connectée à RIEN est "flottante" (bruit électrique). Elle change de valeur aléatoirement.
-                </p>
-                <ul class="dense-list" style="margin-top:10px;">
-                    <li><strong>Pull-Up (Résistance au 3.3V)</strong> : Comme un ballon à l'hélium. Par défaut il est en
-                        haut (HIGH). Si j'appuie, je le force en bas (LOW).</li>
-                    <li><strong>Pull-Down (Résistance au GND)</strong> : Comme un ballon lourd. Par défaut il est au sol
-                        (LOW). Si je le tire, il monte (HIGH).</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULE 03: PROTOCOLS -->
-    <section id="m3" style="background:var(--bg2);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">Bus de Communication</h2>
-                    <p class="sec-sub">Le Langage des machines</p>
-                </div>
-            </div>
-
-            <div class="grid3">
-                <!-- UART -->
-                <div class="ref-card">
-                    <h4 style="color:#61afef;">1. UART (Serial)</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Asynchrone (Pas d'horloge). Point-à-point.</p>
-
-                    <div class="pin-diagram" style="margin:15px 0;">
-                        <div class="pin-row"><span class="pin-l">TX</span> ➜ <span class="pin-r">RX</span></div>
-                        <div class="pin-row"><span class="pin-l">RX</span> ⬅ <span class="pin-r">TX</span></div>
-                        <div class="pin-row"><span class="pin-l">GND</span> ― <span class="pin-r">GND</span></div>
                     </div>
 
-                    <ul class="dense-list" style="font-size:0.85rem;">
-                        <li>Usage: Debug, GPS, Bluetooth.</li>
-                        <li>Vitesse: Baudrate (9600, 115200).</li>
-                    </ul>
-                </div>
-
-                <!-- I2C -->
-                <div class="ref-card">
-                    <h4 style="color:#98c379;">2. I2C (Inter-Integrated)</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Bus (Multi-esclaves avec Adresse).</p>
-
-                    <div class="pin-diagram" style="margin:15px 0;">
-                        <div class="pin-row"><span class="pin-l">SDA</span> ⇄ <span class="pin-r">Data</span></div>
-                        <div class="pin-row"><span class="pin-l">SCL</span> ➜ <span class="pin-r">Clock</span></div>
-                    </div>
-
-                    <ul class="dense-list" style="font-size:0.85rem;">
-                        <li>Usage: Capteurs, OLED.</li>
-                        <li>Avantage: 2 fils seulement !</li>
-                        <li>Défaut: Lent, adresses fixes.</li>
-                    </ul>
-                </div>
-
-                <!-- SPI -->
-                <div class="ref-card">
-                    <h4 style="color:#e06c75;">3. SPI (Peripheral)</h4>
-                    <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Full Duplex. Très rapide.</p>
-
-                    <div class="pin-diagram" style="margin:15px 0;">
-                        <div class="pin-row"><span class="pin-l">MOSI</span> ➜ <span class="pin-r">Master Out</span>
+                    <!-- VOCAB M01 -->
+                    <div class="tool-card" style="margin-top:20px; text-align:left;">
+                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                        <div class="grid2" style="font-size:0.85rem;">
+                            <div>
+                                <span class="vocab-term">Flash Memory</span>
+                                <p style="color:var(--muted);">Mémoire non-volatile. C'est le "Disque Dur" du MCU où est
+                                    stocké
+                                    votre code. (Lecture rapide, écriture lente).</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">SRAM</span>
+                                <p style="color:var(--muted);">Static Random Access Memory. Volatile. C'est la "Table de
+                                    travail" pour les variables. Perdue si coupure de courant.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Clock Speed (Hz)</span>
+                                <p style="color:var(--muted);">Le rythme cardiaque du CPU. 16MHz = 16 millions
+                                    d'opérations par
+                                    seconde.</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Registre</span>
+                                <p style="color:var(--muted);">Petite case mémoire ultra-rapide directement dans le CPU.
+                                    Tout
+                                    passe par là.</p>
+                            </div>
                         </div>
-                        <div class="pin-row"><span class="pin-l">MISO</span> ⬅ <span class="pin-r">Master In</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE 02: GPIO -->
+            <section id="m2">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">02</div>
+                        <div>
+                            <h2 class="sec-title">GPIO & Digital Logic</h2>
+                            <p class="sec-sub">Les Mains du système</p>
                         </div>
-                        <div class="pin-row"><span class="pin-l">SCK</span> ➜ <span class="pin-r">Clock</span></div>
-                        <div class="pin-row"><span class="pin-l">CS</span> ➜ <span class="pin-r">Select</span></div>
                     </div>
 
-                    <ul class="dense-list" style="font-size:0.85rem;">
-                        <li>Usage: Carte SD, Écrans LCD/TFT.</li>
-                    </ul>
-                </div>
-            </div>
+                    <div class="grid2">
+                        <div class="intro-box" style="margin-bottom:0;">
+                            <h4>General Purpose Input Output</h4>
+                            <p>Une broche (Pin) peut être soit une entrée (Lecteur), soit une sortie (Acteur).</p>
+                            <div style="margin-top:15px; display:flex; gap:10px;">
+                                <span
+                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--primary);">OUTPUT</span>
+                                <span>0V (LOW) ou 3.3V (HIGH)</span>
+                            </div>
+                            <div style="margin-top:5px; display:flex; gap:10px;">
+                                <span
+                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--accent);">INPUT</span>
+                                <span>Lit l'état (Bouton)</span>
+                            </div>
+                        </div>
 
-            <!-- VOCAB M03 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Baud Rate</span>
-                        <p style="color:var(--muted);">Vitesse de transmission en symboles/seconde (ex: 9600 bauds).
-                            Emetteur et Récepteur doivent avoir le même !</p>
+                        <!-- SIMULATEUR VIRTUEL -->
+                        <div class="sim-container">
+                            <div style="position:absolute; top:10px; right:10px; color:#555; font-size:0.7rem;">VIRTUAL
+                                LAB
+                            </div>
+                            <div class="led" id="sim-led"></div>
+                            <div style="text-align:center; font-size:0.8rem; color:#777; margin-bottom:10px;">GP13
+                                (Output)
+                            </div>
+                            <button class="push-btn"
+                                onclick="document.getElementById('sim-led').classList.toggle('on')">
+                                DIGITAL WRITE (High/Low)
+                            </button>
+                            <div style="margin-top:10px; font-size:0.8rem; color:#aaa;">
+                                <code>digitalWrite(13, !state);</code>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <span class="vocab-term">Master / Slave</span>
-                        <p style="color:var(--muted);">Architecture où un chef (MCU) orchestre les communications et
-                            donne la parole aux périphériques (Capteurs).</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Full Duplex</span>
-                        <p style="color:var(--muted);">Parler et écouter en même temps (Téléphone). Contraire de
-                            Half-Duplex (Talkie-Walkie).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- MODULE 04: ANALOG -->
-    <section id="m4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Analogique & PWM</h2>
-                    <p class="sec-sub">Le monde réel n'est pas binaire</p>
-                </div>
-            </div>
-
-            <div class="grid2">
-                <div>
-                    <div class="intro-box" style="border-left-color:var(--accent);">
-                        <h4>ADC (Analog to Digital Converter)</h4>
-                        <p>Transforme une tension (0-3.3V) en nombre (0-4095 pour 12-bit).</p>
-                    </div>
-                    <div class="code-block">
-                        <pre><span class="t">int</span> val = <span class="f">analogRead</span>(PIN);
-<span class="c">// Si 12-bit (0..4095)</span>
-<span class="t">float</span> volts = val * (3.3 / 4095.0);</pre>
-                    </div>
-                </div>
-                <div>
-                    <div class="intro-box" style="border-left-color:var(--kw);">
-                        <h4>PWM (Pulse Width Modulation)</h4>
-                        <p>Simule une tension variable en allumant/éteignant très vite (Duty Cycle).</p>
+                    <div class="analogy-box">
+                        <h4>🎈 Pull-Up vs Pull-Down (Le Ballon)</h4>
+                        <p>Une entrée connectée à RIEN est "flottante" (bruit électrique). Elle change de valeur
+                            aléatoirement.
+                        </p>
                         <ul class="dense-list" style="margin-top:10px;">
-                            <li><strong>LED</strong> : Change la luminosité.</li>
-                            <li><strong>Moteur</strong> : Change la vitesse (Moyenne de tension).</li>
+                            <li><strong>Pull-Up (Résistance au 3.3V)</strong> : Comme un ballon à l'hélium. Par défaut
+                                il est en
+                                haut (HIGH). Si j'appuie, je le force en bas (LOW).</li>
+                            <li><strong>Pull-Down (Résistance au GND)</strong> : Comme un ballon lourd. Par défaut il
+                                est au sol
+                                (LOW). Si je le tire, il monte (HIGH).</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- VOCAB M04 -->
-        <div class="tool-card" style="margin-top:20px; text-align:left;">
-            <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-            <div class="grid2" style="font-size:0.85rem;">
-                <div>
-                    <span class="vocab-term">Resolution (Bit Depth)</span>
-                    <p style="color:var(--muted);">Précision de la mesure. 8-bit = 256 niveaux. 12-bit = 4096 niveaux
-                        (plus précis).</p>
+            <!-- MODULE 03: PROTOCOLS -->
+            <section id="m3" style="background:var(--bg2);">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">03</div>
+                        <div>
+                            <h2 class="sec-title">Bus de Communication</h2>
+                            <p class="sec-sub">Le Langage des machines</p>
+                        </div>
+                    </div>
+
+                    <div class="grid3">
+                        <!-- UART -->
+                        <div class="ref-card">
+                            <h4 style="color:#61afef;">1. UART (Serial)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Asynchrone (Pas d'horloge). Point-à-point.
+                            </p>
+
+                            <div class="pin-diagram" style="margin:15px 0;">
+                                <div class="pin-row"><span class="pin-l">TX</span> ➜ <span class="pin-r">RX</span></div>
+                                <div class="pin-row"><span class="pin-l">RX</span> ⬅ <span class="pin-r">TX</span></div>
+                                <div class="pin-row"><span class="pin-l">GND</span> ― <span class="pin-r">GND</span>
+                                </div>
+                            </div>
+
+                            <ul class="dense-list" style="font-size:0.85rem;">
+                                <li>Usage: Debug, GPS, Bluetooth.</li>
+                                <li>Vitesse: Baudrate (9600, 115200).</li>
+                            </ul>
+                        </div>
+
+                        <!-- I2C -->
+                        <div class="ref-card">
+                            <h4 style="color:#98c379;">2. I2C (Inter-Integrated)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Bus (Multi-esclaves avec
+                                Adresse).</p>
+
+                            <div class="pin-diagram" style="margin:15px 0;">
+                                <div class="pin-row"><span class="pin-l">SDA</span> ⇄ <span class="pin-r">Data</span>
+                                </div>
+                                <div class="pin-row"><span class="pin-l">SCL</span> ➜ <span class="pin-r">Clock</span>
+                                </div>
+                            </div>
+
+                            <ul class="dense-list" style="font-size:0.85rem;">
+                                <li>Usage: Capteurs, OLED.</li>
+                                <li>Avantage: 2 fils seulement !</li>
+                                <li>Défaut: Lent, adresses fixes.</li>
+                            </ul>
+                        </div>
+
+                        <!-- SPI -->
+                        <div class="ref-card">
+                            <h4 style="color:#e06c75;">3. SPI (Peripheral)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Full Duplex. Très rapide.</p>
+
+                            <div class="pin-diagram" style="margin:15px 0;">
+                                <div class="pin-row"><span class="pin-l">MOSI</span> ➜ <span class="pin-r">Master
+                                        Out</span>
+                                </div>
+                                <div class="pin-row"><span class="pin-l">MISO</span> ⬅ <span class="pin-r">Master
+                                        In</span>
+                                </div>
+                                <div class="pin-row"><span class="pin-l">SCK</span> ➜ <span class="pin-r">Clock</span>
+                                </div>
+                                <div class="pin-row"><span class="pin-l">CS</span> ➜ <span class="pin-r">Select</span>
+                                </div>
+                            </div>
+
+                            <ul class="dense-list" style="font-size:0.85rem;">
+                                <li>Usage: Carte SD, Écrans LCD/TFT.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- VOCAB M03 -->
+                    <div class="tool-card" style="margin-top:20px; text-align:left;">
+                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                        <div class="grid2" style="font-size:0.85rem;">
+                            <div>
+                                <span class="vocab-term">Baud Rate</span>
+                                <p style="color:var(--muted);">Vitesse de transmission en symboles/seconde (ex: 9600
+                                    bauds).
+                                    Emetteur et Récepteur doivent avoir le même !</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Master / Slave</span>
+                                <p style="color:var(--muted);">Architecture où un chef (MCU) orchestre les
+                                    communications et
+                                    donne la parole aux périphériques (Capteurs).</p>
+                            </div>
+                            <div>
+                                <span class="vocab-term">Full Duplex</span>
+                                <p style="color:var(--muted);">Parler et écouter en même temps (Téléphone). Contraire de
+                                    Half-Duplex (Talkie-Walkie).</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span class="vocab-term">Sampling Rate</span>
-                    <p style="color:var(--muted);">Fréquence d'échantillonnage. Combien de fois par seconde on mesure la
-                        tension.</p>
+            </section>
+
+            <!-- MODULE 04: ANALOG -->
+            <section id="m4">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">04</div>
+                        <div>
+                            <h2 class="sec-title">Analogique & PWM</h2>
+                            <p class="sec-sub">Le monde réel n'est pas binaire</p>
+                        </div>
+                    </div>
+
+                    <div class="grid2">
+                        <div>
+                            <div class="intro-box" style="border-left-color:var(--accent);">
+                                <h4>ADC (Analog to Digital Converter)</h4>
+                                <p>Transforme une tension (0-3.3V) en nombre (0-4095 pour 12-bit).</p>
+                            </div>
+                            <div class="code-block">
+                                <pre><span class="t">int</span> val = <span class="f">analogRead</span>(PIN);
+<span class="c">// Si 12-bit (0..4095)</span>
+<span class="t">float</span> volts = val * (3.3 / 4095.0);</pre>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="intro-box" style="border-left-color:var(--kw);">
+                                <h4>PWM (Pulse Width Modulation)</h4>
+                                <p>Simule une tension variable en allumant/éteignant très vite (Duty Cycle).</p>
+                                <ul class="dense-list" style="margin-top:10px;">
+                                    <li><strong>LED</strong> : Change la luminosité.</li>
+                                    <li><strong>Moteur</strong> : Change la vitesse (Moyenne de tension).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span class="vocab-term">Duty Cycle</span>
-                    <p style="color:var(--muted);">Rapport cyclique (PWM). % du temps où le signal est à l'état HAUT sur
-                        une période.</p>
+
+                <!-- VOCAB M04 -->
+                <div class="tool-card" style="margin-top:20px; text-align:left;">
+                    <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                    <div class="grid2" style="font-size:0.85rem;">
+                        <div>
+                            <span class="vocab-term">Resolution (Bit Depth)</span>
+                            <p style="color:var(--muted);">Précision de la mesure. 8-bit = 256 niveaux. 12-bit = 4096
+                                niveaux
+                                (plus précis).</p>
+                        </div>
+                        <div>
+                            <span class="vocab-term">Sampling Rate</span>
+                            <p style="color:var(--muted);">Fréquence d'échantillonnage. Combien de fois par seconde on
+                                mesure la
+                                tension.</p>
+                        </div>
+                        <div>
+                            <span class="vocab-term">Duty Cycle</span>
+                            <p style="color:var(--muted);">Rapport cyclique (PWM). % du temps où le signal est à l'état
+                                HAUT sur
+                                une période.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
         </div>
         </div>
     </section>
@@ -1049,6 +1345,254 @@
                         <span class="vocab-term">Brick</span>
                         <p style="color:var(--muted);">Un appareil rendu inutilisable (aussi utile qu'une brique) suite
                             à une mise à jour ratée ou un fusible mal configuré.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    </section>
+
+    <!-- MODULE 14: HIGH SPEED -->
+    <section id="m14" class="module-bg">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">Électronique Rapide</h2>
+                    <p class="sec-sub">Quand le fil devient une antenne</p>
+                </div>
+            </div>
+            <div class="intro-box" style="border-left-color:var(--active);">
+                <h4>🏎️ Signal Integrity</h4>
+                <p>À basse vitesse (I2C, UART), un fil est un fil. À haute vitesse (USB 3.0, HDMI, DDR), un fil est une
+                    ligne de transmission complexe. Chaque virage compte, chaque millimètre compte.</p>
+            </div>
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Impedance Matching ( Adaptation )</h4>
+                    <p>Si la source fait 50Ω, le câble doit faire 50Ω et la charge 50Ω. Sinon ?
+                        <strong>Réflexion</strong>. Le signal rebondit et corrompt les données (comme un écho).
+                    </p>
+                </div>
+                <div class="ref-card">
+                    <h4>Paires Différentielles (LVDS)</h4>
+                    <p>On n'utilise pas 1 fil + GND, mais 2 fils (D+ et D-) avec des signaux opposés. Immunité totale au
+                        bruit externe (utilisé par USB, Ethernet, CAN).</p>
+                </div>
+            </div>
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                <div class="grid2" style="font-size:0.85rem;">
+                    <div><span class="vocab-term">Skew</span>
+                        <p style="color:var(--muted);">Décalage temporel entre deux signaux qui devraient arriver en
+                            même temps (ex: Clock et Data).</p>
+                    </div>
+                    <div><span class="vocab-term">Eye Diagram</span>
+                        <p style="color:var(--muted);">Outil d'oscilloscope pour visualiser la qualité ("l'ouverture")
+                            d'un signal rapide.</p>
+                    </div>
+                    <div><span class="vocab-term">Jitter</span>
+                        <p style="color:var(--muted);">Tremblement de l'horloge. Une horloge instable provoque des
+                            erreurs de transmission.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 15: TELECOMS -->
+    <section id="m15" style="background:var(--bg2);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Télécoms & RF</h2>
+                    <p class="sec-sub">La magie sans fil</p>
+                </div>
+            </div>
+            <div class="intro-box" style="border-left-color:var(--str);">
+                <h4>📡 L'Art de la Radio</h4>
+                <p>Envoyer des données dans l'air demande de moduler une onde porteuse. C'est le domaine de la magie
+                    noire (RF) où la géométrie du cuivre définit la performance.</p>
+            </div>
+            <div class="grid3">
+                <div class="ref-card">
+                    <strong style="color:var(--fn);">Antenne</strong>
+                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Ce n'est pas juste un bout de
+                        métal. Sa longueur doit être accordée à la longueur d'onde (λ/4).</p>
+                </div>
+                <div class="ref-card">
+                    <strong style="color:var(--accent);">Modulation</strong>
+                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Comment mettre des 0 et 1 sur une
+                        onde. ASK (Amplitude), FSK (Fréquence), LoRa (Chirp Spread Spectrum).</p>
+                </div>
+                <div class="ref-card">
+                    <strong style="color:var(--type);">Link Budget</strong>
+                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Le calcul comptable des gains
+                        (Ampli, Antenne) et des pertes (Air, Obstacles) pour savoir si "ça passe".</p>
+                </div>
+            </div>
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                <div class="grid2" style="font-size:0.85rem;">
+                    <div><span class="vocab-term">dBm</span>
+                        <p style="color:var(--muted);">Unité de puissance logarithmique. 0dBm = 1mW. -120dBm = Signal
+                            très faible (limite LoRa).</p>
+                    </div>
+                    <div><span class="vocab-term">RSSI</span>
+                        <p style="color:var(--muted);">Received Signal Strength Indicator. La puissance reçue (les
+                            "barres" de réseau).</p>
+                    </div>
+                    <div><span class="vocab-term">VSWR</span>
+                        <p style="color:var(--muted);">Taux d'ondes stationnaires. Mesure si l'antenne est bien accordée
+                            (1:1 est parfait).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 16: OPTRONICS -->
+    <section id="m16">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Optronique</h2>
+                    <p class="sec-sub">Photons vs Électrons</p>
+                </div>
+            </div>
+            <div class="intro-box" style="border-left-color:var(--var);">
+                <h4>👁️ Voir et Isoler</h4>
+                <p>La lumière n'est pas sensible aux parasites électromagnétiques. On l'utilise pour transporter de
+                    l'info (Fibre) ou pour isoler galvaniquement deux circuits dangereux (Optocoupleur).</p>
+            </div>
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Optocoupleur</h4>
+                    <p>Une LED en face d'un phototransistor dans une boite noire.</p>
+                    <p><em>Permet de piloter du 220V avec un MCU 3.3V sans AUCUN contact électrique. Sécurité
+                            absolue.</em></p>
+                </div>
+                <div class="ref-card">
+                    <h4>LiDAR & ToF</h4>
+                    <p>Time of Flight. On envoie une impulsion laser et on compte le temps qu'elle met à revenir.</p>
+                    <p><em>Utilisé par les voitures autonomes et les aspirateurs robots pour cartographier.</em></p>
+                </div>
+            </div>
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                <div class="grid2" style="font-size:0.85rem;">
+                    <div><span class="vocab-term">IR (Infrarouge)</span>
+                        <p style="color:var(--muted);">Lumière invisible utilisée par les télécommandes. Attention aux
+                            perturbations solaires.</p>
+                    </div>
+                    <div><span class="vocab-term">Photodiode</span>
+                        <p style="color:var(--muted);">Composant qui transforme la lumière en courant électrique.</p>
+                    </div>
+                    <div><span class="vocab-term">PWM Dimming</span>
+                        <p style="color:var(--muted);">Pour changer la luminosité d'une LED, on ne change pas la
+                            tension, on la clignote très vite.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 17: MECHATRONICS -->
+    <section id="m17" style="background:var(--bg2);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">17</div>
+                <div>
+                    <h2 class="sec-title">Mécatronique</h2>
+                    <p class="sec-sub">Le mouvement contrôlé</p>
+                </div>
+            </div>
+            <div class="intro-box" style="border-left-color:var(--num);">
+                <h4>🤖 Robotique & Asservissement</h4>
+                <p>Faire tourner un moteur est facile. Faire tourner un moteur à exactement 300.5 RPM malgré une charge
+                    variable demande des maths : l'asservissement (PID).</p>
+            </div>
+            <div class="grid2">
+                <div class="code-block" style="margin:0;">
+                    <strong style="color:var(--kw);">PID (Proportionnel Intégral Dérivé)</strong>
+                    <p style="padding:10px 0; font-size:0.9rem;">L'algorithme roi de la régulation.</p>
+                    <ul class="dense-list">
+                        <li><strong>P</strong> : Corrige l'erreur présente (Force brute).</li>
+                        <li><strong>I</strong> : Corrige l'erreur passée (Accumulation, précision finale).</li>
+                        <li><strong>D</strong> : Anticipe l'erreur future (Amortissement, évite les oscillations).</li>
+                    </ul>
+                </div>
+                <div class="ref-card">
+                    <h4>Encodeur Quadrature</h4>
+                    <p>Capteur sur l'axe du moteur qui envoie des impulsions (A et B).</p>
+                    <p><em>Permet de connaître la vitesse ET le sens de rotation au degré près.</em></p>
+                </div>
+            </div>
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                <div class="grid2" style="font-size:0.85rem;">
+                    <div><span class="vocab-term">Stepper Motor</span>
+                        <p style="color:var(--muted);">Moteur Pas-à-Pas. Avance par crans discrets. Précis sans capteur
+                            (Imprimante 3D).</p>
+                    </div>
+                    <div><span class="vocab-term">Brushless (BLDC)</span>
+                        <p style="color:var(--muted);">Moteur sans balais. Puissant, silencieux, mais demande un
+                            contrôleur complexe (ESC).</p>
+                    </div>
+                    <div><span class="vocab-term">Torque (Couple)</span>
+                        <p style="color:var(--muted);">La force de rotation. "La patate" du moteur. Mesuré en N.m.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 18: CEM -->
+    <section id="m18">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">18</div>
+                <div>
+                    <h2 class="sec-title">Contraintes Électromagnétiques (CEM)</h2>
+                    <p class="sec-sub">La Guerre du Bruit</p>
+                </div>
+            </div>
+            <div class="intro-box" style="border-left-color:#ff9f43;">
+                <h4>📡 EMI & EMC</h4>
+                <p>Votre circuit fonctionne sur table. Il plante dès qu'on allume le néon de l'atelier. Bienvenue dans
+                    l'enfer de la CEM. Un circuit doit ne pas polluer (Émission) et résister à la pollution (Immunité).
+                </p>
+            </div>
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Cage de Faraday</h4>
+                    <p>Enfermer le circuit dans une boite métallique conductrice reliée à la terre.</p>
+                    <p><em>Bloque les ondes radio externes.</em></p>
+                </div>
+                <div class="ref-card">
+                    <h4>Boucle de Masse (Ground Loop)</h4>
+                    <p>Le piège classique. Avoir plusieurs chemins pour le retour de masse crée une antenne géante qui
+                        capte tout le bruit magnétique.</p>
+                </div>
+            </div>
+            <div class="tool-card" style="margin-top:20px; text-align:left;">
+                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
+                <div class="grid2" style="font-size:0.85rem;">
+                    <div><span class="vocab-term">ESD</span>
+                        <p style="color:var(--muted);">Electrostatic Discharge. L'étincelle quand on touche la poignée
+                            de porte. 2000V qui tue un MCU instantanément.</p>
+                    </div>
+                    <div><span class="vocab-term">Decoupling</span>
+                        <p style="color:var(--muted);">Placer des condensateurs au plus près des broches d'alim des
+                            puces pour absorber le bruit localement.</p>
+                    </div>
+                    <div><span class="vocab-term">Certification CE</span>
+                        <p style="color:var(--muted);">Tests obligatoires en chambre anéchoïque pour vendre un produit
+                            électronique.</p>
                     </div>
                 </div>
             </div>

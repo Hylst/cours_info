@@ -1362,49 +1362,62 @@
                 <div class="sec-num">08</div>
                 <div>
                     <h2 class="sec-title">Low Power & Énergie</h2>
-                    <p class="sec-sub">Survivre 5 ans sur pile</p>
+                    <p class="sec-sub">L'Art de Dormir Intelligemment</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:#27c93f;">
-                <h4>🔋 La chasse aux micro-ampères</h4>
-                <p>En IoT sur batterie, le MCU ne doit travailler que 0.1% du temps. Le reste du temps, il doit dormir.
-                    Un code mal optimisé peut vider une pile en 24h au lieu de 2 ans.</p>
+            <div class="intro-box" style="border-left-color:#27c93f; margin-bottom:30px;">
+                <h4>🔋 La Chasse aux Micro-Ampères</h4>
+                <p>En IoT sur batterie, le MCU ne doit travailler que 0.1% du temps. Le reste, il doit dormir
+                    profondément. Un code mal optimisé vide une pile en 24h au lieu de 5 ans.</p>
             </div>
 
             <div class="grid3">
-                <div class="info">
-                    <strong>Active Mode</strong><br>
-                    Consommation Max (ex: 80mA avec WiFi).<br>
-                    <em>Faire le calcul au plus vite et s'éteindre.</em>
+                <div class="ref-card">
+                    <strong style="color:var(--error);">Active Mode</strong>
+                    <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                        Consommation Max (<strong>80-200mA</strong> avec WiFi). Faire le calcul au plus vite et
+                        s'éteindre !
+                    </p>
                 </div>
-                <div class="info">
-                    <strong>Light Sleep</strong><br>
-                    CPU en pause, mais RAM active. Réveil rapide.<br>
-                    <em>Utile pour attendre un événement court.</em>
+                <div class="ref-card">
+                    <strong style="color:var(--var);">Light Sleep</strong>
+                    <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                        CPU en pause, RAM active (<strong>~1mA</strong>). Réveil rapide via GPIO ou Timer.
+                    </p>
                 </div>
-                <div class="info">
-                    <strong>Deep Sleep</strong><br>
-                    Tout est éteint sauf le RTC (Horloge). Conso: 10µA.<br>
-                    <em>La seule façon de durer des années.</em>
+                <div class="ref-card">
+                    <strong style="color:var(--accent);">Deep Sleep</strong>
+                    <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                        Tout éteint sauf RTC (<strong>~10µA</strong>). La seule façon de durer des années. Au réveil, le
+                        MCU reboot.
+                    </p>
                 </div>
             </div>
 
-            <!-- VOCAB M08 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">mAh (Milliampère-heure)</span>
-                        <p style="color:var(--muted);">Capacité d'une batterie. 2000mAh = Peut fournir 2000mA pendant 1
-                            heure, ou 1mA pendant 2000 heures.</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Quiescent Current (Iq)</span>
-                        <p style="color:var(--muted);">Le courant consommé par vos régulateurs de tension (LDO) même
-                            quand vous ne faites rien. L'ennemi silencieux.</p>
+            <!-- BATTERY MATH -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">📊 Calcul de l'Autonomie</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        <strong>Formule :</strong> Autonomie (heures) = Capacité (mAh) / Consommation moyenne (mA)
+                    </p>
+                    <div
+                        style="background:rgba(0,0,0,0.3); padding:10px; border-radius:4px; font-family:monospace; font-size:0.8rem; margin-top:10px;">
+                        Exemple: 2000mAh / 0.05mA (Deep Sleep) = 40 000 heures ≈ **4.5 ans**<br>
+                        Exemple: 2000mAh / 10mA (Always On) = 200 heures ≈ **8 jours**
                     </div>
                 </div>
+            </div>
+
+            <!-- TIPS -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:#27c93f;">
+                <h4 style="color:#27c93f; margin-bottom:10px;">💡 Bonnes Pratiques</h4>
+                <ul class="dense-list" style="font-size:0.85rem;">
+                    <li>Éteignez les périphériques (WiFi, ADC) quand vous ne les utilisez pas.</li>
+                    <li>Attention au <span class="vocab-term">Quiescent Current (Iq)</span> des régulateurs.</li>
+                    <li>Utilisez un RTC externe ultra-low-power si le timer interne consomme trop.</li>
+                </ul>
             </div>
         </div>
     </section>

@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "Quiz Système Embarqué - 100 Questions",
-        "total": 100
+        "title": "Quiz Système Embarqué - 120 Questions",
+        "total": 120
     },
     "questions": [
         {
@@ -1203,6 +1203,246 @@
             ],
             "answer": 0,
             "explanation": "Tout devient 'Smart'."
+        },
+        {
+            "id": 101,
+            "question": "Quelle modulation LoRa utilise pour sa longue portée ?",
+            "options": [
+                "CSS (Chirp Spread Spectrum)",
+                "ASK (Amplitude Shift Keying)",
+                "FSK (Frequency Shift Keying)",
+                "OFDM"
+            ],
+            "answer": 0,
+            "explanation": "Le Chirp Spread Spectrum permet une excellente immunité au bruit et une sensibilité extrême (-120dBm)."
+        },
+        {
+            "id": 102,
+            "question": "Que signifie 0dBm en RF ?",
+            "options": [
+                "1 milliwatt de puissance",
+                "0 watt",
+                "1 watt",
+                "Aucune puissance"
+            ],
+            "answer": 0,
+            "explanation": "dBm est une échelle logarithmique. +3dBm = 2mW, +10dBm = 10mW."
+        },
+        {
+            "id": 103,
+            "question": "Dans un Link Budget RF, que calcule-t-on ?",
+            "options": [
+                "Si la puissance reçue dépasse la sensibilité du récepteur",
+                "La vitesse de transmission",
+                "La fréquence porteuse",
+                "Le débit binaire"
+            ],
+            "answer": 0,
+            "explanation": "Link Budget = PTX + GTX - Lpath + GRX. La marge doit être positive (15dB recommandé)."
+        },
+        {
+            "id": 104,
+            "question": "Quelle longueur d'antenne pour 2.4GHz (λ/4) ?",
+            "options": [
+                "Environ 3.1 cm",
+                "Environ 12.5 cm",
+                "Environ 30 cm",
+                "1 mètre"
+            ],
+            "answer": 0,
+            "explanation": "λ = c/f = 12.5cm, donc λ/4 ≈ 3.1cm."
+        },
+        {
+            "id": 105,
+            "question": "Que signifie CTR pour un optocoupleur ?",
+            "options": [
+                "Current Transfer Ratio (rapport courant sortie/entrée)",
+                "Circuit Trigger Rate",
+                "Constant Temperature Rating",
+                "Control Transfer Register"
+            ],
+            "answer": 0,
+            "explanation": "Un CTR de 100% signifie que 10mA en entrée donne 10mA en sortie."
+        },
+        {
+            "id": 106,
+            "question": "Quelle est la longueur d'onde typique pour les télécommandes IR ?",
+            "options": [
+                "850-940 nm (infrarouge proche)",
+                "450 nm (bleu)",
+                "1550 nm (télécom)",
+                "630 nm (rouge)"
+            ],
+            "answer": 0,
+            "explanation": "940nm est le plus courant car invisible à l'œil mais peu affecté par le soleil."
+        },
+        {
+            "id": 107,
+            "question": "Quelle est la différence entre fibre Multimode et Monomode ?",
+            "options": [
+                "Multimode : cœur large (~50µm), courtes distances. Monomode : cœur fin (~9µm), longues distances.",
+                "Multimode transporte plusieurs couleurs, Monomode une seule",
+                "Monomode est plus économique",
+                "Aucune différence"
+            ],
+            "answer": 0,
+            "explanation": "Monomode utilise un laser, Multimode une LED. Monomode peut atteindre 100+ km."
+        },
+        {
+            "id": 108,
+            "question": "Qu'est-ce qu'un APD (Avalanche Photodiode) ?",
+            "options": [
+                "Photodiode avec gain interne (×100) pour détecter de faibles lumières",
+                "Diode de protection",
+                "Amplificateur de puissance",
+                "Diode laser"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé dans les LiDAR longue portée. Plus sensible mais plus cher qu'une PIN."
+        },
+        {
+            "id": 109,
+            "question": "Quelle classe laser est considérée sûre sans protection ?",
+            "options": [
+                "Classe 1",
+                "Classe 2",
+                "Classe 3R",
+                "Classe 4"
+            ],
+            "answer": 0,
+            "explanation": "Classe 1 : intrinsèquement sûr (CD/DVD players). Classe 2 : réflexe palpébral protège."
+        },
+        {
+            "id": 110,
+            "question": "Dans un PID, que fait le terme Intégral (Ki) ?",
+            "options": [
+                "Élimine l'erreur résiduelle en accumulant l'erreur passée",
+                "Réagit immédiatement à l'erreur",
+                "Anticipe l'erreur future",
+                "Filtre le bruit"
+            ],
+            "answer": 0,
+            "explanation": "Ki corrige les petites erreurs persistantes mais peut causer un overshoot si trop élevé."
+        },
+        {
+            "id": 111,
+            "question": "Quelle méthode de réglage PID augmente Kp jusqu'à oscillation ?",
+            "options": [
+                "Ziegler-Nichols",
+                "Cohen-Coon",
+                "Essai/Erreur",
+                "Auto-tuning"
+            ],
+            "answer": 0,
+            "explanation": "On note le Ku (gain critique) et Tu (période d'oscillation) pour calculer Kp, Ki, Kd."
+        },
+        {
+            "id": 112,
+            "question": "Quelle est la formule du rapport de réduction d'un engrenage ?",
+            "options": [
+                "Ratio = Zsortie / Zentrée",
+                "Ratio = Zentrée / Zsortie",
+                "Ratio = Vsortie / Ventrée",
+                "Ratio = Couple × Vitesse"
+            ],
+            "answer": 0,
+            "explanation": "Ex: 50 dents / 10 dents = 5:1 → Vitesse ÷5, Couple ×5."
+        },
+        {
+            "id": 113,
+            "question": "Quelle est la différence entre un encodeur Incrémental et Absolu ?",
+            "options": [
+                "Incrémental : position relative, besoin de Homing. Absolu : position exacte à tout moment.",
+                "Incrémental est plus précis",
+                "Absolu est moins cher",
+                "Aucune différence"
+            ],
+            "answer": 0,
+            "explanation": "Absolu utilise un code Gray pour connaître la position même après coupure de courant."
+        },
+        {
+            "id": 114,
+            "question": "Quel driver stepper utilise StealthChop pour un fonctionnement ultra-silencieux ?",
+            "options": [
+                "TMC2209",
+                "L298N",
+                "DRV8825",
+                "A4988"
+            ],
+            "answer": 0,
+            "explanation": "TMC2209 de Trinamic. StealthChop = mode silencieux, SpreadCycle = mode puissance."
+        },
+        {
+            "id": 115,
+            "question": "Quel capteur combine accéléromètre et gyroscope pour la stabilisation ?",
+            "options": [
+                "IMU (ex: MPU6050)",
+                "GPS",
+                "Boussole",
+                "Encodeur"
+            ],
+            "answer": 0,
+            "explanation": "6 axes = Accéléromètre (3) + Gyroscope (3). 9 axes ajoute magnétomètre."
+        },
+        {
+            "id": 116,
+            "question": "Quel algorithme fusionne les données d'un IMU pour une orientation précise ?",
+            "options": [
+                "Filtre de Kalman ou Madgwick",
+                "FFT",
+                "PID",
+                "Moyennage simple"
+            ],
+            "answer": 0,
+            "explanation": "Le filtre de Kalman prédit l'état futur, Madgwick est optimisé pour les MCU légers."
+        },
+        {
+            "id": 117,
+            "question": "Quel ADC 24-bit est couramment utilisé avec les cellules de charge ?",
+            "options": [
+                "HX711",
+                "ADS1115",
+                "MCP3008",
+                "PCF8591"
+            ],
+            "answer": 0,
+            "explanation": "HX711 est conçu pour les jauges de contrainte (Wheatstone bridge)."
+        },
+        {
+            "id": 118,
+            "question": "Dans un ToF (Time of Flight), comment calcule-t-on la distance ?",
+            "options": [
+                "Distance = (Temps × Vitesse lumière) / 2",
+                "Distance = Temps × Vitesse son",
+                "Distance = Fréquence × Longueur d'onde",
+                "Distance = Puissance / Atténuation"
+            ],
+            "answer": 0,
+            "explanation": "On divise par 2 car la lumière fait l'aller-retour. 1ns ≈ 15cm."
+        },
+        {
+            "id": 119,
+            "question": "Quel protocole sans-fil a la plus longue portée avec la plus basse consommation ?",
+            "options": [
+                "LoRa (868/915MHz, 15km, Very Low Power)",
+                "WiFi (2.4GHz, 50m, High Power)",
+                "BLE (2.4GHz, 30m, Low Power)",
+                "Zigbee (2.4GHz, 100m, Low Power)"
+            ],
+            "answer": 0,
+            "explanation": "LoRa sacrifie le débit (0.3-50 kbit/s) pour la portée et l'autonomie."
+        },
+        {
+            "id": 120,
+            "question": "Pourquoi ne jamais router de piste sous une antenne PCB ?",
+            "options": [
+                "Cela perturbe le champ électromagnétique et réduit la portée",
+                "C'est interdit par la norme CE",
+                "Cela augmente la consommation",
+                "Cela chauffe trop"
+            ],
+            "answer": 0,
+            "explanation": "L'antenne a besoin d'un plan de masse propre en dessous. Chaque mm mal placé = dB perdus."
         }
     ]
 }

@@ -1912,40 +1912,66 @@
                 <div class="sec-num">16</div>
                 <div>
                     <h2 class="sec-title">Optronique</h2>
-                    <p class="sec-sub">Photons vs Électrons</p>
+                    <p class="sec-sub">Quand la Lumière Devient Signal</p>
                 </div>
             </div>
-            <div class="intro-box" style="border-left-color:var(--var);">
-                <h4>👁️ Voir et Isoler</h4>
-                <p>La lumière n'est pas sensible aux parasites électromagnétiques. On l'utilise pour transporter de
-                    l'info (Fibre) ou pour isoler galvaniquement deux circuits dangereux (Optocoupleur).</p>
+
+            <div class="intro-box" style="border-left-color:var(--var); margin-bottom:30px;">
+                <h4>👁️ Photons vs Électrons</h4>
+                <p>La lumière est **immunisée** aux parasites électromagnétiques. On l'utilise pour transporter de
+                    l'info (Fibre Optique) ou pour **isoler galvaniquement** deux circuits dangereux (Optocoupleur). Un
+                    photon ne conduit pas l'électricité !</p>
             </div>
+
             <div class="grid2">
+                <!-- OPTOCOUPLER -->
                 <div class="ref-card">
-                    <h4>Optocoupleur</h4>
-                    <p>Une LED en face d'un phototransistor dans une boite noire.</p>
-                    <p><em>Permet de piloter du 220V avec un MCU 3.3V sans AUCUN contact électrique. Sécurité
-                            absolue.</em></p>
+                    <h4 style="color:var(--var);">🔌 Optocoupleur</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Une **LED** en face d'un **phototransistor** dans un boîtier opaque. La lumière traverse, pas
+                        l'électricité.
+                    </p>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace; text-align:center;">
+                        MCU 3.3V → LED → (photons) → Phototransistor → Relais 220V
+                    </div>
+                    <p style="font-size:0.75rem; color:#888; margin-top:8px;"><strong>Usage :</strong> Piloter du
+                        secteur, isolation industrielle, MIDI.</p>
                 </div>
+
+                <!-- LIDAR / TOF -->
                 <div class="ref-card">
-                    <h4>LiDAR & ToF</h4>
-                    <p>Time of Flight. On envoie une impulsion laser et on compte le temps qu'elle met à revenir.</p>
-                    <p><em>Utilisé par les voitures autonomes et les aspirateurs robots pour cartographier.</em></p>
+                    <h4 style="color:var(--accent);">📏 LiDAR & ToF (Time of Flight)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        On envoie une impulsion **laser IR** et on mesure le temps qu'elle met à revenir. Distance =
+                        (Temps × Vitesse de la lumière) / 2.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                        <li><strong>Voitures autonomes</strong> : Cartographie 3D temps réel.</li>
+                        <li><strong>Aspirateurs robots</strong> : Évitement d'obstacles.</li>
+                        <li><strong>Téléphones</strong> : Autofocus, Face ID.</li>
+                    </ul>
                 </div>
             </div>
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div><span class="vocab-term">IR (Infrarouge)</span>
-                        <p style="color:var(--muted);">Lumière invisible utilisée par les télécommandes. Attention aux
-                            perturbations solaires.</p>
+
+            <!-- COMPONENTS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">💡 Composants Optiques</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--fn);">Photodiode</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Transforme lumière → courant. Très
+                            rapide (fibre optique, récepteurs IR).</p>
                     </div>
-                    <div><span class="vocab-term">Photodiode</span>
-                        <p style="color:var(--muted);">Composant qui transforme la lumière en courant électrique.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--str);">Phototransistor</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Photodiode + Amplification intégrée.
+                            Plus sensible mais plus lent.</p>
                     </div>
-                    <div><span class="vocab-term">PWM Dimming</span>
-                        <p style="color:var(--muted);">Pour changer la luminosité d'une LED, on ne change pas la
-                            tension, on la clignote très vite.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--accent);">LED IR (940nm)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Invisible à l'œil. Télécommandes,
+                            barrières IR. Attention au soleil !</p>
                     </div>
                 </div>
             </div>
@@ -1959,43 +1985,71 @@
                 <div class="sec-num">17</div>
                 <div>
                     <h2 class="sec-title">Mécatronique</h2>
-                    <p class="sec-sub">Le mouvement contrôlé</p>
+                    <p class="sec-sub">L'Art du Mouvement Précis</p>
                 </div>
             </div>
-            <div class="intro-box" style="border-left-color:var(--num);">
-                <h4>🤖 Robotique & Asservissement</h4>
-                <p>Faire tourner un moteur est facile. Faire tourner un moteur à exactement 300.5 RPM malgré une charge
-                    variable demande des maths : l'asservissement (PID).</p>
+
+            <div class="intro-box" style="border-left-color:var(--num); margin-bottom:30px;">
+                <h4>🤖 Faire Tourner un Moteur est Facile...</h4>
+                <p>...le faire tourner à **exactement 300.5 RPM** malgré une charge variable demande des maths :
+                    l'**asservissement** (PID). C'est le cœur de la robotique.</p>
             </div>
+
             <div class="grid2">
-                <div class="code-block" style="margin:0;">
-                    <strong style="color:var(--kw);">PID (Proportionnel Intégral Dérivé)</strong>
-                    <p style="padding:10px 0; font-size:0.9rem;">L'algorithme roi de la régulation.</p>
-                    <ul class="dense-list">
-                        <li><strong>P</strong> : Corrige l'erreur présente (Force brute).</li>
-                        <li><strong>I</strong> : Corrige l'erreur passée (Accumulation, précision finale).</li>
-                        <li><strong>D</strong> : Anticipe l'erreur future (Amortissement, évite les oscillations).</li>
+                <!-- PID -->
+                <div class="ref-card">
+                    <h4 style="color:var(--kw);">⚙️ PID (Proportionnel Intégral Dérivé)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin:10px 0;">L'algorithme roi de la régulation.
+                    </p>
+                    <div style="font-size:0.85rem;">
+                        <div style="margin-bottom:8px; border-left:2px solid var(--error); padding-left:8px;">
+                            <strong style="color:var(--error);">P (Proportionnel)</strong> : Corrige l'erreur présente.
+                            Force brute.
+                        </div>
+                        <div style="margin-bottom:8px; border-left:2px solid var(--accent); padding-left:8px;">
+                            <strong style="color:var(--accent);">I (Intégral)</strong> : Corrige l'erreur passée
+                            (accumulation). Précision finale.
+                        </div>
+                        <div style="border-left:2px solid var(--primary); padding-left:8px;">
+                            <strong style="color:var(--primary);">D (Dérivé)</strong> : Anticipe l'erreur future.
+                            Amortissement (évite oscillations).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ENCODERS -->
+                <div class="ref-card">
+                    <h4 style="color:var(--accent);">🔄 Encodeur Quadrature</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Capteur sur l'axe du moteur qui envoie des impulsions sur 2 canaux (A et B) **déphasées de
+                        90°**.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                        <li>**Vitesse** : Compter les impulsions par seconde.</li>
+                        <li>**Sens** : Si A passe avant B → Sens Horaire.</li>
+                        <li>**Position** : Compteur incrémental (Homing au démarrage).</li>
                     </ul>
                 </div>
-                <div class="ref-card">
-                    <h4>Encodeur Quadrature</h4>
-                    <p>Capteur sur l'axe du moteur qui envoie des impulsions (A et B).</p>
-                    <p><em>Permet de connaître la vitesse ET le sens de rotation au degré près.</em></p>
-                </div>
             </div>
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div><span class="vocab-term">Stepper Motor</span>
-                        <p style="color:var(--muted);">Moteur Pas-à-Pas. Avance par crans discrets. Précis sans capteur
-                            (Imprimante 3D).</p>
+
+            <!-- SENSORS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🎯 Capteurs de Mouvement</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--fn);">IMU (6/9 axes)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Accéléromètre + Gyroscope (+
+                            Magnétomètre). Orientation 3D. Drones, robots.</p>
                     </div>
-                    <div><span class="vocab-term">Brushless (BLDC)</span>
-                        <p style="color:var(--muted);">Moteur sans balais. Puissant, silencieux, mais demande un
-                            contrôleur complexe (ESC).</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--str);">Fin de Course</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Micro-switch mécanique. Détecte la
+                            position limite (Homing imprimante 3D).</p>
                     </div>
-                    <div><span class="vocab-term">Torque (Couple)</span>
-                        <p style="color:var(--muted);">La force de rotation. "La patate" du moteur. Mesuré en N.m.</p>
+                    <div class="ref-card" style="padding:10px;">
+                        <strong style="color:var(--accent);">Cellule de Charge</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Capteur de force (jauge de
+                            contrainte). Balances, pinces robotiques.</p>
                     </div>
                 </div>
             </div>

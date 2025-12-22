@@ -2188,65 +2188,172 @@
             <div class="intro-box" style="border-left-color:var(--num); margin-bottom:30px;">
                 <h4>🤖 Faire Tourner un Moteur est Facile...</h4>
                 <p>...le faire tourner à **exactement 300.5 RPM** malgré une charge variable demande des maths :
-                    l'**asservissement** (PID). C'est le cœur de la robotique.</p>
+                    l'**asservissement** (PID). C'est le cœur de la robotique, des drones aux bras industriels.</p>
             </div>
 
-            <div class="grid2">
+            <!-- MOTOR COMPARISON TABLE -->
+            <div>
+                <h3 style="margin-bottom:15px; color:var(--text);">⚡ Comparatif Types de Moteurs</h3>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.05);">
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Type</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Contrôle</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Précision</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Vitesse</th>
+                                <th style="padding:8px; text-align:left; border-bottom:1px solid #333;">Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:6px; color:var(--primary);"><strong>DC Brushed</strong></td>
+                                <td>PWM simple</td>
+                                <td>Faible</td>
+                                <td>Haute</td>
+                                <td>Jouets, ventilateurs</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--accent);"><strong>Brushless (BLDC)</strong></td>
+                                <td>ESC/FOC</td>
+                                <td>Moyenne</td>
+                                <td>Très haute</td>
+                                <td>Drones, véhicules</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--str);"><strong>Stepper</strong></td>
+                                <td>Séquence pas</td>
+                                <td>Très haute</td>
+                                <td>Faible</td>
+                                <td>CNC, imprimantes 3D</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--var);"><strong>Servo RC</strong></td>
+                                <td>PWM 1-2ms</td>
+                                <td>Haute (angle)</td>
+                                <td>Moyenne</td>
+                                <td>Bras robot, direction</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px; color:var(--fn);"><strong>Servo Industriel</strong></td>
+                                <td>Boucle fermée</td>
+                                <td>Extrême</td>
+                                <td>Variable</td>
+                                <td>Robots industriels</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:30px;">
                 <!-- PID -->
                 <div class="ref-card">
                     <h4 style="color:var(--kw);">⚙️ PID (Proportionnel Intégral Dérivé)</h4>
-                    <p style="font-size:0.85rem; color:var(--muted); margin:10px 0;">L'algorithme roi de la régulation.
-                    </p>
-                    <div style="font-size:0.85rem;">
+                    <div style="font-size:0.85rem; margin-top:10px;">
                         <div style="margin-bottom:8px; border-left:2px solid var(--error); padding-left:8px;">
-                            <strong style="color:var(--error);">P (Proportionnel)</strong> : Corrige l'erreur présente.
-                            Force brute.
+                            <strong style="color:var(--error);">Kp</strong> : Réponse immédiate. ↑ = Plus rapide mais
+                            oscillations.
                         </div>
                         <div style="margin-bottom:8px; border-left:2px solid var(--accent); padding-left:8px;">
-                            <strong style="color:var(--accent);">I (Intégral)</strong> : Corrige l'erreur passée
-                            (accumulation). Précision finale.
+                            <strong style="color:var(--accent);">Ki</strong> : Élimine erreur résiduelle. ↑ = Précis
+                            mais lent.
                         </div>
                         <div style="border-left:2px solid var(--primary); padding-left:8px;">
-                            <strong style="color:var(--primary);">D (Dérivé)</strong> : Anticipe l'erreur future.
-                            Amortissement (évite oscillations).
+                            <strong style="color:var(--primary);">Kd</strong> : Amortit oscillations. ↑ = Stabilise mais
+                            sensible au bruit.
                         </div>
+                    </div>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace; text-align:center;">
+                        Sortie = Kp×e + Ki×∫e·dt + Kd×de/dt
                     </div>
                 </div>
 
-                <!-- ENCODERS -->
+                <!-- TUNING -->
                 <div class="ref-card">
-                    <h4 style="color:var(--accent);">🔄 Encodeur Quadrature</h4>
-                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
-                        Capteur sur l'axe du moteur qui envoie des impulsions sur 2 canaux (A et B) **déphasées de
-                        90°**.
-                    </p>
-                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
-                        <li>**Vitesse** : Compter les impulsions par seconde.</li>
-                        <li>**Sens** : Si A passe avant B → Sens Horaire.</li>
-                        <li>**Position** : Compteur incrémental (Homing au démarrage).</li>
+                    <h4 style="color:var(--accent);">🎛️ Méthodes de Réglage PID</h4>
+                    <ul class="dense-list" style="font-size:0.85rem; margin-top:10px;">
+                        <li><strong>Ziegler-Nichols</strong> : Augmenter Kp jusqu'à oscillation → Lire Ku et Tu →
+                            Appliquer formules.</li>
+                        <li><strong>Essai/Erreur</strong> : Commencer Kp seul, ajouter Ki puis Kd progressivement.</li>
+                        <li><strong>Auto-tuning</strong> : Certains contrôleurs calculent automatiquement (ex: Arduino
+                            PID_AutoTune).</li>
                     </ul>
+                    <p style="font-size:0.75rem; color:#888; margin-top:8px;"><strong>Ordre :</strong> Toujours régler
+                        Kp → Ki → Kd.</p>
+                </div>
+            </div>
+
+            <!-- GEAR RATIOS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">⚙️ Réducteurs & Rapport de Réduction</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">Sacrifier de la vitesse pour gagner du **couple**
+                        (et inversement).</p>
+                    <div
+                        style="background:#111; padding:10px; border-radius:4px; font-size:0.85rem; margin:10px 0; font-family:monospace; text-align:center;">
+                        Ratio = Z<sub>sortie</sub> / Z<sub>entrée</sub><br>
+                        <span style="color:#888; font-size:0.75rem;">Ex: 50T / 10T = 5:1 → Vitesse ÷5, Couple ×5</span>
+                    </div>
+                    <div class="grid2" style="gap:10px; font-size:0.8rem; margin-top:10px;">
+                        <div><strong>Planétaire</strong> : Compact, efficace, coûteux. Robotique précise.</div>
+                        <div><strong>Vis sans fin</strong> : Très haut ratio, irréversible (auto-bloquant).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENCODERS -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🔄 Encodeurs (Feedback)</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--primary);">Incrémental (A/B)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Impulsions relatives. Besoin de Homing
+                            au démarrage. Économique. 100-10000 PPR.</p>
+                    </div>
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--str);">Absolu (Gray Code)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Position exacte à chaque instant. Pas
+                            de Homing. Plus cher. Robots industriels.</p>
+                    </div>
                 </div>
             </div>
 
             <!-- SENSORS -->
-            <div style="margin-top:30px;">
+            <div style="margin-top:20px;">
                 <h3 style="margin-bottom:15px; color:var(--text);">🎯 Capteurs de Mouvement</h3>
                 <div class="grid3">
                     <div class="ref-card" style="padding:10px;">
-                        <strong style="color:var(--fn);">IMU (6/9 axes)</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Accéléromètre + Gyroscope (+
-                            Magnétomètre). Orientation 3D. Drones, robots.</p>
+                        <strong style="color:var(--fn);">IMU (MPU6050)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Accéléromètre + Gyroscope. Fusion
+                            Kalman/Madgwick. Drones, stabilisation.</p>
                     </div>
                     <div class="ref-card" style="padding:10px;">
                         <strong style="color:var(--str);">Fin de Course</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Micro-switch mécanique. Détecte la
-                            position limite (Homing imprimante 3D).</p>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Micro-switch NC. Homing + Sécurité.
+                            Debounce obligatoire.</p>
                     </div>
                     <div class="ref-card" style="padding:10px;">
                         <strong style="color:var(--accent);">Cellule de Charge</strong>
-                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Capteur de force (jauge de
-                            contrainte). Balances, pinces robotiques.</p>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Jauge de contrainte + HX711 (24-bit
+                            ADC). Balances, pinces force.</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- DRIVER ICS -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:var(--num);">
+                <h4 style="color:var(--num); margin-bottom:8px;">🔧 Drivers Moteur Populaires</h4>
+                <div class="grid2" style="font-size:0.8rem; gap:10px;">
+                    <div><strong style="color:var(--primary);">L298N</strong> : Pont-H double, jusqu'à 2A. DC/Stepper.
+                        Classique.</div>
+                    <div><strong style="color:var(--accent);">DRV8825</strong> : Stepper microstep (1/32). Silencieux.
+                        CNC.</div>
+                    <div><strong style="color:var(--str);">TMC2209</strong> : StealthChop (ultra silencieux). UART.
+                        Premium.</div>
+                    <div><strong style="color:var(--fn);">ESC (BLHeli)</strong> : BLDC haute vitesse. Drones. Signal
+                        PWM/OneShot.</div>
                 </div>
             </div>
         </div>

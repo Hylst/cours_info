@@ -642,27 +642,60 @@
 
                     <!-- BUS ARCHITECTURE -->
                     <div class="tool-card" style="margin-top:40px; text-align:left;">
-                        <h4 style="color:var(--primary-bright); margin-bottom:10px;">🚌 Architecture Interne & Bus</h4>
+                        <h4 style="color:var(--primary-bright); margin-bottom:15px;">🚌 Architecture Interne & Bus</h4>
+
+                        <!-- CORE COMPONENTS -->
+                        <div
+                            style="background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; border:1px solid #333; margin-bottom:20px;">
+                            <h5 style="color:var(--kw); margin-bottom:10px; font-size:1rem;">🕹️ Le Cœur du Cœur :
+                                Registres & ALU</h5>
+                            <div class="grid4" style="font-size:0.8rem; gap:10px;">
+                                <div
+                                    style="background:#111; padding:10px; border-radius:6px; border-left:3px solid var(--str);">
+                                    <strong style="color:var(--str);">ALU</strong><br>
+                                    L'Unité Arithmétique. Elle fait les calculs (ADD, OR, XOR). C'est la calculatrice.
+                                </div>
+                                <div
+                                    style="background:#111; padding:10px; border-radius:6px; border-left:3px solid var(--primary);">
+                                    <strong style="color:var(--primary);">Control Unit</strong><br>
+                                    Le chef d'orchestre. Décode les instructions et active les bons circuits.
+                                </div>
+                                <div
+                                    style="background:#111; padding:10px; border-radius:6px; border-left:3px solid var(--type);">
+                                    <strong style="color:var(--type);">PC (Program Counter)</strong><br>
+                                    Le marque-page. Contient l'adresse de la PROCHAINE instruction à lire en Flash.
+                                </div>
+                                <div
+                                    style="background:#111; padding:10px; border-radius:6px; border-left:3px solid var(--kw);">
+                                    <strong style="color:var(--kw);">SP (Stack Pointer)</strong><br>
+                                    Pointe vers la pile en RAM. Crucial pour les appels de fonctions et interruptions.
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="grid2" style="font-size:0.85rem;">
                             <div>
-                                <span class="vocab-term">Von Neumann</span>
-                                <p style="color:var(--muted);">Bus unique pour Code et Données. Facile à coder, mais
-                                    goulot d'étranglement.</p>
+                                <span class="vocab-term">Von Neumann vs Harvard</span>
+                                <p style="color:var(--muted);">Von Neumann utilise un bus unique (Goulot).
+                                    <strong>Harvard</strong> (Cortex-M) sépare Code et Données pour lire les deux en
+                                    même temps.
+                                </p>
                             </div>
                             <div>
-                                <span class="vocab-term">Harvard</span>
-                                <p style="color:var(--muted);">Bus séparés. Lecture instruction + Lecture donnée en
-                                    simultané. Beaucoup plus rapide (Cortex-M).</p>
+                                <span class="vocab-term">Memory Map</span>
+                                <p style="color:var(--muted);">Tout est une adresse. La Flash, la RAM et même les
+                                    Périphériques (GPIO) ont une case mémoire dédiée.</p>
                             </div>
                             <div>
-                                <span class="vocab-term">Registers (Registres)</span>
-                                <p style="color:var(--muted);">La mémoire la plus rapide au monde. Située directement
-                                    dans l'ALU pour les calculs immédiats.</p>
+                                <span class="vocab-term">System Bus (AHB / APB)</span>
+                                <p style="color:var(--muted);">Le CPU parle vite via le <strong>AHB</strong>
+                                    (High-speed) et commande les périphériques lents via le <strong>APB</strong>
+                                    (Peripheral).</p>
                             </div>
                             <div>
-                                <span class="vocab-term">Pipeline</span>
-                                <p style="color:var(--muted);">Vitesse de traitement : Charger une instruction pendant
-                                    qu'on décode la précédente et qu'on exécute celle d'avant.</p>
+                                <span class="vocab-term">Pipeline (Fetch/Decode/Exec)</span>
+                                <p style="color:var(--muted);">Parallélisation : Préparer l'instruction N+1 pendant
+                                    qu'on exécute l'instruction N.</p>
                             </div>
                         </div>
                     </div>
@@ -681,36 +714,52 @@
                     </div>
 
                     <div class="grid2">
-                        <div class="intro-box" style="margin-bottom:0;">
-                            <h4>General Purpose Input Output</h4>
-                            <p>Une broche (Pin) peut être soit une entrée (Lecteur), soit une sortie (Acteur).</p>
+                        <div class="intro-box" style="margin-bottom:0; border-left-color:var(--primary);">
+                            <h4>🔌 Le Pont entre les Bits et les Atomes</h4>
+                            <p>Le GPIO est l'interface la plus basique mais la plus polyvalente. C'est ici que le code
+                                devient une tension électrique réelle.</p>
+
+                            <!-- PIN INTERNALS -->
+                            <div
+                                style="margin-top:20px; background:rgba(0,0,0,0.2); padding:10px; border-radius:6px; border:1px solid #333;">
+                                <h5 style="font-size:0.9rem; color:var(--primary); margin-bottom:10px;">🛡️ Anatomie
+                                    Électronique d'une Pin</h5>
+                                <div style="font-size:0.8rem; line-height:1.4;">
+                                    <p>• <span class="vocab-term">Schmitt Trigger</span> : Un circuit qui nettoie le
+                                        signal d'entrée. Il évite que le MCU ne lise "0-1-0-1" très vite si le signal
+                                        est bruité.</p>
+                                    <p>• <span class="vocab-term">Push-Pull</span> : Mode standard. La pin "pousse" vers
+                                        3.3V ou "tire" vers le GND. Idéal pour piloter une LED.</p>
+                                    <p>• <span class="vocab-term">Open-Drain</span> : La pin peut seulement "tirer" vers
+                                        le GND. Pour le 3.3V, il faut une résistance externe. Utilisé pour l'I2C.</p>
+                                </div>
+                            </div>
+
                             <div style="margin-top:15px; display:flex; gap:10px;">
                                 <span
-                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--primary);">OUTPUT</span>
-                                <span>0V (LOW) ou 3.3V (HIGH)</span>
+                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--primary); font-size:0.8rem;">OUTPUT</span>
+                                <span style="font-size:0.85rem;">Driven by CPU (Write)</span>
                             </div>
                             <div style="margin-top:5px; display:flex; gap:10px;">
                                 <span
-                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--accent);">INPUT</span>
-                                <span>Lit l'état (Bouton)</span>
+                                    style="background:#000; padding:5px 10px; border-radius:4px; color:var(--accent); font-size:0.8rem;">INPUT</span>
+                                <span style="font-size:0.85rem;">Sensed by CPU (Read)</span>
                             </div>
                         </div>
 
                         <!-- SIMULATEUR VIRTUEL -->
                         <div class="sim-container">
                             <div style="position:absolute; top:10px; right:10px; color:#555; font-size:0.7rem;">VIRTUAL
-                                LAB
-                            </div>
+                                LAB</div>
                             <div class="led" id="sim-led"></div>
-                            <div style="text-align:center; font-size:0.8rem; color:#777; margin-bottom:10px;">GP13
-                                (Output)
-                            </div>
+                            <div style="text-align:center; font-size:0.8rem; color:#777; margin-bottom:10px;">Output
+                                Buffer</div>
                             <button class="push-btn"
                                 onclick="document.getElementById('sim-led').classList.toggle('on')">
-                                DIGITAL WRITE (High/Low)
+                                GPIO_Write(PIN_13, HIGH/LOW)
                             </button>
-                            <div style="margin-top:10px; font-size:0.8rem; color:#aaa;">
-                                <code>digitalWrite(13, !state);</code>
+                            <div style="margin-top:10px; font-size:0.8rem; color:#aaa; font-family:monospace;">
+                                <code>// Drive the MOSFETs<br>PORTB |= (1 << 5);</code>
                             </div>
                         </div>
                     </div>
@@ -729,6 +778,34 @@
                                 (LOW). Si je le tire, il monte (HIGH).</li>
                         </ul>
                     </div>
+
+                    <!-- LOGIC LEVELS & PROTECTION -->
+                    <div class="grid2" style="margin-top:30px;">
+                        <div class="ref-card">
+                            <h4 style="color:var(--num);">📏 Seuils Logiques (Vih / Vil)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">
+                                Le numérique n'est pas "parfait". Pour un MCU 3.3V :
+                            </p>
+                            <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                                <li><strong>V<sub>IH</sub> (Input High)</strong> : > 2.3V est lu comme un '1'.</li>
+                                <li><strong>V<sub>IL</sub> (Input Low)</strong> : < 0.8V est lu comme un '0' .</li>
+                                <li><span style="color:var(--error);">⚠️ Zone Interdite</span> : Entre les deux, l'état
+                                    est indéterminé.</li>
+                            </ul>
+                        </div>
+                        <div class="ref-card">
+                            <h4 style="color:var(--error);">🛡️ Protection & Dangers</h4>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-top:5px;">
+                                Une pin est fragile. Courant max : souvent <strong>20mA</strong>.
+                            </p>
+                            <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                                <li><strong>Clamp Diodes</strong> : Protègent contre les légères surtensions.</li>
+                                <li><strong>ESD</strong> : Une décharge statique peut griller le transistor interne.
+                                </li>
+                                <li><strong>Short-circuit</strong> : Relier une sortie HIGH au GND = Destruction.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -743,66 +820,96 @@
                         </div>
                     </div>
 
+                    <!-- MODULE INTRO -->
+                    <div class="intro-box" style="border-left-color:var(--kw); margin-bottom:40px;">
+                        <h4>🌐 Le Dialogue au Cœur du Système</h4>
+                        <p>Dans un système embarqué, le MCU ne travaille jamais seul. Il doit commander des capteurs,
+                            parler à des mémoires ou envoyer des logs à un PC. Pour cela, on utilise des **protocoles de
+                            communication série**, chacun ayant ses forces, ses faiblesses et ses contraintes
+                            électriques.</p>
+                    </div>
+
                     <div class="grid3">
                         <!-- UART -->
                         <div class="ref-card">
-                            <h4 style="color:#61afef;">1. UART (Serial)</h4>
-                            <p style="font-size:0.85rem; color:var(--muted);">Asynchrone (Pas d'horloge). Point-à-point.
+                            <h4 style="color:#61afef;">1. UART (Point-à-Point)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-bottom:10px;">
+                                L'UART est le "vieux sage". Sans horloge commune, il repose sur un timing strict
+                                (Baudrate) convenu à l'avance.
                             </p>
 
-                            <div class="pin-diagram" style="margin:15px 0;">
-                                <div class="pin-row"><span class="pin-l">TX</span> ➜ <span class="pin-r">RX</span></div>
-                                <div class="pin-row"><span class="pin-l">RX</span> ⬅ <span class="pin-r">TX</span></div>
-                                <div class="pin-row"><span class="pin-l">GND</span> ― <span class="pin-r">GND</span>
+                            <div
+                                style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; margin-bottom:15px; font-size:0.8rem;">
+                                <strong style="color:var(--primary);">Anatomie d'une Trame 8N1</strong>
+                                <!-- CSS FRAME DIAGRAM -->
+                                <div
+                                    style="display:flex; height:20px; border:1px solid #444; margin-top:5px; text-align:center; line-height:20px; font-family:monospace;">
+                                    <div style="flex:1; background:var(--error); color:#000;" title="Start Bit">ST</div>
+                                    <div style="flex:5; background:#222;">DATA (8-bit)</div>
+                                    <div style="flex:1; background:var(--primary-bright); color:#000;" title="Stop Bit">
+                                        SP</div>
                                 </div>
+                                <p style="font-size:0.7rem; color:#888; margin-top:5px;">ST=Start, SP=Stop. Pas de
+                                    parité.</p>
                             </div>
 
                             <ul class="dense-list" style="font-size:0.85rem;">
-                                <li>Usage: Debug, GPS, Bluetooth.</li>
-                                <li>Vitesse: Baudrate (9600, 115200).</li>
+                                <li><strong>Flow Control</strong> : <span class="vocab-term">RTS/CTS</span> évite de
+                                    saturer le récepteur.</li>
+                                <li><strong>Logic Levels</strong> : <span class="vocab-term">TTL (0-3.3V)</span> vs
+                                    <span class="vocab-term">RS232 (-12/+12V)</span>. Attention à ne pas griller le MCU
+                                    !
+                                </li>
                             </ul>
                         </div>
 
                         <!-- I2C -->
                         <div class="ref-card">
-                            <h4 style="color:#98c379;">2. I2C (Inter-Integrated)</h4>
-                            <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Bus (Multi-esclaves avec
-                                Adresse).</p>
+                            <h4 style="color:#98c379;">2. I2C (Bus Multi-Maître)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-bottom:10px;">
+                                L'I2C est le "réseau local" de la carte. Il permet de connecter des dizaines de
+                                composants sur seulement 2 fils grâce à l'adressage.
+                            </p>
 
-                            <div class="pin-diagram" style="margin:15px 0;">
-                                <div class="pin-row"><span class="pin-l">SDA</span> ⇄ <span class="pin-r">Data</span>
+                            <div
+                                style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; margin-bottom:15px; font-size:0.8rem;">
+                                <strong style="color:#98c379;">Le Signal Open-Drain</strong>
+                                <div style="display:flex; align-items:center; gap:5px; margin-top:5px;">
+                                    <div style="width:10px; height:10px; background:var(--num); border-radius:50%;">
+                                    </div>
+                                    <span>Nécessite des <span class="vocab-term">Pull-up Resistors</span>.</span>
                                 </div>
-                                <div class="pin-row"><span class="pin-l">SCL</span> ➜ <span class="pin-r">Clock</span>
-                                </div>
+                                <p style="font-size:0.75rem; color:#888; margin-top:5px;">Sans résistance, le bus reste
+                                    à 0V !</p>
                             </div>
 
                             <ul class="dense-list" style="font-size:0.85rem;">
-                                <li>Usage: Capteurs, OLED.</li>
-                                <li>Avantage: 2 fils seulement !</li>
-                                <li>Défaut: Lent, adresses fixes.</li>
+                                <li><strong>Arbitrage</strong> : Si deux maîtres parlent, le "0" l'emporte toujours.
+                                </li>
+                                <li><strong>Clock Stretching</strong> : Un esclave lent peut maintenir SCL au sol pour
+                                    faire attendre le maître.</li>
                             </ul>
                         </div>
 
                         <!-- SPI -->
                         <div class="ref-card">
-                            <h4 style="color:#e06c75;">3. SPI (Peripheral)</h4>
-                            <p style="font-size:0.85rem; color:var(--muted);">Synchrone. Full Duplex. Très rapide.</p>
+                            <h4 style="color:#e06c75;">3. SPI (Vitesse Maximale)</h4>
+                            <p style="font-size:0.85rem; color:var(--muted); margin-bottom:10px;">
+                                Le SPI est un "télégramme ultra-rapide". Synchronisé par une horloge, il est idéal pour
+                                les écrans et les cartes SD.
+                            </p>
 
-                            <div class="pin-diagram" style="margin:15px 0;">
-                                <div class="pin-row"><span class="pin-l">MOSI</span> ➜ <span class="pin-r">Master
-                                        Out</span>
-                                </div>
-                                <div class="pin-row"><span class="pin-l">MISO</span> ⬅ <span class="pin-r">Master
-                                        In</span>
-                                </div>
-                                <div class="pin-row"><span class="pin-l">SCK</span> ➜ <span class="pin-r">Clock</span>
-                                </div>
-                                <div class="pin-row"><span class="pin-l">CS</span> ➜ <span class="pin-r">Select</span>
-                                </div>
+                            <div
+                                style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; margin-bottom:15px; font-size:0.8rem;">
+                                <strong style="color:#e06c75;">Configuration CPOL / CPHA</strong>
+                                <p style="font-size:0.75rem; color:#888; margin:5px 0;">Il existe 4 modes SPI. S'ils ne
+                                    correspondent pas, les données seront corrompues.</p>
                             </div>
 
                             <ul class="dense-list" style="font-size:0.85rem;">
-                                <li>Usage: Carte SD, Écrans LCD/TFT.</li>
+                                <li><strong>Daisy Chain</strong> : On peut chaîner les périphériques pour économiser des
+                                    pins de sélection (<span class="vocab-term">CS</span>).</li>
+                                <li><strong>Full Duplex</strong> : On lit et on écrit simultanément sur MOSI/MISO.</li>
                             </ul>
                         </div>
                     </div>
@@ -844,28 +951,84 @@
                         </div>
                     </div>
 
+                    <!-- MODULE INTRO -->
+                    <div class="intro-box" style="border-left-color:var(--accent); margin-bottom:40px;">
+                        <h4>🌊 Le Monde Réel est Infini, le CPU est Discret</h4>
+                        <p>La température, le son ou la lumière sont des valeurs analogiques (infinies). Le processeur,
+                            lui, ne comprend que des 0 et des 1. Il faut donc un traducteur : l'**ADC** (Analog to
+                            Digital Converter) pour écouter, et le **PWM** (ou DAC) pour parler.</p>
+                    </div>
+
                     <div class="grid2">
+                        <!-- ADC SECTION -->
                         <div>
-                            <div class="intro-box" style="border-left-color:var(--accent);">
-                                <h4>ADC (Analog to Digital Converter)</h4>
-                                <p>Transforme une tension (0-3.3V) en nombre (0-4095 pour 12-bit).</p>
+                            <h4 style="color:var(--accent); margin-bottom:10px;">1. ADC (L'Oreille Numérique)</h4>
+                            <div class="ref-card">
+                                <strong style="color:#fff;">📏 Résolution (La Précision)</strong>
+                                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">
+                                    Combien de marches a votre escalier ? Pour un ADC 12-bit (ESP32) sur 3.3V :
+                                </p>
+                                <div
+                                    style="background:rgba(0,0,0,0.3); padding:8px; border-radius:4px; font-family:monospace; color:var(--accent); font-size:0.8rem; text-align:center;">
+                                    Step = 3.3V / 4095 ≈ 0.8 mV
+                                </div>
+                                <p style="font-size:0.75rem; color:#888; margin-top:5px;">Le moindre bruit > 0.8mV
+                                    faussera la mesure !</p>
                             </div>
-                            <div class="code-block">
-                                <pre><span class="t">int</span> val = <span class="f">analogRead</span>(PIN);
-<span class="c">// Si 12-bit (0..4095)</span>
-<span class="t">float</span> volts = val * (3.3 / 4095.0);</pre>
+
+                            <div class="ref-card" style="margin-top:15px;">
+                                <strong style="color:var(--error);">⚠️ Théorème de Nyquist</strong>
+                                <p style="font-size:0.8rem; color:var(--muted);">
+                                    Pour numériser un son à 40kHz, il faut échantillonner à au moins **80kHz** (2x).
+                                    Sinon, gare à l'**Aliasing** (les roues de voiture qui tournent à l'envers à la
+                                    télé).
+                                </p>
                             </div>
                         </div>
+
+                        <!-- PWM SECTION -->
                         <div>
-                            <div class="intro-box" style="border-left-color:var(--kw);">
-                                <h4>PWM (Pulse Width Modulation)</h4>
-                                <p>Simule une tension variable en allumant/éteignant très vite (Duty Cycle).</p>
-                                <ul class="dense-list" style="margin-top:10px;">
-                                    <li><strong>LED</strong> : Change la luminosité.</li>
-                                    <li><strong>Moteur</strong> : Change la vitesse (Moyenne de tension).</li>
-                                </ul>
+                            <h4 style="color:var(--var); margin-bottom:10px;">2. PWM (Faux Analogique)</h4>
+                            <div class="intro-box" style="margin-bottom:15px; background:rgba(0,0,0,0.2);">
+                                <p>Le MCU ne sait pas sortir 1.5V. Il sort 3.3V, puis 0V, très vite. La moyenne donne
+                                    l'illusion de 1.5V.</p>
                             </div>
+
+                            <!-- PWM SIMULATOR CSS -->
+                            <div style="background:#111; padding:15px; border-radius:8px; border:1px solid #333;">
+                                <div
+                                    style="font-size:0.8rem; display:flex; justify-content:space-between; margin-bottom:10px;">
+                                    <span style="color:var(--var);">Duty Cycle: 50%</span>
+                                    <span style="color:#666;">Freq: 1kHz</span>
+                                </div>
+                                <div style="height:40px; display:flex; align-items:flex-end;">
+                                    <!-- Signal 50% -->
+                                    <div style="width:20%; height:2px; background:var(--var);"></div>
+                                    <div style="width:1px; height:30px; background:var(--var);"></div>
+                                    <div style="width:30%; height:30px; border-top:2px solid var(--var);">ON (3.3V)
+                                    </div>
+                                    <div style="width:1px; height:30px; background:var(--var);"></div>
+                                    <div style="width:30%; height:2px; background:var(--var);">OFF (0V)</div>
+                                    <div style="width:1px; height:30px; background:var(--var);"></div>
+                                    <div style="width:20%; height:30px; border-top:2px solid var(--var);"></div>
+                                </div>
+                            </div>
+
+                            <ul class="dense-list" style="margin-top:15px; font-size:0.8rem;">
+                                <li><strong>LED</strong> : > 60Hz pour ne pas voir le scintillement.</li>
+                                <li><strong>Moteur</strong> : 10-20kHz pour éviter qu'il "chante" (bruit audible).</li>
+                            </ul>
                         </div>
+                    </div>
+
+                    <!-- DAC NOTICE -->
+                    <div class="tool-card" style="margin-top:30px; text-align:left;">
+                        <h4 style="color:var(--str); margin-bottom:5px;">🎹 Et le Vrai Analogique ? (DAC)</h4>
+                        <p style="font-size:0.85rem; color:var(--muted);">
+                            Pour de l'audio haute fidélité, le PWM est trop "sale". On utilise un **DAC (Digital to
+                            Analog Converter)** (souvent un réseau de résistances R-2R) pour créer une courbe de tension
+                            lisse et parfaite.
+                        </p>
                     </div>
                 </div>
 
@@ -904,54 +1067,104 @@
                 <div class="sec-num">05</div>
                 <div>
                     <h2 class="sec-title">IoT & Connectivité</h2>
-                    <p class="sec-sub">ESP32 & MQTT</p>
+                    <p class="sec-sub">L'Intelligence Connectée (ESP32 & MQTT)</p>
                 </div>
             </div>
 
-            <div class="analogy-box">
-                <h4>📡 MQTT : Le Twitter des machines</h4>
-                <p>HTTP est trop lourd ("Hello, tu es là ? Tiens voici la page"). MQTT est léger.</p>
-                <div class="grid3" style="margin-top:20px; font-size:0.9rem;">
-                    <div style="text-align:center;">
-                        <div style="font-size:2rem;">🌡️</div>
-                        <strong>Publisher</strong>
-                        <p style="color:#aaa;">Capteur<br>Publie sur "home/temp"</p>
-                    </div>
-                    <div style="text-align:center;">
-                        <div style="font-size:2rem; color:var(--accent);">📨</div>
-                        <strong>Broker</strong>
-                        <p style="color:#aaa;">Serveur Central<br>(La Poste)</p>
-                    </div>
-                    <div style="text-align:center;">
-                        <div style="font-size:2rem;">📱</div>
-                        <strong>Subscriber</strong>
-                        <p style="color:#aaa;">Téléphone<br>Abonné à "home/temp"</p>
+            <!-- ESP32 SECTION -->
+            <div class="grid2">
+                <div class="intro-box" style="border-left-color:var(--primary); margin-bottom:0;">
+                    <h4>🧠 L'ESP32 : Un Monstre à 2 Têtes</h4>
+                    <p>Ce n'est pas juste un Arduino avec du WiFi. C'est un **SoC Dual Core** 240MHz.</p>
+                    <ul class="dense-list" style="margin-top:10px;">
+                        <li><strong>Core 0 (Pro CPU)</strong> : Gère le WiFi, le Bluetooth et la Radio (Tâches de fond).
+                        </li>
+                        <li><strong>Core 1 (App CPU)</strong> : Exécute VOTRE code Arduino/C++.</li>
+                    </ul>
+                    <p style="font-size:0.8rem; color:#888; margin-top:5px;">C'est pourquoi votre `loop()` n'est jamais
+                        bloquée par le réseau !</p>
+                </div>
+                <div>
+                    <div class="ref-card">
+                        <h4 style="color:var(--num);">📡 WiFi vs BLE</h4>
+                        <div style="font-size:0.85rem; margin-top:10px;">
+                            <div style="margin-bottom:10px;">
+                                <strong style="color:var(--primary);">WiFi (802.11)</strong><br>
+                                <span style="color:#aaa;">Gros débit, Grosse conso (100-200mA). Pour la vidéo ou le
+                                    Cloud.</span>
+                            </div>
+                            <div>
+                                <strong style="color:var(--accent);">BLE (Bluetooth Low Energy)</strong><br>
+                                <span style="color:#aaa;">Micro débit, Micro conso (mA). Pour les capteurs sur pile
+                                    (Montres).</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- VOCAB M05 -->
-        <div class="tool-card" style="margin-top:20px; text-align:left;">
-            <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-            <div class="grid2" style="font-size:0.85rem;">
-                <div>
-                    <span class="vocab-term">QoS (Quality of Service)</span>
-                    <p style="color:var(--muted);">Niveau de garantie en MQTT. 0 (Fire & Forget), 1 (At least once), 2
-                        (Exactly once).</p>
+            <!-- MQTT SECTION -->
+            <div style="margin-top:40px;">
+                <h3 style="margin-bottom:20px; color:var(--text);">📨 MQTT : Le Protocole Roi</h3>
+                <div class="intro-box" style="border-left-color:var(--accent);">
+                    <p>HTTP est lourd ("Allô ? Tu m'entends ? Tiens la page"). MQTT est ultra-léger, pensé pour des
+                        réseaux instables.</p>
                 </div>
-                <div>
-                    <span class="vocab-term">Payload</span>
-                    <p style="color:var(--muted);">La donnée utile transportée (ex: `{"temp": 24.5}`). Souvent en JSON.
+
+                <div class="grid2">
+                    <!-- QOS LEVELS -->
+                    <div class="ref-card">
+                        <strong style="color:#fff;">🎯 QoS (Quality of Service)</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">
+                            À quel point le message est-il important ?
+                        </p>
+                        <div style="display:flex; flex-direction:column; gap:8px; font-size:0.8rem;">
+                            <div style="border-left:2px solid var(--error); padding-left:8px;">
+                                <span style="color:var(--error); font-weight:bold;">QoS 0</span> : "Fire & Forget". On
+                                tire, si c'est perdu, tant pis. (Capteur T° rapide).
+                            </div>
+                            <div style="border-left:2px solid var(--var); padding-left:8px;">
+                                <span style="color:var(--var); font-weight:bold;">QoS 1</span> : "At Least Once". Le
+                                serveur doit confirmer (ACK). Sinon on renvoie. (Standard).
+                            </div>
+                            <div style="border-left:2px solid var(--primary); padding-left:8px;">
+                                <span style="color:var(--primary); font-weight:bold;">QoS 2</span> : "Exactly Once".
+                                Lourd, lent, mais garanti sans doublon. (Banque).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOPIC HIERARCHY -->
+                    <div class="ref-card">
+                        <strong style="color:#fff;">📂 Topics & Architecture</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">
+                            Organisez vos données comme des dossiers.
+                        </p>
+                        <div
+                            style="background:#111; padding:10px; border-radius:4px; font-family:monospace; font-size:0.8rem;">
+                            home/livingroom/temp<br>
+                            home/kitchen/light/set<br>
+                            factory/machine_1/vibration
+                        </div>
+                        <div style="margin-top:10px; border-top:1px solid #333; padding-top:10px;">
+                            <strong style="color:var(--kw);">☁️ Edge vs Cloud</strong><br>
+                            <span style="font-size:0.8rem; color:#aaa;">
+                                <strong>Edge</strong> : L'ESP32 décide d'allumer le ventilateur (Rapide).<br>
+                                <strong>Cloud</strong> : AWS stocke l'historique et fait des stats (Lent, Analytics).
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECURITY WARNING -->
+                <div class="tool-card" style="margin-top:20px; border-color:var(--error);">
+                    <h4 style="color:var(--error); margin-bottom:5px;">🔒 Sécurité (TLS/SSL)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        MQTT clair (Port 1883) = Tout le monde voit vos mots de passe. Utilisez toujours **MQTTS** (Port
+                        8883) avec certificats, même si c'est dur pour un petit CPU !
                     </p>
                 </div>
-                <div>
-                    <span class="vocab-term">Keep-Alive</span>
-                    <p style="color:var(--muted);">Ping régulier pour dire au serveur "Je suis toujours là, ne coupe pas
-                        la connexion".</p>
-                </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -962,52 +1175,93 @@
                 <div class="sec-num">06</div>
                 <div>
                     <h2 class="sec-title">RTOS (Real-Time OS)</h2>
-                    <p class="sec-sub">FreeRTOS & Multitasking</p>
+                    <p class="sec-sub">FreeRTOS & L'Art du Multitâche</p>
                 </div>
             </div>
 
-            <div class="intro-box">
-                <h4>⏳ Super Loop vs FreeRTOS</h4>
-                <p>Dans <code>main() { while(1) }</code>, si une fonction bloque (delay), tout s'arrête. Avec un RTOS,
-                    on découpe le code en <strong>Tâches</strong> indépendantes.</p>
+            <!-- INTRO NARRATIVE -->
+            <div class="intro-box" style="border-left-color:var(--primary); margin-bottom:30px;">
+                <h4>⏳ Pourquoi un RTOS ?</h4>
+                <p>Dans une **Super Loop** (`while(1)`), si une action bloque, tout le système fige. Le RTOS (Real-Time
+                    Operating System) découpe le code en **Tâches** indépendantes. Le **Scheduler** (ordonnanceur)
+                    décide qui a le droit de "parler" au CPU à chaque milliseconde.</p>
             </div>
 
-            <div class="code-block">
-                <pre><span class="c">// Tâche 1: Clignote LED</span>
-<span class="t">void</span> <span class="f">TaskBlink</span>(<span class="t">void</span> *pv) {
-  <span class="k">while</span>(1) { toggle(); <span class="f">vTaskDelay</span>(1000); }
-}
+            <div class="grid2">
+                <!-- TASK MODEL -->
+                <div>
+                    <div class="ref-card">
+                        <h4 style="color:var(--primary);">📦 Anatomie d'une Tâche</h4>
+                        <ul class="dense-list" style="margin-top:10px; font-size:0.85rem;">
+                            <li><strong>Priorité</strong> : Plus le nombre est haut, plus la tâche est urgente.</li>
+                            <li><strong>Stack</strong> : Sa propre mémoire de travail (variables locales).</li>
+                            <li><strong>État</strong> : `Running`, `Ready`, `Blocked` (en attente d'un délai ou mutex).
+                            </li>
+                        </ul>
+                        <div class="code-block" style="margin-top:15px;">
+                            <pre><span class="f">xTaskCreate</span>(TaskBlink, <span class="str">"Blink"</span>, 1024, NULL, <span class="num">1</span>, NULL);
+<span class="c">// Nom, Nom debug, Stack, Params, PRIORITE, Handle</span></pre>
+                        </div>
+                    </div>
+                </div>
 
-<span class="c">// Tâche 2: Lit Capteur (En même temps !)</span>
-<span class="t">void</span> <span class="f">TaskSensor</span>(<span class="t">void</span> *pv) {
-  <span class="k">while</span>(1) { read(); <span class="f">vTaskDelay</span>(500); }
-}</pre>
+                <!-- TASK TIMELINE CSS -->
+                <div>
+                    <div class="ref-card">
+                        <h4 style="color:var(--var);">⏱️ Timeline du Scheduler</h4>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">Exemple de 2 tâches
+                            alternant (preemption).</p>
+                        <div
+                            style="background:#111; padding:10px; border-radius:6px; font-size:0.75rem; font-family:monospace;">
+                            <!-- CSS TASK TIMELINE -->
+                            <div style="display:flex; gap:2px; height:20px; margin-bottom:5px;">
+                                <div style="flex:3; background:var(--primary);"></div>
+                                <div style="flex:2; background:var(--var);"></div>
+                                <div style="flex:4; background:var(--primary);"></div>
+                                <div style="flex:1; background:var(--var);"></div>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; color:#888;">
+                                <span>t=0</span>
+                                <span style="color:var(--primary);">TaskA (Prio 2)</span>
+                                <span style="color:var(--var);">TaskB (Prio 1)</span>
+                                <span>t=10ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- VOCAB M06 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Scheduler (Ordonnanceur)</span>
-                        <p style="color:var(--muted);">Le chef d'orchestre du RTOS. Il décide quelle tâche a le droit
-                            d'utiliser le CPU maintenant.</p>
+            <!-- SYNCHRONIZATION -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🔒 Synchronisation : Éviter le Chaos</h3>
+                <div class="grid3">
+                    <div class="ref-card">
+                        <strong style="color:var(--error);">Mutex</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            "La clé des toilettes". Une seule tâche peut la prendre à la fois. Protège une ressource
+                            partagée.
+                        </p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Context Switch</span>
-                        <p style="color:var(--muted);">Le moment coûteux où le CPU sauvegarde l'état de la Tâche A pour
-                            charger celle de la Tâche B.</p>
+                    <div class="ref-card">
+                        <strong style="color:var(--accent);">Semaphore</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            "Le compteur de places de parking". Peut autoriser N accès simultanés (ex: 3 connexions
+                            max).
+                        </p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Race Condition</span>
-                        <p style="color:var(--muted);">Bug critique où deux tâches essaient de modifier la même variable
-                            en même temps. Résultat imprévisible.</p>
+                    <div class="ref-card">
+                        <strong style="color:var(--str);">Queue</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            "Une file d'attente". Passer des données d'une tâche à l'autre de manière sûre (FIFO).
+                        </p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Mutex / Semaphore</span>
-                        <p style="color:var(--muted);">Mécanismes de protection pour empêcher les Race Conditions (comme
-                            la clé des toilettes).</p>
-                    </div>
+                </div>
+                <div class="tool-card" style="margin-top:15px; border-color:var(--error);">
+                    <h4 style="color:var(--error); margin-bottom:5px;">⚠️ Priority Inversion (Bug Célèbre)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        Si une tâche basse prio bloque un Mutex dont une tâche haute prio a besoin, le système peut se
+                        retrouver bloqué. FreeRTOS offre des Mutex avec "Priority Inheritance" pour éviter cela.
+                    </p>
                 </div>
             </div>
         </div>

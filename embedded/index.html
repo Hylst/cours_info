@@ -1429,57 +1429,64 @@
                 <div class="sec-num">09</div>
                 <div>
                     <h2 class="sec-title">Mémoire & Concepts Avancés</h2>
-                    <p class="sec-sub">Au cœur du C embarqué</p>
+                    <p class="sec-sub">Le C Embarqué en Profondeur</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:#e06c75;">
-                <h4>🧠 Gérer ses ressources</h4>
-                <p>Sur un PC, vous avez 16Go de RAM. Sur un Arduino, vous avez 2Ko.
-                    Chaque octet compte. Comprendre la mémoire évite les plantages aléatoires après 3 jours de
-                    fonctionnement.</p>
+            <div class="intro-box" style="border-left-color:#e06c75; margin-bottom:30px;">
+                <h4>🧠 Chaque Octet Compte</h4>
+                <p>Sur un PC, vous avez 16Go de RAM. Sur un Arduino Uno, vous avez **2Ko**. Comprendre la mémoire évite
+                    les plantages mystérieux après 72h de fonctionnement (fragmentation, stack overflow).</p>
             </div>
 
             <div class="grid2">
+                <!-- HEAP VS STACK -->
                 <div class="ref-card">
-                    <h4>Heap vs Stack</h4>
-                    <ul class="dense-list">
-                        <li><strong>Stack (Pile)</strong> : Variables locales, appels de fonctions. Rapide, autogéré,
-                            mais petit. <em>Danger: Recursion infinie.</em></li>
-                        <li><strong>Heap (Tas)</strong> : Allocations dynamiques (`malloc`). Flexible mais dangereux
-                            (Fragmentation, Memory Leaks).</li>
-                        <li><strong>Règle d'or</strong> : Évitez `malloc` en embarqué critique. Préférez l'allocation
-                            statique.</li>
+                    <h4 style="color:var(--primary);">📦 Heap vs Stack</h4>
+                    <ul class="dense-list" style="font-size:0.85rem; margin-top:10px;">
+                        <li><strong>Stack (Pile)</strong> : Variables locales, appels de fonctions. Rapide, automatique.
+                            <span style="color:var(--error);">Danger: Récursion infinie.</span>
+                        </li>
+                        <li><strong>Heap (Tas)</strong> : `malloc()`. Flexible mais dangereux (Fragmentation, Memory
+                            Leaks).</li>
+                        <li><strong>Règle d'or</strong> : Évitez `malloc` en embarqué critique. Préférez l'**allocation
+                            statique**.</li>
                     </ul>
                 </div>
+
+                <!-- VOLATILE / CONST -->
                 <div class="ref-card">
-                    <h4>🚀 DMA (Direct Memory Access)</h4>
-                    <p>Le "Sous-fiffre" du CPU.</p>
-                    <p style="font-size:0.9rem; color:var(--muted);">Il peut copier des données (ex: Capteur -> RAM)
-                        tout seul, pendant que le CPU fait autre chose (Dormir ou calculer).</p>
-                    <p><em>Indispensable pour l'audio, les écrans ou le SPI rapide.</em></p>
+                    <h4 style="color:var(--error);">⚠️ Mots-Clés Critiques</h4>
+                    <div style="font-size:0.85rem; margin-top:10px;">
+                        <div style="margin-bottom:10px; border-left:2px solid var(--error); padding-left:8px;">
+                            <strong style="color:var(--error);">volatile</strong><br>
+                            <span style="color:#aaa;">"Cette variable peut changer à tout moment (ISR, Hardware)".
+                                Empêche le compilateur de l'optimiser en cache.</span>
+                        </div>
+                        <div style="border-left:2px solid var(--accent); padding-left:8px;">
+                            <strong style="color:var(--accent);">const</strong><br>
+                            <span style="color:#aaa;">Stocké en Flash (ROM), pas en RAM. Économise la précieuse RAM pour
+                                les tableaux de constantes.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- VOCAB M09 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Stack Overflow</span>
-                        <p style="color:var(--muted);">Quand la pile déborde (trop de variables locales/fonctions) et
-                            écrase le reste de la mémoire. Crash immédiat.</p>
+            <!-- DMA -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🚀 DMA (Direct Memory Access)</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">
+                        Le "Sous-fifre" du CPU. Un circuit dédié qui copie des données (ADC → RAM, RAM → SPI) **tout
+                        seul**, pendant que le CPU dort ou calcule.
+                    </p>
+                    <div
+                        style="background:#111; padding:10px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace;">
+                        Sans DMA : CPU copie 1000 octets un par un (bloquant).<br>
+                        Avec DMA : CPU lance le transfert, puis fait autre chose.
                     </div>
-                    <div>
-                        <span class="vocab-term">Memory Leak</span>
-                        <p style="color:var(--muted);">Oublier de `free()` une mémoire allouée. La RAM se remplit petit
-                            à petit jusqu'à la mort du système.</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Pointer</span>
-                        <p style="color:var(--muted);">Une variable qui contient l'adresse d'une autre. Puissant mais
-                            source de 90% des bugs (Segfault).</p>
-                    </div>
+                    <p style="font-size:0.8rem; color:#888; margin-top:10px;"><strong>Indispensable pour :</strong>
+                        Audio temps réel, SPI rapide (écrans), UART haute vitesse.</p>
                 </div>
             </div>
         </div>
@@ -1492,59 +1499,63 @@
                 <div class="sec-num">10</div>
                 <div>
                     <h2 class="sec-title">PCB Design & Outillage</h2>
-                    <p class="sec-sub">Du prototype au produit</p>
+                    <p class="sec-sub">Du Prototype au Produit Fini</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:var(--kw);">
+            <div class="intro-box" style="border-left-color:var(--kw); margin-bottom:30px;">
                 <h4>🛠️ L'Atelier du Pro</h4>
-                <p>La Breadboard (platine d'essai) n'est que le début. Le but final est un circuit imprimé (PCB) fiable
-                    et fabricable.</p>
+                <p>La Breadboard n'est que le début. Le but final est un **circuit imprimé (PCB)** fiable, fabricable et
+                    prêt à l'assemblage en usine.</p>
             </div>
 
-            <div class="grid3">
-                <div class="tool-card">
-                    <strong style="color:var(--fn);">EDA Software</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">KiCad (Open Source) ou Altium (Pro). Pour dessiner le
-                        schéma et le routage.</p>
+            <div class="grid2">
+                <!-- DEBUG TOOLS -->
+                <div>
+                    <h4 style="color:var(--primary); margin-bottom:10px;">🔍 Outils de Debug</h4>
+                    <div class="grid2" style="gap:10px;">
+                        <div class="ref-card" style="padding:10px;">
+                            <strong style="color:var(--fn);">JTAG / SWD</strong>
+                            <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Interface physique pour flasher et
+                                déboguer pas-à-pas. Voir la RAM en temps réel.</p>
+                        </div>
+                        <div class="ref-card" style="padding:10px;">
+                            <strong style="color:var(--active);">Logic Analyzer</strong>
+                            <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">"Voir" les 0 et les 1 sur
+                                I2C/SPI/UART. Le Saleae est la référence.</p>
+                        </div>
+                        <div class="ref-card" style="padding:10px;">
+                            <strong style="color:var(--num);">Oscilloscope</strong>
+                            <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Voir la forme du signal (tensions,
+                                glitchs, bruit). Indispensable pour l'analogique.</p>
+                        </div>
+                        <div class="ref-card" style="padding:10px;">
+                            <strong style="color:var(--str);">Multimètre</strong>
+                            <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">L'ami fidèle : Tension (V),
+                                Continuité (Bip), Courant (A).</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="tool-card">
-                    <strong style="color:var(--active);">Logic Analyzer</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">Permet de "voir" les 0 et les 1 sur le fil I2C/UART.
-                        Indispensable pour débugger les protocoles.</p>
-                </div>
-                <div class="tool-card">
-                    <strong style="color:var(--num);">Multimètre</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">L'ami fidèle. Pour vérifier la tension (V), la
-                        continuité (Bip) et le courant (A).</p>
-                </div>
-            </div>
 
-            <!-- VOCAB M10 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Gerber Files</span>
-                        <p style="color:var(--muted);">Les fichiers PDF que l'on envoie à l'usine (JLCPCB, PCBWay) pour
-                            fabriquer la carte.</p>
+                <!-- PCB FLOW -->
+                <div>
+                    <h4 style="color:var(--accent); margin-bottom:10px;">📐 Flux de Conception PCB</h4>
+                    <div class="ref-card">
+                        <ol style="font-size:0.85rem; padding-left:18px; margin:0;">
+                            <li><strong>Schéma</strong> : Dessiner le circuit logique (KiCad, Altium).</li>
+                            <li><strong>Routage</strong> : Placer les composants, tracer les pistes cuivre.</li>
+                            <li><strong>Gerber</strong> : Exporter les fichiers machine (PDF de l'usine).</li>
+                            <li><strong>Fabrication</strong> : Envoyer à JLCPCB, PCBWay (10 PCB pour ~5$).</li>
+                            <li><strong>Assemblage</strong> : Souder (soi-même ou Pick & Place).</li>
+                        </ol>
                     </div>
-                    <div>
-                        <span class="vocab-term">SMD / SMT</span>
-                        <p style="color:var(--muted);">Surface Mount Device. Composants soudés SUR la carte
-                            (minuscules). Opposé au THT (Traversant).</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">Silkscreen</span>
-                        <p style="color:var(--muted);">La peinture blanche sur le PCB qui indique les noms des
-                            composants (R1, C2, LED1).</p>
+                    <div class="tool-card" style="margin-top:10px; padding:10px;">
+                        <strong>SMD vs THT</strong> : SMD (Surface Mount) = minuscule, pro. THT (Through-Hole) = gros,
+                        facile à souder à la main.
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    </div>
     </section>
 
     <!-- MODULE 11: DSP -->
@@ -1554,54 +1565,56 @@
                 <div class="sec-num">11</div>
                 <div>
                     <h2 class="sec-title">Traitement du Signal (DSP)</h2>
-                    <p class="sec-sub">Mathématiques appliquées au réel</p>
+                    <p class="sec-sub">Extraire l'Info du Chaos</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:#a29bfe;">
-                <h4>📉 Nettoyer le bruit</h4>
-                <p>Le monde réel est bruité. Un capteur ne donne jamais une ligne parfaite. Le DSP (Digital Signal
-                    Processing) permet de filtrer ces parasites mathématiquement pour extraire l'information utile (ex:
-                    Rythme cardiaque, Voix).</p>
+            <div class="intro-box" style="border-left-color:#a29bfe; margin-bottom:30px;">
+                <h4>📉 Nettoyer le Bruit</h4>
+                <p>Le monde réel est bruité. Un capteur ne donne jamais une ligne parfaite. Le **DSP** (Digital Signal
+                    Processing) permet de filtrer ces parasites pour extraire l'information utile (rythme cardiaque,
+                    voix, vibrations).</p>
             </div>
 
             <div class="grid2">
+                <!-- FILTERS -->
                 <div class="ref-card">
-                    <h4>Filtres Numériques</h4>
-                    <p>Pour éliminer les fréquences indésirables.</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li><strong>Low-Pass (Passe-Bas)</strong> : Garde les variations lentes (Température), supprime
-                            le bruit rapide. <em>Moyenne glissante (Moving Average)</em> est le plus simple.</li>
-                        <li><strong>High-Pass (Passe-Haut)</strong> : Garde les changements brusques (Choc), supprime la
-                            composante continue (Gravité).</li>
+                    <h4 style="color:#a29bfe;">🔊 Filtres Numériques</h4>
+                    <ul class="dense-list" style="font-size:0.85rem; margin-top:10px;">
+                        <li><strong>Low-Pass (Passe-Bas)</strong> : Garde les variations lentes (T°), supprime le bruit
+                            rapide. <em>EMA (Exponential Moving Average)</em> est le plus simple.</li>
+                        <li><strong>High-Pass (Passe-Haut)</strong> : Garde les changements brusques (Chocs), supprime
+                            la composante continue (Gravité).</li>
+                        <li><strong>Band-Pass</strong> : Isole une fréquence spécifique (ex: 50Hz du secteur à rejeter).
+                        </li>
                     </ul>
                 </div>
-                <div class="code-block" style="margin:0;">
-                    <pre><span class="c">// Filtre Passe-Bas Simple (Exponential Moving Average)</span>
-<span class="t">float</span> filtered = 0;
-<span class="k">loop</span>() {
-  <span class="t">float</span> raw = <span class="f">readSensor</span>();
-  <span class="c">// 10% de la nouvelle valeur, 90% de l'ancienne</span>
-  filtered = (0.1 * raw) + (0.9 * filtered);
-}</pre>
+
+                <!-- FFT -->
+                <div class="ref-card">
+                    <h4 style="color:var(--str);">🌈 FFT (Fast Fourier Transform)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Algorithme "magique" qui transforme un **signal temporel** (amplitude vs temps) en un **spectre
+                        fréquentiel** (amplitude vs fréquence).
+                    </p>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace;">
+                        Entrée : 1024 échantillons du micro.<br>
+                        Sortie : 512 bins de fréquence (0 → Nyquist).
+                    </div>
+                    <p style="font-size:0.8rem; color:#888; margin-top:10px;"><strong>Applications :</strong> Égaliseur
+                        audio, Reconnaissance vocale, Détection de vibrations.</p>
                 </div>
             </div>
 
-            <!-- VOCAB M11 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Nyquist Theorem</span>
-                        <p style="color:var(--muted);">Pour capturer un signal de fréquence F, il faut échantillonner à
-                            au moins <strong>2 x F</strong>. Sinon : Aliasing (artefacts).</p>
-                    </div>
-                    <div>
-                        <span class="vocab-term">FFT (Fast Fourier Transform)</span>
-                        <p style="color:var(--muted);">Algorithme magique qui transforme un Signal (Temps) en Spectre
-                            (Fréquences). Permet de voir "de quoi est composé" le son.</p>
-                    </div>
-                </div>
+            <!-- CODE EXAMPLE -->
+            <div class="code-block" style="margin-top:20px;">
+                <pre><span class="c">// Filtre Passe-Bas Simple (Exponential Moving Average)</span>
+<span class="t">float</span> filtered = 0;
+<span class="k">void</span> <span class="f">loop</span>() {
+  <span class="t">float</span> raw = <span class="f">readSensor</span>();
+  filtered = (0.1 * raw) + (0.9 * filtered); <span class="c">// Alpha = 0.1</span>
+}</pre>
             </div>
         </div>
     </section>
@@ -1613,52 +1626,73 @@
                 <div class="sec-num">12</div>
                 <div>
                     <h2 class="sec-title">Sécurité Embarquée</h2>
-                    <p class="sec-sub">Protéger le Hardware</p>
+                    <p class="sec-sub">L'Attaquant a Accès au Hardware</p>
                 </div>
             </div>
 
-            <div class="intro-box" style="border-left-color:#d63031;">
+            <div class="intro-box" style="border-left-color:#d63031; margin-bottom:30px;">
                 <h4>🛡️ Ce n'est pas que du Web</h4>
-                <p>Si un attaquant a un accès physique à votre carte, il peut souvent tout lire. La sécurité embarquée
-                    vise à protéger votre Propriété Intellectuelle (Firmware) et les données utilisateur (Clés WiFi),
-                    même contre un vol physique.</p>
+                <p>Si un attaquant a un accès **physique** à votre carte, il peut souvent tout lire (JTAG, dump Flash).
+                    La sécurité embarquée vise à protéger votre **Propriété Intellectuelle** (Firmware) et les **données
+                    utilisateur** (Clés WiFi), même contre un vol physique.</p>
             </div>
 
+            <!-- PROTECTION MECHANISMS -->
             <div class="grid3">
                 <div class="ref-card">
-                    <strong style="color:var(--fn);">Readout Protection (RDP)</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Un fusible matériel qui empêche le
-                        débugger (JTAG/SWD) de relire la mémoire Flash. Si verrouillé, le seul moyen de débloquer est
-                        d'effacer toute la puce.</p>
-                </div>
-                <div class="ref-card">
-                    <strong style="color:var(--accent);">Secure Boot</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Le MCU ne démarre QUE si le
-                        Firmware est signé cryptographiquement par votre clé privée. Empêche l'installation de malwares.
+                    <strong style="color:var(--fn);">🔐 Readout Protection (RDP)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px; color:var(--muted);">
+                        Un **fusible matériel** qui empêche le débugger (JTAG/SWD) de relire la mémoire Flash. Si
+                        verrouillé, le seul moyen de débloquer est d'**effacer toute la puce**.
                     </p>
                 </div>
                 <div class="ref-card">
-                    <strong style="color:var(--type);">Hardware Crypto</strong>
-                    <p style="font-size:0.85rem; margin-top:5px; color:var(--muted);">Accélérateurs matériels (AES, RNG)
-                        pour chiffrer les données sans ralentir le CPU principal.</p>
+                    <strong style="color:var(--accent);">✅ Secure Boot</strong>
+                    <p style="font-size:0.8rem; margin-top:5px; color:var(--muted);">
+                        Le MCU ne démarre QUE si le Firmware est **signé cryptographiquement** par votre clé privée.
+                        Empêche l'installation de malwares ou de firmwares pirates.
+                    </p>
+                </div>
+                <div class="ref-card">
+                    <strong style="color:var(--type);">⚡ Hardware Crypto</strong>
+                    <p style="font-size:0.8rem; margin-top:5px; color:var(--muted);">
+                        Accélérateurs matériels (AES-256, SHA, RNG) pour chiffrer les données **sans ralentir le CPU**
+                        et sans exposer les clés en RAM.
+                    </p>
                 </div>
             </div>
 
-            <!-- VOCAB M12 -->
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div>
-                        <span class="vocab-term">Side-Channel Attack</span>
-                        <p style="color:var(--muted);">Deviner la clé secrète en analysant la consommation de courant
-                            (Power Analysis) pendant que le CPU chiffre.</p>
+            <!-- ATTACK VECTORS -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">⚔️ Vecteurs d'Attaque</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="border-left:3px solid var(--error);">
+                        <strong style="color:var(--error);">Glitching</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            Perturber l'alimentation ou l'horloge pour faire "sauter" une instruction de sécurité. Le
+                            CPU exécute `if(password_ok)` mais le glitch fait qu'il saute le `if`.
+                        </p>
                     </div>
-                    <div>
-                        <span class="vocab-term">Glitching</span>
-                        <p style="color:var(--muted);">Perturber l'alimentation ou l'horloge pour faire "sauter" une
-                            instruction de sécurité au CPU.</p>
+                    <div class="ref-card" style="border-left:3px solid var(--kw);">
+                        <strong style="color:var(--kw);">Side-Channel (DPA/SPA)</strong>
+                        <p style="font-size:0.8rem; color:var(--muted); margin-top:5px;">
+                            Analyser la **consommation de courant** (Power Analysis) pendant que le CPU chiffre. La
+                            différence de conso révèle les bits de la clé secrète.
+                        </p>
                     </div>
                 </div>
+            </div>
+
+            <!-- BEST PRACTICES -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:#27c93f;">
+                <h4 style="color:#27c93f; margin-bottom:10px;">✅ Bonnes Pratiques</h4>
+                <ul class="dense-list" style="font-size:0.85rem;">
+                    <li><strong>Activez RDP</strong> sur tout produit en production.</li>
+                    <li><strong>Stockez les clés</strong> dans un Secure Element (ATECC608) ou l'eFuse, jamais en Flash
+                        claire.</li>
+                    <li><strong>Vérifiez les signatures</strong> des OTA avant de les flasher.</li>
+                    <li><strong>Effacez la RAM sensible</strong> après utilisation (Zeroize).</li>
+                </ul>
             </div>
         </div>
     </section>

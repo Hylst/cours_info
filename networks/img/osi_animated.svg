@@ -1,0 +1,76 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .layer-box { fill: #2d3748; stroke: #4a5568; stroke-width: 1; rx: 5; }
+        .layer-text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 14px; font-weight: 500; }
+        .packet { fill: #4fd1c5; rx: 5; }
+        .packet-text { font-family: 'Segoe UI', sans-serif; fill: #1a202c; font-size: 12px; font-weight: bold; }
+        
+        /* Animation Path */
+        @keyframes floatDown {
+            0% { transform: translateY(40px); opacity: 1; }
+            100% { transform: translateY(320px); opacity: 0; }
+        }
+        
+        .animated-packet {
+            animation: floatDown 3s infinite ease-in-out;
+        }
+
+        /* Hover Interaction */
+        .layer-group:hover .layer-box { fill: #4a5568; stroke: #4fd1c5; cursor: pointer; }
+        .layer-group:hover .layer-text { fill: #4fd1c5; }
+    </style>
+
+    <!-- Background -->
+    <rect width="600" height="400" fill="#1e1e1e" rx="10"/>
+    <text x="300" y="30" fill="#a0aec0" font-family="Segoe UI" font-size="16" text-anchor="middle" font-weight="bold">Flux de Données OSI (Encapsulation)</text>
+
+    <!-- Layers -->
+    <g class="layer-group" transform="translate(50, 60)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">7. Application</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 100)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">6. Présentation</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 140)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">5. Session</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 180)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">4. Transport</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 220)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">3. Réseau</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 260)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">2. Liaison</text>
+    </g>
+    <g class="layer-group" transform="translate(50, 300)">
+        <rect width="200" height="35" class="layer-box"/>
+        <text x="100" y="22" class="layer-text" text-anchor="middle">1. Physique</text>
+    </g>
+
+    <!-- Animated Packet -->
+    <g transform="translate(350, 20)">
+        <g class="animated-packet">
+            <rect width="120" height="30" class="packet"/>
+            <text x="60" y="20" class="packet-text" text-anchor="middle">DATA</text>
+        </g>
+    </g>
+
+    <!-- Arrow Flow -->
+    <line x1="410" y1="60" x2="410" y2="340" stroke="#4fd1c5" stroke-width="2" stroke-dasharray="5 5"/>
+    <polygon points="410,350 405,340 415,340" fill="#4fd1c5"/>
+
+    <!-- Explanations -->
+    <text x="430" y="100" fill="#718096" font-family="Segoe UI" font-size="12">Données Brutes</text>
+    <text x="430" y="200" fill="#718096" font-family="Segoe UI" font-size="12">+ TCP Header</text>
+    <text x="430" y="240" fill="#718096" font-family="Segoe UI" font-size="12">+ IP Header</text>
+    <text x="430" y="280" fill="#718096" font-family="Segoe UI" font-size="12">+ MAC Header</text>
+    <text x="430" y="320" fill="#718096" font-family="Segoe UI" font-size="12">Bits (010101)</text>
+
+</svg>

@@ -52,7 +52,7 @@
         <div class="container">
             <h3 style="margin-top:0; color:var(--text-color)">Pourquoi ce Mémo ?</h3>
             <p style="color:#c9d1d9; max-width:800px; line-height:1.6;">
-                Ce cours interactif est conçu pour être la référence ultime des concepts réseaux modernes. Que vous
+                Ce cours interactif est conçu pour rappeler les bases des concepts réseaux modernes. Que vous
                 soyez
                 développeur, administrateur système ou étudiant, comprendre le réseau est indispensable : c'est l'épine
                 dorsale
@@ -84,34 +84,58 @@
                 ingénieurs réseau.
             </p>
 
-            <details open>
-                <summary>💡 Les 7 Couches (Moyen mnémotechnique)</summary>
-                <div class="details-content">
-                    <p><em>"Pour Aimer Partout Ses Tantes Rester Célibataire"</em> (Physique -> Application)</p>
+            <img src="img/osi_animated.svg" alt="Flux de Données OSI Animé"
+                style="width:100%; max-width:600px; height:auto; display:block; margin:20px auto; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+
+            <div class="grid2" style="gap:30px;">
+                <div>
+                    <h3 style="color:var(--text-color); font-size:1.1rem;">L'Analogie de la Poste 📮</h3>
+                    <p style="color:var(--muted); font-size:0.95rem; line-height:1.6;">Pour comprendre l'encapsulation,
+                        imaginez l'envoi d'une lettre recommandée :</p>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.8; font-size:0.9rem; color:#b0b0b0;">
+                        <li><strong style="color:var(--primary-bright)">7. Application</strong> : Vous écrivez la lettre
+                            (Contenu).</li>
+                        <li><strong>6. Présentation</strong> : Vous traduisez la lettre en anglais (Formatage).</li>
+                        <li><strong>5. Session</strong> : Vous vérifiez que le destinataire est chez lui (Connexion).
+                        </li>
+                        <li><strong style="color:var(--num)">4. Transport</strong> : Vous choisissez "Recommandé avec
+                            A.R." (Fiabilité TCP).</li>
+                        <li><strong style="color:var(--fn)">3. Réseau</strong> : La Poste ajoute l'adresse du
+                            destinataire sur l'enveloppe (Adresse IP).</li>
+                        <li><strong>2. Liaison</strong> : Le camion transporte la lettre au centre de tri local (Adresse
+                            MAC).</li>
+                        <li><strong>1. Physique</strong> : La route sur laquelle roule le camion (Câble).</li>
+                    </ul>
+                </div>
+
+                <details open
+                    style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                    <summary style="cursor:pointer; font-weight:bold; color:var(--text-color);">Techniquement (Les
+                        Couches)</summary>
                     <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:0.9rem;">
                         <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                            <th>#</th>
                             <th>Couche</th>
-                            <th>Nom</th>
-                            <th>Donnée (PDU)</th>
+                            <th>Unité (PDU)</th>
                             <th>Exemples</th>
                         </tr>
                         <tr>
                             <td>7</td>
                             <td style="color:var(--primary-bright)">Application</td>
                             <td>Data</td>
-                            <td>HTTP, FTP, SSH, DNS</td>
+                            <td>HTTP, SMTP</td>
                         </tr>
                         <tr>
                             <td>6</td>
                             <td>Présentation</td>
                             <td>Data</td>
-                            <td>SSL/TLS, JPEG, ASCII, Compression</td>
+                            <td>TLS, JPEG</td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td>Session</td>
                             <td>Data</td>
-                            <td>Sockets, RPC, NetBIOS</td>
+                            <td>RPC, Socket</td>
                         </tr>
                         <tr>
                             <td>4</td>
@@ -123,23 +147,23 @@
                             <td>3</td>
                             <td style="color:var(--fn)">Réseau</td>
                             <td>Paquet</td>
-                            <td>IP, ICMP, IPsec, OSPF</td>
+                            <td>IP, ICMP</td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Liaison</td>
-                            <td>Trame (Frame)</td>
-                            <td>Ethernet, MAC, Wi-Fi, ARP</td>
+                            <td>Trame</td>
+                            <td>Ethernet, Wi-Fi</td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>Physique</td>
                             <td>Bit</td>
-                            <td>Câble, Fibre, Ondes, RJ45</td>
+                            <td>RJ45, Fibre</td>
                         </tr>
                     </table>
-                </div>
-            </details>
+                </details>
+            </div>
 
             <div class="grid2" style="margin-top:20px;">
                 <div class="info">
@@ -369,8 +393,8 @@
                 ou <strong>"Après Plusieurs Semaines Tout Respire La Paix"</strong> (de haut en bas).
             </p>
 
-            <img src="img/osi_model.svg" alt="Modèle OSI Schema"
-                style="width:100%; max-width:800px; height:auto; margin-bottom:20px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+            <img src="img/osi_animated.svg" alt="Modèle OSI Animé"
+                style="width:100%; max-width:800px; height:auto; margin-bottom:20px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
 
             <div class="tip">
                 <strong>CIDR (Classless Inter-Domain Routing)</strong><br>
@@ -876,10 +900,47 @@ les paquets en temps réel.
             </div>
 
             <p style="color:var(--muted); margin-bottom:20px;">
-                Le Cloud Computing abstrait le matériel physique.
-                On ne gère plus des serveurs individuels, mais des services interconnectés haute performance (Scaling,
-                CDN).
+                Le Cloud Computing n'est pas "magique", c'est juste l'ordinateur de quelqu'un d'autre (Amazon, Google,
+                Microsoft) que vous louez à la seconde.
+                L'innovation majeure est l'<strong>abstraction</strong> du matériel.
             </p>
+
+            <div class="grid2" style="gap:20px;">
+                <div class="code">
+                    <div class="code-head">Les 3 Modèles de Service</div>
+                    <ul style="margin:0; padding:15px; list-style:none; line-height:1.6;">
+                        <li>
+                            <strong style="color:var(--fn)">IaaS</strong> (Infrastructure)<br>
+                            <span style="color:var(--muted); font-size:0.85rem;">Vous gérez l'OS + App. (Ex: EC2,
+                                VPS)</span>
+                        </li>
+                        <li style="margin-top:10px;">
+                            <strong style="color:var(--num)">PaaS</strong> (Platform)<br>
+                            <span style="color:var(--muted); font-size:0.85rem;">Vous gérez juste le Code. (Ex: Vercel,
+                                Heroku)</span>
+                        </li>
+                        <li style="margin-top:10px;">
+                            <strong style="color:var(--primary-bright)">SaaS</strong> (Software)<br>
+                            <span style="color:var(--muted); font-size:0.85rem;">Vous utilisez le logiciel. (Ex: Gmail,
+                                Notion)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info">
+                    <strong>Concepts Clés</strong>
+                    <ul style="margin-top:10px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>Load Balancer</strong> : Policier qui répartit le trafic entrant entre plusieurs
+                            serveurs pour éviter la surcharge.</li>
+                        <li><strong>Auto-Scaling</strong> : Ajoute ou supprime des serveurs automatiquement selon la
+                            charge.</li>
+                        <li><strong>CDN (Content Delivery Network)</strong> : Serveurs caches partout dans le monde pour
+                            servir les images/CSS plus vite (ex: Cloudflare).</li>
+                        <li><strong>Serverless</strong> : Exécuter une fonction (code) uniquement quand on l'appelle. On
+                            ne paie que le temps d'exécution (ms).</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="grid2">
                 <div class="info">
@@ -928,28 +989,53 @@ les paquets en temps réel.
                 de DNS) et configurer chaque machine manuellement (pas de DHCP).
             </p>
 
-            <div class="grid2">
-                <div class="info">
-                    <strong>DNS (Domain Name System)</strong><br>
-                    <span style="font-size:0.85rem; color:#888;">L'Annuaire d'Internet</span>
-                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
-                        <li><strong>A Record</strong> : Domaine → IPv4.</li>
-                        <li><strong>AAAA Record</strong> : Domaine → IPv6.</li>
-                        <li><strong>CNAME</strong> : Alias (www → domaine).</li>
-                        <li><strong>MX</strong> : Serveur Mail (pour les emails).</li>
-                    </ul>
-                </div>
-                <div class="info" style="border-left-color:var(--num);">
-                    <strong>DHCP (Dynamic Host Config)</strong><br>
-                    <span style="font-size:0.85rem; color:#888;">Le Distributeur d'IP</span>
-                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
-                        <li><strong>Discover</strong> : Client cherche serveur.</li>
-                        <li><strong>Offer</strong> : Serveur propose une IP.</li>
-                        <li><strong>Request</strong> : Client accepte l'IP.</li>
-                        <li><strong>Acknowledge</strong> : Serveur confirme (Bail).</li>
-                    </ul>
+            <!-- DNS SECTION -->
+            <div class="code">
+                <div class="code-head">1. DNS (L'Annuaire)</div>
+                <div class="grid2" style="background:transparent; padding:0; border:none;">
+                    <div>
+                        <p style="margin-top:10px; line-height:1.6; color:var(--text-color);">
+                            <strong>Analogie :</strong> Le DNS est le contact de votre téléphone. Vous cliquez sur
+                            "Maman" (Domaine), le téléphone compose le <code>06.12.34.56.78</code> (IP).
+                        </p>
+                        <ul style="margin-top:10px; padding-left:15px; font-size:0.9rem; color:var(--muted);">
+                            <li><strong>Recursive :</strong> Votre serviteur (FAI) qui cherche pour vous.</li>
+                            <li><strong>Root (.) :</strong> Les grands sages qui connaissent les TLD.</li>
+                            <li><strong>TLD (.com) :</strong> Gèrent les extensions.</li>
+                            <li><strong>Authoritative :</strong> Le serveur final qui a la réponse.</li>
+                        </ul>
+                    </div>
+                    <img src="img/dns_flow.svg" alt="Schéma Résolution DNS" style="width:100%; border-radius:8px;">
                 </div>
             </div>
+
+            <!-- DHCP SECTION -->
+            <div class="code" style="margin-top:30px;">
+                <div class="code-head">2. DHCP (Le Bailleur)</div>
+                <p style="margin-top:10px; line-height:1.6; color:var(--text-color);">
+                    <strong>Analogie :</strong> C'est comme un ticket de parking. On vous prête une place (IP) pour une
+                    durée limitée (Bail/Lease).
+                </p>
+                <img src="img/dhcp_dora.svg" alt="DHCP DORA Process"
+                    style="width:100%; margin-top:15px; border-radius:8px;">
+                <div class="tip" style="margin-top:15px; font-size:0.85rem;">
+                    <strong>DORA</strong> : <strong>D</strong>iscover (Cherche), <strong>O</strong>ffer (Propose),
+                    <strong>R</strong>equest (Demande), <strong>A</strong>cknowledge (Valide).
+                </div>
+            </div>
+            </ul>
+        </div>
+        <div class="info" style="border-left-color:var(--num);">
+            <strong>DHCP (Dynamic Host Config)</strong><br>
+            <span style="font-size:0.85rem; color:#888;">Le Distributeur d'IP</span>
+            <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
+                <li><strong>Discover</strong> : Client cherche serveur.</li>
+                <li><strong>Offer</strong> : Serveur propose une IP.</li>
+                <li><strong>Request</strong> : Client accepte l'IP.</li>
+                <li><strong>Acknowledge</strong> : Serveur confirme (Bail).</li>
+            </ul>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -994,6 +1080,64 @@ les paquets en temps réel.
                         <li><strong>OSPF</strong> : Interne (Entreprise).</li>
                         <li><strong>BGP</strong> : Externe (Internet).</li>
                     </ul>
+                    <p class="sec-sub">La boussole des paquets</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Le routeur est un orienteur. Il ne connaît pas TOUT Internet, il connaît juste son <strong>prochain
+                    voisin</strong> (Next Hop).
+                <br><br>
+                <strong>Analogie :</strong> Le GPS. À chaque carrefour (Routeur), on décide de tourner à gauche ou à
+                droite pour se rapprocher de la destination.
+            </p>
+
+            <div class="code">
+                <div class="code-head">Exemple de Table de Routage Simplifiée</div>
+                <table style="width:100%; font-family:consolas; font-size:0.9rem; color:var(--text-color);">
+                    <tr style="border-bottom:1px solid #555; text-align:left;">
+                        <th>Destination</th>
+                        <th>Masque</th>
+                        <th>Gateway (Passerelle)</th>
+                        <th>Interface</th>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--primary-bright)">192.168.1.0</td>
+                        <td>255.255.255.0</td>
+                        <td>0.0.0.0 (Direct)</td>
+                        <td>ETH0 (LAN)</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--num)">10.0.0.0</td>
+                        <td>255.0.0.0</td>
+                        <td>192.168.1.254</td>
+                        <td>ETH0</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--fn)">0.0.0.0 (Internet)</td>
+                        <td>0.0.0.0</td>
+                        <td>80.12.34.56 (Box FAI)</td>
+                        <td>WAN (Internet)</td>
+                    </tr>
+                </table>
+                <div class="tip" style="margin-top:10px;">
+                    Si le routeur reçoit un paquet pour <code>8.8.8.8</code>, il ne matche ni le LAN ni le 10.x.x.x,
+                    donc il utilise la ligne <strong>0.0.0.0 (Défaut)</strong> et l'envoie vers le WAN.
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info">
+                    <strong>Routage Statique</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Manuel</span>
+                    <p style="font-size:0.9rem;">L'admin tape les routes à la main. Sûr mais fastidieux. Idéal petits
+                        réseaux.</p>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Routage Dynamique (OSPF / BGP)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Automatique</span>
+                    <p style="font-size:0.9rem;">Les routeurs se parlent : <em>"J'ai une route vers X !"</em>. Si un
+                        câble casse, ils recalculent le chemin (comme Waze).</p>
                 </div>
             </div>
         </div>

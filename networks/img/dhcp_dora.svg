@@ -1,0 +1,41 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .actor { fill: #2d3748; stroke: #a0aec0; stroke-width: 2; }
+        .text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 14px; font-weight: bold; }
+        .msg-text { font-family: 'Consolas', monospace; fill: #fbbf24; font-size: 13px; }
+        .arrow { stroke: #fbbf24; stroke-width: 2; marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24"/>
+        </marker>
+    </defs>
+
+    <!-- Client -->
+    <circle cx="100" cy="50" r="30" class="actor"/>
+    <text x="100" y="95" class="text" text-anchor="middle">Client (PC)</text>
+    <line x1="100" y1="100" x2="100" y2="280" stroke="#4a5568" stroke-width="2" stroke-dasharray="5 5"/>
+
+    <!-- Server -->
+    <circle cx="500" cy="50" r="30" class="actor" stroke="#48bb78"/>
+    <text x="500" y="95" class="text" text-anchor="middle">DHCP Server</text>
+    <line x1="500" y1="100" x2="500" y2="280" stroke="#4a5568" stroke-width="2" stroke-dasharray="5 5"/>
+
+    <!-- DORA Steps -->
+    <!-- D -->
+    <line x1="100" y1="130" x2="490" y2="130" class="arrow"/>
+    <text x="300" y="125" class="msg-text" text-anchor="middle">1. DISCOVER (Broadcast: "Y'a quelqu'un ?")</text>
+
+    <!-- O -->
+    <line x1="500" y1="170" x2="110" y2="170" class="arrow"/>
+    <text x="300" y="165" class="msg-text" text-anchor="middle">2. OFFER (Unicast: "J'ai l'IP 10.0.0.5")</text>
+
+    <!-- R -->
+    <line x1="100" y1="210" x2="490" y2="210" class="arrow"/>
+    <text x="300" y="205" class="msg-text" text-anchor="middle">3. REQUEST (Broadcast: "Je prends la 10.0.0.5 !")</text>
+
+    <!-- A -->
+    <line x1="500" y1="250" x2="110" y2="250" class="arrow"/>
+    <text x="300" y="245" class="msg-text" text-anchor="middle">4. ACKNOWLEDGE (Unicast: "C'est validé !")</text>
+
+</svg>

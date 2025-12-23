@@ -24,13 +24,17 @@
                 <a href="#s1">OSI</a>
                 <a href="#s2">Proto</a>
                 <a href="#s3">IP</a>
-                <a href="#s4">Matériel</a>
+                <a href="#s4">Hardware</a>
                 <a href="#s5">IPv6</a>
-                <a href="#s6">Sécurité</a>
+                <a href="#s6">Sécu</a>
                 <a href="#s7">Wi-Fi</a>
                 <a href="#s8">TCP/IP</a>
                 <a href="#s9">Outils</a>
                 <a href="#s10">Cloud</a>
+                <a href="#s11">DNS</a>
+                <a href="#s12">Routage</a>
+                <a href="#s13">VLAN</a>
+                <a href="#s14">Docker</a>
             </nav>
         </div>
     </header>
@@ -40,6 +44,25 @@
             <p>Comprendre comment circule l'information : Architecture, Protocoles et Adressage.</p>
         </div>
     </section>
+    <!-- INTRO GENERAL -->
+    <div class="intro-box"
+        style="background:var(--card-bg); border-bottom:1px solid var(--border-color); padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--text-color)">Pourquoi ce Mémo ?</h3>
+            <p style="color:#c9d1d9; max-width:800px; line-height:1.6;">
+                Ce cours interactif est conçu pour être la référence ultime des concepts réseaux modernes. Que vous
+                soyez
+                développeur, administrateur système ou étudiant, comprendre le réseau est indispensable : c'est l'épine
+                dorsale
+                de toutes les applications connectées.
+            </p>
+            <p style="color:#8b949e; font-size:0.95rem; margin-top:15px; line-height:1.6;">
+                Nous couvrirons ici les fondamentaux théoriques (OSI, TCP/IP), l'infrastructure (Routeurs, Switchs),
+                la sécurité (VPN, Firewalls), jusqu'aux architectures modernes (Cloud, IoT, IPv6). Chaque module va
+                à l'essentiel pour vous donner les clés de compréhension immédiates.
+            </p>
+        </div>
+    </div>
 
     <!-- S1: OSI -->
     <section id="s1">
@@ -51,6 +74,13 @@
                     <p class="sec-sub">Open Systems Interconnection (7 Couches)</p>
                 </div>
             </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Le modèle OSI (Open Systems Interconnection) est une norme <strong>théorique</strong> qui standardise la
+                communication
+                entre systèmes informatiques en la découpant en 7 niveaux d'abstraction. C'est le langage universel des
+                ingénieurs réseau.
+            </p>
 
             <details open>
                 <summary>💡 Les 7 Couches (Moyen mnémotechnique)</summary>
@@ -162,6 +192,12 @@
                     <p class="sec-sub">TCP/IP Suite, Ports Standards</p>
                 </div>
             </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Les protocoles sont les règles de langage qui permettent aux machines de se comprendre.
+                La suite <strong>TCP/IP</strong> est la base d'Internet, dictant comment les données sont empaquetées,
+                adressées, transmises et reçues.
+            </p>
 
             <div class="grid2">
                 <div class="code">
@@ -278,19 +314,13 @@
             </table>
 
             <!-- TLS HANDSHAKE -->
-            <div class="code" style="margin-top:20px;">
-                <div class="code-head">TLS Handshake (HTTPS)</div>
-                <pre style="text-align:center; line-height:1.8;">
-<span class="var">Client</span>                              <span class="var">Serveur</span>
-   |                                    |
-   |---- <span class="kw">ClientHello</span> (versions TLS) ---->|
-   |                                    |
-   |<---- <span class="kw">ServerHello</span> + <span class="fn">Certificat</span> -----|
-   |                                    |
-   |---- <span class="num">Clé pré-master</span> (chiffrée) ----->|
-   |                                    |
-   |<===== <span class="str">Communication chiffrée</span> =====|</pre>
-            </div>
+            <!-- TLS HANDSHAKE -->
+            <h3 style="margin-top:30px;">TLS Handshake (HTTPS)</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Avant d'envoyer la moindre donnée sensible, le client et
+                le serveur doivent se mettre d'accord sur une clé de chiffrement.</p>
+
+            <img src="img/tls_handshake.svg" alt="TLS Handshake Diagram"
+                style="width:100%; max-width:600px; height:auto; display:block; margin:20px auto; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
 
             <div class="tip" style="margin-top:20px;"><strong>💡 HTTPS</strong> = HTTP + TLS (anciennement SSL). Le
                 cadenas 🔒 dans le navigateur indique que TLS est actif.</div>
@@ -307,6 +337,12 @@
                     <p class="sec-sub">32 bits, CIDR, Sous-réseaux</p>
                 </div>
             </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                L'adresse IP (Internet Protocol) est l'identifiant unique d'une machine sur un réseau.
+                En IPv4, elle est codée sur <strong>32 bits</strong> (ex: 192.168.1.1). Le CIDR permet de gérer
+                efficacement les sous-réseaux.
+            </p>
 
             <p style="color:var(--muted); margin-bottom:20px;">
                 Moyen mémotechnique : <strong>"All People Seem To Need Data Processing"</strong> (de bas en haut)
@@ -398,6 +434,12 @@
                     <p class="sec-sub">Hub, Switch, Routeur</p>
                 </div>
             </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Pour construire un réseau physique, nous utilisons des équipements spécifiques qui opèrent à différentes
+                couches du modèle OSI.
+                Comprendre la différence entre un Switch et un Routeur est fondamental.
+            </p>
 
             <img src="img/topology.svg" alt="Topology Réseau Schema"
                 style="width:100%; max-width:800px; height:auto; margin-bottom:30px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
@@ -523,6 +565,13 @@
                 </div>
             </div>
 
+            <p style="color:var(--muted); margin-bottom:20px;">
+                La sécurité réseau vise à protéger l'intégrité, la confidentialité et la disponibilité des données
+                (CIA).
+                Elle repose sur des équipements (Firewall) et des techniques (Chiffrement, VPN) pour contrer les
+                menaces.
+            </p>
+
             <div class="grid2">
                 <div class="code">
                     <div class="code-head">CIA Triad (Le socle de la sécu)</div>
@@ -588,6 +637,11 @@ Le service est accessible quand on en a besoin.
                 </div>
             </div>
 
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Le Wi-Fi (Wireless Fidelity) permet la connexion sans fil via des ondes radio (normes IEEE 802.11).
+                Il évolue constamment pour offrir plus de vitesse (Wi-Fi 6/7) et de sécurité (WPA3).
+            </p>
+
             <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
                 <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
                     <th>Standard</th>
@@ -622,20 +676,13 @@ Le service est accessible quand on en a besoin.
             </table>
 
             <div class="grid2">
-                <div class="code">
-                    <div class="code-head">Fréquences : 2.4 vs 5 GHz</div>
-                    <pre style="color:var(--muted)">
-<span class="kw">2.4 GHz</span>
-- Meilleure Portée (traverse mieux les murs)
-- Débit plus lent
-- Très encombré (Micro-ondes, Bluetooth)
-- 3 canaux non-chevauchants (1, 6, 11)
-
-<span class="kw">5 GHz</span>
-- Moins de portée (absorbé par les obstacles)
-- Débit très rapide
-- Plus stable (nombreux canaux)
-- Idéal pour streaming/gaming</pre>
+                <div>
+                    <h3 style="font-size:1.1rem; color:var(--text-color);">Fréquences & Canaux</h3>
+                    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:15px;">
+                        Le 2.4 GHz est une autoroute embouteillée (seulement 3 voies). Le 5 GHz est une autoroute large.
+                    </p>
+                    <img src="img/wifi_channels.svg" alt="Wifi Channels 2.4 vs 5GHz"
+                        style="width:100%; height:auto; border-radius:8px; border:1px solid var(--border);">
                 </div>
 
                 <div class="info">
@@ -726,6 +773,11 @@ Le service est accessible quand on en a besoin.
                 </div>
             </div>
 
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Savoir diagnostiquer un problème est LA compétence n°1.
+                Ces commandes terminal sont universelles (Windows/Linux) pour tester la connectivité et le chemin.
+            </p>
+
             <div class="code">
                 <div class="code-head">Commandes Terminal (Windows / Linux)</div>
                 <pre>
@@ -772,6 +824,12 @@ les paquets en temps réel.
                 </div>
             </div>
 
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Le Cloud Computing abstrait le matériel physique.
+                On ne gère plus des serveurs individuels, mais des services interconnectés haute performance (Scaling,
+                CDN).
+            </p>
+
             <div class="grid2">
                 <div class="info">
                     <strong>Load Balancer (Équilibreur)</strong><br>
@@ -797,6 +855,188 @@ les paquets en temps réel.
                     de routage, et passerelles.
                 </div>
             </div>
+        </div>
+    </section>
+
+    </div>
+    </section>
+
+    <!-- S11: DNS & DHCP -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">DNS & DHCP</h2>
+                    <p class="sec-sub">Services d'Infrastructure</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Ces deux protocoles sont les piliers invisibles du réseau. Sans eux, il faudrait mémoriser des IP (pas
+                de DNS) et configurer chaque machine manuellement (pas de DHCP).
+            </p>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>DNS (Domain Name System)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">L'Annuaire d'Internet</span>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
+                        <li><strong>A Record</strong> : Domaine → IPv4.</li>
+                        <li><strong>AAAA Record</strong> : Domaine → IPv6.</li>
+                        <li><strong>CNAME</strong> : Alias (www → domaine).</li>
+                        <li><strong>MX</strong> : Serveur Mail (pour les emails).</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--num);">
+                    <strong>DHCP (Dynamic Host Config)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Le Distributeur d'IP</span>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
+                        <li><strong>Discover</strong> : Client cherche serveur.</li>
+                        <li><strong>Offer</strong> : Serveur propose une IP.</li>
+                        <li><strong>Request</strong> : Client accepte l'IP.</li>
+                        <li><strong>Acknowledge</strong> : Serveur confirme (Bail).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S12: ROUTING -->
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Routage</h2>
+                    <p class="sec-sub">Statique vs Dynamique</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Comment un paquet trouve son chemin à travers des milliers de réseaux ? Grâce aux tables de routage des
+                routeurs.
+            </p>
+
+            <div class="code">
+                <div class="code-head">Exemple Table Routage Simplifiée</div>
+                <pre>
+<span class="kw">Dest. Network</span>    <span class="fn">Gateway (Next Hop)</span>     <span class="num">Interface</span>
+0.0.0.0/0        192.168.1.254 (Box)    eth0  <span class="c">(Route par défaut)</span>
+192.168.1.0/24   0.0.0.0                eth0  <span class="c">(Directement connecté)</span>
+10.0.0.0/8       10.0.0.1 (VPN)         tun0</pre>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info">
+                    <strong>Routage Statique</strong><br>
+                    L'admin configure les routes manuellement.
+                    <ul>
+                        <li>Simple, Sécurisé.</li>
+                        <li>Ne s'adapte pas aux pannes.</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Routage Dynamique (OSPF, BGP)</strong><br>
+                    Les routeurs se parlent pour trouver le meilleur chemin.
+                    <ul>
+                        <li><strong>OSPF</strong> : Interne (Entreprise).</li>
+                        <li><strong>BGP</strong> : Externe (Internet).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S13: VLAN -->
+    <section id="s13">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">VLAN & Virtualisation</h2>
+                    <p class="sec-sub">Segmentation Logique</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Pourquoi acheter 3 switchs physiques quand un seul suffit ? Les VLANs permettent de découper
+                virtuellement un switch en plusieurs réseaux isolés.
+            </p>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>VLAN (Virtual LAN)</strong><br>
+                    Sépare les domaines de broadcast.
+                    <ul>
+                        <li><strong>VLAN 10</strong> : Service RH.</li>
+                        <li><strong>VLAN 20</strong> : Développeurs.</li>
+                        <li>Sécurité : RH ne voit pas Devs.</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--str);">
+                    <strong>Trunking (802.1Q)</strong><br>
+                    Faire passer plusieurs VLANs sur un seul câble.
+                    <ul>
+                        <li><strong>Tagging</strong> : Ajoute une étiquette au paquet.</li>
+                        <li>Relie Switch à Switch (ou Switch à Routeur).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S14: DOCKER NETWORK -->
+    <section id="s14">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">Réseau Docker</h2>
+                    <p class="sec-sub">Bridge, Host, Overlay</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Dans le monde des conteneurs, le réseau est virtualisé. Chaque conteneur peut avoir sa propre IP
+                interne, invisible de l'extérieur.
+            </p>
+
+            <div class="code">
+                <div class="code-head">Commandes Docker Network</div>
+                <pre>
+<span class="kw">docker network ls</span>
+Lister les réseaux.
+
+<span class="kw">docker network inspect bridge</span>
+Voir les IP des conteneurs connectés.
+
+<span class="kw">docker run -p 8080:80 nginx</span>
+Port Mapping : Redirige le port 8080 de l'Hôte vers le 80 du Conteneur.</pre>
+            </div>
+
+            <table style="width:100%; margin-top:20px; font-size:0.9rem; border-collapse:collapse;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Driver</th>
+                    <th>Description</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td style="color:var(--primary-bright)"><strong>Bridge</strong></td>
+                    <td>Par défaut. Réseau privé interne (NAT).</td>
+                    <td>Apps isolées (90% des cas).</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--num)"><strong>Host</strong></td>
+                    <td>Partage l'IP de la machine hôte.</td>
+                    <td>Performance max (pas d'isolation).</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--fn)"><strong>Overlay</strong></td>
+                    <td>Réseau multi-hôtes (Swarm/K8s).</td>
+                    <td>Clusters distribués.</td>
+                </tr>
+            </table>
         </div>
     </section>
 

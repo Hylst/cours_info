@@ -1,0 +1,52 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 14px; }
+        .label { fill: #aaa; font-size: 12px; }
+        .channel { fill-opacity: 0.7; stroke: white; stroke-width: 1; }
+    </style>
+
+    <!-- Background -->
+    <rect width="600" height="300" fill="#1e1e1e" rx="10"/>
+
+    <!-- 2.4 GHz Section -->
+    <text x="30" y="40" class="text" style="font-weight:bold; fill:#f6e05e">2.4 GHz (Encombré)</text>
+    <text x="30" y="60" class="label">Seulement 3 canaux sans chevauchement</text>
+
+    <!-- Channels 1, 6, 11 -->
+    <path d="M50 150 Q75 100 100 150" fill="#e53e3e" class="channel"/>
+    <text x="75" y="140" class="text" text-anchor="middle" font-size="10">Ch 1</text>
+    
+    <!-- Interference -->
+    <path d="M75 150 Q100 100 125 150" fill="#444" class="channel" style="stroke-dasharray:2 2"/>
+    <path d="M100 150 Q125 100 150 150" fill="#444" class="channel" style="stroke-dasharray:2 2"/>
+
+    <path d="M175 150 Q200 100 225 150" fill="#e53e3e" class="channel"/>
+    <text x="200" y="140" class="text" text-anchor="middle" font-size="10">Ch 6</text>
+
+    <path d="M300 150 Q325 100 350 150" fill="#e53e3e" class="channel"/>
+    <text x="325" y="140" class="text" text-anchor="middle" font-size="10">Ch 11</text>
+
+    <!-- 5 GHz Section -->
+    <line x1="30" y1="180" x2="570" y2="180" stroke="#444"/>
+    <text x="30" y="210" class="text" style="font-weight:bold; fill:#4fd1c5">5 GHz (Rapide)</text>
+    <text x="30" y="230" class="label">Nombreux canaux indépendants (20/40/80 MHz)</text>
+
+    <g transform="translate(0, 50)">
+        <rect x="50" y="200" width="30" height="20" fill="#4299e1" rx="2"/>
+        <text x="65" y="215" class="text" text-anchor="middle" font-size="10">36</text>
+
+        <rect x="90" y="200" width="30" height="20" fill="#4299e1" rx="2"/>
+        <text x="105" y="215" class="text" text-anchor="middle" font-size="10">40</text>
+
+        <rect x="130" y="200" width="30" height="20" fill="#4299e1" rx="2"/>
+        <text x="145" y="215" class="text" text-anchor="middle" font-size="10">44</text>
+
+        <rect x="170" y="200" width="30" height="20" fill="#4299e1" rx="2"/>
+         <text x="185" y="215" class="text" text-anchor="middle" font-size="10">48</text>
+
+        <!-- Bandwidth block -->
+        <rect x="50" y="180" width="150" height="15" fill="none" stroke="#4fd1c5" rx="4"/>
+        <text x="125" y="191" class="label" text-anchor="middle" font-size="9">80 MHz (Vitesse Max)</text>
+    </g>
+
+</svg>

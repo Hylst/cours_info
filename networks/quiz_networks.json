@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Quiz Réseaux - 100 Questions",
-        "total": 130
+        "total": 150
     },
     "questions": [
         {
@@ -1563,6 +1563,246 @@
             ],
             "answer": 0,
             "explanation": "Combine vitesse du switch et intelligence du routeur."
+        },
+        {
+            "id": 131,
+            "question": "Que signifie DNS ?",
+            "options": [
+                "Domain Name System",
+                "Data Network Service",
+                "Digital Name Space",
+                "Domain New Server"
+            ],
+            "answer": 0,
+            "explanation": "Traduit les noms de domaine en IP."
+        },
+        {
+            "id": 132,
+            "question": "Quel enregistrement DNS mappe un domaine vers une IPv4 ?",
+            "options": [
+                "A",
+                "AAAA",
+                "CNAME",
+                "MX"
+            ],
+            "answer": 0,
+            "explanation": "A pour IPv4, AAAA pour IPv6."
+        },
+        {
+            "id": 133,
+            "question": "Quel est le rôle du DHCP ?",
+            "options": [
+                "Attribuer automatiquement des IP",
+                "Chiffrer les données",
+                "Bloquer les virus",
+                "Résoudre les noms de domaine"
+            ],
+            "answer": 0,
+            "explanation": "Dynamic Host Configuration Protocol gére l'attribution d'IP."
+        },
+        {
+            "id": 134,
+            "question": "Quelle étape vient EN PREMIER dans l'échange DHCP (DORA) ?",
+            "options": [
+                "Discover",
+                "Offer",
+                "Request",
+                "Acknowledge"
+            ],
+            "answer": 0,
+            "explanation": "Le client diffuse un Discover pour trouver un serveur."
+        },
+        {
+            "id": 135,
+            "question": "En routage statique :",
+            "options": [
+                "L'admin configure les routes manuellement",
+                "Le routeur apprend tout seul",
+                "C'est moins sécurisé",
+                "Ça consomme plus de CPU"
+            ],
+            "answer": 0,
+            "explanation": "Manuel, simple et sécurisé pour les petits réseaux."
+        },
+        {
+            "id": 136,
+            "question": "Quel protocole est utilisé pour le routage EXTERNE (Internet) ?",
+            "options": [
+                "BGP",
+                "OSPF",
+                "RIP",
+                "EIGRP"
+            ],
+            "answer": 0,
+            "explanation": "Border Gateway Protocol gère les routes entre les FAI."
+        },
+        {
+            "id": 137,
+            "question": "À quoi sert un VLAN ?",
+            "options": [
+                "Segmenter logiquement un réseau au niveau 2",
+                "Augmenter la vitesse du Wi-Fi",
+                "Chiffrer les données",
+                "Connecter deux routeurs"
+            ],
+            "answer": 0,
+            "explanation": "Isole les domaines de broadcast sur un même switch."
+        },
+        {
+            "id": 138,
+            "question": "Quel standard permet le 'Trunking' (plusieurs VLAN sur un câble) ?",
+            "options": [
+                "802.1Q",
+                "802.11ax",
+                "802.3x",
+                "802.1X"
+            ],
+            "answer": 0,
+            "explanation": "Ajoute un tag (étiquette) à la trame Ethernet."
+        },
+        {
+            "id": 139,
+            "question": "Par défaut, deux VLANs différents :",
+            "options": [
+                "Ne peuvent pas communiquer sans routeur",
+                "Communiquent librement",
+                "Sont fusionnés",
+                "Partagent la même IP"
+            ],
+            "answer": 0,
+            "explanation": "Il faut un routeur (Inter-VLAN Routing) pour passer de l'un à l'autre."
+        },
+        {
+            "id": 140,
+            "question": "Quel driver réseau Docker connecte un conteneur au réseau privé interne (NAT) ?",
+            "options": [
+                "Bridge",
+                "Host",
+                "Overlay",
+                "Macvlan"
+            ],
+            "answer": 0,
+            "explanation": "Bridge est le défaut. Isole le conteneur."
+        },
+        {
+            "id": 141,
+            "question": "Avec le driver Docker 'Host' :",
+            "options": [
+                "Le conteneur partage l'IP de la machine hôte",
+                "Le conteneur a sa propre IP isolée",
+                "C'est plus lent",
+                "Il faut mapper les ports (-p)"
+            ],
+            "answer": 0,
+            "explanation": "Performance maximale, pas d'isolation réseau."
+        },
+        {
+            "id": 142,
+            "question": "Quel driver Docker permet de relier des conteneurs sur plusieurs hôtes (Swarm) ?",
+            "options": [
+                "Overlay",
+                "Bridge",
+                "Host",
+                "None"
+            ],
+            "answer": 0,
+            "explanation": "Crée un sous-réseau distribué."
+        },
+        {
+            "id": 143,
+            "question": "Que fait la commande 'docker run -p 8080:80' ?",
+            "options": [
+                "Redirige le port 8080 hôte vers 80 conteneur",
+                "Redirige le port 80 hôte vers 8080 conteneur",
+                "Ouvre le port 8080 uniquement",
+                "Bloque le port 80"
+            ],
+            "answer": 0,
+            "explanation": "Mappe Host:Container."
+        },
+        {
+            "id": 144,
+            "question": "Un enregistrement DNS 'CNAME' sert à :",
+            "options": [
+                "Créer un alias vers un autre nom",
+                "Définir le serveur mail",
+                "Donner l'adresse IPv6",
+                "Authentifier le domaine"
+            ],
+            "answer": 0,
+            "explanation": "Ex: www.site.com -> site.com."
+        },
+        {
+            "id": 145,
+            "question": "Dans le routage, que signifie 0.0.0.0/0 ?",
+            "options": [
+                "Route par défaut (tout le reste)",
+                "Réseau invalide",
+                "Adresse de broadcast",
+                "Localhost"
+            ],
+            "answer": 0,
+            "explanation": "Gateway of last resort (souvent vers Internet)."
+        },
+        {
+            "id": 146,
+            "question": "Quel port est utilisé par le service DNS ?",
+            "options": [
+                "53",
+                "80",
+                "22",
+                "443"
+            ],
+            "answer": 0,
+            "explanation": "Souvent UDP 53 (et TCP 53)."
+        },
+        {
+            "id": 147,
+            "question": "OSPF est un protocole de type :",
+            "options": [
+                "Link-State (État de lien)",
+                "Distance-Vector",
+                "Path-Vector",
+                "Static"
+            ],
+            "answer": 0,
+            "explanation": "Il connait la topologie complète de sa zone."
+        },
+        {
+            "id": 148,
+            "question": "Pourquoi utiliser des VLANs ?",
+            "options": [
+                "Sécurité et réduction du broadcast",
+                "Pour ralentir le réseau",
+                "Pour utiliser plus de câbles",
+                "Pour ne pas utiliser d'IP"
+            ],
+            "answer": 0,
+            "explanation": "Segmente le trafic pour plus de perf et de sécu."
+        },
+        {
+            "id": 149,
+            "question": "Que signifie un 'Tag' VLAN ?",
+            "options": [
+                "Une étiquette ajoutée à la trame Ethernet pour identifier le VLAN",
+                "Un commentaire dans le code",
+                "Une erreur réseau",
+                "Un type de câble"
+            ],
+            "answer": 0,
+            "explanation": "Permet au switch récepteur de savoir à quel VLAN appartient la trame."
+        },
+        {
+            "id": 150,
+            "question": "Quelle commande liste les réseaux Docker ?",
+            "options": [
+                "docker network ls",
+                "docker net show",
+                "docker ip list",
+                "ping docker"
+            ],
+            "answer": 0,
+            "explanation": "Affiche les réseaux bridge, host, etc."
         }
     ]
 }

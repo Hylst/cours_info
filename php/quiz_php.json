@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "Quiz PHP Modern Expert - 120 Questions",
-        "total": 120
+        "title": "Quiz PHP Modern Expert - 130 Questions",
+        "total": 130
     },
     "questions": [
         {
@@ -1443,6 +1443,126 @@
             ],
             "answer": 0,
             "explanation": "Toujours utiliser === pour éviter les bugs de comparaison."
+        },
+        {
+            "id": 121,
+            "question": "Que signifie l'acronyme MVC ?",
+            "options": [
+                "Model View Controller",
+                "Modern View Code",
+                "Method Value Class",
+                "Main Visual Component"
+            ],
+            "answer": 0,
+            "explanation": "Pattern d'architecture séparant les données, la logique et l'affichage."
+        },
+        {
+            "id": 122,
+            "question": "Quel est le rôle du 'Controller' dans le MVC ?",
+            "options": [
+                "Recevoir la requête et faire le lien entre Modèle et Vue",
+                "Gérer la base de données",
+                "Afficher le HTML",
+                "Styler la page"
+            ],
+            "answer": 0,
+            "explanation": "C'est l'orchestrateur de l'application."
+        },
+        {
+            "id": 123,
+            "question": "Quelle est la responsabilité du 'Model' ?",
+            "options": [
+                "La logique métier et l'accès aux données",
+                "L'affichage utilisateur",
+                "Le routage des URL",
+                "Le CSS"
+            ],
+            "answer": 0,
+            "explanation": "Interagit directement avec la BDD."
+        },
+        {
+            "id": 124,
+            "question": "Dans une architecture MVC sécure, quel dossier est exposé au Web ?",
+            "options": [
+                "public/",
+                "app/",
+                "src/",
+                "root/"
+            ],
+            "answer": 0,
+            "explanation": "Le Front Controller (index.php) s'y trouve, le reste est protégé."
+        },
+        {
+            "id": 125,
+            "question": "À quoi sert le fichier .htaccess dans un Front Controller ?",
+            "options": [
+                "Rediriger toutes les requêtes vers index.php",
+                "Protéger les mots de passe",
+                "Gérer la base de données",
+                "Styler le texte"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'avoir des 'Clean URLs' comme /user/profile/1."
+        },
+        {
+            "id": 126,
+            "question": "Quelle fonction pour détruire une session (Dashboard Logout) ?",
+            "options": [
+                "session_destroy()",
+                "session_stop()",
+                "unset_session()",
+                "exit_session()"
+            ],
+            "answer": 0,
+            "explanation": "Supprime toutes les données de la session actuelle."
+        },
+        {
+            "id": 127,
+            "question": "Pourquoi hacher les mots de passe avant insertion ?",
+            "options": [
+                "Pour ne pas les stocker en clair en cas de fuite BDD",
+                "Pour qu'ils soient plus courts",
+                "Pour accélérer la recherche",
+                "Pour le plaisir"
+            ],
+            "answer": 0,
+            "explanation": "Principe de sécurité fondamental."
+        },
+        {
+            "id": 128,
+            "question": "Qu'est-ce qu'un 'Middleware' d'authentification ?",
+            "options": [
+                "Un script qui vérifie si l'utilisateur est connecté avant d'exécuter l'action",
+                "Un virus",
+                "Un type de base de données",
+                "Un framework JS"
+            ],
+            "answer": 0,
+            "explanation": "Intercepte la requête pour valider les droits d'accès."
+        },
+        {
+            "id": 129,
+            "question": "Quel standard PHP définit l'autoloading des classes par namespaces ?",
+            "options": [
+                "PSR-4",
+                "PSR-1",
+                "PSR-12",
+                "PSR-7"
+            ],
+            "answer": 0,
+            "explanation": "Permet au Model et Controller d'être chargés automatiquement."
+        },
+        {
+            "id": 130,
+            "question": "Où doit-on placer le code HTML dans une architecture MVC ?",
+            "options": [
+                "Dans les Views",
+                "Dans les Controllers",
+                "Dans les Models",
+                "Dans index.php"
+            ],
+            "answer": 0,
+            "explanation": "La Vue ne doit contenir que l'affichage et de la logique de présentation simple."
         }
     ]
 }

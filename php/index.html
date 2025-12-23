@@ -90,6 +90,7 @@
                 <a href="#s13" class="toc-item"><span class="toc-num">13</span>PHP 8.x</a>
                 <a href="#s14" class="toc-item"><span class="toc-num">14</span>API REST</a>
                 <a href="#s15" class="toc-item"><span class="toc-num">15</span>Sécurité</a>
+                <a href="#s16" class="toc-item"><span class="toc-num">16</span>MVC & Auth</a>
             </div>
         </div>
     </div>
@@ -1517,6 +1518,131 @@ HTML</span>;
             <div class="tip" style="margin-top:20px;"><strong>💡 Production</strong> <code>display_errors = Off</code>,
                 <code>log_errors = On</code>, <code>error_log = /path/to/error.log</code>
             </div>
+        </div>
+    </section>
+
+    <!-- S16: ARCHITECTURE MVC & AUTH -->
+    <section id="s16">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Architecture MVC & Auth</h2>
+                    <p class="sec-sub">Model, View, Controller, Routing, Authentification</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Qu'est-ce que le MVC ?</summary>
+                <div>
+                    <p>Le pattern <strong>Model-View-Controller</strong> sépare les responsabilités pour rendre le code
+                        maintenable et scalable.</p>
+                    <ul>
+                        <li><strong>Model</strong> : Gestion des données et de la logique métier (BDD).</li>
+                        <li><strong>View</strong> : Interface utilisateur (HTML/CSS).</li>
+                        <li><strong>Controller</strong> : Le chef d'orchestre qui reçoit la requête et lie le Modèle à
+                            la Vue.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- STRUCTURE & ROUTING -->
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Structure de Dossiers</div>
+                    <pre><span class="c">// Organisation moderne (PSR-4)</span>
+/projet
+  /app          <span class="c">// Logique métier</span>
+    /Controllers
+    /Models
+    /Views
+  /public       <span class="c">// Seul dossier accessible web</span>
+    index.php   <span class="c">// Front Controller</span>
+    .htaccess   <span class="c">// Apache rewrite</span>
+    /assets     <span class="c">// css, js, images</span>
+  /vendor       <span class="c">// Dépendances Composer</span>
+  composer.json</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Routage (.htaccess)</div>
+                    <pre><span class="c">// Redirige toutes les requêtes vers index.php</span>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+<span class="c">// Dans index.php (Front Controller)</span>
+<span class="var">$uri</span> = <span class="var">$_SERVER</span>[<span class="str">'REQUEST_URI'</span>];
+<span class="kw">switch</span>(<span class="var">$uri</span>) {
+    <span class="kw">case</span> <span class="str">'/'</span>: <span class="var">$ctrl</span>-><span class="fn">home</span>(); <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="str">'/login'</span>: <span class="var">$ctrl</span>-><span class="fn">login</span>(); <span class="kw">break</span>;
+    <span class="kw">default</span>: <span class="fn">header</span>(<span class="str">"HTTP/1.0 404"</span>);
+}</pre>
+                </div>
+            </div>
+
+            <!-- AUTHENTIFICATION FLOW -->
+            <h3 style="margin-top:30px;">Flux d'Authentification</h3>
+            <div class="grid2">
+                <!-- SIGN UP / IN -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Inscription & Connexion</div>
+                    <pre><span class="c">// 1. Inscription (Sign Up)</span>
+<span class="var">$hash</span> = <span class="fn">password_hash</span>(<span class="var">$pass</span>, <span class="var">PASSWORD_DEFAULT</span>);
+<span class="var">$db</span>-><span class="fn">exec</span>(<span class="str">"INSERT INTO users..."</span>);
+
+<span class="c">// 2. Connexion (Sign In)</span>
+<span class="var">$user</span> = <span class="var">$db</span>-><span class="fn">find</span>(<span class="var">$email</span>);
+<span class="kw">if</span> (<span class="var">$user</span> && <span class="fn">password_verify</span>(<span class="var">$pass</span>, <span class="var">$user</span>[<span class="str">'pass'</span>])) {
+    <span class="var">$_SESSION</span>[<span class="str">'user_id'</span>] = <span class="var">$user</span>[<span class="str">'id'</span>];
+    <span class="var">$_SESSION</span>[<span class="str">'role'</span>] = <span class="var">$user</span>[<span class="str">'role'</span>];
+    <span class="fn">header</span>(<span class="str">'Location: /dashboard'</span>);
+}</pre>
+                </div>
+
+                <!-- SIGN OUT / MIDDLEWARE -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Déconnexion & Contrôle</div>
+                    <pre><span class="c">// 3. Déconnexion (Sign Out)</span>
+<span class="fn">session_destroy</span>();
+<span class="fn">header</span>(<span class="str">'Location: /'</span>);
+
+<span class="c">// 4. Middleware Auth (Vérification)</span>
+<span class="kw">function</span> <span class="fn">requireAuth</span>() {
+    <span class="kw">if</span> (!<span class="kw">isset</span>(<span class="var">$_SESSION</span>[<span class="str">'user_id'</span>])) {
+        <span class="fn">header</span>(<span class="str">'Location: /login'</span>);
+        <span class="kw">exit</span>;
+    }
+}
+
+<span class="c">// Utilisation en début de controller</span>
+<span class="fn">requireAuth</span>();</pre>
+                </div>
+            </div>
+
+            <!-- MVC EXAMPLE -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Exemple Controller MVC</div>
+                <pre><span class="kw">class</span> <span class="fn">UserController</span> <span class="kw">extends</span> <span class="fn">BaseController</span> {
+    <span class="kw">public function</span> <span class="fn">showProfile</span>(<span class="kw">int</span> <span class="var">$id</span>) {
+        <span class="c">// Model</span>
+        <span class="var">$user</span> = <span class="var">$this</span>-><span class="fn">userModel</span>-><span class="fn">find</span>(<span class="var">$id</span>);
+        
+        <span class="c">// View</span>
+        <span class="kw">return</span> <span class="var">$this</span>-><span class="fn">render</span>(<span class="str">'profile.php'</span>, [<span class="str">'user'</span> => <span class="var">$user</span>]);
+    }
+}</pre>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 Conseil</strong> : Ne réinventez pas la roue pour les
+                gros projets. Utilisez un framework comme <strong>Laravel</strong> ou <strong>Symfony</strong> qui
+                implémentent parfaitement ces concepts par défaut.</div>
         </div>
     </section>
 

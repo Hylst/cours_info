@@ -2366,43 +2366,146 @@
                 <div class="sec-num">18</div>
                 <div>
                     <h2 class="sec-title">Contraintes Électromagnétiques (CEM)</h2>
-                    <p class="sec-sub">La Guerre du Bruit</p>
+                    <p class="sec-sub">La Guerre Invisible du Bruit</p>
                 </div>
             </div>
-            <div class="intro-box" style="border-left-color:#ff9f43;">
-                <h4>📡 EMI & EMC</h4>
-                <p>Votre circuit fonctionne sur table. Il plante dès qu'on allume le néon de l'atelier. Bienvenue dans
-                    l'enfer de la CEM. Un circuit doit ne pas polluer (Émission) et résister à la pollution (Immunité).
-                </p>
+
+            <div class="intro-box" style="border-left-color:#ff9f43; margin-bottom:30px;">
+                <h4>📡 EMI & EMC : Le Cauchemar de l'Ingénieur</h4>
+                <p>Votre circuit fonctionne sur table. Il plante dès qu'on allume le néon ou le moteur à côté. Bienvenue
+                    en **CEM** ! Un produit doit **ne pas polluer** (Émission) et **résister à la pollution**
+                    (Immunité). Sans cela = pas de certification CE = pas de vente.</p>
             </div>
+
             <div class="grid2">
+                <!-- EMI vs EMC -->
                 <div class="ref-card">
-                    <h4>Cage de Faraday</h4>
-                    <p>Enfermer le circuit dans une boite métallique conductrice reliée à la terre.</p>
-                    <p><em>Bloque les ondes radio externes.</em></p>
+                    <h4 style="color:#ff9f43;">⚡ EMI (Electromagnetic Interference)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        Le **bruit** que votre circuit génère ou subit.
+                    </p>
+                    <ul class="dense-list" style="font-size:0.8rem; margin-top:10px;">
+                        <li><strong>Conduit</strong> : Par les câbles d'alimentation (filtres secteur).</li>
+                        <li><strong>Rayonné</strong> : Par les pistes/câbles qui agissent comme antennes.</li>
+                        <li><strong>Sources</strong> : Moteurs, variateurs, switching power supplies, ESD.</li>
+                    </ul>
                 </div>
+
+                <!-- EMC -->
                 <div class="ref-card">
-                    <h4>Boucle de Masse (Ground Loop)</h4>
-                    <p>Le piège classique. Avoir plusieurs chemins pour le retour de masse crée une antenne géante qui
-                        capte tout le bruit magnétique.</p>
+                    <h4 style="color:var(--accent);">🛡️ EMC (Electromagnetic Compatibility)</h4>
+                    <p style="font-size:0.85rem; color:var(--muted); margin-top:10px;">
+                        La capacité d'un système à fonctionner sans perturber ni être perturbé.
+                    </p>
+                    <div
+                        style="background:#111; padding:8px; border-radius:4px; font-size:0.8rem; margin-top:10px; font-family:monospace; text-align:center;">
+                        EMC = Faible Émission + Haute Immunité
+                    </div>
+                    <p style="font-size:0.75rem; color:#888; margin-top:8px;"><strong>Normes :</strong> EN 55032
+                        (Émission), EN 55035 (Immunité).</p>
                 </div>
             </div>
-            <div class="tool-card" style="margin-top:20px; text-align:left;">
-                <h4 style="color:var(--primary-bright); margin-bottom:10px;">📚 Vocabulaire Essentiel</h4>
-                <div class="grid2" style="font-size:0.85rem;">
-                    <div><span class="vocab-term">ESD</span>
-                        <p style="color:var(--muted);">Electrostatic Discharge. L'étincelle quand on touche la poignée
-                            de porte. 2000V qui tue un MCU instantanément.</p>
+
+            <!-- PROTECTION TECHNIQUES -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🔧 Techniques de Protection</h3>
+                <div class="grid3">
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--primary);">Blindage (Shielding)</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Cage de Faraday : Boîtier métallique
+                            relié à la masse. Bloque les ondes rayonnées.</p>
                     </div>
-                    <div><span class="vocab-term">Decoupling</span>
-                        <p style="color:var(--muted);">Placer des condensateurs au plus près des broches d'alim des
-                            puces pour absorber le bruit localement.</p>
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--str);">Filtrage</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Ferrites sur les câbles, filtres LC
+                            sur l'alimentation. Bloque le bruit conduit.</p>
                     </div>
-                    <div><span class="vocab-term">Certification CE</span>
-                        <p style="color:var(--muted);">Tests obligatoires en chambre anéchoïque pour vendre un produit
-                            électronique.</p>
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--accent);">Découplage</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Condensateurs 100nF + 10µF au plus
+                            près de chaque puce. Absorbe les spikes localement.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- GROUND & LAYOUT -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🌍 Masse & Layout PCB</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--error);">⚠️ Ground Loops</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Plusieurs chemins de masse = antenne
+                            captant le bruit magnétique. Solution : topologie en étoile unique.</p>
+                    </div>
+                    <div class="ref-card" style="padding:12px;">
+                        <strong style="color:var(--fn);">Plan de Masse</strong>
+                        <p style="font-size:0.75rem; color:#aaa; margin-top:5px;">Couche entière de cuivre GND. Chemin
+                            de retour à très basse impédance. Ne jamais découper !</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESD -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">⚡ ESD (Electrostatic Discharge)</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">L'étincelle quand on touche une poignée de porte =
+                        **2000-15000V** en quelques nanosecondes. Un MCU meurt à 100V.</p>
+                    <div class="grid2" style="gap:15px; margin-top:15px; font-size:0.8rem;">
+                        <div>
+                            <strong style="color:var(--primary);">Protection :</strong>
+                            <ul class="dense-list" style="margin-top:5px;">
+                                <li>TVS Diodes (clamp) sur chaque entrée exposée.</li>
+                                <li>Séries resistors (22-100Ω) limitent le courant.</li>
+                                <li>ESD Guards sur USB, Ethernet, boutons.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color:var(--accent);">Norme IEC 61000-4-2 :</strong>
+                            <ul class="dense-list" style="margin-top:5px;">
+                                <li>Contact : ±8kV (niveau 4).</li>
+                                <li>Air : ±15kV (niveau 4).</li>
+                                <li>Test en laboratoire accrédité.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CE CERTIFICATION -->
+            <div style="margin-top:20px;">
+                <h3 style="margin-bottom:15px; color:var(--text);">🏷️ Certification CE</h3>
+                <div class="ref-card">
+                    <p style="font-size:0.85rem; color:var(--muted);">Obligatoire pour vendre en Europe. Tests en
+                        chambre anéchoïque (≈2000-5000€).</p>
+                    <div class="grid2" style="gap:10px; margin-top:15px; font-size:0.8rem;">
+                        <div style="border-left:2px solid var(--error); padding-left:8px;">
+                            <strong>Émission Rayonnée</strong> : Mesure ce que votre produit émet (dBµV/m @ 3m/10m).
+                        </div>
+                        <div style="border-left:2px solid var(--accent); padding-left:8px;">
+                            <strong>Émission Conduite</strong> : Mesure le bruit injecté sur le secteur (LISN).
+                        </div>
+                        <div style="border-left:2px solid var(--primary); padding-left:8px;">
+                            <strong>Immunité ESD/EFT/Surge</strong> : Résiste aux décharges et surtensions.
+                        </div>
+                        <div style="border-left:2px solid var(--str); padding-left:8px;">
+                            <strong>Immunité RF</strong> : Résiste aux champs RF (3V/m, 80-1000MHz).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEST PRACTICES -->
+            <div class="tool-card" style="margin-top:20px; text-align:left; border-color:#ff9f43;">
+                <h4 style="color:#ff9f43; margin-bottom:8px;">✅ Bonnes Pratiques CEM</h4>
+                <ol style="font-size:0.85rem; color:var(--muted); padding-left:18px; margin:0;">
+                    <li>Plan de masse continu sur toute la carte (Layer 2 ou Bottom).</li>
+                    <li>Condensateurs de découplage 100nF à <5mm de chaque VCC.</li>
+                    <li>Pistes courtes et larges pour les signaux haute fréquence.</li>
+                    <li>Ferrites sur les câbles d'entrée/sortie (USB, alimentation).</li>
+                    <li>TVS sur toutes les lignes exposées à l'utilisateur.</li>
+                    <li>Séparer les alimentations numériques et analogiques.</li>
+                </ol>
             </div>
         </div>
     </section>

@@ -87,6 +87,9 @@
                 <a href="#s10" class="toc-item"><span class="toc-num">10</span>Fichiers</a>
                 <a href="#s11" class="toc-item"><span class="toc-num">11</span>Formulaires</a>
                 <a href="#s12" class="toc-item"><span class="toc-num">12</span>Référence</a>
+                <a href="#s13" class="toc-item"><span class="toc-num">13</span>PHP 8.x</a>
+                <a href="#s14" class="toc-item"><span class="toc-num">14</span>API REST</a>
+                <a href="#s15" class="toc-item"><span class="toc-num">15</span>Sécurité</a>
             </div>
         </div>
     </div>
@@ -422,77 +425,180 @@ HTML</span>;
                 <div class="sec-num">06</div>
                 <div>
                     <h2 class="sec-title">Programmation Orientée Objet</h2>
-                    <p class="sec-sub">Classes, héritage, interfaces</p>
+                    <p class="sec-sub">Classes, PHP 8.x, Enums, Magic Methods</p>
                 </div>
             </div>
 
             <details>
-                <summary>📖 Le Modèle Objet</summary>
+                <summary>📖 Le Modèle Objet PHP</summary>
                 <div>
-                    <p>PHP possède un modèle objet complet similaire à Java.</p>
-                    <p>Il supporte l'héritage simple, les interfaces multiples, les classes abstraites, les traits, et
-                        depuis PHP 8.1, les <strong>Enums</strong>.</p>
+                    <p>PHP possède un modèle objet complet similaire à Java/C#.</p>
+                    <p>Depuis PHP 8.x, il est encore plus puissant avec <strong>Constructor Promotion</strong>,
+                        <strong>Enums</strong>, <strong>Readonly Properties</strong>, et les
+                        <strong>Attributes</strong>.
+                    </p>
                 </div>
             </details>
 
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Classes</div>
-                <pre><span class="kw">class</span> <span class="fn">User</span> {
-    <span class="c">// Propriétés</span>
+            <div class="grid2">
+                <!-- CLASSIC CLASS -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Classe Classique</div>
+                    <pre><span class="kw">class</span> <span class="fn">User</span> {
     <span class="kw">public</span> <span class="kw">string</span> <span class="var">$name</span>;
     <span class="kw">private</span> <span class="kw">int</span> <span class="var">$age</span>;
-    <span class="kw">protected</span> <span class="var">$email</span>;
     <span class="kw">public static int</span> <span class="var">$count</span> = <span class="num">0</span>;
 
-    <span class="c">// Constructeur</span>
-    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">string</span> <span class="var">$name</span>, <span class="kw">int</span> <span class="var">$age</span> = <span class="num">0</span>) {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">string</span> <span class="var">$name</span>, <span class="kw">int</span> <span class="var">$age</span>) {
         <span class="var">$this</span>-&gt;<span class="prop">name</span> = <span class="var">$name</span>;
         <span class="var">$this</span>-&gt;<span class="prop">age</span> = <span class="var">$age</span>;
         <span class="kw">self</span>::<span class="var">$count</span>++;
     }
 
-    <span class="c">// Méthode</span>
     <span class="kw">public function</span> <span class="fn">greet</span>(): <span class="kw">string</span> {
         <span class="kw">return</span> <span class="str">"Hello, I'm {$this-&gt;name}"</span>;
     }
-
-    <span class="c">// Getter</span>
-    <span class="kw">public function</span> <span class="fn">getAge</span>(): <span class="kw">int</span> {
-        <span class="kw">return</span> <span class="var">$this</span>-&gt;<span class="prop">age</span>;
-    }
-
-    <span class="c">// Méthode statique</span>
-    <span class="kw">public static function</span> <span class="fn">getCount</span>(): <span class="kw">int</span> {
-        <span class="kw">return</span> <span class="kw">self</span>::<span class="var">$count</span>;
-    }
-}
-
-<span class="c">// Héritage</span>
-<span class="kw">class</span> <span class="fn">Admin</span> <span class="kw">extends</span> <span class="fn">User</span> {
-    <span class="kw">public function</span> <span class="fn">greet</span>(): <span class="kw">string</span> {
-        <span class="kw">return</span> <span class="kw">parent</span>::<span class="fn">greet</span>() . <span class="str">" (Admin)"</span>;
-    }
-}
-
-<span class="c">// Interface</span>
-<span class="kw">interface</span> <span class="fn">Printable</span> {
-    <span class="kw">public function</span> <span class="fn">print</span>(): <span class="kw">void</span>;
-}
-
-<span class="c">// Trait</span>
-<span class="kw">trait</span> <span class="fn">Timestampable</span> {
-    <span class="kw">public</span> <span class="var">$createdAt</span>;
 }</pre>
-            </div>
+                </div>
 
-            <div class="demo">
-                <div class="demo-title">Résultat attendu</div>
-                <div class="demo-output">
-                    Hello, I'm Alice<br>
-                    Total users: 2
+                <!-- CONSTRUCTOR PROMOTION -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Constructor Promotion (PHP 8.0)</div>
+                    <pre><span class="c">// Shorthand - propriétés déclarées dans le constructeur</span>
+<span class="kw">class</span> <span class="fn">Product</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">public readonly string</span> <span class="var">$name</span>,
+        <span class="kw">public</span> <span class="kw">float</span> <span class="var">$price</span>,
+        <span class="kw">private</span> <span class="kw">int</span> <span class="var">$stock</span> = <span class="num">0</span>
+    ) {}
+}
+
+<span class="c">// Équivalent à déclarer les propriétés + les assigner</span>
+<span class="var">$p</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"iPhone"</span>, <span class="num">999.99</span>, <span class="num">10</span>);
+<span class="fn">echo</span> <span class="var">$p</span>-&gt;<span class="prop">name</span>; <span class="c">// "iPhone"</span></pre>
                 </div>
             </div>
+
+            <!-- ENUMS -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Enums (PHP 8.1)</div>
+                <pre><span class="c">// Enum simple (Unit Enum)</span>
+<span class="kw">enum</span> <span class="fn">Status</span> {
+    <span class="kw">case</span> Pending;
+    <span class="kw">case</span> Active;
+    <span class="kw">case</span> Archived;
+}
+<span class="var">$status</span> = <span class="fn">Status</span>::Active;
+
+<span class="c">// Backed Enum (avec valeurs)</span>
+<span class="kw">enum</span> <span class="fn">HttpCode</span>: <span class="kw">int</span> {
+    <span class="kw">case</span> Ok = <span class="num">200</span>;
+    <span class="kw">case</span> NotFound = <span class="num">404</span>;
+    <span class="kw">case</span> ServerError = <span class="num">500</span>;
+
+    <span class="c">// Méthode dans un enum</span>
+    <span class="kw">public function</span> <span class="fn">label</span>(): <span class="kw">string</span> {
+        <span class="kw">return match</span>(<span class="var">$this</span>) {
+            <span class="kw">self</span>::Ok =&gt; <span class="str">"Success"</span>,
+            <span class="kw">self</span>::NotFound =&gt; <span class="str">"Not Found"</span>,
+            <span class="kw">self</span>::ServerError =&gt; <span class="str">"Server Error"</span>,
+        };
+    }
+}
+<span class="fn">echo</span> <span class="fn">HttpCode</span>::Ok-&gt;<span class="prop">value</span>; <span class="c">// 200</span>
+<span class="fn">echo</span> <span class="fn">HttpCode</span>::Ok-&gt;<span class="fn">label</span>(); <span class="c">// "Success"</span></pre>
+            </div>
+
+            <!-- MAGIC METHODS -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Magic Methods</div>
+                <pre><span class="kw">class</span> <span class="fn">Entity</span> {
+    <span class="kw">private array</span> <span class="var">$data</span> = [];
+
+    <span class="c">// Appelé quand on accède à une propriété inexistante</span>
+    <span class="kw">public function</span> <span class="fn">__get</span>(<span class="kw">string</span> <span class="var">$key</span>): <span class="kw">mixed</span> {
+        <span class="kw">return</span> <span class="var">$this</span>-&gt;<span class="prop">data</span>[<span class="var">$key</span>] ?? <span class="kw">null</span>;
+    }
+
+    <span class="c">// Appelé quand on assigne une propriété inexistante</span>
+    <span class="kw">public function</span> <span class="fn">__set</span>(<span class="kw">string</span> <span class="var">$key</span>, <span class="kw">mixed</span> <span class="var">$value</span>): <span class="kw">void</span> {
+        <span class="var">$this</span>-&gt;<span class="prop">data</span>[<span class="var">$key</span>] = <span class="var">$value</span>;
+    }
+
+    <span class="c">// Conversion en string</span>
+    <span class="kw">public function</span> <span class="fn">__toString</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="fn">json_encode</span>(<span class="var">$this</span>-&gt;<span class="prop">data</span>);
+    }
+
+    <span class="c">// Appelé pour méthode inexistante</span>
+    <span class="kw">public function</span> <span class="fn">__call</span>(<span class="kw">string</span> <span class="var">$name</span>, <span class="kw">array</span> <span class="var">$args</span>): <span class="kw">mixed</span> {
+        <span class="kw">return</span> <span class="str">"Method $name not found"</span>;
+    }
+}
+
+<span class="var">$e</span> = <span class="kw">new</span> <span class="fn">Entity</span>();
+<span class="var">$e</span>-&gt;<span class="prop">name</span> = <span class="str">"Test"</span>; <span class="c">// __set</span>
+<span class="fn">echo</span> <span class="var">$e</span>-&gt;<span class="prop">name</span>;      <span class="c">// __get → "Test"</span>
+<span class="fn">echo</span> <span class="var">$e</span>;             <span class="c">// __toString → {"name":"Test"}</span></pre>
+            </div>
+
+            <!-- ABSTRACT & INTERFACE -->
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Abstract & Final</div>
+                    <pre><span class="c">// Classe abstraite (non instanciable)</span>
+<span class="kw">abstract class</span> <span class="fn">Animal</span> {
+    <span class="kw">abstract public function</span> <span class="fn">speak</span>(): <span class="kw">string</span>;
+    
+    <span class="kw">public function</span> <span class="fn">breathe</span>(): <span class="kw">void</span> {
+        <span class="fn">echo</span> <span class="str">"Breathing..."</span>;
+    }
+}
+
+<span class="c">// Final = ne peut pas être étendue</span>
+<span class="kw">final class</span> <span class="fn">Dog</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
+    <span class="kw">public function</span> <span class="fn">speak</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="str">"Woof!"</span>;
+    }
+}</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Interface & Trait</div>
+                    <pre><span class="c">// Interface (contrat)</span>
+<span class="kw">interface</span> <span class="fn">Jsonable</span> {
+    <span class="kw">public function</span> <span class="fn">toJson</span>(): <span class="kw">string</span>;
+}
+
+<span class="c">// Trait (réutilisation de code)</span>
+<span class="kw">trait</span> <span class="fn">Timestampable</span> {
+    <span class="kw">public</span> <span class="fn">DateTime</span> <span class="var">$createdAt</span>;
+    
+    <span class="kw">public function</span> <span class="fn">touch</span>(): <span class="kw">void</span> {
+        <span class="var">$this</span>-&gt;<span class="prop">createdAt</span> = <span class="kw">new</span> <span class="fn">DateTime</span>();
+    }
+}
+
+<span class="c">// Utilisation</span>
+<span class="kw">class</span> <span class="fn">Post</span> <span class="kw">implements</span> <span class="fn">Jsonable</span> {
+    <span class="kw">use</span> <span class="fn">Timestampable</span>;
+    
+    <span class="kw">public function</span> <span class="fn">toJson</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="fn">json_encode</span>([<span class="str">'created'</span> =&gt; <span class="var">$this</span>-&gt;<span class="prop">createdAt</span>]);
+    }
+}</pre>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 PHP 8.2+</strong> <code>readonly class</code> rend
+                toutes les propriétés readonly automatiquement. <code>#[Override]</code> attribute vérifie qu'une
+                méthode surcharge bien un parent.</div>
         </div>
     </section>
 
@@ -1055,6 +1161,362 @@ HTML</span>;
 
             <div class="tip" style="margin-top:24px"><strong>💡 200+ fonctions référencées</strong> — Ce mémo couvre
                 toutes les fonctionnalités essentielles de PHP moderne!</div>
+        </div>
+    </section>
+
+    <!-- S13: PHP 8 MODERN FEATURES -->
+    <section id="s13">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">PHP 8.x Moderne</h2>
+                    <p class="sec-sub">Nouveautés PHP 8.0, 8.1, 8.2, 8.3</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 La Révolution PHP 8</summary>
+                <div>
+                    <p>PHP 8 a été une révolution majeure avec le JIT Compiler, les Named Arguments, et Union Types.</p>
+                    <p>Chaque version mineure (8.1, 8.2, 8.3) apporte de nouvelles fonctionnalités essentielles.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <!-- NAMED ARGUMENTS -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Named Arguments (8.0)</div>
+                    <pre><span class="c">// Appel classique (ordre imposé)</span>
+<span class="fn">str_replace</span>(<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="var">$str</span>);
+
+<span class="c">// Named arguments (ordre libre)</span>
+<span class="fn">str_replace</span>(
+    subject: <span class="var">$str</span>,
+    search: <span class="str">'a'</span>,
+    replace: <span class="str">'b'</span>
+);
+
+<span class="c">// Très utile pour les params optionnels</span>
+<span class="fn">htmlspecialchars</span>(<span class="var">$str</span>, double_encode: <span class="kw">false</span>);</pre>
+                </div>
+
+                <!-- UNION TYPES -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Union Types (8.0)</div>
+                    <pre><span class="c">// Plusieurs types possibles</span>
+<span class="kw">function</span> <span class="fn">format</span>(<span class="kw">int</span>|<span class="kw">float</span>|<span class="kw">string</span> <span class="var">$value</span>): <span class="kw">string</span> {
+    <span class="kw">return</span> (<span class="kw">string</span>) <span class="var">$value</span>;
+}
+
+<span class="c">// Nullable raccourci</span>
+<span class="kw">function</span> <span class="fn">find</span>(<span class="kw">int</span> <span class="var">$id</span>): <span class="fn">User</span>|<span class="kw">null</span> {
+    <span class="kw">return</span> <span class="var">$users</span>[<span class="var">$id</span>] ?? <span class="kw">null</span>;
+}
+
+<span class="c">// mixed = accepte tout (PHP 8.0)</span>
+<span class="kw">function</span> <span class="fn">debug</span>(<span class="kw">mixed</span> <span class="var">$data</span>): <span class="kw">void</span> { }</pre>
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <!-- NULLSAFE -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Nullsafe Operator (8.0)</div>
+                    <pre><span class="c">// Avant PHP 8</span>
+<span class="var">$country</span> = <span class="kw">null</span>;
+<span class="kw">if</span> (<span class="var">$user</span> !== <span class="kw">null</span>) {
+    <span class="kw">if</span> (<span class="var">$user</span>-><span class="fn">getAddress</span>() !== <span class="kw">null</span>) {
+        <span class="var">$country</span> = <span class="var">$user</span>-><span class="fn">getAddress</span>()-><span class="prop">country</span>;
+    }
+}
+
+<span class="c">// Avec Nullsafe ?-></span>
+<span class="var">$country</span> = <span class="var">$user</span>?-><span class="fn">getAddress</span>()?-><span class="prop">country</span>;
+
+<span class="c">// Retourne null si un maillon est null</span></pre>
+                </div>
+
+                <!-- MATCH -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Match Expression (8.0)</div>
+                    <pre><span class="c">// Match = switch mais expression</span>
+<span class="var">$msg</span> = <span class="kw">match</span>(<span class="var">$code</span>) {
+    <span class="num">200</span> => <span class="str">"OK"</span>,
+    <span class="num">404</span> => <span class="str">"Not Found"</span>,
+    <span class="num">500</span>, <span class="num">502</span>, <span class="num">503</span> => <span class="str">"Server Error"</span>,
+    <span class="kw">default</span> => <span class="str">"Unknown"</span>
+};
+
+<span class="c">// Comparaison stricte (===)</span>
+<span class="c">// Lève exception si aucun match</span>
+<span class="c">// Pas de fall-through (pas de break)</span></pre>
+                </div>
+            </div>
+
+            <!-- ATTRIBUTES -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Attributes (8.0)</div>
+                <pre><span class="c">// Métadonnées sur classes/méthodes (remplace les DocBlocks)</span>
+#[<span class="fn">Attribute</span>]
+<span class="kw">class</span> <span class="fn">Route</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">public string</span> <span class="var">$path</span>,
+        <span class="kw">public string</span> <span class="var">$method</span> = <span class="str">'GET'</span>
+    ) {}
+}
+
+<span class="c">// Utilisation</span>
+<span class="kw">class</span> <span class="fn">UserController</span> {
+    #[<span class="fn">Route</span>(<span class="str">'/users'</span>, <span class="str">'GET'</span>)]
+    <span class="kw">public function</span> <span class="fn">index</span>(): <span class="kw">array</span> { }
+
+    #[<span class="fn">Route</span>(<span class="str">'/users/{id}'</span>, <span class="str">'DELETE'</span>)]
+    <span class="kw">public function</span> <span class="fn">delete</span>(<span class="kw">int</span> <span class="var">$id</span>): <span class="kw">void</span> { }
+}
+
+<span class="c">// Lecture via Reflection</span>
+<span class="var">$ref</span> = <span class="kw">new</span> <span class="fn">ReflectionMethod</span>(<span class="fn">UserController</span>::<span class="kw">class</span>, <span class="str">'index'</span>);
+<span class="var">$attrs</span> = <span class="var">$ref</span>-><span class="fn">getAttributes</span>(<span class="fn">Route</span>::<span class="kw">class</span>);</pre>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 PHP 8.3+</strong> <code>json_validate()</code> valide
+                du JSON sans le décoder. <code>#[\Override]</code> force la vérification d'override. Typed class
+                constants.</div>
+        </div>
+    </section>
+
+    <!-- S14: API REST -->
+    <section id="s14">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">API REST</h2>
+                    <p class="sec-sub">JSON, Headers, cURL, Routing</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 API REST en PHP Vanilla</summary>
+                <div>
+                    <p>Créer une API REST en PHP pur est simple : gestion des méthodes HTTP, JSON, et bonnes pratiques
+                        de routing.</p>
+                    <p>Pour les projets complexes, utilisez un micro-framework comme Slim ou Lumen.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <!-- JSON API -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Réponse JSON</div>
+                    <pre><span class="c">// Headers obligatoires</span>
+<span class="fn">header</span>(<span class="str">'Content-Type: application/json; charset=utf-8'</span>);
+<span class="fn">header</span>(<span class="str">'Access-Control-Allow-Origin: *'</span>); <span class="c">// CORS</span>
+
+<span class="c">// Réponse structurée</span>
+<span class="kw">function</span> <span class="fn">jsonResponse</span>(<span class="kw">mixed</span> <span class="var">$data</span>, <span class="kw">int</span> <span class="var">$code</span> = <span class="num">200</span>): <span class="kw">void</span> {
+    <span class="fn">http_response_code</span>(<span class="var">$code</span>);
+    <span class="kw">echo</span> <span class="fn">json_encode</span>([
+        <span class="str">'success'</span> => <span class="var">$code</span> < <span class="num">400</span>,
+        <span class="str">'data'</span> => <span class="var">$data</span>
+    ], <span class="var">JSON_UNESCAPED_UNICODE</span>);
+    <span class="kw">exit</span>;
+}
+
+<span class="c">// Utilisation</span>
+<span class="fn">jsonResponse</span>([<span class="str">'users'</span> => <span class="var">$users</span>]);
+<span class="fn">jsonResponse</span>([<span class="str">'error'</span> => <span class="str">'Not found'</span>], <span class="num">404</span>);</pre>
+                </div>
+
+                <!-- ROUTING -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Routing Simple</div>
+                    <pre><span class="var">$method</span> = <span class="var">$_SERVER</span>[<span class="str">'REQUEST_METHOD'</span>];
+<span class="var">$uri</span> = <span class="fn">parse_url</span>(<span class="var">$_SERVER</span>[<span class="str">'REQUEST_URI'</span>], <span class="var">PHP_URL_PATH</span>);
+
+<span class="c">// Routes</span>
+<span class="kw">match</span>(<span class="kw">true</span>) {
+    <span class="var">$method</span> === <span class="str">'GET'</span> && <span class="var">$uri</span> === <span class="str">'/api/users'</span>
+        => <span class="fn">getUsers</span>(),
+    <span class="var">$method</span> === <span class="str">'GET'</span> && <span class="fn">preg_match</span>(<span class="str">'#/api/users/(\d+)#'</span>, <span class="var">$uri</span>, <span class="var">$m</span>)
+        => <span class="fn">getUser</span>(<span class="var">$m</span>[<span class="num">1</span>]),
+    <span class="var">$method</span> === <span class="str">'POST'</span> && <span class="var">$uri</span> === <span class="str">'/api/users'</span>
+        => <span class="fn">createUser</span>(),
+    <span class="var">$method</span> === <span class="str">'DELETE'</span> && <span class="fn">preg_match</span>(<span class="str">'#/api/users/(\d+)#'</span>, <span class="var">$uri</span>, <span class="var">$m</span>)
+        => <span class="fn">deleteUser</span>(<span class="var">$m</span>[<span class="num">1</span>]),
+    <span class="kw">default</span> => <span class="fn">jsonResponse</span>(<span class="str">'Not Found'</span>, <span class="num">404</span>)
+};</pre>
+                </div>
+            </div>
+
+            <!-- CORS & INPUT -->
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Lire le Body JSON</div>
+                    <pre><span class="c">// POST/PUT body (pas $_POST!)</span>
+<span class="var">$json</span> = <span class="fn">file_get_contents</span>(<span class="str">'php://input'</span>);
+<span class="var">$data</span> = <span class="fn">json_decode</span>(<span class="var">$json</span>, <span class="kw">true</span>);
+
+<span class="c">// Validation</span>
+<span class="kw">if</span> (<span class="fn">json_last_error</span>() !== <span class="var">JSON_ERROR_NONE</span>) {
+    <span class="fn">jsonResponse</span>(<span class="str">'Invalid JSON'</span>, <span class="num">400</span>);
+}
+
+<span class="c">// PHP 8.3: json_validate()</span>
+<span class="kw">if</span> (!<span class="fn">json_validate</span>(<span class="var">$json</span>)) {
+    <span class="fn">jsonResponse</span>(<span class="str">'Invalid JSON'</span>, <span class="num">400</span>);
+}</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>cURL - Consommer une API</div>
+                    <pre><span class="c">// GET Request</span>
+<span class="var">$ch</span> = <span class="fn">curl_init</span>(<span class="str">'https://api.example.com/users'</span>);
+<span class="fn">curl_setopt_array</span>(<span class="var">$ch</span>, [
+    <span class="var">CURLOPT_RETURNTRANSFER</span> => <span class="kw">true</span>,
+    <span class="var">CURLOPT_HTTPHEADER</span> => [
+        <span class="str">'Authorization: Bearer '</span> . <span class="var">$token</span>,
+        <span class="str">'Accept: application/json'</span>
+    ]
+]);
+<span class="var">$response</span> = <span class="fn">curl_exec</span>(<span class="var">$ch</span>);
+<span class="var">$httpCode</span> = <span class="fn">curl_getinfo</span>(<span class="var">$ch</span>, <span class="var">CURLINFO_HTTP_CODE</span>);
+<span class="fn">curl_close</span>(<span class="var">$ch</span>);
+
+<span class="var">$data</span> = <span class="fn">json_decode</span>(<span class="var">$response</span>, <span class="kw">true</span>);</pre>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top:20px;"><strong>⚠️ HTTP Codes</strong> 200 OK, 201 Created, 204 No
+                Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Server Error</div>
+        </div>
+    </section>
+
+    <!-- S15: SÉCURITÉ -->
+    <section id="s15">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Sécurité Avancée</h2>
+                    <p class="sec-sub">Passwords, CSRF, Headers, Bonnes Pratiques</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 La Sécurité est Primordiale</summary>
+                <div>
+                    <p>Une faille de sécurité peut détruire votre application et votre réputation.</p>
+                    <p>PHP fournit des fonctions natives robustes pour gérer les mots de passe, tokens, et headers de
+                        sécurité.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <!-- PASSWORD -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Mots de Passe</div>
+                    <pre><span class="c">// JAMAIS stocker en clair ni MD5/SHA1!</span>
+
+<span class="c">// Hasher (registration)</span>
+<span class="var">$hash</span> = <span class="fn">password_hash</span>(
+    <span class="var">$password</span>,
+    <span class="var">PASSWORD_ARGON2ID</span>  <span class="c">// ou PASSWORD_DEFAULT</span>
+);
+
+<span class="c">// Vérifier (login)</span>
+<span class="kw">if</span> (<span class="fn">password_verify</span>(<span class="var">$password</span>, <span class="var">$hash</span>)) {
+    <span class="c">// Connecté !</span>
+    
+    <span class="c">// Rehash si nécessaire (upgrade algo)</span>
+    <span class="kw">if</span> (<span class="fn">password_needs_rehash</span>(<span class="var">$hash</span>, <span class="var">PASSWORD_ARGON2ID</span>)) {
+        <span class="var">$newHash</span> = <span class="fn">password_hash</span>(<span class="var">$password</span>, <span class="var">PASSWORD_ARGON2ID</span>);
+        <span class="c">// Sauvegarder en DB</span>
+    }
+}</pre>
+                </div>
+
+                <!-- CSRF -->
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Protection CSRF</div>
+                    <pre><span class="c">// Générer le token (session)</span>
+<span class="kw">if</span> (<span class="fn">empty</span>(<span class="var">$_SESSION</span>[<span class="str">'csrf_token'</span>])) {
+    <span class="var">$_SESSION</span>[<span class="str">'csrf_token'</span>] = <span class="fn">bin2hex</span>(<span class="fn">random_bytes</span>(<span class="num">32</span>));
+}
+
+<span class="c">// Dans le formulaire HTML</span>
+&lt;input type="hidden" name="csrf_token"
+       value="&lt;?= $_SESSION['csrf_token'] ?&gt;"&gt;
+
+<span class="c">// Vérification (traitement)</span>
+<span class="kw">if</span> (!<span class="fn">hash_equals</span>(
+    <span class="var">$_SESSION</span>[<span class="str">'csrf_token'</span>],
+    <span class="var">$_POST</span>[<span class="str">'csrf_token'</span>] ?? <span class="str">''</span>
+)) {
+    <span class="fn">die</span>(<span class="str">'CSRF token invalide!'</span>);
+}</pre>
+                </div>
+            </div>
+
+            <!-- SECURITY HEADERS -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Headers de Sécurité</div>
+                <pre><span class="c">// À placer en début de script ou dans .htaccess</span>
+<span class="fn">header</span>(<span class="str">'X-Content-Type-Options: nosniff'</span>);           <span class="c">// Pas de sniffing MIME</span>
+<span class="fn">header</span>(<span class="str">'X-Frame-Options: DENY'</span>);                      <span class="c">// Pas d'iframe</span>
+<span class="fn">header</span>(<span class="str">'X-XSS-Protection: 1; mode=block'</span>);            <span class="c">// Protection XSS navigateur</span>
+<span class="fn">header</span>(<span class="str">'Referrer-Policy: strict-origin-when-cross-origin'</span>);
+<span class="fn">header</span>(<span class="str">"Content-Security-Policy: default-src 'self'; script-src 'self'"</span>);
+
+<span class="c">// HTTPS only</span>
+<span class="fn">header</span>(<span class="str">'Strict-Transport-Security: max-age=31536000; includeSubDomains'</span>);</pre>
+            </div>
+
+            <!-- BEST PRACTICES -->
+            <div class="grid2" style="margin-top:20px;">
+                <div
+                    style="background:var(--card-bg); border-radius:8px; padding:15px; border:1px solid var(--border-color);">
+                    <h4 style="color:var(--success); margin-top:0;">✅ À FAIRE</h4>
+                    <ul style="font-size:0.85rem; color:var(--text-color); margin:0; padding-left:18px;">
+                        <li>Requêtes préparées PDO</li>
+                        <li><code>htmlspecialchars()</code> pour affichage</li>
+                        <li><code>password_hash()</code> pour mots de passe</li>
+                        <li>Tokens CSRF sur tous les formulaires</li>
+                        <li><code>filter_var()</code> pour validation</li>
+                        <li>HTTPS obligatoire</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background:var(--card-bg); border-radius:8px; padding:15px; border:1px solid var(--border-color);">
+                    <h4 style="color:var(--error); margin-top:0;">❌ À ÉVITER</h4>
+                    <ul style="font-size:0.85rem; color:var(--text-color); margin:0; padding-left:18px;">
+                        <li>Concaténer SQL (<code>$_GET</code> directement)</li>
+                        <li><code>echo $_POST['name'];</code> (XSS!)</li>
+                        <li><code>md5()</code> ou <code>sha1()</code> pour passwords</li>
+                        <li>Faire confiance aux données client</li>
+                        <li><code>eval()</code>, <code>exec()</code> avec user input</li>
+                        <li>Afficher les erreurs en production</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 Production</strong> <code>display_errors = Off</code>,
+                <code>log_errors = On</code>, <code>error_log = /path/to/error.log</code>
+            </div>
         </div>
     </section>
 

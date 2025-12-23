@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "Quiz PHP Modern Expert - 100 Questions",
-        "total": 100
+        "title": "Quiz PHP Modern Expert - 120 Questions",
+        "total": 120
     },
     "questions": [
         {
@@ -1203,6 +1203,246 @@
             ],
             "answer": 0,
             "explanation": "Toujours très vivant, performant et évolutif."
+        },
+        {
+            "id": 101,
+            "question": "Comment fonctionne le Nullsafe Operator (PHP 8) ?",
+            "options": [
+                "$obj?->method() retourne null si $obj est null",
+                "Lève une exception",
+                "Ignore l'appel",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Évite les chaînes de vérification if (isset...)."
+        },
+        {
+            "id": 102,
+            "question": "Qu'est-ce qu'un Attribute (PHP 8) ?",
+            "options": [
+                "Métadonnée native sur classes/méthodes (#[Attribute])",
+                "Une variable",
+                "Un commentaire",
+                "Un trait"
+            ],
+            "answer": 0,
+            "explanation": "Remplace les annotations DocBlock."
+        },
+        {
+            "id": 103,
+            "question": "Comment déclarer un Union Type ?",
+            "options": [
+                "int|string",
+                "int,string",
+                "int/string",
+                "int&string"
+            ],
+            "answer": 0,
+            "explanation": "Permet plusieurs types (PHP 8.0)."
+        },
+        {
+            "id": 104,
+            "question": "Quelle fonction PHP 8.3 valide du JSON sans le décoder ?",
+            "options": [
+                "json_validate()",
+                "json_check()",
+                "is_json()",
+                "validate_json()"
+            ],
+            "answer": 0,
+            "explanation": "Plus rapide que json_decode() + vérification d'erreur."
+        },
+        {
+            "id": 105,
+            "question": "Comment créer une propriété readonly (PHP 8.1) ?",
+            "options": [
+                "public readonly string $name",
+                "final string $name",
+                "const string $name",
+                "static string $name"
+            ],
+            "answer": 0,
+            "explanation": "Ne peut être assignée qu'une seule fois."
+        },
+        {
+            "id": 106,
+            "question": "Quel header envoyer pour une réponse JSON API ?",
+            "options": [
+                "Content-Type: application/json",
+                "Accept: json",
+                "Type: JSON",
+                "Format: json"
+            ],
+            "answer": 0,
+            "explanation": "Indique au client le type de contenu."
+        },
+        {
+            "id": 107,
+            "question": "Comment lire le body JSON d'une requête POST API ?",
+            "options": [
+                "file_get_contents('php://input')",
+                "$_POST['json']",
+                "json_input()",
+                "http_get_body()"
+            ],
+            "answer": 0,
+            "explanation": "$_POST ne contient que form-data, pas le JSON brut."
+        },
+        {
+            "id": 108,
+            "question": "Quel code HTTP pour 'Created' ?",
+            "options": [
+                "201",
+                "200",
+                "204",
+                "202"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé après un POST qui crée une ressource."
+        },
+        {
+            "id": 109,
+            "question": "Quelle fonction PHP définit le code de réponse HTTP ?",
+            "options": [
+                "http_response_code()",
+                "header_code()",
+                "set_status()",
+                "response()"
+            ],
+            "answer": 0,
+            "explanation": "Ex: http_response_code(404)."
+        },
+        {
+            "id": 110,
+            "question": "Quelle est la fonction recommandée pour hasher un mot de passe ?",
+            "options": [
+                "password_hash() avec ARGON2ID",
+                "md5()",
+                "sha256()",
+                "crypt()"
+            ],
+            "answer": 0,
+            "explanation": "ARGON2ID est l'algo le plus sécurisé actuellement."
+        },
+        {
+            "id": 111,
+            "question": "Comment vérifier un mot de passe hashé ?",
+            "options": [
+                "password_verify($password, $hash)",
+                "$password === $hash",
+                "hash_equals($password, $hash)",
+                "compare($password, $hash)"
+            ],
+            "answer": 0,
+            "explanation": "Ne jamais comparer directement les strings."
+        },
+        {
+            "id": 112,
+            "question": "Quel header empêche l'inclusion dans une iframe ?",
+            "options": [
+                "X-Frame-Options: DENY",
+                "Content-Security-Policy",
+                "X-XSS-Protection",
+                "Referrer-Policy"
+            ],
+            "answer": 0,
+            "explanation": "Protection contre le clickjacking."
+        },
+        {
+            "id": 113,
+            "question": "Quelle fonction génère un token CSRF sécurisé ?",
+            "options": [
+                "bin2hex(random_bytes(32))",
+                "rand()",
+                "uniqid()",
+                "md5(time())"
+            ],
+            "answer": 0,
+            "explanation": "random_bytes() est cryptographiquement sécurisé."
+        },
+        {
+            "id": 114,
+            "question": "Quel header force HTTPS (HSTS) ?",
+            "options": [
+                "Strict-Transport-Security",
+                "X-HTTPS-Only",
+                "Force-SSL",
+                "Secure-Connection"
+            ],
+            "answer": 0,
+            "explanation": "max-age en secondes."
+        },
+        {
+            "id": 115,
+            "question": "Comment comparer deux strings de manière sécurisée (timing-safe) ?",
+            "options": [
+                "hash_equals()",
+                "===",
+                "strcmp()",
+                "==="
+            ],
+            "answer": 0,
+            "explanation": "Évite les attaques timing side-channel."
+        },
+        {
+            "id": 116,
+            "question": "Comment faire un appel HTTP externe en PHP ?",
+            "options": [
+                "cURL ou file_get_contents() avec stream context",
+                "http_request()",
+                "fetch()",
+                "axios.get()"
+            ],
+            "answer": 0,
+            "explanation": "cURL offre plus de contrôle."
+        },
+        {
+            "id": 117,
+            "question": "Quelle option cURL retourne la réponse au lieu de l'afficher ?",
+            "options": [
+                "CURLOPT_RETURNTRANSFER => true",
+                "CURLOPT_OUTPUT => false",
+                "CURLOPT_SILENT => true",
+                "CURLOPT_NOECHO => true"
+            ],
+            "answer": 0,
+            "explanation": "Par défaut cURL affiche directement."
+        },
+        {
+            "id": 118,
+            "question": "Quel header CORS autorise toutes les origines ?",
+            "options": [
+                "Access-Control-Allow-Origin: *",
+                "Allow-Origin: all",
+                "CORS: enabled",
+                "Cross-Origin: true"
+            ],
+            "answer": 0,
+            "explanation": "Pour les API publiques (attention en production)."
+        },
+        {
+            "id": 119,
+            "question": "Qu'est-ce que le Constructor Promotion (PHP 8) ?",
+            "options": [
+                "Déclarer et assigner les propriétés directement dans les paramètres du constructeur",
+                "Promouvoir une méthode en constructeur",
+                "Créer un constructeur automatique",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "public function __construct(public int $id) {}."
+        },
+        {
+            "id": 120,
+            "question": "Quelle est la différence entre == et === ?",
+            "options": [
+                "=== vérifie type ET valeur, == ne vérifie que la valeur (avec coercion)",
+                "Aucune différence",
+                "=== est plus lent",
+                "== vérifie le type"
+            ],
+            "answer": 0,
+            "explanation": "Toujours utiliser === pour éviter les bugs de comparaison."
         }
     ]
 }

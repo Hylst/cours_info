@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Quiz Réseaux - 100 Questions",
-        "total": 100
+        "total": 130
     },
     "questions": [
         {
@@ -1203,6 +1203,366 @@
             ],
             "answer": 0,
             "explanation": "340 undécillions d'adresses."
+        },
+        {
+            "id": 101,
+            "question": "Quelle est l'adresse de Loopback en IPv6 ?",
+            "options": [
+                "::1",
+                "127.0.0.1",
+                "::255",
+                "ffff::"
+            ],
+            "answer": 0,
+            "explanation": "L'équivalent de localhost."
+        },
+        {
+            "id": 102,
+            "question": "Combien de bits compose une adresse IPv6 ?",
+            "options": [
+                "128 bits",
+                "64 bits",
+                "32 bits",
+                "256 bits"
+            ],
+            "answer": 0,
+            "explanation": "Contre 32 bits pour IPv4."
+        },
+        {
+            "id": 103,
+            "question": "Comment simplifier l'adresse IPv6 2001:0dv8:0000:0000:0000:0000:0000:0001 ?",
+            "options": [
+                "2001:db8::1",
+                "2001:db8:0:1",
+                "2001:db8::0001",
+                "Impossible"
+            ],
+            "answer": 0,
+            "explanation": "Les suites de zéros sont remplacées par ::."
+        },
+        {
+            "id": 104,
+            "question": "Que signifie le /64 souvent vu en IPv6 ?",
+            "options": [
+                "Le préfixe (la partie réseau)",
+                "Le nombre de serveurs",
+                "La vitesse",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Standard pour un sous-réseau (LAN)."
+        },
+        {
+            "id": 105,
+            "question": "Quel type d'adresse IPv6 commence par fe80:: ?",
+            "options": [
+                "Link-Local (Local uniquement)",
+                "Global Unicast",
+                "Multicast",
+                "Loopback"
+            ],
+            "answer": 0,
+            "explanation": "Auto-configurée, ne passe par les routeurs."
+        },
+        {
+            "id": 106,
+            "question": "Dans le triangle CIA de la sécurité, que signifie 'C' ?",
+            "options": [
+                "Confidentialité",
+                "Crypto",
+                "Certificat",
+                "Control"
+            ],
+            "answer": 0,
+            "explanation": "Seuls les autorisés voient les données."
+        },
+        {
+            "id": 107,
+            "question": "Dans le triangle CIA, que signifie 'I' ?",
+            "options": [
+                "Intégrité",
+                "Intelligence",
+                "Internet",
+                "Internal"
+            ],
+            "answer": 0,
+            "explanation": "Les données n'ont pas été altérées."
+        },
+        {
+            "id": 108,
+            "question": "Dans le triangle CIA, que signifie 'A' ?",
+            "options": [
+                "Disponibilité (Availability)",
+                "Access",
+                "Admin",
+                "Auth"
+            ],
+            "answer": 0,
+            "explanation": "Le service fonctionne quand on en a besoin."
+        },
+        {
+            "id": 109,
+            "question": "Quelle attaque vise à saturer un service pour le rendre indisponible ?",
+            "options": [
+                "DDoS (Denial of Service)",
+                "Phishing",
+                "XSS",
+                "SQL Injection"
+            ],
+            "answer": 0,
+            "explanation": "Attaque sur la Disponibilité."
+        },
+        {
+            "id": 110,
+            "question": "Quelle attaque consiste à voler des identifiants via un faux email ?",
+            "options": [
+                "Phishing (Hameçonnage)",
+                "Fishing",
+                "Spoofing",
+                "DDoS"
+            ],
+            "answer": 0,
+            "explanation": "Ingénierie sociale."
+        },
+        {
+            "id": 111,
+            "question": "Qu'est-ce qu'un Ransomware ?",
+            "options": [
+                "Logiciel qui chiffre les données et demande une rançon",
+                "Logiciel gratuit",
+                "Virus lent",
+                "Antivirus"
+            ],
+            "answer": 0,
+            "explanation": "Menace majeure actuelle."
+        },
+        {
+            "id": 112,
+            "question": "A quoi sert une DMZ (Demilitarized Zone) ?",
+            "options": [
+                "Isoler les services publics (Web) du réseau interne sensible",
+                "Zone de guerre",
+                "Zone de test",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Tampon de sécurité."
+        },
+        {
+            "id": 113,
+            "question": "Quel protocole sécurise le Wi-Fi moderne ?",
+            "options": [
+                "WPA3",
+                "WEP",
+                "WPA",
+                "WPS"
+            ],
+            "answer": 0,
+            "explanation": "Le plus récent et sécurisé."
+        },
+        {
+            "id": 114,
+            "question": "Quelle fréquence Wi-Fi a la meilleure portée mais est moins rapide ?",
+            "options": [
+                "2.4 GHz",
+                "5 GHz",
+                "6 GHz",
+                "60 GHz"
+            ],
+            "answer": 0,
+            "explanation": "Traverse mieux les murs."
+        },
+        {
+            "id": 115,
+            "question": "Quelle fréquence Wi-Fi est idéale pour le Gaming/Streaming (rapide) ?",
+            "options": [
+                "5 GHz",
+                "2.4 GHz",
+                "900 MHz",
+                "4G"
+            ],
+            "answer": 0,
+            "explanation": "Plus de bande passante, moins d'interférences."
+        },
+        {
+            "id": 116,
+            "question": "Qu'est-ce que le Wi-Fi 6 ?",
+            "options": [
+                "La norme 802.11ax",
+                "La 6ème antenne",
+                "6 GHz",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Meilleure gestion de nombreux appareils."
+        },
+        {
+            "id": 117,
+            "question": "Qu'est-ce qu'un Load Balancer ?",
+            "options": [
+                "Répartit la charge sur plusieurs serveurs",
+                "Pèse les serveurs",
+                "Accélère le cpu",
+                "Stocke les données"
+            ],
+            "answer": 0,
+            "explanation": "Évite la surcharge d'un seul serveur."
+        },
+        {
+            "id": 118,
+            "question": "A quoi sert un Proxy Inverse (Reverse Proxy) ?",
+            "options": [
+                "Protéger le serveur web, gérer le SSL et le cache",
+                "Cacher le client",
+                "Bloquer les pubs",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Souvent Nginx ou HAProxy."
+        },
+        {
+            "id": 119,
+            "question": "Qu'est-ce qu'un VPC dans le Cloud ?",
+            "options": [
+                "Virtual Private Cloud",
+                "Very Public Cloud",
+                "Virtual PC",
+                "Video PC"
+            ],
+            "answer": 0,
+            "explanation": "Votre réseau privé isolé chez AWS/Azure."
+        },
+        {
+            "id": 120,
+            "question": "Quel outil permet de voir les paquets traversant la carte réseau en temps réel ?",
+            "options": [
+                "Wireshark",
+                "Word",
+                "Excel",
+                "Paint"
+            ],
+            "answer": 0,
+            "explanation": "Sniffer de paquets."
+        },
+        {
+            "id": 121,
+            "question": "Quelle commande affiche l'adresse IP de votre PC ?",
+            "options": [
+                "ipconfig (Windows) / ifconfig (Linux)",
+                "showip",
+                "myip",
+                "whoami"
+            ],
+            "answer": 0,
+            "explanation": "Base du diagnostic."
+        },
+        {
+            "id": 122,
+            "question": "Quelle couche du modèle TCP/IP fusionne les couches 5, 6, 7 d'OSI ?",
+            "options": [
+                "Application",
+                "Transport",
+                "Internet",
+                "Physique"
+            ],
+            "answer": 0,
+            "explanation": "Simplification pratique."
+        },
+        {
+            "id": 123,
+            "question": "Quel port est utilisé par le bureau à distance Windows (RDP) ?",
+            "options": [
+                "3389",
+                "8080",
+                "22",
+                "443"
+            ],
+            "answer": 0,
+            "explanation": "Remote Desktop Protocol."
+        },
+        {
+            "id": 124,
+            "question": "Quel port est utilisé par une base de données MySQL par défaut ?",
+            "options": [
+                "3306",
+                "5432",
+                "80",
+                "21"
+            ],
+            "answer": 0,
+            "explanation": "Standard pour MySQL/MariaDB."
+        },
+        {
+            "id": 125,
+            "question": "Qu'est-ce que ARP Spoofing ?",
+            "options": [
+                "Mentir sur son adresse MAC pour intercepter le trafic",
+                "Voler une IP",
+                "Casser le Wi-Fi",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Attaque Man-in-the-Middle locale."
+        },
+        {
+            "id": 126,
+            "question": "Quel est l'avantage du Wi-Fi 5 GHz sur le 2.4 GHz ?",
+            "options": [
+                "Plus de vitesse et moins d'interférences",
+                "Meilleure portée",
+                "Traverse les murs",
+                "Moins cher"
+            ],
+            "answer": 0,
+            "explanation": "Mais moins bonne portée."
+        },
+        {
+            "id": 127,
+            "question": "A quoi sert le chiffrement AES ?",
+            "options": [
+                "Protéger la confidentialité des données",
+                "Compresser",
+                "Trier",
+                "Hashage"
+            ],
+            "answer": 0,
+            "explanation": "Standard de chiffrement symétrique."
+        },
+        {
+            "id": 128,
+            "question": "Qu'est-ce que le Hashing (ex: SHA-256) ?",
+            "options": [
+                "Empreinte numérique unique (irréversible)",
+                "Chiffrement",
+                "Compression",
+                "Mot de passe"
+            ],
+            "answer": 0,
+            "explanation": "Vérifie l'intégrité."
+        },
+        {
+            "id": 129,
+            "question": "Quelle commande permet de tester si un serveur est en ligne ?",
+            "options": [
+                "ping",
+                "pong",
+                "test",
+                "online"
+            ],
+            "answer": 0,
+            "explanation": "Envoie des paquets ICMP Echo."
+        },
+        {
+            "id": 130,
+            "question": "Qu'est-ce qu'un Switch de couche 3 ?",
+            "options": [
+                "Un switch qui peut aussi faire du routage (IP)",
+                "Un routeur nul",
+                "Un hub rapide",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Combine vitesse du switch et intelligence du routeur."
         }
     ]
 }

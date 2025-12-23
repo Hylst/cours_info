@@ -21,10 +21,16 @@
                 <div class="logo-icon">NET</div>Réseaux
             </div>
             <nav>
-                <a href="#s1">OSI Model</a>
-                <a href="#s2">Protocoles</a>
-                <a href="#s3">Adressage</a>
+                <a href="#s1">OSI</a>
+                <a href="#s2">Proto</a>
+                <a href="#s3">IP</a>
                 <a href="#s4">Matériel</a>
+                <a href="#s5">IPv6</a>
+                <a href="#s6">Sécurité</a>
+                <a href="#s7">Wi-Fi</a>
+                <a href="#s8">TCP/IP</a>
+                <a href="#s9">Outils</a>
+                <a href="#s10">Cloud</a>
             </nav>
         </div>
     </header>
@@ -61,19 +67,19 @@
                             <td>7</td>
                             <td style="color:var(--primary-bright)">Application</td>
                             <td>Data</td>
-                            <td>HTTP, FTP, SSH</td>
+                            <td>HTTP, FTP, SSH, DNS</td>
                         </tr>
                         <tr>
                             <td>6</td>
                             <td>Présentation</td>
                             <td>Data</td>
-                            <td>SSL/TLS, JPEG, ASCII</td>
+                            <td>SSL/TLS, JPEG, ASCII, Compression</td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td>Session</td>
                             <td>Data</td>
-                            <td>Sockets, RPC</td>
+                            <td>Sockets, RPC, NetBIOS</td>
                         </tr>
                         <tr>
                             <td>4</td>
@@ -85,23 +91,64 @@
                             <td>3</td>
                             <td style="color:var(--fn)">Réseau</td>
                             <td>Paquet</td>
-                            <td>IP, ICMP, IPsec</td>
+                            <td>IP, ICMP, IPsec, OSPF</td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Liaison</td>
                             <td>Trame (Frame)</td>
-                            <td>Ethernet, MAC, Wi-Fi</td>
+                            <td>Ethernet, MAC, Wi-Fi, ARP</td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>Physique</td>
                             <td>Bit</td>
-                            <td>Câble, Fibre, Ondes</td>
+                            <td>Câble, Fibre, Ondes, RJ45</td>
                         </tr>
                     </table>
                 </div>
             </details>
+
+            <!-- ENCAPSULATION -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head">Encapsulation des Données</div>
+                <pre style="text-align:center; line-height:1.8;">
+<span class="kw">Application</span>  →  [ <span class="str">DATA</span> ]
+     ↓
+<span class="kw">Transport</span>   →  [ <span class="fn">TCP Header</span> | DATA ]  = <span class="var">Segment</span>
+     ↓
+<span class="kw">Réseau</span>      →  [ <span class="fn">IP Header</span> | TCP | DATA ]  = <span class="var">Paquet</span>
+     ↓
+<span class="kw">Liaison</span>     →  [ <span class="fn">MAC</span> | IP | TCP | DATA | <span class="num">FCS</span> ]  = <span class="var">Trame</span>
+     ↓
+<span class="kw">Physique</span>    →  <span class="c">0101101010101101...</span>  = <span class="var">Bits</span></pre>
+            </div>
+
+            <!-- OSI vs TCP/IP -->
+            <h3 style="margin-top:30px;">OSI vs TCP/IP</h3>
+            <div class="grid2">
+                <div style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                    <h4 style="color:var(--primary-bright); margin-bottom:10px;">Modèle OSI (7 couches)</h4>
+                    <ul style="line-height:1.8; font-size:0.9rem; color:var(--muted);">
+                        <li>Modèle <strong>théorique</strong> de référence</li>
+                        <li>7 couches distinctes</li>
+                        <li>Développé par l'ISO</li>
+                        <li>Utilisé pour <strong>enseigner</strong> les concepts</li>
+                    </ul>
+                </div>
+                <div style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                    <h4 style="color:var(--num); margin-bottom:10px;">Modèle TCP/IP (4 couches)</h4>
+                    <ul style="line-height:1.8; font-size:0.9rem; color:var(--muted);">
+                        <li>Modèle <strong>pratique</strong> d'Internet</li>
+                        <li>4 couches : Application, Transport, Internet, Accès Réseau</li>
+                        <li>Développé par le DoD (US)</li>
+                        <li>Utilisé dans la <strong>vraie vie</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 Astuce</strong> : Les couches 5, 6, 7 d'OSI sont
+                fusionnées dans la couche "Application" du modèle TCP/IP.</div>
         </div>
     </section>
 
@@ -112,7 +159,7 @@
                 <div class="sec-num">02</div>
                 <div>
                     <h2 class="sec-title">Protocoles Clés</h2>
-                    <p class="sec-sub">TCP/IP Suite</p>
+                    <p class="sec-sub">TCP/IP Suite, Ports Standards</p>
                 </div>
             </div>
 
@@ -141,9 +188,112 @@
                             sur un réseau.</li>
                         <li><strong>NAT</strong> (Network Address Translation) : Permet à plusieurs appareils (IP
                             privées) de sortir sur le net avec une seule IP publique.</li>
+                        <li><strong>ARP</strong> (Address Resolution Protocol) : Associe une adresse IP à une adresse
+                            MAC.</li>
                     </ul>
                 </div>
             </div>
+
+            <!-- PORTS TABLE -->
+            <h3 style="margin-top:30px;">Ports Standards</h3>
+            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Port</th>
+                    <th>Protocole</th>
+                    <th>Service</th>
+                    <th>TCP/UDP</th>
+                </tr>
+                <tr>
+                    <td>20/21</td>
+                    <td><code>FTP</code></td>
+                    <td>Transfert fichiers</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--fn)">22</td>
+                    <td><code>SSH</code></td>
+                    <td>Shell sécurisé</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td><code>Telnet</code></td>
+                    <td>Shell non-sécurisé</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td><code>SMTP</code></td>
+                    <td>Envoi email</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--num)">53</td>
+                    <td><code>DNS</code></td>
+                    <td>Résolution domaines</td>
+                    <td>UDP/TCP</td>
+                </tr>
+                <tr>
+                    <td>67/68</td>
+                    <td><code>DHCP</code></td>
+                    <td>Attribution IP</td>
+                    <td>UDP</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--primary-bright)">80</td>
+                    <td><code>HTTP</code></td>
+                    <td>Web non-sécurisé</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>110</td>
+                    <td><code>POP3</code></td>
+                    <td>Réception email</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>143</td>
+                    <td><code>IMAP</code></td>
+                    <td>Réception email (sync)</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--str)">443</td>
+                    <td><code>HTTPS</code></td>
+                    <td>Web sécurisé (TLS)</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>3306</td>
+                    <td><code>MySQL</code></td>
+                    <td>Base de données</td>
+                    <td>TCP</td>
+                </tr>
+                <tr>
+                    <td>3389</td>
+                    <td><code>RDP</code></td>
+                    <td>Bureau à distance Windows</td>
+                    <td>TCP</td>
+                </tr>
+            </table>
+
+            <!-- TLS HANDSHAKE -->
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head">TLS Handshake (HTTPS)</div>
+                <pre style="text-align:center; line-height:1.8;">
+<span class="var">Client</span>                              <span class="var">Serveur</span>
+   |                                    |
+   |---- <span class="kw">ClientHello</span> (versions TLS) ---->|
+   |                                    |
+   |<---- <span class="kw">ServerHello</span> + <span class="fn">Certificat</span> -----|
+   |                                    |
+   |---- <span class="num">Clé pré-master</span> (chiffrée) ----->|
+   |                                    |
+   |<===== <span class="str">Communication chiffrée</span> =====|</pre>
+            </div>
+
+            <div class="tip" style="margin-top:20px;"><strong>💡 HTTPS</strong> = HTTP + TLS (anciennement SSL). Le
+                cadenas 🔒 dans le navigateur indique que TLS est actif.</div>
         </div>
     </section>
 
@@ -154,7 +304,7 @@
                 <div class="sec-num">03</div>
                 <div>
                     <h2 class="sec-title">Adressage IP (v4)</h2>
-                    <p class="sec-sub">32 bits</p>
+                    <p class="sec-sub">32 bits, CIDR, Sous-réseaux</p>
                 </div>
             </div>
 
@@ -167,18 +317,69 @@
                 La notation <code>/24</code> définit le "Masque de sous-réseau".<br>
                 <code>192.168.1.0/24</code> signifie :
                 <ul>
-                    <li>Les 24 premiers bits sont le réseau (fixe).</li>
-                    <li>Les 8 derniers bits sont pour les hôtes (254 machines max).</li>
-                    <li>Masque : <code>255.255.255.0</code></li>
+                    <li>Masque : <code>255.255.255.0</code> (24 bits à 1)</li>
+                    <li>Réseau (fixe) : <code>192.168.1.x</code></li>
+                    <li>Hôtes disponibles : 254 (de .1 à .254, .0=réseau, .255=broadcast)</li>
                 </ul>
             </div>
 
-            <div class="code">
-                <div class="code-head">Classes d'IP Privées (LAN)</div>
-                <pre>
-Classe A: 10.0.0.0    à 10.255.255.255
-Classe B: 172.16.0.0  à 172.31.255.255
-Classe C: 192.168.0.0 à 192.168.255.255 <span class="c">// Le plus courant (Box)</span></pre>
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head">Classes d'IP Privées (RFC 1918)</div>
+                    <pre>
+<span class="kw">Classe A (Grands réseaux)</span>
+10.0.0.0 à 10.255.255.255 (/8)
+> 16 millions d'hôtes
+
+<span class="kw">Classe B (Moyens réseaux)</span>
+172.16.0.0 à 172.31.255.255 (/12)
+> 1 million d'hôtes
+
+<span class="kw">Classe C (Petits réseaux / Box)</span>
+192.168.0.0 à 192.168.255.255 (/16)
+> 65 536 hôtes</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head">Aide-Mémoire CIDR</div>
+                    <table style="width:100%; font-size:0.85rem; border-collapse:collapse;">
+                        <tr style="color:#888; border-bottom:1px solid #444;">
+                            <th>CIDR</th>
+                            <th>Masque</th>
+                            <th>Hôtes</th>
+                        </tr>
+                        <tr>
+                            <td>/32</td>
+                            <td>255.255.255.255</td>
+                            <td>1 (IP unique)</td>
+                        </tr>
+                        <tr>
+                            <td>/30</td>
+                            <td>255.255.255.252</td>
+                            <td>2 (Lien P2P)</td>
+                        </tr>
+                        <tr>
+                            <td style="color:var(--primary-bright)">/24</td>
+                            <td>255.255.255.0</td>
+                            <td>254 (Standard)</td>
+                        </tr>
+                        <tr>
+                            <td>/16</td>
+                            <td>255.255.0.0</td>
+                            <td>65 534</td>
+                        </tr>
+                        <tr>
+                            <td>/8</td>
+                            <td>255.0.0.0</td>
+                            <td>16 Millions</td>
+                        </tr>
+                        <tr>
+                            <td>/0</td>
+                            <td>0.0.0.0</td>
+                            <td>Internet (Tout)</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -190,20 +391,399 @@ Classe C: 192.168.0.0 à 192.168.255.255 <span class="c">// Le plus courant (Box
                 <div class="sec-num">04</div>
                 <div>
                     <h2 class="sec-title">Matériel (Hardware)</h2>
-                    <p class="sec-sub">Switch vs Router</p>
+                    <p class="sec-sub">Équipements d'Interconnexion</p>
                 </div>
             </div>
 
             <div class="grid2">
                 <div class="info">
-                    <strong>Switch (Commutateur)</strong><br>
-                    Couche 2 (Liaison). Connecte les appareils d'un <strong>même réseau</strong> (LAN). Utilise les
-                    adresses MAC.
+                    <strong style="color:var(--primary-bright); font-size:1.1rem;">Switch (Commutateur)</strong><br>
+                    <span style="font-size:0.8rem; color:#888;">COUCHE 2 (LIAISON)</span>
+                    <p>Connecte les appareils d'un <strong>même réseau</strong> (LAN). Il est "intelligent" : il apprend
+                        les adresses MAC et n'envoie les données qu'au bon destinataire (contrairement au Hub).</p>
                 </div>
                 <div class="info" style="border-left-color:var(--num);">
-                    <strong>Router (Routeur)</strong><br>
-                    Couche 3 (Réseau). Connecte <strong>différents réseaux</strong> entre eux (LAN <-> WAN). Utilise les
-                        adresses IP.
+                    <strong style="color:var(--num); font-size:1.1rem;">Router (Routeur)</strong><br>
+                    <span style="font-size:0.8rem; color:#888;">COUCHE 3 (RÉSEAU)</span>
+                    <p>Connecte <strong>différents réseaux</strong> entre eux (ex: LAN <-> Internet). Il utilise les
+                            adresses IP pour diriger les paquets (Routage).</p>
+                </div>
+            </div>
+
+            <table style="width:100%; margin-top:25px; border-collapse:collapse; font-size:0.9rem;">
+                <tr style="background:#222;">
+                    <th style="padding:10px;">Équipement</th>
+                    <th>Couche OSI</th>
+                    <th>Adresse utilisée</th>
+                    <th>Fonction principale</th>
+                </tr>
+                <tr>
+                    <td style="padding:10px;"><strong>Hub</strong></td>
+                    <td>1 (Physique)</td>
+                    <td>Aucune</td>
+                    <td>Répète le signal (bête et inefficace).</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;"><strong>Switch</strong></td>
+                    <td>2 (Liaison)</td>
+                    <td>MAC</td>
+                    <td>Connecte les hôtes d'un LAN.</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;"><strong>Routeur</strong></td>
+                    <td>3 (Réseau)</td>
+                    <td>IP</td>
+                    <td>Connecte des réseaux (LAN/WAN).</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;"><strong>Firewall</strong></td>
+                    <td>3-7</td>
+                    <td>IP/Ports/App</td>
+                    <td>Filtre et sécurise le trafic.</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;"><strong>Access Point</strong></td>
+                    <td>2 (Liaison)</td>
+                    <td>MAC</td>
+                    <td>Donne l'accès Wi-Fi au réseau filaire.</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- S5: IPv6 -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">IPv6</h2>
+                    <p class="sec-sub">128 bits, Hexadécimal</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:15px;">IPv4 est épuisé (4.3 milliards d'adresses). IPv6 offre
+                340
+                indécillions d'adresses (3.4 x 10^38).</p>
+
+            <div class="code">
+                <div class="code-head">Format : 8 groupes de 4 hexadécimaux</div>
+                <pre>
+<span class="kw">Exemple complet :</span>
+2001:0db8:0000:0000:0000:8a2e:0370:7334
+
+<span class="kw">Règles de simplification :</span>
+1. Omettre les zéros initiaux
+2. Remplacer une suite de zéros par "::" (une seule fois)
+
+<span class="kw">Exemple simplifié :</span>
+2001:db8::8a2e:370:7334</pre>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info">
+                    <strong>Types d'adresses</strong>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
+                        <li><strong>Unicast Global</strong> : <code>2000::/3</code> (L'équivalent des IP publiques V4).
+                        </li>
+                        <li><strong>Link-Local</strong> : <code>fe80::/10</code> (Communication locale uniquement,
+                            auto-configuré).</li>
+                        <li><strong>Unique Local</strong> : <code>fc00::/7</code> (L'équivalent des IP privées V4).</li>
+                        <li><strong>Loopback</strong> : <code>::1</code> (L'équivalent de 127.0.0.1).</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Avantages</strong>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
+                        <li>Plus de NAT nécessaire !</li>
+                        <li>Auto-configuration (SLAAC).</li>
+                        <li>En-tête simplifié (traitement routeur plus rapide).</li>
+                        <li>IPsec intégré nativement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: SECURITY -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Sécurité Réseau</h2>
+                    <p class="sec-sub">Firewall, VPN, CIA Triad</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head">CIA Triad (Le socle de la sécu)</div>
+                    <pre style="line-height:1.8;">
+<span class="kw">Confidentiality (Confidentialité)</span>
+Seules les personnes autorisées voient les données.
+> Chiffrement (AES, TLS), VPN.
+
+<span class="kw">Integrity (Intégrité)</span>
+Les données n'ont pas été modifiées.
+> Hashing (SHA-256), Signatures numériques.
+
+<span class="kw">Availability (Disponibilité)</span>
+Le service est accessible quand on en a besoin.
+> Redondance, Anti-DDoS</pre>
+                </div>
+
+                <div style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                    <h4 style="color:var(--error); margin-bottom:10px;">Attaques Courantes</h4>
+                    <ul style="line-height:1.6; font-size:0.9rem; color:var(--muted);">
+                        <li><strong>DDoS</strong> : Saturer un serveur de requêtes pour le faire tomber.</li>
+                        <li><strong>Man-in-the-Middle (MitM)</strong> : Intercepter la communication (ex: faux Wi-Fi).
+                        </li>
+                        <li><strong>Phishing</strong> : Vol d'identifiants via faux site/email.</li>
+                        <li><strong>Ransomware</strong> : Chiffrage malveillant des données contre rançon.</li>
+                        <li><strong>ARP Spoofing</strong> : Se faire passer pour le routeur sur un LAN.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- VPN & FIREWALL -->
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info" style="border-left-color:var(--fn);">
+                    <strong>VPN (Virtual Private Network)</strong><br>
+                    Crée un tunel chiffré (encapsulation) sur internet.
+                    <ul>
+                        <li><strong>Site-to-Site</strong> : Relie deux bureaux distants.</li>
+                        <li><strong>Remote Access</strong> : Télétravailleur vers Bureau.</li>
+                        <li>Protocoles : IPsec, WireGuard, OpenVPN.</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--str);">
+                    <strong>Zones Réseaux (Architecture)</strong><br>
+                    <ul>
+                        <li><strong>LAN</strong> (Trusted) : Réseau interne sécurisé.</li>
+                        <li><strong>WAN</strong> (Untrusted) : Internet, dangereux.</li>
+                        <li><strong>DMZ</strong> (De-Militarized Zone) : Zone tampon pour serveurs publics (Web, Mail).
+                            Isolé du LAN pour sécurité.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S7: WIFI -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Wi-Fi & Sans-Fil</h2>
+                    <p class="sec-sub">IEEE 802.11, Fréquences, Sécurité</p>
+                </div>
+            </div>
+
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Standard</th>
+                    <th>Nom Marketing</th>
+                    <th>Fréquence</th>
+                    <th>Débit Max (Théorique)</th>
+                </tr>
+                <tr>
+                    <td>802.11n</td>
+                    <td>Wi-Fi 4</td>
+                    <td>2.4 / 5 GHz</td>
+                    <td>600 Mbps</td>
+                </tr>
+                <tr>
+                    <td>802.11ac</td>
+                    <td>Wi-Fi 5</td>
+                    <td>5 GHz</td>
+                    <td>3.5 Gbps</td>
+                </tr>
+                <tr>
+                    <td>802.11ax</td>
+                    <td>Wi-Fi 6 / 6E</td>
+                    <td>2.4 / 5 / 6 GHz</td>
+                    <td>9.6 Gbps</td>
+                </tr>
+                <tr>
+                    <td>802.11be</td>
+                    <td>Wi-Fi 7</td>
+                    <td>2.4 / 5 / 6 GHz</td>
+                    <td>46 Gbps</td>
+                </tr>
+            </table>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head">Fréquences : 2.4 vs 5 GHz</div>
+                    <pre style="color:var(--muted)">
+<span class="kw">2.4 GHz</span>
+- Meilleure Portée (traverse mieux les murs)
+- Débit plus lent
+- Très encombré (Micro-ondes, Bluetooth)
+- 3 canaux non-chevauchants (1, 6, 11)
+
+<span class="kw">5 GHz</span>
+- Moins de portée (absorbé par les obstacles)
+- Débit très rapide
+- Plus stable (nombreux canaux)
+- Idéal pour streaming/gaming</pre>
+                </div>
+
+                <div class="info">
+                    <strong>Sécurité Wi-Fi</strong>
+                    <ul style="margin-top:10px; padding-left:15px; line-height:1.7;">
+                        <li style="color:var(--error);"><strong>WEP</strong> : Obsolète. Craquable en 2 minutes.</li>
+                        <li style="color:var(--num);"><strong>WPA2 (AES)</strong> : Standard actuel. Robuste.</li>
+                        <li style="color:var(--primary-bright);"><strong>WPA3</strong> : Le futur. Meilleur chiffrement
+                            (SAE), protection contre attaques dico.</li>
+                    </ul>
+                    <p style="margin-top:10px; font-size:0.85rem; color:#888;">Pour les entreprises : WPA-Enterprise
+                        (802.1X) avec serveur Radius (chaque utilisateur a son login/mdp).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: TCP/IP MODEL -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">TCP/IP Model</h2>
+                    <p class="sec-sub">Encapsulation & RFC</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:15px;">Le modèle réel d'Internet (contrairement à OSI qui est
+                théorique). Il regroupe les fonctions en 4 couches.</p>
+
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Couche TCP/IP</th>
+                    <th>Équivalent OSI</th>
+                    <th>Unités & Protocoles</th>
+                </tr>
+                <tr>
+                    <td rowspan="3" style="border-bottom:1px solid #333; color:var(--primary-bright)">
+                        <strong>Application</strong></td>
+                    <td>Application (7)</td>
+                    <td rowspan="3" style="border-bottom:1px solid #333;">Data<br><span style="color:#666">HTTP, DNS,
+                            SSH, TLS</span></td>
+                </tr>
+                <tr>
+                    <td>Présentation (6)</td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid #333">Session (5)</td>
+                </tr>
+
+                <tr>
+                    <td style="border-bottom:1px solid #333; color:var(--num)"><strong>Transport</strong></td>
+                    <td style="border-bottom:1px solid #333">Transport (4)</td>
+                    <td style="border-bottom:1px solid #333">Segment<br><span style="color:#666">TCP, UDP</span></td>
+                </tr>
+
+                <tr>
+                    <td style="border-bottom:1px solid #333; color:var(--fn)"><strong>Internet</strong></td>
+                    <td style="border-bottom:1px solid #333">Réseau (3)</td>
+                    <td style="border-bottom:1px solid #333">Paquet<br><span style="color:#666">IP, ICMP</span></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2" style="color:var(--str)"><strong>Accès Réseau</strong></td>
+                    <td>Liaison (2)</td>
+                    <td rowspan="2">Trame / Bit<br><span style="color:#666">Ethernet, Wi-Fi</span></td>
+                </tr>
+                <tr>
+                    <td>Physique (1)</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- S9: TOOLS -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Outils & Diagnostic</h2>
+                    <p class="sec-sub">Commandes essentielles</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head">Commandes Terminal (Windows / Linux)</div>
+                <pre>
+<span class="kw">ping &lt;ip&gt;</span>
+Vérifie la connectivité (temps de réponse).
+> ping google.com
+
+<span class="kw">ipconfig / ifconfig</span>
+Affiche l'IP, le masque, la passerelle.
+> ipconfig /all
+
+<span class="kw">nslookup &lt;domaine&gt;</span>
+Interroge le serveur DNS.
+> nslookup google.com
+
+<span class="kw">tracert / traceroute</span>
+Affiche le chemin (routeurs) jusqu'à la destination.
+> tracert 8.8.8.8
+
+<span class="kw">netstat -an</span>
+Liste toutes les connexions actives et ports ouverts.</pre>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head">Wireshark (Sniffer)</div>
+                <pre style="color:var(--muted);">
+Outil graphique puissant pour capturer et analyser
+les paquets en temps réel.
+- Voir les handshakes TCP
+- Décoder les protocoles
+- Identifier les problèmes réseaux</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S10: CLOUD -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Cloud Architecture</h2>
+                    <p class="sec-sub">Concepts Modernes</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>Load Balancer (Équilibreur)</strong><br>
+                    Répartit le trafic entrant sur plusieurs serveurs (Backend) pour éviter la surcharge et assurer la
+                    redondance.
+                </div>
+                <div class="info" style="border-left-color:var(--num);">
+                    <strong>CDN (Content Delivery Network)</strong><br>
+                    Réseau de serveurs "Edge" (en périphérie) proches des utilisateurs pour servir les fichiers
+                    statiques (images, CSS, JS) très vite. (ex: Cloudflare).
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Proxy Inverse (Nginx)</strong><br>
+                    Se place devant les serveurs web. Gère la terminaison SSL, la compression, le cache, et protège l'IP
+                    du serveur réel.
+                </div>
+                <div class="info" style="border-left-color:var(--fn);">
+                    <strong>VPC (Virtual Private Cloud)</strong><br>
+                    Votre réseau privé isolé dans le cloud public (AWS/Azure). Vous définissez vos sous-réseaux, tables
+                    de routage, et passerelles.
                 </div>
             </div>
         </div>

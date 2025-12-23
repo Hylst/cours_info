@@ -35,6 +35,8 @@
                 <a href="#s12">Routage</a>
                 <a href="#s13">VLAN</a>
                 <a href="#s14">Docker</a>
+                <a href="#s15">Infra</a>
+                <a href="#s16">Futur</a>
             </nav>
         </div>
     </header>
@@ -138,6 +140,24 @@
                     </table>
                 </div>
             </details>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info">
+                    <strong>Échelles de Réseaux</strong>
+                    <ul style="margin-top:5px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>PAN (Personal)</strong> : Bluetooth, NFC (quelques mètres).</li>
+                        <li><strong>LAN (Local)</strong> : Maison, Bureau (Ethernet/Wi-Fi).</li>
+                        <li><strong>MAN (Metropolitan)</strong> : Campus, Ville (Fibre noire).</li>
+                        <li><strong>WAN (Wide)</strong> : Internet, Réseau mondial (Transocéanique).</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--fn);">
+                    <strong>GAN (Global Area Network)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Le réseau des réseaux</span>
+                    <p style="font-size:0.9rem;">Internet est un GAN, interconnectant des millions de réseaux privés et
+                        publics via des protocoles communs.</p>
+                </div>
+            </div>
 
             <!-- ENCAPSULATION -->
             <div class="code" style="margin-top:20px;">
@@ -497,6 +517,27 @@
                     <td>Donne l'accès Wi-Fi au réseau filaire.</td>
                 </tr>
             </table>
+
+            <h3 style="margin-top:30px;">Couche 1 : Le Physique (Câblage)</h3>
+            <div class="grid2">
+                <div class="info">
+                    <strong>Cuivre (Ethernet RJ45)</strong>
+                    <ul style="margin-top:5px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>Cat 5e</strong> : 1 Gbps (Standard domestique).</li>
+                        <li><strong>Cat 6/6a</strong> : 10 Gbps (Entreprise).</li>
+                        <li><strong>Cat 7/8</strong> : 40 Gbps (Datacenter, blindé).</li>
+                        <li><em>Sensible aux interférences électromagnétiques (EMI).</em></li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Fibre Optique</strong>
+                    <ul style="margin-top:5px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>Monomode (SMF)</strong> : Très longue distance (Laser), Laser jaune.</li>
+                        <li><strong>Multimode (MMF)</strong> : Courte distance (LED), Câble aqua/orange.</li>
+                        <li><em>Immunisé aux interférences, vitesse lumière.</em></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -801,14 +842,24 @@ Affiche le chemin (routeurs) jusqu'à la destination.
 Liste toutes les connexions actives et ports ouverts.</pre>
             </div>
 
-            <div class="code" style="margin-top:20px;">
-                <div class="code-head">Wireshark (Sniffer)</div>
-                <pre style="color:var(--muted);">
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head">Wireshark (Sniffer)</div>
+                    <pre style="color:var(--muted);">
 Outil graphique puissant pour capturer et analyser
 les paquets en temps réel.
 - Voir les handshakes TCP
 - Décoder les protocoles
 - Identifier les problèmes réseaux</pre>
+                </div>
+                <div class="info" style="border-left-color:var(--num);">
+                    <strong>SNMP (Supervision)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Simple Network Management Protocol</span>
+                    <p style="font-size:0.9rem;">
+                        Permet de monitorer l'état des équipements (CPU routeur, bande passante switch, température) et
+                        d'envoyer des alertes (Traps).
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1037,6 +1088,105 @@ Port Mapping : Redirige le port 8080 de l'Hôte vers le 80 du Conteneur.</pre>
                     <td>Clusters distribués.</td>
                 </tr>
             </table>
+        </div>
+    </section>
+
+    <!-- S15: INFRA INTERNET -->
+    <section id="s15">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Infrastructure Internet</h2>
+                    <p class="sec-sub">FAI, IXP, Câbles Sous-marins</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Internet n'est pas magique, c'est du matériel. Des câbles sous les océans et des bâtiments remplis de
+                routeurs ultra-puissants.
+            </p>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>1. FAI (Fournisseur d'Accès)</strong>
+                    <ul style="margin-top:5px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>Tier 1</strong> : Opérateurs mondiaux (Orange, AT&T). Ils possèdent les câbles
+                            internationaux. Il se "peering" (échangent) gratuitement.</li>
+                        <li><strong>Tier 2</strong> : Opérateurs nationaux. Achètent du transit aux Tier 1.</li>
+                        <li><strong>Tier 3</strong> : FAI locaux (votre box).</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>2. IXP (Internet Exchange Point)</strong>
+                    <p style="font-size:0.9rem;">
+                        Des lieux physiques où les FAI s'interconnectent directement pour échanger du trafic (Peering)
+                        sans passer par des intermédiaires coûteux.
+                        <br><em>Ex: France-IX à Paris.</em>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="info" style="border-left-color:var(--str);">
+                    <strong>3. La Boucle Locale</strong>
+                    <p style="font-size:0.9rem;">Le "dernier kilomètre" qui relie l'abonné au réseau.</p>
+                    <ul style="margin-top:5px; padding-left:15px; font-size:0.9rem; line-height:1.6;">
+                        <li><strong>FTTH (Fiber to the Home)</strong> : Fibre optique jusqu'au salon (GPON). Rapide.
+                        </li>
+                        <li><strong>ADSL/VDSL</strong> : Paires de cuivre historiques. Lent et sensible distance.</li>
+                        <li><strong>4G/5G Fixe</strong> : Radio cellulaire.</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--fn);">
+                    <strong>4. Câbles Sous-marins</strong>
+                    <p style="font-size:0.9rem;">
+                        99% du trafic intercontinental passe sous l'eau (pas par satellite). Ce sont des fibres optiques
+                        blindées posées au fond des océans.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S16: TRENDS & FUTURE -->
+    <section id="s16">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Tendances & Futur</h2>
+                    <p class="sec-sub">SDN, Edge, 5G</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>SDN (Software Defined Networking)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Programmabilité</span>
+                    <p style="font-size:0.9rem;">
+                        On sépare le "cerveau" (Contrôleur) des "muscles" (Switchs). Permet de configurer tout le réseau
+                        via une API centralisée au lieu de taper des commandes sur chaque switch.
+                    </p>
+                </div>
+                <div class="info" style="border-left-color:var(--num);">
+                    <strong>Edge Computing</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Traitement à la source</span>
+                    <p style="font-size:0.9rem;">
+                        Au lieu d'envoyer toutes les données IoT au Cloud (lent), on les traite localement (sur la
+                        passerelle ou l'antenne 5G) pour une latence minimale.
+                    </p>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>5G (Nouvelle Radio)</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Pas juste pour le mobile</span>
+                    <p style="font-size:0.9rem;">
+                        Offre le "Network Slicing" : découper le réseau en tranches virtuelles garantissant une QoS
+                        spécifique (ex: une tranche ultra-sécurisée pour la chirurgie à distance, une tranche haut débit
+                        pour Netflix).
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 

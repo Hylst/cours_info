@@ -1,7 +1,7 @@
 {
     "meta": {
         "title": "Quiz Réseaux - 100 Questions",
-        "total": 150
+        "total": 165
     },
     "questions": [
         {
@@ -1803,6 +1803,186 @@
             ],
             "answer": 0,
             "explanation": "Affiche les réseaux bridge, host, etc."
+        },
+        {
+            "id": 151,
+            "question": "Quel type de réseau a la plus PETITE portée ?",
+            "options": [
+                "PAN (Personal Area Network)",
+                "LAN (Local Area Network)",
+                "MAN (Metropolitan Area Network)",
+                "WAN (Wide Area Network)"
+            ],
+            "answer": 0,
+            "explanation": "Quelques mètres (Bluetooth, NFC)."
+        },
+        {
+            "id": 152,
+            "question": "Quelle catégorie de câble Ethernet supporte 10 Gbps (standard entreprise) ?",
+            "options": [
+                "Cat 6a",
+                "Cat 5e",
+                "Cat 3",
+                "Coaxial"
+            ],
+            "answer": 0,
+            "explanation": "Cat 5e est limité à 1 Gbps. Cat 6a monte à 10."
+        },
+        {
+            "id": 153,
+            "question": "Quelle fibre optique est utilisée pour les TRÈS longues distances ?",
+            "options": [
+                "Monomode (SMF)",
+                "Multimode (MMF)",
+                "Fibre plastique",
+                "Fibre carbone"
+            ],
+            "answer": 0,
+            "explanation": "Utilise un laser, signal direct sans rebond."
+        },
+        {
+            "id": 154,
+            "question": "À quoi sert Wireshark ?",
+            "options": [
+                "Capturer et analyser les paquets réseaux (Sniffer)",
+                "Bloquer les virus",
+                "Créer des dessins 3D",
+                "Gérer les mots de passe"
+            ],
+            "answer": 0,
+            "explanation": "Permet de voir le contenu exact du trafic."
+        },
+        {
+            "id": 155,
+            "question": "Quel protocole permet de superviser l'état des équipements (CPU, Température) ?",
+            "options": [
+                "SNMP",
+                "SMTP",
+                "HTTP",
+                "FTP"
+            ],
+            "answer": 0,
+            "explanation": "Simple Network Management Protocol."
+        },
+        {
+            "id": 156,
+            "question": "Qu'est-ce qu'un FAI 'Tier 1' ?",
+            "options": [
+                "Un opérateur mondial qui possède son propre réseau international",
+                "Le FAI de votre quartier",
+                "Un revendeur de connexion",
+                "Un fabricant de câbles"
+            ],
+            "answer": 0,
+            "explanation": "Ils forment l'épine dorsale d'Internet (ex: Orange, AT&T)."
+        },
+        {
+            "id": 157,
+            "question": "Quel est le but d'un IXP (Internet Exchange Point) ?",
+            "options": [
+                "Permettre aux FAI d'échanger du trafic directement (Peering)",
+                "Vendre des ordinateurs",
+                "Héberger des sites web",
+                "Stocker des emails"
+            ],
+            "answer": 0,
+            "explanation": "Réduit la latence et les coûts de transit."
+        },
+        {
+            "id": 158,
+            "question": "Par où passe 99% du trafic internet intercontinental ?",
+            "options": [
+                "Câbles sous-marins",
+                "Satellites",
+                "Ondes radio",
+                "Courrier postal"
+            ],
+            "answer": 0,
+            "explanation": "Les satellites (Starlink inclus) sont minoritaires en volume."
+        },
+        {
+            "id": 159,
+            "question": "Quelle techno de boucle locale amène la fibre jusqu'à l'utilisateur ?",
+            "options": [
+                "FTTH (Fiber To The Home)",
+                "ADSL",
+                "VDSL",
+                "Dial-up"
+            ],
+            "answer": 0,
+            "explanation": "Fibre de bout en bout."
+        },
+        {
+            "id": 160,
+            "question": "En SDN (Software Defined Networking), que sépare-t-on ?",
+            "options": [
+                "Le plan de contrôle (Cerveau) et le plan de données (Muscles)",
+                "Le clavier et la souris",
+                "Le routeur et le switch",
+                "L'IPV4 et l'IPV6"
+            ],
+            "answer": 0,
+            "explanation": "Permet une gestion centralisée et programmable."
+        },
+        {
+            "id": 161,
+            "question": "Quel est l'avantage principal de l'Edge Computing ?",
+            "options": [
+                "Réduire la latence en traitant les données près de la source",
+                "Stocker plus de données",
+                "Avoir des serveurs plus jolis",
+                "Utiliser moins d'électricité"
+            ],
+            "answer": 0,
+            "explanation": "Évite l'aller-retour vers un Cloud lointain."
+        },
+        {
+            "id": 162,
+            "question": "Qu'est-ce que le 'Network Slicing' en 5G ?",
+            "options": [
+                "Découper le réseau en tranches virtuelles avec des QoS différentes",
+                "Couper les câbles en deux",
+                "Partager le Wi-Fi avec les voisins",
+                "Une technique de piratage"
+            ],
+            "answer": 0,
+            "explanation": "Une tranche pour l'IoT, une pour le streaming, une critique..."
+        },
+        {
+            "id": 163,
+            "question": "La fibre multimode est généralement de couleur :",
+            "options": [
+                "Aqua ou Orange",
+                "Jaune",
+                "Noire",
+                "Rouge"
+            ],
+            "answer": 0,
+            "explanation": "Jaune = Monomode. Aqua/Orange = Multimode."
+        },
+        {
+            "id": 164,
+            "question": "Quel composant est sensible aux interférences électromagnétiques (EMI) ?",
+            "options": [
+                "Câble Cuivre (RJ45)",
+                "Fibre Optique",
+                "Disque Dur SSD",
+                "Clavier"
+            ],
+            "answer": 0,
+            "explanation": "Le cuivre agit comme une antenne. La fibre utilise la lumière (immunisée)."
+        },
+        {
+            "id": 165,
+            "question": "Internet est considéré comme quel type de réseau ?",
+            "options": [
+                "GAN (Global Area Network)",
+                "LAN",
+                "PAN",
+                "VLAN"
+            ],
+            "answer": 0,
+            "explanation": "Le plus grand des WAN."
         }
     ]
 }

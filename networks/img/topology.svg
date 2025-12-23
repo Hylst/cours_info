@@ -1,0 +1,82 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 14px; text-anchor: middle; }
+        .icon-box { fill: #2d3748; stroke: #4fd1c5; stroke-width: 2; rx: 8; }
+        .line { stroke: #4fd1c5; stroke-width: 2; }
+        .cloud { fill: #5c6bc0; opacity: 0.2; }
+        .zone-label { fill: #666; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+    </style>
+    
+    <rect width="800" height="400" fill="#1e1e1e" rx="10"/>
+    <text x="400" y="30" class="text" style="font-size:20px; font-weight:bold; fill:#4fd1c5">TOPOLOGIE RÉSEAU TYPIQUE</text>
+
+    <!-- ZONES -->
+    <rect x="30" y="60" width="200" height="300" stroke="#ef5350" stroke-dasharray="4" rx="10" fill="none"/>
+    <text x="130" y="80" class="zone-label" fill="#ef5350">WAN (INTERNET)</text>
+
+    <rect x="250" y="60" width="520" height="300" stroke="#66bb6a" stroke-dasharray="4" rx="10" fill="none"/>
+    <text x="510" y="80" class="zone-label" fill="#66bb6a">LAN (LOCAL)</text>
+
+    <!-- Cloud Icon -->
+    <path d="M130 150 Q160 150 170 180 Q190 190 180 210 Q190 240 160 250 H90 Q50 250 60 210 Q40 180 80 160 Q90 130 130 150 Z" class="cloud"/>
+    <text x="125" y="210" class="text">INTERNET</text>
+
+    <!-- CONNECTIONS -->
+    <line x1="180" y1="200" x2="280" y2="200" class="line" stroke="#ef5350"/> <!-- Internet to Firewall -->
+    <line x1="320" y1="200" x2="380" y2="200" class="line"/> <!-- Firewall to Router -->
+    <line x1="420" y1="200" x2="480" y2="200" class="line"/> <!-- Router to Switch -->
+    
+    <line x1="520" y1="200" x2="600" y2="100" class="line"/> <!-- Switch to PC1 -->
+    <line x1="520" y1="200" x2="600" y2="300" class="line"/> <!-- Switch to PC2 -->
+    <line x1="520" y1="200" x2="600" y2="200" class="line"/> <!-- Switch to AP -->
+    
+    <!-- DEVICES -->
+    
+    <!-- Firewall -->
+    <g transform="translate(280, 180)">
+        <rect width="40" height="40" fill="#c62828" rx="4"/>
+        <text x="20" y="55" class="text" style="font-size:12px">FW</text>
+    </g>
+
+    <!-- Router -->
+    <g transform="translate(380, 180)">
+        <circle cx="20" cy="20" r="20" fill="#1976d2"/>
+        <path d="M10 20 L20 10 L30 20 M10 20 L20 30 L30 20" stroke="white" stroke-width="2" fill="none"/>
+        <text x="20" y="55" class="text" style="font-size:12px">Routeur</text>
+    </g>
+
+    <!-- Switch -->
+    <g transform="translate(480, 180)">
+        <rect width="40" height="40" fill="#2d3748" stroke="#4fd1c5" stroke-width="2"/>
+        <path d="M10 15 L30 15 M10 25 L30 25" stroke="#4fd1c5" stroke-width="2"/>
+        <text x="20" y="55" class="text" style="font-size:12px">Switch</text>
+    </g>
+
+    <!-- PC 1 -->
+    <g transform="translate(600, 80)">
+        <rect width="40" height="30" fill="#4a5568" rx="2"/>
+        <rect x="5" y="32" width="30" height="4" fill="#4a5568"/>
+        <text x="70" y="20" class="text" style="text-anchor:start">PC Admin</text>
+    </g>
+
+    <!-- Access Point -->
+    <g transform="translate(600, 180)">
+        <circle cx="20" cy="20" r="15" fill="#4a5568"/>
+        <path d="M10 15 Q20 5 30 15 M15 20 Q20 15 25 20" stroke="#4fd1c5" stroke-width="2" fill="none"/>
+        <text x="70" y="25" class="text" style="text-anchor:start">Wi-Fi AP</text>
+    </g>
+
+    <!-- PC 2 -->
+    <g transform="translate(600, 280)">
+        <rect width="40" height="30" fill="#4a5568" rx="2"/>
+        <rect x="5" y="32" width="30" height="4" fill="#4a5568"/>
+        <text x="70" y="20" class="text" style="text-anchor:start">PC User</text>
+    </g>
+
+    <!-- Phone (Wifi) -->
+    <g transform="translate(680, 220)">
+        <rect width="15" height="30" fill="#4a5568" rx="2"/>
+        <path d="M-5 15 Q-15 5 -15 25" stroke="#4fd1c5" stroke-width="2" stroke-dasharray="2 2" fill="none"/>
+    </g>
+
+</svg>

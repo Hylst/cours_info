@@ -1,0 +1,77 @@
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 14px; text-anchor: middle; }
+        .label { font-size: 12px; fill: #aaa; text-anchor: middle; }
+        .box { stroke: #4df; stroke-width: 2; fill: rgba(0, 50, 80, 0.5); rx: 6; }
+        .header { fill: #ab47bc; stroke: none; }
+        .data { fill: #26a69a; stroke: none; }
+        .footer { fill: #ef5350; stroke: none; }
+    </style>
+
+    <!-- Background -->
+    <rect width="800" height="300" fill="#1e1e1e" rx="10"/>
+    <text x="400" y="30" class="text" style="font-size:20px; font-weight:bold; fill:#4df">ENCAPSULATION DES DONNÉES</text>
+
+    <!-- Step 1: Data -->
+    <g transform="translate(50, 100)">
+        <rect width="80" height="60" class="data" rx="4"/>
+        <text x="40" y="35" class="text">Data</text>
+        <text x="40" y="80" class="label">App (L7)</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M140 130 H170" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 2: Segment -->
+    <g transform="translate(180, 100)">
+        <rect width="30" height="60" class="header" rx="4"/>
+        <text x="15" y="35" class="text" style="font-size:10px">TCP</text>
+        <rect x="32" width="80" height="60" class="data" rx="4"/>
+        <text x="72" y="35" class="text">Data</text>
+        <text x="56" y="80" class="label">Segment (L4)</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M302 130 H332" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 3: Packet -->
+    <g transform="translate(340, 100)">
+        <rect width="30" height="60" class="header" rx="4" style="fill:#5c6bc0"/>
+        <text x="15" y="35" class="text" style="font-size:10px">IP</text>
+        
+        <rect x="32" width="30" height="60" class="header" rx="4"/>
+        <text x="47" y="35" class="text" style="font-size:10px">TCP</text>
+
+        <rect x="64" width="80" height="60" class="data" rx="4"/>
+        <text x="104" y="35" class="text">Data</text>
+        
+        <text x="72" y="80" class="label">Paquet (L3)</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M495 130 H525" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 4: Frame -->
+    <g transform="translate(535, 100)">
+        <rect width="30" height="60" class="header" rx="4" style="fill:#e67e22"/>
+        <text x="15" y="35" class="text" style="font-size:10px">MAC</text>
+
+        <rect x="32" width="30" height="60" class="header" rx="4" style="fill:#5c6bc0"/>
+        
+        <rect x="64" width="30" height="60" class="header" rx="4"/>
+
+        <rect x="96" width="80" height="60" class="data" rx="4"/>
+        <text x="136" y="35" class="text">Data</text>
+
+        <rect x="178" width="30" height="60" class="footer" rx="4"/>
+        <text x="193" y="35" class="text" style="font-size:10px">FCS</text>
+
+        <text x="104" y="80" class="label">Trame (L2)</text>
+    </g>
+
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg>

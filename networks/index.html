@@ -308,9 +308,13 @@
                 </div>
             </div>
 
-            <p style="color:var(--muted); margin-bottom:15px;">Format : <code>x.x.x.x</code> (4 octets). Ex:
-                <code>192.168.1.10</code>
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Moyen mémotechnique : <strong>"All People Seem To Need Data Processing"</strong> (de bas en haut)
+                ou <strong>"Après Plusieurs Semaines Tout Respire La Paix"</strong> (de haut en bas).
             </p>
+
+            <img src="img/osi_model.svg" alt="Modèle OSI Schema"
+                style="width:100%; max-width:800px; height:auto; margin-bottom:20px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
 
             <div class="tip">
                 <strong>CIDR (Classless Inter-Domain Routing)</strong><br>
@@ -390,10 +394,13 @@
             <div class="sec-header">
                 <div class="sec-num">04</div>
                 <div>
-                    <h2 class="sec-title">Matériel (Hardware)</h2>
-                    <p class="sec-sub">Équipements d'Interconnexion</p>
+                    <h2 class="sec-title">Matériel Réseau</h2>
+                    <p class="sec-sub">Hub, Switch, Routeur</p>
                 </div>
             </div>
+
+            <img src="img/topology.svg" alt="Topology Réseau Schema"
+                style="width:100%; max-width:800px; height:auto; margin-bottom:30px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
 
             <div class="grid2">
                 <div class="info">
@@ -660,6 +667,9 @@ Le service est accessible quand on en a besoin.
             <p style="color:var(--muted); margin-bottom:15px;">Le modèle réel d'Internet (contrairement à OSI qui est
                 théorique). Il regroupe les fonctions en 4 couches.</p>
 
+            <img src="img/encapsulation.svg" alt="Encapsulation Data Schema"
+                style="width:100%; max-width:800px; height:auto; margin-bottom:30px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+
             <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
                 <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
                     <th>Couche TCP/IP</th>
@@ -668,7 +678,8 @@ Le service est accessible quand on en a besoin.
                 </tr>
                 <tr>
                     <td rowspan="3" style="border-bottom:1px solid #333; color:var(--primary-bright)">
-                        <strong>Application</strong></td>
+                        <strong>Application</strong>
+                    </td>
                     <td>Application (7)</td>
                     <td rowspan="3" style="border-bottom:1px solid #333;">Data<br><span style="color:#666">HTTP, DNS,
                             SSH, TLS</span></td>

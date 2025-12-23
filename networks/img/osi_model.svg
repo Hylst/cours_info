@@ -1,0 +1,85 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: #e0e0e0; font-size: 16px; font-weight: 500; }
+        .layer-title { font-weight: bold; font-size: 18px; fill: white; }
+        .desc { font-size: 14px; fill: #a0a0a0; }
+        .box { stroke-width: 0; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25)); }
+        .arrow { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+        <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8e44ad"/><stop offset="100%" stop-color="#9b59b6"/></linearGradient>
+        <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2980b9"/><stop offset="100%" stop-color="#3498db"/></linearGradient>
+        <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#27ae60"/><stop offset="100%" stop-color="#2ecc71"/></linearGradient>
+        <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f39c12"/><stop offset="100%" stop-color="#f1c40f"/></linearGradient>
+        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d35400"/><stop offset="100%" stop-color="#e67e22"/></linearGradient>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c0392b"/><stop offset="100%" stop-color="#e74c3c"/></linearGradient>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7f8c8d"/><stop offset="100%" stop-color="#95a5a6"/></linearGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="800" height="600" fill="#1e1e1e" rx="10"/>
+
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" class="layer-title" style="font-size: 24px; fill: #4fd1c5;">MODÈLE OSI</text>
+    <text x="400" y="65" text-anchor="middle" class="desc">Open Systems Interconnection</text>
+
+    <!-- Layer 7: Application -->
+    <g transform="translate(150, 90)">
+        <rect width="500" height="50" rx="8" fill="url(#grad7)" class="box"/>
+        <text x="30" y="32" class="layer-title">7. Application</text>
+        <text x="200" y="32" class="text">Interface Utilisateur (HTTP, DNS, SSH)</text>
+    </g>
+
+    <!-- Layer 6: Presentation -->
+    <g transform="translate(150, 155)">
+        <rect width="500" height="50" rx="8" fill="url(#grad6)" class="box"/>
+        <text x="30" y="32" class="layer-title">6. Présentation</text>
+        <text x="200" y="32" class="text">Formatage, Chiffrement (SSL/TLS, JPEG)</text>
+    </g>
+
+    <!-- Layer 5: Session -->
+    <g transform="translate(150, 220)">
+        <rect width="500" height="50" rx="8" fill="url(#grad5)" class="box"/>
+        <text x="30" y="32" class="layer-title">5. Session</text>
+        <text x="200" y="32" class="text">Gestion des dialogues (Sockets, RPC)</text>
+    </g>
+
+    <!-- Layer 4: Transport -->
+    <g transform="translate(150, 285)">
+        <rect width="500" height="50" rx="8" fill="url(#grad4)" class="box"/>
+        <text x="30" y="32" class="layer-title">4. Transport</text>
+        <text x="200" y="32" class="text">Fiabilité & Ports (TCP, UDP)</text>
+    </g>
+
+    <!-- Layer 3: Network -->
+    <g transform="translate(150, 350)">
+        <rect width="500" height="50" rx="8" fill="url(#grad3)" class="box"/>
+        <text x="30" y="32" class="layer-title">3. Réseau</text>
+        <text x="200" y="32" class="text">Routage & Adressage IP (Packets)</text>
+    </g>
+
+    <!-- Layer 2: Data Link -->
+    <g transform="translate(150, 415)">
+        <rect width="500" height="50" rx="8" fill="url(#grad2)" class="box"/>
+        <text x="30" y="32" class="layer-title">2. Liaison</text>
+        <text x="200" y="32" class="text">Adressage Physique MAC (Frames)</text>
+    </g>
+
+    <!-- Layer 1: Physical -->
+    <g transform="translate(150, 480)">
+        <rect width="500" height="50" rx="8" fill="url(#grad1)" class="box"/>
+        <text x="30" y="32" class="layer-title">1. Physique</text>
+        <text x="200" y="32" class="text">Signaux Binaires (Câbles, Fibre, Ondes)</text>
+    </g>
+
+    <!-- Arrows flow -->
+    <line x1="120" y1="115" x2="120" y2="505" class="arrow" stroke="#4fd1c5" marker-end="url(#arrowhead)"/>
+    <text x="80" y="300" class="desc" transform="rotate(-90 80,300)" style="fill:#4fd1c5">Encapsulation (Descente)</text>
+    
+    <line x1="680" y1="505" x2="680" y2="115" class="arrow" stroke="#4fd1c5" marker-end="url(#arrowhead)"/>
+    <text x="720" y="300" class="desc" transform="rotate(-90 720,300)" style="fill:#4fd1c5">Désencapsulation (Montée)</text>
+
+</svg>

@@ -1,0 +1,79 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .layer-box { stroke-width: 2; rx: 5; }
+        .text { font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 14px; text-anchor: middle; fill: white; }
+        .data-text { font-family: 'Consolas', monospace; font-size: 12px; fill: #2d3748; }
+        .header { font-family: 'Segoe UI', sans-serif; font-size: 10px; font-weight: bold; fill: #fff; text-anchor: middle; }
+        
+        /* Animations */
+        @keyframes flowDown {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(280px); opacity: 1; }
+        }
+        
+        .payload { animation: flowDown 4s infinite linear; }
+        
+        /* Highlight Layers as payload passes */
+        @keyframes highlightApp { 0%, 20% { opacity:1; } 25%, 100% { opacity:0.3; } }
+        @keyframes highlightTrans { 0%, 20% { opacity:0.3; } 25%, 45% { opacity:1; } 50%, 100% { opacity:0.3; } }
+        @keyframes highlightNet { 0%, 45% { opacity:0.3; } 50%, 70% { opacity:1; } 75%, 100% { opacity:0.3; } }
+        @keyframes highlightLink { 0%, 70% { opacity:0.3; } 75%, 95% { opacity:1; } 100% { opacity:0.3; } }
+
+        .l-app { animation: highlightApp 4s infinite; }
+        .l-trans { animation: highlightTrans 4s infinite; }
+        .l-net { animation: highlightNet 4s infinite; }
+        .l-link { animation: highlightLink 4s infinite; }
+    </style>
+
+    <rect width="600" height="400" fill="#1a202c" rx="10"/>
+
+    <!-- Layers Background -->
+    <g transform="translate(20, 20)">
+        <rect width="150" height="80" class="layer-box l-app" fill="#e53e3e" opacity="0.3"/>
+        <text x="75" y="45" class="text">Application</text>
+        <rect y="90" width="150" height="80" class="layer-box l-trans" fill="#d69e2e" opacity="0.3"/>
+        <text x="75" y="135" class="text">Transport</text>
+        <rect y="180" width="150" height="80" class="layer-box l-net" fill="#3182ce" opacity="0.3"/>
+        <text x="75" y="225" class="text">Internet</text>
+        <rect y="270" width="150" height="80" class="layer-box l-link" fill="#38a169" opacity="0.3"/>
+        <text x="75" y="315" class="text">Access (Liaison)</text>
+    </g>
+
+    <!-- Moving Payload Container -->
+    <g transform="translate(250, 40)">
+        
+        <!-- Step 1: Data (App) -->
+        <g class="payload">
+            <!-- Base Data -->
+            <rect x="0" y="0" width="100" height="40" fill="#e2e8f0" rx="3"/>
+            <text x="50" y="25" class="data-text" text-anchor="middle">DATA (HTTP)</text>
+
+            <!-- Step 2: TCP Header (Transport) -->
+            <g opacity="0">
+                <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.25;0.26;1" duration="4s" repeatCount="indefinite"/>
+                <rect x="-30" y="0" width="30" height="40" fill="#d69e2e" rx="3"/>
+                <text x="-15" y="25" class="header">TCP</text>
+            </g>
+
+            <!-- Step 3: IP Header (Internet) -->
+            <g opacity="0">
+                <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.5;0.51;1" duration="4s" repeatCount="indefinite"/>
+                <rect x="-60" y="0" width="30" height="40" fill="#3182ce" rx="3"/>
+                <text x="-45" y="25" class="header">IP</text>
+            </g>
+
+            <!-- Step 4: Eth Header & Trailer (Access) -->
+            <g opacity="0">
+                <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.75;0.76;1" duration="4s" repeatCount="indefinite"/>
+                <rect x="-90" y="0" width="30" height="40" fill="#38a169" rx="3"/>
+                <text x="-75" y="25" class="header">ETH</text>
+                
+                <rect x="100" y="0" width="30" height="40" fill="#38a169" rx="3"/>
+                <text x="115" y="25" class="header">FCS</text>
+            </g>
+        </g>
+    </g>
+
+    <text x="450" y="380" class="text" font-size="12" fill="#a0aec0">Encapsulation Process</text>
+</svg>

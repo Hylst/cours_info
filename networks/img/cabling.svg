@@ -1,0 +1,60 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 16px; font-weight: bold; }
+        .label { font-family: 'Segoe UI', sans-serif; fill: #a0aec0; font-size: 12px; }
+        .copper-wire { stroke: #ed8936; stroke-width: 4; stroke-linecap: round; }
+        .fiber-core { stroke: #63b3ed; stroke-width: 2; opacity: 0.8; }
+        .fiber-cladding { stroke: #2d3748; stroke-width: 8; stroke-linecap: round; }
+        .connector { fill: #4a5568; stroke: #cbd5e0; stroke-width: 1; }
+    </style>
+
+    <!-- Background -->
+    <rect width="600" height="300" fill="#1a202c" rx="10"/>
+
+    <!-- Left: Copper / RJ45 -->
+    <g transform="translate(50, 50)">
+        <text x="100" y="20" class="title" text-anchor="middle">Cuivre (RJ45)</text>
+        
+        <!-- Cable -->
+        <path d="M 0 100 L 150 100" stroke="#718096" stroke-width="20" stroke-linecap="round"/>
+        <!-- Wires exposed -->
+        <path d="M 150 92 L 180 92" class="copper-wire" stroke="#f6ad55"/> <!-- Orange -->
+        <path d="M 150 96 L 180 96" class="copper-wire" stroke="#68d391"/> <!-- Green -->
+        <path d="M 150 100 L 180 100" class="copper-wire" stroke="#63b3ed"/> <!-- Blue -->
+        <path d="M 150 104 L 180 104" class="copper-wire" stroke="#7f4f2f"/> <!-- Brown -->
+
+        <!-- Connector Head -->
+        <rect x="180" y="85" width="40" height="30" class="connector" rx="2"/>
+        <rect x="190" y="80" width="10" height="5" fill="#cbd5e0"/> <!-- Clip -->
+
+        <!-- EMI Waves -->
+        <path d="M 80 60 Q 100 80 120 60" stroke="#fc8181" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+        <text x="100" y="50" class="label" fill="#fc8181" text-anchor="middle">Sensible EMI</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="300" y1="40" x2="300" y2="260" stroke="#4a5568" stroke-width="1" stroke-dasharray="5 5"/>
+
+    <!-- Right: Fiber -->
+    <g transform="translate(350, 50)">
+        <text x="100" y="20" class="title" text-anchor="middle">Fibre Optique</text>
+
+        <!-- Cable -->
+        <path d="M 0 100 L 150 100" class="fiber-cladding"/>
+        
+        <!-- Light Beam -->
+        <path d="M 0 100 L 220 100" class="fiber-core"/>
+        <circle cx="220" cy="100" r="3" fill="#63b3ed">
+            <animate attributeName="opacity" values="1;0.2;1" duration="1s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Connector LC -->
+        <rect x="150" y="90" width="40" height="20" class="connector" rx="2"/>
+        
+        <!-- Light Waves -->
+        <path d="M 170 100 L 240 100" stroke="#63b3ed" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="120" y="140" class="label" text-anchor="middle">Signal Lumineux (Speed of Light)</text>
+    </g>
+
+    <text x="300" y="280" class="label" text-anchor="middle" font-style="italic">Layer 1: Physical Media</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg width="600" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .zone { fill-opacity: 0.1; stroke-width: 2; stroke-dasharray: 4; rx: 10; }
+        .zone-text { font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 14px; letter-spacing: 1px; }
+        .text { font-family: 'Segoe UI', sans-serif; fill: white; font-size: 12px; text-anchor: middle; }
+        .fw-wall { fill: #e53e3e; }
+        .line { stroke: #cbd5e0; stroke-width: 2; }
+    </style>
+
+    <!-- Background -->
+    <rect width="600" height="350" fill="#1a202c" rx="10"/>
+
+    <!-- WAN Zone (Red) -->
+    <rect x="20" y="50" width="120" height="250" class="zone" fill="#fc8181" stroke="#fc8181"/>
+    <text x="80" y="40" class="zone-text" fill="#fc8181" text-anchor="middle">WAN (Untrusted)</text>
+    <path d="M 60 150 Q 80 130 100 150 Q 120 170 100 190 Q 80 210 60 190 Q 40 170 60 150" fill="#5c6bc0" opacity="0.3"/>
+    <text x="80" y="175" class="text">Internet</text>
+
+    <!-- DMZ Zone (Orange) -->
+    <rect x="240" y="50" width="120" height="150" class="zone" fill="#f6ad55" stroke="#f6ad55"/>
+    <text x="300" y="40" class="zone-text" fill="#f6ad55" text-anchor="middle">DMZ</text>
+    
+    <!-- DMZ Servers -->
+    <rect x="270" y="80" width="60" height="40" fill="#4a5568" rx="2"/>
+    <text x="300" y="105" class="text">Web Srv</text>
+    <rect x="270" y="140" width="60" height="40" fill="#4a5568" rx="2"/>
+    <text x="300" y="165" class="text">Mail Srv</text>
+
+    <!-- LAN Zone (Green) -->
+    <rect x="460" y="50" width="120" height="250" class="zone" fill="#68d391" stroke="#68d391"/>
+    <text x="520" y="40" class="zone-text" fill="#68d391" text-anchor="middle">LAN (Trusted)</text>
+
+    <!-- LAN PC -->
+    <rect x="490" y="100" width="60" height="40" fill="#4a5568" rx="2"/>
+    <text x="520" y="125" class="text">PC Admin</text>
+    <rect x="490" y="200" width="60" height="40" fill="#4a5568" rx="2"/>
+    <text x="520" y="225" class="text">Database</text>
+
+
+    <!-- Firewalls -->
+    <g transform="translate(160, 150)">
+        <rect width="60" height="60" class="fw-wall" rx="5"/>
+        <text x="30" y="35" class="text" font-weight="bold">FW 1</text>
+    </g>
+    <g transform="translate(380, 150)">
+        <rect width="60" height="60" class="fw-wall" rx="5"/>
+        <text x="30" y="35" class="text" font-weight="bold">FW 2</text>
+    </g>
+
+    <!-- Connections -->
+    <line x1="100" y1="180" x2="160" y2="180" class="line"/> <!-- WAN to FW1 -->
+    <line x1="220" y1="180" x2="270" y2="180" class="line"/> <!-- FW1 to DMZ Entry -->
+    <line x1="270" y1="180" x2="270" y2="120" class="line"/> <!-- DMZ Entry Up -->
+    <line x1="270" y1="180" x2="380" y2="180" class="line"/> <!-- DMZ to FW2 -->
+    <line x1="440" y1="180" x2="490" y2="180" class="line"/> <!-- FW2 to LAN -->
+    <line x1="490" y1="180" x2="490" y2="140" class="line"/>
+    <line x1="490" y1="180" x2="490" y2="200" class="line"/>
+
+    <!-- Labels -->
+    <text x="190" y="230" class="text" fill="#e53e3e">Filtrage Externe</text>
+    <text x="410" y="230" class="text" fill="#e53e3e">Filtrage Interne</text>
+
+</svg>

@@ -5,10 +5,20 @@
         .line { stroke: #4fd1c5; stroke-width: 2; }
         .cloud { fill: #5c6bc0; opacity: 0.2; }
         .zone-label { fill: #666; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+        
+        /* Animation Packets */
+        .packet { fill: #fbbf24; }
+        .packet-drop { fill: #f56565; }
+        
+        @keyframes flow1 { 0% { opacity:1; cx:180; } 100% { opacity:0; cx:280; } } /* Net -> FW */
+        @keyframes flow2 { 0% { opacity:1; cx:320; } 100% { opacity:0; cx:380; } } /* FW -> Router */
+        @keyframes flow3 { 0% { opacity:1; cx:420; } 100% { opacity:0; cx:480; } } /* Router -> SW */
+        @keyframes flow4 { 0% { opacity:1; cx:520; cy:200; } 100% { opacity:0; cx:600; cy:100; } } /* SW -> PC1 */
+        @keyframes flow5 { 0% { opacity:1; cx:520; cy:200; } 100% { opacity:0; cx:600; cy:300; } } /* SW -> PC2 */
     </style>
     
     <rect width="800" height="400" fill="#1e1e1e" rx="10"/>
-    <text x="400" y="30" class="text" style="font-size:20px; font-weight:bold; fill:#4fd1c5">TOPOLOGIE RÉSEAU TYPIQUE</text>
+    <text x="400" y="30" class="text" style="font-size:20px; font-weight:bold; fill:#4fd1c5">TOPOLOGIE RÉSEAU TYPIQUE (Animé)</text>
 
     <!-- ZONES -->
     <rect x="30" y="60" width="200" height="300" stroke="#ef5350" stroke-dasharray="4" rx="10" fill="none"/>
@@ -30,6 +40,21 @@
     <line x1="520" y1="200" x2="600" y2="300" class="line"/> <!-- Switch to PC2 -->
     <line x1="520" y1="200" x2="600" y2="200" class="line"/> <!-- Switch to AP -->
     
+    <!-- PACKETS ANIMATION -->
+    <circle r="4" class="packet" cy="200"><animate attributeName="cx" values="180;280" dur="1.5s" repeatCount="indefinite" /></circle>
+    <circle r="4" class="packet" cy="200"><animate attributeName="cx" values="320;380" dur="1s" begin="0.5s" repeatCount="indefinite" /></circle>
+    <circle r="4" class="packet" cy="200"><animate attributeName="cx" values="420;480" dur="1s" begin="0.8s" repeatCount="indefinite" /></circle>
+    
+    <!-- Diverging Packets from Switch -->
+    <circle r="4" class="packet">
+        <animate attributeName="cx" values="520;600" dur="1.5s" begin="1s" repeatCount="indefinite" />
+        <animate attributeName="cy" values="200;100" dur="1.5s" begin="1s" repeatCount="indefinite" />
+    </circle>
+    <circle r="4" class="packet">
+        <animate attributeName="cx" values="520;600" dur="1.5s" begin="1.2s" repeatCount="indefinite" />
+        <animate attributeName="cy" values="200;300" dur="1.5s" begin="1.2s" repeatCount="indefinite" />
+    </circle>
+
     <!-- DEVICES -->
     
     <!-- Firewall -->

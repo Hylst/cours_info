@@ -1,0 +1,97 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; font-size: 14px; fill: #e2e8f0; }
+        .label { font-weight: bold; font-size: 12px; fill: #a0aec0; text-anchor: middle; }
+        .box { stroke-width: 2; rx: 4; }
+        .arrow { stroke: #718096; stroke-width: 2; marker-end: url(#arrowhead); }
+        .plus { fill: #48bb78; font-weight: bold; font-size: 20px; text-anchor: middle; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#718096" />
+        </marker>
+    </defs>
+
+    <rect width="800" height="500" fill="#1a202c" rx="10"/>
+    <text x="400" y="30" class="text" font-size="18" font-weight="bold" text-anchor="middle" fill="#63b3ed">Processus Détaillé d'Encapsulation</text>
+
+    <!-- STEP 1: APPLICATION -->
+    <g transform="translate(50, 60)">
+        <text x="0" y="20" class="text" fill="#fc8181" font-weight="bold">1. Application</text>
+        <rect x="120" y="0" width="100" height="40" fill="#e53e3e" class="box" stroke="#c53030"/>
+        <text x="170" y="25" class="text" text-anchor="middle" fill="white">DATA</text>
+        <text x="170" y="55" class="label">Données Utilisateur</text>
+    </g>
+
+    <path d="M 220 80 L 220 110" class="arrow"/>
+
+    <!-- STEP 2: TRANSPORT -->
+    <g transform="translate(50, 130)">
+        <text x="0" y="20" class="text" fill="#f6ad55" font-weight="bold">2. Transport</text>
+        
+        <!-- Header -->
+        <rect x="120" y="0" width="80" height="40" fill="#dd6b20" class="box" stroke="#c05621"/>
+        <text x="160" y="25" class="text" text-anchor="middle" font-size="12">TCP Header</text>
+        <text x="160" y="38" class="label" font-size="10" fill="white" dy="12">Src/Dst Port</text>
+
+        <!-- Payload -->
+        <rect x="205" y="0" width="100" height="40" fill="#e53e3e" class="box" stroke="#c53030" opacity="0.8"/>
+        <text x="255" y="25" class="text" text-anchor="middle">DATA</text>
+        
+        <text x="220" y="70" class="label" fill="#f6ad55">= SEGMENT</text>
+    </g>
+
+    <path d="M 220 190 L 220 220" class="arrow"/>
+
+    <!-- STEP 3: INTERNET -->
+    <g transform="translate(50, 240)">
+        <text x="0" y="20" class="text" fill="#63b3ed" font-weight="bold">3. Internet</text>
+        
+        <!-- IP Header -->
+        <rect x="120" y="0" width="80" height="40" fill="#3182ce" class="box" stroke="#2b6cb0"/>
+        <text x="160" y="25" class="text" text-anchor="middle" font-size="12">IP Header</text>
+        <text x="160" y="38" class="label" font-size="10" fill="white" dy="12">Src/Dst IP</text>
+
+        <!-- Previous -->
+        <rect x="205" y="0" width="185" height="40" fill="#dd6b20" class="box" stroke="#c05621" opacity="0.6"/>
+        <text x="297" y="25" class="text" text-anchor="middle">TCP Segment</text>
+        
+        <text x="250" y="70" class="label" fill="#63b3ed">= PAQUET</text>
+    </g>
+
+    <path d="M 220 300 L 220 330" class="arrow"/>
+
+    <!-- STEP 4: ACCESS -->
+    <g transform="translate(50, 350)">
+        <text x="0" y="20" class="text" fill="#68d391" font-weight="bold">4. Accès Réseau</text>
+        
+        <!-- Frame Header -->
+        <rect x="120" y="0" width="90" height="40" fill="#38a169" class="box" stroke="#2f855a"/>
+        <text x="165" y="25" class="text" text-anchor="middle" font-size="12">MAC Header</text>
+        <text x="165" y="38" class="label" font-size="10" fill="white" dy="12">Src/Dst MAC</text>
+
+        <!-- Previous -->
+        <rect x="215" y="0" width="270" height="40" fill="#3182ce" class="box" stroke="#2b6cb0" opacity="0.6"/>
+        <text x="350" y="25" class="text" text-anchor="middle">IP Packet</text>
+
+        <!-- Trailer -->
+        <rect x="490" y="0" width="50" height="40" fill="#38a169" class="box" stroke="#2f855a"/>
+        <text x="515" y="25" class="text" text-anchor="middle">FCS</text>
+        
+        <text x="300" y="70" class="label" fill="#68d391">= TRAME (FRAME)</text>
+    </g>
+    
+    <!-- Explanations layout -->
+    <g transform="translate(550, 100)">
+        <foreignObject width="220" height="300">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="color:#cbd5e0; font-family:'Segoe UI'; font-size:13px; line-height:1.6;">
+                <p><strong style="color:#f6ad55">Transport :</strong> Ajoute les PORTS pour savoir quelle app gérer (ex: Port 80 pour Web).</p>
+                <div style="height:10px"></div>
+                <p><strong style="color:#63b3ed">Internet :</strong> Ajoute les IP pour savoir quelle machine atteindre (ex: 192.168.1.1).</p>
+                <div style="height:10px"></div>
+                <p><strong style="color:#68d391">Accès (Liaison) :</strong> Ajoute les MAC pour savoir quelle carte réseau physique utiliser. Ajoute le FCS pour vérifier les erreurs.</p>
+            </div>
+        </foreignObject>
+    </g>
+
+</svg>

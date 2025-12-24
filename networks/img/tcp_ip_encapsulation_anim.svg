@@ -1,0 +1,114 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: #e2e8f0; font-size: 14px; }
+        .label { font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 16px; text-anchor: middle; }
+        .header-text { font-family: 'Consolas', monospace; font-size: 12px; fill: #1a202c; text-anchor: middle; font-weight: bold; }
+        .box { stroke-width: 2; rx: 4; }
+        
+        /* Keyframes */
+        @keyframes slideInTCP {
+            0% { opacity: 0; transform: translateY(-50px); }
+            15% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(0); }
+        }
+        @keyframes slideInIP {
+            0%, 25% { opacity: 0; transform: translateY(-50px); }
+            40% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(0); }
+        }
+        @keyframes slideInEth {
+            0%, 50% { opacity: 0; transform: translateY(-50px); }
+            65% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInSegment { 0%, 15% { opacity: 0; } 20%, 90% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes fadeInPacket { 0%, 40% { opacity: 0; } 45%, 90% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes fadeInFrame { 0%, 65% { opacity: 0; } 70%, 90% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* Assign animations */
+        .anim-tcp { animation: slideInTCP 8s infinite; }
+        .anim-ip { animation: slideInIP 8s infinite; }
+        .anim-eth { animation: slideInEth 8s infinite; }
+        
+        .txt-seg { animation: fadeInSegment 8s infinite; }
+        .txt-pkt { animation: fadeInPacket 8s infinite; }
+        .txt-frm { animation: fadeInFrame 8s infinite; }
+    </style>
+
+    <rect width="800" height="400" fill="#1a202c" rx="10"/>
+
+    <!-- TITLE -->
+    <text x="400" y="30" class="text" font-size="18" font-weight="bold" text-anchor="middle" fill="#63b3ed">Animation : Construction d'une Trame (Encapsulation)</text>
+
+    <!-- CENTER STAGE -->
+    <g transform="translate(100, 150)">
+        
+        <!-- BASE DATA (Always visible) -->
+        <g transform="translate(300, 0)">
+            <rect width="100" height="60" fill="#e53e3e" class="box" stroke="#c53030"/>
+            <text x="50" y="35" class="header-text" fill="white">DATA</text>
+            <text x="50" y="85" class="label" fill="#e53e3e">Application</text>
+        </g>
+
+        <!-- STEP 2: TCP HEADER -->
+        <g class="anim-tcp" transform="translate(200, 0)">
+            <rect width="100" height="60" fill="#dd6b20" class="box" stroke="#c05621"/>
+            <text x="50" y="25" class="header-text">TCP</text>
+            <text x="50" y="45" class="header-text" font-size="10">Port 80</text>
+            
+            <!-- Bracket for Segment -->
+            <path d="M 0 70 L 0 75 L 200 75 L 200 70" stroke="#dd6b20" stroke-width="2" class="txt-seg"/>
+            <text x="100" y="95" class="label txt-seg" fill="#dd6b20">Segment (Transport)</text>
+        </g>
+
+        <!-- STEP 3: IP HEADER -->
+        <g class="anim-ip" transform="translate(100, 0)">
+            <rect width="100" height="60" fill="#3182ce" class="box" stroke="#2b6cb0"/>
+            <text x="50" y="25" class="header-text">IP</text>
+            <text x="50" y="45" class="header-text" font-size="10">192.168.1.5</text>
+
+            <!-- Bracket for Packet -->
+            <path d="M 0 110 L 0 115 L 300 115 L 300 110" stroke="#3182ce" stroke-width="2" class="txt-pkt"/>
+            <text x="150" y="135" class="label txt-pkt" fill="#3182ce">Paquet (Internet)</text>
+        </g>
+
+        <!-- STEP 4: ETH HEADER & TRAILER -->
+        <g class="anim-eth">
+            <!-- Header -->
+            <g transform="translate(0, 0)">
+                <rect width="100" height="60" fill="#38a169" class="box" stroke="#2f855a"/>
+                <text x="50" y="25" class="header-text">MAC</text>
+                <text x="50" y="45" class="header-text" font-size="10">AA:BB:CC...</text>
+            </g>
+            <!-- Trailer -->
+            <g transform="translate(400, 0)">
+                <rect width="80" height="60" fill="#38a169" class="box" stroke="#2f855a"/>
+                <text x="40" y="35" class="header-text">FCS</text>
+            </g>
+
+            <!-- Bracket for Frame -->
+            <path d="M 0 150 L 0 155 L 480 155 L 480 150" stroke="#38a169" stroke-width="2" class="txt-frm"/>
+            <text x="240" y="175" class="label txt-frm" fill="#38a169">Trame (Accès Réseau)</text>
+        </g>
+
+    </g>
+
+    <!-- Timeline Legend -->
+    <g transform="translate(50, 350)">
+        <text x="0" y="0" class="text" fill="#a0aec0">Chronologie :</text>
+        <circle cx="100" cy="-5" r="5" fill="#e53e3e"/> <text x="115" y="0" class="text">1. App</text>
+        <circle cx="180" cy="-5" r="5" fill="#dd6b20"/> <text x="195" y="0" class="text">2. TCP</text>
+        <circle cx="260" cy="-5" r="5" fill="#3182ce"/> <text x="275" y="0" class="text">3. IP</text>
+        <circle cx="330" cy="-5" r="5" fill="#38a169"/> <text x="345" y="0" class="text">4. Eth</text>
+        
+        <rect x="500" y="-15" width="200" height="6" fill="#4a5568" rx="3"/>
+        <rect x="500" y="-15" width="10" height="6" fill="#63b3ed">
+            <animate attributeName="x" values="500;700" duration="8s" repeatCount="indefinite"/>
+        </rect>
+    </g>
+
+</svg>

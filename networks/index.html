@@ -398,30 +398,37 @@
 
             <div class="tip">
                 <strong>CIDR (Classless Inter-Domain Routing)</strong><br>
-                La notation <code>/24</code> définit le "Masque de sous-réseau".<br>
-                <code>192.168.1.0/24</code> signifie :
+                Le masque définit la taille du réseau. Plus le <code>/XX</code> est grand, plus le réseau est petit.<br>
+                Exemple : <code>192.168.1.0/24</code>
                 <ul>
-                    <li>Masque : <code>255.255.255.0</code> (24 bits à 1)</li>
-                    <li>Réseau (fixe) : <code>192.168.1.x</code></li>
-                    <li>Hôtes disponibles : 254 (de .1 à .254, .0=réseau, .255=broadcast)</li>
+                    <li><strong>Partie Réseau (Fixe)</strong> : 24 bits (192.168.1). Tous les appareils doivent avoir ça
+                        en commun.</li>
+                    <li><strong>Partie Hôte (Variable)</strong> : 8 bits restants (le dernier chiffre). C'est
+                        l'identifiant unique.</li>
+                    <li><strong>Range</strong> : 192.168.1.1 à 192.168.1.254 (254 appareils max).</li>
                 </ul>
             </div>
 
             <div class="grid2" style="margin-top:20px;">
                 <div class="code">
-                    <div class="code-head">Classes d'IP Privées (RFC 1918)</div>
+                    <div class="code-head">IP Privées (RFC 1918)</div>
                     <pre>
-<span class="kw">Classe A (Grands réseaux)</span>
-10.0.0.0 à 10.255.255.255 (/8)
-> 16 millions d'hôtes
+<span class="kw">Pourquoi ?</span>
+Ces adresses ne sont <strong>pas routables</strong> sur Internet.
+Elles servent à créer des réseaux locaux (LAN).
+Pour aller sur Internet, le routeur fait du NAT.
 
-<span class="kw">Classe B (Moyens réseaux)</span>
-172.16.0.0 à 172.31.255.255 (/12)
-> 1 million d'hôtes
+<span class="fn">Classe A (10.0.0.0/8)</span>
+Utilisé par les très grandes entreprises.
+> 16 millions d'IP dispos.
 
-<span class="kw">Classe C (Petits réseaux / Box)</span>
-192.168.0.0 à 192.168.255.255 (/16)
-> 65 536 hôtes</pre>
+<span class="num">Classe B (172.16.0.0/12)</span>
+Souvent utilisé par Docker et les VPN.
+> 1 million d'IP dispos.
+
+<span class="primary">Classe C (192.168.0.0/16)</span>
+Le standard domestique (Box, TPE/PME).
+> 65 536 IP dispos.</pre>
                 </div>
 
                 <div class="code">
@@ -543,6 +550,10 @@
             </table>
 
             <h3 style="margin-top:30px;">Couche 1 : Le Physique (Câblage)</h3>
+
+            <img src="img/cabling.svg" alt="Illustration Câblage Réseau"
+                style="width:100%; max-width:600px; display:block; margin:20px auto; border-radius:8px;">
+
             <div class="grid2">
                 <div class="info">
                     <strong>Cuivre (Ethernet RJ45)</strong>
@@ -607,12 +618,24 @@
                     </ul>
                 </div>
                 <div class="info" style="border-left-color:var(--primary-bright);">
-                    <strong>Avantages</strong>
+                    <strong>Avantages & Termes Clés</strong>
                     <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
-                        <li>Plus de NAT nécessaire !</li>
-                        <li>Auto-configuration (SLAAC).</li>
-                        <li>En-tête simplifié (traitement routeur plus rapide).</li>
-                        <li>IPsec intégré nativement.</li>
+                        <li
+                            title="Network Address Translation : Technique de bidouille IPv4 pour faire sortir plusieurs PC avec une seule IP publique. Inutile en IPv6 car tout le monde a une IP publique.">
+                            <strong>Plus de NAT</strong> <span
+                                style="cursor:help; border-bottom:1px dotted #888;">(?)</span> : Restaure la connexion
+                            "bout-à-bout".
+                        </li>
+                        <li
+                            title="Stateless Address Auto-Configuration : Le PC génère sa propre IP tout seul en écoutant le routeur. Plus besoin de serveur DHCP !">
+                            <strong>SLAAC</strong> <span style="cursor:help; border-bottom:1px dotted #888;">(?)</span>
+                            : Auto-configuration magique.
+                        </li>
+                        <li
+                            title="Protocol Suite de Sécurité qui chiffre et authentifie les paquets IP. Optionnel en IPv4, il est obligatoire (nativement supporté) dans le standard IPv6.">
+                            <strong>IPSec</strong> <span style="cursor:help; border-bottom:1px dotted #888;">(?)</span>
+                            : Sécurité intégrée nativement.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -680,11 +703,15 @@ Le service est accessible quand on en a besoin.
                 </div>
                 <div class="info" style="border-left-color:var(--str);">
                     <strong>Zones Réseaux (Architecture)</strong><br>
+                    <img src="img/network_zones.svg" alt="Schéma DMZ Network"
+                        style="width:100%; border-radius:5px; margin:10px 0;">
                     <ul>
-                        <li><strong>LAN</strong> (Trusted) : Réseau interne sécurisé.</li>
-                        <li><strong>WAN</strong> (Untrusted) : Internet, dangereux.</li>
-                        <li><strong>DMZ</strong> (De-Militarized Zone) : Zone tampon pour serveurs publics (Web, Mail).
-                            Isolé du LAN pour sécurité.</li>
+                        <li><strong>LAN</strong> (Trusted) : Réseau interne (Employés, Base de données). Personne ne
+                            rentre ici sans passer 2 pare-feux.</li>
+                        <li><strong>WAN</strong> (Untrusted) : Internet, le Far West. Dangereux par définition.</li>
+                        <li><strong>DMZ</strong> (Zone Tampon) : Zone "sacrifiable" exposée à Internet pour les services
+                            publics (Serveur Web). Si un pirate hacke le Web, il est bloqué dans la DMZ et n'accède pas
+                            au LAN.</li>
                     </ul>
                 </div>
             </div>
@@ -776,52 +803,94 @@ Le service est accessible quand on en a besoin.
                 </div>
             </div>
 
-            <p style="color:var(--muted); margin-bottom:15px;">Le modèle réel d'Internet (contrairement à OSI qui est
-                théorique). Il regroupe les fonctions en 4 couches.</p>
+            <p style="color:var(--muted); margin-bottom:15px;">
+                C'est le modèle <strong>réel et pragmatique</strong> d'Internet.
+            </p>
 
-            <img src="img/encapsulation.svg" alt="Encapsulation Data Schema"
-                style="width:100%; max-width:800px; height:auto; margin-bottom:30px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+            <div class="grid2">
+                <div>
+                    <h3 style="font-size:1.1rem; color:var(--text-color);">1. Le Modèle (Vue d'ensemble)</h3>
+                    <img src="img/encapsulation.svg" alt="Encapsulation Data Schema"
+                        style="width:100%; height:auto; margin-bottom:20px; border-radius:10px; border:1px solid #333;">
+                </div>
+                <div>
+                    <h3 style="font-size:1.1rem; color:var(--text-color);">2. Le Processus (Pas à Pas)</h3>
+                    <p style="font-size:0.9rem; color:var(--muted); margin-bottom:10px;">
+                        Observez l'animation ci-dessous : chaque couche <strong>ajoute</strong> une enveloppe (Header)
+                        par dessus les données.
+                    </p>
+                    <img src="img/tcp_ip_encapsulation_anim.svg" alt="Detailed Encapsulation Animation"
+                        style="width:100%; height:auto; margin-bottom:20px; border-radius:10px; box-shadow:0 0 15px rgba(52, 152, 219, 0.2);">
+                </div>
+            </div>
+
+            <div class="tip" style="margin-bottom:30px;">
+                <strong>Zoom sur la mécanique d'Encapsulation</strong><br>
+                Imaginez que vous envoyez un colis (Data) :
+                <ol style="margin-top:5px; margin-left:20px;">
+                    <li><strong>Application</strong> : Vous préparez le contenu du colis.</li>
+                    <li><strong>Transport (Segment)</strong> : Le transporteur met le colis dans un carton et écrit
+                        "Fragile" (TCP).</li>
+                    <li><strong>Internet (Paquet)</strong> : La poste met le carton dans un conteneur adressé à "New
+                        York" (IP).</li>
+                    <li><strong>Accès Réseau (Trame)</strong> : Le conteneur est chargé sur un camion spécifique (MAC)
+                        et scellé (FCS).</li>
+                </ol>
+            </div>
+
+            <div class="grid2" style="margin-bottom:20px;">
+                <div class="info">
+                    <strong>Pourquoi 4 couches ?</strong><br>
+                    Le modèle OSI était trop complexe. TCP/IP regroupe les couches "inutiles" (Application,
+                    Présentation, Session) en une seule : <strong>Application</strong>.
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>L'Encapsulation (Poupées Russes)</strong><br>
+                    Comme une lettre dans une enveloppe, dans un camion, dans un bateau. Chaque couche ajoute son
+                    "en-tête" (Header) pour gérer le transport.
+                </div>
+            </div>
 
             <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
                 <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
                     <th>Couche TCP/IP</th>
-                    <th>Équivalent OSI</th>
+                    <th>Rôle Concret</th>
                     <th>Unités & Protocoles</th>
                 </tr>
                 <tr>
-                    <td rowspan="3" style="border-bottom:1px solid #333; color:var(--primary-bright)">
-                        <strong>Application</strong>
+                    <td style="border-bottom:1px solid #333; color:var(--primary-bright)">
+                        <strong>4. Application</strong>
+                        <div style="font-size:0.75rem; color:#888;">(OSI 5, 6, 7)</div>
                     </td>
-                    <td>Application (7)</td>
-                    <td rowspan="3" style="border-bottom:1px solid #333;">Data<br><span style="color:#666">HTTP, DNS,
-                            SSH, TLS</span></td>
+                    <td>Parle à l'utilisateur. Formate les données (HTML, JSON).</td>
+                    <td style="border-bottom:1px solid #333;">Data<br><span style="color:#666">HTTP, DNS, SSH</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Présentation (6)</td>
+                    <td style="border-bottom:1px solid #333; color:var(--num)">
+                        <strong>3. Transport</strong>
+                        <div style="font-size:0.75rem; color:#888;">(OSI 4)</div>
+                    </td>
+                    <td>Gère la fiabilité (TCP) ou la vitesse (UDP). Définit les <strong>Ports</strong>.</td>
+                    <td style="border-bottom:1px solid #333;">Segment<br><span style="color:#666">TCP, UDP</span></td>
                 </tr>
                 <tr>
-                    <td style="border-bottom:1px solid #333">Session (5)</td>
-                </tr>
-
-                <tr>
-                    <td style="border-bottom:1px solid #333; color:var(--num)"><strong>Transport</strong></td>
-                    <td style="border-bottom:1px solid #333">Transport (4)</td>
-                    <td style="border-bottom:1px solid #333">Segment<br><span style="color:#666">TCP, UDP</span></td>
-                </tr>
-
-                <tr>
-                    <td style="border-bottom:1px solid #333; color:var(--fn)"><strong>Internet</strong></td>
-                    <td style="border-bottom:1px solid #333">Réseau (3)</td>
-                    <td style="border-bottom:1px solid #333">Paquet<br><span style="color:#666">IP, ICMP</span></td>
-                </tr>
-
-                <tr>
-                    <td rowspan="2" style="color:var(--str)"><strong>Accès Réseau</strong></td>
-                    <td>Liaison (2)</td>
-                    <td rowspan="2">Trame / Bit<br><span style="color:#666">Ethernet, Wi-Fi</span></td>
+                    <td style="border-bottom:1px solid #333; color:var(--fn)">
+                        <strong>2. Internet</strong>
+                        <div style="font-size:0.75rem; color:#888;">(OSI 3)</div>
+                    </td>
+                    <td>Trouve le chemin (Routage). Définit l'<strong>Adresse IP</strong>.</td>
+                    <td style="border-bottom:1px solid #333;">Paquet<br><span style="color:#666">IP, ICMP</span></td>
                 </tr>
                 <tr>
-                    <td>Physique (1)</td>
+                    <td style="color:var(--str)">
+                        <strong>1. Accès Réseau</strong>
+                        <div style="font-size:0.75rem; color:#888;">(OSI 1, 2)</div>
+                    </td>
+                    <td>Envoie les bits sur le câble/onde. Adresse <strong>MAC</strong>.</td>
+                    <td>Trame / Bit<br><span style="color:#666">Ethernet, Wi-Fi</span></td>
+                </tr>
+                <td>Physique (1)</td>
                 </tr>
             </table>
         </div>

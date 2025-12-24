@@ -37,6 +37,7 @@
                 <a href="#s14">Docker</a>
                 <a href="#s15">Infra</a>
                 <a href="#s16">Futur</a>
+                <a href="#s17">HTTP</a>
             </nav>
         </div>
     </header>
@@ -1399,6 +1400,227 @@ Port Mapping : Redirige le port 8080 de l'Hôte vers le 80 du Conteneur.</pre>
                         pour Netflix).
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S17: HTTP DEEP DIVE -->
+    <section id="s17">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">17</div>
+                <div>
+                    <h2 class="sec-title">HTTP en Profondeur</h2>
+                    <p class="sec-sub">Méthodes, Headers, Status Codes</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                <strong>HTTP (HyperText Transfer Protocol)</strong> est le protocole de communication du Web.
+                C'est lui qui permet à votre navigateur de demander une page web à un serveur.
+                Comprendre HTTP, c'est comprendre le dialogue entre le client et le serveur.
+            </p>
+
+            <div class="tip" style="margin-bottom:20px;">
+                <strong>Analogie : Commander au restaurant</strong><br>
+                <ul style="margin-top:5px;">
+                    <li><strong>Requête (Request)</strong> = Votre commande au serveur ("Je voudrais un steak").</li>
+                    <li><strong>Réponse (Response)</strong> = Ce que le serveur vous apporte (le steak, ou "Désolé, on
+                        n'en a plus").</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top:30px;">1. Anatomie d'une Requête HTTP</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Une requête se compose de 3 parties : Ligne de Requête,
+                En-têtes (Headers), et Corps (Body).</p>
+
+            <div class="code">
+                <div class="code-head">Exemple de Requête GET</div>
+                <pre>
+<span class="kw">GET</span> /api/users?id=42 <span class="fn">HTTP/1.1</span>
+<span class="str">Host:</span> api.example.com
+<span class="str">User-Agent:</span> Mozilla/5.0
+<span class="str">Accept:</span> application/json
+<span class="str">Authorization:</span> Bearer xyz...
+
+<span class="c">(Pas de Body pour GET)</span></pre>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head">Exemple de Requête POST (avec Body)</div>
+                <pre>
+<span class="kw">POST</span> /api/users <span class="fn">HTTP/1.1</span>
+<span class="str">Host:</span> api.example.com
+<span class="str">Content-Type:</span> application/json
+<span class="str">Content-Length:</span> 48
+
+<span class="num">{"name": "Alice", "email": "alice@mail.com"}</span></pre>
+            </div>
+
+            <h3 style="margin-top:30px;">2. Méthodes HTTP (Verbes)</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Le verbe indique l'<strong>action</strong> que le client
+                veut effectuer.</p>
+
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Méthode</th>
+                    <th>Action (CRUD)</th>
+                    <th>Body ?</th>
+                    <th>Idempotent ?</th>
+                    <th>Cas d'usage</th>
+                </tr>
+                <tr>
+                    <td style="color:var(--primary-bright); font-weight:bold;">GET</td>
+                    <td>Read</td>
+                    <td>Non</td>
+                    <td>Oui</td>
+                    <td>Lire une ressource (page, user, produit).</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--fn); font-weight:bold;">POST</td>
+                    <td>Create</td>
+                    <td>Oui</td>
+                    <td>Non</td>
+                    <td>Créer une nouvelle ressource (inscription, nouveau post).</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--num); font-weight:bold;">PUT</td>
+                    <td>Update (Replace)</td>
+                    <td>Oui</td>
+                    <td>Oui</td>
+                    <td>Remplacer une ressource entière.</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--str); font-weight:bold;">PATCH</td>
+                    <td>Update (Partial)</td>
+                    <td>Oui</td>
+                    <td>Non</td>
+                    <td>Modifier un champ spécifique (changer son email).</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--error); font-weight:bold;">DELETE</td>
+                    <td>Delete</td>
+                    <td>Non</td>
+                    <td>Oui</td>
+                    <td>Supprimer une ressource.</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top:30px;">3. En-têtes HTTP (Headers)</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Les Headers sont des métadonnées sur la requête/réponse
+                (qui parle, quel format, etc.).</p>
+
+            <div class="grid2">
+                <div class="info">
+                    <strong>Headers de Requête (Client)</strong>
+                    <ul style="margin-top:5px; font-size:0.9rem;">
+                        <li><code>Host</code> : Nom de domaine cible.</li>
+                        <li><code>User-Agent</code> : Qui envoie (navigateur, curl, etc.).</li>
+                        <li><code>Accept</code> : Format de réponse souhaité (JSON, HTML).</li>
+                        <li><code>Authorization</code> : Token d'authentification (Bearer, Basic).</li>
+                        <li><code>Content-Type</code> : Format du Body envoyé.</li>
+                    </ul>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>Headers de Réponse (Serveur)</strong>
+                    <ul style="margin-top:5px; font-size:0.9rem;">
+                        <li><code>Content-Type</code> : Format du Body (application/json).</li>
+                        <li><code>Set-Cookie</code> : Envoyer un cookie au client.</li>
+                        <li><code>Cache-Control</code> : Durée de mise en cache.</li>
+                        <li><code>Location</code> : URL de redirection (30x).</li>
+                        <li><code>Access-Control-Allow-Origin</code> : Politique CORS.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">4. Codes de Statut HTTP</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Le code indique si la requête a réussi, échoué, ou
+                nécessite une action.</p>
+
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Catégorie</th>
+                    <th>Code</th>
+                    <th>Signification</th>
+                    <th>Quand ?</th>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="color:#3498db; font-weight:bold;">2xx Succès</td>
+                    <td><code>200</code></td>
+                    <td>OK</td>
+                    <td>GET réussi.</td>
+                </tr>
+                <tr>
+                    <td><code>201</code></td>
+                    <td>Created</td>
+                    <td>POST réussi (ressource créée).</td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="color:#f39c12; font-weight:bold;">3xx Redirect</td>
+                    <td><code>301</code></td>
+                    <td>Moved Permanently</td>
+                    <td>La ressource a déménagé (SEO).</td>
+                </tr>
+                <tr>
+                    <td><code>304</code></td>
+                    <td>Not Modified</td>
+                    <td>Utilisez le cache, rien n'a changé.</td>
+                </tr>
+                <tr>
+                    <td rowspan="4" style="color:var(--error); font-weight:bold;">4xx Client Error</td>
+                    <td><code>400</code></td>
+                    <td>Bad Request</td>
+                    <td>Requête malformée (JSON invalide).</td>
+                </tr>
+                <tr>
+                    <td><code>401</code></td>
+                    <td>Unauthorized</td>
+                    <td>Non authentifié (token manquant).</td>
+                </tr>
+                <tr>
+                    <td><code>403</code></td>
+                    <td>Forbidden</td>
+                    <td>Authentifié mais droits insuffisants.</td>
+                </tr>
+                <tr>
+                    <td><code>404</code></td>
+                    <td>Not Found</td>
+                    <td>La ressource n'existe pas.</td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="color:#e74c3c; font-weight:bold;">5xx Server Error</td>
+                    <td><code>500</code></td>
+                    <td>Internal Server Error</td>
+                    <td>Bug côté serveur (exception non gérée).</td>
+                </tr>
+                <tr>
+                    <td><code>503</code></td>
+                    <td>Service Unavailable</td>
+                    <td>Serveur surchargé ou en maintenance.</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top:30px;">5. HTTP/1.1 vs HTTP/2 vs HTTP/3</h3>
+            <div class="grid2">
+                <div class="info">
+                    <strong>HTTP/1.1</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Le vétéran</span>
+                    <p style="font-size:0.9rem;">Une requête par connexion (ou Keep-Alive limité). Lent pour charger
+                        beaucoup de ressources.</p>
+                </div>
+                <div class="info" style="border-left-color:var(--primary-bright);">
+                    <strong>HTTP/2</strong><br>
+                    <span style="font-size:0.85rem; color:#888;">Le turbo</span>
+                    <p style="font-size:0.9rem;">Multiplexage (plusieurs requêtes en parallèle sur une seule connexion
+                        TCP). Server Push.</p>
+                </div>
+            </div>
+            <div class="info" style="margin-top:10px; border-left-color:var(--fn);">
+                <strong>HTTP/3 (QUIC)</strong><br>
+                <span style="font-size:0.85rem; color:#888;">Le futur (maintenant)</span>
+                <p style="font-size:0.9rem;">Basé sur UDP au lieu de TCP. Réduit la latence (handshake plus rapide),
+                    meilleure gestion des pertes de paquets (pas de "head-of-line blocking"). Utilisé par Google,
+                    Cloudflare.</p>
             </div>
         </div>
     </section>

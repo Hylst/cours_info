@@ -28,5 +28,4 @@ export interface ActeStep {
   desc: string;
   icon: any;
   science: string;
-  detailedExample: string;
 }

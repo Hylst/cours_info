@@ -33,6 +33,66 @@ export const DEEP_DIVE_CONTENT: Record<string, any> = {
       actionableTip: "Utilisez un minuteur physique. 10 minutes de silence complet face à votre éditeur de code avant de solliciter l'IA.",
       imagePrompt: "A developer in deep focus, silhouette in a dark room with a single glowing screen showing a blank architecture diagram."
     }
+  },
+  "friction": {
+    title: "L'Ingénierie de la Friction",
+    fullContent: {
+      analogy: "Imaginez apprendre la guitare en regardant un robot jouer les notes à votre place. Vos yeux voient, mais vos doigts ne savent rien. Taper le code, c'est donner de la texture à la pensée.",
+      scientificExplanation: "La mémoire procédurale (mémoire du geste) est distincte de la mémoire déclarative. En tapant, vous créez une double trace neuronale : conceptuelle et motrice. C'est l'effet Haptic Learning.",
+      scenario: "Vous apprenez une nouvelle bibliothèque de CSS-in-JS. L'IA génère les styles. Si vous copiez-collez, vous ne saurez jamais les refaire. Si vous les retapez manuellement, votre cerveau mémorise les mots-clés par le mouvement.",
+      actionableTip: "Désinstallez temporairement les extensions 'Auto-complete' quand vous apprenez un nouveau framework. Réactivez-les seulement quand vous maîtrisez la syntaxe de base.",
+      imagePrompt: "Human hands glowing with golden light typing on a futuristic glass keyboard, data particles flying around."
+    }
+  },
+  "reverse-prompt": {
+    title: "Le Prompt Inversé",
+    fullContent: {
+      analogy: "Ne demandez pas au professeur de faire le calcul. Faites le calcul, et demandez-lui où vous avez fait une erreur. L'IA devient votre auditeur, pas votre auteur.",
+      scientificExplanation: "C'est la méthode de l'enseignement réciproque. Cela force le cerveau à l'auto-explication, une des techniques d'apprentissage les plus puissantes connue sous le nom de Métacognition.",
+      scenario: "Vous avez un bug. Au lieu de copier l'erreur, décrivez à l'IA ce que vous pensez qu'il se passe. Si elle vous corrige, vous apprenez. Si elle confirme, vous renforcez votre confiance et votre modèle mental.",
+      actionableTip: "Commencez vos prompts par : 'Voici mon approche : [VOTRE CODE]. Critique-la sévèrement avant de proposer quoi que ce soit.'",
+      imagePrompt: "A digital mirror reflecting a human figure, but the reflection is a network of connections and code, surreal aesthetic."
+    }
+  },
+  "ten-minute-rule": {
+    title: "La Règle des 10 Minutes",
+    fullContent: {
+      analogy: "Un GPS vous empêche de découvrir la ville. 10 minutes de déambulation avant de l'allumer vous forcent à observer les repères, à construire une carte mentale.",
+      scientificExplanation: "La Potentiation à Long Terme (LTP) nécessite un effort cognitif préalable. Ce pré-traitement prépare les synapses à 'accrocher' la solution quand elle arrive.",
+      scenario: "Avant de prompter 'Comment implémenter un système de cache ?', vous dessinez un diagramme de flux sur papier. Quand l'IA répond, vous comprenez instantanément où placer chaque composant.",
+      actionableTip: "Mettez un minuteur visible sur votre bureau. Quand il sonne, vous avez le DROIT d'utiliser l'IA. Pas avant.",
+      imagePrompt: "A minimalist hourglass filled with golden sand, digital clock numbers floating around, dark tech aesthetic."
+    }
+  },
+  "feynman-test": {
+    title: "Le Test de Feynman",
+    fullContent: {
+      analogy: "Richard Feynman disait : 'Si vous ne pouvez pas expliquer quelque chose simplement, vous ne le comprenez pas assez bien.' L'IA sait générer ; vous devez savoir enseigner.",
+      scientificExplanation: "L'auto-explication force le cerveau à combler les lacunes dans son modèle mental. C'est une des techniques d'apprentissage les plus efficaces, validée par des décennies de recherche.",
+      scenario: "L'IA vous génère un hook React complexe. Fermez l'écran, prenez un papier, et expliquez-le à haute voix. Si vous dites 'et ça fait quelque chose', vous n'avez pas encodé.",
+      actionableTip: "Tenez un 'cahier d'enseignement' où vous réécrivez les concepts appris avec VOS mots, sans regarder le code.",
+      imagePrompt: "A teacher writing on a glowing chalkboard, simple diagrams and arrows, warm academic lighting."
+    }
+  },
+  "doc-first": {
+    title: "Documentation First",
+    fullContent: {
+      analogy: "La documentation est une carte topographique. L'IA est un guide touristique qui vous montre les points d'intérêt. La carte reste, le guide s'en va.",
+      scientificExplanation: "Naviguer dans une documentation complexe renforce les circuits de résolution de problèmes et l'autonomie cognitive. C'est un exercice de 'Deep Work'.",
+      scenario: "Au lieu de demander 'Comment utiliser useContext ?', vous ouvrez la doc React, lisez les exemples, et essayez. L'IA devient votre recours APRÈS l'effort, pour les détails subtils.",
+      actionableTip: "Ouvrez deux onglets : la doc officielle ET votre éditeur. L'IA reste fermée pour les 15 premières minutes.",
+      imagePrompt: "An open ancient book with glowing modern code emerging from the pages, mystical and technological fusion."
+    }
+  },
+  "weekly-detox": {
+    title: "La Détox Hebdomadaire",
+    fullContent: {
+      analogy: "Un athlète ne s'entraîne pas que sur tapis roulant. Il court dehors, sur terrain irrégulier, pour développer une vraie endurance. Votre cerveau a besoin de terrain irrégulier.",
+      scientificExplanation: "La dépendance cognitive s'installe progressivement. Des périodes de 'jeûne' technologique forcent le cerveau à réactiver les circuits sous-utilisés.",
+      scenario: "Chaque vendredi après-midi, vous fermez tous vos assistants. Vous déboguez à l'ancienne : printf, logs, réflexion. Vous redécouvrez votre propre capacité à résoudre.",
+      actionableTip: "Bloquez le créneau dans votre agenda comme un RDV médical. C'est un investissement dans votre santé cognitive.",
+      imagePrompt: "A brain doing weightlifting with glowing dumbbells, gym setting with neon lights, motivational poster style."
+    }
   }
 };
 
@@ -61,6 +121,58 @@ export const SOLUTIONS: SolutionItem[] = [
       scenario: "Vous avez un bug. Au lieu de copier l'erreur, décrivez à l'IA ce que vous pensez qu'il se passe. Si elle vous corrige, vous apprenez. Si elle confirme, vous renforcez votre confiance.",
       actionableTip: "Commencez vos prompts par 'Voici mon approche : [CODE]. Critique-la sévèrement avant de proposer quoi que ce soit.'",
       imagePrompt: "A digital mirror reflecting a human figure, but the reflection is a network of connections and code."
+    }
+  },
+  {
+    id: "ten-minute-rule",
+    title: "La Règle des 10 Minutes",
+    description: "Avant toute requête à l'IA, offrez-vous 10 minutes de réflexion pure : documentation, schémas, faux départs. C'est le prix de l'autonomie.",
+    icon: "clock",
+    fullContent: {
+      analogy: "Un GPS vous empêche de découvrir la ville. 10 minutes de déambulation avant de l'allumer vous forcent à observer les repères, à construire une carte mentale.",
+      scientificExplanation: "La Potentiation à Long Terme (LTP) nécessite un effort cognitif préalable. Ce pré-traitement prépare les synapses à 'accrocher' la solution quand elle arrive.",
+      scenario: "Avant de prompter 'Comment implémenter un système de cache ?', vous dessinez un diagramme de flux sur papier. Quand l'IA répond, vous comprenez instantanément où placer chaque composant.",
+      actionableTip: "Mettez un minuteur visible sur votre bureau. Quand il sonne, vous avez le DROIT d'utiliser l'IA. Pas avant.",
+      imagePrompt: "A minimalist hourglass filled with golden sand, digital clock numbers floating around, dark tech aesthetic."
+    }
+  },
+  {
+    id: "feynman-test",
+    title: "Le Test de Feynman",
+    description: "Après chaque session avec l'IA, expliquez le concept à voix haute comme si vous l'enseigniez à un enfant. Si vous bloquez, vous n'avez pas compris.",
+    icon: "book",
+    fullContent: {
+      analogy: "Richard Feynman disait : 'Si vous ne pouvez pas expliquer quelque chose simplement, vous ne le comprenez pas assez bien.' L'IA sait générer ; vous devez savoir enseigner.",
+      scientificExplanation: "L'auto-explication force le cerveau à combler les lacunes dans son modèle mental. C'est une des techniques d'apprentissage les plus efficaces, validée par des décennies de recherche.",
+      scenario: "L'IA vous génère un hook React complexe. Fermez l'écran, prenez un papier, et expliquez-le à haute voix. Si vous dites 'et ça fait quelque chose', vous n'avez pas encodé.",
+      actionableTip: "Tenez un 'cahier d'enseignement' où vous réécrivez les concepts appris avec VOS mots, sans regarder le code.",
+      imagePrompt: "A teacher writing on a glowing chalkboard, simple diagrams and arrows, warm academic lighting."
+    }
+  },
+  {
+    id: "doc-first",
+    title: "Documentation First",
+    description: "Privilégiez la documentation officielle avant l'IA. C'est plus lent, mais ça construit une compréhension plus robuste et moins biaisée.",
+    icon: "search",
+    fullContent: {
+      analogy: "La documentation est une carte topographique. L'IA est un guide touristique qui vous montre les points d'intérêt. La carte reste, le guide s'en va.",
+      scientificExplanation: "Naviguer dans une documentation complexe renforce les circuits de résolution de problèmes et l'autonomie cognitive. C'est un exercice de 'Deep Work'.",
+      scenario: "Au lieu de demander 'Comment utiliser useContext ?', vous ouvrez la doc React, lisez les exemples, et essayez. L'IA devient votre recours APRÈS l'effort, pour les détails subtils.",
+      actionableTip: "Ouvrez deux onglets : la doc officielle ET votre éditeur. L'IA reste fermée pour les 15 premières minutes.",
+      imagePrompt: "An open ancient book with glowing modern code emerging from the pages, mystical and technological fusion."
+    }
+  },
+  {
+    id: "weekly-detox",
+    title: "La Détox Hebdomadaire",
+    description: "Bloquez une demi-journée par semaine sans aucun outil IA. C'est l'exercice de musculation de votre cerveau.",
+    icon: "lightbulb",
+    fullContent: {
+      analogy: "Un athlète ne s'entraîne pas que sur tapis roulant. Il court dehors, sur terrain irrégulier, pour développer une vraie endurance. Votre cerveau a besoin de terrain irrégulier.",
+      scientificExplanation: "La dépendance cognitive s'installe progressivement. Des périodes de 'jeûne' technologique forcent le cerveau à réactiver les circuits sous-utilisés.",
+      scenario: "Chaque vendredi après-midi, vous fermez tous vos assistants. Vous déboguez à l'ancienne : printf, logs, réflexion. Vous redécouvrez votre propre capacité à résoudre.",
+      actionableTip: "Bloquez le créneau dans votre agenda comme un RDV médical. C'est un investissement dans votre santé cognitive.",
+      imagePrompt: "A brain doing weightlifting with glowing dumbbells, gym setting with neon lights, motivational poster style."
     }
   }
 ];

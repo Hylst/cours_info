@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-right">
-          <p className="text-slate-500 text-sm">© 2024 Apprentissage Fantôme.</p>
+          <p className="text-slate-500 text-sm">© 2025 Apprentissage Fantôme.</p>
           <p className="text-slate-600 text-xs mt-1 italic">L'effort est la seule preuve du savoir.</p>
         </div>
       </div>

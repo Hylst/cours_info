@@ -93,6 +93,36 @@ export const DEEP_DIVE_CONTENT: Record<string, any> = {
       actionableTip: "Bloquez le créneau dans votre agenda comme un RDV médical. C'est un investissement dans votre santé cognitive.",
       imagePrompt: "A brain doing weightlifting with glowing dumbbells, gym setting with neon lights, motivational poster style."
     }
+  },
+  "acte-socratic": {
+    title: "A.C.T.E : Confrontation Socratique",
+    fullContent: {
+      analogy: "Socrate ne donnait jamais de réponse. Il posait des questions jusqu'à ce que l'élève accouche de sa propre vérité. Faites de l'IA votre Socrate, pas votre scribe.",
+      scientificExplanation: "La maïeutique force l'élaboration sémantique. Quand l'IA vous pose des contre-questions ou vous explique les concepts sous-jacents, votre cerveau les traite plus profondément que si vous receviez juste du code.",
+      scenario: "Au lieu de demander 'Écris-moi un reducer Redux', vous demandez 'Explique-moi les principes fondamentaux d'un reducer. Pourquoi est-ce une fonction pure ? Quels sont les pièges ?'. Vous générerez le code VOUS-MÊME après.",
+      actionableTip: "Terminez chaque prompt par : 'Ne me donne pas de code. Explique-moi les concepts d'abord.'",
+      imagePrompt: "An ancient Greek philosopher in a digital temple, holograms of questions floating around him, dramatic lighting."
+    }
+  },
+  "acte-texture": {
+    title: "A.C.T.E : Texture Manuelle",
+    fullContent: {
+      analogy: "Un sculpteur ne peut pas déléguer la sensation du marbre. Chaque coup de burin enseigne la résistance de la pierre. Chaque ligne tapée enseigne la syntaxe du langage.",
+      scientificExplanation: "La mémoire procédurale (celle des gestes) est incroyablement résistante à l'oubli. C'est pourquoi on n'oublie jamais comment faire du vélo. En tapant le code, vous créez une mémoire musculaire.",
+      scenario: "L'IA génère 50 lignes de TypeScript. Vous les lisez, les comprenez, puis vous les retapez ENTIÈREMENT à la main dans votre éditeur. C'est 5 minutes de plus, mais 5 ans de rétention en plus.",
+      actionableTip: "Désactivez le copier-coller depuis les réponses de l'IA. Forcez-vous à tout retaper. Votre frustration est le signal que vous apprenez.",
+      imagePrompt: "Hands of a sculptor working on a digital statue made of code, marble texture, workshop lighting."
+    }
+  },
+  "acte-feynman": {
+    title: "A.C.T.E : Test de Feynman",
+    fullContent: {
+      analogy: "Richard Feynman disait : 'Le premier principe est que vous ne devez pas vous tromper vous-même, et vous êtes la personne la plus facile à tromper.' Expliquer, c'est tester l'intégrité de votre modèle mental.",
+      scientificExplanation: "L'auto-explication révèle les 'trous' dans votre compréhension. Si vous ne pouvez pas expliquer simplement, c'est que vous avez une compréhension superficielle qui s'effondrera sous pression.",
+      scenario: "Après avoir implémenté une authentification JWT générée par l'IA, vous fermez tout et expliquez à voix haute (à un collègue imaginaire) : le flux, les tokens, le refresh. Si vous dites 'et puis ça marche', vous avez échoué.",
+      actionableTip: "Enregistrez-vous en train d'expliquer. Réécoutez. Les silences et les 'euh' sont vos points faibles à retravailler.",
+      imagePrompt: "A scientist at a podium explaining to an empty auditorium, spotlight, chalkboard with simplified diagrams behind."
+    }
   }
 };
 
@@ -297,28 +327,32 @@ export const SCIENTIFIC_RESOURCES = [
     author: "Richard Feynman",
     type: "Technique",
     desc: "Apprendre en expliquant un concept complexe avec des mots simples.",
-    icon: <BookOpen className="text-amber-500" />
+    icon: <BookOpen className="text-amber-500" />,
+    url: "https://fs.blog/feynman-technique/"
   },
   {
     title: "The Dunning-Kruger Effect",
     author: "Kruger & Dunning",
     type: "Psychologie",
     desc: "Comment l'incompétence empêche de reconnaître sa propre incompétence.",
-    icon: <ShieldAlert className="text-cyan-400" />
+    icon: <ShieldAlert className="text-cyan-400" />,
+    url: "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect"
   },
   {
     title: "Deep Work",
     author: "Cal Newport",
     type: "Productivité",
     desc: "Règles pour une concentration absolue dans un monde distrait.",
-    icon: <Zap className="text-amber-500" />
+    icon: <Zap className="text-amber-500" />,
+    url: "https://www.amazon.fr/Deep-Work-Focused-Success-Distracted/dp/1455586692"
   },
   {
     title: "Make It Stick",
     author: "Peter C. Brown",
     type: "Neuroscience",
     desc: "La science de l'apprentissage réussi par la difficulté désirable.",
-    icon: <Repeat className="text-cyan-400" />
+    icon: <Repeat className="text-cyan-400" />,
+    url: "https://www.amazon.fr/Make-Stick-Science-Successful-Learning/dp/0674729013"
   }
 ];
 

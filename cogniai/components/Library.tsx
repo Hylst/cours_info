@@ -11,7 +11,7 @@ const Library: React.FC = () => {
         <h2 className="text-3xl md:text-5xl font-black mb-4">La Bibliothèque de l'Apprenant</h2>
         <p className="text-slate-400 text-lg mb-8">Pour aller plus loin dans la compréhension des mécanismes de l'esprit.</p>
         <div className="max-w-3xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl opacity-80 hover:opacity-100 transition-opacity">
-          <AIImage 
+          <AIImage
             prompt="A grand futuristic library inside a crystal dome, glowing holographic scrolls floating in the air, sunset lighting, architectural masterpiece, hyper-realistic."
             alt="Futuristic Library"
             className="h-48 w-full"
@@ -42,7 +42,9 @@ const Library: React.FC = () => {
             </div>
 
             <a
-              href="#"
+              href={resource.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 flex items-center justify-center gap-2 py-3 bg-white/5 rounded-xl text-xs font-bold hover:bg-amber-500 hover:text-slate-950 transition-all"
             >
               Consulter <ExternalLink size={12} />
@@ -50,7 +52,7 @@ const Library: React.FC = () => {
           </div>
         ))}
       </div>
-      
+
       <div className="mt-16 p-8 bg-gradient-to-r from-amber-500/10 to-cyan-500/10 rounded-3xl border border-white/5 text-center">
         <p className="text-slate-300 italic">"L'accès à l'information n'est pas l'acquisition du savoir. La lecture est une porte, l'effort est le chemin."</p>
       </div>

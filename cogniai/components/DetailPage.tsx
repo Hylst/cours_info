@@ -18,10 +18,20 @@ const DetailPage: React.FC<DetailPageProps> = ({ id, onBack }) => {
 
   if (!content) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <button onClick={onBack} className="text-white flex items-center gap-2 underline">
-          <ArrowLeft size={20} /> Retour à l'accueil
-        </button>
+      <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col items-center justify-center p-8">
+        <div className="text-center max-w-md">
+          <div className="text-8xl mb-6">🔍</div>
+          <h1 className="text-4xl font-black mb-4">Contenu Introuvable</h1>
+          <p className="text-slate-400 mb-8 leading-relaxed">
+            Cette page de détail n'existe pas encore. Le contenu est peut-être en cours de rédaction ou l'identifiant est incorrect.
+          </p>
+          <button
+            onClick={onBack}
+            className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-2xl font-bold transition-all flex items-center gap-2 mx-auto"
+          >
+            <ArrowLeft size={20} /> Retour à l'accueil
+          </button>
+        </div>
       </div>
     );
   }
@@ -30,7 +40,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ id, onBack }) => {
     <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-amber-500/30">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <button 
+          <button
             onClick={onBack}
             className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors group"
           >
@@ -55,7 +65,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ id, onBack }) => {
           </header>
 
           <div className="mb-20 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-            <AIImage 
+            <AIImage
               prompt={content.fullContent.imagePrompt}
               alt={content.title}
               className="h-[400px] w-full"
@@ -110,7 +120,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ id, onBack }) => {
               <p className="text-xl text-white/90 font-bold leading-relaxed max-w-2xl mx-auto">
                 {content.fullContent.actionableTip}
               </p>
-              <button 
+              <button
                 onClick={onBack}
                 className="mt-12 bg-white text-slate-950 px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform"
               >

@@ -1,0 +1,41 @@
+/* ... existing styles ... */
+
+/* === SIDE NAV (Desktop) === */
+.side-nav {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 200px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 5px;
+    z-index: 90;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.side-nav a {
+    text-decoration: none;
+    color: var(--dim);
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background: rgba(55, 118, 171, 0.05);
+}
+
+@media (min-width: 1350px) {
+    .side-nav {
+        display: flex;
+    }
+}

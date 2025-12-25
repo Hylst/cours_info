@@ -1,0 +1,81 @@
+<svg width="700" height="350" viewBox="0 0 700 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: #e2e8f0; font-size: 13px; }
+        .label { font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 15px; text-anchor: middle; }
+        .code { font-family: 'Consolas', monospace; font-size: 12px; fill: #ffd43b; }
+        .box { stroke-width: 2; rx: 5; }
+        .arrow { stroke: #718096; stroke-width: 2; marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#718096" />
+        </marker>
+    </defs>
+
+    <rect width="700" height="350" fill="#1a202c" rx="10"/>
+    <text x="350" y="30" class="label" fill="#3776ab" text-anchor="middle">Mutable vs Immutable en Mémoire</text>
+
+    <!-- IMMUTABLE SECTION -->
+    <g transform="translate(30, 50)">
+        <text x="150" y="15" class="label" fill="#e74c3c">Immutable (int, str, tuple)</text>
+        
+        <!-- Code -->
+        <text x="0" y="50" class="code">a = 10</text>
+        <text x="0" y="70" class="code">b = a</text>
+        <text x="0" y="90" class="code">a = 20  # Nouveau objet!</text>
+
+        <!-- Variables -->
+        <rect x="130" y="100" width="50" height="30" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="155" y="120" class="text" text-anchor="middle">a</text>
+        <rect x="130" y="145" width="50" height="30" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="155" y="165" class="text" text-anchor="middle">b</text>
+
+        <!-- Objects -->
+        <rect x="230" y="100" width="60" height="30" class="box" fill="#27ae60" stroke="#1e8449"/>
+        <text x="260" y="120" class="text" text-anchor="middle">20</text>
+        <rect x="230" y="145" width="60" height="30" class="box" fill="#3776ab" stroke="#2b6cb0"/>
+        <text x="260" y="165" class="text" text-anchor="middle">10</text>
+
+        <!-- Arrows -->
+        <path d="M 180 115 L 225 115" class="arrow"/>
+        <path d="M 180 160 L 225 160" class="arrow"/>
+
+        <!-- Result -->
+        <text x="0" y="210" class="text" fill="#27ae60">✓ a = 20, b = 10 (indépendants)</text>
+    </g>
+
+    <!-- MUTABLE SECTION -->
+    <g transform="translate(380, 50)">
+        <text x="150" y="15" class="label" fill="#27ae60">Mutable (list, dict, set)</text>
+        
+        <!-- Code -->
+        <text x="0" y="50" class="code">a = [1, 2, 3]</text>
+        <text x="0" y="70" class="code">b = a</text>
+        <text x="0" y="90" class="code">a.append(4)  # Même objet!</text>
+
+        <!-- Variables -->
+        <rect x="130" y="100" width="50" height="30" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="155" y="120" class="text" text-anchor="middle">a</text>
+        <rect x="130" y="150" width="50" height="30" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="155" y="170" class="text" text-anchor="middle">b</text>
+
+        <!-- Object (shared) -->
+        <rect x="230" y="110" width="80" height="60" class="box" fill="#e67e22" stroke="#d35400"/>
+        <text x="270" y="135" class="text" text-anchor="middle">[1,2,3,4]</text>
+        <text x="270" y="155" class="text" font-size="10" text-anchor="middle" fill="#fff">list obj</text>
+
+        <!-- Arrows (both point to same) -->
+        <path d="M 180 115 L 225 130" class="arrow"/>
+        <path d="M 180 165 L 225 155" class="arrow"/>
+
+        <!-- Result -->
+        <text x="0" y="210" class="text" fill="#e74c3c">⚠ a = b = [1,2,3,4] (même objet!)</text>
+    </g>
+
+    <!-- Bottom Tip -->
+    <g transform="translate(50, 290)">
+        <rect width="600" height="45" fill="#2d3748" rx="5"/>
+        <text x="300" y="20" class="text" text-anchor="middle" font-weight="bold" fill="#ffd43b">💡 Astuce : Pour copier une liste → b = a.copy() ou b = a[:]</text>
+        <text x="300" y="38" class="text" text-anchor="middle" font-size="11" fill="#888">Pour copie profonde : import copy; b = copy.deepcopy(a)</text>
+    </g>
+</svg>

@@ -28,4 +28,42 @@ document.addEventListener('DOMContentLoaded', function () {
             head.appendChild(btn);
         }
     });
+
+    // Generate Side Nav
+    const sideNav = document.createElement('div');
+    sideNav.className = 'side-nav';
+    
+    document.querySelectorAll('section[id]').forEach(sec => {
+        if (sec.id === 'quiz-section') return;
+        
+        const title = sec.querySelector('.sec-title')?.textContent || sec.id;
+        const num = sec.querySelector('.sec-num')?.textContent || '';
+        const link = document.createElement('a');
+        link.href = '#' + sec.id;
+        link.innerHTML = `<span style="opacity:0.5; margin-right:5px">${num}</span> ${title.replace("introduction à ", "")}`;
+        sideNav.appendChild(link);
+    });
+
+    document.body.appendChild(sideNav);
+
+    // Scroll Spy
+    window.addEventListener('scroll', () => {
+        const fromTop = window.scrollY + 150;
+        let current = null;
+
+        document.querySelectorAll('section[id]').forEach(sec => {
+            if (sec.offsetTop <= fromTop) {
+                current = sec;
+            }
+        });
+
+        if (current) {
+            document.querySelectorAll('.side-nav a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current.id) {
+                    a.classList.add('active');
+                }
+            });
+        }
+    });
 });

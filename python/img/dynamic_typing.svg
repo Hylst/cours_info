@@ -1,0 +1,70 @@
+<svg width="600" height="300" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Segoe UI', sans-serif; fill: #e2e8f0; font-size: 14px; }
+        .label { font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 16px; text-anchor: middle; }
+        .code { font-family: 'Consolas', monospace; font-size: 13px; fill: #ffd43b; }
+        .box { stroke-width: 2; rx: 8; }
+        .arrow { stroke: #718096; stroke-width: 2; marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#718096" />
+        </marker>
+    </defs>
+
+    <rect width="600" height="300" fill="#1a202c" rx="10"/>
+    <text x="300" y="30" class="label" fill="#3776ab" text-anchor="middle">Typage Dynamique en Python</text>
+
+    <!-- Variable Box -->
+    <g transform="translate(50, 60)">
+        <text x="0" y="0" class="code">x = 42</text>
+        <rect x="0" y="15" width="80" height="40" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="40" y="40" class="text" text-anchor="middle">x</text>
+        <text x="40" y="75" class="text" font-size="11" text-anchor="middle" fill="#888">Étiquette</text>
+    </g>
+
+    <!-- Arrow to Object -->
+    <path d="M 135 85 L 200 85" class="arrow"/>
+
+    <!-- Object Box (int) -->
+    <g transform="translate(210, 55)">
+        <rect width="120" height="60" class="box" fill="#3776ab" stroke="#2b6cb0"/>
+        <text x="60" y="25" class="text" text-anchor="middle" font-weight="bold">int</text>
+        <text x="60" y="45" class="code" text-anchor="middle">42</text>
+    </g>
+
+    <!-- Second example -->
+    <g transform="translate(50, 160)">
+        <text x="0" y="0" class="code">x = "hello"</text>
+        <rect x="0" y="15" width="80" height="40" class="box" fill="#2d3748" stroke="#4a5568"/>
+        <text x="40" y="40" class="text" text-anchor="middle">x</text>
+        <text x="40" y="75" class="text" font-size="11" text-anchor="middle" fill="#888">Même étiquette</text>
+    </g>
+
+    <!-- Arrow to new Object -->
+    <path d="M 135 185 L 200 185" class="arrow"/>
+
+    <!-- Object Box (str) -->
+    <g transform="translate(210, 155)">
+        <rect width="120" height="60" class="box" fill="#27ae60" stroke="#1e8449"/>
+        <text x="60" y="25" class="text" text-anchor="middle" font-weight="bold">str</text>
+        <text x="60" y="45" class="code" text-anchor="middle">"hello"</text>
+    </g>
+
+    <!-- Old int object (faded) -->
+    <g transform="translate(380, 55)" opacity="0.3">
+        <rect width="120" height="60" class="box" fill="#3776ab" stroke="#2b6cb0"/>
+        <text x="60" y="25" class="text" text-anchor="middle" font-weight="bold">int</text>
+        <text x="60" y="45" class="code" text-anchor="middle">42</text>
+        <line x1="10" y1="10" x2="110" y2="50" stroke="#e74c3c" stroke-width="3"/>
+        <text x="60" y="80" class="text" font-size="11" text-anchor="middle" fill="#e74c3c">Garbage Collected</text>
+    </g>
+
+    <!-- Explanation -->
+    <g transform="translate(380, 180)">
+        <rect width="200" height="90" fill="#2d3748" rx="5"/>
+        <text x="100" y="25" class="text" text-anchor="middle" font-weight="bold" fill="#ffd43b">Le Type suit l'Objet</text>
+        <text x="100" y="50" class="text" text-anchor="middle" font-size="12">x ne change pas de type.</text>
+        <text x="100" y="70" class="text" text-anchor="middle" font-size="12">x pointe vers un nouvel objet.</text>
+    </g>
+</svg>

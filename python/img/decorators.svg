@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+  <defs>
+    <style>
+      .wrapper { fill: #e8f4f8; stroke: #3776ab; stroke-width: 2; rx: 10; }
+      .func { fill: #fff; stroke: #ffd43b; stroke-width: 2; rx: 5; }
+      .arrow { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }
+      .text { font-family: 'Consolas', monospace; font-size: 14px; fill: #333; }
+      .label { font-family: sans-serif; font-size: 14px; font-weight: bold; fill: #555; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Wrapper Box -->
+  <rect x="150" y="50" width="300" height="200" class="wrapper"/>
+  <text x="170" y="80" class="text">@decorator (Wrapper)</text>
+  
+  <!-- Pre-processing -->
+  <text x="220" y="110" class="text" fill="#2ecc71"># Code AVANT</text>
+  
+  <!-- Original Function -->
+  <rect x="200" y="130" width="200" height="60" class="func"/>
+  <text x="250" y="165" class="text">Fonction Originale</text>
+  
+  <!-- Post-processing -->
+  <text x="220" y="220" class="text" fill="#e74c3c"># Code APRÈS</text>
+
+  <!-- Flow Arrows -->
+  <path d="M 50 160 L 150 160" class="arrow"/>
+  <text x="60" y="150" class="label">Appel</text>
+  
+  <path d="M 450 160 L 550 160" class="arrow"/>
+  <text x="470" y="150" class="label">Retour</text>
+</svg>

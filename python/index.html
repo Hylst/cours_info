@@ -31,6 +31,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="side-nav.css">
 </head>
 
 <body>
@@ -59,6 +60,7 @@
     <div class="toc">
         <div class="container">
             <div class="toc-grid">
+                <a href="#s0" class="toc-item"><span class="toc-num">00</span>Introduction</a>
                 <a href="#s1" class="toc-item"><span class="toc-num">01</span>Variables</a>
                 <a href="#s2" class="toc-item"><span class="toc-num">02</span>Structures</a>
                 <a href="#s3" class="toc-item"><span class="toc-num">03</span>Fonctions</a>
@@ -73,9 +75,136 @@
                 <a href="#s12" class="toc-item"><span class="toc-num">12</span>Async</a>
                 <a href="#s13" class="toc-item"><span class="toc-num">13</span>Tests</a>
                 <a href="#s14" class="toc-item"><span class="toc-num">14</span>Référence</a>
+                <a href="#s15" class="toc-item"><span class="toc-num">15</span>Data Science</a>
+                <a href="#s16" class="toc-item"><span class="toc-num">16</span>Écosystème</a>
+                <a href="#s17" class="toc-item"><span class="toc-num">17</span>Web Dev</a>
             </div>
         </div>
     </div>
+
+    <!-- S0: INTRODUCTION -->
+    <section id="s0">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">00</div>
+                <div>
+                    <h2 class="sec-title">Introduction à Python</h2>
+                    <p class="sec-sub">Histoire, philosophie, écosystème</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px; font-size:1.05rem; line-height:1.8;">
+                <strong>Python</strong> est un langage de programmation interprété, polyvalent et très lisible.
+                Créé en 1991 par <strong>Guido van Rossum</strong>, il est devenu l'un des langages les plus populaires
+                au monde grâce à sa syntaxe claire et sa communauté active.
+            </p>
+
+            <div class="grid2">
+                <div class="info" style="border-left-color:#3776ab;">
+                    <strong>📜 Un peu d'histoire</strong>
+                    <ul style="margin-top:10px; font-size:0.9rem; line-height:1.7;">
+                        <li><strong>1991</strong> : Première version par Guido van Rossum (Pays-Bas).</li>
+                        <li><strong>2000</strong> : Python 2.0 (List Comprehensions, Garbage Collector).</li>
+                        <li><strong>2008</strong> : Python 3.0 (refonte majeure, non rétrocompatible).</li>
+                        <li><strong>2020</strong> : Fin de vie Python 2.7. Python 3 est désormais le standard.</li>
+                        <li><strong>2025</strong> : Python 3.12+ avec améliorations de performance (JIT expérimental).
+                        </li>
+                    </ul>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#666;">
+                        💡 Le nom "Python" vient des Monty Python, pas du serpent !
+                    </p>
+                </div>
+
+                <div class="info" style="border-left-color:#ffd43b;">
+                    <strong>🧘 La Philosophie Python</strong>
+                    <p style="font-size:0.9rem; margin-top:10px;">
+                        Le <code>import this</code> révèle le <strong>"Zen of Python"</strong>, 19 aphorismes guidant la
+                        conception du langage :
+                    </p>
+                    <ul style="font-size:0.9rem; line-height:1.7; font-style:italic; margin-top:10px;">
+                        <li><em>"Beautiful is better than ugly."</em></li>
+                        <li><em>"Simple is better than complex."</em></li>
+                        <li><em>"Readability counts."</em></li>
+                        <li><em>"There should be one-- and preferably only one --obvious way to do it."</em></li>
+                    </ul>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#666;">➡️ Tape <code>import this</code> dans
+                        Python pour voir les 19 règles.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">🚀 Cas d'usage de Python</h3>
+            <p style="color:var(--muted); margin-bottom:15px;">Python est utilisé partout, de l'automatisation à
+                l'intelligence artificielle.</p>
+
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>🌐 Web Backend</h4>
+                    <code>Django</code> <code>Flask</code> <code>FastAPI</code><br>
+                    <span style="font-size:0.8rem; color:#888;">APIs REST, applications web, microservices</span>
+                </div>
+                <div class="ref-card">
+                    <h4>📊 Data Science</h4>
+                    <code>NumPy</code> <code>Pandas</code> <code>Matplotlib</code><br>
+                    <span style="font-size:0.8rem; color:#888;">Analyse de données, visualisation, statistiques</span>
+                </div>
+                <div class="ref-card">
+                    <h4>🤖 Machine Learning</h4>
+                    <code>TensorFlow</code> <code>PyTorch</code> <code>scikit-learn</code><br>
+                    <span style="font-size:0.8rem; color:#888;">IA, deep learning, modèles prédictifs</span>
+                </div>
+                <div class="ref-card">
+                    <h4>⚙️ Automatisation</h4>
+                    <code>Scripting</code> <code>Selenium</code> <code>Requests</code><br>
+                    <span style="font-size:0.8rem; color:#888;">Scripts système, scraping, tests E2E</span>
+                </div>
+                <div class="ref-card">
+                    <h4>🔐 Cybersécurité</h4>
+                    <code>Scapy</code> <code>Paramiko</code> <code>PyCrypto</code><br>
+                    <span style="font-size:0.8rem; color:#888;">Pentest, analyse réseau, chiffrement</span>
+                </div>
+                <div class="ref-card">
+                    <h4>🐳 DevOps & Cloud</h4>
+                    <code>Ansible</code> <code>Boto3</code> <code>Docker SDK</code><br>
+                    <span style="font-size:0.8rem; color:#888;">Infrastructure as Code, AWS, orchestration</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top:30px;">⚔️ Python 2 vs Python 3</h3>
+            <table style="width:100%; font-size:0.9rem; border-collapse:collapse; margin-bottom:20px;">
+                <tr style="border-bottom:1px solid #444; color:#a0a0a0;">
+                    <th>Aspect</th>
+                    <th style="color:#e74c3c;">Python 2 (❌ Obsolète)</th>
+                    <th style="color:#27ae60;">Python 3 (✅ Standard)</th>
+                </tr>
+                <tr>
+                    <td>Print</td>
+                    <td><code>print "Hello"</code></td>
+                    <td><code>print("Hello")</code></td>
+                </tr>
+                <tr>
+                    <td>Division entière</td>
+                    <td><code>5/2 = 2</code></td>
+                    <td><code>5/2 = 2.5</code> (// pour entier)</td>
+                </tr>
+                <tr>
+                    <td>Strings</td>
+                    <td>ASCII par défaut</td>
+                    <td>Unicode (UTF-8) par défaut</td>
+                </tr>
+                <tr>
+                    <td>Support</td>
+                    <td>Fin de vie : 01/01/2020</td>
+                    <td>Activement maintenu</td>
+                </tr>
+            </table>
+
+            <div class="tip">
+                <strong>💡 Règle d'or :</strong> En 2025, utilisez <strong>TOUJOURS Python 3.10+</strong>.
+                Python 2 est mort et ne reçoit plus de correctifs de sécurité. Si vous héritez de code Python 2,
+                migrez-le avec l'outil <code>2to3</code>.
+            </div>
+        </div>
+    </section>
 
     <!-- S1: VARIABLES -->
     <section id="s1">
@@ -162,6 +291,40 @@
                     isinstance(25, int) = True</div>
             </div>
 
+            <div class="grid2" style="margin-bottom:20px;">
+                <div>
+                    <h3 style="font-size:1rem; color:var(--text-color);">Typage Dynamique</h3>
+                    <img src="img/dynamic_typing.svg" alt="Dynamic Typing Diagram"
+                        style="width:100%; border-radius:8px; border:1px solid #333;">
+                </div>
+                <div>
+                    <h3 style="font-size:1rem; color:var(--text-color);">Mutable vs Immutable</h3>
+                    <img src="img/memory_mutable.svg" alt="Memory Mutable vs Immutable"
+                        style="width:100%; border-radius:8px; border:1px solid #333;">
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Walrus Operator := (Python 3.8+)</div>
+                <pre><span class="c"># Assigner ET utiliser dans une expression</span>
+<span class="c"># Avant :</span>
+<span class="var">n</span> = <span class="fn">len</span>(<span class="var">data</span>)
+<span class="kw">if</span> <span class="var">n</span> > <span class="num">10</span>:
+    <span class="fn">print</span>(<span class="str">f"Trop long: </span>{<span class="var">n</span>}<span class="str">"</span>)
+
+<span class="c"># Avec Walrus Operator :</span>
+<span class="kw">if</span> (<span class="var">n</span> := <span class="fn">len</span>(<span class="var">data</span>)) > <span class="num">10</span>:
+    <span class="fn">print</span>(<span class="str">f"Trop long: </span>{<span class="var">n</span>}<span class="str">"</span>)
+
+<span class="c"># Utile dans les while</span>
+<span class="kw">while</span> (<span class="var">line</span> := <span class="var">file</span>.<span class="fn">readline</span>()):
+    <span class="fn">process</span>(<span class="var">line</span>)
+
+<span class="c"># Utile dans les list comprehensions</span>
+<span class="var">filtered</span> = [<span class="var">y</span> <span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">data</span> <span class="kw">if</span> (<span class="var">y</span> := <span class="fn">compute</span>(<span class="var">x</span>)) > <span class="num">0</span>]</pre>
+            </div>
+
             <div class="tip"><strong>💡 f-strings</strong> Utilisez <code>f"Hello {name}"</code> pour l'interpolation de
                 chaînes. C'est la méthode la plus lisible et performante depuis Python 3.6.</div>
         </div>
@@ -231,6 +394,13 @@
 <span class="kw">for</span> <span class="var">i</span>, <span class="var">val</span> <span class="kw">in</span> <span class="fn">enumerate</span>(<span class="var">lst</span>):
     <span class="fn">print</span>(<span class="str">f"</span>{<span class="var">i</span>}: {<span class="var">val</span>}<span class="str">"</span>)
 
+<span class="c"># for/else (No Break)</span>
+<span class="kw">for</span> <span class="var">x</span> <span class="kw">in</span> <span class="var">data</span>:
+    <span class="kw">if</span> <span class="var">x</span> == <span class="var">target</span>:
+        <span class="kw">break</span>
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">"Not found"</span>)
+
 <span class="c"># while</span>
 <span class="kw">while</span> <span class="var">condition</span>:
     <span class="c"># ...</span>
@@ -290,26 +460,35 @@
 <span class="c"># Lambda</span>
 <span class="var">double</span> = <span class="kw">lambda</span> <span class="var">x</span>: <span class="var">x</span> * <span class="num">2</span>
 
-<span class="c"># Décorateur</span>
+            <div class="grid2">
+                <div>
+                     <h3 style="font-size:1rem; color:var(--text-color); margin-bottom:10px;">Le Pattern Décorateur</h3>
+                     <img src="img/decorators.svg" alt="Decorator Pattern" style="width:100%; border-radius:8px; border:1px solid #333;">
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Décorateur</div>
+                    <pre><span class="c"># Décorateur (Wrapper)</span>
 <span class="kw">def</span> <span class="fn">decorator</span>(<span class="var">func</span>):
     <span class="kw">def</span> <span class="fn">wrapper</span>(*<span class="var">args</span>):
-        <span class="fn">print</span>(<span class="str">"Before"</span>)
+        <span class="fn">print</span>(<span class="str">"LOG: Before call"</span>)
         <span class="var">result</span> = <span class="var">func</span>(*<span class="var">args</span>)
-        <span class="fn">print</span>(<span class="str">"After"</span>)
+        <span class="fn">print</span>(<span class="str">"LOG: After call"</span>)
         <span class="kw">return</span> <span class="var">result</span>
     <span class="kw">return</span> <span class="var">wrapper</span>
 
 <span class="dec">@decorator</span>
-<span class="kw">def</span> <span class="fn">say_hello</span>():
-    <span class="fn">print</span>(<span class="str">"Hello!"</span>)</pre>
+<span class="kw">def</span> <span class="fn">say_hello</span>(<span class="var">name</span>):
+    <span class="fn">print</span>(<span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">!"</span>)</pre>
             </div>
+        </div>
 
-            <div class="demo">
-                <div class="demo-title">Résultat attendu</div>
-                <div class="demo-output">greet("Python") → "Hello Python!"
-                    power(2, 8) → 256
-                    double(5) → 10</div>
-            </div>
+        <div class="demo">
+            <div class="demo-title">Résultat attendu</div>
+            <div class="demo-output">greet("Python") → "Hello Python!"
+                power(2, 8) → 256
+                double(5) → 10</div>
+        </div>
         </div>
     </section>
 
@@ -338,6 +517,11 @@
                         dict pour les associations clé-valeur, tuple pour les données immuables.</p>
                 </div>
             </details>
+
+            <div style="margin-bottom:20px;">
+                <img src="img/list_comp.svg" alt="List Comprehension Syntax"
+                    style="width:100%; border-radius:8px; border:1px solid #333;">
+            </div>
 
             <div class="grid2">
                 <div class="code">
@@ -474,26 +658,39 @@
     <span class="kw">def</span> <span class="fn">get_count</span>(<span class="var">cls</span>) -> <span class="cls">int</span>:
         <span class="kw">return</span> <span class="var">cls</span>.<span class="var">count</span>
 
-<span class="c"># Héritage</span>
-<span class="kw">class</span> <span class="cls">Admin</span>(<span class="cls">User</span>):
-    <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span class="cls">str</span>:
-        <span class="kw">return</span> <span class="fn">super</span>().<span class="fn">greet</span>() + <span class="str">" (Admin)"</span>
-
-<span class="c"># Dataclass (Python 3.7+)</span>
-<span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
-
-<span class="dec">@dataclass</span>
-<span class="kw">class</span> <span class="cls">Point</span>:
-    <span class="var">x</span>: <span class="cls">float</span>
-    <span class="var">y</span>: <span class="cls">float</span></pre>
+<span class="c"># Héritage & MRO</span>
+<span class="c"># Python utilise l'algorithme C3 Linearization pour résoudre l'héritage multiple (D -> B -> C -> A)</span>
+<span class="c"># Voir l'attribut __mro__ sur une classe.</span></pre>
             </div>
 
-            <div class="demo">
-                <div class="demo-title">Résultat attendu</div>
-                <div class="demo-output">alice = User("Alice", 25)
-                    alice.greet() → "Hello, I'm Alice"
-                    User.count → 1</div>
+            <div style="margin-top:10px;">
+                <img src="img/mro.svg" alt="MRO Diagram"
+                    style="max-width:350px; border-radius:8px; border:1px solid #333;">
             </div>
+        </div>
+
+        <span class="c"># Héritage</span>
+        <span class="kw">class</span> <span class="cls">Admin</span>(<span class="cls">User</span>):
+        <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span
+            class="cls">str</span>:
+        <span class="kw">return</span> <span class="fn">super</span>().<span class="fn">greet</span>() + <span
+            class="str">" (Admin)"</span>
+
+        <span class="c"># Dataclass (Python 3.7+)</span>
+        <span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
+
+        <span class="dec">@dataclass</span>
+        <span class="kw">class</span> <span class="cls">Point</span>:
+        <span class="var">x</span>: <span class="cls">float</span>
+        <span class="var">y</span>: <span class="cls">float</span></pre>
+        </div>
+
+        <div class="demo">
+            <div class="demo-title">Résultat attendu</div>
+            <div class="demo-output">alice = User("Alice", 25)
+                alice.greet() → "Hello, I'm Alice"
+                User.count → 1</div>
+        </div>
         </div>
     </section>
 
@@ -613,6 +810,28 @@
 <span class="var">p</span>.<span class="fn">read_text</span>()
 <span class="var">p</span>.<span class="fn">write_text</span>(<span class="str">"content"</span>)</pre>
             </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>CSV / YAML / Pickle</div>
+                <pre><span class="kw">import</span> csv
+<span class="kw">import</span> pickle
+<span class="c"># import yaml  # pip install pyyaml</span>
+
+<span class="c"># CSV Lecture</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"data.csv"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">reader</span> = csv.<span class="fn">reader</span>(<span class="var">f</span>)
+    <span class="kw">for</span> <span class="var">row</span> <span class="kw">in</span> <span class="var">reader</span>:
+        <span class="fn">print</span>(<span class="var">row</span>)
+
+<span class="c"># Pickle (Sérialisation binaire objets Python)</span>
+<span class="var">data</span> = {<span class="str">"temp"</span>: <span class="num">24.5</span>, <span class="str">"hum"</span>: <span class="num">60</span>}
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"data.pkl"</span>, <span class="str">"wb"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    pickle.<span class="fn">dump</span>(<span class="var">data</span>, <span class="var">f</span>)
+
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"data.pkl"</span>, <span class="str">"rb"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">loaded</span> = pickle.<span class="fn">load</span>(<span class="var">f</span>)</pre>
+            </div>
+        </div>
         </div>
     </section>
 
@@ -885,7 +1104,21 @@ re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="
 <span class="fn">cycle</span>([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>])      <span class="c"># 1, 2, 3, 1, 2, 3, ...</span>
 <span class="fn">repeat</span>(<span class="str">"A"</span>, <span class="num">5</span>)      <span class="c"># A, A, A, A, A</span>
 <span class="fn">chain</span>([<span class="num">1</span>], [<span class="num">2</span>,<span class="num">3</span>])   <span class="c"># 1, 2, 3</span>
-<span class="fn">islice</span>(<span class="var">gen</span>, <span class="num">10</span>)     <span class="c"># 10 premiers éléments</span></pre>
+<span class="fn">islice</span>(<span class="var">gen</span>, <span class="num">10</span>)     <span class="c"># 10 premiers éléments</span>
+
+<span class="c"># Interaction (Coroutines avancées)</span>
+<span class="kw">def</span> <span class="fn">grep</span>(<span class="var">pattern</span>):
+    <span class="fn">print</span>(<span class="str">f"Looking for </span>{<span class="var">pattern</span>}<span class="str">"</span>)
+    <span class="kw">while</span> <span class="kw">True</span>:
+        <span class="var">line</span> = (<span class="kw">yield</span>)
+        <span class="kw">if</span> <span class="var">pattern</span> <span class="kw">in</span> <span class="var">line</span>:
+            <span class="fn">print</span>(<span class="var">line</span>)
+
+<span class="var">g</span> = <span class="fn">grep</span>(<span class="str">"python"</span>)
+<span class="fn">next</span>(<span class="var">g</span>)        <span class="c"># Amorcer</span>
+<span class="var">g</span>.<span class="fn">send</span>(<span class="str">"Hello python"</span>)  <span class="c"># Envoie valeur au yield</span>
+<span class="var">g</span>.<span class="fn">throw</span>(<span class="cls">RuntimeError</span>, <span class="str">"Stop"</span>) 
+<span class="var">g</span>.<span class="fn">close</span>()</pre>
             </div>
         </div>
     </section>
@@ -914,10 +1147,16 @@ re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="
                 </div>
             </details>
 
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Async</div>
-                <pre><span class="kw">import</span> asyncio
+            <div class="grid2">
+                <div>
+                    <h3 style="font-size:1rem; color:var(--text-color);">Architecture Event Loop</h3>
+                    <img src="img/event_loop.svg" alt="Event Loop Diagram"
+                        style="width:100%; border-radius:8px; border:1px solid #333;">
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Async</div>
+                    <pre><span class="kw">import</span> asyncio
 
 <span class="c"># Coroutine</span>
 <span class="kw">async def</span> <span class="fn">fetch_data</span>(<span class="var">url</span>):
@@ -956,8 +1195,8 @@ asyncio.<span class="fn">run</span>(<span class="fn">main</span>())
 <span class="kw">async def</span> <span class="fn">fetch_url</span>(<span class="var">session</span>, <span class="var">url</span>):
     <span class="kw">async with</span> <span class="var">session</span>.<span class="fn">get</span>(<span class="var">url</span>) <span class="kw">as</span> <span class="var">response</span>:
         <span class="kw">return await</span> <span class="var">response</span>.<span class="fn">text</span>()</pre>
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- S13: TESTS -->
@@ -1208,6 +1447,165 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
         </div>
     </section>
 
+    <!-- S15: DATA SCIENCE -->
+    <section id="s15">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Python Data Science</h2>
+                    <p class="sec-sub">NumPy, Pandas, Matplotlib</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Python est le leader mondial de la Data Science. Voici les 3 piliers de l'écosystème.
+            </p>
+
+            <div class="grid2">
+                <div class="info" style="border-left-color:#f1c40f;">
+                    <strong>NumPy (Numerical Python)</strong>
+                    <p style="font-size:0.9rem; margin-top:5px;">
+                        Calcul matriciel haute performance. Les <code>ndarray</code> sont bien plus rapides et économes
+                        que les listes Python.
+                    </p>
+                </div>
+                <div class="info" style="border-left-color:#e74c3c;">
+                    <strong>Pandas</strong>
+                    <p style="font-size:0.9rem; margin-top:5px;">
+                        Manipulation de données structurées (DataFrames). C'est le "Excel programmable" de Python.
+                    </p>
+                </div>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Data Science Starter</div>
+                <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+<span class="c"># --- 1. NumPy ---</span>
+<span class="var">arr</span> = np.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+<span class="fn">print</span>(<span class="var">arr</span> * <span class="num">2</span>)      <span class="c"># [2 4 6] (vectorisation !)</span>
+
+<span class="c"># --- 2. Pandas ---</span>
+<span class="var">df</span> = pd.<span class="fn">DataFrame</span>({
+    <span class="str">"Nom"</span>: [<span class="str">"Alice"</span>, <span class="str">"Bob"</span>],
+    <span class="str">"Age"</span>: [<span class="num">25</span>, <span class="num">30</span>]
+})
+<span class="var">df</span>[<span class="str">"Age"</span>].<span class="fn">mean</span>()    <span class="c"># 27.5</span>
+<span class="var">df</span>.<span class="fn">to_csv</span>(<span class="str">"export.csv"</span>)
+
+<span class="c"># --- 3. Matplotlib ---</span>
+<span class="var">x</span> = np.<span class="fn">linspace</span>(<span class="num">0</span>, <span class="num">10</span>, <span class="num">100</span>)
+<span class="var">y</span> = np.<span class="fn">sin</span>(<span class="var">x</span>)
+plt.<span class="fn">plot</span>(<span class="var">x</span>, <span class="var">y</span>)
+plt.<span class="fn">show</span>()</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S16: ÉCOSYSTÈME -->
+    <section id="s16">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Écosystème & Bonnes Pratiques</h2>
+                    <p class="sec-sub">Linting, Typing, Structure projet</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted); margin-bottom:20px;">
+                Un code Python professionnel ne se limite pas à la syntaxe. Il respecte des normes strictes pour être
+                maintenable.
+            </p>
+
+            <div class="grid2">
+                <div class="info" style="border-left-color:#3776ab;">
+                    <strong>🛠️ Outils Indispensables</strong>
+                    <ul style="margin-top:10px; font-size:0.9rem; line-height:1.7;">
+                        <li><strong>Black / Ruff</strong> : Formatteur de code (ne débattez plus de l'espacement !).
+                        </li>
+                        <li><strong>Mypy</strong> : Vérificateur de type statique (utilise les Type Hints).</li>
+                        <li><strong>Poetry / UV</strong> : Gestionnaire de dépendances moderne (remplace pip + venv).
+                        </li>
+                        <li><strong>Pytest</strong> : Standard pour les tests unitaires.</li>
+                    </ul>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>pyproject.toml</div>
+                    <pre><span class="c"># Configuration centralisée (PEP 518)</span>
+[tool.black]
+<span class="var">line-length</span> = <span class="num">88</span>
+
+[tool.ruff]
+<span class="var">select</span> = [<span class="str">"E"</span>, <span class="str">"F"</span>, <span class="str">"I"</span>]
+<span class="var">ignore</span> = [<span class="str">"E501"</span>]
+
+[project]
+<span class="var">name</span> = <span class="str">"my-app"</span>
+<span class="var">version</span> = <span class="str">"1.0.0"</span>
+<span class="var">dependencies</span> = [
+    <span class="str">"fastapi>=0.100"</span>,
+    <span class="str">"pydantic>=2.0"</span>
+]</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S17: WEB DEV -->
+    <section id="s17">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">17</div>
+                <div>
+                    <h2 class="sec-title">Développement Web</h2>
+                    <p class="sec-sub">Flask vs FastAPI</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Flask (Micro-framework)</div>
+                    <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask, jsonify
+
+<span class="var">app</span> = <span class="cls">Flask</span>(__name__)
+
+<span class="dec">@app.route</span>(<span class="str">"/hello/&lt;name&gt;"</span>)
+<span class="kw">def</span> <span class="fn">hello</span>(<span class="var">name</span>):
+    <span class="kw">return</span> <span class="fn">jsonify</span>({<span class="str">"msg"</span>: <span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">"</span>})
+
+<span class="kw">if</span> <span class="var">__name__</span> == <span class="str">"__main__"</span>:
+    <span class="var">app</span>.<span class="fn">run</span>(debug=<span class="kw">True</span>)</pre>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#888;">Simple, mature, idéal pour petits projets
+                        et SSR (Jinja2).</p>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>FastAPI (Moderne Async)</div>
+                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI
+
+<span class="var">app</span> = <span class="cls">FastAPI</span>()
+
+<span class="dec">@app.get</span>(<span class="str">"/hello/{name}"</span>)
+<span class="kw">async def</span> <span class="fn">hello</span>(<span class="var">name</span>: <span class="cls">str</span>):
+    <span class="c"># Auto-documentation (Swagger UI)</span>
+    <span class="kw">return</span> {<span class="str">"msg"</span>: <span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">"</span>}
+
+<span class="c"># Run: uvicorn main:app --reload</span></pre>
+                    <p style="font-size:0.85rem; margin-top:10px; color:#888;">Rapide, Async natif, Docs auto, Typage
+                        strict.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION QUIZ -->
     <section id="quiz-section" class="quiz-container">
         <div class="container">
@@ -1216,17 +1614,17 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
         </div>
     </section>
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_python.json', questionsPerSession: 10 });
-        });
-    </script>
     <script src="../../assets/js/quiz-engine.js"></script>
     <script>
-        window.addEventListener('load', () => {
-            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_python.json', questionsPerSession: 10 });
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.QuizEngine) {
+                new window.QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: 'quiz_python.json',
+                    questionsPerSession: 10
+                });
+            } else {
+                console.error('QuizEngine not loaded');
             }
         });
     </script>

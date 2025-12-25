@@ -76,8 +76,10 @@
                 <a href="#s13" class="toc-item"><span class="toc-num">13</span>Tests</a>
                 <a href="#s14" class="toc-item"><span class="toc-num">14</span>Référence</a>
                 <a href="#s15" class="toc-item"><span class="toc-num">15</span>Data Science</a>
-                <a href="#s16" class="toc-item"><span class="toc-num">16</span>Écosystème</a>
-                <a href="#s17" class="toc-item"><span class="toc-num">17</span>Web Dev</a>
+                <a href="#s16" class="toc-item"><span class="toc-num">16</span>Écosystème <span
+                        class="badge-new">NEW</span></a>
+                <a href="#s17" class="toc-item"><span class="toc-num">17</span>Web Dev <span
+                        class="badge-new">NEW</span></a>
             </div>
         </div>
     </div>
@@ -940,7 +942,8 @@ python -m module</pre>
 <span class="var">s</span>.<span class="fn">replace</span>(<span class="str">"o"</span>, <span class="str">"0"</span>)   <span class="c"># "Hell0 W0rld"</span>
 <span class="var">s</span>.<span class="fn">startswith</span>(<span class="str">"He"</span>)   <span class="c"># True</span>
 <span class="var">s</span>.<span class="fn">endswith</span>(<span class="str">"ld"</span>)     <span class="c"># True</span>
-<span class="var">s</span>.<span class="fn">find</span>(<span class="str">"o"</span>)           <span class="c"># 4 (index)</span>
+<span class="var">s</span>.<span class="fn">find</span>(<span class="str">"o"</span>)           <span class="c"># 4 (ou -1 si absent)</span>
+<span class="var">s</span>.<span class="fn">index</span>(<span class="str">"o"</span>)          <span class="c"># 4 (ou ValueError si absent)</span>
 <span class="var">s</span>.<span class="fn">count</span>(<span class="str">"o"</span>)          <span class="c"># 2</span>
 <span class="var">s</span>.<span class="fn">isdigit</span>()           <span class="c"># False</span>
 <span class="var">s</span>.<span class="fn">isalpha</span>()           <span class="c"># False</span>
@@ -993,9 +996,9 @@ python -m module</pre>
 <span class="var">pattern</span> = <span class="str">r"\s+"</span>          <span class="c"># espaces</span>
 
 <span class="c"># Méthodes principales</span>
-re.<span class="fn">match</span>(<span class="var">pattern</span>, <span class="var">text</span>)    <span class="c"># début seulement</span>
-re.<span class="fn">search</span>(<span class="var">pattern</span>, <span class="var">text</span>)   <span class="c"># première occurrence</span>
-re.<span class="fn">findall</span>(<span class="var">pattern</span>, <span class="var">text</span>)  <span class="c"># liste de toutes</span>
+re.<span class="fn">match</span>(<span class="var">pattern</span>, <span class="var">text</span>)    <span class="c"># Début chaîne UNIQUEMENT</span>
+re.<span class="fn">search</span>(<span class="var">pattern</span>, <span class="var">text</span>)   <span class="c"># Cherche PARTOUT (1ère occ.)</span>
+re.<span class="fn">findall</span>(<span class="var">pattern</span>, <span class="var">text</span>)  <span class="c"># Liste de toutes les occurrences</span>
 re.<span class="fn">finditer</span>(<span class="var">pattern</span>, <span class="var">text</span>) <span class="c"># itérateur</span>
 re.<span class="fn">sub</span>(<span class="var">pattern</span>, <span class="var">repl</span>, <span class="var">text</span>) <span class="c"># remplacer</span>
 re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="var">text</span>)   <span class="c"># découper</span>
@@ -1345,74 +1348,76 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                 </div>
             </div>
 
-            <h3>Modules standard essentiels</h3>
-            <table>
-                <tr>
-                    <th>Module</th>
-                    <th>Description</th>
-                    <th>Fonctions clés</th>
-                </tr>
-                <tr>
-                    <td><code>os</code></td>
-                    <td>Système d'exploitation</td>
-                    <td>getcwd, listdir, mkdir, remove, environ</td>
-                </tr>
-                <tr>
-                    <td><code>sys</code></td>
-                    <td>Paramètres système</td>
-                    <td>argv, exit, path, version</td>
-                </tr>
-                <tr>
-                    <td><code>json</code></td>
-                    <td>JSON</td>
-                    <td>load, dump, loads, dumps</td>
-                </tr>
-                <tr>
-                    <td><code>re</code></td>
-                    <td>Expressions régulières</td>
-                    <td>match, search, findall, sub</td>
-                </tr>
-                <tr>
-                    <td><code>datetime</code></td>
-                    <td>Dates et heures</td>
-                    <td>datetime, date, time, timedelta</td>
-                </tr>
-                <tr>
-                    <td><code>pathlib</code></td>
-                    <td>Chemins modernes</td>
-                    <td>Path, exists, read_text, write_text</td>
-                </tr>
-                <tr>
-                    <td><code>collections</code></td>
-                    <td>Types avancés</td>
-                    <td>Counter, defaultdict, namedtuple, deque</td>
-                </tr>
-                <tr>
-                    <td><code>itertools</code></td>
-                    <td>Itérateurs</td>
-                    <td>count, cycle, chain, islice, groupby</td>
-                </tr>
-                <tr>
-                    <td><code>functools</code></td>
-                    <td>Fonctions</td>
-                    <td>lru_cache, partial, reduce, wraps</td>
-                </tr>
-                <tr>
-                    <td><code>random</code></td>
-                    <td>Aléatoire</td>
-                    <td>random, randint, choice, shuffle</td>
-                </tr>
-                <tr>
-                    <td><code>math</code></td>
-                    <td>Mathématiques</td>
-                    <td>sqrt, ceil, floor, sin, cos, pi</td>
-                </tr>
-                <tr>
-                    <td><code>logging</code></td>
-                    <td>Journalisation</td>
-                    <td>debug, info, warning, error, critical</td>
-                </tr>
-            </table>
+            <details>
+                <summary>📚 Modules standard essentiels</summary>
+                <table>
+                    <tr>
+                        <th>Module</th>
+                        <th>Description</th>
+                        <th>Fonctions clés</th>
+                    </tr>
+                    <tr>
+                        <td><code>os</code></td>
+                        <td>Système d'exploitation</td>
+                        <td>getcwd, listdir, mkdir, remove, environ</td>
+                    </tr>
+                    <tr>
+                        <td><code>sys</code></td>
+                        <td>Paramètres système</td>
+                        <td>argv, exit, path, version</td>
+                    </tr>
+                    <tr>
+                        <td><code>json</code></td>
+                        <td>JSON</td>
+                        <td>load, dump, loads, dumps</td>
+                    </tr>
+                    <tr>
+                        <td><code>re</code></td>
+                        <td>Expressions régulières</td>
+                        <td>match, search, findall, sub</td>
+                    </tr>
+                    <tr>
+                        <td><code>datetime</code></td>
+                        <td>Dates et heures</td>
+                        <td>datetime, date, time, timedelta</td>
+                    </tr>
+                    <tr>
+                        <td><code>pathlib</code></td>
+                        <td>Chemins modernes</td>
+                        <td>Path, exists, read_text, write_text</td>
+                    </tr>
+                    <tr>
+                        <td><code>collections</code></td>
+                        <td>Types avancés</td>
+                        <td>Counter, defaultdict, namedtuple, deque</td>
+                    </tr>
+                    <tr>
+                        <td><code>itertools</code></td>
+                        <td>Itérateurs</td>
+                        <td>count, cycle, chain, islice, groupby</td>
+                    </tr>
+                    <tr>
+                        <td><code>functools</code></td>
+                        <td>Fonctions</td>
+                        <td>lru_cache, partial, reduce, wraps</td>
+                    </tr>
+                    <tr>
+                        <td><code>random</code></td>
+                        <td>Aléatoire</td>
+                        <td>random, randint, choice, shuffle</td>
+                    </tr>
+                    <tr>
+                        <td><code>math</code></td>
+                        <td>Mathématiques</td>
+                        <td>sqrt, ceil, floor, sin, cos, pi (const)</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging</code></td>
+                        <td>Journalisation</td>
+                        <td>debug, info, warning, error, critical</td>
+                    </tr>
+                </table>
+            </details>
 
             <h3>Dunder methods (méthodes magiques)</h3>
             <div class="ref-grid">
@@ -1478,30 +1483,12 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                 </div>
             </div>
 
-            <div class="code" style="margin-top:20px;">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Data Science Starter</div>
-                <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
-<span class="kw">import</span> pandas <span class="kw">as</span> pd
-<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
-
-<span class="c"># --- 1. NumPy ---</span>
-<span class="var">arr</span> = np.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
-<span class="fn">print</span>(<span class="var">arr</span> * <span class="num">2</span>)      <span class="c"># [2 4 6] (vectorisation !)</span>
-
-<span class="c"># --- 2. Pandas ---</span>
-<span class="var">df</span> = pd.<span class="fn">DataFrame</span>({
-    <span class="str">"Nom"</span>: [<span class="str">"Alice"</span>, <span class="str">"Bob"</span>],
-    <span class="str">"Age"</span>: [<span class="num">25</span>, <span class="num">30</span>]
-})
-<span class="var">df</span>[<span class="str">"Age"</span>].<span class="fn">mean</span>()    <span class="c"># 27.5</span>
-<span class="var">df</span>.<span class="fn">to_csv</span>(<span class="str">"export.csv"</span>)
-
-<span class="c"># --- 3. Matplotlib ---</span>
-<span class="var">x</span> = np.<span class="fn">linspace</span>(<span class="num">0</span>, <span class="num">10</span>, <span class="num">100</span>)
-<span class="var">y</span> = np.<span class="fn">sin</span>(<span class="var">x</span>)
-plt.<span class="fn">plot</span>(<span class="var">x</span>, <span class="var">y</span>)
-plt.<span class="fn">show</span>()</pre>
+            <div class="code" style="margin-top:20px; text-align:center; padding:20px; background:#1e1e1e;">
+                <img src="img/data_science_plot.svg" alt="Data Science Plot"
+                    style="width:100%; max-width:600px; border-radius:4px;">
+                <p style="margin-top:10px; color:#888; font-size:0.9rem; font-family:'Courier New', monospace;">
+                    > plt.plot(x, y) # Output generated successfully
+                </p>
             </div>
         </div>
     </section>

@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Generate Side Nav
     const sideNav = document.createElement('div');
     sideNav.className = 'side-nav';
-    
+
     document.querySelectorAll('section[id]').forEach(sec => {
         if (sec.id === 'quiz-section') return;
-        
+
         const title = sec.querySelector('.sec-title')?.textContent || sec.id;
         const num = sec.querySelector('.sec-num')?.textContent || '';
         const link = document.createElement('a');
@@ -64,6 +64,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     a.classList.add('active');
                 }
             });
+        }
+    });
+
+    // Back to Top Button
+    const btt = document.createElement('a');
+    btt.className = 'back-to-top';
+    btt.innerHTML = '↑';
+    btt.href = '#';
+    btt.onclick = (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    document.body.appendChild(btt);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btt.classList.add('visible');
+        } else {
+            btt.classList.remove('visible');
         }
     });
 });

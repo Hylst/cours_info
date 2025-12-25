@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Noël 2025 • L'Expérience Magique par Geoffroy</title>
+
+    <!-- 🎄 SEO & Meta Tags de Noël 🎄 -->
+    <meta name="description"
+        content="Découvrez une carte de vœux interactive et féérique pour Noël 2025. Une expérience unique mêlant code, magie et intelligence artificielle. Joyeuses Fêtes ! ✨">
+    <meta name="keywords"
+        content="Noël 2025, Carte de vœux, Développement Web, Magie, Geoffroy, Expérience Interactive">
+    <meta name="author" content="Geoffroy">
+    <meta name="robots" content="index, follow">
+
+    <!-- 🎁 Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hylst.fr/noel2025/">
+    <meta property="og:title" content="Joyeux Noël 2025 • L'Expérience Magique">
+    <meta property="og:description"
+        content="Une pensée chaleureuse codée avec amour pour les fêtes. Cliquez pour déployer la magie ! 🎅🚀">
+    <meta property="og:image" content="https://hylst.fr/noel2025/joyeux_noel_2025.jpg">
+
+    <!-- 🐦 Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Joyeux Noël 2025 • L'Expérience Magique">
+    <meta property="twitter:description"
+        content="Une pensée chaleureuse codée avec amour pour les fêtes. Cliquez pour déployer la magie ! 🎅🚀">
+    <meta property="twitter:image" content="https://hylst.fr/noel2025/joyeux_noel_2025.jpg">
+
+    <!-- ✨ Données Structurées (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Joyeux Noël 2025",
+      "startDate": "2025-12-25T00:00:00+01:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "location": {
+        "@type": "VirtualLocation",
+        "url": "https://hylst.fr/noel2025/"
+      },
+      "image": [
+        "https://hylst.fr/noel2025/joyeux_noel_2025.jpg"
+       ],
+      "description": "Une célébration numérique et poétique de l'esprit de Noël 2025.",
+      "organizer": {
+        "@type": "Person",
+        "name": "Geoffroy"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
+</head>
+
+<body>
+
+    <!-- ✨ Le Ciel Étoilé (Fond) - Supprimé pour laisser place à l'image -->
+    <div class="overlay"></div>
+
+    <div id="app">
+        <!-- 🖥️ SCÈNE 1 : L'ATELIER DU CODEUR (L'avant-première) -->
+        <div class="code-container" id="codeEditor">
+            <div class="window-header">
+                <div class="controls">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <!-- ... header content ... -->
+                <div class="filename">noel_2025.py</div>
+            </div>
+            <div class="code-content">
+                <pre><code id="typewriter"></code><span class="cursor">|</span></pre>
+            </div>
+            <div class="action-bar">
+                <button id="deployBtn" class="deploy-btn" disabled>
+                    <span class="icon">🚀</span> DÉPLOYER NOËL
+                </button>
+            </div>
+        </div>
+
+        <!-- 💌 SCÈNE 2 : LA CARTE MAGIQUE (La révélation) -->
+        <div class="card-container hidden" id="cardContainer">
+            <div class="glass-card">
+                <h1 class="christmas-title">Joyeux Noël <span class="year">2025</span></h1>
+
+                <p class="greeting-text">
+                    Une douce et lumineuse veille de Noël à tous ! ✨<br><br>
+                    En ce 25 décembre, je voulais simplement vous envoyer une petite pensée chaleureuse. 🎄<br>
+                    Au-delà des cadeaux et des lumières, je nous souhaite à tous un jour de Noël placé sous le signe de
+                    l'authenticité et du cœur.<br><br>
+                    Que ces moments passés en famille ou avec nos proches soient l'occasion de consolider les liens qui
+                    nous unissent, de se soutenir et se témoigner de la tendresse, de cultiver la gaieté et la
+                    gratitude.<br><br>
+                    Que l'esprit de Noël remplisse vos maisons de rires et de douceur. Profitez de chaque instant, de
+                    chaque discussion et de chaque sourire.<br><br>
+                    <span class="signature">Joyeux Noël à vous et à ceux qui vous sont chers ! 🎅🎁🌟</span>
+                </p>
+
+                <div class="decoration-tree"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>2025 • par GEOFFROY</p>
+        <p class="sub-footer">
+            Conçu avec un soupçon de code, une pincée d’intelligence artificielle<br>
+            et un peu de poudre de Perlimpinpin ✨
+        </p>
+    </footer>
+
+    <!-- 🎶 L'Orchestre de Noël (Ambiance sonore) -->
+    <audio id="bgMusic" loop>
+        <source src="http://hylst.fr/mp3/danse_des_flocons.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ambianceWind" loop>
+        <source src="https://lasonotheque.org/UPLOAD/mp3/0187.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ambianceFire" loop>
+        <source src="https://lasonotheque.org/UPLOAD/mp3/1357.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BOUTON D'ACTIVATION SONORE CENTRALE -->
+    <div id="soundOverlay"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; display:flex; justify-content:center; align-items:center; flex-direction:column; backdrop-filter:blur(5px);">
+        <h1
+            style="font-family:'Great Vibes', cursive; font-size:4rem; color:#f59e0b; margin-bottom:20px; text-shadow:0 0 20px rgba(245,158,11,0.5);">
+            Joyeux Noël 2025</h1>
+        <button id="startExperienceBtn"
+            style="background:var(--accent-green); color:white; border:none; padding:15px 40px; font-size:1.2rem; border-radius:50px; cursor:pointer; font-family:'Montserrat', sans-serif; font-weight:700; box-shadow:0 0 30px rgba(16,185,129,0.5); transition:transform 0.3s;">
+            ✨ Entrer dans la Magie (Activer le son)
+        </button>
+        <p style="color:#94a3b8; margin-top:20px; font-size:0.9rem;">(Cliquez pour activer l'ambiance sonore)</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

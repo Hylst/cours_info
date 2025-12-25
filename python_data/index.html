@@ -88,9 +88,30 @@
                 <a href="#s5" class="toc-item"><span class="toc-num">05</span>Machine Learning</a>
                 <a href="#s6" class="toc-item"><span class="toc-num">06</span>Deep Learning</a>
                 <a href="#s7" class="toc-item"><span class="toc-num">07</span>Mise en Production</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>GenAI & LLMs <span
+                        class="badge-new">NEW</span></a>
                 <a href="#s8" class="toc-item"><span class="toc-num">08</span>Référence</a>
             </div>
         </div>
+    </div>
+
+    <!-- SIDE NAV (Desktop) -->
+    <div class="side-nav">
+        <div class="side-nav-header">
+            <h3>Sommaire</h3>
+        </div>
+        <nav class="side-nav-links">
+            <a href="#s0" class="side-link active"><span>00.</span> Écosystème</a>
+            <a href="#s1" class="side-link"><span>01.</span> Numpy</a>
+            <a href="#s2" class="side-link"><span>02.</span> Acquisition</a>
+            <a href="#s3" class="side-link"><span>03.</span> Pandas</a>
+            <a href="#s4" class="side-link"><span>04.</span> Visualisation</a>
+            <a href="#s5" class="side-link"><span>05.</span> Machine Learning</a>
+            <a href="#s6" class="side-link"><span>06.</span> Deep Learning</a>
+            <a href="#s7" class="side-link"><span>07.</span> Production</a>
+            <a href="#s9" class="side-link"><span>09.</span> GenAI <span class="badge-new">NEW</span></a>
+            <a href="#s8" class="side-link"><span>08.</span> Référence</a>
+        </nav>
     </div>
 
     <!-- S0: INTRO -->
@@ -160,39 +181,48 @@
                 </div>
             </details>
 
+            <div class="tip"
+                style="background:rgba(59, 130, 246, 0.05); border-left:4px solid var(--primary); display:flex; align-items:center; gap:20px; margin-top:20px;">
+                <img src="img/broadcasting.svg" alt="Numpy Broadcasting"
+                    style="width:100%; max-width:400px; border-radius:8px;">
+                <p style="margin-bottom:0;"><strong>Le Broadcasting</strong> évite les boucles `for` en propageant les
+                    dimensions plus petites sur les plus grandes.</p>
+            </div>
+
             <div class="grid2">
                 <div class="code">
                     <div class="code-head"><span class="dot g"></span>Indexing, Types & Performance</div>
                     <pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> numpy.<span class="fn">linalg</span> <span class="kw">import</span> inv, det, eig
 
 <span class="c"># 1. Optimisation Mémoire (Critical Big Data)</span>
-<span class="c"># int8 : -128 à 127 (1 octet) vs int64 (8 octets)</span>
 <span class="var">arr_opt</span> = <span class="var">np</span>.<span class="fn">array</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">100</span>], dtype=<span class="str">'int8'</span>)
 
-<span class="c"># 2. Performance (Vectorisation vs Boucle)</span>
-<span class="c"># %timeit [i**2 for i in range(1000000)]  -> 300ms</span>
-<span class="c"># %timeit np.arange(1000000)**2           -> 3ms (x100 !)</span>
-
-<span class="c"># 3. Slicing Avancé (Boolean Masking)</span>
+<span class="c"># 2. Slicing Avancé (Boolean Masking)</span>
 <span class="var">arr</span> = <span class="var">np</span>.<span class="fn">arange</span>(<span class="num">12</span>).<span class="fn">reshape</span>(<span class="num">3</span>, <span class="num">4</span>)
 <span class="var">mask</span> = (<span class="var">arr</span> > <span class="num">5</span>) & (<span class="var">arr</span> < <span class="num">10</span>)
-<span class="var">filtered</span> = <span class="var">arr</span>[<span class="var">mask</span>]  <span class="c"># Filtre immédiat sans boucle</span></pre>
+<span class="var">filtered</span> = <span class="var">arr</span>[<span class="var">mask</span>]
+
+<span class="c"># 3. Nouvelle API Random (Recommendée 2025)</span>
+<span class="var">rng</span> = <span class="var">np</span>.<span class="var">random</span>.<span class="fn">default_rng</span>(seed=<span class="num">42</span>)
+<span class="var">rand_vals</span> = <span class="var">rng</span>.<span class="fn">standard_normal</span>(<span class="num">10</span>)</pre>
                 </div>
 
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Opérations Matricielles</div>
+                    <div class="code-head"><span class="dot g"></span>Algèbre Linéaire & Stats</div>
                     <pre><span class="var">A</span> = <span class="var">np</span>.<span class="fn">array</span>([[<span class="num">1</span>, <span class="num">2</span>], [<span class="num">3</span>, <span class="num">4</span>]])
-<span class="var">B</span> = <span class="var">np</span>.<span class="fn">array</span>([[<span class="num">0</span>, <span class="num">1</span>], [<span class="num">1</span>, <span class="num">0</span>]])
+
+<span class="c"># Algèbre Linéaire (Scikit-Learn internals)</span>
+<span class="var">determinant</span> = <span class="fn">det</span>(<span class="var">A</span>)       <span class="c"># -2.0</span>
+<span class="var">inverse</span> = <span class="fn">inv</span>(<span class="var">A</span>)           <span class="c"># [[-2, 1], [1.5, -0.5]]</span>
+<span class="var">vals</span>, <span class="var">vecs</span> = <span class="fn">eig</span>(<span class="var">A</span>)        <span class="c"># Valeurs/Vecteurs propres</span>
 
 <span class="c"># Produit Matriciel (Dot Product)</span>
-<span class="var">dot</span> = <span class="var">A</span> @ <span class="var">B</span>      <span class="c"># [[2 1], [4 3]]</span>
+<span class="var">dot</span> = <span class="var">A</span> @ <span class="var">A</span>.<span class="prop">T</span>             <span class="c"># Multiplication par transposée</span>
 
-<span class="c"># Transposition</span>
-<span class="var">trans</span> = <span class="var">A</span>.<span class="prop">T</span>      <span class="c"># [[1 3], [2 4]]</span>
-
-<span class="c"># Statistique sur axe</span>
-<span class="c"># axis=0 (colonne), axis=1 (ligne)</span>
-<span class="var">avg_cols</span> = <span class="var">A</span>.<span class="fn">mean</span>(axis=<span class="num">0</span>)</pre>
+<span class="c"># Statistiques sur axes</span>
+<span class="var">avg_cols</span> = <span class="var">A</span>.<span class="fn">mean</span>(axis=<span class="num">0</span>)  <span class="c"># [2, 3]</span>
+<span class="var">std_rows</span> = <span class="var">A</span>.<span class="fn">std</span>(axis=<span class="num">1</span>)   <span class="c"># [0.5, 0.5]</span></pre>
                 </div>
             </div>
         </div>
@@ -276,47 +306,51 @@
                 </div>
             </details>
 
+            <div style="text-align:center; margin:30px 0;">
+                <img src="img/pandas_joins.svg" alt="Pandas Joins"
+                    style="width:100%; max-width:450px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));">
+            </div>
+
             <div class="grid2">
                 <div class="code">
-                    <div class="code-head"><span class="dot y"></span>Manipulation Temporelle</div>
+                    <div class="code-head"><span class="dot y"></span>Big Data : Chunking & Performance</div>
                     <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-<span class="c"># Création index temporel</span>
-<span class="var">df</span>[<span class="str">'Date'</span>] = <span class="var">pd</span>.<span class="fn">to_datetime</span>(<span class="var">df</span>[<span class="str">'Date'</span>])
-<span class="var">df</span>.<span class="fn">set_index</span>(<span class="str">'Date'</span>, inplace=<span class="kw">True</span>)
+<span class="c"># 1. Lire des fichiers massifs (par morceaux)</span>
+<span class="var">reader</span> = <span class="var">pd</span>.<span class="fn">read_csv</span>(<span class="str">"huge_data.csv"</span>, chunksize=<span class="num">10000</span>)
+<span class="kw">for</span> <span class="var">chunk</span> <span class="kw">in</span> <span class="var">reader</span>:
+    <span class="fn">process</span>(<span class="var">chunk</span>) <span class="c"># On ne charge pas tout en RAM</span>
 
-<span class="c"># Resampling (Agrégation par Période)</span>
-<span class="c"># Moyenne mensuelle 'M', Hebdo 'W'</span>
-<span class="var">monthly</span> = <span class="var">df</span>.<span class="fn">resample</span>(<span class="str">'M'</span>).<span class="fn">mean</span>()
+<span class="c"># 2. Filtrage haute performance (API C++)</span>
+<span class="var">high_sales</span> = <span class="var">df</span>.<span class="fn">query</span>(<span class="str">"Ventes > 1000 and Region == 'Nord'"</span>)
 
-<span class="c"># Glissement (Rolling)</span>
-<span class="c"># Moyenne mobile sur 7 jours</span>
-<span class="var">roll</span> = <span class="var">df</span>[<span class="str">'Prix'</span>].<span class="fn">rolling</span>(<span class="num">7</span>).<span class="fn">mean</span>()</pre>
+<span class="c"># 3. Calculs complexes optimisés</span>
+<span class="var">df</span>.<span class="fn">eval</span>(<span class="str">"Marge = (Ventes - Cout) / Ventes"</span>, inplace=<span class="kw">True</span>)
+
+<span class="c"># 4. Optimisation RAM (Categories)</span>
+<span class="var">df</span>[<span class="str">'Ville'</span>] = <span class="var">df</span>[<span class="str">'Ville'</span>].<span class="fn">astype</span>(<span class="str">'category'</span>)</pre>
                 </div>
 
                 <div class="code">
-                    <div class="code-head"><span class="dot y"></span>Pivot Tables & Optimisation</div>
-                    <pre><span class="c"># Optimisation String -> Category (Gain RAM x10)</span>
-<span class="var">df</span>[<span class="str">'Ville'</span>] = <span class="var">df</span>[<span class="str">'Ville'</span>].<span class="fn">astype</span>(<span class="str">'category'</span>)
+                    <div class="code-head"><span class="dot y"></span>Time Series & Joins</div>
+                    <pre><span class="c"># Manipulation de Dates</span>
+<span class="var">df</span>[<span class="str">'Date'</span>] = <span class="var">pd</span>.<span class="fn">to_datetime</span>(<span class="var">df</span>[<span class="str">'Date'</span>])
+<span class="var">df</span>.<span class="fn">set_index</span>(<span class="str">'Date'</span>, inplace=<span class="kw">True</span>)
 
-<span class="c"># Manipulation de Textes Vectorisée</span>
-<span class="c"># .str accessor est beaucoup plus rapide que apply()</span>
-<span class="var">df</span>[<span class="str">'Nom_Maj'</span>] = <span class="var">df</span>[<span class="str">'Nom'</span>].<span class="prop">str</span>.<span class="fn">upper</span>().<span class="prop">str</span>.<span class="fn">strip</span>()
-
-<span class="c"># Pivot Table (Style Excel Croisé Dynamique)</span>
-<span class="var">pivot</span> = <span class="var">df</span>.<span class="fn">pivot_table</span>(
-    values=<span class="str">'Ventes'</span>, 
-    index=<span class="str">'Region'</span>, 
-    columns=<span class="str">'Annee'</span>, 
-    aggfunc=<span class="str">'sum'</span>
-)
+<span class="c"># Resampling (Moyenne Mensuelle)</span>
+<span class="var">monthly</span> = <span class="var">df</span>.<span class="fn">resample</span>(<span class="str">'M'</span>).<span class="fn">mean</span>()
 
 <span class="c"># Merge Avancé (Proche du SQL)</span>
 <span class="var">full_data</span> = <span class="var">pd</span>.<span class="fn">merge</span>(
     <span class="var">commandes</span>, <span class="var">clients</span>, 
     on=<span class="str">'client_id'</span>, 
     how=<span class="str">'inner'</span>, 
-    validate=<span class="str">'m:1'</span>  <span class="c"># Vérifie intégrité des données</span>
+    validate=<span class="str">'m:1'</span>  <span class="c"># Sécurité: many-to-one</span>
+)
+
+<span class="c"># Pivot Table (Style Excel)</span>
+<span class="var">pivot</span> = <span class="var">df</span>.<span class="fn">pivot_table</span>(
+    values=<span class="str">'Total'</span>, index=<span class="str">'Categ'</span>, columns=<span class="str">'Mois'</span>, aggfunc=<span class="str">'sum'</span>
 )</pre>
                 </div>
             </div>
@@ -407,6 +441,13 @@
                 </div>
             </details>
 
+            <div
+                style="margin:30px 0; background:var(--card); padding:20px; border-radius:12px; border:1px solid var(--border);">
+                <div style="font-size:0.8rem; color:var(--dim); margin-bottom:10px;">Workflow Industrialisé</div>
+                <img src="img/ml_pipeline.svg" alt="ML Pipeline"
+                    style="width:100%; max-width:500px; display:block; margin:0 auto;">
+            </div>
+
             <details>
                 <summary>📖 Concepts Clés (Overfitting, Biais/Variance)</summary>
                 <div>
@@ -491,12 +532,22 @@
 <span class="var">param_grid</span> = {
     <span class="str">'classifier__n_estimators'</span>: [<span class="num">50</span>, <span class="num">100</span>],
     <span class="str">'classifier__max_depth'</span>: [<span class="kw">None</span>, <span class="num">10</span>, <span class="num">20</span>]
-}
+                <pre><span class="fn">print</span>(<span class="str">"Best score:"</span>, <span class="var">grid</span>.<span class="prop">best_score_</span>)</pre>
+            </div>
 
-<span class="var">grid</span> = <span class="cls">GridSearchCV</span>(<span class="var">pipe</span>, <span class="var">param_grid</span>, cv=<span class="num">5</span>)
-<span class="var">grid</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>)
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Interprétabilité (SHAP) & XGBoost</div>
+                <pre><span class="kw">import</span> xgboost <span class="kw">as</span> xgb
+<span class="kw">import</span> shap
 
-<span class="fn">print</span>(<span class="str">"Best score:"</span>, <span class="var">grid</span>.<span class="prop">best_score_</span>)</pre>
+<span class="c"># 1. XGBoost (Le standard des compétitions Kaggle)</span>
+<span class="var">model</span> = <span class="var">xgb</span>.<span class="cls">XGBClassifier</span>(n_estimators=<span class="num">100</span>, learning_rate=<span class="num">0.05</span>)
+<span class="var">model</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>)
+
+<span class="c"># 2. SHAP (Pourquoi le modèle a prédit ça ?)</span>
+<span class="var">explainer</span> = <span class="var">shap</span>.<span class="fn">Explainer</span>(<span class="var">model</span>)
+<span class="var">shap_values</span> = <span class="fn">explainer</span>(<span class="var">X_test</span>)
+<span class="var">shap</span>.<span class="fn">summary_plot</span>(<span class="var">shap_values</span>, <span class="var">X_test</span>)</pre>
             </div>
         </div>
     </section>
@@ -521,6 +572,17 @@
                         coût (Loss).</p>
                 </div>
             </details>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="tip" style="border-left-color:var(--purple); margin:0;">
+                    <strong>Transfer Learning</strong> : Utiliser un modèle pré-entraîné (ex: ResNet, BERT) et ne
+                    ré-entraîner que la dernière couche. Gain de temps et de données colossal.
+                </div>
+                <div class="tip" style="border-left-color:var(--pink); margin:0;">
+                    <strong>PyTorch vs Keras</strong> : Keras est idéal pour le prototypage rapide. PyTorch est
+                    privilégié par la recherche pour sa flexibilité et son mode impératif.
+                </div>
+            </div>
 
             <h4 style="margin-top:20px">Cheat Sheet Architecture DL</h4>
             <table>
@@ -641,6 +703,79 @@
     <span class="c"># Appel du modèle...</span>
     <span class="var">prix</span> = <span class="num">250000</span>  <span class="c"># fake</span>
     <span class="var">st</span>.<span class="fn">success</span>(<span class="str">f"Prix estimé : </span>{<span class="var">prix</span>}<span class="str"> €"</span>)</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>FastAPI & Docker (Industrialisation)</div>
+                    <pre><span class="c"># FastAPI (API Haute Performance)</span>
+<span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI
+<span class="var">app</span> = <span class="fn">FastAPI</span>()
+
+@<span class="var">app</span>.<span class="fn">post</span>(<span class="str">"/predict"</span>)
+<span class="kw">def</span> <span class="fn">predict</span>(<span class="var">data</span>: <span class="cls">dict</span>):
+    <span class="kw">return</span> {<span class="str">"res"</span>: <span class="var">model</span>.<span class="fn">predict</span>(<span class="var">data</span>)}
+
+<span class="c"># Dockerfile (Reproductibilité)</span>
+<span class="c"># FROM python:3.10-slim</span>
+<span class="c"># RUN pip install pandas scikit-learn fastapi</span>
+<span class="c"># COPY . /app</span>
+<span class="c"># CMD uvicorn main:app --host 0.0.0.0</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- S9: GEN AI & LLMS -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Generative AI & LLMs</h2>
+                    <p class="sec-sub">OpenAI, LangChain, Prompt Engineering</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 L'IA Générative pour la Data</summary>
+                <div>
+                    <p>En 2025, un Data Scientist doit savoir orchestrer des LLMs. Que ce soit pour du **Natural
+                        Language to SQL**, du résumé de texte ou de l'extraction d'entités.</p>
+                    <p>La clé réside dans le **Prompt Engineering** et le **RAG** (Retrieval Augmented Generation) pour
+                        connecter l'IA à vos propres données privées.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Utilisation API (OpenAI)</div>
+                    <pre><span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+<span class="var">client</span> = <span class="fn">OpenAI</span>()
+
+<span class="var">response</span> = <span class="var">client</span>.<span class="var">chat</span>.<span class="var">completions</span>.<span class="fn">create</span>(
+  model=<span class="str">"gpt-4o"</span>,
+  messages=[
+    {<span class="str">"role"</span>: <span class="str">"system"</span>, <span class="str">"content"</span>: <span class="str">"Tu es un expert Data."</span>},
+    {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"Analyse ce CSV..."</span>}
+  ]
+)
+
+<span class="fn">print</span>(<span class="var">response</span>.<span class="var">choices</span>[<span class="num">0</span>].<span class="var">message</span>.<span class="var">content</span>)</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Hugging Face & Local</div>
+                    <pre><span class="kw">from</span> transformers <span class="kw">import</span> pipeline
+
+<span class="c"># Sentiment Analysis en local</span>
+<span class="var">classifier</span> = <span class="fn">pipeline</span>(<span class="str">"sentiment-analysis"</span>)
+<span class="var">res</span> = <span class="fn">classifier</span>(<span class="str">"J'adore Pandas !"</span>)
+
+<span class="c"># Zero-shot Classification</span>
+<span class="var">zs</span> = <span class="fn">pipeline</span>(<span class="str">"zero-shot-classification"</span>)
+<span class="var">zs</span>(<span class="str">"Débit de 50€"</span>, candidate_labels=[<span class="str">"banque"</span>, <span class="str">"sport"</span>])</pre>
                 </div>
             </div>
         </div>

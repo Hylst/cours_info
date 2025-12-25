@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180">
+  <defs>
+    <style>
+      .circle { opacity: 0.6; stroke-width: 2; }
+      .left { fill: #3b82f6; stroke: #2563eb; }
+      .right { fill: #f97316; stroke: #ea580c; }
+      .intersect { fill: #a855f7; }
+      .text { font-family: 'Outfit', sans-serif; fill: #f1f5f9; font-size: 12px; font-weight: bold; }
+      .label { font-family: 'Outfit', sans-serif; fill: #94a3b8; font-size: 10px; }
+    </style>
+  </defs>
+
+  <!-- Venn Diagram -->
+  <circle cx="150" cy="80" r="50" class="circle left"/>
+  <circle cx="210" cy="80" r="50" class="circle right"/>
+  
+  <text x="120" y="85" class="text">LEFT</text>
+  <text x="225" y="85" class="text">RIGHT</text>
+  <text x="165" y="150" class="text" style="fill:#a855f7; font-size:14px">INNER JOIN</text>
+
+  <!-- Join types labels -->
+  <g transform="translate(300, 40)">
+    <rect x="0" y="0" width="80" height="20" rx="4" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6"/>
+    <text x="40" y="14" class="label" text-anchor="middle" style="fill:#3b82f6">Left: All Left</text>
+    
+    <rect x="0" y="30" width="80" height="20" rx="4" fill="rgba(249, 115, 22, 0.1)" stroke="#f97316"/>
+    <text x="40" y="44" class="label" text-anchor="middle" style="fill:#f97316">Right: All Right</text>
+    
+    <rect x="0" y="60" width="80" height="20" rx="4" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7"/>
+    <text x="40" y="74" class="label" text-anchor="middle" style="fill:#a855f7">Inner: Matches</text>
+    
+    <rect x="0" y="90" width="80" height="20" rx="4" fill="rgba(241, 245, 249, 0.1)" stroke="#94a3b8"/>
+    <text x="40" y="104" class="label" text-anchor="middle" style="fill:#94a3b8">Outer: Both</text>
+  </g>
+</svg>

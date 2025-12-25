@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Image as ImageIcon, Loader2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Image as ImageIcon } from 'lucide-react';
 
 interface AIImageProps {
   prompt: string;
@@ -10,58 +10,67 @@ interface AIImageProps {
 }
 
 /**
- * Composant optimisé pour l'hébergement statique sans clé API.
- * Utilise Unsplash Source pour simuler des visuels thématiques.
+ * Composant optimisé pour l'hébergement statique.
+ * Utilise des SVG locaux thématiques au lieu d'URLs externes.
  */
 const AIImage: React.FC<AIImageProps> = ({ prompt, alt, className = "", aspectRatio = "1:1" }) => {
-  const [loading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
-  // Transformation du prompt en mots-clés pour Unsplash
-  const getKeywords = (text: string) => {
-    const keywords = text.toLowerCase()
-      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "")
-      .split(' ')
-      .filter(w => w.length > 3 && !['with', 'from', 'high', 'quality', 'digital', 'style', 'dark'].includes(w))
-      .slice(0, 3)
-      .join(',');
-    return keywords || "technology,abstract";
+  // Mapping des mots-clés vers les SVGs locaux
+  const getImagePath = (text: string): string => {
+    const lowerPrompt = text.toLowerCase();
+
+    // Mapping basé sur le contenu du prompt
+    if (lowerPrompt.includes('phantom') || lowerPrompt.includes('ghost') || lowerPrompt.includes('illusion') || lowerPrompt.includes('brain') || lowerPrompt.includes('knowledge')) {
+      return '/images/phantom-brain.svg';
+    }
+    if (lowerPrompt.includes('blind') || lowerPrompt.includes('algorithmic') || lowerPrompt.includes('eye') || lowerPrompt.includes('scanner')) {
+      return '/images/algorithmic-blindness.svg';
+    }
+    if (lowerPrompt.includes('atrophy') || lowerPrompt.includes('decay') || lowerPrompt.includes('wither') || lowerPrompt.includes('creative')) {
+      return '/images/creative-atrophy.svg';
+    }
+    if (lowerPrompt.includes('neural') || lowerPrompt.includes('neuron') || lowerPrompt.includes('effort') || lowerPrompt.includes('synapse') || lowerPrompt.includes('spark')) {
+      return '/images/neural-effort.svg';
+    }
+    if (lowerPrompt.includes('collabor') || lowerPrompt.includes('handshake') || lowerPrompt.includes('human') && lowerPrompt.includes('robot') || lowerPrompt.includes('symbiosis')) {
+      return '/images/human-ai-collab.svg';
+    }
+    if (lowerPrompt.includes('book') || lowerPrompt.includes('library') || lowerPrompt.includes('reading') || lowerPrompt.includes('document')) {
+      return '/images/library.svg';
+    }
+
+    // Fallback par défaut
+    return '/images/phantom-brain.svg';
   };
 
-  const keywords = getKeywords(prompt);
-  const ratioMap = {
-    "1:1": "800x800",
-    "3:4": "600x800",
-    "4:3": "800x600",
-    "9:16": "450x800",
-    "16:9": "800x450"
-  };
+  const imagePath = getImagePath(prompt);
 
-  const size = ratioMap[aspectRatio];
-  const imageUrl = `https://images.unsplash.com/photo-1620712943543-bcc4628c9757?auto=format&fit=crop&q=80&w=800&sig=${encodeURIComponent(keywords)}`;
-  // Note: On utilise une image de base technologique élégante filtrée par thème pour la cohérence visuelle du site.
-  // Pour un vrai site statique, vous pourriez aussi mettre vos propres assets dans un dossier /public.
+  useEffect(() => {
+    // Simuler un petit délai pour l'animation
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className={`relative group overflow-hidden bg-slate-900 border border-white/5 rounded-3xl ${className} flex items-center justify-center`} role="img" aria-label={alt}>
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-950 z-10" aria-live="polite" aria-busy="true">
-          <Loader2 className="w-8 h-8 text-amber-500 animate-spin" aria-label="Chargement de l'image" />
-        </div>
-      )}
-
+    <div
+      className={`relative group overflow-hidden bg-slate-900 border border-white/5 rounded-3xl ${className} flex items-center justify-center`}
+      role="img"
+      aria-label={alt}
+    >
       <img
-        src={imageUrl}
+        src={imagePath}
         alt={alt}
-        className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${loading ? 'opacity-0' : 'opacity-60 group-hover:opacity-80'}`}
-        onLoad={() => setLoading(false)}
+        className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${loaded ? 'opacity-70 group-hover:opacity-90' : 'opacity-0'}`}
+        onLoad={() => setLoaded(true)}
         loading="lazy"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" aria-hidden="true"></div>
 
       <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/40 backdrop-blur-md border border-white/5 text-[8px] font-black text-white/50 uppercase tracking-widest" aria-hidden="true">
         <ImageIcon size={10} />
-        Visual Reference
+        Illustration
       </div>
     </div>
   );

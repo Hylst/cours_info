@@ -14,6 +14,26 @@ export const DEEP_DIVE_CONTENT: Record<string, any> = {
       imagePrompt: "A spectral figure lost in a digital labyrinth, transparent neural paths glowing faintly, dark futuristic aesthetic."
     }
   },
+  "algorithmic-blindness": {
+    title: "La Cécité Algorithmique",
+    fullContent: {
+      analogy: "C'est comme conduire avec un régulateur de vitesse et oublier progressivement comment freiner vous-même. L'automatisation vous endort, et quand un imprévu surgit, vous avez perdu les réflexes pour réagir.",
+      scientificExplanation: "Le biais d'automatisation pousse les humains à faire confiance aux systèmes automatisés même quand ils présentent des erreurs flagrantes. Plus vous déléguez, plus vos circuits de vigilance critique s'atrophient.",
+      scenario: "Un développeur accepte aveuglément 15 suggestions de code en 10 minutes. Le code fonctionne en surface, mais une faille de sécurité SQL Injection est cachée dans l'une d'elles. Sans la capacité de lire critiquement, l'erreur passe en production.",
+      actionableTip: "Pour chaque bloc de code suggéré par l'IA, posez-vous la question : 'Et si cette ligne était malveillante, comment je la détecterais ?'",
+      imagePrompt: "A digital eye covered with matrix code patterns, unable to see through the algorithmic veil, dark cyberpunk aesthetic."
+    }
+  },
+  "creative-atrophy": {
+    title: "L'Atrophie Créative",
+    fullContent: {
+      analogy: "Une rivière emprunte toujours le chemin de moindre résistance. À force de suivre les suggestions de l'IA (le chemin le plus probable), votre pensée s'uniformise comme un lit de rivière qui s'érode toujours au même endroit.",
+      scientificExplanation: "La créativité émerge du chaos cognitif : des connexions inattendues entre des idées disparates. L'IA optimise pour la cohérence et la probabilité. En la suivant systématiquement, vous élaguez vos branches de pensée divergentes.",
+      scenario: "Un designer utilise l'IA pour générer 100 logos. Il choisit toujours dans les 10 premiers. Après un an, tous ses designs se ressemblent. Il a perdu la capacité de partir d'une page blanche car son 'muscle créatif' n'a plus été sollicité.",
+      actionableTip: "Chaque semaine, travaillez sur un 'projet de friction' : quelque chose que vous faites entièrement sans IA, même si c'est plus lent et moins 'parfait'.",
+      imagePrompt: "A dry withered tree in a digital landscape, leaves replaced by binary code, representing creative decay and atrophy."
+    }
+  },
   "neural-effort": {
     title: "La Science de l'Effort",
     fullContent: {

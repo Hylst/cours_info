@@ -13,9 +13,9 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { id: 'hero', label: 'Accueil' },
     { id: 'diagnostic', label: 'Risques' },
     { id: 'protocol', label: 'A.C.T.E' },
+    { id: 'socratic', label: 'Socratique' },
     { id: 'quiz', label: 'Quiz' },
     { id: 'test', label: 'Test' },
-    { id: 'success', label: 'Success' },
     { id: 'library', label: 'Bibliothèque' },
     { id: 'solutions', label: 'Guide' },
     { id: 'manifesto', label: 'Manifeste' },
@@ -103,8 +103,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               href={`#${item.id}`}
               onClick={handleNavClick}
               className={`block py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all ${activeSection === item.id
-                  ? 'bg-amber-500/20 text-amber-400 border-l-4 border-amber-500'
-                  : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                ? 'bg-amber-500/20 text-amber-400 border-l-4 border-amber-500'
+                : 'text-slate-400 hover:bg-white/5 hover:text-white'
                 }`}
               aria-current={activeSection === item.id ? 'page' : undefined}
             >

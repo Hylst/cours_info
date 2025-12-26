@@ -1,11 +1,18 @@
-
 /**
  * AIImage.tsx
  * Composant optimisé pour l'hébergement statique avec Vite.
- * Utilise des images locales (PNG artistiques ou SVG thématiques) avec gestion automatique du chemin de base.
+ * Utilise des images locales importées statiquement (Vite gère le chemin et le hash).
  */
 import React, { useState, useEffect } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
+
+// Import statique des assets (Garanti que Vite trouve le bon chemin en prod)
+import imgPhantom from '../assets/phantom-knowledge-art.webp';
+import imgBlindness from '../assets/algorithmic-blindness-art.webp';
+import imgAtrophy from '../assets/creative-atrophy-art.webp';
+import imgNeural from '../assets/neural-effort-art.webp';
+import imgCollab from '../assets/human-ai-collab-art.webp';
+import imgLibrary from '../assets/library-art.webp';
 
 interface AIImageProps {
   prompt: string;
@@ -17,45 +24,38 @@ interface AIImageProps {
 const AIImage: React.FC<AIImageProps> = ({ prompt, alt, className = "", aspectRatio = "1:1" }) => {
   const [loaded, setLoaded] = useState(false);
 
-  // Mapping des mots-clés vers les assets locaux
-  // Utilisation de import.meta.env.BASE_URL pour gérer le préfixe '/cogniai/' en production
+  // Mapping des mots-clés vers les imports d'images
   const getImagePath = (text: string): string => {
     const lowerPrompt = text.toLowerCase();
-    const baseUrl = import.meta.env.BASE_URL;
 
-    // Fonction helper pour construire le chemin complet sans double slash
-    // Vite BASE_URL inclut généralement le slash final, mais on s'assure que c'est propre
-    const resolve = (path: string) => `${baseUrl}${path}`.replace('//', '/');
-
-    // MAPPING V2 - Images artistiques générées (PNG haute qualité)
     // 1. Phantom Knowledge
     if (lowerPrompt.includes('phantom') || lowerPrompt.includes('ghost') || lowerPrompt.includes('illusion') || lowerPrompt.includes('brain') && lowerPrompt.includes('knowledge')) {
-      return resolve('images/phantom-knowledge-art.png');
+      return imgPhantom;
     }
     // 2. Algorithmic Blindness
     if (lowerPrompt.includes('blind') || lowerPrompt.includes('algorithmic') || lowerPrompt.includes('eye') || lowerPrompt.includes('scanner')) {
-      return resolve('images/algorithmic-blindness-art.png');
+      return imgBlindness;
     }
     // 3. Creative Atrophy
     if (lowerPrompt.includes('atrophy') || lowerPrompt.includes('decay') || lowerPrompt.includes('wither') || lowerPrompt.includes('creative')) {
-      return resolve('images/creative-atrophy-art.png');
+      return imgAtrophy;
     }
 
     // 4. Neural Effort
     if (lowerPrompt.includes('neural') || lowerPrompt.includes('neuron') || lowerPrompt.includes('effort') || lowerPrompt.includes('synapse') || lowerPrompt.includes('spark')) {
-      return resolve('images/neural-effort-art.png');
+      return imgNeural;
     }
     // 5. Human-AI Symbiosis
     if (lowerPrompt.includes('collabor') || lowerPrompt.includes('handshake') || lowerPrompt.includes('human') && lowerPrompt.includes('robot') || lowerPrompt.includes('symbiosis')) {
-      return resolve('images/human-ai-collab-art.png');
+      return imgCollab;
     }
     // 6. Library / Knowledge
     if (lowerPrompt.includes('book') || lowerPrompt.includes('library') || lowerPrompt.includes('reading') || lowerPrompt.includes('document')) {
-      return resolve('images/library-art.png');
+      return imgLibrary;
     }
 
     // Default fallback
-    return resolve('images/phantom-knowledge-art.png');
+    return imgPhantom;
   };
 
   const imagePath = getImagePath(prompt);

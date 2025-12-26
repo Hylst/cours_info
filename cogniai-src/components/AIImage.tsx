@@ -28,25 +28,30 @@ const AIImage: React.FC<AIImageProps> = ({ prompt, alt, className = "", aspectRa
     const resolve = (path: string) => `${baseUrl}${path}`.replace('//', '/');
 
     // MAPPING V2 - Images artistiques générées (PNG haute qualité)
+    // 1. Phantom Knowledge
     if (lowerPrompt.includes('phantom') || lowerPrompt.includes('ghost') || lowerPrompt.includes('illusion') || lowerPrompt.includes('brain') && lowerPrompt.includes('knowledge')) {
       return resolve('images/phantom-knowledge-art.png');
     }
+    // 2. Algorithmic Blindness
     if (lowerPrompt.includes('blind') || lowerPrompt.includes('algorithmic') || lowerPrompt.includes('eye') || lowerPrompt.includes('scanner')) {
       return resolve('images/algorithmic-blindness-art.png');
     }
+    // 3. Creative Atrophy
     if (lowerPrompt.includes('atrophy') || lowerPrompt.includes('decay') || lowerPrompt.includes('wither') || lowerPrompt.includes('creative')) {
       return resolve('images/creative-atrophy-art.png');
     }
 
-    // MAPPING V1 - Fallback sur les SVG thématiques pour le reste
+    // 4. Neural Effort
     if (lowerPrompt.includes('neural') || lowerPrompt.includes('neuron') || lowerPrompt.includes('effort') || lowerPrompt.includes('synapse') || lowerPrompt.includes('spark')) {
-      return resolve('images/neural-effort.svg');
+      return resolve('images/neural-effort-art.png');
     }
+    // 5. Human-AI Symbiosis
     if (lowerPrompt.includes('collabor') || lowerPrompt.includes('handshake') || lowerPrompt.includes('human') && lowerPrompt.includes('robot') || lowerPrompt.includes('symbiosis')) {
-      return resolve('images/human-ai-collab.svg');
+      return resolve('images/human-ai-collab-art.png');
     }
+    // 6. Library / Knowledge
     if (lowerPrompt.includes('book') || lowerPrompt.includes('library') || lowerPrompt.includes('reading') || lowerPrompt.includes('document')) {
-      return resolve('images/library.svg');
+      return resolve('images/library-art.png');
     }
 
     // Default fallback

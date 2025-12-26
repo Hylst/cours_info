@@ -2,39 +2,88 @@
 <html lang="fr">
 
 <head>
+    <!-- 
+        ██████╗ ██████╗  ██████╗ ███╗   ██╗██╗ █████╗ ██╗
+       ██╔════╝██╔═══██╗██╔════╝ ████╗  ██║██║██╔══██╗██║
+       ██║     ██║   ██║██║  ███╗██╔██╗ ██║██║███████║██║
+       ██║     ██║   ██║██║   ██║██║╚██╗██║██║██╔══██║██║
+       ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║██║██║  ██║██║
+        ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝
+        
+        CogniAI - Maîtrisez l'Apprentissage face à l'IA
+        Par Geoffroy (hylst) - Décembre 2024
+        
+        Ce projet est né d'une réflexion sur l'impact des outils d'IA
+        sur notre capacité à apprendre réellement. On copie-colle des 
+        réponses ChatGPT sans les comprendre... et on s'étonne de ne 
+        rien retenir ! Le protocole A.C.T.E propose une méthode pour
+        éviter ce piège.
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CogniAI - Maîtrisez l'Apprentissage face à l'IA | Évitez l'Illusion de Compétence</title>
+    <title>CogniAI - Maîtrisez l'Apprentissage face à l'IA | Guide Anti-Illusion</title>
 
-    <!-- SEO Meta Tags -->
+    <!-- SEO Meta Tags - Optimisés pour le référencement -->
     <meta name="description"
-        content="CogniAI vous apprend à collaborer intelligemment avec l'IA. Découvrez le concept d'Apprentissage Fantôme et le protocole A.C.T.E pour éviter la dégénérescence de vos connaissances.">
+        content="CogniAI vous apprend à utiliser l'IA sans perdre vos compétences. Découvrez le concept d'Apprentissage Fantôme (Phantom Learning) et le protocole A.C.T.E pour éviter la dégénérescence cognitive. Quiz interactif et ressources scientifiques inclus.">
     <meta name="keywords"
-        content="Apprentissage IA, Illusion de compétence, Pédagogie active, Neurosciences, ChatGPT, Cursor, Copilot, Développement Web, Geoffroy, CogniAI, Cognitive Offloading">
+        content="Apprentissage IA, Illusion de compétence, Phantom Learning, Pédagogie active, Neurosciences cognitives, ChatGPT apprentissage, Cursor AI, GitHub Copilot, Cognitive Offloading, Deep Work, Méthode Feynman, Développement Web, Formation IA">
     <meta name="author" content="Geoffroy">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cogniai.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0f172a">
 
-    <!-- Open Graph / Facebook -->
+    <!-- URL canonique - à modifier selon ton domaine final -->
+    <link rel="canonical" href="https://hylst.fr/cogniai/">
+
+    <!-- Open Graph / Facebook - Pour le partage sur les réseaux sociaux -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cogniai.app/">
-    <meta property="og:title" content="CogniAI - L'Art de Collaborer avec l'IA">
+    <meta property="og:url" content="https://hylst.fr/cogniai/">
+    <meta property="og:title" content="CogniAI - L'Art de Collaborer avec l'IA sans se Lobotomiser">
     <meta property="og:description"
-        content="Évitez le piège de la connaissance facile. Reprenez le contrôle de votre cerveau face aux outils génératifs.">
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1200">
+        content="Évitez le piège de la connaissance facile. Quiz, protocole A.C.T.E, et ressources scientifiques pour reprendre le contrôle de votre cerveau face aux IA génératives.">
+    <meta property="og:image" content="https://hylst.fr/cogniai/images/phantom-brain.svg">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CogniAI">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="CogniAI - Apprentissage vs Illusion">
-    <meta property="twitter:description"
-        content="Un guide complet par Geoffroy pour utiliser l'IA comme un collaborateur plutôt que comme une béquille.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CogniAI - Apprentissage vs Illusion de Compétence">
+    <meta name="twitter:description"
+        content="Un guide complet par Geoffroy pour utiliser l'IA comme un collaborateur plutôt que comme une béquille cognitive.">
+    <meta name="twitter:image" content="https://hylst.fr/cogniai/images/phantom-brain.svg">
 
+    <!-- Données structurées JSON-LD pour Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CogniAI",
+      "description": "Application web éducative sur les risques cognitifs de l'IA et les méthodes pour apprendre efficacement à l'ère de ChatGPT.",
+      "url": "https://hylst.fr/cogniai/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Geoffroy",
+        "url": "https://hylst.fr"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+
+    <!-- Chargement des ressources externes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- Styles globaux - Rien de fou, juste les gradients et le glassmorphism -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -42,18 +91,21 @@
             scroll-behavior: smooth;
         }
 
+        /* Gradient pour les titres "humains" (or/ambre) */
         .text-gradient-human {
             background: linear-gradient(to right, #f59e0b, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        /* Gradient pour les éléments "IA" (cyan/bleu) */
         .text-gradient-ai {
             background: linear-gradient(to right, #22d3ee, #0ea5e9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        /* Cartes avec effet verre dépoli - très tendance en 2024 */
         .glass-card {
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(12px);
@@ -66,6 +118,8 @@
             background: rgba(30, 41, 59, 0.8);
         }
     </style>
+
+    <!-- Import Map pour les modules ES - Permet d'utiliser React sans bundler en dev -->
     <script type="importmap">
 {
   "imports": {
@@ -79,6 +133,7 @@
 </head>
 
 <body>
+    <!-- Point d'entrée React - tout le rendu se fait ici -->
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>

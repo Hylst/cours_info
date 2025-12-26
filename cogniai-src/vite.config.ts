@@ -3,10 +3,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Configuration Vite pour CogniAI
-// En dev: base = '/' pour que les assets soient accessibles normalement
-// En prod: base = '/cogniai/' pour le déploiement sur hylst.fr/cogniai/
+// En dev: base = '/'
+// En prod: base = './' pour des chemins relatifs (marche partout : /cogniai/, /test/, etc.)
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/cogniai/' : '/',
+  base: mode === 'production' ? './' : '/',
   build: {
     outDir: '../cogniai',
     emptyOutDir: true,

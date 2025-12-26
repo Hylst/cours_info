@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react';
 
 // Configuration Vite pour CogniAI
 // En dev: base = '/'
-// En prod: base = './' pour des chemins relatifs (marche partout : /cogniai/, /test/, etc.)
+// En prod: base = '/cogniai/' (Chemin absolu explicite, plus robuste pour le routing)
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? './' : '/',
+  base: mode === 'production' ? '/cogniai/' : '/',
   build: {
     outDir: '../cogniai',
     emptyOutDir: true,

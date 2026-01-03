@@ -1,0 +1,1208 @@
+{
+  "meta": {
+    "title": "Quiz HTML5 Expert - 100 Questions",
+    "total": 100
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Quelle balise est sémantiquement correcte pour le contenu principal ?",
+      "options": [
+        "<div id='main'>",
+        "<main>",
+        "<content>",
+        "<section>"
+      ],
+      "answer": 1,
+      "explanation": "La balise <main> spécifie le contenu principal du document. Elle ne doit être utilisée qu'une seule fois par page."
+    },
+    {
+      "id": 2,
+      "question": "Quel attribut sert à fournir un texte alternatif pour une image ?",
+      "options": [
+        "title",
+        "src",
+        "alt",
+        "desc"
+      ],
+      "answer": 2,
+      "explanation": "L'attribut 'alt' est obligatoire pour l'accessibilité (lecteurs d'écran) et le SEO si l'image ne charge pas."
+    },
+    {
+      "id": 3,
+      "question": "Quelle balise permet de créer une liste ordonnée (numérotée) ?",
+      "options": [
+        "<ul>",
+        "<ol>",
+        "<dl>",
+        "<list>"
+      ],
+      "answer": 1,
+      "explanation": "<ol> signifie Ordered List. <ul> est pour Unordered List (puces)."
+    },
+    {
+      "id": 4,
+      "question": "Quel input type permet de choisir une couleur ?",
+      "options": [
+        "<input type='color'>",
+        "<input type='paint'>",
+        "<input type='palette'>",
+        "<input type='rgb'>"
+      ],
+      "answer": 0,
+      "explanation": "<input type='color'> affiche un sélecteur de couleur natif du système."
+    },
+    {
+      "id": 5,
+      "question": "Quel attribut permet d'ouvrir un lien dans un nouvel onglet ?",
+      "options": [
+        "target='_new'",
+        "target='_blank'",
+        "target='_tab'",
+        "open='new'"
+      ],
+      "answer": 1,
+      "explanation": "target='_blank' force l'ouverture dans un nouveau contexte de navigation (généralement un onglet)."
+    },
+    {
+      "id": 6,
+      "question": "Quelle balise groupe un contenu (ex: image) et sa légende ?",
+      "options": [
+        "<figure>",
+        "<image-group>",
+        "<picture>",
+        "<container>"
+      ],
+      "answer": 0,
+      "explanation": "<figure> est le conteneur sémantique, et <figcaption> contient la légende associée."
+    },
+    {
+      "id": 7,
+      "question": "À quoi sert la balise <meta charset='UTF-8'> ?",
+      "options": [
+        "Définir la langue",
+        "Définir l'encodage des caractères",
+        "Optimiser le SEO",
+        "Charger les polices"
+      ],
+      "answer": 1,
+      "explanation": "Elle indique au navigateur d'utiliser le jeu de caractères UTF-8, supportant presque tous les symboles mondiaux."
+    },
+    {
+      "id": 8,
+      "question": "Quelle balise n'est PAS une balise sémantique HTML5 ?",
+      "options": [
+        "<nav>",
+        "<header>",
+        "<div>",
+        "<article>"
+      ],
+      "answer": 2,
+      "explanation": "<div> est un conteneur générique sans sens sémantique particulier. Les autres donnent du sens à la structure."
+    },
+    {
+      "id": 9,
+      "question": "Comment lier une feuille de style CSS externe ?",
+      "options": [
+        "<style src='...'>",
+        "<link rel='stylesheet' href='...'>",
+        "<css link='...'>",
+        "<script href='...'>"
+      ],
+      "answer": 1,
+      "explanation": "La balise <link> avec rel='stylesheet' est la méthode standard placée dans le <head>."
+    },
+    {
+      "id": 10,
+      "question": "Quelle balise définit une cellule d'en-tête de tableau ?",
+      "options": [
+        "<td>",
+        "<head>",
+        "<th>",
+        "<tr>"
+      ],
+      "answer": 2,
+      "explanation": "<th> (Table Header) définit une cellule d'en-tête, souvent en gras et centrée par défaut."
+    },
+    {
+      "id": 11,
+      "question": "Quelle différence entre <section> et <article> ?",
+      "options": [
+        "Aucune",
+        "<article> doit être autonome",
+        "<section> est plus important",
+        "<article> ne peut pas contenir de titre"
+      ],
+      "answer": 1,
+      "explanation": "Un <article> doit avoir un sens même sorti de son contexte (ex: post de blog), alors qu'une <section> est un groupe thématique."
+    },
+    {
+      "id": 12,
+      "question": "Quel attribut rend un champ de formulaire obligatoire ?",
+      "options": [
+        "validate",
+        "mandatory",
+        "required",
+        "need"
+      ],
+      "answer": 2,
+      "explanation": "L'attribut booléen 'required' empêche la soumission du formulaire si le champ est vide."
+    },
+    {
+      "id": 13,
+      "question": "Quelle balise utiliser pour du code informatique ?",
+      "options": [
+        "<cmd>",
+        "<code>",
+        "<pre>",
+        "<script>"
+      ],
+      "answer": 1,
+      "explanation": "<code> est fait pour afficher des extraits de code inline. Pour des blocs, on l'entoure souvent de <pre>."
+    },
+    {
+      "id": 14,
+      "question": "Quel attribut permet de pré-remplir un input avec un texte effaçable ?",
+      "options": [
+        "value",
+        "placeholder",
+        "title",
+        "label"
+      ],
+      "answer": 1,
+      "explanation": "'placeholder' affiche un texte gris indicatif qui disparaît dès que l'utilisateur tape."
+    },
+    {
+      "id": 15,
+      "question": "Quelle est la structure correcte d'un tableau ?",
+      "options": [
+        "<table><tr><td>",
+        "<table><td><tr>",
+        "<table><row><col>",
+        "<table><list>"
+      ],
+      "answer": 0,
+      "explanation": "<table> contient des lignes (<tr>) qui contiennent des cellules (<td>)."
+    },
+    {
+      "id": 16,
+      "question": "Quelle balise crée un menu déroulant ?",
+      "options": [
+        "<list>",
+        "<dropdown>",
+        "<select>",
+        "<option>"
+      ],
+      "answer": 2,
+      "explanation": "<select> crée le conteneur du menu, et <option> définit chaque choix à l'intérieur."
+    },
+    {
+      "id": 17,
+      "question": "Quelle balise permet d'ajouter des métadonnées pour les réseaux sociaux (Open Graph) ?",
+      "options": [
+        "<link>",
+        "<meta>",
+        "<og>",
+        "<social>"
+      ],
+      "answer": 1,
+      "explanation": "On utilise <meta property='og:title' content='...'> etc. pour le protocole Open Graph."
+    },
+    {
+      "id": 18,
+      "question": "Quel attribut d'une <iframe> permet certaines fonctionnalités (ex: plein écran) ?",
+      "options": [
+        "allow",
+        "permission",
+        "grant",
+        "access"
+      ],
+      "answer": 0,
+      "explanation": "L'attribut 'allow' spécifie les permissions (ex: allow='fullscreen; camera')."
+    },
+    {
+      "id": 19,
+      "question": "Quelle input type sert à saisir un mot de passe ?",
+      "options": [
+        "secure",
+        "hidden",
+        "password",
+        "encrypt"
+      ],
+      "answer": 2,
+      "explanation": "<input type='password'> masque les caractères saisis (généralement par des points ou astérisques)."
+    },
+    {
+      "id": 20,
+      "question": "Quelle balise est appropriée pour un pied de page ?",
+      "options": [
+        "<bottom>",
+        "<footer>",
+        "<end>",
+        "<section id='footer'>"
+      ],
+      "answer": 1,
+      "explanation": "<footer> est la balise sémantique dédiée au pied de page d'un document ou d'une section."
+    },
+    {
+      "id": 21,
+      "question": "Quel élément définit une liste de définitions (termes et descriptions) ?",
+      "options": [
+        "<dl>",
+        "<ul>",
+        "<ol>",
+        "<list>"
+      ],
+      "answer": 0,
+      "explanation": "<dl> signifie Description List. Il contient des <dt> (termes) et <dd> (descriptions)."
+    },
+    {
+      "id": 22,
+      "question": "Pour grouper des options dans un <select>, on utilise...",
+      "options": [
+        "<group>",
+        "<optgroup>",
+        "<fieldset>",
+        "<category>"
+      ],
+      "answer": 1,
+      "explanation": "<optgroup label='Nom'> permet de créer des sous-sections dans un menu déroulant."
+    },
+    {
+      "id": 23,
+      "question": "Quel attribut global active l'édition de contenu directement dans le navigateur ?",
+      "options": [
+        "editable",
+        "contenteditable",
+        "write",
+        "type"
+      ],
+      "answer": 1,
+      "explanation": "contenteditable='true' rend n'importe quel élément (div, p...) éditable par l'utilisateur."
+    },
+    {
+      "id": 24,
+      "question": "Quelle balise sert à surligner du texte (surlignage jaune par défaut) ?",
+      "options": [
+        "<em>",
+        "<strong>",
+        "<mark>",
+        "<highlight>"
+      ],
+      "answer": 2,
+      "explanation": "<mark> est utilisé sémantiquement pour marquer un passage pertinent ou surligné."
+    },
+    {
+      "id": 25,
+      "question": "Comment définir une abréviation avec son sens complet ?",
+      "options": [
+        "<abbr title='...'>",
+        "<acronym title='...'>",
+        "<short>",
+        "<def>"
+      ],
+      "answer": 0,
+      "explanation": "<abbr title='HyperText Markup Language'>HTML</abbr>. <acronym> est obsolète."
+    },
+    {
+      "id": 26,
+      "question": "Quelle balise est utilisée pour afficher un exposant (ex: m²) ?",
+      "options": [
+        "<sub>",
+        "<sup>",
+        "<exp>",
+        "<up>"
+      ],
+      "answer": 1,
+      "explanation": "<sup> pour Superscript (exposant). <sub> est pour Subscript (indice)."
+    },
+    {
+      "id": 27,
+      "question": "Quel attribut de <details> permet de l'afficher ouvert par défaut ?",
+      "options": [
+        "visible",
+        "show",
+        "open",
+        "active"
+      ],
+      "answer": 2,
+      "explanation": "<details open> affiche le contenu dès le chargement."
+    },
+    {
+      "id": 28,
+      "question": "Quelle balise représente une rupture thématique (ligne horizontale) ?",
+      "options": [
+        "<br>",
+        "<line>",
+        "<hr>",
+        "<break>"
+      ],
+      "answer": 2,
+      "explanation": "<hr> (Horizontal Rule) crée une ligne de séparation visuelle et sémantique."
+    },
+    {
+      "id": 29,
+      "question": "Quel attribut permet d'associer un <label> à un <input> ?",
+      "options": [
+        "target",
+        "for",
+        "bind",
+        "to"
+      ],
+      "answer": 1,
+      "explanation": "<label for='id_input'>. Le 'for' doit correspondre à l'ID de l'input."
+    },
+    {
+      "id": 30,
+      "question": "Quelle balise permet de dessiner des graphiques via script (JS) ?",
+      "options": [
+        "<svg>",
+        "<canvas>",
+        "<draw>",
+        "<paint>"
+      ],
+      "answer": 1,
+      "explanation": "<canvas> est une zone de pixels manipulable en JS. <svg> est vectoriel (XML)."
+    },
+    {
+      "id": 31,
+      "question": "Quel type d'input crée une case à cocher ?",
+      "options": [
+        "radio",
+        "check",
+        "checkbox",
+        "box"
+      ],
+      "answer": 2,
+      "explanation": "<input type='checkbox'> permet des choix multiples."
+    },
+    {
+      "id": 32,
+      "question": "Quelle balise définit un temps ou une date précis ?",
+      "options": [
+        "<date>",
+        "<time>",
+        "<datetime>",
+        "<moment>"
+      ],
+      "answer": 1,
+      "explanation": "<time datetime='2025-01-01'>1er Janvier</time>."
+    },
+    {
+      "id": 33,
+      "question": "Comment désactiver un input ?",
+      "options": [
+        "block",
+        "disabled",
+        "readonly",
+        "locked"
+      ],
+      "answer": 1,
+      "explanation": "L'attribut booléen 'disabled' empêche l'interaction et l'envoi de la donnée."
+    },
+    {
+      "id": 34,
+      "question": "Quelle balise permet une citation longue (bloc) ?",
+      "options": [
+        "<q>",
+        "<quote>",
+        "<blockquote>",
+        "<cite>"
+      ],
+      "answer": 2,
+      "explanation": "<blockquote> est pour les blocs de citation. <q> pour les citations en ligne."
+    },
+    {
+      "id": 35,
+      "question": "Quel attribut spécifie l'URL de destination d'un formulaire ?",
+      "options": [
+        "target",
+        "method",
+        "action",
+        "dest"
+      ],
+      "answer": 2,
+      "explanation": "<form action='/submit-url'> définit où les données sont envoyées."
+    },
+    {
+      "id": 36,
+      "question": "Quelle balise est utilisée pour les barres de progression ?",
+      "options": [
+        "<meter>",
+        "<progress>",
+        "<bar>",
+        "<status>"
+      ],
+      "answer": 1,
+      "explanation": "<progress> indique l'avancement d'une tâche. <meter> est pour une mesure scalaire connue."
+    },
+    {
+      "id": 37,
+      "question": "Quel attribut permet de suggérer des valeurs (autocomplétion) pour un input ?",
+      "options": [
+        "list",
+        "suggestions",
+        "autocomplete",
+        "options"
+      ],
+      "answer": 0,
+      "explanation": "L'attribut 'list' pointe vers l'ID d'une balise <datalist> contenant les options."
+    },
+    {
+      "id": 38,
+      "question": "Quelle balise est utilisée pour intégrer une vidéo ?",
+      "options": [
+        "<media>",
+        "<movie>",
+        "<video>",
+        "<mp4>"
+      ],
+      "answer": 2,
+      "explanation": "<video src='film.mp4' controls>."
+    },
+    {
+      "id": 39,
+      "question": "Quel doctype est correct pour HTML5 ?",
+      "options": [
+        "<!DOCTYPE html>",
+        "<!DOCTYPE html5>",
+        "<!DOCTYPE HTML PUBLIC...>",
+        "<html type='5'>"
+      ],
+      "answer": 0,
+      "explanation": "Simple et court : <!DOCTYPE html>."
+    },
+    {
+      "id": 40,
+      "question": "Quel attribut spécifie la langue de la page ?",
+      "options": [
+        "xml:lang",
+        "lang",
+        "language",
+        "locale"
+      ],
+      "answer": 1,
+      "explanation": "<html lang='fr'> aide les moteurs de recherche et les lecteurs d'écran."
+    },
+    {
+      "id": 41,
+      "question": "Quelle balise HTML est utilisée pour afficher un texte barré ?",
+      "options": [
+        "<s>",
+        "<del>",
+        "<strike>",
+        "Toutes les réponses"
+      ],
+      "answer": 3,
+      "explanation": "<s> (non-pertinent), <del> (supprimé/édité), <strike> (obsolète mais supporté). <del> est sémantiquement préféré pour les corrections."
+    },
+    {
+      "id": 42,
+      "question": "Quelle balise permet de définir des contacts (adresse, email) pour l'auteur ?",
+      "options": [
+        "<contact>",
+        "<address>",
+        "<info>",
+        "<author>"
+      ],
+      "answer": 1,
+      "explanation": "<address> contient les infos de contact de l'auteur du document ou de l'article."
+    },
+    {
+      "id": 43,
+      "question": "Quel input type sert à saisir un numéro de téléphone ?",
+      "options": [
+        "phone",
+        "tel",
+        "number",
+        "call"
+      ],
+      "answer": 1,
+      "explanation": "<input type='tel'> permet aux claviers mobiles d'afficher le pavé numérique."
+    },
+    {
+      "id": 44,
+      "question": "Comment empêcher le navigateur de traduire une partie du texte ?",
+      "options": [
+        "notranslate",
+        "translate='no'",
+        "lang='none'",
+        "no-google"
+      ],
+      "answer": 1,
+      "explanation": "L'attribut global translate='no' indique aux outils de traduction d'ignorer cet élément."
+    },
+    {
+      "id": 45,
+      "question": "Quelle balise offre une alternative si le script n'est pas supporté ?",
+      "options": [
+        "<fallback>",
+        "<noscript>",
+        "<nojs>",
+        "<alt>"
+      ],
+      "answer": 1,
+      "explanation": "<noscript> affiche son contenu uniquement si JS est désactivé."
+    },
+    {
+      "id": 46,
+      "question": "Quel attribut permet de charger un script après le chargement du HTML (différé) ?",
+      "options": [
+        "async",
+        "defer",
+        "load='lazy'",
+        "wait"
+      ],
+      "answer": 1,
+      "explanation": "'defer' télécharge le script en parallèle mais l'exécute à la fin du parsing HTML, respectant l'ordre."
+    },
+    {
+      "id": 47,
+      "question": "Quelle balise est correcte pour un sous-titre ou un titre secondaire ?",
+      "options": [
+        "<subtitle>",
+        "<hgroup>",
+        "<h2> à <h6>",
+        "<subhead>"
+      ],
+      "answer": 2,
+      "explanation": "La hiérarchie standard utilise <h1>, <h2>, <h3>... <hgroup> sert à grouper un titre et son sous-titre."
+    },
+    {
+      "id": 48,
+      "question": "Quelle balise sert à inserer un son/audio ?",
+      "options": [
+        "<sound>",
+        "<audio>",
+        "<mp3>",
+        "<music>"
+      ],
+      "answer": 1,
+      "explanation": "<audio controls src='song.mp3'>."
+    },
+    {
+      "id": 49,
+      "question": "Comment spécifier une image responsive qui change selon la taille d'écran ?",
+      "options": [
+        "<picture> avec <source>",
+        "<img> avec media",
+        "<responsive>",
+        "<image-set>"
+      ],
+      "answer": 0,
+      "explanation": "<picture> permet de définir plusieurs sources (<source media='...'>) pour une même image."
+    },
+    {
+      "id": 50,
+      "question": "Quel attribut input permet de définir une plage de valeurs (slider) ?",
+      "options": [
+        "slider",
+        "range",
+        "scroll",
+        "between"
+      ],
+      "answer": 1,
+      "explanation": "<input type='range' min='0' max='100'>."
+    },
+    {
+      "id": 51,
+      "question": "Quelle balise permet de créer des termes à définir ?",
+      "options": [
+        "<dfn>",
+        "<def>",
+        "<term>",
+        "<mean>"
+      ],
+      "answer": 0,
+      "explanation": "<dfn> (Definition) indique que le texte est le terme en cours de définition."
+    },
+    {
+      "id": 52,
+      "question": "Quel élément racine contient toute la page ?",
+      "options": [
+        "<body>",
+        "<head>",
+        "<html>",
+        "<root>"
+      ],
+      "answer": 2,
+      "explanation": "<html> est l'élément racine."
+    },
+    {
+      "id": 53,
+      "question": "À quoi sert l'attribut 'hidden' ?",
+      "options": [
+        "Cacher l'élément sémantiquement et visuellement",
+        "Cacher juste visuellement",
+        "Désactiver l'élément",
+        "Crypter l'élément"
+      ],
+      "answer": 0,
+      "explanation": "C'est un attribut global. L'élément n'est plus pertinent pour la page courante."
+    },
+    {
+      "id": 54,
+      "question": "Quelle méthode HTTP envoie les données dans l'URL ?",
+      "options": [
+        "POST",
+        "GET",
+        "PUT",
+        "HEAD"
+      ],
+      "answer": 1,
+      "explanation": "GET ajoute les paramètres à l'URL (?nom=valeur)."
+    },
+    {
+      "id": 55,
+      "question": "Quelle balise permet de mettre en valeur du code clavier (accourci) ?",
+      "options": [
+        "<key>",
+        "<kbd>",
+        "<shortcut>",
+        "<input>"
+      ],
+      "answer": 1,
+      "explanation": "<kbd>Ctrl</kbd> + <kbd>C</kbd>."
+    },
+    {
+      "id": 56,
+      "question": "Quelle balise représente une sortie ou un résultat de calcul ?",
+      "options": [
+        "<result>",
+        "<output>",
+        "<value>",
+        "<print>"
+      ],
+      "answer": 1,
+      "explanation": "<output> est fait pour afficher le résultat d'un calcul (souvent lié à des inputs)."
+    },
+    {
+      "id": 57,
+      "question": "Comment indiquer qu'un lien pointe vers la page courante elle-même ?",
+      "options": [
+        "href='.'",
+        "href='#'",
+        "href='self'",
+        "href='this'"
+      ],
+      "answer": 1,
+      "explanation": "href='#' remonte souvent en haut, ou pointe vers une ancre locale."
+    },
+    {
+      "id": 58,
+      "question": "Quel attribut spécifie le type MIME d'un lien (ex: CSS, PDF) ?",
+      "options": [
+        "content",
+        "mime",
+        "type",
+        "format"
+      ],
+      "answer": 2,
+      "explanation": "Ex: <link type='text/css'> ou <a type='application/pdf'>."
+    },
+    {
+      "id": 59,
+      "question": "Quelle balise permet de créer des modèles de contenu réutilisables (invisibles au chargement) ?",
+      "options": [
+        "<template>",
+        "<model>",
+        "<pattern>",
+        "<clone>"
+      ],
+      "answer": 0,
+      "explanation": "<template> contient du HTML qui n'est pas rendu, mais peut être cloné via JS."
+    },
+    {
+      "id": 60,
+      "question": "Quel attribut permet de télécharger la cible d'un lien au lieu de l'ouvrir ?",
+      "options": [
+        "save",
+        "load",
+        "download",
+        "export"
+      ],
+      "answer": 2,
+      "explanation": "<a href='file.pdf' download> force le téléchargement."
+    },
+    {
+      "id": 61,
+      "question": "Quelle balise est un conteneur pour les graphiques vectoriels ?",
+      "options": [
+        "<xml>",
+        "<svg>",
+        "<vector>",
+        "<path>"
+      ],
+      "answer": 1,
+      "explanation": "SVG (Scalable Vector Graphics)."
+    },
+    {
+      "id": 62,
+      "question": "Quel attribut input définit un pas d'incrémentation (ex: 0, 10, 20) ?",
+      "options": [
+        "step",
+        "jump",
+        "gap",
+        "inc"
+      ],
+      "answer": 0,
+      "explanation": "<input type='number' step='10'>."
+    },
+    {
+      "id": 63,
+      "question": "Comment faire un retour à la ligne forcé ?",
+      "options": [
+        "<lb>",
+        "<return>",
+        "<br>",
+        "<enter>"
+      ],
+      "answer": 2,
+      "explanation": "<br> (Break Row) insère un saut de ligne."
+    },
+    {
+      "id": 64,
+      "question": "Quelle balise met en italique pour une raison sémantique (ton différent, terme technique) ?",
+      "options": [
+        "<b>",
+        "<i>",
+        "<em>",
+        "<cite>"
+      ],
+      "answer": 1,
+      "explanation": "<i> (Idiomatic Text). <em> est pour l'emphase (stress). <i> est souvent utilisé pour les voix off, pensées, termes techniques."
+    },
+    {
+      "id": 65,
+      "question": "Comment spécifier l'icône de l'onglet (Favicon) ?",
+      "options": [
+        "<icon src='...'>",
+        "<link rel='icon' href='...'>",
+        "<meta name='icon' ...>",
+        "<img type='favicon'>"
+      ],
+      "answer": 1,
+      "explanation": "<link rel='icon' href='favicon.ico'>."
+    },
+    {
+      "id": 66,
+      "question": "Quelle balise permet d'annoter du texte avec une explication ruby (asiatique) ?",
+      "options": [
+        "<ruby>",
+        "<kanji>",
+        "<annotate>",
+        "<text-help>"
+      ],
+      "answer": 0,
+      "explanation": "<ruby> avec <rt> (Ruby Text) permet d'afficher la prononciation au-dessus des caractères."
+    },
+    {
+      "id": 67,
+      "question": "Quel élément crée une barre latérale ou un contenu tangentiel ?",
+      "options": [
+        "<sidebar>",
+        "<aside>",
+        "<box>",
+        "<panel>"
+      ],
+      "answer": 1,
+      "explanation": "<aside> contient du contenu indirectement lié au principal (pubs, bio, navigation latérale)."
+    },
+    {
+      "id": 68,
+      "question": "Quel attribut permet de donner un titre consultatif (tooltip) à un élément ?",
+      "options": [
+        "tooltip",
+        "info",
+        "title",
+        "alt"
+      ],
+      "answer": 2,
+      "explanation": "L'attribut global 'title' affiche une infobulle au survol."
+    },
+    {
+      "id": 69,
+      "question": "Quelle balise est utilisée pour le contenu inséré dynamiquement (Shadow DOM) ?",
+      "options": [
+        "<shadow>",
+        "<slot>",
+        "<portal>",
+        "<inject>"
+      ],
+      "answer": 1,
+      "explanation": "<slot> est un placeholder dans un Web Component."
+    },
+    {
+      "id": 70,
+      "question": "Comment grouper les champs d'un formulaire avec une bordure et un titre ?",
+      "options": [
+        "<fieldset> et <legend>",
+        "<group> et <title>",
+        "<formgroup>",
+        "<section>"
+      ],
+      "answer": 0,
+      "explanation": "<fieldset> encadre le groupe, <legend> donne le titre du groupe."
+    },
+    {
+      "id": 71,
+      "question": "Quel attribut rend un élément déplaçable (Drag & Drop) ?",
+      "options": [
+        "moveable",
+        "draggable",
+        "drag",
+        "drop"
+      ],
+      "answer": 1,
+      "explanation": "draggable='true'."
+    },
+    {
+      "id": 72,
+      "question": "Quelle balise permet de surligner des changements textuels 'insérés' ?",
+      "options": [
+        "<ins>",
+        "<add>",
+        "<new>",
+        "<plus>"
+      ],
+      "answer": 0,
+      "explanation": "<ins> souligne généralement le texte ajouté, opposé à <del>."
+    },
+    {
+      "id": 73,
+      "question": "Quel attribut empêche l'autocomplétion par le navigateur ?",
+      "options": [
+        "no-complete",
+        "autocomplete='off'",
+        "suggest='false'",
+        "private"
+      ],
+      "answer": 1,
+      "explanation": "autocomplete='off' sur le form ou l'input."
+    },
+    {
+      "id": 74,
+      "question": "Quelle balise sert à définir les termes de navigation ?",
+      "options": [
+        "<menu>",
+        "<nav>",
+        "<dir>",
+        "<map>"
+      ],
+      "answer": 1,
+      "explanation": "<nav> contient les liens de navigation majeurs."
+    },
+    {
+      "id": 75,
+      "question": "Comment indiquer que le contenu est une citation d'une source externe (URL) ?",
+      "options": [
+        "src='url'",
+        "cite='url'",
+        "ref='url'",
+        "from='url'"
+      ],
+      "answer": 1,
+      "explanation": "L'attribut 'cite' sur <blockquote> ou <q> pointe vers l'URL source."
+    },
+    {
+      "id": 76,
+      "question": "Quelle méthode est utilisée pour les barres de recherche généralement ?",
+      "options": [
+        "POST",
+        "SEARCH",
+        "GET",
+        "FIND"
+      ],
+      "answer": 2,
+      "explanation": "GET permet d'avoir l'URL partageable (ex: ?q=chat)."
+    },
+    {
+      "id": 77,
+      "question": "Quelle balise permet d'intégrer une autre page HTML ?",
+      "options": [
+        "<include>",
+        "<frame>",
+        "<iframe>",
+        "<embed>"
+      ],
+      "answer": 2,
+      "explanation": "<iframe> (Inline Frame)."
+    },
+    {
+      "id": 78,
+      "question": "Quel attribut permet de focaliser un champ dès le chargement ?",
+      "options": [
+        "focus",
+        "autofocus",
+        "active",
+        "selected"
+      ],
+      "answer": 1,
+      "explanation": "autofocus (booléen)."
+    },
+    {
+      "id": 79,
+      "question": "Quelle balise sert à structurer les colonnes d'un tableau ?",
+      "options": [
+        "<colgroup> et <col>",
+        "<columns>",
+        "<cd>",
+        "<structure>"
+      ],
+      "answer": 0,
+      "explanation": "Permet d'appliquer des styles globaux aux colonnes sans répéter sur chaque <td>."
+    },
+    {
+      "id": 80,
+      "question": "Quel input type est utilisé pour saisir une URL ?",
+      "options": [
+        "text",
+        "link",
+        "url",
+        "web"
+      ],
+      "answer": 2,
+      "explanation": "<input type='url'> offre une validation basique du format."
+    },
+    {
+      "id": 81,
+      "question": "Comment définir une carte cliquable sur une image ?",
+      "options": [
+        "<map> et <area>",
+        "<clickmap>",
+        "<zone>",
+        "<imagemap>"
+      ],
+      "answer": 0,
+      "explanation": "<map name='x'><area coords='...'></map> lié à une <img> via usemap."
+    },
+    {
+      "id": 82,
+      "question": "Quelle balise permet de forcer la direction du texte (Bi-Directional Override) ?",
+      "options": [
+        "<bdo>",
+        "<rtl>",
+        "<dir>",
+        "<text>"
+      ],
+      "answer": 0,
+      "explanation": "<bdo dir='rtl'> force le sens droite-à-gauche."
+    },
+    {
+      "id": 83,
+      "question": "Quel attribut permet de spécifier plusieurs fichiers dans un input file ?",
+      "options": [
+        "many",
+        "multiple",
+        "array",
+        "group"
+      ],
+      "answer": 1,
+      "explanation": "<input type='file' multiple>."
+    },
+    {
+      "id": 84,
+      "question": "Quelle balise représente une variable mathématique ou de code ?",
+      "options": [
+        "<var>",
+        "$",
+        "<math>",
+        "<x>"
+      ],
+      "answer": 0,
+      "explanation": "<var>x</var> = 2."
+    },
+    {
+      "id": 85,
+      "question": "Quel attribut spécifie que l'image doit être chargée paresseusement (au scroll) ?",
+      "options": [
+        "lazy='true'",
+        "loading='lazy'",
+        "defer",
+        "scroll"
+      ],
+      "answer": 1,
+      "explanation": "Standard natif pour le Lazy Loading des images."
+    },
+    {
+      "id": 86,
+      "question": "Quelle balise sert à intégrer des plugins (Flash, PDF...) ?",
+      "options": [
+        "<object>",
+        "<applet>",
+        "<plugin>",
+        "<module>"
+      ],
+      "answer": 0,
+      "explanation": "<object data='doc.pdf'> ou <embed>. (<applet> est désuet)."
+    },
+    {
+      "id": 87,
+      "question": "Quel attribut permet de définir une touche d'accès raccourci ?",
+      "options": [
+        "shortcut",
+        "hotkey",
+        "accesskey",
+        "key"
+      ],
+      "answer": 2,
+      "explanation": "accesskey='h' permet d'activer l'élément avec Alt+H (selon OS)."
+    },
+    {
+      "id": 88,
+      "question": "Quelle balise permet d'encapsuler un texte très petit (copyright, légal) ?",
+      "options": [
+        "<tiny>",
+        "<small>",
+        "<legal>",
+        "<min>"
+      ],
+      "answer": 1,
+      "explanation": "<small> représente des commentaires annexes ou copyright."
+    },
+    {
+      "id": 89,
+      "question": "Quel type d'input sert à saisir une semaine ?",
+      "options": [
+        "week",
+        "date-week",
+        "datetime",
+        "7days"
+      ],
+      "answer": 0,
+      "explanation": "<input type='week'> (Sélectionne une semaine de l'année)."
+    },
+    {
+      "id": 90,
+      "question": "Quelle balise est idéale pour afficher un dialogue ou une fenêtre modale ?",
+      "options": [
+        "<dialog>",
+        "<modal>",
+        "<window>",
+        "<popup>"
+      ],
+      "answer": 0,
+      "explanation": "<dialog> est l'élément sémantique HTML5 pour les popups/modales."
+    },
+    {
+      "id": 91,
+      "question": "Quel attribut définit l'ordre de tabulation ?",
+      "options": [
+        "taborder",
+        "tabindex",
+        "order",
+        "nav-index"
+      ],
+      "answer": 1,
+      "explanation": "tabindex='1'. tabindex='-1' sort l'élément de la navigation clavier."
+    },
+    {
+      "id": 92,
+      "question": "Quelle balise permet de marquer l'heure ?",
+      "options": [
+        "<time>",
+        "<date>",
+        "<hour>",
+        "<clock>"
+      ],
+      "answer": 0,
+      "explanation": "Déjà vu? Oui, <time>. (Doublon évité : question sur datetime vs balise)."
+    },
+    {
+      "id": 93,
+      "question": "Comment associer une liste de suggestions à un champ recherche ?",
+      "options": [
+        "<input list='id'> et <datalist>",
+        "<input suggest='id'>",
+        "<search options='...'>",
+        "<select>"
+      ],
+      "answer": 0,
+      "explanation": "C'est le combo input + datalist."
+    },
+    {
+      "id": 94,
+      "question": "Quelle balise signale un texte important / alerte ?",
+      "options": [
+        "<b>",
+        "<strong>",
+        "<alert>",
+        "<imp>"
+      ],
+      "answer": 1,
+      "explanation": "<strong> indique une importance forte, souvent rendu en gras."
+    },
+    {
+      "id": 95,
+      "question": "Quel attribut input limite le nombre max de caractères ?",
+      "options": [
+        "limit",
+        "size",
+        "maxlength",
+        "cap"
+      ],
+      "answer": 2,
+      "explanation": "maxlength='10'."
+    },
+    {
+      "id": 96,
+      "question": "Quelle balise permet de définir des pistes de sous-titres pour une vidéo ?",
+      "options": [
+        "<track>",
+        "<subtitle>",
+        "<caption>",
+        "<text>"
+      ],
+      "answer": 0,
+      "explanation": "<track src='subs.vtt' kind='subtitles'> dans <video>."
+    },
+    {
+      "id": 97,
+      "question": "Comment déclarer que le site est responsive dans le head ?",
+      "options": [
+        "<meta name='viewport' ...>",
+        "<responsive>",
+        "<meta name='mobile'>",
+        "<size>"
+      ],
+      "answer": 0,
+      "explanation": "<meta name='viewport' content='width=device-width, initial-scale=1.0'>."
+    },
+    {
+      "id": 98,
+      "question": "Quel élément représente une légende de tableau ?",
+      "options": [
+        "<legend>",
+        "<caption>",
+        "<name>",
+        "<title>"
+      ],
+      "answer": 1,
+      "explanation": "<caption> se place juste après <table>."
+    },
+    {
+      "id": 99,
+      "question": "Quelle est la différence entre <script> et <script type='module'> ?",
+      "options": [
+        "Aucune",
+        "Module active le mode strict et import/export",
+        "Module est plus lent",
+        "Script est obsolète"
+      ],
+      "answer": 1,
+      "explanation": "type='module' permet d'utiliser les imports ES6 et isole le scope."
+    },
+    {
+      "id": 100,
+      "question": "Quelle balise est utilisée pour couper un mot si nécessaire (Word Break Opportunity) ?",
+      "options": [
+        "<br>",
+        "<wbr>",
+        "<break>",
+        "<cut>"
+      ],
+      "answer": 1,
+      "explanation": "<wbr> indique au navigateur où il peut couper un mot long si la ligne est pleine."
+    }
+  ]
+}

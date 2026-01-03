@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz CSS3 Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quelle propriété active le mode Flexbox ?",
+            "options": [
+                "display: block",
+                "display: flex",
+                "position: flex",
+                "flex: 1"
+            ],
+            "answer": 1,
+            "explanation": "display: flex transforme l'élément en conteneur flexible."
+        },
+        {
+            "id": 2,
+            "question": "Quelle propriété change l'axe principal en Flexbox ?",
+            "options": [
+                "justify-content",
+                "align-items",
+                "flex-direction",
+                "flex-wrap"
+            ],
+            "answer": 2,
+            "explanation": "flex-direction (row par défaut) permet de passer en colonne (column)."
+        },
+        {
+            "id": 3,
+            "question": "Comment centrer un élément horizontalement ET verticalement en Grid ?",
+            "options": [
+                "place-items: center",
+                "justify-content: center",
+                "align-items: center",
+                "text-align: center"
+            ],
+            "answer": 0,
+            "explanation": "place-items: center est un raccourci pour align-items: center et justify-items: center."
+        },
+        {
+            "id": 4,
+            "question": "Quelle est la valeur par défaut de 'position' ?",
+            "options": [
+                "relative",
+                "absolute",
+                "fixed",
+                "static"
+            ],
+            "answer": 3,
+            "explanation": "static est le comportement normal du flux du document."
+        },
+        {
+            "id": 5,
+            "question": "Que signifie l'unité 'rem' ?",
+            "options": [
+                "Relative au parent",
+                "Relative à l'élément racine (html)",
+                "Relative à la largeur d'écran",
+                "Random Emily Unit"
+            ],
+            "answer": 1,
+            "explanation": "Root EM. 1rem = taille de police définie dans <html> (généralement 16px)."
+        },
+        {
+            "id": 6,
+            "question": "Quelle propriété gère la transparence d'un élément ?",
+            "options": [
+                "transparent",
+                "opacity",
+                "visibility",
+                "filter"
+            ],
+            "answer": 1,
+            "explanation": "opacity: 0.5 rend l'élément semi-transparent (0 à 1)."
+        },
+        {
+            "id": 7,
+            "question": "Quel sélecteur cible les éléments impairs ?",
+            "options": [
+                ":nth-child(odd)",
+                ":nth-child(even)",
+                ":first-child",
+                ":unique"
+            ],
+            "answer": 0,
+            "explanation": "odd signifie impair, even signifie pair."
+        },
+        {
+            "id": 8,
+            "question": "Comment sélectionner tous les <p> qui sont directement dans une <div> ?",
+            "options": [
+                "div p",
+                "div > p",
+                "div + p",
+                "div ~ p"
+            ],
+            "answer": 1,
+            "explanation": "Le chevrons > désigne l'enfant direct (pas les petits-enfants)."
+        },
+        {
+            "id": 9,
+            "question": "Quelle propriété sert à créer de l'espace À L'INTÉRIEUR d'un élément ?",
+            "options": [
+                "margin",
+                "padding",
+                "border",
+                "gap"
+            ],
+            "answer": 1,
+            "explanation": "Padding est la marge interne, entre le contenu et la bordure."
+        },
+        {
+            "id": 10,
+            "question": "Quelle pseudo-classe cible le survol de la souris ?",
+            "options": [
+                ":active",
+                ":focus",
+                ":hover",
+                ":visited"
+            ],
+            "answer": 2,
+            "explanation": ":hover s'active lorsque le curseur passe au-dessus de l'élément."
+        },
+        {
+            "id": 11,
+            "question": "Avec `flex-grow: 1`, que fait l'élément ?",
+            "options": [
+                "Il rétrécit",
+                "Il prend tout l'espace disponible restant",
+                "Il garde sa taille fixe",
+                "Il disparaît"
+            ],
+            "answer": 1,
+            "explanation": "Il grandit pour occuper l'espace vide laissé par les autres éléments."
+        },
+        {
+            "id": 12,
+            "question": "Quelle propriété permet de superposer des éléments (axe Z) ?",
+            "options": [
+                "z-index",
+                "elevation",
+                "layer",
+                "depth"
+            ],
+            "answer": 0,
+            "explanation": "z-index définit l'ordre d'empilement (nécessite une position non-static)."
+        },
+        {
+            "id": 13,
+            "question": "Que fait `box-sizing: border-box` ?",
+            "options": [
+                "Ajoute une bordure",
+                "Inclut padding et border dans la largeur totale",
+                "Exclut le padding de la largeur",
+                "Arrondit les angles"
+            ],
+            "answer": 1,
+            "explanation": "C'est la bonne pratique moderne : width = contenu + padding + border."
+        },
+        {
+            "id": 14,
+            "question": "Quelle fonction permet de faire des calculs en CSS ?",
+            "options": [
+                "calc()",
+                "math()",
+                "compute()",
+                "sum()"
+            ],
+            "answer": 0,
+            "explanation": "Exemple : width: calc(100% - 20px);"
+        },
+        {
+            "id": 15,
+            "question": "Quel sélecteur a la plus haute spécificité ?",
+            "options": [
+                "#id",
+                ".class",
+                "balise",
+                "*"
+            ],
+            "answer": 0,
+            "explanation": "L'ID (#) l'emporte sur les classes, qui l'emportent sur les balises."
+        },
+        {
+            "id": 16,
+            "question": "Comment définir une grille de 3 colonnes égales ?",
+            "options": [
+                "grid-template-columns: 33% 33% 33%",
+                "grid-template-columns: repeat(3, 1fr)",
+                "grid-cols: 3",
+                "display: grid-3"
+            ],
+            "answer": 1,
+            "explanation": "1fr (fraction) est l'unité flexible de Grid. repeat(3, 1fr) crée 3 colonnes de largeur égale."
+        },
+        {
+            "id": 17,
+            "question": "Quelle propriété gère l'ombre portée d'un bloc ?",
+            "options": [
+                "text-shadow",
+                "box-shadow",
+                "drop-shadow",
+                "shadow"
+            ],
+            "answer": 1,
+            "explanation": "box-shadow pour les boîtes. text-shadow pour le texte."
+        },
+        {
+            "id": 18,
+            "question": "Quel media query cible les écrans mobiles (< 768px) ?",
+            "options": [
+                "@media (min-width: 768px)",
+                "@media (max-width: 768px)",
+                "@mobile",
+                "@screen small"
+            ],
+            "answer": 1,
+            "explanation": "max-width: 768px s'applique si l'écran est PLUS PETIT ou égal à 768px."
+        },
+        {
+            "id": 19,
+            "question": "Comment faire une transition fluide de couleur ?",
+            "options": [
+                "animation: color",
+                "transition: color 0.3s",
+                "transform: color",
+                "move: color"
+            ],
+            "answer": 1,
+            "explanation": "transition permet d'interpoler les valeurs sur une durée donnée."
+        },
+        {
+            "id": 20,
+            "question": "Quelle valeur de `display` cache l'élément (sans prendre de place) ?",
+            "options": [
+                "visibility: hidden",
+                "opacity: 0",
+                "display: none",
+                "display: hidden"
+            ],
+            "answer": 2,
+            "explanation": "display: none retire l'élément du flux (comme s'il n'existait pas)."
+        },
+        {
+            "id": 21,
+            "question": "Quelle propriété CSS définit la police d'écriture ?",
+            "options": [
+                "font-weight",
+                "text-style",
+                "font-family",
+                "typeface"
+            ],
+            "answer": 2,
+            "explanation": "font-family: 'Arial', sans-serif;"
+        },
+        {
+            "id": 22,
+            "question": "Comment mettre un texte en gras ?",
+            "options": [
+                "font-weight: bold",
+                "font-style: bold",
+                "text-decoration: bold",
+                "font-size: bold"
+            ],
+            "answer": 0,
+            "explanation": "font-weight gère l'épaisseur (400, 700, bold, etc.)."
+        },
+        {
+            "id": 23,
+            "question": "Quelle propriété contrôle l'espace entre les lettres ?",
+            "options": [
+                "word-spacing",
+                "line-height",
+                "letter-spacing",
+                "text-indent"
+            ],
+            "answer": 2,
+            "explanation": "letter-spacing définit l'interlettrage."
+        },
+        {
+            "id": 24,
+            "question": "Comment souligner un texte ?",
+            "options": [
+                "text-decoration: underline",
+                "font-style: underline",
+                "border-bottom: 1px",
+                "text-style: underline"
+            ],
+            "answer": 0,
+            "explanation": "text-decoration gère le soulignement, barré, etc."
+        },
+        {
+            "id": 25,
+            "question": "Quelle unité est relative à la taille de la police du parent ?",
+            "options": [
+                "px",
+                "rem",
+                "em",
+                "vw"
+            ],
+            "answer": 2,
+            "explanation": "em est relative au parent direct, rem est relative à la racine."
+        },
+        {
+            "id": 26,
+            "question": "Comment charger une image de fond ?",
+            "options": [
+                "background-src: url()",
+                "background-image: url()",
+                "image: url()",
+                "bg: url()"
+            ],
+            "answer": 1,
+            "explanation": "background-image: url('image.jpg');"
+        },
+        {
+            "id": 27,
+            "question": "Quelle valeur de `background-size` couvre tout le conteneur ?",
+            "options": [
+                "contain",
+                "cover",
+                "fill",
+                "100%"
+            ],
+            "answer": 1,
+            "explanation": "cover redimensionne l'image pour couvrir toute la zone, quitte à la rogner."
+        },
+        {
+            "id": 28,
+            "question": "Comment éviter la répétition d'une image de fond ?",
+            "options": [
+                "background-repeat: no-repeat",
+                "background-loop: none",
+                "background-tile: false",
+                "repeat: 0"
+            ],
+            "answer": 0,
+            "explanation": "Par défaut, les images se répètent (tile)."
+        },
+        {
+            "id": 29,
+            "question": "Quelle propriété change la couleur du texte ?",
+            "options": [
+                "font-color",
+                "text-color",
+                "color",
+                "foreground"
+            ],
+            "answer": 2,
+            "explanation": "Simplement color."
+        },
+        {
+            "id": 30,
+            "question": "Quel sélecteur cible un élément avec l'attribut `type='text'` ?",
+            "options": [
+                "input.text",
+                "input[type='text']",
+                "input:text",
+                "input(text)"
+            ],
+            "answer": 1,
+            "explanation": "Sélecteur d'attribut [attr='value']."
+        },
+        {
+            "id": 31,
+            "question": "Comment centrer du texte horizontalement ?",
+            "options": [
+                "vertical-align: middle",
+                "text-align: center",
+                "align-items: center",
+                "justify-content: center"
+            ],
+            "answer": 1,
+            "explanation": "text-align s'applique au contenu inline (texte, img) dans un bloc."
+        },
+        {
+            "id": 32,
+            "question": "Quelle propriété met tout en majuscules ?",
+            "options": [
+                "text-transform: uppercase",
+                "text-style: uppercase",
+                "font-variant: caps",
+                "capitalization: all"
+            ],
+            "answer": 0,
+            "explanation": "text-transform gère la casse (uppercase, lowercase, capitalize)."
+        },
+        {
+            "id": 33,
+            "question": "`visibility: hidden` vs `display: none` ?",
+            "options": [
+                "Aucune différence",
+                "hidden garde l'espace, none supprime l'espace",
+                "none garde l'espace, hidden supprime",
+                "hidden est animé"
+            ],
+            "answer": 1,
+            "explanation": "Un élément hidden est invisible mais toujours là physiquement."
+        },
+        {
+            "id": 34,
+            "question": "Comment faire une rotation de 45 degrés ?",
+            "options": [
+                "rotate: 45deg",
+                "transform: rotate(45deg)",
+                "orientation: 45deg",
+                "angle: 45"
+            ],
+            "answer": 1,
+            "explanation": "La propriété transform gère les rotations, échelles, translations."
+        },
+        {
+            "id": 35,
+            "question": "Quelle propriété définit l'arrondi des coins ?",
+            "options": [
+                "border-radius",
+                "corner-radius",
+                "round-border",
+                "arc"
+            ],
+            "answer": 0,
+            "explanation": "border-radius: 10px; ou 50% pour un cercle."
+        },
+        {
+            "id": 36,
+            "question": "Comment mettre une bordure seulement en bas ?",
+            "options": [
+                "border-bottom",
+                "border-down",
+                "bottom-border",
+                "underline"
+            ],
+            "answer": 0,
+            "explanation": "border-bottom: 1px solid black;"
+        },
+        {
+            "id": 37,
+            "question": "Dans Flexbox, comment aligner les éléments sur l'axe SECONDAIRE ?",
+            "options": [
+                "justify-content",
+                "align-items",
+                "align-content",
+                "flex-align"
+            ],
+            "answer": 1,
+            "explanation": "align-items gère l'axe transversal (ex: vertical si on est en row)."
+        },
+        {
+            "id": 38,
+            "question": "Quelle valeur de `position` fixe l'élément par rapport à la fenêtre (scroll) ?",
+            "options": [
+                "absolute",
+                "fixed",
+                "sticky",
+                "static"
+            ],
+            "answer": 1,
+            "explanation": "fixed reste au même endroit de l'écran même quand on scrolle."
+        },
+        {
+            "id": 39,
+            "question": "Quelle pseudo-classe cible le premier enfant ?",
+            "options": [
+                ":child(1)",
+                ":first-child",
+                ":one",
+                ":start"
+            ],
+            "answer": 1,
+            "explanation": "p:first-child cible le premier paragraphe de son parent."
+        },
+        {
+            "id": 40,
+            "question": "Comment changer le curseur de la souris au survol ?",
+            "options": [
+                "pointer: cursor",
+                "mouse: pointer",
+                "cursor: pointer",
+                "style: hand"
+            ],
+            "answer": 2,
+            "explanation": "cursor: pointer affiche généralement la main."
+        },
+        {
+            "id": 41,
+            "question": "Quelle propriété permet de gérer le débordement de contenu ?",
+            "options": [
+                "clip",
+                "overflow",
+                "scroll",
+                "hidden"
+            ],
+            "answer": 1,
+            "explanation": "overflow: hidden, scroll, auto, ou visible."
+        },
+        {
+            "id": 42,
+            "question": "Que fait `list-style: none` ?",
+            "options": [
+                "Supprime la liste",
+                "Supprime les puces/numéros de la liste",
+                "Aligne la liste",
+                "Met la liste en gras"
+            ],
+            "answer": 1,
+            "explanation": "Utilisé souvent pour les menus de navigation basés sur <ul>."
+        },
+        {
+            "id": 43,
+            "question": "Quelle propriété définit la hauteur d'une ligne de texte ?",
+            "options": [
+                "text-height",
+                "line-height",
+                "spacing",
+                "vertical-size"
+            ],
+            "answer": 1,
+            "explanation": "Important pour la lisibilité."
+        },
+        {
+            "id": 44,
+            "question": "Quelle valeur de `white-space` empêche le retour à la ligne automatique ?",
+            "options": [
+                "nowrap",
+                "no-break",
+                "single-line",
+                "continuous"
+            ],
+            "answer": 0,
+            "explanation": "white-space: nowrap force le texte à rester sur une seule ligne."
+        },
+        {
+            "id": 45,
+            "question": "Comment cibler un élément avec la classe 'a' ET la classe 'b' ?",
+            "options": [
+                ".a.b",
+                ".a .b",
+                ".a + .b",
+                ".a, .b"
+            ],
+            "answer": 0,
+            "explanation": "Collé sans espace : .a.b signifie 'élément ayant les deux classes'."
+        },
+        {
+            "id": 46,
+            "question": "Quel sélecteur cible tous les éléments suivants (frères) ?",
+            "options": [
+                "+",
+                "~",
+                ">",
+                "*"
+            ],
+            "answer": 1,
+            "explanation": "~ cible tous les frères suivants. + cible seulement le frère immédiatement suivant."
+        },
+        {
+            "id": 47,
+            "question": "Quelle propriété CSS Grid définit la zone d'un élément nommée ?",
+            "options": [
+                "grid-area",
+                "grid-zone",
+                "grid-name",
+                "place-area"
+            ],
+            "answer": 0,
+            "explanation": "grid-area: header; permet de placer l'élément dans la template area 'header'."
+        },
+        {
+            "id": 48,
+            "question": "Quelle propriété permet de flouter le fond derrière un élément ?",
+            "options": [
+                "filter: blur()",
+                "backdrop-filter: blur()",
+                "background-opacity",
+                "opacity"
+            ],
+            "answer": 1,
+            "explanation": "backdrop-filter applique des effets à ce qui est SOUS l'élément (effet verre dépoli)."
+        },
+        {
+            "id": 49,
+            "question": "Quelle unité représente 1% de la largeur du viewport ?",
+            "options": [
+                "vh",
+                "vw",
+                "%",
+                "vp"
+            ],
+            "answer": 1,
+            "explanation": "vw = Viewport Width. 100vw = largeur totale de la fenêtre."
+        },
+        {
+            "id": 50,
+            "question": "Quelle propriété définit l'ordre d'affichage dans Flexbox ?",
+            "options": [
+                "index",
+                "order",
+                "sort",
+                "rank"
+            ],
+            "answer": 1,
+            "explanation": "order: 1; permet de réorganiser visuellement sans changer le HTML."
+        },
+        {
+            "id": 51,
+            "question": "Comment réinitialiser toutes les marges par défaut ?",
+            "options": [
+                "* { margin: 0; padding: 0; }",
+                "body { no-margin: true; }",
+                "reset: all;",
+                "clear: both;"
+            ],
+            "answer": 0,
+            "explanation": "C'est un 'Reset CSS' basique."
+        },
+        {
+            "id": 52,
+            "question": "Quelle propriété permet de rogner une image en forme de cercle ?",
+            "options": [
+                "crop: circle",
+                "clip-path: circle()",
+                "shape-outside: circle",
+                "mask: round"
+            ],
+            "answer": 1,
+            "explanation": "clip-path permet de découper l'affichage selon une forme vectorielle."
+        },
+        {
+            "id": 53,
+            "question": "Quelle propriété anime un élément en boucle ?",
+            "options": [
+                "animation-iteration-count: infinite",
+                "loop: true",
+                "repeat: always",
+                "cycle: infinite"
+            ],
+            "answer": 0,
+            "explanation": "Dans la propriété raccourcie : animation: name duration infinite."
+        },
+        {
+            "id": 54,
+            "question": "Quelle valeur de `position` colle l'élément au scroll jusqu'à un point donné ?",
+            "options": [
+                "fixed",
+                "static",
+                "sticky",
+                "absolute"
+            ],
+            "answer": 2,
+            "explanation": "sticky agit comme relative jusqu'à ce qu'on scrolle, puis devient 'fixed'."
+        },
+        {
+            "id": 55,
+            "question": "Comment créer une variable CSS ?",
+            "options": [
+                "$var: value;",
+                "--var: value;",
+                "var-name: value;",
+                "@var: value;"
+            ],
+            "answer": 1,
+            "explanation": "Déclaration : --main-color: red; Utilisation : var(--main-color)."
+        },
+        {
+            "id": 56,
+            "question": "Dans un dégradé, quelle direction est par défaut ?",
+            "options": [
+                "De gauche à droite",
+                "De haut en bas",
+                "De bas en haut",
+                "Radial"
+            ],
+            "answer": 1,
+            "explanation": "linear-gradient(red, blue) va de haut (red) en bas (blue) par défaut."
+        },
+        {
+            "id": 57,
+            "question": "Que fait `object-fit: cover` sur une image ?",
+            "options": [
+                "Déforme l'image",
+                "Remplit le conteneur en préservant le ratio (rogne)",
+                "Affiche l'image entière (bandes noires)",
+                "Rien"
+            ],
+            "answer": 1,
+            "explanation": "Essentiel pour les galeries d'images responsives."
+        },
+        {
+            "id": 58,
+            "question": "Quelle propriété permet de changer la couleur de sélection du texte ?",
+            "options": [
+                "::selection",
+                ":select",
+                "user-select",
+                "highlight"
+            ],
+            "answer": 0,
+            "explanation": "::selection { background: gold; color: black; }"
+        },
+        {
+            "id": 59,
+            "question": "Comment cibler le parent d'un élément en CSS ?",
+            "options": [
+                "Il n'y a pas de sélecteur parent (sauf :has() récent)",
+                "parent > child",
+                "< parent",
+                "^ parent"
+            ],
+            "answer": 0,
+            "explanation": "Pendant longtemps impossible. :has() commence à le permettre."
+        },
+        {
+            "id": 60,
+            "question": "Quelle propriété définit l'espacement entre les colonnes de Grid ?",
+            "options": [
+                "grid-gap (ou gap)",
+                "space-between",
+                "gutter",
+                "margin"
+            ],
+            "answer": 0,
+            "explanation": "gap (raccourci moderne) gère l'espace rows et columns."
+        },
+        {
+            "id": 61,
+            "question": "Quelle est la couleur `#F00` ?",
+            "options": [
+                "Bleu",
+                "Vert",
+                "Rouge",
+                "Noir"
+            ],
+            "answer": 2,
+            "explanation": "Hexadécimal court pour #FF0000 (RGB)."
+        },
+        {
+            "id": 62,
+            "question": "Comment inclure une police Google Fonts ?",
+            "options": [
+                "@include url(...)",
+                "@import url(...)",
+                "<script src=...>",
+                "download(...)"
+            ],
+            "answer": 1,
+            "explanation": "@import url('...'); dans le CSS ou <link> dans le HTML."
+        },
+        {
+            "id": 63,
+            "question": "Quelle propriété contrôle le redimensionnement d'un textarea ?",
+            "options": [
+                "size",
+                "resize",
+                "scale",
+                "zoom"
+            ],
+            "answer": 1,
+            "explanation": "resize: none, vertical, horizontal, ou both."
+        },
+        {
+            "id": 64,
+            "question": "Que fait `!important` ?",
+            "options": [
+                "Rend la règle prioritaire sur tout",
+                "C'est un commentaire",
+                "Signale une erreur",
+                "Optimise le code"
+            ],
+            "answer": 0,
+            "explanation": "Force l'application du style, passant outre la spécificité. À éviter si possible."
+        },
+        {
+            "id": 65,
+            "question": "Quelle propriété gère l'opacité du fond uniquement ?",
+            "options": [
+                "opacity",
+                "background-color: rgba(...)",
+                "transparent",
+                "background-opacity"
+            ],
+            "answer": 1,
+            "explanation": "rgba(255, 0, 0, 0.5) met le fond semi-transparent sans affecter le texte."
+        },
+        {
+            "id": 66,
+            "question": "Quel filtre passe l'image en noir et blanc ?",
+            "options": [
+                "filter: grayscale(100%)",
+                "filter: bw()",
+                "color: black",
+                "style: mono"
+            ],
+            "answer": 0,
+            "explanation": "grayscale(1) ou 100%."
+        },
+        {
+            "id": 67,
+            "question": "Quelle propriété CSS permet le défilement fluide ?",
+            "options": [
+                "scroll-behavior: smooth",
+                "smooth-scroll: true",
+                "animations: scroll",
+                "transition: scroll"
+            ],
+            "answer": 0,
+            "explanation": "scroll-behavior: smooth; sur l'élément html."
+        },
+        {
+            "id": 68,
+            "question": "Comment gérer les veuves et orphelines en impression ?",
+            "options": [
+                "widows / orphans",
+                "break-inside",
+                "page-break",
+                "print-layout"
+            ],
+            "answer": 0,
+            "explanation": "widows et orphans définissent le nombre min de lignes à laisser en bas/haut de page."
+        },
+        {
+            "id": 69,
+            "question": "Quelle pseudo-classe cible un lien visité ?",
+            "options": [
+                ":visited",
+                ":seen",
+                ":old",
+                ":history"
+            ],
+            "answer": 0,
+            "explanation": ":visited permet de styler les liens déjà cliqués."
+        },
+        {
+            "id": 70,
+            "question": "Quelle fonction définit un dégradé radial ?",
+            "options": [
+                "radial-gradient()",
+                "circle-gradient()",
+                "gradient-radial()",
+                "round-gradient()"
+            ],
+            "answer": 0,
+            "explanation": "Part du centre vers l'extérieur."
+        },
+        {
+            "id": 71,
+            "question": "Quelle propriété gère l'alignement du texte sur la dernière ligne ?",
+            "options": [
+                "text-align-last",
+                "last-line-align",
+                "justify-end",
+                "text-end"
+            ],
+            "answer": 0,
+            "explanation": "Utile quand text-align: justify est utilisé."
+        },
+        {
+            "id": 72,
+            "question": "Comment faire une ombre intérieure ?",
+            "options": [
+                "box-shadow: inset ...",
+                "inner-shadow: ...",
+                "shadow: inside ...",
+                "box-inner: ..."
+            ],
+            "answer": 0,
+            "explanation": "Le mot-clé `inset` au début de box-shadow."
+        },
+        {
+            "id": 73,
+            "question": "Quelle propriété permet de masquer la face arrière d'un élément 3D ?",
+            "options": [
+                "backface-visibility",
+                "backend-display",
+                "3d-hide",
+                "flip-side"
+            ],
+            "answer": 0,
+            "explanation": "backface-visibility: hidden; (utile pour les cartes qui se retournent)."
+        },
+        {
+            "id": 74,
+            "question": "Que fait `will-change` ?",
+            "options": [
+                "Prédit le futur",
+                "Informe le navigateur d'un changement imminent pour optimiser (GPU)",
+                "Change la valeur",
+                "Force le changement"
+            ],
+            "answer": 1,
+            "explanation": "Optimisation de performance. will-change: transform;"
+        },
+        {
+            "id": 75,
+            "question": "Quelle unité est relative à la largeur du caractère '0' ?",
+            "options": [
+                "ch",
+                "ex",
+                "em",
+                "zero"
+            ],
+            "answer": 0,
+            "explanation": "ch (character). Utile pour limiter la largeur de texte (ex: 60ch)."
+        },
+        {
+            "id": 76,
+            "question": "Quelle disposition permet le masonry layout (maçonnerie) nativement ?",
+            "options": [
+                "Grid (en futur standard)",
+                "Flexbox",
+                "Float",
+                "Table"
+            ],
+            "answer": 0,
+            "explanation": "grid-template-rows: masonry; est en cours de spécification."
+        },
+        {
+            "id": 77,
+            "question": "Comment désactiver les événements souris sur un élément ?",
+            "options": [
+                "pointer-events: none",
+                "mouse: off",
+                "click: no",
+                "interaction: none"
+            ],
+            "answer": 0,
+            "explanation": "L'élément devient 'transparent' aux clics."
+        },
+        {
+            "id": 78,
+            "question": "Quelle propriété gère la césure des mots ?",
+            "options": [
+                "hyphens",
+                "break-words",
+                "word-cut",
+                "dash"
+            ],
+            "answer": 0,
+            "explanation": "hyphens: auto; ajoute des traits d'union si nécessaire."
+        },
+        {
+            "id": 79,
+            "question": "Quelle pseudo-classe cible la racine du document (haut de l'arbre) ?",
+            "options": [
+                ":root",
+                "html",
+                ":top",
+                ":base"
+            ],
+            "answer": 0,
+            "explanation": ":root est équivalent à html mais avec une spécificité plus haute. Lieu idéal des variables."
+        },
+        {
+            "id": 80,
+            "question": "Quel filtre permet d'inverser les couleurs ?",
+            "options": [
+                "invert()",
+                "reverse()",
+                "negative()",
+                "flip()"
+            ],
+            "answer": 0,
+            "explanation": "filter: invert(1);"
+        },
+        {
+            "id": 81,
+            "question": "Quelle propriété définit combien une colonne Flex peut rétrécir ?",
+            "options": [
+                "flex-shrink",
+                "flex-reduce",
+                "shrink-rate",
+                "flex-min"
+            ],
+            "answer": 0,
+            "explanation": "flex-shrink: 0 empêche le rétrécissement."
+        },
+        {
+            "id": 82,
+            "question": "Comment appliquer un style si le navigateur supporte une feature ?",
+            "options": [
+                "@supports",
+                "@if",
+                "@feature",
+                "@check"
+            ],
+            "answer": 0,
+            "explanation": "@supports (display: grid) { ... }"
+        },
+        {
+            "id": 83,
+            "question": "Quelle propriété contrôle le rendu des polices (lissage) sur Mac/iOS ?",
+            "options": [
+                "-webkit-font-smoothing",
+                "text-rendering",
+                "font-smooth",
+                "aliasing"
+            ],
+            "answer": 0,
+            "explanation": "-webkit-font-smoothing: antialiased;"
+        },
+        {
+            "id": 84,
+            "question": "Quelle valeur de `content` est utilisée pour insérer une image ?",
+            "options": [
+                "content: url()",
+                "content: image()",
+                "src: url()",
+                "alt: ''"
+            ],
+            "answer": 0,
+            "explanation": "Souvent utilisé dans les pseudo-éléments ::before/::after."
+        },
+        {
+            "id": 85,
+            "question": "Que fait `mix-blend-mode` ?",
+            "options": [
+                "Mélange les couleurs avec l'arrière-plan (Photoshop style)",
+                "Mélange les polices",
+                "Fusionne les blocs",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: multiply, screen, overlay."
+        },
+        {
+            "id": 86,
+            "question": "Quelle propriété permet de couper un texte trop long avec '...' ?",
+            "options": [
+                "text-overflow: ellipsis",
+                "overflow: dots",
+                "text-cut: true",
+                "wrap: none"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite aussi white-space: nowrap et overflow: hidden."
+        },
+        {
+            "id": 87,
+            "question": "Comment changer la couleur du placeholder d'un input ?",
+            "options": [
+                "::placeholder",
+                ":placeholder",
+                "input-placeholder",
+                "text-placeholder"
+            ],
+            "answer": 0,
+            "explanation": "input::placeholder { color: gray; }"
+        },
+        {
+            "id": 88,
+            "question": "Quelle propriété définit le ratio largeur/hauteur ?",
+            "options": [
+                "aspect-ratio",
+                "ratio",
+                "size-ratio",
+                "proportion"
+            ],
+            "answer": 0,
+            "explanation": "aspect-ratio: 16 / 9;"
+        },
+        {
+            "id": 89,
+            "question": "Quelle pseudo-classe s'applique quand l'URL contient l'ancre de l'élément ?",
+            "options": [
+                ":target",
+                ":active",
+                ":current",
+                ":focus"
+            ],
+            "answer": 0,
+            "explanation": ":target match l'élément dont l'ID est dans l'URL (#section)."
+        },
+        {
+            "id": 90,
+            "question": "Quelle propriété permet de définir des compteurs CSS ?",
+            "options": [
+                "counter-reset / counter-increment",
+                "count-up",
+                "numbering",
+                "list-count"
+            ],
+            "answer": 0,
+            "explanation": "Permet de numéroter des éléments arbitraires via CSS (content: counter(my-counter))."
+        },
+        {
+            "id": 91,
+            "question": "Quel mot-clé remet une propriété à sa valeur héritée ?",
+            "options": [
+                "inherit",
+                "initial",
+                "unset",
+                "revert"
+            ],
+            "answer": 0,
+            "explanation": "inherit force l'héritage du parent."
+        },
+        {
+            "id": 92,
+            "question": "Quelle propriété contrôle l'apparence native des contrôles UI ?",
+            "options": [
+                "appearance",
+                "native-style",
+                "ui-look",
+                "theme"
+            ],
+            "answer": 0,
+            "explanation": "appearance: none; supprime le style par défaut (boutons, inputs) pour le personnaliser."
+        },
+        {
+            "id": 93,
+            "question": "Comment créer une animation keyframe ?",
+            "options": [
+                "@keyframes name { ... }",
+                "@animation name { ... }",
+                "@motion name",
+                "@animate"
+            ],
+            "answer": 0,
+            "explanation": "Définit les étapes de l'animation."
+        },
+        {
+            "id": 94,
+            "question": "Quelle propriété définit le décalage d'un contour (outline) ?",
+            "options": [
+                "outline-offset",
+                "outline-distance",
+                "border-space",
+                "margin-outline"
+            ],
+            "answer": 0,
+            "explanation": "Sépare l'outline de la bordure."
+        },
+        {
+            "id": 95,
+            "question": "Que signifie `currentColor` ?",
+            "options": [
+                "La valeur calculée de la propriété 'color'",
+                "Noir",
+                "Blanc",
+                "La couleur du fond"
+            ],
+            "answer": 0,
+            "explanation": "Très utile pour les bordures ou SVG qui doivent matcher la couleur du texte."
+        },
+        {
+            "id": 96,
+            "question": "Quelle propriété permet le défilement horizontal avec accroche (snap) ?",
+            "options": [
+                "scroll-snap-type",
+                "scroll-lock",
+                "snap-scroll",
+                "overflow-snap"
+            ],
+            "answer": 0,
+            "explanation": "scroll-snap-type: x mandatory;"
+        },
+        {
+            "id": 97,
+            "question": "Quelle pseudo-classe match un input valide ?",
+            "options": [
+                ":valid",
+                ":ok",
+                ":check",
+                ":good"
+            ],
+            "answer": 0,
+            "explanation": ":valid (et :invalid) se base sur les attributs HTML (type email, required...)."
+        },
+        {
+            "id": 98,
+            "question": "Quelle propriété permet de 'clipper' le fond au texte ?",
+            "options": [
+                "background-clip: text",
+                "text-fill: image",
+                "font-mask",
+                "background-text"
+            ],
+            "answer": 0,
+            "explanation": "Souvent utilisé avec color: transparent pour avoir une image dans le texte."
+        },
+        {
+            "id": 99,
+            "question": "Quelle transformation modifie la perspective 3D ?",
+            "options": [
+                "perspective()",
+                "view()",
+                "3d()",
+                "depth()"
+            ],
+            "answer": 0,
+            "explanation": "transform: perspective(500px) rotateY(45deg);"
+        },
+        {
+            "id": 100,
+            "question": "Quelle est la valeur par défaut de `flex-direction` ?",
+            "options": [
+                "row",
+                "column",
+                "row-reverse",
+                "auto"
+            ],
+            "answer": 0,
+            "explanation": "Les éléments s'alignent en ligne (horizontalement) par défaut."
+        }
+    ]
+}

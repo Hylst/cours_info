@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz Docker Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quelle commande liste les conteneurs actifs ?",
+            "options": [
+                "docker ps",
+                "docker list",
+                "docker active",
+                "docker status"
+            ],
+            "answer": 0,
+            "explanation": "docker ps liste les conteneurs en cours d'exécution. Ajouter -a liste tous les conteneurs."
+        },
+        {
+            "id": 2,
+            "question": "Quel fichier décrit la construction d'une image ?",
+            "options": [
+                "docker-compose.yml",
+                "Dockerfile",
+                "Imagefile",
+                "Containerfile"
+            ],
+            "answer": 1,
+            "explanation": "Le Dockerfile contient les instructions FROM, RUN, CMD, etc."
+        },
+        {
+            "id": 3,
+            "question": "Comment exécuter une commande dans un conteneur existant ?",
+            "options": [
+                "docker run",
+                "docker exec",
+                "docker enter",
+                "docker shell"
+            ],
+            "answer": 1,
+            "explanation": "docker exec -it <id> <commande> permet d'interagir avec un conteneur lancé."
+        },
+        {
+            "id": 4,
+            "question": "Quelle option permet de mapper un port hôte:conteneur ?",
+            "options": [
+                "-p 80:80",
+                "-port 80:80",
+                "-m 80:80",
+                "-bind 80:80"
+            ],
+            "answer": 0,
+            "explanation": "L'option -p (ou --publish) lie le port de la machine locale à celui du conteneur."
+        },
+        {
+            "id": 5,
+            "question": "Quelle commande supprime tous les objets non utilisés ?",
+            "options": [
+                "docker clean",
+                "docker system prune",
+                "docker rm all",
+                "docker garbage"
+            ],
+            "answer": 1,
+            "explanation": "docker system prune nettoie conteneurs arrêtés, réseaux inutilisés et images orphelines."
+        },
+        {
+            "id": 6,
+            "question": "Quelle est la différence entre une Image et un Conteneur ?",
+            "options": [
+                "Aucune",
+                "L'image est le modèle (classe), le conteneur l'instance (objet)",
+                "L'image est active, le conteneur stocké",
+                "Le conteneur est plus gros"
+            ],
+            "answer": 1,
+            "explanation": "Une image est en lecture seule. Un conteneur est une couche d'écriture par-dessus l'image."
+        },
+        {
+            "id": 7,
+            "question": "Quelle instruction Dockerfile définit la commande par défaut ?",
+            "options": [
+                "RUN",
+                "CMD",
+                "EXEC",
+                "START"
+            ],
+            "answer": 1,
+            "explanation": "CMD spécifie la commande lancée au démarrage du conteneur. ENTRYPOINT est aussi possible."
+        },
+        {
+            "id": 8,
+            "question": "Comment lancer un conteneur en arrière-plan (détaché) ?",
+            "options": [
+                "-b",
+                "--background",
+                "-d",
+                "--detach"
+            ],
+            "answer": 2,
+            "explanation": "L'option -d (detached) lance le conteneur sans bloquer le terminal."
+        },
+        {
+            "id": 9,
+            "question": "Quel outil permet de gérer des applications multi-conteneurs ?",
+            "options": [
+                "Docker Swarm",
+                "Docker Compose",
+                "Kubernetes",
+                "Docker Registry"
+            ],
+            "answer": 1,
+            "explanation": "Docker Compose utilise un fichier YAML pour orchestrer plusieurs services."
+        },
+        {
+            "id": 10,
+            "question": "Quelle commande télécharge une image sans la lancer ?",
+            "options": [
+                "docker get",
+                "docker fetch",
+                "docker pull",
+                "docker load"
+            ],
+            "answer": 2,
+            "explanation": "docker pull <image> récupère l'image depuis le registre."
+        },
+        {
+            "id": 11,
+            "question": "Où sont stockées les images publiques officielles ?",
+            "options": [
+                "GitHub",
+                "Docker Hub",
+                "GitLab",
+                "Localhost"
+            ],
+            "answer": 1,
+            "explanation": "Le Docker Hub est le registre par défaut."
+        },
+        {
+            "id": 12,
+            "question": "Comment voir les logs d'un conteneur ?",
+            "options": [
+                "docker logs <id>",
+                "docker history <id>",
+                "docker cat <id>",
+                "docker show <id>"
+            ],
+            "answer": 0,
+            "explanation": "Affiche STDOUT et STDERR du processus principal."
+        },
+        {
+            "id": 13,
+            "question": "Quelle instruction Dockerfile copie des fichiers locaux ?",
+            "options": [
+                "MOVE",
+                "ADD",
+                "COPY",
+                "TRANSFER"
+            ],
+            "answer": 2,
+            "explanation": "COPY est préféré à ADD (qui gère aussi les URL et tars) pour sa simplicité."
+        },
+        {
+            "id": 14,
+            "question": "Comment créer un volume nommé ?",
+            "options": [
+                "docker volume create",
+                "docker create volume",
+                "docker vol new",
+                "docker system vol"
+            ],
+            "answer": 0,
+            "explanation": "docker volume create <nom>."
+        },
+        {
+            "id": 15,
+            "question": "Quelle commande arrête un conteneur ?",
+            "options": [
+                "docker stop",
+                "docker kill",
+                "docker pause",
+                "docker end"
+            ],
+            "answer": 0,
+            "explanation": "docker stop envoie SIGTERM (laissant le temps de fermer). docker kill envoie SIGKILL."
+        },
+        {
+            "id": 16,
+            "question": "Comment construire une image depuis un Dockerfile ?",
+            "options": [
+                "docker build .",
+                "docker make .",
+                "docker compile .",
+                "docker image ."
+            ],
+            "answer": 0,
+            "explanation": "Souvent utilisé avec -t pour taguer l'image : docker build -t nom ."
+        },
+        {
+            "id": 17,
+            "question": "Quel fichier ignore les fichiers lors du build ?",
+            "options": [
+                ".dockerignore",
+                ".gitignore",
+                "ignore.docker",
+                "docker.ignore"
+            ],
+            "answer": 0,
+            "explanation": "Fonctionne comme .gitignore pour éviter d'envoyer node_modules ou .git au daemon."
+        },
+        {
+            "id": 18,
+            "question": "Dans Docker Compose, comment définir une variable d'environnement ?",
+            "options": [
+                "env_file",
+                "environment",
+                "vars",
+                "env"
+            ],
+            "answer": 1,
+            "explanation": "Section 'environment' ou via un fichier référencé dans 'env_file'."
+        },
+        {
+            "id": 19,
+            "question": "Quelle commande liste toutes les images locales ?",
+            "options": [
+                "docker images",
+                "docker list images",
+                "docker ls -i",
+                "docker show images"
+            ],
+            "answer": 0,
+            "explanation": "Alias de docker image ls."
+        },
+        {
+            "id": 20,
+            "question": "Qu'est-ce qu'un conteneur 'stateless' ?",
+            "options": [
+                "Sans état persistant",
+                "Sans système d'exploitation",
+                "Sans réseau",
+                "Sans nom"
+            ],
+            "answer": 0,
+            "explanation": "Les données ne survivent pas au redémarrage, sauf si stockées dans un volume."
+        },
+        {
+            "id": 21,
+            "question": "Quelle commande supprime une image ?",
+            "options": [
+                "docker rmi",
+                "docker rm",
+                "docker del image",
+                "docker erase"
+            ],
+            "answer": 0,
+            "explanation": "rmi = ReMove Image."
+        },
+        {
+            "id": 22,
+            "question": "Quel réseau Docker permet aux conteneurs de se voir par nom ?",
+            "options": [
+                "bridge par défaut",
+                "bridge défini par l'utilisateur",
+                "host",
+                "none"
+            ],
+            "answer": 1,
+            "explanation": "Le DNS interne Docker ne fonctionne que sur les réseaux bridge créés par l'utilisateur."
+        },
+        {
+            "id": 23,
+            "question": "Comment redémarrer automatiquement un conteneur s'il plante ?",
+            "options": [
+                "--restart always",
+                "--autorestart",
+                "--keep-alive",
+                "--loop"
+            ],
+            "answer": 0,
+            "explanation": "Ou --restart on-failure, unless-stopped."
+        },
+        {
+            "id": 24,
+            "question": "Quelle commande connecte un conteneur à un réseau ?",
+            "options": [
+                "docker network connect",
+                "docker link",
+                "docker net attach",
+                "docker join"
+            ],
+            "answer": 0,
+            "explanation": "docker network connect <réseau> <conteneur>."
+        },
+        {
+            "id": 25,
+            "question": "Quelle est l'image de base minimale populaire ?",
+            "options": [
+                "Ubuntu",
+                "Alpine",
+                "Debian",
+                "CentOS"
+            ],
+            "answer": 1,
+            "explanation": "Alpine Linux fait environ 5 Mo."
+        },
+        {
+            "id": 26,
+            "question": "Comment monter un dossier local dans le conteneur (Bind Mount) ?",
+            "options": [
+                "-v /host:/container",
+                "-m /host:/container",
+                "--mount host",
+                "-copy"
+            ],
+            "answer": 0,
+            "explanation": "L'option -v (volume) permet de lier un chemin hôte à un chemin conteneur."
+        },
+        {
+            "id": 27,
+            "question": "Quelle instruction définit le répertoire de travail ?",
+            "options": [
+                "DIR",
+                "WORKDIR",
+                "CD",
+                "LOCATION"
+            ],
+            "answer": 1,
+            "explanation": "Tous les RUN, CMD, COPY suivants s'exécuteront depuis ce dossier."
+        },
+        {
+            "id": 28,
+            "question": "Que fait `FROM scratch` ?",
+            "options": [
+                "Part d'une image vierge",
+                "Part de l'image Scratch (chat)",
+                "Erreur",
+                "Part de Ubuntu"
+            ],
+            "answer": 0,
+            "explanation": "Utilisé pour créer des images de base ou des binaires statiques (Go, Rust)."
+        },
+        {
+            "id": 29,
+            "question": "Comment voir l'historique des couches d'une image ?",
+            "options": [
+                "docker history",
+                "docker layers",
+                "docker inspect",
+                "docker steps"
+            ],
+            "answer": 0,
+            "explanation": "Affiche les commandes qui ont créé chaque layer."
+        },
+        {
+            "id": 30,
+            "question": "Quelle commande affiche les infos bas niveau (JSON) ?",
+            "options": [
+                "docker inspect",
+                "docker details",
+                "docker info",
+                "docker json"
+            ],
+            "answer": 0,
+            "explanation": "Retourne toute la configuration d'un objet Docker."
+        },
+        {
+            "id": 31,
+            "question": "Comment supprimer TOUS les conteneurs (actifs ou non) ?",
+            "options": [
+                "docker rm -f $(docker ps -aq)",
+                "docker rm all",
+                "docker clean --force",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "$(docker ps -aq) liste tous les ID. rm -f force la suppression."
+        },
+        {
+            "id": 32,
+            "question": "Quelle instruction expose un port (documentation seulement) ?",
+            "options": [
+                "PORT",
+                "EXPOSE",
+                "OPEN",
+                "NET"
+            ],
+            "answer": 1,
+            "explanation": "EXPOSE indique sur quel port le conteneur écoute, mais ne le publie pas."
+        },
+        {
+            "id": 33,
+            "question": "Quel driver de stockage est utilisé par défaut ?",
+            "options": [
+                "overlay2",
+                "aufs",
+                "btrfs",
+                "vfs"
+            ],
+            "answer": 0,
+            "explanation": "overlay2 est le standard actuel performant sur Linux."
+        },
+        {
+            "id": 34,
+            "question": "Comment taguer une image existante ?",
+            "options": [
+                "docker tag",
+                "docker name",
+                "docker label",
+                "docker alias"
+            ],
+            "answer": 0,
+            "explanation": "docker tag source:tag target:tag."
+        },
+        {
+            "id": 35,
+            "question": "Quelle commande Docker Compose démarre les services ?",
+            "options": [
+                "docker-compose up",
+                "docker-compose start",
+                "docker-compose run",
+                "docker-compose boot"
+            ],
+            "answer": 0,
+            "explanation": "'up' crée et démarre. 'start' démarre seulement si déjà créés."
+        },
+        {
+            "id": 36,
+            "question": "Comment forcer la reconstruction avec Compose ?",
+            "options": [
+                "--build",
+                "--recreate",
+                "--force",
+                "--new"
+            ],
+            "answer": 0,
+            "explanation": "docker-compose up --build."
+        },
+        {
+            "id": 37,
+            "question": "Quelle est l'utilisateur par défaut dans un conteneur ?",
+            "options": [
+                "root",
+                "docker",
+                "admin",
+                "user"
+            ],
+            "answer": 0,
+            "explanation": "Root, ce qui peut poser des problèmes de sécurité."
+        },
+        {
+            "id": 38,
+            "question": "Comment changer d'utilisateur dans le Dockerfile ?",
+            "options": [
+                "USER",
+                "SWITCH",
+                "LOGIN",
+                "SUDO"
+            ],
+            "answer": 0,
+            "explanation": "USER nom_utilisateur."
+        },
+        {
+            "id": 39,
+            "question": "Comment exécuter une commande seulement au build ?",
+            "options": [
+                "RUN",
+                "CMD",
+                "BUILD",
+                "EXEC"
+            ],
+            "answer": 0,
+            "explanation": "RUN s'exécute lors de la création de l'image (ex: installation package)."
+        },
+        {
+            "id": 40,
+            "question": "Quel fichier gère les exclusions contextuelles ?",
+            "options": [
+                ".dockerignore",
+                ".gitignore",
+                "exclude.txt",
+                "Context"
+            ],
+            "answer": 0,
+            "explanation": "Déjà vu ? Question similaire posée différemment pour renforcer."
+        },
+        {
+            "id": 41,
+            "question": "Quelle commande permet de se loguer au Docker Hub ?",
+            "options": [
+                "docker login",
+                "docker signin",
+                "docker auth",
+                "docker connect"
+            ],
+            "answer": 0,
+            "explanation": "Demande user/pass et stocke le token."
+        },
+        {
+            "id": 42,
+            "question": "Quel est l'avantage des Multi-stage builds ?",
+            "options": [
+                "Images plus légères",
+                "Build plus rapide",
+                "Plus de sécurité",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Permet de compiler dans une étape et copier juste le binaire dans l'image finale."
+        },
+        {
+            "id": 43,
+            "question": "Comment limiter la mémoire d'un conteneur ?",
+            "options": [
+                "--memory='256m'",
+                "-m 256",
+                "limit-ram",
+                "mem: 256"
+            ],
+            "answer": 0,
+            "explanation": "docker run --memory='256m'."
+        },
+        {
+            "id": 44,
+            "question": "Quelle commande montre l'usage CPU/RAM en temps réel ?",
+            "options": [
+                "docker stats",
+                "docker top",
+                "docker monitor",
+                "docker info"
+            ],
+            "answer": 0,
+            "explanation": "Similaire à 'htop' pour les conteneurs."
+        },
+        {
+            "id": 45,
+            "question": "Quelle commande copie un fichier du conteneur vers l'hôte ?",
+            "options": [
+                "docker cp",
+                "docker copy",
+                "docker move",
+                "docker get"
+            ],
+            "answer": 0,
+            "explanation": "docker cp <container>:<path> <localpath>."
+        },
+        {
+            "id": 46,
+            "question": "Docker est écrit en quel langage ?",
+            "options": [
+                "Go",
+                "C++",
+                "Python",
+                "Java"
+            ],
+            "answer": 0,
+            "explanation": "Golang (Google Go)."
+        },
+        {
+            "id": 47,
+            "question": "Quelle est la différence entre ADD et COPY ?",
+            "options": [
+                "ADD gère les URL et décompresse les tar",
+                "COPY est plus rapide",
+                "ADD est déprécié",
+                "Aucune"
+            ],
+            "answer": 0,
+            "explanation": "COPY est strict (fichiers locaux). ADD est magique (URL, auto-extract)."
+        },
+        {
+            "id": 48,
+            "question": "Qu'est-ce qu'un 'dangling image' ?",
+            "options": [
+                "Une image sans tag (<none>)",
+                "Une image corrompue",
+                "Une image en cours de téléchargement",
+                "Une image dangereuse"
+            ],
+            "answer": 0,
+            "explanation": "Souvent résidu d'anciens builds. Supprimable avec prune."
+        },
+        {
+            "id": 49,
+            "question": "Comment passer une variable d'environnement au RUN ?",
+            "options": [
+                "ARG",
+                "ENV",
+                "VAR",
+                "PARAM"
+            ],
+            "answer": 0,
+            "explanation": "ARG est disponible uniquement au build. ENV persiste au runtime."
+        },
+        {
+            "id": 50,
+            "question": "Quelle commande pour initialiser un Swarm ?",
+            "options": [
+                "docker swarm init",
+                "docker cluster create",
+                "docker swarm start",
+                "docker init"
+            ],
+            "answer": 0,
+            "explanation": "Transforme le noeud actuel en Manager."
+        },
+        {
+            "id": 51,
+            "question": "Quel driver réseau permet au conteneur d'utiliser l'IP de l'hôte ?",
+            "options": [
+                "host",
+                "bridge",
+                "macvlan",
+                "overlay"
+            ],
+            "answer": 0,
+            "explanation": "Le conteneur n'est plus isolé au niveau réseau."
+        },
+        {
+            "id": 52,
+            "question": "Quelle commande supprime un volume ?",
+            "options": [
+                "docker volume rm",
+                "docker rm volume",
+                "docker vol del",
+                "docker delete vol"
+            ],
+            "answer": 0,
+            "explanation": "Impossible si le volume est utilisé par un conteneur."
+        },
+        {
+            "id": 53,
+            "question": "Qu'est-ce que Docker Scout ?",
+            "options": [
+                "Un outil d'analyse de vulnérabilités",
+                "Un outil de recherche",
+                "Un navigateur",
+                "Un éclaireur"
+            ],
+            "answer": 0,
+            "explanation": "Remplace Docker Scan. Analyse les CVE dans les images."
+        },
+        {
+            "id": 54,
+            "question": "Comment renommer un conteneur ?",
+            "options": [
+                "docker rename",
+                "docker name",
+                "docker mv",
+                "docker alias"
+            ],
+            "answer": 0,
+            "explanation": "docker rename old_name new_name."
+        },
+        {
+            "id": 55,
+            "question": "Quel fichier ignore les fichiers pour Docker Compose ?",
+            "options": [
+                "Aucun spécifique, utilise .dockerignore pour le build",
+                ".composeignore",
+                ".ignore",
+                "docker-compose.ignore"
+            ],
+            "answer": 0,
+            "explanation": "Compose utilise le contexte de build, donc .dockerignore."
+        },
+        {
+            "id": 56,
+            "question": "Quelle option de `run` nettoie le conteneur après arrêt ?",
+            "options": [
+                "--rm",
+                "--clean",
+                "--temp",
+                "--del"
+            ],
+            "answer": 0,
+            "explanation": "Très utile pour les conteneurs éphémères de test."
+        },
+        {
+            "id": 57,
+            "question": "Comment voir les processus DANS un conteneur ?",
+            "options": [
+                "docker top",
+                "docker ps -p",
+                "docker proc",
+                "docker list proc"
+            ],
+            "answer": 0,
+            "explanation": "Affiche les PID de l'hôte correspondant aux processus du conteneur."
+        },
+        {
+            "id": 58,
+            "question": "Quel signal est envoyé par `docker stop` par défaut ?",
+            "options": [
+                "SIGTERM",
+                "SIGINT",
+                "SIGKILL",
+                "SIGQUIT"
+            ],
+            "answer": 0,
+            "explanation": "Laisse 10 secondes (par défaut) pour s'arrêter proprement."
+        },
+        {
+            "id": 59,
+            "question": "Comment surcharger le CMD par défaut ?",
+            "options": [
+                "En ajoutant la commande après le nom de l'image",
+                "Avec --cmd",
+                "Impossible",
+                "Dans le Dockerfile uniquement"
+            ],
+            "answer": 0,
+            "explanation": "docker run my-image echo 'Hello' remplace le CMD."
+        },
+        {
+            "id": 60,
+            "question": "Quelle commande liste les réseaux ?",
+            "options": [
+                "docker network ls",
+                "docker net list",
+                "docker networks",
+                "docker ls net"
+            ],
+            "answer": 0,
+            "explanation": "Affiche bridge, host, none, overlay..."
+        },
+        {
+            "id": 61,
+            "question": "Quel est le PID du processus principal dans le conteneur ?",
+            "options": [
+                "1",
+                "0",
+                "100",
+                "Random"
+            ],
+            "answer": 0,
+            "explanation": "Le processus lancé par CMD/ENTRYPOINT a le PID 1. S'il meurt, le conteneur meurt."
+        },
+        {
+            "id": 62,
+            "question": "Comment mettre en pause un conteneur ?",
+            "options": [
+                "docker pause",
+                "docker stop",
+                "docker freeze",
+                "docker halt"
+            ],
+            "answer": 0,
+            "explanation": "Gèle les processus (SIGSTOP)."
+        },
+        {
+            "id": 63,
+            "question": "Quelle commande sauvegarde une image dans une archive tar ?",
+            "options": [
+                "docker save",
+                "docker export",
+                "docker archive",
+                "docker zip"
+            ],
+            "answer": 0,
+            "explanation": "docker save -o image.tar my-image."
+        },
+        {
+            "id": 64,
+            "question": "Quelle commande charge une image depuis un tar ?",
+            "options": [
+                "docker load",
+                "docker import",
+                "docker open",
+                "docker unzip"
+            ],
+            "answer": 0,
+            "explanation": "docker load -i image.tar."
+        },
+        {
+            "id": 65,
+            "question": "Comment créer un nouveau tag pour une image ?",
+            "options": [
+                "docker tag",
+                "docker label",
+                "docker alias",
+                "docker name"
+            ],
+            "answer": 0,
+            "explanation": "Crée un pointeur. L'Image ID reste le même."
+        },
+        {
+            "id": 66,
+            "question": "Quelle est la différence entre ENTRYPOINT et CMD ?",
+            "options": [
+                "ENTRYPOINT est la commande fixe, CMD les arguments par défaut",
+                "CMD est fixe",
+                "Aucune",
+                "ENTRYPOINT est déprécié"
+            ],
+            "answer": 0,
+            "explanation": "Arguments passés au `run` s'ajoutent à ENTRYPOINT mais remplacent CMD."
+        },
+        {
+            "id": 67,
+            "question": "Comment lister les volumes ?",
+            "options": [
+                "docker volume ls",
+                "docker vol list",
+                "docker ls vol",
+                "docker volumes"
+            ],
+            "answer": 0,
+            "explanation": "Liste les volumes gérés par Docker."
+        },
+        {
+            "id": 68,
+            "question": "Quel outil graphique populaire gère Docker ?",
+            "options": [
+                "Portainer",
+                "Docker UI",
+                "Kitematic",
+                "Rancher"
+            ],
+            "answer": 0,
+            "explanation": "Interface Web très utilisée."
+        },
+        {
+            "id": 69,
+            "question": "Quelle option définit le nom du conteneur ?",
+            "options": [
+                "--name",
+                "-n",
+                "--id",
+                "--label"
+            ],
+            "answer": 0,
+            "explanation": "docker run --name mon-serveur ..."
+        },
+        {
+            "id": 70,
+            "question": "Dans quel dossier sont stockés les volumes sous Linux ?",
+            "options": [
+                "/var/lib/docker/volumes",
+                "/etc/docker",
+                "/tmp/docker",
+                "/home/docker"
+            ],
+            "answer": 0,
+            "explanation": "Chemin par défaut."
+        },
+        {
+            "id": 71,
+            "question": "Comment modifier un conteneur en cours d'exécution ?",
+            "options": [
+                "On ne le modifie pas, on recrée",
+                "docker update",
+                "docker edit",
+                "docker change"
+            ],
+            "answer": 0,
+            "explanation": "Philosophie des conteneurs immuables. On change l'image, on relance."
+        },
+        {
+            "id": 72,
+            "question": "Quelle commande affiche les événements Docker en temps réel ?",
+            "options": [
+                "docker events",
+                "docker logs",
+                "docker monitor",
+                "docker watch"
+            ],
+            "answer": 0,
+            "explanation": "Affiche créations, arrêts, connexions réseau..."
+        },
+        {
+            "id": 73,
+            "question": "Comment spécifier le fichier Compose à utiliser ?",
+            "options": [
+                "-f fichier.yml",
+                "--file",
+                "-c",
+                "--config"
+            ],
+            "answer": 0,
+            "explanation": "docker-compose -f prod.yml up."
+        },
+        {
+            "id": 74,
+            "question": "Quel est l'OS hôte sous Docker Desktop Windows/Mac ?",
+            "options": [
+                "Une VM Linux cachée",
+                "Windows",
+                "Mac",
+                "Aucun"
+            ],
+            "answer": 0,
+            "explanation": "Docker a besoin d'un noyau Linux. Il tourne dans une micro-VM."
+        },
+        {
+            "id": 75,
+            "question": "Que signifie l'état 'Exited (0)' ?",
+            "options": [
+                "Arrêt normal sans erreur",
+                "Crash",
+                "Erreur fatale",
+                "En cours"
+            ],
+            "answer": 0,
+            "explanation": "Code de sortie 0 signifie succès."
+        },
+        {
+            "id": 76,
+            "question": "Que signifie 'Exited (137)' ?",
+            "options": [
+                "Tué par OOMKiller (Out of Memory)",
+                "Arrêt normal",
+                "Erreur syntaxe",
+                "Fichier introuvable"
+            ],
+            "answer": 0,
+            "explanation": "128 + 9 (SIGKILL). Souvent manque de RAM."
+        },
+        {
+            "id": 77,
+            "question": "Comment visualiser l'arbre des processus ?",
+            "options": [
+                "pstree (sur l'hôte ou conteneur)",
+                "docker tree",
+                "docker graph",
+                "docker view"
+            ],
+            "answer": 0,
+            "explanation": "Pas de commande docker native pour l'arbre global."
+        },
+        {
+            "id": 78,
+            "question": "Quelle instruction définit une vérification d'état ?",
+            "options": [
+                "HEALTHCHECK",
+                "CHECK",
+                "TEST",
+                "STATUS"
+            ],
+            "answer": 0,
+            "explanation": "Permet à Docker de savoir si le service répond vraiment (pas juste si le processus tourne)."
+        },
+        {
+            "id": 79,
+            "question": "Comment empêcher Docker de démarrer au boot ?",
+            "options": [
+                "systemctl disable docker",
+                "docker config boot off",
+                "Impossible",
+                "docker stop daemon"
+            ],
+            "answer": 0,
+            "explanation": "Gestion standard des services Linux."
+        },
+        {
+            "id": 80,
+            "question": "Quel port écoute le daemon Docker (socket TCP, déconseillé) ?",
+            "options": [
+                "2375",
+                "8080",
+                "22",
+                "443"
+            ],
+            "answer": 0,
+            "explanation": "2375 (non chiffré) ou 2376 (TLS)."
+        },
+        {
+            "id": 81,
+            "question": "Quelle commande permet de 'prune' seulement les images ?",
+            "options": [
+                "docker image prune",
+                "docker prune image",
+                "docker rm images",
+                "docker clean images"
+            ],
+            "answer": 0,
+            "explanation": "Supprime les images 'dangling'."
+        },
+        {
+            "id": 82,
+            "question": "Comment partager un volume entre conteneurs ?",
+            "options": [
+                "--volumes-from",
+                "--share",
+                "--link-volume",
+                "--map"
+            ],
+            "answer": 0,
+            "explanation": "Option héritée (--volumes-from <container>)."
+        },
+        {
+            "id": 83,
+            "question": "Quel est le format par défaut des logs Docker ?",
+            "options": [
+                "json-file",
+                "syslog",
+                "journald",
+                "txt"
+            ],
+            "answer": 0,
+            "explanation": "Fichiers JSON stockés sur l'hôte."
+        },
+        {
+            "id": 84,
+            "question": "Qu'est-ce que 'docker context' ?",
+            "options": [
+                "Gère plusieurs environnements/daemons (local, remote)",
+                "Gère les variables",
+                "Gère le texte",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Permet de switcher facilement entre Docker Desktop, serveur SSH, cloud..."
+        },
+        {
+            "id": 85,
+            "question": "Comment passer une image d'un serveur A à B sans Hub ?",
+            "options": [
+                "save | ssh load",
+                "copy paste",
+                "ftp",
+                "impossible"
+            ],
+            "answer": 0,
+            "explanation": "docker save myimg | ssh user@host 'docker load'."
+        },
+        {
+            "id": 86,
+            "question": "Quelle commande affiche la version client et serveur ?",
+            "options": [
+                "docker version",
+                "docker -v",
+                "docker info",
+                "docker ver"
+            ],
+            "answer": 0,
+            "explanation": "docker -v affiche juste la version client."
+        },
+        {
+            "id": 87,
+            "question": "Quel fichier permet de configurer le daemon (registry mirror, etc) ?",
+            "options": [
+                "daemon.json",
+                "docker.conf",
+                "config.yml",
+                "settings.json"
+            ],
+            "answer": 0,
+            "explanation": "/etc/docker/daemon.json."
+        },
+        {
+            "id": 88,
+            "question": "Comment ignorer le cache lors du build ?",
+            "options": [
+                "--no-cache",
+                "--force",
+                "--fresh",
+                "--clean"
+            ],
+            "answer": 0,
+            "explanation": "docker build --no-cache ."
+        },
+        {
+            "id": 89,
+            "question": "Quelle instruction marque la fin des options d'un ENTRYPOINT ?",
+            "options": [
+                "--",
+                "END",
+                "STOP",
+                ";"
+            ],
+            "answer": 0,
+            "explanation": "Convention shell standard."
+        },
+        {
+            "id": 90,
+            "question": "Comment voir les diffs du système de fichiers d'un conteneur ?",
+            "options": [
+                "docker diff",
+                "docker changes",
+                "docker status",
+                "docker fs"
+            ],
+            "answer": 0,
+            "explanation": "Liste les fichiers modifiés (A), supprimés (D) ou changés (C) par rapport à l'image."
+        },
+        {
+            "id": 91,
+            "question": "Quelle instruction SHELL permet de changer le shell par défaut ?",
+            "options": [
+                "SHELL",
+                "BASH",
+                "CMD",
+                "RUN"
+            ],
+            "answer": 0,
+            "explanation": "SHELL [\"powershell\", \"-command\"] pour Windows par exemple."
+        },
+        {
+            "id": 92,
+            "question": "Qu'est-ce qu'un 'multi-host networking' ?",
+            "options": [
+                "Réseau Overlay",
+                "Réseau Bridge",
+                "Réseau Local",
+                "Réseau Mesh"
+            ],
+            "answer": 0,
+            "explanation": "Permet aux conteneurs sur différents hôtes Swarm de communiquer."
+        },
+        {
+            "id": 93,
+            "question": "Comment limiter le CPU ?",
+            "options": [
+                "--cpus",
+                "-c",
+                "--cpu-limit",
+                "cpu: 1"
+            ],
+            "answer": 0,
+            "explanation": "--cpus=0.5 (demi-coeur)."
+        },
+        {
+            "id": 94,
+            "question": "Quelle commande met à jour une image (pull) ?",
+            "options": [
+                "docker pull",
+                "docker update",
+                "docker refresh",
+                "docker upgrade"
+            ],
+            "answer": 0,
+            "explanation": "Télécharge la dernière version du tag (ex: latest)."
+        },
+        {
+            "id": 95,
+            "question": "Comment exécuter docker sans sudo ?",
+            "options": [
+                "Ajouter l'user au groupe docker",
+                "Impossible",
+                "Utiliser root",
+                "Changer les droits du binaire"
+            ],
+            "answer": 0,
+            "explanation": "usermod -aG docker $USER."
+        },
+        {
+            "id": 96,
+            "question": "Que signifie l'instruction ONBUILD ?",
+            "options": [
+                "Instruction déclenchée quand l'image est utilisée comme base",
+                "Au build courant",
+                "Au démarrage",
+                "Erreur"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour créer des images 'builder' génériques."
+        },
+        {
+            "id": 97,
+            "question": "Quel est le registre par défaut ?",
+            "options": [
+                "Docker Hub",
+                "Google CR",
+                "AWS ECR",
+                "Azure ACR"
+            ],
+            "answer": 0,
+            "explanation": "docker.io."
+        },
+        {
+            "id": 98,
+            "question": "Comment lister les plugins installés ?",
+            "options": [
+                "docker plugin ls",
+                "docker plugins",
+                "docker list plugins",
+                "docker show plugins"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'étendre Docker (volume drivers, network drivers)."
+        },
+        {
+            "id": 99,
+            "question": "Comment déboguer un build qui échoue ?",
+            "options": [
+                "Lancer un conteneur depuis l'étape précédente",
+                "Lire les logs",
+                "--progress=plain",
+                "Tout ça"
+            ],
+            "answer": 3,
+            "explanation": "Bonnes pratiques de débogage."
+        },
+        {
+            "id": 100,
+            "question": "Quelle est la philosophie de Docker ?",
+            "options": [
+                "Un processus par conteneur",
+                "Une VM complète",
+                "Tout dans un seul conteneur",
+                "GUI only"
+            ],
+            "answer": 0,
+            "explanation": "Microservices : découplage et isolation."
+        }
+    ]
+}

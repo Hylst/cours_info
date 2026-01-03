@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo CSS3 - 150+ propriétés avec démos visuelles | Guide 2025</title>
+    <meta name="description"
+        content="Guide CSS3 : 150+ propriétés avec démos interactives. Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
+    <meta name="keywords"
+        content="CSS, CSS3, Flexbox, Grid, animations, transitions, responsive design, variables CSS, tutoriel, guide, mémo, stylesheets">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#264de4">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo CSS3 - 150+ propriétés">
+    <meta property="og:description"
+        content="Guide CSS3 avec démos visuelles : Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo CSS3 - 150+ propriétés">
+    <meta name="twitter:description"
+        content="Guide CSS3 avec démos visuelles : Flexbox, Grid, animations, transitions, responsive design, variables CSS.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="cours-css-style.css">
+    <link rel="stylesheet" href="assets/css/quiz-style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">CSS</div>CSS3
+            </div>
+            <nav>
+                <a href="#s1">Syntaxe</a>
+                <a href="#s5">Flexbox</a>
+                <a href="#s6">Grid</a>
+                <a href="#s7">Anim</a>
+                <a href="#s12">Référence</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo CSS3</h1>
+            <p>Guide pratique avec exemples visuels pour maîtriser les styles et la mise en page web moderne.</p>
+            <p style="margin-top: 20px; color: var(--text); font-size: 1.1rem; max-width: 800px; margin-inline: auto;">
+                Le CSS (Cascading Style Sheets) est le langage de design du Web. Il transforme le HTML brut en
+                interfaces riches et adaptatives. Ce mémo condense les concepts essentiels, du Box Model aux nouvelles
+                fonctionnalités comme Grid et les Container Queries.
+            </p>
+        </div>
+    </section>
+
+    <!-- INTRO GENERAL -->
+    <div class="intro-box" style="background:#1e293b; border-bottom:1px solid #334155; padding:30px 0;">
+        <div class="container">
+            <h3 style="margin-top:0; color:var(--primary)">La puissance du CSS moderne</h3>
+            <p style="color:var(--text); max-width:800px;">
+                Le <strong>CSS (Cascading Style Sheets)</strong> a énormément évolué. Fini les "hacks" avec des
+                flottants !
+                Aujourd'hui, avec <strong>Flexbox</strong> et <strong>Grid</strong>, la mise en page est robuste.
+                Les <strong>Variables CSS</strong>, les fonctions comme <code>clamp()</code> et les nesting natifs
+                apportent
+                une puissance proche des préprocesseurs (Sass) directement dans le navigateur.
+            </p>
+        </div>
+    </div>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Syntaxe</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Sélecteurs</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Box Model</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Texte</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Flexbox</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Grid</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Animations</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Responsive</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Variables</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Architecture CSS</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>CSS Moderne</a>
+                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Référence</a>
+                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Galerie Démos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- S1: SYNTAXE -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Syntaxe CSS</h2>
+                    <p class="sec-sub">Structure de base</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                La syntaxe CSS est simple mais stricte. Elle repose sur des sélecteurs qui ciblent les éléments HTML et
+                des blocs de déclarations <code>{}</code> contenant des paires "propriété: valeur".
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Syntaxe</div>
+                <pre><span class="sel">sélecteur</span> {
+    <span class="prop">propriété</span>: <span class="val">valeur</span>;
+    <span class="prop">propriété</span>: <span class="val">valeur</span>;
+}
+
+<span class="c">/* Exemple */</span>
+<span class="sel">h1</span> {
+    <span class="prop">color</span>: <span class="val">#2965f1</span>;
+    <span class="prop">font-size</span>: <span class="val">2rem</span>;
+    <span class="prop">margin-bottom</span>: <span class="val">16px</span>;
+}</pre>
+            </div>
+
+            <h3>Intégration CSS</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>3 méthodes</div>
+                <pre><span class="c">&lt;!-- 1. Externe (recommandé) --&gt;</span>
+&lt;link rel="stylesheet" href="<span class="val">style.css</span>"&gt;
+
+<span class="c">&lt;!-- 2. Interne (dans &lt;head&gt;) --&gt;</span>
+&lt;style&gt;
+    <span class="sel">body</span> { <span class="prop">margin</span>: <span class="val">0</span>; }
+&lt;/style&gt;
+
+<span class="c">&lt;!-- 3. Inline (à éviter) --&gt;</span>
+&lt;p style="<span class="prop">color</span>: <span class="val">red</span>;"&gt;Texte&lt;/p&gt;</pre>
+            </div>
+
+            <h3>Unités</h3>
+            <table>
+                <tr>
+                    <th>Unité</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>px</code></td>
+                    <td>Absolue</td>
+                    <td>Pixels (fixe)</td>
+                </tr>
+                <tr>
+                    <td><code>%</code></td>
+                    <td>Relative</td>
+                    <td>% du parent</td>
+                </tr>
+                <tr>
+                    <td><code>em</code></td>
+                    <td>Relative</td>
+                    <td>× taille police parent</td>
+                </tr>
+                <tr>
+                    <td><code>rem</code></td>
+                    <td>Relative</td>
+                    <td>× taille police racine (html)</td>
+                </tr>
+                <tr>
+                    <td><code>vw/vh</code></td>
+                    <td>Viewport</td>
+                    <td>% largeur/hauteur écran</td>
+                </tr>
+                <tr>
+                    <td><code>fr</code></td>
+                    <td>Grid</td>
+                    <td>Fraction d'espace disponible</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- S2: SÉLECTEURS -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Sélecteurs</h2>
+                    <p class="sec-sub">Cibler les éléments</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                La puissance du CSS réside dans sa capacité à cibler précisément les éléments. Des sélecteurs simples
+                aux combinateurs avancés, maîtriser le ciblage est essentiel pour un code propre.
+            </p>
+
+            <h3>Sélecteurs de base</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Base</div>
+                <pre><span class="sel">*</span> { }           <span class="c">/* Universel */</span>
+<span class="sel">element</span> { }     <span class="c">/* Type (p, div, h1...) */</span>
+<span class="sel">.classe</span> { }     <span class="c">/* Classe */</span>
+<span class="sel">#id</span> { }         <span class="c">/* ID (unique) */</span>
+<span class="sel">[attr]</span> { }      <span class="c">/* Attribut */</span>
+<span class="sel">[attr="val"]</span>    <span class="c">/* Attribut = valeur */</span></pre>
+            </div>
+
+            <h3>Combinateurs</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Combinateurs</div>
+                <pre><span class="sel">A B</span>    <span class="c">/* Descendant (B dans A) */</span>
+<span class="sel">A > B</span>  <span class="c">/* Enfant direct */</span>
+<span class="sel">A + B</span>  <span class="c">/* Frère adjacent (suivant) */</span>
+<span class="sel">A ~ B</span>  <span class="c">/* Frères généraux (tous suivants) */</span>
+<span class="sel">A, B</span>   <span class="c">/* Groupement */</span></pre>
+            </div>
+
+            <h3>Pseudo-classes</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>États</div>
+                    <pre><span class="sel">:hover</span>    <span class="c">/* Survol */</span>
+<span class="sel">:focus</span>    <span class="c">/* Focus */</span>
+<span class="sel">:active</span>   <span class="c">/* Clic */</span>
+<span class="sel">:visited</span>  <span class="c">/* Lien visité */</span>
+<span class="sel">:checked</span>  <span class="c">/* Coché */</span>
+<span class="sel">:disabled</span> <span class="c">/* Désactivé */</span></pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                            class="dot g"></span>Position</div>
+                    <pre><span class="sel">:first-child</span>   <span class="c">/* Premier enfant */</span>
+<span class="sel">:last-child</span>    <span class="c">/* Dernier */</span>
+<span class="sel">:nth-child(n)</span>  <span class="c">/* Nième */</span>
+<span class="sel">:nth-child(odd)</span>  <span class="c">/* Impairs */</span>
+<span class="sel">:nth-child(even)</span> <span class="c">/* Pairs */</span>
+<span class="sel">:not(sel)</span>      <span class="c">/* Négation */</span></pre>
+                </div>
+            </div>
+
+            <h3>Pseudo-éléments</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Pseudo-éléments</div>
+                <pre><span class="sel">::before</span>       <span class="c">/* Avant le contenu */</span>
+<span class="sel">::after</span>        <span class="c">/* Après le contenu */</span>
+<span class="sel">::first-line</span>   <span class="c">/* Première ligne */</span>
+<span class="sel">::first-letter</span> <span class="c">/* Première lettre */</span>
+<span class="sel">::selection</span>    <span class="c">/* Texte sélectionné */</span>
+<span class="sel">::placeholder</span>  <span class="c">/* Placeholder input */</span></pre>
+            </div>
+
+            <h3>Spécificité (priorité)</h3>
+            <table>
+                <tr>
+                    <th>Sélecteur</th>
+                    <th>Spécificité</th>
+                </tr>
+                <tr>
+                    <td><code>*</code></td>
+                    <td>0-0-0</td>
+                </tr>
+                <tr>
+                    <td><code>element</code></td>
+                    <td>0-0-1</td>
+                </tr>
+                <tr>
+                    <td><code>.classe</code></td>
+                    <td>0-1-0</td>
+                </tr>
+                <tr>
+                    <td><code>#id</code></td>
+                    <td>1-0-0</td>
+                </tr>
+                <tr>
+                    <td><code>style=""</code></td>
+                    <td>1-0-0-0</td>
+                </tr>
+                <tr>
+                    <td><code>!important</code></td>
+                    <td>∞ (éviter)</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- S3: BOX MODEL -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Box Model</h2>
+                    <p class="sec-sub">Dimensions et espacements</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Chaque élément HTML est une boîte. Comprendre le modèle de boîte (marges, bordures, padding, contenu)
+                est le prérequis absolu pour contrôler la mise en page et les dimensions.
+            </p>
+
+            <div class="demo">
+                <div class="demo-title">Modèle de boîte</div>
+                <div style="display:flex;justify-content:center">
+                    <div style="background:#f59e0b33;padding:20px;border:2px dashed #f59e0b;border-radius:8px">
+                        <span style="color:#f59e0b;font-size:.75rem">margin</span>
+                        <div
+                            style="background:#a855f733;padding:20px;border:2px dashed #a855f7;border-radius:6px;margin-top:8px">
+                            <span style="color:#a855f7;font-size:.75rem">border</span>
+                            <div
+                                style="background:#10b98133;padding:20px;border:2px dashed #10b981;border-radius:4px;margin-top:8px">
+                                <span style="color:#10b981;font-size:.75rem">padding</span>
+                                <div
+                                    style="background:#264de4;padding:20px;border-radius:4px;margin-top:8px;text-align:center">
+                                    <span style="color:#fff;font-size:.85rem">content</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Box Model</div>
+                <pre><span class="c">/* Box-sizing (recommandé) */</span>
+<span class="sel">*</span> { <span class="prop">box-sizing</span>: <span class="val">border-box</span>; }
+
+<span class="c">/* Dimensions */</span>
+<span class="prop">width</span>: <span class="val">100%</span>;    <span class="prop">height</span>: <span class="val">auto</span>;
+<span class="prop">max-width</span>: <span class="val">1200px</span>;  <span class="prop">min-height</span>: <span class="val">100vh</span>;
+
+<span class="c">/* Margin (extérieur) */</span>
+<span class="prop">margin</span>: <span class="val">20px</span>;              <span class="c">/* 4 côtés */</span>
+<span class="prop">margin</span>: <span class="val">10px 20px</span>;         <span class="c">/* vertical | horizontal */</span>
+<span class="prop">margin</span>: <span class="val">10px 20px 30px 40px</span>; <span class="c">/* haut droite bas gauche */</span>
+<span class="prop">margin</span>: <span class="val">0 auto</span>;            <span class="c">/* Centrer horizontalement */</span>
+
+<span class="c">/* Padding (intérieur) */</span>
+<span class="prop">padding</span>: <span class="val">20px</span>;
+<span class="prop">padding-left</span>: <span class="val">10px</span>;
+
+<span class="c">/* Border */</span>
+<span class="prop">border</span>: <span class="val">1px solid #ccc</span>;
+<span class="prop">border-radius</span>: <span class="val">8px</span>;  <span class="c">/* Coins arrondis */</span>
+<span class="prop">border-radius</span>: <span class="val">50%</span>;  <span class="c">/* Cercle */</span></pre>
+            </div>
+
+            <h3>Display</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Display</div>
+                <pre><span class="prop">display</span>: <span class="val">block</span>;       <span class="c">/* Prend toute la largeur */</span>
+<span class="prop">display</span>: <span class="val">inline</span>;      <span class="c">/* Sur la même ligne */</span>
+<span class="prop">display</span>: <span class="val">inline-block</span>; <span class="c">/* Inline + dimensions */</span>
+<span class="prop">display</span>: <span class="val">none</span>;        <span class="c">/* Caché */</span>
+<span class="prop">display</span>: <span class="val">flex</span>;        <span class="c">/* Flexbox */</span>
+<span class="prop">display</span>: <span class="val">grid</span>;        <span class="c">/* Grid */</span>
+
+<span class="prop">visibility</span>: <span class="val">hidden</span>;   <span class="c">/* Caché mais occupe l'espace */</span>
+<span class="prop">opacity</span>: <span class="val">0.5</span>;         <span class="c">/* Transparence */</span></pre>
+            </div>
+
+            <h3>Position</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Position</div>
+                <pre><span class="prop">position</span>: <span class="val">static</span>;    <span class="c">/* Par défaut (flux normal) */</span>
+<span class="prop">position</span>: <span class="val">relative</span>;  <span class="c">/* Décalé de sa position normale */</span>
+<span class="prop">position</span>: <span class="val">absolute</span>;  <span class="c">/* Par rapport au parent positionné */</span>
+<span class="prop">position</span>: <span class="val">fixed</span>;     <span class="c">/* Par rapport au viewport */</span>
+<span class="prop">position</span>: <span class="val">sticky</span>;    <span class="c">/* relative puis fixed au scroll */</span>
+
+<span class="prop">top</span>: <span class="val">10px</span>;  <span class="prop">right</span>: <span class="val">0</span>;  <span class="prop">bottom</span>: <span class="val">0</span>;  <span class="prop">left</span>: <span class="val">0</span>;
+<span class="prop">z-index</span>: <span class="val">100</span>;  <span class="c">/* Ordre d'empilement */</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S4: TEXTE -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Texte & Couleurs</h2>
+                    <p class="sec-sub">Typographie et couleurs</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le design web, c'est avant tout de la typographie et de la couleur. CSS offre des outils puissants pour
+                gérer les polices, l'alignement, et des palettes de couleurs modernes (HSL, RGB).
+            </p>
+
+            <h3>Typographie</h3>
+            <div class="demo">
+                <div class="demo-title">Exemples</div>
+                <p style="font-family:serif">font-family: serif</p>
+                <p style="font-size:1.5em">font-size: 1.5em</p>
+                <p style="font-weight:700">font-weight: 700 (bold)</p>
+                <p style="font-style:italic">font-style: italic</p>
+                <p style="text-transform:uppercase">text-transform: uppercase</p>
+                <p style="text-decoration:underline">text-decoration: underline</p>
+                <p style="letter-spacing:3px">letter-spacing: 3px</p>
+                <p style="line-height:2">line-height: 2</p>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Typographie</div>
+                <pre><span class="prop">font-family</span>: <span class="val">'Inter', sans-serif</span>;
+<span class="prop">font-size</span>: <span class="val">16px</span>;
+<span class="prop">font-weight</span>: <span class="val">400</span>;  <span class="c">/* 100-900, normal=400, bold=700 */</span>
+<span class="prop">font-style</span>: <span class="val">italic</span>;
+<span class="prop">line-height</span>: <span class="val">1.6</span>;
+<span class="prop">letter-spacing</span>: <span class="val">0.5px</span>;
+<span class="prop">text-align</span>: <span class="val">center</span>;  <span class="c">/* left | right | justify */</span>
+<span class="prop">text-transform</span>: <span class="val">uppercase</span>;
+<span class="prop">text-decoration</span>: <span class="val">none</span>;  <span class="c">/* underline | line-through */</span>
+<span class="prop">text-shadow</span>: <span class="val">2px 2px 4px rgba(0,0,0,0.3)</span>;
+<span class="prop">white-space</span>: <span class="val">nowrap</span>;
+<span class="prop">overflow</span>: <span class="val">hidden</span>;
+<span class="prop">text-overflow</span>: <span class="val">ellipsis</span>;  <span class="c">/* ... */</span></pre>
+            </div>
+
+            <h3>Couleurs</h3>
+            <div class="demo">
+                <div class="demo-title">Formats de couleurs</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <div style="padding:12px 20px;background:#264de4;border-radius:6px">#264de4</div>
+                    <div style="padding:12px 20px;background:rgb(38,77,228);border-radius:6px">rgb(38,77,228)</div>
+                    <div style="padding:12px 20px;background:rgba(38,77,228,0.5);border-radius:6px">rgba(..., 0.5)</div>
+                    <div style="padding:12px 20px;background:hsl(227,80%,52%);border-radius:6px">hsl(227,80%,52%)</div>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Couleurs</div>
+                <pre><span class="prop">color</span>: <span class="val">#fff</span>;                <span class="c">/* Hex */</span>
+<span class="prop">color</span>: <span class="val">#ffffff</span>;             <span class="c">/* Hex 6 digits */</span>
+<span class="prop">color</span>: <span class="val">rgb(255, 255, 255)</span>;  <span class="c">/* RGB */</span>
+<span class="prop">color</span>: <span class="val">rgba(255,255,255,0.8)</span>; <span class="c">/* RGBA (alpha) */</span>
+<span class="prop">color</span>: <span class="val">hsl(0, 0%, 100%)</span>;    <span class="c">/* HSL */</span>
+<span class="prop">color</span>: <span class="val">transparent</span>;
+<span class="prop">color</span>: <span class="val">currentColor</span>;        <span class="c">/* Hérite */</span></pre>
+            </div>
+
+            <h3>Background</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Background</div>
+                <pre><span class="prop">background-color</span>: <span class="val">#f0f0f0</span>;
+<span class="prop">background-image</span>: <span class="val">url('img.jpg')</span>;
+<span class="prop">background-size</span>: <span class="val">cover</span>;  <span class="c">/* contain | 100% */</span>
+<span class="prop">background-position</span>: <span class="val">center</span>;
+<span class="prop">background-repeat</span>: <span class="val">no-repeat</span>;
+<span class="prop">background-attachment</span>: <span class="val">fixed</span>;
+
+<span class="c">/* Gradients */</span>
+<span class="prop">background</span>: <span class="val">linear-gradient(135deg, #264de4, #00d4ff)</span>;
+<span class="prop">background</span>: <span class="val">radial-gradient(circle, #264de4, #0a0f1a)</span>;</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5: FLEXBOX -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Flexbox</h2>
+                    <p class="sec-sub">Mise en page flexible</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Flexbox a révolutionné la mise en page unidimensionnelle. Il distribue l'espace et aligne les éléments
+                dans un conteneur (ligne ou colonne) avec une flexibilité incroyable.
+            </p>
+
+            <div class="demo">
+                <div class="demo-title">justify-content</div>
+                <div style="display:flex;gap:30px;flex-wrap:wrap">
+                    <div><span
+                            style="display:block;font-size:.75rem;color:var(--dim);margin-bottom:6px">flex-start</span>
+                        <div
+                            style="display:flex;justify-content:flex-start;gap:6px;background:var(--bg);padding:10px;border-radius:6px;width:150px">
+                            <div style="width:25px;height:25px;background:var(--primary);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--primary);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--primary);border-radius:4px"></div>
+                        </div>
+                    </div>
+                    <div><span style="display:block;font-size:.75rem;color:var(--dim);margin-bottom:6px">center</span>
+                        <div
+                            style="display:flex;justify-content:center;gap:6px;background:var(--bg);padding:10px;border-radius:6px;width:150px">
+                            <div style="width:25px;height:25px;background:var(--accent);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--accent);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--accent);border-radius:4px"></div>
+                        </div>
+                    </div>
+                    <div><span
+                            style="display:block;font-size:.75rem;color:var(--dim);margin-bottom:6px">space-between</span>
+                        <div
+                            style="display:flex;justify-content:space-between;background:var(--bg);padding:10px;border-radius:6px;width:150px">
+                            <div style="width:25px;height:25px;background:var(--green);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--green);border-radius:4px"></div>
+                            <div style="width:25px;height:25px;background:var(--green);border-radius:4px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Conteneur Flex</div>
+                <pre><span class="sel">.container</span> {
+    <span class="prop">display</span>: <span class="val">flex</span>;
+    <span class="prop">flex-direction</span>: <span class="val">row</span>;     <span class="c">/* column | row-reverse */</span>
+    <span class="prop">flex-wrap</span>: <span class="val">wrap</span>;         <span class="c">/* nowrap | wrap-reverse */</span>
+    <span class="prop">justify-content</span>: <span class="val">center</span>; <span class="c">/* Axe principal */</span>
+    <span class="prop">align-items</span>: <span class="val">center</span>;     <span class="c">/* Axe secondaire */</span>
+    <span class="prop">gap</span>: <span class="val">20px</span>;               <span class="c">/* Espacement */</span>
+}
+
+<span class="c">/* justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly */</span>
+<span class="c">/* align-items: flex-start | flex-end | center | stretch | baseline */</span></pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Enfants Flex</div>
+                <pre><span class="sel">.item</span> {
+    <span class="prop">flex</span>: <span class="val">1</span>;           <span class="c">/* Prend l'espace disponible */</span>
+    <span class="prop">flex-grow</span>: <span class="val">1</span>;      <span class="c">/* Capacité à grandir */</span>
+    <span class="prop">flex-shrink</span>: <span class="val">0</span>;    <span class="c">/* Capacité à rétrécir */</span>
+    <span class="prop">flex-basis</span>: <span class="val">200px</span>; <span class="c">/* Taille de base */</span>
+    <span class="prop">align-self</span>: <span class="val">flex-end</span>; <span class="c">/* Alignement individuel */</span>
+    <span class="prop">order</span>: <span class="val">1</span>;          <span class="c">/* Ordre d'affichage */</span>
+}</pre>
+            </div>
+
+            <div class="tip"><strong>💡 Centrer parfaitement</strong>
+                <code>display: flex; justify-content: center; align-items: center;</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- S6: GRID -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">CSS Grid</h2>
+                    <p class="sec-sub">Grilles bidimensionnelles</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                CSS Grid est le système de layout le plus complet. Il permet de diviser une page en régions majeures et
+                de définir des relations de positionnement en deux dimensions (lignes et colonnes).
+            </p>
+
+            <div class="demo">
+                <div class="demo-title">Grid Layout</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                    <div style="background:var(--primary);padding:20px;border-radius:6px;text-align:center">1</div>
+                    <div
+                        style="background:var(--accent);padding:20px;border-radius:6px;text-align:center;grid-column:span 2">
+                        2 (span 2)</div>
+                    <div style="background:var(--green);padding:20px;border-radius:6px;text-align:center">3</div>
+                    <div style="background:var(--purple);padding:20px;border-radius:6px;text-align:center">4</div>
+                    <div style="background:var(--pink);padding:20px;border-radius:6px;text-align:center">5</div>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Grid Container</div>
+                <pre><span class="sel">.grid</span> {
+    <span class="prop">display</span>: <span class="val">grid</span>;
+    <span class="prop">grid-template-columns</span>: <span class="val">1fr 2fr 1fr</span>;
+    <span class="prop">grid-template-columns</span>: <span class="val">repeat(3, 1fr)</span>;
+    <span class="prop">grid-template-columns</span>: <span class="val">repeat(auto-fit, minmax(250px, 1fr))</span>;
+    <span class="prop">grid-template-rows</span>: <span class="val">100px auto</span>;
+    <span class="prop">gap</span>: <span class="val">20px</span>;
+    <span class="prop">justify-items</span>: <span class="val">center</span>;
+    <span class="prop">align-items</span>: <span class="val">center</span>;
+}</pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Grid Items</div>
+                <pre><span class="sel">.item</span> {
+    <span class="prop">grid-column</span>: <span class="val">1 / 3</span>;      <span class="c">/* De col 1 à 3 */</span>
+    <span class="prop">grid-column</span>: <span class="val">span 2</span>;     <span class="c">/* Sur 2 colonnes */</span>
+    <span class="prop">grid-row</span>: <span class="val">1 / 3</span>;         <span class="c">/* De row 1 à 3 */</span>
+    <span class="prop">grid-area</span>: <span class="val">1 / 1 / 3 / 3</span>; <span class="c">/* row-start / col-start / row-end / col-end */</span>
+}</pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Template Areas</div>
+                <pre><span class="sel">.layout</span> {
+    <span class="prop">display</span>: <span class="val">grid</span>;
+    <span class="prop">grid-template-areas</span>:
+        <span class="val">"header header header"</span>
+        <span class="val">"nav    main   aside"</span>
+        <span class="val">"footer footer footer"</span>;
+}
+<span class="sel">.header</span> { <span class="prop">grid-area</span>: <span class="val">header</span>; }
+<span class="sel">.nav</span>    { <span class="prop">grid-area</span>: <span class="val">nav</span>; }
+<span class="sel">.main</span>   { <span class="prop">grid-area</span>: <span class="val">main</span>; }</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S7: ANIMATIONS -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Animations & Transitions</h2>
+                    <p class="sec-sub">Mouvement et effets</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Donnez vie à vos interfaces. Les transitions adoucissent les changements d'état, tandis que les
+                animations <code>@keyframes</code> permettent de scénariser des mouvements complexes.
+            </p>
+
+            <h3>Transitions</h3>
+            <div class="demo">
+                <div class="demo-title">Survol (hover)</div>
+                <style>
+                    .demo-btn {
+                        padding: 12px 28px;
+                        background: var(--primary);
+                        border: none;
+                        color: #fff;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all .3s ease
+                    }
+
+                    .demo-btn:hover {
+                        background: var(--accent);
+                        transform: translateY(-3px);
+                        box-shadow: 0 10px 20px rgba(0, 212, 255, .3)
+                    }
+                </style>
+                <button class="demo-btn">Survolez-moi</button>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Transitions</div>
+                <pre><span class="sel">.element</span> {
+    <span class="prop">transition</span>: <span class="val">all 0.3s ease</span>;
+    <span class="prop">transition</span>: <span class="val">property duration timing-function delay</span>;
+}
+
+<span class="c">/* Timing functions */</span>
+<span class="prop">transition-timing-function</span>: <span class="val">ease</span>;        <span class="c">/* Par défaut */</span>
+<span class="prop">transition-timing-function</span>: <span class="val">linear</span>;
+<span class="prop">transition-timing-function</span>: <span class="val">ease-in</span>;    <span class="c">/* Accélère */</span>
+<span class="prop">transition-timing-function</span>: <span class="val">ease-out</span>;   <span class="c">/* Décélère */</span>
+<span class="prop">transition-timing-function</span>: <span class="val">ease-in-out</span>;
+<span class="prop">transition-timing-function</span>: <span class="val">cubic-bezier(0.68, -0.55, 0.27, 1.55)</span>;</pre>
+            </div>
+
+            <h3>Keyframes</h3>
+            <div class="demo">
+                <div class="demo-title">Animation continue</div>
+                <style>
+                    @keyframes pulse {
+
+                        0%,
+                        100% {
+                            transform: scale(1)
+                        }
+
+                        50% {
+                            transform: scale(1.1)
+                        }
+                    }
+
+                    .demo-pulse {
+                        width: 60px;
+                        height: 60px;
+                        background: linear-gradient(135deg, var(--primary), var(--accent));
+                        border-radius: 50%;
+                        animation: pulse 2s infinite
+                    }
+                </style>
+                <div class="demo-pulse"></div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Keyframes</div>
+                <pre><span class="sel">@keyframes</span> <span class="val">slidein</span> {
+    <span class="sel">from</span> {
+        <span class="prop">transform</span>: <span class="val">translateX(-100%)</span>;
+        <span class="prop">opacity</span>: <span class="val">0</span>;
+    }
+    <span class="sel">to</span> {
+        <span class="prop">transform</span>: <span class="val">translateX(0)</span>;
+        <span class="prop">opacity</span>: <span class="val">1</span>;
+    }
+}
+
+<span class="sel">.element</span> {
+    <span class="prop">animation</span>: <span class="val">slidein 0.5s ease-out forwards</span>;
+    <span class="c">/* name | duration | timing | fill-mode */</span>
+    <span class="prop">animation-iteration-count</span>: <span class="val">infinite</span>;
+    <span class="prop">animation-direction</span>: <span class="val">alternate</span>;
+}</pre>
+            </div>
+
+            <h3>Transform</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Transform</div>
+                <pre><span class="prop">transform</span>: <span class="val">translateX(50px)</span>;
+<span class="prop">transform</span>: <span class="val">translateY(-20px)</span>;
+<span class="prop">transform</span>: <span class="val">translate(50px, -20px)</span>;
+<span class="prop">transform</span>: <span class="val">scale(1.2)</span>;
+<span class="prop">transform</span>: <span class="val">rotate(45deg)</span>;
+<span class="prop">transform</span>: <span class="val">skew(10deg, 5deg)</span>;
+<span class="prop">transform</span>: <span class="val">rotate(45deg) scale(1.2)</span>; <span class="c">/* Combiné */</span>
+<span class="prop">transform-origin</span>: <span class="val">center center</span>;</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S8: RESPONSIVE -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Responsive Design</h2>
+                    <p class="sec-sub">Media queries et adaptabilité</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Un site moderne doit s'adapter à tout. Les Media Queries permettent d'appliquer des styles différents
+                selon la taille de l'écran, pour une expérience optimale sur mobile comme sur desktop.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Media Queries</div>
+                <pre><span class="c">/* Mobile first */</span>
+<span class="sel">.container</span> { <span class="prop">width</span>: <span class="val">100%</span>; }
+
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="val">576px</span>) {
+    <span class="c">/* Smartphone paysage */</span>
+}
+
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="val">768px</span>) {
+    <span class="c">/* Tablette */</span>
+    <span class="sel">.container</span> { <span class="prop">max-width</span>: <span class="val">720px</span>; }
+}
+
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="val">992px</span>) {
+    <span class="c">/* Desktop */</span>
+    <span class="sel">.container</span> { <span class="prop">max-width</span>: <span class="val">960px</span>; }
+}
+
+<span class="sel">@media</span> (<span class="prop">min-width</span>: <span class="val">1200px</span>) {
+    <span class="c">/* Large desktop */</span>
+    <span class="sel">.container</span> { <span class="prop">max-width</span>: <span class="val">1140px</span>; }
+}</pre>
+            </div>
+
+            <h3>Breakpoints courants</h3>
+            <table>
+                <tr>
+                    <th>Device</th>
+                    <th>Breakpoint</th>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td><code>&lt; 576px</code></td>
+                </tr>
+                <tr>
+                    <td>Mobile paysage</td>
+                    <td><code>≥ 576px</code></td>
+                </tr>
+                <tr>
+                    <td>Tablette</td>
+                    <td><code>≥ 768px</code></td>
+                </tr>
+                <tr>
+                    <td>Desktop</td>
+                    <td><code>≥ 992px</code></td>
+                </tr>
+                <tr>
+                    <td>Large Desktop</td>
+                    <td><code>≥ 1200px</code></td>
+                </tr>
+            </table>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Autres conditions</div>
+                <pre><span class="sel">@media</span> (<span class="prop">max-width</span>: <span class="val">768px</span>) { }
+<span class="sel">@media</span> (<span class="prop">orientation</span>: <span class="val">landscape</span>) { }
+<span class="sel">@media</span> (<span class="prop">prefers-color-scheme</span>: <span class="val">dark</span>) { }
+<span class="sel">@media</span> (<span class="prop">hover</span>: <span class="val">hover</span>) { }  <span class="c">/* Device avec hover */</span>
+<span class="sel">@media</span> print { }  <span class="c">/* Impression */</span></pre>
+            </div>
+
+            <div class="tip"><strong>💡</strong> Utilisez <code>clamp(min, preferred, max)</code> pour des tailles
+                fluides: <code>font-size: clamp(1rem, 2vw, 1.5rem);</code></div>
+        </div>
+    </section>
+
+    <!-- S9: VARIABLES -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Variables CSS</h2>
+                    <p class="sec-sub">Custom Properties</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Les Custom Properties (Variables CSS) apportent la dynamique. Stockez des valeurs réutilisables pour
+                faciliter la maintenance et créer des thèmes.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Variables</div>
+                <pre><span class="c">/* Déclaration (dans :root = global) */</span>
+<span class="sel">:root</span> {
+    <span class="prop">--primary</span>: <span class="val">#264de4</span>;
+    <span class="prop">--secondary</span>: <span class="val">#2965f1</span>;
+    <span class="prop">--spacing</span>: <span class="val">16px</span>;
+    <span class="prop">--radius</span>: <span class="val">8px</span>;
+    <span class="prop">--shadow</span>: <span class="val">0 4px 20px rgba(0,0,0,0.2)</span>;
+}
+
+<span class="c">/* Utilisation */</span>
+<span class="sel">.button</span> {
+    <span class="prop">background</span>: <span class="val">var(--primary)</span>;
+    <span class="prop">padding</span>: <span class="val">var(--spacing)</span>;
+    <span class="prop">border-radius</span>: <span class="val">var(--radius)</span>;
+    <span class="prop">box-shadow</span>: <span class="val">var(--shadow)</span>;
+}
+
+<span class="c">/* Valeur de fallback */</span>
+<span class="prop">color</span>: <span class="val">var(--text-color, #333)</span>;
+
+<span class="c">/* Redéfinition locale */</span>
+<span class="sel">.dark-theme</span> {
+    <span class="prop">--primary</span>: <span class="val">#00d4ff</span>;
+}</pre>
+            </div>
+
+            <h3>Fonctions CSS</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Fonctions</div>
+                <pre><span class="c">/* Calculs */</span>
+<span class="prop">width</span>: <span class="val">calc(100% - 40px)</span>;
+<span class="prop">height</span>: <span class="val">calc(100vh - var(--header-height))</span>;
+
+<span class="c">/* Valeurs fluides */</span>
+<span class="prop">font-size</span>: <span class="val">clamp(1rem, 2vw + 0.5rem, 2rem)</span>;
+<span class="prop">width</span>: <span class="val">min(100%, 1200px)</span>;
+<span class="prop">width</span>: <span class="val">max(300px, 50%)</span>;
+
+<span class="c">/* Filtres */</span>
+<span class="prop">filter</span>: <span class="val">blur(5px)</span>;
+<span class="prop">filter</span>: <span class="val">brightness(1.2)</span>;
+<span class="prop">filter</span>: <span class="val">grayscale(100%)</span>;
+<span class="prop">backdrop-filter</span>: <span class="val">blur(10px)</span>;</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S10: ARCHITECTURE -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Architecture CSS</h2>
+                    <p class="sec-sub">Méthodologie et Organisation</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Organiser son CSS est vital pour les gros projets. Découvrez les méthodologies comme BEM pour garder un
+                code modulaire, lisible et évolutif.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>BEM (Block Element Modifier)</div>
+                <pre><span class="c">/* Block */</span>
+<span class="sel">.card</span> { }
+
+<span class="c">/* Element (Enfant) */</span>
+<span class="sel">.card__title</span> { }
+<span class="sel">.card__image</span> { }
+
+<span class="c">/* Modifier (Variante) */</span>
+<span class="sel">.card--featured</span> { }
+<span class="sel">.card__btn--large</span> { }</pre>
+            </div>
+
+            <h3>Dark Mode Natif</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Thème Sombre</div>
+                <pre><span class="sel">:root</span> {
+    <span class="prop">--bg</span>: <span class="val">#ffffff</span>;
+    <span class="prop">--text</span>: <span class="val">#333333</span>;
+}
+
+<span class="sel">@media</span> (<span class="prop">prefers-color-scheme</span>: <span class="val">dark</span>) {
+    <span class="sel">:root</span> {
+        <span class="prop">--bg</span>: <span class="val">#1a1a1a</span>;
+        <span class="prop">--text</span>: <span class="val">#ffffff</span>;
+    }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S11: CSS MODERNE -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">CSS Moderne</h2>
+                    <p class="sec-sub">Nouvelles fonctionnalités puissantes</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le CSS ne cesse d'évoluer. Nesting, fonctions logiques, container queries : découvrez les
+                fonctionnalités qui rendent le CSS natif aussi puissant que les préprocesseurs.
+            </p>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Selecteurs Logiques</div>
+                    <pre><span class="c">/* :is() et :where() pour grouper */</span>
+<span class="sel">:is</span>(<span class="val">header, footer</span>) <span class="sel">p</span> {
+    <span class="prop">margin</span>: <span class="val">0</span>;
+}
+
+<span class="c">/* :has() - Le sélecteur parent ! */</span>
+<span class="sel">.card:has</span>(<span class="sel">img</span>) {
+    <span class="prop">grid-template-columns</span>: <span class="val">1fr 1fr</span>;
+}
+<span class="sel">form:has</span>(<span class="sel">input:invalid</span>) <span class="sel">button</span> {
+    <span class="prop">opacity</span>: <span class="val">0.5</span>;
+    <span class="prop">pointer-events</span>: <span class="val">none</span>;
+}</pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Propriétés Logiques</div>
+                    <pre><span class="c">/* Mieux que left/right/top/bottom */</span>
+<span class="prop">margin-block</span>: <span class="val">10px</span>;  <span class="c">/* top & bottom */</span>
+<span class="prop">margin-inline</span>: <span class="val">auto</span>; <span class="c">/* left & right */</span>
+
+<span class="prop">padding-block-start</span>: <span class="val">20px</span>; <span class="c">/* padding-top */</span>
+<span class="prop">text-align</span>: <span class="val">start</span>;       <span class="c">/* left (ou right en RTL) */</span></pre>
+                </div>
+            </div>
+
+            <h3>Container Queries</h3>
+            <p style="margin-bottom:10px">Le composant s'adapte à son conteneur, pas à l'écran.</p>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>@container</div>
+                <pre><span class="sel">.sidebar</span> {
+    <span class="prop">container-type</span>: <span class="val">inline-size</span>;
+}
+
+<span class="sel">@container</span> (<span class="prop">min-width</span>: <span class="val">400px</span>) {
+    <span class="sel">.card</span> {
+        <span class="prop">display</span>: <span class="val">flex</span>;
+    }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- S12: RÉFÉRENCE -->
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Référence rapide</h2>
+                    <p class="sec-sub">Propriétés essentielles</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Une vue d'ensemble synthétique des propriétés indispensables pour le développeur front-end moderne.
+            </p>
+
+            <h3>Box Model & Layout</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Dimensions</h4><code>width</code> <code>height</code> <code>max-width</code>
+                    <code>min-width</code> <code>max-height</code> <code>min-height</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Spacing</h4><code>margin</code> <code>padding</code> <code>gap</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Border</h4><code>border</code> <code>border-radius</code> <code>border-width</code>
+                    <code>border-style</code> <code>border-color</code> <code>outline</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Display</h4><code>display</code> <code>visibility</code> <code>opacity</code>
+                    <code>overflow</code> <code>z-index</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Position</h4><code>position</code> <code>top</code> <code>right</code> <code>bottom</code>
+                    <code>left</code> <code>inset</code>
+                </div>
+            </div>
+
+            <h3>Flexbox</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Container</h4><code>flex-direction</code> <code>flex-wrap</code> <code>justify-content</code>
+                    <code>align-items</code> <code>align-content</code> <code>gap</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Items</h4><code>flex</code> <code>flex-grow</code> <code>flex-shrink</code>
+                    <code>flex-basis</code> <code>align-self</code> <code>order</code>
+                </div>
+            </div>
+
+            <h3>Grid</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Container</h4><code>grid-template-columns</code> <code>grid-template-rows</code>
+                    <code>grid-template-areas</code> <code>grid-auto-flow</code> <code>gap</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Items</h4><code>grid-column</code> <code>grid-row</code> <code>grid-area</code>
+                    <code>justify-self</code> <code>align-self</code> <code>place-self</code>
+                </div>
+            </div>
+
+            <h3>Texte & Typographie</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Font</h4><code>font-family</code> <code>font-size</code> <code>font-weight</code>
+                    <code>font-style</code> <code>font-variant</code> <code>line-height</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Text</h4><code>text-align</code> <code>text-decoration</code> <code>text-transform</code>
+                    <code>text-shadow</code> <code>letter-spacing</code> <code>word-spacing</code>
+                    <code>white-space</code> <code>text-overflow</code>
+                </div>
+            </div>
+
+            <h3>Couleurs & Background</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Colors</h4><code>color</code> <code>background-color</code> <code>opacity</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Background</h4><code>background-image</code> <code>background-size</code>
+                    <code>background-position</code> <code>background-repeat</code> <code>background-attachment</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Gradients</h4><code>linear-gradient()</code> <code>radial-gradient()</code>
+                    <code>conic-gradient()</code>
+                </div>
+            </div>
+
+            <h3>Animations & Effets</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Transform</h4><code>transform</code> <code>translate()</code> <code>rotate()</code>
+                    <code>scale()</code> <code>skew()</code> <code>transform-origin</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Transition</h4><code>transition</code> <code>transition-property</code>
+                    <code>transition-duration</code> <code>transition-timing-function</code>
+                    <code>transition-delay</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Animation</h4><code>animation</code> <code>animation-name</code> <code>animation-duration</code>
+                    <code>animation-iteration-count</code> <code>animation-direction</code> <code>@keyframes</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Filter</h4><code>filter</code> <code>blur()</code> <code>brightness()</code>
+                    <code>contrast()</code> <code>grayscale()</code> <code>drop-shadow()</code>
+                    <code>backdrop-filter</code>
+                </div>
+            </div>
+
+            <h3>Divers</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Shadows</h4><code>box-shadow</code> <code>text-shadow</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Curseur</h4><code>cursor</code> <code>pointer-events</code> <code>user-select</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Responsive</h4><code>@media</code> <code>clamp()</code> <code>min()</code> <code>max()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Variables</h4><code>--custom-prop</code> <code>var()</code> <code>calc()</code>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 150+ propriétés CSS</strong> — Cette référence couvre
+                les propriétés les plus utilisées en CSS moderne.</div>
+        </div>
+    </section>
+
+    <!-- S13: GALERIE DEMOS -->
+    <section id="s13">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">Galerie de Démos Visuelles</h2>
+                    <p class="sec-sub">50+ effets CSS en action</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                L'apprentissage par l'exemple. Explorez cette collection de démos interactives pour visualiser
+                concrètement le comportement des propriétés CSS.
+            </p>
+
+            <h3>Borders & Border-Radius</h3>
+            <div class="demo">
+                <div class="demo-title">Variations de border-radius</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:0" title="0"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:8px" title="8px"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:16px" title="16px"></div>
+                    <div style="width:60px;height:60px;background:var(--primary);border-radius:50%" title="50%"></div>
+                    <div style="width:80px;height:60px;background:var(--accent);border-radius:30px 0" title="30px 0">
+                    </div>
+                    <div style="width:80px;height:60px;background:var(--green);border-radius:50% 0 50% 0"
+                        title="50% 0 50% 0"></div>
+                </div>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Styles de bordure</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div style="padding:16px 24px;border:3px solid var(--primary)">solid</div>
+                    <div style="padding:16px 24px;border:3px dashed var(--accent)">dashed</div>
+                    <div style="padding:16px 24px;border:3px dotted var(--green)">dotted</div>
+                    <div style="padding:16px 24px;border:3px double var(--purple)">double</div>
+                    <div style="padding:16px 24px;border:3px groove var(--pink)">groove</div>
+                    <div style="padding:16px 24px;border:3px ridge var(--orange)">ridge</div>
+                </div>
+            </div>
+
+            <h3>Box-Shadow</h3>
+            <div class="demo">
+                <div class="demo-title">Variations d'ombres</div>
+                <div style="display:flex;gap:30px;flex-wrap:wrap">
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        subtle</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        elevated</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:0 0 20px var(--primary);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        glow</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:inset 0 4px 10px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        inset</div>
+                    <div
+                        style="width:100px;height:80px;background:var(--card);border-radius:8px;box-shadow:5px 5px 0 var(--accent);display:flex;align-items:center;justify-content:center;font-size:.75rem">
+                        offset</div>
+                </div>
+            </div>
+
+            <h3>Gradients</h3>
+            <div class="demo">
+                <div class="demo-title">Types de dégradés</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(to right,var(--primary),var(--accent));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        linear →</div>
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        135deg</div>
+                    <div
+                        style="width:120px;height:80px;background:radial-gradient(circle,var(--accent),var(--bg));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        radial</div>
+                    <div
+                        style="width:120px;height:80px;background:conic-gradient(var(--primary),var(--accent),var(--green),var(--primary));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        conic</div>
+                    <div
+                        style="width:120px;height:80px;background:linear-gradient(90deg,var(--primary) 50%,var(--accent) 50%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        hard stop</div>
+                </div>
+            </div>
+
+            <h3>Transform</h3>
+            <div class="demo">
+                <div class="demo-title">Transformations (survolez)</div>
+                <style>
+                    .tr-box {
+                        width: 70px;
+                        height: 70px;
+                        background: var(--primary);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .65rem;
+                        transition: transform .3s
+                    }
+
+                    .tr-scale:hover {
+                        transform: scale(1.3)
+                    }
+
+                    .tr-rotate:hover {
+                        transform: rotate(45deg)
+                    }
+
+                    .tr-skew:hover {
+                        transform: skewX(20deg)
+                    }
+
+                    .tr-translate:hover {
+                        transform: translateY(-15px)
+                    }
+
+                    .tr-combo:hover {
+                        transform: rotate(10deg) scale(1.1) translateY(-5px)
+                    }
+                </style>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;padding:20px 0">
+                    <div class="tr-box tr-scale">scale</div>
+                    <div class="tr-box tr-rotate" style="background:var(--accent)">rotate</div>
+                    <div class="tr-box tr-skew" style="background:var(--green)">skewX</div>
+                    <div class="tr-box tr-translate" style="background:var(--purple)">translateY</div>
+                    <div class="tr-box tr-combo" style="background:var(--pink)">combo</div>
+                </div>
+            </div>
+
+            <h3>Filters</h3>
+            <div class="demo">
+                <div class="demo-title">Filtres CSS</div>
+                <style>
+                    .filter-box {
+                        width: 80px;
+                        height: 80px;
+                        background: linear-gradient(135deg, var(--primary), var(--accent));
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .65rem;
+                        text-align: center
+                    }
+                </style>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div class="filter-box">normal</div>
+                    <div class="filter-box" style="filter:blur(2px)">blur(2px)</div>
+                    <div class="filter-box" style="filter:brightness(1.5)">brightness</div>
+                    <div class="filter-box" style="filter:contrast(1.5)">contrast</div>
+                    <div class="filter-box" style="filter:grayscale(100%)">grayscale</div>
+                    <div class="filter-box" style="filter:sepia(100%)">sepia</div>
+                    <div class="filter-box" style="filter:saturate(2)">saturate</div>
+                    <div class="filter-box" style="filter:hue-rotate(90deg)">hue-rotate</div>
+                    <div class="filter-box" style="filter:invert(100%)">invert</div>
+                    <div class="filter-box" style="filter:drop-shadow(4px 4px 4px rgba(0,0,0,0.5))">drop-shadow</div>
+                </div>
+            </div>
+
+            <h3>Animations</h3>
+            <div class="demo">
+                <div class="demo-title">Animations variées</div>
+                <style>
+                    @keyframes bounce {
+
+                        0%,
+                        100% {
+                            transform: translateY(0)
+                        }
+
+                        50% {
+                            transform: translateY(-20px)
+                        }
+                    }
+
+                    @keyframes spin {
+                        to {
+                            transform: rotate(360deg)
+                        }
+                    }
+
+                    @keyframes shake {
+
+                        0%,
+                        100% {
+                            transform: translateX(0)
+                        }
+
+                        25% {
+                            transform: translateX(-5px)
+                        }
+
+                        75% {
+                            transform: translateX(5px)
+                        }
+                    }
+
+                    @keyframes fade {
+
+                        0%,
+                        100% {
+                            opacity: 1
+                        }
+
+                        50% {
+                            opacity: 0.3
+                        }
+                    }
+
+                    @keyframes grow {
+
+                        0%,
+                        100% {
+                            transform: scale(1)
+                        }
+
+                        50% {
+                            transform: scale(1.2)
+                        }
+                    }
+
+                    .anim-box {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: .6rem;
+                        text-align: center
+                    }
+                </style>
+                <div style="display:flex;gap:30px;flex-wrap:wrap;padding:20px 0">
+                    <div>
+                        <div class="anim-box" style="background:var(--primary);animation:bounce 1s infinite">bounce
+                        </div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--accent);animation:spin 2s linear infinite">spin
+                        </div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--green);animation:shake 0.5s infinite">shake</div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--purple);animation:fade 2s infinite">fade</div>
+                    </div>
+                    <div>
+                        <div class="anim-box" style="background:var(--pink);animation:grow 1s infinite">grow</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Cursors</h3>
+            <div class="demo">
+                <div class="demo-title">Types de curseurs</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:default">default</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:pointer">pointer</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:text">text</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:move">move</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:not-allowed">not-allowed
+                    </div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:wait">wait</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:crosshair">crosshair
+                    </div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:grab">grab</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:zoom-in">zoom-in</div>
+                    <div style="padding:10px 16px;background:var(--bg);border-radius:6px;cursor:col-resize">col-resize
+                    </div>
+                </div>
+            </div>
+
+            <h3>Text Effects</h3>
+            <div class="demo">
+                <div class="demo-title">Effets de texte</div>
+                <p style="font-size:1.5rem;text-shadow:2px 2px 4px rgba(0,0,0,0.5)">text-shadow</p>
+                <p
+                    style="font-size:1.5rem;background:linear-gradient(90deg,var(--primary),var(--accent),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">
+                    gradient text</p>
+                <p style="font-size:1.5rem;-webkit-text-stroke:1px var(--accent);-webkit-text-fill-color:transparent">
+                    text stroke</p>
+                <p style="font-size:1.5rem;letter-spacing:10px">letter-spacing</p>
+                <p style="font-size:1.5rem;word-spacing:20px">word spacing demo</p>
+                <p style="width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Text très long avec
+                    ellipsis automatique...</p>
+            </div>
+
+            <h3>Aspect-Ratio</h3>
+            <div class="demo">
+                <div class="demo-title">Ratios automatiques</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+                    <div
+                        style="width:120px;aspect-ratio:1/1;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        1:1</div>
+                    <div
+                        style="width:120px;aspect-ratio:16/9;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        16:9</div>
+                    <div
+                        style="width:120px;aspect-ratio:4/3;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        4:3</div>
+                    <div
+                        style="width:120px;aspect-ratio:21/9;background:var(--purple);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem">
+                        21:9</div>
+                </div>
+            </div>
+
+            <h3>Overflow & Scroll</h3>
+            <div class="demo">
+                <div class="demo-title">Comportement du scroll</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap">
+                    <div
+                        style="width:150px;height:80px;overflow:hidden;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: hidden - Le contenu qui dépasse est masqué complètement.</p>
+                    </div>
+                    <div
+                        style="width:150px;height:80px;overflow:auto;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: auto - Scroll automatique si nécessaire.</p>
+                    </div>
+                    <div
+                        style="width:150px;height:80px;overflow:scroll;background:var(--bg);padding:10px;border-radius:6px">
+                        <p style="margin:0">overflow: scroll - Toujours afficher les scrollbars.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Object-Fit (images)</h3>
+            <div class="demo">
+                <div class="demo-title">Recadrage d'images</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">cover</span>
+                        <div style="width:100px;height:100px;background:var(--bg);border-radius:8px;overflow:hidden">
+                            <div
+                                style="width:100%;height:100%;background:linear-gradient(45deg,var(--primary),var(--accent));background-size:150% 150%">
+                            </div>
+                        </div>
+                    </div>
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">contain</span>
+                        <div
+                            style="width:100px;height:100px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center">
+                            <div
+                                style="width:60px;height:80px;background:linear-gradient(45deg,var(--green),var(--accent))">
+                            </div>
+                        </div>
+                    </div>
+                    <div><span style="display:block;font-size:.7rem;color:var(--dim);margin-bottom:4px">fill</span>
+                        <div
+                            style="width:100px;height:100px;background:linear-gradient(45deg,var(--purple),var(--pink));border-radius:8px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Mix-Blend-Mode</h3>
+            <div class="demo">
+                <div class="demo-title">Modes de fusion</div>
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:multiply">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">multiply</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:screen">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">screen</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:overlay">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">overlay</span>
+                    </div>
+                    <div style="position:relative;width:80px;height:80px">
+                        <div
+                            style="position:absolute;width:50px;height:50px;background:var(--primary);border-radius:50%">
+                        </div>
+                        <div
+                            style="position:absolute;left:30px;top:30px;width:50px;height:50px;background:var(--accent);border-radius:50%;mix-blend-mode:difference">
+                        </div><span
+                            style="position:absolute;bottom:-20px;font-size:.6rem;width:100%;text-align:center">difference</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Outline</h3>
+            <div class="demo">
+                <div class="demo-title">Outline vs Border</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap">
+                    <div style="padding:16px 24px;border:3px solid var(--primary)">border</div>
+                    <div style="padding:16px 24px;outline:3px solid var(--accent)">outline</div>
+                    <div style="padding:16px 24px;outline:3px dashed var(--green);outline-offset:5px">outline-offset
+                    </div>
+                </div>
+            </div>
+
+            <h3>Clip-Path</h3>
+            <div class="demo">
+                <div class="demo-title">Formes CSS</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap;padding:10px 0">
+                    <div style="width:80px;height:80px;background:var(--primary);clip-path:circle(50%)"></div>
+                    <div
+                        style="width:80px;height:80px;background:var(--accent);clip-path:polygon(50% 0%, 100% 100%, 0% 100%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--green);clip-path:polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--purple);clip-path:polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)">
+                    </div>
+                    <div
+                        style="width:80px;height:80px;background:var(--pink);clip-path:polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Backdrop-Filter</h3>
+            <div class="demo">
+                <div class="demo-title">Effet verre (glassmorphism)</div>
+                <div
+                    style="position:relative;height:150px;background:linear-gradient(135deg,var(--primary),var(--accent),var(--green));border-radius:12px;display:flex;align-items:center;justify-content:center">
+                    <div
+                        style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:20px 40px;border-radius:10px;border:1px solid rgba(255,255,255,0.2)">
+                        <span style="font-weight:500">Glassmorphism</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Writing-Mode</h3>
+            <div class="demo">
+                <div class="demo-title">Direction du texte</div>
+                <div style="display:flex;gap:30px;align-items:flex-start">
+                    <div style="background:var(--bg);padding:10px;border-radius:6px"><span
+                            style="font-size:.7rem;color:var(--dim)">horizontal-tb</span>
+                        <p style="margin:8px 0 0">Texte normal</p>
+                    </div>
+                    <div style="background:var(--bg);padding:10px;border-radius:6px;height:120px"><span
+                            style="font-size:.7rem;color:var(--dim)">vertical-rl</span>
+                        <p style="margin:8px 0 0;writing-mode:vertical-rl">Texte vertical</p>
+                    </div>
+                    <div style="background:var(--bg);padding:10px;border-radius:6px;height:120px"><span
+                            style="font-size:.7rem;color:var(--dim)">vertical-lr</span>
+                        <p style="margin:8px 0 0;writing-mode:vertical-lr">Texte vertical</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 50+ démos interactives</strong> — Survolez les éléments
+                pour voir les effets en action!</div>
+        </div>
+    </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app"></div>
+        </div>
+    </section>
+
+    <script type="module">
+        import 'assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({
+                containerId: 'quiz-app',
+                jsonPath: 'quiz_css.json',
+                questionsPerSession: 10
+            });
+        });
+    </script>
+    <script src="assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_css.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo CSS3</strong> • 150+ propriétés • 2025</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
+                mémoire avec un
+                cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
+                faciliter l'apprentissage des autres.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

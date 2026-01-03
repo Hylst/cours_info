@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo HTML5 - 85+ balises avec exemples visuels | Guide 2025</title>
+    <meta name="description"
+        content="Guide complet HTML5 : 85+ balises avec exemples visuels. Structure, formulaires, tableaux, médias, sémantique. Mémo pratique et interactif.">
+    <meta name="keywords"
+        content="HTML, HTML5, balises HTML, formulaires, tableaux, sémantique web, tutoriel HTML, guide HTML, mémo, référence">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#e44d26">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo HTML Complet - 85+ balises">
+    <meta property="og:description"
+        content="Guide complet HTML5 avec exemples visuels : structure, formulaires, tableaux, médias, sémantique.">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo HTML Complet - 85+ balises">
+    <meta name="twitter:description"
+        content="Guide complet HTML5 avec exemples visuels : structure, formulaires, tableaux, médias, sémantique.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/quiz-style.css">
+    <style>
+        :root {
+            --primary: #e44d26;
+            --secondary: #f06529;
+            --bg: #0f0a1a;
+            --bg2: #1a1230;
+            --card: #201840;
+            --text: #f0e6ff;
+            --muted: #a89cc8;
+            --dim: #6b5f87;
+            --border: #2d2250;
+            --green: #10b981;
+            --purple: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 10, 26, .95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 700
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: .85rem;
+            transition: .2s
+        }
+
+        nav a:hover {
+            background: var(--card);
+            color: var(--text)
+        }
+
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--text), var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .toc {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: .9rem;
+            transition: .2s
+        }
+
+        .toc-item:hover {
+            border-color: var(--primary);
+            transform: translateX(4px)
+        }
+
+        .toc-num {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .75rem;
+            font-weight: 600
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .sec-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px
+        }
+
+        .sec-num {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), #c23616);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex-shrink: 0
+        }
+
+        section:nth-child(odd) .sec-num {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed)
+        }
+
+        section:nth-child(3n) .sec-num {
+            background: linear-gradient(135deg, #ec4899, #db2777)
+        }
+
+        .sec-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 4px
+        }
+
+        .sec-sub {
+            color: var(--dim);
+            font-size: .95rem
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 24px 0 12px;
+            color: var(--secondary)
+        }
+
+        p,
+        li {
+            color: var(--muted);
+            margin-bottom: 8px
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0
+        }
+
+        li {
+            padding-left: 20px;
+            position: relative
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary)
+        }
+
+        .code {
+            background: #0d0918;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 12px 0;
+            overflow: hidden
+        }
+
+        .code-head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: #1a1230;
+            border-bottom: 1px solid var(--border);
+            font-size: .75rem;
+            color: var(--dim)
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%
+        }
+
+        .dot.r {
+            background: #ff5f56
+        }
+
+        .dot.y {
+            background: #ffbd2e
+        }
+
+        .dot.g {
+            background: #27ca40
+        }
+
+        pre {
+            padding: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .8rem;
+            line-height: 1.5;
+            overflow-x: auto
+        }
+
+        .t {
+            color: var(--primary)
+        }
+
+        .a {
+            color: var(--purple)
+        }
+
+        .v {
+            color: var(--green)
+        }
+
+        .c {
+            color: var(--dim)
+        }
+
+        .demo {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 12px 0
+        }
+
+        .demo-title {
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dim);
+            margin-bottom: 12px
+        }
+
+        .demo h1,
+        .demo h2,
+        .demo h3,
+        .demo h4,
+        .demo h5,
+        .demo h6 {
+            color: var(--text);
+            margin: 8px 0;
+            background: none;
+            -webkit-text-fill-color: var(--text)
+        }
+
+        .demo p {
+            color: var(--muted)
+        }
+
+        .demo table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0
+        }
+
+        .demo th,
+        .demo td {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            text-align: left
+        }
+
+        .demo th {
+            background: var(--bg2);
+            color: var(--secondary)
+        }
+
+        .demo input,
+        .demo select,
+        .demo textarea {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 4px 0;
+            font-family: inherit
+        }
+
+        .demo input:focus,
+        .demo textarea:focus {
+            outline: none;
+            border-color: var(--primary)
+        }
+
+        .demo button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: .2s
+        }
+
+        .demo button:hover {
+            background: var(--secondary)
+        }
+
+        .demo label {
+            display: block;
+            color: var(--muted);
+            margin: 8px 0 4px;
+            font-size: .9rem
+        }
+
+        .demo fieldset {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 0
+        }
+
+        .demo legend {
+            padding: 0 8px;
+            color: var(--secondary)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px
+        }
+
+        .tip {
+            background: rgba(16, 185, 129, .1);
+            border-left: 3px solid var(--green);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0
+        }
+
+        .tip strong {
+            color: var(--green)
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px
+        }
+
+        .ref-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px
+        }
+
+        .ref-card h4 {
+            font-size: .95rem;
+            color: var(--secondary);
+            margin-bottom: 8px
+        }
+
+        /* Tooltips Reference */
+        .tt-wrap {
+            position: relative;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        .tt-wrap code {
+            cursor: help;
+            border-bottom: 1px dotted var(--muted);
+        }
+
+        .tt-box {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 280px;
+            background: var(--bg);
+            border: 1px solid var(--secondary);
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.2s ease;
+            pointer-events: none;
+            text-align: left;
+        }
+
+        .tt-wrap:hover .tt-box {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tt-def {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .tt-ex {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            border-left: 2px solid var(--secondary);
+        }
+
+        .tt-box::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--secondary) transparent transparent transparent;
+        }
+
+        .ref-card code {
+            color: var(--primary);
+            background: var(--bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: .8rem
+        }
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: var(--dim);
+            font-size: .85rem
+        }
+
+        @media(max-width:768px) {
+            .hero h1 {
+                font-size: 1.8rem
+            }
+
+            nav {
+                display: none
+            }
+
+            .sec-header {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">&lt;/&gt;</div>HTML
+            </div>
+            <nav><a href="#s1">Base</a><a href="#s3">Texte</a><a href="#s5">Médias</a><a href="#s7">Forms</a><a
+                    href="#s9">Référence</a></nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Mémo HTML Complet</h1>
+            <p>Guide pratique avec exemples visuels et référence de 80+ balises</p>
+            <p style="margin-top: 20px; color: var(--text); font-size: 1.1rem; max-width: 800px; margin-inline: auto;">
+                Le HTML (HyperText Markup Language) est le langage fondamental du Web. Il permet de structurer le
+                contenu de vos pages. Ce mémo est conçu pour être une référence rapide et visuelle pour les développeurs
+                de tous niveaux.
+            </p>
+        </div>
+    </div>
+
+    <div class="toc">
+        <div class="container">
+            <div class="toc-grid">
+                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Structure</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Métadonnées</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Texte</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Liens</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Médias</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Listes & Tableaux</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Formulaires</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Sémantique</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Accessibilité (A11y)</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>SEO & Performance</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Référence 80+ balises</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Structure de base</h2>
+                    <p class="sec-sub">Squelette HTML5</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Tout commence ici. Une page HTML bien structurée est la base d'un site robuste. Comprendre le DOCTYPE,
+                la balise html, head et body est essentiel pour garantir que votre page soit correctement interprétée
+                par les navigateurs.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>index.html</div>
+                <pre><span class="t">&lt;!DOCTYPE html&gt;</span>
+<span class="t">&lt;html</span> <span class="a">lang=</span><span class="v">"fr"</span><span class="t">&gt;</span>
+<span class="t">&lt;head&gt;</span>
+    <span class="t">&lt;meta</span> <span class="a">charset=</span><span class="v">"UTF-8"</span><span class="t">&gt;</span>
+    <span class="t">&lt;meta</span> <span class="a">name=</span><span class="v">"viewport"</span> <span class="a">content=</span><span class="v">"width=device-width, initial-scale=1.0"</span><span class="t">&gt;</span>
+    <span class="t">&lt;title&gt;</span>Titre<span class="t">&lt;/title&gt;</span>
+<span class="t">&lt;/head&gt;</span>
+<span class="t">&lt;body&gt;</span>
+    <span class="c">&lt;!-- Contenu --&gt;</span>
+<span class="t">&lt;/body&gt;</span>
+<span class="t">&lt;/html&gt;</span></pre>
+            </div>
+
+            <h3>Éléments racine</h3>
+            <ul>
+                <li><code>&lt;!DOCTYPE html&gt;</code> - Déclaration HTML5 (obligatoire)</li>
+                <li><code>&lt;html lang="fr"&gt;</code> - Élément racine + langue</li>
+                <li><code>&lt;head&gt;</code> - Conteneur métadonnées</li>
+                <li><code>&lt;body&gt;</code> - Contenu visible</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Métadonnées</h2>
+                    <p class="sec-sub">Balises &lt;head&gt;</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le contenu invisible est souvent le plus important pour les moteurs de recherche et les réseaux sociaux.
+                Les balises meta définissent l'identité de votre page, son encodage et son comportement sur mobile.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>head</div>
+                <pre><span class="t">&lt;meta</span> <span class="a">charset=</span><span class="v">"UTF-8"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">name=</span><span class="v">"viewport"</span> <span class="a">content=</span><span class="v">"width=device-width, initial-scale=1.0"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">name=</span><span class="v">"robots"</span> <span class="a">content=</span><span class="v">"index, follow"</span><span class="t">&gt;</span>
+<span class="t">&lt;link</span> <span class="a">rel=</span><span class="v">"icon"</span> <span class="a">href=</span><span class="v">"favicon.ico"</span><span class="t">&gt;</span>
+<span class="t">&lt;link</span> <span class="a">rel=</span><span class="v">"canonical"</span> <span class="a">href=</span><span class="v">"https://url-officielle.com"</span><span class="t">&gt;</span></pre>
+            </div>
+
+            <!-- EXPLICATIONS DÉTAILLÉES -->
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+
+                <!-- Viewport -->
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🔍 Zoom sur : Viewport
+                        (Mobile)</summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p style="margin-bottom: 10px;"><code>&lt;meta name="viewport" ...&gt;</code> est crucial pour
+                            le Responsive Design.</p>
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li><code>width=device-width</code> : La largeur de la page s'adapte à la largeur de l'écran
+                                de l'appareil.</li>
+                            <li><code>initial-scale=1.0</code> : Le niveau de zoom initial est à 100%.</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--muted);">⛔ Ne bloquez jamais le zoom
+                            utilisateur avec <code>user-scalable=no</code> pour des raisons d'accessibilité.</p>
+                    </div>
+                </details>
+
+                <!-- Robots -->
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🤖 Zoom sur : Robots
+                        (SEO)
+                    </summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p style="margin-bottom: 10px;">Contrôle comment Google/Bing indexent votre page.</p>
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li><code>index</code> : Autorise l'indexation de la page (apparait dans les résultats).
+                            </li>
+                            <li><code>follow</code> : Autorise les robots à suivre les liens présents sur la page.</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Contraires : <code>noindex</code> (page privée),
+                            <code>nofollow</code> (ne pas transmettre de "jus" SEO).
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Favicon -->
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">⭐ Zoom sur : Favicon
+                    </summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p>La petite icône dans l'onglet du navigateur.</p>
+                        <code
+                            style="display:block; background:#000; padding:10px; margin:10px 0; border-radius:4px; font-size:0.85rem;">&lt;link rel="icon" type="image/svg+xml" href="logo.svg"&gt;</code>
+                        <p>Format recommandé aujourd'hui : <strong>SVG</strong> (plus léger, redimensionnable) ou
+                            <strong>PNG</strong>. Le format <code>.ico</code> reste utilisé pour la rétro-compatibilité.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Canonical -->
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🔗 Zoom sur : Canonical
+                        URL</summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p>Essentiel pour éviter le <strong>Duplicate Content</strong> (pénalisant pour le SEO).</p>
+                        <p>Si votre site est accessible via <code>http://site.com</code>, <code>https://site.com</code>
+                            et <code>site.com/index.html</code>, cette balise indique aux moteurs quelle est la SEULE
+                            version officielle à référencer.</p>
+                    </div>
+                </details>
+
+            </div>
+
+            <div class="tip"><strong>💡</strong> Utilisez <code>defer</code> ou <code>async</code> pour les scripts afin
+                de ne pas bloquer le rendu.</div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 - TEXTE -->
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Texte & Formatage</h2>
+                    <p class="sec-sub">Titres, paragraphes, mise en forme</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le web est avant tout textuel. HTML offre une riche palette de balises pour hiérarchiser (titres),
+                formater (gras, italique) et donner du sens (citations, code) à vos écrits.
+            </p>
+
+            <h3>Titres h1 à h6</h3>
+            <div class="demo">
+                <div class="demo-title">Rendu</div>
+                <h1 style="font-size:2rem">Titre h1 - Principal</h1>
+                <h2 style="font-size:1.5rem">Titre h2 - Section</h2>
+                <h3 style="font-size:1.25rem">Titre h3 - Sous-section</h3>
+                <h4 style="font-size:1.1rem">Titre h4</h4>
+                <h5 style="font-size:1rem">Titre h5</h5>
+                <h6 style="font-size:.9rem">Titre h6</h6>
+            </div>
+
+            <h3>Formatage de texte</h3>
+            <div class="demo">
+                <div class="demo-title">Rendu</div>
+                <p><strong>strong</strong> - texte important (gras)</p>
+                <p><b>b</b> - gras sans importance sémantique</p>
+                <p><em>em</em> - emphase (italique)</p>
+                <p><i>i</i> - italique sans emphase</p>
+                <p><u>u</u> - souligné</p>
+                <p><s>s</s> - texte barré (obsolète)</p>
+                <p><del>del</del> - supprimé / <ins>ins</ins> - inséré</p>
+                <p><mark>mark</mark> - surligné</p>
+                <p><small>small</small> - petit texte</p>
+                <p>H<sub>2</sub>O - subscript / X<sup>2</sup> - superscript</p>
+                <p><code>code</code> - code inline</p>
+                <p><kbd>Ctrl</kbd> + <kbd>C</kbd> - touche clavier</p>
+                <p><samp>Sortie programme</samp> - sample output</p>
+                <p><var>x</var> = 5 - variable</p>
+                <p><q>Citation courte inline</q></p>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> - abréviation</p>
+                <p><cite>Titre d'œuvre</cite> - citation</p>
+                <p><dfn>Terme</dfn> - définition</p>
+                <p><time datetime="2024-01-15">15 janvier 2024</time></p>
+                <p><data value="123">Produit #123</data></p>
+                <address>Contact : email@site.com</address>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Code</div>
+                <pre><span class="t">&lt;strong&gt;</span>Important<span class="t">&lt;/strong&gt;</span>  <span class="t">&lt;b&gt;</span>Gras<span class="t">&lt;/b&gt;</span>
+<span class="t">&lt;em&gt;</span>Emphase<span class="t">&lt;/em&gt;</span>  <span class="t">&lt;i&gt;</span>Italique<span class="t">&lt;/i&gt;</span>
+<span class="t">&lt;u&gt;</span>Souligné<span class="t">&lt;/u&gt;</span>  <span class="t">&lt;s&gt;</span>Barré<span class="t">&lt;/s&gt;</span>
+<span class="t">&lt;del&gt;</span>Supprimé<span class="t">&lt;/del&gt;</span>  <span class="t">&lt;ins&gt;</span>Inséré<span class="t">&lt;/ins&gt;</span>
+<span class="t">&lt;mark&gt;</span>Surligné<span class="t">&lt;/mark&gt;</span>  <span class="t">&lt;small&gt;</span>Petit<span class="t">&lt;/small&gt;</span>
+<span class="t">&lt;sub&gt;</span>Indice<span class="t">&lt;/sub&gt;</span>  <span class="t">&lt;sup&gt;</span>Exposant<span class="t">&lt;/sup&gt;</span>
+<span class="t">&lt;code&gt;</span>Code<span class="t">&lt;/code&gt;</span>  <span class="t">&lt;kbd&gt;</span>Touche<span class="t">&lt;/kbd&gt;</span>
+<span class="t">&lt;abbr</span> <span class="a">title=</span><span class="v">"..."</span><span class="t">&gt;</span>ABR<span class="t">&lt;/abbr&gt;</span>
+<span class="t">&lt;time</span> <span class="a">datetime=</span><span class="v">"2024-01-15"</span><span class="t">&gt;</span>15 jan<span class="t">&lt;/time&gt;</span></pre>
+            </div>
+
+            <h3>Blocs de texte</h3>
+            <div class="demo">
+                <div class="demo-title">Blockquote</div>
+                <blockquote
+                    style="border-left:3px solid var(--primary);padding-left:16px;margin:10px 0;color:var(--muted)">
+                    "Une citation longue avec la balise blockquote."
+                    <footer style="font-size:.85rem;color:var(--dim)">— Auteur</footer>
+                </blockquote>
+                <!-- Code pour Blockquote -->
+                <div class="code" style="margin-top:10px; margin-bottom: 20px;">
+                    <div class="code-head"><span class="dot g"></span>HTML</div>
+                    <pre><span class="t">&lt;blockquote</span> <span class="a">cite=</span><span class="v">"source.html"</span><span class="t">&gt;</span>
+    "Une citation longue..."
+    <span class="t">&lt;footer&gt;</span>— Auteur<span class="t">&lt;/footer&gt;</span>
+<span class="t">&lt;/blockquote&gt;</span></pre>
+                </div>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Pre (préformaté)</div>
+                <pre
+                    style="background:var(--bg);padding:12px;border-radius:6px;color:var(--muted);font-family:monospace;margin:0">Texte
+    préformaté
+        avec espaces conservés</pre>
+                <!-- Code pour Pre -->
+                <div class="code" style="margin-top:10px;">
+                    <div class="code-head"><span class="dot g"></span>HTML</div>
+                    <pre><span class="t">&lt;pre&gt;</span>
+Texte
+    préformaté
+        avec espaces conservés
+<span class="t">&lt;/pre&gt;</span></pre>
+                </div>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">WBR (Césure optionnelle)</div>
+                <p>Sans &lt;wbr&gt; :</p>
+                <div
+                    style="width:140px; border:1px solid var(--border); padding:5px; margin-bottom:10px; overflow:hidden;">
+                    MotTresLongSansCesureQuiDeborde
+                </div>
+                <p>Avec &lt;wbr&gt; :</p>
+                <div style="width:140px; border:1px solid var(--border); padding:5px; overflow:hidden;">
+                    MotTresLong<wbr>AvecCesure<wbr>Optionnelle<wbr>PourEviter<wbr>LeDebordement
+                </div>
+                <!-- Code pour WBR -->
+                <div class="code" style="margin-top:10px;">
+                    <div class="code-head"><span class="dot g"></span>HTML</div>
+                    <pre>MotTresLong<span class="t">&lt;wbr&gt;</span>QuiPeutEtreCoupe</pre>
+                </div>
+            </div>
+
+            <h3>Séparateurs</h3>
+            <ul>
+                <li><code>&lt;br&gt;</code> - Saut de ligne</li>
+                <li><code>&lt;hr&gt;</code> - Ligne horizontale</li>
+                <li><code>&lt;wbr&gt;</code> - Point de coupure optionnel</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 4 - LIENS -->
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Liens & Navigation</h2>
+                    <p class="sec-sub">Balise &lt;a&gt;</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                L'hyperlien est l'essence même du web. Il permet de naviguer de page en page, de télécharger des
+                fichiers ou d'envoyer des emails. La balise annotée &lt;a&gt; est votre outil de navigation principal.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Liens</div>
+                <pre><span class="c">&lt;!-- Externe --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"https://google.com"</span><span class="t">&gt;</span>Google<span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Nouvel onglet (sécurisé) --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"url"</span> <span class="a">target=</span><span class="v">"_blank"</span> <span class="a">rel=</span><span class="v">"noopener noreferrer"</span><span class="t">&gt;</span>Lien<span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Interne --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"/page.html"</span><span class="t">&gt;</span>Page<span class="t">&lt;/a&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"./dossier/page.html"</span><span class="t">&gt;</span>Relatif<span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Ancre --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"#section"</span><span class="t">&gt;</span>Vers section<span class="t">&lt;/a&gt;</span>
+<span class="t">&lt;section</span> <span class="a">id=</span><span class="v">"section"</span><span class="t">&gt;</span>Cible<span class="t">&lt;/section&gt;</span>
+
+<span class="c">&lt;!-- Email / Téléphone --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"mailto:contact@site.com"</span><span class="t">&gt;</span>Email<span class="t">&lt;/a&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"tel:+33123456789"</span><span class="t">&gt;</span>Appeler<span class="t">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Téléchargement --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"doc.pdf"</span> <span class="a">download</span><span class="t">&gt;</span>Télécharger<span class="t">&lt;/a&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"doc.pdf"</span> <span class="a">download=</span><span class="v">"nouveau-nom.pdf"</span><span class="t">&gt;</span>Télécharger<span class="t">&lt;/a&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 - MÉDIAS -->
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Images & Médias</h2>
+                    <p class="sec-sub">Multimédia HTML5</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Un site moderne n'est pas que du texte. Images, vidéos et audio enrichissent l'expérience utilisateur.
+                Apprenez à intégrer ces médias tout en optimisant les performances.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Images</div>
+                <pre><span class="c">&lt;!-- Image simple --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"photo.jpg"</span> <span class="a">alt=</span><span class="v">"Description obligatoire"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- Dimensions + lazy loading --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"img.jpg"</span> <span class="a">alt=</span><span class="v">"..."</span> <span class="a">width=</span><span class="v">"400"</span> <span class="a">height=</span><span class="v">"300"</span> <span class="a">loading=</span><span class="v">"lazy"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- Figure + légende --&gt;</span>
+<span class="t">&lt;figure&gt;</span>
+    <span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"img.jpg"</span> <span class="a">alt=</span><span class="v">"..."</span><span class="t">&gt;</span>
+    <span class="t">&lt;figcaption&gt;</span>Légende<span class="t">&lt;/figcaption&gt;</span>
+<span class="t">&lt;/figure&gt;</span>
+
+<span class="c">&lt;!-- Image responsive --&gt;</span>
+<span class="t">&lt;picture&gt;</span>
+    <span class="t">&lt;source</span> <span class="a">media=</span><span class="v">"(min-width:800px)"</span> <span class="a">srcset=</span><span class="v">"large.jpg"</span><span class="t">&gt;</span>
+    <span class="t">&lt;source</span> <span class="a">media=</span><span class="v">"(min-width:400px)"</span> <span class="a">srcset=</span><span class="v">"medium.jpg"</span><span class="t">&gt;</span>
+    <span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"small.jpg"</span> <span class="a">alt=</span><span class="v">"..."</span><span class="t">&gt;</span>
+<span class="t">&lt;/picture&gt;</span>
+
+<span class="c">&lt;!-- Image cliquable --&gt;</span>
+<span class="t">&lt;a</span> <span class="a">href=</span><span class="v">"page.html"</span><span class="t">&gt;&lt;img</span> <span class="a">src=</span><span class="v">"btn.png"</span> <span class="a">alt=</span><span class="v">"Bouton"</span><span class="t">&gt;&lt;/a&gt;</span></pre>
+            </div>
+            <details class="info-details"
+                style="margin-top:15px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">📊 Comprendre src vs srcset
+                </summary>
+                <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                    <p><strong>src</strong> : L'image par défaut, chargée par tous les navigateurs.</p>
+                    <p><strong>srcset</strong> : Liste d'images avec leur largeur réelle (ex: <code>400w</code>). Le
+                        navigateur choisira <em>automatiquement</em> la plus adaptée à la résolution de l'écran et à la
+                        bande passante.</p>
+                    <p><strong>sizes</strong> : Indique au navigateur la taille que l'image occupera sur l'écran (ex:
+                        <code>(max-width: 600px) 100vw, 50vw</code>), avant même d'avoir chargé le CSS/Layout.
+                    </p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Audio & Vidéo</div>
+                <pre><span class="c">&lt;!-- Vidéo --&gt;</span>
+<span class="t">&lt;video</span> <span class="a">controls</span> <span class="a">width=</span><span class="v">"640"</span> <span class="a">poster=</span><span class="v">"thumb.jpg"</span><span class="t">&gt;</span>
+    <span class="t">&lt;source</span> <span class="a">src=</span><span class="v">"video.mp4"</span> <span class="a">type=</span><span class="v">"video/mp4"</span><span class="t">&gt;</span>
+    <span class="t">&lt;source</span> <span class="a">src=</span><span class="v">"video.webm"</span> <span class="a">type=</span><span class="v">"video/webm"</span><span class="t">&gt;</span>
+    <span class="t">&lt;track</span> <span class="a">src=</span><span class="v">"sous-titres.vtt"</span> <span class="a">kind=</span><span class="v">"subtitles"</span> <span class="a">srclang=</span><span class="v">"fr"</span><span class="t">&gt;</span>
+<span class="t">&lt;/video&gt;</span>
+
+<span class="c">&lt;!-- Audio --&gt;</span>
+<span class="t">&lt;audio</span> <span class="a">controls</span> <span class="a">loop</span> <span class="a">muted</span><span class="t">&gt;</span>
+    <span class="t">&lt;source</span> <span class="a">src=</span><span class="v">"audio.mp3"</span> <span class="a">type=</span><span class="v">"audio/mpeg"</span><span class="t">&gt;</span>
+<span class="t">&lt;/audio&gt;</span>
+
+<span class="c">&lt;!-- Iframe (YouTube, maps...) --&gt;</span>
+<span class="t">&lt;iframe</span> <span class="a">src=</span><span class="v">"https://youtube.com/embed/ID"</span> <span class="a">allowfullscreen</span> <span class="a">loading=</span><span class="v">"lazy"</span><span class="t">&gt;&lt;/iframe&gt;</span>
+
+<span class="c">&lt;!-- Canvas / SVG --&gt;</span>
+<span class="t">&lt;canvas</span> <span class="a">id=</span><span class="v">"c"</span> <span class="a">width=</span><span class="v">"300"</span> <span class="a">height=</span><span class="v">"200"</span><span class="t">&gt;&lt;/canvas&gt;</span>
+<span class="t">&lt;svg</span> <span class="a">width=</span><span class="v">"100"</span> <span class="a">height=</span><span class="v">"100"</span><span class="t">&gt;</span>...<span class="t">&lt;/svg&gt;</span></pre>
+            </div>
+
+            <!-- EXPLICATIONS MÉDIAS -->
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🎥 Vidéo : Attributs &
+                        Accessibilité</summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li><code>poster</code> : Image affichée avant que la lecture ne commence (comme une
+                                miniature YouTube).</li>
+                            <li><code>controls</code> : Affiche les boutons lecture/pause/volume du navigateur.</li>
+                            <li><strong>&lt;track&gt;</strong> : Indispensable pour l'accessibilité. Le fichier
+                                <code>.vtt</code> contient les sous-titres temporels.
+                            </li>
+                            <li><strong>Multi-source</strong> : Mettre plusieurs <code>&lt;source&gt;</code> permet au
+                                navigateur de choisir le format qu'il supporte (WebM est souvent plus léger que MP4).
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🖼️ Canvas vs SVG
+                    </summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p><strong>SVG (Scalable Vector Graphics)</strong> :</p>
+                        <ul style="padding-left: 20px; margin-bottom: 10px;">
+                            <li>Vectoriel (ne pixelise pas au zoom).</li>
+                            <li>Fait partie du DOM (chaque forme est une balise <code>&lt;rect&gt;</code>,
+                                <code>&lt;path&gt;</code>...).
+                            </li>
+                            <li>Idéal pour : Logos, Icônes, Graphiques simples.</li>
+                        </ul>
+                        <p><strong>Canvas</strong> :</p>
+                        <ul style="padding-left: 20px;">
+                            <li>Bitmap (matrice de pixels).</li>
+                            <li>Dessiné via JavaScript (<code>getContext('2d')</code>).</li>
+                            <li>Idéal pour : Jeux vidéo, visualisations de données complexes (milliers de points),
+                                manipulation d'images (filtres).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6 - LISTES & TABLEAUX -->
+    <section id="s6">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Listes & Tableaux</h2>
+                    <p class="sec-sub">Organisation des données</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Pour organiser des données structurées, rien de tel que les listes et les tableaux. Utilisés à bon
+                escient, ils rendent l'information complexe lisible et accessible.
+            </p>
+
+            <h3>Listes</h3>
+            <div class="grid2">
+                <div class="demo">
+                    <div class="demo-title">Liste non ordonnée (ul)</div>
+                    <ul style="list-style:disc;padding-left:20px">
+                        <li style="padding-left:0">Élément 1</li>
+                        <li style="padding-left:0">Élément 2</li>
+                        <li style="padding-left:0">Élément 3</li>
+                    </ul>
+                </div>
+                <div class="demo">
+                    <div class="demo-title">Liste ordonnée (ol)</div>
+                    <ol style="padding-left:20px">
+                        <li style="padding-left:0">Premier</li>
+                        <li style="padding-left:0">Deuxième</li>
+                        <li style="padding-left:0">Troisième</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">Liste de définitions (dl)</div>
+                <dl>
+                    <dt style="font-weight:600;color:var(--secondary)">HTML</dt>
+                    <dd style="padding-left:20px;margin-bottom:8px">HyperText Markup Language</dd>
+                    <dt style="font-weight:600;color:var(--secondary)">CSS</dt>
+                    <dd style="padding-left:20px">Cascading Style Sheets</dd>
+                </dl>
+                </dl>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot g"></span>HTML Listes</div>
+                <pre><span class="c">&lt;!-- Liste à puces (Unordered) --&gt;</span>
+<span class="t">&lt;ul&gt;</span>
+    <span class="t">&lt;li&gt;</span>Item A<span class="t">&lt;/li&gt;</span>
+    <span class="t">&lt;li&gt;</span>Item B<span class="t">&lt;/li&gt;</span>
+<span class="t">&lt;/ul&gt;</span>
+
+<span class="c">&lt;!-- Liste numérotée (Ordered) --&gt;</span>
+<span class="t">&lt;ol&gt;</span>
+    <span class="t">&lt;li&gt;</span>Premier<span class="t">&lt;/li&gt;</span>
+    <span class="t">&lt;li&gt;</span>Second<span class="t">&lt;/li&gt;</span>
+<span class="t">&lt;/ol&gt;</span>
+
+<span class="c">&lt;!-- Définitions --&gt;</span>
+<span class="t">&lt;dl&gt;</span>
+    <span class="t">&lt;dt&gt;</span>Terme<span class="t">&lt;/dt&gt;</span>
+    <span class="t">&lt;dd&gt;</span>Définition du terme...<span class="t">&lt;/dd&gt;</span>
+<span class="t">&lt;/dl&gt;</span></pre>
+            </div>
+
+            <h3>Tableaux</h3>
+            <div class="demo">
+                <div class="demo-title">Tableau complet</div>
+                <table>
+                    <caption style="text-align:left;margin-bottom:8px;color:var(--dim);font-size:.9rem">Liste des
+                        utilisateurs</caption>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alice</td>
+                            <td>alice@mail.com</td>
+                            <td>Admin</td>
+                        </tr>
+                        <tr>
+                            <td>Bob</td>
+                            <td>bob@mail.com</td>
+                            <td>User</td>
+                        </tr>
+                        <tr>
+                            <td>Charlie</td>
+                            <td>charlie@mail.com</td>
+                            <td>User</td>
+                        </tr>
+                    </tbody>
+                    <tfoot style="background:var(--bg2)">
+                        <tr>
+                            <td colspan="3" style="text-align:right;font-size:.85rem">3 utilisateurs</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Table</div>
+                <pre><span class="t">&lt;table&gt;</span>
+    <span class="t">&lt;caption&gt;</span>Titre du tableau<span class="t">&lt;/caption&gt;</span>
+    <span class="t">&lt;colgroup&gt;&lt;col</span> <span class="a">span=</span><span class="v">"2"</span><span class="t">&gt;&lt;col&gt;&lt;/colgroup&gt;</span>
+    <span class="t">&lt;thead&gt;</span>
+        <span class="t">&lt;tr&gt;&lt;th&gt;</span>Col 1<span class="t">&lt;/th&gt;&lt;th&gt;</span>Col 2<span class="t">&lt;/th&gt;&lt;/tr&gt;</span>
+    <span class="t">&lt;/thead&gt;</span>
+    <span class="t">&lt;tbody&gt;</span>
+        <span class="t">&lt;tr&gt;&lt;td&gt;</span>A<span class="t">&lt;/td&gt;&lt;td&gt;</span>B<span class="t">&lt;/td&gt;&lt;/tr&gt;</span>
+        <span class="t">&lt;tr&gt;&lt;td</span> <span class="a">colspan=</span><span class="v">"2"</span><span class="t">&gt;</span>Fusionné<span class="t">&lt;/td&gt;&lt;/tr&gt;</span>
+        <span class="t">&lt;tr&gt;&lt;td</span> <span class="a">rowspan=</span><span class="v">"2"</span><span class="t">&gt;</span>2 lignes<span class="t">&lt;/td&gt;&lt;td&gt;</span>X<span class="t">&lt;/td&gt;&lt;/tr&gt;</span>
+    <span class="t">&lt;/tbody&gt;</span>
+    <span class="t">&lt;tfoot&gt;&lt;tr&gt;&lt;td</span> <span class="a">colspan=</span><span class="v">"2"</span><span class="t">&gt;</span>Pied<span class="t">&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;</span>
+<span class="t">&lt;/table&gt;</span></pre>
+            </div>
+
+            <details class="info-details"
+                style="margin-top:15px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">📐 Colgroup & Caption
+                </summary>
+                <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                    <p><code>&lt;caption&gt;</code> : C'est le titre sémantique du tableau. Il est lu par les lecteurs
+                        d'écran comme faisant partie intégrante du tableau.</p>
+                    <p><code>&lt;colgroup&gt;</code> : Permet d'appliquer des styles à des colonnes entières sans mettre
+                        de class sur chaque <code>&lt;td&gt;</code>. Très utile pour fixer des largeurs ou couleurs de
+                        fond.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- SECTION 7 - FORMULAIRES -->
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Formulaires</h2>
+                    <p class="sec-sub">Inputs et validation</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le point de contact avec vos utilisateurs. Les formulaires permettent de recueillir des données, des
+                inscriptions aux paiements. La variété des types d'input HTML5 facilite grandement la validation.
+            </p>
+
+            <div class="demo">
+                <div class="demo-title">Tous les types d'inputs</div>
+                <form onsubmit="return false">
+                    <div class="grid2">
+                        <div>
+                            <label>text</label>
+                            <input type="text" placeholder="Texte simple">
+
+                            <label>email</label>
+                            <input type="email" placeholder="email@exemple.com">
+
+                            <label>password</label>
+                            <input type="password" placeholder="••••••">
+
+                            <label>number</label>
+                            <input type="number" min="0" max="100" value="50">
+
+                            <label>tel</label>
+                            <input type="tel" placeholder="06 12 34 56 78">
+
+                            <label>url</label>
+                            <input type="url" placeholder="https://...">
+
+                            <label>search</label>
+                            <input type="search" placeholder="Rechercher...">
+                        </div>
+                        <div>
+                            <label>date</label>
+                            <input type="date">
+
+                            <label>time</label>
+                            <input type="time">
+
+                            <label>datetime-local</label>
+                            <input type="datetime-local">
+
+                            <label>month</label>
+                            <input type="month">
+
+                            <label>week</label>
+                            <input type="week">
+
+                            <label>color</label>
+                            <input type="color" value="#e44d26">
+
+                            <label>range</label>
+                            <input type="range" min="0" max="100" value="70">
+                        </div>
+                    </div>
+
+                    <label>file</label>
+                    <input type="file" accept="image/*" multiple>
+
+                    <label>hidden (invisible)</label>
+                    <input type="hidden" name="token" value="abc123">
+                    <span style="color:var(--dim);font-size:.8rem">← champ caché</span>
+
+                    <fieldset>
+                        <legend>Checkbox</legend>
+                        <label style="display:inline"><input type="checkbox" checked> Option 1</label>
+                        <label style="display:inline;margin-left:16px"><input type="checkbox"> Option 2</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Radio</legend>
+                        <label style="display:inline"><input type="radio" name="choix" checked> Choix A</label>
+                        <label style="display:inline;margin-left:16px"><input type="radio" name="choix"> Choix B</label>
+                    </fieldset>
+
+                    <label>select</label>
+                    <select style="width:100%">
+                        <optgroup label="Groupe 1">
+                            <option>Option A</option>
+                            <option>Option B</option>
+                        </optgroup>
+                        <optgroup label="Groupe 2">
+                            <option>Option C</option>
+                        </optgroup>
+                    </select>
+
+                    <label>datalist (autocomplete)</label>
+                    <input list="browsers" placeholder="Tapez...">
+                    <datalist id="browsers">
+                        <option value="Chrome">
+                        <option value="Firefox">
+                        <option value="Safari">
+                        <option value="Edge">
+                    </datalist>
+
+                    <label>textarea</label>
+                    <textarea rows="3" style="width:100%" placeholder="Texte multi-lignes..."></textarea>
+
+                    <label>output</label>
+                    <output style="display:block;padding:8px;background:var(--bg);border-radius:4px">Résultat
+                        calculé</output>
+
+                    <label>progress</label>
+                    <progress value="70" max="100" style="width:100%"></progress>
+
+                    <label>meter</label>
+                    <meter value="0.7" min="0" max="1" low="0.3" high="0.7" optimum="1" style="width:100%"></meter>
+
+                    <div style="margin-top:16px">
+                        <button type="submit">Submit</button>
+                        <button type="reset" style="background:var(--dim)">Reset</button>
+                        <button type="button" style="background:var(--purple)">Button</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="code" style="margin-top:20px; margin-bottom: 20px;">
+                <div class="code-head"><span class="dot g"></span>Structure Formulaire</div>
+                <pre><span class="t">&lt;form</span> <span class="a">action=</span><span class="v">"/api/login"</span> <span class="a">method=</span><span class="v">"POST"</span><span class="t">&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"email"</span><span class="t">&gt;</span>Votre Email<span class="t">&lt;/label&gt;</span>
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"email"</span> <span class="a">id=</span><span class="v">"email"</span> <span class="a">name=</span><span class="v">"email"</span> <span class="a">required</span><span class="t">&gt;</span>
+
+    <span class="t">&lt;button</span> <span class="a">type=</span><span class="v">"submit"</span><span class="t">&gt;</span>Envoyer<span class="t">&lt;/button&gt;</span>
+<span class="t">&lt;/form&gt;</span></pre>
+            </div>
+
+            <!-- EXPLICATIONS FORMULAIRES -->
+            <details class="info-details"
+                style="margin-top:15px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">⚙️ Le cycle de vie d'un
+                    Formulaire (HTML / CSS / JS / PHP)</summary>
+                <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                    <p>Un formulaire implique plusieurs technologies :</p>
+                    <ul style="padding-left: 20px; line-height: 1.6; margin-top: 10px;">
+                        <li><strong>HTML</strong> : Structure les champs et assure la validation de base
+                            (<code>required</code>, <code>type="email"</code>). Le navigateur bloque l'envoi si
+                            invalide.</li>
+                        <li><strong>CSS</strong> : Stylise les états grâce aux pseudo-classes : <code>:valid</code>,
+                            <code>:invalid</code>, <code>:focus</code>, <code>:checked</code>.
+                        </li>
+                        <li><strong>JavaScript</strong> (Front-end) : Peut intercepter l'envoi
+                            (<code>event.preventDefault()</code>) pour envoyer les données en AJAX (sans recharger la
+                            page) ou faire des validations complexes.</li>
+                        <li><strong>PHP / Serveur</strong> (Back-end) : Reçoit les données via <code>$_POST</code> ou
+                            <code>$_GET</code> (défini par l'attribut <code>method</code>). ⚠️ Le serveur doit TOUJOURS
+                            revérifier les données, car le HTML/JS peut être contourné.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Attributs de validation</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Validation</div>
+                <pre><span class="t">&lt;input</span> <span class="a">required</span><span class="t">&gt;</span>                    <span class="c">&lt;!-- Obligatoire --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">minlength=</span><span class="v">"3"</span> <span class="a">maxlength=</span><span class="v">"20"</span><span class="t">&gt;</span>  <span class="c">&lt;!-- Longueur --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">min=</span><span class="v">"0"</span> <span class="a">max=</span><span class="v">"100"</span> <span class="a">step=</span><span class="v">"5"</span><span class="t">&gt;</span>     <span class="c">&lt;!-- Nombre --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">pattern=</span><span class="v">"[A-Za-z]{3}"</span><span class="t">&gt;</span>       <span class="c">&lt;!-- Regex --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">placeholder=</span><span class="v">"Indice"</span><span class="t">&gt;</span>        <span class="c">&lt;!-- Placeholder --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">readonly</span><span class="t">&gt;</span>                    <span class="c">&lt;!-- Lecture seule --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">disabled</span><span class="t">&gt;</span>                    <span class="c">&lt;!-- Désactivé --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">autofocus</span><span class="t">&gt;</span>                   <span class="c">&lt;!-- Focus auto --&gt;</span>
+<span class="t">&lt;input</span> <span class="a">autocomplete=</span><span class="v">"off"</span><span class="t">&gt;</span>          <span class="c">&lt;!-- Pas d'auto-complétion --&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8 - SÉMANTIQUE -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">HTML5 Sémantique</h2>
+                    <p class="sec-sub">Structure moderne</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Le HTML5 a introduit des balises porteuses de sens (header, article, footer) qui remplacent les div
+                génériques. Elles aident les lecteurs d'écran et les robots d'indexation à comprendre la structure
+                logique de votre contenu.
+            </p>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Structure page</div>
+                <pre><span class="t">&lt;body&gt;</span>
+    <span class="t">&lt;header&gt;</span>
+        <span class="t">&lt;nav&gt;</span>Navigation<span class="t">&lt;/nav&gt;</span>
+    <span class="t">&lt;/header&gt;</span>
+    
+    <span class="t">&lt;main&gt;</span>
+        <span class="t">&lt;article&gt;</span>
+            <span class="t">&lt;header&gt;</span>En-tête article<span class="t">&lt;/header&gt;</span>
+            <span class="t">&lt;section&gt;</span>Section 1<span class="t">&lt;/section&gt;</span>
+            <span class="t">&lt;section&gt;</span>Section 2<span class="t">&lt;/section&gt;</span>
+            <span class="t">&lt;footer&gt;</span>Pied article<span class="t">&lt;/footer&gt;</span>
+        <span class="t">&lt;/article&gt;</span>
+        <span class="t">&lt;aside&gt;</span>Sidebar<span class="t">&lt;/aside&gt;</span>
+    <span class="t">&lt;/main&gt;</span>
+    
+    <span class="t">&lt;footer&gt;</span>Pied de page<span class="t">&lt;/footer&gt;</span>
+<span class="t">&lt;/body&gt;</span></pre>
+            </div>
+
+            <details class="info-details"
+                style="margin-top:15px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🤔 Div vs Section vs
+                    Article
+                </summary>
+                <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                    <ul style="padding-left: 20px; line-height: 1.6;">
+                        <li><strong>&lt;div&gt;</strong> : Conteneur générique <em>sans sens sémantique</em>. À utiliser
+                            uniquement pour le styling (CSS layout).</li>
+                        <li><strong>&lt;section&gt;</strong> : Un regroupement thématique de contenu, généralement avec
+                            un titre.</li>
+                        <li><strong>&lt;article&gt;</strong> : Un contenu autonome et indépendant (ex: un post de blog,
+                            un widget météo, un commentaire) qui pourrait être redistribué ailleurs seul.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Éléments interactifs</h3>
+            <div class="demo">
+                <div class="demo-title">details / summary</div>
+                <details style="cursor:pointer">
+                    <summary style="color:var(--secondary);font-weight:500">Cliquez pour voir plus</summary>
+                    <p style="padding:12px 0">Contenu caché révélé au clic. Très utile pour les FAQ!</p>
+                </details>
+                <details open>
+                    <summary style="color:var(--secondary);font-weight:500">Ouvert par défaut</summary>
+                    <p style="padding:12px 0">Avec l'attribut <code>open</code></p>
+                </details>
+            </div>
+
+            <div class="demo">
+                <div class="demo-title">dialog</div>
+                <dialog id="modal"
+                    style="background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:24px">
+                    <h3 style="color:var(--secondary);margin-bottom:12px">Modal Dialog</h3>
+                    <p>Contenu de la fenêtre modale.</p>
+                    <button onclick="document.getElementById('modal').close()" style="margin-top:12px">Fermer</button>
+                </dialog>
+                <button onclick="document.getElementById('modal').showModal()">Ouvrir Dialog</button>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot g"></span>Code Interactif</div>
+                <pre><span class="c">&lt;!-- Accordéon natif --&gt;</span>
+<span class="t">&lt;details&gt;</span>
+    <span class="t">&lt;summary&gt;</span>Titre visible<span class="t">&lt;/summary&gt;</span>
+    Contenu caché...
+<span class="t">&lt;/details&gt;</span>
+
+<span class="c">&lt;!-- Fenêtre modale native --&gt;</span>
+<span class="t">&lt;dialog</span> <span class="a">id=</span><span class="v">"modal"</span><span class="t">&gt;</span>
+    <span class="t">&lt;p&gt;</span>Bonjour<span class="t">&lt;/p&gt;</span>
+    <span class="t">&lt;form</span> <span class="a">method=</span><span class="v">"dialog"</span><span class="t">&gt;</span> <span class="c">&lt;!-- Ferme sans JS --&gt;</span>
+        <span class="t">&lt;button&gt;</span>Fermer<span class="t">&lt;/button&gt;</span>
+    <span class="t">&lt;/form&gt;</span>
+<span class="t">&lt;/dialog&gt;</span>
+<span class="t">&lt;script&gt;</span>
+    modal.showModal(); <span class="c">// Ouvre avec backdrop</span>
+<span class="t">&lt;/script&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SECTION 9 - ACCESSIBILITÉ -->
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Accessibilité (A11y)</h2>
+                    <p class="sec-sub">Rendre le web utilisable par tous</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                L'accessibilité n'est pas une option, c'est un devoir. Un bon HTML est la première étape pour rendre
+                votre site utilisable par les personnes en situation de handicap.
+            </p>
+
+            <details>
+                <summary>📖 Les 3 règles d'or</summary>
+                <div>
+                    <p>1. <strong>Contraste</strong> : Le texte et le fond doivent avoir un contraste suffisant
+                        (ratio 4.5:1).</p>
+                    <p>2. <strong>Structure</strong> : Utiliser les balises sémantiques (<code>h1-h6</code>,
+                        <code>nav</code>, <code>button</code>) pour que les lecteurs d'écran comprennent la
+                        page.
+                    </p>
+                    <p>3. <strong>Clavier</strong> : Tout doit être accessible sans souris (Tabulation).</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                        class="dot g"></span>Bonnes pratiques</div>
+                <pre><span class="c">&lt;!-- Alt pour images --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">src=</span><span class="v">"cat.jpg"</span> <span class="a">alt=</span><span class="v">"Chat noir qui dort sur un canapé"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- Label pour formulaires --&gt;</span>
+<span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"email"</span><span class="t">&gt;</span>Email<span class="t">&lt;/label&gt;</span>
+<span class="t">&lt;input</span> <span class="a">id=</span><span class="v">"email"</span> <span class="a">type=</span><span class="v">"email"</span><span class="t">&gt;</span>
+
+<span class="c">&lt;!-- ARIA (si HTML ne suffit pas) --&gt;</span>
+<span class="t">&lt;div</span> <span class="a">role=</span><span class="v">"alert"</span> <span class="a">aria-live=</span><span class="v">"polite"</span><span class="t">&gt;</span>Erreur de connexion<span class="t">&lt;/div&gt;</span></pre>
+            </div>
+
+            <details class="info-details"
+                style="margin-top:15px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">👁️ ARIA vs HTML Natif
+                </summary>
+                <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                    <p><strong>Règle d'or :</strong> N'utilisez ARIA que si le HTML ne suffit pas.</p>
+                    <p>❌ Mauvais : <code>&lt;div role="button" onclick="..."&gt;Clic&lt;/div&gt;</code> (nécessite JS
+                        pour clavier, focus, etc.)</p>
+                    <p>✅ Bon : <code>&lt;button&gt;Clic&lt;/button&gt;</code> (Accessible nativement)</p>
+                    <p>ARIA est utile pour des widgets complexes (onglets, modales, sliders) ou pour donner des labels
+                        invisibles (<code>aria-label</code>).</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- SECTION 10 - SEO -->
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">SEO & Performance</h2>
+                    <p class="sec-sub">Optimisation pour les moteurs</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                La structure de votre code impacte directement votre visibilité. Un code propre, rapide et sémantique
+                est favorisé par Google. Optimisez vos balises pour le référencement.
+            </p>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Open Graph (Social)</div>
+                    <pre><span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:title"</span> <span class="a">content=</span><span class="v">"Mon Article"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:image"</span> <span class="a">content=</span><span class="v">"https://site.com/thumb.jpg"</span><span class="t">&gt;</span>
+<span class="t">&lt;meta</span> <span class="a">property=</span><span class="v">"og:description"</span> <span class="a">content=</span><span class="v">"Résumé..."</span><span class="t">&gt;</span></pre>
+                </div>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Performance</div>
+                    <pre><span class="c">&lt;!-- Lazy loading --&gt;</span>
+<span class="t">&lt;img</span> <span class="a">loading=</span><span class="v">"lazy"</span> ...<span class="t">&gt;</span>
+<span class="t">&lt;iframe</span> <span class="a">loading=</span><span class="v">"lazy"</span> ...<span class="t">&gt;&lt;/iframe&gt;</span>
+
+<span class="c">&lt;!-- Preload (Police critique) --&gt;</span>
+<span class="t">&lt;link</span> <span class="a">rel=</span><span class="v">"preload"</span> <span class="a">href=</span><span class="v">"font.woff2"</span> <span class="a">as=</span><span class="v">"font"</span><span class="t">&gt;</span></pre>
+                </div>
+            </div>
+
+            <!-- EXPLICATIONS SEO & PERF -->
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">🚀 3 Piliers de la
+                        Performance Web</summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <ul style="padding-left: 20px; line-height: 1.6;">
+                            <li><strong>Lazy Loading</strong> (<code>loading="lazy"</code>) : Ne charge les
+                                images/iframes que quand l'utilisateur scrolle jusqu'à elles. Économise énormément de
+                                bande passante initiale.</li>
+                            <li><strong>Preload</strong> : Indique au navigateur de charger une ressource critique
+                                (police, image hero) <em>immédiatement</em>, avant même d'avoir fini d'analyser tout le
+                                HTML.</li>
+                            <li><strong>Minification</strong> : Réduire la taille des fichiers HTML/CSS/JS (supprimer
+                                espaces/commentaires) pour accélérer le transfert réseau.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="info-details"
+                    style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px;">
+                    <summary style="cursor: pointer; font-weight: 500; color: var(--secondary);">📱 Open Graph & Social
+                        Cards</summary>
+                    <div style="padding: 15px 0 5px 0; color: var(--muted); font-size: 0.95rem;">
+                        <p>Sans Open Graph, le partage de votre lien sur Facebook/Twitter/LinkedIn sera moche (juste
+                            l'URL).</p>
+                        <p>Avec les balises <code>og:*</code>, vous contrôlez l'image, le titre et la description qui
+                            apparaissent dans le "card" de prévisualisation.</p>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li><code>og:image</code> : L'image doit être < 1MB, ratio idéal 1.91:1 (ex:
+                                    1200x630px).</li>
+                            <li><code>og:title</code> : Doit être accrocheur (60 caractères max).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11 - REFERENCE -->
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Référence Complète</h2>
+                    <p class="sec-sub">80+ balises HTML5</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--muted); font-size: 1.05rem;">
+                Une vue d'ensemble compacte de tout l'arsenal HTML à votre disposition.
+            </p>
+            <h3>Structure</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Document</h4>
+                    <span class="tt-wrap"><code>&lt;!DOCTYPE&gt;</code><span class="tt-box"><span class="tt-def">Déclare
+                                la version de HTML utilisée (HTML5). Doit être la première ligne.</span><span
+                                class="tt-ex">&lt;!DOCTYPE html&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;html&gt;</code><span class="tt-box"><span class="tt-def">La racine
+                                du document. L'attribut lang est recommandé.</span><span class="tt-ex">&lt;html
+                                lang="fr"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;head&gt;</code><span class="tt-box"><span class="tt-def">Contient
+                                les métadonnées invisibles (titre, scripts, styles).</span><span
+                                class="tt-ex">&lt;head&gt;...&lt;/head&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;body&gt;</code><span class="tt-box"><span class="tt-def">Contient
+                                tout le contenu visible de la page.</span><span
+                                class="tt-ex">&lt;body&gt;&lt;h1&gt;Bonjour&lt;/h1&gt;&lt;/body&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Métadonnées</h4>
+                    <span class="tt-wrap"><code>&lt;title&gt;</code><span class="tt-box"><span class="tt-def">Définit le
+                                titre affiché dans l'onglet du navigateur et les résultats Google.</span><span
+                                class="tt-ex">&lt;title&gt;Mon Site&lt;/title&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;meta&gt;</code><span class="tt-box"><span class="tt-def">Métadonnées
+                                diverses : encodage, viewport, description SEO...</span><span class="tt-ex">&lt;meta
+                                charset="UTF-8"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;link&gt;</code><span class="tt-box"><span class="tt-def">Lie une
+                                ressource externe (CSS, Favicon).</span><span class="tt-ex">&lt;link rel="stylesheet"
+                                href="style.css"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;style&gt;</code><span class="tt-box"><span class="tt-def">Définit
+                                des styles CSS internes au document.</span><span class="tt-ex">&lt;style&gt;body {
+                                color: red; }&lt;/style&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;script&gt;</code><span class="tt-box"><span class="tt-def">Intègre
+                                ou référence un script JavaScript.</span><span class="tt-ex">&lt;script
+                                src="app.js"&gt;&lt;/script&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;base&gt;</code><span class="tt-box"><span class="tt-def">Définit
+                                l'URL de base pour tous les liens relatifs.</span><span class="tt-ex">&lt;base
+                                href="https://site.com/"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;noscript&gt;</code><span class="tt-box"><span class="tt-def">Affiché
+                                uniquement si JS est désactivé.</span><span class="tt-ex">&lt;noscript&gt;Activez JS
+                                !&lt;/noscript&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Sections</h4>
+                    <span class="tt-wrap"><code>&lt;header&gt;</code><span class="tt-box"><span class="tt-def">En-tête
+                                d'une page ou d'une section.</span><span
+                                class="tt-ex">&lt;header&gt;&lt;h1&gt;Logo&lt;/h1&gt;&lt;/header&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;nav&gt;</code><span class="tt-box"><span class="tt-def">Section de
+                                liens de navigation principale.</span><span class="tt-ex">&lt;nav&gt;&lt;a
+                                href="/"&gt;Accueil&lt;/a&gt;&lt;/nav&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;main&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                principal unique de la page.</span><span
+                                class="tt-ex">&lt;main&gt;...&lt;/main&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;article&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                autonome et indépendant (post, widget).</span><span
+                                class="tt-ex">&lt;article&gt;&lt;h2&gt;Titre&lt;/h2&gt;...&lt;/article&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;section&gt;</code><span class="tt-box"><span
+                                class="tt-def">Regroupement thématique de contenu, généralement avec un
+                                titre.</span><span
+                                class="tt-ex">&lt;section&gt;&lt;h2&gt;Intro&lt;/h2&gt;...&lt;/section&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;aside&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                indirectement lié au principal (sidebar, pub).</span><span
+                                class="tt-ex">&lt;aside&gt;Pub...&lt;/aside&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;footer&gt;</code><span class="tt-box"><span class="tt-def">Pied de
+                                page ou de section.</span><span class="tt-ex">&lt;footer&gt;©
+                                2024&lt;/footer&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;address&gt;</code><span class="tt-box"><span
+                                class="tt-def">Informations de contact de l'auteur.</span><span
+                                class="tt-ex">&lt;address&gt;contact@site.com&lt;/address&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;hgroup&gt;</code><span class="tt-box"><span class="tt-def">Groupe un
+                                titre et un sous-titre.</span><span
+                                class="tt-ex">&lt;hgroup&gt;&lt;h1&gt;Titre&lt;/h1&gt;&lt;p&gt;Sub&lt;/p&gt;&lt;/hgroup&gt;</span></span></span>
+                </div>
+            </div>
+
+            <h3>Texte</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Titres</h4>
+                    <span class="tt-wrap"><code>&lt;h1&gt;</code><span class="tt-box"><span class="tt-def">Titre
+                                principal (le plus important). 1 par page max.</span><span class="tt-ex">&lt;h1&gt;Titre
+                                Page&lt;/h1&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;h2&gt;</code><span class="tt-box"><span class="tt-def">Titre de
+                                section.</span><span class="tt-ex">&lt;h2&gt;Chapitre 1&lt;/h2&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;h3&gt;...&lt;h6&gt;</code><span class="tt-box"><span
+                                class="tt-def">Sous-titres de h3 à h6 par ordre d'importance décroissante.</span><span
+                                class="tt-ex">&lt;h3&gt;Sous-section&lt;/h3&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Blocs</h4>
+                    <span class="tt-wrap"><code>&lt;p&gt;</code><span class="tt-box"><span class="tt-def">Paragraphe de
+                                texte. Ajoute une marge par défaut.</span><span
+                                class="tt-ex">&lt;p&gt;Texte...&lt;/p&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;div&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                générique de bloc sans sens sémantique.</span><span class="tt-ex">&lt;div
+                                class="box"&gt;...&lt;/div&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;pre&gt;</code><span class="tt-box"><span class="tt-def">Texte
+                                préformaté. Conserve espaces et sauts de ligne.</span><span class="tt-ex">&lt;pre&gt;
+                                Code &lt;/pre&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;blockquote&gt;</code><span class="tt-box"><span
+                                class="tt-def">Citation longue (bloc).</span><span
+                                class="tt-ex">&lt;blockquote&gt;"..."&lt;/blockquote&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;hr&gt;</code><span class="tt-box"><span class="tt-def">Rupture
+                                thématique (ligne horizontale).</span><span
+                                class="tt-ex">&lt;hr&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Inline sémantique</h4>
+                    <span class="tt-wrap"><code>&lt;strong&gt;</code><span class="tt-box"><span
+                                class="tt-def">Importance forte (généralement gras).</span><span
+                                class="tt-ex">&lt;strong&gt;Attention&lt;/strong&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;em&gt;</code><span class="tt-box"><span class="tt-def">Emphase
+                                (généralement italique).</span><span
+                                class="tt-ex">&lt;em&gt;Important&lt;/em&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;mark&gt;</code><span class="tt-box"><span class="tt-def">Texte
+                                surligné (mise en évidence).</span><span
+                                class="tt-ex">&lt;mark&gt;Trouvé&lt;/mark&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;cite&gt;</code><span class="tt-box"><span class="tt-def">Titre d'une
+                                œuvre (livre, film).</span><span
+                                class="tt-ex">&lt;cite&gt;Titanic&lt;/cite&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;q&gt;</code><span class="tt-box"><span class="tt-def">Citation
+                                courte inline. Ajoute des guillemets.</span><span
+                                class="tt-ex">&lt;q&gt;Bonjour&lt;/q&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;dfn&gt;</code><span class="tt-box"><span class="tt-def">Terme en
+                                cours de définition.</span><span class="tt-ex">&lt;dfn&gt;HTML&lt;/dfn&gt;
+                                est...</span></span></span>
+                    <span class="tt-wrap"><code>&lt;abbr&gt;</code><span class="tt-box"><span class="tt-def">Abréviation
+                                ou acronyme.</span><span class="tt-ex">&lt;abbr
+                                title="Super"&gt;Sup.&lt;/abbr&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;time&gt;</code><span class="tt-box"><span class="tt-def">Date ou
+                                heure machine-readable.</span><span class="tt-ex">&lt;time datetime="2024-01-01"&gt;Jan
+                                1&lt;/time&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Inline style</h4>
+                    <span class="tt-wrap"><code>&lt;b&gt;</code><span class="tt-box"><span class="tt-def">Gras sans
+                                importance sémantique.</span><span
+                                class="tt-ex">&lt;b&gt;Mot&lt;/b&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;i&gt;</code><span class="tt-box"><span class="tt-def">Italique sans
+                                emphase (terme technique, pensée).</span><span
+                                class="tt-ex">&lt;i&gt;Latin&lt;/i&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;u&gt;</code><span class="tt-box"><span class="tt-def">Souligné
+                                (non-lien), ex: faute d'orthographe.</span><span
+                                class="tt-ex">&lt;u&gt;Faute&lt;/u&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;s&gt;</code><span class="tt-box"><span class="tt-def">Barré (info
+                                plus valide).</span><span class="tt-ex">&lt;s&gt;10€&lt;/s&gt; 5€</span></span></span>
+                    <span class="tt-wrap"><code>&lt;small&gt;</code><span class="tt-box"><span class="tt-def">Petits
+                                caractères (copyright, mentions légales).</span><span class="tt-ex">&lt;small&gt;©
+                                2024&lt;/small&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;sub&gt;</code><span class="tt-box"><span
+                                class="tt-def">Indice.</span><span
+                                class="tt-ex">H&lt;sub&gt;2&lt;/sub&gt;O</span></span></span>
+                    <span class="tt-wrap"><code>&lt;sup&gt;</code><span class="tt-box"><span
+                                class="tt-def">Exposant.</span><span
+                                class="tt-ex">1&lt;sup&gt;er&lt;/sup&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Code</h4>
+                    <span class="tt-wrap"><code>&lt;code&gt;</code><span class="tt-box"><span class="tt-def">Fragment de
+                                code informatique.</span><span
+                                class="tt-ex">&lt;code&gt;print()&lt;/code&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;kbd&gt;</code><span class="tt-box"><span class="tt-def">Entrée
+                                utilisateur (clavier).</span><span class="tt-ex">&lt;kbd&gt;Ctrl&lt;/kbd&gt; +
+                                &lt;kbd&gt;C&lt;/kbd&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;samp&gt;</code><span class="tt-box"><span class="tt-def">Sortie d'un
+                                programme.</span><span class="tt-ex">&lt;samp&gt;Error
+                                404&lt;/samp&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;var&gt;</code><span class="tt-box"><span class="tt-def">Variable
+                                mathématique ou informatique.</span><span class="tt-ex">&lt;var&gt;x&lt;/var&gt; =
+                                2</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Coupures</h4>
+                    <span class="tt-wrap"><code>&lt;br&gt;</code><span class="tt-box"><span class="tt-def">Saut de ligne
+                                contraint.</span><span class="tt-ex">Ligne 1&lt;br&gt;Ligne 2</span></span></span>
+                    <span class="tt-wrap"><code>&lt;wbr&gt;</code><span class="tt-box"><span class="tt-def">Saut de
+                                ligne optionnel (Word Break Opportunity).</span><span
+                                class="tt-ex">Long&lt;wbr&gt;Mot</span></span></span>
+                    <span class="tt-wrap"><code>&lt;span&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                générique inline sans sens sémantique.</span><span class="tt-ex">&lt;span
+                                class="red"&gt;Mot&lt;/span&gt;</span></span></span>
+                </div>
+            </div>
+
+            <h3>Liens & Médias</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Liens</h4>
+                    <span class="tt-wrap"><code>&lt;a&gt;</code><span class="tt-box"><span class="tt-def">Lien
+                                hypertexte vers une autre page, un fichier, ou une ancre.</span><span
+                                class="tt-ex">&lt;a href="page.html"&gt;Lien&lt;/a&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;nav&gt;</code><span class="tt-box"><span class="tt-def">Section
+                                contenant les liens de navigation principaux.</span><span
+                                class="tt-ex">&lt;nav&gt;...&lt;/nav&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Images</h4>
+                    <span class="tt-wrap"><code>&lt;img&gt;</code><span class="tt-box"><span class="tt-def">Image
+                                intégrée. Nécessite alt pour l'accessibilité.</span><span class="tt-ex">&lt;img
+                                src="img.jpg" alt="..."&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;figure&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                autonome avec légende optionnelle (image, code, diagramme).</span><span
+                                class="tt-ex">&lt;figure&gt;&lt;img...&gt;&lt;/figure&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;figcaption&gt;</code><span class="tt-box"><span
+                                class="tt-def">Légende associée à un parent &lt;figure&gt;.</span><span
+                                class="tt-ex">&lt;figcaption&gt;Img 1&lt;/figcaption&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;picture&gt;</code><span class="tt-box"><span
+                                class="tt-def">Conteneur pour images responsives (multi-sources).</span><span
+                                class="tt-ex">&lt;picture&gt;...&lt;/picture&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;source&gt;</code><span class="tt-box"><span class="tt-def">Définit
+                                une ressource pour &lt;picture&gt;, &lt;audio&gt; ou &lt;video&gt;.</span><span
+                                class="tt-ex">&lt;source srcset="img.webp"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;map&gt;</code><span class="tt-box"><span class="tt-def">Définit une
+                                carte d'image (zones cliquables).</span><span class="tt-ex">&lt;map
+                                name="m"&gt;...&lt;/map&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;area&gt;</code><span class="tt-box"><span class="tt-def">Zone
+                                cliquable dans une &lt;map&gt;.</span><span class="tt-ex">&lt;area
+                                coords="0,0,10,10"&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Médias</h4>
+                    <span class="tt-wrap"><code>&lt;video&gt;</code><span class="tt-box"><span class="tt-def">Lecteur
+                                vidéo intégré.</span><span class="tt-ex">&lt;video src="v.mp4"
+                                controls&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;audio&gt;</code><span class="tt-box"><span class="tt-def">Lecteur
+                                audio intégré.</span><span class="tt-ex">&lt;audio src="a.mp3"
+                                controls&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;track&gt;</code><span class="tt-box"><span class="tt-def">Piste
+                                texte (sous-titres) pour média.</span><span class="tt-ex">&lt;track src="s.vtt"
+                                kind="subtitles"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;iframe&gt;</code><span class="tt-box"><span class="tt-def">Cadre en
+                                ligne (affiche une autre page web).</span><span class="tt-ex">&lt;iframe
+                                src="https://..."&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;embed&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                pour application externe ou plug-in.</span><span class="tt-ex">&lt;embed
+                                src="f.swf"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;object&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                générique pour ressource externe.</span><span class="tt-ex">&lt;object
+                                data="doc.pdf"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;param&gt;</code><span class="tt-box"><span class="tt-def">Paramètre
+                                pour &lt;object&gt;.</span><span class="tt-ex">&lt;param name="autoplay"
+                                value="true"&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Graphiques</h4>
+                    <span class="tt-wrap"><code>&lt;canvas&gt;</code><span class="tt-box"><span class="tt-def">Zone de
+                                dessin bitmap scriptable (JS).</span><span class="tt-ex">&lt;canvas
+                                id="game"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;svg&gt;</code><span class="tt-box"><span class="tt-def">Graphique
+                                vectoriel (Scalable Vector Graphics).</span><span
+                                class="tt-ex">&lt;svg&gt;&lt;circle...&gt;&lt;/svg&gt;</span></span></span>
+                </div>
+            </div>
+
+            <h3>Listes & Tableaux</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Listes</h4>
+                    <span class="tt-wrap"><code>&lt;ul&gt;</code><span class="tt-box"><span class="tt-def">Liste non
+                                ordonnée (puces rondes).</span><span
+                                class="tt-ex">&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;ol&gt;</code><span class="tt-box"><span class="tt-def">Liste
+                                ordonnée (1, 2, 3...).</span><span
+                                class="tt-ex">&lt;ol&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ol&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;li&gt;</code><span class="tt-box"><span class="tt-def">Élément de
+                                liste (List Item).</span><span
+                                class="tt-ex">&lt;li&gt;Pain&lt;/li&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;dl&gt;</code><span class="tt-box"><span class="tt-def">Liste de
+                                description (clé-valeur).</span><span
+                                class="tt-ex">&lt;dl&gt;&lt;dt&gt;...&lt;/dt&gt;&lt;/dl&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;dt&gt;</code><span class="tt-box"><span class="tt-def">Terme à
+                                définir dans une liste de description.</span><span
+                                class="tt-ex">&lt;dt&gt;HTML&lt;/dt&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;dd&gt;</code><span class="tt-box"><span
+                                class="tt-def">Définition/Description du terme précédent.</span><span
+                                class="tt-ex">&lt;dd&gt;Langage...&lt;/dd&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;menu&gt;</code><span class="tt-box"><span class="tt-def">Liste de
+                                commandes (similaire à ul sémantiquement).</span><span
+                                class="tt-ex">&lt;menu&gt;&lt;li&gt;Copier&lt;/li&gt;&lt;/menu&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Tableaux</h4>
+                    <span class="tt-wrap"><code>&lt;table&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                de tableau.</span><span
+                                class="tt-ex">&lt;table&gt;...&lt;/table&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;caption&gt;</code><span class="tt-box"><span class="tt-def">Titre du
+                                tableau.</span><span
+                                class="tt-ex">&lt;caption&gt;Prix&lt;/caption&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;thead&gt;</code><span class="tt-box"><span class="tt-def">Groupe
+                                d'en-tête (lignes de titres).</span><span
+                                class="tt-ex">&lt;thead&gt;&lt;tr&gt;...&lt;/tr&gt;&lt;/thead&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;tbody&gt;</code><span class="tt-box"><span class="tt-def">Corps
+                                principal du tableau (données).</span><span
+                                class="tt-ex">&lt;tbody&gt;...&lt;/tbody&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;tfoot&gt;</code><span class="tt-box"><span class="tt-def">Pied du
+                                tableau (totaux).</span><span
+                                class="tt-ex">&lt;tfoot&gt;...&lt;/tfoot&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;tr&gt;</code><span class="tt-box"><span class="tt-def">Ligne de
+                                tableau (Table Row).</span><span
+                                class="tt-ex">&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;th&gt;</code><span class="tt-box"><span class="tt-def">Cellule
+                                d'en-tête (gras, centré).</span><span
+                                class="tt-ex">&lt;th&gt;Nom&lt;/th&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;td&gt;</code><span class="tt-box"><span class="tt-def">Cellule de
+                                données standard.</span><span
+                                class="tt-ex">&lt;td&gt;Bob&lt;/td&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;colgroup&gt;</code><span class="tt-box"><span class="tt-def">Groupe
+                                de colonnes pour styling.</span><span
+                                class="tt-ex">&lt;colgroup&gt;&lt;col&gt;...</span></span></span>
+                    <span class="tt-wrap"><code>&lt;col&gt;</code><span class="tt-box"><span class="tt-def">Définit les
+                                attributs d'une colonne.</span><span class="tt-ex">&lt;col span="2"
+                                class="red"&gt;</span></span></span>
+                </div>
+            </div>
+
+            <h3>Formulaires</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Structure</h4>
+                    <span class="tt-wrap"><code>&lt;form&gt;</code><span class="tt-box"><span class="tt-def">Conteneur
+                                de formulaire pour l'envoi de données.</span><span class="tt-ex">&lt;form
+                                action="/login"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;fieldset&gt;</code><span class="tt-box"><span class="tt-def">Groupe
+                                d'éléments de formulaire liés.</span><span
+                                class="tt-ex">&lt;fieldset&gt;...&lt;/fieldset&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;legend&gt;</code><span class="tt-box"><span class="tt-def">Titre
+                                d'un &lt;fieldset&gt;.</span><span
+                                class="tt-ex">&lt;legend&gt;Identité&lt;/legend&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;label&gt;</code><span class="tt-box"><span class="tt-def">Libellé
+                                associé à un champ de formulaire.</span><span class="tt-ex">&lt;label
+                                for="email"&gt;Email&lt;/label&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Inputs</h4>
+                    <span class="tt-wrap"><code>&lt;input&gt;</code><span class="tt-box"><span class="tt-def">Champ de
+                                saisie interactif (nombreux types).</span><span class="tt-ex">&lt;input
+                                type="password"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;textarea&gt;</code><span class="tt-box"><span class="tt-def">Zone de
+                                texte multiligne.</span><span class="tt-ex">&lt;textarea
+                                rows="5"&gt;&lt;/textarea&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;select&gt;</code><span class="tt-box"><span class="tt-def">Menu
+                                déroulant d'options.</span><span
+                                class="tt-ex">&lt;select&gt;&lt;option&gt;A&lt;/option&gt;&lt;/select&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;option&gt;</code><span class="tt-box"><span class="tt-def">Option
+                                dans un menu select.</span><span class="tt-ex">&lt;option
+                                value="1"&gt;Un&lt;/option&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;optgroup&gt;</code><span class="tt-box"><span class="tt-def">Groupe
+                                d'options dans un select.</span><span class="tt-ex">&lt;optgroup
+                                label="Pays"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;datalist&gt;</code><span class="tt-box"><span class="tt-def">Liste
+                                de suggestions pour un input.</span><span class="tt-ex">&lt;datalist
+                                id="villes"&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Boutons</h4>
+                    <span class="tt-wrap"><code>&lt;button&gt;</code><span class="tt-box"><span class="tt-def">Bouton
+                                cliquable (submit, reset, button).</span><span
+                                class="tt-ex">&lt;button&gt;Envoyer&lt;/button&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Résultats</h4>
+                    <span class="tt-wrap"><code>&lt;output&gt;</code><span class="tt-box"><span class="tt-def">Résultat
+                                d'un calcul ou action utilisateur.</span><span class="tt-ex">&lt;output
+                                name="total"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;progress&gt;</code><span class="tt-box"><span
+                                class="tt-def">Progression d'une tâche (téléchargement).</span><span
+                                class="tt-ex">&lt;progress value="50" max="100"&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;meter&gt;</code><span class="tt-box"><span class="tt-def">Mesure
+                                scalaire dans une gamme connue (disque utilisé).</span><span class="tt-ex">&lt;meter
+                                value="0.8"&gt;</span></span></span>
+                </div>
+            </div>
+
+            <h3>Interactif & Autres</h3>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Interactif</h4>
+                    <span class="tt-wrap"><code>&lt;details&gt;</code><span class="tt-box"><span class="tt-def">Widget
+                                de divulgation (accordéon) affichant/masquant du contenu.</span><span
+                                class="tt-ex">&lt;details&gt;&lt;summary&gt;Titre&lt;/summary&gt;...&lt;/details&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;summary&gt;</code><span class="tt-box"><span
+                                class="tt-def">Légende/Titre visible pour un élément &lt;details&gt;.</span><span
+                                class="tt-ex">&lt;summary&gt;Plus d'infos&lt;/summary&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;dialog&gt;</code><span class="tt-box"><span class="tt-def">Boîte de
+                                dialogue ou fenêtre modale.</span><span
+                                class="tt-ex">&lt;dialog&gt;&lt;p&gt;Bonjour&lt;/p&gt;&lt;/dialog&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Script</h4>
+                    <span class="tt-wrap"><code>&lt;script&gt;</code><span class="tt-box"><span class="tt-def">Code
+                                exécutable (JavaScript).</span><span
+                                class="tt-ex">&lt;script&gt;console.log('Hi')&lt;/script&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;noscript&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                alternatif si le script est désactivé.</span><span class="tt-ex">&lt;noscript&gt;Activez
+                                JS&lt;/noscript&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;template&gt;</code><span class="tt-box"><span class="tt-def">Contenu
+                                inerte clonable par JavaScript.</span><span
+                                class="tt-ex">&lt;template&gt;&lt;div&gt;...&lt;/div&gt;&lt;/template&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;slot&gt;</code><span class="tt-box"><span class="tt-def">Emplacement
+                                (placeholder) dans un Shadow DOM.</span><span class="tt-ex">&lt;slot
+                                name="icon"&gt;&lt;/slot&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Ruby (annotations)</h4>
+                    <span class="tt-wrap"><code>&lt;ruby&gt;</code><span class="tt-box"><span class="tt-def">Annotation
+                                ruby (typo asiatique).</span><span
+                                class="tt-ex">&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;rt&gt;</code><span class="tt-box"><span class="tt-def">Texte de
+                                l'annotation ruby.</span><span
+                                class="tt-ex">&lt;rt&gt;kan&lt;/rt&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;rp&gt;</code><span class="tt-box"><span class="tt-def">Parenthèses
+                                pour navigateurs ne supportant pas ruby.</span><span
+                                class="tt-ex">&lt;rp&gt;(&lt;/rp&gt;</span></span></span>
+                </div>
+                <div class="ref-card">
+                    <h4>Bidirectionnel</h4>
+                    <span class="tt-wrap"><code>&lt;bdi&gt;</code><span class="tt-box"><span class="tt-def">Isolation
+                                bidirectionnelle de texte.</span><span
+                                class="tt-ex">&lt;bdi&gt;Username&lt;/bdi&gt;</span></span></span>
+                    <span class="tt-wrap"><code>&lt;bdo&gt;</code><span class="tt-box"><span class="tt-def">Override
+                                bidirectionnel (force la direction).</span><span class="tt-ex">&lt;bdo
+                                dir="rtl"&gt;Texte&lt;/bdo&gt;</span></span></span>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:24px"><strong>💡 Total : 85+ balises HTML</strong> - Cette
+                référence
+                couvre toutes les balises HTML5 courantes et leur usage.</div>
+        </div>
+    </section>
+
+    <!-- SECTION QUIZ -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="container">
+            <h2>Testez vos connaissances</h2>
+            <div id="quiz-app">
+                <!-- Injecté par JS -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import 'assets/js/quiz-engine.js';
+
+        // Init Quiz
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({
+                containerId: 'quiz-app',
+                jsonPath: 'quiz_html.json',
+                questionsPerSession: 10
+            });
+        });
+    </script>
+    <!-- Fallback if module import fails or separate script needed -->
+    <script src="assets/js/quiz-engine.js"></script>
+    <script>
+        // Simple init check
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: 'quiz_html.json',
+                    questionsPerSession: 10
+                });
+            }
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom:8px"><strong>Mémo HTML5</strong> • 85+ balises • 2025</p>
+            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
+                mémoire
+                avec un
+                cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
+                faciliter l'apprentissage des autres.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

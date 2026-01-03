@@ -333,7 +333,53 @@ pre {
     font-size: 0.78rem;
     margin: 2px;
     display: inline-block;
+    position: relative;
+    cursor: help;
 }
+
+/* Tooltip Styles */
+.ref-card code .tt {
+    visibility: hidden;
+    width: 260px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 12px;
+    position: absolute;
+    z-index: 100;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    pointer-events: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: normal;
+}
+
+.ref-card code .tt::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--primary) transparent transparent transparent;
+}
+
+.ref-card code:hover .tt {
+    visibility: visible;
+    opacity: 1;
+    bottom: 125%;
+}
+
+.tt b { color: var(--accent); display: block; margin-bottom: 4px; font-size: 0.8rem; }
+.tt i { color: var(--green); display: block; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-style: normal; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 4px; }
 
 /* === TABLES === */
 table {

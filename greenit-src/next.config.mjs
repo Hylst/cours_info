@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Requis pour l'export statique
   },
+  basePath: '/greenit',
 }
 
 export default nextConfig

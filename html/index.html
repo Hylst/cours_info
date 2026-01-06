@@ -1348,6 +1348,278 @@ Texte
         </div>
     </section>
 
+    <!-- SECTION 07b - CAS PRATIQUE : LE BUREAU DES QUÊTES -->
+    <section id="s7b" style="background: var(--bg2); border-left: 4px solid var(--purple);">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07b</div>
+                <div>
+                    <h2 class="sec-title">Cas Pratique : Bureau des Quêtes</h2>
+                    <p class="sec-sub">Formulaire thématique complet (Heroic Fantasy)</p>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 25px;">
+                Ici, nous appliquons tout ce que nous avons appris. Ce formulaire de "Rapport de Fin de Quête"
+                exploite les attributs sémantiques et de validation pour une expérience utilisateur (UX) optimale
+                et une transmission de données propre.
+            </p>
+
+            <!-- DÉMO INTERACTIVE -->
+            <div class="fantasy-demo"
+                style="background: #fdf6e3; padding: 30px; border-radius: 12px; border: 3px double #b8860b; color: #2c1e0f; font-family: 'Outfit', serif; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                <header
+                    style="background: none; border: none; position: static; text-align: center; margin-bottom: 25px;">
+                    <h1
+                        style="color: #8b4513; font-size: 2rem; margin-bottom: 5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                        📜 Rapport de Fin de Quête</h1>
+                    <p style="color: #5d4037; font-style: italic; font-size: 1.1rem;">Bureau de l'Aventurier - Royaume
+                        de HTMLia</p>
+                    <hr style="border: 0; border-top: 1px solid #d2b48c; margin: 15px auto; width: 60%;">
+                </header>
+
+                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 25px;">
+                    <!-- Groupe : Identité -->
+                    <fieldset
+                        style="border: 1px solid #d2b48c; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.3);">
+                        <legend
+                            style="padding: 0 15px; font-weight: bold; color: #8b4513; font-size: 1.1rem; text-shadow: 1px 1px 0 white;">
+                            🆔 Identité du Brave</legend>
+
+                        <div style="margin-bottom: 15px;">
+                            <label for="aventurier-nom"
+                                style="display: block; font-weight: 600; margin-bottom: 5px;">Nom ou Surnom <span
+                                    style="color:#b22222">*</span> :</label>
+                            <input type="text" id="aventurier-nom" name="hero_name"
+                                placeholder="Ex: Godefroy le Vaillant" required
+                                style="width: 100%; padding: 10px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label for="aventurier-parchemin"
+                                style="display: block; font-weight: 600; margin-bottom: 5px;">Parchemin de Contact
+                                (Email) <span style="color:#b22222">*</span> :</label>
+                            <input type="email" id="aventurier-parchemin" name="hero_email"
+                                placeholder="godefroy@donjon.com" required
+                                style="width: 100%; padding: 10px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-size: 1rem;">
+                        </div>
+
+                        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 120px;">
+                                <label for="aventurier-niveau"
+                                    style="display: block; font-weight: 600; margin-bottom: 5px;">Niveau (1-99)
+                                    :</label>
+                                <input type="number" id="aventurier-niveau" name="hero_level" min="1" max="99" value="1"
+                                    style="width: 100%; padding: 10px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-size: 1rem;">
+                            </div>
+                            <div style="flex: 2; min-width: 200px;">
+                                <label for="aventurier-guild"
+                                    style="display: block; font-weight: 600; margin-bottom: 5px;">Guilde d'appartenance
+                                    :</label>
+                                <input type="text" id="aventurier-guild" name="hero_guild" list="guild-list"
+                                    placeholder="Tapez pour voir..."
+                                    style="width: 100%; padding: 10px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-size: 1rem;">
+                                <datalist id="guild-list">
+                                    <option value="La main ensanglantée">
+                                    <option value="Les mages de l'Aube">
+                                    <option value="L'Ombre du Soir">
+                                    <option value="Cercle des Druides">
+                                </datalist>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Groupe : Classe -->
+                    <fieldset
+                        style="border: 1px solid #d2b48c; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.3);">
+                        <legend
+                            style="padding: 0 15px; font-weight: bold; color: #8b4513; font-size: 1.1rem; text-shadow: 1px 1px 0 white;">
+                            ⚔️ Voie de l'Aventure</legend>
+                        <p style="font-size: 1rem; margin-bottom: 15px; font-weight: 500;">Quelle est votre spécialité
+                            majeure ?</p>
+
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                            <label
+                                style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px; background: #fffcf5; border: 1px solid #d2b48c; border-radius: 6px;">
+                                <input type="radio" name="hero_class" value="warrior" checked
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Guerrier
+                            </label>
+                            <label
+                                style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px; background: #fffcf5; border: 1px solid #d2b48c; border-radius: 6px;">
+                                <input type="radio" name="hero_class" value="mage"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Mage
+                            </label>
+                            <label
+                                style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px; background: #fffcf5; border: 1px solid #d2b48c; border-radius: 6px;">
+                                <input type="radio" name="hero_class" value="rogue"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Voleur
+                            </label>
+                            <label
+                                style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px; background: #fffcf5; border: 1px solid #d2b48c; border-radius: 6px;">
+                                <input type="radio" name="hero_class" value="druid"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Druide
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Groupe : Équipement -->
+                    <fieldset
+                        style="border: 1px solid #d2b48c; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.3);">
+                        <legend
+                            style="padding: 0 15px; font-weight: bold; color: #8b4513; font-size: 1.1rem; text-shadow: 1px 1px 0 white;">
+                            🎒 Équipement de Campagne</legend>
+                        <p style="font-size: 1rem; margin-bottom: 15px; font-weight: 500;">Cochez l'équipement ramené
+                            intact :</p>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="gear" value="sword" checked
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Épée longue
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="gear" value="shield"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Bouclier
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="gear" value="potion" checked
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Potion de soin
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="gear" value="grimoire"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Grimoire
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="gear" value="steed"
+                                    style="accent-color: #8b4513; width: 18px; height: 18px;"> Monture
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Groupe : Détails Quête -->
+                    <fieldset
+                        style="border: 1px solid #d2b48c; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.3);">
+                        <legend
+                            style="padding: 0 15px; font-weight: bold; color: #8b4513; font-size: 1.1rem; text-shadow: 1px 1px 0 white;">
+                            🐉 Détails de la Quête</legend>
+
+                        <div style="margin-bottom: 20px;">
+                            <label for="quest-type" style="display: block; font-weight: 600; margin-bottom: 5px;">Nature
+                                de la mission :</label>
+                            <select id="quest-type" name="mission" required
+                                style="width: 100%; padding: 10px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-size: 1rem;">
+                                <option value="">-- Choisissez l'exploit réalisé --</option>
+                                <option value="slaying">Extermination de Dragon</option>
+                                <option value="retrieval">Récupération d'Artefact Maudit</option>
+                                <option value="escort" selected>Escorte de la Princesse</option>
+                                <option value="investigation">Enquête sur Nécromancie</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="difficulty"
+                                style="display: block; font-weight: 600; margin-bottom: 10px;">Difficulté rencontrée
+                                (Échelle de péril) :</label>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <span style="font-size: 0.9rem; color: #5d4037;">Promenade</span>
+                                <input type="range" id="difficulty" name="feat_difficulty" min="1" max="10" step="1"
+                                    value="7" style="flex: 1; accent-color: #8b4513; cursor: pointer;">
+                                <span style="font-size: 0.9rem; color: #b22222; font-weight: bold;">Enfer</span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div>
+                        <label for="narrative" style="display: block; font-weight: 600; margin-bottom: 8px;">🖋️ Journal
+                            de bord (Récit facultatif) :</label>
+                        <textarea id="narrative" name="hero_story" rows="5" placeholder="Parlez-nous de vos exploits..."
+                            style="width: 100%; padding: 12px; border: 1px solid #d2b48c; border-radius: 4px; background: #fffcf5; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button type="submit"
+                            onmouseover="this.style.transform='translateY(-2px) scale(1.02)'; this.style.backgroundColor='#a0522d';"
+                            onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.backgroundColor='#8b4513';"
+                            style="background: #8b4513; color: white; padding: 15px 45px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1.2rem; box-shadow: 0 6px 0 #5d4037; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-transform: uppercase; letter-spacing: 1.5px;">
+                            Sceller le Parchemin
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CODE EXEMPLE COMPLET -->
+            <h3 style="margin-top: 50px;">Exemple de code source complet (Heroic Fantasy)</h3>
+            <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 20px;">
+                Voici le code source de la démo ci-dessus, annoté pour comprendre chaque paramètre et option.
+            </p>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Code source commenté - quest-form.html</div>
+                <pre><span class="c">&lt;!-- 
+  FORM : Élément racine.
+  - action : l'URL où les données seront envoyées (script serveur).
+  - method : POST (recommandé pour la sécurité et l'envoi de données).
+--&gt;</span>
+<span class="t">&lt;form</span> <span class="a">action=</span><span class="v">"/api/quests"</span> <span class="a">method=</span><span class="v">"POST"</span><span class="t">&gt;</span>
+
+  <span class="c">&lt;!-- fieldset regroupe thématiquement les champs --&gt;</span>
+  <span class="t">&lt;fieldset&gt;</span>
+    <span class="c">&lt;!-- legend donne un titre au groupe --&gt;</span>
+    <span class="t">&lt;legend&gt;</span>Identité de l'aventurier<span class="t">&lt;/legend&gt;</span>
+    
+    <span class="c">&lt;!-- Le 'for' du label DOIT être identique à l'ID de l'input --&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"nom"</span><span class="t">&gt;</span>Nom (Requis) :<span class="t">&lt;/label&gt;</span>
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"text"</span> 
+           <span class="a">id=</span><span class="v">"nom"</span> 
+           <span class="a">name=</span><span class="v">"hero_name"</span> 
+           <span class="a">required</span> 
+           <span class="a">placeholder=</span><span class="v">"Ex: Godefroy"</span><span class="t">&gt;</span>
+
+    <span class="c">&lt;!-- type="number" : pour les statistiques chiffrées --&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"lvl"</span><span class="t">&gt;</span>Niveau (1-99) :<span class="t">&lt;/label&gt;</span>
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"number"</span> <span class="a">id=</span><span class="v">"lvl"</span> <span class="a">name=</span><span class="v">"level"</span> <span class="a">min=</span><span class="v">"1"</span> <span class="a">max=</span><span class="v">"99"</span> <span class="a">value=</span><span class="v">"1"</span><span class="t">&gt;</span>
+  <span class="t">&lt;/fieldset&gt;</span>
+
+  <span class="c">&lt;!-- Boutons Radio : l'utilisateur choisit UNE seule option parmi N.
+       Ils DOIVENT porter le même 'name' pour fonctionner en groupe. --&gt;</span>
+  <span class="t">&lt;fieldset&gt;</span>
+    <span class="t">&lt;legend&gt;</span>Choix de la classe (Radio)<span class="t">&lt;/legend&gt;</span>
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"radio"</span> <span class="a">id=</span><span class="v">"warrior"</span> <span class="a">name=</span><span class="v">"class"</span> <span class="a">value=</span><span class="v">"warrior"</span> <span class="a">checked</span><span class="t">&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"warrior"</span><span class="t">&gt;</span>Guerrier<span class="t">&lt;/label&gt;</span>
+    
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"radio"</span> <span class="a">id=</span><span class="v">"mage"</span> <span class="a">name=</span><span class="v">"class"</span> <span class="a">value=</span><span class="v">"mage"</span><span class="t">&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"mage"</span><span class="t">&gt;</span>Mage<span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;/fieldset&gt;</span>
+
+  <span class="c">&lt;!-- Checkbox : choix multiples possibles. --&gt;</span>
+  <span class="t">&lt;fieldset&gt;</span>
+    <span class="t">&lt;legend&gt;</span>Équipement (Checkbox - choix multiples)<span class="t">&lt;/legend&gt;</span>
+    <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"checkbox"</span> <span class="a">id=</span><span class="v">"sword"</span> <span class="a">name=</span><span class="v">"gear"</span> <span class="a">value=</span><span class="v">"épée"</span> <span class="a">checked</span><span class="t">&gt;</span>
+    <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"sword"</span><span class="t">&gt;</span>Épée magique<span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;/fieldset&gt;</span>
+
+  <span class="c">&lt;!-- select/option : menu déroulant classique --&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"mission"</span><span class="t">&gt;</span>Mission :<span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;select</span> <span class="a">id=</span><span class="v">"mission"</span> <span class="a">name=</span><span class="v">"quest"</span><span class="t">&gt;</span>
+    <span class="t">&lt;option</span> <span class="a">value=</span><span class="v">"slayer"</span><span class="t">&gt;</span>Tuer le Dragon<span class="t">&lt;/option&gt;</span>
+    <span class="t">&lt;option</span> <span class="a">value=</span><span class="v">"rescuer"</span> <span class="a">selected</span><span class="t">&gt;</span>Sauver la Princesse<span class="t">&lt;/option&gt;</span>
+  <span class="t">&lt;/select&gt;</span>
+
+  <span class="c">&lt;!-- range : curseur de sélection --&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"peril"</span><span class="t">&gt;</span>Difficulté (1-10) :<span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;input</span> <span class="a">type=</span><span class="v">"range"</span> <span class="a">id=</span><span class="v">"peril"</span> <span class="a">name=</span><span class="v">"diff"</span> <span class="a">min=</span><span class="v">"1"</span> <span class="a">max=</span><span class="v">"10"</span> <span class="a">step=</span><span class="v">"1"</span><span class="t">&gt;</span>
+
+  <span class="c">&lt;!-- textarea : pour les textes longs (multi-lignes) --&gt;</span>
+  <span class="t">&lt;label</span> <span class="a">for=</span><span class="v">"story"</span><span class="t">&gt;</span>Récit :<span class="t">&lt;/label&gt;</span>
+  <span class="t">&lt;textarea</span> <span class="a">id=</span><span class="v">"story"</span> <span class="a">name=</span><span class="v">"story"</span> <span class="a">rows=</span><span class="v">"5"</span><span class="t">&gt;&lt;/textarea&gt;</span>
+
+  <span class="c">&lt;!-- submit : bouton déclenchant l'envoi --&gt;</span>
+  <span class="t">&lt;button</span> <span class="a">type=</span><span class="v">"submit"</span><span class="t">&gt;</span>Sceller le Parchemin<span class="t">&lt;/button&gt;</span>
+
+<span class="t">&lt;/form&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION 8 - SÉMANTIQUE -->
     <section id="s8">
         <div class="container">

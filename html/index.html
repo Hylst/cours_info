@@ -30,531 +30,12 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/quiz-style.css">
-    <style>
-        :root {
-            --primary: #e44d26;
-            --secondary: #f06529;
-            --bg: #0f0a1a;
-            --bg2: #1a1230;
-            --card: #201840;
-            --text: #f0e6ff;
-            --muted: #a89cc8;
-            --dim: #6b5f87;
-            --border: #2d2250;
-            --green: #10b981;
-            --purple: #a855f7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 10, 26, .95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-            padding: 16px 0
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.3rem;
-            font-weight: 700
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem
-        }
-
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: .85rem;
-            transition: .2s
-        }
-
-        nav a:hover {
-            background: var(--card);
-            color: var(--text)
-        }
-
-        .hero {
-            padding: 60px 0 40px;
-            text-align: center;
-            border-bottom: 1px solid var(--border)
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--text), var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px
-        }
-
-        .hero p {
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto
-        }
-
-        .toc {
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border)
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px
-        }
-
-        .toc-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: .9rem;
-            transition: .2s
-        }
-
-        .toc-item:hover {
-            border-color: var(--primary);
-            transform: translateX(4px)
-        }
-
-        .toc-num {
-            width: 28px;
-            height: 28px;
-            background: var(--primary);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .75rem;
-            font-weight: 600
-        }
-
-        section {
-            padding: 50px 0;
-            border-bottom: 1px solid var(--border)
-        }
-
-        .sec-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 28px
-        }
-
-        .sec-num {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), #c23616);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            font-weight: 600;
-            flex-shrink: 0
-        }
-
-        section:nth-child(odd) .sec-num {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed)
-        }
-
-        section:nth-child(3n) .sec-num {
-            background: linear-gradient(135deg, #ec4899, #db2777)
-        }
-
-        .sec-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 4px
-        }
-
-        .sec-sub {
-            color: var(--dim);
-            font-size: .95rem
-        }
-
-        h3 {
-            font-size: 1.15rem;
-            margin: 24px 0 12px;
-            color: var(--secondary)
-        }
-
-        p,
-        li {
-            color: var(--muted);
-            margin-bottom: 8px
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0
-        }
-
-        li {
-            padding-left: 20px;
-            position: relative
-        }
-
-        li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary)
-        }
-
-        .code {
-            background: #0d0918;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin: 12px 0;
-            overflow: hidden
-        }
-
-        .code-head {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            background: #1a1230;
-            border-bottom: 1px solid var(--border);
-            font-size: .75rem;
-            color: var(--dim)
-        }
-
-        .dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%
-        }
-
-        .dot.r {
-            background: #ff5f56
-        }
-
-        .dot.y {
-            background: #ffbd2e
-        }
-
-        .dot.g {
-            background: #27ca40
-        }
-
-        pre {
-            padding: 14px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .8rem;
-            line-height: 1.5;
-            overflow-x: auto
-        }
-
-        .t {
-            color: var(--primary)
-        }
-
-        .a {
-            color: var(--purple)
-        }
-
-        .v {
-            color: var(--green)
-        }
-
-        .c {
-            color: var(--dim)
-        }
-
-        .demo {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 12px 0
-        }
-
-        .demo-title {
-            font-size: .75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--dim);
-            margin-bottom: 12px
-        }
-
-        .demo h1,
-        .demo h2,
-        .demo h3,
-        .demo h4,
-        .demo h5,
-        .demo h6 {
-            color: var(--text);
-            margin: 8px 0;
-            background: none;
-            -webkit-text-fill-color: var(--text)
-        }
-
-        .demo p {
-            color: var(--muted)
-        }
-
-        .demo table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 10px 0
-        }
-
-        .demo th,
-        .demo td {
-            padding: 10px 14px;
-            border: 1px solid var(--border);
-            text-align: left
-        }
-
-        .demo th {
-            background: var(--bg2);
-            color: var(--secondary)
-        }
-
-        .demo input,
-        .demo select,
-        .demo textarea {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin: 4px 0;
-            font-family: inherit
-        }
-
-        .demo input:focus,
-        .demo textarea:focus {
-            outline: none;
-            border-color: var(--primary)
-        }
-
-        .demo button {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: .2s
-        }
-
-        .demo button:hover {
-            background: var(--secondary)
-        }
-
-        .demo label {
-            display: block;
-            color: var(--muted);
-            margin: 8px 0 4px;
-            font-size: .9rem
-        }
-
-        .demo fieldset {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            margin: 10px 0
-        }
-
-        .demo legend {
-            padding: 0 8px;
-            color: var(--secondary)
-        }
-
-        .grid2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 16px
-        }
-
-        .tip {
-            background: rgba(16, 185, 129, .1);
-            border-left: 3px solid var(--green);
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0
-        }
-
-        .tip strong {
-            color: var(--green)
-        }
-
-        .ref-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px
-        }
-
-        .ref-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px
-        }
-
-        .ref-card h4 {
-            font-size: .95rem;
-            color: var(--secondary);
-            margin-bottom: 8px
-        }
-
-        /* Tooltips Reference */
-        .tt-wrap {
-            position: relative;
-            display: inline-block;
-            margin: 2px;
-        }
-
-        .tt-wrap code {
-            cursor: help;
-            border-bottom: 1px dotted var(--muted);
-        }
-
-        .tt-box {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            bottom: 120%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            width: 280px;
-            background: var(--bg);
-            border: 1px solid var(--secondary);
-            padding: 12px;
-            border-radius: 8px;
-            z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            transition: all 0.2s ease;
-            pointer-events: none;
-            text-align: left;
-        }
-
-        .tt-wrap:hover .tt-box {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .tt-def {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-bottom: 8px;
-            line-height: 1.4;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .tt-ex {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--muted);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            border-left: 2px solid var(--secondary);
-        }
-
-        .tt-box::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -6px;
-            border-width: 6px;
-            border-style: solid;
-            border-color: var(--secondary) transparent transparent transparent;
-        }
-
-        .ref-card code {
-            color: var(--primary);
-            background: var(--bg);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: .8rem
-        }
-
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            color: var(--dim);
-            font-size: .85rem
-        }
-
-        @media(max-width:768px) {
-            .hero h1 {
-                font-size: 1.8rem
-            }
-
-            nav {
-                display: none
-            }
-
-            .sec-header {
-                flex-direction: column
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Styles personnalisés extraits -->
 </head>
 
 <body>
 
+    <!-- EN-TÊTE : Contient le logo et la navigation principale -->
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -565,6 +46,7 @@
         </div>
     </header>
 
+    <!-- HÉRO : Présentation du cours -->
     <div class="hero">
         <div class="container">
             <h1>Mémo HTML Complet</h1>
@@ -577,6 +59,7 @@
         </div>
     </div>
 
+    <!-- TABLE DES MATIÈRES : Liens rapides vers les sections -->
     <div class="toc">
         <div class="container">
             <div class="toc-grid">
@@ -595,7 +78,7 @@
         </div>
     </div>
 
-    <!-- SECTION 1 -->
+    <!-- SECTION 01 : LA STRUCTURE DE BASE -->
     <section id="s1">
         <div class="container">
             <div class="sec-header">
@@ -984,6 +467,57 @@ Texte
 <span class="c">&lt;!-- Canvas / SVG --&gt;</span>
 <span class="t">&lt;canvas</span> <span class="a">id=</span><span class="v">"c"</span> <span class="a">width=</span><span class="v">"300"</span> <span class="a">height=</span><span class="v">"200"</span><span class="t">&gt;&lt;/canvas&gt;</span>
 <span class="t">&lt;svg</span> <span class="a">width=</span><span class="v">"100"</span> <span class="a">height=</span><span class="v">"100"</span><span class="t">&gt;</span>...<span class="t">&lt;/svg&gt;</span></pre>
+            </div>
+
+            <!-- DÉMO INTERACTIVE MÉDIAS -->
+            <div class="demo" style="border-left: 4px solid var(--purple);">
+                <div class="demo-title">Galerie Multimédia Interactive</div>
+
+                <div class="ref-grid">
+                    <!-- Image -->
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 5px; font-size: 0.85rem; color: var(--muted);">Image avec
+                            <code>figcaption</code>
+                        </p>
+                        <figure
+                            style="margin: 0; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                            <img src="https://images.unsplash.com/photo-1620641788427-b965d964e390?q=80&w=300&auto=format&fit=crop"
+                                alt="Paysage Cyberpunk" width="250" height="150" loading="lazy"
+                                style="border-radius: 4px; object-fit: cover;">
+                            <figcaption
+                                style="font-size: 0.8rem; color: var(--dim); margin-top: 5px; font-style: italic;">
+                                📸 Paysage Cyberpunk (Unsplash)
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Audio -->
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 5px; font-size: 0.85rem; color: var(--muted);">Lecteur Audio HTML5</p>
+                        <div
+                            style="background: rgba(0,0,0,0.2); padding: 20px 10px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; height: 195px;">
+                            <audio controls style="width: 100%; max-width: 250px;">
+                                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                                    type="audio/mpeg">
+                                Votre navigateur ne supporte pas l'audio.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <!-- Iframe Youtube -->
+                    <div style="text-align: center; grid-column: 1 / -1;">
+                        <p style="margin-bottom: 5px; font-size: 0.85rem; color: var(--muted);">Intégration Vidéo
+                            (Iframe)</p>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 1px solid var(--border);">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0" title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- EXPLICATIONS MÉDIAS -->
@@ -1832,47 +1366,7 @@ Texte
                     </div>
                 </div>
 
-                <script>
-                    const slider = document.getElementById('resp-slider');
-                    const container = document.getElementById('resp-container');
-                    const valDisplay = document.getElementById('resp-val');
-                    const deviceDisplay = document.getElementById('resp-device');
-                    const currentSrc = document.getElementById('current-src');
-
-                    const imgDesktop = document.getElementById('img-desktop');
-                    const imgTablet = document.getElementById('img-tablet');
-                    const imgMobile = document.getElementById('img-mobile');
-
-                    slider.addEventListener('input', (e) => {
-                        const width = e.target.value;
-                        container.style.width = width + 'px';
-                        valDisplay.innerText = width;
-
-                        // Simulation de la logique media query
-                        if (width < 600) {
-                            // Mobile
-                            deviceDisplay.innerText = "(Mobile - Focus Détail)";
-                            imgDesktop.style.display = 'none';
-                            imgTablet.style.display = 'none';
-                            imgMobile.style.display = 'block';
-                            currentSrc.innerText = 'responsive-mobile.png';
-                        } else if (width < 900) {
-                            // Tablet
-                            deviceDisplay.innerText = "(Tablette - Plan Moyen)";
-                            imgDesktop.style.display = 'none';
-                            imgTablet.style.display = 'block';
-                            imgMobile.style.display = 'none';
-                            currentSrc.innerText = 'responsive-tablet.png';
-                        } else {
-                            // Desktop
-                            deviceDisplay.innerText = "(Desktop - Plan Large)";
-                            imgDesktop.style.display = 'block';
-                            imgTablet.style.display = 'none';
-                            imgMobile.style.display = 'none';
-                            currentSrc.innerText = 'responsive-desktop.png';
-                        }
-                    });
-                </script>
+                <!-- LOGIQUE INTERACTIVE : Gérée dans script.js (Simulateur de Responsive) -->
             </div>
 
             <div class="code">
@@ -2536,32 +2030,9 @@ Texte
                 </div>
             </section>
 
-            <script type="module">
-                import 'assets/js/quiz-engine.js';
-
-                // Init Quiz
-                document.addEventListener('DOMContentLoaded', () => {
-                    new window.QuizEngine({
-                        containerId: 'quiz-app',
-                        jsonPath: 'quiz_html.json',
-                        questionsPerSession: 10
-                    });
-                });
-            </script>
-            <!-- Fallback if module import fails or separate script needed -->
+            <!-- MOTEUR DE QUIZ ET LOGIQUE GLOBALE -->
             <script src="assets/js/quiz-engine.js"></script>
-            <script>
-                // Simple init check
-                window.addEventListener('load', () => {
-                    if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                        new window.QuizEngine({
-                            containerId: 'quiz-app',
-                            jsonPath: 'quiz_html.json',
-                            questionsPerSession: 10
-                        });
-                    }
-                });
-            </script>
+            <script src="script.js"></script> <!-- Logique personnalisée extraite -->
 
             <footer>
                 <div class="container">

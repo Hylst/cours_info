@@ -1,0 +1,546 @@
+/* 
+   =====================================================
+   SYSTÈME DE DESIGN - MÉMO HTML5
+   Auteur : Geoffroy Streit
+   Dernière mise à jour : 2025
+   ===================================================== 
+*/
+
+:root {
+    /* Palette de couleurs inspirée par HTML5 (Orange/Feu) */
+    --primary: #e44d26;
+    --secondary: #f06529;
+    --bg: #0f0a1a;
+    --bg2: #1a1230;
+    --card: #201840;
+    --text: #f0e6ff;
+    --muted: #a89cc8;
+    --dim: #6b5f87;
+    --border: #2d2250;
+    --green: #10b981;
+    --purple: #a855f7;
+}
+
+/* Reset de base pour éviter les marges par défaut bizarres des navigateurs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Pour des transitions fluides lors des clics sur les ancres */
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header autocollant (sticky) pour garder la nav sous les yeux */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(15, 10, 26, .95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 16px 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: .85rem;
+    transition: .2s;
+}
+
+nav a:hover {
+    background: var(--card);
+    color: var(--text);
+}
+
+/* Section Héro : le titre qui claque */
+.hero {
+    padding: 60px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--text), var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Table des matières (TOC) */
+.toc {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: .9rem;
+    transition: .2s;
+}
+
+.toc-item:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.toc-num {
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+/* Sections du cours */
+section {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sec-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.sec-num {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), #c23616);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* Alternance de couleurs pour les numéros de sections */
+section:nth-child(odd) .sec-num {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+section:nth-child(3n) .sec-num {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+}
+
+.sec-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.sec-sub {
+    color: var(--dim);
+    font-size: .95rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+    margin: 24px 0 12px;
+    color: var(--secondary);
+}
+
+p,
+li {
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding-left: 20px;
+    position: relative;
+}
+
+li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+/* Blocs de code stylisés (façon IDE sombre) */
+.code {
+    background: #0d0918;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+.code-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #1a1230;
+    border-bottom: 1px solid var(--border);
+    font-size: .75rem;
+    color: var(--dim);
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dot.r {
+    background: #ff5f56;
+}
+
+.dot.y {
+    background: #ffbd2e;
+}
+
+.dot.g {
+    background: #27ca40;
+}
+
+pre {
+    padding: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* Couleurs de coloration syntaxique maison */
+.t {
+    color: var(--primary);
+}
+
+/* Tags */
+.a {
+    color: var(--purple);
+}
+
+/* Attributes */
+.v {
+    color: var(--green);
+}
+
+/* Values */
+.c {
+    color: var(--dim);
+}
+
+/* Comments */
+
+/* Boîtes de démo (rendu visuel) */
+.demo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 12px 0;
+}
+
+.demo-title {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dim);
+    margin-bottom: 12px;
+}
+
+.demo h1,
+.demo h2,
+.demo h3,
+.demo h4,
+.demo h5,
+.demo h6 {
+    color: var(--text);
+    margin: 8px 0;
+    background: none;
+    -webkit-text-fill-color: var(--text);
+}
+
+.demo p {
+    color: var(--muted);
+}
+
+.demo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.demo th,
+.demo td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+.demo th {
+    background: var(--bg2);
+    color: var(--secondary);
+}
+
+/* Styles pour les formulaires dans les démos */
+.demo input,
+.demo select,
+.demo textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 4px 0;
+    font-family: inherit;
+}
+
+.demo input:focus,
+.demo textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.demo button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: .2s;
+}
+
+.demo button:hover {
+    background: var(--secondary);
+}
+
+.demo label {
+    display: block;
+    color: var(--muted);
+    margin: 8px 0 4px;
+    font-size: .9rem;
+}
+
+.demo fieldset {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px 0;
+}
+
+.demo legend {
+    padding: 0 8px;
+    color: var(--secondary);
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.tip {
+    background: rgba(16, 185, 129, .1);
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+}
+
+.tip strong {
+    color: var(--green);
+}
+
+/* Grilles de référence (lexique des balises) */
+.ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.ref-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.ref-card h4 {
+    font-size: .95rem;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+/* Tooltips de la section Lexique */
+.tt-wrap {
+    position: relative;
+    display: inline-block;
+    margin: 2px;
+}
+
+.tt-wrap code {
+    cursor: help;
+    border-bottom: 1px dotted var(--muted);
+}
+
+.tt-box {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 280px;
+    background: var(--bg);
+    border: 1px solid var(--secondary);
+    padding: 12px;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    text-align: left;
+}
+
+.tt-wrap:hover .tt-box {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tt-def {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    font-family: 'Outfit', sans-serif;
+}
+
+.tt-ex {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    border-left: 2px solid var(--secondary);
+}
+
+.tt-box::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--secondary) transparent transparent transparent;
+}
+
+.ref-card code {
+    color: var(--primary);
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    color: var(--dim);
+    font-size: .85rem;
+}
+
+/* Adaptations mobiles */
+@media(max-width:768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .sec-header {
+        flex-direction: column;
+    }
+}

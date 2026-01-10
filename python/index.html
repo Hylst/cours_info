@@ -53,7 +53,8 @@
     <section class="hero">
         <div class="container">
             <h1>Mémo Python</h1>
-            <p>Guide pratique Python avec exemples concrets. Programmation moderne et efficace.</p>
+            <p>Propulsez votre maîtrise de Python. Un mémo technique, visuel et interactif pour les développeurs
+                modernes.</p>
         </div>
     </section>
 
@@ -101,36 +102,66 @@
                 au monde grâce à sa syntaxe claire et sa communauté active.
             </p>
 
+            <!-- ENRICHMENT: Interactive Timeline -->
+            <div class="interactive-box">
+                <div class="interactive-title">🚀 L'Évolution de Python</div>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <!-- JS will handle click events to update content -->
+                    <div class="timeline-point active" onclick="updateTimeline(0)">
+                        <div class="point-dot">1991</div>
+                        <div class="point-label">Naissance</div>
+                    </div>
+                    <div class="timeline-point" onclick="updateTimeline(1)">
+                        <div class="point-dot">2000</div>
+                        <div class="point-label">Python 2</div>
+                    </div>
+                    <div class="timeline-point" onclick="updateTimeline(2)">
+                        <div class="point-dot">2008</div>
+                        <div class="point-label">Python 3</div>
+                    </div>
+                    <div class="timeline-point" onclick="updateTimeline(3)">
+                        <div class="point-dot">2025</div>
+                        <div class="point-label">Modern</div>
+                    </div>
+                </div>
+                <div id="timeline-desc" class="timeline-content">
+                    <strong>1991 : Guido van Rossum</strong> publie la première version. Un langage simple pour
+                    remplacer les scripts Shell et C.
+                </div>
+                <div style="font-size:0.8rem; color:var(--dim); margin-top:10px; text-align:center;">
+                    (Cliquez sur les dates pour voir l'évolution)
+                </div>
+            </div>
+
             <div class="grid2">
-                <div class="info" style="border-left-color:#3776ab;">
-                    <strong>📜 Un peu d'histoire</strong>
-                    <ul style="margin-top:10px; font-size:0.9rem; line-height:1.7;">
-                        <li><strong>1991</strong> : Première version par Guido van Rossum (Pays-Bas).</li>
-                        <li><strong>2000</strong> : Python 2.0 (List Comprehensions, Garbage Collector).</li>
-                        <li><strong>2008</strong> : Python 3.0 (refonte majeure, non rétrocompatible).</li>
-                        <li><strong>2020</strong> : Fin de vie Python 2.7. Python 3 est désormais le standard.</li>
-                        <li><strong>2025</strong> : Python 3.12+ avec améliorations de performance (JIT expérimental).
-                        </li>
+                <!-- ENRICHMENT: Essential Box -->
+                <div class="info" style="border-left-color:#ffd43b;">
+                    <strong>🧘 Le Zen of Python (L'Essentiel)</strong>
+                    <p style="font-size:0.9rem; margin-top:10px; color:var(--text);">
+                        3 règles d'or pour écrire du code "Pythonique" :
+                    </p>
+                    <ul style="font-size:0.9rem; line-height:1.7; margin-top:10px;">
+                        <li><strong>Explicite</strong> vaut mieux qu'implicite.</li>
+                        <li><strong>Simple</strong> vaut mieux que complexe.</li>
+                        <li><strong>La lisibilité</strong> compte (le code est lu plus souvent qu'écrit).</li>
                     </ul>
-                    <p style="font-size:0.85rem; margin-top:10px; color:#666;">
-                        💡 Le nom "Python" vient des Monty Python, pas du serpent !
+                    <p style="font-size:0.85rem; margin-top:10px; color:var(--dim);">
+                        Tapez <code>import this</code> pour voir les 19 aphorismes complets.
                     </p>
                 </div>
+            </div>
 
-                <div class="info" style="border-left-color:#ffd43b;">
-                    <strong>🧘 La Philosophie Python</strong>
-                    <p style="font-size:0.9rem; margin-top:10px;">
-                        Le <code>import this</code> révèle le <strong>"Zen of Python"</strong>, 19 aphorismes guidant la
-                        conception du langage :
-                    </p>
-                    <ul style="font-size:0.9rem; line-height:1.7; font-style:italic; margin-top:10px;">
-                        <li><em>"Beautiful is better than ugly."</em></li>
-                        <li><em>"Simple is better than complex."</em></li>
-                        <li><em>"Readability counts."</em></li>
-                        <li><em>"There should be one-- and preferably only one --obvious way to do it."</em></li>
-                    </ul>
-                    <p style="font-size:0.85rem; margin-top:10px; color:#666;">➡️ Tape <code>import this</code> dans
-                        Python pour voir les 19 règles.</p>
+            <div class="practice-grid">
+                <div class="best-practice">
+                    <span class="practice-title">✅ Do : Suivre la PEP 8</span>
+                    <p style="font-size:0.85rem;">Utilisez 4 espaces pour l'indentation, des noms explicites en
+                        <code>snake_case</code>, et aérez votre code.</p>
+                </div>
+                <div class="bad-practice">
+                    <span class="practice-title">❌ Don't : One-liners cryptiques</span>
+                    <p style="font-size:0.85rem;">Ne sacrifiez jamais la lisibilité pour quelques lignes de code en
+                        moins. Le code est lu 10x plus qu'il n'est écrit.</p>
                 </div>
             </div>
 
@@ -293,18 +324,85 @@
                     isinstance(25, int) = True</div>
             </div>
 
-            <div class="grid2" style="margin-bottom:20px;">
-                <div>
-                    <h3 style="font-size:1rem; color:var(--text-color);">Typage Dynamique</h3>
-                    <img src="img/dynamic_typing.svg" alt="Dynamic Typing Diagram"
-                        style="width:100%; border-radius:8px; border:1px solid #333;">
+            <!-- ENRICHMENT: Interactive Memory Box -->
+            <div class="interactive-box">
+                <div class="interactive-title">📦 Visualiseur de Variables (Typage Dynamique)</div>
+                <div style="margin-bottom:20px; text-align:center;">
+                    <p style="margin-bottom:10px; font-size:0.9rem;">Affectez une valeur à <code>var_x</code> :</p>
+                    <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+                        <button onclick="setMemory('int')"
+                            style="padding:8px 15px; border-radius:6px; border:1px solid var(--orange); color:var(--orange); background:rgba(251,146,60,0.1); cursor:pointer; font-family:'JetBrains Mono';">x
+                            = 42</button>
+                        <button onclick="setMemory('str')"
+                            style="padding:8px 15px; border-radius:6px; border:1px solid var(--green); color:var(--green); background:rgba(16,185,129,0.1); cursor:pointer; font-family:'JetBrains Mono';">x
+                            = "Python"</button>
+                        <button onclick="setMemory('list')"
+                            style="padding:8px 15px; border-radius:6px; border:1px solid var(--purple); color:var(--purple); background:rgba(167,139,250,0.1); cursor:pointer; font-family:'JetBrains Mono';">x
+                            = [1, 2, 3]</button>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="font-size:1rem; color:var(--text-color);">Mutable vs Immutable</h3>
-                    <img src="img/memory_mutable.svg" alt="Memory Mutable vs Immutable"
-                        style="width:100%; border-radius:8px; border:1px solid #333;">
+
+                <div class="memory-box-container">
+                    <div class="memory-var">
+                        <div
+                            style="font-family:'JetBrains Mono'; font-weight:bold; font-size:1.2rem; color:var(--pink);">
+                            var_x</div>
+                        <div style="font-size:0.8rem; color:var(--dim);">Étiquette</div>
+                    </div>
+                    <div class="memory-arrow">➜</div>
+                    <div class="memory-value-wrapper" style="text-align:center;">
+                        <div id="mem-val" class="memory-value type-int">42</div>
+                        <div id="mem-type"
+                            style="font-size:0.8rem; margin-top:5px; font-family:'JetBrains Mono'; color:var(--dim);">
+                            type: &lt;int&gt;</div>
+                    </div>
                 </div>
+                <p style="text-align:center; font-size:0.85rem; color:var(--muted); margin-top:15px;">
+                    En Python, la variable n'est qu'une <strong>étiquette</strong>. Elle peut changer de type à tout
+                    moment.
+                </p>
             </div>
+
+            <!-- ENRICHMENT: Essential Cheat Sheet -->
+            <h3 style="margin-top:30px;">⚡ Types Primitifs Essentiels</h3>
+            <table class="cheat-sheet">
+                <tr>
+                    <th>Type</th>
+                    <th>Exemple</th>
+                    <th>Immuable ?</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>int</code></td>
+                    <td><code>42</code>, <code>-10</code></td>
+                    <td>✅ OUI</td>
+                    <td>Entiers (taille illimitée)</td>
+                </tr>
+                <tr>
+                    <td><code>float</code></td>
+                    <td><code>3.14</code>, <code>1.2e-3</code></td>
+                    <td>✅ OUI</td>
+                    <td>Nombres à virgule flottante</td>
+                </tr>
+                <tr>
+                    <td><code>bool</code></td>
+                    <td><code>True</code>, <code>False</code></td>
+                    <td>✅ OUI</td>
+                    <td>Booléens (sous-type de int)</td>
+                </tr>
+                <tr>
+                    <td><code>str</code></td>
+                    <td><code>"Hello"</code></td>
+                    <td>✅ OUI</td>
+                    <td>Chaîne Unicode</td>
+                </tr>
+                <tr>
+                    <td><code>NoneType</code></td>
+                    <td><code>None</code></td>
+                    <td>✅ OUI</td>
+                    <td>Absence de valeur</td>
+                </tr>
+            </table>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -462,9 +560,28 @@
 <span class="c"># Lambda</span>
 <span class="var">double</span> = <span class="kw">lambda</span> <span class="var">x</span>: <span class="var">x</span> * <span class="num">2</span>
 
+            <div class="interactive-box">
+                <div class="interactive-title">📦 *ARGS et **KWARGS Visualizer</div>
+                <p style="font-size:0.9rem; margin-bottom:15px; text-align:center;">
+                    Appel de fonction : <code>func(1, 2, a=3, b=4)</code>
+                </p>
+                <div class="grid2">
+                    <div style="background:var(--bg2); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                        <div style="color:var(--secondary); font-family:'JetBrains Mono'; margin-bottom:10px;">*args (Tuple)</div>
+                        <div style="font-family:'JetBrains Mono'; color:var(--text);">(1, 2)</div>
+                        <div style="font-size:0.8rem; color:var(--dim); margin-top:5px;">Arguments positionnels</div>
+                    </div>
+                    <div style="background:var(--bg2); padding:15px; border-radius:8px; border:1px solid var(--border);">
+                        <div style="color:var(--accent); font-family:'JetBrains Mono'; margin-bottom:10px;">**kwargs (Dict)</div>
+                        <div style="font-family:'JetBrains Mono'; color:var(--text);">{'a': 3, 'b': 4}</div>
+                        <div style="font-size:0.8rem; color:var(--dim); margin-top:5px;">Arguments nommés</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid2">
                 <div>
-                     <h3 style="font-size:1rem; color:var(--text-color); margin-bottom:10px;">Le Pattern Décorateur</h3>
+                     <h3 style="font-size:1rem; color:var(--text); margin-bottom:10px;">Le Pattern Décorateur</h3>
                      <img src="img/decorators.svg" alt="Decorator Pattern" style="width:100%; border-radius:8px; border:1px solid #333;">
                 </div>
                 <div class="code">
@@ -519,6 +636,53 @@
                         dict pour les associations clé-valeur, tuple pour les données immuables.</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: List vs Set -->
+            <div class="interactive-box">
+                <div class="interactive-title">📊 Listes vs Sets (Unicité)</div>
+                <div style="display:flex; gap:10px; margin-bottom:15px; justify-content:center;">
+                    <input type="text" id="coll-input" placeholder="Entrez un fruit..."
+                        style="padding:8px; border-radius:4px; border:1px solid var(--border); background:var(--bg2); color:var(--text);">
+                    <button onclick="addCollectionItem()"
+                        style="padding:8px 15px; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer;">Ajouter</button>
+                    <button onclick="document.getElementById('coll-input').value='Pomme'; addCollectionItem();"
+                        style="padding:8px; background:var(--bg2); border:1px solid var(--border); border-radius:4px; cursor:pointer;">Test
+                        "Pomme"</button>
+                </div>
+                <div class="grid2">
+                    <div style="background:var(--bg2); padding:15px; border-radius:8px;">
+                        <h4 style="color:var(--secondary); margin-bottom:10px;">List (Ordonné, Duplicats OK)</h4>
+                        <div id="demo-list" style="font-family:'JetBrains Mono'; color:var(--text);">[]</div>
+                    </div>
+                    <div style="background:var(--bg2); padding:15px; border-radius:8px;">
+                        <h4 style="color:var(--green); margin-bottom:10px;">Set (Désordonné, Unique)</h4>
+                        <div id="demo-set" style="font-family:'JetBrains Mono'; color:var(--text);">{}</div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="cheat-sheet">
+                <tr>
+                    <th>Opération</th>
+                    <th>List (Array)</th>
+                    <th>Set (Hash Map)</th>
+                </tr>
+                <tr>
+                    <td>Accès index <code>L[i]</code></td>
+                    <td><code style="color:var(--green)">O(1)</code> Très rapide</td>
+                    <td>❌ Impossible</td>
+                </tr>
+                <tr>
+                    <td>Recherche <code>x in L</code></td>
+                    <td><code style="color:var(--red)">O(n)</code> Lent</td>
+                    <td><code style="color:var(--green)">O(1)</code> Très rapide</td>
+                </tr>
+                <tr>
+                    <td>Ajout <code>append/add</code></td>
+                    <td><code style="color:var(--green)">O(1)</code></td>
+                    <td><code style="color:var(--green)">O(1)</code></td>
+                </tr>
+            </table>
 
             <div style="margin-bottom:20px;">
                 <img src="img/list_comp.svg" alt="List Comprehension Syntax"
@@ -776,6 +940,66 @@
                 </div>
             </details>
 
+            <!-- ENRICHMENT: Open Mode Selector -->
+            <div class="interactive-box">
+                <div class="interactive-title">📂 Modes d'ouverture de fichier</div>
+                <div style="text-align:center; margin-bottom:15px;">
+                    <div style="margin-bottom:10px;">
+                        <button onclick="setFileMode('r')"
+                            style="padding:5px 10px; margin:0 5px; cursor:pointer; font-weight:bold; color:var(--text); background:var(--card); border:1px solid var(--border); border-radius:4px;">'r'</button>
+                        <button onclick="setFileMode('w')"
+                            style="padding:5px 10px; margin:0 5px; cursor:pointer; font-weight:bold; color:var(--text); background:var(--card); border:1px solid var(--border); border-radius:4px;">'w'</button>
+                        <button onclick="setFileMode('a')"
+                            style="padding:5px 10px; margin:0 5px; cursor:pointer; font-weight:bold; color:var(--text); background:var(--card); border:1px solid var(--border); border-radius:4px;">'a'</button>
+                    </div>
+                    <div id="file-viz"
+                        style="background:var(--bg2); border:2px solid var(--muted); width:200px; height:120px; margin:0 auto; position:relative; border-radius:4px; transition:all 0.3s;">
+                        <div id="file-content"
+                            style="padding:10px; font-size:0.8rem; color:var(--muted); text-align:left;">Contenu...
+                        </div>
+                        <div id="file-cursor"
+                            style="position:absolute; width:10px; height:10px; background:var(--red); border-radius:50%; top:15px; left:10px; transition:all 0.3s; box-shadow:0 0 5px var(--red);">
+                        </div>
+                    </div>
+                    <div id="mode-desc"
+                        style="margin-top:10px; font-weight:bold; color:var(--secondary); min-height:24px;">Lecture
+                        seule (défaut)</div>
+                </div>
+            </div>
+
+            <table class="cheat-sheet">
+                <tr>
+                    <th>Mode</th>
+                    <th>Action</th>
+                    <th>Si fichier absent</th>
+                    <th>Si fichier existe</th>
+                </tr>
+                <tr>
+                    <td><code>'r'</code></td>
+                    <td>Lecture</td>
+                    <td>❌ Erreur</td>
+                    <td>✅ Lit (début)</td>
+                </tr>
+                <tr>
+                    <td><code>'w'</code></td>
+                    <td>Écriture</td>
+                    <td>✅ Crée</td>
+                    <td>⚠️ ÉCRASE tout</td>
+                </tr>
+                <tr>
+                    <td><code>'a'</code></td>
+                    <td>Ajout</td>
+                    <td>✅ Crée</td>
+                    <td>✅ Ajoute (fin)</td>
+                </tr>
+                <tr>
+                    <td><code>'x'</code></td>
+                    <td>Création</td>
+                    <td>✅ Crée</td>
+                    <td>❌ Erreur</td>
+                </tr>
+            </table>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Fichiers</div>
@@ -861,6 +1085,50 @@
                 </div>
             </details>
 
+            <div class="interactive-box" style="border-left:4px solid var(--primary);">
+                <div class="interactive-title">📦 Cheat Sheet : Virtual Environments</div>
+                <p style="font-size:0.9rem; margin-bottom:15px;">
+                    Ne polluez pas votre système ! Créez un dossier <code>venv</code> par projet.
+                </p>
+                <div class="grid2">
+                    <div style="background:var(--bg2); padding:10px; border-radius:6px;">
+                        <div style="font-weight:bold; color:var(--blue); margin-bottom:5px;">Windows (PowerShell)</div>
+                        <code style="display:block; margin-bottom:5px; color:var(--muted);">python -m venv venv</code>
+                        <code style="display:block; color:var(--green);">.\venv\Scripts\Activate</code>
+                    </div>
+                    <div style="background:var(--bg2); padding:10px; border-radius:6px;">
+                        <div style="font-weight:bold; color:var(--orange); margin-bottom:5px;">Mac / Linux</div>
+                        <code style="display:block; margin-bottom:5px; color:var(--muted);">python3 -m venv venv</code>
+                        <code style="display:block; color:var(--green);">source venv/bin/activate</code>
+                    </div>
+                </div>
+                <div style="margin-top:10px; font-size:0.85rem; text-align:center; color:var(--dim);">
+                    Pour sortir : tapez <code>deactivate</code>
+                </div>
+            </div>
+
+            <div class="interactive-box" style="border-left:4px solid var(--primary);">
+                <div class="interactive-title">📦 Cheat Sheet : Virtual Environments</div>
+                <p style="font-size:0.9rem; margin-bottom:15px;">
+                    Ne polluez pas votre système ! Créez un dossier <code>venv</code> par projet.
+                </p>
+                <div class="grid2">
+                    <div style="background:var(--bg2); padding:10px; border-radius:6px;">
+                        <div style="font-weight:bold; color:var(--blue); margin-bottom:5px;">Windows (PowerShell)</div>
+                        <code style="display:block; margin-bottom:5px; color:var(--muted);">python -m venv venv</code>
+                        <code style="display:block; color:var(--green);">.\venv\Scripts\Activate</code>
+                    </div>
+                    <div style="background:var(--bg2); padding:10px; border-radius:6px;">
+                        <div style="font-weight:bold; color:var(--orange); margin-bottom:5px;">Mac / Linux</div>
+                        <code style="display:block; margin-bottom:5px; color:var(--muted);">python3 -m venv venv</code>
+                        <code style="display:block; color:var(--green);">source venv/bin/activate</code>
+                    </div>
+                </div>
+                <div style="margin-top:10px; font-size:0.85rem; text-align:center; color:var(--dim);">
+                    Pour sortir : tapez <code>deactivate</code>
+                </div>
+            </div>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Imports</div>
@@ -927,6 +1195,65 @@ python -m module</pre>
                 </div>
             </details>
 
+            <!-- ENRICHMENT: Format Lab -->
+            <div class="interactive-box">
+                <div class="interactive-title">🔧 F-String Format Lab</div>
+                <div class="grid2" style="align-items:center;">
+                    <div>
+                        <div style="margin-bottom:10px;">
+                            <label style="font-size:0.85rem; color:var(--dim);">Valeur (raw)</label>
+                            <input type="text" id="fmt-val" value="1234.5678" oninput="updateFormat()"
+                                style="width:100%; padding:8px; background:var(--bg2); border:1px solid var(--border); color:var(--text); border-radius:4px;">
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <label style="font-size:0.85rem; color:var(--dim);">Spécificateur (ex:
+                                <code>.2f</code>)</label>
+                            <div
+                                style="display:flex; align-items:center; gap:5px; background:var(--bg2); padding:5px 10px; border-radius:4px; border:1px solid var(--border);">
+                                <span style="color:var(--green);">f"{val:</span>
+                                <input type="text" id="fmt-spec" value=".2f" oninput="updateFormat()"
+                                    style="width:50px; background:transparent; border:none; color:var(--orange); font-weight:bold; outline:none;">
+                                <span style="color:var(--green);">}"</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Résultat</div>
+                        <div id="fmt-res"
+                            style="font-size:1.5rem; font-family:'JetBrains Mono'; color:var(--text); font-weight:bold;">
+                            1234.57</div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="cheat-sheet">
+                <tr>
+                    <th>Code</th>
+                    <th>Effet</th>
+                    <th>Exemple (v=3.14159)</th>
+                </tr>
+                <tr>
+                    <td><code>:.2f</code></td>
+                    <td>2 décimales</td>
+                    <td><code>3.14</code></td>
+                </tr>
+                <tr>
+                    <td><code>:+.2f</code></td>
+                    <td>Signe explicite</td>
+                    <td><code>+3.14</code></td>
+                </tr>
+                <tr>
+                    <td><code>:0>5</code></td>
+                    <td>Zero padding</td>
+                    <td><code>03.14</code></td>
+                </tr>
+                <tr>
+                    <td><code>:%</code></td>
+                    <td>Pourcentage</td>
+                    <td><code>314.159000%</code></td>
+                </tr>
+            </table>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Strings</div>
@@ -983,6 +1310,31 @@ python -m module</pre>
                         (remplacement).</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: Mini Regex Tester -->
+            <div class="interactive-box">
+                <div class="interactive-title">🔍 Mini Regex Tester</div>
+                <div class="grid2" style="align-items:start;">
+                    <div>
+                        <div style="margin-bottom:10px;">
+                            <label style="font-size:0.85rem; color:var(--dim);">Texte</label>
+                            <textarea id="regex-text" rows="3" oninput="testRegex()"
+                                style="width:100%; padding:8px; background:var(--bg2); border:1px solid var(--border); color:var(--text); border-radius:4px;">Contact: alice@mail.com, 0612345678, bob@test.fr</textarea>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <label style="font-size:0.85rem; color:var(--dim);">Pattern (Regex)</label>
+                            <input type="text" id="regex-input" value="\d+" oninput="testRegex()"
+                                style="width:100%; padding:8px; background:var(--bg2); border:1px solid var(--border); color:var(--orange); font-family:'JetBrains Mono'; border-radius:4px;">
+                        </div>
+                    </div>
+                    <div
+                        style="background:var(--bg2); padding:15px; border-radius:8px; border:1px solid var(--border); min-height:100px;">
+                        <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Résultats (findall)</div>
+                        <div id="regex-res" style="font-family:'JetBrains Mono'; color:var(--green); font-weight:bold;">
+                            ['0612345678']</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
@@ -1070,6 +1422,32 @@ re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="
                 </div>
             </details>
 
+            <!-- ENRICHMENT: Yield Machine -->
+            <div class="interactive-box">
+                <div class="interactive-title">🏭 The Yield Machine</div>
+                <div style="display:flex; align-items:center; gap:20px; justify-content:center; flex-wrap:wrap;">
+                    <div style="text-align:center;">
+                        <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Fonction Générateur</div>
+                        <div
+                            style="background:var(--bg2); padding:10px; border-radius:6px; font-family:'JetBrains Mono'; color:var(--muted); border:1px solid var(--border);">
+                            def gen():<br>
+                            &nbsp;&nbsp;yield <span id="yield-1" style="color:var(--text);">1</span><br>
+                            &nbsp;&nbsp;yield <span id="yield-2" style="color:var(--text);">2</span><br>
+                            &nbsp;&nbsp;yield <span id="yield-3" style="color:var(--text);">3</span>
+                        </div>
+                    </div>
+                    <button onclick="nextYield()"
+                        style="padding:10px 20px; background:var(--primary); color:white; border:none; border-radius:6px; cursor:pointer; font-weight:bold;">next()</button>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Sortie</div>
+                        <div id="yield-out"
+                            style="width:60px; height:60px; background:var(--card); border:2px solid var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:bold; color:var(--green);">
+                            -
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Générateurs</div>
@@ -1150,6 +1528,49 @@ re.<span class="fn">split</span>(<span class="var">pattern</span>, <span class="
                 </div>
             </details>
 
+            <!-- ENRICHMENT: Async vs Sync Visualizer -->
+            <div class="interactive-box">
+                <div class="interactive-title">⏱️ Sync vs Async</div>
+                <div style="text-align:center; margin-bottom:15px;">
+                    <button onclick="runSync()"
+                        style="padding:8px 15px; margin:0 5px; background:var(--bg2); border:1px solid var(--border); color:var(--text); cursor:pointer; border-radius:4px;">Mode
+                        Synchrone (Bloquant)</button>
+                    <button onclick="runAsync()"
+                        style="padding:8px 15px; margin:0 5px; background:var(--bg2); border:1px solid var(--border); color:var(--purple); cursor:pointer; border-radius:4px;">Mode
+                        Asynchrone (Concurrent)</button>
+                </div>
+
+                <div
+                    style="position:relative; height:120px; background:var(--bg2); border-radius:8px; border:1px solid var(--border); overflow:hidden; margin-bottom:10px;">
+                    <!-- Track 1 -->
+                    <div style="position:absolute; top:20px; left:10px; font-size:0.8rem; color:var(--dim);">Tâche 1
+                    </div>
+                    <div id="task-1"
+                        style="position:absolute; top:20px; left:60px; width:0%; height:20px; background:var(--primary); transition:width 0.1s;">
+                    </div>
+
+                    <!-- Track 2 -->
+                    <div style="position:absolute; top:50px; left:10px; font-size:0.8rem; color:var(--dim);">Tâche 2
+                    </div>
+                    <div id="task-2"
+                        style="position:absolute; top:50px; left:60px; width:0%; height:20px; background:var(--secondary); transition:width 0.1s;">
+                    </div>
+
+                    <!-- Track 3 -->
+                    <div style="position:absolute; top:80px; left:10px; font-size:0.8rem; color:var(--dim);">Tâche 3
+                    </div>
+                    <div id="task-3"
+                        style="position:absolute; top:80px; left:60px; width:0%; height:20px; background:var(--green); transition:width 0.1s;">
+                    </div>
+
+                    <div id="async-time"
+                        style="position:absolute; bottom:5px; right:10px; font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text);">
+                        Time: 0s</div>
+                </div>
+                <p id="async-desc" style="font-size:0.85rem; color:var(--muted); text-align:center;">Choisissez un
+                    mode...</p>
+            </div>
+
             <div class="grid2">
                 <div>
                     <h3 style="font-size:1rem; color:var(--text-color);">Architecture Event Loop</h3>
@@ -1221,9 +1642,32 @@ asyncio.<span class="fn">run</span>(<span class="fn">main</span>())
                         attendu.</p>
                     <p><code>pytest</code> est le framework de test le plus populaire en Python. Il découvre
                         automatiquement les tests et offre des assertions riches et lisibles.</p>
-                    <p>Une bonne pratique est de tester les cas normaux, les cas limites et les erreurs attendues.</p>
                 </div>
             </details>
+
+            <div class="interactive-box">
+                <div class="interactive-title">🧪 Pytest Cheat Sheet</div>
+                <div class="grid2">
+                    <div>
+                        <div style="font-weight:bold; color:var(--green); margin-bottom:5px;">Assertions</div>
+                        <ul style="font-size:0.85rem; padding-left:20px; color:var(--text);">
+                            <li><code>assert x == y</code></li>
+                            <li><code>assert x is True</code></li>
+                            <li><code>assert "text" in string</code></li>
+                            <li><code>assert x > 0</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div style="font-weight:bold; color:var(--purple); margin-bottom:5px;">Commandes</div>
+                        <ul style="font-size:0.85rem; padding-left:20px; color:var(--text);">
+                            <li><code>pytest</code> (Run all)</li>
+                            <li><code>pytest -v</code> (Verbose)</li>
+                            <li><code>pytest -k "name"</code> (Filter)</li>
+                            <li><code>pytest -x</code> (Stop on fail)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid2">
                 <div class="code">
@@ -1467,6 +1911,29 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                 Python est le leader mondial de la Data Science. Voici les 3 piliers de l'écosystème.
             </p>
 
+            <table class="cheat-sheet" style="margin-bottom:20px;">
+                <tr>
+                    <th>Lib</th>
+                    <th>Objet Principal</th>
+                    <th>Usage</th>
+                </tr>
+                <tr>
+                    <td><strong>NumPy</strong></td>
+                    <td><code>np.array([1,2,3])</code></td>
+                    <td>Calcul mathématique vectorisé</td>
+                </tr>
+                <tr>
+                    <td><strong>Pandas</strong></td>
+                    <td><code>pd.DataFrame(data)</code></td>
+                    <td>Manipulation de tableaux (SQL-like)</td>
+                </tr>
+                <tr>
+                    <td><strong>Matplotlib</strong></td>
+                    <td><code>plt.plot(x,y)</code></td>
+                    <td>Visualisation graphique</td>
+                </tr>
+            </table>
+
             <div class="grid2">
                 <div class="info" style="border-left-color:#f1c40f;">
                     <strong>NumPy (Numerical Python)</strong>
@@ -1508,6 +1975,20 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                 Un code Python professionnel ne se limite pas à la syntaxe. Il respecte des normes strictes pour être
                 maintenable.
             </p>
+
+            <div class="interactive-box" style="margin-bottom:20px; border-left:4px solid var(--orange);">
+                <div class="interactive-title">📂 Structure Type (Clean Arch)</div>
+                <pre
+                    style="background:transparent; border:none; padding:0; font-size:0.85rem; color:var(--text); font-family:'JetBrains Mono';">
+my_project/
+├── <span style="color:var(--blue);">src/</span>
+│   └── <span style="color:var(--orange);">main.py</span>       <span style="color:var(--dim);"># Point d'entrée</span>
+├── <span style="color:var(--blue);">tests/</span>
+│   └── <span style="color:var(--orange);">test_main.py</span>  <span style="color:var(--dim);"># Tests unitaires</span>
+├── pyproject.toml    <span style="color:var(--dim);"># Dépendances (Poetry/UV)</span>
+├── README.md         <span style="color:var(--dim);"># Documentation</span>
+└── .gitignore        <span style="color:var(--dim);"># Fichiers à ignorer</span></pre>
+            </div>
 
             <div class="grid2">
                 <div class="info" style="border-left-color:#3776ab;">
@@ -1554,6 +2035,34 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
                     <p class="sec-sub">Flask vs FastAPI</p>
                 </div>
             </div>
+
+            <table class="cheat-sheet" style="margin-bottom:20px;">
+                <tr>
+                    <th>Caractéristique</th>
+                    <th>Flask 🌶️</th>
+                    <th>FastAPI ⚡</th>
+                </tr>
+                <tr>
+                    <td><strong>Architecture</strong></td>
+                    <td>Micro-framework</td>
+                    <td>Moderne & Async</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance</strong></td>
+                    <td>Standard (WSGI)</td>
+                    <td>Très haute (ASGI)</td>
+                </tr>
+                <tr>
+                    <td><strong>Validation</strong></td>
+                    <td>Manuelle</td>
+                    <td>Automatique (Pydantic)</td>
+                </tr>
+                <tr>
+                    <td><strong>Docs API</strong></td>
+                    <td>Manuelle</td>
+                    <td>Auto (Swagger UI)</td>
+                </tr>
+            </table>
 
             <div class="grid2">
                 <div class="code">

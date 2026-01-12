@@ -33,7 +33,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-background dark:via-secondary dark:to-background px-6 py-20 lg:py-32">
         <div className="absolute inset-0 opacity-20 dark:opacity-10">
           <Image
-            src="/abstract-green-technology-network-with-leaves-and-.webp"
+            src="/greenit/abstract-green-technology-network-with-leaves-and-.webp"
             alt="Green IT concept - réseau technologique écologique avec des feuilles naturelles"
             fill
             className="object-cover"
@@ -86,7 +86,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg border border-border">
               <Image
-                src="/electronic-waste-pile-with-smartphones-tablets-and.webp"
+                src="/greenit/electronic-waste-pile-with-smartphones-tablets-and.webp"
                 alt="Impact des déchets électroniques - pile de smartphones et tablettes usagés montrant l'accumulation de e-déchets"
                 fill
                 className="object-cover"

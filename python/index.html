@@ -53,8 +53,8 @@
     <section class="hero">
         <div class="container">
             <h1>Mémo Python</h1>
-            <p>Propulsez votre maîtrise de Python. Un mémo technique, visuel et interactif pour les développeurs
-                modernes.</p>
+            <p>Guide pratique Python avec exemples concrets. Fiche mémo, rappels des essentiels (syntaxe, fonction, ...)
+                . Snippets, exemples, démo interactives, ... à suivre</p>
         </div>
     </section>
 
@@ -156,7 +156,8 @@
                 <div class="best-practice">
                     <span class="practice-title">✅ Do : Suivre la PEP 8</span>
                     <p style="font-size:0.85rem;">Utilisez 4 espaces pour l'indentation, des noms explicites en
-                        <code>snake_case</code>, et aérez votre code.</p>
+                        <code>snake_case</code>, et aérez votre code.
+                    </p>
                 </div>
                 <div class="bad-practice">
                     <span class="practice-title">❌ Don't : One-liners cryptiques</span>
@@ -172,32 +173,44 @@
             <div class="ref-grid">
                 <div class="ref-card">
                     <h4>🌐 Web Backend</h4>
-                    <code>Django</code> <code>Flask</code> <code>FastAPI</code><br>
+                    <code><a href="https://www.djangoproject.com/" target="_blank">Django</a></code>
+                    <code><a href="https://flask.palletsprojects.com/" target="_blank">Flask</a></code>
+                    <code><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">APIs REST, applications web, microservices</span>
                 </div>
                 <div class="ref-card">
                     <h4>📊 Data Science</h4>
-                    <code>NumPy</code> <code>Pandas</code> <code>Matplotlib</code><br>
+                    <code><a href="https://numpy.org/" target="_blank">NumPy</a></code>
+                    <code><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></code>
+                    <code><a href="https://matplotlib.org/" target="_blank">Matplotlib</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">Analyse de données, visualisation, statistiques</span>
                 </div>
                 <div class="ref-card">
                     <h4>🤖 Machine Learning</h4>
-                    <code>TensorFlow</code> <code>PyTorch</code> <code>scikit-learn</code><br>
+                    <code><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a></code>
+                    <code><a href="https://pytorch.org/" target="_blank">PyTorch</a></code>
+                    <code><a href="https://scikit-learn.org/" target="_blank">scikit-learn</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">IA, deep learning, modèles prédictifs</span>
                 </div>
                 <div class="ref-card">
                     <h4>⚙️ Automatisation</h4>
-                    <code>Scripting</code> <code>Selenium</code> <code>Requests</code><br>
+                    <code>Scripting</code>
+                    <code><a href="https://www.selenium.dev/" target="_blank">Selenium</a></code>
+                    <code><a href="https://requests.readthedocs.io/" target="_blank">Requests</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">Scripts système, scraping, tests E2E</span>
                 </div>
                 <div class="ref-card">
                     <h4>🔐 Cybersécurité</h4>
-                    <code>Scapy</code> <code>Paramiko</code> <code>PyCrypto</code><br>
+                    <code><a href="https://scapy.net/" target="_blank">Scapy</a></code>
+                    <code><a href="https://www.paramiko.org/" target="_blank">Paramiko</a></code>
+                    <code><a href="https://pypi.org/project/pycryptodome/" target="_blank">PyCrypto</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">Pentest, analyse réseau, chiffrement</span>
                 </div>
                 <div class="ref-card">
                     <h4>🐳 DevOps & Cloud</h4>
-                    <code>Ansible</code> <code>Boto3</code> <code>Docker SDK</code><br>
+                    <code><a href="https://www.ansible.com/" target="_blank">Ansible</a></code>
+                    <code><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">Boto3</a></code>
+                    <code><a href="https://docker-py.readthedocs.io/" target="_blank">Docker SDK</a></code><br>
                     <span style="font-size:0.8rem; color:#888;">Infrastructure as Code, AWS, orchestration</span>
                 </div>
             </div>
@@ -563,17 +576,26 @@
             <div class="interactive-box">
                 <div class="interactive-title">📦 *ARGS et **KWARGS Visualizer</div>
                 <p style="font-size:0.9rem; margin-bottom:15px; text-align:center;">
-                    Appel de fonction : <code>func(1, 2, a=3, b=4)</code>
+                    Testez vos arguments (ex: <code>1, 2, a=3, b="test"</code>)
                 </p>
+                
+                <div style="display:flex; gap:10px; margin-bottom:15px; justify-content:center;">
+                    <input type="text" id="args-input" placeholder="1, 2, a=3, b=4" 
+                        onkeyup="if(event.key==='Enter') visualizeArgs()"
+                        style="padding:8px; border-radius:4px; border:1px solid var(--border); background:var(--bg2); color:var(--text); width:250px;">
+                    <button onclick="visualizeArgs()" 
+                        style="padding:8px 15px; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer;">Visualiser</button>
+                </div>
+
                 <div class="grid2">
                     <div style="background:var(--bg2); padding:15px; border-radius:8px; border:1px solid var(--border);">
                         <div style="color:var(--secondary); font-family:'JetBrains Mono'; margin-bottom:10px;">*args (Tuple)</div>
-                        <div style="font-family:'JetBrains Mono'; color:var(--text);">(1, 2)</div>
+                        <div id="demo-args" style="font-family:'JetBrains Mono'; color:var(--text); min-height:24px;">()</div>
                         <div style="font-size:0.8rem; color:var(--dim); margin-top:5px;">Arguments positionnels</div>
                     </div>
                     <div style="background:var(--bg2); padding:15px; border-radius:8px; border:1px solid var(--border);">
                         <div style="color:var(--accent); font-family:'JetBrains Mono'; margin-bottom:10px;">**kwargs (Dict)</div>
-                        <div style="font-family:'JetBrains Mono'; color:var(--text);">{'a': 3, 'b': 4}</div>
+                        <div id="demo-kwargs" style="font-family:'JetBrains Mono'; color:var(--text); min-height:24px;">{}</div>
                         <div style="font-size:0.8rem; color:var(--dim); margin-top:5px;">Arguments nommés</div>
                     </div>
                 </div>
@@ -779,84 +801,132 @@
                 <div class="sec-num">05</div>
                 <div>
                     <h2 class="sec-title">Programmation Orientée Objet</h2>
-                    <p class="sec-sub">Classes, héritage, dataclass</p>
+                    <p class="sec-sub">Classes, objets, héritage (Thème RPG ⚔️)</p>
                 </div>
             </div>
 
-            <details>
-                <summary>📖 Comprendre la POO</summary>
-                <div>
-                    <p>La Programmation Orientée Objet permet de modéliser des entités avec leurs attributs (données) et
-                        méthodes (comportements). <code>self</code> représente l'instance courante.</p>
-                    <p>L'<strong>héritage</strong> permet de créer des classes spécialisées. <code>@property</code> crée
-                        des getters/setters élégants. <code>@staticmethod</code> et <code>@classmethod</code>
-                        définissent des méthodes de classe.</p>
-                    <p>Les <strong>dataclasses</strong> (Python 3.7+) génèrent automatiquement __init__, __repr__,
-                        __eq__ pour les classes de données simples.</p>
-                </div>
-            </details>
+            <p style="margin-bottom: 20px;">
+                La POO permet de structurer le code en créant des <strong>modèles</strong> (Classes) pour fabriquer des
+                <strong>objets</strong> concrets. Imaginez un moule à gâteaux (Classe) et les gâteaux produits (Objets).
+            </p>
 
+            <!-- Interactive RPG Factory -->
+            <div class="interactive-box" style="border-left:4px solid var(--purple);">
+                <div class="interactive-title">🏰 La Forge de Héros (Factory)</div>
+                <div class="grid2">
+                    <!-- Controls -->
+                    <div style="background:var(--bg2); padding:15px; border-radius:8px;">
+                        <h4 style="color:var(--text); margin-bottom:10px;">Créer un Personnage</h4>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                            <input type="text" id="rpg-name" placeholder="Nom du héros"
+                                style="flex:1; padding:8px; border-radius:4px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+                            <select id="rpg-type"
+                                style="padding:8px; border-radius:4px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+                                <option value="Guerrier">Guerrier ⚔️</option>
+                                <option value="Mage">Mage 🔮</option>
+                            </select>
+                            <button onclick="createRPGChar()"
+                                style="padding:8px 15px; background:var(--purple); color:white; border:none; border-radius:4px; cursor:pointer;">
+                                Invoquer
+                            </button>
+                        </div>
+                        <div style="margin-top:15px;">
+                            <h4 style="color:var(--text); margin-bottom:10px; font-size:0.9rem;">Groupe Actuel :</h4>
+                            <div id="rpg-party" class="grid2" style="grid-template-columns: 1fr 1fr; gap:10px;">
+                                <div style="color:var(--dim); font-style:italic;">Aucun héros...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Console Log -->
+                    <div
+                        style="background:#0d0918; padding:15px; border-radius:8px; border:1px solid var(--border); font-family:'JetBrains Mono'; font-size:0.85rem; height:200px; overflow-y:auto; display:flex; flex-direction:column;">
+                        <div style="color:var(--dim); border-bottom:1px solid var(--border); margin-bottom:5px;">Game
+                            Log...</div>
+                        <div id="rpg-log" style="color:var(--text);"></div>
+                    </div>
+                </div>
+                <div style="margin-top:10px; font-size:0.8rem; color:var(--muted); text-align:center;">
+                    Cliquez sur une carte héros pour déclencher une action !
+                </div>
+            </div>
+
+            <!-- Code Examples Tabs -->
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Classes</div>
-                <pre><span class="kw">class</span> <span class="cls">User</span>:
-    <span class="c"># Attribut de classe</span>
-    <span class="var">count</span> = <span class="num">0</span>
+                        class="dot g"></span>models.py</div>
+                <pre><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+<span class="kw">import</span> random
 
-    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>, <span class="var">name</span>: <span class="cls">str</span>, <span class="var">age</span>: <span class="cls">int</span> = <span class="num">0</span>):
-        <span class="var">self</span>.<span class="prop">name</span> = <span class="var">name</span>         <span class="c"># public</span>
-        <span class="var">self</span>.<span class="prop">_age</span> = <span class="var">age</span>          <span class="c"># protected</span>
-        <span class="var">self</span>.<span class="prop">__secret</span> = <span class="str">"..."</span>   <span class="c"># private</span>
-        <span class="cls">User</span>.<span class="var">count</span> += <span class="num">1</span>
+<span class="c"># Classe Abstraite (ne peut être instanciée)</span>
+<span class="kw">class</span> <span class="cls">Personnage</span>(<span class="cls">ABC</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>, <span class="var">nom</span>, <span class="var">pv</span>):
+        <span class="var">self</span>.<span class="prop">nom</span> = <span class="var">nom</span>
+        <span class="var">self</span>.<span class="prop">pv</span> = <span class="var">pv</span>
+    
+    <span class="c"># Méthode Abstraite (doit être implémentée par les enfants)</span>
+    <span class="dec">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">attaquer</span>(<span class="var">self</span>):
+        <span class="kw">pass</span>
 
-    <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span class="cls">str</span>:
-        <span class="kw">return</span> <span class="str">f"Hello, I'm </span>{<span class="var">self</span>.<span class="prop">name</span>}<span class="str">"</span>
-
-    <span class="dec">@property</span>
-    <span class="kw">def</span> <span class="fn">age</span>(<span class="var">self</span>) -> <span class="cls">int</span>:
-        <span class="kw">return</span> <span class="var">self</span>.<span class="prop">_age</span>
-
+    <span class="c"># Méthode Statique (utilitaire, pas de self)</span>
     <span class="dec">@staticmethod</span>
-    <span class="kw">def</span> <span class="fn">info</span>():
-        <span class="kw">return</span> <span class="str">"User class"</span>
+    <span class="kw">def</span> <span class="fn">roll_dice</span>(<span class="var">sides</span>=<span class="num">20</span>):
+        <span class="kw">return</span> random.<span class="fn">randint</span>(<span class="num">1</span>, <span class="var">sides</span>)
 
-    <span class="dec">@classmethod</span>
-    <span class="kw">def</span> <span class="fn">get_count</span>(<span class="var">cls</span>) -> <span class="cls">int</span>:
-        <span class="kw">return</span> <span class="var">cls</span>.<span class="var">count</span>
+<span class="kw">class</span> <span class="cls">Guerrier</span>(<span class="cls">Personnage</span>):
+    <span class="kw">def</span> <span class="fn">attaquer</span>(<span class="var">self</span>):
+        <span class="var">dmg</span> = <span class="cls">Personnage</span>.<span class="fn">roll_dice</span>(<span class="num">6</span>) + <span class="num">2</span>
+        <span class="fn">print</span>(<span class="str">f"</span>{<span class="var">self</span>.<span class="prop">nom</span>}<span class="str"> frappe (</span>{<span class="var">dmg</span>}<span class="str"> dmg) !"</span>)
 
-<span class="c"># Héritage & MRO</span>
-<span class="c"># Python utilise l'algorithme C3 Linearization pour résoudre l'héritage multiple (D -> B -> C -> A)</span>
-<span class="c"># Voir l'attribut __mro__ sur une classe.</span></pre>
+<span class="kw">class</span> <span class="cls">Mage</span>(<span class="cls">Personnage</span>):
+    <span class="kw">def</span> <span class="fn">attaquer</span>(<span class="var">self</span>):
+        <span class="var">dmg</span> = <span class="cls">Personnage</span>.<span class="fn">roll_dice</span>(<span class="num">10</span>)
+        <span class="fn">print</span>(<span class="str">f"</span>{<span class="var">self</span>.<span class="prop">nom</span>}<span class="str"> lance un sort (</span>{<span class="var">dmg</span>}<span class="str"> dmg) !"</span>)
+
+<span class="c"># p = Personnage("Test")  # ERREUR: TypeError (Abstract class)</span>
+
+<span class="c"># Polymorphisme</span>
+<span class="var">groupe</span> = [<span class="cls">Guerrier</span>(<span class="str">"Conan"</span>, <span class="num">150</span>), <span class="cls">Mage</span>(<span class="str">"Gandalf"</span>, <span class="num">80</span>)]
+<span class="kw">for</span> <span class="var">h</span> <span class="kw">in</span> <span class="var">groupe</span>:
+    <span class="var">h</span>.<span class="fn">attaquer</span>()  <span class="c"># Chaque classe a sa propre version</span></pre>
             </div>
 
-            <div style="margin-top:10px;">
-                <img src="img/mro.svg" alt="MRO Diagram"
-                    style="max-width:350px; border-radius:8px; border:1px solid #333;">
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>🏗️ Classe vs Objet</h4>
+                    <p style="font-size:0.9rem;">La <strong>Classe</strong> est le plan (moule).
+                        L'<strong>Objet</strong> est l'instance concrète (gâteau). <code>self</code> référence l'objet
+                        actuel.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>🧬 Héritage</h4>
+                    <p style="font-size:0.9rem;"><code>class Guerrier(Personnage)</code> : Le Guerrier hérite des
+                        attributs/méthodes du Personnage. Évite la duplication de code.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>🔒 Encapsulation</h4>
+                    <p style="font-size:0.9rem;">Protéger les données internes (<code>_protected</code>,
+                        <code>__private</code>). Utilisez des <code>@property</code> pour contrôler l'accès.
+                    </p>
+                </div>
+                <div class="ref-card">
+                    <h4>🎭 Polymorphisme</h4>
+                    <p style="font-size:0.9rem;">Capacité à utiliser une méthode commune (ex: <code>attaquer()</code>)
+                        sur différents types d'objets sans connaître leur classe exacte.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>👻 Abstraction (ABC)</h4>
+                    <p style="font-size:0.9rem;"><code>@abstractmethod</code> force les enfants à implémenter une
+                        méthode. Empêche d'instancier un modèle incomplet.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>🛠️ Méthode Statique</h4>
+                    <p style="font-size:0.9rem;"><code>@staticmethod</code> appartient à la classe mais n'utilise pas
+                        <code>self</code>. Utile pour des fonctions d'aide ou outils.
+                    </p>
+                </div>
             </div>
-        </div>
-
-        <span class="c"># Héritage</span>
-        <span class="kw">class</span> <span class="cls">Admin</span>(<span class="cls">User</span>):
-        <span class="kw">def</span> <span class="fn">greet</span>(<span class="var">self</span>) -> <span
-            class="cls">str</span>:
-        <span class="kw">return</span> <span class="fn">super</span>().<span class="fn">greet</span>() + <span
-            class="str">" (Admin)"</span>
-
-        <span class="c"># Dataclass (Python 3.7+)</span>
-        <span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
-
-        <span class="dec">@dataclass</span>
-        <span class="kw">class</span> <span class="cls">Point</span>:
-        <span class="var">x</span>: <span class="cls">float</span>
-        <span class="var">y</span>: <span class="cls">float</span></pre>
-        </div>
-
-        <div class="demo">
-            <div class="demo-title">Résultat attendu</div>
-            <div class="demo-output">alice = User("Alice", 25)
-                alice.greet() → "Hello, I'm Alice"
-                User.count → 1</div>
-        </div>
         </div>
     </section>
 
@@ -867,51 +937,98 @@
                 <div class="sec-num">06</div>
                 <div>
                     <h2 class="sec-title">Gestion des exceptions</h2>
-                    <p class="sec-sub">try/except, raise</p>
+                    <p class="sec-sub">Try, Except, Finally (Thème Réacteur ☢️)</p>
                 </div>
             </div>
 
-            <details>
-                <summary>📖 Comprendre les exceptions</summary>
-                <div>
-                    <p>Les exceptions permettent de gérer les erreurs de manière élégante. <code>try</code> contient le
-                        code risqué, <code>except</code> attrape les erreurs, <code>finally</code> s'exécute toujours.
-                    </p>
-                    <p>Python distingue de nombreux types d'exceptions : <code>ValueError</code>,
-                        <code>TypeError</code>, <code>KeyError</code>, <code>IndexError</code>, etc. Capturez toujours
-                        l'exception la plus spécifique possible.
-                    </p>
-                    <p>Créez vos propres exceptions en héritant de <code>Exception</code> pour des erreurs métier
-                        spécifiques à votre application.</p>
+            <p style="margin-bottom: 20px;">
+                Le bloc <code>try/except</code> est le gilet de pare-balles de votre code. Il permet d'intercepter les
+                erreurs (Exceptions) pour éviter que le programme ne plante brutalement.
+            </p>
+
+            <!-- Interactive Exception Flow -->
+            <div class="interactive-box" style="border-left:4px solid var(--orange);">
+                <div class="interactive-title">☢️ Simulateur de Stabilité du Réacteur</div>
+                <div class="grid2">
+                    <div
+                        style="display:flex; flex-direction:column; gap:10px; align-items:center; justify-content:center;">
+                        <p style="font-size:0.9rem;">Tentez une division dans le cœur du réacteur :</p>
+                        <div
+                            style="font-family:'JetBrains Mono'; background:var(--bg2); padding:10px; border-radius:4px; border:1px solid var(--border);">
+                            result = 10 / <span id="flow-val" style="color:var(--primary); font-weight:bold;">0</span>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <button onclick="triggerError(true)"
+                                style="padding:8px 15px; background:var(--red); color:white; border:none; border-radius:4px; cursor:pointer;">
+                                Provoquer Erreur (x=0)
+                            </button>
+                            <button onclick="triggerError(false)"
+                                style="padding:8px 15px; background:var(--green); color:white; border:none; border-radius:4px; cursor:pointer;">
+                                Division Valide (x=2)
+                            </button>
+                        </div>
+                        <div id="flow-status"
+                            style="margin-top:10px; font-weight:bold; color:var(--text); min-height:24px;">Prêt...</div>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div id="flow-try"
+                            style="padding:10px; border:1px solid var(--border); border-radius:4px; opacity:0.5; transition:.3s;">
+                            <strong>TRY</strong> <span style="font-size:0.8rem; color:var(--muted);">Code dangereux
+                                (Division)</span>
+                        </div>
+                        <div style="display:flex; gap:5px;">
+                            <div style="flex:1; height:20px; border-left:2px dashed var(--dim); margin-left:20px;">
+                            </div>
+                            <div style="flex:1; height:20px; border-right:2px dashed var(--dim); margin-right:20px;">
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <div id="flow-except"
+                                style="flex:1; padding:10px; border:1px solid var(--red); border-radius:4px; opacity:0.5; transition:.3s;">
+                                <strong style="color:var(--red);">EXCEPT</strong><br>
+                                <span style="font-size:0.8rem; color:var(--muted);">Si Erreur détectée</span>
+                            </div>
+                            <div id="flow-else"
+                                style="flex:1; padding:10px; border:1px solid var(--green); border-radius:4px; opacity:0.5; transition:.3s;">
+                                <strong style="color:var(--green);">ELSE</strong><br>
+                                <span style="font-size:0.8rem; color:var(--muted);">Si Aucune erreur</span>
+                            </div>
+                        </div>
+                        <div
+                            style="text-align:center; height:20px; border-left:2px dashed var(--dim); margin-left:50%;">
+                        </div>
+                        <div id="flow-finally"
+                            style="padding:10px; border:1px solid var(--orange); border-radius:4px; opacity:0.5; transition:.3s; text-align:center;">
+                            <strong style="color:var(--orange);">FINALLY</strong> <span
+                                style="font-size:0.8rem; color:var(--muted);">Toujours exécuté (Nettoyage)</span>
+                        </div>
+                    </div>
                 </div>
-            </details>
+            </div>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                         class="dot g"></span>Exceptions</div>
-                <pre><span class="c"># try / except / else / finally</span>
+                <pre><span class="c"># Structure Complète</span>
 <span class="kw">try</span>:
-    <span class="var">result</span> = <span class="num">10</span> / <span class="var">x</span>
+    <span class="var">val</span> = <span class="fn">int</span>(<span class="var">user_input</span>)
+    <span class="var">res</span> = <span class="num">100</span> / <span class="var">val</span>
+<span class="kw">except</span> <span class="cls">ValueError</span>:
+    <span class="fn">print</span>(<span class="str">"Ce n'est pas un nombre !"</span>)
 <span class="kw">except</span> <span class="cls">ZeroDivisionError</span>:
-    <span class="fn">print</span>(<span class="str">"Division par zéro!"</span>)
-<span class="kw">except</span> (<span class="cls">TypeError</span>, <span class="cls">ValueError</span>) <span class="kw">as</span> <span class="var">e</span>:
-    <span class="fn">print</span>(<span class="str">f"Erreur: </span>{<span class="var">e</span>}<span class="str">"</span>)
+    <span class="fn">print</span>(<span class="str">"Division par zéro interdite !"</span>)
+<span class="kw">except</span> <span class="cls">Exception</span> <span class="kw">as</span> <span class="var">e</span>:
+    <span class="fn">print</span>(<span class="str">f"Erreur inconnue : </span>{<span class="var">e</span>}<span class="str">"</span>)
 <span class="kw">else</span>:
-    <span class="fn">print</span>(<span class="str">"Succès!"</span>)  <span class="c"># si pas d'erreur</span>
+    <span class="fn">print</span>(<span class="str">f"Résultat : </span>{<span class="var">res</span>}<span class="str">"</span>)
 <span class="kw">finally</span>:
-    <span class="fn">print</span>(<span class="str">"Nettoyage"</span>)  <span class="c"># toujours</span>
+    <span class="fn">print</span>(<span class="str">"Fin de l'opération."</span>)</pre>
+            </div>
 
-<span class="c"># Lancer une exception</span>
-<span class="kw">raise</span> <span class="cls">ValueError</span>(<span class="str">"Message d'erreur"</span>)
-<span class="kw">raise</span> <span class="cls">Exception</span>(<span class="str">"Erreur générique"</span>)
-
-<span class="c"># Exception personnalisée</span>
-<span class="kw">class</span> <span class="cls">UserNotFoundError</span>(<span class="cls">Exception</span>):
-    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>, <span class="var">user_id</span>: <span class="cls">int</span>):
-        <span class="fn">super</span>().<span class="fn">__init__</span>(<span class="str">f"User </span>{<span class="var">user_id</span>}<span class="str"> not found"</span>)
-
-<span class="c"># Assert (debug)</span>
-<span class="kw">assert</span> <span class="var">x</span> > <span class="num">0</span>, <span class="str">"x doit être positif"</span></pre>
+            <div class="tip">
+                <strong>💡 Note :</strong> Capturez toujours les erreurs les plus spécifiques en premier. Ne faites
+                jamais de <code>except: pass</code> silencieux, c'est le meilleur moyen de cacher des bugs critiques.
             </div>
         </div>
     </section>
@@ -1176,43 +1293,65 @@ python -m module</pre>
                 <div class="sec-num">09</div>
                 <div>
                     <h2 class="sec-title">Chaînes de caractères</h2>
-                    <p class="sec-sub">Méthodes, formatage</p>
+                    <p class="sec-sub">Méthodes, Slicing, f-strings</p>
                 </div>
             </div>
 
-            <details>
-                <summary>📖 Comprendre les chaînes</summary>
-                <div>
-                    <p>Les strings Python sont <strong>immuables</strong> : chaque modification crée une nouvelle
-                        chaîne. Les méthodes comme <code>upper()</code> retournent une nouvelle string sans modifier
-                        l'originale.</p>
-                    <p>Les <strong>f-strings</strong> (Python 3.6+) sont la méthode recommandée pour le formatage :
-                        <code>f"Hello {name}"</code>. Elles sont plus lisibles et plus rapides que
-                        <code>.format()</code>.
-                    </p>
-                    <p>Pour la manipulation intensive de strings, utilisez <code>str.join()</code> plutôt que la
-                        concaténation répétée + qui crée de nombreux objets intermédiaires.</p>
-                </div>
-            </details>
+            <p style="margin-bottom: 20px;">
+                Les chaînes (Strings) sont des <strong>séquences immuables</strong> de caractères. Vous ne pouvez pas
+                modifier une lettre sur place, mais vous pouvez transformer la chaîne pour en créer une nouvelle.
+            </p>
 
-            <!-- ENRICHMENT: Format Lab -->
+            <!-- Interactive String Transformer -->
+            <div class="interactive-box" style="border-left:4px solid var(--accent);">
+                <div class="interactive-title">⚡ String Transformer</div>
+                <div class="grid2">
+                    <div>
+                        <input type="text" id="str-input" value="  Python is Awesome  "
+                            style="width:100%; padding:10px; font-family:'JetBrains Mono'; font-size:1rem; border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:4px; margin-bottom:10px;">
+
+                        <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                            <button onclick="transformString('upper')" class="btn-mini">.upper()</button>
+                            <button onclick="transformString('lower')" class="btn-mini">.lower()</button>
+                            <button onclick="transformString('title')" class="btn-mini">.title()</button>
+                            <button onclick="transformString('strip')" class="btn-mini">.strip()</button>
+                            <button onclick="transformString('reverse')" class="btn-mini"
+                                style="border-color:var(--purple); color:var(--purple);">[::-1]</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Résultat (Nouvelle String)
+                        </div>
+                        <div id="str-output"
+                            style="font-family:'JetBrains Mono'; font-size:1.1rem; color:var(--accent); font-weight:bold; word-break:break-all;">
+                            " PYTHON IS AWESOME "
+                        </div>
+                        <div id="str-desc"
+                            style="font-size:0.8rem; color:var(--muted); margin-top:5px; font-style:italic;">
+                            Convertit en majuscules.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENRICHMENT: Improved Format Lab -->
             <div class="interactive-box">
                 <div class="interactive-title">🔧 F-String Format Lab</div>
                 <div class="grid2" style="align-items:center;">
                     <div>
                         <div style="margin-bottom:10px;">
                             <label style="font-size:0.85rem; color:var(--dim);">Valeur (raw)</label>
-                            <input type="text" id="fmt-val" value="1234.5678" oninput="updateFormat()"
+                            <input type="text" id="fmt-val" value="Python" oninput="updateFormat()"
                                 style="width:100%; padding:8px; background:var(--bg2); border:1px solid var(--border); color:var(--text); border-radius:4px;">
                         </div>
                         <div style="margin-bottom:10px;">
-                            <label style="font-size:0.85rem; color:var(--dim);">Spécificateur (ex:
-                                <code>.2f</code>)</label>
+                            <label style="font-size:0.85rem; color:var(--dim);">Spécificateur (ex: <code>>10</code>,
+                                <code>^10</code>)</label>
                             <div
                                 style="display:flex; align-items:center; gap:5px; background:var(--bg2); padding:5px 10px; border-radius:4px; border:1px solid var(--border);">
                                 <span style="color:var(--green);">f"{val:</span>
-                                <input type="text" id="fmt-spec" value=".2f" oninput="updateFormat()"
-                                    style="width:50px; background:transparent; border:none; color:var(--orange); font-weight:bold; outline:none;">
+                                <input type="text" id="fmt-spec" value=">10" oninput="updateFormat()"
+                                    style="width:60px; background:transparent; border:none; color:var(--orange); font-weight:bold; outline:none;">
                                 <span style="color:var(--green);">}"</span>
                             </div>
                         </div>
@@ -1220,67 +1359,94 @@ python -m module</pre>
                     <div style="text-align:center;">
                         <div style="font-size:0.8rem; color:var(--dim); margin-bottom:5px;">Résultat</div>
                         <div id="fmt-res"
-                            style="font-size:1.5rem; font-family:'JetBrains Mono'; color:var(--text); font-weight:bold;">
-                            1234.57</div>
+                            style="font-size:1.5rem; font-family:'JetBrains Mono'; color:var(--text); background:var(--bg); padding:5px; border-radius:4px; border:1px dashed var(--dim); display:inline-block; min-width:150px;">
+                            " Python"</div>
                     </div>
                 </div>
             </div>
 
-            <table class="cheat-sheet">
-                <tr>
-                    <th>Code</th>
-                    <th>Effet</th>
-                    <th>Exemple (v=3.14159)</th>
-                </tr>
-                <tr>
-                    <td><code>:.2f</code></td>
-                    <td>2 décimales</td>
-                    <td><code>3.14</code></td>
-                </tr>
-                <tr>
-                    <td><code>:+.2f</code></td>
-                    <td>Signe explicite</td>
-                    <td><code>+3.14</code></td>
-                </tr>
-                <tr>
-                    <td><code>:0>5</code></td>
-                    <td>Zero padding</td>
-                    <td><code>03.14</code></td>
-                </tr>
-                <tr>
-                    <td><code>:%</code></td>
-                    <td>Pourcentage</td>
-                    <td><code>314.159000%</code></td>
-                </tr>
-            </table>
+            <!-- Slicing Masterclass -->
+            <div class="code" style="border-left:4px solid var(--purple);">
+                <div class="code-head">🍕 Slicing Masterclass</div>
+                <pre><span class="var">text</span> = <span class="str">"Python"</span>
+
+<span class="var">text</span>[<span class="num">0</span>]      <span class="c"># "P" (Premier)</span>
+<span class="var">text</span>[-<span class="num">1</span>]     <span class="c"># "n" (Dernier)</span>
+<span class="var">text</span>[<span class="num">0</span>:<span class="num">2</span>]    <span class="c"># "Py" (Stop exclus)</span>
+<span class="var">text</span>[<span class="num">2</span>:]     <span class="c"># "thon" (Jusqu'à la fin)</span>
+<span class="var">text</span>[:<span class="num">3</span>]     <span class="c"># "Pyt" (Depuis le début)</span>
+<span class="var">text</span>[::<span class="num">2</span>]    <span class="c"># "Pto" (Pas de 2)</span>
+<span class="var">text</span>[::-<span class="num">1</span>]   <span class="c"># "nohtyP" (Inverse)</span></pre>
+            </div>
+
+            <!-- ENRICHMENT: Method Gallery -->
+            <h3>Galerie de Méthodes</h3>
+            <div class="ref-grid" style="margin-bottom:20px;">
+                <div class="ref-card">
+                    <h4>🔍 Inspection</h4>
+                    <p style="font-size:0.85rem; margin-bottom:5px;">Retourne <code>True</code> / <code>False</code></p>
+                    <code>startswith(prefix)</code><br>
+                    <code>endswith(suffix)</code><br>
+                    <code>isdigit()</code> <span class="c"># "123"</span><br>
+                    <code>isalpha()</code> <span class="c"># "abc"</span><br>
+                    <code>isalnum()</code> <span class="c"># "a1"</span><br>
+                    <code>isspace()</code> <span class="c"># " "</span><br>
+                    <code>islower()</code> / <code>isupper()</code>
+                </div>
+                <div class="ref-card">
+                    <h4>✂️ Découpage</h4>
+                    <p style="font-size:0.85rem; margin-bottom:5px;">Sépare ou nettoie</p>
+                    <code>split(sep)</code> <span class="c"># Liste</span><br>
+                    <code>splitlines()</code><br>
+                    <code>partition(sep)</code> <span class="c"># Tuple (av, sep, ap)</span><br>
+                    <code>strip()</code> <span class="c"># Trim espaces</span><br>
+                    <code>lstrip()</code> / <code>rstrip()</code><br>
+                    <code>removeprefix(fix)</code> (3.9+)
+                </div>
+                <div class="ref-card">
+                    <h4>🔎 Recherche</h4>
+                    <p style="font-size:0.85rem; margin-bottom:5px;">Trouve ou compte</p>
+                    <code>find(sub)</code> <span class="c"># Index ou -1</span><br>
+                    <code>index(sub)</code> <span class="c"># Index ou Error</span><br>
+                    <code>count(sub)</code> <span class="c"># Nb occurences</span><br>
+                    <code>replace(old, new)</code><br>
+                    <code>join(iterable)</code>
+                </div>
+                <div class="ref-card">
+                    <h4>Aa Transformation</h4>
+                    <p style="font-size:0.85rem; margin-bottom:5px;">Modifie la casse</p>
+                    <code>upper()</code> / <code>lower()</code><br>
+                    <code>title()</code> <span class="c"># "Titulo"</span><br>
+                    <code>capitalize()</code> <span class="c"># "Phrase"</span><br>
+                    <code>swapcase()</code> <span class="c"># aA -> Aa</span><br>
+                    <code>center(w)</code> / <code>zfill(w)</code>
+                </div>
+            </div>
 
             <div class="code">
                 <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Strings</div>
-                <pre><span class="var">s</span> = <span class="str">"Hello World"</span>
+                        class="dot g"></span>Exemples Avancés</div>
+                <pre><span class="var">s</span> = <span class="str">"  hello world, python is fun  "</span>
 
-<span class="c"># Méthodes</span>
-<span class="var">s</span>.<span class="fn">upper</span>()             <span class="c"># "HELLO WORLD"</span>
-<span class="var">s</span>.<span class="fn">lower</span>()             <span class="c"># "hello world"</span>
-<span class="var">s</span>.<span class="fn">title</span>()             <span class="c"># "Hello World"</span>
-<span class="var">s</span>.<span class="fn">strip</span>()             <span class="c"># supprime espaces</span>
-<span class="var">s</span>.<span class="fn">split</span>(<span class="str">" "</span>)          <span class="c"># ["Hello", "World"]</span>
-<span class="str">"-"</span>.<span class="fn">join</span>([<span class="str">"a"</span>, <span class="str">"b"</span>])  <span class="c"># "a-b"</span>
-<span class="var">s</span>.<span class="fn">replace</span>(<span class="str">"o"</span>, <span class="str">"0"</span>)   <span class="c"># "Hell0 W0rld"</span>
-<span class="var">s</span>.<span class="fn">startswith</span>(<span class="str">"He"</span>)   <span class="c"># True</span>
-<span class="var">s</span>.<span class="fn">endswith</span>(<span class="str">"ld"</span>)     <span class="c"># True</span>
-<span class="var">s</span>.<span class="fn">find</span>(<span class="str">"o"</span>)           <span class="c"># 4 (ou -1 si absent)</span>
-<span class="var">s</span>.<span class="fn">index</span>(<span class="str">"o"</span>)          <span class="c"># 4 (ou ValueError si absent)</span>
-<span class="var">s</span>.<span class="fn">count</span>(<span class="str">"o"</span>)          <span class="c"># 2</span>
-<span class="var">s</span>.<span class="fn">isdigit</span>()           <span class="c"># False</span>
-<span class="var">s</span>.<span class="fn">isalpha</span>()           <span class="c"># False</span>
+<span class="c"># Nettoyage et Normalisation</span>
+<span class="var">clean</span> = <span class="var">s</span>.<span class="fn">strip</span>().<span class="fn">upper</span>()
+<span class="c"># "HELLO WORLD, PYTHON IS FUN"</span>
 
-<span class="c"># Formatage</span>
-<span class="str">f"Hello </span>{<span class="var">name</span>}<span class="str">"</span>                    <span class="c"># f-string</span>
-<span class="str">f"</span>{<span class="var">price</span>:.2f}<span class="str">"</span>                     <span class="c"># "19.99"</span>
-<span class="str">f"</span>{<span class="var">n</span>:05d}<span class="str">"</span>                         <span class="c"># "00042"</span>
-<span class="str">"Hello {}"</span>.<span class="fn">format</span>(<span class="var">name</span>)           <span class="c"># ancien</span>
-<span class="str">"Hello {name}"</span>.<span class="fn">format</span>(name=<span class="str">"Alice"</span>)</pre>
+<span class="c"># Extraction de mots</span>
+<span class="var">mots</span> = <span class="var">clean</span>.<span class="fn">replace</span>(<span class="str">","</span>, <span class="str">""</span>).<span class="fn">split</span>(<span class="str">" "</span>)
+<span class="c"># ['HELLO', 'WORLD', 'PYTHON', 'IS', 'FUN']</span>
+
+<span class="c"># Reconstruction</span>
+<span class="var">kebab</span> = <span class="str">"-"</span>.<span class="fn">join</span>(<span class="var">mots</span>)
+<span class="c"># "HELLO-WORLD-PYTHON-IS-FUN"</span>
+
+<span class="c"># Validation</span>
+<span class="kw">if</span> <span class="var">kebab</span>.<span class="fn">startswith</span>(<span class="str">"HELLO"</span>):
+    <span class="fn">print</span>(<span class="str">"Salutations détectées !"</span>)
+
+<span class="c"># Formatage avancé</span>
+<span class="fn">print</span>(<span class="str">"Id"</span>.<span class="fn">center</span>(<span class="num">10</span>, <span class="str">"="</span>))   <span class="c"># "====Id===="</span>
+<span class="fn">print</span>(<span class="str">"42"</span>.<span class="fn">zfill</span>(<span class="num">5</span>))        <span class="c"># "00042"</span></pre>
             </div>
         </div>
     </section>
@@ -1755,139 +1921,120 @@ pytest --cov=mypackage     <span class="c"># avec couverture</span></pre>
             <div class="sec-header">
                 <div class="sec-num">14</div>
                 <div>
-                    <h2 class="sec-title">Référence complète</h2>
-                    <p class="sec-sub">Fonctions built-in, modules, dunder methods</p>
+                    <h2 class="sec-title">Références Courantes</h2>
+                    <p class="sec-sub">Built-ins, Dunders, Modules, Keywords</p>
                 </div>
             </div>
 
-            <h3>Fonctions built-in</h3>
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4>Conversion</h4><code>int()</code> <code>float()</code> <code>str()</code> <code>bool()</code>
-                    <code>list()</code> <code>dict()</code> <code>tuple()</code> <code>set()</code> <code>bytes()</code>
-                    <code>complex()</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Itérables</h4><code>len()</code> <code>range()</code> <code>enumerate()</code>
-                    <code>zip()</code> <code>map()</code> <code>filter()</code> <code>sorted()</code>
-                    <code>reversed()</code> <code>iter()</code> <code>next()</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Math</h4><code>abs()</code> <code>min()</code> <code>max()</code> <code>sum()</code>
-                    <code>round()</code> <code>pow()</code> <code>divmod()</code> <code>bin()</code> <code>hex()</code>
-                    <code>oct()</code>
-                </div>
-                <div class="ref-card">
-                    <h4>I/O</h4><code>print()</code> <code>input()</code> <code>open()</code> <code>format()</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Objets</h4><code>type()</code> <code>isinstance()</code> <code>issubclass()</code>
-                    <code>hasattr()</code> <code>getattr()</code> <code>setattr()</code> <code>delattr()</code>
-                    <code>dir()</code> <code>vars()</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Autres</h4><code>all()</code> <code>any()</code> <code>id()</code> <code>hash()</code>
-                    <code>callable()</code> <code>repr()</code> <code>eval()</code> <code>exec()</code>
-                    <code>compile()</code> <code>globals()</code> <code>locals()</code>
-                </div>
-            </div>
+            <p style="margin-bottom:20px;">
+                Survolez les termes pour voir leur définition. 💡
+            </p>
 
-            <details>
-                <summary>📚 Modules standard essentiels</summary>
-                <table>
-                    <tr>
-                        <th>Module</th>
-                        <th>Description</th>
-                        <th>Fonctions clés</th>
-                    </tr>
-                    <tr>
-                        <td><code>os</code></td>
-                        <td>Système d'exploitation</td>
-                        <td>getcwd, listdir, mkdir, remove, environ</td>
-                    </tr>
-                    <tr>
-                        <td><code>sys</code></td>
-                        <td>Paramètres système</td>
-                        <td>argv, exit, path, version</td>
-                    </tr>
-                    <tr>
-                        <td><code>json</code></td>
-                        <td>JSON</td>
-                        <td>load, dump, loads, dumps</td>
-                    </tr>
-                    <tr>
-                        <td><code>re</code></td>
-                        <td>Expressions régulières</td>
-                        <td>match, search, findall, sub</td>
-                    </tr>
-                    <tr>
-                        <td><code>datetime</code></td>
-                        <td>Dates et heures</td>
-                        <td>datetime, date, time, timedelta</td>
-                    </tr>
-                    <tr>
-                        <td><code>pathlib</code></td>
-                        <td>Chemins modernes</td>
-                        <td>Path, exists, read_text, write_text</td>
-                    </tr>
-                    <tr>
-                        <td><code>collections</code></td>
-                        <td>Types avancés</td>
-                        <td>Counter, defaultdict, namedtuple, deque</td>
-                    </tr>
-                    <tr>
-                        <td><code>itertools</code></td>
-                        <td>Itérateurs</td>
-                        <td>count, cycle, chain, islice, groupby</td>
-                    </tr>
-                    <tr>
-                        <td><code>functools</code></td>
-                        <td>Fonctions</td>
-                        <td>lru_cache, partial, reduce, wraps</td>
-                    </tr>
-                    <tr>
-                        <td><code>random</code></td>
-                        <td>Aléatoire</td>
-                        <td>random, randint, choice, shuffle</td>
-                    </tr>
-                    <tr>
-                        <td><code>math</code></td>
-                        <td>Mathématiques</td>
-                        <td>sqrt, ceil, floor, sin, cos, pi (const)</td>
-                    </tr>
-                    <tr>
-                        <td><code>logging</code></td>
-                        <td>Journalisation</td>
-                        <td>debug, info, warning, error, critical</td>
-                    </tr>
-                </table>
-            </details>
+            <div class="grid2">
+                <!-- BUILT-INS -->
+                <div class="ref-card">
+                    <h4>🛠️ Fonctions Built-in</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <code data-tooltip="Affiche du texte console.&#10;Ex: print('Hello')">print</code>
+                        <code data-tooltip="Retourne la longueur.&#10;Ex: len([1,2,3]) -> 3">len</code>
+                        <code data-tooltip="Génère une séquence de nombres.&#10;Ex: range(5) -> 0,1,2,3,4">range</code>
+                        <code data-tooltip="Retourne le type d'un objet.&#10;Ex: type(1) -> <class 'int'>">type</code>
+                        <code data-tooltip="Liste les attributs/méthodes.&#10;Ex: dir(str)">dir</code>
+                        <code data-tooltip="Aide interactive.&#10;Ex: help(list)">help</code>
+                        <code
+                            data-tooltip="Crée des paires (index, valeur).&#10;Ex: for i, v in enumerate(lst):">enumerate</code>
+                        <code data-tooltip="Combine des itérables.&#10;Ex: zip([1,2], ['a','b'])">zip</code>
+                        <code data-tooltip="Applique une fonction.&#10;Ex: map(str, [1,2])">map</code>
+                        <code
+                            data-tooltip="Filtre selon une condition.&#10;Ex: filter(lambda x: x>0, lst)">filter</code>
+                        <code data-tooltip="Demande une saisie utilisateur.&#10;Ex: name = input('?')">input</code>
+                        <code data-tooltip="Ouvre un fichier.&#10;Ex: with open('f.txt') as f:">open</code>
+                        <code data-tooltip="Retourne la valeur absolue.&#10;Ex: abs(-5) -> 5">abs</code>
+                        <code data-tooltip="Arrondit un nombre.&#10;Ex: round(3.14, 1) -> 3.1">round</code>
+                        <code data-tooltip="Minimum d'une séquence.&#10;Ex: min([1,5,2]) -> 1">min</code>
+                        <code data-tooltip="Maximum d'une séquence.&#10;Ex: max([1,5,2]) -> 5">max</code>
+                        <code data-tooltip="Somme des éléments.&#10;Ex: sum([1,2,3]) -> 6">sum</code>
+                        <code data-tooltip="Trie une liste.&#10;Ex: sorted([3,1,2]) -> [1,2,3]">sorted</code>
+                        <code data-tooltip="Vérifie si TOUS sont True.&#10;Ex: all([True, True]) -> True">all</code>
+                        <code data-tooltip="Vérifie si UN est True.&#10;Ex: any([False, True]) -> True">any</code>
+                        <code data-tooltip="Vérifie le type (sur).&#10;Ex: isinstance(x, int)">isinstance</code>
+                    </div>
+                </div>
 
-            <h3>Dunder methods (méthodes magiques)</h3>
-            <div class="ref-grid">
+                <!-- KEYWORDS -->
                 <div class="ref-card">
-                    <h4>Initialisation</h4><code>__init__</code> <code>__new__</code> <code>__del__</code>
-                    <code>__repr__</code> <code>__str__</code>
+                    <h4>🔑 Mots-clés (Keywords)</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <code data-tooltip="Définit une fonction.">def</code>
+                        <code data-tooltip="Définit une classe.">class</code>
+                        <code data-tooltip="Retourne une valeur.">return</code>
+                        <code data-tooltip="Générateur (lazy).">yield</code>
+                        <code data-tooltip="Fonction anonyme sur 1 ligne.&#10;Ex: lambda x: x*2">lambda</code>
+                        <code data-tooltip="Ne fait rien (placeholder).">pass</code>
+                        <code data-tooltip="Arrête une boucle.">break</code>
+                        <code data-tooltip="Passe à l'itération suivante.">continue</code>
+                        <code data-tooltip="Condition 'sinon'.">else</code>
+                        <code data-tooltip="Condition 'sinon si'.">elif</code>
+                        <code data-tooltip="Gestion d'erreur.">try</code>
+                        <code data-tooltip="Capture une erreur.">except</code>
+                        <code data-tooltip="Toujours exécuté (cleanup).">finally</code>
+                        <code data-tooltip="Lève une exception.">raise</code>
+                        <code data-tooltip="Vérifie une condition (debug).">assert</code>
+                        <code data-tooltip="Gestionnaire de contexte.&#10;Ex: with open(...)">with</code>
+                        <code data-tooltip="Importe un module.">import</code>
+                        <code data-tooltip="Depuis un module.&#10;Ex: from math import pi">from</code>
+                        <code data-tooltip="Alias de nommage.&#10;Ex: import pandas as pd">as</code>
+                        <code data-tooltip="Variable globale.">global</code>
+                        <code data-tooltip="Test d'appartenance.">in</code>
+                        <code data-tooltip="Test d'identité (mémoire).">is</code>
+                        <code data-tooltip="Négation booléenne.">not</code>
+                        <code data-tooltip="Opérateur logique ET.">and</code>
+                        <code data-tooltip="Opérateur logique OU.">or</code>
+                    </div>
                 </div>
+
+                <!-- DUNDER METHODS -->
                 <div class="ref-card">
-                    <h4>Comparaison</h4><code>__eq__</code> <code>__ne__</code> <code>__lt__</code> <code>__le__</code>
-                    <code>__gt__</code> <code>__ge__</code>
+                    <h4>✨ Dunder Methods</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <code data-tooltip="Constructeur. Initialise l'objet.">__init__</code>
+                        <code data-tooltip="Représentation lisible (User).&#10;Ex: print(obj)">__str__</code>
+                        <code data-tooltip="Représentation officielle (Dev).&#10;Ex: repr(obj)">__repr__</code>
+                        <code data-tooltip="Définit la longueur.&#10;Ex: len(obj)">__len__</code>
+                        <code data-tooltip="Accès par index/clé.&#10;Ex: obj['key']">__getitem__</code>
+                        <code data-tooltip="Assigne par index/clé.&#10;Ex: obj['key'] = val">__setitem__</code>
+                        <code data-tooltip="Supprime par index/clé.&#10;Ex: del obj['key']">__delitem__</code>
+                        <code data-tooltip="Rend l'objet itérable.&#10;Ex: for x in obj">__iter__</code>
+                        <code data-tooltip="Rend l'objet appelable.&#10;Ex: obj()">__call__</code>
+                        <code data-tooltip="Égalité (==).">__eq__</code>
+                        <code data-tooltip="Plus petit que (<).">__lt__</code>
+                        <code data-tooltip="Addition (+).">__add__</code>
+                        <code data-tooltip="Entrée de contexte (with).">__enter__</code>
+                        <code data-tooltip="Sortie de contexte (with).">__exit__</code>
+                    </div>
                 </div>
+
+                <!-- STANDARD MODULES -->
                 <div class="ref-card">
-                    <h4>Opérations</h4><code>__add__</code> <code>__sub__</code> <code>__mul__</code>
-                    <code>__truediv__</code> <code>__floordiv__</code> <code>__mod__</code> <code>__pow__</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Conteneur</h4><code>__len__</code> <code>__getitem__</code> <code>__setitem__</code>
-                    <code>__delitem__</code> <code>__contains__</code> <code>__iter__</code> <code>__next__</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Contexte</h4><code>__enter__</code> <code>__exit__</code> <code>__call__</code>
-                    <code>__hash__</code> <code>__bool__</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Attributs</h4><code>__getattr__</code> <code>__setattr__</code> <code>__delattr__</code>
-                    <code>__getattribute__</code> <code>__dir__</code>
+                    <h4>📦 Modules Standard</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <code data-tooltip="Interaction Système (fichiers, env).&#10;Ex: os.listdir()">os</code>
+                        <code data-tooltip="Paramètres Système (argv, path).&#10;Ex: sys.exit()">sys</code>
+                        <code data-tooltip="Manipulation de chemins.&#10;Ex: Path('folder')">pathlib</code>
+                        <code data-tooltip="Parsing JSON.&#10;Ex: json.load()">json</code>
+                        <code data-tooltip="Dates et heures.&#10;Ex: datetime.now()">datetime</code>
+                        <code data-tooltip="Expressions Régulières.&#10;Ex: re.search()">re</code>
+                        <code data-tooltip="Mathématiques.&#10;Ex: math.sqrt()">math</code>
+                        <code data-tooltip="Nombres aléatoires.&#10;Ex: random.choice()">random</code>
+                        <code data-tooltip="Collections avancées.&#10;Ex: Counter, deque">collections</code>
+                        <code data-tooltip="Itérateurs efficaces.&#10;Ex: cycle, chain">itertools</code>
+                        <code data-tooltip="Outils fonctionnels.&#10;Ex: partial, reduce">functools</code>
+                        <code data-tooltip="Logs d'application.&#10;Ex: logging.info()">logging</code>
+                        <code data-tooltip="Tests unitaires.">unittest</code>
+                        <code data-tooltip="Format binaire (sérialisation).">pickle</code>
+                        <code data-tooltip="Processus légers.">threading</code>
+                        <code data-tooltip="Asynchronisme (modern).">asyncio</code>
+                    </div>
                 </div>
             </div>
 
@@ -2110,17 +2257,19 @@ my_project/
         </div>
     </section>
 
-    <script src="../../assets/js/quiz-engine.js"></script>
+    <script src="../assets/js/quiz-engine.js"></script>
+    <script src="../assets/js/quiz-data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (window.QuizEngine) {
                 new window.QuizEngine({
                     containerId: 'quiz-app',
-                    jsonPath: 'quiz_python.json',
+                    data: QUIZ_DATA, // Loaded from quiz-data.js
                     questionsPerSession: 10
                 });
             } else {
                 console.error('QuizEngine not loaded');
+                document.getElementById('quiz-app').innerHTML = '<div style="color:red; text-align:center;">Erreur: Moteur de quiz introuvable.</div>';
             }
         });
     </script>

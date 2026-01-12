@@ -5,6 +5,7 @@
 
 class QuizEngine {
     constructor(config) {
+        this.config = config; // Store full config
         this.containerId = config.containerId || 'quiz-app';
         this.jsonPath = config.jsonPath; // Path relative to the HTML file
         this.questionsPerSession = config.questionsPerSession || 10;
@@ -32,16 +33,25 @@ class QuizEngine {
     async init() {
         try {
             this.showLoading();
-            const response = await fetch(this.jsonPath);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-            const data = await response.json();
+            let data;
+            if (this.config.data) {
+                // Direct data injection (bypasses CORS/fetch)
+                data = this.config.data;
+            } else if (this.jsonPath) {
+                // Standard fetch
+                const response = await fetch(this.jsonPath);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                data = await response.json();
+            } else {
+                throw new Error("No data or jsonPath provided");
+            }
+
             this.state.allQuestions = data.questions;
-
             this.renderIntro(data.meta);
         } catch (error) {
             console.error('Failed to load quiz data:', error);
-            this.showError('Impossible de charger le quiz. Vérifiez votre connexion.');
+            this.showError('Impossible de charger le quiz. ' + error.message);
         }
     }
 

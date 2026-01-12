@@ -125,7 +125,7 @@ export default function ComprendrePage() {
             équipements électroniques à chaque étape de leur vie.
           </p>
           <ImageZoom
-            src="/images/lifecycle-numerique-hero.webp"
+            src="/greenit/images/lifecycle-numerique-hero.webp"
             alt="Cycle de vie du numérique - de l'extraction au recyclage"
             containerClassName="aspect-[16/9] w-full rounded-2xl shadow-xl bg-muted border-2"
             priority
@@ -159,7 +159,7 @@ export default function ComprendrePage() {
           </p>
 
           <ImageZoom
-            src="/images/smartphone-impact-infographic.webp"
+            src="/greenit/images/smartphone-impact-infographic.webp"
             alt="Infographie détaillée de l'impact environnemental d'un smartphone"
             containerClassName="mb-12 aspect-[4/3] w-full max-w-4xl mx-auto rounded-2xl shadow-lg bg-card border"
             className="p-4"

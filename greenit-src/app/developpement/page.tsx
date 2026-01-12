@@ -120,7 +120,7 @@ export default function DeveloppementPage() {
         <div className="absolute inset-0 bg-secondary/30" />
         <div className="absolute inset-0 opacity-10 dark:opacity-5">
           <Image
-            src="/images/sustainable-coding.png"
+            src="/greenit/images/sustainable-coding.png"
             alt="Développeur travaillant sur du code éco-responsable dans un environnement de travail durable avec plantes vertes, éclairage naturel, et écran affichant du code optimisé pour la performance énergétique"
             fill
             className="object-cover"
@@ -165,7 +165,7 @@ export default function DeveloppementPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="mb-8 relative h-[400px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/clean-efficient-code-on-screen-with-green-energy-s.webp"
+                src="/greenit/clean-efficient-code-on-screen-with-green-energy-s.webp"
                 alt="Code propre et efficace"
                 fill
                 className="object-cover"

@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Découvrez l'impact environnemental du numérique et adoptez des pratiques responsables. Informations, outils interactifs et ressources pour un Green IT en France.",
     images: [
       {
-        url: "/abstract-green-technology-network-with-leaves-and-.webp",
+        url: "/greenit/abstract-green-technology-network-with-leaves-and-.webp",
         width: 1200,
         height: 630,
         alt: "Le Green IT en clair - Écologie Numérique",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Le Green IT en clair - Écologie Numérique et Numérique Responsable",
     description:
       "Découvrez l'impact environnemental du numérique et adoptez des pratiques responsables. Informations, outils interactifs et ressources pour un Green IT en France.",
-    images: ["/abstract-green-technology-network-with-leaves-and-.webp"],
+    images: ["/greenit/abstract-green-technology-network-with-leaves-and-.webp"],
     creator: "@greenitenclair",
   },
   robots: {

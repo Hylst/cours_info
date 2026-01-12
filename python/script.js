@@ -213,6 +213,7 @@ function setFileMode(mode) {
 }
 
 // Format Lab (Mod 09)
+// Format Lab (Mod 09)
 function updateFormat() {
     const valStr = document.getElementById('fmt-val').value;
     const spec = document.getElementById('fmt-spec').value;
@@ -222,7 +223,6 @@ function updateFormat() {
     if (isNaN(val)) val = valStr; // fallback for strings
 
     try {
-        // Simple JS emulation of Python formatting
         let res = "Error";
 
         if (typeof val === 'number') {
@@ -233,7 +233,6 @@ function updateFormat() {
             } else if (spec.includes('%')) {
                 res = (val * 100).toFixed(6) + '%';
             } else if (spec.includes('d')) {
-                // Zero padding emulation :05d
                 let intVal = Math.round(val);
                 res = intVal.toString();
                 const pad = spec.match(/0(\d+)d/);
@@ -242,16 +241,69 @@ function updateFormat() {
                     while (res.length < len) res = '0' + res;
                 }
             } else {
-                res = val.toString(); // basic fallback
+                res = val.toString();
             }
         } else {
             res = val.toString();
         }
 
-        resEl.textContent = res;
+        // Handle Alignment (mockup)
+        if (spec.includes('>')) {
+            const width = parseInt(spec.match(/>(\d+)/)?.[1] || 0);
+            while (res.length < width) res = ' ' + res;
+        } else if (spec.includes('^')) {
+            const width = parseInt(spec.match(/\^(\d+)/)?.[1] || 0);
+            while (res.length < width) {
+                res = ' ' + res;
+                if (res.length < width) res = res + ' ';
+            }
+        }
+
+        resEl.textContent = `"${res}"`;
     } catch (e) {
         resEl.textContent = "Invalid";
     }
+}
+
+// String Transformer (Mod 09)
+function transformString(action) {
+    const input = document.getElementById('str-input');
+    const output = document.getElementById('str-output');
+    const desc = document.getElementById('str-desc');
+
+    let original = input.value;
+    let result = "";
+    let description = "";
+
+    switch (action) {
+        case 'upper':
+            result = original.toUpperCase();
+            description = "Convertit tout en MAJUSCULES.";
+            break;
+        case 'lower':
+            result = original.toLowerCase();
+            description = "Convertit tout en minuscules.";
+            break;
+        case 'title':
+            result = original.toLowerCase().replace(/(?:^|\s)\w/g, match => match.toUpperCase());
+            description = "Met la Première Lettre De Chaque Mot En Majuscule.";
+            break;
+        case 'strip':
+            result = original.trim();
+            description = "Retire les espaces au début et à la fin.";
+            break;
+        case 'reverse':
+            result = original.split('').reverse().join('');
+            description = "Inverse l'ordre des caractères (Slicing [::-1]).";
+            break;
+    }
+
+    output.textContent = `"${result}"`;
+    desc.textContent = description;
+
+    // Animation flash
+    output.style.color = 'var(--text)';
+    setTimeout(() => output.style.color = 'var(--accent)', 100);
 }
 
 // Regex Tester (Mod 10)

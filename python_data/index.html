@@ -189,6 +189,12 @@
                     dimensions plus petites sur les plus grandes.</p>
             </div>
 
+            <!-- ENRICHMENT: Numpy Visualizer -->
+            <div id="numpy-viz-container" class="interactive-box"
+                style="margin-top:25px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject grid here -->
+            </div>
+
             <div class="grid2">
                 <div class="code">
                     <div class="code-head"><span class="dot g"></span>Indexing, Types & Performance</div>
@@ -309,6 +315,12 @@
             <div style="text-align:center; margin:30px 0;">
                 <img src="img/pandas_joins.svg" alt="Pandas Joins"
                     style="width:100%; max-width:450px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));">
+            </div>
+
+            <!-- ENRICHMENT: Pandas Lab -->
+            <div id="pandas-lab-container" class="interactive-box"
+                style="margin-bottom:30px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject table here -->
             </div>
 
             <div class="grid2">
@@ -899,7 +911,13 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JS Modules (Sequential for file:// compatibility) -->
+    <script src="assets/js/app_init.js"></script>
+    <script src="assets/js/modules/utils.js"></script>
+    <script src="assets/js/modules/nav.js"></script>
+    <script src="assets/js/modules/numpy_viz.js"></script>
+    <script src="assets/js/modules/pandas_lab.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

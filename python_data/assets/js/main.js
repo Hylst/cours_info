@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.App) {
         if (window.App.utils) window.App.utils.initCopyButtons();
         if (window.App.nav) window.App.nav.init();
+        if (window.App.ecosystem) window.App.ecosystem.init();
         if (window.App.numpyViz) window.App.numpyViz.init();
         if (window.App.pandasLab) window.App.pandasLab.init();
     }

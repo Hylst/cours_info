@@ -175,17 +175,21 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre Numpy (Avancé)</summary>
+                <summary>📖 Comprendre Numpy (Concepts Clés)</summary>
                 <div>
                     <p>Les listes Python sont trop lentes pour des millions de calculs. Numpy introduit les
                         <strong>Arrays</strong> (tableaux) typés.
                     </p>
-                    <p>Le <strong>Reshaping</strong> est critique pour le Deep Learning (ex: transformer une image 28x28
-                        en vecteur 784).</p>
-                    <p>Le <strong>Broadcasting</strong> permet des opérations matrice-vecteur ultra-rapides sans
-                        boucles.</p>
+                    <p><strong>Contiguïté Mémoire :</strong> Contrairement aux listes qui pointent vers des objets
+                        éparpillés, Numpy stocke les données côte à côte. C'est le secret de sa vitesse.</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: Numpy Dimensions Viz -->
+            <div id="numpy-dim-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject dims here -->
+            </div>
 
             <div class="tip"
                 style="background:rgba(59, 130, 246, 0.05); border-left:4px solid var(--primary); display:flex; align-items:center; gap:20px; margin-top:20px;">
@@ -199,6 +203,18 @@
             <div id="numpy-viz-container" class="interactive-box"
                 style="margin-top:25px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
                 <!-- JS will inject grid here -->
+            </div>
+
+            <!-- ENRICHMENT: Performance Race -->
+            <div id="numpy-perf-container" class="interactive-box"
+                style="margin-top:25px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject race here -->
+            </div>
+
+            <div class="tip" style="margin-top:20px; border-color:var(--accent);">
+                <p>💡 <strong>Contexte Réel :</strong> Dans une application d'IA, on reçoit souvent des milliers
+                    d'images. On les "stack" dans un seul tenseur Numpy pour les envoyer d'un coup au GPU. C'est
+                    l'essence du <strong>Batch Processing</strong>.</p>
             </div>
 
             <div class="grid2">
@@ -923,6 +939,7 @@
     <script src="assets/js/modules/nav.js"></script>
     <script src="assets/js/modules/ecosystem.js"></script>
     <script src="assets/js/modules/numpy_viz.js"></script>
+    <script src="assets/js/modules/numpy_performance.js"></script>
     <script src="assets/js/modules/pandas_lab.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

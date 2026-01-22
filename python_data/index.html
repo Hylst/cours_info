@@ -723,14 +723,40 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre le Deep Learning</summary>
+                <summary>📖 Comprendre le Deep Learning (Concepts Fondamentaux)</summary>
                 <div>
-                    <p>Neurone artificiel = <strong>Somme pondérée</strong> des entrées + Biais -> <strong>Fonction
-                            d'activation</strong> (Non-linéarité).</p>
-                    <p>L'apprentissage consiste à ajuster ces poids (Backpropagation) pour minimiser une fonction de
-                        coût (Loss).</p>
+                    <p><strong>Définition :</strong> Le Deep Learning est une branche du Machine Learning utilisant des
+                        réseaux de neurones artificiels à plusieurs couches (d'où "deep"). Contrairement au ML classique
+                        où on conçoit manuellement les features, le DL apprend automatiquement des représentations de
+                        plus en plus abstraites.</p>
+                    <p><strong>Le Neurone Artificiel :</strong> C'est l'unité de base. Il reçoit des entrées (x₁, x₂,
+                        ...), les multiplie par des poids (w₁, w₂, ...), fait la somme, ajoute un biais, puis applique
+                        une <em>fonction d'activation</em> (non-linéarité). Formule :
+                        <code>output = activation(Σ(wi * xi) + b)</code>
+                    </p>
+                    <p><strong>Backpropagation :</strong> L'algorithme d'apprentissage. On calcule l'erreur (Loss) entre
+                        la prédiction et la vérité, puis on "propage" cette erreur en arrière dans le réseau pour
+                        ajuster les poids. C'est la descente de gradient appliquée couche par couche.</p>
+                    <p><strong>Pourquoi "Deep" ?</strong> Plus il y a de couches, plus le réseau peut apprendre des
+                        abstractions complexes. La 1ère couche détecte des bords, la 2ème des formes, la 3ème des
+                        objets, etc. C'est ce qui rend le DL si puissant pour les images, le texte et l'audio.</p>
+                    <p><strong>GPU / TPU :</strong> L'entraînement DL nécessite des millions de calculs matriciels. Les
+                        GPU (cartes graphiques) sont optimisés pour ce type de calcul parallèle. Sans GPU,
+                        l'entraînement peut prendre des jours au lieu d'heures.</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: Neural Network Visualizer -->
+            <div id="dl-neuron-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject neural network viz here -->
+            </div>
+
+            <!-- ENRICHMENT: Activation Functions -->
+            <div id="dl-activation-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject activation viz here -->
+            </div>
 
             <div class="grid2" style="margin-top:20px;">
                 <div class="tip" style="border-left-color:var(--purple); margin:0;">
@@ -1068,6 +1094,7 @@
     <script src="assets/js/modules/pandas_lab.js"></script>
     <script src="assets/js/modules/acquisition.js"></script>
     <script src="assets/js/modules/machine_learning.js"></script>
+    <script src="assets/js/modules/deep_learning.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

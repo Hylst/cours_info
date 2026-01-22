@@ -1110,77 +1110,222 @@
                 </div>
             </div>
 
+            <details>
+                <summary>📖 Comment utiliser cette référence</summary>
+                <div>
+                    <p>Cette section regroupe les commandes les plus utilisées en Data Science Python. Gardez-la sous la
+                        main pour vos projets !</p>
+                    <p><strong>Conseil :</strong> Utilisez <code>Ctrl+F</code> pour rechercher rapidement une commande.
+                    </p>
+                </div>
+            </details>
+
+            <h4 style="margin-top:20px; color:var(--primary);">📊 Pandas - Manipulation de Données</h4>
             <table>
                 <tr>
-                    <th>Librairie</th>
-                    <th>Code commun</th>
+                    <th>Commande</th>
                     <th>Description</th>
+                    <th>Exemple</th>
                 </tr>
                 <tr>
-                    <td><strong>Pandas</strong></td>
-                    <td><code>pd.read_csv('file.csv')</code></td>
-                    <td>Lire un fichier de données</td>
+                    <td><code>pd.read_csv()</code></td>
+                    <td>Lire un fichier CSV</td>
+                    <td><code>df = pd.read_csv('data.csv')</code></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><code>df.groupby('col').mean()</code></td>
-                    <td>Agrégation style tableau croisé</td>
+                    <td><code>df.head()</code></td>
+                    <td>Afficher les premières lignes</td>
+                    <td><code>df.head(10)</code></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><code>df.plot()</code></td>
-                    <td>Plot rapide intégré</td>
+                    <td><code>df.info()</code></td>
+                    <td>Résumé du DataFrame</td>
+                    <td><code>df.info()</code></td>
                 </tr>
                 <tr>
-                    <td><strong>Numpy</strong></td>
-                    <td><code>np.array([1, 2, 3])</code></td>
-                    <td>Créer un vecteur</td>
+                    <td><code>df.describe()</code></td>
+                    <td>Statistiques descriptives</td>
+                    <td><code>df.describe()</code></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><code>np.random.normal()</code></td>
-                    <td>Générer données aléatoires (Gauss)</td>
+                    <td><code>df.groupby()</code></td>
+                    <td>Agrégation par groupe</td>
+                    <td><code>df.groupby('cat').mean()</code></td>
                 </tr>
                 <tr>
-                    <td><strong>Sklearn</strong></td>
-                    <td><code>model.fit(X, y)</code></td>
-                    <td>Entraîner le modèle</td>
+                    <td><code>df.merge()</code></td>
+                    <td>Jointure SQL-style</td>
+                    <td><code>pd.merge(df1, df2, on='id')</code></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><code>model.predict(X)</code></td>
-                    <td>Faire des prédictions</td>
+                    <td><code>df.fillna()</code></td>
+                    <td>Remplir valeurs manquantes</td>
+                    <td><code>df.fillna(0)</code></td>
                 </tr>
                 <tr>
-                    <td><strong>SQL/Joblib</strong></td>
-                    <td><code>pd.read_sql(q, engine)</code></td>
-                    <td>Lire depuis une DB</td>
+                    <td><code>df.drop_duplicates()</code></td>
+                    <td>Supprimer doublons</td>
+                    <td><code>df.drop_duplicates()</code></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><code>joblib.dump(model, 'f.pkl')</code></td>
-                    <td>Sauvegarder le modèle</td>
+                    <td><code>df.to_csv()</code></td>
+                    <td>Exporter en CSV</td>
+                    <td><code>df.to_csv('out.csv', index=False)</code></td>
                 </tr>
             </table>
 
-            <h4 style="margin-top:30px">Deep Learning (Pour aller plus loin)</h4>
+            <h4 style="margin-top:30px; color:var(--accent);">🔢 Numpy - Calcul Numérique</h4>
+            <table>
+                <tr>
+                    <th>Commande</th>
+                    <th>Description</th>
+                    <th>Exemple</th>
+                </tr>
+                <tr>
+                    <td><code>np.array()</code></td>
+                    <td>Créer un array</td>
+                    <td><code>np.array([1, 2, 3])</code></td>
+                </tr>
+                <tr>
+                    <td><code>np.zeros() / ones()</code></td>
+                    <td>Tableaux remplis</td>
+                    <td><code>np.zeros((3, 3))</code></td>
+                </tr>
+                <tr>
+                    <td><code>np.arange()</code></td>
+                    <td>Séquence</td>
+                    <td><code>np.arange(0, 10, 2)</code></td>
+                </tr>
+                <tr>
+                    <td><code>np.linspace()</code></td>
+                    <td>N points équidistants</td>
+                    <td><code>np.linspace(0, 1, 100)</code></td>
+                </tr>
+                <tr>
+                    <td><code>arr.reshape()</code></td>
+                    <td>Changer la forme</td>
+                    <td><code>arr.reshape(3, 4)</code></td>
+                </tr>
+                <tr>
+                    <td><code>np.random.normal()</code></td>
+                    <td>Distribution normale</td>
+                    <td><code>np.random.normal(0, 1, 100)</code></td>
+                </tr>
+                <tr>
+                    <td><code>arr @ arr2</code></td>
+                    <td>Produit matriciel</td>
+                    <td><code>A @ B</code></td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top:30px; color:#10b981;">🤖 Scikit-Learn - Machine Learning</h4>
+            <table>
+                <tr>
+                    <th>Commande</th>
+                    <th>Description</th>
+                    <th>Exemple</th>
+                </tr>
+                <tr>
+                    <td><code>train_test_split()</code></td>
+                    <td>Séparer train/test</td>
+                    <td><code>X_train, X_test, y_train, y_test = train_test_split(X, y)</code></td>
+                </tr>
+                <tr>
+                    <td><code>model.fit()</code></td>
+                    <td>Entraîner le modèle</td>
+                    <td><code>model.fit(X_train, y_train)</code></td>
+                </tr>
+                <tr>
+                    <td><code>model.predict()</code></td>
+                    <td>Faire des prédictions</td>
+                    <td><code>y_pred = model.predict(X_test)</code></td>
+                </tr>
+                <tr>
+                    <td><code>cross_val_score()</code></td>
+                    <td>Validation croisée</td>
+                    <td><code>cross_val_score(model, X, y, cv=5)</code></td>
+                </tr>
+                <tr>
+                    <td><code>StandardScaler()</code></td>
+                    <td>Normaliser les données</td>
+                    <td><code>scaler.fit_transform(X)</code></td>
+                </tr>
+                <tr>
+                    <td><code>Pipeline()</code></td>
+                    <td>Enchaîner les étapes</td>
+                    <td><code>Pipeline([('scaler', StandardScaler()), ('clf', SVC())])</code></td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top:30px; color:#f59e0b;">💾 Persistance & APIs</h4>
+            <table>
+                <tr>
+                    <th>Commande</th>
+                    <th>Description</th>
+                    <th>Exemple</th>
+                </tr>
+                <tr>
+                    <td><code>joblib.dump()</code></td>
+                    <td>Sauvegarder un modèle</td>
+                    <td><code>joblib.dump(model, 'model.pkl')</code></td>
+                </tr>
+                <tr>
+                    <td><code>joblib.load()</code></td>
+                    <td>Charger un modèle</td>
+                    <td><code>model = joblib.load('model.pkl')</code></td>
+                </tr>
+                <tr>
+                    <td><code>pd.read_sql()</code></td>
+                    <td>Lire depuis SQL</td>
+                    <td><code>pd.read_sql(query, engine)</code></td>
+                </tr>
+                <tr>
+                    <td><code>requests.get()</code></td>
+                    <td>Appel API GET</td>
+                    <td><code>requests.get(url).json()</code></td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top:30px; color:#8b5cf6;">🧠 Deep Learning (Keras / PyTorch)</h4>
             <div class="grid2">
-                <div class="code" style="border:1px solid #ea580c">
+                <div class="code" style="border:1px solid #f97316">
                     <div class="code-head" style="color:#f97316">TensorFlow / Keras</div>
-                    <pre><span class="c"># Standard Google (Prod)</span>
-<span class="var">model</span> = <span class="var">keras</span>.<span class="cls">Sequential</span>([
-    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">64</span>, activation=<span class="str">'relu'</span>),
-    <span class="var">layers</span>.<span class="cls">Dense</span>(<span class="num">10</span>)
-])</pre>
+                    <pre><span class="kw">import</span> tensorflow <span class="kw">as</span> tf
+
+<span class="c"># Modèle séquentiel</span>
+<span class="var">model</span> = <span class="var">tf.keras</span>.<span class="cls">Sequential</span>([
+    <span class="var">tf.keras.layers</span>.<span class="cls">Dense</span>(<span class="num">128</span>, activation=<span class="str">'relu'</span>),
+    <span class="var">tf.keras.layers</span>.<span class="cls">Dropout</span>(<span class="num">0.2</span>),
+    <span class="var">tf.keras.layers</span>.<span class="cls">Dense</span>(<span class="num">10</span>, activation=<span class="str">'softmax'</span>)
+])
+
+<span class="var">model</span>.<span class="fn">compile</span>(optimizer=<span class="str">'adam'</span>, loss=<span class="str">'sparse_categorical_crossentropy'</span>)
+<span class="var">model</span>.<span class="fn">fit</span>(<span class="var">X_train</span>, <span class="var">y_train</span>, epochs=<span class="num">10</span>)</pre>
                 </div>
                 <div class="code" style="border:1px solid #ef4444">
                     <div class="code-head" style="color:#ef4444">PyTorch</div>
-                    <pre><span class="c"># Standard Recherche (Meta)</span>
+                    <pre><span class="kw">import</span> torch
+<span class="kw">import</span> torch.nn <span class="kw">as</span> nn
+
 <span class="kw">class</span> <span class="cls">Net</span>(<span class="var">nn</span>.<span class="cls">Module</span>):
     <span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):
         <span class="var">super</span>().<span class="fn">__init__</span>()
-        <span class="var">self</span>.<span class="var">fc1</span> = <span class="var">nn</span>.<span class="cls">Linear</span>(<span class="num">10</span>, <span class="num">64</span>)</pre>
+        <span class="var">self</span>.<span class="var">fc1</span> = <span class="var">nn</span>.<span class="cls">Linear</span>(<span class="num">784</span>, <span class="num">128</span>)
+        <span class="var">self</span>.<span class="var">fc2</span> = <span class="var">nn</span>.<span class="cls">Linear</span>(<span class="num">128</span>, <span class="num">10</span>)
+    
+    <span class="kw">def</span> <span class="fn">forward</span>(<span class="var">self</span>, <span class="var">x</span>):
+        <span class="kw">return</span> <span class="var">self</span>.<span class="var">fc2</span>(<span class="var">torch.relu</span>(<span class="var">self</span>.<span class="var">fc1</span>(<span class="var">x</span>)))</pre>
                 </div>
+            </div>
+
+            <div class="tip" style="margin-top:25px; border-color:var(--primary);">
+                <p>💡 <strong>Ressources :</strong>
+                    <a href="https://pandas.pydata.org/docs/" target="_blank" style="color:var(--primary);">Pandas
+                        Docs</a> •
+                    <a href="https://scikit-learn.org/stable/" target="_blank" style="color:var(--primary);">Sklearn
+                        Docs</a> •
+                    <a href="https://numpy.org/doc/" target="_blank" style="color:var(--primary);">Numpy Docs</a>
+                </p>
             </div>
 
         </div>

@@ -1,36 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140">
   <defs>
     <style>
-      .step { fill: #1e293b; stroke: #334155; stroke-width: 2; }
-      .arrow { fill: #64748b; }
-      .text { font-family: 'Outfit', sans-serif; fill: #f1f5f9; font-size: 11px; text-anchor: middle; }
-      .accent { fill: #3b82f6; font-weight: bold; }
+      .step { stroke-width: 2; }
+      .text { font-family: 'Outfit', Arial, sans-serif; fill: #f1f5f9; font-size: 11px; text-anchor: middle; }
+      .label { font-family: 'Outfit', Arial, sans-serif; fill: #94a3b8; font-size: 9px; text-anchor: middle; }
+      .arrow { fill: none; stroke: #64748b; stroke-width: 2; }
+      .arrow-head { fill: #64748b; }
     </style>
   </defs>
 
-  <!-- Steps -->
-  <rect x="10" y="30" width="80" height="40" rx="6" class="step"/>
-  <text x="50" y="55" class="text">Raw Data</text>
+  <!-- Step 1: Raw Data -->
+  <rect x="10" y="35" width="80" height="50" rx="8" fill="#1e293b" stroke="#3b82f6" class="step"/>
+  <text x="50" y="55" class="text" style="fill:#3b82f6;">📊</text>
+  <text x="50" y="72" class="text">Raw Data</text>
 
-  <path d="M100 50 L120 50" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Arrow 1 -->
+  <line x1="95" y1="60" x2="115" y2="60" class="arrow"/>
+  <polygon points="115,55 125,60 115,65" class="arrow-head"/>
 
-  <rect x="120" y="30" width="90" height="40" rx="6" class="step" style="stroke:#f97316"/>
-  <text x="165" y="55" class="text">Preprocessing</text>
+  <!-- Step 2: Split -->
+  <rect x="130" y="35" width="80" height="50" rx="8" fill="#1e293b" stroke="#f97316" class="step"/>
+  <text x="170" y="55" class="text" style="fill:#f97316;">✂️</text>
+  <text x="170" y="72" class="text">Train/Test</text>
 
-  <rect x="230" y="30" width="100" height="40" rx="6" class="step" style="stroke:#a855f7"/>
-  <text x="280" y="55" class="text">Model Training</text>
+  <!-- Arrow 2 -->
+  <line x1="215" y1="60" x2="235" y2="60" class="arrow"/>
+  <polygon points="235,55 245,60 235,65" class="arrow-head"/>
 
-  <rect x="350" y="30" width="80" height="40" rx="6" class="step" style="stroke:#10b981"/>
-  <text x="390" y="55" class="text">Evaluation</text>
+  <!-- Step 3: Preprocessing -->
+  <rect x="250" y="35" width="80" height="50" rx="8" fill="#1e293b" stroke="#a855f7" class="step"/>
+  <text x="290" y="55" class="text" style="fill:#a855f7;">⚙️</text>
+  <text x="290" y="72" class="text">Preprocess</text>
 
-  <rect x="440" y="30" width="50" height="40" rx="6" class="step" style="stroke:#3b82f6"/>
-  <text x="465" y="55" class="text" class="accent">PROD</text>
+  <!-- Arrow 3 -->
+  <line x1="335" y1="60" x2="355" y2="60" class="arrow"/>
+  <polygon points="355,55 365,60 355,65" class="arrow-head"/>
 
-  <!-- Connecting arrows (simplified) -->
-  <polygon points="100,45 110,50 100,55" class="arrow" transform="translate(10,0)"/>
-  <polygon points="215,45 225,50 215,55" class="arrow" />
-  <polygon points="335,45 345,50 335,55" class="arrow" />
-  <polygon points="432,45 442,50 432,55" class="arrow" />
+  <!-- Step 4: Training -->
+  <rect x="370" y="35" width="80" height="50" rx="8" fill="#1e293b" stroke="#10b981" class="step"/>
+  <text x="410" y="55" class="text" style="fill:#10b981;">🧠</text>
+  <text x="410" y="72" class="text">fit()</text>
 
-  <text x="250" y="95" class="text" style="fill:#64748b; font-style:italic">Encapsulation complète via sklearn.pipeline.Pipeline</text>
+  <!-- Arrow 4 -->
+  <line x1="455" y1="60" x2="475" y2="60" class="arrow"/>
+  <polygon points="475,55 485,60 475,65" class="arrow-head"/>
+
+  <!-- Step 5: Evaluation -->
+  <rect x="490" y="35" width="95" height="50" rx="8" fill="#1e293b" stroke="#ef4444" class="step"/>
+  <text x="537" y="55" class="text" style="fill:#ef4444;">📏</text>
+  <text x="537" y="72" class="text">Evaluate</text>
+
+  <!-- Pipeline wrapper -->
+  <rect x="125" y="25" width="340" height="70" rx="12" fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="295" y="18" class="label">sklearn.pipeline.Pipeline</text>
+
+  <!-- Bottom labels -->
+  <text x="50" y="105" class="label">X, y</text>
+  <text x="170" y="105" class="label">X_train, X_test</text>
+  <text x="290" y="105" class="label">Scale, Encode</text>
+  <text x="410" y="105" class="label">model.fit()</text>
+  <text x="537" y="105" class="label">Accuracy, F1</text>
+
+  <!-- Legend -->
+  <text x="300" y="130" style="font-family: 'Outfit', Arial, sans-serif; fill: #64748b; font-size: 10px; text-anchor: middle; font-style: italic;">
+    Encapsulation complète : preprocessing + modèle dans un seul objet
+  </text>
 </svg>

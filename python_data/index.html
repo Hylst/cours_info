@@ -128,12 +128,20 @@
             <details>
                 <summary>📖 Comprendre l'environnement Data</summary>
                 <div>
-                    <p>En Data Science, on n'écrit pas le code comme pour le Web. On explore les données de manière
-                        interactive.</p>
-                    <p>L'outil roi est le <strong>Notebook Jupyter</strong> (fichier `.ipynb`). Il alterne cellules de
-                        code (exécutables indépendamment) et cellules de texte (Markdown).</p>
-                    <p>La distribution <strong>Anaconda</strong> est recommandée car elle pré-installe toutes les
-                        librairies scientifiques complexes (qui nécessitent parfois de la compilation C/C++).</p>
+                    <p><strong>Contexte :</strong> En Data Science, on n'écrit pas le code comme pour le Web ou le
+                        backend classique. L'approche est <em>exploratoire</em> : on charge des données, on les
+                        visualise, on teste des hypothèses, on itère. C'est un processus interactif et non linéaire.</p>
+                    <p><strong>Le Notebook Jupyter :</strong> C'est l'outil roi (fichier <code>.ipynb</code>). Il
+                        alterne cellules de code (exécutables indépendamment) et cellules de texte (Markdown pour la
+                        documentation). On peut voir le résultat d'un graphique juste en dessous du code qui l'a généré.
+                        C'est idéal pour le prototypage, l'enseignement et le partage de travaux reproductibles.</p>
+                    <p><strong>Anaconda vs pip :</strong> La distribution Anaconda est recommandée car elle pré-installe
+                        toutes les librairies scientifiques complexes (Numpy, Pandas, Scikit-Learn) et gère les
+                        dépendances binaires (compilation C/C++/Fortran) automatiquement via <code>conda</code>. C'est
+                        un gain de temps énorme par rapport à <code>pip</code> seul, surtout sur Windows.</p>
+                    <p><strong>Concept clé : Environnements Virtuels.</strong> Chaque projet doit avoir son propre
+                        environnement isolé (<code>conda create -n monprojet</code>). Cela évite les conflits de
+                        versions entre projets et garantit la reproductibilité.</p>
                 </div>
             </details>
 
@@ -177,11 +185,24 @@
             <details>
                 <summary>📖 Comprendre Numpy (Concepts Clés)</summary>
                 <div>
-                    <p>Les listes Python sont trop lentes pour des millions de calculs. Numpy introduit les
-                        <strong>Arrays</strong> (tableaux) typés.
+                    <p><strong>Le Problème :</strong> Les listes Python sont flexibles (on peut mélanger types et
+                        tailles), mais cette flexibilité a un coût : chaque élément est un objet Python complet,
+                        dispersé en mémoire. Pour des millions de calculs, c'est beaucoup trop lent.</p>
+                    <p><strong>La Solution Numpy :</strong> Numpy introduit les <em>ndarray</em> (N-dimensional arrays),
+                        des tableaux typés et homogènes. Tous les éléments ont le même type (<code>int32</code>,
+                        <code>float64</code>, etc.) et sont stockés dans un bloc mémoire contigu.
                     </p>
-                    <p><strong>Contiguïté Mémoire :</strong> Contrairement aux listes qui pointent vers des objets
-                        éparpillés, Numpy stocke les données côte à côte. C'est le secret de sa vitesse.</p>
+                    <p><strong>Contiguïté Mémoire :</strong> C'est le secret de la vitesse. Le CPU adore les données
+                        contiguës car il peut les charger par blocs dans le cache (principe de localité). Une boucle
+                        <code>for</code> Python est interprétée ; une opération Numpy est exécutée en C/Fortran
+                        optimisé.
+                    </p>
+                    <p><strong>Le Broadcasting :</strong> Permet d'appliquer des opérations entre tableaux de dimensions
+                        différentes sans boucle explicite. Numpy "étend" virtuellement le plus petit tableau pour
+                        correspondre au plus grand. C'est magique et ultra-performant.</p>
+                    <p><strong>Le Reshaping :</strong> Critique en Deep Learning. Une image 28x28 pixels devient un
+                        vecteur de 784 éléments pour un réseau de neurones (<code>arr.reshape(-1)</code>). Un batch de
+                        100 images devient un tenseur de forme <code>(100, 784)</code>.</p>
                 </div>
             </details>
 
@@ -269,12 +290,22 @@
             <details>
                 <summary>📖 Comprendre l'Acquisition (Concepts Clés)</summary>
                 <div>
-                    <p>L'acquisition de données (DAQ) va bien au-delà de la simple collecte. C'est un processus continu
-                        où les données sont collectées, transformées et valorisées.</p>
-                    <p><strong>Sources Internes :</strong> ERP, CRM, logs applicatifs, bases transactionnelles.</p>
-                    <p><strong>Sources Externes :</strong> APIs REST, Open Data, Web Scraping, capteurs IoT.</p>
-                    <p>Le succès repose sur : <em>Pertinence métier</em>, <em>Rigueur technique</em> et <em>Vigilance
-                            éthique/légale</em>.</p>
+                    <p><strong>Définition :</strong> L'acquisition de données (Data Acquisition ou DAQ) va bien au-delà
+                        de la simple collecte. C'est un processus continu où les données sont constamment collectées,
+                        transformées, validées et valorisées pour l'analyse et la prise de décision.</p>
+                    <p><strong>Le Principe GIGO :</strong> "Garbage In, Garbage Out". De mauvaises données en entrée
+                        produisent de mauvais résultats. La qualité des données est fondamentale : inexactitudes,
+                        incohérences ou données obsolètes ruinent les modèles.</p>
+                    <p><strong>Sources Internes :</strong> Données des systèmes d'entreprise (ERP, CRM), logs
+                        applicatifs, bases de données transactionnelles. Souvent en silos, nécessitent désilottage.</p>
+                    <p><strong>Sources Externes :</strong> APIs REST (données en temps réel), Open Data, Web Scraping,
+                        capteurs IoT. Attention à la conformité (RGPD) et aux CGU.</p>
+                    <p><strong>Le Pipeline ETL/ELT :</strong> Extract (extraire des sources), Transform (nettoyer,
+                        normaliser, enrichir), Load (charger dans un Data Warehouse ou Data Lake). C'est l'étape
+                        cruciale de préparation qui peut représenter jusqu'à 90% du temps d'un projet.</p>
+                    <p><strong>Clés du Succès :</strong> <em>Pertinence métier</em> (collecter les bonnes données),
+                        <em>Rigueur technique</em> (les préparer correctement), <em>Vigilance éthique/légale</em> (RGPD,
+                        consentements, anonymisation).</p>
                 </div>
             </details>
 
@@ -361,11 +392,27 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre Pandas (Expert)</summary>
+                <summary>📖 Comprendre Pandas (Concepts Clés)</summary>
                 <div>
-                    <p>Au-delà du chargement CSV, Pandas gère les <strong>Time Series</strong> (dates), les jointures
-                        SQL-style (merge) et les agrégations complexes.</p>
-                    <p>Le nettoyage de données (Data Cleaning) représente 80% du travail d'un Data Scientist.</p>
+                    <p><strong>La Structure de Base :</strong> Un <code>DataFrame</code> est essentiellement un tableau
+                        2D avec des étiquettes (index pour les lignes, colonnes nommées). Chaque colonne est une
+                        <code>Series</code> (un array 1D avec un index). C'est l'équivalent Python d'une feuille Excel
+                        ou d'une table SQL.
+                    </p>
+                    <p><strong>Pourquoi Pandas ?</strong> Au-delà du simple chargement CSV, Pandas excelle dans la
+                        manipulation : filtrage conditionnel (<code>df[df.age > 30]</code>), agrégations
+                        (<code>groupby</code>), jointures SQL-style (<code>merge</code>), et gestion des Time Series
+                        (dates, resampling).</p>
+                    <p><strong>Le Data Cleaning :</strong> C'est souvent 80% du temps d'un projet ! Gestion des valeurs
+                        manquantes (<code>fillna</code>, <code>dropna</code>), correction de types
+                        (<code>astype</code>), suppression des doublons (<code>drop_duplicates</code>), normalisation
+                        des formats (dates, textes).</p>
+                    <p><strong>Le Concept de Chaînage (Method Chaining) :</strong> Pandas encourage un style fonctionnel
+                        où l'on enchaîne les opérations : <code>df.dropna().query('x > 0').groupby('cat').mean()</code>.
+                        C'est lisible, concis, et évite de créer des variables intermédiaires.</p>
+                    <p><strong>Attention à la Performance :</strong> Pour de très gros fichiers (> 1Go), Pandas peut
+                        être lent. Utilisez <code>chunksize</code> pour lire par morceaux, <code>dtype</code> pour
+                        optimiser la RAM, ou passez à des outils Big Data comme Polars ou Dask.</p>
                 </div>
             </details>
 
@@ -438,12 +485,28 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre la Dataviz (OO API)</summary>
+                <summary>📖 Comprendre la Dataviz (Concepts Clés)</summary>
                 <div>
-                    <p>Pour des graphiques simples, `plt.plot()` suffit. Pour du professionnel, utilisez l'API Orientée
-                        Objet : `fig, ax = plt.subplots()`.</p>
-                    <p>Cela permet de gérer plusieurs graphiques (subplots) et de contrôler chaque axe indépendamment.
+                    <p><strong>Pourquoi Visualiser ?</strong> Un tableau de 10 000 lignes est inexploitable à l'œil nu.
+                        Une visualisation révèle des patterns, des outliers, des corrélations. C'est l'outil de
+                        communication n°1 du Data Scientist, autant pour l'exploration que pour convaincre un décideur.
                     </p>
+                    <p><strong>Matplotlib : La Fondation.</strong> C'est la librairie historique, très puissante mais
+                        parfois verbeuse. Elle offre deux API : l'API "state-based" (<code>plt.plot()</code>, simple
+                        mais limitée) et l'API Orientée Objet (<code>fig, ax = plt.subplots()</code>, recommandée pour
+                        du pro).</p>
+                    <p><strong>L'API OO Expliquée :</strong> <code>fig</code> est la "fenêtre" ou le "canvas".
+                        <code>ax</code> est un "axe", c'est-à-dire un graphique à l'intérieur de la figure. On peut
+                        avoir plusieurs <code>ax</code> (subplots). On appelle les méthodes sur <code>ax</code>
+                        (<code>ax.plot()</code>, <code>ax.set_title()</code>), pas directement sur <code>plt</code>.
+                    </p>
+                    <p><strong>Seaborn : La Surcouche Statistique.</strong> Seaborn est construit sur Matplotlib et
+                        offre des graphiques statistiques prêts à l'emploi (violin plots, pair plots, heatmaps de
+                        corrélation) avec une esthétique moderne par défaut. Idéal pour l'EDA (Exploratory Data
+                        Analysis).</p>
+                    <p><strong>Choisir le Bon Graphique :</strong> Distribution → Histogramme, Violin, Boxplot. Relation
+                        → Scatter, Ligne. Composition → Pie, Barres empilées. Comparaison → Barres. Évolution → Ligne
+                        avec le temps en abscisse.</p>
                 </div>
             </details>
 

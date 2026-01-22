@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.App.numpyPerf) window.App.numpyPerf.init();
         if (window.App.pandasLab) window.App.pandasLab.init();
         if (window.App.acquisition) window.App.acquisition.init();
+        if (window.App.machineLearning) window.App.machineLearning.init();
     }
 
     initVizPlaceholders();

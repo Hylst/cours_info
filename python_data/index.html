@@ -305,7 +305,8 @@
                         cruciale de préparation qui peut représenter jusqu'à 90% du temps d'un projet.</p>
                     <p><strong>Clés du Succès :</strong> <em>Pertinence métier</em> (collecter les bonnes données),
                         <em>Rigueur technique</em> (les préparer correctement), <em>Vigilance éthique/légale</em> (RGPD,
-                        consentements, anonymisation).</p>
+                        consentements, anonymisation).
+                    </p>
                 </div>
             </details>
 
@@ -561,33 +562,59 @@
             </div>
 
             <details>
-                <summary>📖 Comprendre le Workflow ML (Preprocessing & Pipelines)</summary>
+                <summary>📖 Comprendre le Machine Learning (Concepts Fondamentaux)</summary>
                 <div>
-                    <p>Un modèle ne comprend que les chiffres. Il faut <strong>Encoder</strong> le texte (H/F -> 0/1) et
-                        <strong>Scaler</strong> les données numériques (mettre à la même échelle).
+                    <p><strong>Définition :</strong> Le Machine Learning (ML) est une branche de l'IA où les algorithmes
+                        apprennent des patterns à partir de données, sans être explicitement programmés. Contrairement à
+                        la programmation classique (règles → résultat), en ML on fournit des données et des résultats
+                        attendus, et l'algorithme déduit les règles.</p>
+                    <p><strong>Supervisé vs Non-Supervisé :</strong> En apprentissage <em>supervisé</em>, on a des
+                        labels (la "réponse" attendue) pour entraîner le modèle. En <em>non-supervisé</em>, on cherche
+                        des structures cachées dans les données sans labels (clustering, réduction de dimension).</p>
+                    <p><strong>Le Train/Test Split :</strong> On divise TOUJOURS les données en deux parties. Le modèle
+                        apprend sur le <em>train set</em> (80%) et est évalué sur le <em>test set</em> (20%) qu'il n'a
+                        jamais vu. C'est crucial pour mesurer la généralisation.</p>
+                    <p><strong>Overfitting vs Underfitting :</strong> Un modèle <em>overfit</em> quand il apprend "par
+                        cœur" le train set mais échoue sur le test (trop complexe). Un modèle <em>underfit</em> quand il
+                        est trop simple pour capturer les patterns. L'objectif est le juste milieu.</p>
+                    <p><strong>Preprocessing :</strong> Les modèles ne comprennent que les nombres. Il faut
+                        <em>encoder</em> le texte (OneHotEncoder), <em>scaler</em> les valeurs numériques
+                        (StandardScaler), et gérer les valeurs manquantes.
                     </p>
-                    <p>Les <strong>Pipelines</strong> encapsulent ces étapes pour éviter la fuite de données (Data
-                        Leakage) et simplifier le déploiement.</p>
-                    <p>Pour optimiser, on utilise <strong>GridSearchCV</strong> qui teste toutes les combinaisons
-                        d'hyperparamètres.</p>
                 </div>
             </details>
 
+            <!-- ENRICHMENT: ML Algorithm Selector -->
+            <div id="ml-algo-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject algo cards here -->
+            </div>
+
+            <!-- ENRICHMENT: ML Workflow -->
+            <div id="ml-workflow-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject workflow here -->
+            </div>
+
             <div
                 style="margin:30px 0; background:var(--card); padding:20px; border-radius:12px; border:1px solid var(--border);">
-                <div style="font-size:0.8rem; color:var(--dim); margin-bottom:10px;">Workflow Industrialisé</div>
+                <div style="font-size:0.8rem; color:var(--dim); margin-bottom:10px;">Workflow Industrialisé (Pipeline)
+                </div>
                 <img src="img/ml_pipeline.svg" alt="ML Pipeline"
                     style="width:100%; max-width:500px; display:block; margin:0 auto;">
             </div>
 
             <details>
-                <summary>📖 Concepts Clés (Overfitting, Biais/Variance)</summary>
+                <summary>📖 Concepts Avancés (Overfitting, Métriques, GridSearch)</summary>
                 <div>
-                    <p><strong>Overfitting (Surapprentissage)</strong> : Le modèle apprend "par coeur" le train set mais
-                        échoue sur le test set (High Variance). Solution : Plus de données, simplifier le modèle,
-                        régularisation.</p>
-                    <p><strong>Cross-Validation</strong> : Découper les données en K parties (Folds) pour entrainer K
-                        fois le modèle et avoir un score robuste.</p>
+                    <p><strong>Cross-Validation :</strong> Pour un score plus robuste, on découpe les données en K
+                        parties (Folds). On entraîne K fois le modèle en utilisant à tour de rôle chaque fold comme test
+                        set. Le score final est la moyenne.</p>
+                    <p><strong>GridSearchCV :</strong> Teste automatiquement toutes les combinaisons d'hyperparamètres
+                        (ex: nombre d'arbres, profondeur max) pour trouver la meilleure configuration. Attention :
+                        computationnellement coûteux !</p>
+                    <p><strong>Pipelines :</strong> Encapsulent preprocessing + modèle dans un seul objet. Avantage :
+                        évite le "data leakage" (fuite d'information du test set) et simplifie le déploiement.</p>
                 </div>
             </details>
 
@@ -1040,6 +1067,7 @@
     <script src="assets/js/modules/numpy_performance.js"></script>
     <script src="assets/js/modules/pandas_lab.js"></script>
     <script src="assets/js/modules/acquisition.js"></script>
+    <script src="assets/js/modules/machine_learning.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

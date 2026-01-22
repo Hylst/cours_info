@@ -256,29 +256,47 @@
         </div>
     </section>
 
-    <!-- S2: ACQUISITION (NEW) -->
     <section id="s2">
         <div class="container">
             <div class="sec-header">
                 <div class="sec-num">02</div>
                 <div>
                     <h2 class="sec-title">Acquisition de Données</h2>
-                    <p class="sec-sub">SQL, APIs, Fichiers</p>
+                    <p class="sec-sub">SQL, APIs, Fichiers, IoT, Web Scraping</p>
                 </div>
             </div>
 
             <details>
-                <summary>📖 Se connecter au monde réel</summary>
+                <summary>📖 Comprendre l'Acquisition (Concepts Clés)</summary>
                 <div>
-                    <p>En entreprise, la donnée n'arrive pas magiquement en CSV propre.</p>
-                    <p>Il faut aller la chercher : dans des bases de données relationnelles (SQL), via des APIs REST
-                        (JSON), ou dans des formats Big Data (Parquet).</p>
-                    <p><strong>Pandas</strong> travaille main dans la main avec <strong>SQLAlchemy</strong> pour
-                        lire/écrire en base de données.</p>
+                    <p>L'acquisition de données (DAQ) va bien au-delà de la simple collecte. C'est un processus continu
+                        où les données sont collectées, transformées et valorisées.</p>
+                    <p><strong>Sources Internes :</strong> ERP, CRM, logs applicatifs, bases transactionnelles.</p>
+                    <p><strong>Sources Externes :</strong> APIs REST, Open Data, Web Scraping, capteurs IoT.</p>
+                    <p>Le succès repose sur : <em>Pertinence métier</em>, <em>Rigueur technique</em> et <em>Vigilance
+                            éthique/légale</em>.</p>
                 </div>
             </details>
 
-            <div class="grid2">
+            <!-- ENRICHMENT: Methods & Vigilances -->
+            <div id="acquisition-methods-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject methods grid here -->
+            </div>
+
+            <!-- ENRICHMENT: Pipeline -->
+            <div id="acquisition-pipeline-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject pipeline here -->
+            </div>
+
+            <div class="tip" style="margin-top:20px; border-color:var(--accent);">
+                <p>💡 <strong>Contexte Réel :</strong> Dans un projet ML, la préparation des données (nettoyage, gestion
+                    des valeurs manquantes) peut représenter jusqu'à <strong>90% du temps</strong> du Data Scientist.
+                    C'est l'étape ETL/ELT.</p>
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
                 <div class="code">
                     <div class="code-head"><span class="dot y"></span>SQL & Bases de Données</div>
                     <pre><span class="kw">from</span> sqlalchemy <span class="kw">import</span> create_engine
@@ -295,7 +313,7 @@
                 </div>
 
                 <div class="code">
-                    <div class="code-head"><span class="dot y"></span>APIs & Formats</div>
+                    <div class="code-head"><span class="dot y"></span>APIs REST & Formats</div>
                     <pre><span class="kw">import</span> requests
 
 <span class="c"># Consommer une API REST</span>
@@ -310,6 +328,23 @@
 <span class="var">df</span>.<span class="fn">to_parquet</span>(<span class="str">"data.parquet"</span>)          <span class="c"># Rapide & Compact (Pro)</span>
 <span class="var">df</span>.<span class="fn">to_excel</span>(<span class="str">"report.xlsx"</span>)             <span class="c"># Pour le business</span></pre>
                 </div>
+            </div>
+
+            <div class="code" style="margin-top:20px;">
+                <div class="code-head"><span class="dot r"></span>Web Scraping (BeautifulSoup)</div>
+                <pre><span class="kw">import</span> requests
+<span class="kw">from</span> bs4 <span class="kw">import</span> BeautifulSoup
+
+<span class="c"># Récupérer le HTML d'une page</span>
+<span class="var">page</span> = <span class="var">requests</span>.<span class="fn">get</span>(<span class="str">"https://example.com/products"</span>)
+<span class="var">soup</span> = <span class="cls">BeautifulSoup</span>(<span class="var">page</span>.<span class="prop">content</span>, <span class="str">'html.parser'</span>)
+
+<span class="c"># Extraire des éléments (sélecteurs CSS)</span>
+<span class="var">titles</span> = [<span class="var">h2</span>.<span class="prop">text</span> <span class="kw">for</span> <span class="var">h2</span> <span class="kw">in</span> <span class="var">soup</span>.<span class="fn">select</span>(<span class="str">'.product-title'</span>)]
+<span class="var">prices</span> = [<span class="var">span</span>.<span class="prop">text</span> <span class="kw">for</span> <span class="var">span</span> <span class="kw">in</span> <span class="var">soup</span>.<span class="fn">select</span>(<span class="str">'.price'</span>)]
+
+<span class="c"># Attention : Respecter robots.txt et CGU !</span>
+<span class="var">df</span> = <span class="var">pd</span>.<span class="cls">DataFrame</span>({<span class="str">'title'</span>: <span class="var">titles</span>, <span class="str">'price'</span>: <span class="var">prices</span>})</pre>
             </div>
         </div>
     </section>
@@ -941,6 +976,7 @@
     <script src="assets/js/modules/numpy_viz.js"></script>
     <script src="assets/js/modules/numpy_performance.js"></script>
     <script src="assets/js/modules/pandas_lab.js"></script>
+    <script src="assets/js/modules/acquisition.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

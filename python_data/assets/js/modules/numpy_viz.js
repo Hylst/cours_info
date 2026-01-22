@@ -71,28 +71,73 @@ window.App.numpyViz = {
         if (!container) return;
 
         const dims = [
-            { name: "Scalar (0D)", shape: "()", example: "42", css: "width:20px; height:20px;" },
-            { name: "Vector (1D)", shape: "(4,)", example: "[1, 2, 3, 4]", css: "width:80px; height:20px;" },
-            { name: "Matrix (2D)", shape: "(3, 3)", example: "[[...], [...]]", css: "width:60px; height:60px;" },
-            { name: "Tensor (3D+)", shape: "(2, 3, 3)", example: "Images (H, W, C)", css: "width:60px; height:60px; box-shadow: 4px 4px 0 var(--primary), 8px 8px 0 var(--accent);" }
+            {
+                name: "Scalar (0D)",
+                shape: "()",
+                example: "42",
+                useCase: "Une seule valeur : température, prix, score.",
+                css: "width:24px; height:24px; border-radius:50%;",
+                color: "#3b82f6"
+            },
+            {
+                name: "Vector (1D)",
+                shape: "(n,)",
+                example: "[1, 2, 3, 4]",
+                useCase: "Liste de features, série temporelle.",
+                css: "width:100px; height:24px;",
+                color: "#10b981"
+            },
+            {
+                name: "Matrix (2D)",
+                shape: "(m, n)",
+                example: "Tableau Excel, image N&B",
+                useCase: "Dataset (lignes=samples, colonnes=features).",
+                css: "width:70px; height:70px;",
+                color: "#8b5cf6"
+            },
+            {
+                name: "Tensor 3D",
+                shape: "(h, w, c)",
+                example: "Image RGB (224, 224, 3)",
+                useCase: "Image couleur : Hauteur × Largeur × Canaux.",
+                css: "width:60px; height:60px; box-shadow: 5px 5px 0 rgba(139, 92, 246, 0.5), 10px 10px 0 rgba(139, 92, 246, 0.3);",
+                color: "#f59e0b"
+            },
+            {
+                name: "Tensor 4D+",
+                shape: "(b, h, w, c)",
+                example: "Batch (32, 224, 224, 3)",
+                useCase: "Batch d'images pour le Deep Learning.",
+                css: "width:50px; height:50px; box-shadow: 4px 4px 0 rgba(239, 68, 68, 0.4), 8px 8px 0 rgba(239, 68, 68, 0.3), 12px 12px 0 rgba(239, 68, 68, 0.2);",
+                color: "#ef4444"
+            }
         ];
 
-        let html = '<div class="interactive-title" style="margin-bottom:15px; font-weight:600;">📐 De la Donneé au Tenseur (Shapes)</div>';
-        html += '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:15px;">';
+        let html = '<div class="interactive-title" style="margin-bottom:15px; font-weight:600;">📐 De la Donnée au Tenseur (Shapes)</div>';
+        html += '<p style="font-size:0.85rem; color:var(--muted); margin-bottom:20px;">En Numpy, la <code>shape</code> définit les dimensions d\'un array. Comprendre cette notion est <strong>fondamental</strong> pour le Machine Learning.</p>';
+        html += '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:15px;">';
 
         dims.forEach(d => {
             html += `
                 <div class="dim-card" style="
                     background:var(--card-bg); border:1px solid var(--border); 
-                    padding:15px; border-radius:8px; text-align:center; transition:all 0.3s; cursor:help;"
+                    padding:15px; border-radius:8px; text-align:center; 
+                    transition:all 0.3s; cursor:help;"
                     title="${d.example}">
-                    <div style="font-size:0.7rem; font-weight:bold; color:var(--primary); margin-bottom:10px;">${d.name}</div>
-                    <div style="margin:10px auto; border:2px solid var(--primary); ${d.css} background:rgba(55, 118, 171, 0.1);"></div>
-                    <div style="font-family:monospace; font-size:0.8rem; color:var(--muted);">${d.shape}</div>
+                    <div style="font-size:0.75rem; font-weight:bold; color:${d.color}; margin-bottom:8px;">${d.name}</div>
+                    <div style="margin:12px auto; border:2px solid ${d.color}; ${d.css} background:${d.color}22;"></div>
+                    <div style="font-family:monospace; font-size:0.9rem; color:var(--text); margin-bottom:8px;">${d.shape}</div>
+                    <div style="font-size:0.7rem; color:var(--muted); line-height:1.3;">${d.useCase}</div>
                 </div>
             `;
         });
         html += '</div>';
+
+        html += `
+            <div style="margin-top:20px; padding:12px; background:rgba(59, 130, 246, 0.05); border-left:3px solid var(--primary); border-radius:4px;">
+                <p style="margin:0; font-size:0.85rem;"><strong>💡 Astuce :</strong> Utilisez <code>arr.shape</code> pour connaître les dimensions et <code>arr.reshape()</code> pour les modifier. Le <code>-1</code> laisse Numpy calculer automatiquement une dimension.</p>
+            </div>
+        `;
 
         container.innerHTML = html;
     },

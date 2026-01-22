@@ -88,9 +88,10 @@
                 <a href="#s5" class="toc-item"><span class="toc-num">05</span>Machine Learning</a>
                 <a href="#s6" class="toc-item"><span class="toc-num">06</span>Deep Learning</a>
                 <a href="#s7" class="toc-item"><span class="toc-num">07</span>Mise en Production</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>NLP & Texte</a>
                 <a href="#s9" class="toc-item"><span class="toc-num">09</span>GenAI & LLMs <span
                         class="badge-new">NEW</span></a>
-                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Référence</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Référence</a>
             </div>
         </div>
     </div>
@@ -109,8 +110,9 @@
             <a href="#s5" class="side-link"><span>05.</span> Machine Learning</a>
             <a href="#s6" class="side-link"><span>06.</span> Deep Learning</a>
             <a href="#s7" class="side-link"><span>07.</span> Production</a>
+            <a href="#s8" class="side-link"><span>08.</span> NLP</a>
             <a href="#s9" class="side-link"><span>09.</span> GenAI <span class="badge-new">NEW</span></a>
-            <a href="#s8" class="side-link"><span>08.</span> Référence</a>
+            <a href="#s10" class="side-link"><span>10.</span> Référence</a>
         </nav>
     </div>
 
@@ -847,14 +849,37 @@
             </div>
 
             <details>
-                <summary>📖 Sortir du Notebook</summary>
+                <summary>📖 Comprendre le MLOps (Concepts Fondamentaux)</summary>
                 <div>
-                    <p>Un modèle qui reste dans un Notebook n'a aucune valeur. Il faut l'exporter (Serialisation) pour
-                        pouvoir l'utiliser dans une application web ou une API.</p>
-                    <p><strong>Streamlit</strong> est l'outil parfait pour créer des démos web interactives en pur
-                        Python, sans toucher au HTML/CSS.</p>
+                    <p><strong>Définition :</strong> Le MLOps (Machine Learning Operations) est l'ensemble des pratiques
+                        pour déployer et maintenir des modèles ML en production de manière fiable. C'est le DevOps
+                        appliqué au Machine Learning.</p>
+                    <p><strong>Le Problème :</strong> Un modèle qui reste dans un Notebook n'a aucune valeur business.
+                        87% des projets ML ne dépassent jamais le stade du prototype. Le MLOps vise à réduire ce "gap"
+                        entre expérimentation et production.</p>
+                    <p><strong>Serialisation :</strong> Sauvegarder un modèle entraîné (avec ses poids) pour le
+                        réutiliser sans ré-entraînement. <code>joblib.dump()</code> pour Sklearn,
+                        <code>model.save()</code> pour Keras, <code>torch.save()</code> pour PyTorch.
+                    </p>
+                    <p><strong>API vs Batch :</strong> Deux modes de déploiement. En <em>temps réel</em> (API REST,
+                        FastAPI) pour des prédictions à la demande. En <em>batch</em> pour traiter de gros volumes
+                        périodiquement (ex: scoring nocturne).</p>
+                    <p><strong>Docker :</strong> Conteneurise votre environnement (Python, libs, modèle) pour garantir
+                        que le code fonctionne identiquement partout. Plus de "ça marche sur ma machine".</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: MLOps Pipeline -->
+            <div id="mlops-deploy-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject deployment viz here -->
+            </div>
+
+            <!-- ENRICHMENT: MLOps Tools -->
+            <div id="mlops-tools-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject tools here -->
+            </div>
 
             <div class="grid2">
                 <div class="code">
@@ -907,9 +932,95 @@
 <span class="c"># CMD uvicorn main:app --host 0.0.0.0</span></pre>
                 </div>
             </div>
-        </div>
     </section>
 
+    <!-- S8: NLP & TRAITEMENT DU TEXTE (NEW) -->
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">NLP & Traitement du Texte</h2>
+                    <p class="sec-sub">Tokenisation, Embeddings, spaCy</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le NLP (Concepts Fondamentaux)</summary>
+                <div>
+                    <p><strong>Définition :</strong> Le NLP (Natural Language Processing) permet aux machines de
+                        comprendre, interpréter et générer du langage humain. C'est le pont entre le texte brut et les
+                        algorithmes de Machine Learning.</p>
+                    <p><strong>Tokenisation :</strong> Première étape critique. Découper le texte en unités (mots,
+                        sous-mots, caractères). "J'aime Python" → ["J'", "aime", "Python"] ou avec BERT → ["J", "'",
+                        "aime", "Py", "##thon"].</p>
+                    <p><strong>Stop Words :</strong> Mots très fréquents sans valeur sémantique (le, la, de, et...).
+                        Souvent retirés pour réduire le bruit, mais attention avec les LLMs modernes qui en ont besoin.
+                    </p>
+                    <p><strong>Lemmatisation vs Stemming :</strong> Ramener les mots à leur forme canonique. "mangeait"
+                        → "manger" (lemme) ou "mang" (stem). La lemmatisation est plus précise mais plus lente.</p>
+                    <p><strong>Embeddings :</strong> Représenter les mots comme des vecteurs denses où la proximité
+                        reflète la similarité sémantique. "roi" - "homme" + "femme" ≈ "reine". Révolution depuis
+                        Word2Vec (2013) puis BERT (2018).</p>
+                </div>
+            </details>
+
+            <!-- ENRICHMENT: NLP Pipeline -->
+            <div id="nlp-pipeline-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject pipeline viz here -->
+            </div>
+
+            <!-- ENRICHMENT: NLP Techniques -->
+            <div id="nlp-techniques-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject techniques here -->
+            </div>
+
+            <div class="grid2" style="margin-top:20px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>spaCy (NLP Industriel)</div>
+                    <pre><span class="kw">import</span> spacy
+
+<span class="c"># Charger le modèle français</span>
+<span class="var">nlp</span> = <span class="var">spacy</span>.<span class="fn">load</span>(<span class="str">"fr_core_news_md"</span>)
+
+<span class="var">doc</span> = <span class="fn">nlp</span>(<span class="str">"Paris est la capitale de la France."</span>)
+
+<span class="c"># Entités nommées (NER)</span>
+<span class="kw">for</span> <span class="var">ent</span> <span class="kw">in</span> <span class="var">doc</span>.<span class="prop">ents</span>:
+    <span class="fn">print</span>(<span class="var">ent</span>.<span class="prop">text</span>, <span class="var">ent</span>.<span class="prop">label_</span>)
+<span class="c"># Paris → LOC, France → LOC</span>
+
+<span class="c"># Lemmatisation</span>
+[<span class="var">token</span>.<span class="prop">lemma_</span> <span class="kw">for</span> <span class="var">token</span> <span class="kw">in</span> <span class="var">doc</span>]</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Sklearn TF-IDF</div>
+                    <pre><span class="kw">from</span> sklearn.feature_extraction.text <span class="kw">import</span> TfidfVectorizer
+
+<span class="var">corpus</span> = [
+    <span class="str">"Le chat mange la souris"</span>,
+    <span class="str">"Le chien court dans le jardin"</span>
+]
+
+<span class="c"># Vectorisation TF-IDF</span>
+<span class="var">vectorizer</span> = <span class="cls">TfidfVectorizer</span>()
+<span class="var">X</span> = <span class="var">vectorizer</span>.<span class="fn">fit_transform</span>(<span class="var">corpus</span>)
+
+<span class="c"># X est maintenant une matrice sparse</span>
+<span class="c"># Chaque ligne = un document vectorisé</span>
+<span class="fn">print</span>(<span class="var">vectorizer</span>.<span class="fn">get_feature_names_out</span>())</pre>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:20px; border-color:var(--accent);">
+                <p>💡 <strong>Conseil :</strong> Pour du NLP moderne, privilégiez <code>spaCy</code> (rapide,
+                    production-ready) ou <code>Hugging Face Transformers</code> (état de l'art, modèles pré-entraînés).
+                    NLTK est plus académique et vieillissant.</p>
+            </div>
+        </div>
     </section>
 
     <!-- S9: GEN AI & LLMS -->
@@ -924,14 +1035,36 @@
             </div>
 
             <details>
-                <summary>📖 L'IA Générative pour la Data</summary>
+                <summary>📖 Comprendre l'IA Générative (Concepts Fondamentaux)</summary>
                 <div>
-                    <p>En 2025, un Data Scientist doit savoir orchestrer des LLMs. Que ce soit pour du **Natural
-                        Language to SQL**, du résumé de texte ou de l'extraction d'entités.</p>
-                    <p>La clé réside dans le **Prompt Engineering** et le **RAG** (Retrieval Augmented Generation) pour
-                        connecter l'IA à vos propres données privées.</p>
+                    <p><strong>Définition :</strong> L'IA Générative crée du nouveau contenu (texte, image, code, audio)
+                        plutôt que de simplement classifier ou prédire. Les LLMs (Large Language Models) comme GPT-4,
+                        Claude ou Llama sont les stars de cette révolution.</p>
+                    <p><strong>Tokens :</strong> Les LLMs ne lisent pas des mots mais des "tokens" (sous-mots).
+                        "Bonjour" = 1-2 tokens. Important car le coût et les limites de contexte sont en tokens.</p>
+                    <p><strong>Prompt Engineering :</strong> L'art de formuler ses requêtes pour obtenir les meilleures
+                        réponses. Zero-shot, Few-shot, Chain-of-Thought... La qualité du prompt détermine 80% de la
+                        qualité du résultat.</p>
+                    <p><strong>RAG (Retrieval Augmented Generation) :</strong> Pattern clé en entreprise. On injecte
+                        dans le prompt des morceaux de documents pertinents récupérés d'une base vectorielle. Le LLM
+                        répond en se basant sur VOS données, pas juste son entraînement.</p>
+                    <p><strong>Fine-tuning vs RAG :</strong> Le fine-tuning ré-entraîne le modèle sur vos données
+                        (coûteux, figé). Le RAG est plus flexible : vos données sont à jour et le modèle reste
+                        généraliste.</p>
                 </div>
             </details>
+
+            <!-- ENRICHMENT: Prompt Engineering -->
+            <div id="genai-prompt-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:var(--card-bg-hover);">
+                <!-- JS will inject prompt viz here -->
+            </div>
+
+            <!-- ENRICHMENT: RAG Pipeline -->
+            <div id="genai-rag-container" class="interactive-box"
+                style="margin-top:20px; padding:20px; border:1px solid var(--border); border-radius:8px; background:rgba(0,0,0,0.1);">
+                <!-- JS will inject RAG viz here -->
+            </div>
 
             <div class="grid2">
                 <div class="code">
@@ -966,11 +1099,11 @@
         </div>
     </section>
 
-    <!-- S8: RÉFÉRENCE -->
-    <section id="s8">
+    <!-- S10: RÉFÉRENCE RAPIDE -->
+    <section id="s10">
         <div class="container">
             <div class="sec-header">
-                <div class="sec-num">08</div>
+                <div class="sec-num">10</div>
                 <div>
                     <h2 class="sec-title">Référence Rapide</h2>
                     <p class="sec-sub">Cheat Sheet des commandes vitales</p>
@@ -1095,6 +1228,9 @@
     <script src="assets/js/modules/acquisition.js"></script>
     <script src="assets/js/modules/machine_learning.js"></script>
     <script src="assets/js/modules/deep_learning.js"></script>
+    <script src="assets/js/modules/mlops.js"></script>
+    <script src="assets/js/modules/nlp.js"></script>
+    <script src="assets/js/modules/genai.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

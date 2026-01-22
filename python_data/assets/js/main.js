@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.App.acquisition) window.App.acquisition.init();
         if (window.App.machineLearning) window.App.machineLearning.init();
         if (window.App.deepLearning) window.App.deepLearning.init();
+        if (window.App.mlops) window.App.mlops.init();
+        if (window.App.nlp) window.App.nlp.init();
+        if (window.App.genAI) window.App.genAI.init();
     }
 
     initVizPlaceholders();

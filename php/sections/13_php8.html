@@ -1,0 +1,87 @@
+<div class="sec-header">
+    <div class="sec-num">13</div>
+    <div>
+        <h2 class="sec-title">Modern PHP 8.x</h2>
+        <p class="sec-sub">Révolutions, Performance et Syntaxe Sucrée</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>PHP 8 n'est pas juste une mise à jour, c'est un changement de paradigme. Le langage est devenu mature, typé et
+        extrêmement performant (comparable au Node.js ou Go sur certains benchmarks).</p>
+</div>
+
+<!-- PARTIE 1 : PERFORMANCE JIT -->
+<section>
+    <h3>1. Le Moteur JIT (Just In Time)</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🚀 Analogie : Le Turbo</h4>
+            <p>Imaginez un traducteur qui traduit un livre ligne par ligne (PHP classique). Le JIT, lui, repère les
+                chapitres que vous lisez souvent et les transforme <strong>définitivement</strong> en votre langue
+                maternelle pour ne plus avoir à traduire la prochaine fois.</p>
+        </div>
+        <div class="ref-card">
+            <p><strong>Impact réel :</strong> Jusqu'à 3x plus rapide pour les calculs mathématiques, l'IA ou le
+                traitement d'image lourd.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : SYNTAXE -->
+<section>
+    <h3>2. Les "Game Changers" Syntaxiques</h3>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Constructor Promotion (PHP 8.0)</div>
+        <pre><span class="c">// Plus besoin de déclarer, assigner et paramétrer séparément !</span>
+<span class="kw">class</span> <span class="fn">User</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">public string</span> <span class="var">$name</span>,
+        <span class="kw">protected int</span> <span class="var">$age</span>
+    ) {}
+}</pre>
+    </div>
+
+    <div class="code" style="margin-top:20px;">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Nullsafe
+            Operator (PHP 8.0)</div>
+        <pre><span class="c">// Fini les "if ($obj !== null && $obj->prop !== null ...)"</span>
+<span class="var">$country</span> = <span class="var">$user</span>?-><span class="fn">getAddress</span>()?-><span class="prop">country</span>;</pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : PHP 8.1 - 8.3 -->
+<section>
+    <h3>3. Évolutions Récentes</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>Enums (8.1)</h4>
+            <pre><span class="kw">enum</span> <span class="fn">Status</span> {
+    <span class="kw">case</span> Pending;
+    <span class="kw">case</span> Published;
+}</pre>
+        </div>
+        <div class="ref-card">
+            <h4>Readonly (8.1 & 8.2)</h4>
+            <pre><span class="kw">readonly class</span> <span class="fn">Post</span> {
+    <span class="kw">public string</span> <span class="var">$title</span>;
+    <span class="c">// Une fois écrit, plus de modif possible !</span>
+}</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 4 : PHP 8.4 (Nouveauté Preview) -->
+<section>
+    <h3>4. Le futur proche (8.4)</h3>
+    <p><strong>Property Hooks</strong> : Permet de définir des accesseurs (Get/Set) directement sur la propriété, sans
+        créer de méthodes manuelles. <em>(Inspiré de C# / Swift)</em>.</p>
+</section>
+
+<div class="tip">
+    <strong>💡 Pourquoi migrer ?</strong><br>
+    Chaque version majeure apporte 15-20% de gain de performance pur et une réduction de la consommation mémoire. PHP
+    8.x utilise 2x moins de RAM que PHP 5.6.
+</div>

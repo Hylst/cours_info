@@ -1,0 +1,223 @@
+<div class="sec-header">
+    <div class="sec-num">18</div>
+    <div>
+        <h2 class="sec-title">Librairies PHP</h2>
+        <p class="sec-sub">L'écosystème incontournable en 2026 : Comparatif & Catalogue</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Le PHP moderne s'appuie sur des géants. Voici le guide définitif des bibliothèques essentielles, comparant les
+        méthodes traditionnelles aux standards actuels.</p>
+    <p style="font-size: 0.9em; margin-top: 10px;"><em>Installation standard :
+            <code>composer require [nom-du-paquet]</code> + <code>require 'vendor/autoload.php'</code>.</em></p>
+</div>
+
+<!-- ============================================== -->
+<!-- 1. ENVIRONNEMENT & CONFIG -->
+<!-- ============================================== -->
+<section>
+    <h3>1. Environnement & Config</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head">❌ Avant (Hardcodé)</div>
+            <pre><span class="var">$db_pass</span> = <span class="str">"mon_mot_de_passe_en_clair"</span>;
+<span class="c">// Dangereux si commité sur Git !</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head">✅ Moderne (Dotenv)</div>
+            <pre><span class="c">// Charge les variables depuis .env -> $_ENV</span>
+<span class="var">$dotenv</span> = <span class="fn">Dotenv\Dotenv</span>::<span class="fn">createImmutable</span>(<span class="var">__DIR__</span>);
+<span class="var">$dotenv</span>-><span class="fn">load</span>();
+<span class="var">$pass</span> = <span class="var">$_ENV</span>[<span class="str">'DB_PASS'</span>];</pre>
+        </div>
+    </div>
+    <div class="ref-card full-width">
+        <h4>🔧 vlucas/phpdotenv</h4>
+        <p>Charge les variables d'environnement depuis un fichier <code>.env</code> vers <code>getenv()</code>,
+            <code>$_ENV</code> et <code>$_SERVER</code> automatiquement.</p>
+        <code>composer require vlucas/phpdotenv</code>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 2. HTTP & API -->
+<!-- ============================================== -->
+<section>
+    <h3>2. Communication HTTP</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head">❌ Avant (cURL brut)</div>
+            <pre><span class="var">$ch</span> = <span class="fn">curl_init</span>();
+<span class="fn">curl_setopt</span>(<span class="var">$ch</span>, <span class="var">CURLOPT_URL</span>, <span class="str">"..."</span>);
+<span class="c">// Verbeux et complexe</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head">✅ Moderne (Guzzle)</div>
+            <pre><span class="var">$client</span> = <span class="kw">new</span> <span class="fn">GuzzleHttp\Client</span>();
+<span class="var">$res</span> = <span class="var">$client</span>-><span class="fn">request</span>(<span class="str">'GET'</span>, <span class="str">'/api'</span>);
+<span class="kw">echo</span> <span class="var">$res</span>-><span class="fn">getBody</span>();</pre>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🌐 Guzzle (guzzlehttp/guzzle)</h4>
+            <p>Client HTTP puissant et flexible. Facilite l'envoi de requêtes et l'intégration de Web Services.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🧱 Symfony HttpFoundation</h4>
+            <p>Une couche objet pour la spécification HTTP (Request, Response). Indispensable pour gérer les requêtes
+                proprement.</p>
+            <code>composer require symfony/http-foundation</code>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🚀 Strapi PHP Client</h4>
+        <p>Pour interagir spécifiquement avec le CMS Headless Strapi.</p>
+        <code>composer require mbvienasbaitas/strapi-php-client</code>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 3. EMAILS -->
+<!-- ============================================== -->
+<section>
+    <h3>3. Envoi d'Emails</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head">❌ Avant (mail())</div>
+            <pre><span class="fn">mail</span>(<span class="str">'to@test.com'</span>, <span class="str">'Sujet'</span>, <span class="str">'Msg'</span>);
+<span class="c">// Souvent bloqué, pas de SMTP, pas d'Auth</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head">✅ Moderne (PHPMailer)</div>
+            <pre><span class="var">$mail</span> = <span class="kw">new</span> <span class="fn">PHPMailer</span>();
+<span class="var">$mail</span>-><span class="fn">isSMTP</span>();
+<span class="var">$mail</span>-><span class="fn">addAttachment</span>(<span class="str">'doc.pdf'</span>);
+<span class="var">$mail</span>-><span class="fn">send</span>();</pre>
+        </div>
+    </div>
+    <div class="ref-card full-width">
+        <h4>📧 PHPMailer (phpmailer/phpmailer)</h4>
+        <p>La référence absolue. Supporte SMTP, SSL, pièces jointes et HTML. Une bibliothèque complète de création et
+            transfert d'emails.</p>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 4. PDF & DOCUMENTS -->
+<!-- ============================================== -->
+<section>
+    <h3>4. Génération de Documents</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>📄 FPDF (setasign/fpdf)</h4>
+            <p>Génère des PDF en <strong>pur PHP</strong> sans dépendances. Idéal pour des documents simples et rapides.
+            </p>
+            <code>composer require setasign/fpdf</code>
+        </div>
+        <div class="ref-card">
+            <h4>📄 DomPDF (dompdf/dompdf)</h4>
+            <p>Convertit du <strong>HTML/CSS</strong> directement en PDF. Plus simple pour les mises en page complexes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 5. BASES DE DONNÉES & ORM -->
+<!-- ============================================== -->
+<section>
+    <h3>5. Bases de Données (Niveau Pro)</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🗄️ Doctrine ORM</h4>
+            <p>Le standard entreprise (utilisé par Symfony). Mappe vos objets PHP vers la BDD (Data Mapper).</p>
+            <code>composer require doctrine/orm</code>
+        </div>
+        <div class="ref-card">
+            <h4>🔄 Phinx</h4>
+            <p>Gère les <strong>migrations</strong> de BDD (versioning de votre schéma SQL). Permet de déployer vos
+                modifs BDD partout.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 6. OUTILS DE DÉVELOPPEMENT -->
+<!-- ============================================== -->
+<section>
+    <h3>6. La Boîte à Outils du Développeur</h3>
+
+    <div class="grid3">
+        <div class="ref-card">
+            <h4>📝 Monolog</h4>
+            <p><strong>Journalisation (Logging)</strong>. Envoie vos logs vers fichiers, Slack, BDD... Compatible PSR-3.
+            </p>
+            <code>monolog/monolog</code>
+        </div>
+        <div class="ref-card">
+            <h4>📅 Carbon</h4>
+            <p><strong>Dates</strong>. Extension intuitive de DateTime. "Next friday", "Diff for humans".</p>
+            <code>nesbot/carbon</code>
+        </div>
+        <div class="ref-card">
+            <h4>🆔 Ramsey UUID</h4>
+            <p><strong>Identifiants Uniques</strong>. Génère des UUIDs (ex: <code>a0eebc99-9c0b...</code>) pour vos clés
+                primaires.</p>
+            <code>ramsey/uuid</code>
+        </div>
+    </div>
+
+    <div class="grid3" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧪 PHPUnit</h4>
+            <p><strong>Tests Unitaires</strong>. Le framework de test historique et standard de l'industrie.</p>
+            <code>phpunit/phpunit</code>
+        </div>
+        <div class="ref-card">
+            <h4>🎭 Faker</h4>
+            <p><strong>Données Factices</strong>. Génère faux noms, adresses, lorem ipsum pour remplir votre BDD de
+                test.</p>
+            <code>fakerphp/faker</code>
+        </div>
+        <div class="ref-card">
+            <h4>🎨 PHP CS Fixer</h4>
+            <p><strong>Qualité Code</strong>. Reformate automatiquement votre code pour respecter les standards
+                (PSR-12).</p>
+            <code>friendsofphp/php-cs-fixer</code>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- 7. RENDU & VUE -->
+<!-- ============================================== -->
+<section>
+    <h3>7. Moteur de Templates</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head">❌ PHP Natif</div>
+            <pre>&lt;h1&gt;&lt;?= $user->getName() ?&gt;&lt;/h1&gt;
+<span class="c">// Mélange logique et vue, risque XSS</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head">✅ Twig (twig/twig)</div>
+            <pre>&lt;h1&gt;{{ user.name }}&lt;/h1&gt;
+<span class="c">// Sécurisé, syntaxe claire, héritage</span></pre>
+        </div>
+    </div>
+    <div class="ref-card full-width">
+        <p><strong>Twig</strong> est un moteur de templates flexible, rapide et sécurisé. Il sépare définitivement la
+            logique PHP du HTML.</p>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Frameworks Full-Stack</strong><br>
+    Plutôt que d'assembler tout ça à la main, les frameworks comme <strong>Laravel</strong> ou <strong>Symfony</strong>
+    intègrent déjà la plupart de ces outils (Eloquent/Doctrine, Blade/Twig, Monolog, Carbon, PHPUnit...) pré-configurés
+    pour vous.
+</div>

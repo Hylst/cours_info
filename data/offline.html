@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors ligne - Data Science Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .offline-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: rgba(59, 130, 246, 0.8);
+            border-color: rgba(59, 130, 246, 1);
+        }
+        
+        .btn-primary:hover {
+            background: rgba(59, 130, 246, 1);
+        }
+        
+        .cached-pages {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cached-pages h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .cached-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .cached-link {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cached-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .connection-status {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .status-offline {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .status-online {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        @media (max-width: 480px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .cached-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cached-link {
+                min-width: 150px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">
+            📡
+        </div>
+        
+        <h1>Vous êtes hors ligne</h1>
+        
+        <p>
+            Il semble que vous n'ayez pas de connexion Internet. 
+            Certaines pages sont disponibles hors ligne grâce à notre cache.
+        </p>
+        
+        <div class="actions">
+            <button class="btn btn-primary" onclick="window.location.reload()">
+                🔄 Réessayer
+            </button>
+            
+            <button class="btn" onclick="window.history.back()">
+                ← Retour
+            </button>
+        </div>
+        
+        <div class="cached-pages">
+            <h3>Pages disponibles hors ligne</h3>
+            <div class="cached-links">
+                <a href="/" class="cached-link">🏠 Accueil</a>
+                <a href="/introduction" class="cached-link">📖 Introduction</a>
+                <a href="/fundamentals" class="cached-link">🎯 Fondamentaux</a>
+                <a href="/machine-learning" class="cached-link">🤖 Machine Learning</a>
+                <a href="/glossary" class="cached-link">📚 Glossaire</a>
+            </div>
+        </div>
+        
+        <div class="connection-status status-offline" id="connectionStatus">
+            🔴 Connexion Internet indisponible
+        </div>
+    </div>
+    
+    <script>
+        // Monitor connection status
+        function updateConnectionStatus() {
+            const statusElement = document.getElementById('connectionStatus');
+            
+            if (navigator.onLine) {
+                statusElement.className = 'connection-status status-online';
+                statusElement.innerHTML = '🟢 Connexion Internet rétablie';
+                
+                // Auto-reload after 2 seconds when back online
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                statusElement.className = 'connection-status status-offline';
+                statusElement.innerHTML = '🔴 Connexion Internet indisponible';
+            }
+        }
+        
+        // Listen for connection changes
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+        
+        // Initial status check
+        updateConnectionStatus();
+        
+        // Periodic connection check
+        setInterval(() => {
+            // Try to fetch a small resource to verify actual connectivity
+            fetch('/favicon.ico', {
+                method: 'HEAD',
+                cache: 'no-cache'
+            })
+            .then(() => {
+                if (!navigator.onLine) {
+                    // Force online status if fetch succeeds
+                    window.dispatchEvent(new Event('online'));
+                }
+            })
+            .catch(() => {
+                if (navigator.onLine) {
+                    // Force offline status if fetch fails
+                    window.dispatchEvent(new Event('offline'));
+                }
+            });
+        }, 5000);
+        
+        // Add click tracking for cached links
+        document.querySelectorAll('.cached-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Add loading state
+                link.style.opacity = '0.6';
+                link.innerHTML = '⏳ Chargement...';
+                
+                // Reset after navigation attempt
+                setTimeout(() => {
+                    link.style.opacity = '1';
+                }, 1000);
+            });
+        });
+        
+        // Service worker registration check
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then((registration) => {
+                console.log('Service Worker ready:', registration);
+            });
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                window.location.reload();
+            }
+            
+            if (e.key === 'Escape') {
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+</html>

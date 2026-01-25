@@ -1,0 +1,213 @@
+<div class="sec-header">
+    <div class="sec-num">03</div>
+    <div>
+        <h2 class="sec-title">Structures de Contrôle</h2>
+        <p class="sec-sub">Logique décisionnelle et Itérations : Le cerveau de vos scripts</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Sans structures de contrôle, un programme ne serait qu'une liste de courses exécutée de haut en bas.
+        Ce sont elles qui permettent de prendre des <strong>décisions</strong> (Conditions) et de <strong>répéter des
+            tâches</strong> (Boucles).</p>
+</div>
+
+<!-- PARTIE 1 : STRUCTURES CONDITIONNELLES -->
+<section>
+    <h3>1. Prendre des décisions (Conditions)</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🚦 Analogie : L'Aiguillage</h4>
+            <p>Imaginez un train arrivant à une bifurcation. L'aiguillage (la condition) décide si le train va vers la
+                voie A, B ou C en fonction d'un signal (Vrai ou Faux).</p>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+   [Début]
+      |
+   < Si ? > --FAUX--> [Voie B]
+      |               (else)
+    VRAI
+      |
+   [Voie A]
+   (if)</pre>
+        </div>
+    </div>
+
+    <h4>Syntaxe Classique & Alternative</h4>
+    <p>PHP propose deux syntaxes. La syntaxe alternative est <strong>indispensable</strong> quand on mélange PHP et
+        HTML.</p>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Standard (Accolades)</div>
+            <pre><span class="kw">if</span> (<span class="var">$score</span> >= <span class="num">10</span>) {
+    <span class="kw">echo</span> <span class="str">"Bravo !"</span>;
+} <span class="kw">elseif</span> (<span class="var">$score</span> > <span class="num">5</span>) {
+    <span class="kw">echo</span> <span class="str">"Pas mal"</span>;
+} <span class="kw">else</span> {
+    <span class="kw">echo</span> <span class="str">"Révise encore"</span>;
+}</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Template (Alternative)</div>
+            <pre><span class="tag">&lt;?php</span> <span class="kw">if</span> (<span class="var">$user</span>-&gt;<span class="prop">isAdmin</span>): <span class="tag">?&gt;</span>
+    &lt;button&gt;Supprimer&lt;/button&gt;
+<span class="tag">&lt;?php</span> <span class="kw">elseif</span> (<span class="var">$user</span>-&gt;<span class="prop">isEditor</span>): <span class="tag">?&gt;</span>
+    &lt;button&gt;Éditer&lt;/button&gt;
+<span class="tag">&lt;?php</span> <span class="kw">else</span>: <span class="tag">?&gt;</span>
+    &lt;p&gt;Lecture seule&lt;/p&gt;
+<span class="tag">&lt;?php</span> <span class="kw">endif</span>; <span class="tag">?&gt;</span></pre>
+        </div>
+    </div>
+
+    <!-- MATCH & TERNARY (RAPPEL) -->
+    <div class="grid2" style="margin-top:20px;">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Match (PHP 8+)</div>
+            <pre><span class="var">$result</span> = <span class="kw">match</span>(<span class="var">$ext</span>) {
+    <span class="str">'png'</span>, <span class="str">'jpg'</span> => <span class="str">'image'</span>,
+    <span class="str">'mp4'</span> => <span class="str">'video'</span>,
+    <span class="kw">default</span> => <span class="str">'inconnu'</span>,
+};</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Ternaire / Coalescing</div>
+            <pre><span class="c">// Si vrai ? alors : sinon</span>
+<span class="var">$res</span> = <span class="var">$a</span> ? <span class="str">'ok'</span> : <span class="str">'ko'</span>;
+
+<span class="c">// Si existe et non null ?? sinon</span>
+<span class="var">$user</span> = <span class="var">$_GET</span>[<span class="str">'u'</span>] ?? <span class="str">'Anonyme'</span>;</pre>
+        </div>
+    </div>
+</section>
+
+<hr style="border:0; border-top:1px solid var(--border); margin:40px 0;">
+
+<!-- PARTIE 2 : STRUCTURES ITÉRATIVES -->
+<section>
+    <h3>2. Répéter des tâches (Boucles)</h3>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔄 Analogie : La Roue</h4>
+            <p>Une boucle est une roue qui tourne tant qu'une condition (le carburant) est présente. Dès qu'il n'y a
+                plus de carburant, la roue s'arrête.</p>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+  ---[Action] ---
+ |               |
+  ---< Encore ? >--NON--> [Sortie]
+         |
+        OUI</pre>
+        </div>
+    </div>
+
+    <div class="grid2">
+        <!-- FOR -->
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>For
+                (Compteur)</div>
+            <pre><span class="c">// Initialisation ; Condition ; Incrémentation</span>
+<span class="kw">for</span> (<span class="var">$i</span> = <span class="num">0</span>; <span class="var">$i</span> < <span class="num">5</span>; <span class="var">$i</span>++) {
+    <span class="kw">echo</span> <span class="str">"Tour n°"</span> . <span class="var">$i</span>;
+}</pre>
+        </div>
+        <!-- FOREACH -->
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Foreach (Tableaux)</div>
+            <pre><span class="c">// Version simple</span>
+<span class="kw">foreach</span> (<span class="var">$items</span> <span class="kw">as</span> <span class="var">$item</span>) { ... }
+
+<span class="c">// Version avec clé (Dictionnaire)</span>
+<span class="kw">foreach</span> (<span class="var">$user</span> <span class="kw">as</span> <span class="var">$key</span> => <span class="var">$val</span>) {
+    <span class="kw">echo</span> <span class="str">"$key : $val"</span>;
+}</pre>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-top:20px;">
+        <!-- WHILE -->
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>While (Tant que...)</div>
+            <pre><span class="c">// Tant que la condition est VRAIE</span>
+<span class="kw">while</span> (<span class="var">$line</span> = <span class="fn">fgets</span>(<span class="var">$file</span>)) {
+    <span class="kw">echo</span> <span class="var">$line</span>;
+}</pre>
+        </div>
+        <!-- DO WHILE -->
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Do
+                While (Au moins une fois)</div>
+            <pre><span class="c">// Exécute d'abord, vérifie ensuite</span>
+<span class="kw">do</span> {
+    <span class="var">$code</span> = <span class="fn">generateCode</span>();
+} <span class="kw">while</span> (<span class="fn">existsInDb</span>(<span class="var">$code</span>));</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 3 : LE CONSEIL DU PRO (YIELD) -->
+<section>
+    <h3>3. Le mot-clé "yield" : Les Générateurs</h3>
+
+    <div class="info">
+        <p><strong>Question :</strong> Que fait <code>yield</code> ?</p>
+        <p><strong>Réponse courte :</strong> Il transforme une fonction en "distributeur" de données qui s'arrête et
+            reprend.
+            C'est le secret pour traiter 1 million de lignes avec seulement 2 Mo de RAM.</p>
+    </div>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🍬 Analogie : Le Distributeur de PEZ</h4>
+            <p>Imaginez un sac de 1000 bonbons (Array). Pour le transporter, il vous faut un grand sac lourd (RAM).</p>
+            <p>Le <code>yield</code> est un <strong>distributeur de PEZ</strong>. Il ne contient qu'un bonbon à la fois.
+                Vous demandez le suivant, il le sort, puis s'arrête. Pas besoin de gros sac !</p>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Un
+                Générateur simple</div>
+            <pre><span class="kw">function</span> <span class="fn">compteur_infini</span>() {
+    <span class="var">$i</span> = <span class="num">0</span>;
+    <span class="kw">while</span>(<span class="kw">true</span>) {
+        <span class="kw">yield</span> <span class="var">$i</span>++; <span class="c">// Met la fonction en PAUSE ici</span>
+    }
+}
+
+<span class="kw">foreach</span> (<span class="fn">compteur_infini</span>() <span class="kw">as</span> <span class="var">$nb</span>) {
+    <span class="kw">echo</span> <span class="var">$nb</span>;
+    <span class="kw">if</span> (<span class="var">$nb</span> > <span class="num">1000</span>) <span class="kw">break</span>;
+}</pre>
+        </div>
+    </div>
+
+    <div class="tip">
+        <strong>💡 Quand utiliser yield ?</strong><br>
+        Dès que vous lisez un fichier CSV de + de 50 Mo ou que vous bouclez sur des milliers de résultats SQL.
+    </div>
+</section>
+
+<!-- INTERACTIVITÉ SIMULÉE -->
+<div class="demo">
+    <div class="demo-title">🛠️ Mise en situation</div>
+    <p style="font-size:0.85rem;">Vous devez afficher une liste d'articles seulement si elle n'est pas vide.</p>
+    <div class="code">
+        <pre><span class="tag">&lt;?php</span> <span class="kw">if</span> (<span class="var">$articles</span>): <span class="tag">?&gt;</span>
+    &lt;ul&gt;
+    <span class="tag">&lt;?php</span> <span class="kw">foreach</span>(<span class="var">$articles</span> <span class="kw">as</span> <span class="var">$a</span>): <span class="tag">?&gt;</span>
+        &lt;li&gt;&lt;?= <span class="var">$a</span>['titre'] ?&gt;&lt;/li&gt;
+    <span class="tag">&lt;?php</span> <span class="kw">endforeach</span>; <span class="tag">?&gt;</span>
+    &lt;/ul&gt;
+<span class="tag">&lt;?php</span> <span class="kw">else</span>: <span class="tag">?&gt;</span>
+    &lt;p&gt;Aucun article trouvé.&lt;/p&gt;
+<span class="tag">&lt;?php</span> <span class="kw">endif</span>; <span class="tag">?&gt;</span></pre>
+    </div>
+</div>

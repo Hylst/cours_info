@@ -1,0 +1,101 @@
+<div class="sec-header">
+    <div class="sec-num">09</div>
+    <div>
+        <h2 class="sec-title">Sessions & Cookies</h2>
+        <p class="sec-sub">Gérer l'état et la persistance sur un web sans mémoire</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Le protocole HTTP est "stateless" (sans état) : le serveur oublie qui vous êtes dès que la page est chargée. Les
+        Sessions et Cookies sont les outils qui permettent au web de se "souvenir" de vous (connexion, panier,
+        préférences).</p>
+</div>
+
+<!-- PARTIE 1 : ANALOGIES -->
+<section>
+    <h3>1. Analogie : Le Club de Sport</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🍪 Le Cookie : La Carte de Visite</h4>
+            <p>Le serveur vous donne une petite carte que <strong>vous</strong> gardez dans votre poche (votre
+                navigateur). À chaque visite, vous la lui montrez.</p>
+            <p><em>Risque : On peut vous la voler ou vous pouvez la modifier.</em></p>
+        </div>
+        <div class="ref-card">
+            <h4>🔒 La Session : Le Casier</h4>
+            <p>Le serveur garde vos affaires dans un casier <strong>chez lui</strong>. Il vous donne juste la clé (le
+                Session ID). Vous ne pouvez pas modifier le contenu du casier vous-même.</p>
+            <p><em>Sécurité : C'est beaucoup plus sûr pour les données sensibles.</em></p>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : SESSIONS -->
+<section>
+    <h3>2. Maîtriser les Sessions</h3>
+    <p>Une session dépose automatiquement un cookie nommé <code>PHPSESSID</code> sur votre navigateur.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Sessions.php</div>
+        <pre><span class="c">// 1. TOUJOURS démarrer en haut du fichier</span>
+<span class="fn">session_start</span>();
+
+<span class="c">// 2. Stocker des données</span>
+<span class="var">$_SESSION</span>[<span class="str">'user'</span>] = [
+    <span class="str">'id'</span> => <span class="num">42</span>,
+    <span class="str">'role'</span> => <span class="str">'admin'</span>
+];
+
+<span class="c">// 3. Utiliser les données</span>
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="var">$_SESSION</span>[<span class="str">'user'</span>])) {
+    <span class="kw">echo</span> <span class="str">"Bienvenue "</span> . <span class="var">$_SESSION</span>[<span class="str">'user'</span>][<span class="str">'id'</span>];
+}
+
+<span class="c">// 4. Sécurité : Régénérer l'ID au login (Contre le Session Fixation)</span>
+<span class="fn">session_regenerate_id</span>(<span class="kw">true</span>);
+
+<span class="c">// 5. Détruire (Déconnexion)</span>
+<span class="fn">session_destroy</span>();</pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : COOKIES -->
+<section>
+    <h3>3. Utiliser les Cookies intelligemment</h3>
+    <p>Les cookies ont une date d'expiration. Si on ne la met pas, ils meurent à la fermeture du navigateur.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Cookies.php</div>
+        <pre><span class="c">// Créer un cookie "Thème Sombre" pour 30 jours</span>
+<span class="var">$expiration</span> = <span class="fn">time</span>() + (<span class="num">3600</span> * <span class="num">24</span> * <span class="num">30</span>);
+
+<span class="fn">setcookie</span>(
+    name: <span class="str">"theme"</span>,
+    value: <span class="str">"dark"</span>,
+    expires_or_options: [
+        <span class="str">'expires'</span> => <span class="var">$expiration</span>,
+        <span class="str">'path'</span> => <span class="str">'/'</span>,
+        <span class="str">'httponly'</span> => <span class="kw">true</span>, <span class="c">// 🛡️ Invisible pour le JavaScript (Contre XSS)</span>
+        <span class="str">'samesite'</span> => <span class="str">'Lax'</span>  <span class="c">// 🛡️ Contre les attaques CSRF</span>
+    ]
+);
+
+<span class="c">// Lire un cookie</span>
+<span class="var">$theme</span> = <span class="var">$_COOKIE</span>[<span class="str">'theme'</span>] ?? <span class="str">'light'</span>;</pre>
+    </div>
+</section>
+
+<div class="warning">
+    <strong>🛡️ RGPD & Cookies</strong><br>
+    En Europe, vous devez informer l'utilisateur si vous utilisez des cookies qui ne sont pas "strictement nécessaires"
+    au fonctionnement du site.
+</div>
+
+<div class="tip">
+    <strong>💡 Flash Messages</strong><br>
+    On utilise souvent les sessions pour afficher un message de succès (ex: "Profil mis à jour") qui s'efface dès qu'on
+    rafraîchit la page.
+</div>

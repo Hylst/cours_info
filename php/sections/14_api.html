@@ -1,0 +1,104 @@
+<div class="sec-header">
+    <div class="sec-num">14</div>
+    <div>
+        <h2 class="sec-title">API REST & JSON</h2>
+        <p class="sec-sub">Faire parler votre App avec le reste du monde</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Une API (Application Programming Interface) permet à deux programmes de communiquer. Le format standard est le
+        <strong>JSON</strong>. PHP est parfait pour créer des "Backends" qui alimentent des Apps mobiles ou des sites en
+        Vue/React.</p>
+</div>
+
+<!-- PARTIE 1 : ANALOGIE -->
+<section>
+    <h3>1. Analogie : Le Serveur de Restaurant</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🤵 Le Restaurant</h4>
+            <ul>
+                <li><strong>Client</strong> : Le navigateur (ou une App).</li>
+                <li><strong>Menu</strong> : La documentation de l'API (Endpoints).</li>
+                <li><strong>Serveur</strong> : L'API (fait le lien entre cuisine et client).</li>
+                <li><strong>JSON</strong> : Le plateau (Format de transport standardisé).</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Client ] -- GET /api/users --> [ PHP ]
+                                    |
+ [ Client ] <---- JSON data ------ [ PHP ]</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : JSON -->
+<section>
+    <h3>2. Manipuler le JSON en PHP</h3>
+    <p>PHP possède des fonctions natives ultra-rapides pour transformer des tableaux en JSON et inversement.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Json.php
+        </div>
+        <pre><span class="var">$data</span> = [<span class="str">"nom"</span> => <span class="str">"Hylst"</span>, <span class="str">"age"</span> => <span class="num">30</span>];
+
+<span class="c">// 1. Array -> JSON (Encode)</span>
+<span class="var">$json</span> = <span class="fn">json_encode</span>(<span class="var">$data</span>); 
+
+<span class="c">// 2. JSON -> Array (Decode)</span>
+<span class="var">$array</span> = <span class="fn">json_decode</span>(<span class="var">$json</span>, <span class="kw">true</span>);
+
+<span class="c">// 3. Sécurité : Vérifier les erreurs</span>
+<span class="kw">if</span> (<span class="fn">json_last_error</span>() !== <span class="var">JSON_ERROR_NONE</span>) { ... }</pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : CREER UNE API -->
+<section>
+    <h3>3. Créer son premier Endpoint</h3>
+    <p>Il ne faut pas juste faire un <code>echo</code>, il faut dire au navigateur quel type de contenu on envoie via
+        les <strong>Headers</strong>.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Api.php
+        </div>
+        <pre><span class="c">// Dire au navigateur qu'on envoie du JSON</span>
+<span class="fn">header</span>(<span class="str">'Content-Type: application/json'</span>);
+
+<span class="c">// Gérer les méthodes HTTP</span>
+<span class="var">$method</span> = <span class="var">$_SERVER</span>[<span class="str">'REQUEST_METHOD'</span>];
+
+<span class="kw">if</span> (<span class="var">$method</span> === <span class="str">'GET'</span>) {
+    <span class="fn">http_response_code</span>(<span class="num">200</span>);
+    <span class="kw">echo</span> <span class="fn">json_encode</span>([<span class="str">"message"</span> => <span class="str">"Hello API"</span>]);
+} <span class="kw">else</span> {
+    <span class="fn">http_response_code</span>(<span class="num">405</span>); <span class="c">// Method Not Allowed</span>
+    <span class="kw">echo</span> <span class="fn">json_encode</span>([<span class="str">"error"</span> => <span class="str">"Utilisez GET"</span>]);
+}</pre>
+    </div>
+</section>
+
+<!-- PARTIE 4 : CONSOMMER UNE API -->
+<section>
+    <h3>4. Appeler une API externe</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>FetchExternal.php</div>
+        <pre><span class="c">// Approche simple (si allow_url_fopen est ON)</span>
+<span class="var">$json</span> = <span class="fn">file_get_contents</span>(<span class="str">'https://api.github.com/users/octocat'</span>);
+
+<span class="c">// Approche Pro : cURL (plus puissant)</span>
+<span class="var">$ch</span> = <span class="fn">curl_init</span>(<span class="str">'https://api.site.com/v1/data'</span>);
+<span class="fn">curl_setopt</span>(<span class="var">$ch</span>, <span class="var">CURLOPT_RETURNTRANSFER</span>, <span class="kw">true</span>);
+<span class="var">$res</span> = <span class="fn">curl_exec</span>(<span class="var">$ch</span>);
+<span class="fn">curl_close</span>(<span class="var">$ch</span>);</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Postman / Insomnia</strong><br>
+    Utilisez des outils comme <strong>Postman</strong> pour tester vos API sans avoir besoin de coder le front-end. Ils
+    permettent de voir les Headers et les codes de retour (200, 404, 500) facilement.
+</div>

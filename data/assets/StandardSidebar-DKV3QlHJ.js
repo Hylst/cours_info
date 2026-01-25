@@ -1,0 +1,1 @@
+import{j as o,J as a}from"./index-jatdNhFh.js";const n=({currentPage:e,sections:s=[]})=>{const t=[{title:"Accueil",href:"/",icon:o.jsx(a,{className:"h-4 w-4"}),isActive:e==="home"}],c=s.map(i=>({...i,isActive:!1}));return{items:[...t,...c]}};export{n as c};

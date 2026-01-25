@@ -1,0 +1,91 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" rx="32" fill="url(#bgGradient)"/>
+  
+  <!-- Data Science Symbol - Brain with circuits -->
+  <g transform="translate(48, 48)">
+    <!-- Brain outline -->
+    <path d="M48 20C60 20 72 28 76 40C80 36 84 36 88 40C88 48 84 52 80 56C84 60 88 64 88 72C88 80 80 88 72 88C68 88 64 84 60 80C56 84 52 88 48 88C40 88 32 80 32 72C32 64 36 60 40 56C36 52 32 48 32 40C36 36 40 36 44 40C48 28 48 20 48 20Z" fill="url(#iconGradient)" stroke="none"/>
+    
+    <!-- Circuit patterns inside brain -->
+    <g fill="#3b82f6" opacity="0.6">
+      <!-- Horizontal lines -->
+      <rect x="40" y="35" width="16" height="2" rx="1"/>
+      <rect x="44" y="45" width="12" height="2" rx="1"/>
+      <rect x="42" y="55" width="14" height="2" rx="1"/>
+      <rect x="46" y="65" width="10" height="2" rx="1"/>
+      
+      <!-- Vertical lines -->
+      <rect x="48" y="30" width="2" height="12" rx="1"/>
+      <rect x="54" y="40" width="2" height="16" rx="1"/>
+      <rect x="42" y="50" width="2" height="12" rx="1"/>
+      
+      <!-- Connection nodes -->
+      <circle cx="48" cy="36" r="2"/>
+      <circle cx="56" cy="46" r="2"/>
+      <circle cx="44" cy="56" r="2"/>
+      <circle cx="52" cy="66" r="2"/>
+    </g>
+    
+    <!-- Data visualization elements -->
+    <g transform="translate(20, 75)" fill="#ffffff" opacity="0.9">
+      <!-- Bar chart -->
+      <rect x="0" y="8" width="4" height="12" rx="1"/>
+      <rect x="6" y="4" width="4" height="16" rx="1"/>
+      <rect x="12" y="10" width="4" height="10" rx="1"/>
+      <rect x="18" y="2" width="4" height="18" rx="1"/>
+    </g>
+    
+    <!-- ML/AI symbol -->
+    <g transform="translate(70, 75)" fill="#ffffff" opacity="0.9">
+      <!-- Neural network nodes -->
+      <circle cx="2" cy="4" r="2"/>
+      <circle cx="2" cy="12" r="2"/>
+      <circle cx="2" cy="20" r="2"/>
+      
+      <circle cx="14" cy="8" r="2"/>
+      <circle cx="14" cy="16" r="2"/>
+      
+      <circle cx="26" cy="12" r="2"/>
+      
+      <!-- Connections -->
+      <line x1="4" y1="4" x2="12" y2="8" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      <line x1="4" y1="12" x2="12" y2="8" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      <line x1="4" y1="20" x2="12" y2="16" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      <line x1="4" y1="12" x2="12" y2="16" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      <line x1="16" y1="8" x2="24" y2="12" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+      <line x1="16" y1="16" x2="24" y2="12" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+    </g>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g fill="#ffffff" opacity="0.3">
+    <!-- Top left -->
+    <circle cx="24" cy="24" r="3"/>
+    <circle cx="32" cy="16" r="2"/>
+    
+    <!-- Top right -->
+    <circle cx="168" cy="24" r="2"/>
+    <circle cx="160" cy="32" r="3"/>
+    
+    <!-- Bottom left -->
+    <circle cx="24" cy="168" r="2"/>
+    <circle cx="16" cy="160" r="3"/>
+    
+    <!-- Bottom right -->
+    <circle cx="168" cy="168" r="3"/>
+    <circle cx="176" cy="160" r="2"/>
+  </g>
+</svg>

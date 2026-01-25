@@ -1,0 +1,135 @@
+<div class="sec-header">
+    <div class="sec-num">07</div>
+    <div>
+        <h2 class="sec-title">Gestion des Erreurs & Exceptions</h2>
+        <p class="sec-sub">Sécuriser son code contre l'imprévisible</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Un bon développeur ne code pas seulement pour le "chemin idéal" (Happy Path). Il prévoit ce qui se passe quand
+        tout casse : base de données hors ligne, fichier manquant ou erreur de saisie utilisateur.</p>
+</div>
+
+<!-- PARTIE 1 : ERREUR VS EXCEPTION -->
+<section>
+    <h3>1. Erreur vs Exception : La nuance</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🚨 L'Erreur (Interne)</h4>
+            <p>Elle vient du coeur de PHP. C'est un signal système (ex: variable oubliée, faute de frappe).</p>
+            <p><em>Analogie : La fumée qui sort du moteur.</em></p>
+        </div>
+        <div class="ref-card">
+            <h4>⚠️ L'Exception (Logique)</h4>
+            <p>C'est vous qui la déclenchez quand une règle métier est violée (ex: solde bancaire insuffisant).</p>
+            <p><em>Analogie : Le détecteur de fumée qui sonne.</em></p>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : NIVEAUX D'ERREUR -->
+<section>
+    <h3>2. Les niveaux d'erreurs classiques</h3>
+    <p>Toutes les erreurs ne sont pas fatales. PHP les classe par gravité :</p>
+    <table>
+        <tr>
+            <th>Niveau</th>
+            <th>Impact</th>
+            <th>Exemple</th>
+        </tr>
+        <tr>
+            <td><code>E_NOTICE</code></td>
+            <td>Léger</td>
+            <td>Utiliser une variable non définie.</td>
+        </tr>
+        <tr>
+            <td><code>E_WARNING</code></td>
+            <td>Moyen</td>
+            <td>Inclure un fichier inexistant (<code>include</code>).</td>
+        </tr>
+        <tr>
+            <td><code>E_ERROR</code></td>
+            <td>Fatal 💀</td>
+            <td>Appeler une fonction qui n'existe pas. Arrêt du script.</td>
+        </tr>
+        <tr>
+            <td><code>E_DEPRECATED</code></td>
+            <td>Info</td>
+            <td>Utiliser une fonction qui va disparaître bientôt.</td>
+        </tr>
+    </table>
+</section>
+
+<!-- PARTIE 3 : EXCEPTIONS & TRY/CATCH -->
+<section>
+    <h3>3. Maîtriser le Try / Catch</h3>
+    <p>C'est le filet de sécurité. Si une exception est lancée dans le <code>try</code>, PHP saute directement au
+        <code>catch</code> sans arrêter le site.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>TryCatchFinally.php</div>
+        <pre><span class="kw">try</span> {
+    <span class="c">// 1. Tentative d'action risquée</span>
+    <span class="kw">if</span> (!<span class="fn">file_exists</span>(<span class="str">'config.json'</span>)) {
+        <span class="kw">throw new</span> <span class="fn">Exception</span>(<span class="str">"Fichier de config introuvable !"</span>);
+    }
+} <span class="kw">catch</span> (<span class="fn">Exception</span> <span class="var">$e</span>) {
+    <span class="c">// 2. Récupération du crash</span>
+    <span class="kw">echo</span> <span class="str">"Désolé, il y a eu un souci : "</span> . <span class="var">$e</span>-><span class="fn">getMessage</span>();
+} <span class="kw">finally</span> {
+    <span class="c">// 3. Toujours exécuté (ex: fermer la BDD)</span>
+    <span class="kw">echo</span> <span class="str">"Nettoyage..."</span>;
+}</pre>
+    </div>
+</section>
+
+<!-- PARTIE 4 : PHP 8 MODERNE -->
+<section>
+    <h3>4. Throw Expression (PHP 8.0+)</h3>
+    <p>Avant PHP 8, <code>throw</code> était une instruction. Maintenant, c'est une <strong>expression</strong>. On peut
+        l'utiliser partout, même dans des ternaires.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>ModernThrow.php</div>
+        <pre><span class="c">// Une ligne au lieu d'un bloc IF complet</span>
+<span class="var">$id</span> = <span class="var">$_GET</span>[<span class="str">'id'</span>] ?? <span class="kw">throw new</span> <span class="fn">InvalidArgumentException</span>(<span class="str">"ID manquant !"</span>);
+
+<span class="c">// Utilisation dans une Arrow Function</span>
+<span class="var">$fn</span> = <span class="kw">fn</span>() => <span class="kw">throw new</span> <span class="fn">Exception</span>();</pre>
+    </div>
+</section>
+
+<!-- PARTIE 5 : EXCEPTIONS PERSONNALISEES -->
+<section>
+    <h3>5. Créer ses propres Exceptions</h3>
+    <p>Pour mieux organiser vos erreurs, héritez de la classe de base.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>CustomException.php</div>
+        <pre><span class="kw">class</span> <span class="fn">DatabaseException</span> <span class="kw">extends</span> <span class="fn">Exception</span> {}
+
+<span class="kw">try</span> {
+    <span class="c">// ... code BDD</span>
+} <span class="kw">catch</span> (<span class="fn">DatabaseException</span> <span class="var">$e</span>) {
+    <span class="c">// Gère seulement les erreurs BDD ici</span>
+} <span class="kw">catch</span> (<span class="fn">Exception</span> <span class="var">$e</span>) {
+    <span class="c">// Gère le reste</span>
+}</pre>
+    </div>
+</section>
+
+<div class="warning">
+    <strong>🛡️ Sécurité en Production</strong><br>
+    N'affichez JAMAIS les erreurs sur votre site public (<code>display_errors = Off</code>). <br>
+    Un pirate pourrait utiliser les chemins de fichiers ou les noms de tables affichés pour vous attaquer.
+</div>
+
+<div class="tip">
+    <strong>💡 Astuce Débug</strong><br>
+    Utilisez <code>error_reporting(E_ALL);</code> au début de vos scripts en développement pour être au courant du
+    moindre petit oubli.
+</div>

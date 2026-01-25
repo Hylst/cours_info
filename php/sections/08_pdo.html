@@ -1,0 +1,150 @@
+<div class="sec-header">
+    <div class="sec-num">08</div>
+    <div>
+        <h2 class="sec-title">PDO & Base de données</h2>
+        <p class="sec-sub">Communiquer avec MySQL de manière pro et sécurisée</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>PHP et SQL sont les deux meilleurs amis du web. Pour les faire discuter, on utilise <strong>PDO</strong> (PHP
+        Data Objects), une extension qui simplifie et sécurise les échanges avec quasiment n'importe quelle BDD.</p>
+</div>
+
+<!-- PARTIE 1 : ANALOGIE & RÔLE -->
+<section>
+    <h3>1. PDO : L'Ambassadeur Universel</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🗣️ Analogie : Le Traducteur</h4>
+            <p>Imaginez que vous parliez PHP. Vous voulez discuter avec une BDD MySQL (qui parle espagnol) ou une BDD
+                SQLite (qui parle italien).</p>
+            <p><strong>PDO</strong> est votre traducteur personnel : vous lui parlez en PHP, il transmet les ordres dans
+                la bonne langue à la BDD.</p>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Votre Code PHP ] --(PDO)--> [ Pont ]
+                                 |
+           ---------------------------------------
+          |                |                      |
+     [ MySQL ]      [ PostgreSQL ]           [ SQLite ]</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : CONNEXION & CONFIG -->
+<section>
+    <h3>2. La Connexion Robuste</h3>
+    <p>On ne se connecte pas juste avec un login/pass, on définit aussi comment PDO doit se comporter en cas d'erreur.
+    </p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Connection.php</div>
+        <pre><span class="var">$host</span> = <span class="str">'localhost'</span>;
+<span class="var">$db</span>   = <span class="str">'ma_boutique'</span>;
+<span class="var">$user</span> = <span class="str">'root'</span>;
+<span class="var">$pass</span> = <span class="str">''</span>;
+<span class="var">$charset</span> = <span class="str">'utf8mb4'</span>;
+
+<span class="var">$dsn</span> = <span class="str">"mysql:host=$host;dbname=$db;charset=$charset"</span>;
+
+<span class="var">$options</span> = [
+    <span class="fn">PDO</span>::<span class="var">ATTR_ERRMODE</span>            => <span class="fn">PDO</span>::<span class="var">ERRMODE_EXCEPTION</span>, <span class="c">// Génère des ErrorException</span>
+    <span class="fn">PDO</span>::<span class="var">ATTR_DEFAULT_FETCH_MODE</span> => <span class="fn">PDO</span>::<span class="var">FETCH_ASSOC</span>,       <span class="c">// Retourne des tableaux associatifs</span>
+    <span class="fn">PDO</span>::<span class="var">ATTR_EMULATE_PREPARES</span>   => <span class="kw">false</span>,                  <span class="c">// Sécurité renforcée</span>
+];
+
+<span class="kw">try</span> {
+     <span class="var">$pdo</span> = <span class="kw">new</span> <span class="fn">PDO</span>(<span class="var">$dsn</span>, <span class="var">$user</span>, <span class="var">$pass</span>, <span class="var">$options</span>);
+} <span class="kw">catch</span> (\<span class="fn">PDOException</span> <span class="var">$e</span>) {
+     <span class="kw">throw new</span> \<span class="fn">PDOException</span>(<span class="var">$e</span>-><span class="fn">getMessage</span>(), (<span class="kw">int</span>)<span class="var">$e</span>-><span class="fn">getCode</span>());
+}</pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : SECURITE (PREPARED STATEMENTS) -->
+<section>
+    <h3>3. La Sécurité : Barrage aux Injections SQL</h3>
+    <div class="warning">
+        <strong>🚨 Danger :</strong> Ne concaténez JAMAIS vos variables dans une requête SQL (ex:
+        <code>"WHERE id = " . $id</code>). Un pirate pourrait injecter du code malveillant.
+    </div>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>💡 Le Bouclier : Prepare</h4>
+            <p>On envoie d'abord la "forme" de la requête au serveur SQL (sans les données). On envoie les données
+                ensuite, séparément. Le serveur SQL sait alors que c'est du <strong>texte</strong> et non des ordres.
+            </p>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Requête Préparée</div>
+            <pre><span class="c">// 1. On prépare (le serveur SQL "comprend" la structure)</span>
+<span class="var">$stmt</span> = <span class="var">$pdo</span>-><span class="fn">prepare</span>(<span class="str">"SELECT * FROM users WHERE email = :email"</span>);
+
+<span class="c">// 2. On exécute avec les données (sécurisé)</span>
+<span class="var">$stmt</span>-><span class="fn">execute</span>([<span class="str">'email'</span> => <span class="var">$_POST</span>[<span class="str">'email'</span>]]);
+
+<span class="var">$user</span> = <span class="var">$stmt</span>-><span class="fn">fetch</span>();</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 4 : CRUD AVANCÉ -->
+<section>
+    <h3>4. Le CRUD Complet (Create, Read, Update, Delete)</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>CRUD.php
+        </div>
+        <pre><span class="c">// CREATE</span>
+<span class="var">$pdo</span>-><span class="fn">prepare</span>(<span class="str">"INSERT INTO posts (title, content) VALUES (?, ?)"</span>)
+    -><span class="fn">execute</span>([<span class="var">$title</span>, <span class="var">$content</span>]);
+
+<span class="c">// READ (Plusieurs lignes)</span>
+<span class="var">$stmt</span> = <span class="var">$pdo</span>-><span class="fn">query</span>(<span class="str">"SELECT * FROM posts"</span>);
+<span class="kw">while</span> (<span class="var">$row</span> = <span class="var">$stmt</span>-><span class="fn">fetch</span>()) {
+    <span class="kw">echo</span> <span class="var">$row</span>[<span class="str">'title'</span>];
+}
+
+<span class="c">// UPDATE</span>
+<span class="var">$pdo</span>-><span class="fn">prepare</span>(<span class="str">"UPDATE posts SET title = ? WHERE id = ?"</span>)
+    -><span class="fn">execute</span>([<span class="str">"Nouveau titre"</span>, <span class="num">1</span>]);
+
+<span class="c">// DELETE</span>
+<span class="var">$pdo</span>-><span class="fn">prepare</span>(<span class="str">"DELETE FROM posts WHERE id = ?"</span>)
+    -><span class="fn">execute</span>([<span class="var">$id</span>]);</pre>
+    </div>
+</section>
+
+<!-- PARTIE 5 : TRANSACTIONS -->
+<section>
+    <h3>5. Transactions : Le mode "Tout ou Rien"</h3>
+    <p>Imaginez un virement bancaire : vous retirez 100€ au compte A et versez 100€ au compte B. Si le B bugue, il faut
+        annuler le retrait au A.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Transaction.php</div>
+        <pre><span class="var">$pdo</span>-><span class="fn">beginTransaction</span>();
+
+<span class="kw">try</span> {
+    <span class="var">$pdo</span>-><span class="fn">exec</span>(<span class="str">"UPDATE accounts SET bal = bal - 100 WHERE id = 1"</span>);
+    <span class="var">$pdo</span>-><span class="fn">exec</span>(<span class="str">"UPDATE accounts SET bal = bal + 100 WHERE id = 2"</span>);
+    
+    <span class="c">// Si on arrive ici, tout est OK</span>
+    <span class="var">$pdo</span>-><span class="fn">commit</span>();
+} <span class="kw">catch</span> (<span class="fn">Exception</span> <span class="var">$e</span>) {
+    <span class="c">// Une erreur ? On annule TOUT</span>
+    <span class="var">$pdo</span>-><span class="fn">rollBack</span>();
+}</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 PHP 8.x</strong><br>
+    Avec <code>fetch(PDO::FETCH_CLASS, 'User')</code>, PDO peut transformer vos lignes SQL directement en objets de
+    votre classe <code>User</code> !
+</div>

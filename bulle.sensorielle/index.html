@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Métadonnées de base -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- SEO et métadonnées -->
+    <title>Bulle Sensorielle - Sanctuaire Numérique Apaisant pour Enfants | Geoffroy Streit</title>
+    <meta name="description" content="Application web apaisante conçue pour les enfants de 6-12 ans avec sensibilités sensorielles (TSA, TDAH). Sons relaxants, visuels thérapeutiques et outils de régulation émotionnelle.">
+    <meta name="keywords" content="autisme, TDAH, sensibilités sensorielles, relaxation enfants, thérapie sensorielle, sons apaisants, application éducative, bien-être numérique, régulation émotionnelle">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="creator" content="Geoffroy Streit">
+    <meta name="publisher" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="French">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bulle Sensorielle - Sanctuaire Numérique Apaisant">
+    <meta property="og:description" content="Application web thérapeutique pour enfants avec sensibilités sensorielles. Créez votre bulle de calme personnalisée avec sons et visuels apaisants.">
+    <meta property="og:image" content="./assets/og-image.jpg">
+    <meta property="og:url" content="https://bulle-sensorielle.app">
+    <meta property="og:site_name" content="Bulle Sensorielle">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bulle Sensorielle - Sanctuaire Numérique Apaisant">
+    <meta name="twitter:description" content="Application thérapeutique pour enfants avec sensibilités sensorielles. Sons relaxants et visuels apaisants.">
+    <meta name="twitter:image" content="./assets/twitter-card.jpg">
+    <meta name="twitter:creator" content="@geoffroystreit">
+    
+    <!-- Icônes et thème -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+    <meta name="theme-color" content="#E8F4FD">
+    <meta name="msapplication-TileColor" content="#E8F4FD">
+    
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bulle Sensorielle",
+      "description": "Application web thérapeutique pour enfants avec sensibilités sensorielles (TSA, TDAH). Offre un sanctuaire numérique avec sons apaisants, visuels relaxants et outils de régulation émotionnelle.",
+      "url": "https://bulle-sensorielle.app",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "author": {
+        "@type": "Person",
+        "name": "Geoffroy Streit",
+        "email": "geoffroy.streit@gmail.com"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Geoffroy Streit",
+        "email": "geoffroy.streit@gmail.com"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Enfants avec sensibilités sensorielles",
+        "suggestedMinAge": 6,
+        "suggestedMaxAge": 12
+      },
+      "featureList": [
+        "Mixeur de sons apaisants",
+        "Visuels thérapeutiques interactifs",
+        "Minuteur de pause sensorielle",
+        "Profils sensoriels personnalisés",
+        "Mode jour/nuit adaptatif"
+      ],
+      "inLanguage": "fr-FR",
+      "isAccessibleForFree": true,
+      "browserRequirements": "Navigateur web moderne avec support HTML5, CSS3 et JavaScript ES6+"
+    }
+    </script>
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Polices et ressources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+</head>
+<body>
+    <!-- Mascot -->
+    <div class="mascot" id="mascot">
+        <div class="mascot-message" id="mascotMessage">Bienvenue dans ta bulle sensorielle !</div>
+    </div>
+
+    <!-- App Symbol Bubble (top-right) -->
+    <button type="button" class="app-symbol-btn" id="appSymbolBtn" title="Bulle Sensorielle">
+        <span class="app-icon" id="appIcon">🌙</span>
+    </button>
+
+    <!-- Global Pause/Play Button -->
+    <button type="button" class="global-pause-btn" id="globalPauseBtn" title="Mettre en pause">
+        <span class="pause-icon">⏸️</span>
+    </button>
+
+    <!-- Toggle Theme Button -->
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <!-- Info Bubble (bottom-left) -->
+    <button type="button" class="info-bubble" id="infoBubble" title="Informations sur l'application">
+        <span class="info-icon">ℹ️</span>
+    </button>
+
+    <!-- Info Modal -->
+    <div class="info-modal" id="infoModal">
+        <div class="info-modal-content">
+            <div class="info-modal-header">
+                <h2>🫧 Bulle Sensorielle</h2>
+                <button type="button" class="info-modal-close" id="infoModalClose">&times;</button>
+            </div>
+            <div class="info-modal-body">
+                <div class="floating-bubbles"></div>
+                <div class="info-content">
+                    <h3>✨ Bienvenue dans ton sanctuaire numérique</h3>
+                    <p>Cette application a été conçue pour t'offrir un espace de calme et de détente personnalisé.</p>
+                    
+                    <h4>🎵 Fonctionnalités :</h4>
+                    <ul>
+                        <li><strong>Sons apaisants</strong> - Mélange tes sons favoris</li>
+                        <li><strong>Visuels relaxants</strong> - Choisis l'ambiance qui te convient</li>
+                        <li><strong>Minuteur personnalisé</strong> - Gère tes pauses</li>
+                        <li><strong>Profils sauvegardés</strong> - Retrouve tes configurations préférées</li>
+                        <li><strong>Mode sombre/clair</strong> - Adapte l'interface à tes besoins</li>
+                    </ul>
+                    
+                    <h4>💡 Conseils d'utilisation :</h4>
+                    <ul>
+                        <li>Utilise des écouteurs pour une meilleure immersion</li>
+                        <li>Trouve un endroit calme pour profiter pleinement</li>
+                        <li>Sauvegarde tes combinaisons favorites</li>
+                        <li>Ajuste le volume selon ton confort</li>
+                    </ul>
+                    
+                    <div class="creator-info">
+                        <p><strong>🧑‍💻 Créé avec 💙 par Geoffroy Streit</strong></p>
+                        <p><em>Développeur passionné par l'accessibilité numérique</em></p>
+                        <p>📧 <a href="mailto:geoffroy.streit@gmail.com" style="color: var(--accent-color); text-decoration: none;">geoffroy.streit@gmail.com</a></p>
+                        <p style="font-style: italic; margin-top: 1rem;">"Pour tous ceux qui cherchent un moment de paix dans leur journée"</p>
+                        <p style="font-size: 0.9em; opacity: 0.8;">Version 2.7.3 - Application web progressive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Ma Bulle Sensorielle</h1>
+            <p class="subtitle">Ton sanctuaire numérique apaisant</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button type="button" class="nav-btn active" data-section="home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Accueil</span>
+            </button>
+            <button type="button" class="nav-btn" data-section="mixer">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-text">Sons</span>
+            </button>
+            <button type="button" class="nav-btn" data-section="visuals">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Visuels</span>
+            </button>
+            <button type="button" class="nav-btn" data-section="timer">
+                <span class="nav-icon">⏰</span>
+                <span class="nav-text">Minuteur</span>
+            </button>
+            <button type="button" class="nav-btn" data-section="profiles">
+                <span class="nav-icon">💾</span>
+                <span class="nav-text">Mes Bulles</span>
+            </button>
+            <button type="button" class="nav-btn" data-section="tips">
+                <span class="nav-icon">💡</span>
+                <span class="nav-text">Conseils</span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Home Section -->
+            <section class="section active" id="home">
+                <div class="welcome-card">
+                    <h2>Bienvenue dans ton espace de calme</h2>
+                    <p>Choisis ce qui t'aide à te sentir bien :</p>
+                    <div class="quick-actions">
+                        <button type="button" class="quick-btn" data-action="mixer">
+                            <span class="quick-icon">🎵</span>
+                            <span>Écouter des sons</span>
+                        </button>
+                        <button type="button" class="quick-btn" data-action="visuals">
+                            <span class="quick-icon">✨</span>
+                            <span>Regarder des visuels</span>
+                        </button>
+                        <button type="button" class="quick-btn" data-action="timer">
+                            <span class="quick-icon">⏰</span>
+                            <span>Prendre une pause</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Saved Profiles Preview -->
+                <div class="saved-profiles-preview" id="savedProfilesPreview">
+                    <h3>Mes Bulles Sauvegardées</h3>
+                    <div class="profiles-grid" id="profilesGrid">
+                        <!-- Profiles will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sound Mixer Section -->
+            <section class="section" id="mixer">
+                <h2>Mixeur de Sons Apaisants</h2>
+                <div class="sound-controls">
+                    <!-- Ambient Sounds -->
+                    <div class="sound-category">
+                        <h3>Bruits Ambiants</h3>
+                        <div class="sound-grid">
+                            <div class="sound-control" data-sound="white-noise">
+                                <button type="button" class="sound-btn" data-sound="white-noise">
+                                    <span class="sound-icon">🌊</span>
+                                    <span class="sound-name">Bruit Blanc</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="white-noise">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="pink-noise">
+                                <button type="button" class="sound-btn" data-sound="pink-noise">
+                                    <span class="sound-icon">🌸</span>
+                                    <span class="sound-name">Bruit Rose</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="pink-noise">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="brown-noise">
+                                <button type="button" class="sound-btn" data-sound="brown-noise">
+                                    <span class="sound-icon">🍂</span>
+                                    <span class="sound-name">Bruit Brun</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="brown-noise">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Nature Sounds -->
+                    <div class="sound-category">
+                        <h3>Sons de la Nature</h3>
+                        <div class="sound-grid">
+                            <div class="sound-control" data-sound="campagne">
+                                <button type="button" class="sound-btn" data-sound="campagne">
+                                    <span class="sound-icon">🌾</span>
+                                    <span class="sound-name">Campagne</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="campagne">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="forest">
+                                <button type="button" class="sound-btn" data-sound="forest">
+                                    <span class="sound-icon">🌲</span>
+                                    <span class="sound-name">Forêt</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="forest">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="ocean">
+                                <button type="button" class="sound-btn" data-sound="ocean">
+                                    <span class="sound-icon">🌊</span>
+                                    <span class="sound-name">Océan</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="ocean">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="rain">
+                                <button type="button" class="sound-btn" data-sound="rain">
+                                    <span class="sound-icon">🌧️</span>
+                                    <span class="sound-name">Pluie</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="rain">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="chat">
+                                <button type="button" class="sound-btn" data-sound="chat">
+                                    <span class="sound-icon">🐱</span>
+                                    <span class="sound-name">Chat</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="chat">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="feu">
+                                <button type="button" class="sound-btn" data-sound="feu">
+                                    <span class="sound-icon">🔥</span>
+                                    <span class="sound-name">Feu</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="feu">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="underwater">
+                                <button type="button" class="sound-btn" data-sound="underwater">
+                                    <span class="sound-icon">🫧</span>
+                                    <span class="sound-name">Sous l'eau</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="underwater">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Melodies -->
+                    <div class="sound-category">
+                        <h3>Mélodies Douces</h3>
+                        <div class="sound-grid">
+                            <div class="sound-control" data-sound="piano">
+                                <button type="button" class="sound-btn" data-sound="piano">
+                                    <span class="sound-icon">🎹</span>
+                                    <span class="sound-name">Piano Doux</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="piano">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="lofi">
+                                <button type="button" class="sound-btn" data-sound="lofi">
+                                    <span class="sound-icon">🎧</span>
+                                    <span class="sound-name">Lo-Fi Calme</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="lofi">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="berceuse">
+                                <button type="button" class="sound-btn" data-sound="berceuse">
+                                    <span class="sound-icon">😴</span>
+                                    <span class="sound-name">Berceuse</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="berceuse">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                            <div class="sound-control" data-sound="ballade">
+                                <button type="button" class="sound-btn" data-sound="ballade">
+                                    <span class="sound-icon">🚶‍♀️</span>
+                                    <span class="sound-name">Ballade</span>
+                                </button>
+                                <div class="volume-control">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="ballade">
+                                    <span class="volume-value">50%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Generator Section -->
+            <section class="section" id="visuals">
+                <h2>Visuels Apaisants</h2>
+                <div class="visual-controls">
+                    <div class="visual-options">
+                        <button type="button" class="visual-btn active" data-visual="breathing">
+                            <span class="visual-icon">🫧</span>
+                            <span>Respiration Guidée</span>
+                        </button>
+                        <button type="button" class="visual-btn" data-visual="colors">
+                            <span class="visual-icon">🌈</span>
+                            <span>Couleurs Flottantes</span>
+                        </button>
+                        <button type="button" class="visual-btn" data-visual="stars">
+                            <span class="visual-icon">⭐</span>
+                            <span>Pluie d'Étoiles</span>
+                        </button>
+                        <button type="button" class="visual-btn" data-visual="mandala">
+                            <span class="visual-icon">🌸</span>
+                            <span>Géométrie vivante</span>
+                        </button>
+                        <button type="button" class="visual-btn fullscreen-btn" id="fullscreenBtn" title="Mode plein écran">
+                            <span class="visual-icon">⛶</span>
+                            <span>Plein écran</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="visual-display">
+                    <canvas id="visualCanvas" width="800" height="600"></canvas>
+                </div>
+            </section>
+
+            <!-- Timer Section -->
+            <section class="section" id="timer">
+                <h2>Minuteur de Pause Sensorielle</h2>
+                <div class="timer-container">
+                    <div class="timer-display">
+                        <div class="timer-circle" id="timerCircle">
+                            <div class="timer-time" id="timerTime">00:00</div>
+                        </div>
+                    </div>
+                    <div class="timer-controls">
+                        <div class="preset-times">
+                            <button type="button" class="preset-btn" data-time="1">1 min</button>
+                            <button type="button" class="preset-btn" data-time="2">2 min</button>
+                            <button type="button" class="preset-btn" data-time="5">5 min</button>
+                            <button type="button" class="preset-btn" data-time="10">10 min</button>
+                        </div>
+                        <div class="custom-time">
+                            <label for="customMinutes">Temps personnalisé :</label>
+                            <input type="number" id="customMinutes" min="1" max="60" value="5">
+                            <span>minutes</span>
+                        </div>
+                        <div class="timer-actions">
+                            <button type="button" class="timer-btn" id="startTimer">▶️ Commencer</button>
+                            <button type="button" class="timer-btn" id="pauseTimer" disabled>⏸️ Pause</button>
+                            <button type="button" class="timer-btn" id="stopTimer" disabled>⏹️ Arrêter</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profiles Section -->
+            <section class="section" id="profiles">
+                <h2>Mes Bulles Sensorielles</h2>
+                <div class="profile-actions">
+                    <button type="button" class="save-profile-btn" id="saveProfile">
+                        <span class="save-icon">💾</span>
+                        <span>Sauvegarder ma bulle actuelle</span>
+                    </button>
+                </div>
+                <div class="profiles-list" id="profilesList">
+                    <!-- Saved profiles will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="section" id="tips">
+                <h2>Mon Coin Tranquille - Conseils</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">🏠</div>
+                        <h3>Crée ton espace</h3>
+                        <p>Construis une cabane avec des couvertures et des oreillers pour avoir ton propre petit refuge.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🧸</div>
+                        <h3>Câlin réconfortant</h3>
+                        <p>Fais un gros câlin à ta peluche préférée ou à un coussin tout doux.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🎧</div>
+                        <h3>Écouteurs anti-bruit</h3>
+                        <p>Utilise des écouteurs spéciaux qui bloquent les bruits dérangeants.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🌬️</div>
+                        <h3>Respire calmement</h3>
+                        <p>Inspire lentement par le nez, retiens un peu, puis expire doucement par la bouche.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">💡</div>
+                        <h3>Lumière douce</h3>
+                        <p>Baisse les lumières ou utilise une petite lampe avec une lumière chaude et douce.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🌿</div>
+                        <h3>Objets texturés</h3>
+                        <p>Touche des objets doux comme une balle anti-stress, du sable kinétique ou une couverture lestée.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Save Profile Modal -->
+    <div class="modal" id="saveModal">
+        <div class="modal-content">
+            <h3>Sauvegarder ma bulle</h3>
+            <input type="text" id="profileName" placeholder="Nom de ma bulle (ex: Bulle de Calme)">
+            <div class="modal-actions">
+                <button type="button" class="modal-btn cancel" id="cancelSave">Annuler</button>
+                <button type="button" class="modal-btn save" id="confirmSave">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

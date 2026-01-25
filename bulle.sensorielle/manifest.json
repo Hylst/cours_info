@@ -1,0 +1,110 @@
+{
+  "name": "Bulle Sensorielle - Sanctuaire Numérique Apaisant",
+  "short_name": "Bulle Sensorielle",
+  "description": "Application web thérapeutique pour enfants avec sensibilités sensorielles (TSA, TDAH). Créez votre bulle de calme personnalisée avec sons et visuels apaisants.",
+  "version": "2.7.3",
+  "author": "Geoffroy Streit <geoffroy.streit@gmail.com>",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#E8F4FD",
+  "background_color": "#E8F4FD",
+  "scope": "./",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": [
+    "health",
+    "education",
+    "accessibility",
+    "wellness",
+    "therapy"
+  ],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='88' fill='%23E8F4FD' stroke='%236B9BD2' stroke-width='4'/><text x='96' y='130' font-size='80' text-anchor='middle'>🫧</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='240' fill='%23E8F4FD' stroke='%236B9BD2' stroke-width='8'/><text x='256' y='340' font-size='200' text-anchor='middle'>🫧</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='48' fill='%23E8F4FD'/><text x='96' y='130' font-size='80' text-anchor='middle'>🫧</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/screenshot-wide.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Interface principale avec mixeur de sons et visuels apaisants"
+    },
+    {
+      "src": "./assets/screenshot-narrow.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Version mobile optimisée pour l'accessibilité"
+    }
+  ],
+  "features": [
+    "Mixeur de sons thérapeutiques",
+    "Animations visuelles apaisantes",
+    "Minuteur de pause sensorielle",
+    "Profils sensoriels personnalisés",
+    "Interface adaptative jour/nuit",
+    "Fonctionnement hors ligne",
+    "Optimisé pour l'accessibilité"
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "shortcuts": [
+    {
+      "name": "Sons Apaisants",
+      "short_name": "Sons",
+      "description": "Accès direct au mixeur de sons thérapeutiques",
+      "url": "./index.html#mixer",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text x='48' y='65' font-size='60' text-anchor='middle'>🎵</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Visuels Relaxants",
+      "short_name": "Visuels",
+      "description": "Animations visuelles pour la relaxation",
+      "url": "./index.html#visuals",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text x='48' y='65' font-size='60' text-anchor='middle'>✨</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Minuteur",
+      "short_name": "Timer",
+      "description": "Minuteur de pause sensorielle",
+      "url": "./index.html#timer",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><text x='48' y='65' font-size='60' text-anchor='middle'>⏰</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

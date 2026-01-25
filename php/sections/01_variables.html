@@ -1,0 +1,93 @@
+<div class="sec-header">
+    <div class="sec-num">01</div>
+    <div>
+        <h2 class="sec-title">Variables & Types</h2>
+        <p class="sec-sub">Déclaration, typage strict, et portées</p>
+    </div>
+</div>
+
+<!-- ANALOGIE -->
+<div class="grid2">
+    <div class="ref-card">
+        <h4>🏷️ Analogie : L'Étiquette</h4>
+        <p>Une variable n'est pas une boîte, c'est une <strong>étiquette</strong> que l'on pose sur une valeur en
+            mémoire.</p>
+        <p><code>$titre = "Mémo";</code> signifie que l'étiquette <code>$titre</code> pointe vers la chaîne "Mémo".</p>
+    </div>
+    <div class="ref-card">
+        <h4>📏 Typage</h4>
+        <p>PHP est dynamiquement typé, mais le <strong>Typage Strict</strong> est la norme professionnelle aujourd'hui.
+        </p>
+        <p>Cela évite des bugs silencieux (ex: additionner "10 pommes" + 5).</p>
+    </div>
+</div>
+
+<details>
+    <summary>📖 Les Types Scalaires (Primitifs)</summary>
+    <div>
+        <ul>
+            <li><code>bool</code> : Vrai/Faux (1 bit). Attention, "false" (string) est Vrai !</li>
+            <li><code>int</code> : Entier (souvent 64 bits). <code>PHP_INT_MAX</code> pour la limite.</li>
+            <li><code>float</code> : Décimal. Attention aux précisions (0.1 + 0.2 != 0.3).</li>
+            <li><code>string</code> : Chaîne de caractères.</li>
+        </ul>
+    </div>
+</details>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Exemples &
+        Typage</div>
+    <pre><span class="tag">&lt;?php</span>
+<span class="c">// Mode Strict (Premier ligne du fichier !)</span>
+<span class="kw">declare</span>(strict_types=<span class="num">1</span>);
+
+<span class="c">// Variables basiques</span>
+<span class="var">$nom</span> = <span class="str">"CyberPunk"</span>;      <span class="c">// string</span>
+<span class="var">$annee</span> = <span class="num">2077</span>;           <span class="c">// int</span>
+<span class="var">$prix</span> = <span class="num">59.99</span>;           <span class="c">// float</span>
+<span class="var">$isReleased</span> = <span class="kw">true</span>;      <span class="c">// bool</span>
+<span class="var">$features</span> = <span class="kw">null</span>;        <span class="c">// null (absence de valeur)</span>
+
+<span class="c">// Constantes (Immuables)</span>
+<span class="kw">const</span> <span class="var">MAX_LIVES</span> = <span class="num">3</span>;     <span class="c">// Compile-time (rapide)</span>
+<span class="kw">define</span>(<span class="str">'API_URL'</span>, <span class="str">'/v1'</span>); <span class="c">// Runtime (flexible)</span>
+
+<span class="c">// Interpolation (Double quotes uniquement)</span>
+<span class="kw">echo</span> <span class="str">"Le jeu $nom est sorti en $annee"</span>;
+<span class="kw">echo</span> <span class="str">'Le jeu $nom'</span>; <span class="c">// Affiche "Le jeu $nom"</span>
+
+<span class="c">// Variable dynamique (Magie noire 🧙‍♂️)</span>
+<span class="var">$a</span> = <span class="str">"hello"</span>;
+<span class="var">$$a</span> = <span class="str">"world"</span>;
+<span class="kw">echo</span> <span class="var">$hello</span>; <span class="c">// Affiche "world"</span></pre>
+</div>
+
+<h3>Portée (Scope)</h3>
+<div class="info">
+    <p>Une variable définie hors d'une fonction <strong>N'EST PAS</strong> visible dedans (contrairement au JS).</p>
+</div>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Scope.php
+    </div>
+    <pre><span class="var">$globalVar</span> = <span class="str">"Dehors"</span>;
+
+<span class="kw">function</span> <span class="fn">test</span>() {
+    <span class="c">// echo $globalVar; // ❌ ERREUR : Undefined variable</span>
+    
+    <span class="c">// Solution 1 (Mauvais): global</span>
+    <span class="kw">global</span> <span class="var">$globalVar</span>;
+    
+    <span class="c">// Solution 2 (Bon): Passer en argument</span>
+    <span class="c">// Solution 3 (Moderne): use() pour les closures</span>
+}
+
+<span class="c">// Superglobales (Toujours visibles)</span>
+<span class="kw">echo</span> <span class="var">$_SERVER</span>[<span class="str">'HTTP_HOST'</span>];</pre>
+</div>
+
+<div class="tip">
+    <strong>💡 Null Coalescing</strong><br>
+    Au lieu de <code>isset($x) ? $x : 'défaut'</code>,<br>
+    Utilisez <code>$x ?? 'défaut'</code> (PHP 7+).
+</div>

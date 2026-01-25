@@ -1,0 +1,104 @@
+<div class="sec-header">
+    <div class="sec-num">10</div>
+    <div>
+        <h2 class="sec-title">Gestion des Fichiers</h2>
+        <p class="sec-sub">Lecture, Écriture et Uploads sécurisés</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>PHP est né pour manipuler des fichiers. Que ce soit pour enregistrer des logs, générer des CSV ou gérer des
+        photos d'utilisateurs, la maîtrise du système de fichiers (File System) est cruciale.</p>
+</div>
+
+<!-- PARTIE 1 : ANALOGIE -->
+<section>
+    <h3>1. L'Armoire à Archives</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🗄️ Analogie</h4>
+            <p>Manipuler des fichiers en PHP, c'est comme gérer une armoire à archives :</p>
+            <ul>
+                <li><strong>Lecture</strong> : Ouvrir un dossier pour lire une fiche.</li>
+                <li><strong>Écriture</strong> : Remplir une nouvelle fiche et la ranger.</li>
+                <li><strong>Permissions</strong> : Avoir ou non la clé de l'armoire (chmod).</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Serveur PHP ]
+      |
+      |-- (Lecture) ----> [ fichier.txt ]
+      |-- (Écriture) ---> [ logs/ ]
+      |-- (Effacement) -> [ tmp/ ]</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : LECTURE / ECRITURE -->
+<section>
+    <h3>2. Méthodes Rapides vs Méthodes de Flux</h3>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Mode
+                "One-Shot"</div>
+            <pre><span class="c">// Lecture complète en 1 ligne</span>
+<span class="var">$content</span> = <span class="fn">file_get_contents</span>(<span class="str">'doc.txt'</span>);
+
+<span class="c">// Écriture complète (écrase tout)</span>
+<span class="fn">file_put_contents</span>(<span class="str">'doc.txt'</span>, <span class="str">'Nouveau texte'</span>);
+
+<span class="c">// Ajouter à la fin (Append)</span>
+<span class="fn">file_put_contents</span>(<span class="str">'log.txt'</span>, <span class="str">"Log..."</span>, <span class="var">FILE_APPEND</span>);</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Mode
+                "Flux" (Moins de RAM)</div>
+            <pre><span class="var">$handle</span> = <span class="fn">fopen</span>(<span class="str">'gros_fichier.csv'</span>, <span class="str">'r'</span>);
+
+<span class="kw">while</span> ((<span class="var">$line</span> = <span class="fn">fgetcsv</span>(<span class="var">$handle</span>)) !== <span class="kw">false</span>) {
+    <span class="c">// On traite ligne par ligne</span>
+}
+
+<span class="fn">fclose</span>(<span class="var">$handle</span>);</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 3 : UPLOADS -->
+<section>
+    <h3>3. Upload de fichiers : Le défi sécurité</h3>
+    <div class="warning">
+        <strong>🚨 Danger :</strong> Ne faites jamais confiance au nom du fichier envoyé par l'utilisateur. Un pirate
+        pourrait envoyer un fichier <code>shell.php</code> pour prendre le contrôle du serveur.
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>UploadSecu.php</div>
+        <pre><span class="kw">if</span> (<span class="var">$_FILES</span>[<span class="str">'avatar'</span>][<span class="str">'error'</span>] === <span class="var">UPLOAD_ERR_OK</span>) {
+    
+    <span class="c">// 1. Vérifier le type MIME (pas l'extension !)</span>
+    <span class="var">$finfo</span> = <span class="kw">new</span> <span class="fn">finfo</span>(<span class="var">FILEINFO_MIME_TYPE</span>);
+    <span class="var">$type</span> = <span class="var">$finfo</span>-><span class="fn">file</span>(<span class="var">$_FILES</span>[<span class="str">'avatar'</span>][<span class="str">'tmp_name'</span>]);
+
+    <span class="kw">if</span> (<span class="fn">in_array</span>(<span class="var">$type</span>, [<span class="str">'image/jpeg'</span>, <span class="str">'image/png'</span>])) {
+        <span class="c">// 2. Générer un nom Aléatoire</span>
+        <span class="var">$newName</span> = <span class="fn">bin2hex</span>(<span class="fn">random_bytes</span>(<span class="num">8</span>)) . <span class="str">".jpg"</span>;
+        
+        <span class="c">// 3. Déplacer dans le dossier final</span>
+        <span class="fn">move_uploaded_file</span>(
+            <span class="var">$_FILES</span>[<span class="str">'avatar'</span>][<span class="str">'tmp_name'</span>], 
+            <span class="str">"uploads/"</span> . <span class="var">$newName</span>
+        );
+    }
+}</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Permissions (Chmod)</strong><br>
+    Sur Linux, assurez-vous que le dossier de destination appartient à l'utilisateur <code>www-data</code> (le serveur
+    web) et a les droits <code>755</code> ou <code>775</code>.
+</div>

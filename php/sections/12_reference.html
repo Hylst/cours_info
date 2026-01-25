@@ -1,0 +1,88 @@
+<div class="sec-header">
+    <div class="sec-num">12</div>
+    <div>
+        <h2 class="sec-title">Référence & Cheat Sheet</h2>
+        <p class="sec-sub">Les outils indispensables au quotidien</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>PHP possède des milliers de fonctions. Personne ne les connaît toutes. L'important n'est pas de tout savoir, mais
+        de savoir <strong>où chercher</strong>.</p>
+</div>
+
+<!-- CATEGORIES -->
+<section>
+    <h3>📌 Fonctions de Tableaux (Arrays)</h3>
+    <div class="grid2">
+        <ul class="ref-card">
+            <li><code>count($a)</code> : Taille du tableau.</li>
+            <li><code>array_merge($a, $b)</code> : Fusionner.</li>
+            <li><code>array_push($a, $v)</code> : Ajouter à la fin.</li>
+            <li><code>in_array($v, $a)</code> : Vérifier l'existence.</li>
+        </ul>
+        <ul class="ref-card">
+            <li><code>array_keys($a)</code> : Liste des clés.</li>
+            <li><code>array_values($a)</code> : Liste des valeurs.</li>
+            <li><code>sort($a)</code> : Trier (croissant).</li>
+            <li><code>array_slice($a, 0, 5)</code> : Extraire une partie.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Fonctions de Chaînes (Strings)</h3>
+    <div class="grid2">
+        <ul class="ref-card">
+            <li><code>strlen($s)</code> : Longueur (octets).</li>
+            <li><code>mb_strlen($s)</code> : Longueur (caractères).</li>
+            <li><code>str_replace($o, $n, $s)</code> : Remplacer.</li>
+            <li><code>trim($s)</code> : Nettoyer les bords.</li>
+        </ul>
+        <ul class="ref-card">
+            <li><code>explode($d, $s)</code> : Splitter en tableau.</li>
+            <li><code>implode($d, $a)</code> : Joindre en chaîne.</li>
+            <li><code>substr($s, 0, 10)</code> : Couper.</li>
+            <li><code>strtoupper($s)</code> : En MAJUSCULES.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Debug & Utilitaires</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Debug.php</div>
+        <pre><span class="fn">var_dump</span>(<span class="var">$var</span>); <span class="c">// Affiche tout (type + valeur)</span>
+<span class="fn">print_r</span>(<span class="var">$arr</span>);  <span class="c">// Affiche proprement un tableau</span>
+<span class="fn">die</span>(<span class="str">"Stop"</span>);     <span class="c">// Arrête le script avec un message</span>
+<span class="fn">exit</span>;           <span class="c">// Arrête le script</span>
+
+<span class="c">// Temps d'exécution</span>
+<span class="var">$start</span> = <span class="fn">microtime</span>(<span class="kw">true</span>);
+<span class="c">// ... code ...</span>
+<span class="kw">echo</span> <span class="fn">microtime</span>(<span class="kw">true</span>) - <span class="var">$start</span>;</pre>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Math & Dates</h3>
+    <div class="grid2">
+        <ul class="ref-card">
+            <li><code>rand(1, 100)</code> : Nombre aléatoire.</li>
+            <li><code>round(12.55, 1)</code> : Arrondir -> 12.6.</li>
+            <li><code>abs(-5)</code> : Valeur absolue -> 5.</li>
+        </ul>
+        <ul class="ref-card">
+            <li><code>date('d/m/Y H:i')</code> : Date actuelle.</li>
+            <li><code>time()</code> : Timestamp actuel.</li>
+            <li><code>strtotime('next monday')</code> : Texte -> Date.</li>
+        </ul>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Documentation Officielle</strong><br>
+    Le site <a href="https://www.php.net/manual/fr/" target="_blank" style="color:var(--primary);">php.net</a> est votre
+    meilleur ami. Tapez <code>php.net/ma_fonction</code> pour y accéder directement.
+</div>

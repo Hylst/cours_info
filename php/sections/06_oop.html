@@ -1,0 +1,277 @@
+<div class="sec-header">
+    <div class="sec-num">06</div>
+    <div>
+        <h2 class="sec-title">Le Guide Ultime de la POO</h2>
+        <p class="sec-sub">De la théorie à la pratique professionnelle : Maîtriser l'Architecture Objet</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>La Programmation Orientée Objet (POO) n'est pas juste une syntaxe, c'est une <strong>philosophie</strong>. Elle
+        permet de structurer des systèmes complexes en les découpant en petites briques autonomes (Objets) qui
+        communiquent entre elles.</p>
+</div>
+
+<!-- ========================================== -->
+<!-- 1. CLASSES & OBJETS -->
+<!-- ========================================== -->
+<section>
+    <h3>1. Le Concept Fondamental : Classe vs Objet</h3>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>📘 La Classe (Le Plan)</h4>
+            <p>C'est une définition abstraite. Elle liste les caractéristiques (Propriétés) et les comportements
+                (Méthodes).</p>
+            <p><em>Exemple : Le plan d'architecte d'une maison T4.</em></p>
+        </div>
+        <div class="ref-card">
+            <h4>🏠 L'Objet (L'Instance)</h4>
+            <p>C'est la version concrète et vivante de la classe. Elle occupe de la place en mémoire.</p>
+            <p><em>Exemple : La maison au 12 rue des Lila, construite selon le plan T4.</em></p>
+        </div>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Use Case
+            : E-commerce</div>
+        <pre><span class="c">// Définition (Classe)</span>
+<span class="kw">class</span> <span class="fn">Product</span> {
+    <span class="c">// Constructeur moderne (PHP 8) : Propriétés définies directements</span>
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">public string</span> <span class="var">$name</span>,
+        <span class="kw">public float</span> <span class="var">$price</span>
+    ) {}
+}
+
+<span class="c">// Utilisation (Objets)</span>
+<span class="var">$p1</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"iPhone"</span>, <span class="num">999</span>);
+<span class="var">$p2</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"Coque"</span>, <span class="num">20</span>);
+<span class="c">// $p1 et $p2 sont indépendants.</span></pre>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 2. ENCAPSULATION -->
+<!-- ========================================== -->
+<section>
+    <h3>2. Encapsulation : La Protection des Données</h3>
+    <p>Le but est d'empêcher que n'importe qui modifie n'importe quoi. On "encapsule" les données sensibles dans un
+        coffre-fort.</p>
+
+    <div class="asci-art">
+        <pre>
+[ Extérieur ] --(stop)--> [ Propriété Privée ($solde) ]
+      |
+      |---(ok)---> [ Méthode Publique (deposer) ] ---> [ Modifie $solde ]
+        </pre>
+    </div>
+
+    <div class="grid3">
+        <div class="ref-card">
+            <h4>🟢 Public</h4>
+            <p>Accessible par tout le monde.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🔴 Private</h4>
+            <p>Accessible UNIQUEMENT depuis l'intérieur de la classe.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🟡 Protected</h4>
+            <p>Accessible par la classe ET ses enfants (Héritage).</p>
+        </div>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Use Case
+            : Compte Bancaire</div>
+        <pre><span class="kw">class</span> <span class="fn">BankAccount</span> {
+    <span class="kw">private float</span> <span class="var">$balance</span> = <span class="num">0</span>; <span class="c">// Personne ne peut toucher ça directement</span>
+
+    <span class="kw">public function</span> <span class="fn">deposit</span>(<span class="kw">float</span> <span class="var">$amount</span>): <span class="kw">void</span> {
+        <span class="kw">if</span> (<span class="var">$amount</span> > <span class="num">0</span>) {
+            <span class="var">$this</span>-><span class="prop">balance</span> += <span class="var">$amount</span>;
+        }
+    }
+}</pre>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 3. ABSTRACTION (DEEP DIVE) -->
+<!-- ========================================== -->
+<section>
+    <h3>3. Abstraction (Classes Abstraites & Interfaces)</h3>
+    <div class="intro-box" style="background:var(--card); border-left:4px solid var(--accent);">
+        <p><strong>C'est LE concept le plus important pour l'architecture.</strong><br>
+            L'abstraction permet de définir des concepts génériques sans se soucier des détails techniques.</p>
+    </div>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>📜 Interface (Le Contrat)</h4>
+            <p>Elle dit <strong>QUOI</strong> faire, mais pas comment.<br> Une classe peut implémenter
+                <em>plusieurs</em> interfaces.</p>
+            <p><em>Exemple : "Tout objet 'Volant' doit avoir une méthode decoller()".</em></p>
+        </div>
+        <div class="ref-card">
+            <h4>👻 Classe Abstraite (Le Modèle Partiel)</h4>
+            <p>Elle peut contenir du code (méthodes communes) ET des méthodes abstraites (à définir par les enfants).
+                Classe unique (extends).</p>
+            <p><em>Exemple : "Un Véhicule a une couleur (commun) mais roule différemment (abstrait)."</em></p>
+        </div>
+    </div>
+
+    <h4 style="margin-top:20px;">Use Case : Moteur de Rendu Graphique</h4>
+    <p>On veut dessiner des formes. On sait que toute forme a une surface, mais la formule change selon la forme.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Approche
+            Abstraite</div>
+        <pre><span class="c">// CONCEPT ABSTRAIT</span>
+<span class="kw">abstract class</span> <span class="fn">Shape</span> {
+    <span class="kw">protected string</span> <span class="var">$color</span>; <span class="c">// Code commun</span>
+
+    <span class="kw">public function</span> <span class="fn">setColor</span>(<span class="var">$c</span>) { <span class="var">$this</span>-><span class="prop">color</span> = <span class="var">$c</span>; }
+    
+    <span class="c">// La méthode "trou" que les enfants DOIVENT remplir</span>
+    <span class="kw">abstract public function</span> <span class="fn">area</span>(): <span class="kw">float</span>;
+}
+
+<span class="c">// IMPLEMENTATION CONCRETE 1</span>
+<span class="kw">class</span> <span class="fn">Square</span> <span class="kw">extends</span> <span class="fn">Shape</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">private float</span> <span class="var">$side</span>) {}
+    
+    <span class="kw">public function</span> <span class="fn">area</span>(): <span class="kw">float</span> {
+        <span class="kw">return</span> <span class="var">$this</span>-><span class="prop">side</span> * <span class="var">$this</span>-><span class="prop">side</span>;
+    }
+}
+
+<span class="c">// IMPLEMENTATION CONCRETE 2</span>
+<span class="kw">class</span> <span class="fn">Circle</span> <span class="kw">extends</span> <span class="fn">Shape</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">private float</span> <span class="var">$radius</span>) {}
+    
+    <span class="kw">public function</span> <span class="fn">area</span>(): <span class="kw">float</span> {
+        <span class="kw">return</span> <span class="num">3.14</span> * <span class="var">$this</span>-><span class="prop">radius</span> ** <span class="num">2</span>;
+    }
+}</pre>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 4. POLYMORPHISME A L'USAGE -->
+<!-- ========================================== -->
+<section>
+    <h3>4. Polymorphisme : La flexibilité absolue</h3>
+    <p>C'est la capacité d'interchanger des objets tant qu'ils respectent le même contrat (Interface ou Classe parente).
+    </p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Use Case
+            : Système de Paiement</div>
+        <pre><span class="c">// Contrat</span>
+<span class="kw">interface</span> <span class="fn">PaymentGateway</span> {
+    <span class="kw">public function</span> <span class="fn">pay</span>(<span class="kw">float</span> <span class="var">$amount</span>): <span class="kw">bool</span>;
+}
+
+<span class="c">// La classe Checkout ne connait ni PayPal ni Stripe.</span>
+<span class="c">// Elle connait juste "PaymentGateway".</span>
+<span class="kw">class</span> <span class="fn">Checkout</span> {
+    <span class="kw">public function</span> <span class="fn">process</span>(<span class="fn">PaymentGateway</span> <span class="var">$gateway</span>, <span class="kw">float</span> <span class="var">$total</span>) {
+        <span class="var">$gateway</span>-><span class="fn">pay</span>(<span class="var">$total</span>);
+    }
+}
+
+<span class="c">// On peut changer de méthode de paiement sans casser le Checkout !</span>
+<span class="var">$checkout</span>-><span class="fn">process</span>(<span class="kw">new</span> <span class="fn">PayPal</span>(), <span class="num">50</span>);
+<span class="var">$checkout</span>-><span class="fn">process</span>(<span class="kw">new</span> <span class="fn">Stripe</span>(), <span class="num">50</span>);</pre>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 5. TRAITS -->
+<!-- ========================================== -->
+<section>
+    <h3>5. Les Traits (Héritage Horizontal)</h3>
+    <p>PHP ne permet pas l'héritage multiple (un enfant ne peut pas avoir 2 pères). Les <strong>Traits</strong>
+        contournent ça. C'est du "Copier-Coller" intelligent.</p>
+
+    <div class="asci-art">
+        <pre>
+ [Trait Loggable] -> injecté dans -> [Class User]
+                  -> injecté dans -> [Class Product]
+                  -> injecté dans -> [Class Order]
+        </pre>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Use Case
+            : Logs partagés</div>
+        <pre><span class="kw">trait</span> <span class="fn">Loggable</span> {
+    <span class="kw">public function</span> <span class="fn">log</span>(<span class="var">$msg</span>) {
+        <span class="fn">file_put_contents</span>(<span class="str">'app.log'</span>, <span class="fn">date</span>(<span class="str">'Y-m-d'</span>) . <span class="str">": $msg\n"</span>, <span class="var">FILE_APPEND</span>);
+    }
+}
+
+<span class="kw">class</span> <span class="fn">User</span> {
+    <span class="kw">use</span> <span class="fn">Loggable</span>; <span class="c">// Gagne la méthode log()</span>
+    
+    <span class="kw">public function</span> <span class="fn">save</span>() {
+        <span class="var">$this</span>-><span class="fn">log</span>(<span class="str">"User saved"</span>); 
+    }
+}</pre>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 6. MAGIC METHODS -->
+<!-- ========================================== -->
+<section>
+    <h3>6. Méthodes Magiques (Hooks)</h3>
+    <p>Elles commencent par <code>__</code> et interceptent des événements.</p>
+    <ul class="ref-card">
+        <li><code>__construct()</code> : À la création (new).</li>
+        <li><code>__toString()</code> : Quand on fait <code>echo $obj</code>.</li>
+        <li><code>__get($name)</code> : Quand on lit une propriété qui n'existe pas.</li>
+        <li><code>__call($name, $args)</code> : Quand on appelle une méthode qui n'existe pas.</li>
+    </ul>
+</section>
+
+<!-- ========================================== -->
+<!-- 7. DESIGN PATTERN VITAL -->
+<!-- ========================================== -->
+<section>
+    <h3>7. Dependency Injection (DI)</h3>
+    <p>C'est le pattern le plus important en PHP moderne (Symfony/Laravel).<br>
+        <strong>Principe :</strong> Une classe ne doit pas créer ses dépendances (avec <code>new</code>), elle doit les
+        demander dans son constructeur.
+    </p>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head">❌ Couplage fort (Mauvais)</div>
+            <pre><span class="kw">class</span> <span class="fn">Report</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>() {
+        <span class="c">// Impossible à tester ou changer !</span>
+        <span class="var">$this</span>-><span class="prop">mailer</span> = <span class="kw">new</span> <span class="fn">GmailSender</span>();
+    }
+}</pre>
+        </div>
+        <div class="code">
+            <div class="code-head">✅ Injection (Bon)</div>
+            <pre><span class="kw">class</span> <span class="fn">Report</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="c">// On injecte une Interface !</span>
+        <span class="kw">private</span> <span class="fn">MailerInterface</span> <span class="var">$mailer</span>
+    ) {}
+}</pre>
+        </div>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Composition > Héritage</strong><br>
+    L'héritage est rigide. La composition (assembler des objets via DI ou Traits) est souple. <br>
+    <em>Exemple : Au lieu de faire <code>class SuperCar extends Car</code>, faites une <code>Car</code> qui contient un
+        objet <code>Engine</code>.</em>
+</div>

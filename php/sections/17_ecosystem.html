@@ -1,0 +1,114 @@
+<div class="sec-header">
+    <div class="sec-num">17</div>
+    <div>
+        <h2 class="sec-title">Écosystème & Dépendances</h2>
+        <p class="sec-sub">Composer, Packagist et la Gestion moderne de projet</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>En PHP moderne, on ne télécharge plus des fichiers .zip à la main. On utilise <strong>Composer</strong>, l'outil
+        qui a sauvé PHP en structurant la façon dont on partage et utilise le code de la communauté.</p>
+</div>
+
+<!-- 1. COMPOSER -->
+<section>
+    <h3>1. Composer : Le Bibliothécaire Intelligent</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>📚 Analogie</h4>
+            <p>Imaginez que vous voulez construire une voiture. Au lieu de forger chaque vis, vous consultez un
+                catalogue (<strong>Packagist</strong>). Vous dites au bibliothécaire (<strong>Composer</strong>) ce dont
+                vous avez besoin. Il va chercher les pièces, vérifie qu'elles sont compatibles entre elles, et les range
+                dans votre garage (dossier <code>/vendor</code>).</p>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Votre Projet ] 
+      |
+      |-- composer.json (Ma liste de courses)
+      |-- composer.lock (Le ticket de caisse précis)
+      |
+ [ Composer ] <--- dialogue ---> [ Packagist.org ]
+      |
+ [ /vendor ] (Le stockage local des librairies)</pre>
+        </div>
+    </div>
+
+    <h4>Le duel : JSON vs LOCK</h4>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>composer.json</div>
+            <pre>{
+    "require": {
+        "monolog/monolog": "^3.0"
+    }
+}
+<span class="c">// ^3.0 signifie "N'importe quelle 
+// version de 3.0 à 3.9"</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>composer.lock</div>
+            <pre>{
+    "name": "monolog/monolog",
+    "version": "3.1.2",
+    "hash": "abc123..."
+}
+<span class="c">// Figé ! Garantie que toute l'équipe 
+// a EXACTEMENT la même version.</span></pre>
+        </div>
+    </div>
+</section>
+
+<!-- 2. AUTOLOADING -->
+<section>
+    <h3>2. L'Autoloading : Magie de rangement</h3>
+    <p>Le standard <strong>PSR-4</strong> définit que le nom d'une classe doit correspondre au chemin du fichier.
+        Composer utilise cette règle pour charger vos fichiers automatiquement.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Mapping
+            PSR-4</div>
+        <pre><span class="c">// Dans composer.json</span>
+"autoload": {
+    "psr-4": { "App\\": "src/" }
+}
+
+<span class="c">// Utilisation</span>
+<span class="kw">use</span> <span class="fn">App\Service\Mailer</span>; 
+<span class="c">// Composer sait qu'il doit chercher dans : 
+// src/Service/Mailer.php</span></pre>
+    </div>
+</section>
+
+<!-- 3. DOTENV -->
+<section>
+    <h3>3. Sécurité : Les Variables d'Environnement</h3>
+    <p>Un fichier <code>.env</code> permet de configurer votre application sans toucher au code source. C'est là qu'on
+        met les secrets (clés API, mots de passe BDD).</p>
+
+    <div class="warning">
+        <strong>🚨 Alerte Git :</strong> Le fichier <code>.env</code> ne doit JAMAIS être envoyé sur GitHub ou GitLab.
+        Ajoutez-le toujours dans votre <code>.gitignore</code>.
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Usage
+            DotEnv</div>
+        <pre><span class="c">// Chargement</span>
+<span class="var">$dotenv</span> = <span class="fn">Dotenv\Dotenv</span>::<span class="fn">createImmutable</span>(<span class="var">__DIR__</span>);
+<span class="var">$dotenv</span>-><span class="fn">load</span>();
+
+<span class="c">// Récupération sécurisée</span>
+<span class="var">$dbPass</span> = <span class="var">$_ENV</span>[<span class="str">'DB_PASSWORD'</span>] ?? <span class="fn">die</span>(<span class="str">'Config BDD manquante'</span>);</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Commandes utiles</strong><br>
+    - <code>composer install</code> : Installe ce qui est dans le .lock (pour les serveurs).<br>
+    - <code>composer update</code> : Met à jour les librairies vers les dernières versions autorisées.<br>
+    - <code>composer dump-autoload</code> : Force le rafraîchissement des chemins de classes.
+</div>

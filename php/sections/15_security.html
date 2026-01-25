@@ -1,0 +1,85 @@
+<div class="sec-header">
+    <div class="sec-num">15</div>
+    <div>
+        <h2 class="sec-title">Sécurité & Cryptographie</h2>
+        <p class="sec-sub">Protéger les données et les utilisateurs : Priorité #1</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>La sécurité n'est pas une option, c'est un métier. PHP offre des outils natifs pour se protéger des attaques les
+        plus courantes. Voici les 3 piliers à connaître par cœur.</p>
+</div>
+
+<!-- PARTIE 1 : MOTS DE PASSE -->
+<section>
+    <h3>1. Mots de passe : Plus jamais en clair !</h3>
+    <div class="warning">
+        <strong>🚨 Règle d'or :</strong> Ne stockez JAMAIS un mot de passe tel quel. Si votre BDD est piratée, tous vos
+        clients sont en danger. N'utilisez plus <code>md5()</code> ou <code>sha1()</code> (trop rapides à cracker).
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Passwords.php</div>
+        <pre><span class="c">// 1. À l'inscription : Hachage (Bcrypt par défaut)</span>
+<span class="var">$hash</span> = <span class="fn">password_hash</span>(<span class="str">"mon_pass_secret"</span>, <span class="var">PASSWORD_DEFAULT</span>);
+
+<span class="c">// 2. À la connexion : Vérification</span>
+<span class="kw">if</span> (<span class="fn">password_verify</span>(<span class="str">"mon_pass_secret"</span>, <span class="var">$hash</span>)) {
+    <span class="c">// Connecté !</span>
+} <span class="kw">else</span> {
+    <span class="c">// Erreur</span>
+}</pre>
+    </div>
+</section>
+
+<!-- PARTIE 2 : LES 3 MONSTRES (OWASP) -->
+<section>
+    <h3>2. Le TOP 3 des failles Web</h3>
+
+    <div class="grid3">
+        <div class="ref-card">
+            <h4>💉 SQL Injection</h4>
+            <p>Le pirate injecte du code SQL dans vos formulaires.</p>
+            <p><strong>Parade :</strong> Requêtes préparées (PDO).</p>
+        </div>
+        <div class="ref-card">
+            <h4>🎭 XSS (Cross Site Scripting)</h4>
+            <p>Le pirate injecte du JavaScript pour voler des cookies.</p>
+            <p><strong>Parade :</strong> <code>htmlspecialchars()</code> à l'affichage.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🔄 CSRF</h4>
+            <p>Le pirate déclenche une action à votre insu.</p>
+            <p><strong>Parade :</strong> Jetons (Tokens) de session.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 3 : CHIFFREMENT -->
+<section>
+    <h3>3. Chiffrement Réversible (AES)</h3>
+    <p>Parfois, on a besoin de cacher une info (ex: numéro de CB) mais de pouvoir la relire plus tard. On utilise
+        <strong>OpenSSL</strong>.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Encryption.php</div>
+        <pre><span class="var">$methode</span> = <span class="str">"aes-256-cbc"</span>;
+<span class="var">$cle</span> = <span class="str">"ma_clé_super_secrète_32_carac"</span>;
+<span class="var">$iv</span> = <span class="fn">openssl_random_pseudo_bytes</span>(<span class="num">16</span>);
+
+<span class="c">// Chiffrer</span>
+<span class="var">$crypt</span> = <span class="fn">openssl_encrypt</span>(<span class="str">"Secret"</span>, <span class="var">$methode</span>, <span class="var">$cle</span>, <span class="num">0</span>, <span class="var">$iv</span>);
+
+<span class="c">// Déchiffrer</span>
+<span class="kw">echo</span> <span class="fn">openssl_decrypt</span>(<span class="var">$crypt</span>, <span class="var">$methode</span>, <span class="var">$cle</span>, <span class="num">0</span>, <span class="var">$iv</span>);</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 HTTPS est Obligatoire</strong><br>
+    Peu importe la qualité de votre code PHP, si vous n'êtes pas en <strong>HTTPS</strong>, n'importe qui sur le réseau
+    (ex: Wi-Fi gratuit) peut "voir" les données passer en clair.
+</div>

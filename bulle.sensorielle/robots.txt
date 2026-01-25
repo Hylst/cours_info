@@ -1,0 +1,33 @@
+# Robots.txt pour Bulle Sensorielle
+# Application web thérapeutique pour enfants avec sensibilités sensorielles
+# Créée par Geoffroy Streit <geoffroy.streit@gmail.com>
+
+User-agent: *
+Allow: /
+
+# Fichiers principaux
+Allow: /index.html
+Allow: /manifest.json
+Allow: /styles.css
+Allow: /script.js
+
+# Dossiers de ressources
+Allow: /sons/
+Allow: /assets/
+
+# Fichiers de documentation
+Allow: /README.md
+Allow: /changelog.md
+
+# Sitemap (si disponible)
+Sitemap: https://bulle-sensorielle.app/sitemap.xml
+
+# Délai de crawl respectueux (10 secondes)
+Crawl-delay: 10
+
+# Informations sur l'application
+# Bulle Sensorielle - Sanctuaire numérique apaisant
+# Conçue pour les enfants de 6-12 ans avec TSA, TDAH et sensibilités sensorielles
+# Technologies: HTML5, CSS3, JavaScript ES6+, Tone.js, Canvas API
+# Licence: MIT
+# Version: 2.7.3

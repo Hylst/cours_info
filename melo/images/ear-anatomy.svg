@@ -1,0 +1,49 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Outer Ear -->
+  <path d="M100,300 C140,200 180,150 200,180 C220,210 200,240 220,260 C240,280 260,270 270,250 C280,230 300,220 320,240 C340,260 320,300 300,320 C280,340 240,350 200,340 C160,330 130,320 100,300 Z" fill="#F9DCC4" stroke="#333" stroke-width="2"/>
+  <text x="150" y="400" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Oreille externe</text>
+  
+  <!-- Ear Canal -->
+  <path d="M300,290 L400,290 C420,290 430,270 430,250 C430,230 420,220 400,220 L300,220 Z" fill="#FEE3D4" stroke="#333" stroke-width="2"/>
+  <text x="350" y="270" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">Conduit auditif</text>
+  
+  <!-- Eardrum -->
+  <path d="M400,220 L400,290 C410,290 420,280 420,255 C420,230 410,220 400,220 Z" fill="#F0C3A0" stroke="#333" stroke-width="2"/>
+  <text x="410" y="320" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">Tympan</text>
+  
+  <!-- Middle Ear -->
+  <ellipse cx="480" cy="255" rx="50" ry="40" fill="#FCD5CE" stroke="#333" stroke-width="2"/>
+  <text x="480" y="400" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Oreille moyenne</text>
+  
+  <!-- Ossicles -->
+  <path d="M420,255 L440,255 L460,245 L480,255" fill="none" stroke="#333" stroke-width="3"/>
+  <text x="450" y="230" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">Osselets</text>
+  
+  <!-- Inner Ear -->
+  <ellipse cx="600" cy="255" rx="70" ry="50" fill="#D6BCFA" stroke="#333" stroke-width="2"/>
+  <path d="M550,255 C570,235 590,225 610,235 C630,245 640,265 630,285 C620,305 600,310 580,300 C560,290 550,275 550,255 Z" fill="#B794F4" stroke="#333" stroke-width="2"/>
+  <text x="600" y="400" font-family="Arial" font-size="16" fill="#333" text-anchor="middle">Oreille interne</text>
+  <text x="590" y="280" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">Cochlée</text>
+  
+  <!-- Semicircular Canals -->
+  <path d="M630,230 C650,210 670,220 670,240 C670,260 650,270 630,250 Z" fill="none" stroke="#333" stroke-width="2"/>
+  <path d="M640,215 C660,195 680,205 680,225" fill="none" stroke="#333" stroke-width="2"/>
+  <path d="M650,205 C670,185 690,195 690,215" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="680" y="260" font-family="Arial" font-size="12" fill="#333" text-anchor="middle">Canaux semi-circulaires</text>
+  
+  <!-- Sound Wave -->
+  <path d="M50,255 C70,235 90,275 110,255 C130,235 150,275 170,255" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="110" y="220" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">Ondes sonores</text>
+  
+  <!-- Nerve -->
+  <path d="M660,255 C680,260 700,270 720,290 C740,310 750,340 750,370" fill="none" stroke="#333" stroke-width="3" stroke-dasharray="5,5"/>
+  <text x="720" y="320" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">Nerf auditif</text>
+  <text x="720" y="340" font-family="Arial" font-size="14" fill="#333" text-anchor="middle">(vers le cerveau)</text>
+  
+  <!-- Title -->
+  <text x="400" y="500" font-family="Arial" font-size="20" fill="#333" text-anchor="middle" font-weight="bold">Anatomie de l'oreille humaine</text>
+</svg>

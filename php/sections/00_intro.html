@@ -1,0 +1,115 @@
+<!-- HEADER -->
+<div class="sec-header">
+    <div class="sec-num">00</div>
+    <div>
+        <h2 class="sec-title">Introduction & Écosystème</h2>
+        <p class="sec-sub">Histoire, Rôle du PHP, et Mode d'emploi</p>
+    </div>
+</div>
+
+<!-- MODE D'EMPLOI (UX IMPROVEMENT) -->
+<div class="info">
+    <h4 style="margin-top:0; display:flex; align-items:center; gap:8px;">
+        <span>🎓</span> Mode d'emploi de ce mémo
+    </h4>
+    <p style="margin-bottom:0;">
+        Ce site est une <strong>Single Page Application (SPA)</strong>.
+    </p>
+    <ul style="margin-top:8px; margin-bottom:0;">
+        <li>Cliquez sur les <strong>modules</strong> ci-dessous (ex: <em>01 Variables</em>) pour afficher le cours.</li>
+        <li>Utilisez le bouton <strong>⬅ Menu Principal</strong> (en haut ou bas de page) pour revenir ici.</li>
+        <li>Les codes encadrés possèdent un bouton <strong>📋 Copier</strong> pour tester rapidement.</li>
+    </ul>
+</div>
+
+<!-- CONCEPT & ANALOGIE -->
+<section>
+    <h3>Le Serveur : Le Cuisinier du Web</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🍰 Analogie</h4>
+            <p>Imaginez un restaurant.</p>
+            <ul>
+                <li><strong>HTML/CSS (Client)</strong> : C'est la salle, la déco, et le menu. C'est ce que le client
+                    voit.</li>
+                <li><strong>PHP (Serveur)</strong> : C'est le <strong>cuisinier</strong> en cuisine. Le client ne le
+                    voit jamais, mais c'est lui qui prépare le plat (la page web) à la demande, en fonction des
+                    ingrédients (Base de données).</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>💻 Technique</h4>
+            <p><strong>PHP</strong> (Hypertext Preprocessor) est un langage de script <strong>côté serveur</strong>.</p>
+            <p>Contrairement au JavaScript (qui s'exécute souvent sur votre ordinateur), le code PHP est exécuté sur le
+                serveur, qui ne renvoie que le résultat final (HTML) au navigateur.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHY PHP? -->
+<details open>
+    <summary>Pourquoi PHP en 2026 ?</summary>
+    <div>
+        <p>On entend parfois que "PHP est mort". C'est faux.</p>
+        <ul style="margin-top:10px;">
+            <li><strong>79% du Web</strong> l'utilise (WordPress, Laravel, Symfony).</li>
+            <li><strong>Performance</strong> : Avec PHP 8+ et le compilateur JIT, il est extrêmement rapide.</li>
+            <li><strong>Écosystème</strong> : Composer est l'un des meilleurs gestionnaires de paquets au monde.</li>
+            <li><strong>Facilité</strong> : Il est permissif pour les débutants, mais rigoureux pour les experts (Typage
+                fort optionnel).</li>
+        </ul>
+    </div>
+</details>
+
+<!-- HISTOIRE -->
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Bref
+        Historique</div>
+    <div style="padding:16px; font-size:0.9rem; color:var(--muted-foreground);">
+        <ul style="border-left:2px solid var(--border); padding-left:20px; list-style:none;">
+            <li style="margin-bottom:10px;">
+                <strong style="color:var(--primary);">1995</strong> : Créé par Rasmus Lerdorf (Personal Home Page).
+            </li>
+            <li style="margin-bottom:10px;">
+                <strong style="color:var(--primary);">PHP 5 (2004)</strong> : La vraie POO arrive. C'est l'âge d'or des
+                Frameworks.
+            </li>
+            <li style="margin-bottom:10px;">
+                <strong style="color:var(--primary);">PHP 7 (2015)</strong> : <span style="color:var(--green);">+100% de
+                    performance</span>. Typage scalaire.
+            </li>
+            <li>
+                <strong style="color:var(--primary);">PHP 8+ (2020...)</strong> : Modernité absolue. Attributs, JIT,
+                Enum, Fibers.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- EXEMPLE BASIQUE -->
+<h3>Premier Script</h3>
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>hello.php
+    </div>
+    <pre><span class="tag">&lt;?php</span>
+<span class="c">// Le serveur exécute ceci :</span>
+<span class="var">$nom</span> = <span class="str">"Monde"</span>;
+<span class="var">$heure</span> = <span class="fn">date</span>(<span class="str">'H:i'</span>);
+
+<span class="kw">echo</span> <span class="str">"&lt;h1&gt;Bonjour $nom !&lt;/h1&gt;"</span>;
+<span class="kw">echo</span> <span class="str">"&lt;p&gt;Il est $heure.&lt;/p&gt;"</span>;
+<span class="tag">?&gt;</span></pre>
+</div>
+<div class="demo">
+    <div class="demo-title">Ce que reçoit le navigateur (HTML)</div>
+    <div class="demo-output" style="color:var(--foreground);">
+        &lt;h1&gt;Bonjour Monde !&lt;/h1&gt;<br>
+        &lt;p&gt;Il est 16:42.&lt;/p&gt;
+    </div>
+</div>
+
+<div class="tip">
+    <strong>💡 Astuce Débug</strong><br>
+    Pour lancer un serveur local rapidement sans Apache/WAMP :<br>
+    <code>php -S localhost:8000</code> dans votre terminal.
+</div>

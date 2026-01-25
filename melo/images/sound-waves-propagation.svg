@@ -1,0 +1,67 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="550" fill="#f8f9fa"/>
+  
+  <!-- Source -->
+  <circle cx="100" cy="250" r="40" fill="#8B5CF6"/>
+  <text x="100" y="250" font-family="Arial" font-size="16" fill="white" text-anchor="middle" dominant-baseline="middle">Source</text>
+  
+  <!-- Wave Circles -->
+  <circle cx="100" cy="250" r="80" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.9"/>
+  <circle cx="100" cy="250" r="120" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.8"/>
+  <circle cx="100" cy="250" r="160" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.7"/>
+  <circle cx="100" cy="250" r="200" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.6"/>
+  <circle cx="100" cy="250" r="240" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.5"/>
+  <circle cx="100" cy="250" r="280" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.4"/>
+  <circle cx="100" cy="250" r="320" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.3"/>
+  <circle cx="100" cy="250" r="360" stroke="#8B5CF6" stroke-width="2" fill="none" opacity="0.2"/>
+  
+  <!-- Compression/Rarefaction Labels -->
+  <line x1="500" y1="100" x2="520" y2="170" stroke="#333" stroke-width="1" stroke-dasharray="4"/>
+  <text x="480" y="90" font-family="Arial" font-size="14" fill="#333">Compression</text>
+  
+  <line x1="540" y1="170" x2="560" y2="100" stroke="#333" stroke-width="1" stroke-dasharray="4"/>
+  <text x="560" y="90" font-family="Arial" font-size="14" fill="#333">Raréfaction</text>
+  
+  <!-- Propagation Direction -->
+  <path d="M580,250 L680,250 L650,230 M680,250 L650,270" stroke="#333" stroke-width="2" fill="none"/>
+  <text x="630" y="230" font-family="Arial" font-size="14" fill="#333">Direction de propagation</text>
+  
+  <!-- Molecules representation -->
+  <g fill="#333" opacity="0.7">
+    <!-- Compressed region -->
+    <circle cx="180" cy="250" r="3"/>
+    <circle cx="190" cy="245" r="3"/>
+    <circle cx="185" cy="255" r="3"/>
+    <circle cx="175" cy="260" r="3"/>
+    <circle cx="170" cy="240" r="3"/>
+    <circle cx="180" cy="235" r="3"/>
+    <circle cx="195" cy="265" r="3"/>
+    
+    <!-- Normal region -->
+    <circle cx="250" cy="250" r="3"/>
+    <circle cx="270" cy="240" r="3"/>
+    <circle cx="260" cy="270" r="3"/>
+    <circle cx="240" cy="230" r="3"/>
+    
+    <!-- Rarefied region -->
+    <circle cx="330" cy="250" r="3"/>
+    <circle cx="350" cy="230" r="3"/>
+    <circle cx="310" cy="270" r="3"/>
+    <circle cx="370" cy="260" r="3"/>
+    
+    <!-- Compressed region -->
+    <circle cx="420" cy="250" r="3"/>
+    <circle cx="430" cy="245" r="3"/>
+    <circle cx="425" cy="255" r="3"/>
+    <circle cx="415" cy="260" r="3"/>
+    <circle cx="410" cy="240" r="3"/>
+    <circle cx="420" cy="235" r="3"/>
+    <circle cx="435" cy="265" r="3"/>
+  </g>
+  
+  <!-- Legend moved to the bottom with more space -->
+  <text x="100" y="470" font-family="Arial" font-size="18" fill="#333" font-weight="bold">Propagation des ondes sonores dans l'air</text>
+  <text x="100" y="500" font-family="Arial" font-size="14" fill="#333">Les zones de compression et de raréfaction se déplacent loin de la source</text>
+</svg>

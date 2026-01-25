@@ -1,0 +1,113 @@
+<div class="sec-header">
+    <div class="sec-num">16</div>
+    <div>
+        <h2 class="sec-title">Architecture MVC & Authentification</h2>
+        <p class="sec-sub">Organiser son projet comme un professionnel</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Quand un projet grandit, on ne peut plus tout mettre dans un seul fichier. On utilise alors l'architecture
+        <strong>MVC</strong> (Modèle-Vue-Contrôleur) pour séparer les données, la logique et l'affichage.</p>
+</div>
+
+<!-- PARTIE 1 : ANALOGIE DU RESTAURANT -->
+<section>
+    <h3>1. L'Analogie du Restaurant</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🤵 Le Contrôleur (Le Serveur)</h4>
+            <p>Il prend votre commande, va voir en cuisine, et vous apporte l'assiette. Il ne cuisine pas lui-même.</p>
+        </div>
+        <div class="ref-card">
+            <h4>👨‍🍳 Le Modèle (Le Chef)</h4>
+            <p>Il connaît les ingrédients (BDD) et les recettes. Il prépare les données mais ne voit jamais le client.
+            </p>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🍽️ La Vue (L'Assiette)</h4>
+            <p>C'est la présentation finale. C'est ce que le client voit et consomme (le HTML).</p>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Client ] -- Requête --> [ Contrôleur ]
+                                |
+        <-- Données -- [ Modèle ]
+        |
+ [ Vue (HTML) ] <------- Affichage</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : STRUCTURE DE PROJET MODERNE -->
+<section>
+    <h3>2. Organisation des Dossiers</h3>
+    <p>Un projet pro sépare les fichiers publics (accessibles via URL) des fichiers sources (privés).</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Arborescence Type</div>
+        <pre>/mon-app
+  /app
+    /Controllers  <span class="c">// La logique d'aiguillage</span>
+    /Models       <span class="c">// Les classes liées à la BDD</span>
+    /Views        <span class="c">// Les fichiers HTML/PHP d'affichage</span>
+  /public
+    index.php     <span class="c">// Le Front-Controller (Entrée unique)</span>
+    /assets       <span class="c">// CSS, JS, Images</span>
+  /vendor         <span class="c">// Bibliothèques (Composer)</span>
+  .env            <span class="c">// Configuration secrète</span></pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : LE ROUTAGE -->
+<section>
+    <h3>3. Le Routage (Aiguillage)</h3>
+    <p>Toutes les requêtes arrivent sur <code>index.php</code>. C'est lui qui décide quel contrôleur appeler.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>index.php (Simplified Router)</div>
+        <pre><span class="var">$url</span> = <span class="var">$_GET</span>[<span class="str">'url'</span>] ?? <span class="str">'home'</span>;
+
+<span class="kw">match</span> (<span class="var">$url</span>) {
+    <span class="str">'articles'</span> => (new <span class="fn">PostController</span>())-><span class="fn">list</span>(),
+    <span class="str">'login'</span>    => (new <span class="fn">AuthController</span>())-><span class="fn">showForm</span>(),
+    <span class="kw">default</span>    => (new <span class="fn">HomeController</span>())-><span class="fn">index</span>(),
+};</pre>
+    </div>
+</section>
+
+<!-- PARTIE 4 : AUTHENTIFICATION -->
+<section>
+    <h3>4. Le Flux d'Authentification</h3>
+    <p>Comment sécuriser l'accès à certaines pages ?</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>AuthFlow.php</div>
+        <pre><span class="c">// 1. Traitement du Login</span>
+<span class="kw">if</span> (<span class="fn">password_verify</span>(<span class="var">$pass</span>, <span class="var">$userHash</span>)) {
+    <span class="var">$_SESSION</span>[<span class="str">'user'</span>] = <span class="var">$user</span>;
+    <span class="fn">header</span>(<span class="str">'Location: /dashboard'</span>);
+}
+
+<span class="c">// 2. Guard (Vérification sur les pages privées)</span>
+<span class="kw">function</span> <span class="fn">isAdmin</span>(): <span class="kw">bool</span> {
+    <span class="kw">return</span> <span class="fn">isset</span>(<span class="var">$_SESSION</span>[<span class="str">'user'</span>]) && <span class="var">$_SESSION</span>[<span class="str">'user'</span>][<span class="str">'role'</span>] === <span class="str">'admin'</span>;
+}
+
+<span class="kw">if</span> (!<span class="fn">isAdmin</span>()) {
+    <span class="fn">http_response_code</span>(<span class="num">403</span>);
+    <span class="fn">die</span>(<span class="str">"Accès réservé aux administrateurs."</span>);
+}</pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Ne réinventez pas la roue</strong><br>
+    Si vous aimez cette architecture, passez à <strong>Laravel</strong> ou <strong>Symfony</strong>. Ces frameworks
+    implémentent le MVC de manière ultra-sécurisée et performante "out of the box".
+</div>

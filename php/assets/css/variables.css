@@ -1,0 +1,72 @@
+/* =====================================================
+   DESIGN SYSTEM - VARIABLES
+   ===================================================== */
+
+:root {
+    /* BASE COLORS */
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
+    --color-slate-400: #94a3b8;
+    --color-slate-500: #64748b;
+    --color-slate-600: #475569;
+    --color-slate-700: #334155;
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
+
+    --color-primary-base: #777bb4;
+    --color-primary-light: #8892bf;
+    --color-accent-base: #00d4ff;
+    
+    /* SEMANTIC COLORS (DEFAULT DARK MODE) */
+    --background: var(--color-slate-950);
+    --foreground: var(--color-slate-50);
+
+    --card: var(--color-slate-900);
+    --card-foreground: var(--color-slate-50);
+
+    --popover: var(--color-slate-900);
+    --popover-foreground: var(--color-slate-50);
+
+    --primary: var(--color-primary-base);
+    --primary-foreground: #ffffff;
+
+    --secondary: var(--color-slate-800);
+    --secondary-foreground: var(--color-slate-50);
+
+    --muted: var(--color-slate-800);
+    --muted-foreground: var(--color-slate-400);
+
+    --accent: var(--color-slate-800);
+    --accent-foreground: var(--color-slate-50);
+
+    --destructive: #ef4444;
+    --destructive-foreground: #f8fafc;
+
+    --border: var(--color-slate-800);
+    --input: var(--color-slate-800);
+    --ring: var(--color-primary-base);
+
+    --radius: 0.5rem;
+}
+
+/* SYNTAX HIGHLIGHTING (MOCKED) */
+:root {
+    --sh-keyword: #c678dd;
+    --sh-function: #61afef;
+    --sh-string: #98c379;
+    --sh-number: #d19a66;
+    --sh-comment: #5c6370;
+    --sh-variable: #e06c75;
+    --sh-property: #abb2bf;
+    --sh-tag: #e06c75;
+}
+
+/* UTILITIES */
+.bg-background { background-color: var(--background); }
+.bg-card { background-color: var(--card); }
+.text-foreground { color: var(--foreground); }
+.text-muted-foreground { color: var(--muted-foreground); }
+.border-border { border-color: var(--border); }

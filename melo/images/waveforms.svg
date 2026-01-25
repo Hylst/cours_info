@@ -1,0 +1,25 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- Extended height to add more space for the caption and increased padding -->
+  
+  <!-- Sine Wave -->
+  <path d="M50,150 Q200,50 350,150 T650,150" stroke="#8B5CF6" stroke-width="3" fill="none"/>
+  <text x="700" y="150" font-family="Arial" font-size="16" fill="#333">Sinusoïdale</text>
+  
+  <!-- Square Wave -->
+  <path d="M50,250 L50,200 L200,200 L200,300 L350,300 L350,200 L500,200 L500,300 L650,300 L650,200" stroke="#D946EF" stroke-width="3" fill="none"/>
+  <text x="700" y="250" font-family="Arial" font-size="16" fill="#333">Carrée</text>
+  
+  <!-- Triangle Wave -->
+  <path d="M50,400 L125,350 L200,450 L275,350 L350,450 L425,350 L500,450 L575,350 L650,450" stroke="#F97316" stroke-width="3" fill="none"/>
+  <text x="700" y="400" font-family="Arial" font-size="16" fill="#333">Triangulaire</text>
+  
+  <!-- Sawtooth Wave -->
+  <path d="M50,550 L125,500 L125,550 L200,500 L200,550 L275,500 L275,550 L350,500 L350,550 L425,500 L425,550 L500,500 L500,550 L575,500 L575,550 L650,500" stroke="#0EA5E9" stroke-width="3" fill="none"/>
+  <text x="700" y="550" font-family="Arial" font-size="16" fill="#333">Dents de scie</text>
+  
+  <!-- Caption placed at the bottom with enough space -->
+  <text x="50" y="650" font-family="Arial" font-size="16" fill="#333" font-weight="bold">Types d'ondes sonores fondamentales</text>
+  <text x="50" y="680" font-family="Arial" font-size="14" fill="#333">De haut en bas: onde sinusoïdale, carrée, triangulaire et en dents de scie</text>
+  <text x="50" y="710" font-family="Arial" font-size="14" fill="#333">Chaque type d'onde possède un timbre caractéristique et des applications spécifiques en acoustique musicale</text>
+</svg>

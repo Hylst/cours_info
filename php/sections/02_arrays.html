@@ -1,0 +1,89 @@
+<div class="sec-header">
+    <div class="sec-num">02</div>
+    <div>
+        <h2 class="sec-title">Tableaux (Arrays)</h2>
+        <p class="sec-sub">Listes, Dictionnaires, et Manipulations avancées</p>
+    </div>
+</div>
+
+<!-- ANALOGIE -->
+<div class="grid2">
+    <div class="ref-card">
+        <h4>📦 Analogie : Le Casier</h4>
+        <p>Un Array est comme un meuble à casiers.</p>
+        <ul>
+            <li><strong>Indexé</strong> : Les casiers sont numérotés (0, 1, 2...). C'est une <em>Liste</em>.</li>
+            <li><strong>Associatif</strong> : Les casiers ont des étiquettes ("Nom", "Email"). C'est un
+                <em>Dictionnaire</em>.</li>
+        </ul>
+    </div>
+    <div class="ref-card">
+        <h4>⚡ Performance</h4>
+        <p>Les tableaux PHP sont des "Ordered Maps" optimisés. Ils sont très flexibles mais consomment plus de mémoire
+            que des tableaux fixes en C/C++.</p>
+    </div>
+</div>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Syntaxe
+        Moderne</div>
+    <pre><span class="c">// Syntaxe courte [] (Depuis PHP 5.4)</span>
+<span class="var">$stack</span> = [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"PHP"</span>];
+
+<span class="c">// Associatif</span>
+<span class="var">$config</span> = [
+    <span class="str">"db_host"</span> => <span class="str">"localhost"</span>,
+    <span class="str">"debug"</span> => <span class="kw">true</span>,
+    <span class="str">"timeout"</span> => <span class="num">30</span>
+];
+
+<span class="c">// Accès Intriqué</span>
+<span class="var">$users</span> = [
+    [<span class="str">"name"</span> => <span class="str">"Ana"</span>, <span class="str">"roles"</span> => [<span class="str">"admin"</span>]],
+    [<span class="str">"name"</span> => <span class="str">"Bob"</span>, <span class="str">"roles"</span> => [<span class="str">"guest"</span>]]
+];
+<span class="kw">echo</span> <span class="var">$users</span>[<span class="num">0</span>][<span class="str">"roles"</span>][<span class="num">0</span>]; <span class="c">// "admin"</span></pre>
+</div>
+
+<h3>Destructuring & Spread (PHP 7.4+)</h3>
+<p>Comme en JS, PHP permet de déballer les tableaux.</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Destucturing
+    </div>
+    <pre><span class="c">// Array Destructuring</span>
+[<span class="var">$a</span>, <span class="var">$b</span>] = [<span class="num">10</span>, <span class="num">20</span>];
+<span class="c">// $a = 10, $b = 20</span>
+
+<span class="c">// Avec clés (PHP 7.1+)</span>
+[<span class="str">"name"</span> => <span class="var">$n</span>, <span class="str">"age"</span> => <span class="var">$a</span>] = <span class="var">$user</span>;
+
+<span class="c">// Spread Operator (...)</span>
+<span class="var">$parts</span> = [<span class="str">"pomme"</span>, <span class="str">"poire"</span>];
+<span class="var">$fruits</span> = [<span class="str">"banane"</span>, ...<span class="var">$parts</span>, <span class="str">"fraise"</span>];
+<span class="c">// ["banane", "pomme", "poire", "fraise"]</span></pre>
+</div>
+
+<h3>Fonctionnel (Map, Filter, Reduce)</h3>
+<p>Manipuler les données sans boucles <code>foreach</code> rend le code plus déclaratif.</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Functional
+        Programming</div>
+    <pre><span class="var">$numbers</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];
+
+<span class="c">// Filter : Garder les pairs</span>
+<span class="var">$evens</span> = <span class="fn">array_filter</span>(<span class="var">$numbers</span>, <span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> % <span class="num">2</span> === <span class="num">0</span>);
+
+<span class="c">// Map : Mettre au carré</span>
+<span class="var">$squares</span> = <span class="fn">array_map</span>(<span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> ** <span class="num">2</span>, <span class="var">$evens</span>);
+
+<span class="c">// Reduce : Somme totale</span>
+<span class="var">$sum</span> = <span class="fn">array_reduce</span>(<span class="var">$numbers</span>, <span class="kw">fn</span>(<span class="var">$carry</span>, <span class="var">$n</span>) => <span class="var">$carry</span> + <span class="var">$n</span>, <span class="num">0</span>);</pre>
+</div>
+
+<div class="tip">
+    <strong>💡 Astuce Debug</strong><br>
+    <code>print_r($arr)</code> est bien, mais <code>var_dump($arr)</code> donne le type et la taille.<br>
+    Encore mieux : <code>dd($arr)</code> si vous utilisez Laravel/Symfony (Dump and Die).
+</div>

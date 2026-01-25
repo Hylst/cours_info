@@ -1,0 +1,147 @@
+<div class="sec-header">
+    <div class="sec-num">05</div>
+    <div>
+        <h2 class="sec-title">Chaînes de caractères (Strings)</h2>
+        <p class="sec-sub">Au-delà du texte : Manipulation, Sécurité et Encodage</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Une chaîne de caractères est une séquence d'octets. En PHP, elles sont partout : du contenu HTML aux requêtes SQL
+        en passant par le JSON. Savoir les manipuler sans faille est la base du métier.</p>
+</div>
+
+<!-- PARTIE 1 : DECLARATION & ANALOGIE -->
+<section>
+    <h3>1. L'Art de la Citation</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🧶 Analogie : Le Fil d'Ariane</h4>
+            <p>Une string est un fil sur lequel on enfile des perles (les caractères). On peut couper le fil,
+                l'allonger, ou changer une perle à un endroit précis.</p>
+        </div>
+        <div class="ref-card">
+            <h4>❓ Simple ou Double ?</h4>
+            <p><strong>'Cote simple'</strong> : PHP ne regarde pas dedans. C'est du texte brut (plus rapide).</p>
+            <p><strong>"Cote double"</strong> : PHP analyse le contenu pour y injecter des variables (Interpolation).
+            </p>
+        </div>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Syntaxe.php</div>
+        <pre><span class="var">$nom</span> = <span class="str">"Geoff"</span>;
+
+<span class="c">// Interpolation classique</span>
+<span class="kw">echo</span> <span class="str">"Salut $nom"</span>;
+
+<span class="c">// Syntaxe complexe (Recommandée pour la clarté)</span>
+<span class="kw">echo</span> <span class="str">"L'utilisateur {$nom} a gagné."</span>;
+
+<span class="c">// Heredoc (Multi-ligne avec interpolation)</span>
+<span class="var">$html</span> = <span class="str">&lt;&lt;&lt;HTML
+&lt;div class="user"&gt;
+    &lt;h2&gt;$nom&lt;/h2&gt;
+&lt;/div&gt;
+HTML</span>;</pre>
+    </div>
+</section>
+
+<!-- PARTIE 2 : PHP 8 & MODERNITÉ -->
+<section>
+    <h3>2. Fonctions Modernes (PHP 8+)</h3>
+    <p>Fini les <code>strpos()</code> illisibles. PHP 8 a introduit des fonctions sémantiques claires.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>ModernStrings.php</div>
+        <pre><span class="var">$url</span> = <span class="str">"https://hylst.fr/blog/article"</span>;
+
+<span class="fn">str_contains</span>(<span class="var">$url</span>, <span class="str">'blog'</span>);       <span class="c">// true</span>
+<span class="fn">str_starts_with</span>(<span class="var">$url</span>, <span class="str">'https'</span>);  <span class="c">// true</span>
+<span class="fn">str_ends_with</span>(<span class="var">$url</span>, <span class="str">'article'</span>);    <span class="c">// true</span>
+
+<span class="c">// Manipulation de casse</span>
+<span class="fn">strtolower</span>(<span class="str">"PHP"</span>); <span class="c">// php</span>
+<span class="fn">strtoupper</span>(<span class="str">"php"</span>); <span class="c">// PHP</span>
+<span class="fn">ucfirst</span>(<span class="str">"hello"</span>);  <span class="c">// Hello (Upper Case First)</span></pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : SECURITE & NETTOYAGE -->
+<section>
+    <h3>3. Nettoyage et Sécurité (XSS)</h3>
+    <div class="warning">
+        <strong>🚨 Règle d'or :</strong> Ne faites jamais confiance au texte venant de l'utilisateur
+        (<code>$_POST</code>, <code>$_GET</code>).
+    </div>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Contre le XSS</div>
+            <pre><span class="var">$input</span> = <span class="str">"&lt;script&gt;alert('Hacked')&lt;/script&gt;"</span>;
+
+<span class="c">// Neutralise les balises HTML</span>
+<span class="kw">echo</span> <span class="fn">htmlspecialchars</span>(<span class="var">$input</span>); 
+<span class="c">// Affiche le texte brut sans l'exécuter</span></pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Nettoyage</div>
+            <pre><span class="var">$email</span> = <span class="str">"  user@domain.com  "</span>;
+
+<span class="c">// Supprime les espaces blancs autour</span>
+<span class="var">$email</span> = <span class="fn">trim</span>(<span class="var">$email</span>);
+
+<span class="c">// Filtrage de type</span>
+<span class="fn">filter_var</span>(<span class="var">$email</span>, <span class="var">FILTER_VALIDATE_EMAIL</span>);</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 4 : UNICODE & MBSTRING -->
+<section>
+    <h3>4. Le piège de l'Unicode (UTF-8)</h3>
+    <p>PHP traite par défaut les chaînes comme des tableaux d'octets. Un accent ou un emoji occupe plusieurs octets, ce
+        qui casse les fonctions classiques.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Multibyte.php</div>
+        <pre><span class="var">$txt</span> = <span class="str">"Éléphant 🐘"</span>;
+
+<span class="c">// ❌ Erreur : comptera 14 octets</span>
+<span class="kw">echo</span> <span class="fn">strlen</span>(<span class="var">$txt</span>); 
+
+<span class="c">// ✅ Correct : comptera 10 caractères</span>
+<span class="kw">echo</span> <span class="fn">mb_strlen</span>(<span class="var">$txt</span>); 
+
+<span class="c">// Toujours utiliser mb_* pour :</span>
+<span class="c">// mb_substr(), mb_strpos(), mb_strtolower()...</span></pre>
+    </div>
+</section>
+
+<!-- PARTIE 5 : TRANSFORMATIONS -->
+<section>
+    <h3>5. De String à Array (et inversement)</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Explode
+            & Implode</div>
+        <pre><span class="var">$tags</span> = <span class="str">"php,js,html"</span>;
+
+<span class="c">// String -> Array</span>
+<span class="var">$list</span> = <span class="fn">explode</span>(<span class="str">","</span>, <span class="var">$tags</span>);
+
+<span class="c">// Array -> String</span>
+<span class="kw">echo</span> <span class="fn">implode</span>(<span class="str">" | "</span>, <span class="var">$list</span>); 
+<span class="c">// Affiche : "php | js | html"</span></pre>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Regex (Expression Régulière)</strong><br>
+    Pour des recherches complexes (ex: vérifier un format de téléphone), utilisez <code>preg_match()</code>.<br>
+    <code>preg_match('/^[0-9]{10}$/', $num);</code>
+</div>

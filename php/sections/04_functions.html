@@ -1,0 +1,138 @@
+<div class="sec-header">
+    <div class="sec-num">04</div>
+    <div>
+        <h2 class="sec-title">Les Fonctions</h2>
+        <p class="sec-sub">Découpage, Typage et Modernité : Le secret du code maintenable</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Une fonction est un bloc de code réutilisable. Pourquoi les utiliser ? Pour respecter le principe
+        <strong>DRY</strong> (<em>Don't Repeat Yourself</em>). Si vous écrivez deux fois la même logique, créez une
+        fonction !</p>
+</div>
+
+<!-- PARTIE 1 : ANATOMIE & ANALOGIE -->
+<section>
+    <h3>1. L'Usine à Code</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🏭 Analogie : La Machine à Jus</h4>
+            <p>Imaginez une machine :</p>
+            <ul>
+                <li><strong>Entrées ($fruits)</strong> : Vous donnez des pommes ou des oranges.</li>
+                <li><strong>Traitement</strong> : La machine presse, filtre et mélange.</li>
+                <li><strong>Sortie (return)</strong> : Elle vous rend un verre de jus.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+ [ Entrée ] -> ( $paramètres )
+      |
+ [ Machine ] -> { traitement }
+      |
+ [ Sortie ] -> return "verre";</pre>
+        </div>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Basique.php</div>
+        <pre><span class="c">// Déclaration</span>
+<span class="kw">function</span> <span class="fn">faireJus</span>(<span class="kw">string</span> <span class="var">$fruit</span>, <span class="kw">int</span> <span class="var">$quantite</span> = <span class="num">1</span>): <span class="kw">string</span> {
+    <span class="kw">return</span> <span class="str">"Voici $quantite verre(s) de jus de $fruit"</span>;
+}
+
+<span class="c">// Appel</span>
+<span class="kw">echo</span> <span class="fn">faireJus</span>(<span class="str">"Pomme"</span>); <span class="c">// Utilise la valeur par défaut (1)</span>
+<span class="kw">echo</span> <span class="fn">faireJus</span>(<span class="str">"Orange"</span>, <span class="num">3</span>);</pre>
+    </div>
+</section>
+
+<!-- PARTIE 2 : TYPAGE MODERNE -->
+<section>
+    <h3>2. Typage Fort (PHP 8+)</h3>
+    <p>PHP moderne permet d'être très précis sur ce que la fonction accepte et renvoie. <strong>Indispensable pour la
+            sécurité.</strong></p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Typage.php</div>
+        <pre><span class="c">// Union Types (Plusieurs types possibles) |</span>
+<span class="kw">function</span> <span class="fn">traiter</span>(<span class="kw">int</span>|<span class="kw">float</span> <span class="var">$num</span>): <span class="kw">void</span> { ... }
+
+<span class="c">// Nullable Types (Peut être NULL) ?</span>
+<span class="kw">function</span> <span class="fn">trouverUser</span>(<span class="kw">int</span> <span class="var">$id</span>): ?<span class="kw">array</span> {
+    <span class="kw">return</span> <span class="var">$db</span>-><span class="fn">fetch</span>(<span class="var">$id</span>) ?: <span class="kw">null</span>;
+}
+
+<span class="c">// Variadics (...$params) : Liste d'arguments infinie</span>
+<span class="kw">function</span> <span class="fn">somme</span>(<span class="kw">int</span> ...<span class="var">$nombres</span>): <span class="kw">int</span> {
+    <span class="kw">return</span> <span class="fn">array_sum</span>(<span class="var">$nombres</span>);
+}
+<span class="kw">echo</span> <span class="fn">somme</span>(<span class="num">1</span>, <span class="num">5</span>, <span class="num">10</span>, <span class="num">20</span>); <span class="c">// 36</span></pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : CLOSURES & ARROW FUNCTIONS -->
+<section>
+    <h3>3. Fonctions Anonymes & Fléchées</h3>
+    <p>Utiles pour passer une fonction en argument d'une autre (callbacks).</p>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Closure (Classique)</div>
+            <pre><span class="var">$facteur</span> = <span class="num">2</span>;
+<span class="var">$double</span> = <span class="kw">function</span>(<span class="var">$n</span>) <span class="kw">use</span> (<span class="var">$facteur</span>) {
+    <span class="kw">return</span> <span class="var">$n</span> * <span class="var">$facteur</span>;
+};</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Arrow Function (PHP 7.4+)</div>
+            <pre><span class="var">$facteur</span> = <span class="num">2</span>;
+<span class="c">// Capture automatique par valeur</span>
+<span class="var">$double</span> = <span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> * <span class="var">$facteur</span>;</pre>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 4 : CONCEPTS AVANCÉS -->
+<section>
+    <h3>4. Concepts Avancés</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔄 La Récursion (Inception)</h4>
+            <p>Une fonction qui s'appelle elle-même. Utile pour les structures en arbre (menus, dossiers).</p>
+            <p><strong>🚨 Attention :</strong> Il faut toujours une "condition de sortie" pour éviter la boucle infinie
+                !</p>
+        </div>
+        <div class="ref-card">
+            <h4>⚓ Référence (&)</h4>
+            <p>Par défaut, PHP passe une <strong>copie</strong>. Avec <code>&</code>, il passe
+                l'<strong>original</strong>.</p>
+            <code>function boost(&$n) { $n++; }</code>
+        </div>
+    </div>
+
+    <div class="code" style="margin-top:20px;">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Première
+            Classe (PHP 8.1+)</div>
+        <pre><span class="c">// Récupérer une fonction comme un objet stable</span>
+<span class="var">$maFonction</span> = <span class="fn">strlen</span>(...); 
+<span class="kw">echo</span> <span class="var">$maFonction</span>(<span class="str">"Hello"</span>); <span class="c">// 5</span></pre>
+    </div>
+</section>
+
+<div class="warning">
+    <strong>⚠️ Global Scope</strong><br>
+    En PHP, une variable globale n'est <strong>pas accessible</strong> dans une fonction sans le mot-clé
+    <code>global</code> (déconseillé) ou sans la passer en paramètre (recommandé).
+</div>
+
+<div class="tip">
+    <strong>💡 Named Arguments (PHP 8)</strong><br>
+    Très utile pour clarifier les appels avec beaucoup d'arguments :<br>
+    <code>envoyerMail(dest: $mail, sujet: "Salut", urgent: true);</code>
+</div>

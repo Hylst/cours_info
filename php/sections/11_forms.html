@@ -1,0 +1,94 @@
+<div class="sec-header">
+    <div class="sec-num">11</div>
+    <div>
+        <h2 class="sec-title">Formulaires & Validation</h2>
+        <p class="sec-sub">Récupérer, Nettoyer et Sécuriser les données utilisateurs</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Le formulaire est le principal pont entre l'utilisateur et votre application. C'est aussi la principale porte
+        d'entrée pour les attaques. Une règle d'or : <strong>Ne jamais faire confiance à l'utilisateur.</strong></p>
+</div>
+
+<!-- PARTIE 1 : GET vs POST -->
+<section>
+    <h3>1. GET vs POST : Lequel choisir ?</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔍 GET (Public)</h4>
+            <p>Les données passent dans l'URL : <code>page.php?id=123</code>.</p>
+            <ul>
+                <li><strong>Usage</strong> : Recherche, filtres, pagination.</li>
+                <li><strong>Limites</strong> : Taille courte, visible dans l'historique.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>📦 POST (Privé)</h4>
+            <p>Les données sont cachées dans le "corps" de la requête HTTP.</p>
+            <ul>
+                <li><strong>Usage</strong> : Inscription, login, envoi de fichiers.</li>
+                <li><strong>Limites</strong> : Plus lent (légèrement), sécurise les données sensibles.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- PARTIE 2 : VALIDATION -->
+<section>
+    <h3>2. Validation : Filtrer avant d'agir</h3>
+    <p>N'utilisez pas de <code>preg_match</code> compliqués pour des emails ou des URL. PHP a des filtres natifs
+        puissants.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Validation.php</div>
+        <pre><span class="c">// Nettoyer (Sanitize)</span>
+<span class="var">$email</span> = <span class="fn">filter_input</span>(<span class="var">INPUT_POST</span>, <span class="str">'email'</span>, <span class="var">FILTER_SANITIZE_EMAIL</span>);
+
+<span class="c">// Valider (Check)</span>
+<span class="kw">if</span> (<span class="fn">filter_var</span>(<span class="var">$email</span>, <span class="var">FILTER_VALIDATE_EMAIL</span>)) {
+    <span class="c">// Email syntaxiquement correct</span>
+}
+
+<span class="c">// Valider un entier entre 1 et 100</span>
+<span class="var">$age</span> = <span class="fn">filter_var</span>(<span class="var">$_POST</span>[<span class="str">'age'</span>], <span class="var">FILTER_VALIDATE_INT</span>, [
+    <span class="str">'options'</span> => [<span class="str">'min_range'</span> => <span class="num">1</span>, <span class="str">'max_range'</span> => <span class="num">100</span>]
+]);</pre>
+    </div>
+</section>
+
+<!-- PARTIE 3 : CSRF -->
+<section>
+    <h3>3. La faille CSRF : Le "Vol de clic"</h3>
+    <p>Un pirate pourrait forcer un utilisateur connecté à supprimer son compte via un lien caché sur un autre site. On
+        utilise un <strong>Token CSRF</strong> pour s'assurer que le formulaire vient bien de NOTRE site.</p>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>CsrfProtection.php</div>
+        <pre><span class="c">// 1. Générer le token au chargement du formulaire</span>
+<span class="var">$_SESSION</span>[<span class="str">'csrf'</span>] = <span class="fn">bin2hex</span>(<span class="fn">random_bytes</span>(<span class="num">32</span>));
+
+<span class="c">// 2. Dans le HTML</span>
+<span class="str">&lt;input type="hidden" name="token" value="&lt;?= $_SESSION['csrf'] ?&gt;"&gt;</span>
+
+<span class="c">// 3. À la réception</span>
+<span class="kw">if</span> (!<span class="fn">hash_equals</span>(<span class="var">$_SESSION</span>[<span class="str">'csrf'</span>], <span class="var">$_POST</span>[<span class="str">'token'</span>])) {
+    <span class="fn">die</span>(<span class="str">"Attaque CSRF bloquée !"</span>);
+}</pre>
+    </div>
+</section>
+
+<div class="warning">
+    <strong>🛡️ XSS vs Formulaires</strong><br>
+    Toujours utiliser <code>htmlspecialchars()</code> quand vous ré-affichez une donnée postée par l'utilisateur dans un
+    champ (ex: en cas d'erreur de saisie).
+</div>
+
+<div class="tip">
+    <strong>💡 Post-Redirect-Get (PRG)</strong><br>
+    Après un traitement de formulaire réussi, faites toujours une redirection :<br>
+    <code>header('Location: succes.php'); exit;</code><br>
+    Cela évite que l'utilisateur renvoie le formulaire s'il rafraîchit la page (F5).
+</div>

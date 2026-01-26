@@ -36,4 +36,36 @@ document.addEventListener('DOMContentLoaded', function () {
             head.appendChild(btn);
         }
     });
+
+    // Handle expandable examples with smooth animation
+    document.querySelectorAll('.example-toggle').forEach(toggle => {
+        // Initialize all examples as hidden
+        const content = toggle.nextElementSibling;
+        content.style.display = 'none';
+        
+        toggle.addEventListener('click', function() {
+            this.classList.toggle('expanded');
+            const content = this.nextElementSibling;
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(-10px)';
+                
+                // Smooth animation
+                setTimeout(() => {
+                    content.style.transition = 'all 0.3s ease';
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(-10px)';
+                
+                setTimeout(() => {
+                    content.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
 });

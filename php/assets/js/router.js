@@ -67,6 +67,13 @@ export class Router {
                 container.innerHTML = html;
             }
 
+            // Initialize section-specific JavaScript after content is loaded
+            if (typeof window.initSectionExamples === 'function') {
+                setTimeout(() => {
+                    window.initSectionExamples();
+                }, 100);
+            }
+
             // Show/Hide TOC based on route
             const toc = document.getElementById('toc-container');
             if (toc) {

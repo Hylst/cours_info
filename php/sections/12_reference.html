@@ -1,7 +1,7 @@
 <div class="sec-header">
     <div class="sec-num">12</div>
     <div>
-        <h2 class="sec-title">Référence & Cheat Sheet</h2>
+        <h2 class="sec-title">📚 Référence & Cheat Sheet</h2>
         <p class="sec-sub">Les outils indispensables au quotidien</p>
     </div>
 </div>
@@ -15,36 +15,503 @@
 <section>
     <h3>📌 Fonctions de Tableaux (Arrays)</h3>
     <div class="grid2">
-        <ul class="ref-card">
-            <li><code>count($a)</code> : Taille du tableau.</li>
-            <li><code>array_merge($a, $b)</code> : Fusionner.</li>
-            <li><code>array_push($a, $v)</code> : Ajouter à la fin.</li>
-            <li><code>in_array($v, $a)</code> : Vérifier l'existence.</li>
-        </ul>
-        <ul class="ref-card">
-            <li><code>array_keys($a)</code> : Liste des clés.</li>
-            <li><code>array_values($a)</code> : Liste des valeurs.</li>
-            <li><code>sort($a)</code> : Trier (croissant).</li>
-            <li><code>array_slice($a, 0, 5)</code> : Extraire une partie.</li>
-        </ul>
+        <div class="ref-card">
+            <h4>🔄 Manipulation</h4>
+            <div class="function-item">
+                <code>count($array)</code>
+                <div class="function-desc">Retourne le nombre d'éléments dans un tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                 <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">fruits</span> = [<span class="php-str">'pomme'</span>, <span class="php-str">'banane'</span>, <span class="php-str">'orange'</span>];
+<span class="php-kw">echo</span> <span class="php-fn">count</span>(<span class="php-var">$fruits</span>); <span class="php-com">// → 3</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>array_merge($array1, $array2)</code>
+                <div class="function-desc">Fusionne deux ou plusieurs tableaux</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">arr1</span> = [<span class="php-str">'a'</span>, <span class="php-str">'b'</span>];
+<span class="php-kw">$</span><span class="php-var">arr2</span> = [<span class="php-str">'c'</span>, <span class="php-str">'d'</span>];
+<span class="php-kw">$</span><span class="php-var">result</span> = <span class="php-fn">array_merge</span>(<span class="php-var">$arr1</span>, <span class="php-var">$arr2</span>);
+<span class="php-com">// → ['a', 'b', 'c', 'd']</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>array_push(&$array, $value)</code>
+                <div class="function-desc">Ajoute un ou plusieurs éléments à la fin d'un tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">stack</span> = [<span class="php-str">'pomme'</span>, <span class="php-str">'banane'</span>];
+<span class="php-fn">array_push</span>(<span class="php-var">$stack</span>, <span class="php-str">'orange'</span>);
+<span class="php-com">// $stack → ['pomme', 'banane', 'orange']</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>in_array($needle, $haystack)</code>
+                <div class="function-desc">Vérifie si une valeur existe dans un tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">fruits</span> = [<span class="php-str">'pomme'</span>, <span class="php-str">'banane'</span>, <span class="php-str">'orange'</span>];
+<span class="php-kw">if</span> (<span class="php-fn">in_array</span>(<span class="php-str">'banane'</span>, <span class="php-var">$fruits</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Trouvé !'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="ref-card">
+            <h4>🔍 Extraction</h4>
+            <div class="function-item">
+                <code>array_keys($array)</code>
+                <div class="function-desc">Retourne toutes les clés d'un tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">arr</span> = [<span class="php-str">'nom'</span> => <span class="php-str">'Jean'</span>, <span class="php-str">'âge'</span> => <span class="php-num">25</span>];
+<span class="php-kw">$</span><span class="php-var">keys</span> = <span class="php-fn">array_keys</span>(<span class="php-var">$arr</span>);
+<span class="php-com">// → ['nom', 'âge']</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>array_values($array)</code>
+                <div class="function-desc">Retourne toutes les valeurs d'un tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">arr</span> = [<span class="php-str">'nom'</span> => <span class="php-str">'Jean'</span>, <span class="php-str">'âge'</span> => <span class="php-num">25</span>];
+<span class="php-kw">$</span><span class="php-var">values</span> = <span class="php-fn">array_values</span>(<span class="php-var">$arr</span>);
+<span class="php-com">// → ['Jean', 25]</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>sort(&$array)</code>
+                <div class="function-desc">Trie un tableau en ordre croissant</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">numbers</span> = [<span class="php-num">3</span>, <span class="php-num">1</span>, <span class="php-num">4</span>, <span class="php-num">2</span>];
+<span class="php-fn">sort</span>(<span class="php-var">$numbers</span>);
+<span class="php-com">// $numbers → [1, 2, 3, 4]</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>array_slice($array, $offset, $length)</code>
+                <div class="function-desc">Extrait une portion de tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">input</span> = [<span class="php-str">'a'</span>, <span class="php-str">'b'</span>, <span class="php-str">'c'</span>, <span class="php-str">'d'</span>, <span class="php-str">'e'</span>];
+<span class="php-kw">$</span><span class="php-var">output</span> = <span class="php-fn">array_slice</span>(<span class="php-var">$input</span>, <span class="php-num">2</span>, <span class="php-num">2</span>);
+<span class="php-com">// → ['c', 'd']</span></pre>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <section>
     <h3>📌 Fonctions de Chaînes (Strings)</h3>
     <div class="grid2">
-        <ul class="ref-card">
-            <li><code>strlen($s)</code> : Longueur (octets).</li>
-            <li><code>mb_strlen($s)</code> : Longueur (caractères).</li>
-            <li><code>str_replace($o, $n, $s)</code> : Remplacer.</li>
-            <li><code>trim($s)</code> : Nettoyer les bords.</li>
-        </ul>
-        <ul class="ref-card">
-            <li><code>explode($d, $s)</code> : Splitter en tableau.</li>
-            <li><code>implode($d, $a)</code> : Joindre en chaîne.</li>
-            <li><code>substr($s, 0, 10)</code> : Couper.</li>
-            <li><code>strtoupper($s)</code> : En MAJUSCULES.</li>
-        </ul>
+        <div class="ref-card">
+            <h4>📏 Longueur & Extraction</h4>
+            <div class="function-item">
+                <code>strlen($s)</code>
+                <div class="function-desc">Longueur d'une chaîne en octets</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'Bonjour'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">strlen</span>(<span class="php-var">$s</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>mb_strlen($s)</code>
+                <div class="function-desc">Longueur en caractères (UTF-8)</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'école'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">mb_strlen</span>(<span class="php-var">$s</span>, <span class="php-str">'UTF-8'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>substr($s, $start, $len)</code>
+                <div class="function-desc">Extrait une portion de chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'programmation'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">substr</span>(<span class="php-var">$s</span>, <span class="php-num">0</span>, <span class="php-num">7</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>mb_substr($s, $start, $len)</code>
+                <div class="function-desc">Extrait une portion en UTF-8</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'développeur'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">mb_substr</span>(<span class="php-var">$s</span>, <span class="php-num">0</span>, <span class="php-num">4</span>, <span class="php-str">'UTF-8'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>substr_replace($s, $rep, $start, $len)</code>
+                <div class="function-desc">Remplace une portion par une autre</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'bonjour le monde'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">substr_replace</span>(<span class="php-var">$s</span>, <span class="php-str">'PHP'</span>, <span class="php-num">8</span>, <span class="php-num">2</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>substr_count($s, $needle)</code>
+                <div class="function-desc">Compte les occurrences d'une sous-chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'banane'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">substr_count</span>(<span class="php-var">$s</span>, <span class="php-str">'an'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>wordwrap($s, $width)</code>
+                <div class="function-desc">Coupe une chaîne par largeur</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">s</span> = <span class="php-str">'Un texte assez long pour être coupé'</span>;
+<span class="php-kw">echo</span> <span class="php-fn">wordwrap</span>(<span class="php-var">$s</span>, <span class="php-num">10</span>, <span class="php-str">"\n"</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_repeat($s, $n)</code>
+                <div class="function-desc">Répète une chaîne n fois</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">str_repeat</span>(<span class="php-str">'*'</span>, <span class="php-num">5</span>);</pre>
+                </div>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>🧩 Découpe & Assemblage</h4>
+            <div class="function-item">
+                <code>explode($delim, $s)</code>
+                <div class="function-desc">Découpe une chaîne en tableau</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">csv</span> = <span class="php-str">'pomme,poire,prune'</span>;
+<span class="php-kw">print_r</span>(<span class="php-fn">explode</span>(<span class="php-str">','</span>, <span class="php-var">$csv</span>));</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>implode($glue, $arr)</code>
+                <div class="function-desc">Assemble un tableau en chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">arr</span> = [<span class="php-str">'PHP'</span>, <span class="php-str">'HTML'</span>, <span class="php-str">'CSS'</span>];
+<span class="php-kw">echo</span> <span class="php-fn">implode</span>(<span class="php-str">' - '</span>, <span class="php-var">$arr</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>join($glue, $arr)</code>
+                <div class="function-desc">Alias de implode</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">join</span>(<span class="php-str">'|'</span>, [<span class="php-str">'a'</span>, <span class="php-str">'b'</span>, <span class="php-str">'c'</span>]);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_split($s)</code>
+                <div class="function-desc">Découpe une chaîne en caractères</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">print_r</span>(<span class="php-fn">str_split</span>(<span class="php-str">'abcd'</span>));</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>chunk_split($s, $len)</code>
+                <div class="function-desc">Découpe en morceaux avec séparateur</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">chunk_split</span>(<span class="php-str">'ABCDEFG'</span>, <span class="php-num">2</span>, <span class="php-str">'-'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_pad($s, $len, $pad)</code>
+                <div class="function-desc">Complète une chaîne à une longueur</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">str_pad</span>(<span class="php-str">'42'</span>, <span class="php-num">6</span>, <span class="php-str">'0'</span>, <span class="php-const">STR_PAD_LEFT</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>sprintf($fmt, ...$args)</code>
+                <div class="function-desc">Formate une chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">sprintf</span>(<span class="php-str">'%s a %d ans'</span>, <span class="php-str">'Lysandre'</span>, <span class="php-num">28</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>printf($fmt, ...$args)</code>
+                <div class="function-desc">Affiche une chaîne formatée</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">printf</span>(<span class="php-str">'%0.2f €'</span>, <span class="php-num">12.5</span>);</pre>
+                </div>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>🔍 Recherche & Position</h4>
+            <div class="function-item">
+                <code>strpos($s, $needle)</code>
+                <div class="function-desc">Position de la première occurrence</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strpos</span>(<span class="php-str">'développeur'</span>, <span class="php-str">'lop'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>stripos($s, $needle)</code>
+                <div class="function-desc">Position (insensible à la casse)</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">stripos</span>(<span class="php-str">'Paris'</span>, <span class="php-str">'RIS'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strrpos($s, $needle)</code>
+                <div class="function-desc">Position de la dernière occurrence</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strrpos</span>(<span class="php-str">'bananier'</span>, <span class="php-str">'an'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strripos($s, $needle)</code>
+                <div class="function-desc">Dernière occurrence sans casse</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strripos</span>(<span class="php-str">'Symphonie'</span>, <span class="php-str">'O'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_contains($s, $needle)</code>
+                <div class="function-desc">Vérifie la présence d'une sous-chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">var_dump</span>(<span class="php-fn">str_contains</span>(<span class="php-str">'Laravel'</span>, <span class="php-str">'vel'</span>));</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_starts_with($s, $prefix)</code>
+                <div class="function-desc">Teste le préfixe</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">var_dump</span>(<span class="php-fn">str_starts_with</span>(<span class="php-str">'backend'</span>, <span class="php-str">'back'</span>));</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_ends_with($s, $suffix)</code>
+                <div class="function-desc">Teste le suffixe</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">var_dump</span>(<span class="php-fn">str_ends_with</span>(<span class="php-str">'index.php'</span>, <span class="php-str">'.php'</span>));</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strstr($s, $needle)</code>
+                <div class="function-desc">Retourne la chaîne à partir d'une occurrence</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strstr</span>(<span class="php-str">'nom@site.com'</span>, <span class="php-str">'@'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>stristr($s, $needle)</code>
+                <div class="function-desc">Recherche insensible à la casse</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">stristr</span>(<span class="php-str">'MemoPHP'</span>, <span class="php-str">'php'</span>);</pre>
+                </div>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>🎛️ Casse & Format</h4>
+            <div class="function-item">
+                <code>strtolower($s)</code>
+                <div class="function-desc">Passe en minuscules</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strtolower</span>(<span class="php-str">'PHP'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strtoupper($s)</code>
+                <div class="function-desc">Passe en majuscules</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strtoupper</span>(<span class="php-str">'php'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>mb_strtolower($s)</code>
+                <div class="function-desc">Minuscules UTF-8</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">mb_strtolower</span>(<span class="php-str">'ÉCOLE'</span>, <span class="php-str">'UTF-8'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>mb_strtoupper($s)</code>
+                <div class="function-desc">Majuscules UTF-8</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">mb_strtoupper</span>(<span class="php-str">'été'</span>, <span class="php-str">'UTF-8'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>ucfirst($s)</code>
+                <div class="function-desc">Met la première lettre en majuscule</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">ucfirst</span>(<span class="php-str">'php'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>lcfirst($s)</code>
+                <div class="function-desc">Met la première lettre en minuscule</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">lcfirst</span>(<span class="php-str">'PHP'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>ucwords($s)</code>
+                <div class="function-desc">Met chaque mot en majuscule</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">ucwords</span>(<span class="php-str">'bonjour le monde'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>number_format($n, $dec, $sep)</code>
+                <div class="function-desc">Formate un nombre en chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">number_format</span>(<span class="php-num">12345.678</span>, <span class="php-num">2</span>, <span class="php-str">','</span>, <span class="php-str">' '</span>);</pre>
+                </div>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>🧼 Nettoyage & Remplacement</h4>
+            <div class="function-item">
+                <code>trim($s)</code>
+                <div class="function-desc">Supprime les espaces aux extrémités</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">trim</span>(<span class="php-str">'  PHP  '</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>ltrim($s)</code>
+                <div class="function-desc">Supprime à gauche</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">ltrim</span>(<span class="php-str">'  code'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>rtrim($s)</code>
+                <div class="function-desc">Supprime à droite</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">rtrim</span>(<span class="php-str">'fin  '</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_replace($o, $n, $s)</code>
+                <div class="function-desc">Remplace une sous-chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">str_replace</span>(<span class="php-str">'bleu'</span>, <span class="php-str">'rouge'</span>, <span class="php-str">'ciel bleu'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>str_ireplace($o, $n, $s)</code>
+                <div class="function-desc">Remplace sans tenir compte de la casse</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">str_ireplace</span>(<span class="php-str">'php'</span>, <span class="php-str">'PHP'</span>, <span class="php-str">'Php est cool'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strtr($s, $from, $to)</code>
+                <div class="function-desc">Remplace par tableau ou mapping</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strtr</span>(<span class="php-str">'bonjour'</span>, [<span class="php-str">'b'</span> => <span class="php-str">'B'</span>, <span class="php-str">'j'</span> => <span class="php-str">'J'</span>]);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>addslashes($s)</code>
+                <div class="function-desc">Ajoute des antislashs d'échappement</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">addslashes</span>(<span class="php-str">"L'ombre"</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>stripslashes($s)</code>
+                <div class="function-desc">Retire les antislashs</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">stripslashes</span>(<span class="php-str">"L\\'ombre"</span>);</pre>
+                </div>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>⚖️ Comparaison</h4>
+            <div class="function-item">
+                <code>strcmp($a, $b)</code>
+                <div class="function-desc">Compare deux chaînes</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strcmp</span>(<span class="php-str">'a'</span>, <span class="php-str">'b'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strncmp($a, $b, $len)</code>
+                <div class="function-desc">Compare sur n caractères</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strncmp</span>(<span class="php-str">'alpha'</span>, <span class="php-str">'alpine'</span>, <span class="php-num">2</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strcasecmp($a, $b)</code>
+                <div class="function-desc">Compare sans la casse</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strcasecmp</span>(<span class="php-str">'PHP'</span>, <span class="php-str">'php'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strnatcmp($a, $b)</code>
+                <div class="function-desc">Compare en ordre naturel</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">strnatcmp</span>(<span class="php-str">'file2'</span>, <span class="php-str">'file10'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>similar_text($a, $b)</code>
+                <div class="function-desc">Mesure la similarité entre deux chaînes</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">similar_text</span>(<span class="php-str">'kitten'</span>, <span class="php-str">'sitting'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>levenshtein($a, $b)</code>
+                <div class="function-desc">Distance d'édition entre deux chaînes</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">echo</span> <span class="php-fn">levenshtein</span>(<span class="php-str">'kitten'</span>, <span class="php-str">'sitting'</span>);</pre>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -68,16 +535,573 @@
 <section>
     <h3>📌 Math & Dates</h3>
     <div class="grid2">
-        <ul class="ref-card">
-            <li><code>rand(1, 100)</code> : Nombre aléatoire.</li>
-            <li><code>round(12.55, 1)</code> : Arrondir -> 12.6.</li>
-            <li><code>abs(-5)</code> : Valeur absolue -> 5.</li>
-        </ul>
-        <ul class="ref-card">
-            <li><code>date('d/m/Y H:i')</code> : Date actuelle.</li>
-            <li><code>time()</code> : Timestamp actuel.</li>
-            <li><code>strtotime('next monday')</code> : Texte -> Date.</li>
-        </ul>
+        <div class="ref-card">
+            <h4>🔢 Mathématiques</h4>
+            <div class="function-item">
+                <code>rand(1, 100)</code>
+                <div class="function-desc">Génère un nombre aléatoire entre 1 et 100</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">random</span> = <span class="php-fn">rand</span>(<span class="php-num">1</span>, <span class="php-num">100</span>);
+<span class="php-kw">echo</span> <span class="php-var">$random</span>; <span class="php-com">// → 42 (exemple)</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>round(12.55, 1)</code>
+                <div class="function-desc">Arrondit un nombre avec une précision spécifique</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">rounded</span> = <span class="php-fn">round</span>(<span class="php-num">12.55</span>, <span class="php-num">1</span>);
+<span class="php-kw">echo</span> <span class="php-var">$rounded</span>; <span class="php-com">// → 12.6</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>abs(-5)</code>
+                <div class="function-desc">Retourne la valeur absolue d'un nombre</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">absolute</span> = <span class="php-fn">abs</span>(<span class="php-num">-5</span>);
+<span class="php-kw">echo</span> <span class="php-var">$absolute</span>; <span class="php-com">// → 5</span></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>📅 Dates & Heures</h4>
+            <div class="function-item">
+                <code>date('d/m/Y H:i')</code>
+                <div class="function-desc">Formate la date et l'heure actuelles</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">now</span> = <span class="php-fn">date</span>(<span class="php-str">'d/m/Y H:i'</span>);
+<span class="php-kw">echo</span> <span class="php-var">$now</span>; <span class="php-com">// → 26/01/2026 15:30</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>time()</code>
+                <div class="function-desc">Retourne le timestamp Unix actuel</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">timestamp</span> = <span class="php-fn">time</span>();
+<span class="php-kw">echo</span> <span class="php-var">$timestamp</span>; <span class="php-com">// → 1893457800</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>strtotime('next monday')</code>
+                <div class="function-desc">Convertit une description textuelle en timestamp</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">nextMonday</span> = <span class="php-fn">strtotime</span>(<span class="php-str">'next monday'</span>);
+<span class="php-kw">echo</span> <span class="php-fn">date</span>(<span class="php-str">'d/m/Y'</span>, <span class="php-var">$nextMonday</span>); <span class="php-com">// → 02/02/2026</span></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Sécurité & Validation</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🛡️ Sécurité Web</h4>
+            <div class="function-item">
+                <code>htmlspecialchars($s)</code>
+                <div class="function-desc">Protège contre les attaques XSS en échappant le HTML</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">userInput</span> = <span class="php-str">'&lt;script&gt;alert("XSS")&lt;/script&gt;'</span>;
+<span class="php-kw">$</span><span class="php-var">safe</span> = <span class="php-fn">htmlspecialchars</span>(<span class="php-var">$userInput</span>);
+<span class="php-kw">echo</span> <span class="php-var">$safe</span>; <span class="php-com">// → &amp;lt;script&amp;gt;alert(&amp;quot;XSS&amp;quot;)&amp;lt;/script&amp;gt;</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>filter_var($v, FILTER_VALIDATE_EMAIL)</code>
+                <div class="function-desc">Valide le format d'une adresse email</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">email</span> = <span class="php-str">'user@example.com'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">filter_var</span>(<span class="php-var">$email</span>, <span class="php-const">FILTER_VALIDATE_EMAIL</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Email valide'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'Email invalide'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>password_hash($pass, PASSWORD_DEFAULT)</code>
+                <div class="function-desc">Crée un hachage sécurisé pour les mots de passe</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">password</span> = <span class="php-str">'monMotDePasseSecret'</span>;
+<span class="php-kw">$</span><span class="php-var">hash</span> = <span class="php-fn">password_hash</span>(<span class="php-var">$password</span>, <span class="php-const">PASSWORD_DEFAULT</span>);
+<span class="php-com">// → $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>password_verify($pass, $hash)</code>
+                <div class="function-desc">Vérifie qu'un mot de passe correspond à un hachage</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">password</span> = <span class="php-str">'monMotDePasseSecret'</span>;
+<span class="php-kw">$</span><span class="php-var">hash</span> = <span class="php-str">'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">password_verify</span>(<span class="php-var">$password</span>, <span class="php-var">$hash</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Mot de passe correct'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>🔐 Cryptographie & Tokens</h4>
+            <div class="function-item">
+                <code>bin2hex(random_bytes(32))</code>
+                <div class="function-desc">Génère un token CSRF sécurisé</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">token</span> = <span class="php-fn">bin2hex</span>(<span class="php-fn">random_bytes</span>(<span class="php-num">32</span>));
+<span class="php-kw">echo</span> <span class="php-var">$token</span>; <span class="php-com">// → 4b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b7e7b</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>hash_equals($a, $b)</code>
+                <div class="function-desc">Comparaison sécurisée résistante aux attaques par timing</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">expected</span> = <span class="php-str">'monTokenSecret'</span>;
+<span class="php-kw">$</span><span class="php-var">provided</span> = <span class="php-var">$_POST</span>[<span class="php-str">'token'</span>] ?? <span class="php-str">''</span>;
+<span class="php-kw">if</span> (<span class="php-fn">hash_equals</span>(<span class="php-var">$expected</span>, <span class="php-var">$provided</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Token valide'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>filter_input(INPUT_POST, 'name')</code>
+                <div class="function-desc">Récupère et filtre les données d'entrée</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">name</span> = <span class="php-fn">filter_input</span>(<span class="php-const">INPUT_POST</span>, <span class="php-str">'name'</span>, <span class="php-const">FILTER_SANITIZE_STRING</span>);
+<span class="php-kw">echo</span> <span class="php-str">"Bonjour "</span> . <span class="php-var">$name</span>;</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>openssl_encrypt($data, 'aes-256-cbc', $key)</code>
+                <div class="function-desc">Chiffre des données avec AES-256</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">data</span> = <span class="php-str">'Donnée confidentielle'</span>;
+<span class="php-kw">$</span><span class="php-var">key</span> = <span class="php-str">'maCléSecrèteTrèsLongue32caractères'</span>;
+<span class="php-kw">$</span><span class="php-var">encrypted</span> = <span class="php-fn">openssl_encrypt</span>(<span class="php-var">$data</span>, <span class="php-str">'aes-256-cbc'</span>, <span class="php-var">$key</span>);
+<span class="php-kw">echo</span> <span class="php-var">$encrypted</span>;</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Fichiers & Système</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>📁 Opérations sur fichiers</h4>
+            <div class="function-item">
+                <code>file_get_contents('fichier.txt')</code>
+                <div class="function-desc">Lit le contenu entier d'un fichier dans une chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">content</span> = <span class="php-fn">file_get_contents</span>(<span class="php-str">'monfichier.txt'</span>);
+<span class="php-kw">echo</span> <span class="php-var">$content</span>; <span class="php-com">// → Contenu du fichier</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>file_put_contents('fichier.txt', $data)</code>
+                <div class="function-desc">Écrit des données dans un fichier</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">data</span> = <span class="php-str">'Hello World!'</span>;
+<span class="php-fn">file_put_contents</span>(<span class="php-str">'output.txt'</span>, <span class="php-var">$data</span>);
+<span class="php-com">// Crée ou écrase output.txt avec 'Hello World!'</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>file_exists('fichier.txt')</code>
+                <div class="function-desc">Vérifie si un fichier ou dossier existe</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">if</span> (<span class="php-fn">file_exists</span>(<span class="php-str">'monfichier.txt'</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Le fichier existe'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'Fichier non trouvé'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>unlink('fichier.txt')</code>
+                <div class="function-desc">Supprime un fichier</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">if</span> (<span class="php-fn">file_exists</span>(<span class="php-str">'oldfile.txt'</span>)) {
+    <span class="php-fn">unlink</span>(<span class="php-str">'oldfile.txt'</span>);
+    <span class="php-kw">echo</span> <span class="php-str">'Fichier supprimé'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>📂 Gestion des dossiers</h4>
+            <div class="function-item">
+                <code>mkdir('dossier')</code>
+                <div class="function-desc">Crée un nouveau dossier</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">if</span> (!<span class="php-fn">file_exists</span>(<span class="php-str">'nouveau_dossier'</span>)) {
+    <span class="php-fn">mkdir</span>(<span class="php-str">'nouveau_dossier'</span>);
+    <span class="php-kw">echo</span> <span class="php-str">'Dossier créé'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>rmdir('dossier')</code>
+                <div class="function-desc">Supprime un dossier vide</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">if</span> (<span class="php-fn">is_dir</span>(<span class="php-str">'dossier_vide'</span>)) {
+    <span class="php-fn">rmdir</span>(<span class="php-str">'dossier_vide'</span>);
+    <span class="php-kw">echo</span> <span class="php-str">'Dossier supprimé'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>scandir('dossier')</code>
+                <div class="function-desc">Liste les fichiers et dossiers d'un répertoire</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">files</span> = <span class="php-fn">scandir</span>(<span class="php-str">'.'</span>);
+<span class="php-kw">foreach</span> (<span class="php-var">$files</span> <span class="php-kw">as</span> <span class="php-var">$file</span>) {
+    <span class="php-kw">echo</span> <span class="php-var">$file</span> . <span class="php-str">"\n"</span>;
+}
+<span class="php-com">// → Liste tous les fichiers du dossier courant</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>is_dir('dossier')</code>
+                <div class="function-desc">Vérifie si le chemin est un dossier</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">path</span> = <span class="php-str">'mon_dossier'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">is_dir</span>(<span class="php-var">$path</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'C\'est un dossier'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'Ce n\'est pas un dossier'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Sessions & Cookies</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔐 Gestion des Sessions</h4>
+            <div class="function-item">
+                <code>session_start()</code>
+                <div class="function-desc">Démarre une nouvelle session ou reprend une session existante</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">session_start</span>();
+<span class="php-var">$_SESSION</span>[<span class="php-str">'user_id'</span>] = <span class="php-num">123</span>;
+<span class="php-var">$_SESSION</span>[<span class="php-str">'username'</span>] = <span class="php-str">'john_doe'</span>;</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>$_SESSION['key'] = 'value'</code>
+                <div class="function-desc">Stocke une valeur dans la session</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">session_start</span>();
+<span class="php-var">$_SESSION</span>[<span class="php-str">'panier'</span>] = [<span class="php-str">'produit1'</span>, <span class="php-str">'produit2'</span>];
+<span class="php-var">$_SESSION</span>[<span class="php-str">'last_login'</span>] = <span class="php-fn">date</span>(<span class="php-str">'Y-m-d H:i:s'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>session_destroy()</code>
+                <div class="function-desc">Détruit toutes les données de session</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">session_start</span>();
+<span class="php-com">// ... utilisation de la session ...</span>
+<span class="php-fn">session_destroy</span>();
+<span class="php-kw">echo</span> <span class="php-str">'Session détruite'</span>;</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>session_unset()</code>
+                <div class="function-desc">Vide toutes les variables de session</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">session_start</span>();
+<span class="php-var">$_SESSION</span>[<span class="php-str">'data'</span>] = <span class="php-str">'valeur'</span>;
+<span class="php-fn">session_unset</span>();
+<span class="php-com">// $_SESSION est maintenant vide</span></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>🍪 Gestion des Cookies</h4>
+            <div class="function-item">
+                <code>setcookie('name', 'value', time()+3600)</code>
+                <div class="function-desc">Définit un cookie qui expire dans 1 heure</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">setcookie</span>(<span class="php-str">'user_pref'</span>, <span class="php-str">'dark_mode'</span>, <span class="php-fn">time</span>() + <span class="php-num">3600</span>);
+<span class="php-fn">setcookie</span>(<span class="php-str">'language'</span>, <span class="php-str">'fr'</span>, <span class="php-fn">time</span>() + (<span class="php-num">30</span> * <span class="php-num">24</span> * <span class="php-num">3600</span>)); <span class="php-com">// 30 jours</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>$_COOKIE['name']</code>
+                <div class="function-desc">Accède à la valeur d'un cookie</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">if</span> (<span class="php-kw">isset</span>(<span class="php-var">$_COOKIE</span>[<span class="php-str">'user_pref'</span>])) {
+    <span class="php-kw">$</span><span class="php-var">theme</span> = <span class="php-var">$_COOKIE</span>[<span class="php-str">'user_pref'</span>];
+    <span class="php-kw">echo</span> <span class="php-str">"Thème : "</span> . <span class="php-var">$theme</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>setcookie('name', '', time()-3600)</code>
+                <div class="function-desc">Supprime un cookie en le faisant expirer dans le passé</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">setcookie</span>(<span class="php-str">'old_cookie'</span>, <span class="php-str">''</span>, <span class="php-fn">time</span>() - <span class="php-num">3600</span>);
+<span class="php-kw">echo</span> <span class="php-str">'Cookie supprimé'</span>;</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>session_regenerate_id(true)</code>
+                <div class="function-desc">Régénère l'ID de session pour prévenir les attaques de fixation</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">session_start</span>();
+<span class="php-com">// Après une authentification réussie</span>
+<span class="php-fn">session_regenerate_id</span>(<span class="php-kw">true</span>);
+<span class="php-com">// L'ID de session a été changé</span></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>📌 JSON & API</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔄 Manipulation JSON</h4>
+            <div class="function-item">
+                <code>json_encode($data)</code>
+                <div class="function-desc">Convertit un tableau ou objet PHP en chaîne JSON</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">data</span> = [
+    <span class="php-str">'nom'</span> => <span class="php-str">'Jean'</span>,
+    <span class="php-str">'âge'</span> => <span class="php-num">30</span>,
+    <span class="php-str">'ville'</span> => <span class="php-str">'Paris'</span>
+];
+<span class="php-kw">$</span><span class="php-var">json</span> = <span class="php-fn">json_encode</span>(<span class="php-var">$data</span>);
+<span class="php-kw">echo</span> <span class="php-var">$json</span>; <span class="php-com">// → {"nom":"Jean","âge":30,"ville":"Paris"}</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>json_decode($json, true)</code>
+                <div class="function-desc">Convertit une chaîne JSON en tableau associatif PHP</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">json</span> = <span class="php-str">'{"nom":"Marie","âge":25,"active":true}'</span>;
+<span class="php-kw">$</span><span class="php-var">data</span> = <span class="php-fn">json_decode</span>(<span class="php-var">$json</span>, <span class="php-kw">true</span>);
+<span class="php-kw">echo</span> <span class="php-var">$data</span>[<span class="php-str">'nom'</span>]; <span class="php-com">// → Marie</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>json_last_error()</code>
+                <div class="function-desc">Retourne la dernière erreur survenue lors d'une opération JSON</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">json</span> = <span class="php-str">'{"invalid: json}'</span>; <span class="php-com">// JSON invalide</span>
+<span class="php-fn">json_decode</span>(<span class="php-var">$json</span>);
+<span class="php-kw">if</span> (<span class="php-fn">json_last_error</span>() !== <span class="php-const">JSON_ERROR_NONE</span>) {
+    <span class="php-kw">echo</span> <span class="php-str">'Erreur JSON: '</span> . <span class="php-fn">json_last_error_msg</span>();
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>header('Content-Type: application/json')</code>
+                <div class="function-desc">Définit l'en-tête HTTP pour une réponse JSON</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">header</span>(<span class="php-str">'Content-Type: application/json'</span>);
+<span class="php-kw">$</span><span class="php-var">response</span> = [<span class="php-str">'status'</span> => <span class="php-str">'success'</span>, <span class="php-str">'data'</span> => [<span class="php-num">1</span>, <span class="php-num">2</span>, <span class="php-num">3</span>]];
+<span class="php-kw">echo</span> <span class="php-fn">json_encode</span>(<span class="php-var">$response</span>);
+<span class="php-fn">exit</span>;</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>🌐 Requêtes HTTP & cURL</h4>
+            <div class="function-item">
+                <code>file_get_contents('https://...')</code>
+                <div class="function-desc">Effectue une requête HTTP GET simple</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">api_url</span> = <span class="php-str">'https://api.example.com/data'</span>;
+<span class="php-kw">$</span><span class="php-var">response</span> = <span class="php-fn">file_get_contents</span>(<span class="php-var">$api_url</span>);
+<span class="php-kw">$</span><span class="php-var">data</span> = <span class="php-fn">json_decode</span>(<span class="php-var">$response</span>, <span class="php-kw">true</span>);
+<span class="php-kw">print_r</span>(<span class="php-var">$data</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>curl_init()</code>
+                <div class="function-desc">Initialise une session cURL pour des requêtes HTTP avancées</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">ch</span> = <span class="php-fn">curl_init</span>(<span class="php-str">'https://api.example.com/users'</span>);
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_RETURNTRANSFER</span>, <span class="php-kw">true</span>);
+<span class="php-kw">$</span><span class="php-var">result</span> = <span class="php-fn">curl_exec</span>(<span class="php-var">$ch</span>);
+<span class="php-fn">curl_close</span>(<span class="php-var">$ch</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>curl_setopt($ch, CURLOPT_RETURNTRANSFER, true)</code>
+                <div class="function-desc">Définit une option cURL pour retourner le résultat au lieu de l'afficher</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">ch</span> = <span class="php-fn">curl_init</span>();
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_URL</span>, <span class="php-str">'https://api.example.com'</span>);
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_RETURNTRANSFER</span>, <span class="php-kw">true</span>);
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_POST</span>, <span class="php-kw">true</span>);
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_POSTFIELDS</span>, <span class="php-str">'data=test'</span>);</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>curl_exec($ch)</code>
+                <div class="function-desc">Exécute la requête cURL et retourne le résultat</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">ch</span> = <span class="php-fn">curl_init</span>(<span class="php-str">'https://jsonplaceholder.typicode.com/posts/1'</span>);
+<span class="php-fn">curl_setopt</span>(<span class="php-var">$ch</span>, <span class="php-const">CURLOPT_RETURNTRANSFER</span>, <span class="php-kw">true</span>);
+<span class="php-kw">$</span><span class="php-var">response</span> = <span class="php-fn">curl_exec</span>(<span class="php-var">$ch</span>);
+<span class="php-fn">curl_close</span>(<span class="php-var">$ch</span>);
+<span class="php-kw">$</span><span class="php-var">data</span> = <span class="php-fn">json_decode</span>(<span class="php-var">$response</span>, <span class="php-kw">true</span>);
+<span class="php-kw">echo</span> <span class="php-var">$data</span>[<span class="php-str">'title'</span>];</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>📌 Expressions régulières</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔍 Recherche & Validation</h4>
+            <div class="function-item">
+                <code>preg_match('/pattern/', $str)</code>
+                <div class="function-desc">Recherche une correspondance de pattern regex dans une chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">email</span> = <span class="php-str">'user@example.com'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">preg_match</span>(<span class="php-str">'/^[\w\.-]+@[\w\.-]+\.\w+$/'</span>, <span class="php-var">$email</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'Email valide'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'Email invalide'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>preg_match_all('/pattern/', $str, $matches)</code>
+                <div class="function-desc">Trouve toutes les correspondances d'un pattern dans une chaîne</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">text</span> = <span class="php-str">'Les prix sont 10€, 25€ et 50€'</span>;
+<span class="php-fn">preg_match_all</span>(<span class="php-str">'/\d+€/'</span>, <span class="php-var">$text</span>, <span class="php-var">$matches</span>);
+<span class="php-kw">print_r</span>(<span class="php-var">$matches</span>[<span class="php-num">0</span>]); <span class="php-com">// → Array([0] => 10€, [1] => 25€, [2] => 50€)</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>preg_quote($str)</code>
+                <div class="function-desc">Échappe les caractères spéciaux d'une chaîne pour une utilisation regex</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">search</span> = <span class="php-str">'file.txt'</span>;
+<span class="php-kw">$</span><span class="php-var">pattern</span> = <span class="php-str">'/'</span> . <span class="php-fn">preg_quote</span>(<span class="php-var">$search</span>, <span class="php-str">'/'</span>) . <span class="php-str">'/'</span>;
+<span class="php-com">// $pattern devient '/file\.txt/' (le point est échappé)</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>preg_last_error()</code>
+                <div class="function-desc">Retourne la dernière erreur survenue lors d'une opération regex</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-fn">preg_match</span>(<span class="php-str">'/(unbalanced/group'</span>, <span class="php-str">'test'</span>); <span class="php-com">// Pattern invalide</span>
+<span class="php-kw">if</span> (<span class="php-fn">preg_last_error</span>() !== <span class="php-const">PREG_NO_ERROR</span>) {
+    <span class="php-kw">echo</span> <span class="php-str">'Erreur regex: '</span> . <span class="php-fn">preg_last_error</span>();
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ref-card">
+            <h4>🔄 Remplacement & Division</h4>
+            <div class="function-item">
+                <code>preg_replace('/pattern/', 'repl', $str)</code>
+                <div class="function-desc">Remplace toutes les correspondances d'un pattern par une chaîne de remplacement</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">text</span> = <span class="php-str">'Hello 123 World 456'</span>;
+<span class="php-kw">$</span><span class="php-var">result</span> = <span class="php-fn">preg_replace</span>(<span class="php-str">'/\d+/'</span>, <span class="php-str">'NUMBER'</span>, <span class="php-var">$text</span>);
+<span class="php-kw">echo</span> <span class="php-var">$result</span>; <span class="php-com">// → Hello NUMBER World NUMBER</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>preg_split('/pattern/', $str)</code>
+                <div class="function-desc">Divise une chaîne en utilisant un pattern regex comme séparateur</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">csv</span> = <span class="php-str">'apple,banana,orange,grape'</span>;
+<span class="php-kw">$</span><span class="php-var">fruits</span> = <span class="php-fn">preg_split</span>(<span class="php-str">'/,/'</span>, <span class="php-var">$csv</span>);
+<span class="php-kw">print_r</span>(<span class="php-var">$fruits</span>); <span class="php-com">// → Array([0] => apple, [1] => banana, [2] => orange, [3] => grape)</span></pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>filter_var($url, FILTER_VALIDATE_URL)</code>
+                <div class="function-desc">Valide une URL selon le format standard</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">url</span> = <span class="php-str">'https://www.example.com/page'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">filter_var</span>(<span class="php-var">$url</span>, <span class="php-const">FILTER_VALIDATE_URL</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'URL valide'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'URL invalide'</span>;
+}</pre>
+                </div>
+            </div>
+            <div class="function-item">
+                <code>filter_var($ip, FILTER_VALIDATE_IP)</code>
+                <div class="function-desc">Valide une adresse IP (IPv4 ou IPv6)</div>
+                <button class="example-toggle">Voir l'exemple</button>
+                <div class="example-content">
+<pre><span class="php-kw">$</span><span class="php-var">ip</span> = <span class="php-str">'192.168.1.1'</span>;
+<span class="php-kw">if</span> (<span class="php-fn">filter_var</span>(<span class="php-var">$ip</span>, <span class="php-const">FILTER_VALIDATE_IP</span>)) {
+    <span class="php-kw">echo</span> <span class="php-str">'IP valide'</span>;
+} <span class="php-kw">else</span> {
+    <span class="php-kw">echo</span> <span class="php-str">'IP invalide'</span>;
+}</pre>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

@@ -34,6 +34,32 @@ const routes = [
     }
 ];
 
+function initSectionExamples() {
+    document.querySelectorAll('.example-toggle').forEach(toggle => {
+        if (toggle.dataset.bound === 'true') return;
+        const content = toggle.nextElementSibling;
+        if (!content) return;
+
+        toggle.dataset.bound = 'true';
+        toggle.setAttribute('aria-expanded', 'false');
+        content.classList.remove('is-open');
+        content.style.maxHeight = '0px';
+
+        toggle.addEventListener('click', () => {
+            const isOpen = content.classList.toggle('is-open');
+            toggle.classList.toggle('expanded', isOpen);
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            toggle.textContent = isOpen ? 'Masquer l\'exemple' : 'Voir l\'exemple';
+
+            if (isOpen) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.style.maxHeight = '0px';
+            }
+        });
+    });
+}
+
 function initApp() {
     console.log('🐘 PHP Memo App initializing...');
 
@@ -103,4 +129,5 @@ async function initQuiz() {
     }
 }
 
+window.initSectionExamples = initSectionExamples;
 document.addEventListener('DOMContentLoaded', initApp);

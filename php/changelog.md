@@ -14,6 +14,9 @@
 - Enriched module 03 with control structure use cases, switch vs match, and interactive examples
 - Enriched module 04 with function concepts, use cases, interactivity, and schemas
 - Expanded module 05 strings with alternatives, security, and interactive examples
+- Expanded module 06 OOP with hooks, DI, alternatives, and interactive examples
+- Expanded module 07 errors with handlers, logging, chaining, and scenarios
+- Added module 20 MVC Ecommerce use case guide
 
 ## To do
 - Verify module 12 interactive examples render correctly in the browser

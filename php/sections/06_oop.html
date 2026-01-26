@@ -1,8 +1,8 @@
 <div class="sec-header">
     <div class="sec-num">06</div>
     <div>
-        <h2 class="sec-title">Le Guide Ultime de la POO</h2>
-        <p class="sec-sub">De la théorie à la pratique professionnelle : Maîtriser l'Architecture Objet</p>
+        <h2 class="sec-title">POO : Programmation orientée objets</h2>
+        <p class="sec-sub">Architecture, pratiques modernes, et code évolutif</p>
     </div>
 </div>
 
@@ -10,6 +10,34 @@
     <p>La Programmation Orientée Objet (POO) n'est pas juste une syntaxe, c'est une <strong>philosophie</strong>. Elle
         permet de structurer des systèmes complexes en les découpant en petites briques autonomes (Objets) qui
         communiquent entre elles.</p>
+</div>
+
+<div class="info">
+    <strong>🎯 Objectif du module</strong><br>
+    Comprendre la POO comme un <strong>outil de structure</strong> : clarifier les responsabilités, réduire le
+    couplage, et faciliter l'évolution.
+</div>
+
+<div class="grid2" style="margin-top:10px;">
+    <div class="ref-card">
+        <h4>🧭 Cycle d'un objet</h4>
+        <ul>
+            <li>Conception → Modèle</li>
+            <li>Instantiation → État</li>
+            <li>Interactions → Comportements</li>
+            <li>Extensibilité → Nouvelles règles</li>
+        </ul>
+    </div>
+    <div class="ref-card">
+        <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+[ Modèle ] -> class
+     |
+[ Instance ] -> new
+     |
+[ Méthodes ] -> actions
+     |
+[ Collaboration ] -> objets</pre>
+    </div>
 </div>
 
 <!-- ========================================== -->
@@ -48,6 +76,40 @@
 <span class="var">$p1</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"iPhone"</span>, <span class="num">999</span>);
 <span class="var">$p2</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"Coque"</span>, <span class="num">20</span>);
 <span class="c">// $p1 et $p2 sont indépendants.</span></pre>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="code">
+            <div class="code-head">Ancien style (PHP 7)</div>
+            <pre><span class="kw">class</span> <span class="fn">User</span> {
+    <span class="kw">private string</span> <span class="var">$name</span>;
+    <span class="kw">private string</span> <span class="var">$email</span>;
+
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">string</span> <span class="var">$name</span>, <span class="kw">string</span> <span class="var">$email</span>) {
+        <span class="var">$this</span>-><span class="prop">name</span> = <span class="var">$name</span>;
+        <span class="var">$this</span>-><span class="prop">email</span> = <span class="var">$email</span>;
+    }
+}</pre>
+        </div>
+        <div class="code">
+            <div class="code-head">Moderne (PHP 8+)</div>
+            <pre><span class="kw">class</span> <span class="fn">User</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">private string</span> <span class="var">$name</span>,
+        <span class="kw">private string</span> <span class="var">$email</span>
+    ) {}
+}</pre>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Une classe produit doit être simple à instancier depuis un contrôleur.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="var">$product</span> = <span class="kw">new</span> <span class="fn">Product</span>(<span class="str">"Clavier"</span>, <span class="num">79</span>);
+<span class="kw">echo</span> <span class="var">$product</span>-><span class="prop">name</span>;</pre>
+        </div>
     </div>
 </section>
 
@@ -94,6 +156,40 @@
         }
     }
 }</pre>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="code">
+            <div class="code-head">Accès contrôlé</div>
+            <pre><span class="kw">class</span> <span class="fn">Profile</span> {
+    <span class="kw">private string</span> <span class="var">$email</span>;
+
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">string</span> <span class="var">$email</span>) {
+        <span class="var">$this</span>-><span class="prop">email</span> = <span class="var">$email</span>;
+    }
+
+    <span class="kw">public function</span> <span class="fn">email</span>(): <span class="kw">string</span> {
+        <span class="kw">return</span> <span class="var">$this</span>-><span class="prop">email</span>;
+    }
+}</pre>
+        </div>
+        <div class="code">
+            <div class="code-head">Immutable (PHP 8.1+)</div>
+            <pre><span class="kw">class</span> <span class="fn">Profile</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">public readonly string</span> <span class="var">$email</span>
+    ) {}
+}</pre>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>✅ Bonnes pratiques</h4>
+        <ul>
+            <li>Ne pas exposer les propriétés sensibles en public.</li>
+            <li>Protéger les invariants via des setters contrôlés.</li>
+            <li>Préférer l'immuabilité pour les valeurs stables.</li>
+        </ul>
     </div>
 </section>
 
@@ -156,6 +252,38 @@
     }
 }</pre>
     </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>⚖️ Interface vs Abstraite</h4>
+            <ul>
+                <li>Interface : contrat pur, multi-implémentation.</li>
+                <li>Abstraite : base commune + contrat partiel.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧩 Alternatives modernes</h4>
+            <ul>
+                <li>Enum (PHP 8.1+) pour des valeurs fermées.</li>
+                <li>Value Object pour encapsuler des règles métier.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Un système de notifications doit supporter email, SMS et push.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">interface</span> <span class="fn">Notifier</span> {
+    <span class="kw">public function</span> <span class="fn">send</span>(<span class="kw">string</span> <span class="var">$message</span>): <span class="kw">void</span>;
+}
+
+<span class="kw">class</span> <span class="fn">EmailNotifier</span> <span class="kw">implements</span> <span class="fn">Notifier</span> {
+    <span class="kw">public function</span> <span class="fn">send</span>(<span class="kw">string</span> <span class="var">$message</span>): <span class="kw">void</span> {}
+}</pre>
+        </div>
+    </div>
 </section>
 
 <!-- ========================================== -->
@@ -185,6 +313,32 @@
 <span class="c">// On peut changer de méthode de paiement sans casser le Checkout !</span>
 <span class="var">$checkout</span>-><span class="fn">process</span>(<span class="kw">new</span> <span class="fn">PayPal</span>(), <span class="num">50</span>);
 <span class="var">$checkout</span>-><span class="fn">process</span>(<span class="kw">new</span> <span class="fn">Stripe</span>(), <span class="num">50</span>);</pre>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧩 Pattern Strategy</h4>
+            <p>Le polymorphisme permet de changer l'algorithme sans changer le code client.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🔁 Ancien vs Moderne</h4>
+            <p>Ancien : <code>if/else</code> géants. Moderne : interface + implémentations.</p>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Un moteur de livraison choisit le bon calculateur selon le pays.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">interface</span> <span class="fn">ShippingRule</span> {
+    <span class="kw">public function</span> <span class="fn">cost</span>(<span class="kw">float</span> <span class="var">$amount</span>): <span class="kw">float</span>;
+}
+
+<span class="kw">class</span> <span class="fn">FranceRule</span> <span class="kw">implements</span> <span class="fn">ShippingRule</span> {
+    <span class="kw">public function</span> <span class="fn">cost</span>(<span class="kw">float</span> <span class="var">$amount</span>): <span class="kw">float</span> { <span class="kw">return</span> <span class="num">5</span>; }
+}</pre>
+        </div>
     </div>
 </section>
 
@@ -221,6 +375,32 @@
     }
 }</pre>
     </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧭 Alternative : Composition</h4>
+            <p>Préférer un objet dédié quand le comportement devient complexe.</p>
+        </div>
+        <div class="ref-card">
+            <h4>⚠️ Conflits</h4>
+            <p>Deux traits peuvent exposer la même méthode, il faut alors définir une règle.</p>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Un service d'audit centralise les logs pour plusieurs classes.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">class</span> <span class="fn">AuditLogger</span> {
+    <span class="kw">public function</span> <span class="fn">log</span>(<span class="kw">string</span> <span class="var">$msg</span>): <span class="kw">void</span> {}
+}
+
+<span class="kw">class</span> <span class="fn">UserService</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">private</span> <span class="fn">AuditLogger</span> <span class="var">$logger</span>) {}
+}</pre>
+        </div>
+    </div>
 </section>
 
 <!-- ========================================== -->
@@ -235,6 +415,34 @@
         <li><code>__get($name)</code> : Quand on lit une propriété qui n'existe pas.</li>
         <li><code>__call($name, $args)</code> : Quand on appelle une méthode qui n'existe pas.</li>
     </ul>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🪝 Hooks utiles</h4>
+            <ul>
+                <li><code>__set</code>, <code>__isset</code>, <code>__unset</code></li>
+                <li><code>__invoke</code> pour rendre un objet appelable</li>
+                <li><code>__serialize</code> / <code>__unserialize</code></li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>⏳ Cycle de vie</h4>
+            <p>Construction → Usage → Destruction via <code>__destruct</code></p>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Un objet configuration se comporte comme un tableau.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">class</span> <span class="fn">Config</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">private</span> <span class="kw">array</span> <span class="var">$data</span>) {}
+    <span class="kw">public function</span> <span class="fn">__get</span>(<span class="kw">string</span> <span class="var">$key</span>) { <span class="kw">return</span> <span class="var">$this</span>-><span class="prop">data</span>[<span class="var">$key</span>] ?? <span class="kw">null</span>; }
+    <span class="kw">public function</span> <span class="fn">__set</span>(<span class="kw">string</span> <span class="var">$key</span>, <span class="var">$value</span>): <span class="kw">void</span> { <span class="var">$this</span>-><span class="prop">data</span>[<span class="var">$key</span>] = <span class="var">$value</span>; }
+}</pre>
+        </div>
+    </div>
 </section>
 
 <!-- ========================================== -->
@@ -263,6 +471,83 @@
     <span class="kw">public function</span> <span class="fn">__construct</span>(
         <span class="c">// On injecte une Interface !</span>
         <span class="kw">private</span> <span class="fn">MailerInterface</span> <span class="var">$mailer</span>
+    ) {}
+}</pre>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧱 Types d'injection</h4>
+            <ul>
+                <li>Constructeur : dépendances obligatoires</li>
+                <li>Méthode : dépendances ponctuelles</li>
+                <li>Setter : dépendances optionnelles</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>⚠️ Anti-pattern</h4>
+            <p>Service Locator : cache les dépendances et rend les tests fragiles.</p>
+        </div>
+    </div>
+
+    <div class="asci-art" style="margin-top:10px;">
+        <pre>
+[ Controller ] -> (RepoInterface)
+      |
+[ Container ] -> fournit Repository + Db
+      |
+[ Db ]</pre>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Un contrôleur reçoit un repository sans savoir comment il est construit.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">interface</span> <span class="fn">UserRepository</span> {
+    <span class="kw">public function</span> <span class="fn">find</span>(<span class="kw">int</span> <span class="var">$id</span>): <span class="kw">array</span>;
+}
+
+<span class="kw">class</span> <span class="fn">UserController</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">private</span> <span class="fn">UserRepository</span> <span class="var">$repo</span>) {}
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>8. Bonnes pratiques & Pièges classiques</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>✅ Bonnes pratiques</h4>
+            <ul>
+                <li>Une classe = une responsabilité claire.</li>
+                <li>Préférer les interfaces aux classes concrètes.</li>
+                <li>Composer des objets plutôt qu'hériter.</li>
+                <li>Tester les unités avec des dépendances injectées.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🚫 Pièges fréquents</h4>
+            <ul>
+                <li>Objets géants qui font tout.</li>
+                <li>Propriétés publiques mutables partout.</li>
+                <li>Logique métier noyée dans les contrôleurs.</li>
+                <li>Couplage fort via <code>new</code> partout.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Découper un service monolithique en composants.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">class</span> <span class="fn">OrderService</span> {
+    <span class="kw">public function</span> <span class="fn">__construct</span>(
+        <span class="kw">private</span> <span class="fn">PriceCalculator</span> <span class="var">$pricing</span>,
+        <span class="kw">private</span> <span class="fn">StockChecker</span> <span class="var">$stock</span>
     ) {}
 }</pre>
         </div>

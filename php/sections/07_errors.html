@@ -122,6 +122,184 @@
     </div>
 </section>
 
+<section>
+    <h3>6. Throwable : la hiérarchie réelle</h3>
+    <p>En PHP moderne, tout ce qui peut être attrapé hérite de <code>Throwable</code>. Les erreurs moteur ne sont pas
+        des exceptions classiques, mais elles restent interceptables si vous visez l'interface globale.</p>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🧬 Deux familles</h4>
+            <ul>
+                <li><strong>Error</strong> : erreurs internes (TypeError, ParseError).</li>
+                <li><strong>Exception</strong> : erreurs métier ou applicatives.</li>
+                <li><strong>Throwable</strong> : parent commun pour un <code>catch</code> universel.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+Throwable
+├── Error
+│   ├── TypeError
+│   └── ParseError
+└── Exception
+    ├── RuntimeException
+    └── InvalidArgumentException</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>7. Convertir les erreurs en exceptions</h3>
+    <p>Pour un flux homogène, vous pouvez transformer les erreurs PHP en exceptions. Cela évite les cas silencieux et
+        centralise la gestion.</p>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>ErrorToException.php</div>
+        <pre><span class="fn">set_error_handler</span>(<span class="kw">function</span>(<span class="var">$severity</span>, <span class="var">$message</span>, <span class="var">$file</span>, <span class="var">$line</span>) {
+    <span class="kw">throw new</span> <span class="fn">ErrorException</span>(<span class="var">$message</span>, <span class="num">0</span>, <span class="var">$severity</span>, <span class="var">$file</span>, <span class="var">$line</span>);
+});
+
+<span class="fn">error_reporting</span>(<span class="var">E_ALL</span>);</pre>
+    </div>
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎯 Alternative</h4>
+        <p>Pour certaines fonctions historiques, préférez la vérification de retour (ex: <code>file_get_contents</code>)
+            et lancez vous-même une exception métier avec un message clair.</p>
+    </div>
+</section>
+
+<section>
+    <h3>8. Gestion globale : exception handler & shutdown</h3>
+    <p>Un handler global évite le "white screen" et permet de logguer tout crash inattendu, même en dehors des
+        <code>try/catch</code>.</p>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>GlobalHandlers.php</div>
+        <pre><span class="fn">set_exception_handler</span>(<span class="kw">function</span>(<span class="fn">Throwable</span> <span class="var">$e</span>) {
+    <span class="fn">error_log</span>(<span class="var">$e</span>-><span class="fn">getMessage</span>());
+    <span class="fn">http_response_code</span>(<span class="num">500</span>);
+    <span class="kw">echo</span> <span class="str">'Une erreur est survenue.'</span>;
+});
+
+<span class="fn">register_shutdown_function</span>(<span class="kw">function</span>() {
+    <span class="var">$last</span> = <span class="fn">error_get_last</span>();
+    <span class="kw">if</span> (<span class="var">$last</span>) {
+        <span class="fn">error_log</span>(<span class="fn">json_encode</span>(<span class="var">$last</span>));
+    }
+});</pre>
+    </div>
+</section>
+
+<section>
+    <h3>9. Journalisation propre & traçable</h3>
+    <p>Ne mélangez pas affichage et diagnostic. Logguez des données structurées et gardez un message neutre côté
+        utilisateur.</p>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>LogConfig.php</div>
+            <pre><span class="fn">ini_set</span>(<span class="str">'log_errors'</span>, <span class="str">'1'</span>);
+<span class="fn">ini_set</span>(<span class="str">'error_log'</span>, <span class="fn">__DIR__</span> . <span class="str">'/logs/php.log'</span>);</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>StructuredLog.php</div>
+            <pre><span class="var">$payload</span> = [
+    <span class="str">'event'</span> => <span class="str">'payment_failed'</span>,
+    <span class="str">'orderId'</span> => <span class="num">42</span>,
+    <span class="str">'amount'</span> => <span class="num">99.9</span>
+];
+<span class="fn">error_log</span>(<span class="fn">json_encode</span>(<span class="var">$payload</span>));</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>10. Chaînage & rethrow</h3>
+    <p>Le chaînage conserve la cause initiale. C'est capital pour déboguer sans perdre la trace réelle.</p>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>ExceptionChaining.php</div>
+        <pre><span class="kw">try</span> {
+    <span class="var">$pdo</span>-><span class="fn">query</span>(<span class="str">'SELECT * FROM missing_table'</span>);
+} <span class="kw">catch</span> (<span class="fn">PDOException</span> <span class="var">$e</span>) {
+    <span class="kw">throw new</span> <span class="fn">RuntimeException</span>(<span class="str">'Échec BDD'</span>, <span class="num">0</span>, <span class="var">$e</span>);
+}</pre>
+    </div>
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🔁 Multi-catch</h4>
+        <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+try { ... }
+catch (InvalidArgumentException|RuntimeException $e) { ... }</pre>
+    </div>
+</section>
+
+<section>
+    <h3>11. Scénarios & alternatives de gestion</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>✅ Fail Fast (Exceptions)</h4>
+            <ul>
+                <li>Flux clair et lisible.</li>
+                <li>Erreurs centralisées.</li>
+                <li>Parfait pour services et APIs.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧾 Retour d'erreur (Résultat)</h4>
+            <ul>
+                <li>Utile pour traitements en masse.</li>
+                <li>Permet de continuer malgré des échecs.</li>
+                <li>Nécessite un format d'erreur stable.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Importer un CSV où seules certaines lignes sont invalides.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="var">$errors</span> = [];
+<span class="kw">foreach</span> (<span class="var">$rows</span> <span class="kw">as</span> <span class="var">$i</span> => <span class="var">$row</span>) {
+    <span class="kw">if</span> (!<span class="fn">filter_var</span>(<span class="var">$row</span>[<span class="str">'email'</span>] ?? <span class="str">''</span>, <span class="var">FILTER_VALIDATE_EMAIL</span>)) {
+        <span class="var">$errors</span>[] = <span class="str">'Ligne '</span> . <span class="var">$i</span> . <span class="str">' invalide'</span>;
+        <span class="kw">continue</span>;
+    }
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>12. Bonnes pratiques & pièges</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>✅ Bonnes pratiques</h4>
+            <ul>
+                <li>Utiliser <code>Throwable</code> pour un catch global.</li>
+                <li>Créer des exceptions métier explicites.</li>
+                <li>Logger avec un identifiant de corrélation.</li>
+                <li>Envoyer des messages neutres au client.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>⚠️ Pièges fréquents</h4>
+            <ul>
+                <li>Masquer les erreurs avec <code>@</code>.</li>
+                <li>Attraper trop large sans log.</li>
+                <li>Perdre la cause initiale sans chaînage.</li>
+                <li>Afficher des chemins en production.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧯 Réponse HTTP propre</h4>
+        <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+http_response_code(500);
+echo 'Service temporairement indisponible';</pre>
+    </div>
+</section>
+
 <div class="warning">
     <strong>🛡️ Sécurité en Production</strong><br>
     N'affichez JAMAIS les erreurs sur votre site public (<code>display_errors = Off</code>). <br>

@@ -26,6 +26,7 @@ const routes = [
     { path: 'ecosystem', file: '17_ecosystem.html', title: '17 Écosystème' },
     { path: 'libs', file: '18_libs.html', title: '18 Librairies' },
     { path: 'env', file: '19_env.html', title: '19 Environnement' },
+    { path: 'mvc-ecommerce', file: '20_mvc_ecommerce.html', title: '20 MVC Ecommerce' },
     {
         path: 'quiz',
         file: '99_quiz.html',

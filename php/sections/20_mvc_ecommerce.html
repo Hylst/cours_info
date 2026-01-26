@@ -1,0 +1,290 @@
+<div class="sec-header">
+    <div class="sec-num">20</div>
+    <div>
+        <h2 class="sec-title">Cas d'usage : MVC Ecommerce</h2>
+        <p class="sec-sub">Guide complet de conception, structure et implémentation</p>
+    </div>
+</div>
+
+<div class="intro-box">
+    <p>Un ecommerce solide ne se résume pas à un panier. C'est une orchestration de domaines métiers, de flux
+        transactionnels et d'intégrations externes. Ici, on construit un MVC propre, évolutif et sécurisable.</p>
+</div>
+
+<div class="info">
+    <strong>🎯 Objectif du module</strong><br>
+    Comprendre l'architecture d'un ecommerce MVC moderne, de la structure de projet aux use cases critiques
+    (catalogue, panier, checkout, paiements, webhooks).
+</div>
+
+<section>
+    <h3>1. Les blocs fonctionnels d'un ecommerce</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🛍️ Catalogue</h4>
+            <ul>
+                <li>Produits, variantes, catégories</li>
+                <li>Recherche, filtres, tri</li>
+                <li>Disponibilité et stock</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧺 Panier & Checkout</h4>
+            <ul>
+                <li>Ajout, quantités, coupons</li>
+                <li>Frais de livraison</li>
+                <li>Validation des données</li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>💳 Paiement & Commandes</h4>
+            <ul>
+                <li>Création de paiement</li>
+                <li>Confirmation et statuts</li>
+                <li>Factures & emails</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧑‍💼 Back-office</h4>
+            <ul>
+                <li>Gestion produits</li>
+                <li>Traitement commandes</li>
+                <li>Suivi clients</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>2. Structure de projet recommandée</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Arborescence Ecommerce MVC</div>
+        <pre>/ecommerce
+  /app
+    /Controllers
+    /Models
+    /Repositories
+    /Services
+    /Views
+  /public
+    index.php
+    /assets
+  /storage
+    /logs
+  /vendor
+  .env</pre>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>📦 Services</h4>
+            <p>Encapsulent les règles métiers (prix, stock, paiement).</p>
+        </div>
+        <div class="ref-card">
+            <h4>🗂️ Repositories</h4>
+            <p>Centralisent l'accès à la base de données.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>3. Map de routes clés</h3>
+    <table>
+        <tr>
+            <th>Route</th>
+            <th>Controller</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>/produits</td>
+            <td>ProductController</td>
+            <td>index()</td>
+        </tr>
+        <tr>
+            <td>/produit/{slug}</td>
+            <td>ProductController</td>
+            <td>show()</td>
+        </tr>
+        <tr>
+            <td>/panier</td>
+            <td>CartController</td>
+            <td>show()</td>
+        </tr>
+        <tr>
+            <td>/checkout</td>
+            <td>CheckoutController</td>
+            <td>index()</td>
+        </tr>
+        <tr>
+            <td>/paiement/retour</td>
+            <td>PaymentController</td>
+            <td>success()</td>
+        </tr>
+        <tr>
+            <td>/webhook/paiement</td>
+            <td>WebhookController</td>
+            <td>handle()</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h3>4. Modèles & relations principales</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🧩 Entités</h4>
+            <ul>
+                <li>Product, Category, Variant</li>
+                <li>Cart, CartItem</li>
+                <li>Order, OrderItem, Payment</li>
+                <li>User, Address</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+Product 1---* Variant
+Product *---1 Category
+Cart 1---* CartItem
+Order 1---* OrderItem
+Order 1---1 Payment</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>5. Use case : Ajouter au panier</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>CartController.php</div>
+        <pre><span class="kw">class</span> <span class="fn">CartController</span> {
+    <span class="kw">public function</span> <span class="fn">add</span>(<span class="kw">int</span> <span class="var">$productId</span>, <span class="kw">int</span> <span class="var">$qty</span>) {
+        <span class="var">$product</span> = <span class="var">$this</span>-><span class="fn">productRepo</span>-><span class="fn">find</span>(<span class="var">$productId</span>);
+        <span class="var">$this</span>-><span class="fn">cartService</span>-><span class="fn">addItem</span>(<span class="var">$product</span>, <span class="var">$qty</span>);
+        <span class="kw">return</span> <span class="var">$this</span>-><span class="fn">redirect</span>(<span class="str">'/panier'</span>);
+    }
+}</pre>
+    </div>
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Le panier refuse l'ajout si le stock est insuffisant.</p>
+        <button class="example-toggle">Voir un scénario</button>
+        <div class="example-content">
+<pre><span class="kw">if</span> (<span class="var">$qty</span> > <span class="var">$product</span>-><span class="fn">getStock</span>()) {
+    <span class="kw">throw new</span> <span class="fn">RuntimeException</span>(<span class="str">'Stock insuffisant'</span>);
+}</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>6. Use case : Checkout & création de commande</h3>
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>CheckoutService.php</div>
+        <pre><span class="kw">class</span> <span class="fn">CheckoutService</span> {
+    <span class="kw">public function</span> <span class="fn">createOrder</span>(<span class="kw">array</span> <span class="var">$cart</span>, <span class="kw">array</span> <span class="var">$customer</span>): <span class="fn">Order</span> {
+        <span class="var">$order</span> = <span class="kw">new</span> <span class="fn">Order</span>(<span class="var">$customer</span>);
+        <span class="kw">foreach</span> (<span class="var">$cart</span> <span class="kw">as</span> <span class="var">$item</span>) {
+            <span class="var">$order</span>-><span class="fn">addItem</span>(<span class="var">$item</span>[<span class="str">'product'</span>], <span class="var">$item</span>[<span class="str">'qty'</span>]);
+        }
+        <span class="kw">return</span> <span class="var">$order</span>;
+    }
+}</pre>
+    </div>
+</section>
+
+<section>
+    <h3>7. Paiement & webhooks</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔁 Flux recommandé</h4>
+            <ul>
+                <li>Créer la commande en statut pending</li>
+                <li>Initier le paiement externe</li>
+                <li>Confirmer via webhook serveur</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧠 Points critiques</h4>
+            <ul>
+                <li>Idempotence des callbacks</li>
+                <li>Signature et vérification</li>
+                <li>Double validation stock/prix</li>
+            </ul>
+        </div>
+    </div>
+    <div class="code" style="margin-top:10px;">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>WebhookController.php</div>
+        <pre><span class="kw">class</span> <span class="fn">WebhookController</span> {
+    <span class="kw">public function</span> <span class="fn">handle</span>(<span class="kw">string</span> <span class="var">$payload</span>) {
+        <span class="var">$event</span> = <span class="fn">json_decode</span>(<span class="var">$payload</span>, <span class="kw">true</span>);
+        <span class="var">$this</span>-><span class="fn">orderService</span>-><span class="fn">confirm</span>(<span class="var">$event</span>[<span class="str">'order_id'</span>]);
+    }
+}</pre>
+    </div>
+</section>
+
+<section>
+    <h3>8. Performance & fiabilité</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>⚡ Optimisations clés</h4>
+            <ul>
+                <li>Cache des pages catalogue</li>
+                <li>Indexation recherche</li>
+                <li>Compression d'images</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧵 Async & files</h4>
+            <ul>
+                <li>Email de confirmation</li>
+                <li>Génération facture</li>
+                <li>Sync ERP</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>9. Dépendances & librairies recommandées</h3>
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🔐 Validation & sécurité</h4>
+            <p>symfony/validator • respect/validation</p>
+        </div>
+        <div class="ref-card">
+            <h4>🧵 Templates</h4>
+            <p>twig/twig • jenssegers/blade</p>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>💳 Paiements</h4>
+            <p>stripe/stripe-php • mollie/mollie-api-php • omnipay/omnipay</p>
+        </div>
+        <div class="ref-card">
+            <h4>📦 Stock & logistique</h4>
+            <p>easypost/easypost-php • aftership/aftership-php</p>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>⚡ Cache & queues</h4>
+            <p>symfony/cache • predis/predis • symfony/messenger</p>
+        </div>
+        <div class="ref-card">
+            <h4>📡 Observabilité</h4>
+            <p>sentry/sentry • open-telemetry/opentelemetry</p>
+        </div>
+    </div>
+</section>
+
+<div class="tip">
+    <strong>💡 Raccourci pro</strong><br>
+    Pour un projet ecommerce ambitieux, un framework comme Symfony ou Laravel et un socle comme Sylius accélèrent
+    considérablement la mise en production.
+</div>

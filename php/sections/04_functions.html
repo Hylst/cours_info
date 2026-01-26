@@ -12,6 +12,23 @@
         fonction !</p>
 </div>
 
+<div class="info">
+    <strong>🎯 Objectif du module</strong><br>
+    Comprendre une fonction comme un <strong>contrat</strong> : entrée claire, sortie prévisible, responsabilité unique.
+</div>
+
+<details>
+    <summary>📖 Quand créer une fonction ?</summary>
+    <div>
+        <ul>
+            <li>Quand une logique revient au moins deux fois.</li>
+            <li>Quand un bloc devient difficile à lire en une seule vue.</li>
+            <li>Quand vous voulez tester une logique sans lancer toute l'application.</li>
+            <li>Quand vous avez besoin de nommer clairement une intention métier.</li>
+        </ul>
+    </div>
+</details>
+
 <!-- PARTIE 1 : ANATOMIE & ANALOGIE -->
 <section>
     <h3>1. L'Usine à Code</h3>
@@ -49,9 +66,76 @@
     </div>
 </section>
 
-<!-- PARTIE 2 : TYPAGE MODERNE -->
 <section>
-    <h3>2. Typage Fort (PHP 8+)</h3>
+    <h3>2. Contrat & Responsabilité</h3>
+    <p>Une fonction raconte une intention. Elle doit être <strong>petite</strong>, <strong>prévisible</strong> et
+        <strong>facile à tester</strong>.</p>
+
+    <div class="grid2">
+        <div class="ref-card">
+            <h4>🧭 Le Contrat</h4>
+            <ul>
+                <li>Entrée claire (paramètres explicités).</li>
+                <li>Sortie unique et stable.</li>
+                <li>Effets visibles et assumés.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+[ Entrée ] -> ( paramètres typés )
+      |
+[ Fonction ] -> { logique }
+      |
+[ Sortie ] -> return valeur
+      </pre>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>✅ Fonction pure</h4>
+            <p>Le même input produit toujours le même output. Idéale pour le test et la réutilisation.</p>
+        </div>
+        <div class="ref-card">
+            <h4>⚡ Effet de bord</h4>
+            <p>Écriture fichier, requête SQL, envoi d'email. À isoler pour maîtriser l'impact.</p>
+        </div>
+    </div>
+
+    <div class="code">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Contrat.php</div>
+        <pre><span class="kw">function</span> <span class="fn">totalPanier</span>(<span class="kw">array</span> <span class="var">$lignes</span>, <span class="kw">float</span> <span class="var">$tva</span>): <span class="kw">float</span> {
+    <span class="var">$total</span> = <span class="num">0</span>;
+    <span class="kw">foreach</span> (<span class="var">$lignes</span> <span class="kw">as</span> <span class="var">$ligne</span>) {
+        <span class="var">$total</span> += <span class="var">$ligne</span>[<span class="str">'prix'</span>] * <span class="var">$ligne</span>[<span class="str">'qty'</span>];
+    }
+    <span class="kw">return</span> <span class="var">$total</span> * (<span class="num">1</span> + <span class="var">$tva</span>);
+}</pre>
+    </div>
+
+    <div class="ref-card">
+        <h4>🎯 Bonnes pratiques</h4>
+        <ul>
+            <li>Nommer la fonction par une intention claire (verbe + contexte).</li>
+            <li>Limiter le nombre de paramètres (préférez des tableaux/objets dédiés).</li>
+            <li>Éviter la magie globale, passer les dépendances en argument.</li>
+            <li>Préférer les retours rapides pour réduire la complexité.</li>
+        </ul>
+        <button class="example-toggle">Voir une mise en situation</button>
+        <div class="example-content">
+<pre><span class="var">$lignes</span> = [
+    [<span class="str">'prix'</span> => <span class="num">19.9</span>, <span class="str">'qty'</span> => <span class="num">2</span>],
+    [<span class="str">'prix'</span> => <span class="num">5</span>, <span class="str">'qty'</span> => <span class="num">1</span>]
+];
+<span class="var">$total</span> = <span class="fn">totalPanier</span>(<span class="var">$lignes</span>, <span class="num">0.2</span>);
+<span class="kw">echo</span> <span class="var">$total</span>;</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>3. Typage Fort (PHP 8+)</h3>
     <p>PHP moderne permet d'être très précis sur ce que la fonction accepte et renvoie. <strong>Indispensable pour la
             sécurité.</strong></p>
 
@@ -72,11 +156,36 @@
 }
 <span class="kw">echo</span> <span class="fn">somme</span>(<span class="num">1</span>, <span class="num">5</span>, <span class="num">10</span>, <span class="num">20</span>); <span class="c">// 36</span></pre>
     </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧪 Cas d'usage</h4>
+            <p>Valider des entrées, normaliser des formats, transformer des données pour l'API.</p>
+        </div>
+        <div class="ref-card">
+            <h4>🧰 Gardes rapides</h4>
+            <p>Retourner tôt sur les cas invalides pour garder une fonction lisible.</p>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mini-simulation</h4>
+        <p>Un formulaire envoie parfois un prix vide ou mal formaté.</p>
+        <button class="example-toggle">Voir la solution</button>
+        <div class="example-content">
+<pre><span class="kw">function</span> <span class="fn">nettoyerPrix</span>(?<span class="kw">float</span> <span class="var">$prix</span>): <span class="kw">float</span> {
+    <span class="kw">if</span> (<span class="var">$prix</span> === <span class="kw">null</span>) {
+        <span class="kw">return</span> <span class="num">0</span>;
+    }
+    <span class="kw">return</span> <span class="var">$prix</span>;
+}
+<span class="kw">echo</span> <span class="fn">nettoyerPrix</span>(<span class="kw">null</span>);</pre>
+        </div>
+    </div>
 </section>
 
-<!-- PARTIE 3 : CLOSURES & ARROW FUNCTIONS -->
 <section>
-    <h3>3. Fonctions Anonymes & Fléchées</h3>
+    <h3>4. Fonctions Anonymes & Fléchées</h3>
     <p>Utiles pour passer une fonction en argument d'une autre (callbacks).</p>
 
     <div class="grid2">
@@ -96,11 +205,22 @@
 <span class="var">$double</span> = <span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> * <span class="var">$facteur</span>;</pre>
         </div>
     </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧩 Cas d'usage fréquent</h4>
+        <p>Transformer des listes, filtrer des collections, trier des résultats.</p>
+        <button class="example-toggle">Voir un pipeline</button>
+        <div class="example-content">
+<pre><span class="var">$nombres</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>];
+<span class="var">$pairs</span> = <span class="fn">array_filter</span>(<span class="var">$nombres</span>, <span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> % <span class="num">2</span> === <span class="num">0</span>);
+<span class="var">$doubles</span> = <span class="fn">array_map</span>(<span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> * <span class="num">2</span>, <span class="var">$pairs</span>);
+<span class="kw">print_r</span>(<span class="var">$doubles</span>);</pre>
+        </div>
+    </div>
 </section>
 
-<!-- PARTIE 4 : CONCEPTS AVANCÉS -->
 <section>
-    <h3>4. Concepts Avancés</h3>
+    <h3>5. Concepts Avancés</h3>
     <div class="grid2">
         <div class="ref-card">
             <h4>🔄 La Récursion (Inception)</h4>
@@ -122,6 +242,20 @@
         <pre><span class="c">// Récupérer une fonction comme un objet stable</span>
 <span class="var">$maFonction</span> = <span class="fn">strlen</span>(...); 
 <span class="kw">echo</span> <span class="var">$maFonction</span>(<span class="str">"Hello"</span>); <span class="c">// 5</span></pre>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧠 Récursion simple</h4>
+        <button class="example-toggle">Voir un exemple</button>
+        <div class="example-content">
+<pre><span class="kw">function</span> <span class="fn">tailleArbre</span>(<span class="kw">array</span> <span class="var">$noeud</span>): <span class="kw">int</span> {
+    <span class="var">$total</span> = <span class="num">1</span>;
+    <span class="kw">foreach</span> (<span class="var">$noeud</span>[<span class="str">'enfants'</span>] <span class="kw">as</span> <span class="var">$enfant</span>) {
+        <span class="var">$total</span> += <span class="fn">tailleArbre</span>(<span class="var">$enfant</span>);
+    }
+    <span class="kw">return</span> <span class="var">$total</span>;
+}</pre>
+        </div>
     </div>
 </section>
 

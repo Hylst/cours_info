@@ -11,7 +11,45 @@
         en passant par le JSON. Savoir les manipuler sans faille est la base du métier.</p>
 </div>
 
-<!-- PARTIE 1 : DECLARATION & ANALOGIE -->
+<div class="info">
+    <strong>🎯 Objectif du module</strong><br>
+    Passer d'une simple manipulation de texte à un vrai <strong>pipeline maîtrisé</strong> : formater, transformer,
+    sécuriser, livrer.
+</div>
+
+<div class="grid2" style="margin-top:10px;">
+    <div class="ref-card">
+        <h4>🧠 Cycle d'une string</h4>
+        <ul>
+            <li>Entrée brute → Validation</li>
+            <li>Normalisation → Transformation</li>
+            <li>Échappement → Affichage</li>
+        </ul>
+    </div>
+    <div class="ref-card">
+        <pre style="background:transparent; border:none; padding:0; font-size:0.7rem;">
+[ Entrée ]
+   |
+[ Validation ]
+   |
+[ Normalisation ]
+   |
+[ Transformation ]
+   |
+[ Échappement ]
+   |
+[ Sortie ]</pre>
+    </div>
+</div>
+
+<details>
+    <summary>📖 Pourquoi c'est critique ?</summary>
+    <div>
+        <p>Une string mal traitée peut casser un JSON, ouvrir une faille XSS, faire tomber un export CSV ou fausser une
+            recherche. C'est l'endroit où se jouent la fiabilité et la sécurité.</p>
+    </div>
+</details>
+
 <section>
     <h3>1. L'Art de la Citation</h3>
     <div class="grid2">
@@ -46,11 +84,77 @@
 &lt;/div&gt;
 HTML</span>;</pre>
     </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🔀 Alternatives d'assemblage</h4>
+            <ul>
+                <li>Concaténation avec <code>.</code></li>
+                <li>Interpolation avec <code>"$var"</code></li>
+                <li>Formatage avec <code>sprintf</code></li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧾 Nowdoc</h4>
+            <p>Alternative au heredoc quand vous voulez du texte brut, sans interpolation.</p>
+        </div>
+    </div>
+
+    <div class="code" style="margin-top:10px;">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Assemblage.php</div>
+        <pre><span class="var">$prenom</span> = <span class="str">"Lina"</span>;
+<span class="var">$ville</span> = <span class="str">"Paris"</span>;
+
+<span class="var">$a</span> = <span class="str">"Bonjour "</span> . <span class="var">$prenom</span>;
+<span class="var">$b</span> = <span class="str">"Bonjour $prenom"</span>;
+<span class="var">$c</span> = <span class="fn">sprintf</span>(<span class="str">"%s vient de %s"</span>, <span class="var">$prenom</span>, <span class="var">$ville</span>);
+
+<span class="var">$txt</span> = <span class="str">&lt;&lt;&lt;'TXT'
+Ce bloc n'interpole pas les variables : $prenom
+TXT</span>;</pre>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation</h4>
+        <p>Vous devez générer un message clair pour un e-mail transactionnel.</p>
+        <button class="example-toggle">Voir la solution</button>
+        <div class="example-content">
+<pre><span class="var">$prenom</span> = <span class="str">"Lina"</span>;
+<span class="var">$montant</span> = <span class="num">49.9</span>;
+<span class="var">$message</span> = <span class="fn">sprintf</span>(<span class="str">"Bonjour %s, votre paiement de %.2f€ est validé."</span>, <span class="var">$prenom</span>, <span class="var">$montant</span>);
+<span class="kw">echo</span> <span class="var">$message</span>;</pre>
+        </div>
+    </div>
 </section>
 
-<!-- PARTIE 2 : PHP 8 & MODERNITÉ -->
 <section>
-    <h3>2. Fonctions Modernes (PHP 8+)</h3>
+    <h3>2. Formatage & Alignement</h3>
+    <p>Les strings servent aussi à présenter des données : prix, colonnes, dates, identifiants.</p>
+
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Formatage.php</div>
+            <pre><span class="var">$id</span> = <span class="num">42</span>;
+<span class="var">$prix</span> = <span class="num">9.5</span>;
+
+<span class="var">$label</span> = <span class="fn">sprintf</span>(<span class="str">"#%05d"</span>, <span class="var">$id</span>);
+<span class="var">$montant</span> = <span class="fn">number_format</span>(<span class="var">$prix</span>, <span class="num">2</span>, <span class="str">","</span>, <span class="str">" "</span>);
+<span class="kw">echo</span> <span class="var">$label</span> . <span class="str">" - "</span> . <span class="var">$montant</span>;</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Alignement.php</div>
+            <pre><span class="var">$title</span> = <span class="str">"PHP"</span>;
+<span class="var">$line</span> = <span class="fn">str_pad</span>(<span class="var">$title</span>, <span class="num">10</span>, <span class="str">"."</span>, <span class="var">STR_PAD_BOTH</span>);
+<span class="kw">echo</span> <span class="var">$line</span>;</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>3. Fonctions Modernes (PHP 8+)</h3>
     <p>Fini les <code>strpos()</code> illisibles. PHP 8 a introduit des fonctions sémantiques claires.</p>
 
     <div class="code">
@@ -67,11 +171,64 @@ HTML</span>;</pre>
 <span class="fn">strtoupper</span>(<span class="str">"php"</span>); <span class="c">// PHP</span>
 <span class="fn">ucfirst</span>(<span class="str">"hello"</span>);  <span class="c">// Hello (Upper Case First)</span></pre>
     </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🔁 Alternatives à connaître</h4>
+        <ul>
+            <li><code>str_contains</code> ↔ <code>strpos</code> (test explicite)</li>
+            <li><code>str_starts_with</code> ↔ <code>substr</code></li>
+            <li><code>mb_strtolower</code> ↔ <code>strtolower</code> en UTF-8</li>
+        </ul>
+    </div>
 </section>
 
-<!-- PARTIE 3 : SECURITE & NETTOYAGE -->
 <section>
-    <h3>3. Nettoyage et Sécurité (XSS)</h3>
+    <h3>4. Recherche, Découpe, Remplacement</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Découpe.php</div>
+            <pre><span class="var">$slug</span> = <span class="str">"guide-php-8"</span>;
+<span class="var">$parts</span> = <span class="fn">explode</span>(<span class="str">"-"</span>, <span class="var">$slug</span>);
+<span class="var">$first</span> = <span class="fn">substr</span>(<span class="var">$slug</span>, <span class="num">0</span>, <span class="num">5</span>);
+<span class="kw">print_r</span>(<span class="var">$parts</span>);</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Remplacement.php</div>
+            <pre><span class="var">$txt</span> = <span class="str">"Bonjour    le   monde"</span>;
+<span class="var">$clean</span> = <span class="fn">preg_replace</span>(<span class="str">"/\s+/"</span>, <span class="str">" "</span>, <span class="var">$txt</span>);
+<span class="var">$safe</span> = <span class="fn">str_replace</span>(<span class="str">"monde"</span>, <span class="str">"PHP"</span>, <span class="var">$clean</span>);
+<span class="kw">echo</span> <span class="var">$safe</span>;</pre>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧭 Alternatives rapides</h4>
+        <ul>
+            <li><code>explode</code> ↔ <code>preg_split</code> ↔ <code>str_getcsv</code></li>
+            <li><code>str_replace</code> ↔ <code>strtr</code> ↔ <code>preg_replace</code></li>
+            <li><code>substr</code> ↔ <code>mb_substr</code> en UTF-8</li>
+        </ul>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mini-simulation</h4>
+        <p>Transformer un titre en slug propre et stable.</p>
+        <button class="example-toggle">Voir la solution</button>
+        <div class="example-content">
+<pre><span class="var">$titre</span> = <span class="str">" PHP & Sécurité : les bases "</span>;
+<span class="var">$slug</span> = <span class="fn">trim</span>(<span class="var">$titre</span>);
+<span class="var">$slug</span> = <span class="fn">mb_strtolower</span>(<span class="var">$slug</span>);
+<span class="var">$slug</span> = <span class="fn">preg_replace</span>(<span class="str">"/[^a-z0-9]+/u"</span>, <span class="str">"-"</span>, <span class="var">$slug</span>);
+<span class="var">$slug</span> = <span class="fn">trim</span>(<span class="var">$slug</span>, <span class="str">"-"</span>);
+<span class="kw">echo</span> <span class="var">$slug</span>;</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>5. Nettoyage et Sécurité (XSS, Injection, Filtres)</h3>
     <div class="warning">
         <strong>🚨 Règle d'or :</strong> Ne faites jamais confiance au texte venant de l'utilisateur
         (<code>$_POST</code>, <code>$_GET</code>).
@@ -80,30 +237,59 @@ HTML</span>;</pre>
     <div class="grid2">
         <div class="code">
             <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                    class="dot g"></span>Contre le XSS</div>
+                    class="dot g"></span>Échappement HTML</div>
             <pre><span class="var">$input</span> = <span class="str">"&lt;script&gt;alert('Hacked')&lt;/script&gt;"</span>;
-
-<span class="c">// Neutralise les balises HTML</span>
-<span class="kw">echo</span> <span class="fn">htmlspecialchars</span>(<span class="var">$input</span>); 
-<span class="c">// Affiche le texte brut sans l'exécuter</span></pre>
+<span class="kw">echo</span> <span class="fn">htmlspecialchars</span>(<span class="var">$input</span>, <span class="var">ENT_QUOTES</span> | <span class="var">ENT_SUBSTITUTE</span>, <span class="str">"UTF-8"</span>);</pre>
         </div>
         <div class="code">
             <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                    class="dot g"></span>Nettoyage</div>
+                    class="dot g"></span>Validation</div>
             <pre><span class="var">$email</span> = <span class="str">"  user@domain.com  "</span>;
-
-<span class="c">// Supprime les espaces blancs autour</span>
 <span class="var">$email</span> = <span class="fn">trim</span>(<span class="var">$email</span>);
+<span class="var">$ok</span> = <span class="fn">filter_var</span>(<span class="var">$email</span>, <span class="var">FILTER_VALIDATE_EMAIL</span>);</pre>
+        </div>
+    </div>
 
-<span class="c">// Filtrage de type</span>
-<span class="fn">filter_var</span>(<span class="var">$email</span>, <span class="var">FILTER_VALIDATE_EMAIL</span>);</pre>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card">
+            <h4>🧱 Contextes d'échappement</h4>
+            <ul>
+                <li>HTML : <code>htmlspecialchars</code></li>
+                <li>URL : <code>rawurlencode</code></li>
+                <li>JS : <code>json_encode</code></li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>🧬 Injection SQL</h4>
+            <p>Évitez la concaténation. Utilisez des requêtes préparées avec PDO.</p>
+        </div>
+    </div>
+
+    <div class="code" style="margin-top:10px;">
+        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                class="dot g"></span>Nettoyage.php</div>
+        <pre><span class="var">$raw</span> = <span class="str">"  &lt;b&gt;Alice&lt;/b&gt;  "</span>;
+<span class="var">$clean</span> = <span class="fn">trim</span>(<span class="var">$raw</span>);
+<span class="var">$clean</span> = <span class="fn">strip_tags</span>(<span class="var">$clean</span>);
+<span class="var">$safe</span> = <span class="fn">htmlspecialchars</span>(<span class="var">$clean</span>, <span class="var">ENT_QUOTES</span> | <span class="var">ENT_SUBSTITUTE</span>, <span class="str">"UTF-8"</span>);
+<span class="kw">echo</span> <span class="var">$safe</span>;</pre>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🎮 Mise en situation sécurité</h4>
+        <p>Un champ "bio" accepte du texte, mais pas de scripts.</p>
+        <button class="example-toggle">Voir la solution</button>
+        <div class="example-content">
+<pre><span class="var">$bio</span> = <span class="str">"&lt;img src=x onerror=alert(1)&gt;Salut"</span>;
+<span class="var">$bio</span> = <span class="fn">strip_tags</span>(<span class="var">$bio</span>);
+<span class="var">$bio</span> = <span class="fn">htmlspecialchars</span>(<span class="var">$bio</span>, <span class="var">ENT_QUOTES</span> | <span class="var">ENT_SUBSTITUTE</span>, <span class="str">"UTF-8"</span>);
+<span class="kw">echo</span> <span class="var">$bio</span>;</pre>
         </div>
     </div>
 </section>
 
-<!-- PARTIE 4 : UNICODE & MBSTRING -->
 <section>
-    <h3>4. Le piège de l'Unicode (UTF-8)</h3>
+    <h3>6. Le piège de l'Unicode (UTF-8)</h3>
     <p>PHP traite par défaut les chaînes comme des tableaux d'octets. Un accent ou un emoji occupe plusieurs octets, ce
         qui casse les fonctions classiques.</p>
 
@@ -121,11 +307,19 @@ HTML</span>;</pre>
 <span class="c">// Toujours utiliser mb_* pour :</span>
 <span class="c">// mb_substr(), mb_strpos(), mb_strtolower()...</span></pre>
     </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧰 Alternatives UTF-8</h4>
+        <ul>
+            <li><code>mb_strlen</code> ↔ <code>strlen</code></li>
+            <li><code>mb_substr</code> ↔ <code>substr</code></li>
+            <li><code>mb_strtoupper</code> ↔ <code>strtoupper</code></li>
+        </ul>
+    </div>
 </section>
 
-<!-- PARTIE 5 : TRANSFORMATIONS -->
 <section>
-    <h3>5. De String à Array (et inversement)</h3>
+    <h3>7. De String à Array (et inversement)</h3>
     <div class="code">
         <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Explode
             & Implode</div>
@@ -137,6 +331,54 @@ HTML</span>;</pre>
 <span class="c">// Array -> String</span>
 <span class="kw">echo</span> <span class="fn">implode</span>(<span class="str">" | "</span>, <span class="var">$list</span>); 
 <span class="c">// Affiche : "php | js | html"</span></pre>
+    </div>
+
+    <div class="grid2" style="margin-top:10px;">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>CSV.php</div>
+            <pre><span class="var">$line</span> = <span class="str">"php,security,\"clean input\""</span>;
+<span class="var">$cols</span> = <span class="fn">str_getcsv</span>(<span class="var">$line</span>);
+<span class="kw">print_r</span>(<span class="var">$cols</span>);</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>DécoupageAvancé.php</div>
+            <pre><span class="var">$text</span> = <span class="str">"un, deux ; trois | quatre"</span>;
+<span class="var">$parts</span> = <span class="fn">preg_split</span>(<span class="str">"/\s*[;,|]\s*/"</span>, <span class="var">$text</span>);
+<span class="kw">print_r</span>(<span class="var">$parts</span>);</pre>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>8. Comparaison & Validation</h3>
+    <div class="grid2">
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Comparaison.php</div>
+            <pre><span class="var">$a</span> = <span class="str">"File9"</span>;
+<span class="var">$b</span> = <span class="str">"File10"</span>;
+<span class="var">$nat</span> = <span class="fn">strnatcmp</span>(<span class="var">$a</span>, <span class="var">$b</span>);
+<span class="kw">echo</span> <span class="var">$nat</span>;</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>TimingSafe.php</div>
+            <pre><span class="var">$tokenA</span> = <span class="str">"abc"</span>;
+<span class="var">$tokenB</span> = <span class="str">"abc"</span>;
+<span class="var">$ok</span> = <span class="fn">hash_equals</span>(<span class="var">$tokenA</span>, <span class="var">$tokenB</span>);
+<span class="kw">echo</span> <span class="var">$ok</span>;</pre>
+        </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:10px;">
+        <h4>🧭 Alternatives utiles</h4>
+        <ul>
+            <li><code>strcmp</code> ↔ <code>strcasecmp</code> pour ignorer la casse</li>
+            <li><code>strnatcmp</code> pour un tri humain</li>
+            <li><code>hash_equals</code> pour comparer des secrets</li>
+        </ul>
     </div>
 </section>
 

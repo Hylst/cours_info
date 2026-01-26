@@ -2,7 +2,7 @@
     <div class="sec-num">02</div>
     <div>
         <h2 class="sec-title">Tableaux (Arrays) & Collections</h2>
-        <p class="sec-sub">Masterclass : Architecture, Algorithmique, Structures de Données & Optimisations</p>
+        <p class="sec-sub">Architecture, Algorithmique, Structures de Données & Optimisations</p>
     </div>
 </div>
 
@@ -126,7 +126,7 @@
 <span class="var">$addr</span> = <span class="var">$user</span>[<span class="str">"address"</span>][<span class="str">"city"</span>] ?? <span class="str">"Unknown"</span>; <span class="c">// Marche même en profondeur !</span>
 
 <span class="c">// Destructuring Symétrique (PHP 7.1+)</span>
-[<span class="str">"name"</span> => <span class="var">$n</span>, <span class="str">"role"</span> => <span class="var">$r</span>] = <span class="var">$user</span>;
+<span class="str">"name"</span> => <span class="var">$n</span>, <span class="str">"role"</span> => <span class="var">$r</span>] = <span class="var">$user</span>;
 <span class="c">// $n = "Ada", $r = "dev"</span>
 
 <span class="c">// Extraction dans une boucle</span>
@@ -409,4 +409,282 @@
         <li>Utilisez <code>SplFixedArray</code> pour les matrices mathématiques.</li>
         <li>Utilisez <code>Map/Filter/Reduce</code> pour la logique métier complexe.</li>
     </ul>
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 7 : SPL SPÉCIALISÉES (Stack, Queue, Heap) -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">VII</div>
+    <h3 style="margin:0; color:var(--accent-base);">SPL Spécialisées : Stack & Queue</h3>
+</div>
+<p>Utiliser un Array comme une pile ou une file est possible (<code>array_push/pop</code>), mais les classes SPL
+    communiquent mieux votre intention.</p>
+
+<div class="grid2">
+    <div class="ref-card">
+        <h4>🥞 SplStack (LIFO)</h4>
+        <p>Last In, First Out (Dernier arrivé, premier servi). Idéal pour l'historique "Annuler" ou le parsing.</p>
+        <div class="code">
+            <pre><span class="var">$stack</span> = <span class="kw">new</span> <span class="fn">SplStack</span>();
+<span class="var">$stack</span>-><span class="fn">push</span>(<span class="str">"Page 1"</span>);
+<span class="var">$stack</span>-><span class="fn">push</span>(<span class="str">"Page 2"</span>);
+
+<span class="kw">echo</span> <span class="var">$stack</span>-><span class="fn">pop</span>(); <span class="c">// "Page 2"</span></pre>
+        </div>
+    </div>
+    <div class="ref-card">
+        <h4>🚶 SplQueue (FIFO)</h4>
+        <p>First In, First Out (Premier arrivé, premier servi). Pour les files d'attente de tâches (Jobs).</p>
+        <div class="code">
+            <pre><span class="var">$queue</span> = <span class="kw">new</span> <span class="fn">SplQueue</span>();
+<span class="var">$queue</span>-><span class="fn">enqueue</span>(<span class="str">"Email 1"</span>);
+<span class="var">$queue</span>-><span class="fn">enqueue</span>(<span class="str">"Email 2"</span>);
+
+<span class="kw">echo</span> <span class="var">$queue</span>-><span class="fn">dequeue</span>(); <span class="c">// "Email 1"</span></pre>
+        </div>
+    </div>
+</div>
+
+<details>
+    <summary>🚀 SplPriorityQueue : Gérer les Priorités</summary>
+    <div class="example-content">
+        <p>Une file ou certains éléments passent avant les autres (VIP).</p>
+        <div class="code">
+            <pre><span class="var">$tasks</span> = <span class="kw">new</span> <span class="fn">SplPriorityQueue</span>();
+<span class="var">$tasks</span>-><span class="fn">insert</span>(<span class="str">"Nettoyer le cache"</span>, <span class="num">1</span>); <span class="c">// Basse prio</span>
+<span class="var">$tasks</span>-><span class="fn">insert</span>(<span class="str">"Envoyer Facture"</span>, <span class="num">10</span>);   <span class="c">// Haute prio</span>
+<span class="var">$tasks</span>-><span class="fn">insert</span>(<span class="str">"Log d'erreur"</span>, <span class="num">5</span>);
+
+<span class="c">// L'ordre de sortie sera : Facture, Log, Cache</span>
+<span class="kw">foreach</span> (<span class="var">$tasks</span> <span class="kw">as</span> <span class="var">$task</span>) {
+    <span class="kw">echo</span> <span class="var">$task</span> . <span class="str">"<br>"</span>;
+}</pre>
+        </div>
+    </div>
+</details>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 8 : RÉCURSIVITÉ & ARBRES -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">VIII</div>
+    <h3 style="margin:0; color:var(--accent-base);">Récursivité & Structures Arborescentes</h3>
+</div>
+<p>Les tableaux PHP sont parfaits pour représenter des arbres (Catégories, Commentaires, Menus).</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Tree
+        Building</div>
+    <pre><span class="var">$flatComments</span> = [
+    [<span class="str">'id'</span> => <span class="num">1</span>, <span class="str">'parent_id'</span> => <span class="num">0</span>, <span class="str">'msg'</span> => <span class="str">'Super article !'</span>],
+    [<span class="str">'id'</span> => <span class="num">2</span>, <span class="str">'parent_id'</span> => <span class="num">1</span>, <span class="str">'msg'</span> => <span class="str">'Merci :)'</span>],
+    [<span class="str">'id'</span> => <span class="num">3</span>, <span class="str">'parent_id'</span> => <span class="num">0</span>, <span class="str">'msg'</span> => <span class="str">'Je ne suis pas d\'accord.'</span>]
+];
+
+<span class="kw">function</span> <span class="fn">buildTree</span>(<span class="kw">array</span> <span class="var">$elements</span>, <span class="var">$parentId</span> = <span class="num">0</span>) {
+    <span class="var">$branch</span> = [];
+    <span class="kw">foreach</span> (<span class="var">$elements</span> <span class="kw">as</span> <span class="var">$element</span>) {
+        <span class="kw">if</span> (<span class="var">$element</span>[<span class="str">'parent_id'</span>] == <span class="var">$parentId</span>) {
+            <span class="var">$children</span> = <span class="fn">buildTree</span>(<span class="var">$elements</span>, <span class="var">$element</span>[<span class="str">'id'</span>]);
+            <span class="kw">if</span> (<span class="var">$children</span>) {
+                <span class="var">$element</span>[<span class="str">'children'</span>] = <span class="var">$children</span>;
+            }
+            <span class="var">$branch</span>[] = <span class="var">$element</span>;
+        }
+    }
+    <span class="kw">return</span> <span class="var">$branch</span>;
+}
+
+<span class="var">$tree</span> = <span class="fn">buildTree</span>(<span class="var">$flatComments</span>);</pre>
+</div>
+
+<div class="tip">
+    <strong>💡 Astuce Pro</strong><br>
+    Pour parcourir un tableau multidimensionnel sans récursivité manuelle, utilisez <code>RecursiveArrayIterator</code>
+    avec <code>RecursiveIteratorIterator</code>.
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 9 : DESIGN PATTERN "COLLECTION" -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">IX</div>
+    <h3 style="margin:0; color:var(--accent-base);">Créer sa Propre Collection (POO)</h3>
+</div>
+<p>Pourquoi les frameworks comme Laravel utilisent des objets <code>Collection</code> au lieu de tableaux ? Pour la
+    puissance des méthodes chaînées.</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+            class="dot g"></span>MyCollection.php</div>
+    <pre><span class="kw">class</span> <span class="fn">Collection</span> <span class="kw">implements</span> <span class="fn">IteratorAggregate</span>, <span class="fn">Countable</span> {
+    <span class="kw">protected array</span> <span class="var">$items</span> = [];
+
+    <span class="kw">public function</span> <span class="fn">__construct</span>(<span class="kw">array</span> <span class="var">$items</span> = []) {
+        <span class="var">$this</span>-><span class="prop">items</span> = <span class="var">$items</span>;
+    }
+
+    <span class="c">// Permet le foreach sur l'objet</span>
+    <span class="kw">public function</span> <span class="fn">getIterator</span>(): <span class="fn">Traversable</span> {
+        <span class="kw">return new</span> <span class="fn">ArrayIterator</span>(<span class="var">$this</span>-><span class="prop">items</span>);
+    }
+
+    <span class="c">// Permet le count($col)</span>
+    <span class="kw">public function</span> <span class="fn">count</span>(): <span class="kw">int</span> {
+        <span class="kw">return</span> <span class="fn">count</span>(<span class="var">$this</span>-><span class="prop">items</span>);
+    }
+
+    <span class="c">// Méthode Fluent (Chaînable)</span>
+    <span class="kw">public function</span> <span class="fn">filter</span>(<span class="kw">callable</span> <span class="var">$callback</span>): <span class="kw">self</span> {
+        <span class="kw">return new</span> <span class="kw">self</span>(<span class="fn">array_filter</span>(<span class="var">$this</span>-><span class="prop">items</span>, <span class="var">$callback</span>));
+    }
+
+    <span class="kw">public function</span> <span class="fn">map</span>(<span class="kw">callable</span> <span class="var">$callback</span>): <span class="kw">self</span> {
+        <span class="kw">return new</span> <span class="kw">self</span>(<span class="fn">array_map</span>(<span class="var">$callback</span>, <span class="var">$this</span>-><span class="prop">items</span>));
+    }
+}
+
+<span class="c">// Utilisation élégante</span>
+<span class="var">$users</span> = <span class="kw">new</span> <span class="fn">Collection</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>]);
+<span class="var">$res</span> = <span class="var">$users</span>
+    -><span class="fn">filter</span>(<span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> % <span class="num">2</span> == <span class="num">0</span>)  <span class="c">// Garde les pairs</span>
+    -><span class="fn">map</span>(<span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> * <span class="num">10</span>);        <span class="c">// Multiplie par 10</span>
+
+<span class="c">// Résultat : [20, 40]</span></pre>
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 10 : MÉMOIRE AVANCÉE (COW) -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">X</div>
+    <h3 style="margin:0; color:var(--accent-base);">Deep Dive : Copy-on-Write (COW)</h3>
+</div>
+
+<div class="grid2">
+    <div>
+        <p>PHP est malin. Si vous copiez un tableau, il ne duplique <strong>PAS</strong> les données immédiatement en
+            mémoire.</p>
+        <p>Il crée une "référence virtuelle". La duplication réelle ne se fait que si vous <strong>modifiez</strong>
+            l'une des copies.</p>
+    </div>
+    <div class="code">
+        <pre><span class="var">$a</span> = <span class="fn">range</span>(<span class="num">0</span>, <span class="num">10000</span>); <span class="c">// 500kb RAM</span>
+<span class="var">$b</span> = <span class="var">$a</span>;              <span class="c">// 0kb RAM supp. (Pointe vers la même donnée)</span>
+
+<span class="var">$b</span>[<span class="num">0</span>] = <span class="num">99</span>;           <span class="c">// BOOM! Duplication mémoire ici (COW)</span>
+                      <span class="c">// Maintenant RAM utilisée = 1MB</span></pre>
+    </div>
+</div>
+
+<div class="warning">
+    <strong>⚠️ Le danger des Références (&)</strong><br>
+    Si vous utilisez <code>$b = &$a;</code>, le COW est désactivé. Toute modif sur <code>$b</code> impacte
+    <code>$a</code>. <br>
+    Attention aux boucles : <code>foreach ($arr as &$item)</code> peut corrompre les données si la référence n'est pas
+    détruite après (<code>unset($item)</code>).
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 11 : SÉRIALISATION & STOCKAGE -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">XI</div>
+    <h3 style="margin:0; color:var(--accent-base);">Sérialisation & Persistance</h3>
+</div>
+<p>Comment stocker un tableau en base de données ou dans un fichier ?</p>
+
+<table style="font-size:0.85rem">
+    <tr>
+        <th>Méthode</th>
+        <th>Avantages</th>
+        <th>Inconvénients</th>
+    </tr>
+    <tr>
+        <td><code>json_encode</code></td>
+        <td>Standard, lisible, portable (JS/Python).</td>
+        <td>Perd les types PHP spécifiques (Classes deviennent StdClass), gère mal le binaire.</td>
+    </tr>
+    <tr>
+        <td><code>serialize</code></td>
+        <td>Conserve TOUS les types PHP (Classes, private, protected).</td>
+        <td>Verbeux, spécifique à PHP. ⚠️ <strong>Danger d'injection d'objet</strong> si input non fiable.</td>
+    </tr>
+    <tr>
+        <td><code>igbinary</code></td>
+        <td>Extension PECL. Binaire compact (gain 50% espace).</td>
+        <td>Nécessite une extension serveur.</td>
+    </tr>
+</table>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 12 : MATRICE DÉCISIONNELLE -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">XII</div>
+    <h3 style="margin:0; color:var(--accent-base);">Matrice Décisionnelle</h3>
+</div>
+<p>Quelle structure de données choisir pour votre problème ?</p>
+
+<div style="overflow-x:auto;">
+    <table style="font-size:0.8rem; min-width:600px;">
+        <thead>
+            <tr>
+                <th style="background:var(--card)">Besoin</th>
+                <th style="background:var(--card)">Structure PHP Recommandée</th>
+                <th style="background:var(--card)">Pourquoi ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Liste simple, clés auto</td>
+                <td><code>array</code> (ex: <code>['a', 'b']</code>)</td>
+                <td>Standard, rapide à écrire.</td>
+            </tr>
+            <tr>
+                <td>Clés non-entières (Hash Map)</td>
+                <td><code>array</code> (ex: <code>['key' => 'val']</code>)</td>
+                <td>Flexibilité maximale.</td>
+            </tr>
+            <tr>
+                <td>Matrice Mathématique / Pixels</td>
+                <td><code>SplFixedArray</code></td>
+                <td>30% moins de RAM, indexation entière stricte.</td>
+            </tr>
+            <tr>
+                <td>File d'attente (Jobs)</td>
+                <td><code>SplQueue</code></td>
+                <td>Méthodes <code>enqueue/dequeue</code> claires, mode FIFO optimisé.</td>
+            </tr>
+            <tr>
+                <td>Historique / Annuler</td>
+                <td><code>SplStack</code></td>
+                <td>Mode LIFO optimisé.</td>
+            </tr>
+            <tr>
+                <td>Fichier géant (> 100 Mo)</td>
+                <td><code>Generator</code> (yield)</td>
+                <td>Streaming, empreinte mémoire constante.</td>
+            </tr>
+            <tr>
+                <td>Recherche ultra-fréquente</td>
+                <td><code>Ds\Set</code> ou Clés Array</td>
+                <td><code>isset($a[$k])</code> est O(1), <code>in_array</code> est O(N).</td>
+            </tr>
+            <tr>
+                <td>Vérifier unicité</td>
+                <td><code>Ds\Set</code> ou Clés Array</td>
+                <td>Empêche nativement les doublons.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="tip" style="margin-top:40px; margin-bottom:40px; text-align:center; padding:30px;">
+    <div style="font-size:2rem; margin-bottom:10px;">🎓</div>
+    <strong>Félicitations !</strong><br>
+    Vous avez exploré la structure de données la plus importante de PHP sous toutes ses coutures.<br>
+    Un développeur qui maîtrise les tableaux, les pointeurs de mémoire et la complexité algorithmique est un développeur
+    capable de scaler.
 </div>

@@ -63,26 +63,97 @@
         </div>
     </div>
 
-    <!-- MATCH & TERNARY (RAPPEL) -->
+    <div class="grid2" style="margin-top:20px;">
+        <div class="ref-card">
+            <h4>✅ Bonnes pratiques</h4>
+            <ul>
+                <li>Privilégier <code>===</code> et <code>!==</code> pour éviter la coercition.</li>
+                <li>Préférer des conditions courtes et nommées (variables explicites).</li>
+                <li>Utiliser des retours anticipés pour réduire l'imbrication.</li>
+                <li>Limiter les <code>else</code> profonds pour garder la lisibilité.</li>
+            </ul>
+        </div>
+        <div class="ref-card">
+            <h4>⚠️ Pièges classiques</h4>
+            <ul>
+                <li><code>0</code>, <code>'0'</code>, <code>[]</code>, <code>null</code> sont falsy.</li>
+                <li><code>empty()</code> masque parfois une erreur de variable non définie.</li>
+                <li>Les comparaisons lâches peuvent surprendre.</li>
+            </ul>
+            <button class="example-toggle">Voir un cas réel</button>
+            <div class="example-content">
+<pre><span class="var">$qty</span> = <span class="str">'0'</span>;
+<span class="kw">if</span> (<span class="var">$qty</span>) {
+    <span class="kw">echo</span> <span class="str">'Stock présent'</span>;
+} <span class="kw">else</span> {
+    <span class="kw">echo</span> <span class="str">'Rupture'</span>;
+}</pre>
+            </div>
+        </div>
+    </div>
+
     <div class="grid2" style="margin-top:20px;">
         <div class="code">
             <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Switch (Alternative à match)</div>
+            <pre><span class="kw">switch</span> (<span class="var">$ext</span>) {
+    <span class="kw">case</span> <span class="str">'png'</span>:
+    <span class="kw">case</span> <span class="str">'jpg'</span>:
+        <span class="var">$type</span> = <span class="str">'image'</span>;
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="str">'mp4'</span>:
+        <span class="var">$type</span> = <span class="str">'video'</span>;
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        <span class="var">$type</span> = <span class="str">'inconnu'</span>;
+}</pre>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
                     class="dot g"></span>Match (PHP 8+)</div>
-            <pre><span class="var">$result</span> = <span class="kw">match</span>(<span class="var">$ext</span>) {
+            <pre><span class="var">$type</span> = <span class="kw">match</span>(<span class="var">$ext</span>) {
     <span class="str">'png'</span>, <span class="str">'jpg'</span> => <span class="str">'image'</span>,
     <span class="str">'mp4'</span> => <span class="str">'video'</span>,
     <span class="kw">default</span> => <span class="str">'inconnu'</span>,
 };</pre>
         </div>
+    </div>
+
+    <div class="ref-card" style="margin-top:20px;">
+        <h4>🎯 Switch vs Match</h4>
+        <ul>
+            <li><code>match</code> renvoie une valeur et compare strictement.</li>
+            <li><code>switch</code> est plus verbeux mais tolère le fall-through.</li>
+            <li><code>match</code> évite les <code>break</code> oubliés.</li>
+        </ul>
+        <button class="example-toggle">Voir une mise en situation</button>
+        <div class="example-content">
+<pre><span class="var">$status</span> = <span class="str">'paid'</span>;
+<span class="var">$label</span> = <span class="kw">match</span>(<span class="var">$status</span>) {
+    <span class="str">'paid'</span> => <span class="str">'Payé'</span>,
+    <span class="str">'pending'</span> => <span class="str">'En attente'</span>,
+    <span class="kw">default</span> => <span class="str">'Inconnu'</span>,
+};
+<span class="kw">echo</span> <span class="var">$label</span>;</pre>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-top:20px;">
         <div class="code">
             <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                    class="dot g"></span>Ternaire / Coalescing</div>
-            <pre><span class="c">// Si vrai ? alors : sinon</span>
-<span class="var">$res</span> = <span class="var">$a</span> ? <span class="str">'ok'</span> : <span class="str">'ko'</span>;
-
-<span class="c">// Si existe et non null ?? sinon</span>
-<span class="var">$user</span> = <span class="var">$_GET</span>[<span class="str">'u'</span>] ?? <span class="str">'Anonyme'</span>;</pre>
+                    class="dot g"></span>Ternaire</div>
+            <pre><span class="var">$res</span> = <span class="var">$isVip</span> ? <span class="str">'Accès rapide'</span> : <span class="str">'Accès standard'</span>;</pre>
         </div>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                    class="dot g"></span>Coalescing</div>
+            <pre><span class="var">$user</span> = <span class="var">$_GET</span>[<span class="str">'u'</span>] ?? <span class="str">'Anonyme'</span>;</pre>
+        </div>
+    </div>
+
+    <div class="info" style="margin-top:20px;">
+        <strong>Cas d'usage fréquents</strong><br>
+        Authentification, validation de formulaires, routing, filtres de recherche, gestion des rôles.
     </div>
 </section>
 
@@ -152,6 +223,54 @@
 } <span class="kw">while</span> (<span class="fn">existsInDb</span>(<span class="var">$code</span>));</pre>
         </div>
     </div>
+
+    <div class="grid2" style="margin-top:20px;">
+        <div class="ref-card">
+            <h4>🧭 Choisir la bonne boucle</h4>
+            <table>
+                <tr>
+                    <th>Situation</th>
+                    <th>Boucle conseillée</th>
+                </tr>
+                <tr>
+                    <td>Compteur précis</td>
+                    <td><code>for</code></td>
+                </tr>
+                <tr>
+                    <td>Liste ou tableau</td>
+                    <td><code>foreach</code></td>
+                </tr>
+                <tr>
+                    <td>Flux inconnu</td>
+                    <td><code>while</code></td>
+                </tr>
+                <tr>
+                    <td>Exécuter au moins une fois</td>
+                    <td><code>do...while</code></td>
+                </tr>
+            </table>
+        </div>
+        <div class="ref-card">
+            <h4>🚨 Contrôle fin</h4>
+            <button class="example-toggle">Voir break / continue</button>
+            <div class="example-content">
+<pre><span class="kw">foreach</span> (<span class="var">$orders</span> <span class="kw">as</span> <span class="var">$order</span>) {
+    <span class="kw">if</span> (!<span class="var">$order</span>[<span class="str">'paid'</span>]) {
+        <span class="kw">continue</span>;
+    }
+    <span class="kw">if</span> (<span class="var">$order</span>[<span class="str">'total'</span>] > <span class="num">1000</span>) {
+        <span class="kw">break</span>;
+    }
+    <span class="kw">echo</span> <span class="var">$order</span>[<span class="str">'id'</span>];
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="tip" style="margin-top:20px;">
+        <strong>💡 Astuce de performance</strong><br>
+        Préférer <code>foreach</code> sur les tableaux et éviter les recalculs dans la condition d'une boucle.
+    </div>
 </section>
 
 <!-- PARTIE 3 : LE CONSEIL DU PRO (YIELD) -->
@@ -209,5 +328,21 @@
 <span class="tag">&lt;?php</span> <span class="kw">else</span>: <span class="tag">?&gt;</span>
     &lt;p&gt;Aucun article trouvé.&lt;/p&gt;
 <span class="tag">&lt;?php</span> <span class="kw">endif</span>; <span class="tag">?&gt;</span></pre>
+    </div>
+</div>
+
+<div class="demo" style="margin-top:20px;">
+    <div class="demo-title">🎮 Mini-simulation</div>
+    <p style="font-size:0.85rem;">Un utilisateur tente d'accéder à une page d'administration.</p>
+    <button class="example-toggle">Voir la solution</button>
+    <div class="example-content">
+<pre><span class="var">$role</span> = <span class="str">'editor'</span>;
+<span class="kw">if</span> (<span class="var">$role</span> === <span class="str">'admin'</span>) {
+    <span class="kw">echo</span> <span class="str">'Accès total'</span>;
+} <span class="kw">elseif</span> (<span class="var">$role</span> === <span class="str">'editor'</span>) {
+    <span class="kw">echo</span> <span class="str">'Accès limité'</span>;
+} <span class="kw">else</span> {
+    <span class="kw">echo</span> <span class="str">'Accès refusé'</span>;
+}</pre>
     </div>
 </div>

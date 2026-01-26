@@ -10,7 +10,10 @@
 - Added DI containers, GraphQL, jobs, and E2E testing sections in module 18
 - Highlighted framework, framework-lib, standalone, and service cards in module 18
 - Added Blade, PayPal, CMS/Admin, shipping, and reporting/BI entries to module 18
-- Added missing composer commands for Guzzle, DomPDF, and Phinx
+- Added missing composer commands for PHPMailer, Guzzle, DomPDF, and Phinx
+- Enriched module 03 with control structure use cases, switch vs match, and interactive examples
+- Enriched module 04 with function concepts, use cases, interactivity, and schemas
+- Expanded module 05 strings with alternatives, security, and interactive examples
 
 ## To do
 - Verify module 12 interactive examples render correctly in the browser

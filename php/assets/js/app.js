@@ -8,7 +8,7 @@ import { Router } from './router.js';
 const routes = [
     { path: 'intro', file: '00_intro.html', title: 'Intro' },
     { path: 'variables', file: '01_variables.html', title: '01 Variables' },
-    { path: 'arrays', file: '02_arrays.html', title: '02 Tableaux' },
+    { path: 'arrays', file: '02_arrays.html', title: '02 Tableaux & Collections' },
     { path: 'structures', file: '03_structures.html', title: '03 Structures' },
     { path: 'functions', file: '04_functions.html', title: '04 Fonctions' },
     { path: 'strings', file: '05_strings.html', title: '05 Strings' },

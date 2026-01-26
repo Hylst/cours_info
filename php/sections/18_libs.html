@@ -11,6 +11,12 @@
         méthodes traditionnelles aux standards actuels.</p>
     <p style="font-size: 0.9em; margin-top: 10px;"><em>Installation standard :
             <code>composer require [nom-du-paquet]</code> + <code>require 'vendor/autoload.php'</code>.</em></p>
+    <p style="margin-top: 12px;">
+        <span class="lib-badge lib-framework">Framework</span>
+        <span class="lib-badge lib-framework-lib">Librairie de Framework</span>
+        <span class="lib-badge lib-standalone">Standalone</span>
+        <span class="lib-badge lib-service">Service/SaaS</span>
+    </p>
 </div>
 
 <!-- ============================================== -->
@@ -32,13 +38,13 @@
 <span class="var">$pass</span> = <span class="var">$_ENV</span>[<span class="str">'DB_PASS'</span>];</pre>
         </div>
     </div>
-    <div class="ref-card full-width">
+    <div class="ref-card full-width lib-standalone-card">
         <h4>🔧 vlucas/phpdotenv</h4>
         <p>Charge les variables d'environnement depuis un fichier <code>.env</code> vers <code>getenv()</code>,
             <code>$_ENV</code> et <code>$_SERVER</code> automatiquement.</p>
         <code>composer require vlucas/phpdotenv</code>
     </div>
-    <div class="ref-card full-width" style="margin-top:10px;">
+    <div class="ref-card full-width lib-framework-lib-card" style="margin-top:10px;">
         <h4>🧩 Symfony Dotenv</h4>
         <p>Alternative légère et fiable pour charger les variables d'environnement.</p>
         <code>composer require symfony/dotenv</code>
@@ -66,11 +72,12 @@
     </div>
 
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🌐 Guzzle (guzzlehttp/guzzle)</h4>
             <p>Client HTTP puissant et flexible. Facilite l'envoi de requêtes et l'intégration de Web Services.</p>
+            <code>composer require guzzlehttp/guzzle</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧱 Symfony HttpFoundation</h4>
             <p>Une couche objet pour la spécification HTTP (Request, Response). Indispensable pour gérer les requêtes
                 proprement.</p>
@@ -78,19 +85,19 @@
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>⚡ Symfony HttpClient</h4>
             <p>Client HTTP moderne compatible PSR-18, simple et rapide à intégrer.</p>
             <code>composer require symfony/http-client</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔌 HTTPlug</h4>
             <p>Abstraction PSR-18 pour changer de client HTTP sans refactoriser.</p>
             <code>composer require php-http/httplug</code>
         </div>
     </div>
 
-    <div class="ref-card" style="margin-top:10px;">
+    <div class="ref-card lib-standalone-card" style="margin-top:10px;">
         <h4>🚀 Strapi PHP Client</h4>
         <p>Pour interagir spécifiquement avec le CMS Headless Strapi.</p>
         <code>composer require mbvienasbaitas/strapi-php-client</code>
@@ -116,18 +123,18 @@
 <span class="var">$mail</span>-><span class="fn">send</span>();</pre>
         </div>
     </div>
-    <div class="ref-card full-width">
+    <div class="ref-card full-width lib-standalone-card">
         <h4>📧 PHPMailer (phpmailer/phpmailer)</h4>
         <p>La référence absolue. Supporte SMTP, SSL, pièces jointes et HTML. Une bibliothèque complète de création et
             transfert d'emails.</p>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>📮 Symfony Mailer</h4>
             <p>Envoi d'emails via SMTP, API providers, et transports multiples.</p>
             <code>composer require symfony/mailer</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>✉️ Mailgun SDK</h4>
             <p>Intégration directe avec l'API Mailgun pour délivrabilité fiable.</p>
             <code>composer require mailgun/mailgun-php</code>
@@ -141,25 +148,26 @@
 <section>
     <h3>4. Génération de Documents</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📄 FPDF (setasign/fpdf)</h4>
             <p>Génère des PDF en <strong>pur PHP</strong> sans dépendances. Idéal pour des documents simples et rapides.
             </p>
             <code>composer require setasign/fpdf</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📄 DomPDF (dompdf/dompdf)</h4>
             <p>Convertit du <strong>HTML/CSS</strong> directement en PDF. Plus simple pour les mises en page complexes.
             </p>
+            <code>composer require dompdf/dompdf</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧾 mPDF</h4>
             <p>PDF riche en HTML/CSS, très utilisé pour factures et rapports.</p>
             <code>composer require mpdf/mpdf</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📊 PhpSpreadsheet</h4>
             <p>Création et lecture de fichiers Excel, CSV, ODS.</p>
             <code>composer require phpoffice/phpspreadsheet</code>
@@ -173,24 +181,25 @@
 <section>
     <h3>5. Bases de Données (Niveau Pro)</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🗄️ Doctrine ORM</h4>
             <p>Le standard entreprise (utilisé par Symfony). Mappe vos objets PHP vers la BDD (Data Mapper).</p>
             <code>composer require doctrine/orm</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔄 Phinx</h4>
             <p>Gère les <strong>migrations</strong> de BDD (versioning de votre schéma SQL). Permet de déployer vos
                 modifs BDD partout.</p>
+            <code>composer require robmorgan/phinx</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🌿 Eloquent ORM</h4>
             <p>Active Record simple et fluide (extrait de Laravel). Excellent pour des projets rapides.</p>
             <code>composer require illuminate/database</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧰 Doctrine DBAL</h4>
             <p>Couche d'abstraction SQL puissante : requêtes, schéma, migrations, drivers.</p>
             <code>composer require doctrine/dbal</code>
@@ -205,18 +214,18 @@
     <h3>6. La Boîte à Outils du Développeur</h3>
 
     <div class="grid3">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📝 Monolog</h4>
             <p><strong>Journalisation (Logging)</strong>. Envoie vos logs vers fichiers, Slack, BDD... Compatible PSR-3.
             </p>
             <code>monolog/monolog</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📅 Carbon</h4>
             <p><strong>Dates</strong>. Extension intuitive de DateTime. "Next friday", "Diff for humans".</p>
             <code>nesbot/carbon</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🆔 Ramsey UUID</h4>
             <p><strong>Identifiants Uniques</strong>. Génère des UUIDs (ex: <code>a0eebc99-9c0b...</code>) pour vos clés
                 primaires.</p>
@@ -225,18 +234,18 @@
     </div>
 
     <div class="grid3" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧪 PHPUnit</h4>
             <p><strong>Tests Unitaires</strong>. Le framework de test historique et standard de l'industrie.</p>
             <code>phpunit/phpunit</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🎭 Faker</h4>
             <p><strong>Données Factices</strong>. Génère faux noms, adresses, lorem ipsum pour remplir votre BDD de
                 test.</p>
             <code>fakerphp/faker</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🎨 PHP CS Fixer</h4>
             <p><strong>Qualité Code</strong>. Reformate automatiquement votre code pour respecter les standards
                 (PSR-12).</p>
@@ -244,48 +253,48 @@
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>⚡ Pest</h4>
             <p>Framework de tests moderne, très lisible, idéal pour TDD rapide.</p>
             <code>pestphp/pest</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧩 Mockery</h4>
             <p>Mocks élégants pour vos tests unitaires et d'intégration.</p>
             <code>mockery/mockery</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔍 PHPStan</h4>
             <p>Analyse statique pour détecter les bugs sans exécuter le code.</p>
             <code>phpstan/phpstan</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧭 Psalm</h4>
             <p>Analyse statique avancée avec typage générique et plugins.</p>
             <code>vimeo/psalm</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📏 PHP_CodeSniffer</h4>
             <p>Vérifie la conformité aux standards de code (PSR-12, personnalisés).</p>
             <code>squizlabs/php_codesniffer</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧱 Symfony Console</h4>
             <p>Crée des commandes CLI robustes et testables pour vos scripts.</p>
             <code>symfony/console</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧰 Rector</h4>
             <p>Refactorings automatiques et upgrades PHP massifs.</p>
             <code>rector/rector</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧹 PHP Mess Detector</h4>
             <p>Détecte les smells et complexités excessives dans le code.</p>
             <code>phpmd/phpmd</code>
@@ -314,32 +323,56 @@
         <p><strong>Twig</strong> est un moteur de templates flexible, rapide et sécurisé. Il sépare définitivement la
             logique PHP du HTML.</p>
     </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card lib-standalone-card">
+            <h4>🧵 Twig</h4>
+            <p>Moteur de template sécurisé, rapide et extensible.</p>
+            <code>composer require twig/twig</code>
+        </div>
+        <div class="ref-card lib-framework-lib-card">
+            <h4>🗡️ Blade</h4>
+            <p>Moteur de templates Laravel, utilisable en standalone via Illuminate.</p>
+            <code>composer require jenssegers/blade</code>
+        </div>
+    </div>
 </section>
 
 <section>
     <h3>8. Cache, Files d'attente & Temps réel</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧊 Symfony Cache</h4>
             <p>Cache PSR-6/PSR-16 avec adaptateurs Redis, Filesystem, APCu.</p>
             <code>symfony/cache</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧠 Predis</h4>
             <p>Client Redis en pur PHP pour cache, sessions, files, pub/sub.</p>
             <code>predis/predis</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>📬 Symfony Messenger</h4>
             <p>Gestion des files de messages et exécution async (RabbitMQ, Redis).</p>
             <code>symfony/messenger</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>🌩️ Pusher PHP Server</h4>
             <p>Événements temps réel et websockets sans backend complexe.</p>
             <code>pusher/pusher-php-server</code>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card lib-standalone-card">
+            <h4>🐇 RabbitMQ PHP Client</h4>
+            <p>Client AMQP pour publier et consommer des messages.</p>
+            <code>composer require php-amqplib/php-amqplib</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🕸️ Ratchet</h4>
+            <p>Serveur WebSocket en PHP pour temps réel auto-hébergé.</p>
+            <code>composer require cboden/ratchet</code>
         </div>
     </div>
 </section>
@@ -347,36 +380,36 @@
 <section>
     <h3>9. Validation, Forms & Data</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>✅ Symfony Validator</h4>
             <p>Validation riche via annotations, contraintes, règles composables.</p>
             <code>symfony/validator</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧾 Respect/Validation</h4>
             <p>Règles simples et expressives pour valider des champs.</p>
             <code>respect/validation</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📦 league/csv</h4>
             <p>Lecture, écriture et transformation CSV propre et rapide.</p>
             <code>league/csv</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧮 league/fractal</h4>
             <p>Transforme vos objets en payloads API clairs et cohérents.</p>
             <code>league/fractal</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧾 Symfony Form</h4>
             <p>Composant puissant pour générer, valider et hydrater des formulaires.</p>
             <code>symfony/form</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧷 Spatie Data Transfer Object</h4>
             <p>DTO simples pour structurer et valider vos données.</p>
             <code>spatie/data-transfer-object</code>
@@ -387,36 +420,36 @@
 <section>
     <h3>10. Fichiers, Stockage & Images</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🗂️ Flysystem</h4>
             <p>Abstraction du stockage pour local, S3, FTP, etc.</p>
             <code>league/flysystem</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📥 league/glide</h4>
             <p>Serveur d'images dynamique : resize, crop, cache.</p>
             <code>league/glide</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🖼️ Intervention Image</h4>
             <p>Manipulation d'images (resize, blur, watermark) facilement.</p>
             <code>intervention/image</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📚 Spatie PDF to Text</h4>
             <p>Extraction rapide de texte depuis des fichiers PDF.</p>
             <code>spatie/pdf-to-text</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📦 league/mime-type-detection</h4>
             <p>Détection fiable des types MIME pour uploads.</p>
             <code>league/mime-type-detection</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧼 Spatie Image Optimizer</h4>
             <p>Compression d'images pour de meilleures performances.</p>
             <code>spatie/image-optimizer</code>
@@ -427,24 +460,24 @@
 <section>
     <h3>11. Auth, Sécurité & Sessions</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔐 Firebase JWT</h4>
             <p>Créer et vérifier des tokens JWT en PHP.</p>
             <code>firebase/php-jwt</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔑 league/oauth2-client</h4>
             <p>Client OAuth2 pour Google, GitHub, Microsoft, etc.</p>
             <code>league/oauth2-client</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🛡️ Defuse PHP Encryption</h4>
             <p>Chiffrement simple et sécurisé pour données sensibles.</p>
             <code>defuse/php-encryption</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧯 Symfony Security</h4>
             <p>Gestion auth, rôles, accès, encodage mot de passe.</p>
             <code>symfony/security-bundle</code>
@@ -455,24 +488,24 @@
 <section>
     <h3>12. Observabilité & Monitoring</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>📡 Sentry PHP</h4>
             <p>Suivi d'erreurs, performance et traces en production.</p>
             <code>sentry/sentry</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📈 OpenTelemetry</h4>
             <p>Traces distribuées et métriques pour microservices.</p>
             <code>open-telemetry/opentelemetry</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>🧩 Datadog PHP</h4>
             <p>APM complet pour traces, métriques et profiling.</p>
             <code>datadog/dd-trace</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>📣 Bugsnag</h4>
             <p>Monitoring d'erreurs et de stabilité applicative.</p>
             <code>bugsnag/bugsnag</code>
@@ -483,24 +516,24 @@
 <section>
     <h3>13. Frameworks & Micro-frameworks</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-card">
             <h4>🧱 Symfony</h4>
             <p>Framework robuste pour projets long terme, architecture propre.</p>
             <code>symfony/symfony</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-card">
             <h4>🚀 Laravel</h4>
             <p>Framework expressif et productif avec écosystème massif.</p>
             <code>laravel/framework</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-card">
             <h4>🪶 Slim</h4>
             <p>Micro-framework minimaliste pour APIs rapides.</p>
             <code>slim/slim</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-card">
             <h4>⚡ Laminas</h4>
             <p>Suite complète et modulaire, héritière de Zend Framework.</p>
             <code>laminas/laminas-mvc</code>
@@ -511,24 +544,24 @@
 <section>
     <h3>14. API, Documentation & Sérialisation</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧭 API Platform</h4>
             <p>Construction d'APIs REST/GraphQL avec documentation automatique.</p>
             <code>api-platform/api-pack</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>📘 NelmioApiDocBundle</h4>
             <p>Génère une doc Swagger/OpenAPI pour Symfony.</p>
             <code>nelmio/api-doc-bundle</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📚 swagger-php</h4>
             <p>Annotations OpenAPI pour documenter vos endpoints.</p>
             <code>zircote/swagger-php</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧊 JMS Serializer</h4>
             <p>Sérialisation flexible JSON/XML avec annotations.</p>
             <code>jms/serializer</code>
@@ -539,24 +572,24 @@
 <section>
     <h3>15. I18n, Contenu & Markdown</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🌍 Symfony Translation</h4>
             <p>Internationalisation avec catalogues, formats et pluralisation.</p>
             <code>symfony/translation</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📝 league/commonmark</h4>
             <p>Convertit Markdown en HTML avec extensions.</p>
             <code>league/commonmark</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>📖 Parsedown</h4>
             <p>Parser Markdown simple, rapide et populaire.</p>
             <code>erusev/parsedown</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧩 HTML Purifier</h4>
             <p>Nettoyage HTML sécurisé pour contenus utilisateurs.</p>
             <code>ezyang/htmlpurifier</code>
@@ -567,55 +600,208 @@
 <section>
     <h3>16. Paiements & E-commerce</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>💳 Stripe PHP</h4>
             <p>Intégration complète des paiements Stripe.</p>
             <code>stripe/stripe-php</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-service-card">
             <h4>💶 Mollie API</h4>
             <p>Paiements européens rapides (Bancontact, iDEAL, etc.).</p>
             <code>mollie/mollie-api-php</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🧾 Omnipay</h4>
             <p>Abstraction multi-PSP pour choisir votre fournisseur.</p>
             <code>omnipay/omnipay</code>
         </div>
-        <div class="ref-card">
-            <h4>🛒 Sylius</h4>
-            <p>Framework e-commerce modulaire basé sur Symfony.</p>
-            <code>sylius/sylius</code>
+        <div class="ref-card lib-service-card">
+            <h4>🅿️ PayPal Checkout SDK</h4>
+            <p>SDK officiel pour intégrer les paiements PayPal.</p>
+            <code>paypal/paypal-checkout-sdk</code>
         </div>
+    </div>
+    <div class="ref-card full-width lib-framework-card" style="margin-top:10px;">
+        <h4>🛒 Sylius</h4>
+        <p>Framework e-commerce modulaire basé sur Symfony.</p>
+        <code>sylius/sylius</code>
     </div>
 </section>
 
 <section>
     <h3>17. Recherche, Parsing & Scraping</h3>
     <div class="grid2">
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔎 Meilisearch PHP</h4>
             <p>Moteur de recherche rapide avec SDK PHP.</p>
             <code>meilisearch/meilisearch-php</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-standalone-card">
             <h4>🔍 Elasticsearch PHP</h4>
             <p>Client officiel pour indexation et requêtes avancées.</p>
             <code>elasticsearch/elasticsearch</code>
         </div>
     </div>
     <div class="grid2" style="margin-top:10px;">
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🕸️ Symfony DomCrawler</h4>
             <p>Parse HTML/XML et navigue dans le DOM facilement.</p>
             <code>symfony/dom-crawler</code>
         </div>
-        <div class="ref-card">
+        <div class="ref-card lib-framework-lib-card">
             <h4>🧬 Symfony CssSelector</h4>
             <p>Sélecteurs CSS pour DomCrawler et parsing rapide.</p>
             <code>symfony/css-selector</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>18. Containers & Injection de Dépendances</h3>
+    <div class="grid2">
+        <div class="ref-card lib-framework-lib-card">
+            <h4>🧱 Symfony DependencyInjection</h4>
+            <p>Container puissant pour gérer services, autowiring et configuration.</p>
+            <code>symfony/dependency-injection</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🧩 PHP-DI</h4>
+            <p>Injection simple et flexible, idéale pour projets modernes sans framework.</p>
+            <code>php-di/php-di</code>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card lib-standalone-card">
+            <h4>🪣 League Container</h4>
+            <p>Container léger et PSR-11 pour micro-projets.</p>
+            <code>league/container</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🧷 Pimple</h4>
+            <p>Container minimaliste pour des besoins simples.</p>
+            <code>pimple/pimple</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>19. GraphQL & APIs modernes</h3>
+    <div class="grid2">
+        <div class="ref-card lib-standalone-card">
+            <h4>🔮 webonyx/graphql-php</h4>
+            <p>Moteur GraphQL complet et stable pour construire vos schémas.</p>
+            <code>webonyx/graphql-php</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🧬 GraphQLite</h4>
+            <p>Déclarez vos schémas GraphQL via annotations PHP.</p>
+            <code>thecodingmachine/graphqlite</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>20. Jobs, Processus & Planification</h3>
+    <div class="grid2">
+        <div class="ref-card lib-framework-lib-card">
+            <h4>⚙️ Symfony Process</h4>
+            <p>Exécution de commandes système avec gestion propre des sorties.</p>
+            <code>symfony/process</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>⏱️ cron-expression</h4>
+            <p>Gestion des expressions cron pour planifier vos tâches.</p>
+            <code>dragonmantank/cron-expression</code>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card lib-standalone-card">
+            <h4>🧵 Spatie Async</h4>
+            <p>Exécutez des tâches en parallèle sans complexité.</p>
+            <code>spatie/async</code>
+        </div>
+        <div class="ref-card lib-framework-lib-card">
+            <h4>🔒 Symfony Lock</h4>
+            <p>Verrouillage pour éviter les jobs concurrents.</p>
+            <code>symfony/lock</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>21. Tests E2E & BDD</h3>
+    <div class="grid2">
+        <div class="ref-card lib-standalone-card">
+            <h4>🧪 Codeception</h4>
+            <p>Tests unitaires, API et acceptance dans un seul outil.</p>
+            <code>codeception/codeception</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🎭 Behat</h4>
+            <p>BDD en Gherkin pour valider les comportements métier.</p>
+            <code>behat/behat</code>
+        </div>
+    </div>
+    <div class="grid2" style="margin-top:10px;">
+        <div class="ref-card lib-framework-lib-card">
+            <h4>🌐 Symfony Panther</h4>
+            <p>Tests end-to-end avec un vrai navigateur (Chrome/Firefox).</p>
+            <code>symfony/panther</code>
+        </div>
+        <div class="ref-card lib-standalone-card">
+            <h4>🧭 Mink</h4>
+            <p>Abstraction navigateur pour tests d'acceptation.</p>
+            <code>behat/mink</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>22. CMS & Admin</h3>
+    <div class="grid2">
+        <div class="ref-card lib-framework-card">
+            <h4>🧩 October CMS</h4>
+            <p>CMS moderne basé sur Laravel, orienté back-office rapide.</p>
+            <code>october/october</code>
+        </div>
+        <div class="ref-card lib-framework-lib-card">
+            <h4>🎛️ Filament</h4>
+            <p>Admin panel élégant et puissant pour Laravel.</p>
+            <code>filament/filament</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>23. Expédition & Logistique</h3>
+    <div class="grid2">
+        <div class="ref-card lib-service-card">
+            <h4>📦 EasyPost</h4>
+            <p>Création d'étiquettes, calcul des tarifs et suivi colis.</p>
+            <code>easypost/easypost-php</code>
+        </div>
+        <div class="ref-card lib-service-card">
+            <h4>🚚 AfterShip</h4>
+            <p>Suivi multi-transporteurs et notifications clients.</p>
+            <code>aftership/aftership-php</code>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>24. Reporting & BI</h3>
+    <div class="grid2">
+        <div class="ref-card lib-standalone-card">
+            <h4>📊 KoolReport</h4>
+            <p>Framework de reporting pour tableaux, dashboards et exports.</p>
+            <code>koolreport/koolreport</code>
+        </div>
+        <div class="ref-card lib-service-card">
+            <h4>📈 Microsoft Graph (Power BI)</h4>
+            <p>Accès aux APIs Power BI via Microsoft Graph.</p>
+            <code>microsoft/microsoft-graph</code>
         </div>
     </div>
 </section>

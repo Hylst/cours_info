@@ -412,6 +412,60 @@ pre {
     margin-top: 8px;
 }
 
+.lib-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin-left: 8px;
+    border: 1px solid transparent;
+}
+
+.lib-framework {
+    background: color-mix(in srgb, var(--primary) 25%, transparent);
+    color: var(--primary);
+    border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.lib-framework-lib {
+    background: color-mix(in srgb, var(--color-accent-base) 18%, transparent);
+    color: var(--color-accent-base);
+    border-color: color-mix(in srgb, var(--color-accent-base) 40%, transparent);
+}
+
+.lib-standalone {
+    background: color-mix(in srgb, var(--sh-string) 18%, transparent);
+    color: var(--sh-string);
+    border-color: color-mix(in srgb, var(--sh-string) 35%, transparent);
+}
+
+.lib-service {
+    background: color-mix(in srgb, var(--sh-number) 18%, transparent);
+    color: var(--sh-number);
+    border-color: color-mix(in srgb, var(--sh-number) 35%, transparent);
+}
+
+.lib-framework-card {
+    border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.lib-framework-lib-card {
+    border-color: color-mix(in srgb, var(--color-accent-base) 55%, transparent);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--color-accent-base) 20%, transparent);
+}
+
+.lib-standalone-card {
+    border-color: color-mix(in srgb, var(--sh-string) 45%, transparent);
+}
+
+.lib-service-card {
+    border-color: color-mix(in srgb, var(--sh-number) 45%, transparent);
+}
+
 .example-toggle {
     background: linear-gradient(135deg, var(--primary), var(--color-accent-base));
     border: 1px solid color-mix(in srgb, var(--primary) 60%, transparent);

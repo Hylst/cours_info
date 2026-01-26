@@ -7,6 +7,10 @@
 - Expanded the Strings section with 40+ functions and examples
 - Enriched module 18 with new library categories and ecosystem picks
 - Added more library categories and entries in module 18 (API, i18n, payments, search)
+- Added DI containers, GraphQL, jobs, and E2E testing sections in module 18
+- Highlighted framework, framework-lib, standalone, and service cards in module 18
+- Added Blade, PayPal, CMS/Admin, shipping, and reporting/BI entries to module 18
+- Added missing composer commands for Guzzle, DomPDF, and Phinx
 
 ## To do
 - Verify module 12 interactive examples render correctly in the browser

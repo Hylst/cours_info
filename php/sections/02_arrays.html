@@ -1,89 +1,412 @@
 <div class="sec-header">
     <div class="sec-num">02</div>
     <div>
-        <h2 class="sec-title">Tableaux (Arrays)</h2>
-        <p class="sec-sub">Listes, Dictionnaires, et Manipulations avancées</p>
+        <h2 class="sec-title">Tableaux (Arrays) & Collections</h2>
+        <p class="sec-sub">Masterclass : Architecture, Algorithmique, Structures de Données & Optimisations</p>
     </div>
 </div>
 
-<!-- ANALOGIE -->
+<div class="info">
+    <strong>🎯 Objectif du Module</strong><br>
+    Ce module ne se contente pas de vous apprendre à déclarer un tableau. Il explore l'architecture mémoire de PHP,
+    la complexité algorithmique (Big O), la programmation fonctionnelle, et les structures de données avancées (SPL, DS)
+    pour passer du niveau "Débutant" à "Ingénieur PHP".
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 1 : ARCHITECTURE & INTERNALS -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">I</div>
+    <h3 style="margin:0; color:var(--accent-base);">Architecture Interne & Mémoire</h3>
+</div>
+
+<div class="grid2">
+    <!-- COL 1 -->
+    <div>
+        <h4>Le Mythe du "Tableau"</h4>
+        <p>Si vous venez du C, Java ou C#, oubliez ce que vous savez. En PHP, un tableau n'est <strong>PAS</strong> une
+            zone mémoire contiguë.</p>
+        <p>C'est une structure hybride sophistiquée : une <strong>Ordered Hash Map</strong> (Table de Hachage Ordonnée).
+        </p>
+
+        <div class="ref-card" style="margin-top:15px">
+            <h5 style="color:var(--primary)">Structure d'un Élément (Bucket)</h5>
+            <ul style="font-size:0.85rem; margin-top:5px; padding-left:15px;">
+                <li><strong>h</strong> : Le Hash de la clé (entier)</li>
+                <li><strong>key</strong> : La clé (string ou null si indexé)</li>
+                <li><strong>val</strong> : La valeur (zval)</li>
+                <li><strong>next</strong> : Pointeur vers le prochain élément</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- COL 2 -->
+    <div>
+        <h4>Coût Mémoire & Performance</h4>
+        <p>Cette flexibilité a un coût. Un tableau d'entiers en C prend <code>4 octets</code> par élément.</p>
+        <p>En PHP, le même tableau prendra environ <strong>100 octets</strong> par élément (Overhead des structures).
+        </p>
+
+        <table style="font-size:0.8rem; margin-top:10px;">
+            <tr>
+                <th>Opération</th>
+                <th>Complexité</th>
+                <th>Note</th>
+            </tr>
+            <tr>
+                <td><code>$a['key']</code></td>
+                <td style="color:var(--green)">O(1)</td>
+                <td>Accès immédiat via Hash</td>
+            </tr>
+            <tr>
+                <td><code>$a[] = 1</code></td>
+                <td style="color:var(--green)">O(1)</td>
+                <td>Ajout fin (rapide)</td>
+            </tr>
+            <tr>
+                <td><code>unshift</code></td>
+                <td style="color:var(--red)">O(N)</td>
+                <td>Doit renuméroter TOUT le tableau</td>
+            </tr>
+            <tr>
+                <td><code>search</code></td>
+                <td style="color:var(--red)">O(N)</td>
+                <td>Doit scanner chaque valeur</td>
+            </tr>
+            <tr>
+                <td><code>key_exists</code></td>
+                <td style="color:var(--green)">O(1)</td>
+                <td>Vérifie juste le Hash</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 2 : CRUD & MANIPULATIONS ESSENTIELLES -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">II</div>
+    <h3 style="margin:0; color:var(--accent-base);">CRUD & Manipulations Essentielles</h3>
+</div>
+
+<!-- CREATE -->
+<h4>1. CRÉATION (Create)</h4>
+<p>Au-delà de la syntaxe de base, maîtrisez les générateurs de tableaux.</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+            class="dot g"></span>Initialisation</div>
+    <pre><span class="c">// Générer une séquence (Lazy loading : non, crée tout en mémoire)</span>
+<span class="var">$years</span> = <span class="fn">range</span>(<span class="num">2000</span>, <span class="num">2025</span>);
+<span class="var">$step</span>  = <span class="fn">range</span>(<span class="num">0</span>, <span class="num">100</span>, <span class="num">10</span>); <span class="c">// 0, 10, 20...</span>
+<span class="var">$char</span>  = <span class="fn">range</span>(<span class="str">'a'</span>, <span class="str">'z'</span>);   <span class="c">// Alphabet</span>
+
+<span class="c">// Remplir avec une valeur par défaut</span>
+<span class="var">$zeros</span> = <span class="fn">array_fill</span>(<span class="num">0</span>, <span class="num">5</span>, <span class="num">0</span>); <span class="c">// [0, 0, 0, 0, 0]</span>
+
+<span class="c">// Fusionner (Spread Operator - PHP 7.4+)</span>
+<span class="var">$defaults</span> = [<span class="str">"color"</span> => <span class="str">"red"</span>, <span class="str">"size"</span> => <span class="num">10</span>];
+<span class="var">$options</span>  = [<span class="str">"size"</span> => <span class="num">20</span>];
+<span class="var">$config</span>   = [...<span class="var">$defaults</span>, ...<span class="var">$options</span>]; 
+<span class="c">// Résultat : color=red, size=20 (Le dernier gagne)</span></pre>
+</div>
+
+<!-- READ -->
+<h4>2. LECTURE (Read) & DÉSTRUCTURATION</h4>
+<p>Accédez aux données proprement sans <code>isset()</code> à tout va.</p>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Access</div>
+    <pre><span class="var">$user</span> = [<span class="str">"id"</span> => <span class="num">42</span>, <span class="str">"name"</span> => <span class="str">"Ada"</span>, <span class="str">"role"</span> => <span class="str">"dev"</span>];
+
+<span class="c">// Null Coalescing Operator (??)</span>
+<span class="var">$role</span> = <span class="var">$user</span>[<span class="str">"role"</span>] ?? <span class="str">"guest"</span>;
+<span class="var">$addr</span> = <span class="var">$user</span>[<span class="str">"address"</span>][<span class="str">"city"</span>] ?? <span class="str">"Unknown"</span>; <span class="c">// Marche même en profondeur !</span>
+
+<span class="c">// Destructuring Symétrique (PHP 7.1+)</span>
+[<span class="str">"name"</span> => <span class="var">$n</span>, <span class="str">"role"</span> => <span class="var">$r</span>] = <span class="var">$user</span>;
+<span class="c">// $n = "Ada", $r = "dev"</span>
+
+<span class="c">// Extraction dans une boucle</span>
+<span class="var">$users</span> = [
+    [<span class="str">"id"</span> => <span class="num">1</span>, <span class="str">"log"</span> => <span class="str">"error"</span>],
+    [<span class="str">"id"</span> => <span class="num">2</span>, <span class="str">"log"</span> => <span class="str">"warning"</span>]
+];
+
+<span class="kw">foreach</span> (<span class="var">$users</span> <span class="kw">as</span> [<span class="str">"log"</span> => <span class="var">$l</span>]) {
+    <span class="kw">echo</span> <span class="var">$l</span>; <span class="c">// Affiche "error", "warning"</span>
+}</pre>
+</div>
+
+<!-- UPDATE / DELETE -->
+<h4>3. MODIFICATION & SUPPRESSION</h4>
+<div class="grid2">
+    <div class="code">
+        <pre><span class="c">// Ajouter (Push)</span>
+<span class="var">$stack</span> = [<span class="str">"A"</span>];
+<span class="fn">array_push</span>(<span class="var">$stack</span>, <span class="str">"B"</span>); <span class="c">// ["A", "B"]</span>
+<span class="var">$stack</span>[] = <span class="str">"C"</span>;          <span class="c">// ["A", "B", "C"] (Plus rapide)</span>
+
+<span class="c">// Retirer (Pop)</span>
+<span class="var">$last</span> = <span class="fn">array_pop</span>(<span class="var">$stack</span>); <span class="c">// "C" (Modifie le tableau)</span>
+
+<span class="c">// File d'attente (Queue)</span>
+<span class="fn">array_unshift</span>(<span class="var">$q</span>, <span class="str">"First"</span>); <span class="c">// Ajout début</span>
+<span class="var">$first</span> = <span class="fn">array_shift</span>(<span class="var">$q</span>);   <span class="c">// Retrait début</span></pre>
+    </div>
+    <div class="code">
+        <pre><span class="c">// Supprimer sans laisser de trou</span>
+<span class="var">$tasks</span> = [<span class="str">"A"</span>, <span class="str">"B"</span>, <span class="str">"C"</span>];
+
+<span class="kw">unset</span>(<span class="var">$tasks</span>[<span class="num">1</span>]); 
+<span class="c">// Résultat: [0=>"A", 2=>"C"] (Index 1 manquant !)</span>
+
+<span class="c">// Solution : Splice</span>
+<span class="fn">array_splice</span>(<span class="var">$tasks</span>, <span class="num">1</span>, <span class="num">1</span>);
+<span class="c">// Résultat: [0=>"A", 1=>"C"] (Réindexé)</span>
+
+<span class="c">// Nettoyer les doublons</span>
+<span class="var">$u</span> = <span class="fn">array_unique</span>(<span class="var">$arr</span>);</pre>
+    </div>
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 3 : LA BIBLE DU TRI (SORTING) -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">III</div>
+    <h3 style="margin:0; color:var(--accent-base);">Algorithmique : L'Art du Tri</h3>
+</div>
+<p>PHP offre trop de fonctions de tri. Voici comment choisir.</p>
+
+<table style="margin-bottom:20px;">
+    <tr>
+        <th>Besoin</th>
+        <th>Fonction</th>
+        <th>Comportement</th>
+    </tr>
+    <tr>
+        <td>Trier des <strong>Valeurs</strong> (Simple)</td>
+        <td><code>sort()</code></td>
+        <td>Perd les clés, réindexe (0,1,2)</td>
+    </tr>
+    <tr>
+        <td>Tri <strong>Inverse</strong></td>
+        <td><code>rsort()</code></td>
+        <td>Du plus grand au plus petit</td>
+    </tr>
+    <tr>
+        <td>Trier des <strong>Tableaux Associatifs</strong></td>
+        <td><code>asort()</code></td>
+        <td>Trie les valeurs, <strong style="color:var(--green)">Garde les clés</strong></td>
+    </tr>
+    <tr>
+        <td>Trier par <strong>Clé</strong></td>
+        <td><code>ksort()</code></td>
+        <td>Trie A-Z selon la clé</td>
+    </tr>
+    <tr>
+        <td>Tri <strong>Naturel</strong> (Humain)</td>
+        <td><code>natsort()</code></td>
+        <td>"img2.png" avant "img10.png"</td>
+    </tr>
+    <tr>
+        <td>Tri <strong>Personnalisé</strong> (Complexe)</td>
+        <td><code>usort()</code></td>
+        <td>Utilise une fonction callback</td>
+    </tr>
+</table>
+
+<div class="code">
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Le Tri
+        Personnalisé (usort)</div>
+    <pre><span class="var">$students</span> = [
+    [<span class="str">'nom'</span> => <span class="str">'Zack'</span>, <span class="str">'note'</span> => <span class="num">15</span>],
+    [<span class="str">'nom'</span> => <span class="str">'Alice'</span>, <span class="str">'note'</span> => <span class="num">18</span>],
+    [<span class="str">'nom'</span> => <span class="str">'Bob'</span>, <span class="str">'note'</span> => <span class="num">15</span>] <span class="c">// Même note que Zack</span>
+];
+
+<span class="c">// Opérateur "Spaceship" (<=>) : Retourne -1, 0, 1</span>
+<span class="c">// Trie par Note (Décroissant), puis par Nom (Croissant)</span>
+<span class="fn">usort</span>(<span class="var">$students</span>, <span class="kw">fn</span>(<span class="var">$a</span>, <span class="var">$b</span>) => 
+    <span class="c">// Si notes différentes, comparer notes (inverse pour décroissant)</span>
+    <span class="var">$b</span>[<span class="str">'note'</span>] <=> <span class="var">$a</span>[<span class="str">'note'</span>] 
+    ?: <span class="c">// Sinon (si note égale), comparer noms</span>
+    <span class="var">$a</span>[<span class="str">'nom'</span>] <=> <span class="var">$b</span>[<span class="str">'nom'</span>]
+);
+
+<span class="c">// Résultat : Alice (18), Bob (15), Zack (15)</span></pre>
+</div>
+<div class="tip">
+    <strong>💡 Note sur la stabilité</strong><br>
+    Depuis <strong>PHP 8.0</strong>, les fonctions de tri sont <em>stables</em>. Cela signifie que si deux éléments sont
+    égaux (ex: Bob et Zack ont 15), leur ordre initial est conservé si vous ne spécifiez pas de critère secondaire.
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 4 : PROGRAMMATION FONCTIONNELLE (PIPELINES) -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">IV</div>
+    <h3 style="margin:0; color:var(--accent-base);">Programmation Fonctionnelle</h3>
+</div>
+<p>Arrêtez d'écrire des boucles <code>foreach</code> imbriquées avec des variables temporaires partout.</p>
+
 <div class="grid2">
     <div class="ref-card">
-        <h4>📦 Analogie : Le Casier</h4>
-        <p>Un Array est comme un meuble à casiers.</p>
-        <ul>
-            <li><strong>Indexé</strong> : Les casiers sont numérotés (0, 1, 2...). C'est une <em>Liste</em>.</li>
-            <li><strong>Associatif</strong> : Les casiers ont des étiquettes ("Nom", "Email"). C'est un
-                <em>Dictionnaire</em>.</li>
-        </ul>
+        <h4>🗺️ Map (Transformer)</h4>
+        <p>Applique une fonction à chaque élément et retourne un nouveau tableau.</p>
+        <p><code>[🍎, 🍌] -> Map(Cuire) -> [🥧, 🧁]</code></p>
     </div>
     <div class="ref-card">
-        <h4>⚡ Performance</h4>
-        <p>Les tableaux PHP sont des "Ordered Maps" optimisés. Ils sont très flexibles mais consomment plus de mémoire
-            que des tableaux fixes en C/C++.</p>
+        <h4>🔍 Filter (Sélectionner)</h4>
+        <p>Garde uniquement les éléments qui valident le test.</p>
+        <p><code>[🍎, 🍔, 🍌] -> Filter(isFruit) -> [🍎, 🍌]</code></p>
+    </div>
+    <div class="ref-card">
+        <h4>📉 Reduce (Réduire)</h4>
+        <p>Transforme un tableau en une valeur unique (ou un autre structure).</p>
+        <p><code>[10, 20, 5] -> Reduce(Somme) -> 35</code></p>
     </div>
 </div>
 
+<h4>Exemple : Analyse de Données de Ventes</h4>
 <div class="code">
-    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Syntaxe
-        Moderne</div>
-    <pre><span class="c">// Syntaxe courte [] (Depuis PHP 5.4)</span>
-<span class="var">$stack</span> = [<span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"PHP"</span>];
-
-<span class="c">// Associatif</span>
-<span class="var">$config</span> = [
-    <span class="str">"db_host"</span> => <span class="str">"localhost"</span>,
-    <span class="str">"debug"</span> => <span class="kw">true</span>,
-    <span class="str">"timeout"</span> => <span class="num">30</span>
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Sales
+        Analysis</div>
+    <pre><span class="var">$sales</span> = [
+    [<span class="str">'sku'</span> => <span class="str">'A100'</span>, <span class="str">'price'</span> => <span class="num">50</span>, <span class="str">'qty'</span> => <span class="num">2</span>, <span class="str">'country'</span> => <span class="str">'FR'</span>],
+    [<span class="str">'sku'</span> => <span class="str">'B200'</span>, <span class="str">'price'</span> => <span class="num">80</span>, <span class="str">'qty'</span> => <span class="num">1</span>, <span class="str">'country'</span> => <span class="str">'US'</span>], <span class="c">// Exclure US</span>
+    [<span class="str">'sku'</span> => <span class="str">'A100'</span>, <span class="str">'price'</span> => <span class="num">50</span>, <span class="str">'qty'</span> => <span class="num">1</span>, <span class="str">'country'</span> => <span class="str">'FR'</span>]
 ];
 
-<span class="c">// Accès Intriqué</span>
-<span class="var">$users</span> = [
-    [<span class="str">"name"</span> => <span class="str">"Ana"</span>, <span class="str">"roles"</span> => [<span class="str">"admin"</span>]],
-    [<span class="str">"name"</span> => <span class="str">"Bob"</span>, <span class="str">"roles"</span> => [<span class="str">"guest"</span>]]
-];
-<span class="kw">echo</span> <span class="var">$users</span>[<span class="num">0</span>][<span class="str">"roles"</span>][<span class="num">0</span>]; <span class="c">// "admin"</span></pre>
+<span class="c">// Objectif : Chiffre d'affaires total pour la France</span>
+
+<span class="var">$ca_fr</span> = <span class="fn">array_reduce</span>(
+    <span class="fn">array_map</span>(
+        <span class="c">// 2. Calculer le sous-total par ligne</span>
+        <span class="kw">fn</span>(<span class="var">$s</span>) => <span class="var">$s</span>[<span class="str">'price'</span>] * <span class="var">$s</span>[<span class="str">'qty'</span>],
+        
+        <span class="fn">array_filter</span>(
+            <span class="var">$sales</span>,
+            <span class="c">// 1. Garder uniquement la France</span>
+            <span class="kw">fn</span>(<span class="var">$s</span>) => <span class="var">$s</span>[<span class="str">'country'</span>] === <span class="str">'FR'</span>
+        )
+    ),
+    <span class="c">// 3. Somme finale</span>
+    <span class="kw">fn</span>(<span class="var">$acc</span>, <span class="var">$val</span>) => <span class="var">$acc</span> + <span class="var">$val</span>,
+    <span class="num">0</span> <span class="c">// Valeur initiale</span>
+);
+
+<span class="c">// Résultat : (50*2) + (50*1) = 150</span></pre>
 </div>
 
-<h3>Destructuring & Spread (PHP 7.4+)</h3>
-<p>Comme en JS, PHP permet de déballer les tableaux.</p>
+<!-- ======================================================================= -->
+<!-- PARTIE 5 : THÉORIE DES ENSEMBLES & UTILITAIRES -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">V</div>
+    <h3 style="margin:0; color:var(--accent-base);">Théorie des Ensembles</h3>
+</div>
+<p>Manipulez vos tableaux comme des diagrammes de Venn.</p>
 
 <div class="code">
-    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Destucturing
+    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Set
+        Operations</div>
+    <pre><span class="var">$groupA</span> = [<span class="str">"alix@mail.com"</span>, <span class="str">"bob@mail.com"</span>, <span class="str">"charly@mail.com"</span>];
+<span class="var">$groupB</span> = [<span class="str">"bob@mail.com"</span>, <span class="str">"dave@mail.com"</span>];
+
+<span class="c">// INTERSECTION (Qui est dans les deux ?)</span>
+<span class="var">$common</span> = <span class="fn">array_intersect</span>(<span class="var">$groupA</span>, <span class="var">$groupB</span>);
+<span class="c">// ["bob@mail.com"]</span>
+
+<span class="c">// DIFFÉRENCE (Qui est dans A mais PAS dans B ?)</span>
+<span class="var">$uniqueA</span> = <span class="fn">array_diff</span>(<span class="var">$groupA</span>, <span class="var">$groupB</span>);
+<span class="c">// ["alix@mail.com", "charly@mail.com"]</span>
+
+<span class="c">// UNION (Tous le monde, sans doublons)</span>
+<span class="c">// array_unique(array_merge(...)) est lent. L'astuce :</span>
+<span class="var">$all</span> = <span class="fn">array_unique</span>(<span class="fn">array_merge</span>(<span class="var">$groupA</span>, <span class="var">$groupB</span>));
+<span class="c">// Ou via l'opérateur + (Attention aux clés numériques !)</span></pre>
+</div>
+
+<!-- ======================================================================= -->
+<!-- PARTIE 6 : STRUCTURES AVANCÉES & OPTIMISATION -->
+<!-- ======================================================================= -->
+<div class="sec-header" style="margin-top:50px;">
+    <div class="sec-num" style="width:30px; height:30px; font-size:0.9rem;">VI</div>
+    <h3 style="margin:0; color:var(--accent-base);">Optimisation & SPL</h3>
+</div>
+
+<details>
+    <summary>🚀 Generators (Yield) : Traiter 1 Go avec 10 Mo de RAM</summary>
+    <div class="example-content">
+        <p>Les générateurs permettent de parcourir des données sans construire le tableau en mémoire. C'est du
+            "Streaming" de données.</p>
+        <div class="code">
+            <pre><span class="kw">function</span> <span class="fn">getRows</span>(<span class="var">$file</span>) {
+    <span class="var">$handle</span> = <span class="fn">fopen</span>(<span class="var">$file</span>, <span class="str">'rb'</span>);
+    <span class="kw">while</span> (<span class="var">$line</span> = <span class="fn">fgets</span>(<span class="var">$handle</span>)) {
+        <span class="kw">yield</span> <span class="fn">trim</span>(<span class="var">$line</span>); <span class="c">// Pause l'exécution et envoie la donnée</span>
+    }
+    <span class="fn">fclose</span>(<span class="var">$handle</span>);
+}
+
+<span class="c">// Ce code ne plantera jamais la mémoire, même avec un fichier de 100 Go</span>
+<span class="kw">foreach</span> (<span class="fn">getRows</span>(<span class="str">'big_log.txt'</span>) <span class="kw">as</span> <span class="var">$row</span>) {
+    <span class="kw">if</span> (<span class="fn">str_contains</span>(<span class="var">$row</span>, <span class="str">'ERROR'</span>)) {
+        <span class="c">// Traiter l'erreur</span>
+    }
+}</pre>
+        </div>
     </div>
-    <pre><span class="c">// Array Destructuring</span>
-[<span class="var">$a</span>, <span class="var">$b</span>] = [<span class="num">10</span>, <span class="num">20</span>];
-<span class="c">// $a = 10, $b = 20</span>
+</details>
 
-<span class="c">// Avec clés (PHP 7.1+)</span>
-[<span class="str">"name"</span> => <span class="var">$n</span>, <span class="str">"age"</span> => <span class="var">$a</span>] = <span class="var">$user</span>;
+<h4>Standard PHP Library (SPL)</h4>
+<p>PHP inclut des classes C++ optimisées pour des cas spécifiques.</p>
 
-<span class="c">// Spread Operator (...)</span>
-<span class="var">$parts</span> = [<span class="str">"pomme"</span>, <span class="str">"poire"</span>];
-<span class="var">$fruits</span> = [<span class="str">"banane"</span>, ...<span class="var">$parts</span>, <span class="str">"fraise"</span>];
-<span class="c">// ["banane", "pomme", "poire", "fraise"]</span></pre>
+<div class="grid2">
+    <!-- SPLFixedArray -->
+    <div class="ref-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4>SplFixedArray</h4>
+            <span
+                style="background:var(--green); color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px;">-30%
+                RAM</span>
+        </div>
+        <p>Un tableau de taille fixe (comme en C). Les clés sont uniquement des entiers.</p>
+        <p>Utilisez-le pour des matrices ou des traitements d'images.</p>
+        <pre
+            style="background:var(--bg); border:1px solid var(--border); padding:8px; border-radius:6px; margin-top:10px;"><span class="var">$arr</span> = <span class="kw">new</span> <span class="fn">SplFixedArray</span>(<span class="num">10000</span>);
+<span class="var">$arr</span>[<span class="num">500</span>] = <span class="str">"Data"</span>;
+<span class="c">// $arr["key"] -> Error!</span></pre>
+    </div>
+
+    <!-- DS Extension -->
+    <div class="ref-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4>Extension DS</h4>
+            <span
+                style="background:var(--purple); color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px;">Best
+                Perf</span>
+        </div>
+        <p>Extension PECL (à installer) offrant <code>Vector</code>, <code>Map</code>, <code>Set</code>.</p>
+        <ul style="font-size:0.85rem; margin-top:5px; padding-left:15px;">
+            <li><strong>Vector</strong> : Liste auto-redimensionnable (O(1) push).</li>
+            <li><strong>Set</strong> : Valeurs uniques garanties.</li>
+            <li><strong>Map</strong> : Dictionnaire d'objets (impossible avec array simple).</li>
+        </ul>
+    </div>
 </div>
 
-<h3>Fonctionnel (Map, Filter, Reduce)</h3>
-<p>Manipuler les données sans boucles <code>foreach</code> rend le code plus déclaratif.</p>
-
-<div class="code">
-    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>Functional
-        Programming</div>
-    <pre><span class="var">$numbers</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];
-
-<span class="c">// Filter : Garder les pairs</span>
-<span class="var">$evens</span> = <span class="fn">array_filter</span>(<span class="var">$numbers</span>, <span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> % <span class="num">2</span> === <span class="num">0</span>);
-
-<span class="c">// Map : Mettre au carré</span>
-<span class="var">$squares</span> = <span class="fn">array_map</span>(<span class="kw">fn</span>(<span class="var">$n</span>) => <span class="var">$n</span> ** <span class="num">2</span>, <span class="var">$evens</span>);
-
-<span class="c">// Reduce : Somme totale</span>
-<span class="var">$sum</span> = <span class="fn">array_reduce</span>(<span class="var">$numbers</span>, <span class="kw">fn</span>(<span class="var">$carry</span>, <span class="var">$n</span>) => <span class="var">$carry</span> + <span class="var">$n</span>, <span class="num">0</span>);</pre>
-</div>
-
-<div class="tip">
-    <strong>💡 Astuce Debug</strong><br>
-    <code>print_r($arr)</code> est bien, mais <code>var_dump($arr)</code> donne le type et la taille.<br>
-    Encore mieux : <code>dd($arr)</code> si vous utilisez Laravel/Symfony (Dump and Die).
+<div class="tip" style="margin-top:20px;">
+    <strong>💡 Conclusion</strong><br>
+    <ul>
+        <li>Utilisez <code>array</code> pour 99% des cas (flexibilité).</li>
+        <li>Utilisez <code>Generators</code> pour les gros flux de données.</li>
+        <li>Utilisez <code>SplFixedArray</code> pour les matrices mathématiques.</li>
+        <li>Utilisez <code>Map/Filter/Reduce</code> pour la logique métier complexe.</li>
+    </ul>
 </div>

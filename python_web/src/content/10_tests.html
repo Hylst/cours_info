@@ -1,32 +1,108 @@
-    <section id="s10">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">10</div>
-                <div>
-                    <h2 class="sec-title">Tests Automatisés</h2>
-                    <p class="sec-sub">Pytest, Coverage</p>
-                </div>
-            </div>
-
-            <div class="code">
-                <div class="code-head"><span class="dot g"></span>Test API avec Pytest</div>
-                <pre><span class="c"># test_main.py</span>
-<span class="kw">from</span> fastapi.testclient <span class="kw">import</span> TestClient
-<span class="kw">from</span> main <span class="kw">import</span> app
-
-<span class="var">client</span> = <span class="cls">TestClient</span>(<span class="var">app</span>)
-
-<span class="kw">def</span> <span class="fn">test_read_main</span>():
-    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">get</span>(<span class="str">"/"</span>)
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span>
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="fn">json</span>() == {<span class="str">"msg"</span>: <span class="str">"Hello World"</span>}
-
-<span class="kw">def</span> <span class="fn">test_create_item</span>():
-    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">post</span>(
-        <span class="str">"/items/"</span>,
-        json={<span class="str">"name"</span>: <span class="str">"Test Item"</span>, <span class="str">"price"</span>: <span class="num">10</span>}
-    )
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span></pre>
+<section id="s10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Tests & QA : Garantir la Fiabilité</h2>
+                <p class="sec-sub">De l'unitaire à l'intégration : coder avec confiance</p>
             </div>
         </div>
-    </section>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Un code sans tests est un code "legacy" dès sa naissance. En Python Web, tester permet de s'assurer que
+                vos routes renvoient les bons statuts, que vos modèles calculent correctement et que vos migrations
+                n'ont rien cassé. <strong>Pytest</strong> est l'outil standard pour cette mission.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. La Pyramide des Tests</h3>
+                <p>Pour une stratégie efficace, privilégiez une large base de tests unitaires (rapides) et moins de
+                    tests de bout-en-bout (lents/fragiles).</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    UI["E2E / Selenium - Rare"] --> INT["Intégration / API - Moyen"]
+                    INT --> UNIT["Unitaire / Logique - Nombreux"]
+                    style UNIT fill:var(--primary),color:white
+                </div>
+            </div>
+            <div>
+                <h3>2. La Puissance de Pytest</h3>
+                <p>Fini la lourdeur de <code>unittest</code>. Pytest utilise de simples <code>assert</code> et un
+                    système de <strong>Fixtures</strong> révolutionnaire.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>conftest.py (Fixtures)</div>
+                    <pre><span class="kw">import</span> pytest
+<span class="kw">from</span> main <span class="kw">import</span> app
+<span class="kw">from</span> fastapi.testclient <span class="kw">import</span> TestClient
+
+<span class="at">@pytest</span>.<span class="fn">fixture</span>
+<span class="kw">def</span> <span class="fn">client</span>():
+    <span class="c"># Setup : crée l'objet avant le test</span>
+    <span class="kw">with</span> <span class="cls">TestClient</span>(<span class="var">app</span>) <span class="kw">as</span> <span class="var">c</span>:
+        <span class="kw">yield</span> <span class="var">c</span>
+    <span class="c"># Teardown : nettoyage auto après</span></pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Mocking : Isoler pour Mieux Tester</h3>
+        <p>Si votre fonction appelle une API externe ou une DB lente, <strong>simulez</strong> son comportement pour que
+            vos tests restent rapides et déterministes.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>test_logic.py (Mock)</div>
+            <pre><span class="kw">from</span> unittest.mock <span class="kw">import</span> MagicMock
+
+<span class="kw">def</span> <span class="fn">test_payment_process</span>(<span class="var">mocker</span>):
+    <span class="c"># On remplace l'appel réel à Stripe</span>
+    <span class="var">mock_stripe</span> = <span class="var">mocker</span>.<span class="fn">patch</span>(<span class="str">"services.stripe.charge"</span>)
+    <span class="var">mock_stripe</span>.<span class="fn">return_value</span> = {<span class="str">"status"</span>: <span class="str">"success"</span>}
+    
+    <span class="var">res</span> = <span class="fn">process_order</span>(<span class="num">100</span>)
+    <span class="kw">assert</span> <span class="var">res</span> <span class="kw">is True</span>
+    <span class="var">mock_stripe</span>.<span class="fn">assert_called_once</span>()</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Mesurer la Qualité : Coverage</h3>
+        <p>Le <strong>Code Coverage</strong> indique le pourcentage de lignes de code exécutées par vos tests. Visez
+            80%+, mais rappelez-vous : 100% de couverture ≠ 0 bugs.</p>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>📊 Rapports HTML</h4>
+                <p><code>pytest --cov-report html</code> génère un site web pour visualiser les lignes non testées.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🏗️ CI/CD</h4>
+                <p>Bloquez le déploiement si la couverture descend en dessous d'un certain seuil (Security Gate).</p>
+            </div>
+            <div class="ref-card">
+                <h4>🧪 TDD</h4>
+                <p><em>Test-Driven Development</em> : Écrire le test (rouge), coder (vert), refactoriser.</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: DB de Test</strong>
+            <p>N'utilisez jamais votre DB de prod ou de dev pour les tests. Configurez une base SQLite en mémoire ou un
+                container Docker dédié qui est réinitialisé par les fixtures.</p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Outils de Linting & Formatage</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Ruff / Flake8</h4>
+                    <p>Analyse statique pour détecter les erreurs de syntaxe, les imports inutilisés ou le code mort.
+                    </p>
+                </div>
+                <div class="ref-card">
+                    <h4>Black / Blue</h4>
+                    <p>Formatage automatique du code pour que tout le projet respecte strictement la PEP 8 sans débat.
+                    </p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>

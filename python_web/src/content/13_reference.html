@@ -1,57 +1,122 @@
-    <section id="s13">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">13</div>
-                <div>
-                    <h2 class="sec-title">Référence Web</h2>
-                    <p class="sec-sub">Outils et Librairies clés</p>
-                </div>
+<section id="s13">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">13</div>
+            <div>
+                <h2 class="sec-title">Toolkit : Références & Ressources</h2>
+                <p class="sec-sub">L'arsenal indispensable pour tout développeur Python Web</p>
             </div>
-
-            <table>
-                <tr>
-                    <th>Domaine</th>
-                    <th>Librairie</th>
-                    <th>Usage</th>
-                </tr>
-                <tr>
-                    <td><strong>Web Framework</strong></td>
-                    <td>Flask, Django, FastAPI</td>
-                    <td>Base du site</td>
-                </tr>
-                <tr>
-                    <td><strong>Serveur</strong></td>
-                    <td>Gunicorn, Uvicorn</td>
-                    <td>Production WSGI/ASGI</td>
-                </tr>
-                <tr>
-                    <td><strong>HTTP Client</strong></td>
-                    <td>Requests, Httpx (async)</td>
-                    <td>Appeler des APIs externes</td>
-                </tr>
-                <tr>
-                    <td><strong>Validation</strong></td>
-                    <td>Pydantic, Marshmallow</td>
-                    <td>Valider forms/JSON</td>
-                </tr>
-                <tr>
-                    <td><strong>Sécurité</strong></td>
-                    <td>Passlib, BCrypt, PyJWT</td>
-                    <td>Mots de passe, Tokens</td>
-                </tr>
-                <tr>
-                    <td><strong>Testing</strong></td>
-                    <td>Pytest, Playwright</td>
-                    <td>Tests unitaires / E2E</td>
-                </tr>
-                <tr>
-                    <td><strong>Tâches fond</strong></td>
-                    <td>Celery, Redis Queue</td>
-                    <td>Emails, traitements lourds</td>
-                </tr>
-            </table>
-
-            <div class="tip" style="margin-top:24px"><strong>💡 Cloud Ready</strong> — Les apps Python containerisées se
-                déploient facilement sur AWS, Azure, Google Cloud ou des PaaS comme Render/Railway.</div>
         </div>
-    </section>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Maîtriser Python Web ne s'arrête pas au code. C'est aussi savoir choisir les bons outils de débogage,
+                consulter les documentations officielles et utiliser les meilleurs outils de test d'API.</p>
+        </div>
+
+        <h3 style="margin-top:40px">1. Librairies Incontournables</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Domaine</th>
+                        <th>Librairie</th>
+                        <th>Pourquoi l'utiliser ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HTTP Client</strong></td>
+                        <td><code>httpx</code></td>
+                        <td>Successeur moderne de requests, gère le <code>async</code> nativement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Validation</strong></td>
+                        <td><code>pydantic</code></td>
+                        <td>La référence pour la validation de données par types.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sécurité</strong></td>
+                        <td><code>passlib[argon2]</code></td>
+                        <td>Le standard pour le hashing sécurisé des mots de passe.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Utils</strong></td>
+                        <td><code>python-dotenv</code></td>
+                        <td>Indispensable pour charger ses fichiers <code>.env</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">2. L'Arsenal de l'API Tester</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>🚀 HTTPie</h4>
+                <p>L'alternative moderne à <code>curl</code> en ligne de commande. Coloré et intuitif.</p>
+            </div>
+            <div class="ref-card">
+                <h4>📡 Bruno / Insomnia</h4>
+                <p>Des alternatives légères et souvent open-source à Postman pour tester vos endpoints REST/GraphQL.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🔍 DevTools</h4>
+                <p>L'onglet <code>Network</code> de votre navigateur est votre meilleur ami pour inspecter les requêtes
+                    HTTP.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Mémo Commandes (Cheat Sheet)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Environnement</div>
+                <pre><span class="c"># Créer et activer un venv</span>
+python -m venv .venv
+source .venv/bin/activate <span class="c"># Linux</span>
+.venv\Scripts\activate   <span class="c"># Windows</span>
+
+<span class="c"># Gérer les packages</span>
+pip install -r requirements.txt
+pip freeze > requirements.txt</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Docker Quickstart</div>
+                <pre><span class="c"># Lancer la stack complète</span>
+docker-compose up --build
+
+<span class="c"># Voir les logs en direct</span>
+docker logs -f my_app_container
+
+<span class="c"># Accéder à la DB</span>
+docker exec -it db_cont psql -U user</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Liens Précis (Docs Officielles)</h3>
+        <div class="grid3">
+            <a href="https://flask.palletsprojects.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #10b981;">
+                <h4>Flask Documentation</h4>
+                <p>Clair, complet et pédagogique.</p>
+            </a>
+            <a href="https://docs.djangoproject.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #092e20;">
+                <h4>Django Documentation</h4>
+                <p>La référence absolue, extrêmement détaillée.</p>
+            </a>
+            <a href="https://fastapi.tiangolo.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #05998b;">
+                <h4>FastAPI Documentation</h4>
+                <p>Interactive et remplie d'exemples "live".</p>
+            </a>
+        </div>
+
+        <div class="warning"
+            style="margin-top: 40px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 8px;">
+            <strong>📚 Curated List: Awesome Python</strong>
+            <p>Pour aller plus loin, consultez le dépôt GitHub <a href="https://github.com/vinta/awesome-python"
+                    target="_blank" style="color: var(--primary);">Awesome Python</a> qui liste les meilleures
+                librairies pour chaque besoin imaginable.</p>
+        </div>
+    </div>
+</section>

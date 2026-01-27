@@ -1,56 +1,110 @@
-    <section id="s7">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">07</div>
-                <div>
-                    <h2 class="sec-title">Sécurité & Authentification</h2>
-                    <p class="sec-sub">JWT, Hashing, OWASP</p>
-                </div>
+<section id="s7">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">07</div>
+            <div>
+                <h2 class="sec-title">Sécurité & Auth : Protéger son Backend</h2>
+                <p class="sec-sub">Hashing, JWT, CORS et Architecture Défensive</p>
             </div>
+        </div>
 
-            <details>
-                <summary>📖 Les règles d'or de la sécurité Web</summary>
-                <div>
-                    <p>1. <strong>Ne jamais stocker de mots de passe en clair</strong>. Utilisez des algorithmes de
-                        hachage lents comme <strong>BCrypt</strong> ou <strong>Argon2</strong>.</p>
-                    <p>2. <strong>JWT (JSON Web Tokens)</strong> : Le standard pour l'authentification des APIs
-                        (Stateless). Le serveur signe un token que le client renvoie à chaque requête.</p>
-                    <p>3. <strong>HTTPS partout</strong>. Sans chiffrement, les tokens transitent en clair.</p>
-                </div>
-            </details>
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>La sécurité n'est pas une "feature" qu'on ajoute à la fin, c'est une <strong>fondation</strong>. En
+                Python Web, cela signifie gérer correctement l'identité (Authentification) et les droits (Autorisation),
+                tout en se protégeant contre les menaces automatisées.</p>
+        </div>
 
-            <div class="grid2">
+        <div class="grid2">
+            <div>
+                <h3>1. Hashing : La Règle du "Slow"</h3>
+                <p>On ne stocke <strong>JAMAIS</strong> de mot de passe. On stocke un <code>Hash</code> unique. Plus
+                    l'algorithme est "lent" (coûteux en CPU/Mémoire), plus il résiste aux attaques par force brute.</p>
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Hashing (Passlib)</div>
+                    <div class="code-head"><span class="dot g"></span>Argon2 (Recommandé)</div>
                     <pre><span class="kw">from</span> passlib.context <span class="kw">import</span> CryptContext
 
-<span class="var">pwd_context</span> = <span class="cls">CryptContext</span>(schemes=[<span class="str">"bcrypt"</span>])
+<span class="var">pwd_context</span> = <span class="cls">CryptContext</span>(schemes=[<span class="str">"argon2"</span>, <span class="str">"bcrypt"</span>])
 
-<span class="c"># Hacher un mot de passe (Inscription)</span>
-<span class="var">hash</span> = <span class="var">pwd_context</span>.<span class="fn">hash</span>(<span class="str">"secret123"</span>)
-<span class="c"># -> $2b$12$EixZaYVK1...</span>
+<span class="c"># Inscription</span>
+<span class="var">hash</span> = <span class="var">pwd_context</span>.<span class="fn">hash</span>(<span class="str">"mypassword"</span>)
 
-<span class="c"># Vérifier (Login)</span>
-<span class="var">is_valid</span> = <span class="var">pwd_context</span>.<span class="fn">verify</span>(<span class="str">"secret123"</span>, <span class="var">hash</span>)</pre>
+<span class="c"># Vérification</span>
+<span class="var">is_ok</span> = <span class="var">pwd_context</span>.<span class="fn">verify</span>(<span class="str">"mypassword"</span>, <span class="var">hash</span>)</pre>
                 </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>JWT (Jose / PyJWT)</div>
-                    <pre><span class="kw">from</span> jose <span class="kw">import</span> jwt
-<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
-
-<span class="var">SECRET</span> = <span class="str">"my_super_secret_key"</span>
-<span class="var">ALGO</span> = <span class="str">"HS256"</span>
-
-<span class="c"># Créer un Token</span>
-<span class="kw">def</span> <span class="fn">create_token</span>(<span class="var">user_id</span>: <span class="cls">int</span>):
-    <span class="var">expire</span> = <span class="fn">datetime</span>.utcnow() + <span class="fn">timedelta</span>(minutes=<span class="num">30</span>)
-    <span class="var">payload</span> = {<span class="str">"sub"</span>: <span class="fn">str</span>(<span class="var">user_id</span>), <span class="str">"exp"</span>: <span class="var">expire</span>}
-    <span class="kw">return</span> <span class="var">jwt</span>.<span class="fn">encode</span>(<span class="var">payload</span>, <span class="var">SECRET</span>, algorithm=<span class="var">ALGO</span>)
-
-<span class="c"># Décoder</span>
-<span class="var">payload</span> = <span class="var">jwt</span>.<span class="fn">decode</span>(<span class="var">token</span>, <span class="var">SECRET</span>, algorithms=[<span class="var">ALGO</span>])</pre>
+            </div>
+            <div>
+                <h3>2. JWT : Authentification Sans État</h3>
+                <p>Le <strong>JSON Web Token</strong> permet d'identifier un utilisateur sans interroger la DB à chaque
+                    requête. Le secret côté serveur garantit l'intégrité.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    Client->>Server: Login (User/Pass)
+                    Server-->>Client: JWT (Signé avec SECRET)
+                    Note right of Client: Stocké en mémoire ou Cookie
+                    Client->>Server: Requête (Headers: Bearer JWT)
+                    Server->>Server: Vérifie Signature
+                    Server-->>Client: Données
                 </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. L'Arsenal de Défense (OWASP Tips)</h3>
+        <div class="grid3">
+            <div class="ref-card" style="border-top: 3px solid var(--red);">
+                <h4>CORS</h4>
+                <p>Configurez les <code>Cross-Origin Resource Sharing</code> pour n'autoriser que vos domaines front-end
+                    de confiance.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--orange);">
+                <h4>Injection</h4>
+                <p>Utilisez toujours les ORM (SQLAlchemy, Django) pour échapper automatiquement les paramètres et éviter
+                    les injections SQL.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--yellow);">
+                <h4>Rate Limiting</h4>
+                <p>Limitez le nombre de requêtes par IP (ex: via Flask-Limiter) pour contrer le DoS ou le brute-force.
+                </p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Mise en Pratique : Vérification de Token</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Logic de Décodage</div>
+            <pre><span class="kw">from</span> jose <span class="kw">import</span> jwt, JWTError
+
+<span class="kw">def</span> <span class="fn">validate_access</span>(<span class="var">token</span>: <span class="cls">str</span>):
+    <span class="kw">try</span>:
+        <span class="var">payload</span> = <span class="var">jwt</span>.<span class="fn">decode</span>(<span class="var">token</span>, <span class="var">SECRET_KEY</span>, algorithms=[<span class="str">"HS256"</span>])
+        <span class="var">user_id</span> = <span class="var">payload</span>.<span class="fn">get</span>(<span class="str">"sub"</span>)
+        <span class="kw">if</span> <span class="var">user_id</span> <span class="kw">is None</span>:
+            <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
+        <span class="kw">return</span> <span class="var">user_id</span>
+    <span class="kw">except</span> <span class="cls">JWTError</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>, detail=<span class="str">"Invalid Token"</span>)</pre>
+        </div>
+
+        <div class="warning"
+            style="margin-top: 30px; border-left: 4px solid var(--orange); background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>🛑 Erreur Critique</strong> : Ne jamais placer de données sensibles (mots de passe, numéros CB) dans
+            le <code>payload</code> d'un JWT. Le JWT est lisible par n'importe qui (Base64), il n'est que
+            <strong>signé</strong>, pas chiffré.
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Approfondissement : RBAC vs ABAC</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>RBAC (Role-Based)</h4>
+                    <p>Permission basée sur le titre (ex: admin, éditeur, utilisateur). Simple et efficace pour la
+                        plupart des apps.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>ABAC (Attribute-Based)</h4>
+                    <p>Permission complexe basée sur des attributs (ex: "Peut éditer si l'article lui appartient ET s'il
+                        est avant 18h").</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>

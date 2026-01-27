@@ -1,62 +1,155 @@
-    <section id="s2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">Flask : L'essentiel</h2>
-                    <p class="sec-sub">Micro-framework WSGI</p>
+<section id="s2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Flask : Fondations & Patterns Pro</h2>
+                <p class="sec-sub">Micro-framework WSGI flexible et extensible</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Flask est dit <strong>"Micro"</strong> non pas parce qu'il manque de puissance, mais parce qu'il ne prend
+                pas de décisions à votre place (pas d'ORM imposé, pas de système de login par défaut). Il repose sur
+                deux piliers : <strong>Werkzeug</strong> (WSGI) et <strong>Jinja2</strong> (Templating).</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Architecture & Cycle de Vie</h3>
+                <p>Dans une application Flask, le flux suit une route précise de la requête à la réponse :</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    A["Navigateur"] -->|Requête HTTP| B["Werkzeug / WSGI"]
+                    B --> C["Flask App"]
+                    C --> D{"Route / URL"}
+                    D -->|Blueprint A| E["Logic"]
+                    D -->|Blueprint B| F["Logic"]
+                    E -->|Jinja2| G["HTML / JSON"]
+                    F -->|Jinja2| G
+                    G -->|Réponse HTTP| B
+                    B --> A
                 </div>
             </div>
+            <div>
+                <h3>2. Les Contextes (La "Magie" de Flask)</h3>
+                <p>Flask utilise des <strong>Proxies</strong> pour accéder à des données globales sans polluer les
+                    signatures de fonctions :</p>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><strong><code>request</code></strong> : Accès aux données de la
+                        requête (args, form, json).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>session</code></strong> : Stockage sécurisé côté
+                        client (cookies signés).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>g</code></strong> : Objet temporaire pour une seule
+                        requête (ex: stocker la connexion DB).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>current_app</code></strong> : Accès à l'instance de
+                        l'application active.</li>
+                </ul>
+            </div>
+        </div>
 
-            <details>
-                <summary>📖 Comprendre Flask avancé</summary>
-                <div>
-                    <p>Le pattern <strong>Application Factory</strong> (<code>create_app</code>) permet de créer
-                        l'application dans une fonction, facilitant les tests et la config.</p>
-                    <p>Les <strong>Blueprints</strong> découpent l'application en modules (ex: Auth, Admin, API).</p>
-                </div>
-            </details>
+        <h3 style="margin-top:40px">3. Structure "Industrielle" (Factory & Blueprints)</h3>
+        <p>Pour un projet sérieux, on évite le fichier unique. On utilise le <strong>Application Factory
+                Pattern</strong>.</p>
 
-            <h3 style="margin-top:30px">Structure "Pro" & Blueprints</h3>
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Structure</div>
-                    <pre>/mon_projet
-│
-├── /app                <span class="c"># Package Python</span>
-│   ├── __init__.py     <span class="c"># create_app()</span>
-│   ├── models.py       <span class="c"># Base de données</span>
-│   ├── /templates      <span class="c"># HTML</span>
-│   ├── /static         <span class="c"># CSS, JS, Images</span>
-│   │
-│   ├── /auth           <span class="c"># Module Auth</span>
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   └── /main           <span class="c"># Module Principal</span>
-│       ├── __init__.py
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Arborescence Type</div>
+                <pre>/mon_projet
+├── /app                <span class="c"># Package principal</span>
+│   ├── __init__.py     <span class="c"># Initialisation (Factory)</span>
+│   ├── models.py       <span class="c"># Définition des DB</span>
+│   ├── /auth           <span class="c"># Module d'authentification</span>
+│   │   ├── routes.py
+│   │   └── forms.py
+│   └── /api            <span class="c"># Module API REST</span>
 │       └── routes.py
-│
-├── config.py           <span class="c"># Variables Config</span>
-├── wsgi.py             <span class="c"># Point entrée Prod</span>
+├── config.py           <span class="c"># Configurations (Dev, Prod, Test)</span>
 └── requirements.txt</pre>
-                </div>
+            </div>
 
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Factory Pattern</div>
-                    <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
-<span class="kw">from</span> .models <span class="kw">import</span> db
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Exemple __init__.py</div>
+                <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
+<span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
 
-<span class="kw">def</span> <span class="fn">create_app</span>(<span class="var">config_name</span>=<span class="str">'default'</span>):
+<span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
+
+<span class="kw">def</span> <span class="fn">create_app</span>():
     <span class="var">app</span> = <span class="cls">Flask</span>(<span class="var">__name__</span>)
-    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">f'config.Config'</span>)
+    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">'config.Config'</span>)
 
     <span class="var">db</span>.<span class="fn">init_app</span>(<span class="var">app</span>)
 
-    <span class="kw">from</span> .auth <span class="kw">import</span> <span class="var">auth_bp</span>
-    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>)
+    <span class="c"># Enregistrement des Blueprints</span>
+    <span class="kw">from</span> .auth <span class="kw">import</span> auth_bp
+    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>, <span class="var">url_prefix</span>=<span class="str">'/auth'</span>)
 
     <span class="kw">return</span> <span class="var">app</span></pre>
-                </div>
             </div>
         </div>
-    </section>
+
+        <div class="warning"
+            style="margin-top: 30px; background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--orange); padding: 15px; border-radius: 4px;">
+            <strong>💡 Pourquoi les Blueprints ?</strong> Ils permettent de découpler votre code. Vous pouvez tester le
+            module "Auth" indépendamment du module "API", et même les réutiliser dans d'autres projets Flask.
+        </div>
+
+        <h3 style="margin-top:40px">4. Jinja2 : Plus qu'un simple moteur</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>Héritage</h4>
+                <p>Définissez un <code>base.html</code> et "étendez-le" dans vos pages avec
+                    <code>{% extends "base.html" %}</code>.
+                </p>
+            </div>
+            <div class="ref-card">
+                <h4>Filtres</h4>
+                <p>Transformez vos données dans l'HTML : <code>{{ date | format_date }}</code> ou
+                    <code>{{ texte | truncate(50) }}</code>.
+                </p>
+            </div>
+            <div class="ref-card">
+                <h4>Macros</h4>
+                <p>Créez des composants réutilisables (fonctions HTML) pour vos formulaires ou boutons.</p>
+            </div>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Extensions Essentielles</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Extension</th>
+                            <th>Rôle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Flask-SQLAlchemy</code></td>
+                            <td>Intégration simplifiée de l'ORM SQLAlchemy.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-Migrate</code></td>
+                            <td>Gestion des migrations de base de données (Alembic).</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-Login</code></td>
+                            <td>Gestion des sessions et authentification utilisateur.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-WTF</code></td>
+                            <td>Formulaires sécurisés avec protection CSRF.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-JWT-Extended</code></td>
+                            <td>Authentification par jeton (JSON Web Tokens).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>

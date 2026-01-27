@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Python Web - Guide 2025</title>
-    <meta name="description"
-        content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
-    <meta name="keywords"
-        content="Python, Web, Flask, Django, FastAPI, Async, Docker, Backend, HTML, API, tutoriel, guide">
-    <meta name="author" content="Geoffroy Streit">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#10b981">
-    <link rel="canonical" href="index.html">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo Python Web - API & Backend">
-    <meta property="og:description"
-        content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
-    <meta property="og:url" content="https://hylst.fr/cours/docker/python_web/index.html">
-    <meta property="og:locale" content="fr_FR">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mémo Python Web - API & Backend">
-    <meta name="twitter:description"
-        content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
-    <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mémo Python Web - Guide 2025</title>
+<meta name="description" content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
+<meta name="keywords" content="Python, Web, Flask, Django, FastAPI, Async, Docker, Backend, HTML, API, tutoriel, guide">
+<meta name="author" content="Geoffroy Streit">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#10b981">
+<link rel="canonical" href="index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mémo Python Web - API & Backend">
+<meta property="og:description"
+    content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
+<meta property="og:url" content="https://hylst.fr/cours/docker/python_web/index.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mémo Python Web - API & Backend">
+<meta name="twitter:description"
+    content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
+<link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="assets/css/quiz-style.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
 </head>
 <body>
     <header>
@@ -44,7 +43,6 @@
             </nav>
         </div>
     </header>
-
     <section class="hero">
         <div class="container">
             <h1>Mémo Python Web</h1>
@@ -75,22 +73,21 @@
             <div class="toc-grid">
                 <a href="#s0" class="toc-item"><span class="toc-num">00</span>Panorama Web</a>
                 <a href="#s1" class="toc-item"><span class="toc-num">01</span>Environnement</a>
-                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Flask (Micro)</a>
-                <a href="#s3" class="toc-item"><span class="toc-num">03</span>SQLAlchemy</a>
-                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Django (Full)</a>
-                <a href="#s5" class="toc-item"><span class="toc-num">05</span>FastAPI (Modern)</a>
-                <a href="#s6" class="toc-item"><span class="toc-num">06</span>API REST / JSON</a>
-                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Sécurité & Auth</a>
-                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Async & WS</a>
-                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Background Tasks</a>
-                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Tests & Qualité</a>
-                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Serveurs App</a>
-                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Docker & Cloud</a>
-                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Référence</a>
+                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Flask: Fondations & Patterns Pro</a>
+                <a href="#s3" class="toc-item"><span class="toc-num">03</span>SQLAlchemy: ORM & Maîtrise des Données</a>
+                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Django: Le Framework des Perfectionnistes</a>
+                <a href="#s5" class="toc-item"><span class="toc-num">05</span>FastAPI: La Performance Moderne</a>
+                <a href="#s6" class="toc-item"><span class="toc-num">06</span>API REST: Architectures & Standards</a>
+                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Sécurité & Auth: Protéger son Backend</a>
+                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Async & WebSockets: Le Temps Réel</a>
+                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Background Tasks: Déléguer pour la Performance</a>
+                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Tests & QA: Garantir la Fiabilité</a>
+                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Serveurs App: WSGI, ASGI & Production</a>
+                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Docker: Conteneuriser pour l'Éternité</a>
+                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Toolkit: Références & Ressources</a>
             </div>
         </div>
     </div>
-
     <section id="s0">
         <div class="container">
             <div class="sec-header">
@@ -114,6 +111,114 @@
                 </div>
             </details>
 
+            <div class="info">
+                <strong>🧭 Idée clé</strong> — Le navigateur gère l'interface, Python gère la logique, les données et la
+                sécurité. Le dialogue se fait par HTTP.
+            </div>
+
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>Rôle principal</h4>
+                    <p>Recevoir une requête, exécuter une logique métier, répondre en HTML ou JSON.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Entrées</h4>
+                    <p>URL, paramètres, formulaires, cookies, headers, payload JSON.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Sorties</h4>
+                    <p>Page HTML, JSON d'API, redirection, fichier téléchargé.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>État</h4>
+                    <p>Sessions, tokens JWT, cache, base de données.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Contraintes</h4>
+                    <p>Latence, sécurité, montée en charge, observabilité.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Objectif</h4>
+                    <p>API fiable, performante, maintenable et documentée.</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Flux d'une requête Web (vue simplifiée)</div>
+                <pre>Navigateur
+   │ HTTP (GET/POST)
+   ▼
+Serveur Web (Nginx/Apache)
+   │ reverse proxy
+   ▼
+Serveur d'application (Gunicorn/Uvicorn)
+   │ WSGI ou ASGI
+   ▼
+Python (routes, logique, ORM)
+   │
+   ▼
+Base de données / Cache / Services externes
+   │
+   ▼
+Réponse (HTML/JSON)</pre>
+            </div>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Rendu serveur (SSR)</h4>
+                    <p>Python compose la page HTML et renvoie une vue prête à afficher. Idéal pour les sites orientés
+                        contenu et SEO.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>API JSON + Front</h4>
+                    <p>Python expose des endpoints, et un front (React/Vue/Svelte) consomme l'API. Idéal pour les apps
+                        riches et interactives.</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>⚙️ WSGI vs ASGI en pratique</summary>
+                <div>
+                    <p><strong>WSGI</strong> est le standard historique pour des apps synchrones. Simple, robuste, très
+                        répandu en production (Gunicorn + Flask/Django).</p>
+                    <p><strong>ASGI</strong> étend WSGI pour l'asynchrone, les WebSockets et les tâches en streaming.
+                        Indispensable pour le temps réel (Uvicorn + FastAPI/Django async).</p>
+                    <div class="tip">
+                        <strong>Conseil</strong> — Si votre application n'a pas de temps réel, WSGI reste un choix
+                        pragmatique. Pour chat, live, notifications, privilégiez ASGI.
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>🧱 Architecture type d'une app Python Web</summary>
+                <div>
+                    <p>Une app moderne est découpée en couches pour rester lisible et testable :</p>
+                    <p><strong>Routes</strong> → <strong>Services</strong> → <strong>Accès données</strong> → <strong>Infrastructure</strong>.</p>
+                    <p>Ce découpage simplifie la maintenance, évite le code spaghetti et facilite la montée en charge.
+                    </p>
+                    <div class="info">
+                        <strong>Astuce</strong> — Une route doit orchestrer, pas porter toute la logique métier.
+                    </div>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Questions à se poser</h4>
+                    <p>Combien d'utilisateurs ? Quels temps de réponse ? Temps réel ? API publique ? Équipe ?</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Choisir un style</h4>
+                    <p>Monolithe simple au début, micro-services quand les besoins et l'équipe grandissent.</p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ À ne pas confondre</strong> — Nginx/Apache servent les fichiers et distribuent les requêtes.
+                Gunicorn/Uvicorn exécutent le code Python.
+            </div>
+
             <div class="grid3" style="margin-top:20px;">
                 <div class="framework-card">
                     <h4>Flask</h4>
@@ -133,6 +238,19 @@
                     <p>Moderne, asynchrone, typé. Génère automatiquement la doc API. Le nouveau standard.</p>
                 </div>
             </div>
+
+            <details>
+                <summary>🎯 Comment choisir rapidement ?</summary>
+                <div>
+                    <p><strong>Flask</strong> : projet simple, liberté totale, équipe réduite.</p>
+                    <p><strong>Django</strong> : besoin d'un back-office, d'authentification et d'un ORM intégré.</p>
+                    <p><strong>FastAPI</strong> : API moderne, performance, schémas typés et docs automatiques.</p>
+                    <div class="tip">
+                        <strong>Raccourci</strong> — Flask pour apprendre, Django pour produire vite, FastAPI pour
+                        industrialiser une API.
+                    </div>
+                </div>
+            </details>
         </div>
     </section>
 
@@ -141,9 +259,14 @@
             <div class="sec-header">
                 <div class="sec-num">01</div>
                 <div>
-                    <h2 class="sec-title">Environnement Pro</h2>
-                    <p class="sec-sub">Virtualenv, Pip, Structure</p>
+                    <h2 class="sec-title">Environnement & Tooling Python Web</h2>
+                    <p class="sec-sub">Isolation, dépendances, workflow d’équipe</p>
                 </div>
+            </div>
+
+            <div class="info">
+                <strong>🧭 Mise en contexte</strong> — Un projet web vit longtemps. Sans isolation et sans versionnage
+                clair des dépendances, les bugs deviennent imprévisibles et la collaboration se fragilise.
             </div>
 
             <details>
@@ -153,11 +276,39 @@
                         conflits de versions.</p>
                     <p>On utilise un <strong>Virtual Environment (venv)</strong>. C'est un dossier local qui contient
                         une copie de l'interpréteur Python et des bibliothèques installées.</p>
+                    <p>On évite ainsi qu'une mise à jour globale casse un autre projet.</p>
                 </div>
             </details>
 
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>venv/</h4>
+                    <p>Environnement isolé local au projet.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>requirements.txt</h4>
+                    <p>Liste figée des dépendances installées.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>pyproject.toml</h4>
+                    <p>Configuration moderne (build, deps, outils).</p>
+                </div>
+                <div class="ref-card">
+                    <h4>.env</h4>
+                    <p>Variables sensibles et configs locales.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>pip cache</h4>
+                    <p>Accélère les installs en CI/CD.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Python version</h4>
+                    <p>La base du projet, à figer clairement.</p>
+                </div>
+            </div>
+
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Setup Projet</div>
+                <div class="code-head"><span class="dot r"></span>Setup Projet (classique)</div>
                 <pre><span class="c"># 1. Créer le dossier projet</span>
 mkdir mon_projet ; cd mon_projet
 
@@ -174,509 +325,1617 @@ pip install flask sqlalchemy python-dotenv
 <span class="c"># 5. Figer les versions</span>
 pip freeze > requirements.txt</pre>
             </div>
-        </div>
-    </section>
 
-    <section id="s2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">Flask : L'essentiel</h2>
-                    <p class="sec-sub">Micro-framework WSGI</p>
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Workflow minimal d’équipe</h4>
+                    <p>Cloner le repo → créer venv → installer deps → lancer l’app → exécuter les tests.</p>
                 </div>
+                <div class="ref-card">
+                    <h4>Piège courant</h4>
+                    <p>Oublier d’activer le venv et installer les packages globalement.</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Cycle de vie des dépendances</div>
+                <pre>Dév local
+  │ pip install
+  ▼
+requirements.txt (ou pyproject.toml)
+  │
+  ▼
+CI/CD installe les mêmes versions
+  │
+  ▼
+Production stable</pre>
             </div>
 
             <details>
-                <summary>📖 Comprendre Flask avancé</summary>
+                <summary>🧪 Nouveaux concepts clés</summary>
                 <div>
-                    <p>Le pattern <strong>Application Factory</strong> (<code>create_app</code>) permet de créer
-                        l'application dans une fonction, facilitant les tests et la config.</p>
-                    <p>Les <strong>Blueprints</strong> découpent l'application en modules (ex: Auth, Admin, API).</p>
+                    <p><strong>Lockfile</strong> : fige exactement les versions pour un build reproductible.</p>
+                    <p><strong>Build backend</strong> : manière de compiler/packager une lib (PEP 517).</p>
+                    <p><strong>12-factor config</strong> : séparer la config du code via variables d’env.</p>
+                    <div class="tip">
+                        <strong>Astuce</strong> — Évitez les dépendances non versionnées pour prévenir les surprises.
+                    </div>
                 </div>
             </details>
 
-            <h3 style="margin-top:30px">Structure "Pro" & Blueprints</h3>
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Structure</div>
-                    <pre>/mon_projet
-│
-├── /app                <span class="c"># Package Python</span>
-│   ├── __init__.py     <span class="c"># create_app()</span>
-│   ├── models.py       <span class="c"># Base de données</span>
-│   ├── /templates      <span class="c"># HTML</span>
-│   ├── /static         <span class="c"># CSS, JS, Images</span>
-│   │
-│   ├── /auth           <span class="c"># Module Auth</span>
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   └── /main           <span class="c"># Module Principal</span>
-│       ├── __init__.py
-│       └── routes.py
-│
-├── config.py           <span class="c"># Variables Config</span>
-├── wsgi.py             <span class="c"># Point entrée Prod</span>
-└── requirements.txt</pre>
+            <details>
+                <summary>🔁 Alternatives d’outillage</summary>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <h4>virtualenv</h4>
+                        <p>Plus ancien que venv, encore très utilisé.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Pipenv</h4>
+                        <p>Environnements + lockfile, orienté simplicité.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Poetry</h4>
+                        <p>Gestion moderne des deps via pyproject.toml.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>uv</h4>
+                        <p>Gestionnaire ultra rapide, workflow moderne.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>conda</h4>
+                        <p>Très utilisé en data science, plus lourd.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>pip-tools</h4>
+                        <p>Compile un requirements.txt verrouillé.</p>
+                    </div>
                 </div>
+            </details>
 
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Factory Pattern</div>
-                    <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
-<span class="kw">from</span> .models <span class="kw">import</span> db
-
-<span class="kw">def</span> <span class="fn">create_app</span>(<span class="var">config_name</span>=<span class="str">'default'</span>):
-    <span class="var">app</span> = <span class="cls">Flask</span>(<span class="var">__name__</span>)
-    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">f'config.Config'</span>)
-
-    <span class="var">db</span>.<span class="fn">init_app</span>(<span class="var">app</span>)
-
-    <span class="kw">from</span> .auth <span class="kw">import</span> <span class="var">auth_bp</span>
-    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>)
-
-    <span class="kw">return</span> <span class="var">app</span></pre>
-                </div>
+            <div class="warning">
+                <strong>⚠️ Sécurité</strong> — Ne stockez jamais de secrets dans le code. Utilisez des variables
+                d’environnement et un .env local ignoré par Git.
             </div>
+
+            <details>
+                <summary>✅ Checklist “projet prêt à partager”</summary>
+                <div>
+                    <p>— Version Python précisée.</p>
+                    <p>— Dépendances figées (requirements ou lockfile).</p>
+                    <p>— .env.example fourni.</p>
+                    <p>— Commandes de lancement documentées.</p>
+                    <p>— Tests basiques exécutables.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>🎓 Mini-atelier guidé</summary>
+                <div>
+                    <p>Objectif : créer un squelette web propre en 10 minutes.</p>
+                    <p><strong>Étape 1</strong> — Créez un venv et installez Flask.</p>
+                    <p><strong>Étape 2</strong> — Lancez une route “/health” qui renvoie “OK”.</p>
+                    <p><strong>Étape 3</strong> — Figez vos dépendances et partagez le projet.</p>
+                    <div class="info">
+                        <strong>Question</strong> — Si un collègue clone le repo, quelles étapes doit-il exécuter pour
+                        obtenir le même résultat ?
+                    </div>
+                </div>
+            </details>
+
         </div>
     </section>
 
-    <section id="s3">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">SQLAlchemy</h2>
-                    <p class="sec-sub">Interaction Base de Données (ORM)</p>
+<section id="s2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Flask : Fondations & Patterns Pro</h2>
+                <p class="sec-sub">Micro-framework WSGI flexible et extensible</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Flask est dit <strong>"Micro"</strong> non pas parce qu'il manque de puissance, mais parce qu'il ne prend
+                pas de décisions à votre place (pas d'ORM imposé, pas de système de login par défaut). Il repose sur
+                deux piliers : <strong>Werkzeug</strong> (WSGI) et <strong>Jinja2</strong> (Templating).</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Architecture & Cycle de Vie</h3>
+                <p>Dans une application Flask, le flux suit une route précise de la requête à la réponse :</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    A["Navigateur"] -->|Requête HTTP| B["Werkzeug / WSGI"]
+                    B --> C["Flask App"]
+                    C --> D{"Route / URL"}
+                    D -->|Blueprint A| E["Logic"]
+                    D -->|Blueprint B| F["Logic"]
+                    E -->|Jinja2| G["HTML / JSON"]
+                    F -->|Jinja2| G
+                    G -->|Réponse HTTP| B
+                    B --> A
                 </div>
+            </div>
+            <div>
+                <h3>2. Les Contextes (La "Magie" de Flask)</h3>
+                <p>Flask utilise des <strong>Proxies</strong> pour accéder à des données globales sans polluer les
+                    signatures de fonctions :</p>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><strong><code>request</code></strong> : Accès aux données de la
+                        requête (args, form, json).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>session</code></strong> : Stockage sécurisé côté
+                        client (cookies signés).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>g</code></strong> : Objet temporaire pour une seule
+                        requête (ex: stocker la connexion DB).</li>
+                    <li style="margin-bottom: 10px;"><strong><code>current_app</code></strong> : Accès à l'instance de
+                        l'application active.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Structure "Industrielle" (Factory & Blueprints)</h3>
+        <p>Pour un projet sérieux, on évite le fichier unique. On utilise le <strong>Application Factory
+                Pattern</strong>.</p>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Arborescence Type</div>
+                <pre>/mon_projet
+├── /app                <span class="c"># Package principal</span>
+│   ├── __init__.py     <span class="c"># Initialisation (Factory)</span>
+│   ├── models.py       <span class="c"># Définition des DB</span>
+│   ├── /auth           <span class="c"># Module d'authentification</span>
+│   │   ├── routes.py
+│   │   └── forms.py
+│   └── /api            <span class="c"># Module API REST</span>
+│       └── routes.py
+├── config.py           <span class="c"># Configurations (Dev, Prod, Test)</span>
+└── requirements.txt</pre>
             </div>
 
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>models.py</div>
-                <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+                <div class="code-head"><span class="dot g"></span>Exemple __init__.py</div>
+                <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
+<span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
 
 <span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
 
-<span class="kw">class</span> <span class="cls">User</span>(<span class="var">db</span>.<span class="cls">Model</span>):
-    <span class="var">id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, primary_key=<span class="kw">True</span>)
-    <span class="var">username</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">80</span>), unique=<span class="kw">True</span>)
-    <span class="var">email</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">120</span>), unique=<span class="kw">True</span>)
+<span class="kw">def</span> <span class="fn">create_app</span>():
+    <span class="var">app</span> = <span class="cls">Flask</span>(<span class="var">__name__</span>)
+    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">'config.Config'</span>)
 
-    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="var">self</span>):
-        <span class="kw">return</span> <span class="str">f'&lt;User </span>{<span class="var">self</span>.<span class="prop">username</span>}<span class="str">&gt;'</span>
+    <span class="var">db</span>.<span class="fn">init_app</span>(<span class="var">app</span>)
 
-<span class="c"># Utilisation</span>
-<span class="var">new_user</span> = <span class="cls">User</span>(username=<span class="str">"admin"</span>, email=<span class="str">"test@test.com"</span>)
-<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">new_user</span>)
-<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
-<span class="var">user</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">"admin"</span>).<span class="fn">first</span>()</pre>
+    <span class="c"># Enregistrement des Blueprints</span>
+    <span class="kw">from</span> .auth <span class="kw">import</span> auth_bp
+    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>, <span class="var">url_prefix</span>=<span class="str">'/auth'</span>)
+
+    <span class="kw">return</span> <span class="var">app</span></pre>
             </div>
         </div>
-    </section>
 
-    <section id="s4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Django</h2>
-                    <p class="sec-sub">Le Framework "Batteries Included"</p>
+        <div class="warning"
+            style="margin-top: 30px; background: rgba(245, 158, 11, 0.1); border-left: 4px solid var(--orange); padding: 15px; border-radius: 4px;">
+            <strong>💡 Pourquoi les Blueprints ?</strong> Ils permettent de découpler votre code. Vous pouvez tester le
+            module "Auth" indépendamment du module "API", et même les réutiliser dans d'autres projets Flask.
+        </div>
+
+        <h3 style="margin-top:40px">4. Jinja2 : Plus qu'un simple moteur</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>Héritage</h4>
+                <p>Définissez un <code>base.html</code> et "étendez-le" dans vos pages avec
+                    <code>{% extends "base.html" %}</code>.
+                </p>
+            </div>
+            <div class="ref-card">
+                <h4>Filtres</h4>
+                <p>Transformez vos données dans l'HTML : <code>{{ date | format_date }}</code> ou
+                    <code>{{ texte | truncate(50) }}</code>.
+                </p>
+            </div>
+            <div class="ref-card">
+                <h4>Macros</h4>
+                <p>Créez des composants réutilisables (fonctions HTML) pour vos formulaires ou boutons.</p>
+            </div>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Extensions Essentielles</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Extension</th>
+                            <th>Rôle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Flask-SQLAlchemy</code></td>
+                            <td>Intégration simplifiée de l'ORM SQLAlchemy.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-Migrate</code></td>
+                            <td>Gestion des migrations de base de données (Alembic).</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-Login</code></td>
+                            <td>Gestion des sessions et authentification utilisateur.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-WTF</code></td>
+                            <td>Formulaires sécurisés avec protection CSRF.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Flask-JWT-Extended</code></td>
+                            <td>Authentification par jeton (JSON Web Tokens).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">SQLAlchemy : ORM & Maîtrise des Données</h2>
+                <p class="sec-sub">Le standard industriel pour la persistance en Python</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>SQLAlchemy n'est pas qu'un simple ORM (Object-Relational Mapper) ; c'est une boîte à outils complète qui
+                sépare l'<strong>Abstraction SQL</strong> de la <strong>Gestion des Objets</strong>. Il permet de
+                manipuler vos bases de données comme des objets Python tout en conservant la puissance du SQL brut si
+                nécessaire.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Le Concept de "Session"</h3>
+                <p>La <code>Session</code> agit comme une <strong>Unité de Travail</strong> (Unit of Work). Elle suit
+                    tous les changements apportés à vos objets avant de les synchroniser avec la base.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    A[Objets Python] -->|add / delete| B[Session / Unit of Work]
+                    B -->|flush| C{Tampon de Base}
+                    C -->|commit| D[(Base de Données)]
+                    D -->|query| B
+                    B -->|refresh| A
                 </div>
             </div>
+            <div>
+                <h3>2. Définition d'un Modèle Pro</h3>
+                <p>Un modèle bien défini utilise des types précis et des contraintes pour garantir l'intégrité des
+                    données.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>models.py</div>
+                    <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
 
+<span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
+
+<span class="kw">class</span> <span class="cls">Post</span>(<span class="var">db</span>.<span class="cls">Model</span>):
+    <span class="var">id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, primary_key=<span class="kw">True</span>)
+    <span class="var">title</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">100</span>), nullable=<span class="kw">False</span>)
+    <span class="var">content</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Text</span>, nullable=<span class="kw">False</span>)
+    <span class="var">date</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">DateTime</span>, default=<span class="var">datetime</span>.<span class="var">utcnow</span>)
+    
+    <span class="c"># Relation Many-to-One</span>
+    <span class="var">user_id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, <span class="var">db</span>.<span class="fn">ForeignKey</span>(<span class="str">'user.id'</span>))</pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Relations & Chargement (Loading)</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>One-to-Many</h4>
+                <p>Un utilisateur a plusieurs articles. Utilisation de <code>db.relationship()</code> pour naviguer
+                    facilement entre les objets.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Eager Loading</h4>
+                <p><code>joinedload()</code> permet de récupérer les données liées en une seule requête SQL (évite le
+                    problème N+1).</p>
+            </div>
+            <div class="ref-card">
+                <h4>Lazy Loading</h4>
+                <p>Par défaut, SQLAlchemy ne charge les relations que lorsqu'on y accède, économisant de la mémoire sur
+                    les objets simples.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Le Workflow CRUD</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Manipulations courantes</div>
+            <pre><span class="c"># CREATE</span>
+<span class="var">user</span> = <span class="cls">User</span>(username=<span class="str">'alice'</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+
+<span class="c"># READ</span>
+<span class="var">users</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">all</span>()
+<span class="var">bob</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">'bob'</span>).<span class="fn">first</span>()
+
+<span class="c"># UPDATE</span>
+<span class="var">bob</span>.<span class="var">email</span> = <span class="str">'bob@new.com'</span>
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+
+<span class="c"># DELETE</span>
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">delete</span>(<span class="var">user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()</pre>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--blue); background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: Alembic & Migrations</strong>
+            <p>En production, on n'utilise jamais <code>db.create_all()</code>. On utilise <strong>Alembic</strong> (via
+                Flask-Migrate) pour versionner les changements de schéma de la base de données.</p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Alternatives & Évolutions</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>SQLModel</h4>
+                    <p>Une nouvelle lib basée sur SQLAlchemy et Pydantic, idéale pour FastAPI car elle fusionne modèles
+                        DB et schémas de validation.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Peewee</h4>
+                    <p>Un ORM beaucoup plus léger et simple, parfait pour de petits projets ou scripts où SQLAlchemy
+                        serait surdimensionné.</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Django : Le Framework des Perfectionnistes</h2>
+                <p class="sec-sub">"Batteries included" - Productivité maximale et sécurité native</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Django est un framework web de haut niveau qui encourage un développement rapide et une conception
+                propre. Contrairement à Flask, il arrive avec <strong>tout le nécessaire</strong> : ORM, Auth, Admin,
+                Migrations, et protection contre les failles (SQLi, XSS, CSRF) activées par défaut.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Le Pattern MVT</h3>
+                <p>Django utilise une variante du MVC appelée <strong>Model-View-Template</strong>. La logique de
+                    contrôle est gérée par le framework lui-même.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    URL[URL Conf / Router] --> V[View / Logic]
+                    V --> M[Model / Database]
+                    M --> V
+                    V --> T[Template / HTML]
+                    T --> V
+                    V --> Res[Réponse HTTP]
+                </div>
+            </div>
+            <div>
+                <h3>2. L'Interface d'Administration</h3>
+                <p>C'est l'un des "tueurs" de Django : une interface de gestion de contenu générée automatiquement à
+                    partir de vos modèles.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>admin.py</div>
+                    <pre><span class="kw">from</span> django.contrib <span class="kw">import</span> admin
+<span class="kw">from</span> .models <span class="kw">import</span> Product
+
+<span class="at">@admin</span>.<span class="fn">register</span>(<span class="cls">Product</span>)
+<span class="kw">class</span> <span class="cls">ProductAdmin</span>(<span class="cls">admin.ModelAdmin</span>):
+    <span class="var">list_display</span> = (<span class="str">'name'</span>, <span class="str">'price'</span>, <span class="str">'stock'</span>)
+    <span class="var">search_fields</span> = (<span class="str">'name'</span>,)
+    <span class="var">list_filter</span> = (<span class="str">'category'</span>,)</pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Puissance des Class-Based Views (CBV)</h3>
+        <p>Pour les tâches courantes (lister, afficher, créer), Django propose des classes génériques qui réduisent
+            drastiquement le code.</p>
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Class-Based Views (CBV)</div>
+                <div class="code-head"><span class="dot r"></span>views.py</div>
                 <pre><span class="kw">from</span> django.views.generic <span class="kw">import</span> ListView
 <span class="kw">from</span> .models <span class="kw">import</span> Post
 
 <span class="kw">class</span> <span class="cls">PostListView</span>(<span class="cls">ListView</span>):
     <span class="var">model</span> = <span class="cls">Post</span>
-    <span class="var">template_name</span> = <span class="str">'post_list.html'</span>
-    <span class="var">context_object_name</span> = <span class="str">'posts'</span>
-    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination auto !</span></pre>
+    <span class="var">template_name</span> = <span class="str">'blog/list.html'</span>
+    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination automatique !</span></pre>
+            </div>
+            <div class="info"
+                style="border-left: 4px solid var(--purple); background: rgba(168, 85, 247, 0.1); padding: 15px; border-radius: 4px;">
+                <h4>🚀 Pourquoi choisir Django ?</h4>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li>✅ <strong>Structure stricte</strong> : Idéal pour les grosses équipes.</li>
+                    <li>✅ <strong>Écosystème immense</strong> : Des milliers de "apps" réutilisables.</li>
+                    <li>✅ <strong>Sécurité par défaut</strong> : Moins de risques d'erreurs humaines.</li>
+                    <li>✅ <strong>Migrations intégrées</strong> : Gestion native du schéma DB.</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <section id="s5">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">05</div>
-                <div>
-                    <h2 class="sec-title">FastAPI</h2>
-                    <p class="sec-sub">APIs Modernes & Asynchrones</p>
+        <h3 style="margin-top:40px">4. Django REST Framework (DRF)</h3>
+        <p>Si vous voulez créer des APIs, DRF est le standard absolu pour Django. Il ajoute des sérialiseurs puissants
+            et une interface de test d'API.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>serializers.py</div>
+            <pre><span class="kw">from</span> rest_framework <span class="kw">import</span> serializers
+<span class="kw">from</span> .models <span class="kw">import</span> User
+
+<span class="kw">class</span> <span class="cls">UserSerializer</span>(<span class="cls">serializers.ModelSerializer</span>):
+    <span class="kw">class</span> <span class="cls">Meta</span>:
+        <span class="var">model</span> = <span class="cls">User</span>
+        <span class="var">fields</span> = [<span class="str">'id'</span>, <span class="str">'username'</span>, <span class="str">'email'</span>]</pre>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Concepts Clés & Alternatives</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Middlewares</h4>
+                    <p>Des composants qui interceptent chaque requête/réponse pour gérer l'auth, la compression, ou le
+                        cache globalement.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Signals</h4>
+                    <p>Permettent à des applications découplées d'être notifiées quand des actions se produisent (ex:
+                        créer un profil après l'inscription).</p>
                 </div>
             </div>
+            <div class="warning"
+                style="margin-top: 20px; border-left: 4px solid var(--red); background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 4px;">
+                <strong>⚠️ Attention</strong> : Django a une courbe d'apprentissage plus raide que Flask par sa rigidité
+                et sa taille. Il peut sembler "trop lourd" pour de simples microservices ou APIs légères.
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">FastAPI : La Performance Moderne</h2>
+                <p class="sec-sub">Framework ASGI ultra-rapide basé sur les types Python 3.10+</p>
+            </div>
+        </div>
 
-            <details>
-                <summary>📖 Comprendre FastAPI avancé</summary>
-                <div>
-                    <p>FastAPI repose sur Pydantic (validation de données) et Starlette (serveur asynchrone).</p>
-                    <p>La <strong>Dependency Injection</strong> ("Depends") est un concept clé pour l'auth et la
-                        connexion DB.</p>
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>FastAPI est le framework qui a révolutionné le backend Python récent. Il repose sur deux piliers :
+                <strong>Starlette</strong> (pour la partie web asynchrone) et <strong>Pydantic</strong> (pour la
+                validation de données ultra-rapide). Sa signature ? L'utilisation massive des <code>Type Hints</code> de
+                Python pour générer automatiquement de la documentation et valider les requêtes.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. ASGI vs WSGI : L'Asynchronisme</h3>
+                <p>Contrairement à Flask (WSGI), FastAPI est <strong>ASGI</strong> (Asynchronous Server Gateway
+                    Interface). Il peut gérer des milliers de connexions simultanément sans bloquer le serveur.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    subgraph "WSGI (Synchrone)"
+                    W1[Req 1] --> S1[Occupé]
+                    W2[Req 2] --> S1
+                    end
+                    subgraph "ASGI (Asynchrone)"
+                    A1[Req 1] --> EventLoop
+                    A2[Req 2] --> EventLoop
+                    EventLoop --> S2[Gère tout en parallèle]
+                    end
                 </div>
-            </details>
-
-            <div class="grid2">
+            </div>
+            <div>
+                <h3>2. Validation & Pydantic</h3>
+                <p>Fini les erreurs de type <code>KeyError</code>. FastAPI convertit le JSON entrant en vrais objets
+                    Python typés.</p>
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Route typée & Validée</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, Body
-<span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, EmailStr
+                    <div class="code-head"><span class="dot g"></span>schemas.py</div>
+                    <pre><span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, Field
+
+<span class="kw">class</span> <span class="cls">Item</span>(<span class="cls">BaseModel</span>):
+    <span class="var">name</span>: <span class="cls">str</span>
+    <span class="var">price</span>: <span class="cls">float</span> = <span class="fn">Field</span>(gt=<span class="num">0</span>, description=<span class="str">"Doit être positif"</span>)
+    <span class="var">is_offer</span>: <span class="cls">bool</span> | <span class="kw">None</span> = <span class="kw">None</span>
+
+<span class="dec">@app.post</span>(<span class="str">"/items/"</span>)
+<span class="kw">async def</span> <span class="fn">create_item</span>(<span class="var">item</span>: <span class="cls">Item</span>):
+    <span class="kw">return</span> <span class="var">item</span>  <span class="c"># Auto-sérialisation JSON</span></pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Injection de Dépendances (Depends)</h3>
+        <p>FastAPI possède un système puissant pour gérer les pré-requis (Auth, DB, Logging) de manière modulaire.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>main.py</div>
+            <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, Header
+
+<span class="kw">async def</span> <span class="fn">get_token</span>(<span class="var">x_token</span>: <span class="cls">str</span> = <span class="fn">Header</span>()):
+    <span class="kw">if</span> <span class="var">x_token</span> != <span class="str">"fake-secret"</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">400</span>)
+    <span class="kw">return</span> <span class="var">x_token</span>
+
+<span class="dec">@app.get</span>(<span class="str">"/secure-data/"</span>)
+<span class="kw">async def</span> <span class="fn">read_data</span>(<span class="var">token</span>: <span class="cls">str</span> = <span class="fn">Depends</span>(<span class="fn">get_token</span>)):
+    <span class="kw">return</span> {<span class="str">"auth"</span>: <span class="kw">True</span>}</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Auto-Documentation Magique</h3>
+        <p>Sans aucun code supplémentaire, FastAPI génère deux documentations interactives complètes :</p>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Swagger UI (/docs)</h4>
+                <p>Permet de tester vos APIs directement depuis le navigateur avec un bouton "Try it out".</p>
+            </div>
+            <div class="ref-card">
+                <h4>ReDoc (/redoc)</h4>
+                <p>Une version plus structurée et design, idéale pour la documentation technique partagée avec d'autres
+                    équipes.</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Pourquoi l'utiliser ?</strong> Si vous construisez une API à haute performance (Machine Learning,
+            IoT, Real-time), FastAPI est le choix numéro 1. Pour les sites avec beaucoup de templates HTML côté serveur,
+            Flask ou Django restent préférables.
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Concepts Avancés</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fonctionnalité</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Background Tasks</code></td>
+                            <td>Lancer des fonctions après avoir renvoyé une réponse (ex: envoi d'email).</td>
+                        </tr>
+                        <tr>
+                            <td><code>FastAPI Lifespan</code></td>
+                            <td>Gérer les événements de démarrage et d'extinction (connexions DB).</td>
+                        </tr>
+                        <tr>
+                            <td><code>Middleware</code></td>
+                            <td>Gérer les CORS, Gzip, ou ajouter des headers personnalisés.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Path & Query Params</code></td>
+                            <td>Validation stricte des paramètres d'URL via <code>Query</code> et <code>Path</code>.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">API REST : Architectures & Standards</h2>
+                <p class="sec-sub">Concevoir des interfaces robustes, prévisibles et scalables</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le style architectural <strong>REST</strong> (Representational State Transfer) n'est pas un protocole,
+                mais un ensemble de contraintes. Une API "RESTful" utilise les standards du web (HTTP, URL, JSON) pour
+                manipuler des <strong>ressources</strong> de manière sans état (stateless).</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Les 6 Contraintes REST</h3>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">👤 <strong>Client-Serveur</strong> : Séparation des préoccupations
+                        (UI vs Data).</li>
+                    <li style="margin-bottom: 10px;">☁️ <strong>Stateless</strong> : Chaque requête doit contenir toute
+                        l'info nécessaire.</li>
+                    <li style="margin-bottom: 10px;">💾 <strong>Cacheable</strong> : Les réponses doivent indiquer si
+                        elles sont réutilisables.</li>
+                    <li style="margin-bottom: 10px;">🧱 <strong>Layered System</strong> : Le client ne sait pas s'il
+                        parle au serveur final.</li>
+                    <li style="margin-bottom: 10px;">🌐 <strong>Interface Uniforme</strong> : Utilisation cohérente des
+                        URI et méthodes.</li>
+                    <li style="margin-bottom: 10px;">📜 <strong>Code on Demand</strong> (Optionnel) : Envoi de scripts
+                        exécutables.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>2. Cycle Requête / Réponse</h3>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    participant C as Client
+                    participant S as API REST
+                    C->>S: METHOD /resource (JSON/Headers)
+                    Note over S: Auth -> Validation -> Business Logic
+                    S-->>C: HTTP STATUS CODE + Body (JSON)
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Méthodes HTTP & Idempotence</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Méthode</th>
+                        <th>Action</th>
+                        <th>Idempotent ?</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>🔍 Récupérer</td>
+                        <td>✅ Oui</td>
+                        <td>Récupérer une liste ou un élément (Lecture seule).</td>
+                    </tr>
+                    <tr>
+                        <td><code>POST</code></td>
+                        <td>➕ Créer</td>
+                        <td>❌ Non</td>
+                        <td>Créer une nouvelle ressource (N+1 exécutions = N+1 créations).</td>
+                    </tr>
+                    <tr>
+                        <td><code>PUT</code></td>
+                        <td>🔄 Remplacer</td>
+                        <td>✅ Oui</td>
+                        <td>Remplacer entièrement une ressource existante.</td>
+                    </tr>
+                    <tr>
+                        <td><code>PATCH</code></td>
+                        <td>📝 Modifier</td>
+                        <td>❌ Non</td>
+                        <td>Modification partielle d'une ressource (souvent asynchrone).</td>
+                    </tr>
+                    <tr>
+                        <td><code>DELETE</code></td>
+                        <td>🗑️ Supprimer</td>
+                        <td>✅ Oui</td>
+                        <td>Supprimer une ressource (2 exécutions = même résultat final).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">4. Les Points de Douleur & Alternatives</h3>
+        <div class="grid3">
+            <div class="ref-card" style="border-top: 3px solid var(--blue);">
+                <h4>Over-fetching</h4>
+                <p>REST renvoie souvent trop de données. <strong>GraphQL</strong> permet au client de choisir exactement
+                    ses champs.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--orange);">
+                <h4>Under-fetching</h4>
+                <p> REST nécessite souvent plusieurs appels d'API. <strong>HATEOAS</strong> (liens hypermédias) aide à
+                    la navigation.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--purple);">
+                <h4>Performance</h4>
+                <p>Pour des microservices ultra-rapides, <strong>gRPC</strong> (Protocol Buffers) est souvent plus
+                    efficace que le JSON/REST.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">5. Codes de Statut (Résumé Quick-Ref)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Familles de codes</div>
+                <ul class="ref-list" style="list-style: none; padding: 15px;">
+                    <li>🟢 <strong>2xx (Success)</strong> : 200 (OK), 201 (Created), 204 (No Content).</li>
+                    <li>🟡 <strong>3xx (Redirection)</strong> : 301 (Moved Permanently), 304 (Not Modified).</li>
+                    <li>🟠 <strong>4xx (Client Error)</strong> : 400 (Bad Req), 401 (Unauthorized), 403 (Forbidden), 404
+                        (Not Found).</li>
+                    <li>🔴 <strong>5xx (Server Error)</strong> : 500 (Internal Error), 502 (Bad Gateway), 503 (Service
+                        Unavailable).</li>
+                </ul>
+            </div>
+            <div class="info"
+                style="border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+                <strong>💡 Richardson Maturity Model</strong>
+                <p>Niveau 0 : HTTP pur. Niveau 1 : Ressources (URI). Niveau 2 : Verbes HTTP. Niveau 3 : HATEOAS (Le
+                    Graal du REST).</p>
+            </div>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Bonnes Pratiques JSON</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Exemple JSON:API</div>
+                    <pre>{
+  <span class="str">"data"</span>: {
+    <span class="str">"type"</span>: <span class="str">"articles"</span>,
+    <span class="str">"id"</span>: <span class="str">"1"</span>,
+    <span class="str">"attributes"</span>: { <span class="str">"title"</span>: <span class="str">"REST is Life"</span> },
+    <span class="str">"links"</span>: { <span class="str">"self"</span>: <span class="str">"/articles/1"</span> }
+  }
+}</pre>
+                </div>
+                <div class="ref-card">
+                    <ul class="ref-list">
+                        <li>Utilisez <strong>snake_case</strong> ou <strong>camelCase</strong> de manière cohérente.
+                        </li>
+                        <li>Évitez les tableaux à la racine (sécurité).</li>
+                        <li>Incluez toujours un champ <code>id</code>.</li>
+                        <li>Gérez l'UTF-8 par défaut.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s7">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">07</div>
+            <div>
+                <h2 class="sec-title">Sécurité & Auth : Protéger son Backend</h2>
+                <p class="sec-sub">Hashing, JWT, CORS et Architecture Défensive</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>La sécurité n'est pas une "feature" qu'on ajoute à la fin, c'est une <strong>fondation</strong>. En
+                Python Web, cela signifie gérer correctement l'identité (Authentification) et les droits (Autorisation),
+                tout en se protégeant contre les menaces automatisées.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Hashing : La Règle du "Slow"</h3>
+                <p>On ne stocke <strong>JAMAIS</strong> de mot de passe. On stocke un <code>Hash</code> unique. Plus
+                    l'algorithme est "lent" (coûteux en CPU/Mémoire), plus il résiste aux attaques par force brute.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Argon2 (Recommandé)</div>
+                    <pre><span class="kw">from</span> passlib.context <span class="kw">import</span> CryptContext
+
+<span class="var">pwd_context</span> = <span class="cls">CryptContext</span>(schemes=[<span class="str">"argon2"</span>, <span class="str">"bcrypt"</span>])
+
+<span class="c"># Inscription</span>
+<span class="var">hash</span> = <span class="var">pwd_context</span>.<span class="fn">hash</span>(<span class="str">"mypassword"</span>)
+
+<span class="c"># Vérification</span>
+<span class="var">is_ok</span> = <span class="var">pwd_context</span>.<span class="fn">verify</span>(<span class="str">"mypassword"</span>, <span class="var">hash</span>)</pre>
+                </div>
+            </div>
+            <div>
+                <h3>2. JWT : Authentification Sans État</h3>
+                <p>Le <strong>JSON Web Token</strong> permet d'identifier un utilisateur sans interroger la DB à chaque
+                    requête. Le secret côté serveur garantit l'intégrité.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    Client->>Server: Login (User/Pass)
+                    Server-->>Client: JWT (Signé avec SECRET)
+                    Note right of Client: Stocké en mémoire ou Cookie
+                    Client->>Server: Requête (Headers: Bearer JWT)
+                    Server->>Server: Vérifie Signature
+                    Server-->>Client: Données
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. L'Arsenal de Défense (OWASP Tips)</h3>
+        <div class="grid3">
+            <div class="ref-card" style="border-top: 3px solid var(--red);">
+                <h4>CORS</h4>
+                <p>Configurez les <code>Cross-Origin Resource Sharing</code> pour n'autoriser que vos domaines front-end
+                    de confiance.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--orange);">
+                <h4>Injection</h4>
+                <p>Utilisez toujours les ORM (SQLAlchemy, Django) pour échapper automatiquement les paramètres et éviter
+                    les injections SQL.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--yellow);">
+                <h4>Rate Limiting</h4>
+                <p>Limitez le nombre de requêtes par IP (ex: via Flask-Limiter) pour contrer le DoS ou le brute-force.
+                </p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Mise en Pratique : Vérification de Token</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Logic de Décodage</div>
+            <pre><span class="kw">from</span> jose <span class="kw">import</span> jwt, JWTError
+
+<span class="kw">def</span> <span class="fn">validate_access</span>(<span class="var">token</span>: <span class="cls">str</span>):
+    <span class="kw">try</span>:
+        <span class="var">payload</span> = <span class="var">jwt</span>.<span class="fn">decode</span>(<span class="var">token</span>, <span class="var">SECRET_KEY</span>, algorithms=[<span class="str">"HS256"</span>])
+        <span class="var">user_id</span> = <span class="var">payload</span>.<span class="fn">get</span>(<span class="str">"sub"</span>)
+        <span class="kw">if</span> <span class="var">user_id</span> <span class="kw">is None</span>:
+            <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
+        <span class="kw">return</span> <span class="var">user_id</span>
+    <span class="kw">except</span> <span class="cls">JWTError</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>, detail=<span class="str">"Invalid Token"</span>)</pre>
+        </div>
+
+        <div class="warning"
+            style="margin-top: 30px; border-left: 4px solid var(--orange); background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>🛑 Erreur Critique</strong> : Ne jamais placer de données sensibles (mots de passe, numéros CB) dans
+            le <code>payload</code> d'un JWT. Le JWT est lisible par n'importe qui (Base64), il n'est que
+            <strong>signé</strong>, pas chiffré.
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Approfondissement : RBAC vs ABAC</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>RBAC (Role-Based)</h4>
+                    <p>Permission basée sur le titre (ex: admin, éditeur, utilisateur). Simple et efficace pour la
+                        plupart des apps.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>ABAC (Attribute-Based)</h4>
+                    <p>Permission complexe basée sur des attributs (ex: "Peut éditer si l'article lui appartient ET s'il
+                        est avant 18h").</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s8">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">08</div>
+            <div>
+                <h2 class="sec-title">Async & WebSockets : Le Temps Réel</h2>
+                <p class="sec-sub">Du parallélisme avec AsyncIO à la communication Full-Duplex</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le web moderne ne se limite plus au cycle "Requête / Réponse". Avec l'asynchronisme
+                (<code>asyncio</code>) et les <strong>WebSockets</strong>, Python peut gérer des flux de données en
+                temps réel (chats, dashboards live, jeux) sans bloquer ses ressources systèmes.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. L'Event Loop & asyncio</h3>
+                <p>Au lieu de créer un thread par utilisateur (coûteux), Python utilise une <strong>Boucle
+                        d'Événements</strong>. Quand une tâche attend (ex: lecture DB), le serveur passe instantanément
+                    à la suivante.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    Loop["Event Loop"] --> T1["Tâche 1: I/O Wait"]
+                    Loop --> T2["Tâche 2: Calcul"]
+                    T1 -.->|Pause / yield| Loop
+                    Loop --> T3["Tâche 3: Response"]
+                </div>
+            </div>
+            <div>
+                <h3>2. WebSockets vs HTTP</h3>
+                <p>Alors que l'HTTP ferme la connexion après chaque réponse, le WebSocket maintient un <strong>tunnel
+                        ouvert</strong> et bidirectionnel.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    participant C as Client
+                    participant S as Serveur
+                    C->>S: Upgrade Request (HTTP)
+                    S-->>C: 101 Switching Protocols
+                    Note over C,S: Connexion Persistante (TCP)
+                    C->>S: Data (JSON/Binary)
+                    S->>C: Data (Push temps réel)
+                    C->>S: Data
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Implémentation avec FastAPI</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>websocket_server.py</div>
+            <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, WebSocket
 
 <span class="var">app</span> = <span class="cls">FastAPI</span>()
 
-<span class="kw">class</span> <span class="cls">UserCreate</span>(<span class="cls">BaseModel</span>):
-    <span class="var">username</span>: <span class="cls">str</span>
-    <span class="var">email</span>: <span class="cls">EmailStr</span>
-    <span class="var">age</span>: <span class="cls">int</span> | <span class="kw">None</span> = <span class="kw">None</span>
-
-<span class="dec">@app.post</span>(<span class="str">"/users/"</span>)
-<span class="kw">async def</span> <span class="fn">create_user</span>(<span class="var">user</span>: <span class="cls">UserCreate</span>):
-    <span class="c"># Auto-validation JSON -> Objet Python</span>
-    <span class="kw">return</span> {<span class="str">"message"</span>: <span class="str">"User created"</span>}</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Dependency Injection</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, HTTPException
-
-<span class="kw">async def</span> <span class="fn">verify_token</span>(<span class="var">token</span>: <span class="cls">str</span>):
-    <span class="kw">if</span> <span class="var">token</span> != <span class="str">"secret"</span>:
-        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
-    <span class="kw">return</span> <span class="str">"admin"</span>
-
-<span class="dec">@app.get</span>(<span class="str">"/admin"</span>)
-<span class="kw">async def</span> <span class="fn">admin_panel</span>(
-    <span class="var">user</span>: <span class="cls">str</span> = <span class="fn">Depends</span>(<span class="fn">verify_token</span>)
-):
-    <span class="kw">return</span> {<span class="str">"user"</span>: <span class="var">user</span>}</pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="s6">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">06</div>
-                <div>
-                    <h2 class="sec-title">Concepts API REST</h2>
-                    <p class="sec-sub">Méthodes, Codes, JSON</p>
-                </div>
-            </div>
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4>200 OK</h4>
-                    <p>Succès standard.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>201 Created</h4>
-                    <p>Ressource créée.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>401 Unauth</h4>
-                    <p>Token manquant/invalide.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>403 Forbidden</h4>
-                    <p>Droits insuffisants.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>404 Not Found</h4>
-                    <p>Ressource introuvable.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>500 Error</h4>
-                    <p>Crash serveur.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="s7">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">07</div>
-                <div>
-                    <h2 class="sec-title">Sécurité & Authentification</h2>
-                    <p class="sec-sub">JWT, Hashing, OWASP</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>📖 Les règles d'or de la sécurité Web</summary>
-                <div>
-                    <p>1. <strong>Ne jamais stocker de mots de passe en clair</strong>. Utilisez des algorithmes de
-                        hachage lents comme <strong>BCrypt</strong> ou <strong>Argon2</strong>.</p>
-                    <p>2. <strong>JWT (JSON Web Tokens)</strong> : Le standard pour l'authentification des APIs
-                        (Stateless). Le serveur signe un token que le client renvoie à chaque requête.</p>
-                    <p>3. <strong>HTTPS partout</strong>. Sans chiffrement, les tokens transitent en clair.</p>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Hashing (Passlib)</div>
-                    <pre><span class="kw">from</span> passlib.context <span class="kw">import</span> CryptContext
-
-<span class="var">pwd_context</span> = <span class="cls">CryptContext</span>(schemes=[<span class="str">"bcrypt"</span>])
-
-<span class="c"># Hacher un mot de passe (Inscription)</span>
-<span class="var">hash</span> = <span class="var">pwd_context</span>.<span class="fn">hash</span>(<span class="str">"secret123"</span>)
-<span class="c"># -> $2b$12$EixZaYVK1...</span>
-
-<span class="c"># Vérifier (Login)</span>
-<span class="var">is_valid</span> = <span class="var">pwd_context</span>.<span class="fn">verify</span>(<span class="str">"secret123"</span>, <span class="var">hash</span>)</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>JWT (Jose / PyJWT)</div>
-                    <pre><span class="kw">from</span> jose <span class="kw">import</span> jwt
-<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
-
-<span class="var">SECRET</span> = <span class="str">"my_super_secret_key"</span>
-<span class="var">ALGO</span> = <span class="str">"HS256"</span>
-
-<span class="c"># Créer un Token</span>
-<span class="kw">def</span> <span class="fn">create_token</span>(<span class="var">user_id</span>: <span class="cls">int</span>):
-    <span class="var">expire</span> = <span class="fn">datetime</span>.utcnow() + <span class="fn">timedelta</span>(minutes=<span class="num">30</span>)
-    <span class="var">payload</span> = {<span class="str">"sub"</span>: <span class="fn">str</span>(<span class="var">user_id</span>), <span class="str">"exp"</span>: <span class="var">expire</span>}
-    <span class="kw">return</span> <span class="var">jwt</span>.<span class="fn">encode</span>(<span class="var">payload</span>, <span class="var">SECRET</span>, algorithm=<span class="var">ALGO</span>)
-
-<span class="c"># Décoder</span>
-<span class="var">payload</span> = <span class="var">jwt</span>.<span class="fn">decode</span>(<span class="var">token</span>, <span class="var">SECRET</span>, algorithms=[<span class="var">ALGO</span>])</pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="s8">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">08</div>
-                <div>
-                    <h2 class="sec-title">Async & Temps Réel</h2>
-                    <p class="sec-sub">WebSockets, AsyncIO</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>📖 WebSockets vs HTTP</summary>
-                <div>
-                    <p>HTTP est "Unidirectionnel" (Client demande -> Serveur répond).</p>
-                    <p><strong>WebSocket</strong> est "Bidirectionnel" et persistant. Le serveur peut pousser des
-                        données au client (Chat, Notifications, Trading).</p>
-                    <p>FastAPI gère nativement les WebSockets grâce à son moteur asynchrone.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>Chat WebSocket (FastAPI)</div>
-                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> WebSocket
-
-<span class="dec">@app.websocket</span>(<span class="str">"/ws"</span>)
-<span class="kw">async def</span> <span class="fn">websocket_endpoint</span>(<span class="var">websocket</span>: <span class="cls">WebSocket</span>):
+<span class="dec">@app.websocket</span>(<span class="str">"/ws/{client_id}"</span>)
+<span class="kw">async def</span> <span class="fn">websocket_endpoint</span>(<span class="var">websocket</span>: <span class="cls">WebSocket</span>, <span class="var">client_id</span>: <span class="cls">int</span>):
     <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">accept</span>()
-    <span class="kw">while True</span>:
-        <span class="c"># Attendre un message du client</span>
-        <span class="var">data</span> = <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">receive_text</span>()
-        
-        <span class="c"># Renvoyer (Echo ou Broadcast)</span>
-        <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">send_text</span>(<span class="str">f"Reçu : </span>{<span class="var">data</span>}<span class="str">"</span>)</pre>
+    <span class="kw">try</span>:
+        <span class="kw">while True</span>:
+            <span class="var">data</span> = <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">receive_text</span>()
+            <span class="c"># Push de données au client sans qu'il demande</span>
+            <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">send_text</span>(<span class="str">f"Message reçu : </span>{<span class="var">data</span>}<span class="str">"</span>)
+    <span class="kw">except</span> <span class="cls">Exception</span>:
+        <span class="fn">print</span>(<span class="str">"Client déconnecté"</span>)</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Cas d'Usage & Écosystème</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>📡 Broadcasting</h4>
+                <p>Envoyer un message à tous les utilisateurs connectés simultanément (ex: notification système).</p>
+            </div>
+            <div class="ref-card">
+                <h4>⏱️ Basse Latence</h4>
+                <p>Idéal pour le trading ou les collaborations en direct (type Google Docs) où chaque ms compte.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🔌 Alternatives</h4>
+                <p><strong>Socket.io</strong> (couche au-dessus de WS pour la reconnexion auto) ou <strong>Server-Sent
+                        Events (SSE)</strong> pour du push unidirectionnel.</p>
             </div>
         </div>
-    </section>
 
-    <section id="s9">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">09</div>
-                <div>
-                    <h2 class="sec-title">Tâches d'Arrière-plan</h2>
-                    <p class="sec-sub">Celery, Redis, BackgroundTasks</p>
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--blue); background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>⚠️ Note sur le Déploiement</strong>
+            <p>Les WebSockets nécessitent un serveur compatible ASGI (comme <strong>Uvicorn</strong> ou
+                <strong>Daphne</strong>) et une configuration spécifique de Nginx
+                (<code>proxy_set_header Upgrade $http_upgrade;</code>) pour ne pas couper la connexion.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Syntaxe Moderne : async with & await</summary>
+            <div class="code" style="margin-top: 15px;">
+                <div class="code-head"><span class="dot b"></span>HTTP Client Asynchrone (Hittpx)</div>
+                <pre><span class="kw">import</span> httpx
+<span class="kw">import</span> asyncio
+
+<span class="kw">async def</span> <span class="fn">fetch_data</span>():
+    <span class="kw">async with</span> <span class="var">httpx</span>.<span class="cls">AsyncClient</span>() <span class="kw">as</span> <span class="var">client</span>:
+        <span class="var">resp</span> = <span class="kw">await</span> <span class="var">client</span>.<span class="fn">get</span>(<span class="str">"https://api.example.com"</span>)
+        <span class="kw">return</span> <span class="var">resp</span>.<span class="fn">json</span>()
+
+<span class="c"># Lancer plusieurs requêtes en parallèle</span>
+<span class="var">results</span> = <span class="kw">await</span> <span class="var">asyncio</span>.<span class="fn">gather</span>(<span class="fn">fetch_data</span>(), <span class="fn">fetch_data</span>())</pre>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s9">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">09</div>
+            <div>
+                <h2 class="sec-title">Background Tasks : Déléguer pour la Performance</h2>
+                <p class="sec-sub">Optimiser l'expérience utilisateur en déchargeant les opérations lourdes</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Dans une application web, la règle d'or est la <strong>réactivité</strong>. Si une action prend plus de
+                200ms (envoi d'email, génération de PDF, calcul IA), elle ne doit pas bloquer la requête HTTP. La
+                solution : le pattern <strong>Producteur-Consommateur</strong>.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Architecture Distribuée</h3>
+                <p>L'application (Producteur) envoie un message dans une file d'attente (Broker). Un processus séparé
+                    (Worker) récupère ce message et l'exécute en arrière-plan.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    App["App Web"] -->|1. Envoie Tâche| B[("Broker: Redis / RMQ")]
+                    B -->|2. Pull| W["Worker: Celery"]
+                    W -->|3. Exécute| Job["Email / Image / PDF"]
+                    Job -.->|4. Stocke Résultat| DB[("Base de Données / Cache")]
                 </div>
             </div>
-
-            <details>
-                <summary>📖 Pourquoi les tâches background ?</summary>
-                <div>
-                    <p>Une requête web doit répondre en < 200ms. Si vous devez envoyer un email, générer un PDF ou
-                            traiter une image, <strong>ne le faites pas dans la requête</strong>.</p>
-                    <p>Déléguez le travail à une "Queue" (Redis) et un "Worker" (Celery/Dramatiq) qui le traitera plus
-                        tard.</p>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot y"></span>FastAPI (Simple)</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> BackgroundTasks
-
-<span class="kw">def</span> <span class="fn">send_email</span>(<span class="var">email</span>: <span class="cls">str</span>):
-    <span class="c"># Code lent (SMTP...)</span>
-    <span class="fn">time.sleep</span>(<span class="num">2</span>)
-
-<span class="dec">@app.post</span>(<span class="str">"/signup"</span>)
-<span class="kw">async def</span> <span class="fn">signup</span>(<span class="var">bg_tasks</span>: <span class="cls">BackgroundTasks</span>):
-    <span class="c"># La réponse part tout de suite !</span>
-    <span class="var">bg_tasks</span>.<span class="fn">add_task</span>(<span class="fn">send_email</span>, <span class="str">"user@mail.com"</span>)
-    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"Email en cours d'envoi"</span>}</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Celery (Robuste)</div>
-                    <pre><span class="kw">from</span> celery <span class="kw">import</span> Celery
-
-<span class="var">celery</span> = <span class="cls">Celery</span>(<span class="str">'tasks'</span>, broker=<span class="str">'redis://localhost:6379'</span>)
-
-<span class="dec">@celery.task</span>
-<span class="kw">def</span> <span class="fn">process_image</span>(<span class="var">img_id</span>):
-    <span class="c"># Traitement très lourd (IA, resize...)</span>
-    <span class="kw">return</span> <span class="str">"Done"</span>
-
-<span class="c"># Appel asynchrone</span>
-<span class="fn">process_image</span>.<span class="fn">delay</span>(<span class="num">123</span>)</pre>
+            <div>
+                <h3>2. Stratégies de Délégation</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="border-left: 4px solid var(--blue);">
+                        <h4>⚡ Solution Légère</h4>
+                        <p><strong>FastAPI BackgroundTasks</strong> : Exécution dans le même processus après la réponse.
+                            Simple, idéal pour les emails rapides.</p>
+                    </div>
+                    <div class="ref-card" style="border-left: 4px solid var(--red);">
+                        <h4>🏗️ Solution Robuste</h4>
+                        <p><strong>Celery / Dramatiq</strong> : Processus isolés, gestion des retries, monitoring,
+                            scheduling (Crontab).</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="s10">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">10</div>
-                <div>
-                    <h2 class="sec-title">Tests Automatisés</h2>
-                    <p class="sec-sub">Pytest, Coverage</p>
-                </div>
-            </div>
-
+        <h3 style="margin-top:40px">3. Comparatif Technique</h3>
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot g"></span>Test API avec Pytest</div>
-                <pre><span class="c"># test_main.py</span>
-<span class="kw">from</span> fastapi.testclient <span class="kw">import</span> TestClient
+                <div class="code-head"><span class="dot g"></span>In-Process (FastAPI)</div>
+                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> BackgroundTasks
+
+<span class="dec">@app.post</span>(<span class="str">"/report"</span>)
+<span class="kw">async def</span> <span class="fn">generate_report</span>(<span class="var">bg</span>: <span class="cls">BackgroundTasks</span>):
+    <span class="c"># S'exécute APRES le return</span>
+    <span class="var">bg</span>.<span class="fn">add_task</span>(<span class="fn">big_calculation</span>)
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"En cours"</span>}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Distributed (Celery)</div>
+                <pre><span class="kw">from</span> celery <span class="kw">import</span> Celery
+
+<span class="var">app</span> = <span class="cls">Celery</span>(broker=<span class="str">"redis://..."</span>)
+
+<span class="at">@app</span>.<span class="fn">task</span>
+<span class="kw">def</span> <span class="fn">heavy_task</span>(<span class="var">x</span>):
+    <span class="kw">return</span> <span class="var">x</span> ** <span class="num">2</span>
+
+<span class="c"># Appel immédiat, réponse non bloquée</span>
+<span class="fn">heavy_task</span>.<span class="fn">delay</span>(<span class="num">10</span>)</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Monitoring & Fiabilité</h3>
+        <p>Plus vous avez de tâches de fond, plus vous avez besoin de visibilité sur leur état (échec, succès, temps
+            d'exécution).</p>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>Flower 🌸</h4>
+                <p>L'interface web standard pour monitorer Celery en temps réel (files, workers, taux d'erreur).</p>
+            </div>
+            <div class="ref-card">
+                <h4>Retries 🔄</h4>
+                <p>Celery permet de re-tenter automatiquement une tâche si une API tierce est temporairement
+                    indisponible.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Beat ⏲️</h4>
+                <p>Le planificateur de Celery pour exécuter des tâches à intervalle régulier (ex: stats tous les lundis
+                    à 8h).</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--purple); background: rgba(168, 85, 247, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: Redis vs RabbitMQ</strong>
+            <p><strong>Redis</strong> est parfait pour débuter (simple, rapide, souvent déjà là pour le cache).
+                <strong>RabbitMQ</strong> est plus robuste pour des millions de messages avec des routages complexes.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Alternatives Modernes</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Dramatiq</h4>
+                    <p>Une alternative à Celery qui se veut plus simple, avec moins de configuration et des erreurs plus
+                        claires.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>ARQ / SAQ</h4>
+                    <p>Des bibliothèques basées sur Redis et <code>asyncio</code>, parfaites si votre projet est déjà
+                        100% asynchrone.</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Tests & QA : Garantir la Fiabilité</h2>
+                <p class="sec-sub">De l'unitaire à l'intégration : coder avec confiance</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Un code sans tests est un code "legacy" dès sa naissance. En Python Web, tester permet de s'assurer que
+                vos routes renvoient les bons statuts, que vos modèles calculent correctement et que vos migrations
+                n'ont rien cassé. <strong>Pytest</strong> est l'outil standard pour cette mission.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. La Pyramide des Tests</h3>
+                <p>Pour une stratégie efficace, privilégiez une large base de tests unitaires (rapides) et moins de
+                    tests de bout-en-bout (lents/fragiles).</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    UI["E2E / Selenium - Rare"] --> INT["Intégration / API - Moyen"]
+                    INT --> UNIT["Unitaire / Logique - Nombreux"]
+                    style UNIT fill:var(--primary),color:white
+                </div>
+            </div>
+            <div>
+                <h3>2. La Puissance de Pytest</h3>
+                <p>Fini la lourdeur de <code>unittest</code>. Pytest utilise de simples <code>assert</code> et un
+                    système de <strong>Fixtures</strong> révolutionnaire.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>conftest.py (Fixtures)</div>
+                    <pre><span class="kw">import</span> pytest
 <span class="kw">from</span> main <span class="kw">import</span> app
+<span class="kw">from</span> fastapi.testclient <span class="kw">import</span> TestClient
 
-<span class="var">client</span> = <span class="cls">TestClient</span>(<span class="var">app</span>)
-
-<span class="kw">def</span> <span class="fn">test_read_main</span>():
-    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">get</span>(<span class="str">"/"</span>)
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span>
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="fn">json</span>() == {<span class="str">"msg"</span>: <span class="str">"Hello World"</span>}
-
-<span class="kw">def</span> <span class="fn">test_create_item</span>():
-    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">post</span>(
-        <span class="str">"/items/"</span>,
-        json={<span class="str">"name"</span>: <span class="str">"Test Item"</span>, <span class="str">"price"</span>: <span class="num">10</span>}
-    )
-    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span></pre>
-            </div>
-        </div>
-    </section>
-
-    <section id="s11">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">11</div>
-                <div>
-                    <h2 class="sec-title">Production</h2>
-                    <p class="sec-sub">Gunicorn, Uvicorn</p>
+<span class="at">@pytest</span>.<span class="fn">fixture</span>
+<span class="kw">def</span> <span class="fn">client</span>():
+    <span class="c"># Setup : crée l'objet avant le test</span>
+    <span class="kw">with</span> <span class="cls">TestClient</span>(<span class="var">app</span>) <span class="kw">as</span> <span class="var">c</span>:
+        <span class="kw">yield</span> <span class="var">c</span>
+    <span class="c"># Teardown : nettoyage auto après</span></pre>
                 </div>
             </div>
+        </div>
 
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>Terminal</div>
-                <pre><span class="c"># Lancer Flask/Django avec Gunicorn (WSGI)</span>
-gunicorn -w 4 src.app:app
+        <h3 style="margin-top:40px">3. Mocking : Isoler pour Mieux Tester</h3>
+        <p>Si votre fonction appelle une API externe ou une DB lente, <strong>simulez</strong> son comportement pour que
+            vos tests restent rapides et déterministes.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>test_logic.py (Mock)</div>
+            <pre><span class="kw">from</span> unittest.mock <span class="kw">import</span> MagicMock
 
-<span class="c"># Lancer FastAPI avec Uvicorn (ASGI)</span>
-uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
+<span class="kw">def</span> <span class="fn">test_payment_process</span>(<span class="var">mocker</span>):
+    <span class="c"># On remplace l'appel réel à Stripe</span>
+    <span class="var">mock_stripe</span> = <span class="var">mocker</span>.<span class="fn">patch</span>(<span class="str">"services.stripe.charge"</span>)
+    <span class="var">mock_stripe</span>.<span class="fn">return_value</span> = {<span class="str">"status"</span>: <span class="str">"success"</span>}
+    
+    <span class="var">res</span> = <span class="fn">process_order</span>(<span class="num">100</span>)
+    <span class="kw">assert</span> <span class="var">res</span> <span class="kw">is True</span>
+    <span class="var">mock_stripe</span>.<span class="fn">assert_called_once</span>()</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Mesurer la Qualité : Coverage</h3>
+        <p>Le <strong>Code Coverage</strong> indique le pourcentage de lignes de code exécutées par vos tests. Visez
+            80%+, mais rappelez-vous : 100% de couverture ≠ 0 bugs.</p>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>📊 Rapports HTML</h4>
+                <p><code>pytest --cov-report html</code> génère un site web pour visualiser les lignes non testées.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🏗️ CI/CD</h4>
+                <p>Bloquez le déploiement si la couverture descend en dessous d'un certain seuil (Security Gate).</p>
+            </div>
+            <div class="ref-card">
+                <h4>🧪 TDD</h4>
+                <p><em>Test-Driven Development</em> : Écrire le test (rouge), coder (vert), refactoriser.</p>
             </div>
         </div>
-    </section>
 
-    <section id="s12">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">12</div>
-                <div>
-                    <h2 class="sec-title">Dockerisation</h2>
-                    <p class="sec-sub">Containeriser son app Python</p>
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: DB de Test</strong>
+            <p>N'utilisez jamais votre DB de prod ou de dev pour les tests. Configurez une base SQLite en mémoire ou un
+                container Docker dédié qui est réinitialisé par les fixtures.</p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Outils de Linting & Formatage</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Ruff / Flake8</h4>
+                    <p>Analyse statique pour détecter les erreurs de syntaxe, les imports inutilisés ou le code mort.
+                    </p>
+                </div>
+                <div class="ref-card">
+                    <h4>Black / Blue</h4>
+                    <p>Formatage automatique du code pour que tout le projet respecte strictement la PEP 8 sans débat.
+                    </p>
                 </div>
             </div>
+        </details>
+    </div>
+</section>
+<section id="s11">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">11</div>
+            <div>
+                <h2 class="sec-title">Serveurs App : WSGI, ASGI & Production</h2>
+                <p class="sec-sub">Passer du serveur de développement à une architecture robuste</p>
+            </div>
+        </div>
 
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le serveur fourni par <code>flask run</code> ou <code>manage.py runserver</code> n'est
+                <strong>JAMAIS</strong> destiné à la production. Il est lent, peu sécurisé et monothread. En production,
+                on utilise un <strong>Serveur d'Application</strong> et un <strong>Reverse Proxy</strong>.
+            </p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. L'Architecture Standard</h3>
+                <p>En production, on ne branche jamais l'application directement sur Internet. On utilise Nginx comme
+                    "bouclier" et Gunicorn/Uvicorn comme moteur de calcul.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    U["🌍 Utilisateur"] -->|Port 80/443| N["🛡️ Nginx / Caddy"]
+                    N -->|Proxy Pass| S["⚙️ Gunicorn / Uvicorn"]
+                    S -->|WSGI / ASGI| A["🐍 App Python"]
+                </div>
+            </div>
+            <div>
+                <h3>2. Pourquoi Nginx ?</h3>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">⚡ <strong>Fichiers Statiques</strong> : Nginx sert les
+                        images/CSS/JS bien plus vite que Python.</li>
+                    <li style="margin-bottom: 10px;">🔒 <strong>SSL / TLS</strong> : C'est là qu'on gère les certificats
+                        (Certbot/LetsEncrypt).</li>
+                    <li style="margin-bottom: 10px;">🧼 <strong>Buffering</strong> : Protège Python des clients lents
+                        qui "bloquent" les connexions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Commandes de Production</h3>
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Dockerfile</div>
-                <pre><span class="kw">FROM</span> python:3.10-slim
+                <div class="code-head"><span class="dot r"></span>Gunicorn (WSGI - Flask/Django)</div>
+                <pre><span class="c"># -w : Nombre de workers (2 * CPU + 1)</span>
+<span class="c"># -b : Bind sur une adresse</span>
+gunicorn -w <span class="num">4</span> -b <span class="num">0.0.0.0</span>:<span class="num">8000</span> app:app</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Uvicorn (ASGI - FastAPI)</div>
+                <pre><span class="kw">uvicorn</span> main:app \
+  --host <span class="num">0.0.0.0</span> \
+  --port <span class="num">8000</span> \
+  --workers <span class="num">4</span></pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Gestion des Workers</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type de Worker</th>
+                        <th>Framework</th>
+                        <th>Usage Idéal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Sync</code> (Default)</td>
+                        <td>Django / Flask</td>
+                        <td>Requêtes rapides, calculs CPU standards.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Gevent / Eventlet</code></td>
+                        <td>Flask</td>
+                        <td>Requêtes avec beaucoup d'attente I/O sans <code>async</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>UvicornWorker</code></td>
+                        <td>FastAPI</td>
+                        <td>Tout ce qui utilise <code>async/await</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: WhiteNoise (Django)</strong>
+            <p>Pour les déploiements Cloud (Heroku, Docker) où Nginx n'est pas toujours disponible,
+                <strong>WhiteNoise</strong> permet à votre application Python de servir elle-même ses fichiers statiques
+                avec une efficacité proche de Nginx.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Configuration Nginx simplifiée</summary>
+            <div class="code" style="margin-top: 15px;">
+                <div class="code-head"><span class="dot b"></span>/etc/nginx/sites-available/myapp</div>
+                <pre>server {
+    listen <span class="num">80</span>;
+    server_name myapp.com;
+
+    location /static/ {
+        alias /path/to/static/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</pre>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s12">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">12</div>
+            <div>
+                <h2 class="sec-title">Docker : Conteneuriser pour l'Éternité</h2>
+                <p class="sec-sub">Isolation, reproductibilité et déploiement simplifié</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Docker permet d'emballer votre application Python, ses dépendances et sa configuration dans une
+                <strong>Image</strong> immuable. "Ça marche sur ma machine" devient "Ça marche partout où il y a
+                Docker".
+            </p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Anatomie d'un Dockerfile Pro</h3>
+                <p>L'ordre des instructions est crucial pour profiter du <strong>cache des couches</strong>. Copiez
+                    toujours les fichiers de dépendances avant le code.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Dockerfile</div>
+                    <pre><span class="c"># 1. Image de base légère</span>
+<span class="kw">FROM</span> python:3.11-slim
+
+<span class="c"># 2. Variables d'environnement Python</span>
+<span class="kw">ENV</span> PYTHONDONTWRITEBYTECODE=1
+<span class="kw">ENV</span> PYTHONUNBUFFERED=1
+
 <span class="kw">WORKDIR</span> /app
 
-<span class="c"># Optimisation cache: Copier requirements d'abord</span>
+<span class="c"># 3. Cache des dépendances</span>
 <span class="kw">COPY</span> requirements.txt .
 <span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
 
+<span class="c"># 4. Copie du code</span>
 <span class="kw">COPY</span> . .
-<span class="kw">CMD</span> ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]</pre>
-            </div>
-        </div>
-    </section>
 
-    <section id="s13">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">13</div>
-                <div>
-                    <h2 class="sec-title">Référence Web</h2>
-                    <p class="sec-sub">Outils et Librairies clés</p>
+<span class="kw">CMD</span> ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]</pre>
                 </div>
             </div>
-
-            <table>
-                <tr>
-                    <th>Domaine</th>
-                    <th>Librairie</th>
-                    <th>Usage</th>
-                </tr>
-                <tr>
-                    <td><strong>Web Framework</strong></td>
-                    <td>Flask, Django, FastAPI</td>
-                    <td>Base du site</td>
-                </tr>
-                <tr>
-                    <td><strong>Serveur</strong></td>
-                    <td>Gunicorn, Uvicorn</td>
-                    <td>Production WSGI/ASGI</td>
-                </tr>
-                <tr>
-                    <td><strong>HTTP Client</strong></td>
-                    <td>Requests, Httpx (async)</td>
-                    <td>Appeler des APIs externes</td>
-                </tr>
-                <tr>
-                    <td><strong>Validation</strong></td>
-                    <td>Pydantic, Marshmallow</td>
-                    <td>Valider forms/JSON</td>
-                </tr>
-                <tr>
-                    <td><strong>Sécurité</strong></td>
-                    <td>Passlib, BCrypt, PyJWT</td>
-                    <td>Mots de passe, Tokens</td>
-                </tr>
-                <tr>
-                    <td><strong>Testing</strong></td>
-                    <td>Pytest, Playwright</td>
-                    <td>Tests unitaires / E2E</td>
-                </tr>
-                <tr>
-                    <td><strong>Tâches fond</strong></td>
-                    <td>Celery, Redis Queue</td>
-                    <td>Emails, traitements lourds</td>
-                </tr>
-            </table>
-
-            <div class="tip" style="margin-top:24px"><strong>💡 Cloud Ready</strong> — Les apps Python containerisées se
-                déploient facilement sur AWS, Azure, Google Cloud ou des PaaS comme Render/Railway.</div>
+            <div>
+                <h3>2. Cycle de Vie & Couches</h3>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    DF["Dockerfile"] -->|docker build| IMG["Image Immuable"]
+                    IMG -->|docker run| C1["Conteneur A"]
+                    IMG -->|docker run| C2["Conteneur B"]
+                    C1 -->|docker stop| STOP["Arrêté"]
+                    C1 -->|docker rm| DEL["Supprimé"]
+                </div>
+            </div>
         </div>
-    </section>
 
+        <h3 style="margin-top:40px">3. Multi-Stage Builds</h3>
+        <p>Utilisez une image lourde pour compiler (ex: avec gcc) et une image ultra-légère pour l'exécution finale.
+            Votre image passe de 800Mo à 150Mo.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Optimisation extrême</div>
+            <pre><span class="c"># STAGE 1: Builder</span>
+<span class="kw">FROM</span> python:3.11-slim <span class="kw">as</span> builder
+<span class="kw">RUN</span> apt-get update && apt-get install -y gcc libpq-dev
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --user --no-cache-dir -r requirements.txt
+
+<span class="c"># STAGE 2: Final</span>
+<span class="kw">FROM</span> python:3.11-slim
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> --from=builder /root/.local /root/.local
+<span class="kw">ENV</span> PATH=/root/.local/bin:$PATH
+<span class="kw">COPY</span> . .
+<span class="kw">CMD</span> ["python", "main.py"]</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Orchestration avec Docker Compose</h3>
+        <p>Ne lancez pas vos conteneurs à la main. Définissez toute votre stack (App, DB, Redis) dans un seul fichier
+            YAML.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot y"></span>docker-compose.yml</div>
+            <pre><span class="key">services</span>:
+  <span class="key">web</span>:
+    <span class="key">build</span>: .
+    <span class="key">ports</span>: ["8000:8000"]
+    <span class="key">depends_on</span>: [db]
+    <span class="key">environment</span>: [DATABASE_URL=postgres://user:pass@db:5432/db]
+
+  <span class="key">db</span>:
+    <span class="key">image</span>: postgres:15-alpine
+    <span class="key">volumes</span>: ["postgres_data:/var/lib/postgresql/data"]
+
+<span class="key">volumes</span>:
+  <span class="key">postgres_data</span>:</pre>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Volumes vs Bind Mounts</strong>
+            <p>Utilisez les <strong>Volumes</strong> pour la persistance des données (DB) en prod. Utilisez les
+                <strong>Bind Mounts</strong> pour le développement (partage de dossier code entre l'hôte et le
+                conteneur).
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Commandes Essentielles Command Line</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Commande</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>docker build -t app:v1 .</code></td>
+                            <td>Créer une image à partir du Dockerfile.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps -a</code></td>
+                            <td>Lister tous les conteneurs (actifs ou non).</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker exec -it ID sh</code></td>
+                            <td>Entrer dans un conteneur en cours d'exécution.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker compose up -d</code></td>
+                            <td>Lancer toute la stack en arrière-plan.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker system prune</code></td>
+                            <td>⚠️ Nettoyer tout ce qui est inutile (images orphelines, etc).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>
+<section id="s13">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">13</div>
+            <div>
+                <h2 class="sec-title">Toolkit : Références & Ressources</h2>
+                <p class="sec-sub">L'arsenal indispensable pour tout développeur Python Web</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Maîtriser Python Web ne s'arrête pas au code. C'est aussi savoir choisir les bons outils de débogage,
+                consulter les documentations officielles et utiliser les meilleurs outils de test d'API.</p>
+        </div>
+
+        <h3 style="margin-top:40px">1. Librairies Incontournables</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Domaine</th>
+                        <th>Librairie</th>
+                        <th>Pourquoi l'utiliser ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HTTP Client</strong></td>
+                        <td><code>httpx</code></td>
+                        <td>Successeur moderne de requests, gère le <code>async</code> nativement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Validation</strong></td>
+                        <td><code>pydantic</code></td>
+                        <td>La référence pour la validation de données par types.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sécurité</strong></td>
+                        <td><code>passlib[argon2]</code></td>
+                        <td>Le standard pour le hashing sécurisé des mots de passe.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Utils</strong></td>
+                        <td><code>python-dotenv</code></td>
+                        <td>Indispensable pour charger ses fichiers <code>.env</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">2. L'Arsenal de l'API Tester</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>🚀 HTTPie</h4>
+                <p>L'alternative moderne à <code>curl</code> en ligne de commande. Coloré et intuitif.</p>
+            </div>
+            <div class="ref-card">
+                <h4>📡 Bruno / Insomnia</h4>
+                <p>Des alternatives légères et souvent open-source à Postman pour tester vos endpoints REST/GraphQL.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🔍 DevTools</h4>
+                <p>L'onglet <code>Network</code> de votre navigateur est votre meilleur ami pour inspecter les requêtes
+                    HTTP.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Mémo Commandes (Cheat Sheet)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Environnement</div>
+                <pre><span class="c"># Créer et activer un venv</span>
+python -m venv .venv
+source .venv/bin/activate <span class="c"># Linux</span>
+.venv\Scripts\activate   <span class="c"># Windows</span>
+
+<span class="c"># Gérer les packages</span>
+pip install -r requirements.txt
+pip freeze > requirements.txt</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Docker Quickstart</div>
+                <pre><span class="c"># Lancer la stack complète</span>
+docker-compose up --build
+
+<span class="c"># Voir les logs en direct</span>
+docker logs -f my_app_container
+
+<span class="c"># Accéder à la DB</span>
+docker exec -it db_cont psql -U user</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Liens Précis (Docs Officielles)</h3>
+        <div class="grid3">
+            <a href="https://flask.palletsprojects.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #10b981;">
+                <h4>Flask Documentation</h4>
+                <p>Clair, complet et pédagogique.</p>
+            </a>
+            <a href="https://docs.djangoproject.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #092e20;">
+                <h4>Django Documentation</h4>
+                <p>La référence absolue, extrêmement détaillée.</p>
+            </a>
+            <a href="https://fastapi.tiangolo.com/" target="_blank" class="ref-card"
+                style="text-decoration: none; color: inherit; border-bottom: 3px solid #05998b;">
+                <h4>FastAPI Documentation</h4>
+                <p>Interactive et remplie d'exemples "live".</p>
+            </a>
+        </div>
+
+        <div class="warning"
+            style="margin-top: 40px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 8px;">
+            <strong>📚 Curated List: Awesome Python</strong>
+            <p>Pour aller plus loin, consultez le dépôt GitHub <a href="https://github.com/vinta/awesome-python"
+                    target="_blank" style="color: var(--primary);">Awesome Python</a> qui liste les meilleures
+                librairies pour chaque besoin imaginable.</p>
+        </div>
+    </div>
+</section>
     <section id="quiz-section" class="quiz-container">
         <div class="container">
             <h2>Testez vos connaissances</h2>
@@ -693,15 +1952,14 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
         </div>
     </footer>
 
-    <script src="../../assets/js/quiz-engine.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.QuizEngine) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'data/quiz_web.json', questionsPerSession: 10 });
-            }
-        });
-    </script>
-    <script src="script.js"></script>
-
+<script src="assets/js/quiz-engine.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.QuizEngine) {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'data/quiz_web.json', questionsPerSession: 10 });
+        }
+    });
+</script>
+<script src="script.js"></script>
 </body>
 </html>

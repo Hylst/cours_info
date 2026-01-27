@@ -1,53 +1,119 @@
-    <section id="s9">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">09</div>
-                <div>
-                    <h2 class="sec-title">Tâches d'Arrière-plan</h2>
-                    <p class="sec-sub">Celery, Redis, BackgroundTasks</p>
+<section id="s9">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">09</div>
+            <div>
+                <h2 class="sec-title">Background Tasks : Déléguer pour la Performance</h2>
+                <p class="sec-sub">Optimiser l'expérience utilisateur en déchargeant les opérations lourdes</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Dans une application web, la règle d'or est la <strong>réactivité</strong>. Si une action prend plus de
+                200ms (envoi d'email, génération de PDF, calcul IA), elle ne doit pas bloquer la requête HTTP. La
+                solution : le pattern <strong>Producteur-Consommateur</strong>.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Architecture Distribuée</h3>
+                <p>L'application (Producteur) envoie un message dans une file d'attente (Broker). Un processus séparé
+                    (Worker) récupère ce message et l'exécute en arrière-plan.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    App["App Web"] -->|1. Envoie Tâche| B[("Broker: Redis / RMQ")]
+                    B -->|2. Pull| W["Worker: Celery"]
+                    W -->|3. Exécute| Job["Email / Image / PDF"]
+                    Job -.->|4. Stocke Résultat| DB[("Base de Données / Cache")]
                 </div>
             </div>
-
-            <details>
-                <summary>📖 Pourquoi les tâches background ?</summary>
-                <div>
-                    <p>Une requête web doit répondre en < 200ms. Si vous devez envoyer un email, générer un PDF ou
-                            traiter une image, <strong>ne le faites pas dans la requête</strong>.</p>
-                    <p>Déléguez le travail à une "Queue" (Redis) et un "Worker" (Celery/Dramatiq) qui le traitera plus
-                        tard.</p>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot y"></span>FastAPI (Simple)</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> BackgroundTasks
-
-<span class="kw">def</span> <span class="fn">send_email</span>(<span class="var">email</span>: <span class="cls">str</span>):
-    <span class="c"># Code lent (SMTP...)</span>
-    <span class="fn">time.sleep</span>(<span class="num">2</span>)
-
-<span class="dec">@app.post</span>(<span class="str">"/signup"</span>)
-<span class="kw">async def</span> <span class="fn">signup</span>(<span class="var">bg_tasks</span>: <span class="cls">BackgroundTasks</span>):
-    <span class="c"># La réponse part tout de suite !</span>
-    <span class="var">bg_tasks</span>.<span class="fn">add_task</span>(<span class="fn">send_email</span>, <span class="str">"user@mail.com"</span>)
-    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"Email en cours d'envoi"</span>}</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Celery (Robuste)</div>
-                    <pre><span class="kw">from</span> celery <span class="kw">import</span> Celery
-
-<span class="var">celery</span> = <span class="cls">Celery</span>(<span class="str">'tasks'</span>, broker=<span class="str">'redis://localhost:6379'</span>)
-
-<span class="dec">@celery.task</span>
-<span class="kw">def</span> <span class="fn">process_image</span>(<span class="var">img_id</span>):
-    <span class="c"># Traitement très lourd (IA, resize...)</span>
-    <span class="kw">return</span> <span class="str">"Done"</span>
-
-<span class="c"># Appel asynchrone</span>
-<span class="fn">process_image</span>.<span class="fn">delay</span>(<span class="num">123</span>)</pre>
+            <div>
+                <h3>2. Stratégies de Délégation</h3>
+                <div class="grid2">
+                    <div class="ref-card" style="border-left: 4px solid var(--blue);">
+                        <h4>⚡ Solution Légère</h4>
+                        <p><strong>FastAPI BackgroundTasks</strong> : Exécution dans le même processus après la réponse.
+                            Simple, idéal pour les emails rapides.</p>
+                    </div>
+                    <div class="ref-card" style="border-left: 4px solid var(--red);">
+                        <h4>🏗️ Solution Robuste</h4>
+                        <p><strong>Celery / Dramatiq</strong> : Processus isolés, gestion des retries, monitoring,
+                            scheduling (Crontab).</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. Comparatif Technique</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>In-Process (FastAPI)</div>
+                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> BackgroundTasks
+
+<span class="dec">@app.post</span>(<span class="str">"/report"</span>)
+<span class="kw">async def</span> <span class="fn">generate_report</span>(<span class="var">bg</span>: <span class="cls">BackgroundTasks</span>):
+    <span class="c"># S'exécute APRES le return</span>
+    <span class="var">bg</span>.<span class="fn">add_task</span>(<span class="fn">big_calculation</span>)
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"En cours"</span>}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Distributed (Celery)</div>
+                <pre><span class="kw">from</span> celery <span class="kw">import</span> Celery
+
+<span class="var">app</span> = <span class="cls">Celery</span>(broker=<span class="str">"redis://..."</span>)
+
+<span class="at">@app</span>.<span class="fn">task</span>
+<span class="kw">def</span> <span class="fn">heavy_task</span>(<span class="var">x</span>):
+    <span class="kw">return</span> <span class="var">x</span> ** <span class="num">2</span>
+
+<span class="c"># Appel immédiat, réponse non bloquée</span>
+<span class="fn">heavy_task</span>.<span class="fn">delay</span>(<span class="num">10</span>)</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Monitoring & Fiabilité</h3>
+        <p>Plus vous avez de tâches de fond, plus vous avez besoin de visibilité sur leur état (échec, succès, temps
+            d'exécution).</p>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>Flower 🌸</h4>
+                <p>L'interface web standard pour monitorer Celery en temps réel (files, workers, taux d'erreur).</p>
+            </div>
+            <div class="ref-card">
+                <h4>Retries 🔄</h4>
+                <p>Celery permet de re-tenter automatiquement une tâche si une API tierce est temporairement
+                    indisponible.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Beat ⏲️</h4>
+                <p>Le planificateur de Celery pour exécuter des tâches à intervalle régulier (ex: stats tous les lundis
+                    à 8h).</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--purple); background: rgba(168, 85, 247, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: Redis vs RabbitMQ</strong>
+            <p><strong>Redis</strong> est parfait pour débuter (simple, rapide, souvent déjà là pour le cache).
+                <strong>RabbitMQ</strong> est plus robuste pour des millions de messages avec des routages complexes.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Alternatives Modernes</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Dramatiq</h4>
+                    <p>Une alternative à Celery qui se veut plus simple, avec moins de configuration et des erreurs plus
+                        claires.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>ARQ / SAQ</h4>
+                    <p>Des bibliothèques basées sur Redis et <code>asyncio</code>, parfaites si votre projet est déjà
+                        100% asynchrone.</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>

@@ -1,24 +1,143 @@
-    <section id="s12">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">12</div>
-                <div>
-                    <h2 class="sec-title">Dockerisation</h2>
-                    <p class="sec-sub">Containeriser son app Python</p>
-                </div>
+<section id="s12">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">12</div>
+            <div>
+                <h2 class="sec-title">Docker : Conteneuriser pour l'Éternité</h2>
+                <p class="sec-sub">Isolation, reproductibilité et déploiement simplifié</p>
             </div>
+        </div>
 
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>Dockerfile</div>
-                <pre><span class="kw">FROM</span> python:3.10-slim
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Docker permet d'emballer votre application Python, ses dépendances et sa configuration dans une
+                <strong>Image</strong> immuable. "Ça marche sur ma machine" devient "Ça marche partout où il y a
+                Docker".
+            </p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Anatomie d'un Dockerfile Pro</h3>
+                <p>L'ordre des instructions est crucial pour profiter du <strong>cache des couches</strong>. Copiez
+                    toujours les fichiers de dépendances avant le code.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Dockerfile</div>
+                    <pre><span class="c"># 1. Image de base légère</span>
+<span class="kw">FROM</span> python:3.11-slim
+
+<span class="c"># 2. Variables d'environnement Python</span>
+<span class="kw">ENV</span> PYTHONDONTWRITEBYTECODE=1
+<span class="kw">ENV</span> PYTHONUNBUFFERED=1
+
 <span class="kw">WORKDIR</span> /app
 
-<span class="c"># Optimisation cache: Copier requirements d'abord</span>
+<span class="c"># 3. Cache des dépendances</span>
 <span class="kw">COPY</span> requirements.txt .
 <span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
 
+<span class="c"># 4. Copie du code</span>
 <span class="kw">COPY</span> . .
+
 <span class="kw">CMD</span> ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]</pre>
+                </div>
+            </div>
+            <div>
+                <h3>2. Cycle de Vie & Couches</h3>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    DF["Dockerfile"] -->|docker build| IMG["Image Immuable"]
+                    IMG -->|docker run| C1["Conteneur A"]
+                    IMG -->|docker run| C2["Conteneur B"]
+                    C1 -->|docker stop| STOP["Arrêté"]
+                    C1 -->|docker rm| DEL["Supprimé"]
+                </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. Multi-Stage Builds</h3>
+        <p>Utilisez une image lourde pour compiler (ex: avec gcc) et une image ultra-légère pour l'exécution finale.
+            Votre image passe de 800Mo à 150Mo.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Optimisation extrême</div>
+            <pre><span class="c"># STAGE 1: Builder</span>
+<span class="kw">FROM</span> python:3.11-slim <span class="kw">as</span> builder
+<span class="kw">RUN</span> apt-get update && apt-get install -y gcc libpq-dev
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --user --no-cache-dir -r requirements.txt
+
+<span class="c"># STAGE 2: Final</span>
+<span class="kw">FROM</span> python:3.11-slim
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> --from=builder /root/.local /root/.local
+<span class="kw">ENV</span> PATH=/root/.local/bin:$PATH
+<span class="kw">COPY</span> . .
+<span class="kw">CMD</span> ["python", "main.py"]</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Orchestration avec Docker Compose</h3>
+        <p>Ne lancez pas vos conteneurs à la main. Définissez toute votre stack (App, DB, Redis) dans un seul fichier
+            YAML.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot y"></span>docker-compose.yml</div>
+            <pre><span class="key">services</span>:
+  <span class="key">web</span>:
+    <span class="key">build</span>: .
+    <span class="key">ports</span>: ["8000:8000"]
+    <span class="key">depends_on</span>: [db]
+    <span class="key">environment</span>: [DATABASE_URL=postgres://user:pass@db:5432/db]
+
+  <span class="key">db</span>:
+    <span class="key">image</span>: postgres:15-alpine
+    <span class="key">volumes</span>: ["postgres_data:/var/lib/postgresql/data"]
+
+<span class="key">volumes</span>:
+  <span class="key">postgres_data</span>:</pre>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Volumes vs Bind Mounts</strong>
+            <p>Utilisez les <strong>Volumes</strong> pour la persistance des données (DB) en prod. Utilisez les
+                <strong>Bind Mounts</strong> pour le développement (partage de dossier code entre l'hôte et le
+                conteneur).
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Commandes Essentielles Command Line</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Commande</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>docker build -t app:v1 .</code></td>
+                            <td>Créer une image à partir du Dockerfile.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps -a</code></td>
+                            <td>Lister tous les conteneurs (actifs ou non).</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker exec -it ID sh</code></td>
+                            <td>Entrer dans un conteneur en cours d'exécution.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker compose up -d</code></td>
+                            <td>Lancer toute la stack en arrière-plan.</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker system prune</code></td>
+                            <td>⚠️ Nettoyer tout ce qui est inutile (images orphelines, etc).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>

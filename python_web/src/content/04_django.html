@@ -1,23 +1,113 @@
-    <section id="s4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Django</h2>
-                    <p class="sec-sub">Le Framework "Batteries Included"</p>
+<section id="s4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Django : Le Framework des Perfectionnistes</h2>
+                <p class="sec-sub">"Batteries included" - Productivité maximale et sécurité native</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Django est un framework web de haut niveau qui encourage un développement rapide et une conception
+                propre. Contrairement à Flask, il arrive avec <strong>tout le nécessaire</strong> : ORM, Auth, Admin,
+                Migrations, et protection contre les failles (SQLi, XSS, CSRF) activées par défaut.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Le Pattern MVT</h3>
+                <p>Django utilise une variante du MVC appelée <strong>Model-View-Template</strong>. La logique de
+                    contrôle est gérée par le framework lui-même.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    URL[URL Conf / Router] --> V[View / Logic]
+                    V --> M[Model / Database]
+                    M --> V
+                    V --> T[Template / HTML]
+                    T --> V
+                    V --> Res[Réponse HTTP]
                 </div>
             </div>
+            <div>
+                <h3>2. L'Interface d'Administration</h3>
+                <p>C'est l'un des "tueurs" de Django : une interface de gestion de contenu générée automatiquement à
+                    partir de vos modèles.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>admin.py</div>
+                    <pre><span class="kw">from</span> django.contrib <span class="kw">import</span> admin
+<span class="kw">from</span> .models <span class="kw">import</span> Product
 
+<span class="at">@admin</span>.<span class="fn">register</span>(<span class="cls">Product</span>)
+<span class="kw">class</span> <span class="cls">ProductAdmin</span>(<span class="cls">admin.ModelAdmin</span>):
+    <span class="var">list_display</span> = (<span class="str">'name'</span>, <span class="str">'price'</span>, <span class="str">'stock'</span>)
+    <span class="var">search_fields</span> = (<span class="str">'name'</span>,)
+    <span class="var">list_filter</span> = (<span class="str">'category'</span>,)</pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Puissance des Class-Based Views (CBV)</h3>
+        <p>Pour les tâches courantes (lister, afficher, créer), Django propose des classes génériques qui réduisent
+            drastiquement le code.</p>
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Class-Based Views (CBV)</div>
+                <div class="code-head"><span class="dot r"></span>views.py</div>
                 <pre><span class="kw">from</span> django.views.generic <span class="kw">import</span> ListView
 <span class="kw">from</span> .models <span class="kw">import</span> Post
 
 <span class="kw">class</span> <span class="cls">PostListView</span>(<span class="cls">ListView</span>):
     <span class="var">model</span> = <span class="cls">Post</span>
-    <span class="var">template_name</span> = <span class="str">'post_list.html'</span>
-    <span class="var">context_object_name</span> = <span class="str">'posts'</span>
-    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination auto !</span></pre>
+    <span class="var">template_name</span> = <span class="str">'blog/list.html'</span>
+    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination automatique !</span></pre>
+            </div>
+            <div class="info"
+                style="border-left: 4px solid var(--purple); background: rgba(168, 85, 247, 0.1); padding: 15px; border-radius: 4px;">
+                <h4>🚀 Pourquoi choisir Django ?</h4>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li>✅ <strong>Structure stricte</strong> : Idéal pour les grosses équipes.</li>
+                    <li>✅ <strong>Écosystème immense</strong> : Des milliers de "apps" réutilisables.</li>
+                    <li>✅ <strong>Sécurité par défaut</strong> : Moins de risques d'erreurs humaines.</li>
+                    <li>✅ <strong>Migrations intégrées</strong> : Gestion native du schéma DB.</li>
+                </ul>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">4. Django REST Framework (DRF)</h3>
+        <p>Si vous voulez créer des APIs, DRF est le standard absolu pour Django. Il ajoute des sérialiseurs puissants
+            et une interface de test d'API.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>serializers.py</div>
+            <pre><span class="kw">from</span> rest_framework <span class="kw">import</span> serializers
+<span class="kw">from</span> .models <span class="kw">import</span> User
+
+<span class="kw">class</span> <span class="cls">UserSerializer</span>(<span class="cls">serializers.ModelSerializer</span>):
+    <span class="kw">class</span> <span class="cls">Meta</span>:
+        <span class="var">model</span> = <span class="cls">User</span>
+        <span class="var">fields</span> = [<span class="str">'id'</span>, <span class="str">'username'</span>, <span class="str">'email'</span>]</pre>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Concepts Clés & Alternatives</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>Middlewares</h4>
+                    <p>Des composants qui interceptent chaque requête/réponse pour gérer l'auth, la compression, ou le
+                        cache globalement.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Signals</h4>
+                    <p>Permettent à des applications découplées d'être notifiées quand des actions se produisent (ex:
+                        créer un profil après l'inscription).</p>
+                </div>
+            </div>
+            <div class="warning"
+                style="margin-top: 20px; border-left: 4px solid var(--red); background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 4px;">
+                <strong>⚠️ Attention</strong> : Django a une courbe d'apprentissage plus raide que Flask par sa rigidité
+                et sa taille. Il peut sembler "trop lourd" pour de simples microservices ou APIs légères.
+            </div>
+        </details>
+    </div>
+</section>

@@ -1,36 +1,112 @@
-    <section id="s8">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">08</div>
-                <div>
-                    <h2 class="sec-title">Async & Temps Réel</h2>
-                    <p class="sec-sub">WebSockets, AsyncIO</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>📖 WebSockets vs HTTP</summary>
-                <div>
-                    <p>HTTP est "Unidirectionnel" (Client demande -> Serveur répond).</p>
-                    <p><strong>WebSocket</strong> est "Bidirectionnel" et persistant. Le serveur peut pousser des
-                        données au client (Chat, Notifications, Trading).</p>
-                    <p>FastAPI gère nativement les WebSockets grâce à son moteur asynchrone.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>Chat WebSocket (FastAPI)</div>
-                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> WebSocket
-
-<span class="dec">@app.websocket</span>(<span class="str">"/ws"</span>)
-<span class="kw">async def</span> <span class="fn">websocket_endpoint</span>(<span class="var">websocket</span>: <span class="cls">WebSocket</span>):
-    <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">accept</span>()
-    <span class="kw">while True</span>:
-        <span class="c"># Attendre un message du client</span>
-        <span class="var">data</span> = <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">receive_text</span>()
-        
-        <span class="c"># Renvoyer (Echo ou Broadcast)</span>
-        <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">send_text</span>(<span class="str">f"Reçu : </span>{<span class="var">data</span>}<span class="str">"</span>)</pre>
+<section id="s8">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">08</div>
+            <div>
+                <h2 class="sec-title">Async & WebSockets : Le Temps Réel</h2>
+                <p class="sec-sub">Du parallélisme avec AsyncIO à la communication Full-Duplex</p>
             </div>
         </div>
-    </section>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le web moderne ne se limite plus au cycle "Requête / Réponse". Avec l'asynchronisme
+                (<code>asyncio</code>) et les <strong>WebSockets</strong>, Python peut gérer des flux de données en
+                temps réel (chats, dashboards live, jeux) sans bloquer ses ressources systèmes.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. L'Event Loop & asyncio</h3>
+                <p>Au lieu de créer un thread par utilisateur (coûteux), Python utilise une <strong>Boucle
+                        d'Événements</strong>. Quand une tâche attend (ex: lecture DB), le serveur passe instantanément
+                    à la suivante.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    Loop["Event Loop"] --> T1["Tâche 1: I/O Wait"]
+                    Loop --> T2["Tâche 2: Calcul"]
+                    T1 -.->|Pause / yield| Loop
+                    Loop --> T3["Tâche 3: Response"]
+                </div>
+            </div>
+            <div>
+                <h3>2. WebSockets vs HTTP</h3>
+                <p>Alors que l'HTTP ferme la connexion après chaque réponse, le WebSocket maintient un <strong>tunnel
+                        ouvert</strong> et bidirectionnel.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    participant C as Client
+                    participant S as Serveur
+                    C->>S: Upgrade Request (HTTP)
+                    S-->>C: 101 Switching Protocols
+                    Note over C,S: Connexion Persistante (TCP)
+                    C->>S: Data (JSON/Binary)
+                    S->>C: Data (Push temps réel)
+                    C->>S: Data
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Implémentation avec FastAPI</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>websocket_server.py</div>
+            <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, WebSocket
+
+<span class="var">app</span> = <span class="cls">FastAPI</span>()
+
+<span class="dec">@app.websocket</span>(<span class="str">"/ws/{client_id}"</span>)
+<span class="kw">async def</span> <span class="fn">websocket_endpoint</span>(<span class="var">websocket</span>: <span class="cls">WebSocket</span>, <span class="var">client_id</span>: <span class="cls">int</span>):
+    <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">accept</span>()
+    <span class="kw">try</span>:
+        <span class="kw">while True</span>:
+            <span class="var">data</span> = <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">receive_text</span>()
+            <span class="c"># Push de données au client sans qu'il demande</span>
+            <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">send_text</span>(<span class="str">f"Message reçu : </span>{<span class="var">data</span>}<span class="str">"</span>)
+    <span class="kw">except</span> <span class="cls">Exception</span>:
+        <span class="fn">print</span>(<span class="str">"Client déconnecté"</span>)</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Cas d'Usage & Écosystème</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>📡 Broadcasting</h4>
+                <p>Envoyer un message à tous les utilisateurs connectés simultanément (ex: notification système).</p>
+            </div>
+            <div class="ref-card">
+                <h4>⏱️ Basse Latence</h4>
+                <p>Idéal pour le trading ou les collaborations en direct (type Google Docs) où chaque ms compte.</p>
+            </div>
+            <div class="ref-card">
+                <h4>🔌 Alternatives</h4>
+                <p><strong>Socket.io</strong> (couche au-dessus de WS pour la reconnexion auto) ou <strong>Server-Sent
+                        Events (SSE)</strong> pour du push unidirectionnel.</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--blue); background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>⚠️ Note sur le Déploiement</strong>
+            <p>Les WebSockets nécessitent un serveur compatible ASGI (comme <strong>Uvicorn</strong> ou
+                <strong>Daphne</strong>) et une configuration spécifique de Nginx
+                (<code>proxy_set_header Upgrade $http_upgrade;</code>) pour ne pas couper la connexion.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Syntaxe Moderne : async with & await</summary>
+            <div class="code" style="margin-top: 15px;">
+                <div class="code-head"><span class="dot b"></span>HTTP Client Asynchrone (Hittpx)</div>
+                <pre><span class="kw">import</span> httpx
+<span class="kw">import</span> asyncio
+
+<span class="kw">async def</span> <span class="fn">fetch_data</span>():
+    <span class="kw">async with</span> <span class="var">httpx</span>.<span class="cls">AsyncClient</span>() <span class="kw">as</span> <span class="var">client</span>:
+        <span class="var">resp</span> = <span class="kw">await</span> <span class="var">client</span>.<span class="fn">get</span>(<span class="str">"https://api.example.com"</span>)
+        <span class="kw">return</span> <span class="var">resp</span>.<span class="fn">json</span>()
+
+<span class="c"># Lancer plusieurs requêtes en parallèle</span>
+<span class="var">results</span> = <span class="kw">await</span> <span class="var">asyncio</span>.<span class="fn">gather</span>(<span class="fn">fetch_data</span>(), <span class="fn">fetch_data</span>())</pre>
+            </div>
+        </details>
+    </div>
+</section>

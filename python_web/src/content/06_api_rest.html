@@ -1,37 +1,161 @@
-    <section id="s6">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">06</div>
-                <div>
-                    <h2 class="sec-title">Concepts API REST</h2>
-                    <p class="sec-sub">Méthodes, Codes, JSON</p>
-                </div>
+<section id="s6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">API REST : Architectures & Standards</h2>
+                <p class="sec-sub">Concevoir des interfaces robustes, prévisibles et scalables</p>
             </div>
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4>200 OK</h4>
-                    <p>Succès standard.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>201 Created</h4>
-                    <p>Ressource créée.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>401 Unauth</h4>
-                    <p>Token manquant/invalide.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>403 Forbidden</h4>
-                    <p>Droits insuffisants.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>404 Not Found</h4>
-                    <p>Ressource introuvable.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>500 Error</h4>
-                    <p>Crash serveur.</p>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le style architectural <strong>REST</strong> (Representational State Transfer) n'est pas un protocole,
+                mais un ensemble de contraintes. Une API "RESTful" utilise les standards du web (HTTP, URL, JSON) pour
+                manipuler des <strong>ressources</strong> de manière sans état (stateless).</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Les 6 Contraintes REST</h3>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">👤 <strong>Client-Serveur</strong> : Séparation des préoccupations
+                        (UI vs Data).</li>
+                    <li style="margin-bottom: 10px;">☁️ <strong>Stateless</strong> : Chaque requête doit contenir toute
+                        l'info nécessaire.</li>
+                    <li style="margin-bottom: 10px;">💾 <strong>Cacheable</strong> : Les réponses doivent indiquer si
+                        elles sont réutilisables.</li>
+                    <li style="margin-bottom: 10px;">🧱 <strong>Layered System</strong> : Le client ne sait pas s'il
+                        parle au serveur final.</li>
+                    <li style="margin-bottom: 10px;">🌐 <strong>Interface Uniforme</strong> : Utilisation cohérente des
+                        URI et méthodes.</li>
+                    <li style="margin-bottom: 10px;">📜 <strong>Code on Demand</strong> (Optionnel) : Envoi de scripts
+                        exécutables.</li>
+                </ul>
+            </div>
+            <div>
+                <h3>2. Cycle Requête / Réponse</h3>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    sequenceDiagram
+                    participant C as Client
+                    participant S as API REST
+                    C->>S: METHOD /resource (JSON/Headers)
+                    Note over S: Auth -> Validation -> Business Logic
+                    S-->>C: HTTP STATUS CODE + Body (JSON)
                 </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. Méthodes HTTP & Idempotence</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Méthode</th>
+                        <th>Action</th>
+                        <th>Idempotent ?</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>GET</code></td>
+                        <td>🔍 Récupérer</td>
+                        <td>✅ Oui</td>
+                        <td>Récupérer une liste ou un élément (Lecture seule).</td>
+                    </tr>
+                    <tr>
+                        <td><code>POST</code></td>
+                        <td>➕ Créer</td>
+                        <td>❌ Non</td>
+                        <td>Créer une nouvelle ressource (N+1 exécutions = N+1 créations).</td>
+                    </tr>
+                    <tr>
+                        <td><code>PUT</code></td>
+                        <td>🔄 Remplacer</td>
+                        <td>✅ Oui</td>
+                        <td>Remplacer entièrement une ressource existante.</td>
+                    </tr>
+                    <tr>
+                        <td><code>PATCH</code></td>
+                        <td>📝 Modifier</td>
+                        <td>❌ Non</td>
+                        <td>Modification partielle d'une ressource (souvent asynchrone).</td>
+                    </tr>
+                    <tr>
+                        <td><code>DELETE</code></td>
+                        <td>🗑️ Supprimer</td>
+                        <td>✅ Oui</td>
+                        <td>Supprimer une ressource (2 exécutions = même résultat final).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">4. Les Points de Douleur & Alternatives</h3>
+        <div class="grid3">
+            <div class="ref-card" style="border-top: 3px solid var(--blue);">
+                <h4>Over-fetching</h4>
+                <p>REST renvoie souvent trop de données. <strong>GraphQL</strong> permet au client de choisir exactement
+                    ses champs.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--orange);">
+                <h4>Under-fetching</h4>
+                <p> REST nécessite souvent plusieurs appels d'API. <strong>HATEOAS</strong> (liens hypermédias) aide à
+                    la navigation.</p>
+            </div>
+            <div class="ref-card" style="border-top: 3px solid var(--purple);">
+                <h4>Performance</h4>
+                <p>Pour des microservices ultra-rapides, <strong>gRPC</strong> (Protocol Buffers) est souvent plus
+                    efficace que le JSON/REST.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">5. Codes de Statut (Résumé Quick-Ref)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Familles de codes</div>
+                <ul class="ref-list" style="list-style: none; padding: 15px;">
+                    <li>🟢 <strong>2xx (Success)</strong> : 200 (OK), 201 (Created), 204 (No Content).</li>
+                    <li>🟡 <strong>3xx (Redirection)</strong> : 301 (Moved Permanently), 304 (Not Modified).</li>
+                    <li>🟠 <strong>4xx (Client Error)</strong> : 400 (Bad Req), 401 (Unauthorized), 403 (Forbidden), 404
+                        (Not Found).</li>
+                    <li>🔴 <strong>5xx (Server Error)</strong> : 500 (Internal Error), 502 (Bad Gateway), 503 (Service
+                        Unavailable).</li>
+                </ul>
+            </div>
+            <div class="info"
+                style="border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+                <strong>💡 Richardson Maturity Model</strong>
+                <p>Niveau 0 : HTTP pur. Niveau 1 : Ressources (URI). Niveau 2 : Verbes HTTP. Niveau 3 : HATEOAS (Le
+                    Graal du REST).</p>
+            </div>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Bonnes Pratiques JSON</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Exemple JSON:API</div>
+                    <pre>{
+  <span class="str">"data"</span>: {
+    <span class="str">"type"</span>: <span class="str">"articles"</span>,
+    <span class="str">"id"</span>: <span class="str">"1"</span>,
+    <span class="str">"attributes"</span>: { <span class="str">"title"</span>: <span class="str">"REST is Life"</span> },
+    <span class="str">"links"</span>: { <span class="str">"self"</span>: <span class="str">"/articles/1"</span> }
+  }
+}</pre>
+                </div>
+                <div class="ref-card">
+                    <ul class="ref-list">
+                        <li>Utilisez <strong>snake_case</strong> ou <strong>camelCase</strong> de manière cohérente.
+                        </li>
+                        <li>Évitez les tableaux à la racine (sécurité).</li>
+                        <li>Incluez toujours un champ <code>id</code>.</li>
+                        <li>Gérez l'UTF-8 par défaut.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>

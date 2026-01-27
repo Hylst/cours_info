@@ -3,9 +3,14 @@
             <div class="sec-header">
                 <div class="sec-num">01</div>
                 <div>
-                    <h2 class="sec-title">Environnement Pro</h2>
-                    <p class="sec-sub">Virtualenv, Pip, Structure</p>
+                    <h2 class="sec-title">Environnement & Tooling Python Web</h2>
+                    <p class="sec-sub">Isolation, dépendances, workflow d’équipe</p>
                 </div>
+            </div>
+
+            <div class="info">
+                <strong>🧭 Mise en contexte</strong> — Un projet web vit longtemps. Sans isolation et sans versionnage
+                clair des dépendances, les bugs deviennent imprévisibles et la collaboration se fragilise.
             </div>
 
             <details>
@@ -15,11 +20,39 @@
                         conflits de versions.</p>
                     <p>On utilise un <strong>Virtual Environment (venv)</strong>. C'est un dossier local qui contient
                         une copie de l'interpréteur Python et des bibliothèques installées.</p>
+                    <p>On évite ainsi qu'une mise à jour globale casse un autre projet.</p>
                 </div>
             </details>
 
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <h4>venv/</h4>
+                    <p>Environnement isolé local au projet.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>requirements.txt</h4>
+                    <p>Liste figée des dépendances installées.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>pyproject.toml</h4>
+                    <p>Configuration moderne (build, deps, outils).</p>
+                </div>
+                <div class="ref-card">
+                    <h4>.env</h4>
+                    <p>Variables sensibles et configs locales.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>pip cache</h4>
+                    <p>Accélère les installs en CI/CD.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Python version</h4>
+                    <p>La base du projet, à figer clairement.</p>
+                </div>
+            </div>
+
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Setup Projet</div>
+                <div class="code-head"><span class="dot r"></span>Setup Projet (classique)</div>
                 <pre><span class="c"># 1. Créer le dossier projet</span>
 mkdir mon_projet ; cd mon_projet
 
@@ -36,5 +69,103 @@ pip install flask sqlalchemy python-dotenv
 <span class="c"># 5. Figer les versions</span>
 pip freeze > requirements.txt</pre>
             </div>
+
+            <div class="grid2">
+                <div class="ref-card">
+                    <h4>Workflow minimal d’équipe</h4>
+                    <p>Cloner le repo → créer venv → installer deps → lancer l’app → exécuter les tests.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Piège courant</h4>
+                    <p>Oublier d’activer le venv et installer les packages globalement.</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Cycle de vie des dépendances</div>
+                <pre>Dév local
+  │ pip install
+  ▼
+requirements.txt (ou pyproject.toml)
+  │
+  ▼
+CI/CD installe les mêmes versions
+  │
+  ▼
+Production stable</pre>
+            </div>
+
+            <details>
+                <summary>🧪 Nouveaux concepts clés</summary>
+                <div>
+                    <p><strong>Lockfile</strong> : fige exactement les versions pour un build reproductible.</p>
+                    <p><strong>Build backend</strong> : manière de compiler/packager une lib (PEP 517).</p>
+                    <p><strong>12-factor config</strong> : séparer la config du code via variables d’env.</p>
+                    <div class="tip">
+                        <strong>Astuce</strong> — Évitez les dépendances non versionnées pour prévenir les surprises.
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>🔁 Alternatives d’outillage</summary>
+                <div class="ref-grid">
+                    <div class="ref-card">
+                        <h4>virtualenv</h4>
+                        <p>Plus ancien que venv, encore très utilisé.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Pipenv</h4>
+                        <p>Environnements + lockfile, orienté simplicité.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Poetry</h4>
+                        <p>Gestion moderne des deps via pyproject.toml.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>uv</h4>
+                        <p>Gestionnaire ultra rapide, workflow moderne.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>conda</h4>
+                        <p>Très utilisé en data science, plus lourd.</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>pip-tools</h4>
+                        <p>Compile un requirements.txt verrouillé.</p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="warning">
+                <strong>⚠️ Sécurité</strong> — Ne stockez jamais de secrets dans le code. Utilisez des variables
+                d’environnement et un .env local ignoré par Git.
+            </div>
+
+            <details>
+                <summary>✅ Checklist “projet prêt à partager”</summary>
+                <div>
+                    <p>— Version Python précisée.</p>
+                    <p>— Dépendances figées (requirements ou lockfile).</p>
+                    <p>— .env.example fourni.</p>
+                    <p>— Commandes de lancement documentées.</p>
+                    <p>— Tests basiques exécutables.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>🎓 Mini-atelier guidé</summary>
+                <div>
+                    <p>Objectif : créer un squelette web propre en 10 minutes.</p>
+                    <p><strong>Étape 1</strong> — Créez un venv et installez Flask.</p>
+                    <p><strong>Étape 2</strong> — Lancez une route “/health” qui renvoie “OK”.</p>
+                    <p><strong>Étape 3</strong> — Figez vos dépendances et partagez le projet.</p>
+                    <div class="info">
+                        <strong>Question</strong> — Si un collègue clone le repo, quelles étapes doit-il exécuter pour
+                        obtenir le même résultat ?
+                    </div>
+                </div>
+            </details>
+
         </div>
     </section>

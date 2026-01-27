@@ -1,56 +1,127 @@
-    <section id="s5">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">05</div>
-                <div>
-                    <h2 class="sec-title">FastAPI</h2>
-                    <p class="sec-sub">APIs Modernes & Asynchrones</p>
+<section id="s5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">FastAPI : La Performance Moderne</h2>
+                <p class="sec-sub">Framework ASGI ultra-rapide basé sur les types Python 3.10+</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>FastAPI est le framework qui a révolutionné le backend Python récent. Il repose sur deux piliers :
+                <strong>Starlette</strong> (pour la partie web asynchrone) et <strong>Pydantic</strong> (pour la
+                validation de données ultra-rapide). Sa signature ? L'utilisation massive des <code>Type Hints</code> de
+                Python pour générer automatiquement de la documentation et valider les requêtes.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. ASGI vs WSGI : L'Asynchronisme</h3>
+                <p>Contrairement à Flask (WSGI), FastAPI est <strong>ASGI</strong> (Asynchronous Server Gateway
+                    Interface). Il peut gérer des milliers de connexions simultanément sans bloquer le serveur.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    subgraph "WSGI (Synchrone)"
+                    W1[Req 1] --> S1[Occupé]
+                    W2[Req 2] --> S1
+                    end
+                    subgraph "ASGI (Asynchrone)"
+                    A1[Req 1] --> EventLoop
+                    A2[Req 2] --> EventLoop
+                    EventLoop --> S2[Gère tout en parallèle]
+                    end
                 </div>
             </div>
-
-            <details>
-                <summary>📖 Comprendre FastAPI avancé</summary>
-                <div>
-                    <p>FastAPI repose sur Pydantic (validation de données) et Starlette (serveur asynchrone).</p>
-                    <p>La <strong>Dependency Injection</strong> ("Depends") est un concept clé pour l'auth et la
-                        connexion DB.</p>
-                </div>
-            </details>
-
-            <div class="grid2">
+            <div>
+                <h3>2. Validation & Pydantic</h3>
+                <p>Fini les erreurs de type <code>KeyError</code>. FastAPI convertit le JSON entrant en vrais objets
+                    Python typés.</p>
                 <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Route typée & Validée</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, Body
-<span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, EmailStr
+                    <div class="code-head"><span class="dot g"></span>schemas.py</div>
+                    <pre><span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, Field
 
-<span class="var">app</span> = <span class="cls">FastAPI</span>()
+<span class="kw">class</span> <span class="cls">Item</span>(<span class="cls">BaseModel</span>):
+    <span class="var">name</span>: <span class="cls">str</span>
+    <span class="var">price</span>: <span class="cls">float</span> = <span class="fn">Field</span>(gt=<span class="num">0</span>, description=<span class="str">"Doit être positif"</span>)
+    <span class="var">is_offer</span>: <span class="cls">bool</span> | <span class="kw">None</span> = <span class="kw">None</span>
 
-<span class="kw">class</span> <span class="cls">UserCreate</span>(<span class="cls">BaseModel</span>):
-    <span class="var">username</span>: <span class="cls">str</span>
-    <span class="var">email</span>: <span class="cls">EmailStr</span>
-    <span class="var">age</span>: <span class="cls">int</span> | <span class="kw">None</span> = <span class="kw">None</span>
-
-<span class="dec">@app.post</span>(<span class="str">"/users/"</span>)
-<span class="kw">async def</span> <span class="fn">create_user</span>(<span class="var">user</span>: <span class="cls">UserCreate</span>):
-    <span class="c"># Auto-validation JSON -> Objet Python</span>
-    <span class="kw">return</span> {<span class="str">"message"</span>: <span class="str">"User created"</span>}</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span>Dependency Injection</div>
-                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, HTTPException
-
-<span class="kw">async def</span> <span class="fn">verify_token</span>(<span class="var">token</span>: <span class="cls">str</span>):
-    <span class="kw">if</span> <span class="var">token</span> != <span class="str">"secret"</span>:
-        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
-    <span class="kw">return</span> <span class="str">"admin"</span>
-
-<span class="dec">@app.get</span>(<span class="str">"/admin"</span>)
-<span class="kw">async def</span> <span class="fn">admin_panel</span>(
-    <span class="var">user</span>: <span class="cls">str</span> = <span class="fn">Depends</span>(<span class="fn">verify_token</span>)
-):
-    <span class="kw">return</span> {<span class="str">"user"</span>: <span class="var">user</span>}</pre>
+<span class="dec">@app.post</span>(<span class="str">"/items/"</span>)
+<span class="kw">async def</span> <span class="fn">create_item</span>(<span class="var">item</span>: <span class="cls">Item</span>):
+    <span class="kw">return</span> <span class="var">item</span>  <span class="c"># Auto-sérialisation JSON</span></pre>
                 </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. Injection de Dépendances (Depends)</h3>
+        <p>FastAPI possède un système puissant pour gérer les pré-requis (Auth, DB, Logging) de manière modulaire.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>main.py</div>
+            <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, Header
+
+<span class="kw">async def</span> <span class="fn">get_token</span>(<span class="var">x_token</span>: <span class="cls">str</span> = <span class="fn">Header</span>()):
+    <span class="kw">if</span> <span class="var">x_token</span> != <span class="str">"fake-secret"</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">400</span>)
+    <span class="kw">return</span> <span class="var">x_token</span>
+
+<span class="dec">@app.get</span>(<span class="str">"/secure-data/"</span>)
+<span class="kw">async def</span> <span class="fn">read_data</span>(<span class="var">token</span>: <span class="cls">str</span> = <span class="fn">Depends</span>(<span class="fn">get_token</span>)):
+    <span class="kw">return</span> {<span class="str">"auth"</span>: <span class="kw">True</span>}</pre>
+        </div>
+
+        <h3 style="margin-top:40px">4. Auto-Documentation Magique</h3>
+        <p>Sans aucun code supplémentaire, FastAPI génère deux documentations interactives complètes :</p>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Swagger UI (/docs)</h4>
+                <p>Permet de tester vos APIs directement depuis le navigateur avec un bouton "Try it out".</p>
+            </div>
+            <div class="ref-card">
+                <h4>ReDoc (/redoc)</h4>
+                <p>Une version plus structurée et design, idéale pour la documentation technique partagée avec d'autres
+                    équipes.</p>
+            </div>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Pourquoi l'utiliser ?</strong> Si vous construisez une API à haute performance (Machine Learning,
+            IoT, Real-time), FastAPI est le choix numéro 1. Pour les sites avec beaucoup de templates HTML côté serveur,
+            Flask ou Django restent préférables.
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Concepts Avancés</summary>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fonctionnalité</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Background Tasks</code></td>
+                            <td>Lancer des fonctions après avoir renvoyé une réponse (ex: envoi d'email).</td>
+                        </tr>
+                        <tr>
+                            <td><code>FastAPI Lifespan</code></td>
+                            <td>Gérer les événements de démarrage et d'extinction (connexions DB).</td>
+                        </tr>
+                        <tr>
+                            <td><code>Middleware</code></td>
+                            <td>Gérer les CORS, Gzip, ou ajouter des headers personnalisés.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Path & Query Params</code></td>
+                            <td>Validation stricte des paramètres d'URL via <code>Query</code> et <code>Path</code>.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </div>
+</section>

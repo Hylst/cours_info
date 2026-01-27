@@ -1,20 +1,121 @@
-    <section id="s11">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">11</div>
-                <div>
-                    <h2 class="sec-title">Production</h2>
-                    <p class="sec-sub">Gunicorn, Uvicorn</p>
-                </div>
-            </div>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>Terminal</div>
-                <pre><span class="c"># Lancer Flask/Django avec Gunicorn (WSGI)</span>
-gunicorn -w 4 src.app:app
-
-<span class="c"># Lancer FastAPI avec Uvicorn (ASGI)</span>
-uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
+<section id="s11">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">11</div>
+            <div>
+                <h2 class="sec-title">Serveurs App : WSGI, ASGI & Production</h2>
+                <p class="sec-sub">Passer du serveur de développement à une architecture robuste</p>
             </div>
         </div>
-    </section>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>Le serveur fourni par <code>flask run</code> ou <code>manage.py runserver</code> n'est
+                <strong>JAMAIS</strong> destiné à la production. Il est lent, peu sécurisé et monothread. En production,
+                on utilise un <strong>Serveur d'Application</strong> et un <strong>Reverse Proxy</strong>.
+            </p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. L'Architecture Standard</h3>
+                <p>En production, on ne branche jamais l'application directement sur Internet. On utilise Nginx comme
+                    "bouclier" et Gunicorn/Uvicorn comme moteur de calcul.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph LR
+                    U["🌍 Utilisateur"] -->|Port 80/443| N["🛡️ Nginx / Caddy"]
+                    N -->|Proxy Pass| S["⚙️ Gunicorn / Uvicorn"]
+                    S -->|WSGI / ASGI| A["🐍 App Python"]
+                </div>
+            </div>
+            <div>
+                <h3>2. Pourquoi Nginx ?</h3>
+                <ul class="ref-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">⚡ <strong>Fichiers Statiques</strong> : Nginx sert les
+                        images/CSS/JS bien plus vite que Python.</li>
+                    <li style="margin-bottom: 10px;">🔒 <strong>SSL / TLS</strong> : C'est là qu'on gère les certificats
+                        (Certbot/LetsEncrypt).</li>
+                    <li style="margin-bottom: 10px;">🧼 <strong>Buffering</strong> : Protège Python des clients lents
+                        qui "bloquent" les connexions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">3. Commandes de Production</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Gunicorn (WSGI - Flask/Django)</div>
+                <pre><span class="c"># -w : Nombre de workers (2 * CPU + 1)</span>
+<span class="c"># -b : Bind sur une adresse</span>
+gunicorn -w <span class="num">4</span> -b <span class="num">0.0.0.0</span>:<span class="num">8000</span> app:app</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Uvicorn (ASGI - FastAPI)</div>
+                <pre><span class="kw">uvicorn</span> main:app \
+  --host <span class="num">0.0.0.0</span> \
+  --port <span class="num">8000</span> \
+  --workers <span class="num">4</span></pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Gestion des Workers</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type de Worker</th>
+                        <th>Framework</th>
+                        <th>Usage Idéal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Sync</code> (Default)</td>
+                        <td>Django / Flask</td>
+                        <td>Requêtes rapides, calculs CPU standards.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Gevent / Eventlet</code></td>
+                        <td>Flask</td>
+                        <td>Requêtes avec beaucoup d'attente I/O sans <code>async</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>UvicornWorker</code></td>
+                        <td>FastAPI</td>
+                        <td>Tout ce qui utilise <code>async/await</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--primary); background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: WhiteNoise (Django)</strong>
+            <p>Pour les déploiements Cloud (Heroku, Docker) où Nginx n'est pas toujours disponible,
+                <strong>WhiteNoise</strong> permet à votre application Python de servir elle-même ses fichiers statiques
+                avec une efficacité proche de Nginx.
+            </p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Configuration Nginx simplifiée</summary>
+            <div class="code" style="margin-top: 15px;">
+                <div class="code-head"><span class="dot b"></span>/etc/nginx/sites-available/myapp</div>
+                <pre>server {
+    listen <span class="num">80</span>;
+    server_name myapp.com;
+
+    location /static/ {
+        alias /path/to/static/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</pre>
+            </div>
+        </details>
+    </div>
+</section>

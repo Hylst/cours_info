@@ -1,32 +1,119 @@
-    <section id="s3">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">SQLAlchemy</h2>
-                    <p class="sec-sub">Interaction Base de Données (ORM)</p>
+<section id="s3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">SQLAlchemy : ORM & Maîtrise des Données</h2>
+                <p class="sec-sub">Le standard industriel pour la persistance en Python</p>
+            </div>
+        </div>
+
+        <div class="intro-box"
+            style="margin-bottom: 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <p>SQLAlchemy n'est pas qu'un simple ORM (Object-Relational Mapper) ; c'est une boîte à outils complète qui
+                sépare l'<strong>Abstraction SQL</strong> de la <strong>Gestion des Objets</strong>. Il permet de
+                manipuler vos bases de données comme des objets Python tout en conservant la puissance du SQL brut si
+                nécessaire.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. Le Concept de "Session"</h3>
+                <p>La <code>Session</code> agit comme une <strong>Unité de Travail</strong> (Unit of Work). Elle suit
+                    tous les changements apportés à vos objets avant de les synchroniser avec la base.</p>
+                <div class="mermaid" style="background: var(--bg2); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    graph TD
+                    A[Objets Python] -->|add / delete| B[Session / Unit of Work]
+                    B -->|flush| C{Tampon de Base}
+                    C -->|commit| D[(Base de Données)]
+                    D -->|query| B
+                    B -->|refresh| A
                 </div>
             </div>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span>models.py</div>
-                <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+            <div>
+                <h3>2. Définition d'un Modèle Pro</h3>
+                <p>Un modèle bien défini utilise des types précis et des contraintes pour garantir l'intégrité des
+                    données.</p>
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>models.py</div>
+                    <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
 
 <span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
 
-<span class="kw">class</span> <span class="cls">User</span>(<span class="var">db</span>.<span class="cls">Model</span>):
+<span class="kw">class</span> <span class="cls">Post</span>(<span class="var">db</span>.<span class="cls">Model</span>):
     <span class="var">id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, primary_key=<span class="kw">True</span>)
-    <span class="var">username</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">80</span>), unique=<span class="kw">True</span>)
-    <span class="var">email</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">120</span>), unique=<span class="kw">True</span>)
-
-    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="var">self</span>):
-        <span class="kw">return</span> <span class="str">f'&lt;User </span>{<span class="var">self</span>.<span class="prop">username</span>}<span class="str">&gt;'</span>
-
-<span class="c"># Utilisation</span>
-<span class="var">new_user</span> = <span class="cls">User</span>(username=<span class="str">"admin"</span>, email=<span class="str">"test@test.com"</span>)
-<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">new_user</span>)
-<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
-<span class="var">user</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">"admin"</span>).<span class="fn">first</span>()</pre>
+    <span class="var">title</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">100</span>), nullable=<span class="kw">False</span>)
+    <span class="var">content</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Text</span>, nullable=<span class="kw">False</span>)
+    <span class="var">date</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">DateTime</span>, default=<span class="var">datetime</span>.<span class="var">utcnow</span>)
+    
+    <span class="c"># Relation Many-to-One</span>
+    <span class="var">user_id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, <span class="var">db</span>.<span class="fn">ForeignKey</span>(<span class="str">'user.id'</span>))</pre>
+                </div>
             </div>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">3. Relations & Chargement (Loading)</h3>
+        <div class="grid3">
+            <div class="ref-card">
+                <h4>One-to-Many</h4>
+                <p>Un utilisateur a plusieurs articles. Utilisation de <code>db.relationship()</code> pour naviguer
+                    facilement entre les objets.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Eager Loading</h4>
+                <p><code>joinedload()</code> permet de récupérer les données liées en une seule requête SQL (évite le
+                    problème N+1).</p>
+            </div>
+            <div class="ref-card">
+                <h4>Lazy Loading</h4>
+                <p>Par défaut, SQLAlchemy ne charge les relations que lorsqu'on y accède, économisant de la mémoire sur
+                    les objets simples.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">4. Le Workflow CRUD</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Manipulations courantes</div>
+            <pre><span class="c"># CREATE</span>
+<span class="var">user</span> = <span class="cls">User</span>(username=<span class="str">'alice'</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+
+<span class="c"># READ</span>
+<span class="var">users</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">all</span>()
+<span class="var">bob</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">'bob'</span>).<span class="fn">first</span>()
+
+<span class="c"># UPDATE</span>
+<span class="var">bob</span>.<span class="var">email</span> = <span class="str">'bob@new.com'</span>
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+
+<span class="c"># DELETE</span>
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">delete</span>(<span class="var">user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()</pre>
+        </div>
+
+        <div class="info"
+            style="margin-top: 30px; border-left: 4px solid var(--blue); background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 4px;">
+            <strong>💡 Tip: Alembic & Migrations</strong>
+            <p>En production, on n'utilise jamais <code>db.create_all()</code>. On utilise <strong>Alembic</strong> (via
+                Flask-Migrate) pour versionner les changements de schéma de la base de données.</p>
+        </div>
+
+        <details style="margin-top: 30px;">
+            <summary>➕ Alternatives & Évolutions</summary>
+            <div class="grid2" style="margin-top: 15px;">
+                <div class="ref-card">
+                    <h4>SQLModel</h4>
+                    <p>Une nouvelle lib basée sur SQLAlchemy et Pydantic, idéale pour FastAPI car elle fusionne modèles
+                        DB et schémas de validation.</p>
+                </div>
+                <div class="ref-card">
+                    <h4>Peewee</h4>
+                    <p>Un ORM beaucoup plus léger et simple, parfait pour de petits projets ou scripts où SQLAlchemy
+                        serait surdimensionné.</p>
+                </div>
+            </div>
+        </details>
+    </div>
+</section>

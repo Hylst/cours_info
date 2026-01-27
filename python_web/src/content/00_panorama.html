@@ -1,61 +1,61 @@
-    <section id="s0">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">00</div>
-                <div>
-                    <h2 class="sec-title">Le Python dans le Web</h2>
-                    <p class="sec-sub">Mise en situation et architectures</p>
-                </div>
+<section id="s0">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">00</div>
+            <div>
+                <h2 class="sec-title">Le Python dans le Web</h2>
+                <p class="sec-sub">Mise en situation et architectures</p>
             </div>
+        </div>
 
-            <details>
-                <summary>📖 Comprendre le rôle de Python sur le Web</summary>
-                <div>
-                    <p>Python n'est pas exécuté nativement par les navigateurs (contrairement à JavaScript). Son rôle se
-                        situe côté <strong>Serveur (Back-end)</strong>.</p>
-                    <p>Il reçoit les requêtes HTTP, traite la logique métier, interagit avec la base de données, et
-                        renvoie une réponse (HTML ou JSON).</p>
-                    <p>Pour communiquer avec les serveurs web (comme Nginx ou Apache), Python utilise des standards :
-                        <strong>WSGI</strong> (synchrone, classique) ou <strong>ASGI</strong> (asynchrone, moderne).
-                    </p>
-                </div>
-            </details>
-
-            <div class="info">
-                <strong>🧭 Idée clé</strong> — Le navigateur gère l'interface, Python gère la logique, les données et la
-                sécurité. Le dialogue se fait par HTTP.
+        <details>
+            <summary>📖 Comprendre le rôle de Python sur le Web</summary>
+            <div>
+                <p>Python n'est pas exécuté nativement par les navigateurs (contrairement à JavaScript). Son rôle se
+                    situe côté <strong>Serveur (Back-end)</strong>.</p>
+                <p>Il reçoit les requêtes HTTP, traite la logique métier, interagit avec la base de données, et
+                    renvoie une réponse (HTML ou JSON).</p>
+                <p>Pour communiquer avec les serveurs web (comme Nginx ou Apache), Python utilise des standards :
+                    <strong>WSGI</strong> (synchrone, classique) ou <strong>ASGI</strong> (asynchrone, moderne).
+                </p>
             </div>
+        </details>
 
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4>Rôle principal</h4>
-                    <p>Recevoir une requête, exécuter une logique métier, répondre en HTML ou JSON.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>Entrées</h4>
-                    <p>URL, paramètres, formulaires, cookies, headers, payload JSON.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>Sorties</h4>
-                    <p>Page HTML, JSON d'API, redirection, fichier téléchargé.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>État</h4>
-                    <p>Sessions, tokens JWT, cache, base de données.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>Contraintes</h4>
-                    <p>Latence, sécurité, montée en charge, observabilité.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>Objectif</h4>
-                    <p>API fiable, performante, maintenable et documentée.</p>
-                </div>
+        <div class="info">
+            <strong>🧭 Idée clé</strong> — Le navigateur gère l'interface, Python gère la logique, les données et la
+            sécurité. Le dialogue se fait par HTTP.
+        </div>
+
+        <div class="ref-grid">
+            <div class="ref-card">
+                <h4>Rôle principal</h4>
+                <p>Recevoir une requête, exécuter une logique métier, répondre en HTML ou JSON.</p>
             </div>
+            <div class="ref-card">
+                <h4>Entrées</h4>
+                <p>URL, paramètres, formulaires, cookies, headers, payload JSON.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Sorties</h4>
+                <p>Page HTML, JSON d'API, redirection, fichier téléchargé.</p>
+            </div>
+            <div class="ref-card">
+                <h4>État</h4>
+                <p>Sessions, tokens JWT, cache, base de données.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Contraintes</h4>
+                <p>Latence, sécurité, montée en charge, observabilité.</p>
+            </div>
+            <div class="ref-card">
+                <h4>Objectif</h4>
+                <p>API fiable, performante, maintenable et documentée.</p>
+            </div>
+        </div>
 
-            <div class="code">
-                <div class="code-head"><span class="dot g"></span>Flux d'une requête Web (vue simplifiée)</div>
-                <pre>Navigateur
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Flux d'une requête Web (vue simplifiée)</div>
+            <pre>Navigateur
    │ HTTP (GET/POST)
    ▼
 Serveur Web (Nginx/Apache)
@@ -71,95 +71,97 @@ Base de données / Cache / Services externes
    │
    ▼
 Réponse (HTML/JSON)</pre>
-            </div>
-
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Rendu serveur (SSR)</h4>
-                    <p>Python compose la page HTML et renvoie une vue prête à afficher. Idéal pour les sites orientés
-                        contenu et SEO.</p>
-                </div>
-                <div class="ref-card">
-                    <h4>API JSON + Front</h4>
-                    <p>Python expose des endpoints, et un front (React/Vue/Svelte) consomme l'API. Idéal pour les apps
-                        riches et interactives.</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>⚙️ WSGI vs ASGI en pratique</summary>
-                <div>
-                    <p><strong>WSGI</strong> est le standard historique pour des apps synchrones. Simple, robuste, très
-                        répandu en production (Gunicorn + Flask/Django).</p>
-                    <p><strong>ASGI</strong> étend WSGI pour l'asynchrone, les WebSockets et les tâches en streaming.
-                        Indispensable pour le temps réel (Uvicorn + FastAPI/Django async).</p>
-                    <div class="tip">
-                        <strong>Conseil</strong> — Si votre application n'a pas de temps réel, WSGI reste un choix
-                        pragmatique. Pour chat, live, notifications, privilégiez ASGI.
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>🧱 Architecture type d'une app Python Web</summary>
-                <div>
-                    <p>Une app moderne est découpée en couches pour rester lisible et testable :</p>
-                    <p><strong>Routes</strong> → <strong>Services</strong> → <strong>Accès données</strong> → <strong>Infrastructure</strong>.</p>
-                    <p>Ce découpage simplifie la maintenance, évite le code spaghetti et facilite la montée en charge.
-                    </p>
-                    <div class="info">
-                        <strong>Astuce</strong> — Une route doit orchestrer, pas porter toute la logique métier.
-                    </div>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="ref-card">
-                    <h4>Questions à se poser</h4>
-                    <p>Combien d'utilisateurs ? Quels temps de réponse ? Temps réel ? API publique ? Équipe ?</p>
-                </div>
-                <div class="ref-card">
-                    <h4>Choisir un style</h4>
-                    <p>Monolithe simple au début, micro-services quand les besoins et l'équipe grandissent.</p>
-                </div>
-            </div>
-
-            <div class="warning">
-                <strong>⚠️ À ne pas confondre</strong> — Nginx/Apache servent les fichiers et distribuent les requêtes.
-                Gunicorn/Uvicorn exécutent le code Python.
-            </div>
-
-            <div class="grid3" style="margin-top:20px;">
-                <div class="framework-card">
-                    <h4>Flask</h4>
-                    <span class="badge flask">Micro-framework</span>
-                    <p>Minimaliste, flexible. Vous choisissez vos outils. Idéal pour débuter ou pour des micro-services.
-                    </p>
-                </div>
-                <div class="framework-card">
-                    <h4>Django</h4>
-                    <span class="badge django">Batteries included</span>
-                    <p>Tout inclus (ORM, Admin, Auth). Robuste et sécurisé. Idéal pour des projets complexes rapides.
-                    </p>
-                </div>
-                <div class="framework-card">
-                    <h4>FastAPI</h4>
-                    <span class="badge fastapi">Haute performance</span>
-                    <p>Moderne, asynchrone, typé. Génère automatiquement la doc API. Le nouveau standard.</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>🎯 Comment choisir rapidement ?</summary>
-                <div>
-                    <p><strong>Flask</strong> : projet simple, liberté totale, équipe réduite.</p>
-                    <p><strong>Django</strong> : besoin d'un back-office, d'authentification et d'un ORM intégré.</p>
-                    <p><strong>FastAPI</strong> : API moderne, performance, schémas typés et docs automatiques.</p>
-                    <div class="tip">
-                        <strong>Raccourci</strong> — Flask pour apprendre, Django pour produire vite, FastAPI pour
-                        industrialiser une API.
-                    </div>
-                </div>
-            </details>
         </div>
-    </section>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Rendu serveur (SSR)</h4>
+                <p>Python compose la page HTML et renvoie une vue prête à afficher. Idéal pour les sites orientés
+                    contenu et SEO.</p>
+            </div>
+            <div class="ref-card">
+                <h4>API JSON + Front</h4>
+                <p>Python expose des endpoints, et un front (React/Vue/Svelte) consomme l'API. Idéal pour les apps
+                    riches et interactives.</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>⚙️ WSGI vs ASGI en pratique</summary>
+            <div>
+                <p><strong>WSGI</strong> est le standard historique pour des apps synchrones. Simple, robuste, très
+                    répandu en production (Gunicorn + Flask/Django).</p>
+                <p><strong>ASGI</strong> étend WSGI pour l'asynchrone, les WebSockets et les tâches en streaming.
+                    Indispensable pour le temps réel (Uvicorn + FastAPI/Django async).</p>
+                <div class="tip">
+                    <strong>Conseil</strong> — Si votre application n'a pas de temps réel, WSGI reste un choix
+                    pragmatique. Pour chat, live, notifications, privilégiez ASGI.
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>🧱 Architecture type d'une app Python Web</summary>
+            <div>
+                <p>Une app moderne est découpée en couches pour rester lisible et testable :</p>
+                <p><strong>Routes</strong> → <strong>Services</strong> → <strong>Accès données</strong> →
+                    <strong>Infrastructure</strong>.</p>
+                <p>Ce découpage simplifie la maintenance, évite le code spaghetti et facilite la montée en charge.
+                </p>
+                <div class="info">
+                    <strong>Astuce</strong> — Une route doit orchestrer, pas porter toute la logique métier.
+                </div>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Questions à se poser</h4>
+                <p>Combien d'utilisateurs ? Quels temps de réponse ? Temps réel ? API publique ? Équipe ?</p>
+            </div>
+            <div class="ref-card">
+                <h4>Choisir un style</h4>
+                <p>Monolithe simple au début, micro-services quand les besoins et l'équipe grandissent.</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ À ne pas confondre</strong> — Nginx/Apache servent les fichiers et distribuent les requêtes.
+            Gunicorn/Uvicorn exécutent le code Python.
+        </div>
+
+        <div class="grid3" style="margin-top:20px;">
+            <div class="framework-card">
+                <h4>Flask</h4>
+                <span class="badge flask">Micro-framework</span>
+                <p>Minimaliste, flexible. Vous choisissez vos outils. Idéal pour débuter ou pour des micro-services.
+                </p>
+            </div>
+            <div class="framework-card">
+                <h4>Django</h4>
+                <span class="badge django">Batteries included</span>
+                <p>Tout inclus (ORM, Admin, Auth). Robuste et sécurisé. Idéal pour des projets complexes rapides.
+                </p>
+            </div>
+            <div class="framework-card">
+                <h4>FastAPI</h4>
+                <span class="badge fastapi">Haute performance</span>
+                <p>Moderne, asynchrone, typé. Génère automatiquement la doc API. Le nouveau standard.</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>🎯 Testez vos connaissances</summary>
+            <div class="ref-card"
+                style="margin-top:20px; border: 2px solid var(--accent-green); background: rgba(16, 185, 129, 0.05); text-align:center; padding: 30px;">
+                <h3>Prêt pour le défi ?</h3>
+                <p>Mesurez votre niveau sur l'ensemble de l'écosystème Python Web (Flask, Django, FastAPI, Docker,
+                    etc.).</p>
+                <a href="#quiz-section" class="quiz-btn primary"
+                    style="text-decoration:none; display:inline-block; margin-top:15px">
+                    🚀 Lancer le Quiz Global
+                </a>
+            </div>
+        </details>
+    </div>
+</section>

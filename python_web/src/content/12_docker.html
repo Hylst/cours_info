@@ -1,0 +1,24 @@
+    <section id="s12">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Dockerisation</h2>
+                    <p class="sec-sub">Containeriser son app Python</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Dockerfile</div>
+                <pre><span class="kw">FROM</span> python:3.10-slim
+<span class="kw">WORKDIR</span> /app
+
+<span class="c"># Optimisation cache: Copier requirements d'abord</span>
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
+
+<span class="kw">COPY</span> . .
+<span class="kw">CMD</span> ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]</pre>
+            </div>
+        </div>
+    </section>

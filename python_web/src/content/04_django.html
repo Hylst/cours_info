@@ -1,0 +1,23 @@
+    <section id="s4">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">04</div>
+                <div>
+                    <h2 class="sec-title">Django</h2>
+                    <p class="sec-sub">Le Framework "Batteries Included"</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Class-Based Views (CBV)</div>
+                <pre><span class="kw">from</span> django.views.generic <span class="kw">import</span> ListView
+<span class="kw">from</span> .models <span class="kw">import</span> Post
+
+<span class="kw">class</span> <span class="cls">PostListView</span>(<span class="cls">ListView</span>):
+    <span class="var">model</span> = <span class="cls">Post</span>
+    <span class="var">template_name</span> = <span class="str">'post_list.html'</span>
+    <span class="var">context_object_name</span> = <span class="str">'posts'</span>
+    <span class="var">paginate_by</span> = <span class="num">10</span>  <span class="c"># Pagination auto !</span></pre>
+            </div>
+        </div>
+    </section>

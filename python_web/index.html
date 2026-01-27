@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +12,12 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#10b981">
     <link rel="canonical" href="index.html">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Mémo Python Web - API & Backend">
     <meta property="og:description"
         content="Guide complet Python pour le Web : Flask, Django, FastAPI, Sécurité, Async, Docker.">
     <meta property="og:url" content="https://hylst.fr/cours/docker/python_web/index.html">
     <meta property="og:locale" content="fr_FR">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mémo Python Web - API & Backend">
     <meta name="twitter:description"
@@ -32,10 +27,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
-
 <body>
-
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -59,18 +53,16 @@
         </div>
     </section>
 
-    <!-- INTRO GENERAL -->
-    <div class="intro-box"
-        style="background:var(--card-bg); border-bottom:1px solid var(--border-color); padding:30px 0;">
+    <div class="intro-box">
         <div class="container">
-            <h3 style="margin-top:0; color:var(--text-color)">Pourquoi Python pour le Web ?</h3>
-            <p style="color:#c9d1d9; max-width:800px;">
+            <h3>Pourquoi Python pour le Web ?</h3>
+            <p class="intro-lead">
                 Si JavaScript règne sur le Frontend, Python est le roi du Backend moderne, notamment grâce à l'essor de
                 l'IA.
                 Des géants comme <strong>Instagram, Spotify, Netflix et Uber</strong> utilisent Python pour gérer des
                 millions de requêtes.
             </p>
-            <p style="color:#8b949e; font-size:0.95rem; margin-top:10px;">
+            <p class="intro-sub">
                 Avec l'arrivée de l'asynchrone (FastAPI) et la maturité de Django, Python offre l'équilibre parfait
                 entre
                 rapidité de développement et performance à l'échelle.
@@ -99,7 +91,6 @@
         </div>
     </div>
 
-    <!-- S0: PANORAMA -->
     <section id="s0">
         <div class="container">
             <div class="sec-header">
@@ -145,7 +136,6 @@
         </div>
     </section>
 
-    <!-- S1: ENVIRONNEMENT -->
     <section id="s1">
         <div class="container">
             <div class="sec-header">
@@ -187,7 +177,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S2: FLASK -->
     <section id="s2">
         <div class="container">
             <div class="sec-header">
@@ -251,7 +240,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S3: ORM -->
     <section id="s3">
         <div class="container">
             <div class="sec-header">
@@ -285,7 +273,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S4: DJANGO -->
     <section id="s4">
         <div class="container">
             <div class="sec-header">
@@ -310,7 +297,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S5: FASTAPI -->
     <section id="s5">
         <div class="container">
             <div class="sec-header">
@@ -368,7 +354,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S6: API REST (Concepts) -->
     <section id="s6">
         <div class="container">
             <div class="sec-header">
@@ -407,7 +392,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S7: SECURITÉ (NEW) -->
     <section id="s7">
         <div class="container">
             <div class="sec-header">
@@ -465,7 +449,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S8: ASYNC & WEBSOCKETS (NEW) -->
     <section id="s8">
         <div class="container">
             <div class="sec-header">
@@ -503,7 +486,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S9: BACKGROUND TASKS (NEW) -->
     <section id="s9">
         <div class="container">
             <div class="sec-header">
@@ -558,7 +540,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S10: TESTING (NEW) -->
     <section id="s10">
         <div class="container">
             <div class="sec-header">
@@ -592,7 +573,6 @@ pip freeze > requirements.txt</pre>
         </div>
     </section>
 
-    <!-- S11: SERVEURS APP -->
     <section id="s11">
         <div class="container">
             <div class="sec-header">
@@ -614,7 +594,6 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
         </div>
     </section>
 
-    <!-- S12: DOCKER -->
     <section id="s12">
         <div class="container">
             <div class="sec-header">
@@ -640,7 +619,6 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
         </div>
     </section>
 
-    <!-- S13: REFERENCE -->
     <section id="s13">
         <div class="container">
             <div class="sec-header">
@@ -699,28 +677,12 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
         </div>
     </section>
 
-    <!-- SECTION QUIZ -->
     <section id="quiz-section" class="quiz-container">
         <div class="container">
             <h2>Testez vos connaissances</h2>
             <div id="quiz-app"></div>
         </div>
     </section>
-
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_web.json', questionsPerSession: 10 });
-        });
-    </script>
-    <script src="../../assets/js/quiz-engine.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_web.json', questionsPerSession: 10 });
-            }
-        });
-    </script>
 
     <footer>
         <div class="container">
@@ -731,7 +693,15 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
         </div>
     </footer>
 
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.QuizEngine) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'data/quiz_web.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
     <script src="script.js"></script>
-</body>
 
+</body>
 </html>

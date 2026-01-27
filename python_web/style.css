@@ -22,6 +22,26 @@
     --red: #f87171;
     --yellow: #fcd34d;
     --blue: #38bdf8;
+    --bg-overlay: rgba(10, 15, 13, 0.95);
+    --hero-glow: rgba(16, 185, 129, 0.15);
+    --toc-hover-bg: rgba(16, 185, 129, 0.1);
+    --text-on-accent: #ffffff;
+    --sec-num-blue-end: #0284c7;
+    --sec-num-purple-end: #7c3aed;
+    --sec-num-orange-end: #ea580c;
+    --code-bg: #060a08;
+    --code-head-bg: #0a100d;
+    --dot-red: #ff5f56;
+    --dot-yellow: #ffbd2e;
+    --dot-green: #27ca40;
+    --tip-bg: rgba(16, 185, 129, 0.1);
+    --info-bg: rgba(56, 189, 248, 0.1);
+    --warning-bg: rgba(248, 113, 113, 0.1);
+    --details-hover-bg: rgba(16, 185, 129, 0.05);
+    --badge-flask-bg: rgba(16, 185, 129, 0.2);
+    --badge-django-bg: #9bf3d5;
+    --badge-django-text: #0c4b33;
+    --badge-fastapi-bg: rgba(6, 214, 160, 0.2);
 }
 
 * {
@@ -51,7 +71,7 @@ body {
 header {
     position: sticky;
     top: 0;
-    background: rgba(10, 15, 13, 0.95);
+    background: var(--bg-overlay);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     z-index: 100;
@@ -76,7 +96,7 @@ header {
     width: 42px;
     height: 42px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: #0a0f0d;
+    color: var(--bg);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -109,7 +129,7 @@ nav a:hover {
     padding: 70px 0 50px;
     text-align: center;
     border-bottom: 1px solid var(--border);
-    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+    background: radial-gradient(ellipse at top, var(--hero-glow) 0%, transparent 60%);
 }
 
 .hero h1 {
@@ -158,14 +178,14 @@ nav a:hover {
 .toc-item:hover {
     border-color: var(--primary);
     transform: translateX(4px);
-    background: rgba(16, 185, 129, 0.1);
+    background: var(--toc-hover-bg);
 }
 
 .toc-num {
     width: 26px;
     height: 26px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
+    color: var(--text-on-accent);
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -193,7 +213,7 @@ section {
     width: 52px;
     height: 52px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
+    color: var(--text-on-accent);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -205,15 +225,37 @@ section {
 }
 
 section:nth-child(odd) .sec-num {
-    background: linear-gradient(135deg, var(--blue), #0284c7);
+    background: linear-gradient(135deg, var(--blue), var(--sec-num-blue-end));
 }
 
 section:nth-child(3n) .sec-num {
-    background: linear-gradient(135deg, var(--purple), #7c3aed);
+    background: linear-gradient(135deg, var(--purple), var(--sec-num-purple-end));
 }
 
 section:nth-child(4n) .sec-num {
-    background: linear-gradient(135deg, var(--orange), #ea580c);
+    background: linear-gradient(135deg, var(--orange), var(--sec-num-orange-end));
+}
+
+.intro-box {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 30px 0;
+}
+
+.intro-box h3 {
+    margin-top: 0;
+    color: var(--text);
+}
+
+.intro-lead {
+    color: var(--muted);
+    max-width: 800px;
+}
+
+.intro-sub {
+    color: var(--dim);
+    font-size: 0.95rem;
+    margin-top: 10px;
 }
 
 .sec-title {
@@ -258,7 +300,7 @@ li::before {
 
 /* === CODE BLOCKS === */
 .code {
-    background: #060a08;
+    background: var(--code-bg);
     border: 1px solid var(--border);
     border-radius: 10px;
     margin: 14px 0;
@@ -270,7 +312,7 @@ li::before {
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: #0a100d;
+    background: var(--code-head-bg);
     border-bottom: 1px solid var(--border);
     font-size: 0.78rem;
     color: var(--dim);
@@ -283,15 +325,15 @@ li::before {
 }
 
 .dot.r {
-    background: #ff5f56;
+    background: var(--dot-red);
 }
 
 .dot.y {
-    background: #ffbd2e;
+    background: var(--dot-yellow);
 }
 
 .dot.g {
-    background: #27ca40;
+    background: var(--dot-green);
 }
 
 pre {
@@ -385,7 +427,7 @@ pre {
 
 /* === TIP BOX === */
 .tip {
-    background: rgba(16, 185, 129, 0.1);
+    background: var(--tip-bg);
     border-left: 3px solid var(--green);
     padding: 14px 18px;
     border-radius: 0 10px 10px 0;
@@ -397,7 +439,7 @@ pre {
 }
 
 .info {
-    background: rgba(56, 189, 248, 0.1);
+    background: var(--info-bg);
     border-left: 3px solid var(--blue);
     padding: 14px 18px;
     border-radius: 0 10px 10px 0;
@@ -409,7 +451,7 @@ pre {
 }
 
 .warning {
-    background: rgba(248, 113, 113, 0.1);
+    background: var(--warning-bg);
     border-left: 3px solid var(--red);
     padding: 14px 18px;
     border-radius: 0 10px 10px 0;
@@ -504,7 +546,7 @@ details summary {
 }
 
 details summary:hover {
-    background: rgba(16, 185, 129, 0.05);
+    background: var(--details-hover-bg);
 }
 
 details summary::before {
@@ -567,18 +609,17 @@ details .code {
 }
 
 .badge.flask {
-    background: rgba(16, 185, 129, 0.2);
+    background: var(--badge-flask-bg);
     color: var(--green);
 }
 
 .badge.django {
-    background: rgba(16, 185, 129, 0.2);
-    color: #0c4b33;
-    background: #9bf3d5;
+    background: var(--badge-django-bg);
+    color: var(--badge-django-text);
 }
 
 .badge.fastapi {
-    background: rgba(6, 214, 160, 0.2);
+    background: var(--badge-fastapi-bg);
     color: var(--secondary);
 }
 

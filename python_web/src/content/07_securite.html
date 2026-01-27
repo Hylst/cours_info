@@ -1,0 +1,56 @@
+    <section id="s7">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Sécurité & Authentification</h2>
+                    <p class="sec-sub">JWT, Hashing, OWASP</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Les règles d'or de la sécurité Web</summary>
+                <div>
+                    <p>1. <strong>Ne jamais stocker de mots de passe en clair</strong>. Utilisez des algorithmes de
+                        hachage lents comme <strong>BCrypt</strong> ou <strong>Argon2</strong>.</p>
+                    <p>2. <strong>JWT (JSON Web Tokens)</strong> : Le standard pour l'authentification des APIs
+                        (Stateless). Le serveur signe un token que le client renvoie à chaque requête.</p>
+                    <p>3. <strong>HTTPS partout</strong>. Sans chiffrement, les tokens transitent en clair.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Hashing (Passlib)</div>
+                    <pre><span class="kw">from</span> passlib.context <span class="kw">import</span> CryptContext
+
+<span class="var">pwd_context</span> = <span class="cls">CryptContext</span>(schemes=[<span class="str">"bcrypt"</span>])
+
+<span class="c"># Hacher un mot de passe (Inscription)</span>
+<span class="var">hash</span> = <span class="var">pwd_context</span>.<span class="fn">hash</span>(<span class="str">"secret123"</span>)
+<span class="c"># -> $2b$12$EixZaYVK1...</span>
+
+<span class="c"># Vérifier (Login)</span>
+<span class="var">is_valid</span> = <span class="var">pwd_context</span>.<span class="fn">verify</span>(<span class="str">"secret123"</span>, <span class="var">hash</span>)</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>JWT (Jose / PyJWT)</div>
+                    <pre><span class="kw">from</span> jose <span class="kw">import</span> jwt
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+
+<span class="var">SECRET</span> = <span class="str">"my_super_secret_key"</span>
+<span class="var">ALGO</span> = <span class="str">"HS256"</span>
+
+<span class="c"># Créer un Token</span>
+<span class="kw">def</span> <span class="fn">create_token</span>(<span class="var">user_id</span>: <span class="cls">int</span>):
+    <span class="var">expire</span> = <span class="fn">datetime</span>.utcnow() + <span class="fn">timedelta</span>(minutes=<span class="num">30</span>)
+    <span class="var">payload</span> = {<span class="str">"sub"</span>: <span class="fn">str</span>(<span class="var">user_id</span>), <span class="str">"exp"</span>: <span class="var">expire</span>}
+    <span class="kw">return</span> <span class="var">jwt</span>.<span class="fn">encode</span>(<span class="var">payload</span>, <span class="var">SECRET</span>, algorithm=<span class="var">ALGO</span>)
+
+<span class="c"># Décoder</span>
+<span class="var">payload</span> = <span class="var">jwt</span>.<span class="fn">decode</span>(<span class="var">token</span>, <span class="var">SECRET</span>, algorithms=[<span class="var">ALGO</span>])</pre>
+                </div>
+            </div>
+        </div>
+    </section>

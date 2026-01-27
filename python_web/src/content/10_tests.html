@@ -1,0 +1,32 @@
+    <section id="s10">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">10</div>
+                <div>
+                    <h2 class="sec-title">Tests Automatisés</h2>
+                    <p class="sec-sub">Pytest, Coverage</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Test API avec Pytest</div>
+                <pre><span class="c"># test_main.py</span>
+<span class="kw">from</span> fastapi.testclient <span class="kw">import</span> TestClient
+<span class="kw">from</span> main <span class="kw">import</span> app
+
+<span class="var">client</span> = <span class="cls">TestClient</span>(<span class="var">app</span>)
+
+<span class="kw">def</span> <span class="fn">test_read_main</span>():
+    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">get</span>(<span class="str">"/"</span>)
+    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span>
+    <span class="kw">assert</span> <span class="var">response</span>.<span class="fn">json</span>() == {<span class="str">"msg"</span>: <span class="str">"Hello World"</span>}
+
+<span class="kw">def</span> <span class="fn">test_create_item</span>():
+    <span class="var">response</span> = <span class="var">client</span>.<span class="fn">post</span>(
+        <span class="str">"/items/"</span>,
+        json={<span class="str">"name"</span>: <span class="str">"Test Item"</span>, <span class="str">"price"</span>: <span class="num">10</span>}
+    )
+    <span class="kw">assert</span> <span class="var">response</span>.<span class="prop">status_code</span> == <span class="num">200</span></pre>
+            </div>
+        </div>
+    </section>

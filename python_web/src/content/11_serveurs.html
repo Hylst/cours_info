@@ -1,0 +1,20 @@
+    <section id="s11">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Production</h2>
+                    <p class="sec-sub">Gunicorn, Uvicorn</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Terminal</div>
+                <pre><span class="c"># Lancer Flask/Django avec Gunicorn (WSGI)</span>
+gunicorn -w 4 src.app:app
+
+<span class="c"># Lancer FastAPI avec Uvicorn (ASGI)</span>
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
+            </div>
+        </div>
+    </section>

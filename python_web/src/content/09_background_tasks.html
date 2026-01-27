@@ -1,0 +1,53 @@
+    <section id="s9">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">09</div>
+                <div>
+                    <h2 class="sec-title">Tâches d'Arrière-plan</h2>
+                    <p class="sec-sub">Celery, Redis, BackgroundTasks</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Pourquoi les tâches background ?</summary>
+                <div>
+                    <p>Une requête web doit répondre en < 200ms. Si vous devez envoyer un email, générer un PDF ou
+                            traiter une image, <strong>ne le faites pas dans la requête</strong>.</p>
+                    <p>Déléguez le travail à une "Queue" (Redis) et un "Worker" (Celery/Dramatiq) qui le traitera plus
+                        tard.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot y"></span>FastAPI (Simple)</div>
+                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> BackgroundTasks
+
+<span class="kw">def</span> <span class="fn">send_email</span>(<span class="var">email</span>: <span class="cls">str</span>):
+    <span class="c"># Code lent (SMTP...)</span>
+    <span class="fn">time.sleep</span>(<span class="num">2</span>)
+
+<span class="dec">@app.post</span>(<span class="str">"/signup"</span>)
+<span class="kw">async def</span> <span class="fn">signup</span>(<span class="var">bg_tasks</span>: <span class="cls">BackgroundTasks</span>):
+    <span class="c"># La réponse part tout de suite !</span>
+    <span class="var">bg_tasks</span>.<span class="fn">add_task</span>(<span class="fn">send_email</span>, <span class="str">"user@mail.com"</span>)
+    <span class="kw">return</span> {<span class="str">"status"</span>: <span class="str">"Email en cours d'envoi"</span>}</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Celery (Robuste)</div>
+                    <pre><span class="kw">from</span> celery <span class="kw">import</span> Celery
+
+<span class="var">celery</span> = <span class="cls">Celery</span>(<span class="str">'tasks'</span>, broker=<span class="str">'redis://localhost:6379'</span>)
+
+<span class="dec">@celery.task</span>
+<span class="kw">def</span> <span class="fn">process_image</span>(<span class="var">img_id</span>):
+    <span class="c"># Traitement très lourd (IA, resize...)</span>
+    <span class="kw">return</span> <span class="str">"Done"</span>
+
+<span class="c"># Appel asynchrone</span>
+<span class="fn">process_image</span>.<span class="fn">delay</span>(<span class="num">123</span>)</pre>
+                </div>
+            </div>
+        </div>
+    </section>

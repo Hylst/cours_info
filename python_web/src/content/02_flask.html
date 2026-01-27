@@ -1,0 +1,62 @@
+    <section id="s2">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Flask : L'essentiel</h2>
+                    <p class="sec-sub">Micro-framework WSGI</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre Flask avancé</summary>
+                <div>
+                    <p>Le pattern <strong>Application Factory</strong> (<code>create_app</code>) permet de créer
+                        l'application dans une fonction, facilitant les tests et la config.</p>
+                    <p>Les <strong>Blueprints</strong> découpent l'application en modules (ex: Auth, Admin, API).</p>
+                </div>
+            </details>
+
+            <h3 style="margin-top:30px">Structure "Pro" & Blueprints</h3>
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Structure</div>
+                    <pre>/mon_projet
+│
+├── /app                <span class="c"># Package Python</span>
+│   ├── __init__.py     <span class="c"># create_app()</span>
+│   ├── models.py       <span class="c"># Base de données</span>
+│   ├── /templates      <span class="c"># HTML</span>
+│   ├── /static         <span class="c"># CSS, JS, Images</span>
+│   │
+│   ├── /auth           <span class="c"># Module Auth</span>
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   └── /main           <span class="c"># Module Principal</span>
+│       ├── __init__.py
+│       └── routes.py
+│
+├── config.py           <span class="c"># Variables Config</span>
+├── wsgi.py             <span class="c"># Point entrée Prod</span>
+└── requirements.txt</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Factory Pattern</div>
+                    <pre><span class="kw">from</span> flask <span class="kw">import</span> Flask
+<span class="kw">from</span> .models <span class="kw">import</span> db
+
+<span class="kw">def</span> <span class="fn">create_app</span>(<span class="var">config_name</span>=<span class="str">'default'</span>):
+    <span class="var">app</span> = <span class="cls">Flask</span>(<span class="var">__name__</span>)
+    <span class="var">app</span>.<span class="prop">config</span>.<span class="fn">from_object</span>(<span class="str">f'config.Config'</span>)
+
+    <span class="var">db</span>.<span class="fn">init_app</span>(<span class="var">app</span>)
+
+    <span class="kw">from</span> .auth <span class="kw">import</span> <span class="var">auth_bp</span>
+    <span class="var">app</span>.<span class="fn">register_blueprint</span>(<span class="var">auth_bp</span>)
+
+    <span class="kw">return</span> <span class="var">app</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>

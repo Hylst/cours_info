@@ -1,0 +1,36 @@
+    <section id="s8">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Async & Temps Réel</h2>
+                    <p class="sec-sub">WebSockets, AsyncIO</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 WebSockets vs HTTP</summary>
+                <div>
+                    <p>HTTP est "Unidirectionnel" (Client demande -> Serveur répond).</p>
+                    <p><strong>WebSocket</strong> est "Bidirectionnel" et persistant. Le serveur peut pousser des
+                        données au client (Chat, Notifications, Trading).</p>
+                    <p>FastAPI gère nativement les WebSockets grâce à son moteur asynchrone.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Chat WebSocket (FastAPI)</div>
+                <pre><span class="kw">from</span> fastapi <span class="kw">import</span> WebSocket
+
+<span class="dec">@app.websocket</span>(<span class="str">"/ws"</span>)
+<span class="kw">async def</span> <span class="fn">websocket_endpoint</span>(<span class="var">websocket</span>: <span class="cls">WebSocket</span>):
+    <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">accept</span>()
+    <span class="kw">while True</span>:
+        <span class="c"># Attendre un message du client</span>
+        <span class="var">data</span> = <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">receive_text</span>()
+        
+        <span class="c"># Renvoyer (Echo ou Broadcast)</span>
+        <span class="kw">await</span> <span class="var">websocket</span>.<span class="fn">send_text</span>(<span class="str">f"Reçu : </span>{<span class="var">data</span>}<span class="str">"</span>)</pre>
+            </div>
+        </div>
+    </section>

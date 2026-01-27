@@ -1,0 +1,9 @@
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.QuizEngine) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'data/quiz_web.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+    <script src="script.js"></script>

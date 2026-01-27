@@ -1,0 +1,56 @@
+    <section id="s5">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">FastAPI</h2>
+                    <p class="sec-sub">APIs Modernes & Asynchrones</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre FastAPI avancé</summary>
+                <div>
+                    <p>FastAPI repose sur Pydantic (validation de données) et Starlette (serveur asynchrone).</p>
+                    <p>La <strong>Dependency Injection</strong> ("Depends") est un concept clé pour l'auth et la
+                        connexion DB.</p>
+                </div>
+            </details>
+
+            <div class="grid2">
+                <div class="code">
+                    <div class="code-head"><span class="dot g"></span>Route typée & Validée</div>
+                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI, Body
+<span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel, EmailStr
+
+<span class="var">app</span> = <span class="cls">FastAPI</span>()
+
+<span class="kw">class</span> <span class="cls">UserCreate</span>(<span class="cls">BaseModel</span>):
+    <span class="var">username</span>: <span class="cls">str</span>
+    <span class="var">email</span>: <span class="cls">EmailStr</span>
+    <span class="var">age</span>: <span class="cls">int</span> | <span class="kw">None</span> = <span class="kw">None</span>
+
+<span class="dec">@app.post</span>(<span class="str">"/users/"</span>)
+<span class="kw">async def</span> <span class="fn">create_user</span>(<span class="var">user</span>: <span class="cls">UserCreate</span>):
+    <span class="c"># Auto-validation JSON -> Objet Python</span>
+    <span class="kw">return</span> {<span class="str">"message"</span>: <span class="str">"User created"</span>}</pre>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot r"></span>Dependency Injection</div>
+                    <pre><span class="kw">from</span> fastapi <span class="kw">import</span> Depends, HTTPException
+
+<span class="kw">async def</span> <span class="fn">verify_token</span>(<span class="var">token</span>: <span class="cls">str</span>):
+    <span class="kw">if</span> <span class="var">token</span> != <span class="str">"secret"</span>:
+        <span class="kw">raise</span> <span class="cls">HTTPException</span>(status_code=<span class="num">401</span>)
+    <span class="kw">return</span> <span class="str">"admin"</span>
+
+<span class="dec">@app.get</span>(<span class="str">"/admin"</span>)
+<span class="kw">async def</span> <span class="fn">admin_panel</span>(
+    <span class="var">user</span>: <span class="cls">str</span> = <span class="fn">Depends</span>(<span class="fn">verify_token</span>)
+):
+    <span class="kw">return</span> {<span class="str">"user"</span>: <span class="var">user</span>}</pre>
+                </div>
+            </div>
+        </div>
+    </section>

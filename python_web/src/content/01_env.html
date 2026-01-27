@@ -1,0 +1,40 @@
+    <section id="s1">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Environnement Pro</h2>
+                    <p class="sec-sub">Virtualenv, Pip, Structure</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre l'isolation des environnements</summary>
+                <div>
+                    <p>En développement web, il est CRITIQUE d'isoler les dépendances de chaque projet pour éviter les
+                        conflits de versions.</p>
+                    <p>On utilise un <strong>Virtual Environment (venv)</strong>. C'est un dossier local qui contient
+                        une copie de l'interpréteur Python et des bibliothèques installées.</p>
+                </div>
+            </details>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Setup Projet</div>
+                <pre><span class="c"># 1. Créer le dossier projet</span>
+mkdir mon_projet ; cd mon_projet
+
+<span class="c"># 2. Créer l'environnement virtuel</span>
+python -m venv venv
+
+<span class="c"># 3. Activer l'environnement</span>
+<span class="c"># Windows :</span> venv\Scripts\activate
+<span class="c"># Mac/Linux :</span> source venv/bin/activate
+
+<span class="c"># 4. Installer les dépendances</span>
+pip install flask sqlalchemy python-dotenv
+
+<span class="c"># 5. Figer les versions</span>
+pip freeze > requirements.txt</pre>
+            </div>
+        </div>
+    </section>

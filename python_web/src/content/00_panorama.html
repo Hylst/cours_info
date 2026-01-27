@@ -1,0 +1,44 @@
+    <section id="s0">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">00</div>
+                <div>
+                    <h2 class="sec-title">Le Python dans le Web</h2>
+                    <p class="sec-sub">Mise en situation et architectures</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>📖 Comprendre le rôle de Python sur le Web</summary>
+                <div>
+                    <p>Python n'est pas exécuté nativement par les navigateurs (contrairement à JavaScript). Son rôle se
+                        situe côté <strong>Serveur (Back-end)</strong>.</p>
+                    <p>Il reçoit les requêtes HTTP, traite la logique métier, interagit avec la base de données, et
+                        renvoie une réponse (HTML ou JSON).</p>
+                    <p>Pour communiquer avec les serveurs web (comme Nginx ou Apache), Python utilise des standards :
+                        <strong>WSGI</strong> (synchrone, classique) ou <strong>ASGI</strong> (asynchrone, moderne).
+                    </p>
+                </div>
+            </details>
+
+            <div class="grid3" style="margin-top:20px;">
+                <div class="framework-card">
+                    <h4>Flask</h4>
+                    <span class="badge flask">Micro-framework</span>
+                    <p>Minimaliste, flexible. Vous choisissez vos outils. Idéal pour débuter ou pour des micro-services.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4>Django</h4>
+                    <span class="badge django">Batteries included</span>
+                    <p>Tout inclus (ORM, Admin, Auth). Robuste et sécurisé. Idéal pour des projets complexes rapides.
+                    </p>
+                </div>
+                <div class="framework-card">
+                    <h4>FastAPI</h4>
+                    <span class="badge fastapi">Haute performance</span>
+                    <p>Moderne, asynchrone, typé. Génère automatiquement la doc API. Le nouveau standard.</p>
+                </div>
+            </div>
+        </div>
+    </section>

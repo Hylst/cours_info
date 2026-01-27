@@ -1,0 +1,32 @@
+    <section id="s3">
+        <div class="container">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">SQLAlchemy</h2>
+                    <p class="sec-sub">Interaction Base de Données (ORM)</p>
+                </div>
+            </div>
+
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>models.py</div>
+                <pre><span class="kw">from</span> flask_sqlalchemy <span class="kw">import</span> SQLAlchemy
+
+<span class="var">db</span> = <span class="cls">SQLAlchemy</span>()
+
+<span class="kw">class</span> <span class="cls">User</span>(<span class="var">db</span>.<span class="cls">Model</span>):
+    <span class="var">id</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">Integer</span>, primary_key=<span class="kw">True</span>)
+    <span class="var">username</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">80</span>), unique=<span class="kw">True</span>)
+    <span class="var">email</span> = <span class="var">db</span>.<span class="fn">Column</span>(<span class="var">db</span>.<span class="cls">String</span>(<span class="num">120</span>), unique=<span class="kw">True</span>)
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="var">self</span>):
+        <span class="kw">return</span> <span class="str">f'&lt;User </span>{<span class="var">self</span>.<span class="prop">username</span>}<span class="str">&gt;'</span>
+
+<span class="c"># Utilisation</span>
+<span class="var">new_user</span> = <span class="cls">User</span>(username=<span class="str">"admin"</span>, email=<span class="str">"test@test.com"</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">add</span>(<span class="var">new_user</span>)
+<span class="var">db</span>.<span class="prop">session</span>.<span class="fn">commit</span>()
+<span class="var">user</span> = <span class="cls">User</span>.<span class="prop">query</span>.<span class="fn">filter_by</span>(username=<span class="str">"admin"</span>).<span class="fn">first</span>()</pre>
+            </div>
+        </div>
+    </section>

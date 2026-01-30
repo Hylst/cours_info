@@ -32,6 +32,7 @@ class QuizEngine {
 
         // Shuffle and select questions
         const allQuestions = data.questions || [];
+        this.totalQuestions = allQuestions.length; // Store total available
         this.questions = this.shuffleArray(allQuestions)
             .slice(0, this.questionsPerSession);
     }
@@ -50,7 +51,7 @@ class QuizEngine {
         container.innerHTML = `
             <div class="quiz-intro">
                 <h3>Prêt à tester vos connaissances ?</h3>
-                <p>Ce quiz contient ${this.questions.length} questions sur JavaScript.</p>
+                <p>Une série aléatoire de <strong>${this.questions.length} questions</strong> tirées d'une banque de <strong>${this.totalQuestions} questions</strong>.</p>
                 <p>Bonne chance ! 🚀</p>
                 <button class="demo-btn" onclick="window.quizInstance.startQuiz()">Commencer le Quiz</button>
             </div>

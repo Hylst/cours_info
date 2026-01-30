@@ -1,0 +1,220 @@
+<section id="c6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">Classes & Objets</h2>
+                <p class="sec-sub">Encapsulation & Instantiation</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître les types et méthodes (C2, C5).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Créer vos propres types de données (classes) et les
+                instancier en objets.</p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🏗️ Qu'est-ce qu'une Classe ?</h3>
+        <p>Une <strong>classe</strong> est un <strong>modèle</strong> (blueprint) qui définit la structure et le
+            comportement d'un type de données personnalisé. C'est comme un plan d'architecte : il décrit comment
+            construire quelque chose, mais ce n'est pas la chose elle-même.</p>
+
+        <p style="margin-top: 1rem;">Un <strong>objet</strong> est une <strong>instance</strong> de cette classe, créée
+            en mémoire avec le mot-clé <code>new</code>. C'est la maison construite à partir du plan.</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>Le Moule et le Gâteau</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>📜 La Classe (Le Moule)</h4>
+                    <p>C'est le moule à gâteau. Il définit la forme et les ingrédients nécessaires, mais on ne peut pas
+                        manger le moule.</p>
+                </div>
+                <div>
+                    <h4>🍰 L'Objet (Le Gâteau)</h4>
+                    <p>C'est le gâteau sorti du four (via <code>new</code>). On peut en faire une infinité à partir d'un
+                        seul moule, chacun ayant sa propre garniture (état).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                classDiagram
+                class User {
+                -String name
+                -int age
+                +sayHi()
+                }
+                User <|-- Instance1 : new User("Alice") User <|-- Instance2 : new User("Bob") style User
+                    fill:#1c2128,stroke:#ffa94d,stroke-width:2px,color:#f0f6fc style Instance1
+                    fill:#161b22,stroke:#3d444d,color:#f0f6fc style Instance2 fill:#161b22,stroke:#3d444d,color:#f0f6fc
+                    </div>
+                    <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">La Classe est le
+                        modèle. Les Instances sont les objets réels en mémoire.</p>
+            </div>
+
+            <!-- Encapsulation -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔒 Encapsulation : Protéger les Données</h3>
+            <div class="callout callout-info">
+                <h4>🚗 L'Analogie de la Voiture</h4>
+                <p>Vous avez accès au <strong>volant</strong> (méthodes publiques) pour contrôler la voiture, mais pas
+                    directement aux <strong>pistons du moteur</strong> (champs privés). Le constructeur décide ce que
+                    vous pouvez toucher.</p>
+            </div>
+
+            <div class="grid2" style="margin-top: 1.5rem;">
+                <div>
+                    <h3>Modificateurs d'Accès</h3>
+                    <table>
+                        <tr>
+                            <th>Modifier</th>
+                            <th>Classe</th>
+                            <th>Package</th>
+                            <th>Monde</th>
+                        </tr>
+                        <tr>
+                            <td><code>public</code></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><code>protected</code></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><code>private</code></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>(default)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="code">
+                    <div class="code-head"><span class="dot b"></span>Classe Complète</div>
+                    <pre><span class="kw">public class</span> <span class="type">User</span> {
+    <span class="com">// Champs (State)</span>
+    <span class="kw">private</span> <span class="type">String</span> <span class="var">name</span>;
+    <span class="kw">private</span> <span class="kw">int</span> <span class="var">age</span>;
+    
+    <span class="com">// Constructeur</span>
+    <span class="kw">public</span> <span class="mt">User</span>(<span class="type">String</span> <span class="var">name</span>, <span class="kw">int</span> <span class="var">age</span>) {
+        <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>;
+        <span class="kw">this</span>.<span class="var">age</span> = <span class="var">age</span>;
+    }
+    
+    <span class="com">// Getter</span>
+    <span class="kw">public</span> <span class="type">String</span> <span class="mt">getName</span>() {
+        <span class="kw">return</span> <span class="var">name</span>;
+    }
+    
+    <span class="com">// Méthode</span>
+    <span class="kw">public void</span> <span class="mt">sayHi</span>() {
+        <span class="type">System</span>.out.println(<span class="str">"Hi, I'm "</span> + <span class="var">name</span>);
+    }
+}</pre>
+                </div>
+            </div>
+
+            <!-- Static -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚡ Static : Partagé par Tous</h3>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Static vs Instance</div>
+                <pre><span class="kw">public class</span> <span class="type">Counter</span> {
+    <span class="kw">private static int</span> <span class="var">count</span> = <span class="num">0</span>; <span class="com">// Partagé par TOUTES les instances</span>
+    <span class="kw">private int</span> <span class="var">id</span>;           <span class="com">// Unique à chaque instance</span>
+    
+    <span class="kw">public</span> <span class="mt">Counter</span>() {
+        <span class="var">id</span> = ++<span class="var">count</span>; <span class="com">// Auto-incrémentation</span>
+    }
+    
+    <span class="kw">public static int</span> <span class="mt">getCount</span>() {
+        <span class="kw">return</span> <span class="var">count</span>; <span class="com">// Méthode static = pas besoin d'instance</span>
+    }
+}
+
+<span class="com">// Utilisation</span>
+<span class="type">Counter</span> <span class="var">c1</span> = <span class="kw">new</span> <span class="type">Counter</span>(); <span class="com">// count = 1</span>
+<span class="type">Counter</span> <span class="var">c2</span> = <span class="kw">new</span> <span class="type">Counter</span>(); <span class="com">// count = 2</span>
+<span class="type">System</span>.out.println(<span class="type">Counter</span>.getCount()); <span class="com">// 2 (sans instance)</span></pre>
+            </div>
+
+            <!-- Le Saviez-vous -->
+            <div class="callout callout-recall" style="margin-top: 2rem;">
+                <h4>💡 Le Saviez-vous ?</h4>
+                <p><strong>this vs super</strong> : <code>this</code> fait référence à l'instance actuelle.
+                    <code>super</code> fait référence à la classe parente (on verra ça en C7).</p>
+                <p style="margin-top: 0.75rem;"><strong>Constructeur par défaut</strong> : Si vous ne définissez aucun
+                    constructeur, Java en crée un vide automatiquement. Mais dès que vous en créez un, le défaut
+                    disparaît.</p>
+                <p style="margin-top: 0.75rem;"><strong>Records (Java 14+)</strong> : Pour les simples conteneurs de
+                    données, utilisez <code>record</code> au lieu de classe (on verra ça en C9).</p>
+            </div>
+
+            <!-- Cas d'Usage -->
+            <div class="use-case" style="margin-top: 2rem;">
+                <h4>🎮 Cas Réel : Système de Jeu RPG</h4>
+                <div class="code" style="margin-top: 1rem;">
+                    <div class="code-head"><span class="dot r"></span>Personnage de Jeu</div>
+                    <pre><span class="kw">public class</span> <span class="type">Character</span> {
+    <span class="kw">private</span> <span class="type">String</span> <span class="var">name</span>;
+    <span class="kw">private int</span> <span class="var">health</span>;
+    <span class="kw">private int</span> <span class="var">mana</span>;
+    
+    <span class="kw">public</span> <span class="mt">Character</span>(<span class="type">String</span> <span class="var">name</span>) {
+        <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>;
+        <span class="kw">this</span>.<span class="var">health</span> = <span class="num">100</span>;
+        <span class="kw">this</span>.<span class="var">mana</span> = <span class="num">50</span>;
+    }
+    
+    <span class="kw">public void</span> <span class="mt">takeDamage</span>(<span class="kw">int</span> <span class="var">damage</span>) {
+        <span class="var">health</span> -= <span class="var">damage</span>;
+        <span class="kw">if</span> (<span class="var">health</span> < <span class="num">0</span>) <span class="var">health</span> = <span class="num">0</span>;
+    }
+    
+    <span class="kw">public boolean</span> <span class="mt">isAlive</span>() {
+        <span class="kw">return</span> <span class="var">health</span> > <span class="num">0</span>;
+    }
+}</pre>
+                </div>
+            </div>
+
+            <!-- Pièges -->
+            <div class="callout callout-warning" style="margin-top: 2rem;">
+                <h4>⚠️ Pièges Courants</h4>
+                <p><strong>1. Oublier <code>new</code></strong> : <code>User u = User("Bob")</code> ne compile pas. Il
+                    faut <code>new User("Bob")</code>.</p>
+                <p style="margin-top: 0.75rem;"><strong>2. Static dans non-static</strong> : Une méthode
+                    <code>static</code> ne peut pas accéder aux champs d'instance (non-static).</p>
+                <p style="margin-top: 0.75rem;"><strong>3. Null Pointer Exception</strong> :
+                    <code>User u = null; u.getName()</code> → crash. Toujours vérifier <code>if (u != null)</code>.</p>
+            </div>
+
+            <!-- Pour Aller Plus Loin -->
+            <div class="callout callout-tip" style="margin-top: 2rem;">
+                <h4>🚀 Pour Aller Plus Loin</h4>
+                <p><strong>Concepts avancés</strong> :</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Inner Classes</strong> : Classes définies à l'intérieur d'autres classes</li>
+                    <li><strong>Anonymous Classes</strong> : Classes sans nom pour les implémentations rapides</li>
+                    <li><strong>Singleton Pattern</strong> : Garantir qu'une classe n'a qu'une seule instance</li>
+                </ul>
+            </div>
+
+        </div>
+</section>

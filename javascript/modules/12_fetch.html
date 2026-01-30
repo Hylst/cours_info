@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch & API - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .method-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .method-name {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-family: 'JetBrains Mono';
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .badge-get {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-post {
+            background: #2196f3;
+            color: white;
+        }
+
+        .badge-put {
+            background: #ff9800;
+            color: white;
+        }
+
+        .badge-delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .api-playground {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .api-controls {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .api-response {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 200px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.85rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .response-header {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .response-body {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .endpoint-select {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .endpoint-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .endpoint-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+
+        .endpoint-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s12" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">12</div>
+                <div>
+                    <h2 class="sec-title">Fetch & API</h2>
+                    <p class="sec-sub">Requêtes HTTP & REST API</p>
+                </div>
+            </div>
+
+            <p>L'API Fetch est le standard moderne pour effectuer des requêtes HTTP en JavaScript. Elle remplace
+                XMLHttpRequest avec une syntaxe plus simple basée sur les Promises.</p>
+
+            <!-- HTTP METHODS -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🌐 Méthodes HTTP
+            </h3>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-name"><span class="method-badge badge-get">GET</span> Récupérer</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">// GET : Récupérer des données
+const res = await fetch('/api/users');
+const data = await res.json();
+
+// Avec query params
+const url = '/api/users?page=1&limit=10';
+const res = await fetch(url);</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name"><span class="method-badge badge-post">POST</span> Créer</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">// POST : Créer une ressource
+const res = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'Alice' })
+});</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name"><span class="method-badge badge-put">PUT</span> Modifier</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">// PUT : Mettre à jour (complet)
+const res = await fetch('/api/users/1', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'Bob' })
+});</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-name"><span class="method-badge badge-delete">DELETE</span> Supprimer</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">// DELETE : Supprimer une ressource
+const res = await fetch('/api/users/1', {
+    method: 'DELETE'
+});
+
+if (res.ok) {
+    console.log('Supprimé !');
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- COMPLETE EXAMPLE -->
+            <h3 style="margin-top:40px;">📝 Exemple Complet avec Gestion d'Erreurs</h3>
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">async function fetchUser(id) {
+    try {
+        const res = await fetch(`/api/users/${id}`);
+        
+        // Vérifier le statut HTTP
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
+        
+        const data = await res.json();
+        return data;
+        
+    } catch (error) {
+        // Gérer les erreurs réseau ou parsing
+        console.error('Erreur:', error.message);
+        throw error;
+    }
+}
+
+// Headers personnalisés
+const res = await fetch('/api/data', {
+    headers: {
+        'Authorization': 'Bearer TOKEN',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    }
+});
+
+// Timeout (avec AbortController)
+const controller = new AbortController();
+setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+try {
+    const res = await fetch('/api/slow', {
+        signal: controller.signal
+    });
+} catch (error) {
+    if (error.name === 'AbortError') {
+        console.log('Requête annulée (timeout)');
+    }
+}</code></pre>
+            </div>
+
+            <!-- API PLAYGROUND -->
+            <div class="api-playground">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 API Playground</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez des requêtes sur des APIs publiques.</p>
+
+                <div class="endpoint-select">
+                    <div class="endpoint-btn" onclick="selectEndpoint('users')">
+                        <strong>👥 Users</strong><br>
+                        <span style="font-size:0.85rem; opacity:0.8">JSONPlaceholder</span>
+                    </div>
+                    <div class="endpoint-btn" onclick="selectEndpoint('posts')">
+                        <strong>📝 Posts</strong><br>
+                        <span style="font-size:0.85rem; opacity:0.8">JSONPlaceholder</span>
+                    </div>
+                    <div class="endpoint-btn" onclick="selectEndpoint('todos')">
+                        <strong>✅ Todos</strong><br>
+                        <span style="font-size:0.85rem; opacity:0.8">JSONPlaceholder</span>
+                    </div>
+                    <div class="endpoint-btn" onclick="selectEndpoint('random')">
+                        <strong>🎲 Random User</strong><br>
+                        <span style="font-size:0.85rem; opacity:0.8">RandomUser API</span>
+                    </div>
+                </div>
+
+                <div class="api-controls">
+                    <div style="display:grid; grid-template-columns: 120px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Méthode :</label>
+                        <select id="method-select" class="demo-input" style="width:150px">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 120px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">URL :</label>
+                        <input type="text" id="url-input" class="demo-input"
+                            placeholder="https://jsonplaceholder.typicode.com/users/1" style="width:100%">
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 120px 1fr; gap:10px">
+                        <label style="font-weight:500">Body (JSON) :</label>
+                        <textarea id="body-input" class="demo-input"
+                            placeholder='{"name": "Alice", "email": "alice@example.com"}'
+                            style="width:100%; min-height:80px; font-family:'JetBrains Mono'; resize:vertical"></textarea>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:15px">
+                    <button class="demo-btn" onclick="sendRequest()">🚀 Envoyer</button>
+                    <button class="demo-btn" onclick="clearResponse()" style="background:var(--bg2)">🗑️ Clear</button>
+                </div>
+
+                <div id="api-response" class="api-response" style="margin-top:20px">
+                    <div style="opacity:0.5; text-align:center">Sélectionnez un endpoint et cliquez sur Envoyer</div>
+                </div>
+            </div>
+
+            <!-- RESPONSE OBJECT -->
+            <h3 style="margin-top:40px;">📦 L'Objet Response</h3>
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">const res = await fetch('/api/data');
+
+// Propriétés utiles
+res.ok;          // true si status 200-299
+res.status;      // 200, 404, 500...
+res.statusText;  // "OK", "Not Found"...
+res.headers;     // Headers object
+res.url;         // URL finale (après redirects)
+
+// Méthodes de parsing
+await res.json();       // Parse JSON
+await res.text();       // Texte brut
+await res.blob();       // Fichier binaire
+await res.arrayBuffer(); // Buffer
+await res.formData();   // FormData
+
+// Clone (body ne peut être lu qu'une fois)
+const clone = res.clone();
+const data1 = await res.json();
+const data2 = await clone.json(); // OK</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Vérifiez toujours <code>res.ok</code> avant de parser. Utilisez
+                <code>AbortController</code> pour les timeouts. Pour les requêtes POST/PUT, n'oubliez pas le header
+                <code>Content-Type: application/json</code>.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="11_async.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">← Async</a>
+                <a href="13_storage.html" class="demo-btn" style="text-decoration:none">Suivant: Storage →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/12_fetch.js"></script>
+</body>
+
+</html>

@@ -4,1434 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo JavaScript - Vanilla JS avec démos interactives | Guide 2025</title>
-    <meta name="description"
-        content="Guide JavaScript : variables, fonctions, arrays, DOM, events, async/await, fetch. Démos interactives vanilla JS front-end.">
-    <meta name="keywords"
-        content="JavaScript, JS, vanilla JavaScript, DOM, events, arrays, fonctions, async, fetch, tutoriel, guide, mémo, front-end">
-    <meta name="author" content="Geoffroy Streit">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#f7df1e">
-    <link rel="canonical" href="index.html">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo JavaScript - Vanilla JS">
-    <meta property="og:description" content="Guide JavaScript avec démos interactives : DOM, events, async, fetch API.">
-    <meta property="og:locale" content="fr_FR">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mémo JavaScript">
-    <meta name="twitter:description"
-        content="Guide JavaScript avec démos interactives : DOM, events, async, fetch API.">
-
+    <title>Mémo JavaScript - Accueil</title>
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .module-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .module-num {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .module-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .module-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header injected by layout.js -->
 
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">JS</div>JavaScript
-            </div>
-            <nav>
-                <a href="#s1">Variables</a>
-                <a href="#s6">Fonctions</a>
-                <a href="#s9">DOM</a>
-                <a href="#s11">Async</a>
-                <a href="#s15">Fetch</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
+    <main class="container">
+        <section class="hero">
             <h1>Mémo JavaScript</h1>
-            <p>Guide pratique Vanilla JS avec démos interactives. Front-end moderne sans framework.</p>
+            <p>Un guide interactif, moderne et modulaire pour maîtriser les essentiels de JavaScript ES6+.</p>
+        </section>
+
+        <div class="module-grid">
+            <a href="modules/01_variables.html" class="module-card">
+                <div class="module-num">01</div>
+                <div class="module-title">Variables</div>
+                <div class="module-desc">let, const, var et portée</div>
+            </a>
+            <a href="modules/02_types.html" class="module-card">
+                <div class="module-num">02</div>
+                <div class="module-title">Types de données</div>
+                <div class="module-desc">Primitifs vs Objets, typeof</div>
+            </a>
+            <a href="modules/03_operators.html" class="module-card">
+                <div class="module-num">03</div>
+                <div class="module-title">Opérateurs</div>
+                <div class="module-desc">Arithmétique, comparaison, logique</div>
+            </a>
+            <a href="modules/04_conditions.html" class="module-card">
+                <div class="module-num">04</div>
+                <div class="module-title">Conditions</div>
+                <div class="module-desc">if/else, switch, ternaire</div>
+            </a>
+            <a href="modules/05_loops.html" class="module-card">
+                <div class="module-num">05</div>
+                <div class="module-title">Boucles</div>
+                <div class="module-desc">for, while, for...of</div>
+            </a>
+            <a href="modules/06_functions.html" class="module-card">
+                <div class="module-num">06</div>
+                <div class="module-title">Fonctions</div>
+                <div class="module-desc">Arrow functions, callbacks</div>
+            </a>
+            <a href="modules/07_arrays.html" class="module-card">
+                <div class="module-num">07</div>
+                <div class="module-title">Arrays</div>
+                <div class="module-desc">map, filter, reduce, find</div>
+            </a>
+            <a href="modules/08_objects.html" class="module-card">
+                <div class="module-num">08</div>
+                <div class="module-title">Objects</div>
+                <div class="module-desc">Propriétés, méthodes, destructuring</div>
+            </a>
+            <a href="modules/09_dom.html" class="module-card">
+                <div class="module-num">09</div>
+                <div class="module-title">DOM</div>
+                <div class="module-desc">Sélection et manipulation HTML</div>
+            </a>
+            <a href="modules/10_events.html" class="module-card">
+                <div class="module-num">10</div>
+                <div class="module-title">Events</div>
+                <div class="module-desc">click, input, load, propagation</div>
+            </a>
+            <a href="modules/11_async.html" class="module-card">
+                <div class="module-num">11</div>
+                <div class="module-title">Asynchrone</div>
+                <div class="module-desc">Event Loop, Callbacks, Timers</div>
+            </a>
+            <a href="modules/12_fetch.html" class="module-card">
+                <div class="module-num">12</div>
+                <div class="module-title">Fetch & API</div>
+                <div class="module-desc">Requêtes HTTP, REST API</div>
+            </a>
+            <a href="modules/13_storage.html" class="module-card">
+                <div class="module-num">13</div>
+                <div class="module-title">Storage</div>
+                <div class="module-desc">localStorage, sessionStorage</div>
+            </a>
+            <a href="modules/14_spread.html" class="module-card">
+                <div class="module-num">14</div>
+                <div class="module-title">Spread & Rest</div>
+                <div class="module-desc">Opérateur ... et copies</div>
+            </a>
+            <a href="modules/15_classes.html" class="module-card">
+                <div class="module-num">15</div>
+                <div class="module-title">Classes</div>
+                <div class="module-desc">Syntaxe de classe et héritage</div>
+            </a>
+            <a href="modules/16_utils.html" class="module-card">
+                <div class="module-num">16</div>
+                <div class="module-title">Utilitaires</div>
+                <div class="module-desc">Date, Math, JSON, Console</div>
+            </a>
+            <a href="modules/17_strings.html" class="module-card">
+                <div class="module-num">17</div>
+                <div class="module-title">Strings & Regex</div>
+                <div class="module-desc">Manipulation de texte avancée</div>
+            </a>
+            <a href="modules/18_cheatsheets.html" class="module-card" style="border-color:var(--accent)">
+                <div class="module-num" style="color:var(--accent)">18</div>
+                <div class="module-title">Cheatsheets</div>
+                <div class="module-desc">Tableaux de référence complets</div>
+            </a>
         </div>
-    </section>
 
-    <!-- INTRO GENERAL -->
-    <div class="intro-box" style="background:var(--card); border-bottom:1px solid var(--border); padding:30px 0;">
-        <div class="container">
-            <h3 style="margin-top:0; color:var(--primary)">Qu'est-ce que JavaScript ?</h3>
-            <p style="color:var(--text); max-width:800px;">
-                JavaScript est le langage de programmation du Web. C'est un langage <strong>interprété</strong>, orienté
-                <strong>prototype</strong> et <strong>asynchrone</strong> (via l'Event Loop).
-                Il permet de rendre les pages web interactives en manipulant le DOM et en réagissant aux actions de
-                l'utilisateur.
-            </p>
-            <p style="color:var(--muted); font-size:0.95rem; margin-top:10px">
-                Contrairement à Java (aucun lien de parenté !), JS est dynamiquement typé et extrêmement flexible.
-                Aujourd'hui, il s'exécute aussi côté serveur grâce à Node.js.
-            </p>
+        <div style="text-align:center; margin-bottom:60px">
+            <a href="quiz.html" class="demo-btn" style="padding:15px 30px; font-size:1.1rem">🧠 Lancer le Quiz</a>
         </div>
-    </div>
+    </main>
 
-    <div class="toc">
-        <div class="container">
-            <div class="toc-grid">
-                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Variables</a>
-                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Types</a>
-                <a href="#s3" class="toc-item"><span class="toc-num">03</span>Opérateurs</a>
-                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Conditions</a>
-                <a href="#s5" class="toc-item"><span class="toc-num">05</span>Boucles</a>
-                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Fonctions</a>
-                <a href="#s7" class="toc-item"><span class="toc-num">07</span>Arrays</a>
-                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Objects</a>
-                <a href="#s9" class="toc-item"><span class="toc-num">09</span>DOM</a>
-                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Events</a>
-                <a href="#s11" class="toc-item"><span class="toc-num">11</span>Async</a>
-                <a href="#s12" class="toc-item"><span class="toc-num">12</span>Storage</a>
-                <a href="#s13" class="toc-item"><span class="toc-num">13</span>Spread/Rest</a>
-                <a href="#s14" class="toc-item"><span class="toc-num">14</span>Classes</a>
-                <a href="#s15" class="toc-item"><span class="toc-num">15</span>Fetch API</a>
-                <a href="#s16" class="toc-item"><span class="toc-num">16</span>Date & Math</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- S1: VARIABLES -->
-    <section id="s1">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">01</div>
-                <div>
-                    <h2 class="sec-title">Variables</h2>
-                    <p class="sec-sub">let, const, var</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Portée et Constantes</summary>
-                <div class="details-content">
-                    <p>En JS moderne (ES6+), on n'utilise presque plus <code>var</code> (qui a une portée fonction et
-                        subit le "hoisting").</p>
-                    <p>On privilégie <strong>const</strong> par défaut pour éviter les réassignations accidentelles, et
-                        <strong>let</strong> uniquement si la variable doit changer.
-                    </p>
-                    <p>Attention : <code>const</code> sur un objet n'empêche pas de modifier ses propriétés !</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Déclaration</div>
-                <pre><span class="kw">let</span> <span class="var">message</span> = <span class="str">"Hello"</span>;     <span class="c">// Modifiable, scope bloc</span>
-<span class="kw">const</span> <span class="var">PI</span> = <span class="num">3.14159</span>;        <span class="c">// Constante, non réassignable</span>
-<span class="kw">var</span> <span class="var">oldStyle</span> = <span class="str">"legacy"</span>;   <span class="c">// Ancien style (éviter)</span>
-
-<span class="c">// let vs const</span>
-<span class="kw">let</span> <span class="var">counter</span> = <span class="num">0</span>;
-<span class="var">counter</span>++;                  <span class="c">// ✅ OK</span>
-
-<span class="kw">const</span> <span class="var">user</span> = { <span class="prop">name</span>: <span class="str">"Alice"</span> };
-<span class="var">user</span>.<span class="prop">name</span> = <span class="str">"Bob"</span>;         <span class="c">// ✅ Le contenu peut changer</span>
-<span class="c">// user = {} ❌ Réassignation interdite</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo interactive</div>
-                <button class="demo-btn" onclick="demoVariables()">Tester les variables</button>
-                <div id="demo-var-output" class="demo-output" style="margin-top:12px">Cliquez pour voir le résultat
-                </div>
-            </div>
-
-            <div class="tip"><strong>💡 Règle d'or</strong> Utilisez <code>const</code> par défaut, <code>let</code> si
-                modification nécessaire.</div>
-        </div>
-    </section>
-
-    <!-- S2: TYPES -->
-    <section id="s2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">Types de données</h2>
-                    <p class="sec-sub">Primitifs et objets</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Typage Dynamique</summary>
-                <div class="details-content">
-                    <p>JavaScript est <strong>dynamiquement typé</strong> : une variable peut changer de type au cours
-                        du temps.</p>
-                    <p>Les types primitifs (String, Number, Boolean...) sont passés par <strong>valeur</strong> (copie).
-                    </p>
-                    <p>Les objets (Object, Array, Function) sont passés par <strong>référence</strong> (adresse
-                        mémoire).</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Types primitifs</div>
-                <pre><span class="kw">const</span> <span class="var">str</span> = <span class="str">"texte"</span>;       <span class="c">// String</span>
-<span class="kw">const</span> <span class="var">num</span> = <span class="num">42</span>;            <span class="c">// Number</span>
-<span class="kw">const</span> <span class="var">float</span> = <span class="num">3.14</span>;        <span class="c">// Number (pas de distinction)</span>
-<span class="kw">const</span> <span class="var">bool</span> = <span class="kw">true</span>;         <span class="c">// Boolean</span>
-<span class="kw">const</span> <span class="var">empty</span> = <span class="kw">null</span>;        <span class="c">// Null (absence volontaire)</span>
-<span class="kw">const</span> <span class="var">undef</span> = <span class="kw">undefined</span>;   <span class="c">// Undefined (non défini)</span>
-<span class="kw">const</span> <span class="var">sym</span> = <span class="fn">Symbol</span>(<span class="str">"id"</span>);  <span class="c">// Symbol (unique)</span>
-<span class="kw">const</span> <span class="var">big</span> = <span class="num">9007199254740991n</span>; <span class="c">// BigInt</span>
-
-<span class="c">// typeof pour vérifier le type</span>
-<span class="kw">typeof</span> <span class="str">"hello"</span>  <span class="c">// "string"</span>
-<span class="kw">typeof</span> <span class="num">42</span>       <span class="c">// "number"</span>
-<span class="kw">typeof</span> <span class="kw">null</span>     <span class="c">// "object" (bug historique!)</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo typeof</div>
-                <button class="demo-btn" onclick="demoTypes()">Afficher les types</button>
-                <div id="demo-types-output" class="demo-output" style="margin-top:12px">Cliquez pour voir</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S3: OPÉRATEURS -->
-    <section id="s3">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">Opérateurs</h2>
-                    <p class="sec-sub">Arithmétiques, comparaison, logiques</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Coercition de Type</summary>
-                <div class="details-content">
-                    <p>JS tente souvent de convertir les types automatiquement (Coercition) : <code>"5" - 1 = 4</code>
-                        mais <code>"5" + 1 = "51"</code>.</p>
-                    <p>C'est pourquoi il faut TOUJOURS utiliser l'égalité stricte <code>===</code> qui vérifie le type
-                        ET la valeur, contrairement à <code>==</code> qui convertit les types.</p>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                            class="dot g"></span>Arithmétiques</div>
-                    <pre><span class="num">5</span> + <span class="num">3</span>   <span class="c">// 8 (addition)</span>
-<span class="num">10</span> - <span class="num">4</span>  <span class="c">// 6 (soustraction)</span>
-<span class="num">6</span> * <span class="num">7</span>   <span class="c">// 42 (multiplication)</span>
-<span class="num">15</span> / <span class="num">3</span>  <span class="c">// 5 (division)</span>
-<span class="num">17</span> % <span class="num">5</span>  <span class="c">// 2 (modulo)</span>
-<span class="num">2</span> ** <span class="num">8</span>  <span class="c">// 256 (puissance)</span>
-<span class="var">x</span>++     <span class="c">// incrémentation</span>
-<span class="var">x</span>--     <span class="c">// décrémentation</span></pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                            class="dot g"></span>Comparaison</div>
-                    <pre><span class="num">5</span> == <span class="str">"5"</span>   <span class="c">// true (égalité lâche)</span>
-<span class="num">5</span> === <span class="str">"5"</span>  <span class="c">// false (égalité stricte)</span>
-<span class="num">5</span> != <span class="str">"5"</span>   <span class="c">// false</span>
-<span class="num">5</span> !== <span class="str">"5"</span>  <span class="c">// true</span>
-<span class="num">10</span> > <span class="num">5</span>     <span class="c">// true</span>
-<span class="num">10</span> >= <span class="num">10</span>   <span class="c">// true</span>
-<span class="num">3</span> < <span class="num">7</span>      <span class="c">// true</span>
-<span class="num">3</span> <= <span class="num">2</span>     <span class="c">// false</span></pre>
-                </div>
-            </div>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Logiques</div>
-                <pre><span class="kw">true</span> && <span class="kw">false</span>   <span class="c">// false (ET)</span>
-<span class="kw">true</span> || <span class="kw">false</span>   <span class="c">// true (OU)</span>
-!<span class="kw">true</span>            <span class="c">// false (NON)</span>
-
-<span class="c">// Nullish coalescing</span>
-<span class="kw">null</span> ?? <span class="str">"default"</span>   <span class="c">// "default"</span>
-<span class="num">0</span> ?? <span class="str">"default"</span>      <span class="c">// 0</span>
-
-<span class="c">// Optional chaining</span>
-<span class="var">user</span>?.<span class="prop">address</span>?.<span class="prop">city</span>  <span class="c">// undefined si null</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo opérateurs</div>
-                <button class="demo-btn" onclick="demoOperators()">Calculer</button>
-                <div id="demo-op-output" class="demo-output" style="margin-top:12px">Cliquez pour voir</div>
-            </div>
-
-            <div class="warning"><strong>⚠️ Important</strong> Utilisez toujours <code>===</code> au lieu de
-                <code>==</code> pour éviter les surprises!
-            </div>
-        </div>
-    </section>
-
-    <!-- S4: CONDITIONS -->
-    <section id="s4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Conditions</h2>
-                    <p class="sec-sub">if, else, switch, ternaire</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Truthy & Falsy</summary>
-                <div class="details-content">
-                    <p>Dans une condition, n'importe quelle valeur est évaluée comme booléen.</p>
-                    <p>Sont <strong>Falsy</strong> (faux) : <code>false, 0, "", null, undefined, NaN</code>.</p>
-                    <p>Tout le reste est <strong>Truthy</strong> (vrai), y compris <code>[]</code> et <code>{}</code>.
-                    </p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Conditions</div>
-                <pre><span class="c">// if / else if / else</span>
-<span class="kw">if</span> (<span class="var">age</span> < <span class="num">18</span>) {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Mineur"</span>);
-} <span class="kw">else if</span> (<span class="var">age</span> < <span class="num">65</span>) {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Adulte"</span>);
-} <span class="kw">else</span> {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Senior"</span>);
-}
-
-<span class="c">// Ternaire</span>
-<span class="kw">const</span> <span class="var">status</span> = <span class="var">age</span> >= <span class="num">18</span> ? <span class="str">"Majeur"</span> : <span class="str">"Mineur"</span>;
-
-<span class="c">// Switch</span>
-<span class="kw">switch</span> (<span class="var">fruit</span>) {
-    <span class="kw">case</span> <span class="str">"pomme"</span>: <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"🍎"</span>); <span class="kw">break</span>;
-    <span class="kw">case</span> <span class="str">"banane"</span>: <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"🍌"</span>); <span class="kw">break</span>;
-    <span class="kw">default</span>: <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"🍇"</span>);
-}</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo conditions</div>
-                <input type="number" id="demo-cond-input" class="demo-input" placeholder="Entrez un âge" value="25">
-                <button class="demo-btn" onclick="demoConditions()">Vérifier</button>
-                <div id="demo-cond-output" class="demo-output" style="margin-top:12px">Résultat ici</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S5: BOUCLES -->
-    <section id="s5">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">05</div>
-                <div>
-                    <h2 class="sec-title">Boucles</h2>
-                    <p class="sec-sub">for, while, for...of</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Itérables</summary>
-                <div class="details-content">
-                    <p>La boucle <code>for...of</code> est la façon moderne de parcourir tout ce qui est "itérable"
-                        (Arrays, Strings, Maps, Sets, NodeLists).</p>
-                    <p>Pour les objets littéraux, on utilise plutôt <code>for...in</code> (qui parcourt les clés) ou
-                        <code>Object.entries()</code>.
-                    </p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Boucles</div>
-                <pre><span class="c">// for classique</span>
-<span class="kw">for</span> (<span class="kw">let</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">5</span>; <span class="var">i</span>++) {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">i</span>);
-}
-
-<span class="c">// for...of (valeurs)</span>
-<span class="kw">const</span> <span class="var">fruits</span> = [<span class="str">"🍎"</span>, <span class="str">"🍌"</span>, <span class="str">"🍊"</span>];
-<span class="kw">for</span> (<span class="kw">const</span> <span class="var">fruit</span> <span class="kw">of</span> <span class="var">fruits</span>) {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">fruit</span>);
-}
-
-<span class="c">// for...in (clés/index)</span>
-<span class="kw">for</span> (<span class="kw">const</span> <span class="var">key</span> <span class="kw">in</span> <span class="var">object</span>) {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">key</span>, <span class="var">object</span>[<span class="var">key</span>]);
-}
-
-<span class="c">// while</span>
-<span class="kw">while</span> (<span class="var">condition</span>) { <span class="c">/* ... */</span> }
-
-<span class="c">// do...while</span>
-<span class="kw">do</span> { <span class="c">/* ... */</span> } <span class="kw">while</span> (<span class="var">condition</span>);</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo boucles</div>
-                <button class="demo-btn" onclick="demoLoops()">Parcourir tableau</button>
-                <div id="demo-loops-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S6: FONCTIONS -->
-    <section id="s6">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">06</div>
-                <div>
-                    <h2 class="sec-title">Fonctions</h2>
-                    <p class="sec-sub">function, arrow, callback</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Fonctions fléchées (Arrow Functions)</summary>
-                <div class="details-content">
-                    <p>Les <strong>Arrow Functions</strong> <code>() => {}</code> sont plus concises mais ont une
-                        différence majeure : elles ne lient pas leur propre <code>this</code>.</p>
-                    <p>Elles héritent du <code>this</code> du contexte parent. Idéal pour les callbacks, mais à éviter
-                        pour les méthodes d'objet qui utilisent <code>this</code>.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Fonctions</div>
-                <pre><span class="c">// Fonction classique</span>
-<span class="kw">function</span> <span class="fn">add</span>(<span class="var">a</span>, <span class="var">b</span>) {
-    <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>;
-}
-
-<span class="c">// Arrow function</span>
-<span class="kw">const</span> <span class="fn">multiply</span> = (<span class="var">a</span>, <span class="var">b</span>) => <span class="var">a</span> * <span class="var">b</span>;
-
-<span class="c">// Arrow avec bloc</span>
-<span class="kw">const</span> <span class="fn">greet</span> = (<span class="var">name</span>) => {
-    <span class="kw">const</span> <span class="var">msg</span> = <span class="str">`Hello </span>${<span class="var">name</span>}<span class="str">!`</span>;
-    <span class="kw">return</span> <span class="var">msg</span>;
-};
-
-<span class="c">// Valeurs par défaut</span>
-<span class="kw">const</span> <span class="fn">power</span> = (<span class="var">base</span>, <span class="var">exp</span> = <span class="num">2</span>) => <span class="var">base</span> ** <span class="var">exp</span>;
-
-<span class="c">// Callback</span>
-<span class="kw">const</span> <span class="fn">doTwice</span> = (<span class="var">fn</span>) => { <span class="fn">fn</span>(); <span class="fn">fn</span>(); };
-<span class="fn">doTwice</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Hi!"</span>));</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo fonctions</div>
-                <button class="demo-btn" onclick="demoFunctions()">Tester</button>
-                <div id="demo-fn-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S7: ARRAYS -->
-    <section id="s7">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">07</div>
-                <div>
-                    <h2 class="sec-title">Arrays</h2>
-                    <p class="sec-sub">map, filter, reduce, find</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Programmation Fonctionnelle</summary>
-                <div class="details-content">
-                    <p>Les méthodes modernes (<code>map, filter, reduce</code>) sont immutables : elles retournent un
-                        <strong>nouveau tableau</strong> sans modifier l'original.
-                    </p>
-                    <p>C'est essentiel dans les frameworks modernes (React/Vue) pour la détection de changements.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Méthodes</div>
-                <pre><span class="kw">const</span> <span class="var">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];
-
-<span class="c">// map: transformer</span>
-<span class="var">nums</span>.<span class="fn">map</span>(<span class="var">x</span> => <span class="var">x</span> * <span class="num">2</span>);          <span class="c">// [2, 4, 6, 8, 10]</span>
-
-<span class="c">// filter: filtrer</span>
-<span class="var">nums</span>.<span class="fn">filter</span>(<span class="var">x</span> => <span class="var">x</span> > <span class="num">3</span>);        <span class="c">// [4, 5]</span>
-
-<span class="c">// reduce: réduire</span>
-<span class="var">nums</span>.<span class="fn">reduce</span>((<span class="var">a</span>, <span class="var">b</span>) => <span class="var">a</span> + <span class="var">b</span>);  <span class="c">// 15</span>
-
-<span class="c">// find: trouver</span>
-<span class="var">nums</span>.<span class="fn">find</span>(<span class="var">x</span> => <span class="var">x</span> > <span class="num">3</span>);          <span class="c">// 4</span>
-
-<span class="c">// some / every</span>
-<span class="var">nums</span>.<span class="fn">some</span>(<span class="var">x</span> => <span class="var">x</span> > <span class="num">4</span>);          <span class="c">// true</span>
-<span class="var">nums</span>.<span class="fn">every</span>(<span class="var">x</span> => <span class="var">x</span> > <span class="num">0</span>);         <span class="c">// true</span>
-
-<span class="c">// includes / indexOf</span>
-<span class="var">nums</span>.<span class="fn">includes</span>(<span class="num">3</span>);               <span class="c">// true</span>
-<span class="var">nums</span>.<span class="fn">indexOf</span>(<span class="num">3</span>);                <span class="c">// 2</span>
-
-<span class="c">// Autres</span>
-<span class="var">nums</span>.<span class="fn">push</span>(<span class="num">6</span>); <span class="var">nums</span>.<span class="fn">pop</span>();       <span class="c">// ajouter / retirer fin</span>
-<span class="var">nums</span>.<span class="fn">unshift</span>(<span class="num">0</span>); <span class="var">nums</span>.<span class="fn">shift</span>();   <span class="c">// ajouter / retirer début</span>
-<span class="var">nums</span>.<span class="fn">slice</span>(<span class="num">1</span>, <span class="num">3</span>);               <span class="c">// [2, 3] extrait</span>
-<span class="var">nums</span>.<span class="fn">splice</span>(<span class="num">2</span>, <span class="num">1</span>);              <span class="c">// supprime index 2</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Arrays</div>
-                <button class="demo-btn" onclick="demoArrays()">Tester</button>
-                <div id="demo-arr-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S8: OBJECTS -->
-    <section id="s8">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">08</div>
-                <div>
-                    <h2 class="sec-title">Objects</h2>
-                    <p class="sec-sub">Propriétés, méthodes, destructuring</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Référence mémoire</summary>
-                <div class="details-content">
-                    <p>En JS, comparer deux objets compare leur <strong>adresse mémoire</strong> :
-                        <code>{} === {}</code> est <code>false</code> !
-                    </p>
-                    <p>Pour copier un objet, utilisez le Spread Operator <code>{...obj}</code> (copie superficielle) ou
-                        <code>structuredClone(obj)</code> (copie profonde).
-                    </p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Objects</div>
-                <pre><span class="c">// Création</span>
-<span class="kw">const</span> <span class="var">user</span> = {
-    <span class="prop">name</span>: <span class="str">"Alice"</span>,
-    <span class="prop">age</span>: <span class="num">28</span>,
-    <span class="prop">skills</span>: [<span class="str">"JS"</span>, <span class="str">"CSS"</span>],
-    <span class="fn">greet</span>() {
-        <span class="kw">return</span> <span class="str">`Hello, I'm </span>${<span class="kw">this</span>.<span class="prop">name</span>}<span class="str">`</span>;
-    }
-};
-
-<span class="c">// Accès</span>
-<span class="var">user</span>.<span class="prop">name</span>;           <span class="c">// "Alice"</span>
-<span class="var">user</span>[<span class="str">"age"</span>];          <span class="c">// 28</span>
-
-<span class="c">// Destructuring</span>
-<span class="kw">const</span> { <span class="var">name</span>, <span class="var">age</span> } = <span class="var">user</span>;
-
-<span class="c">// Spread</span>
-<span class="kw">const</span> <span class="var">copy</span> = { ...<span class="var">user</span>, <span class="prop">city</span>: <span class="str">"Paris"</span> };
-
-<span class="c">// Object.keys / values / entries</span>
-<span class="fn">Object</span>.<span class="fn">keys</span>(<span class="var">user</span>);     <span class="c">// ["name", "age", "skills", "greet"]</span>
-<span class="fn">Object</span>.<span class="fn">values</span>(<span class="var">user</span>);   <span class="c">// valeurs</span>
-<span class="fn">Object</span>.<span class="fn">entries</span>(<span class="var">user</span>);  <span class="c">// [[key, value], ...]</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Objects</div>
-                <button class="demo-btn" onclick="demoObjects()">Tester</button>
-                <div id="demo-obj-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S9: DOM -->
-    <section id="s9">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">09</div>
-                <div>
-                    <h2 class="sec-title">DOM Manipulation</h2>
-                    <p class="sec-sub">Sélection, modification, création</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 DOM Tree</summary>
-                <div class="details-content">
-                    <p>Le <strong>Document Object Model</strong> représente la page comme un arbre de nœuds.</p>
-                    <p>Modifier le DOM est coûteux en performance : il faut minimiser les accès et les modifications
-                        (Reflow/Repaint).</p>
-                    <p>Les méthodes comme <code>querySelector</code> sont flexibles mais légèrement plus lentes que
-                        <code>getElementById</code>.
-                    </p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>DOM</div>
-                <pre><span class="c">// Sélection</span>
-<span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"id"</span>);
-<span class="fn">document</span>.<span class="fn">querySelector</span>(<span class="str">".class"</span>);
-<span class="fn">document</span>.<span class="fn">querySelectorAll</span>(<span class="str">"div"</span>);
-
-<span class="c">// Modification contenu</span>
-<span class="var">el</span>.<span class="prop">textContent</span> = <span class="str">"Texte"</span>;
-<span class="var">el</span>.<span class="prop">innerHTML</span> = <span class="str">"&lt;b&gt;HTML&lt;/b&gt;"</span>;
-
-<span class="c">// Attributs</span>
-<span class="var">el</span>.<span class="fn">getAttribute</span>(<span class="str">"href"</span>);
-<span class="var">el</span>.<span class="fn">setAttribute</span>(<span class="str">"src"</span>, <span class="str">"img.jpg"</span>);
-
-<span class="c">// Classes</span>
-<span class="var">el</span>.<span class="prop">classList</span>.<span class="fn">add</span>(<span class="str">"active"</span>);
-<span class="var">el</span>.<span class="prop">classList</span>.<span class="fn">remove</span>(<span class="str">"hidden"</span>);
-<span class="var">el</span>.<span class="prop">classList</span>.<span class="fn">toggle</span>(<span class="str">"dark"</span>);
-
-<span class="c">// Style</span>
-<span class="var">el</span>.<span class="prop">style</span>.<span class="prop">color</span> = <span class="str">"red"</span>;
-<span class="var">el</span>.<span class="prop">style</span>.<span class="prop">backgroundColor</span> = <span class="str">"#333"</span>;
-
-<span class="c">// Création</span>
-<span class="kw">const</span> <span class="var">div</span> = <span class="fn">document</span>.<span class="fn">createElement</span>(<span class="str">"div"</span>);
-<span class="var">parent</span>.<span class="fn">appendChild</span>(<span class="var">div</span>);
-<span class="var">el</span>.<span class="fn">remove</span>();</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo DOM</div>
-                <div id="demo-dom-box"
-                    style="width:100px;height:100px;background:var(--primary);border-radius:12px;margin:12px 0;transition:all 0.3s">
-                </div>
-                <button class="demo-btn" onclick="demoDOM()">Changer la box</button>
-                <div id="demo-dom-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S10: EVENTS -->
-    <section id="s10">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">10</div>
-                <div>
-                    <h2 class="sec-title">Events</h2>
-                    <p class="sec-sub">click, input, keydown</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Bubbling & Capturing</summary>
-                <div class="details-content">
-                    <p>Les événements se propagent en deux phases : <strong>Capturing</strong> (haut vers bas) et
-                        <strong>Bubbling</strong> (bas vers haut).
-                    </p>
-                    <p>Par défaut, on écoute le bubbling. Utilisez <code>e.stopPropagation()</code> pour empêcher
-                        l'événement de remonter aux parents.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Events</div>
-                <pre><span class="c">// addEventListener</span>
-<span class="var">btn</span>.<span class="fn">addEventListener</span>(<span class="str">"click"</span>, (<span class="var">e</span>) => {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Cliqué!"</span>, <span class="var">e</span>.<span class="prop">target</span>);
-});
-
-<span class="c">// Événements courants</span>
-<span class="str">"click"</span>      <span class="c">// clic souris</span>
-<span class="str">"dblclick"</span>   <span class="c">// double-clic</span>
-<span class="str">"mouseenter"</span> / <span class="str">"mouseleave"</span>
-<span class="str">"keydown"</span> / <span class="str">"keyup"</span>
-<span class="str">"input"</span>      <span class="c">// saisie input</span>
-<span class="str">"change"</span>     <span class="c">// changement valeur</span>
-<span class="str">"submit"</span>     <span class="c">// soumission form</span>
-<span class="str">"scroll"</span>     <span class="c">// défilement</span>
-<span class="str">"load"</span>       <span class="c">// chargement</span>
-
-<span class="c">// Propriétés event</span>
-<span class="var">e</span>.<span class="prop">target</span>           <span class="c">// élément cible</span>
-<span class="var">e</span>.<span class="fn">preventDefault</span>()  <span class="c">// annuler défaut</span>
-<span class="var">e</span>.<span class="fn">stopPropagation</span>() <span class="c">// stopper bubbling</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Events</div>
-                <button class="demo-btn" onclick="demoEvents()">Compteur de clics</button>
-                <div id="demo-event-output" class="demo-output" style="margin-top:12px;margin-bottom:12px">Clics: 0
-                </div>
-                <input type="text" class="demo-input" placeholder="Tapez une touche" onkeydown="demoKeyPress(event)">
-                <div id="demo-key-output" class="demo-output" style="margin-top:12px">Touche pressée</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S11: ASYNC -->
-    <section id="s11">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">11</div>
-                <div>
-                    <h2 class="sec-title">Async / Await</h2>
-                    <p class="sec-sub">Promises, setTimeout, async</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 L'enfer des Callbacks vs Async/Await</summary>
-                <div class="details-content">
-                    <p>Historiquement, on gérait l'asynchrone avec des callbacks imbriqués ("Callback Hell").</p>
-                    <p>Les <strong>Promises</strong> ont aplati le code, et <strong>async/await</strong> (ES8) permet
-                        d'écrire de l'asynchrone comme du synchrone, rendant le code beaucoup plus lisible.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Async</div>
-                <pre><span class="c">// setTimeout / setInterval</span>
-<span class="fn">setTimeout</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"1s"</span>), <span class="num">1000</span>);
-<span class="kw">const</span> <span class="var">id</span> = <span class="fn">setInterval</span>(() => {}, <span class="num">1000</span>);
-<span class="fn">clearInterval</span>(<span class="var">id</span>);
-
-<span class="c">// Promise</span>
-<span class="kw">const</span> <span class="var">promise</span> = <span class="kw">new</span> <span class="fn">Promise</span>((<span class="var">resolve</span>, <span class="var">reject</span>) => {
-    <span class="fn">setTimeout</span>(() => <span class="fn">resolve</span>(<span class="str">"OK"</span>), <span class="num">1000</span>);
-});
-
-<span class="var">promise</span>
-    .<span class="fn">then</span>(<span class="var">result</span> => <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">result</span>))
-    .<span class="fn">catch</span>(<span class="var">err</span> => <span class="fn">console</span>.<span class="fn">error</span>(<span class="var">err</span>));
-
-<span class="c">// Async / Await</span>
-<span class="kw">async function</span> <span class="fn">getData</span>() {
-    <span class="kw">try</span> {
-        <span class="kw">const</span> <span class="var">result</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/api"</span>);
-        <span class="kw">return</span> <span class="var">result</span>.<span class="fn">json</span>();
-    } <span class="kw">catch</span> (<span class="var">err</span>) {
-        <span class="fn">console</span>.<span class="fn">error</span>(<span class="var">err</span>);
-    }
-}</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Async</div>
-                <button class="demo-btn" onclick="demoPromise()">Promise (1.5s)</button>
-                <button class="demo-btn" onclick="demoAsync()">Async/Await (1s)</button>
-                <div id="demo-async-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S12: STORAGE -->
-    <section id="s12">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">12</div>
-                <div>
-                    <h2 class="sec-title">LocalStorage</h2>
-                    <p class="sec-sub">Stockage côté client</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 LocalStorage vs Cookies</summary>
-                <div class="details-content">
-                    <p><strong>LocalStorage</strong> : Stockage persistant (~5-10MB), non envoyé au serveur.</p>
-                    <p><strong>SessionStorage</strong> : Stockage temporaire (disparaît à la fermeture de l'onglet).</p>
-                    <p><strong>Cookies</strong> : Petites données (~4KB) envoyées à chaque requête HTTP (utile pour
-                        l'auth).</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Storage</div>
-                <pre><span class="c">// localStorage (persistant)</span>
-<span class="fn">localStorage</span>.<span class="fn">setItem</span>(<span class="str">"key"</span>, <span class="str">"value"</span>);
-<span class="fn">localStorage</span>.<span class="fn">getItem</span>(<span class="str">"key"</span>);
-<span class="fn">localStorage</span>.<span class="fn">removeItem</span>(<span class="str">"key"</span>);
-<span class="fn">localStorage</span>.<span class="fn">clear</span>();
-
-<span class="c">// Stocker un objet</span>
-<span class="kw">const</span> <span class="var">user</span> = { <span class="prop">name</span>: <span class="str">"Alice"</span> };
-<span class="fn">localStorage</span>.<span class="fn">setItem</span>(<span class="str">"user"</span>, <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">user</span>));
-
-<span class="c">// Récupérer un objet</span>
-<span class="kw">const</span> <span class="var">data</span> = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="fn">localStorage</span>.<span class="fn">getItem</span>(<span class="str">"user"</span>));
-
-<span class="c">// sessionStorage (session uniquement)</span>
-<span class="fn">sessionStorage</span>.<span class="fn">setItem</span>(<span class="str">"temp"</span>, <span class="str">"data"</span>);</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Storage</div>
-                <input type="text" id="demo-storage-input" class="demo-input" placeholder="Valeur à stocker">
-                <button class="demo-btn" onclick="demoLocalStorage()">Sauvegarder</button>
-                <button class="demo-btn" onclick="demoLoadStorage()">Charger</button>
-                <div id="demo-storage-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S13: SPREAD/REST -->
-    <section id="s13">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">13</div>
-                <div>
-                    <h2 class="sec-title">Spread & Rest</h2>
-                    <p class="sec-sub">... opérateur</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Shallow vs Deep Copy</summary>
-                <div class="details-content">
-                    <p>Le spread operator <code>[...]</code> fait une <strong>copie superficielle</strong>.</p>
-                    <p>Si le tableau contient des objets, ces objets sont toujours référencés. Modifier l'objet dans la
-                        copie affecte l'original !</p>
-                    <p>Pour une copie profonde, utilisez <code>structuredClone()</code>.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Spread / Rest</div>
-                <pre><span class="c">// Spread array (étaler)</span>
-<span class="kw">const</span> <span class="var">arr1</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
-<span class="kw">const</span> <span class="var">arr2</span> = [...<span class="var">arr1</span>, <span class="num">4</span>, <span class="num">5</span>];  <span class="c">// [1,2,3,4,5]</span>
-
-<span class="c">// Spread object</span>
-<span class="kw">const</span> <span class="var">obj</span> = { <span class="prop">a</span>: <span class="num">1</span> };
-<span class="kw">const</span> <span class="var">copy</span> = { ...<span class="var">obj</span>, <span class="prop">b</span>: <span class="num">2</span> };   <span class="c">// {a:1, b:2}</span>
-
-<span class="c">// Rest parameters (collecter)</span>
-<span class="kw">function</span> <span class="fn">sum</span>(...<span class="var">numbers</span>) {
-    <span class="kw">return</span> <span class="var">numbers</span>.<span class="fn">reduce</span>((<span class="var">a</span>, <span class="var">b</span>) => <span class="var">a</span> + <span class="var">b</span>, <span class="num">0</span>);
-}
-<span class="fn">sum</span>(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>);  <span class="c">// 10</span>
-
-<span class="c">// Destructuring avec rest</span>
-<span class="kw">const</span> [<span class="var">first</span>, ...<span class="var">rest</span>] = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
-<span class="c">// first = 1, rest = [2, 3]</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Spread/Rest</div>
-                <button class="demo-btn" onclick="demoSpread()">Tester</button>
-                <div id="demo-spread-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S14: CLASSES -->
-    <section id="s14">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">14</div>
-                <div>
-                    <h2 class="sec-title">Classes</h2>
-                    <p class="sec-sub">POO en JavaScript</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Sucre syntaxique</summary>
-                <div class="details-content">
-                    <p>JavaScript reste un langage orienté <strong>Prototype</strong>. Le mot-clé <code>class</code> est
-                        principalement du "sucre syntaxique" pour rendre la syntaxe familière aux développeurs Java/C#.
-                    </p>
-                    <p>Sous le capot, c'est toujours la chaîne de prototypes qui fonctionne.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Classes</div>
-                <pre><span class="kw">class</span> <span class="fn">Animal</span> {
-    <span class="fn">constructor</span>(<span class="var">name</span>) {
-        <span class="kw">this</span>.<span class="prop">name</span> = <span class="var">name</span>;
-    }
-    
-    <span class="fn">speak</span>() {
-        <span class="kw">return</span> <span class="str">`</span>${<span class="kw">this</span>.<span class="prop">name</span>}<span class="str"> fait du bruit`</span>;
-    }
-}
-
-<span class="c">// Héritage</span>
-<span class="kw">class</span> <span class="fn">Dog</span> <span class="kw">extends</span> <span class="fn">Animal</span> {
-    <span class="fn">constructor</span>(<span class="var">name</span>, <span class="var">breed</span>) {
-        <span class="kw">super</span>(<span class="var">name</span>);
-        <span class="kw">this</span>.<span class="prop">breed</span> = <span class="var">breed</span>;
-    }
-    
-    <span class="fn">speak</span>() {
-        <span class="kw">return</span> <span class="str">`</span>${<span class="kw">this</span>.<span class="prop">name</span>}<span class="str"> aboie 🐕`</span>;
-    }
-}
-
-<span class="kw">const</span> <span class="var">rex</span> = <span class="kw">new</span> <span class="fn">Dog</span>(<span class="str">"Rex"</span>, <span class="str">"Berger"</span>);
-<span class="var">rex</span>.<span class="fn">speak</span>();  <span class="c">// "Rex aboie 🐕"</span></pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Classes</div>
-                <button class="demo-btn" onclick="demoClasses()">Tester</button>
-                <div id="demo-class-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S15: FETCH -->
-    <section id="s15">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">15</div>
-                <div>
-                    <h2 class="sec-title">Fetch API</h2>
-                    <p class="sec-sub">Requêtes HTTP</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Fetch vs Axios</summary>
-                <div class="details-content">
-                    <p><code>fetch()</code> est natif mais bas niveau (ne throw pas d'erreur sur 404/500, nécessite deux
-                        <code>await</code> pour le JSON).
-                    </p>
-                    <p>C'est pourquoi beaucoup utilisent des librairies comme <strong>Axios</strong> qui simplifient la
-                        syntaxe, gèrent les timeouts et les erreurs automatiquement.</p>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Fetch</div>
-                <pre><span class="c">// GET</span>
-<span class="kw">const</span> <span class="var">response</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/api/users"</span>);
-<span class="kw">const</span> <span class="var">data</span> = <span class="kw">await</span> <span class="var">response</span>.<span class="fn">json</span>();
-
-<span class="c">// POST</span>
-<span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/api/users"</span>, {
-    <span class="prop">method</span>: <span class="str">"POST"</span>,
-    <span class="prop">headers</span>: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> },
-    <span class="prop">body</span>: <span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="prop">name</span>: <span class="str">"Alice"</span> })
-});
-
-<span class="c">// Avec gestion d'erreur</span>
-<span class="kw">try</span> {
-    <span class="kw">const</span> <span class="var">res</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="var">url</span>);
-    <span class="kw">if</span> (!<span class="var">res</span>.<span class="prop">ok</span>) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="var">res</span>.<span class="prop">status</span>);
-    <span class="kw">const</span> <span class="var">data</span> = <span class="kw">await</span> <span class="var">res</span>.<span class="fn">json</span>();
-} <span class="kw">catch</span> (<span class="var">err</span>) {
-    <span class="fn">console</span>.<span class="fn">error</span>(<span class="var">err</span>);
-}</pre>
-            </div>
-
-            <div class="demo">
-                <div class="demo-title">Démo Fetch (API externe)</div>
-                <button class="demo-btn" onclick="demoFetch()">Fetch User</button>
-                <div id="demo-fetch-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S16: DATE & MATH -->
-    <section id="s16">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">16</div>
-                <div>
-                    <h2 class="sec-title">Date & Math & String</h2>
-                    <p class="sec-sub">Utilitaires natifs</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Gestion des dates</summary>
-                <div class="details-content">
-                    <p>L'objet <code>Date</code> natif est notoirement maladroit. Pour des manipulations complexes, on
-                        recommande souvent <strong>date-fns</strong> ou <strong>Day.js</strong>.</p>
-                    <p>Toutefois, <code>Intl.DateTimeFormat</code> permet un formatage puissant et localisé nativement.
-                    </p>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="demo">
-                    <div class="demo-title">Date</div>
-                    <button class="demo-btn" onclick="demoDate()">Afficher Date</button>
-                    <div id="demo-date-output" class="demo-output" style="margin-top:12px">Résultat</div>
-                </div>
-                <div class="demo">
-                    <div class="demo-title">Math</div>
-                    <button class="demo-btn" onclick="demoMath()">Afficher Math</button>
-                    <div id="demo-math-output" class="demo-output" style="margin-top:12px">Résultat</div>
-                </div>
-            </div>
-
-            <div class="demo" style="margin-top:20px">
-                <div class="demo-title">String Methods</div>
-                <button class="demo-btn" onclick="demoStrings()">Afficher String</button>
-                <div id="demo-string-output" class="demo-output" style="margin-top:12px">Résultat</div>
-            </div>
-
-            <h3>Référence complète Array</h3>
-            <table>
-                <tr>
-                    <th>Méthode</th>
-                    <th>Paramètres</th>
-                    <th>Description</th>
-                    <th>Retour</th>
-                </tr>
-                <tr>
-                    <td><code>map()</code></td>
-                    <td><code>(el, idx, arr) => newValue</code></td>
-                    <td>Transforme chaque élément</td>
-                    <td>New Array</td>
-                </tr>
-                <tr>
-                    <td><code>filter()</code></td>
-                    <td><code>(el, idx, arr) => boolean</code></td>
-                    <td>Filtre les éléments</td>
-                    <td>New Array</td>
-                </tr>
-                <tr>
-                    <td><code>reduce()</code></td>
-                    <td><code>(acc, el, idx, arr) => newAcc, initVal</code></td>
-                    <td>Réduit à une valeur</td>
-                    <td>Any</td>
-                </tr>
-                <tr>
-                    <td><code>find()</code></td>
-                    <td><code>(el, idx, arr) => boolean</code></td>
-                    <td>Trouve le premier match</td>
-                    <td>Element | undefined</td>
-                </tr>
-                <tr>
-                    <td><code>findIndex()</code></td>
-                    <td><code>(el, idx, arr) => boolean</code></td>
-                    <td>Index du premier match</td>
-                    <td>Number (-1 si non trouvé)</td>
-                </tr>
-                <tr>
-                    <td><code>some()</code></td>
-                    <td><code>(el, idx, arr) => boolean</code></td>
-                    <td>Au moins un match?</td>
-                    <td>Boolean</td>
-                </tr>
-                <tr>
-                    <td><code>every()</code></td>
-                    <td><code>(el, idx, arr) => boolean</code></td>
-                    <td>Tous matchent?</td>
-                    <td>Boolean</td>
-                </tr>
-                <tr>
-                    <td><code>forEach()</code></td>
-                    <td><code>(el, idx, arr) => void</code></td>
-                    <td>Itère sans retour</td>
-                    <td>undefined</td>
-                </tr>
-                <tr>
-                    <td><code>includes()</code></td>
-                    <td><code>value, fromIndex?</code></td>
-                    <td>Contient la valeur?</td>
-                    <td>Boolean</td>
-                </tr>
-                <tr>
-                    <td><code>indexOf()</code></td>
-                    <td><code>value, fromIndex?</code></td>
-                    <td>Index de la valeur</td>
-                    <td>Number (-1 si non trouvé)</td>
-                </tr>
-                <tr>
-                    <td><code>slice()</code></td>
-                    <td><code>start?, end?</code></td>
-                    <td>Extrait portion (sans modifier)</td>
-                    <td>New Array</td>
-                </tr>
-                <tr>
-                    <td><code>splice()</code></td>
-                    <td><code>start, deleteCount?, ...items</code></td>
-                    <td>Modifie le tableau</td>
-                    <td>Deleted elements</td>
-                </tr>
-                <tr>
-                    <td><code>concat()</code></td>
-                    <td><code>...arrays</code></td>
-                    <td>Fusionne tableaux</td>
-                    <td>New Array</td>
-                </tr>
-                <tr>
-                    <td><code>join()</code></td>
-                    <td><code>separator?</code></td>
-                    <td>Tableau → String</td>
-                    <td>String</td>
-                </tr>
-                <tr>
-                    <td><code>reverse()</code></td>
-                    <td>—</td>
-                    <td>Inverse l'ordre (modifie)</td>
-                    <td>Array</td>
-                </tr>
-                <tr>
-                    <td><code>sort()</code></td>
-                    <td><code>(a, b) => number</code></td>
-                    <td>Trie (modifie)</td>
-                    <td>Array</td>
-                </tr>
-                <tr>
-                    <td><code>flat()</code></td>
-                    <td><code>depth?</code></td>
-                    <td>Aplatit les sous-tableaux</td>
-                    <td>New Array</td>
-                </tr>
-                <tr>
-                    <td><code>flatMap()</code></td>
-                    <td><code>(el, idx, arr) => newValue</code></td>
-                    <td>map + flat(1)</td>
-                    <td>New Array</td>
-                </tr>
-            </table>
-
-            <h3>Référence complète String</h3>
-            <table>
-                <tr>
-                    <th>Méthode</th>
-                    <th>Paramètres</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><code>length</code></td>
-                    <td>—</td>
-                    <td>Propriété: nombre de caractères</td>
-                </tr>
-                <tr>
-                    <td><code>charAt()</code></td>
-                    <td><code>index</code></td>
-                    <td>Caractère à l'index</td>
-                </tr>
-                <tr>
-                    <td><code>charCodeAt()</code></td>
-                    <td><code>index</code></td>
-                    <td>Code Unicode du caractère</td>
-                </tr>
-                <tr>
-                    <td><code>slice()</code></td>
-                    <td><code>start, end?</code></td>
-                    <td>Extrait une portion</td>
-                </tr>
-                <tr>
-                    <td><code>substring()</code></td>
-                    <td><code>start, end?</code></td>
-                    <td>Extrait (pas d'index négatif)</td>
-                </tr>
-                <tr>
-                    <td><code>substr()</code></td>
-                    <td><code>start, length?</code></td>
-                    <td>Extrait par longueur (déprécié)</td>
-                </tr>
-                <tr>
-                    <td><code>split()</code></td>
-                    <td><code>separator, limit?</code></td>
-                    <td>String → Array</td>
-                </tr>
-                <tr>
-                    <td><code>replace()</code></td>
-                    <td><code>search, replacement</code></td>
-                    <td>Remplace première occurrence</td>
-                </tr>
-                <tr>
-                    <td><code>replaceAll()</code></td>
-                    <td><code>search, replacement</code></td>
-                    <td>Remplace toutes occurrences</td>
-                </tr>
-                <tr>
-                    <td><code>toUpperCase()</code></td>
-                    <td>—</td>
-                    <td>MAJUSCULES</td>
-                </tr>
-                <tr>
-                    <td><code>toLowerCase()</code></td>
-                    <td>—</td>
-                    <td>minuscules</td>
-                </tr>
-                <tr>
-                    <td><code>trim()</code></td>
-                    <td>—</td>
-                    <td>Supprime espaces début/fin</td>
-                </tr>
-                <tr>
-                    <td><code>trimStart()</code></td>
-                    <td>—</td>
-                    <td>Supprime espaces au début</td>
-                </tr>
-                <tr>
-                    <td><code>trimEnd()</code></td>
-                    <td>—</td>
-                    <td>Supprime espaces à la fin</td>
-                </tr>
-                <tr>
-                    <td><code>padStart()</code></td>
-                    <td><code>length, pad?</code></td>
-                    <td>Rembourre au début</td>
-                </tr>
-                <tr>
-                    <td><code>padEnd()</code></td>
-                    <td><code>length, pad?</code></td>
-                    <td>Rembourre à la fin</td>
-                </tr>
-                <tr>
-                    <td><code>includes()</code></td>
-                    <td><code>search, position?</code></td>
-                    <td>Contient la sous-chaîne?</td>
-                </tr>
-                <tr>
-                    <td><code>startsWith()</code></td>
-                    <td><code>search, position?</code></td>
-                    <td>Commence par?</td>
-                </tr>
-                <tr>
-                    <td><code>endsWith()</code></td>
-                    <td><code>search, length?</code></td>
-                    <td>Finit par?</td>
-                </tr>
-                <tr>
-                    <td><code>repeat()</code></td>
-                    <td><code>count</code></td>
-                    <td>Répète n fois</td>
-                </tr>
-                <tr>
-                    <td><code>match()</code></td>
-                    <td><code>regex</code></td>
-                    <td>Trouve les correspondances regex</td>
-                </tr>
-                <tr>
-                    <td><code>search()</code></td>
-                    <td><code>regex</code></td>
-                    <td>Index de la première correspondance</td>
-                </tr>
-            </table>
-
-            <h3>Référence DOM</h3>
-            <table>
-                <tr>
-                    <th>Méthode</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><code>getElementById(id)</code></td>
-                    <td>Sélectionne par ID unique</td>
-                </tr>
-                <tr>
-                    <td><code>querySelector(css)</code></td>
-                    <td>Premier élément matching le sélecteur CSS</td>
-                </tr>
-                <tr>
-                    <td><code>querySelectorAll(css)</code></td>
-                    <td>Tous les éléments (NodeList)</td>
-                </tr>
-                <tr>
-                    <td><code>getElementsByClassName(class)</code></td>
-                    <td>HTMLCollection par classe</td>
-                </tr>
-                <tr>
-                    <td><code>getElementsByTagName(tag)</code></td>
-                    <td>HTMLCollection par tag</td>
-                </tr>
-                <tr>
-                    <td><code>createElement(tag)</code></td>
-                    <td>Crée un nouvel élément</td>
-                </tr>
-                <tr>
-                    <td><code>createTextNode(text)</code></td>
-                    <td>Crée un nœud texte</td>
-                </tr>
-                <tr>
-                    <td><code>appendChild(node)</code></td>
-                    <td>Ajoute enfant à la fin</td>
-                </tr>
-                <tr>
-                    <td><code>insertBefore(new, ref)</code></td>
-                    <td>Insère avant un élément</td>
-                </tr>
-                <tr>
-                    <td><code>removeChild(node)</code></td>
-                    <td>Supprime un enfant</td>
-                </tr>
-                <tr>
-                    <td><code>replaceChild(new, old)</code></td>
-                    <td>Remplace un enfant</td>
-                </tr>
-                <tr>
-                    <td><code>cloneNode(deep?)</code></td>
-                    <td>Clone l'élément (deep=enfants inclus)</td>
-                </tr>
-                <tr>
-                    <td><code>getAttribute(name)</code></td>
-                    <td>Lit un attribut</td>
-                </tr>
-                <tr>
-                    <td><code>setAttribute(name, value)</code></td>
-                    <td>Définit un attribut</td>
-                </tr>
-                <tr>
-                    <td><code>removeAttribute(name)</code></td>
-                    <td>Supprime un attribut</td>
-                </tr>
-                <tr>
-                    <td><code>classList.add/remove/toggle/contains</code></td>
-                    <td>Gestion des classes CSS</td>
-                </tr>
-            </table>
-
-            <h3>Événements JavaScript</h3>
-            <div class="ref-grid">
-                <div class="ref-card">
-                    <h4>Souris</h4><code>click</code> <code>dblclick</code> <code>mousedown</code> <code>mouseup</code>
-                    <code>mousemove</code> <code>mouseenter</code> <code>mouseleave</code> <code>mouseover</code>
-                    <code>mouseout</code> <code>contextmenu</code> <code>wheel</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Clavier</h4><code>keydown</code> <code>keyup</code> <code>keypress</code> — Props:
-                    <code>e.key</code> <code>e.code</code> <code>e.ctrlKey</code> <code>e.shiftKey</code>
-                    <code>e.altKey</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Formulaire</h4><code>submit</code> <code>reset</code> <code>input</code> <code>change</code>
-                    <code>focus</code> <code>blur</code> <code>select</code> <code>invalid</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Document</h4><code>DOMContentLoaded</code> <code>load</code> <code>beforeunload</code>
-                    <code>unload</code> <code>scroll</code> <code>resize</code> <code>hashchange</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Touch (mobile)</h4><code>touchstart</code> <code>touchmove</code> <code>touchend</code>
-                    <code>touchcancel</code>
-                </div>
-                <div class="ref-card">
-                    <h4>Drag & Drop</h4><code>dragstart</code> <code>drag</code> <code>dragend</code>
-                    <code>dragenter</code> <code>dragover</code> <code>dragleave</code> <code>drop</code>
-                </div>
-            </div>
-
-            <h3>Console & Debug</h3>
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Console</div>
-                <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Message"</span>);           <span class="c">// Affiche message</span>
-<span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"Erreur!"</span>);         <span class="c">// Affiche erreur (rouge)</span>
-<span class="fn">console</span>.<span class="fn">warn</span>(<span class="str">"Attention"</span>);        <span class="c">// Affiche warning (jaune)</span>
-<span class="fn">console</span>.<span class="fn">info</span>(<span class="str">"Info"</span>);             <span class="c">// Affiche info</span>
-<span class="fn">console</span>.<span class="fn">table</span>([{<span class="prop">a</span>:<span class="num">1</span>}, {<span class="prop">a</span>:<span class="num">2</span>}]);   <span class="c">// Affiche en tableau</span>
-<span class="fn">console</span>.<span class="fn">dir</span>(<span class="var">object</span>);              <span class="c">// Inspecte objet</span>
-<span class="fn">console</span>.<span class="fn">group</span>(<span class="str">"Groupe"</span>);          <span class="c">// Ouvre groupe</span>
-<span class="fn">console</span>.<span class="fn">groupEnd</span>();               <span class="c">// Ferme groupe</span>
-<span class="fn">console</span>.<span class="fn">time</span>(<span class="str">"timer"</span>);            <span class="c">// Démarre chrono</span>
-<span class="fn">console</span>.<span class="fn">timeEnd</span>(<span class="str">"timer"</span>);         <span class="c">// Affiche durée</span>
-<span class="fn">console</span>.<span class="fn">count</span>(<span class="str">"label"</span>);           <span class="c">// Compte les appels</span>
-<span class="fn">console</span>.<span class="fn">clear</span>();                  <span class="c">// Efface console</span></pre>
-            </div>
-
-            <h3>JSON</h3>
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>JSON</div>
-                <pre><span class="c">// Object → String JSON</span>
-<span class="kw">const</span> <span class="var">jsonStr</span> = <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">obj</span>);
-<span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">obj</span>, <span class="kw">null</span>, <span class="num">2</span>);  <span class="c">// Formaté avec indentation</span>
-
-<span class="c">// String JSON → Object</span>
-<span class="kw">const</span> <span class="var">obj</span> = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="var">jsonStr</span>);
-
-<span class="c">// Deep clone</span>
-<span class="kw">const</span> <span class="var">clone</span> = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="var">original</span>));</pre>
-            </div>
-
-            <h3>Regex (Expressions Régulières)</h3>
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Regex</div>
-                <pre><span class="kw">const</span> <span class="var">regex</span> = /<span class="str">pattern</span>/<span class="var">flags</span>;
-<span class="kw">const</span> <span class="var">regex</span> = <span class="kw">new</span> <span class="fn">RegExp</span>(<span class="str">"pattern"</span>, <span class="str">"flags"</span>);
-
-<span class="c">// Flags</span>
-<span class="var">g</span>  <span class="c">// global (toutes occurrences)</span>
-<span class="var">i</span>  <span class="c">// insensible à la casse</span>
-<span class="var">m</span>  <span class="c">// multilignes</span>
-
-<span class="c">// Méthodes</span>
-<span class="var">regex</span>.<span class="fn">test</span>(<span class="var">str</span>);        <span class="c">// true/false</span>
-<span class="var">regex</span>.<span class="fn">exec</span>(<span class="var">str</span>);        <span class="c">// match object</span>
-<span class="var">str</span>.<span class="fn">match</span>(<span class="var">regex</span>);       <span class="c">// array de matches</span>
-<span class="var">str</span>.<span class="fn">replace</span>(<span class="var">regex</span>, <span class="str">""</span>); <span class="c">// remplacer</span>
-
-<span class="c">// Patterns courants</span>
-/<span class="str">\d</span>/       <span class="c">// chiffre</span>
-/<span class="str">\w</span>/       <span class="c">// lettre/chiffre/_</span>
-/<span class="str">\s</span>/       <span class="c">// espace/tab/newline</span>
-/<span class="str">.</span>/        <span class="c">// n'importe quel caractère</span>
-/<span class="str">^</span>/        <span class="c">// début de chaîne</span>
-/<span class="str">$</span>/        <span class="c">// fin de chaîne</span>
-/<span class="str">[a-z]</span>/    <span class="c">// plage de caractères</span>
-/<span class="str">(group)</span>/  <span class="c">// groupe de capture</span></pre>
-            </div>
-
-            <div class="tip" style="margin-top:24px"><strong>💡 200+ méthodes référencées</strong> — Ce mémo couvre
-                toutes les fonctionnalités essentielles de JavaScript moderne (ES6+) côté front-end!</div>
-        </div>
-    </section>
-
-    <!-- SECTION QUIZ -->
-    <section id="quiz-section" class="quiz-container">
-        <div class="container">
-            <h2>Testez vos connaissances</h2>
-            <div id="quiz-app"></div>
-        </div>
-    </section>
-
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
-        });
-    </script>
-    <script src="../../assets/js/quiz-engine.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
-            }
-        });
-    </script>
-
-    <footer>
-        <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo JavaScript</strong> • 200+ méthodes • Vanilla JS ES6+ •
-                2025</p>
-            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
-                mémoire avec un
-                cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
-                faciliter l'apprentissage des autres.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <!-- Footer injected by layout.js -->
+    <script src="assets/js/layout.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings & Regex - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .method-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .method-title {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .regex-tester {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .regex-controls {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .regex-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+        }
+
+        .match-highlight {
+            background: rgba(76, 175, 80, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .pattern-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .pattern-table th,
+        .pattern-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pattern-table th {
+            background: var(--bg2);
+            font-weight: 600;
+        }
+
+        .pattern-table code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s17" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">17</div>
+                <div>
+                    <h2 class="sec-title">Strings & Regex</h2>
+                    <p class="sec-sub">Manipulation de texte et expressions régulières</p>
+                </div>
+            </div>
+
+            <p>Les chaînes de caractères sont l'un des types les plus utilisés en JavaScript. Maîtriser leurs méthodes
+                et les regex est essentiel pour manipuler du texte efficacement.</p>
+
+            <!-- STRING METHODS -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">📝 Méthodes de
+                String</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">const str = "  Hello World  ";
+
+// NETTOYAGE
+str.trim();           // "Hello World" (supprime espaces début/fin)
+str.trimStart();      // "Hello World  "
+str.trimEnd();        // "  Hello World"
+
+// RECHERCHE
+str.includes("World");     // true
+str.startsWith("  He");    // true
+str.endsWith("ld  ");      // true
+str.indexOf("World");      // 8 (position, -1 si absent)
+str.lastIndexOf("o");      // 10 (dernière occurrence)
+
+// EXTRACTION
+str.slice(2, 7);      // "Hello" (début, fin)
+str.substring(2, 7);  // "Hello" (similaire, mais gère mal les négatifs)
+str.substr(2, 5);     // "Hello" (début, longueur) ⚠️ Déprécié
+
+// TRANSFORMATION
+str.toLowerCase();    // "  hello world  "
+str.toUpperCase();    // "  HELLO WORLD  "
+str.replace("World", "JS");     // "  Hello JS  " (1ère occurrence)
+str.replaceAll("o", "0");       // "  Hell0 W0rld  " (toutes)
+
+// SPLIT & JOIN
+"a,b,c".split(",");   // ["a", "b", "c"]
+["a", "b", "c"].join("-");  // "a-b-c"
+
+// PADDING
+"5".padStart(3, "0"); // "005"
+"5".padEnd(3, "0");   // "500"
+
+// REPEAT
+"Ha".repeat(3);       // "HaHaHa"</code></pre>
+            </div>
+
+            <div class="method-grid">
+                <div class="method-card">
+                    <div class="method-title">🔍 Vérifier présence</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">str.includes("text")
+str.startsWith("pre")
+str.endsWith("fix")</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Retournent true/false</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-title">✂️ Extraire</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">str.slice(start, end)
+str.substring(start, end)
+str.charAt(index)</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Retournent une sous-chaîne</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-title">🔄 Transformer</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">str.toLowerCase()
+str.toUpperCase()
+str.replace(old, new)</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Retournent une nouvelle string</div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-title">➕ Construire</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">str.concat(str2)
+str.repeat(n)
+str.padStart(len, char)</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Créent de nouvelles strings</div>
+                </div>
+            </div>
+
+            <!-- TEMPLATE LITERALS -->
+            <h3 style="margin-top:40px;">🎯 Template Literals (Backticks)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">const name = "Alice";
+const age = 25;
+
+// INTERPOLATION
+const message = `Hello ${name}, you are ${age} years old`;
+// "Hello Alice, you are 25 years old"
+
+// EXPRESSIONS
+const result = `2 + 2 = ${2 + 2}`;  // "2 + 2 = 4"
+const upper = `Name: ${name.toUpperCase()}`;  // "Name: ALICE"
+
+// MULTILIGNE (sans \n)
+const html = `
+    <div>
+        <h1>${name}</h1>
+        <p>Age: ${age}</p>
+    </div>
+`;
+
+// TAGGED TEMPLATES (avancé)
+function highlight(strings, ...values) {
+    return strings.reduce((result, str, i) => {
+        return result + str + (values[i] ? `<mark>${values[i]}</mark>` : '');
+    }, '');
+}
+
+const tagged = highlight`Name: ${name}, Age: ${age}`;
+// "Name: <mark>Alice</mark>, Age: <mark>25</mark>"</code></pre>
+            </div>
+
+            <!-- REGEX -->
+            <h3 style="margin-top:40px; border-left: 4px solid var(--primary); padding-left: 12px;">🔎 Expressions
+                Régulières (Regex)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// CRÉATION
+const regex1 = /pattern/flags;
+const regex2 = new RegExp('pattern', 'flags');
+
+// FLAGS
+// g = global (toutes les occurrences)
+// i = insensitive (ignore la casse)
+// m = multiline (^ et $ pour chaque ligne)
+
+// MÉTHODES
+const text = "Hello World, hello universe";
+
+// test() - Retourne true/false
+/hello/i.test(text);  // true (ignore casse avec 'i')
+
+// match() - Retourne les correspondances
+text.match(/hello/gi);  // ["Hello", "hello"]
+
+// matchAll() - Itérateur de toutes les correspondances
+[...text.matchAll(/h(\w+)/gi)];  // Détails complets
+
+// replace() avec regex
+text.replace(/hello/gi, "Hi");  // "Hi World, Hi universe"
+
+// split() avec regex
+"a1b2c3".split(/\d/);  // ["a", "b", "c"]
+
+// search() - Position de la 1ère correspondance
+text.search(/world/i);  // 6</code></pre>
+            </div>
+
+            <!-- REGEX PATTERNS -->
+            <h3 style="margin-top:40px;">📋 Patterns Regex Courants</h3>
+
+            <table class="pattern-table">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>\d</code></td>
+                        <td>Chiffre (0-9)</td>
+                        <td><code>/\d+/</code> → "123"</td>
+                    </tr>
+                    <tr>
+                        <td><code>\w</code></td>
+                        <td>Mot (a-z, A-Z, 0-9, _)</td>
+                        <td><code>/\w+/</code> → "hello"</td>
+                    </tr>
+                    <tr>
+                        <td><code>\s</code></td>
+                        <td>Espace blanc</td>
+                        <td><code>/\s+/</code> → " "</td>
+                    </tr>
+                    <tr>
+                        <td><code>.</code></td>
+                        <td>N'importe quel caractère</td>
+                        <td><code>/h.t/</code> → "hat", "hot"</td>
+                    </tr>
+                    <tr>
+                        <td><code>^</code></td>
+                        <td>Début de chaîne</td>
+                        <td><code>/^Hello/</code> → "Hello..."</td>
+                    </tr>
+                    <tr>
+                        <td><code>$</code></td>
+                        <td>Fin de chaîne</td>
+                        <td><code>/world$/</code> → "...world"</td>
+                    </tr>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td>1 ou plus</td>
+                        <td><code>/a+/</code> → "a", "aaa"</td>
+                    </tr>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td>0 ou plus</td>
+                        <td><code>/a*/</code> → "", "aaa"</td>
+                    </tr>
+                    <tr>
+                        <td><code>?</code></td>
+                        <td>0 ou 1</td>
+                        <td><code>/colou?r/</code> → "color", "colour"</td>
+                    </tr>
+                    <tr>
+                        <td><code>[abc]</code></td>
+                        <td>a ou b ou c</td>
+                        <td><code>/[aeiou]/</code> → voyelles</td>
+                    </tr>
+                    <tr>
+                        <td><code>[^abc]</code></td>
+                        <td>Pas a, b ou c</td>
+                        <td><code>/[^0-9]/</code> → non-chiffre</td>
+                    </tr>
+                    <tr>
+                        <td><code>(x|y)</code></td>
+                        <td>x ou y</td>
+                        <td><code>/(cat|dog)/</code> → "cat" ou "dog"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- REGEX TESTER -->
+            <div class="regex-tester">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Testeur de Regex</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez vos expressions régulières en temps réel.</p>
+
+                <div class="regex-controls">
+                    <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Pattern :</label>
+                        <input type="text" id="regex-pattern" class="demo-input" placeholder="\d+" value="\w+">
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Flags :</label>
+                        <div style="display:flex; gap:15px">
+                            <label><input type="checkbox" id="flag-g" checked> g (global)</label>
+                            <label><input type="checkbox" id="flag-i"> i (insensitive)</label>
+                            <label><input type="checkbox" id="flag-m"> m (multiline)</label>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px; align-items:start">
+                        <label style="font-weight:500">Texte :</label>
+                        <textarea id="regex-text" class="demo-input" placeholder="Texte à tester"
+                            style="min-height:80px; resize:vertical">Hello World 123, hello universe 456</textarea>
+                    </div>
+                </div>
+
+                <button class="demo-btn" onclick="testRegex()">🔍 Tester</button>
+
+                <div id="regex-output" class="regex-output" style="margin-top:20px">
+                    <div style="opacity:0.5; text-align:center">Entrez un pattern et cliquez sur Tester</div>
+                </div>
+            </div>
+
+            <!-- USE CASES -->
+            <h3 style="margin-top:40px;">💼 Cas d'Usage Pratiques</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// VALIDATION EMAIL
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+emailRegex.test("user@example.com");  // true
+
+// VALIDATION TÉLÉPHONE (FR)
+const phoneRegex = /^0[1-9](\d{2}){4}$/;
+phoneRegex.test("0612345678");  // true
+
+// EXTRAIRE TOUS LES NOMBRES
+const text = "Prix: 19.99€, Quantité: 5";
+text.match(/\d+\.?\d*/g);  // ["19.99", "5"]
+
+// NETTOYER UN SLUG
+function slugify(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')  // Retire caractères spéciaux
+        .replace(/\s+/g, '-')      // Espaces → tirets
+        .replace(/-+/g, '-');      // Tirets multiples → 1 seul
+}
+slugify("Hello World!");  // "hello-world"
+
+// MASQUER UN NUMÉRO DE CARTE
+const card = "1234 5678 9012 3456";
+card.replace(/\d(?=\d{4})/g, "*");  // "**** **** **** 3456"
+
+// CAPITALISER CHAQUE MOT
+function capitalize(str) {
+    return str.replace(/\b\w/g, char => char.toUpperCase());
+}
+capitalize("hello world");  // "Hello World"</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Utilisez les template literals pour la concaténation. Préférez
+                <code>includes()</code> à <code>indexOf() !== -1</code>. Testez vos regex sur <a
+                    href="https://regex101.com" target="_blank" style="color:var(--accent)">regex101.com</a>. Échappez
+                les caractères spéciaux avec <code>\</code>.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Pièges :</strong> Les strings sont immutables (toutes les méthodes retournent une nouvelle
+                string). <code>replace()</code> sans flag <code>g</code> ne remplace que la 1ère occurrence. Les regex
+                peuvent être lentes sur de gros textes (attention aux catastrophic backtracking).
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="16_utils.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Utilitaires</a>
+                <a href="18_cheatsheets.html" class="demo-btn" style="text-decoration:none">Suivant: Cheatsheets →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/17_strings.js"></script>
+</body>
+
+</html>

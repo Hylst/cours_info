@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/quiz-style.css">
+</head>
+
+<body>
+    <!-- Header injected by layout.js -->
+
+    <main class="container">
+        <section id="quiz-section" class="quiz-container" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div>
+                    <h2 class="sec-title" style="color:var(--accent)">Quiz JavaScript</h2>
+                    <p class="sec-sub">Testez vos connaissances</p>
+                </div>
+            </div>
+
+            <div id="quiz-app">
+                <p>Chargement du quiz...</p>
+            </div>
+
+            <div style="margin-top:40px">
+                <a href="modules/18_cheatsheets.html" class="demo-btn"
+                    style="text-decoration:none; background:var(--bg2)">← Révisions</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer injected by layout.js -->
+    <script src="assets/js/layout.js"></script>
+
+    <!-- Quiz Engine (Existing references, need to ensure paths are correct or migrate logic later) -->
+    <!-- For now, using the layout that will be refactored in Phase 4. 
+         But I should probably include the logic if it was in index.html -->
+    <script type="module">
+        import './assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.QuizEngine) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+    <!-- Fallback if module fails or for non-module -->
+    <script src="assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_js.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+</body>
+
+</html>

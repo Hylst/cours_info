@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchrone - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .event-loop {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .loop-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .loop-box {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            min-height: 150px;
+        }
+
+        .loop-box.stack {
+            border-color: #f44336;
+        }
+
+        .loop-box.queue {
+            border-color: #ff9800;
+        }
+
+        .loop-box.micro {
+            border-color: #4caf50;
+        }
+
+        .loop-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .loop-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.85rem;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-side {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .comparison-side.bad {
+            border: 2px solid #f44336;
+        }
+
+        .comparison-side.good {
+            border: 2px solid #4caf50;
+        }
+
+        .exec-playground {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .exec-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.85rem;
+        }
+
+        .exec-line {
+            padding: 5px;
+            margin: 3px 0;
+            border-radius: 4px;
+            border-left: 3px solid var(--muted);
+        }
+
+        .exec-sync {
+            background: rgba(244, 67, 54, 0.1);
+            border-left-color: #f44336;
+        }
+
+        .exec-macro {
+            background: rgba(255, 152, 0, 0.1);
+            border-left-color: #ff9800;
+        }
+
+        .exec-micro {
+            background: rgba(76, 175, 80, 0.1);
+            border-left-color: #4caf50;
+        }
+
+        @media(max-width: 700px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s11" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">11</div>
+                <div>
+                    <h2 class="sec-title">Programmation Asynchrone</h2>
+                    <p class="sec-sub">Event Loop, Callbacks & Timers</p>
+                </div>
+            </div>
+
+            <p>JavaScript est <strong>single-threaded</strong> mais peut gérer des opérations asynchrones grâce à
+                l'Event Loop. Comprendre ce mécanisme est essentiel.</p>
+
+            <!-- EVENT LOOP -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🔄 L'Event Loop</h3>
+            <p>L'Event Loop permet à JavaScript d'exécuter du code asynchrone sans bloquer le thread principal.</p>
+
+            <div class="event-loop">
+                <h4 style="margin-top:0; color:var(--accent)">📊 Architecture de l'Event Loop</h4>
+
+                <div class="loop-components">
+                    <div class="loop-box stack">
+                        <div class="loop-title" style="color:#f44336">📚 Call Stack</div>
+                        <div style="font-size:0.85rem; opacity:0.8; margin-bottom:10px">Pile d'exécution (LIFO)</div>
+                        <div id="stack-viz" style="min-height:80px">
+                            <div class="loop-item">main()</div>
+                        </div>
+                    </div>
+
+                    <div class="loop-box queue">
+                        <div class="loop-title" style="color:#ff9800">⏱️ Task Queue (Macrotasks)</div>
+                        <div style="font-size:0.85rem; opacity:0.8; margin-bottom:10px">setTimeout, setInterval, I/O
+                        </div>
+                        <div id="macro-viz" style="min-height:80px">
+                            <div style="opacity:0.5; text-align:center; padding:20px">Vide</div>
+                        </div>
+                    </div>
+
+                    <div class="loop-box micro">
+                        <div class="loop-title" style="color:#4caf50">⚡ Microtask Queue</div>
+                        <div style="font-size:0.85rem; opacity:0.8; margin-bottom:10px">Promises, queueMicrotask</div>
+                        <div id="micro-viz" style="min-height:80px">
+                            <div style="opacity:0.5; text-align:center; padding:20px">Vide</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:var(--bg); padding:15px; border-radius:8px; margin-top:15px">
+                    <strong>Ordre d'exécution :</strong><br>
+                    1️⃣ <strong style="color:#f44336">Call Stack</strong> : Code synchrone<br>
+                    2️⃣ <strong style="color:#4caf50">Microtasks</strong> : Promises (priorité haute)<br>
+                    3️⃣ <strong style="color:#ff9800">Macrotasks</strong> : setTimeout, setInterval (priorité basse)
+                </div>
+            </div>
+
+            <!-- TIMERS -->
+            <h3 style="margin-top:40px;">⏱️ Timers : setTimeout & setInterval</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// setTimeout : Exécute UNE FOIS après délai
+setTimeout(() => {
+    console.log('Exécuté après 1 seconde');
+}, 1000);
+
+// setInterval : Exécute RÉPÉTITIVEMENT
+const intervalId = setInterval(() => {
+    console.log('Toutes les 2 secondes');
+}, 2000);
+
+// ⚠️ TOUJOURS nettoyer les intervals !
+clearInterval(intervalId);
+
+// Pattern : Auto-nettoyage
+const id = setInterval(() => {
+    console.log('Tick');
+    if (condition) clearInterval(id);
+}, 1000);
+
+// setTimeout avec 0ms : Reporte à la prochaine itération
+setTimeout(() => console.log('Async'), 0);
+console.log('Sync'); // S'exécute AVANT
+// Output: "Sync" puis "Async"</code></pre>
+            </div>
+
+            <!-- CALLBACK HELL -->
+            <h3 style="margin-top:40px;">😱 Callback Hell vs Solutions Modernes</h3>
+            <div class="comparison">
+                <div class="comparison-side bad">
+                    <div style="color:#f44336; font-weight:bold; margin-bottom:10px">❌ Callback Hell (Pyramid of Doom)
+                    </div>
+                    <pre><code class="language-javascript">getData(function(a) {
+    getMoreData(a, function(b) {
+        getMoreData(b, function(c) {
+            getMoreData(c, function(d) {
+                getMoreData(d, function(e) {
+                    // 😱 Illisible !
+                });
+            });
+        });
+    });
+});</code></pre>
+                </div>
+
+                <div class="comparison-side good">
+                    <div style="color:#4caf50; font-weight:bold; margin-bottom:10px">✅ Async/Await (Moderne)</div>
+                    <pre><code class="language-javascript">async function fetchData() {
+    const a = await getData();
+    const b = await getMoreData(a);
+    const c = await getMoreData(b);
+    const d = await getMoreData(c);
+    const e = await getMoreData(d);
+    // ✅ Lisible, séquentiel
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- EXECUTION ORDER PLAYGROUND -->
+            <div class="exec-playground">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Playground : Ordre d'Exécution</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Prédisez l'ordre d'exécution, puis vérifiez !</p>
+
+                <div class="code-container" style="margin-bottom:15px">
+                    <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                            class="dot green"></span></div>
+                    <pre><code class="language-javascript">console.log('1: Sync');
+
+setTimeout(() => console.log('2: Macro (setTimeout)'), 0);
+
+Promise.resolve().then(() => console.log('3: Micro (Promise)'));
+
+console.log('4: Sync');
+
+queueMicrotask(() => console.log('5: Micro (queueMicrotask)'));
+
+// Quel est l'ordre d'affichage ?</code></pre>
+                </div>
+
+                <button class="demo-btn" onclick="runExecutionOrder()">▶️ Exécuter</button>
+                <button class="demo-btn" onclick="resetExecution()" style="background:var(--bg2); margin-left:10px">🔄
+                    Reset</button>
+
+                <div id="exec-output" class="exec-output" style="margin-top:15px">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur Exécuter pour voir l'ordre</div>
+                </div>
+            </div>
+
+            <!-- MICROTASKS VS MACROTASKS -->
+            <h3 style="margin-top:40px;">⚡ Microtasks vs Macrotasks</h3>
+            <table style="width:100%; border-collapse:collapse; margin:20px 0; font-size:0.9rem">
+                <thead>
+                    <tr style="border-bottom:2px solid var(--border)">
+                        <th style="text-align:left; padding:10px; color:var(--muted)">Type</th>
+                        <th style="text-align:left; padding:10px; color:var(--muted)">Exemples</th>
+                        <th style="text-align:left; padding:10px; color:var(--muted)">Priorité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                        <td style="padding:10px"><strong style="color:#4caf50">Microtasks</strong></td>
+                        <td style="padding:10px"><code>Promise.then</code>, <code>queueMicrotask</code>,
+                            <code>MutationObserver</code>
+                        </td>
+                        <td style="padding:10px"><span
+                                style="background:#4caf50; color:white; padding:3px 8px; border-radius:12px; font-size:0.75rem">Haute</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px"><strong style="color:#ff9800">Macrotasks</strong></td>
+                        <td style="padding:10px"><code>setTimeout</code>, <code>setInterval</code>,
+                            <code>setImmediate</code>, I/O
+                        </td>
+                        <td style="padding:10px"><span
+                                style="background:#ff9800; color:white; padding:3px 8px; border-radius:12px; font-size:0.75rem">Basse</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Les <strong>Microtasks</strong> (Promises) s'exécutent AVANT les
+                <strong>Macrotasks</strong> (setTimeout). Utilisez <code>queueMicrotask()</code> pour du code
+                prioritaire. Nettoyez toujours vos <code>setInterval</code> avec <code>clearInterval()</code>.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="10_events.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Events</a>
+                <a href="12_fetch.html" class="demo-btn" style="text-decoration:none">Suivant: Fetch & API →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/11_async.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<section id="c7">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">07</div>
+            <div>
+                <h2 class="sec-title">Héritage</h2>
+                <p class="sec-sub">Extends, Super & Polymorphisme</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Avoir compris les classes et objets (C6).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment réutiliser du code, créer des hiérarchies et
+                traiter des objets différents de manière uniforme.</p>
+            <p><strong>Temps de lecture</strong> : ~12 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧬 L'Héritage : L'ADN du Code</h3>
+        <p>L'héritage est le mécanisme qui permet à une classe d'acquérir les propriétés (champs) et les comportements
+            (méthodes) d'une autre classe. C'est l'outil ultime pour éviter la duplication de code (principe **DRY** -
+            Don't Repeat Yourself).</p>
+
+        <p style="margin-top: 1rem;">En Java, on utilise le mot-clé <strong><code>extends</code></strong>. La classe qui
+            hérite est la <strong>sous-classe</strong> (fille), celle dont on hérite est la
+            <strong>super-classe</strong> (mère).</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>L'Héritage Biologique</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>👤 Parent (Super-classe)</h4>
+                    <p>Définit des traits généraux : couleur des yeux, taille, nom de famille. Il possède aussi des
+                        comportements : manger, marcher.</p>
+                </div>
+                <div>
+                    <h4>👶 Enfant (Sous-classe)</h4>
+                    <p>Hérite de tous les traits de son parent AUTOMATIQUEMENT. Mais il peut aussi avoir ses propres
+                        traits (ex: joue de la guitare) ou faire les choses différemment (ex: court plus vite).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                classDiagram
+                Vehicle <|-- Car Vehicle <|-- Bike class Vehicle { +String brand +move() +stop() } class Car { +int
+                    fuelLevel +honk() } class Bike { +boolean hasBell +ring() } style Vehicle
+                    fill:#1c2128,stroke:#79c0ff,stroke-width:2px,color:#f0f6fc style Car
+                    fill:#161b22,stroke:#3d444d,color:#f0f6fc style Bike fill:#161b22,stroke:#3d444d,color:#f0f6fc
+                    </div>
+                    <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Hiérarchie simple
+                        : La flèche pointe vers le parent.</p>
+            </div>
+
+            <!-- Key Concepts -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔑 Concepts Fondamentaux</h3>
+
+            <div class="grid2">
+                <div class="callout callout-warning" style="margin:0">
+                    <h4>⛔ Pas d'héritage multiple</h4>
+                    <p>En Java, une classe ne peut avoir qu'<strong>UNE SEULE</strong> mère. On ne peut pas faire
+                        <code>class Cyborg extends Human, Robot</code>.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Pourquoi ?</strong> Pour éviter le "Diamant de la mort"
+                        (conflits de méthodes). Pour contourner cela, on utilise les <strong>Interfaces</strong> (C8).
+                    </p>
+                </div>
+                <div class="callout callout-tip" style="margin:0">
+                    <h4>🔄 Redéfinition (@Override)</h4>
+                    <p>Une fille peut réécrire une méthode de sa mère pour qu'elle fasse autre chose. C'est la
+                        <strong>Redéfinition</strong>.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Note</strong> : Utilisez toujours l'annotation
+                        <code>@Override</code> pour être sûr de ne pas faire de faute de frappe dans le nom de la
+                        méthode.</p>
+                </div>
+            </div>
+
+            <!-- Code Example: Super and Override -->
+            <div class="code" style="margin-top: 2rem;">
+                <div class="code-head"><span class="dot b"></span>Exemple : Super & Override</div>
+                <pre><span class="kw">public class</span> <span class="type">Animal</span> {
+    <span class="kw">protected</span> <span class="type">String</span> <span class="var">name</span>; <span class="com">// protected = accessible par les enfants</span>
+    
+    <span class="kw">public</span> <span class="mt">Animal</span>(<span class="type">String</span> <span class="var">name</span>) { <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>; }
+    
+    <span class="kw">public void</span> <span class="mt">makeSound</span>() { <span class="type">System</span>.out.println(<span class="str">"..."</span>); }
+}
+
+<span class="kw">public class</span> <span class="type">Dog</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+    <span class="kw">public</span> <span class="mt">Dog</span>(<span class="type">String</span> <span class="var">name</span>) {
+        <span class="kw">super</span>(<span class="var">name</span>); <span class="com">// Appelle le constructeur du PARENT</span>
+    }
+    
+    <span class="man">@Override</span>
+    <span class="kw">public void</span> <span class="mt">makeSound</span>() {
+        <span class="kw">super</span>.<span class="mt">makeSound</span>(); <span class="com">// Optionnel : appelle la version parente</span>
+        <span class="type">System</span>.out.println(<span class="str">"Woof!"</span>);
+    }
+}</pre>
+            </div>
+
+            <!-- Polymorphism -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🎭 Le Polymorphisme : Une Interface, Plusieurs Formes
+            </h3>
+            <p>C'est la capacité de traiter des objets de types différents de manière uniforme s'ils partagent le même
+                parent.</p>
+
+            <div class="use-case">
+                <h4>🎮 Cas Réel : Liste de Combat RPG</h4>
+                <div class="code" style="margin-top: 1rem;">
+                    <div class="code-head"><span class="dot g"></span>Le pouvoir du Polymorphisme</div>
+                    <pre><span class="type">List</span>&lt;<span class="type">Character</span>&gt; <span class="var">players</span> = <span class="type">List</span>.of(
+    <span class="kw">new</span> <span class="type">Warrior</span>(<span class="str">"Conan"</span>),
+    <span class="kw">new</span> <span class="type">Mage</span>(<span class="str">"Gandalf"</span>),
+    <span class="kw">new</span> <span class="type">Archer</span>(<span class="str">"Legolas"</span>)
+);
+
+<span class="com">// On traite tout le monde pareil !</span>
+<span class="kw">for</span> (<span class="type">Character</span> <span class="var">p</span> : <span class="var">players</span>) {
+    <span class="var">p</span>.<span class="mt">attack</span>(); <span class="com">// Exécute l'attaque spécifique de chaque classe</span>
+}</pre>
+                </div>
+                <p style="margin-top: 1rem;"><strong>Avantage</strong> : Vous pouvez ajouter un <code>Ninja</code> plus
+                    tard sans changer une seule ligne de votre boucle de combat !</p>
+            </div>
+
+            <!-- Pattern Matching -->
+            <div class="code" style="margin-top: 2rem;">
+                <div class="code-head"><span class="dot r"></span>Pattern Matching (Java 16+)</div>
+                <pre><span class="kw">public void</span> <span class="mt">handleUser</span>(<span class="type">User</span> <span class="var">user</span>) {
+    <span class="com">// Plus besoin de cast manuel ( (Admin) user )</span>
+    <span class="kw">if</span> (<span class="var">user</span> <span class="kw">instanceof</span> <span class="type">Admin</span> <span class="var">a</span>) {
+        <span class="var">a</span>.<span class="mt">deleteEverything</span>(); <span class="com">// 'a' est déjà typé Admin</span>
+    } <span class="kw">else if</span> (<span class="var">user</span> <span class="kw">instanceof</span> <span class="type">Guest</span> <span class="var">g</span>) {
+        <span class="var">g</span>.<span class="mt">viewOnly</span>();
+    }
+}</pre>
+            </div>
+
+            <!-- Composition vs Inheritance -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚖️ Composition vs Héritage</h3>
+            <div class="callout callout-warning">
+                <h4>💡 "Favor Composition over Inheritance"</h4>
+                <p>L'héritage crée un lien très fort et rigide (couplage). Si la mère change, toutes les filles
+                    tremblent.</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Héritage (IS-A)</strong> : Une Voiture EST UN Véhicule.</li>
+                    <li><strong>Composition (HAS-A)</strong> : Une Voiture A UN Moteur.</li>
+                </ul>
+                <p style="margin-top: 0.75rem;"><strong>Conseil</strong> : Si vous pouvez utiliser la composition,
+                    faites-le. C'est souvent plus flexible.</p>
+            </div>
+
+            <!-- Le Saviez-vous -->
+            <div class="callout callout-recall" style="margin-top: 2rem;">
+                <h4>💡 Le Saviez-vous ?</h4>
+                <p><strong>final</strong> : Une classe marquée <code>final</code> ne peut pas avoir d'enfants (ex:
+                    <code>String</code> est final). Une méthode <code>final</code> ne peut pas être redéfinie.</p>
+                <p style="margin-top: 0.75rem;"><strong>La classe Object</strong> : En Java, TOUTES les classes héritent
+                    implicitement de la classe <code>Object</code>. C'est l'ancêtre commun qui nous donne
+                    <code>toString()</code>, <code>equals()</code> et <code>hashCode()</code>.</p>
+                <p style="margin-top: 0.75rem;"><strong>Abstract</strong> : Une classe <code>abstract</code> est une
+                    classe "incomplète" qu'on ne peut pas instancier. Elle sert uniquement de base pour ses héritières.
+                </p>
+            </div>
+
+            <!-- Pièges -->
+            <div class="callout callout-warning" style="margin-top: 2rem;">
+                <h4>⚠️ Pièges Courants</h4>
+                <p><strong>1. Constructeur oublié</strong> : Si le parent n'a pas de constructeur vide, l'enfant DOIT
+                    appeler <code>super(...)</code> explicitement en première ligne de son constructeur.</p>
+                <p style="margin-top: 0.75rem;"><strong>2. Visibilité <code>private</code></strong> : Un enfant n'a pas
+                    accès aux champs <code>private</code> de son parent. Utilisez <code>protected</code> ou des getters.
+                </p>
+                <p style="margin-top: 0.75rem;"><strong>3. Le "Liskov Substitution Principle"</strong> : Un enfant ne
+                    devrait pas casser le contrat de son parent. Si un <code>Oiseau</code> vole, et que vous créez une
+                    <code>Autruche</code> qui jette une exception dans <code>voler()</code>, vous avez un problème de
+                    design.</p>
+            </div>
+
+            <!-- Pour Aller Plus Loin -->
+            <div class="callout callout-tip" style="margin-top: 2rem;">
+                <h4>🚀 Pour Aller Plus Loin</h4>
+                <p><strong>Concepts avancés</strong> :</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Dynamic Dispatch</strong> : Le mécanisme interne qui choisit quelle méthode appeler au
+                        runtime</li>
+                    <li><strong>Sealed Classes (Java 17)</strong> : Limiter l'héritage à une liste précise de classes
+                        autorisées</li>
+                    <li><strong>Bridge Methods</strong> : Générées par le compilateur pour gérer les génériques et
+                        l'héritage</li>
+                </ul>
+            </div>
+
+        </div>
+</section>

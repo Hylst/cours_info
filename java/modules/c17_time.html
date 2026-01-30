@@ -1,0 +1,134 @@
+<section id="c17">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">17</div>
+            <div>
+                <h2 class="sec-title">Date & Time API</h2>
+                <p class="sec-sub">L'Ère Moderne (java.time)</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>L'Histoire</strong> :
+                <br>🛑 <code>java.util.Date</code> (Java 1.0) : Mutable, mois commencent à 0, années bizarres. À BANNIR.
+                <br>🛑 <code>java.util.Calendar</code> (Java 1.1) : Encore pire.
+                <br>✅ <code>java.time</code> (Java 8) : Immuable, clair, inspiré de Joda-Time.
+            </p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">📅 Choisir la Bonne Classe</h3>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart TD
+                Human[Temps Humain] --> LD[LocalDate<br />2024-12-25]
+                Human --> LT[LocalTime<br />14:30:00]
+                Human --> LDT[LocalDateTime<br />2024-12-25T14:30]
+                Human --> ZDT[ZonedDateTime<br />...T14:30+01:00[Europe/Paris]]
+
+                Machine[Temps Machine] --> I[Instant<br />Timestamp GMT (Epoch)]
+
+                style LD fill:#79c0ff,color:#f0f6fc
+                style LT fill:#79c0ff,color:#f0f6fc
+                style LDT fill:#79c0ff,color:#f0f6fc
+                style ZDT fill:#ffa94d,color:#0d1117
+                style I fill:#3fb950,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Instant est absolu (GMT).
+                Les autres dépendent du contexte.</p>
+        </div>
+
+        <!-- Examples -->
+        <div class="grid2" style="margin-top: 2rem;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Humain (Local)</div>
+                <pre><span class="com">// Date du jour (sans heure)</span>
+<span class="type">LocalDate</span> <span class="var">date</span> = <span class="type">LocalDate</span>.<span class="mt">now</span>();
+
+<span class="com">// Création spécifique</span>
+<span class="type">LocalDate</span> <span class="var">xmas</span> = <span class="type">LocalDate</span>.<span class="mt">of</span>(<span class="num">2024</span>, <span class="type">Month</span>.<span class="const">DECEMBER</span>, <span class="num">25</span>);
+
+<span class="com">// Manipulations (Immuable !)</span>
+<span class="type">LocalDate</span> <span class="var">nextWeek</span> = <span class="var">date</span>.<span class="mt">plusWeeks</span>(<span class="num">1</span>);</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Machine (Instant)</div>
+                <pre><span class="com">// Point précis sur la timeline (UTC)</span>
+<span class="type">Instant</span> <span class="var">now</span> = <span class="type">Instant</span>.<span class="mt">now</span>();
+<span class="com">// 2024-01-30T19:42:00.123Z</span>
+
+<span class="com">// Conversion vers Date Humaine</span>
+<span class="type">ZonedDateTime</span> <span class="var">zdt</span> = <span class="var">now</span>.<span class="mt">atZone</span>(<span class="type">ZoneId</span>.<span class="mt">of</span>(<span class="str">"Europe/Paris"</span>));</pre>
+            </div>
+        </div>
+
+        <!-- Duration vs Period -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⏳ Durées : Period vs Duration</h3>
+        <p>Ne confondez pas "1 mois" (calendrier) et "30 jours" (physique).</p>
+
+        <div class="grid2">
+            <div>
+                <h4>📅 Period (Calendrier)</h4>
+                <p>Utilise ans, mois, jours. Gère les années bissextiles.</p>
+                <div class="code">
+                    <pre><span class="type">Period</span> <span class="var">p</span> = <span class="type">Period</span>.<span class="mt">between</span>(<span class="var">date1</span>, <span class="var">date2</span>);
+<span class="type">System</span>.out.println(<span class="var">p</span>.<span class="mt">getDays</span>());</pre>
+                </div>
+            </div>
+            <div>
+                <h4>⏱️ Duration (Physique)</h4>
+                <p>Utilise secondes et nanos. Précis.</p>
+                <div class="code">
+                    <pre><span class="type">Duration</span> <span class="var">d</span> = <span class="type">Duration</span>.<span class="mt">between</span>(<span class="var">time1</span>, <span class="var">time2</span>);
+<span class="type">System</span>.out.println(<span class="var">d</span>.<span class="mt">toMinutes</span>());</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formatting -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📝 Parsing et Formatting</h3>
+        <p>Utilisez toujours <code>DateTimeFormatter</code> (qui est Thread-Safe, contrairement à SimpleDateFormat).</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Formatter</div>
+            <pre><span class="type">DateTimeFormatter</span> <span class="var">fmt</span> = <span class="type">DateTimeFormatter</span>.<span class="mt">ofPattern</span>(<span class="str">"dd/MM/yyyy HH:mm"</span>);
+
+<span class="com">// String -> Objet</span>
+<span class="type">LocalDateTime</span> <span class="var">rdv</span> = <span class="type">LocalDateTime</span>.<span class="mt">parse</span>(<span class="str">"30/01/2026 14:30"</span>, <span class="var">fmt</span>);
+
+<span class="com">// Objet -> String</span>
+<span class="type">String</span> <span class="var">s</span> = <span class="var">rdv</span>.<span class="mt">format</span>(<span class="var">fmt</span>);</pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Immuabilité</strong> : Toutes les classes <code>java.time</code> sont immuables.
+                <code>date.plusDays(1)</code> ne modifie pas <code>date</code>, mais retourne <strong>une nouvelle
+                    instance</strong>. Erreur classique : oublier d'affecter le retour !</p>
+            <p style="margin-top: 0.75rem;"><strong>ZoneId</strong> : "CET", "EST" sont des abréviations ambiguës de 3
+                lettres. Utilisez toujours "Region/Ville" (ex: <code>Europe/Paris</code>,
+                <code>America/New_York</code>).</p>
+            <p style="margin-top: 0.75rem;"><strong>Clock</strong> : Pour tester le temps, ne faites pas
+                <code>Instant.now()</code> partout. Injectez une <code>Clock</code>. En test, utilisez
+                <code>Clock.fixed()</code>.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. LocalDateTime vs ZonedDateTime</strong> : <code>LocalDateTime</code> n'a PAS de fuseau
+                horaire. Si vous stockez un événement international avec, vous aurez des problèmes. Préférez stocker en
+                UTC (`Instant`).</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Daylight Saving Time (DST)</strong> : Les changements d'heure
+                peuvent faire qu'une journée fasse 23h ou 25h. <code>Duration.ofDays(1)</code> ajoute exactement 24h, ce
+                qui peut vous décaler ! <code>Period.ofDays(1)</code> ajoute "1 jour calendrier", ce qui est plus sûr
+                pour les RDV humains.</p>
+        </div>
+
+    </div>
+</section>

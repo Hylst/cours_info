@@ -1,0 +1,283 @@
+<section id="c2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Types & Mémoire</h2>
+                <p class="sec-sub">Primitifs (Stack) vs Objets (Heap)</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Avoir compris le concept de JVM (C1).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Pourquoi Java a 2 types de données, comment la mémoire est
+                organisée, et les pièges de performance.</p>
+            <p><strong>Temps de lecture</strong> : ~10 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧠 Pourquoi 2 Types de Données ?</h3>
+        <p>Java est un langage <strong>orienté objet</strong>, mais créer un objet pour stocker un simple nombre (comme
+            <code>5</code>) serait absurde en termes de performance. Imaginez créer une boîte en carton (objet) juste
+            pour ranger une pièce de monnaie (int).</p>
+
+        <p style="margin-top: 1rem;">C'est pourquoi Java a <strong>2 mondes</strong> :</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li><strong>Primitifs</strong> : Rapides, légers, stockés directement en mémoire (Stack).</li>
+            <li><strong>Objets</strong> : Flexibles, riches en fonctionnalités, mais plus lourds (Heap).</li>
+        </ul>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>La Pile d'Assiettes vs Le Panier à Linge</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>🥞 La Pile (Stack)</h4>
+                    <p>Comme une pile d'assiettes dans un restaurant. Super rapide : on pose une assiette en haut
+                        (push), on la retire (pop). Ordre LIFO (Last In First Out). On y stocke les
+                        <strong>primitifs</strong> (int, boolean) et les <strong>références</strong> vers les objets.
+                    </p>
+                    <p style="margin-top: 0.5rem;"><strong>Taille</strong> : Limitée (~1 MB par thread).</p>
+                </div>
+                <div>
+                    <h4>🧺 Le Tas (Heap)</h4>
+                    <p>Comme un énorme panier à linge. On y jette tout ce qui est gros et complexe (Objets, Tableaux).
+                        On les retrouve grâce à une étiquette (référence) stockée dans la Stack.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Taille</strong> : Configurable (plusieurs Go). Géré par le
+                        Garbage Collector.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                classDiagram
+                class Stack {
+                int age = 25
+                User userRef ➡
+                }
+                class Heap {
+                User("Bob", 25)
+                }
+                Stack --> Heap : Pointeur (Adresse mémoire)
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Les Primitifs vivent dans
+                la Stack. Les Objets vivent dans la Heap.</p>
+        </div>
+
+        <!-- Les 8 Primitifs -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔢 Les 8 Types Primitifs (Exhaustif)</h3>
+        <p style="margin-bottom:15px">Ils sont <strong>non-nullables</strong> (pas de <code>null</code> possible) et ont
+            une valeur par défaut.</p>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Taille</th>
+                    <th>Plage</th>
+                    <th>Défaut</th>
+                    <th>Usage Typique</th>
+                </tr>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td>1 bit*</td>
+                    <td><code>true</code> / <code>false</code></td>
+                    <td><code>false</code></td>
+                    <td>Drapeaux, conditions</td>
+                </tr>
+                <tr>
+                    <td><code>byte</code></td>
+                    <td>8 bits</td>
+                    <td>-128 à 127</td>
+                    <td><code>0</code></td>
+                    <td>Flux de données (I/O, Réseau)</td>
+                </tr>
+                <tr>
+                    <td><code>short</code></td>
+                    <td>16 bits</td>
+                    <td>-32,768 à 32,767</td>
+                    <td><code>0</code></td>
+                    <td>Rare (économie mémoire ancienne)</td>
+                </tr>
+                <tr>
+                    <td><code>int</code></td>
+                    <td>32 bits</td>
+                    <td>-2.1B à 2.1B</td>
+                    <td><code>0</code></td>
+                    <td>⭐ Standard (compteurs, ID)</td>
+                </tr>
+                <tr>
+                    <td><code>long</code></td>
+                    <td>64 bits</td>
+                    <td>-9.2E18 à 9.2E18</td>
+                    <td><code>0L</code></td>
+                    <td>Timestamps, grandes valeurs</td>
+                </tr>
+                <tr>
+                    <td><code>float</code></td>
+                    <td>32 bits</td>
+                    <td>~7 décimales</td>
+                    <td><code>0.0f</code></td>
+                    <td>Graphisme 3D (OpenGL)</td>
+                </tr>
+                <tr>
+                    <td><code>double</code></td>
+                    <td>64 bits</td>
+                    <td>~15 décimales</td>
+                    <td><code>0.0d</code></td>
+                    <td>⭐ Calculs scientifiques</td>
+                </tr>
+                <tr>
+                    <td><code>char</code></td>
+                    <td>16 bits</td>
+                    <td>0 à 65,535 (Unicode)</td>
+                    <td><code>\u0000</code></td>
+                    <td>Un seul caractère</td>
+                </tr>
+            </table>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-muted-foreground);">* En pratique, un
+            <code>boolean</code> occupe 1 octet (8 bits) en mémoire pour des raisons d'alignement CPU.</p>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Pourquoi <code>int</code> et pas <code>Integer</code> ?</strong> : <code>Integer</code> est la
+                version "objet" de <code>int</code> (Wrapper Class). Elle permet de stocker <code>null</code> et
+                d'utiliser des méthodes (<code>.toString()</code>), mais elle est 4x plus lente et consomme 4x plus de
+                mémoire.</p>
+            <p style="margin-top: 0.75rem;"><strong>Autoboxing</strong> : Java convertit automatiquement
+                <code>int</code> ↔ <code>Integer</code> depuis Java 5. Pratique, mais attention aux performances dans
+                les boucles !</p>
+            <p style="margin-top: 0.75rem;"><strong>char = Unicode</strong> : Un <code>char</code> peut stocker des
+                émojis... mais pas tous ! Les émojis modernes (🚀) nécessitent 2 <code>char</code> (surrogate pairs).
+            </p>
+        </div>
+
+        <!-- Exemples Progressifs -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📝 Exemples Progressifs</h3>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>1. Déclaration & Littéraux</div>
+                <pre><span class="com">// Déclaration explicite</span>
+<span class="kw">int</span> <span class="var">age</span> = <span class="num">25</span>;
+<span class="kw">long</span> <span class="var">pop</span> = <span class="num">7_000_000_000L</span>; <span class="com">// L obligatoire</span>
+<span class="kw">float</span> <span class="var">pi</span> = <span class="num">3.14f</span>;          <span class="com">// f obligatoire</span>
+<span class="kw">double</span> <span class="var">e</span> = <span class="num">2.718</span>;          <span class="com">// d optionnel</span>
+
+<span class="com">// Bases numériques (Java 7+)</span>
+<span class="kw">int</span> <span class="var">bin</span> = <span class="num">0b1010</span>;       <span class="com">// Binaire (10)</span>
+<span class="kw">int</span> <span class="var">hex</span> = <span class="num">0xFF</span>;         <span class="com">// Hexadécimal (255)</span>
+
+<span class="com">// Underscore pour lisibilité</span>
+<span class="kw">int</span> <span class="var">million</span> = <span class="num">1_000_000</span>;</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>2. Casting (Conversion)</div>
+                <pre><span class="com">// Implicite (Widening - Sans perte)</span>
+<span class="kw">int</span> <span class="var">i</span> = <span class="num">100</span>;
+<span class="kw">double</span> <span class="var">d</span> = <span class="var">i</span>; <span class="com">// OK : int → double</span>
+
+<span class="com">// Explicite (Narrowing - Perte possible)</span>
+<span class="kw">double</span> <span class="var">x</span> = <span class="num">9.99</span>;
+<span class="kw">int</span> <span class="var">y</span> = (<span class="kw">int</span>) <span class="var">x</span>; <span class="com">// → 9 (Tronqué !)</span>
+
+<span class="com">// Overflow (Dépassement)</span>
+<span class="kw">byte</span> <span class="var">b</span> = <span class="num">127</span>;
+<span class="var">b</span>++; <span class="com">// → -128 (Boucle !)</span></pre>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top: 1.5rem;">
+            <div class="code-head"><span class="dot g"></span>3. Classe Math (Utilitaires)</div>
+            <pre><span class="kw">import</span> <span class="type">java.lang.Math</span>;
+
+<span class="com">// Valeur absolue</span>
+<span class="type">Math</span>.<span class="fn">abs</span>(-<span class="num">10</span>);      <span class="com">// 10</span>
+
+<span class="com">// Puissance & Racine</span>
+<span class="type">Math</span>.<span class="fn">pow</span>(<span class="num">2</span>, <span class="num">3</span>);     <span class="com">// 8.0 (2³)</span>
+<span class="type">Math</span>.<span class="fn">sqrt</span>(<span class="num">16</span>);      <span class="com">// 4.0</span>
+
+<span class="com">// Arrondi</span>
+<span class="type">Math</span>.<span class="fn">round</span>(<span class="num">3.6</span>);    <span class="com">// 4 (long)</span>
+<span class="type">Math</span>.<span class="fn">floor</span>(<span class="num">3.9</span>);    <span class="com">// 3.0 (vers le bas)</span>
+<span class="type">Math</span>.<span class="fn">ceil</span>(<span class="num">3.1</span>);     <span class="com">// 4.0 (vers le haut)</span>
+
+<span class="com">// Aléatoire</span>
+<span class="type">Math</span>.<span class="fn">random</span>();      <span class="com">// 0.0 ≤ x < 1.0</span>
+(<span class="kw">int</span>) (<span class="type">Math</span>.<span class="fn">random</span>() * <span class="num">100</span>); <span class="com">// 0 à 99</span></pre>
+        </div>
+
+        <!-- Benchmarks -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚡ Benchmarks : Primitif vs Wrapper</h3>
+        <div class="use-case">
+            <h4>🔬 Expérience : Somme de 10 millions d'entiers</h4>
+            <div class="grid2" style="margin-top: 1rem;">
+                <div class="code" style="margin: 0;">
+                    <div class="code-head"><span class="dot g"></span>Primitif (int)</div>
+                    <pre><span class="kw">int</span> <span class="var">sum</span> = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">10_000_000</span>; <span class="var">i</span>++) {
+    <span class="var">sum</span> += <span class="var">i</span>;
+}
+<span class="com">// Temps : ~10 ms</span></pre>
+                </div>
+                <div class="code" style="margin: 0;">
+                    <div class="code-head"><span class="dot r"></span>Wrapper (Integer)</div>
+                    <pre><span class="type">Integer</span> <span class="var">sum</span> = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">10_000_000</span>; <span class="var">i</span>++) {
+    <span class="var">sum</span> += <span class="var">i</span>; <span class="com">// Autoboxing !</span>
+}
+<span class="com">// Temps : ~250 ms (25x plus lent)</span></pre>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Conclusion</strong> : Utilisez les primitifs dans les boucles
+                critiques. Réservez les Wrappers pour les Collections (<code>List&lt;Integer&gt;</code>) qui n'acceptent
+                pas les primitifs.</p>
+        </div>
+
+        <!-- Pièges Courants -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. L'erreur à 1 million de dollars</strong> : N'utilisez JAMAIS <code>float</code> ou
+                <code>double</code> pour de l'argent ! Ils ont des erreurs d'arrondi (<code>0.1 + 0.2 != 0.3</code>).
+                Utilisez <strong><code>BigDecimal</code></strong> pour la finance.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Division entière</strong> : <code>5 / 2</code> donne
+                <code>2</code> (pas <code>2.5</code>). Pour obtenir un résultat décimal : <code>5.0 / 2</code> ou
+                <code>(double) 5 / 2</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Comparaison de Wrappers</strong> :
+                <code>Integer a = 128; Integer b = 128; a == b</code> est <code>false</code> ! Utilisez
+                <code>.equals()</code>. (Cache interne pour -128 à 127 seulement).</p>
+        </div>
+
+        <!-- Cas d'Usage Réel -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🎮 Cas Réel : Jeu Vidéo (Optimisation Mémoire)</h4>
+            <p><strong>Problème</strong> : Vous développez un jeu avec 10 000 entités (ennemis, projectiles). Chaque
+                entité a une position (x, y, z).</p>
+            <p style="margin-top: 0.75rem;"><strong>Mauvaise approche</strong> : <code>Double x, y, z</code> → 10 000 ×
+                3 × 24 bytes = <strong>720 KB</strong></p>
+            <p style="margin-top: 0.75rem;"><strong>Bonne approche</strong> : <code>float x, y, z</code> → 10 000 × 3 ×
+                4 bytes = <strong>120 KB</strong> (6x moins !)</p>
+            <p style="margin-top: 0.75rem;"><strong>Gain</strong> : Moins de pression sur le Garbage Collector,
+                meilleure performance.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Value Types (Project Valhalla)</strong> : Futurs types primitifs personnalisés pour Java 25+
+                </li>
+                <li><strong>Escape Analysis</strong> : Optimisation JVM qui peut allouer des objets sur la Stack</li>
+                <li><strong>Compressed Oops</strong> : Réduction de la taille des pointeurs (64 bits → 32 bits) pour
+                    économiser la mémoire</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,152 @@
+<section id="c14">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">14</div>
+            <div>
+                <h2 class="sec-title">Optional</h2>
+                <p class="sec-sub">Adieu NullPointerException</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Le Problème</strong> : L'erreur à un milliard de dollars (Tony Hoare). Le <code>null</code> est
+                la première cause de crashs en Java.</p>
+            <p><strong>La Solution</strong> : <code>Optional&lt;T&gt;</code> est une boîte qui contient soit une valeur,
+                soit rien. Elle vous force à gérer le cas "rien" proprement.</p>
+            <p><strong>Temps de lecture</strong> : ~10 minutes | <strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🎁 La Boîte de Schrödinger</h3>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>Le Cadeau</p>
+            <p style="margin-top:0.5rem;">Au lieu de vous donner directement un objet (qui peut n'être rien du tout, et
+                vous explosez si vous le touchez), je vous donne une boîte cadeau.
+                <br>Vous devez d'abord inspecter la boîte : "Est-elle vide ?". Si oui, pas grave. Si non, vous l'ouvrez.
+            </p>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                A[Optional] -->|isPresent()| B{Vide ?}
+                B -->|Oui| C[empty]
+                B -->|Non| D[Valeur T]
+
+                style A fill:#1c2128,stroke:#ffa94d,color:#f0f6fc
+                style B fill:#79c0ff,color:#0d1117
+                style C fill:#ff7b72,stroke:#3d444d,color:#0d1117
+                style D fill:#3fb950,stroke:#3d444d,color:#0d1117
+            </div>
+        </div>
+
+        <!-- Creation -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🏗️ Création</h3>
+        <div class="code">
+            <pre><span class="com">// 1. Vide</span>
+<span class="type">Optional</span>&lt;<span class="type">String</span>&gt; <span class="var">empty</span> = <span class="type">Optional</span>.<span class="mt">empty</span>();
+
+<span class="com">// 2. Avec Valeur (Boom si null !)</span>
+<span class="type">Optional</span>&lt;<span class="type">String</span>&gt; <span class="var">opt</span> = <span class="type">Optional</span>.<span class="mt">of</span>(<span class="str">"Hello"</span>);
+
+<span class="com">// 3. Safe (Accepte null -> devient empty)</span>
+<span class="type">String</span> <span class="var">param</span> = <span class="kw">null</span>;
+<span class="type">Optional</span>&lt;<span class="type">String</span>&gt; <span class="var">safe</span> = <span class="type">Optional</span>.<span class="mt">ofNullable</span>(<span class="var">param</span>);</pre>
+        </div>
+
+        <!-- Safe Usage -->
+        <div class="grid2" style="margin-top: 2rem;">
+            <div>
+                <h3 style="color:var(--color-danger)">⛔ Mauvaise Pratique</h3>
+                <div class="code" style="border-left-color: var(--color-danger);">
+                    <pre><span class="com">// Ne faites JAMAIS ça !</span>
+<span class="com">// C'est juste un check null glorifié</span>
+<span class="kw">if</span> (<span class="var">opt</span>.<span class="mt">isPresent</span>()) {
+    <span class="var">val</span> = <span class="var">opt</span>.<span class="mt">get</span>();
+}</pre>
+                </div>
+            </div>
+            <div>
+                <h3 style="color:var(--color-success)">✅ Bonne Pratique (Fonctionnel)</h3>
+                <div class="code" style="border-left-color: var(--color-success);">
+                    <pre><span class="var">opt</span>.<span class="mt">ifPresent</span>(<span class="var">v</span> -> <span class="type">System</span>.out.println(<span class="var">v</span>));
+
+<span class="com">// Ou avec une valeur par défaut</span>
+<span class="type">String</span> <span class="var">res</span> = <span class="var">opt</span>.<span class="mt">orElse</span>(<span class="str">"Défaut"</span>);</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Methods -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🛠️ L'API Puissante</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Description</th>
+                    <th>Coût (Performance)</th>
+                </tr>
+                <tr>
+                    <td><code>orElse(val)</code></td>
+                    <td>Retourne <em>val</em> si vide</td>
+                    <td>⚠️ <em>val</em> est instancié <strong>même si</strong> l'Optional est plein !</td>
+                </tr>
+                <tr>
+                    <td><code>orElseGet(Supplier)</code></td>
+                    <td>Retourne le résultat du supplier</td>
+                    <td>⚡ Lazy : Appelé seulement si vide.</td>
+                </tr>
+                <tr>
+                    <td><code>orElseThrow(Ex)</code></td>
+                    <td>Lance une exception si vide</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><code>map(Func)</code></td>
+                    <td>Transforme la valeur (si présente)</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="code" style="margin-top: 1rem;">
+            <div class="code-head"><span class="dot b"></span>Chaining : La vraie puissance</div>
+            <pre><span class="com">// Trouver un User, prendre son Adresse, la mettre en Majuscule</span>
+<span class="com">// Si n'importe quelle étape est null/vide, retourne "INCONNU"</span>
+<span class="type">String</span> <span class="var">city</span> = <span class="var">repo</span>.<span class="mt">findUser</span>(<span class="str">"Bob"</span>)  <span class="com">// Retourne Optional&lt;User&gt;</span>
+    .map(<span class="type">User</span>::<span class="mt">getAddress</span>)       <span class="com">// User -> Address</span>
+    .map(<span class="type">Address</span>::<span class="mt">getCity</span>)       <span class="com">// Address -> String</span>
+    .map(<span class="type">String</span>::<span class="mt">toUpperCase</span>)
+    .orElse(<span class="str">"INCONNU"</span>);</pre>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Anti-Patterns (À ne pas faire)</h4>
+            <p><strong>1. `get()` sans check</strong> : Appeler <code>.get()</code> sur un Optional vide lance une
+                <code>NoSuchElementException</code>. C'est aussi pire qu'un NPE.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Optional en Paramètre</strong> : Ne faites pas
+                <code>void method(Optional&lt;String&gt; s)</code>. C'est lourd. Utilisez `String s` et passez null ou
+                une surcharge méthode.</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Optional en Champ de Classe</strong> : <code>Optional</code>
+                n'est pas sérialisable. Utilisez-le uniquement en retour de méthode.</p>
+        </div>
+
+        <!-- Java 9+ -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Nouveautés Java 9/10</h4>
+            <ul style="margin-left: 1.5rem;">
+                <li><code>ifPresentOrElse(action, runnable)</code> : Comme le if/else classique.</li>
+                <li><code>or(Supplier)</code> : Pour chaîner des Optionals de secours (si le premier est vide, essaie le
+                    deuxième).</li>
+                <li><code>stream()</code> : Transforme l'Optional en Stream (0 ou 1 élément). Utile pour les
+                    <code>flatMap</code>.</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

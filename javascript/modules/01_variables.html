@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Custom styles for Scope Visualizer */
+        .scope-viz {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .scope-box {
+            border: 2px dashed var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+        }
+
+        .scope-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: var(--bg);
+            padding: 0 5px;
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .var-item {
+            display: flex;
+            justify-content: space-between;
+            background: var(--card);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .var-name {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .var-val {
+            color: var(--text);
+        }
+
+        .grid-conventions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .convention-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .convention-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .convention-ex {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header injected by layout.js -->
+
+    <main class="container">
+        <section id="s1" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">01</div>
+                <div>
+                    <h2 class="sec-title">Variables & Portée</h2>
+                    <p class="sec-sub">let, const, var, TDZ & Conventions</p>
+                </div>
+            </div>
+
+            <!-- INTRO -->
+            <p>Les variables sont des conteneurs nommés. Depuis ES6 (2015), JavaScript offre trois façons de les
+                déclarer, chacune avec ses règles de portée (Scope) et de mutabilité.</p>
+
+            <!-- COMPARISON TABLE -->
+            <div class="code-container">
+                <div class="code-header-mac">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span style="margin-left: 10px; font-size: 0.8rem; opacity: 0.6">Comparatif</span>
+                </div>
+                <pre><code class="language-javascript">
+// 1. const (La norme)
+// - Ne peut PAS être réassignée
+// - Portée de BLOC { }
+const PI = 3.14; 
+// PI = 3.15; // ❌ TypeError
+
+// 2. let (La variable locale)
+// - PEUT être réassignée
+// - Portée de BLOC { }
+let score = 0;
+score = 10; // ✅ OK
+
+// 3. var (L'ancêtre - À BANNIR)
+// - Portée de FONCTION
+// - "Fuite" hors des if/for
+// - Subit le Hoisting (initialisé à undefined)
+var leak = "Je suis partout";
+                </code></pre>
+            </div>
+
+            <!-- DEEP DIVE: SCOPES -->
+            <details open>
+                <summary>🔭 Visualisation des Portées (Scopes)</summary>
+                <div class="details-content">
+                    <p>La portée définit <strong>où</strong> une variable est visible.</p>
+
+                    <div
+                        style="background:var(--bg2); padding:15px; border-radius:8px; font-family:'JetBrains Mono', monospace; line-height:1.4; overflow-x:auto">
+                        <span style="color:var(--muted)">// 🌍 Global Scope</span><br>
+                        <span style="color:var(--primary)">const</span> global = "Visible partout";<br><br>
+
+                        <span style="color:var(--accent)">function</span> app() {<br>
+                        &nbsp;&nbsp;<span style="color:var(--muted)">// 📦 Function Scope</span><br>
+                        &nbsp;&nbsp;<span style="color:var(--primary)">const</span> local = "Visible dans
+                        app()";<br><br>
+
+                        &nbsp;&nbsp;<span style="color:var(--accent)">if</span> (true) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--muted)">// 🧱 Block Scope</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--primary)">let</span> block = "Caché ici";<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--primary)">var</span> leak = "Je m'échappe
+                        !";<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;<span style="color:var(--muted)">// ici: global ✅, local ✅, leak ✅, block
+                            ❌</span><br>
+                        }
+                    </div>
+                </div>
+            </details>
+
+            <!-- NAMING CONVENTIONS -->
+            <h3
+                style="margin-top:30px; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px;">
+                🏷️ Conventions de Nommage</h3>
+            <div class="grid-conventions">
+                <div class="convention-card">
+                    <div class="convention-title">camelCase</div>
+                    <div class="convention-ex">userName, isLoggedIn</div>
+                    <div style="font-size:0.8rem; margin-top:5px">Standard pour variables & fonctions.</div>
+                </div>
+                <div class="convention-card">
+                    <div class="convention-title">PascalCase</div>
+                    <div class="convention-ex">UserComponent, ApiService</div>
+                    <div style="font-size:0.8rem; margin-top:5px">Pour les Classes et Composants React.</div>
+                </div>
+                <div class="convention-card">
+                    <div class="convention-title">SCREAMING_SNAKE</div>
+                    <div class="convention-ex">MAX_WIDTH, API_KEY</div>
+                    <div style="font-size:0.8rem; margin-top:5px">Pour les constantes hardcodées.</div>
+                </div>
+            </div>
+
+            <!-- HOISTING & TDZ -->
+            <details>
+                <summary>👻 Hoisting & Temporal Dead Zone (TDZ)</summary>
+                <div class="details-content">
+                    <p><strong>Hoisting :</strong> JS "remonte" les déclarations en haut du scope avant l'exécution.</p>
+                    <ul>
+                        <li><code>var</code> est initialisé à <code>undefined</code> (on peut y accéder avant, ça vaut
+                            undefined).</li>
+                        <li><code>let/const</code> sont remontés mais placés en <strong>TDZ</strong>. Y accéder avant
+                            crashe le script (ReferenceError).</li>
+                    </ul>
+                    <div class="code-container" style="margin:10px 0">
+                        <pre><code class="language-javascript">console.log(a); // undefined (pas de crash, mais bug potentiel)
+var a = 5;
+
+console.log(b); // ❌ ReferenceError! (Merci la TDZ)
+let b = 10;</code></pre>
+                    </div>
+                </div>
+            </details>
+
+            <!-- INTERACTIVE DEMO -->
+            <div class="demo">
+                <div class="demo-title">🔬 Visualiseur de Scope Interactif</div>
+                <p style="margin-bottom:15px; opacity:0.8">Cliquez pour simuler l'exécution et voir où vivent les
+                    variables.</p>
+
+                <div class="demo-controls" style="margin-bottom:15px; display:flex; gap:10px">
+                    <button class="demo-btn" onclick="demoScope('global')">1. Scope Global</button>
+                    <button class="demo-btn" onclick="demoScope('function')">2. Scope Fonction</button>
+                    <button class="demo-btn" onclick="demoScope('block')">3. Scope Bloc</button>
+                </div>
+
+                <div id="demo-scope-viz" class="scope-viz">
+                    <!-- Visualization will be injected here -->
+                    <div
+                        style="text-align:center; padding:20px; opacity:0.5; border: 2px dashed var(--border); border-radius:8px">
+                        En attente d'exécution...
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEST PRACTICES -->
+            <div class="tip">
+                <strong>💡 Bonnes Pratiques :</strong>
+                <ul style="margin:5px 0 0 20px; list-style-type:circle">
+                    <li>Toujours utiliser <code>const</code> par défaut.</li>
+                    <li>Passer à <code>let</code> uniquement si réassignation nécessaire.</li>
+                    <li>Nommer les booléens avec <code>is</code>, <code>has</code>, <code>can</code> (ex:
+                        <code>isVisible</code>).</li>
+                    <li>Ne jamais utiliser <code>var</code>. Jamais.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="../index.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Dashboard</a>
+                <a href="02_types.html" class="demo-btn" style="text-decoration:none">Suivant: Types →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer injected by layout.js -->
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/01_variables.js"></script>
+</body>
+
+</html>

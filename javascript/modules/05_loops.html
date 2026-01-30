@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucles - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .loop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .loop-card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .loop-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .loop-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+
+        .loop-perf {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .perf-badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .perf-fast {
+            background: #4caf50;
+            color: white;
+        }
+
+        .perf-medium {
+            background: #ff9800;
+            color: white;
+        }
+
+        .perf-slow {
+            background: #f44336;
+            color: white;
+        }
+
+        .visualizer {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .viz-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .viz-display {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            font-family: 'JetBrains Mono';
+        }
+
+        .viz-step {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 5px 0;
+            border-left: 3px solid var(--primary);
+        }
+
+        .viz-current {
+            background: rgba(76, 175, 80, 0.3);
+            border-left-color: #4caf50;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            text-align: left;
+            color: var(--muted);
+            padding: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .pitfall {
+            background: rgba(244, 67, 54, 0.1);
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s5" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">05</div>
+                <div>
+                    <h2 class="sec-title">Boucles & Itération</h2>
+                    <p class="sec-sub">Guide Complet : 8 Façons d'Itérer</p>
+                </div>
+            </div>
+
+            <!-- INTRO -->
+            <p>JavaScript offre de nombreuses façons d'itérer. Chacune a ses avantages selon le contexte.</p>
+
+            <!-- LOOP TYPES -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🔄 Les 8 Types de
+                Boucles</h3>
+
+            <div class="loop-grid">
+                <!-- 1. FOR CLASSIC -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>1️⃣</span> for (Classique)</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// Contrôle total
+for (let i = 10; i > 0; i -= 2) {
+    console.log(i); // 10, 8, 6...
+}</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-fast">⚡ Rapide</span>
+                        <span>Meilleure performance brute</span>
+                    </div>
+                </div>
+
+                <!-- 2. FOR...OF -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>2️⃣</span> for...of (Valeurs)</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const arr = ['a', 'b', 'c'];
+for (const val of arr) {
+    console.log(val); // a, b, c
+}
+
+// Fonctionne sur tout itérable
+for (const char of "Hello") {
+    console.log(char);
+}</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-fast">⚡ Rapide</span>
+                        <span>Moderne, lisible, itérables</span>
+                    </div>
+                </div>
+
+                <!-- 3. FOR...IN -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>3️⃣</span> for...in (Clés)</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {a: 1, b: 2};
+for (const key in obj) {
+    console.log(key, obj[key]);
+}
+
+// ⚠️ Éviter sur arrays
+// Itère aussi sur le prototype</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-medium">⚡ Moyen</span>
+                        <span>Pour objets uniquement</span>
+                    </div>
+                </div>
+
+                <!-- 4. WHILE -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>4️⃣</span> while</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// Condition en début
+// Peut ne jamais s'exécuter</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-fast">⚡ Rapide</span>
+                        <span>Condition inconnue à l'avance</span>
+                    </div>
+                </div>
+
+                <!-- 5. DO...WHILE -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>5️⃣</span> do...while</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 5);
+
+// S'exécute AU MOINS 1 fois
+// Condition à la fin</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-fast">⚡ Rapide</span>
+                        <span>Garantit 1 exécution minimum</span>
+                    </div>
+                </div>
+
+                <!-- 6. FOREACH -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>6️⃣</span> forEach (Méthode)</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">arr.forEach((val, idx, arr) => {
+    console.log(val, idx);
+});
+
+// ⚠️ Pas de break/continue
+// ⚠️ Pas de return early</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-medium">⚡ Moyen</span>
+                        <span>Fonctionnel, mais inflexible</span>
+                    </div>
+                </div>
+
+                <!-- 7. MAP/FILTER/REDUCE -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>7️⃣</span> map/filter/reduce</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">// Transformation
+const doubled = arr.map(x => x * 2);
+
+// Filtrage
+const evens = arr.filter(x => x % 2 === 0);
+
+// Accumulation
+const sum = arr.reduce((a, b) => a + b, 0);</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-medium">⚡ Moyen</span>
+                        <span>Immutable, chaînable</span>
+                    </div>
+                </div>
+
+                <!-- 8. RECURSION -->
+                <div class="loop-card">
+                    <div class="loop-title"><span>8️⃣</span> Récursion</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">function countdown(n) {
+    if (n <= 0) return;
+    console.log(n);
+    countdown(n - 1);
+}
+
+// ⚠️ Stack overflow si trop profond</code></pre>
+                    <div class="loop-perf">
+                        <span class="perf-badge perf-slow">⚡ Lent</span>
+                        <span>Élégant mais coûteux</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPARISON TABLE -->
+            <h3 style="margin-top:40px;">📊 Tableau Comparatif</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Performance</th>
+                        <th>Break/Continue</th>
+                        <th>Cas d'usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>for</code></td>
+                        <td><span class="perf-badge perf-fast">Rapide</span></td>
+                        <td>✅ Oui</td>
+                        <td>Contrôle total, performance critique</td>
+                    </tr>
+                    <tr>
+                        <td><code>for...of</code></td>
+                        <td><span class="perf-badge perf-fast">Rapide</span></td>
+                        <td>✅ Oui</td>
+                        <td>Itérer sur valeurs (arrays, strings, Sets...)</td>
+                    </tr>
+                    <tr>
+                        <td><code>for...in</code></td>
+                        <td><span class="perf-badge perf-medium">Moyen</span></td>
+                        <td>✅ Oui</td>
+                        <td>Itérer sur clés d'objets</td>
+                    </tr>
+                    <tr>
+                        <td><code>forEach</code></td>
+                        <td><span class="perf-badge perf-medium">Moyen</span></td>
+                        <td>❌ Non</td>
+                        <td>Style fonctionnel, pas besoin de break</td>
+                    </tr>
+                    <tr>
+                        <td><code>map/filter</code></td>
+                        <td><span class="perf-badge perf-medium">Moyen</span></td>
+                        <td>❌ Non</td>
+                        <td>Transformation/filtrage immutable</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- INTERACTIVE VISUALIZER -->
+            <div class="visualizer">
+                <h3 style="margin-top:0; color:var(--accent)">🎬 Visualiseur d'Itération</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Voyez comment chaque boucle parcourt un tableau.</p>
+
+                <div class="viz-controls">
+                    <select id="loop-type" class="demo-input" style="width:150px">
+                        <option value="for">for</option>
+                        <option value="forof">for...of</option>
+                        <option value="foreach">forEach</option>
+                        <option value="while">while</option>
+                    </select>
+                    <input type="text" id="loop-array" class="demo-input" placeholder="Array (ex: 1,2,3,4,5)"
+                        value="10,20,30,40,50" style="flex:1; min-width:200px">
+                    <button class="demo-btn" onclick="runLoopViz()">▶️ Exécuter</button>
+                    <button class="demo-btn" onclick="stepLoopViz()" style="background:var(--bg2)">⏭️ Step</button>
+                    <button class="demo-btn" onclick="resetLoopViz()" style="background:var(--bg2)">🔄 Reset</button>
+                </div>
+
+                <div id="loop-viz-output" class="viz-display">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur Exécuter pour démarrer</div>
+                </div>
+            </div>
+
+            <!-- PITFALLS -->
+            <h3 style="margin-top:40px;">⚠️ Pièges Courants</h3>
+            <div class="pitfall">
+                <strong style="color:#f44336; display:block; margin-bottom:8px">1. Boucle infinie</strong>
+                <pre><code class="language-javascript">// ❌ Oubli d'incrémenter
+let i = 0;
+while (i < 10) {
+    console.log(i); // Boucle infinie !
+    // i++; <- Oublié
+}</code></pre>
+            </div>
+
+            <div class="pitfall">
+                <strong style="color:#f44336; display:block; margin-bottom:8px">2. for...in sur array</strong>
+                <pre><code class="language-javascript">// ❌ Mauvaise pratique
+const arr = [1, 2, 3];
+for (const i in arr) {
+    console.log(i); // "0", "1", "2" (strings!)
+}
+
+// ✅ Utilisez for...of
+for (const val of arr) {
+    console.log(val); // 1, 2, 3
+}</code></pre>
+            </div>
+
+            <div class="pitfall">
+                <strong style="color:#f44336; display:block; margin-bottom:8px">3. Modifier array pendant
+                    forEach</strong>
+                <pre><code class="language-javascript">// ❌ Comportement imprévisible
+arr.forEach((val, i) => {
+    arr.splice(i, 1); // Modifie pendant itération
+});
+
+// ✅ Utilisez filter
+arr = arr.filter(val => condition);</code></pre>
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="04_conditions.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Conditions</a>
+                <a href="06_functions.html" class="demo-btn" style="text-decoration:none">Suivant: Fonctions →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/05_loops.js"></script>
+</body>
+
+</html>

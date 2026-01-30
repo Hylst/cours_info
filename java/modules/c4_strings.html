@@ -1,0 +1,114 @@
+<section id="c4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Strings & Arrays</h2>
+                <p class="sec-sub">Mémoire, Immuabilité & Performance</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>String</strong> est l'objet le plus utilisé en Java. Comprendre son fonctionnement interne
+                (String Pool, Immuabilité) est crucial pour la performance.</p>
+            <p><strong>Arrays</strong> sont la structure de base la plus rapide, mais rigide.</p>
+            <p><strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧵 String & String Pool</h3>
+        <p>Les Strings sont <strong>immuables</strong>. Une fois créées, elles ne changent jamais. Pour optimiser la
+            mémoire, Java utilise un "String Pool".</p>
+
+        <div class="analogy">
+            <p>Le String Pool est comme un dictionnaire partagé.</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>Littéral ("...")</h4>
+                    <p>Si vous écrivez <code>"Hello"</code>, Java vérifie si "Hello" existe déjà dans le Pool. Si oui,
+                        il réutilise la même instance. C'est rapide et économique.</p>
+                </div>
+                <div>
+                    <h4>new String("...")</h4>
+                    <p>Force la création d'un <strong>nouvel objet</strong> en mémoire Heap, même si "Hello" existe
+                        déjà. À ÉVITER.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Comparaison de Strings</div>
+            <pre><span class="type">String</span> <span class="var">s1</span> = <span class="str">"Java"</span>;
+<span class="type">String</span> <span class="var">s2</span> = <span class="str">"Java"</span>; <span class="com">// Réutilise s1 du Pool</span>
+<span class="type">String</span> <span class="var">s3</span> = <span class="kw">new</span> <span class="type">String</span>(<span class="str">"Java"</span>); <span class="com">// Nouvel objet ⚠️</span>
+
+<span class="type">System</span>.out.println(<span class="var">s1</span> == <span class="var">s2</span>);      <span class="com">// true (Même référence)</span>
+<span class="type">System</span>.out.println(<span class="var">s1</span> == <span class="var">s3</span>);      <span class="com">// false (Références différentes)</span>
+<span class="type">System</span>.out.println(<span class="var">s1</span>.<span class="mt">equals</span>(<span class="var">s3</span>)); <span class="com">// true (Même contenu) ✅ TOUJOURS UTILISER EQUALS</span></pre>
+        </div>
+
+        <!-- Concatenation -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚡ Concaténation & StringBuilder</h3>
+        <div class="callout callout-warning">
+            <h4>⛔ Ne concaténez pas dans une boucle !</h4>
+            <p><code>s = s + "a"</code> crée une <strong>nouvelle</strong> String à chaque itération (copie complète).
+                Complexité O(n²).</p>
+            <p>Utilisez <code>StringBuilder</code> (mutable et rapide) pour construire des chaînes.</p>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Lent (O(n²))</div>
+                <pre><span class="type">String</span> <span class="var">s</span> = <span class="str">""</span>;
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span>=0; <span class="var">i</span><1000; <span class="var">i</span>++) {
+    <span class="var">s</span> += <span class="var">i</span>; <span class="com">// 1000 objets créés !</span>
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Rapide (StringBuilder)</div>
+                <pre><span class="type">StringBuilder</span> <span class="var">sb</span> = <span class="kw">new</span> <span class="type">StringBuilder</span>();
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span>=0; <span class="var">i</span><1000; <span class="var">i</span>++) {
+    <span class="var">sb</span>.<span class="mt">append</span>(<span class="var">i</span>); <span class="com">// 1 objet modifié</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Arrays -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📦 Arrays (Tableaux)</h3>
+        <p>Structure de taille fixe. Très rapide, mais peu flexible (préférez <code>ArrayList</code> si la taille
+            change).</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Manipulation de Tableaux</div>
+            <pre><span class="com">// Déclaration</span>
+<span class="kw">int</span>[] <span class="var">numbers</span> = {1, 2, 3, 4, 5};
+<span class="type">String</span>[] <span class="var">names</span> = <span class="kw">new</span> <span class="type">String</span>[<span class="num">10</span>]; <span class="com">// Taille 10, rempli de null</span>
+
+<span class="com">// Parcourir</span>
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">n</span> : <span class="var">numbers</span>) { ... }
+
+<span class="com">// Utilitaires (java.util.Arrays)</span>
+<span class="type">Arrays</span>.<span class="mt">sort</span>(<span class="var">numbers</span>); <span class="com">// Tri rapide (Dual-Pivot Quicksort)</span>
+<span class="type">String</span> <span class="var">str</span> = <span class="type">Arrays</span>.<span class="mt">toString</span>(<span class="var">numbers</span>); <span class="com">// "[1, 2, 3, 4, 5]"</span></pre>
+        </div>
+
+        <!-- Regex -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🔍 Regex (Expressions Régulières)</h4>
+            <p>Pour valider ou extraire du texte complexe.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <pre><span class="type">String</span> <span class="var">email</span> = <span class="str">"test@example.com"</span>;
+<span class="kw">boolean</span> <span class="var">isValid</span> = <span class="var">email</span>.<span class="mt">matches</span>(<span class="str">"^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"</span>);
+
+<span class="com">// Extraction (java.util.regex)</span>
+<span class="type">Pattern</span> <span class="var">p</span> = <span class="type">Pattern</span>.<span class="mt">compile</span>(<span class="str">"\\d+"</span>);
+<span class="type">Matcher</span> <span class="var">m</span> = <span class="var">p</span>.<span class="mt">matcher</span>(<span class="str">"Order #1234"</span>);
+<span class="kw">if</span> (<span class="var">m</span>.<span class="mt">find</span>()) {
+    <span class="type">System</span>.out.println(<span class="var">m</span>.<span class="mt">group</span>()); <span class="com">// "1234"</span>
+}</pre>
+            </div>
+        </div>
+
+    </div>
+</section>

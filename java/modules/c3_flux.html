@@ -1,0 +1,282 @@
+<section id="c3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">Contrôle de Flux</h2>
+                <p class="sec-sub">Décisions & Boucles</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître les types primitifs (C2).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment diriger l'exécution du programme avec des
+                conditions et des boucles.</p>
+            <p><strong>Temps de lecture</strong> : ~12 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔀 Les 3 Piliers du Contrôle de Flux</h3>
+        <p>Tout programme a besoin de 3 choses :</p>
+        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li><strong>Séquence</strong> : Exécuter les instructions ligne par ligne (par défaut).</li>
+            <li><strong>Sélection</strong> : Choisir un chemin (<code>if</code>, <code>switch</code>).</li>
+            <li><strong>Itération</strong> : Répéter des actions (<code>for</code>, <code>while</code>).</li>
+        </ol>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                graph TD
+                Start([Début]) --> Cond{Condition ?}
+                Cond -->|Vrai| A[Action A]
+                Cond -->|Faux| B[Action B]
+                A --> Loop{Boucle ?}
+                B --> Loop
+                Loop -->|Oui| A
+                Loop -->|Non| End([Fin])
+                style Start fill:#3fb950,color:#f0f6fc
+                style End fill:#ff7b72,color:#f0f6fc
+                style Cond fill:#ffa94d,color:#0d1117
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Structure générale d'un
+                programme</p>
+        </div>
+
+        <!-- 1. IF / ELSE -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔀 1. Conditions (if / else)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>If / Else If / Else</div>
+                <pre><span class="kw">int</span> <span class="var">score</span> = <span class="num">85</span>;
+
+<span class="kw">if</span> (<span class="var">score</span> >= <span class="num">90</span>) {
+    <span class="type">System</span>.out.println(<span class="str">"A"</span>);
+} <span class="kw">else if</span> (<span class="var">score</span> >= <span class="num">70</span>) {
+    <span class="type">System</span>.out.println(<span class="str">"B"</span>);
+} <span class="kw">else</span> {
+    <span class="type">System</span>.out.println(<span class="str">"C"</span>);
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Ternaire (Inline)</div>
+                <pre><span class="com">// Syntaxe : condition ? valeurSiVrai : valeurSiFaux</span>
+
+<span class="type">String</span> <span class="var">status</span> = (<span class="var">age</span> >= <span class="num">18</span>) ? <span class="str">"Majeur"</span> : <span class="str">"Mineur"</span>;
+
+<span class="com">// Équivalent à :</span>
+<span class="type">String</span> <span class="var">status</span>;
+<span class="kw">if</span> (<span class="var">age</span> >= <span class="num">18</span>) {
+    <span class="var">status</span> = <span class="str">"Majeur"</span>;
+} <span class="kw">else</span> {
+    <span class="var">status</span> = <span class="str">"Mineur"</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- 2. SWITCH -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🎯 2. Switch (Ancien vs Moderne)</h3>
+
+        <div class="grid2">
+            <div class="callout callout-warning" style="margin:0">
+                <h4>⚠️ Switch Classique (Avant Java 14)</h4>
+                <p><strong>Problèmes</strong> :</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Fall-through (oubli de <code>break</code>)</li>
+                    <li>Verbeux</li>
+                    <li>Pas de valeur de retour</li>
+                </ul>
+            </div>
+            <div class="callout callout-tip" style="margin:0">
+                <h4>🚀 Switch Expression (Java 14+)</h4>
+                <p><strong>Avantages</strong> :</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Flèche <code>-></code> (pas de fall-through)</li>
+                    <li>Retourne une valeur</li>
+                    <li>Exhaustivité vérifiée</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top: 1.5rem;">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Ancien (Verbeux)</div>
+                <pre><span class="type">String</span> <span class="var">type</span>;
+<span class="kw">switch</span> (<span class="var">day</span>) {
+    <span class="kw">case</span> <span class="str">"MON"</span>:
+    <span class="kw">case</span> <span class="str">"TUE"</span>:
+        <span class="var">type</span> = <span class="str">"Travail"</span>;
+        <span class="kw">break</span>; <span class="com">// Oubli = Bug !</span>
+    <span class="kw">case</span> <span class="str">"SAT"</span>:
+        <span class="var">type</span> = <span class="str">"Weekend"</span>;
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        <span class="var">type</span> = <span class="str">"Autre"</span>;
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Moderne (Expression)</div>
+                <pre><span class="type">String</span> <span class="var">type</span> = <span class="kw">switch</span> (<span class="var">day</span>) {
+    <span class="kw">case</span> <span class="str">"MON"</span>, <span class="str">"TUE"</span>, <span class="str">"WED"</span>, <span class="str">"THU"</span> -> <span class="str">"Travail"</span>;
+    <span class="kw">case</span> <span class="str">"FRI"</span> -> {
+        <span class="type">System</span>.out.println(<span class="str">"Party!"</span>);
+        <span class="kw">yield</span> <span class="str">"Apéro"</span>; <span class="com">// yield = return</span>
+    }
+    <span class="kw">case</span> <span class="str">"SAT"</span>, <span class="str">"SUN"</span> -> <span class="str">"Weekend"</span>;
+    <span class="kw">default</span> -> <span class="str">"Autre"</span>;
+};</pre>
+            </div>
+        </div>
+
+        <!-- 3. BOUCLES -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔁 3. Boucles (for / while / do-while)</h3>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>For Classique</div>
+                <pre><span class="com">// Syntaxe : for (init; condition; incrémentation)</span>
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">5</span>; <span class="var">i</span>++) {
+    <span class="type">System</span>.out.println(<span class="var">i</span>); <span class="com">// 0, 1, 2, 3, 4</span>
+}
+
+<span class="com">// Boucle infinie (Ctrl+C pour arrêter)</span>
+<span class="kw">for</span> (;;) {
+    <span class="type">System</span>.out.println(<span class="str">"Forever"</span>);
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>For-Each (Enhanced)</div>
+                <pre><span class="type">String</span>[] <span class="var">langs</span> = {<span class="str">"Java"</span>, <span class="str">"Go"</span>, <span class="str">"Rust"</span>};
+
+<span class="com">// Clean & Safe (pas d'index)</span>
+<span class="kw">for</span> (<span class="type">String</span> <span class="var">lang</span> : <span class="var">langs</span>) {
+    <span class="type">System</span>.out.println(<span class="var">lang</span>);
+}
+
+<span class="com">// ⚠️ Read-only : impossible de modifier</span>
+<span class="kw">for</span> (<span class="type">String</span> <span class="var">lang</span> : <span class="var">langs</span>) {
+    <span class="var">lang</span> = <span class="str">"Python"</span>; <span class="com">// N'affecte PAS le tableau</span>
+}</pre>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top: 1.5rem;">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>While (Pré-condition)</div>
+                <pre><span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>;
+<span class="kw">while</span> (<span class="var">i</span> < <span class="num">5</span>) {
+    <span class="type">System</span>.out.println(<span class="var">i</span>);
+    <span class="var">i</span>++;
+}
+
+<span class="com">// Si condition fausse dès le début : 0 itération</span>
+<span class="kw">while</span> (<span class="kw">false</span>) {
+    <span class="type">System</span>.out.println(<span class="str">"Jamais exécuté"</span>);
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Do-While (Post-condition)</div>
+                <pre><span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>;
+<span class="kw">do</span> {
+    <span class="type">System</span>.out.println(<span class="var">i</span>);
+    <span class="var">i</span>++;
+} <span class="kw">while</span> (<span class="var">i</span> < <span class="num">5</span>);
+
+<span class="com">// Exécuté AU MOINS 1 fois (même si faux)</span>
+<span class="kw">do</span> {
+    <span class="type">System</span>.out.println(<span class="str">"Au moins 1 fois"</span>);
+} <span class="kw">while</span> (<span class="kw">false</span>);</pre>
+            </div>
+        </div>
+
+        <!-- 4. BREAK / CONTINUE -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⏭️ 4. Contrôle de Boucle (break / continue)</h3>
+
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Break & Continue</div>
+            <pre><span class="com">// BREAK : Sortir de la boucle</span>
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">10</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> == <span class="num">5</span>) <span class="kw">break</span>; <span class="com">// Stop à 5</span>
+    <span class="type">System</span>.out.println(<span class="var">i</span>); <span class="com">// 0, 1, 2, 3, 4</span>
+}
+
+<span class="com">// CONTINUE : Passer à l'itération suivante</span>
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">5</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> == <span class="num">2</span>) <span class="kw">continue</span>; <span class="com">// Sauter 2</span>
+    <span class="type">System</span>.out.println(<span class="var">i</span>); <span class="com">// 0, 1, 3, 4</span>
+}
+
+<span class="com">// LABELED BREAK (Boucles imbriquées)</span>
+<span class="var">outer</span>:
+<span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">3</span>; <span class="var">i</span>++) {
+    <span class="kw">for</span> (<span class="kw">int</span> <span class="var">j</span> = <span class="num">0</span>; <span class="var">j</span> < <span class="num">3</span>; <span class="var">j</span>++) {
+        <span class="kw">if</span> (<span class="var">j</span> == <span class="num">1</span>) <span class="kw">break</span> <span class="var">outer</span>; <span class="com">// Sort des 2 boucles</span>
+    }
+}</pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Switch sur Strings</strong> : Depuis Java 7, on peut utiliser des <code>String</code> dans les
+                switch (avant : uniquement <code>int</code>, <code>char</code>, <code>enum</code>).</p>
+            <p style="margin-top: 0.75rem;"><strong>Pattern Matching</strong> : Java 21 introduit le pattern matching
+                dans les switch (<code>case String s when s.length() > 5</code>).</p>
+            <p style="margin-top: 0.75rem;"><strong>For vs While</strong> : Utilisez <code>for</code> quand vous
+                connaissez le nombre d'itérations, <code>while</code> quand c'est conditionnel.</p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🎮 Cas Réel : Validation de Formulaire</h4>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Validation Multi-critères</div>
+                <pre><span class="kw">boolean</span> <span class="mt">isValid</span>(<span class="type">String</span> <span class="var">password</span>) {
+    <span class="kw">if</span> (<span class="var">password</span> == <span class="kw">null</span> || <span class="var">password</span>.isEmpty()) {
+        <span class="kw">return</span> <span class="kw">false</span>; <span class="com">// Early return</span>
+    }
+    
+    <span class="kw">if</span> (<span class="var">password</span>.length() < <span class="num">8</span>) {
+        <span class="kw">return</span> <span class="kw">false</span>;
+    }
+    
+    <span class="kw">boolean</span> <span class="var">hasDigit</span> = <span class="kw">false</span>;
+    <span class="kw">for</span> (<span class="kw">char</span> <span class="var">c</span> : <span class="var">password</span>.toCharArray()) {
+        <span class="kw">if</span> (<span class="type">Character</span>.isDigit(<span class="var">c</span>)) {
+            <span class="var">hasDigit</span> = <span class="kw">true</span>;
+            <span class="kw">break</span>; <span class="com">// Trouvé, pas besoin de continuer</span>
+        }
+    }
+    
+    <span class="kw">return</span> <span class="var">hasDigit</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Comparaison de Strings</strong> : <code>str == "test"</code> compare les références, pas le
+                contenu. Utilisez <code>.equals()</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Boucle infinie</strong> : <code>while (true)</code> sans
+                <code>break</code> = freeze. Toujours prévoir une sortie.</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Off-by-one</strong> :
+                <code>for (int i = 0; i <= array.length; i++)</code> → <code>ArrayIndexOutOfBoundsException</code>.
+                Utilisez <code>&lt;</code> pas <code>&lt;=</code>.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Pattern Matching for Switch</strong> (Java 21) : Déstructuration d'objets dans les switch
+                </li>
+                <li><strong>Sealed Classes</strong> : Contrôler l'exhaustivité des switch sur des types</li>
+                <li><strong>Streams</strong> (C13) : Alternative fonctionnelle aux boucles</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

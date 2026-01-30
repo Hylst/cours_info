@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .obj-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .obj-card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .obj-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .obj-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            font-family: 'JetBrains Mono';
+        }
+
+        .proto-chain {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .proto-level {
+            background: var(--card);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .proto-level::after {
+            content: '⬇️';
+            position: absolute;
+            left: 50%;
+            bottom: -25px;
+            font-size: 1.2rem;
+        }
+
+        .proto-level:last-child::after {
+            content: '🔚';
+        }
+
+        .proto-props {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .proto-prop {
+            font-family: 'JetBrains Mono';
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .copy-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .copy-side {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .copy-side.shallow {
+            border: 2px solid #ff9800;
+        }
+
+        .copy-side.deep {
+            border: 2px solid #4caf50;
+        }
+
+        .explorer {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .explorer-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+        }
+
+        .obj-key {
+            color: #a5d6ff;
+        }
+
+        .obj-val {
+            color: #ce9178;
+        }
+
+        .obj-nested {
+            margin-left: 20px;
+            border-left: 2px solid var(--border);
+            padding-left: 15px;
+        }
+
+        @media(max-width: 700px) {
+            .copy-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s8" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">08</div>
+                <div>
+                    <h2 class="sec-title">Objects Avancés</h2>
+                    <p class="sec-sub">Prototypes, Descriptors & Deep Clone</p>
+                </div>
+            </div>
+
+            <p>Les objets sont au cœur de JavaScript. Tout (sauf primitifs) est un objet : arrays, fonctions, dates...
+            </p>
+
+            <!-- OBJECT METHODS -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🔧 Méthodes Object
+                Essentielles</h3>
+
+            <div class="obj-grid">
+                <div class="obj-card">
+                    <div class="obj-title">Object.keys()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {a: 1, b: 2};
+Object.keys(obj);
+// ["a", "b"]
+
+// Utile pour itérer
+Object.keys(obj).forEach(key => {
+    console.log(key, obj[key]);
+});</code></pre>
+                </div>
+
+                <div class="obj-card">
+                    <div class="obj-title">Object.values()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {a: 1, b: 2};
+Object.values(obj);
+// [1, 2]
+
+// Somme des valeurs
+const sum = Object.values(obj)
+    .reduce((a, b) => a + b);</code></pre>
+                </div>
+
+                <div class="obj-card">
+                    <div class="obj-title">Object.entries()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {a: 1, b: 2};
+Object.entries(obj);
+// [["a", 1], ["b", 2]]
+
+// Destructuring
+for (const [key, val] of Object.entries(obj)) {
+    console.log(key, val);
+}</code></pre>
+                </div>
+
+                <div class="obj-card">
+                    <div class="obj-title">Object.assign()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const target = {a: 1};
+const source = {b: 2};
+Object.assign(target, source);
+// target = {a: 1, b: 2}
+
+// ⚠️ Shallow copy
+// Préférez spread: {...obj}</code></pre>
+                </div>
+
+                <div class="obj-card">
+                    <div class="obj-title">Object.freeze()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {a: 1};
+Object.freeze(obj);
+
+obj.a = 2; // ❌ Silencieux (strict: erreur)
+obj.b = 3; // ❌ Pas ajouté
+
+// Immutable (shallow)</code></pre>
+                </div>
+
+                <div class="obj-card">
+                    <div class="obj-title">structuredClone()</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const obj = {
+    a: 1,
+    nested: {b: 2}
+};
+const clone = structuredClone(obj);
+
+// ✅ Deep clone natif
+// ✅ Gère Date, Map, Set</code></pre>
+                </div>
+            </div>
+
+            <!-- DESTRUCTURING -->
+            <h3 style="margin-top:40px;">📦 Destructuring Avancé</h3>
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. Basique
+const {name, age} = user;
+
+// 2. Renommer
+const {name: userName, age: userAge} = user;
+
+// 3. Valeur par défaut
+const {role = "guest"} = user;
+
+// 4. Nested
+const {address: {city}} = user;
+
+// 5. Rest
+const {id, ...rest} = user;
+
+// 6. Fonction (paramètres)
+function greet({name, age = 18}) {
+    console.log(`${name} (${age})`);
+}
+greet({name: "Alice"}); // Alice (18)</code></pre>
+            </div>
+
+            <!-- PROTOTYPE CHAIN -->
+            <h3 style="margin-top:40px;">⛓️ Prototype Chain</h3>
+            <p>Chaque objet a un lien vers son prototype. C'est le mécanisme d'héritage de JavaScript.</p>
+
+            <div class="proto-chain">
+                <h4 style="margin-top:0; color:var(--accent)">Visualisation de la Chaîne</h4>
+                <div class="proto-level" style="border-left-color: #4caf50;">
+                    <strong style="color:#4caf50">🎯 user (Instance)</strong>
+                    <div class="proto-props">
+                        <span class="proto-prop">name: "Alice"</span>
+                        <span class="proto-prop">age: 25</span>
+                    </div>
+                </div>
+                <div class="proto-level" style="border-left-color: #2196f3;">
+                    <strong style="color:#2196f3">📦 User.prototype</strong>
+                    <div class="proto-props">
+                        <span class="proto-prop">greet()</span>
+                        <span class="proto-prop">toString()</span>
+                    </div>
+                </div>
+                <div class="proto-level" style="border-left-color: #ff9800;">
+                    <strong style="color:#ff9800">🌍 Object.prototype</strong>
+                    <div class="proto-props">
+                        <span class="proto-prop">hasOwnProperty()</span>
+                        <span class="proto-prop">valueOf()</span>
+                    </div>
+                </div>
+                <div class="proto-level" style="border-left-color: #f44336;">
+                    <strong style="color:#f44336">⛔ null</strong>
+                    <div style="margin-top:8px; font-size:0.9rem; opacity:0.8">Fin de la chaîne</div>
+                </div>
+            </div>
+
+            <!-- SHALLOW VS DEEP -->
+            <h3 style="margin-top:40px;">🔍 Shallow vs Deep Copy</h3>
+            <div class="copy-demo">
+                <div class="copy-side shallow">
+                    <div style="color:#ff9800; font-weight:bold; margin-bottom:10px">⚠️ Shallow Copy</div>
+                    <pre><code class="language-javascript">const original = {
+    a: 1,
+    nested: {b: 2}
+};
+
+// Spread ou Object.assign
+const copy = {...original};
+
+copy.a = 99; // ✅ OK
+copy.nested.b = 99; // ❌ Modifie original !
+
+// Seul le 1er niveau est copié</code></pre>
+                </div>
+
+                <div class="copy-side deep">
+                    <div style="color:#4caf50; font-weight:bold; margin-bottom:10px">✅ Deep Copy</div>
+                    <pre><code class="language-javascript">const original = {
+    a: 1,
+    nested: {b: 2}
+};
+
+// structuredClone (natif)
+const copy = structuredClone(original);
+
+copy.nested.b = 99; // ✅ Original intact
+
+// Copie récursive complète</code></pre>
+                </div>
+            </div>
+
+            <!-- OBJECT EXPLORER -->
+            <div class="explorer">
+                <h3 style="margin-top:0; color:var(--accent)">🔬 Object Explorer</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Explorez la structure d'un objet JavaScript.</p>
+
+                <div style="margin-bottom:15px">
+                    <textarea id="obj-input" class="demo-input"
+                        placeholder='{"name": "Alice", "age": 25, "address": {"city": "Paris"}}'
+                        style="width:100%; min-height:80px; font-family:'JetBrains Mono'; resize:vertical">{"name": "Alice", "age": 25, "address": {"city": "Paris", "country": "France"}}</textarea>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-bottom:15px">
+                    <button class="demo-btn" onclick="exploreObject()">🔍 Explorer</button>
+                    <button class="demo-btn" onclick="testClone()" style="background:var(--bg2)">🧪 Test Clone</button>
+                </div>
+
+                <div id="explorer-output" class="explorer-output">
+                    <div style="opacity:0.5; text-align:center">Entrez un objet JSON et cliquez sur Explorer</div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Utilisez <code>structuredClone()</code> pour les deep copies (supporté
+                depuis 2022). Pour les cas complexes (fonctions, symboles), utilisez une bibliothèque comme Lodash
+                <code>_.cloneDeep()</code>.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="07_arrays.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Arrays</a>
+                <a href="09_dom.html" class="demo-btn" style="text-decoration:none">Suivant: DOM →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/08_objects.js"></script>
+</body>
+
+</html>

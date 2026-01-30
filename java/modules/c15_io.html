@@ -1,0 +1,137 @@
+<section id="c15">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">15</div>
+            <div>
+                <h2 class="sec-title">I/O & Fichiers</h2>
+                <p class="sec-sub">Lecture, Écriture & NIO.2</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>L'Histoire</strong> : Java a eu 3 API fichiers.
+                <br>1. IO (<code>java.io.File</code>) - Le vieux (1.0). Lent, bloquant.
+                <br>2. NIO (New IO) - Buffers & Channels (1.4). Complexe.
+                <br>3. NIO.2 (<code>java.nio.file</code>) - Moderne (7+). C'est celui qu'on utilise.
+            </p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">📂 L'API Path et Files (Modern)</h3>
+        <p>Oubliez la classe <code>File</code>. Utilisez <code>Path</code> (le chemin) et <code>Files</code> (l'outil).
+        </p>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Chemins (Path)</div>
+                <pre><span class="com">// Créer un path (indépendant de l'OS)</span>
+<span class="type">Path</span> <span class="var">path</span> = <span class="type">Path</span>.<span class="mt">of</span>(<span class="str">"data"</span>, <span class="str">"logs"</span>, <span class="str">"app.log"</span>);
+<span class="com">// Windows: data\logs\app.log</span>
+<span class="com">// Linux: data/logs/app.log</span>
+
+<span class="com">// Infos</span>
+<span class="type">System</span>.out.println(<span class="var">path</span>.<span class="mt">getFileName</span>());
+<span class="type">System</span>.out.println(<span class="var">path</span>.<span class="mt">toAbsolutePath</span>());</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Manipulations (Files)</div>
+                <pre><span class="kw">if</span> (<span class="type">Files</span>.<span class="mt">exists</span>(<span class="var">path</span>)) {
+    <span class="type">Files</span>.<span class="mt">delete</span>(<span class="var">path</span>);
+}
+
+<span class="type">Files</span>.<span class="mt">createDirectories</span>(<span class="var">path</span>.<span class="mt">getParent</span>());
+<span class="type">Files</span>.<span class="mt">createFile</span>(<span class="var">path</span>);</pre>
+            </div>
+        </div>
+
+        <!-- Reading Writing -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📝 Lire et Écrire (Java 11+)</h3>
+        <p>C'est devenu enfin simple avec les méthodes statiques de <code>Files</code>.</p>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Petits Fichiers (&lt; 100 Mo)</div>
+                <pre><span class="com">// Écrire (String -> Fichier)</span>
+<span class="type">Files</span>.<span class="mt">writeString</span>(<span class="var">path</span>, <span class="str">"Hello Java 11"</span>);
+
+<span class="com">// Lire (Fichier -> String)</span>
+<span class="type">String</span> <span class="var">content</span> = <span class="type">Files</span>.<span class="mt">readString</span>(<span class="var">path</span>);</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Gros Fichiers (Streams)</div>
+                <pre><span class="kw">try</span> (<span class="var">var</span> <span class="var">stm</span> = <span class="type">Files</span>.<span class="mt">lines</span>(<span class="var">path</span>)) {
+    <span class="var">stm</span>.filter(<span class="var">line</span> -> <span class="var">line</span>.<span class="mt">contains</span>(<span class="str">"ERROR"</span>))
+       .forEach(<span class="type">System</span>.out::println);
+} 
+<span class="com">// Charge ligne par ligne en mémoire !</span></pre>
+            </div>
+        </div>
+
+        <!-- Legacy IO -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🕰️ Legacy I/O (InputStream)</h3>
+        <p>Vous en aurez encore besoin pour communiquer avec le réseau, d'autres librairies, ou traiter des octets bruts
+            (images).</p>
+
+        <div class="callout callout-warning">
+            <h4>⚠️ N'oubliez pas le try-with-resources !</h4>
+            <div class="code" style="margin-top:0.5rem;">
+                <pre><span class="kw">try</span> (<span class="type">InputStream</span> <span class="var">is</span> = <span class="kw">new</span> <span class="type">FileInputStream</span>(<span class="str">"image.png"</span>);
+     <span class="type">OutputStream</span> <span class="var">os</span> = <span class="kw">new</span> <span class="type">FileOutputStream</span>(<span class="str">"copy.png"</span>)) {
+    
+    <span class="com">// Java 9 : transferTo() - Magique !</span>
+    <span class="var">is</span>.<span class="mt">transferTo</span>(<span class="var">os</span>);
+
+} <span class="kw">catch</span> (<span class="type">IOException</span> <span class="var">e</span>) { ... }</pre>
+            </div>
+        </div>
+
+        <!-- Serialization -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📦 Sérialisation</h3>
+        <p>Transformer un objet Java en flux d'octets pour le sauvegarder ou l'envoyer sur le réseau.</p>
+
+        <div class="grid2">
+            <div>
+                <h4>Java Natif (`Serializable`)</h4>
+                <ul>
+                    <li>❌ Lent</li>
+                    <li>❌ Verbeux</li>
+                    <li>❌ Risques de sécurité majeurs</li>
+                    <li>⚠️ À éviter sauf obligation</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Alternatives Modernes (JSON/XML)</h4>
+                <ul>
+                    <li>✅ <strong>Jackson</strong> / Gson (JSON)</li>
+                    <li>✅ Protobuf (Dinaire performant)</li>
+                    <li>✅ Lisible et compatible entre langages</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>FileSystems</strong> : Java peut lire DANS un fichier ZIP comme si c'était un dossier
+                !<br><code>FileSystems.newFileSystem(zipPath)</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>WatchService</strong> : Vous pouvez écouter un dossier et être
+                notifié quand un fichier est créé, modifié ou supprimé (comme un File Watcher).</p>
+            <p style="margin-top: 0.75rem;"><strong>Memory-Mapped Files</strong> : Pour lire des fichiers gigantesques
+                (plus gros que la RAM), NIO permet de mapper une partie du fichier directement en mémoire virtuelle.
+                Très rapide.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Encoder/Decoder</strong> : <code>FileReader</code> utilise l'encodage par défaut système.
+                DANGER sur Windows. Spécifiez TOUJOURS <code>StandardCharsets.UTF_8</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Oublier de fermer</strong> : Un Stream de fichier
+                (<code>Files.list</code>, <code>Files.lines</code>, <code>Files.walk</code>) DOIT être fermé. Utilisez
+                <code>try-with-resources</code>.</p>
+        </div>
+
+    </div>
+</section>

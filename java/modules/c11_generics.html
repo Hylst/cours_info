@@ -1,0 +1,241 @@
+<section id="c11">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">11</div>
+            <div>
+                <h2 class="sec-title">Generics</h2>
+                <p class="sec-sub">Type Safety & Flexibilité</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître les classes et interfaces (C6, C8).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment écrire du code réutilisable qui fonctionne avec
+                n'importe quel type, tout en gardant la sécurité du typage fort.</p>
+            <p><strong>Temps de lecture</strong> : ~18 minutes | <strong>Niveau</strong> : ⭐⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🎯 Le Problème : Type Safety vs Réutilisabilité</h3>
+        <p>Avant Java 5 (2004), pour créer une liste qui accepte n'importe quel type, on utilisait <code>Object</code>.
+            Résultat : on perdait toute sécurité de type et on devait caster manuellement à chaque lecture.</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>La Boîte avec Étiquette de Sécurité</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>📦 Sans Generics (Avant 2004)</h4>
+                    <p>Un carton "Divers" où vous mettez livres ET chaussures. Quand vous sortez un objet, vous devez
+                        vérifier ce que c'est avant de l'utiliser. Si vous vous trompez → <strong>crash au
+                            runtime</strong>.</p>
+                </div>
+                <div>
+                    <h4>🏷️ Avec Generics (<code>&lt;T&gt;</code>)</h4>
+                    <p>Le carton a une étiquette "Livres uniquement". Le compilateur refuse physiquement que vous y
+                        mettiez autre chose. Quand vous ouvrez, vous êtes <strong>garanti à 100%</strong> de ne trouver
+                        que des livres.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                A[Code Source<br />&lt;String&gt;] -->|Compile| B{Vérif Type}
+                B -->|Type OK| D[Bytecode<br />Type Erasure]
+                B -->|Type KO| C[❌ Refus]
+
+                style A fill:#1c2128,stroke:#79c0ff,stroke-width:2px,color:#f0f6fc
+                style B fill:#ffa94d,stroke:#3d444d,color:#0d1117
+                style C fill:#ff7b72,stroke:#3d444d,color:#f0f6fc
+                style D fill:#3fb950,stroke:#3d444d,color:#0d1117
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Le type générique
+                n'existe que pour le compilateur. Au runtime, il est effacé (Type Erasure) pour la rétrocompatibilité.
+            </p>
+        </div>
+
+        <!-- Basic Syntax -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📝 Syntaxe de Base</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Classe Générique</div>
+                <pre><span class="kw">public class</span> <span class="type">Box</span>&lt;<span class="type">T</span>&gt; {
+    <span class="kw">private</span> <span class="type">T</span> <span class="var">content</span>;
+    
+    <span class="kw">public void</span> <span class="mt">set</span>(<span class="type">T</span> <span class="var">item</span>) { 
+        <span class="kw">this</span>.<span class="var">content</span> = <span class="var">item</span>; 
+    }
+    
+    <span class="kw">public</span> <span class="type">T</span> <span class="mt">get</span>() { 
+        <span class="kw">return</span> <span class="var">content</span>; 
+    }
+}
+
+<span class="com">// Utilisation</span>
+<span class="type">Box</span>&lt;<span class="type">String</span>&gt; <span class="var">box</span> = <span class="kw">new</span> <span class="type">Box</span>&lt;&gt;(); <span class="com">// Diamond operator</span>
+<span class="var">box</span>.<span class="mt">set</span>(<span class="str">"Hello"</span>);
+<span class="type">String</span> <span class="var">s</span> = <span class="var">box</span>.<span class="mt">get</span>(); <span class="com">// Pas de cast !</span></pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Méthode Générique</div>
+                <pre><span class="kw">public static</span> &lt;<span class="type">T</span>&gt; <span class="type">T</span> <span class="mt">getFirst</span>(<span class="type">List</span>&lt;<span class="type">T</span>&gt; <span class="var">list</span>) {
+    <span class="kw">return</span> <span class="var">list</span>.<span class="mt">isEmpty</span>() ? <span class="kw">null</span> : <span class="var">list</span>.<span class="mt">get</span>(<span class="num">0</span>);
+}
+
+<span class="com">// Utilisation (Type inféré)</span>
+<span class="type">List</span>&lt;<span class="type">Integer</span>&gt; <span class="var">nums</span> = <span class="type">List</span>.of(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>);
+<span class="type">Integer</span> <span class="var">first</span> = <span class="mt">getFirst</span>(<span class="var">nums</span>); <span class="com">// Java devine T=Integer</span></pre>
+            </div>
+        </div>
+
+        <!-- Bounded Types -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔒 Types Bornés (Bounded)</h3>
+        <p>Parfois, vous voulez accepter "n'importe quel type", mais avec des limites. Par exemple : "n'importe quel
+            type qui est un <code>Number</code>".</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Upper Bound (extends)</div>
+            <pre><span class="kw">public class</span> <span class="type">Calculator</span>&lt;<span class="type">T</span> <span class="kw">extends</span> <span class="type">Number</span>&gt; {
+    <span class="kw">public double</span> <span class="mt">sum</span>(<span class="type">T</span> <span class="var">a</span>, <span class="type">T</span> <span class="var">b</span>) {
+        <span class="kw">return</span> <span class="var">a</span>.<span class="mt">doubleValue</span>() + <span class="var">b</span>.<span class="mt">doubleValue</span>(); <span class="com">// OK car Number a doubleValue()</span>
+    }
+}
+
+<span class="type">Calculator</span>&lt;<span class="type">Integer</span>&gt; <span class="var">calc</span> = <span class="kw">new</span> <span class="type">Calculator</span>&lt;&gt;(); <span class="com">// ✅ Integer extends Number</span>
+<span class="com">// Calculator&lt;String&gt; bad = new Calculator&lt;&gt;(); // ❌ String n'est pas un Number</span></pre>
+        </div>
+
+        <!-- Wildcards -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🃏 Wildcards : Le Joker</h3>
+        <p>Les wildcards (<code>?</code>) permettent de dire "je ne sais pas exactement quel type, mais peu importe".
+        </p>
+
+        <div style="overflow-x:auto; margin-top: 1.5rem;">
+            <table>
+                <tr>
+                    <th>Wildcard</th>
+                    <th>Signification</th>
+                    <th>Exemple</th>
+                </tr>
+                <tr>
+                    <td><code>?</code></td>
+                    <td>N'importe quel type</td>
+                    <td><code>List&lt;?&gt;</code> accepte <code>List&lt;String&gt;</code>,
+                        <code>List&lt;Integer&gt;</code>...</td>
+                </tr>
+                <tr>
+                    <td><code>? extends T</code></td>
+                    <td>T ou ses enfants (Covariance)</td>
+                    <td><code>List&lt;? extends Number&gt;</code> accepte <code>List&lt;Integer&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>? super T</code></td>
+                    <td>T ou ses parents (Contravariance)</td>
+                    <td><code>List&lt;? super Integer&gt;</code> accepte <code>List&lt;Number&gt;</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PECS Rule -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>💡 La Règle PECS (Producer Extends, Consumer Super)</h4>
+            <p><strong>Producer Extends</strong> : Si vous <strong>lisez</strong> des données depuis une structure,
+                utilisez <code>? extends T</code>.</p>
+            <p style="margin-top: 0.5rem;"><strong>Consumer Super</strong> : Si vous <strong>écrivez</strong> des
+                données dans une structure, utilisez <code>? super T</code>.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <pre><span class="com">// PRODUCER (lecture) : extends</span>
+<span class="kw">public void</span> <span class="mt">printAll</span>(<span class="type">List</span>&lt;? <span class="kw">extends</span> <span class="type">Number</span>&gt; <span class="var">list</span>) {
+    <span class="kw">for</span> (<span class="type">Number</span> <span class="var">n</span> : <span class="var">list</span>) <span class="type">System</span>.out.println(<span class="var">n</span>);
+}
+
+<span class="com">// CONSUMER (écriture) : super</span>
+<span class="kw">public void</span> <span class="mt">addIntegers</span>(<span class="type">List</span>&lt;? <span class="kw">super</span> <span class="type">Integer</span>&gt; <span class="var">list</span>) {
+    <span class="var">list</span>.<span class="mt">add</span>(<span class="num">42</span>); <span class="com">// OK car la liste accepte au moins des Integer</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Type Erasure -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🧹 Type Erasure : La Disparition</h3>
+        <p>Au runtime, Java <strong>efface</strong> les types génériques pour assurer la compatibilité avec le vieux
+            code pré-Java 5. C'est pourquoi vous ne pouvez pas faire <code>new T()</code> ou <code>T.class</code>.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Ce qui se passe en coulisses</div>
+            <pre><span class="com">// Votre code</span>
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">list</span> = <span class="kw">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+
+<span class="com">// Après compilation (Type Erasure)</span>
+<span class="type">List</span> <span class="var">list</span> = <span class="kw">new</span> <span class="type">ArrayList</span>(); <span class="com">// Plus de &lt;String&gt; !</span>
+
+<span class="com">// C'est pour ça que ces deux listes ont le MÊME type au runtime :</span>
+<span class="type">List</span>&lt;<span class="type">String</span>&gt;.<span class="kw">class</span> == <span class="type">List</span>&lt;<span class="type">Integer</span>&gt;.<span class="kw">class</span> <span class="com">// ❌ Ne compile pas !</span></pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Pourquoi pas de tableaux génériques ?</strong> On ne peut pas faire <code>new T[10]</code> à
+                cause du Type Erasure. Java ne sait pas quel type allouer en mémoire au runtime.</p>
+            <p style="margin-top: 0.75rem;"><strong>Reified Generics</strong> : D'autres langages (C#, Kotlin) gardent
+                les types génériques au runtime. Java a choisi la compatibilité ascendante.</p>
+            <p style="margin-top: 0.75rem;"><strong>Raw Types</strong> : Utiliser <code>List</code> sans
+                <code>&lt;&gt;</code> est légal mais déconseillé. C'est un vestige du passé qui casse la sécurité de
+                type.</p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : Repository Pattern</h4>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Generic DAO</div>
+                <pre><span class="kw">public interface</span> <span class="type">Repository</span>&lt;<span class="type">T</span>, <span class="type">ID</span>&gt; {
+    <span class="type">Optional</span>&lt;<span class="type">T</span>&gt; <span class="mt">findById</span>(<span class="type">ID</span> <span class="var">id</span>);
+    <span class="type">List</span>&lt;<span class="type">T</span>&gt; <span class="mt">findAll</span>();
+    <span class="type">T</span> <span class="mt">save</span>(<span class="type">T</span> <span class="var">entity</span>);
+    <span class="kw">void</span> <span class="mt">delete</span>(<span class="type">T</span> <span class="var">entity</span>);
+}
+
+<span class="com">// Implémentation pour User</span>
+<span class="kw">public class</span> <span class="type">UserRepository</span> <span class="kw">implements</span> <span class="type">Repository</span>&lt;<span class="type">User</span>, <span class="type">Long</span>&gt; {
+    <span class="com">// Tout est typé automatiquement !</span>
+}</pre>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Avantage</strong> : Vous écrivez le code du Repository UNE FOIS, et il
+                fonctionne pour User, Product, Order... sans duplication.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Heap Pollution</strong> : Mélanger des types génériques et raw types peut corrompre la pile et
+                causer des <code>ClassCastException</code> imprévisibles.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Static et Generics</strong> : Une méthode <code>static</code> ne
+                peut pas utiliser le <code>&lt;T&gt;</code> de sa classe. Elle doit déclarer son propre type générique.
+            </p>
+            <p style="margin-top: 0.75rem;"><strong>3. instanceof avec Generics</strong> :
+                <code>if (obj instanceof List&lt;String&gt;)</code> ne compile pas. Utilisez
+                <code>instanceof List&lt;?&gt;</code>.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Recursive Type Bounds</strong> : <code>&lt;T extends Comparable&lt;T&gt;&gt;</code> pour
+                    forcer un type à être comparable à lui-même</li>
+                <li><strong>Type Tokens</strong> : Passer <code>Class&lt;T&gt;</code> en paramètre pour contourner le
+                    Type Erasure</li>
+                <li><strong>Bridge Methods</strong> : Méthodes générées par le compilateur pour maintenir la
+                    compatibilité</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

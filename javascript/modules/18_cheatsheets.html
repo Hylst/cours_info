@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheatsheets - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Search Bar */
+        .search-container {
+            background: var(--bg2);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 20px;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'JetBrains Mono';
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        #search-results {
+            color: var(--muted);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+            margin: 30px 0 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            flex: 0 0 auto;
+            padding: 12px 16px;
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Reference Tables */
+        .ref-table-container {
+            margin: 30px 0;
+        }
+
+        .ref-table-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-left: 12px;
+            border-left: 4px solid var(--primary);
+            color: var(--text);
+        }
+
+        .ref-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        .ref-table thead {
+            background: var(--bg2);
+        }
+
+        .ref-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--muted);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ref-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ref-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ref-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .ref-table code {
+            background: rgba(99, 102, 241, 0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono';
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .method-name {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .returns {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* Quick Reference Cards */
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .quick-ref-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .quick-ref-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .quick-ref-card h4 {
+            color: var(--accent);
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+
+        .quick-ref-card ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .quick-ref-card li {
+            margin: 5px 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .quick-ref-card li code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* Copy button for code examples */
+        .copy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+        }
+
+        /* Badge for mutating methods */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-mutates {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+        }
+
+        .badge-new {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .badge-async {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+
+            .tab-btn {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s18" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">18</div>
+                <div>
+                    <h2 class="sec-title">Cheatsheets JavaScript</h2>
+                    <p class="sec-sub">Référence complète et interactive</p>
+                </div>
+            </div>
+
+            <p>Guide de référence complet des méthodes et syntaxes JavaScript les plus utilisées, organisé par
+                catégorie avec recherche intégrée.</p>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="🔍 Rechercher une méthode..."
+                    oninput="searchCheatsheet()">
+                <div id="search-results"></div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-btn" onclick="switchTab('tab-arrays')">Arrays</button>
+                <button class="tab-btn" onclick="switchTab('tab-strings')">Strings</button>
+                <button class="tab-btn" onclick="switchTab('tab-objects')">Objects</button>
+                <button class="tab-btn" onclick="switchTab('tab-maps')">Maps & Sets</button>
+                <button class="tab-btn" onclick="switchTab('tab-regex')">RegExp</button>
+                <button class="tab-btn" onclick="switchTab('tab-dom')">DOM</button>
+                <button class="tab-btn" onclick="switchTab('tab-bom')">BOM (Browser)</button>
+                <button class="tab-btn" onclick="switchTab('tab-events')">Events</button>
+                <button class="tab-btn" onclick="switchTab('tab-promises')">Async & Réseau</button>
+                <button class="tab-btn" onclick="switchTab('tab-timers')">Timers</button>
+                <button class="tab-btn" onclick="switchTab('tab-classes')">Classes</button>
+                <button class="tab-btn" onclick="switchTab('tab-expert')">ES+ & Expert</button>
+                <button class="tab-btn" onclick="switchTab('tab-json')">JSON & Erreurs</button>
+                <button class="tab-btn" onclick="switchTab('tab-functions')">Fonctions</button>
+                <button class="tab-btn" onclick="switchTab('tab-math')">Math & Date</button>
+                <button class="tab-btn" onclick="switchTab('tab-operators')">Opérateurs</button>
+            </div>
+
+            <!-- TAB: ARRAYS -->
+            <div id="tab-arrays" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🔄 Transformation & Itération</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th style="width:20%">Méthode</th>
+                                <th style="width:40%">Description</th>
+                                <th style="width:25%">Retour</th>
+                                <th style="width:15%">Mutate?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>map(fn)</code></td>
+                                <td>Transforme chaque élément via une fonction</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>filter(fn)</code></td>
+                                <td>Garde les éléments qui valident la condition</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>reduce(fn, init)</code></td>
+                                <td>Réduit le tableau à une seule valeur</td>
+                                <td><span class="badge badge-async">Any</span></td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>forEach(fn)</code></td>
+                                <td>Exécute une fonction pour chaque élément</td>
+                                <td><code>undefined</code></td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>flat(depth)</code></td>
+                                <td>Aplanit les sous-tableaux</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>flatMap(fn)</code></td>
+                                <td>Combinaison de map() et flat(1)</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🔍 Recherche & Tri</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Retour</th>
+                                <th>Mutate?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>find(fn)</code></td>
+                                <td>Premier élément qui valide la condition</td>
+                                <td>Element / undefined</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>findIndex(fn)</code></td>
+                                <td>Index du premier élément trouvé</td>
+                                <td>Number (-1 si absent)</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>includes(val)</code></td>
+                                <td>Vérifie si la valeur existe</td>
+                                <td>Boolean</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>some(fn)</code></td>
+                                <td>Si au moins UN élément valide</td>
+                                <td>Boolean</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>every(fn)</code></td>
+                                <td>Si TOUS les éléments valident</td>
+                                <td>Boolean</td>
+                                <td>Non</td>
+                            </tr>
+                            <tr>
+                                <td><code>sort(fn)</code></td>
+                                <td>Trie les éléments (convertit en string par défaut)</td>
+                                <td>Reference</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>toSorted(fn)</code></td>
+                                <td>Version non-mutante de sort() (ES2023)</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">✏️ Modification (Ajout/Retrait)</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Retour</th>
+                                <th>Mutate?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>push(...el)</code></td>
+                                <td>Ajoute à la fin</td>
+                                <td>Nouvelle length</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>pop()</code></td>
+                                <td>Retire le dernier</td>
+                                <td>Élément retiré</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>unshift(...el)</code></td>
+                                <td>Ajoute au début</td>
+                                <td>Nouvelle length</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>shift()</code></td>
+                                <td>Retire le premier</td>
+                                <td>Élément retiré</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>splice(start, n, ...add)</code></td>
+                                <td>Modifie le contenu (retire/ajoute)</td>
+                                <td>Tableau des supprimés</td>
+                                <td><span class="badge badge-mutates">Oui</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>slice(start, end)</code></td>
+                                <td>Extrait une portion (copie)</td>
+                                <td><span class="badge badge-new">New Array</span></td>
+                                <td>Non</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: STRINGS -->
+            <div id="tab-strings" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🔍 Recherche</h4>
+                        <ul>
+                            <li><code>str.includes("text")</code> : Contient ?</li>
+                            <li><code>str.startsWith("abc")</code> : Commence par ?</li>
+                            <li><code>str.endsWith("xyz")</code> : Finit par ?</li>
+                            <li><code>str.indexOf("text")</code> : Position (ou -1)</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>✂️ Extraction</h4>
+                        <ul>
+                            <li><code>str.slice(0, 5)</code> : Prend de 0 à 5</li>
+                            <li><code>str.substring(0, 5)</code> : Similaire slice</li>
+                            <li><code>str.split(",")</code> : Découpe en Array</li>
+                            <li><code>str.charAt(0)</code> : Caractère à index</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>✨ Transformation</h4>
+                        <ul>
+                            <li><code>str.trim()</code> : Retire espaces tour</li>
+                            <li><code>str.toUpperCase()</code> : MAJUSCULE</li>
+                            <li><code>str.toLowerCase()</code> : minuscule</li>
+                            <li><code>str.replace("a", "b")</code> : Remplace 1er</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">📝 Méthodes de String</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Exemple</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>replace(regex/str, new)</code></td>
+                                <td>Remplace la première occurrence</td>
+                                <td><code>"a-b".replace("-", ":")</code> → "a:b"</td>
+                            </tr>
+                            <tr>
+                                <td><code>replaceAll(str, new)</code></td>
+                                <td>Remplace TOUTES les occurrences</td>
+                                <td><code>"a-b-c".replaceAll("-", ":")</code> → "a:b:c"</td>
+                            </tr>
+                            <tr>
+                                <td><code>padStart(len, char)</code></td>
+                                <td>Ajoute des caractères au début</td>
+                                <td><code>"5".padStart(2, "0")</code> → "05"</td>
+                            </tr>
+                            <tr>
+                                <td><code>padEnd(len, char)</code></td>
+                                <td>Ajoute des caractères à la fin</td>
+                                <td><code>"5".padEnd(2, "0")</code> → "50"</td>
+                            </tr>
+                            <tr>
+                                <td><code>repeat(count)</code></td>
+                                <td>Répète la chaîne</td>
+                                <td><code>"ha".repeat(3)</code> → "hahaha"</td>
+                            </tr>
+                            <tr>
+                                <td><code>concat(...str)</code></td>
+                                <td>Assemble des chaînes</td>
+                                <td><code>"a".concat("b")</code> → "ab"</td>
+                            </tr>
+                            <tr>
+                                <td><code>at(index)</code></td>
+                                <td>Caractère à position (accepte négatif)</td>
+                                <td><code>"abc".at(-1)</code> → "c"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: OBJECTS -->
+            <div id="tab-objects" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">📦 Manipulation d'Objets</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Retour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>Object.keys(obj)</code></td>
+                                <td>Liste des clés énumérables</td>
+                                <td>Array of Strings</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.values(obj)</code></td>
+                                <td>Liste des valeurs</td>
+                                <td>Array of Values</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.entries(obj)</code></td>
+                                <td>Paires [clé, valeur]</td>
+                                <td>Array of Arrays</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.fromEntries(arr)</code></td>
+                                <td>Inverse de entries()</td>
+                                <td>Object</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.assign(t, ...s)</code></td>
+                                <td>Copie les propriétés de source vers cible</td>
+                                <td>Target Object</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.freeze(obj)</code></td>
+                                <td>Rend l'objet immuable (lecture seule)</td>
+                                <td>Frozen Object</td>
+                            </tr>
+                            <tr>
+                                <td><code>Object.seal(obj)</code></td>
+                                <td>Empêche ajout/suppression (modif possible)</td>
+                                <td>Sealed Object</td>
+                            </tr>
+                            <tr>
+                                <td><code>obj.hasOwnProperty(key)</code></td>
+                                <td>Vérifie si la propriété est directe</td>
+                                <td>Boolean</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🔓 Destructuring</h4>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copier</button>
+                        <pre><code>const user = { name: "Alice", age: 25 };
+// Extraction
+const { name, age } = user;
+// Renommage
+const { name: nom } = user;
+// Valeur par défaut
+const { role = "guest" } = user;</code></pre>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>✨ Spread Operator</h4>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copier</button>
+                        <pre><code>const a = { x: 1, y: 2 };
+// Clone (shallow)
+const b = { ...a };
+// Merge
+const c = { ...a, z: 3 };
+// Override
+const d = { ...a, x: 99 };</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: DOM -->
+            <div id="tab-dom" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🎯 Sélection & Contenu</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode / Propriété</th>
+                                <th>Description</th>
+                                <th>Exemple</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>querySelector(sel)</code></td>
+                                <td>Premier élément correspondant</td>
+                                <td><code>document.querySelector('.btn')</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>querySelectorAll(sel)</code></td>
+                                <td>Tous les éléments (NodeList)</td>
+                                <td><code>document.querySelectorAll('li')</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>getElementById(id)</code></td>
+                                <td>Sélection par ID (rapide)</td>
+                                <td><code>document.getElementById('app')</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>textContent</code></td>
+                                <td>Texte pur (sans HTML)</td>
+                                <td><code>el.textContent = 'Hello'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>innerHTML</code></td>
+                                <td>Contenu HTML (Attention XSS)</td>
+                                <td><code>el.innerHTML = '&lt;span&gt;A&lt;/span&gt;'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>value</code></td>
+                                <td>Valeur d'un input/textarea</td>
+                                <td><code>input.value</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🎨 Classes & Styles</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>classList.add(cls)</code></td>
+                                <td>Ajoute une classe</td>
+                            </tr>
+                            <tr>
+                                <td><code>classList.remove(cls)</code></td>
+                                <td>Retire une classe</td>
+                            </tr>
+                            <tr>
+                                <td><code>classList.toggle(cls)</code></td>
+                                <td>Ajoute si absente, retire si présente</td>
+                            </tr>
+                            <tr>
+                                <td><code>classList.contains(cls)</code></td>
+                                <td>Vérifie la présence (true/false)</td>
+                            </tr>
+                            <tr>
+                                <td><code>style.property</code></td>
+                                <td>Style inline (camelCase)</td>
+                            </tr>
+                            <tr>
+                                <td><code>getAttribute(attr)</code></td>
+                                <td>Lire un attribut HTML</td>
+                            </tr>
+                            <tr>
+                                <td><code>setAttribute(attr, val)</code></td>
+                                <td>Définir un attribut</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🌳 Arbre DOM (Création & Navigation)</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>createElement(tag)</code></td>
+                                <td>Crée un nouvel élément (en mémoire)</td>
+                            </tr>
+                            <tr>
+                                <td><code>append(node/str)</code></td>
+                                <td>Ajoute à la fin (accepte texte ou nœud)</td>
+                            </tr>
+                            <tr>
+                                <td><code>prepend(node/str)</code></td>
+                                <td>Ajoute au début</td>
+                            </tr>
+                            <tr>
+                                <td><code>remove()</code></td>
+                                <td>Supprime l'élément du DOM</td>
+                            </tr>
+                            <tr>
+                                <td><code>parentElement</code></td>
+                                <td>Accès au parent direct</td>
+                            </tr>
+                            <tr>
+                                <td><code>closest(sel)</code></td>
+                                <td>Remonte vers l'ancêtre le plus proche matchant</td>
+                            </tr>
+                            <tr>
+                                <td><code>children</code></td>
+                                <td>Liste des enfants directs (HTMLCollection)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: BOM (Browser) -->
+            <div id="tab-bom" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🌍 Window & Screen</h4>
+                        <ul>
+                            <li><code>innerWidth/Height</code> : Taille viewport</li>
+                            <li><code>outerWidth/Height</code> : Taille fenêtre nav</li>
+                            <li><code>screen.width/height</code> : Résolution écran</li>
+                            <li><code>scrollTo(x, y)</code> : Défilement</li>
+                            <li><code>alert/confirm/prompt</code> : Modales natives</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>📍 Location (URL)</h4>
+                        <ul>
+                            <li><code>href</code> : URL complète (lecture/écriture)</li>
+                            <li><code>pathname</code> : Chemin (/app/main)</li>
+                            <li><code>search</code> : Paramètres (?id=1)</li>
+                            <li><code>reload()</code> : Recharge la page</li>
+                            <li><code>assign(url)</code> : Navigue (historique)</li>
+                            <li><code>replace(url)</code> : Remplace (pas d'historique)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🧭 Navigator & Storage</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>API</th>
+                                <th>Propriété / Méthode</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clipboard</td>
+                                <td><code>navigator.clipboard.writeText()</code></td>
+                                <td>Copier texte (Async)</td>
+                            </tr>
+                            <tr>
+                                <td>UserAgent</td>
+                                <td><code>navigator.userAgent</code></td>
+                                <td>Identité du navigateur</td>
+                            </tr>
+                            <tr>
+                                <td>Géo</td>
+                                <td><code>navigator.geolocation.getCurrentPosition()</code></td>
+                                <td>Position GPS</td>
+                            </tr>
+                            <tr>
+                                <td>Langue</td>
+                                <td><code>navigator.language</code></td>
+                                <td>Langue préférée (fr-FR)</td>
+                            </tr>
+                            <tr>
+                                <td>History</td>
+                                <td><code>history.back() / forward()</code></td>
+                                <td>Navigation précédente/suivante</td>
+                            </tr>
+                            <tr>
+                                <td>History</td>
+                                <td><code>history.pushState(data, t, url)</code></td>
+                                <td>Change URL sans recharger (SPA)</td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td><code>localStorage / sessionStorage</code></td>
+                                <td>Voir module 13 pour détails</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: EVENTS -->
+            <div id="tab-events" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🖱️ Souris</h4>
+                        <ul>
+                            <li><code>click</code> : Clic gauche</li>
+                            <li><code>dblclick</code> : Double clic</li>
+                            <li><code>mouseenter</code> : Survol (commence)</li>
+                            <li><code>mouseleave</code> : Survol (finit)</li>
+                            <li><code>mousemove</code> : Déplacement</li>
+                            <li><code>contextmenu</code> : Clic droit</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>⌨️ Clavier</h4>
+                        <ul>
+                            <li><code>keydown</code> : Touche enfoncée</li>
+                            <li><code>keyup</code> : Touche relâchée</li>
+                            <li><code>e.key</code> : Valeur ("Enter", "a")</li>
+                            <li><code>e.code</code> : Code physique ("KeyA")</li>
+                            <li><code>e.ctrlKey</code> : Ctrl pressé (bool)</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>📝 Formulaire</h4>
+                        <ul>
+                            <li><code>submit</code> : Envoi (sur form)</li>
+                            <li><code>input</code> : Modif valeur (temps réel)</li>
+                            <li><code>change</code> : Modif validée (blur)</li>
+                            <li><code>focus</code> : Prise de focus</li>
+                            <li><code>blur</code> : Perte de focus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">⚡ L'Objet Event (e)</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Propriété / Méthode</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>e.target</code></td>
+                                <td>L'élément qui a déclenché l'événement</td>
+                            </tr>
+                            <tr>
+                                <td><code>e.currentTarget</code></td>
+                                <td>L'élément qui porte le listener (this)</td>
+                            </tr>
+                            <tr>
+                                <td><code>e.preventDefault()</code></td>
+                                <td>Empêche l'action par défaut (ex: submit)</td>
+                            </tr>
+                            <tr>
+                                <td><code>e.stopPropagation()</code></td>
+                                <td>Arrête la remontée (bubbling) vers les parents</td>
+                            </tr>
+                            <tr>
+                                <td><code>addEventListener(type, fn)</code></td>
+                                <td>Attache un écouteur</td>
+                            </tr>
+                            <tr>
+                                <td><code>removeEventListener(type, fn)</code></td>
+                                <td>Détache un écouteur (nécessite la même fn ref)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">📱 Window & Document Events</div>
+                    <table class="ref-table">
+                        <tbody>
+                            <tr>
+                                <td><code>DOMContentLoaded</code></td>
+                                <td>HTML chargé et parsé (DOM prêt)</td>
+                            </tr>
+                            <tr>
+                                <td><code>load</code></td>
+                                <td>Page entièrement chargée (images, CSS inclus)</td>
+                            </tr>
+                            <tr>
+                                <td><code>resize</code></td>
+                                <td>Taille fenêtre modifiée (utiliser debounce !)</td>
+                            </tr>
+                            <tr>
+                                <td><code>scroll</code></td>
+                                <td>Défilement page (utiliser throttle !)</td>
+                            </tr>
+                            <tr>
+                                <td><code>beforeunload</code></td>
+                                <td>Avant de quitter la page (confirmation)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: PROMISES & RESEAU -->
+            <div id="tab-promises" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">⏳ Méthodes de Promise</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Retour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>then(onSuccess, onError)</code></td>
+                                <td>Gère la résolution</td>
+                                <td>New Promise</td>
+                            </tr>
+                            <tr>
+                                <td><code>catch(onError)</code></td>
+                                <td>Gère le rejet (erreur)</td>
+                                <td>New Promise</td>
+                            </tr>
+                            <tr>
+                                <td><code>finally(onSettle)</code></td>
+                                <td>S'exécute toujours (fin)</td>
+                                <td>New Promise</td>
+                            </tr>
+                            <tr>
+                                <td><code>Promise.all(iterable)</code></td>
+                                <td>Attend TOUT (rejette si une seule fail)</td>
+                                <td>Promise([results])</td>
+                            </tr>
+                            <tr>
+                                <td><code>Promise.allSettled(iterable)</code></td>
+                                <td>Attend TOUT (indépendamment réussite/échec)</td>
+                                <td>Promise([{status, val}...])</td>
+                            </tr>
+                            <tr>
+                                <td><code>Promise.race(iterable)</code></td>
+                                <td>Le premier réglé gagne (succès ou échec)</td>
+                                <td>Promise(first)</td>
+                            </tr>
+                            <tr>
+                                <td><code>Promise.resolve(val)</code></td>
+                                <td>Crée une promesse résolue</td>
+                                <td>Promise</td>
+                            </tr>
+                            <tr>
+                                <td><code>Promise.reject(reason)</code></td>
+                                <td>Crée une promesse rejetée</td>
+                                <td>Promise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>⚡ Async / Await Pattern</h4>
+                        <pre><code>async function getData() {
+    try {
+        const res = await fetch('/api');
+        if (!res.ok) throw new Error('404');
+        return await res.json();
+    } catch (e) {
+        console.error(e);
+    }
+}</code></pre>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🌐 Fetch Avancé</h4>
+                        <pre><code>fetch('/api/user', {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer token"
+    },
+    body: JSON.stringify({ name: "Bob" })
+});</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-container">
+                    <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                            class="dot green"></span></div>
+                    <pre><code class="language-javascript">// 📤 Envoi de Fichiers (FormData)
+const formData = new FormData();
+formData.append('avatar', fileInput.files[0]);
+formData.append('username', 'bob123');
+
+fetch('/upload', {
+    method: 'POST',
+    body: formData // Pas de Content-Type header (automatique)
+});
+
+// 🛑 Annuler une requête (AbortController)
+const controller = new AbortController();
+fetch('/long-task', { signal: controller.signal });
+// Plus tard...
+controller.abort(); // Annule la requête</code></pre>
+                </div>
+            </div>
+
+            <!-- TAB: TIMERS -->
+            <div id="tab-timers" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">⏱️ Contrôle du Temps</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Usage Typique</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>setTimeout(fn, ms)</code></td>
+                                <td>Exécute 1 fois après délai</td>
+                                <td>Retarder action</td>
+                            </tr>
+                            <tr>
+                                <td><code>clearTimeout(id)</code></td>
+                                <td>Annule un timeout</td>
+                                <td>Annuler si utilisateur change d'avis</td>
+                            </tr>
+                            <tr>
+                                <td><code>setInterval(fn, ms)</code></td>
+                                <td>Répète à l'infini chaque X ms</td>
+                                <td>Horloge, Polling</td>
+                            </tr>
+                            <tr>
+                                <td><code>clearInterval(id)</code></td>
+                                <td>Arrête un intervalle</td>
+                                <td>Stop timer</td>
+                            </tr>
+                            <tr>
+                                <td><code>requestAnimationFrame(fn)</code></td>
+                                <td>Synchronisé avec refresh rate (60fps)</td>
+                                <td>Animations fluides</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🔄 Boucle précise (Recursion)</h4>
+                        <pre><code>// Mieux que setInterval pour tâches lourdes
+setTimeout(function run() {
+    doHeavyTask();
+    setTimeout(run, 1000);
+}, 1000);</code></pre>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🎨 Animation Loop</h4>
+                        <pre><code>function animate() {
+    element.style.left = pos + 'px';
+    requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: CLASSES -->
+            <div id="tab-classes" class="tab-content">
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyCode(this)">📋 Copier</button>
+                    <pre><code class="language-javascript">class User {
+    // Champ privé (ES2022)
+    #password;
+
+    // Champ statique
+    static count = 0;
+
+    constructor(name, password) {
+        this.name = name;
+        this.#password = password;
+        User.count++;
+    }
+
+    // Getter
+    get info() {
+        return `${this.name} (ID: ${this.#randomId()})`;
+    }
+
+    // Méthode d'instance
+    sayHi() {
+        console.log(`Bonjour ${this.name}`);
+    }
+
+    // Méthode privée
+    #randomId() {
+        return Math.floor(Math.random() * 1000);
+    }
+
+    // Méthode statique
+    static getCount() {
+        return User.count;
+    }
+}
+
+// Héritage
+class Admin extends User {
+    constructor(name, pass, permissions) {
+        super(name, pass); // Appelle parent constructor
+        this.permissions = permissions;
+    }
+}</code></pre>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🗝️ Mots-clés Classes</div>
+                    <table class="ref-table">
+                        <tbody>
+                            <tr>
+                                <td><code>class</code></td>
+                                <td>Définition de la classe</td>
+                            </tr>
+                            <tr>
+                                <td><code>constructor</code></td>
+                                <td>Méthode d'initialisation (appelée par new)</td>
+                            </tr>
+                            <tr>
+                                <td><code>extends</code></td>
+                                <td>Héritage (Class A extends Class B)</td>
+                            </tr>
+                            <tr>
+                                <td><code>super</code></td>
+                                <td>Accès au parent (super.method() ou super())</td>
+                            </tr>
+                            <tr>
+                                <td><code>static</code></td>
+                                <td>Appartient à la classe, pas aux instances</td>
+                            </tr>
+                            <tr>
+                                <td><code>#</code></td>
+                                <td>Préfixe pour champs/méthodes privés</td>
+                            </tr>
+                            <tr>
+                                <td><code>get / set</code></td>
+                                <td>Propriétés calculées (accessors)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: EXPERT ES+ -->
+            <div id="tab-expert" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🌀 Générateurs (Generators)</h4>
+                        <pre><code>function* idMaker() {
+    let index = 0;
+    while(true) yield index++;
+}
+const gen = idMaker();
+gen.next().value; // 0
+gen.next().value; // 1</code></pre>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🛡️ Proxy (Méta-programmation)</h4>
+                        <pre><code>const target = {};
+const handler = {
+    get: function(obj, prop) {
+        return prop in obj ? obj[prop] : "N/A";
+    }
+};
+const p = new Proxy(target, handler);
+p.a = 1; 
+console.log(p.a, p.b); // 1, "N/A"</code></pre>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">💎 Types & Syntaxes Modernes</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Exemple</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>BigInt</code></td>
+                                <td><code>9007199254740991n</code></td>
+                                <td>Entiers > 2^53 - 1</td>
+                            </tr>
+                            <tr>
+                                <td><code>Symbol</code></td>
+                                <td><code>const sym = Symbol('desc')</code></td>
+                                <td>Identifiant unique (clés privées)</td>
+                            </tr>
+                            <tr>
+                                <td><code>??=</code></td>
+                                <td><code>x ??= y</code></td>
+                                <td>Assigne si x est null/undefined</td>
+                            </tr>
+                            <tr>
+                                <td><code>&&=</code></td>
+                                <td><code>x &&= y</code></td>
+                                <td>Assigne si x est truthy</td>
+                            </tr>
+                            <tr>
+                                <td><code>||=</code></td>
+                                <td><code>x ||= y</code></td>
+                                <td>Assigne si x est falsy</td>
+                            </tr>
+                            <tr>
+                                <td><code>_</code> (Sep)</td>
+                                <td><code>1_000_000</code></td>
+                                <td>Lisibilité des nombres</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: JSON & ERRORS -->
+            <div id="tab-json" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>📄 JSON</h4>
+                        <ul>
+                            <li><code>JSON.parse(str)</code> : String → Objet</li>
+                            <li><code>JSON.stringify(obj)</code> : Objet → String</li>
+                            <li><strong>Limitations :</strong> Pas de fonctions, undefined, symboles.</li>
+                            <li><code>stringify(obj, null, 2)</code> : Formatage joli (indent 2)</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🚫 Gestion d'Erreurs</h4>
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copier</button>
+                        <pre><code>try {
+    // Code risqué
+    throw new Error("Oups !");
+} catch (e) {
+    // Gestion
+    console.error(e.message);
+} finally {
+    // Toujours exécuté
+    console.log("Cleanup");
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">⚠️ Types d'Erreurs Natifs</div>
+                    <table class="ref-table">
+                        <tbody>
+                            <tr>
+                                <td><code>Error</code></td>
+                                <td>Erreur générique</td>
+                            </tr>
+                            <tr>
+                                <td><code>ReferenceError</code></td>
+                                <td>Variable non déclarée</td>
+                            </tr>
+                            <tr>
+                                <td><code>SyntaxError</code></td>
+                                <td>Code invalide</td>
+                            </tr>
+                            <tr>
+                                <td><code>TypeError</code></td>
+                                <td>Opération sur mauvais type (ex: null.f())</td>
+                            </tr>
+                            <tr>
+                                <td><code>RangeError</code></td>
+                                <td>Nombre hors limites (ex: array length < 0)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: FUNCTIONS -->
+            <div id="tab-functions" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">⚡ Types de Fonctions</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Syntaxe</th>
+                                <th><code>this</code> Context</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Function Declaration</td>
+                                <td><code>function foo() {}</code></td>
+                                <td>Dynamique (dépend de l'appel)</td>
+                            </tr>
+                            <tr>
+                                <td>Function Expression</td>
+                                <td><code>const foo = function() {}</code></td>
+                                <td>Dynamique</td>
+                            </tr>
+                            <tr>
+                                <td>Arrow Function</td>
+                                <td><code>const foo = () => {}</code></td>
+                                <td>Lexical (hérité du parent) - <strong>Pas de <code>this</code> propre</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🎁 Paramètres Avancés</h4>
+                        <ul>
+                            <li><strong>Défaut :</strong> <code>function(a = 1)</code></li>
+                            <li><strong>Rest :</strong> <code>function(...args)</code> → Array</li>
+                            <li><strong>Spread :</strong> <code>call(...arr)</code> → Arguments</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🔒 Closures</h4>
+                        <div style="font-size:0.85rem; margin-bottom:10px">Une fonction qui "se souvient" de son scope
+                            de création.</div>
+                        <pre><code>function counter() {
+  let count = 0;
+  return () => ++count;
+}
+const c = counter(); 
+c(); // 1, c(); // 2</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: MATH & DATE -->
+            <div id="tab-math" class="tab-content">
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>🔢 Math (Arrondis)</h4>
+                        <ul>
+                            <li><code>Math.round(4.7)</code> → 5 (Standard)</li>
+                            <li><code>Math.floor(4.9)</code> → 4 (Inférieur)</li>
+                            <li><code>Math.ceil(4.1)</code> → 5 (Supérieur)</li>
+                            <li><code>Math.trunc(4.9)</code> → 4 (Coupe décimale)</li>
+                            <li><code>val.toFixed(2)</code> → "10.00" (String)</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>🎲 Math (Calculs)</h4>
+                        <ul>
+                            <li><code>Math.random()</code> → 0..1</li>
+                            <li><code>Math.max(a, b, c)</code> → Max</li>
+                            <li><code>Math.min(a, b, c)</code> → Min</li>
+                            <li><code>Math.abs(-5)</code> → 5</li>
+                            <li><code>Math.pow(2, 3)</code> → 2³ = 8</li>
+                            <li><code>Math.sqrt(16)</code> → 4</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>📅 Date (Getters)</h4>
+                        <ul>
+                            <li><code>d.getFullYear()</code> : Année (4 chiffres)</li>
+                            <li><code>d.getMonth()</code> : Mois (0-11) ⚠️</li>
+                            <li><code>d.getDate()</code> : Jour mois (1-31)</li>
+                            <li><code>d.getDay()</code> : Jour semaine (0-6)</li>
+                            <li><code>Date.now()</code> : Timestamp actuel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🌍 Internationalisation (Intl)</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Code</th>
+                                <th>Résultat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Date FR</td>
+                                <td><code>new Intl.DateTimeFormat('fr-FR').format(date)</code></td>
+                                <td>24/12/2025</td>
+                            </tr>
+                            <tr>
+                                <td>Devise</td>
+                                <td><code>new Intl.NumberFormat('fr-FR', {style:'currency', currency:'EUR'}).format(10)</code>
+                                </td>
+                                <td>10,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Mois Long</td>
+                                <td><code>date.toLocaleDateString('fr-FR', {month:'long'})</code></td>
+                                <td>décembre</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB: OPERATORS -->
+            <div id="tab-operators" class="tab-content">
+                <div class="ref-table-container">
+                    <div class="ref-table-title">🧮 Opérateurs & Comparaisons</div>
+                    <table class="ref-table">
+                        <thead>
+                            <tr>
+                                <th>Opérateur</th>
+                                <th>Nom</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>===</code></td>
+                                <td>Égalité stricte</td>
+                                <td>Valeur ET Type identiques (Toujours utiliser)</td>
+                            </tr>
+                            <tr>
+                                <td><code>!==</code></td>
+                                <td>Inégalité stricte</td>
+                                <td>Valeur OU Type différents</td>
+                            </tr>
+                            <tr>
+                                <td><code>&&</code></td>
+                                <td>ET Logique</td>
+                                <td>Retourne la première valeur "falsy" ou la dernière</td>
+                            </tr>
+                            <tr>
+                                <td><code>||</code></td>
+                                <td>OU Logique</td>
+                                <td>Retourne la première valeur "truthy"</td>
+                            </tr>
+                            <tr>
+                                <td><code>!</code></td>
+                                <td>NON Logique</td>
+                                <td>Inverse le booléen</td>
+                            </tr>
+                            <tr>
+                                <td><code>??</code></td>
+                                <td>Nullish Coalescing</td>
+                                <td>Retourne droite si gauche est <code>null</code> ou <code>undefined</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>?.</code></td>
+                                <td>Optional Chaining</td>
+                                <td>Accès sécurisé (<code>obj?.prop</code>) → undefined si non-existant</td>
+                            </tr>
+                            <tr>
+                                <td><code>x ? y : z</code></td>
+                                <td>Ternaire</td>
+                                <td>Si x vrai, alors y, sinon z</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-card">
+                        <h4>❌ Valeurs Falsy</h4>
+                        <div style="font-size:0.85rem; opacity:0.8; margin-bottom:10px">Sont évaluées à false dans if()
+                        </div>
+                        <ul>
+                            <li><code>false</code></li>
+                            <li><code>0</code> et <code>-0</code></li>
+                            <li><code>""</code> (chaîne vide)</li>
+                            <li><code>null</code></li>
+                            <li><code>undefined</code></li>
+                            <li><code>NaN</code> (Not a Number)</li>
+                        </ul>
+                    </div>
+                    <div class="quick-ref-card">
+                        <h4>✅ Valeurs Truthy</h4>
+                        <div style="font-size:0.85rem; opacity:0.8; margin-bottom:10px">Tout le reste, y compris :</div>
+                        <ul>
+                            <li><code>[]</code> (Tableau vide)</li>
+                            <li><code>{}</code> (Objet vide)</li>
+                            <li><code>"0"</code> (String non vide)</li>
+                            <li><code>"false"</code> (String non vide)</li>
+                            <li><code>function(){}</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="17_strings.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Strings</a>
+                <a href="../quiz.html" class="demo-btn"
+                    style="text-decoration:none; border:1px solid var(--accent)">Aller au Quiz →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/18_cheatsheets.js"></script>
+</body>
+
+</html>

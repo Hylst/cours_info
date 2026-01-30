@@ -1,0 +1,153 @@
+<section id="c19">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">19</div>
+            <div>
+                <h2 class="sec-title">Build Systems</h2>
+                <p class="sec-sub">Maven, Gradle & Packaging</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Le Problème</strong> : Compiler un projet de 1000 classes et gérer 50 librairies tierces à la
+                main (`javac -cp ...`) est impossible.</p>
+            <p><strong>La Solution</strong> : Un outil de build (Maven ou Gradle) qui télécharge les dépendances,
+                compile, teste et package le projet automatiquement.</p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🏗️ Maven vs Gradle</h3>
+
+        <div class="grid2">
+            <div>
+                <h4>🦉 Maven (Le Standard)</h4>
+                <ul>
+                    <li><strong>XML</strong> : Configuration verbeuse (`pom.xml`).</li>
+                    <li><strong>Rigide</strong> : Lifecycle strict, difficile de sortir des rails.</li>
+                    <li><strong>Stable</strong> : Ne change pas tous les 6 mois. Choix sûr pour les entreprises.</li>
+                </ul>
+            </div>
+            <div>
+                <h4>🐘 Gradle (Le Moderne)</h4>
+                <ul>
+                    <li><strong>DSL (Groovy/Kotlin)</strong> : Scriptable et concis (`build.gradle`).</li>
+                    <li><strong>Flexible</strong> : On peut tout coder (boucles, if...).</li>
+                    <li><strong>Rapide</strong> : Cache incrémental très performant. Standard pour Android.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Maven Lifecycle Diagram -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔄 Le Cycle de Vie Maven</h3>
+        <p>Ce sont les étapes séquentielles. Si vous lancez <code>package</code>, toutes les étapes précédentes sont
+            exécutées.</p>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                Validate --> Compile --> Test --> Package --> Verify --> Install --> Deploy
+
+                style Validate fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Compile fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Test fill:#161b22,stroke:#ffa94d,color:#f0f6fc
+                style Package fill:#3fb950,stroke:#3d444d,color:#0d1117
+                style Install fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Deploy fill:#ff7b72,stroke:#3d444d,color:#0d1117
+            </div>
+        </div>
+
+        <div style="overflow-x:auto; margin-top: 1rem;">
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><code>compile</code></td>
+                    <td>Compile les sources (`src/main/java`) en `.class`.</td>
+                </tr>
+                <tr>
+                    <td><code>test</code></td>
+                    <td>Lance les tests unitaires (`JUnit`). Échec = Arrêt du build.</td>
+                </tr>
+                <tr>
+                    <td><code>package</code></td>
+                    <td>Crée le JAR/WAR dans le dossier `target/`.</td>
+                </tr>
+                <tr>
+                    <td><code>install</code></td>
+                    <td>Copie le JAR dans votre dépôt local (`~/.m2`).</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Dependency Management -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📦 Gestion des Dépendances</h3>
+        <p>Maven télécharge automagiquement les JARs depuis Maven Central. Plus besoin de stocker des `.jar` dans Git !
+        </p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>pom.xml</div>
+            <pre><span class="kw">&lt;dependencies&gt;</span>
+    <span class="com">&lt;!-- Import de Lombok --&gt;</span>
+    <span class="kw">&lt;dependency&gt;</span>
+        <span class="kw">&lt;groupId&gt;</span>org.projectlombok<span class="kw">&lt;/groupId&gt;</span>
+        <span class="kw">&lt;artifactId&gt;</span>lombok<span class="kw">&lt;/artifactId&gt;</span>
+        <span class="kw">&lt;version&gt;</span>1.18.30<span class="kw">&lt;/version&gt;</span>
+        <span class="kw">&lt;scope&gt;</span>provided<span class="kw">&lt;/scope&gt;</span>
+    <span class="kw">&lt;/dependency&gt;</span>
+<span class="kw">&lt;/dependencies&gt;</span></pre>
+        </div>
+
+        <div class="callout callout-tip" style="margin-top: 1rem;">
+            <h4>🔍 Les Scopes Importants</h4>
+            <ul style="margin-left: 1.5rem;">
+                <li><code>compile</code> (défaut) : Dispo partout, inclus dans le final.</li>
+                <li><code>test</code> : Dispo uniquement pour les tests (ex: JUnit, Mockito). Pas dans le JAR final.
+                </li>
+                <li><code>provided</code> : Dispo à la compile, mais <strong>exclu</strong> du JAR final (supposé fourni
+                    par le serveur, ex: Servlet API, Lombok).</li>
+            </ul>
+        </div>
+
+        <!-- Jar Types -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🎁 Les Types de Packaging</h3>
+        <div class="grid3">
+            <div class="analogy" style="margin:0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">Skinny JAR</p>
+                <p style="font-size:0.9rem;">Contient <strong>uniquement votre code</strong>. Pour exécuter, vous devez
+                    avoir tous les JARs de dépendances dans le classpath (`cp`).</p>
+            </div>
+            <div class="analogy" style="margin:0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">Fat / Uber JAR</p>
+                <p style="font-size:0.9rem;">Contient votre code <strong>ET toutes les dépendances</strong> dézippées et
+                    fusionnées. Un seul fichier exécutable (`java -jar app.jar`). Facile à déployer.</p>
+            </div>
+            <div class="analogy" style="margin:0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">Shaded JAR</p>
+                <p style="font-size:0.9rem;">Un Fat Jar où on <strong>renomme</strong> les packages des dépendances pour
+                    éviter les conflits de version (Jar Hell).</p>
+            </div>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : Maven Shade Plugin</h4>
+            <p>Pour créer un exécutable autonome.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <pre><span class="kw">&lt;plugin&gt;</span>
+    <span class="kw">&lt;artifactId&gt;</span>maven-shade-plugin<span class="kw">&lt;/artifactId&gt;</span>
+    <span class="kw">&lt;executions&gt;</span>
+        <span class="kw">&lt;execution&gt;</span>
+            <span class="kw">&lt;phase&gt;</span>package<span class="kw">&lt;/phase&gt;</span>
+            <span class="kw">&lt;goals&gt;&lt;goal&gt;</span>shade<span class="kw">&lt;/goal&gt;&lt;/goals&gt;</span>
+        <span class="kw">&lt;/execution&gt;</span>
+    <span class="kw">&lt;/executions&gt;</span>
+<span class="kw">&lt;/plugin&gt;</span></pre>
+            </div>
+        </div>
+
+    </div>
+</section>

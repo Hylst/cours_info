@@ -1,0 +1,174 @@
+<section id="c9">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">09</div>
+            <div>
+                <h2 class="sec-title">Records</h2>
+                <p class="sec-sub">Data Carriers Modernes</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître les classes et l'encapsulation (C6).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment supprimer 90% du code inutile (boilerplate) pour
+                vos simples conteneurs de données.</p>
+            <p><strong>Temps de lecture</strong> : ~10 minutes | <strong>Niveau</strong> : ⭐⭐☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">📉 La Fin du Code Inutile (Boilerplate)</h3>
+        <p>Pendant 25 ans, créer une simple classe pour stocker deux données (ex: un <code>Point(x, y)</code>)
+            nécessitait d'écrire 50 lignes de code : constructeur, getters, <code>equals()</code>,
+            <code>hashCode()</code>, <code>toString()</code>. C'est ce qu'on appelle le **Boilerplate**.</p>
+
+        <p style="margin-top: 1rem;">Les <strong>Records</strong> (apparus en Java 14, standardisés en Java 16) sont des
+            classes spéciales de type "Porteur de Données" qui génèrent tout cela <strong>automatiquement</strong>.</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>La Carte de Visite vs Le Dossier Administratif</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>📂 La Classe Classique</h4>
+                    <p>Pour partager votre nom, vous devez remplir un dossier de 50 pages. Si vous changez une info,
+                        vous devez raturer partout. C'est lourd et complexe.</p>
+                </div>
+                <div>
+                    <h4>📇 Le Record</h4>
+                    <p>C'est une carte de visite imprimée. C'est propre, concis, et une fois imprimée, on ne la change
+                        pas (on en crée une nouvelle si besoin). C'est <strong>immuable</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Before / After -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚖️ Le Choc des Générations</h3>
+        <div class="grid2">
+            <div class="callout callout-warning" style="margin: 0;">
+                <h4>⛔ Avant (Classe Verbeuse)</h4>
+                <div class="code" style="margin: 0; background: var(--bg-muted);">
+                    <pre style="font-size: 0.8rem;"><span class="kw">class</span> <span class="type">User</span> {
+    <span class="kw">private final</span> <span class="type">String</span> <span class="var">name</span>;
+    <span class="kw">public</span> <span class="mt">User</span>(<span class="type">String</span> <span class="var">name</span>) { <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>; }
+    <span class="kw">public</span> <span class="type">String</span> <span class="mt">getName</span>() { <span class="kw">return</span> <span class="var">name</span>; }
+    <span class="man">@Override</span> <span class="kw">public boolean</span> <span class="mt">equals</span>(...) { <span class="com">/* 10 lignes */</span> }
+    <span class="man">@Override</span> <span class="kw">public int</span> <span class="mt">hashCode</span>() { <span class="com">/* 5 lignes */</span> }
+    <span class="man">@Override</span> <span class="kw">public</span> <span class="type">String</span> <span class="mt">toString</span>() { <span class="com">/* 5 lignes */</span> }
+}</pre>
+                </div>
+            </div>
+            <div class="callout callout-tip" style="margin: 0;">
+                <h4>✅ Après (Record Moderne)</h4>
+                <div class="code" style="margin: 0; background: var(--bg-muted);">
+                    <pre
+                        style="font-size: 1rem;"><span class="com">// GÉNÈRE TOUT AUTOMATIQUEMENT !</span>
+<span class="kw">public record</span> <span class="type">User</span>(<span class="type">String</span> <span class="var">name</span>) {}</pre>
+                </div>
+                <p style="margin-top: 1rem;"><strong>Auto-généré</strong> : Constructeur, Accesseur <code>name()</code>,
+                    Equals, HashCode, ToString.</p>
+            </div>
+        </div>
+
+        <!-- Characteristics -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔑 Caractéristiques des Records</h3>
+        <ul style="margin-left: 1.5rem;">
+            <li><strong>Immuable</strong> : Tous les champs sont <code>private final</code> par défaut.</li>
+            <li><strong>Final</strong> : Un Record ne peut pas être hérité.</li>
+            <li><strong>Pas de Setters</strong> : On ne modifie pas un Record, on en instancie un nouveau.</li>
+            <li><strong>Accesseurs directs</strong> : On utilise <code>user.name()</code> au lieu de
+                <code>user.getName()</code>.</li>
+        </ul>
+
+        <!-- Validation -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🛡️ Validation & Personnalisation</h3>
+        <p>On peut ajouter de la logique à un Record via le **Constructeur Compact**.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Validation & Méthodes personnalisées</div>
+            <pre><span class="kw">public record</span> <span class="type">Product</span>(<span class="type">String</span> <span class="var">label</span>, <span class="kw">double</span> <span class="var">price</span>) {
+    
+    <span class="com">// 1. Constructeur Compact (Pas de paramètres !)</span>
+    <span class="kw">public</span> <span class="type">Product</span> {
+        <span class="kw">if</span> (<span class="var">price</span> < <span class="num">0</span>) {
+            <span class="kw">throw new</span> <span class="type">IllegalArgumentException</span>(<span class="str">"Prix négatif interdit"</span>);
+        }
+    }
+
+    <span class="com">// 2. Méthode personnalisée</span>
+    <span class="kw">public</span> <span class="kw">double</span> <span class="mt">getPriceWithTax</span>() {
+        <span class="kw">return</span> <span class="var">price</span> * <span class="num">1.20</span>;
+    }
+}</pre>
+        </div>
+
+        <!-- Pattern Matching with Records -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🧩 Pattern Matching (Java 21+)</h3>
+        <p>Les Records brillent particulièrement lors de la déstructuration.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Déstructuration Automatique</div>
+            <pre><span class="kw">if</span> (<span class="var">obj</span> <span class="kw">instanceof</span> <span class="type">Product</span>(<span class="type">String</span> <span class="var">l</span>, <span class="kw">double</span> <span class="var">p</span>)) {
+    <span class="type">System</span>.out.println(<span class="str">"Produit : "</span> + <span class="var">l</span> + <span class="str">" coûte "</span> + <span class="var">p</span>);
+    <span class="com">// Plus besoin d'appeler obj.label() !</span>
+}</pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Record vs Lombok (@Data)</strong> : Lombok est un outil externe. Les Records sont
+                <strong>natifs</strong>, plus performants et plus sûrs (immuabilité forcée).</p>
+            <p style="margin-top: 0.75rem;"><strong>Immuabilité superficielle</strong> : Si votre Record contient une
+                <code>List</code>, la liste elle-même peut être modifiée ! Pour une sécurité totale, utilisez des
+                collections immuables (<code>List.of()</code>).</p>
+            <p style="margin-top: 0.75rem;"><strong>Sérialisation</strong> : Les Records sont plus sûrs pour la
+                sérialisation car ils passent obligatoirement par leur constructeur canonique.</p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : API REST & DTO</h4>
+            <p><strong>Scénario</strong> : Vous recevez un JSON d'une API de météo.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Data Transfer Object (DTO)</div>
+                <pre><span class="com">// Pour mapper un JSON, c'est parfait !</span>
+<span class="kw">public record</span> <span class="type">WeatherResponse</span>(
+    <span class="type">String</span> <span class="var">city</span>,
+    <span class="type">double</span> <span class="var">temp</span>,
+    <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">alerts</span>
+) {}</pre>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Gain</strong> : Code 10x plus lisible, aucune erreur possible dans les
+                equals/hashCode, et l'objet est protégé contre les modifications accidentelles.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Vouloir de l'héritage</strong> : Un Record ne peut pas <code>extends</code> une classe (car il
+                hérite déjà de <code>java.lang.Record</code>). Mais il peut implémenter des interfaces !</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Utiliser comme entité JPA/Hibernate</strong> : Les entités
+                Hibernate ont besoin de setters et de constructeurs vides pour fonctionner. Les Records ne sont donc
+                <strong>pas adaptés</strong> pour les entités de base de données (JPA).</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Abus d'immuabilité</strong> : Si vous avez besoin de changer
+                souvent l'état d'un objet (ex: calcul complexe step-by-step), une classe mutable classique sera plus
+                performante.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Local Records</strong> : Définir un Record à l'intérieur d'une méthode pour stocker des
+                    résultats intermédiaires</li>
+                <li><strong>Record Decomposition in Switch</strong> : Utiliser les Records dans les nouvelles
+                    expressions <code>switch</code> de Java 21</li>
+                <li><strong>Jackson Integration</strong> : Comment Jackson (JSON) gère les Records sans getters
+                    <code>getXXX()</code></li>
+            </ul>
+        </div>
+
+    </div>
+</section>

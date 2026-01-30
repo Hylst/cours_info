@@ -1,0 +1,209 @@
+<section id="c1">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">01</div>
+            <div>
+                <h2 class="sec-title">L'Écosystème Java</h2>
+                <p class="sec-sub">JVM, JDK, JRE & Bytecode</p>
+            </div>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Aucun ! C'est le point de départ.</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comprendre pourquoi Java est "portable" et comment
+                fonctionne sa compilation en 2 étapes.</p>
+            <p><strong>Temps de lecture</strong> : ~8 minutes | <strong>Niveau</strong> : ⭐☆☆</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">📜 Contexte Historique : Le Problème de la Portabilité</h3>
+        <p>Dans les années 1990, développer un logiciel était un cauchemar. Si vous écriviez un programme en C++ pour
+            Windows, il ne fonctionnait pas sur Mac ou Linux sans réécrire une grande partie du code. Chaque système
+            d'exploitation (OS) parlait un "dialecte" différent.</p>
+
+        <p style="margin-top: 1rem;"><strong>Sun Microsystems</strong> (racheté par Oracle en 2010) a créé Java en 1995
+            avec une promesse révolutionnaire : <strong>"Write Once, Run Anywhere"</strong> (WORA). L'idée ? Introduire
+            un intermédiaire universel entre votre code et la machine : la <strong>JVM</strong>.</p>
+
+        <div class="callout callout-recall" style="margin-top: 1.5rem;">
+            <h4>📌 Rappel Clé</h4>
+            <p>Java ne compile PAS directement en code machine (comme C/C++). Il compile en <strong>Bytecode</strong>,
+                un langage intermédiaire que la JVM traduit ensuite pour chaque OS.</p>
+        </div>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>Le Restaurant Universel</p>
+            <ul style="text-align: left; margin-top: 1rem; list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">👨‍🍳 <strong>Le Chef (Développeur)</strong> : Écrit la recette en
+                    français (Code Java).</li>
+                <li style="margin-bottom: 0.5rem;">📜 <strong>La Recette (Code Source .java)</strong> : Lisible par le
+                    chef, mais on ne mange pas du papier.</li>
+                <li style="margin-bottom: 0.5rem;">🍳 <strong>La Cuisine (JDK)</strong> : Contient les outils
+                    (Compilateur <code>javac</code>) pour transformer la recette en plat standardisé.</li>
+                <li style="margin-bottom: 0.5rem;">📦 <strong>Le Plat Préparé (Bytecode .class)</strong> : Format
+                    universel, comme un plat sous vide. Peu importe où vous l'ouvrez, c'est le même plat.</li>
+                <li>🍽️ <strong>Le Serveur (JVM)</strong> : Reçoit le plat et le sert au client (Windows, Mac, Linux) en
+                    l'adaptant à ses couverts spécifiques (architecture CPU).</li>
+            </ul>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                A[Source .java] -->|javac| B(Bytecode .class)
+                B -->|Classloader| C{JVM}
+                C -->|Interpreter / JIT| D[Machine Code]
+                C -->|OS| E[Windows/Linux/Mac]
+                style A fill:#ffa94d,stroke:#3d444d,stroke-width:2px,color:#0d1117
+                style B fill:#79c0ff,stroke:#3d444d,stroke-width:2px,color:#f0f6fc
+                style C fill:#3fb950,stroke:#3d444d,stroke-width:2px,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Le flux "Write Once, Run
+                Anywhere"</p>
+        </div>
+
+        <!-- Les 3 Acronymes -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔑 Les 3 Piliers de l'Écosystème</h3>
+
+        <details open>
+            <summary>📖 JDK, JRE, JVM : Qui fait quoi ?</summary>
+            <div class="grid2">
+                <div class="callout callout-warning" style="margin:0">
+                    <h4>🛠️ JDK (Java Development Kit)</h4>
+                    <p><strong>Pour DÉVELOPPER</strong>. C'est la boîte à outils complète du développeur.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Contient</strong> :</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Le compilateur <code>javac</code></li>
+                        <li>Le JRE (pour tester)</li>
+                        <li>Outils de debug (<code>jdb</code>)</li>
+                        <li>Outils de profiling (<code>jvisualvm</code>)</li>
+                    </ul>
+                </div>
+                <div class="callout callout-info" style="margin:0">
+                    <h4>▶️ JRE (Java Runtime Environment)</h4>
+                    <p><strong>Pour EXÉCUTER</strong>. C'est le minimum pour faire tourner une application Java.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Contient</strong> :</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>La JVM</li>
+                        <li>Bibliothèques de base (<code>java.lang</code>, <code>java.util</code>...)</li>
+                        <li>Fichiers de configuration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout callout-tip" style="margin-top:20px;">
+                <h4>⚙️ JVM (Java Virtual Machine)</h4>
+                <p>Le <strong>MOTEUR</strong>. C'est une machine abstraite qui exécute le bytecode. Elle traduit le
+                    bytecode en instructions natives pour votre CPU (x86, ARM...).</p>
+                <p style="margin-top: 0.5rem;"><strong>Rôle clé</strong> : Assurer la portabilité. Une JVM existe pour
+                    chaque OS (Windows JVM, Linux JVM, macOS JVM...).</p>
+            </div>
+        </details>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Le Bytecode n'est pas du code machine</strong> : C'est un langage intermédiaire, comme un
+                "esperanto" pour ordinateurs. Il ressemble à de l'assembleur mais reste indépendant du processeur.</p>
+            <p style="margin-top: 0.75rem;"><strong>Le JIT Compiler</strong> : La JVM ne se contente pas d'interpréter
+                le bytecode ligne par ligne (lent). Elle utilise un compilateur <strong>Just-In-Time (JIT)</strong> qui
+                traduit les parties "chaudes" (souvent exécutées) en code machine natif pour booster les performances.
+            </p>
+            <p style="margin-top: 0.75rem;"><strong>GraalVM</strong> : Une JVM moderne qui peut compiler Java en binaire
+                natif (comme C++) pour des performances extrêmes, au prix de la portabilité.</p>
+        </div>
+
+        <!-- Exemples Progressifs -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📝 Exemples Progressifs</h3>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>1. Hello World (Basique)</div>
+                <pre><span class="kw">public class</span> <span class="type">Main</span> {
+    <span class="kw">public static void</span> <span class="mt">main</span>(<span class="type">String</span>[] <span class="var">args</span>) {
+        <span class="type">System</span>.out.println(<span class="str">"Hello Java!"</span>);
+    }
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Terminal</div>
+                <pre><span class="com"># 1. Compilation → Main.class</span>
+javac Main.java
+
+<span class="com"># 2. Exécution (JVM)</span>
+java Main
+<span class="str">"Hello Java!"</span></pre>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top: 1.5rem;">
+            <div class="code-head"><span class="dot b"></span>2. Vérifier votre Version Java</div>
+            <pre><span class="com"># Version du JDK (compilateur)</span>
+javac -version
+<span class="str">javac 21.0.1</span>
+
+<span class="com"># Version de la JVM (runtime)</span>
+java -version
+<span class="str">openjdk version "21.0.1" 2023-10-17 LTS
+OpenJDK Runtime Environment (build 21.0.1+12-LTS)
+OpenJDK 64-Bit Server VM (build 21.0.1+12-LTS, mixed mode)</span></pre>
+        </div>
+
+        <div class="code" style="margin-top: 1.5rem;">
+            <div class="code-head"><span class="dot r"></span>3. Inspecter le Bytecode (Avancé)</div>
+            <pre><span class="com"># Désassembler un fichier .class</span>
+javap -c Main.class
+
+<span class="com"># Sortie (extrait) :</span>
+<span class="str">public static void main(java.lang.String[]);
+  Code:
+     0: getstatic     #7  // Field java/lang/System.out
+     3: ldc           #13 // String Hello Java!
+     5: invokevirtual #15 // Method println
+     8: return</span></pre>
+        </div>
+
+        <!-- Cas d'Usage Réel -->
+        <div class="use-case" style="margin-top: 2.5rem;">
+            <h4>🚀 Cas d'Usage Réel : Pourquoi Java Domine le Backend ?</h4>
+            <p><strong>Scénario</strong> : Vous développez une API REST pour une banque. Votre code doit tourner sur des
+                serveurs Linux (production), mais vous développez sur Windows.</p>
+            <p style="margin-top: 0.75rem;"><strong>Solution Java</strong> :</p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Vous écrivez le code sur Windows avec IntelliJ IDEA.</li>
+                <li>Vous compilez en <code>.jar</code> (archive de fichiers <code>.class</code>).</li>
+                <li>Vous déployez le <code>.jar</code> sur un serveur Linux. La JVM Linux l'exécute sans modification.
+                </li>
+            </ol>
+            <p style="margin-top: 0.75rem;"><strong>Avantage</strong> : Pas de recompilation. Pas de surprise. Le même
+                bytecode fonctionne partout où il y a une JVM.</p>
+        </div>
+
+        <!-- Pièges Courants -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Confondre JDK et JRE</strong> : Si vous voulez juste exécuter une application (ex: Minecraft),
+                le JRE suffit. Pour développer, il faut le JDK.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Version Mismatch</strong> : Si vous compilez avec Java 17 mais
+                exécutez avec Java 8, ça crashe. Le bytecode a des versions (comme les formats de fichiers).</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Oublier le CLASSPATH</strong> : La JVM doit savoir où trouver vos
+                fichiers <code>.class</code>. Par défaut, elle cherche dans le dossier courant.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Ressources</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><a href="https://docs.oracle.com/javase/specs/jvms/se21/html/" target="_blank"
+                        style="color: var(--text-accent);">Spécification JVM (Oracle)</a></li>
+                <li><strong>Livre</strong> : "Inside the Java Virtual Machine" de Bill Venners</li>
+                <li><strong>Concept avancé</strong> : Garbage Collection (GC) - Comment la JVM gère automatiquement la
+                    mémoire</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

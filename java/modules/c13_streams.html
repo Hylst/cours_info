@@ -1,0 +1,174 @@
+<section id="c13">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">13</div>
+            <div>
+                <h2 class="sec-title">Streams API</h2>
+                <p class="sec-sub">Programmation Fonctionnelle & Pipelines</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Collections (C12) et Lambdas (C8).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment traiter des millions de données de manière
+                déclarative (SQL-like) sans écrire une seule boucle <code>for</code>.</p>
+            <p><strong>Temps de lecture</strong> : ~20 minutes | <strong>Niveau</strong> : ⭐⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🌊 Le Pipeline Stream</h3>
+        <p>Un Stream n'est pas une structure de données, c'est un <strong>flux</strong> de données. Il ne stocke rien.
+            Il prend une source, applique des transformations, et produit un résultat.</p>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                Source[(Source<br />List, Set, I/O)] -->|stream()| Op1[Intermediate<br />filter, map]
+                Op1 -->|Intermediate| Op2[Intermediate<br />sorted, distinct]
+                Op2 -->|Terminal| Term[Terminal<br />collect, count, forEach]
+
+                style Source fill:#1c2128,stroke:#ffa94d,color:#f0f6fc
+                style Op1 fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Op2 fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Term fill:#3fb950,stroke:#3d444d,color:#0d1117
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Lazy Evaluation : Rien ne
+                se passe tant qu'une opération TERMINALE n'est pas appelée.</p>
+        </div>
+
+        <!-- Operations Table -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🛠️ Les Opérations Clés</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Opération</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>filter(Pred)</code></td>
+                    <td>Intermédiaire</td>
+                    <td>Garde seulement ce qui match (comme `WHERE` en SQL)</td>
+                </tr>
+                <tr>
+                    <td><code>map(Func)</code></td>
+                    <td>Intermédiaire</td>
+                    <td>Transforme chaque élément (Ex: User → String name)</td>
+                </tr>
+                <tr>
+                    <td><code>flatMap(Func)</code></td>
+                    <td>Intermédiaire</td>
+                    <td>Aplatit des structures imbriquées (List&lt;List&gt; → List)</td>
+                </tr>
+                <tr>
+                    <td><code>sorted()</code></td>
+                    <td>Intermédiaire</td>
+                    <td>Trie le flux (Attention : coûteux)</td>
+                </tr>
+                <tr>
+                    <td><code>distinct()</code></td>
+                    <td>Intermédiaire</td>
+                    <td>Supprime les doublons (utilise equals)</td>
+                </tr>
+                <tr>
+                    <td><code>collect()</code></td>
+                    <td><strong>Terminal</strong></td>
+                    <td>Transforme le stream en List, Map, Set...</td>
+                </tr>
+                <tr>
+                    <td><code>findFirst()</code></td>
+                    <td><strong>Terminal</strong></td>
+                    <td>Retourne un `Optional` (Court-circuit)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Code Examples -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">💻 Exemples Concrets</h3>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Map & Filter & Collect</div>
+                <pre><span class="type">List</span>&lt;<span class="type">User</span>&gt; <span class="var">users</span> = <span class="mt">getUsers</span>();
+
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">names</span> = <span class="var">users</span>.<span class="mt">stream</span>()
+    .filter(<span class="var">u</span> -> <span class="var">u</span>.<span class="mt">getAge</span>() > <span class="num">18</span>)
+    .map(<span class="type">User</span>::<span class="mt">getName</span>)
+    .map(<span class="type">String</span>::<span class="mt">toUpperCase</span>)
+    .sorted()
+    .limit(<span class="num">5</span>)
+    .collect(<span class="type">Collectors</span>.<span class="mt">toList</span>());</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Stats & Reduction</div>
+                <pre><span class="type">List</span>&lt;<span class="type">Integer</span>&gt; <span class="var">prices</span> = <span class="type">List</span>.<span class="mt">of</span>(<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>);
+
+<span class="com">// Somme simple</span>
+<span class="kw">int</span> <span class="var">sum</span> = <span class="var">prices</span>.<span class="mt">stream</span>()
+    .mapToInt(<span class="type">Integer</span>::<span class="mt">intValue</span>)
+    .sum();
+
+<span class="com">// Réduction personnalisée</span>
+<span class="kw">int</span> <span class="var">product</span> = <span class="var">prices</span>.<span class="mt">stream</span>()
+    .reduce(<span class="num">1</span>, (<span class="var">a</span>, <span class="var">b</span>) -> <span class="var">a</span> * <span class="var">b</span>);</pre>
+            </div>
+        </div>
+
+        <!-- FlatMap -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🥞 FlatMap : Aplatir le Flux</h3>
+        <p>Utilisé quand chaque élément génère PLUSIEURS résultats (Relation 1-N).</p>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Exemple : Commandes -> Produits</div>
+            <pre><span class="type">List</span>&lt;<span class="type">Order</span>&gt; <span class="var">orders</span> = <span class="mt">getOrders</span>(); 
+<span class="com">// Chaque Order a une List&lt;Product&gt;</span>
+
+<span class="type">List</span>&lt;<span class="type">Product</span>&gt; <span class="var">allProducts</span> = <span class="var">orders</span>.<span class="mt">stream</span>()
+    .flatMap(<span class="var">o</span> -> <span class="var">o</span>.<span class="mt">getProducts</span>().<span class="mt">stream</span>()) <span class="com">// Stream&lt;List&gt; -> Stream&lt;Product&gt;</span>
+    .collect(<span class="type">Collectors</span>.<span class="mt">toList</span>());</pre>
+        </div>
+
+        <!-- Parallel Streams -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🚀 Parallel Streams</h3>
+        <div class="callout callout-warning">
+            <h4>⚠️ À utiliser avec précaution !</h4>
+            <p><code>stream().parallel()</code> divise le travail sur plusieurs cœurs CPU (ForkJoinPool).</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Génial pour</strong> : Calculs CPU intensifs sur de très grosses listes (> 10k éléments).
+                </li>
+                <li><strong>Mauvais pour</strong> : Opérations simples (le coût de coordination dépasse le gain) ou
+                    bloquantes (I/O).</li>
+                <li><strong>Danger</strong> : Si votre opération a des effets de bord (modifier une liste partagée),
+                    vous aurez des bugs de concurrence aléatoires !</li>
+            </ul>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Lazy Evaluation</strong> : <code>filter()</code> ne parcourt pas toute la liste si vous avez un
+                <code>findFirst()</code> derrière. Il s'arrête dès qu'il a trouvé !</p>
+            <p style="margin-top: 0.75rem;"><strong>Reuse is forbiden</strong> : Un Stream ne s'utilise qu'une seule
+                fois. Si vous appelez une méthode terminale, le stream est fermé. Réessayez et vous aurez une
+                <code>IllegalStateException</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>Debug</strong> : Difficile de debuguer une chaîne de 10 map/filter ?
+                Utilisez <code>.peek(System.out::println)</code> pour voir passer les éléments sans modifier le flux.
+            </p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>📊 Cas Réel : Grouping By (SQL like)</h4>
+            <p>On veut grouper les utilisateurs par Ville.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Collectors.groupingBy</div>
+                <pre><span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">List</span>&lt;<span class="type">User</span>&gt;&gt; <span class="var">byCity</span> = <span class="var">users</span>.<span class="mt">stream</span>()
+    .collect(<span class="type">Collectors</span>.<span class="mt">groupingBy</span>(<span class="type">User</span>::<span class="mt">getCity</span>));
+
+<span class="com">// Résultat : { "Paris": [u1, u3], "Lyon": [u2] }</span></pre>
+            </div>
+        </div>
+
+    </div>
+</section>

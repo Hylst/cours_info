@@ -1,0 +1,124 @@
+/* Quiz Styles */
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quiz-intro {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.quiz-intro h3 {
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.quiz-question {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.quiz-question h3 {
+    color: var(--foreground);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.quiz-option {
+    background: var(--bg);
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.quiz-option:hover {
+    border-color: var(--accent);
+    background: var(--bg2);
+}
+
+.quiz-option.selected {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.quiz-option.correct {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.quiz-option.incorrect {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--bg2);
+    border-radius: 8px;
+}
+
+.quiz-score {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.quiz-results {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.quiz-results h3 {
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.quiz-results .score-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin: 20px 0;
+}
+
+.quiz-results .score-message {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    opacity: 0.9;
+}
+
+.quiz-explanation {
+    background: var(--bg2);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: left;
+    border-left: 3px solid var(--accent);
+}
+
+.quiz-explanation strong {
+    color: var(--accent);
+}

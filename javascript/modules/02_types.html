@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types de données - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Specific Module 02 Styles */
+        .mem-viz {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mem-col {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .mem-title {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .stack-item {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .heap-obj {
+            background: #2a2a2a;
+            border: 1px dashed var(--accent);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .heap-addr {
+            font-size: 0.7rem;
+            color: var(--accent);
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: var(--bg);
+            padding: 0 4px;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .type-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            transition: transform 0.2s;
+        }
+
+        .type-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .type-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .type-name {
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .matrix-row {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+            align-items: center;
+        }
+
+        .matrix-cell {
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            background: var(--bg2);
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .matrix-res {
+            font-weight: bold;
+        }
+
+        .res-true {
+            color: #4caf50;
+        }
+
+        .res-false {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header injected by layout.js -->
+
+    <main class="container">
+        <section id="s2" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">02</div>
+                <div>
+                    <h2 class="sec-title">Types de données</h2>
+                    <p class="sec-sub">Primitifs vs Références & Coercition</p>
+                </div>
+            </div>
+
+            <!-- OVERVIEW -->
+            <p>JavaScript possède <strong>8 types de données</strong>. La distinction fondamentale est comment ils sont
+                stockés en mémoire : par <em>valeur</em> (Stack) ou par <em>référence</em> (Heap).</p>
+
+            <div class="type-grid">
+                <div class="type-card">
+                    <div class="type-icon">🔢</div>
+                    <div class="type-name">Number</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🔤</div>
+                    <div class="type-name">String</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">✅</div>
+                    <div class="type-name">Boolean</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🕸️</div>
+                    <div class="type-name">BigInt</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">👻</div>
+                    <div class="type-name">Null</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">❓</div>
+                    <div class="type-name">Undefined</div>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🔑</div>
+                    <div class="type-name">Symbol</div>
+                </div>
+                <div class="type-card" style="border-color:var(--accent)">
+                    <div class="type-icon">📦</div>
+                    <div class="type-name">Object</div>
+                </div>
+            </div>
+
+            <!-- MEMORY VISUALIZATION -->
+            <details open>
+                <summary>🧠 Mémoire : Stack vs Heap</summary>
+                <div class="details-content">
+                    <p>C'est LA source de 50% des bugs en JS. Comprendre ceci, c'est maîtriser le langage.</p>
+
+                    <div class="mem-viz">
+                        <div class="mem-col">
+                            <div class="mem-title">🥞 Stack (Primitifs)</div>
+                            <div style="font-size:0.8rem; opacity:0.7; margin-bottom:10px">Stocke la valeur directement.
+                                Rapide.</div>
+                            <div class="stack-item"><span>age</span> <span style="color:#a5d6ff">25</span></div>
+                            <div class="stack-item"><span>name</span> <span style="color:#ce9178">"Alo"</span></div>
+                            <div class="stack-item"><span>user</span> <span style="color:var(--accent)">@0x1A4</span>
+                            </div>
+                        </div>
+                        <div class="mem-col">
+                            <div class="mem-title">📦 Heap (Objets)</div>
+                            <div style="font-size:0.8rem; opacity:0.7; margin-bottom:10px">Stocke les objets lourds.
+                            </div>
+                            <div class="heap-obj">
+                                <span class="heap-addr">@0x1A4</span>
+                                <div>{ name: "Alice", role: "Admin" }</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="tip">Quand vous copiez un objet (<code>let b = a</code>), vous copiez seulement
+                        <strong>l'adresse mémoire</strong> (@0x1A4). Modifier <code>b</code> modifie aussi
+                        <code>a</code> !</p>
+                </div>
+            </details>
+
+            <!-- TYPEOF QUIRKS -->
+            <h3 style="margin-top:30px; margin-bottom: 15px;">🐛 Les Bizarreries du `sizeof` (typeof)</h3>
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">typeof "Hello"      // "string"
+typeof 42           // "number"
+typeof NaN          // "number" (🤔 Not a Number est un type number...)
+
+typeof undefined    // "undefined"
+typeof null         // "object" (🤬 BUG HISTORIQUE, ne sera jamais corrigé)
+
+typeof []           // "object" (Tout est objet en JS)
+typeof (() => {})   // "function" (Objet appelable)</code></pre>
+            </div>
+
+            <!-- INTERACTIVE DEMO -->
+            <div class="demo">
+                <div class="demo-title">🔬 Laboratoire de Types</div>
+                <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap">
+                    <input type="text" id="demo-input" class="demo-input" placeholder="Tapez n'importe quoi..."
+                        oninput="analyzeType(this.value)" style="flex:1">
+                    <div style="display:flex; gap:5px; align-items:center">
+                        <label><input type="checkbox" id="eval-check"
+                                onchange="analyzeType(document.getElementById('demo-input').value)"> Mode Eval (Code
+                            JS)</label>
+                    </div>
+                </div>
+
+                <div id="type-analysis"
+                    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:10px">
+                    <!-- Results injected here -->
+                    <div class="convention-card" style="text-align:center; padding:10px">En attente...</div>
+                </div>
+            </div>
+
+            <!-- COERCITION -->
+            <details>
+                <summary>⚡ Coercition Implicite</summary>
+                <div class="details-content">
+                    <p>JS essaie d'être "gentil" et convertit les types automatiquement. Cela crée des monstres.</p>
+                    <div style="background:var(--bg2); padding:10px; border-radius:6px; font-family:'JetBrains Mono'">
+                        <div class="matrix-row">"5" + 1 ➡️ <span class="matrix-res" style="color:#ce9178">"51"</span>
+                            (Concaténation gagne)</div>
+                        <div class="matrix-row">"5" - 1 ➡️ <span class="matrix-res" style="color:#a5d6ff">4</span> (Math
+                            gagne)</div>
+                        <div class="matrix-row">[] + [] ➡️ <span class="matrix-res" style="color:#ce9178">""</span>
+                            (Arrays deviennent strings vides)</div>
+                        <div class="matrix-row">true + 1 ➡️ <span class="matrix-res" style="color:#a5d6ff">2</span>
+                            (true devient 1)</div>
+                    </div>
+                    <div class="tip" style="margin-top:10px"><strong>Solution :</strong> Utilisez toujours
+                        <code>===</code> et faites des conversions explicites (<code>Number()</code>,
+                        <code>String()</code>).</div>
+                </div>
+            </details>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="01_variables.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Variables</a>
+                <a href="03_operators.html" class="demo-btn" style="text-decoration:none">Suivant: Opérateurs →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer injected by layout.js -->
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/02_types.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitaires - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .util-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .util-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .util-title {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .util-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .playground {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .playground-controls {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .playground-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 120px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+        }
+
+        .method-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .method-table th,
+        .method-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .method-table th {
+            background: var(--bg2);
+            font-weight: 600;
+        }
+
+        .method-table code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s16" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">16</div>
+                <div>
+                    <h2 class="sec-title">Utilitaires JavaScript</h2>
+                    <p class="sec-sub">Math, Date, JSON, Intl, Console</p>
+                </div>
+            </div>
+
+            <p>JavaScript fournit des objets globaux puissants pour les opérations mathématiques, la manipulation de
+                dates, le parsing JSON, l'internationalisation et le debugging.</p>
+
+            <!-- MATH -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🔢 Math - Opérations
+                Mathématiques</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// CONSTANTES
+Math.PI;      // 3.141592653589793
+Math.E;       // 2.718281828459045 (nombre d'Euler)
+
+// ARRONDIS
+Math.round(4.7);    // 5 (arrondi standard)
+Math.ceil(4.1);     // 5 (arrondi supérieur)
+Math.floor(4.9);    // 4 (arrondi inférieur)
+Math.trunc(4.9);    // 4 (supprime la partie décimale)
+
+// MIN / MAX
+Math.min(5, 2, 8, 1);     // 1
+Math.max(5, 2, 8, 1);     // 8
+Math.max(...[5, 2, 8]);   // 8 (avec spread)
+
+// PUISSANCE & RACINE
+Math.pow(2, 3);     // 8 (2³)
+2 ** 3;             // 8 (opérateur moderne)
+Math.sqrt(16);      // 4 (racine carrée)
+Math.cbrt(27);      // 3 (racine cubique)
+
+// ALÉATOIRE
+Math.random();              // 0 ≤ x < 1
+Math.floor(Math.random() * 10);  // 0-9
+Math.floor(Math.random() * (max - min + 1)) + min;  // Entre min et max
+
+// TRIGONOMÉTRIE (radians)
+Math.sin(Math.PI / 2);  // 1
+Math.cos(0);            // 1
+Math.tan(Math.PI / 4);  // 1
+
+// AUTRES
+Math.abs(-5);       // 5 (valeur absolue)
+Math.sign(-5);      // -1 (signe: -1, 0, 1)
+Math.log(Math.E);   // 1 (logarithme naturel)</code></pre>
+            </div>
+
+            <div class="util-grid">
+                <div class="util-card">
+                    <div class="util-title">🎲 Random entre min-max</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">function randomInt(min, max) {
+    return Math.floor(
+        Math.random() * (max - min + 1)
+    ) + min;
+}</code></pre>
+                </div>
+
+                <div class="util-card">
+                    <div class="util-title">📐 Arrondir à N décimales</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">function round(num, decimals) {
+    const factor = 10 ** decimals;
+    return Math.round(num * factor) 
+        / factor;
+}</code></pre>
+                </div>
+
+                <div class="util-card">
+                    <div class="util-title">📊 Clamp (limiter)</div>
+                    <pre style="margin:8px 0; font-size:0.85rem"><code class="language-javascript">function clamp(num, min, max) {
+    return Math.min(
+        Math.max(num, min), 
+        max
+    );
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- DATE -->
+            <h3 style="margin-top:40px; border-left: 4px solid var(--primary); padding-left: 12px;">📅 Date -
+                Manipulation de Dates</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// CRÉATION
+const now = new Date();                    // Maintenant
+const specific = new Date('2024-12-25');   // Date spécifique
+const timestamp = new Date(1609459200000); // Depuis timestamp
+
+// GETTERS
+now.getFullYear();   // 2024
+now.getMonth();      // 0-11 (⚠️ Janvier = 0)
+now.getDate();       // 1-31 (jour du mois)
+now.getDay();        // 0-6 (dimanche = 0)
+now.getHours();      // 0-23
+now.getMinutes();    // 0-59
+now.getSeconds();    // 0-59
+now.getTime();       // Timestamp en ms
+
+// SETTERS
+now.setFullYear(2025);
+now.setMonth(11);    // Décembre
+now.setDate(25);
+
+// FORMATAGE (Intl recommandé, voir plus bas)
+now.toLocaleDateString('fr-FR');  // "25/12/2024"
+now.toLocaleTimeString('fr-FR');  // "14:30:00"
+now.toISOString();                // "2024-12-25T14:30:00.000Z"
+
+// CALCULS
+const tomorrow = new Date(now);
+tomorrow.setDate(tomorrow.getDate() + 1);
+
+const diff = date2 - date1;  // Différence en ms
+const daysDiff = diff / (1000 * 60 * 60 * 24);</code></pre>
+            </div>
+
+            <table class="method-table">
+                <thead>
+                    <tr>
+                        <th>Méthode</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Date.now()</code></td>
+                        <td>Timestamp actuel (ms)</td>
+                        <td><code>1609459200000</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>date.getTime()</code></td>
+                        <td>Timestamp de la date</td>
+                        <td><code>1609459200000</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>date.toISOString()</code></td>
+                        <td>Format ISO 8601</td>
+                        <td><code>"2024-12-25T14:30:00.000Z"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>date.toLocaleDateString()</code></td>
+                        <td>Format local</td>
+                        <td><code>"25/12/2024"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- JSON -->
+            <h3 style="margin-top:40px; border-left: 4px solid var(--primary); padding-left: 12px;">📦 JSON -
+                Sérialisation</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// STRINGIFY (Objet → String)
+const obj = { name: 'Alice', age: 25, active: true };
+const json = JSON.stringify(obj);
+// '{"name":"Alice","age":25,"active":true}'
+
+// Avec indentation (pretty print)
+JSON.stringify(obj, null, 2);
+/*
+{
+  "name": "Alice",
+  "age": 25,
+  "active": true
+}
+*/
+
+// Avec filtre de propriétés
+JSON.stringify(obj, ['name', 'age']);  // Seulement name et age
+
+// PARSE (String → Objet)
+const parsed = JSON.parse(json);
+// { name: 'Alice', age: 25, active: true }
+
+// ⚠️ ERREURS COURANTES
+JSON.parse('undefined');     // ❌ SyntaxError
+JSON.parse("{'key': 'val'}"); // ❌ Guillemets simples invalides
+JSON.parse('{"key": "val"}'); // ✅ Guillemets doubles
+
+// TYPES SUPPORTÉS
+JSON.stringify({
+    string: 'text',
+    number: 42,
+    boolean: true,
+    null: null,
+    array: [1, 2, 3],
+    object: { nested: true }
+});
+
+// TYPES NON SUPPORTÉS (deviennent null ou sont ignorés)
+JSON.stringify({
+    func: () => {},      // Ignoré
+    undef: undefined,    // Ignoré
+    date: new Date(),    // Converti en string ISO
+    symbol: Symbol('s')  // Ignoré
+});</code></pre>
+            </div>
+
+            <!-- INTL -->
+            <h3 style="margin-top:40px; border-left: 4px solid var(--primary); padding-left: 12px;">🌍 Intl -
+                Internationalisation</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// NOMBRES
+const num = 1234567.89;
+
+new Intl.NumberFormat('fr-FR').format(num);
+// "1 234 567,89"
+
+new Intl.NumberFormat('en-US').format(num);
+// "1,234,567.89"
+
+// Devises
+new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR'
+}).format(99.99);
+// "99,99 €"
+
+// Pourcentages
+new Intl.NumberFormat('fr-FR', {
+    style: 'percent'
+}).format(0.75);
+// "75 %"
+
+// DATES
+const date = new Date('2024-12-25T14:30:00');
+
+new Intl.DateTimeFormat('fr-FR').format(date);
+// "25/12/2024"
+
+new Intl.DateTimeFormat('fr-FR', {
+    dateStyle: 'full',
+    timeStyle: 'short'
+}).format(date);
+// "mercredi 25 décembre 2024 à 14:30"
+
+// DATES RELATIVES
+const rtf = new Intl.RelativeTimeFormat('fr', { numeric: 'auto' });
+rtf.format(-1, 'day');   // "hier"
+rtf.format(2, 'week');   // "dans 2 semaines"
+rtf.format(-3, 'month'); // "il y a 3 mois"
+
+// LISTES
+const list = new Intl.ListFormat('fr', { style: 'long', type: 'conjunction' });
+list.format(['Alice', 'Bob', 'Charlie']);
+// "Alice, Bob et Charlie"</code></pre>
+            </div>
+
+            <!-- INTERACTIVE PLAYGROUND -->
+            <div class="playground">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Playground Utilitaires</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez les différentes APIs.</p>
+
+                <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap">
+                    <button class="demo-btn" onclick="playMath()">🔢 Math Demo</button>
+                    <button class="demo-btn" onclick="playDate()">📅 Date Demo</button>
+                    <button class="demo-btn" onclick="playJSON()">📦 JSON Demo</button>
+                    <button class="demo-btn" onclick="playIntl()">🌍 Intl Demo</button>
+                    <button class="demo-btn" onclick="playConsole()">🖥️ Console Demo</button>
+                </div>
+
+                <div id="playground-output" class="playground-output">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur un bouton pour voir la démo</div>
+                </div>
+            </div>
+
+            <!-- CONSOLE -->
+            <h3 style="margin-top:40px; border-left: 4px solid var(--primary); padding-left: 12px;">🖥️ Console -
+                Debugging</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// LOGS DE BASE
+console.log('Message simple');
+console.info('Information');
+console.warn('Avertissement');  // ⚠️ Jaune
+console.error('Erreur');         // ❌ Rouge
+
+// FORMATAGE
+console.log('User: %s, Age: %d', 'Alice', 25);
+console.log('%cStyled!', 'color: blue; font-size: 20px');
+
+// OBJETS
+const user = { name: 'Alice', age: 25 };
+console.log(user);        // Objet cliquable
+console.dir(user);        // Vue détaillée
+console.table([user]);    // Tableau formaté
+
+// GROUPES
+console.group('Détails');
+console.log('Item 1');
+console.log('Item 2');
+console.groupEnd();
+
+// TEMPS
+console.time('operation');
+// ... code ...
+console.timeEnd('operation');  // "operation: 123ms"
+
+// COMPTEUR
+console.count('clicks');  // clicks: 1
+console.count('clicks');  // clicks: 2
+console.countReset('clicks');
+
+// ASSERTIONS
+console.assert(1 === 2, 'Les valeurs ne sont pas égales');
+// Affiche l'erreur si false
+
+// TRACE
+function a() { b(); }
+function b() { console.trace('Stack trace'); }
+a();  // Affiche la pile d'appels</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Utilisez <code>Intl</code> pour le formatage (dates, nombres, devises)
+                au lieu de méthodes manuelles. Préférez <code>Date.now()</code> à <code>new Date().getTime()</code> pour
+                les timestamps. Validez toujours le JSON avant <code>JSON.parse()</code> avec try/catch.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Pièges :</strong> Les mois en JavaScript sont 0-indexed (Janvier = 0).
+                <code>JSON.stringify()</code> ignore les fonctions et <code>undefined</code>. <code>Math.random()</code>
+                n'est pas cryptographiquement sûr (utilisez <code>crypto.getRandomValues()</code> pour la sécurité).
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="15_classes.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Classes</a>
+                <a href="17_strings.html" class="demo-btn" style="text-decoration:none">Suivant: Strings →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/16_utils.js"></script>
+</body>
+
+</html>

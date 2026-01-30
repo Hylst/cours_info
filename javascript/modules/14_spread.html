@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread & Rest - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .operator-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .operator-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .operator-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .badge-spread {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-rest {
+            background: #2196f3;
+            color: white;
+        }
+
+        .visualizer {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .viz-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .viz-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+        }
+
+        .viz-step {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-left: 3px solid var(--primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: var(--bg2);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg2);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s14" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">14</div>
+                <div>
+                    <h2 class="sec-title">Spread & Rest</h2>
+                    <p class="sec-sub">L'opérateur ... (trois points)</p>
+                </div>
+            </div>
+
+            <p>L'opérateur <code>...</code> est l'un des ajouts les plus puissants d'ES6. Il a deux rôles opposés selon
+                le contexte : <strong>Spread</strong> (expansion) et <strong>Rest</strong> (collecte).</p>
+
+            <!-- SPREAD VS REST -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🔄 Spread vs Rest :
+                Même syntaxe, contextes opposés</h3>
+
+            <div class="operator-grid">
+                <div class="operator-card">
+                    <span class="operator-badge badge-spread">SPREAD</span>
+                    <div class="operator-title">Expansion (Donner)</div>
+                    <p style="margin-bottom:10px; opacity:0.9">Décompose un iterable en éléments individuels.</p>
+                    <pre style="margin:10px 0"><code class="language-javascript">const arr = [1, 2, 3];
+console.log(...arr);  // 1 2 3
+
+const obj = { a: 1, b: 2 };
+const copy = { ...obj };  // Clone</code></pre>
+                    <div style="margin-top:10px; font-size:0.85rem; opacity:0.8">
+                        <strong>Contextes :</strong> Arguments de fonction, tableaux, objets
+                    </div>
+                </div>
+
+                <div class="operator-card">
+                    <span class="operator-badge badge-rest">REST</span>
+                    <div class="operator-title">Collecte (Recevoir)</div>
+                    <p style="margin-bottom:10px; opacity:0.9">Rassemble plusieurs éléments en un tableau.</p>
+                    <pre style="margin:10px 0"><code class="language-javascript">function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b);
+}
+sum(1, 2, 3);  // numbers = [1,2,3]</code></pre>
+                    <div style="margin-top:10px; font-size:0.85rem; opacity:0.8">
+                        <strong>Contextes :</strong> Paramètres de fonction, destructuring
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPREAD PATTERNS -->
+            <h3 style="margin-top:40px;">📤 Patterns Spread (Expansion)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. SPREAD DANS LES TABLEAUX
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+// Concaténation
+const combined = [...arr1, ...arr2];  // [1,2,3,4,5,6]
+
+// Insertion au milieu
+const inserted = [...arr1, 99, ...arr2];  // [1,2,3,99,4,5,6]
+
+// Clone superficiel
+const clone = [...arr1];  // Nouveau tableau
+
+// 2. SPREAD DANS LES OBJETS
+const user = { name: 'Alice', age: 25 };
+const location = { city: 'Paris', country: 'France' };
+
+// Fusion d'objets
+const profile = { ...user, ...location };
+// { name: 'Alice', age: 25, city: 'Paris', country: 'France' }
+
+// Override de propriétés (ordre important !)
+const updated = { ...user, age: 26 };  // age écrasé
+const wrong = { age: 26, ...user };    // age de user gagne
+
+// 3. SPREAD DANS LES APPELS DE FONCTION
+const numbers = [5, 2, 8, 1];
+Math.max(...numbers);  // 8 (au lieu de Math.max(5,2,8,1))
+
+// Équivalent à :
+Math.max.apply(null, numbers);  // Ancienne méthode</code></pre>
+            </div>
+
+            <!-- REST PATTERNS -->
+            <h3 style="margin-top:40px;">📥 Patterns Rest (Collecte)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. REST DANS LES PARAMÈTRES
+function logAll(...args) {
+    console.log('Nombre d\'args:', args.length);
+    args.forEach(arg => console.log(arg));
+}
+logAll('a', 'b', 'c');  // args = ['a', 'b', 'c']
+
+// Combiné avec paramètres normaux (rest DOIT être dernier)
+function greet(greeting, ...names) {
+    return `${greeting} ${names.join(', ')}`;
+}
+greet('Hello', 'Alice', 'Bob');  // "Hello Alice, Bob"
+
+// 2. REST DANS LE DESTRUCTURING (Arrays)
+const [first, second, ...others] = [1, 2, 3, 4, 5];
+// first = 1, second = 2, others = [3, 4, 5]
+
+const [head, ...tail] = [10, 20, 30];
+// head = 10, tail = [20, 30]
+
+// 3. REST DANS LE DESTRUCTURING (Objects)
+const person = { name: 'Bob', age: 30, city: 'Lyon', job: 'Dev' };
+const { name, age, ...rest } = person;
+// name = 'Bob', age = 30, rest = { city: 'Lyon', job: 'Dev' }
+
+// Utile pour extraire certaines props
+const { password, ...publicData } = userFromDB;
+// Retire password, garde le reste</code></pre>
+            </div>
+
+            <!-- INTERACTIVE VISUALIZER -->
+            <div class="visualizer">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Visualiseur Spread/Rest</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez différents patterns et voyez le résultat.</p>
+
+                <div class="viz-controls">
+                    <button class="demo-btn" onclick="vizSpreadArray()">📤 Spread Array</button>
+                    <button class="demo-btn" onclick="vizSpreadObject()">📤 Spread Object</button>
+                    <button class="demo-btn" onclick="vizRestParams()">📥 Rest Params</button>
+                    <button class="demo-btn" onclick="vizRestDestructure()">📥 Rest Destructure</button>
+                    <button class="demo-btn" onclick="vizClone()">🔄 Clone vs Reference</button>
+                </div>
+
+                <div id="viz-output" class="viz-output">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur un bouton pour voir la démo</div>
+                </div>
+            </div>
+
+            <!-- USE CASES -->
+            <h3 style="margin-top:40px;">💼 Cas d'Usage Pratiques</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. CLONER ET MODIFIER UN OBJET (Immutabilité)
+const originalState = { count: 0, user: 'Alice' };
+const newState = { ...originalState, count: 1 };
+// originalState inchangé, newState = { count: 1, user: 'Alice' }
+
+// 2. AJOUTER UN ÉLÉMENT À UN TABLEAU (Immutable)
+const todos = ['Task 1', 'Task 2'];
+const newTodos = [...todos, 'Task 3'];  // Pas de .push()
+
+// 3. RETIRER UNE PROPRIÉTÉ D'UN OBJET
+const { password, ...safeUser } = user;
+// safeUser n'a plus password
+
+// 4. FUSIONNER DES CONFIGS
+const defaultConfig = { theme: 'dark', lang: 'fr', timeout: 5000 };
+const userConfig = { lang: 'en', timeout: 3000 };
+const finalConfig = { ...defaultConfig, ...userConfig };
+// { theme: 'dark', lang: 'en', timeout: 3000 }
+
+// 5. FONCTION VARIADIC (nombre variable d'args)
+function createURL(base, ...segments) {
+    return base + '/' + segments.join('/');
+}
+createURL('https://api.com', 'users', '123', 'posts');
+// "https://api.com/users/123/posts"
+
+// 6. CONVERTIR ARGUMENTS EN ARRAY
+function oldStyle() {
+    const args = [...arguments];  // arguments n'est pas un vrai array
+    return args.map(x => x * 2);
+}
+
+// Mieux : utiliser rest directement
+function modernStyle(...args) {
+    return args.map(x => x * 2);
+}</code></pre>
+            </div>
+
+            <!-- COMPARISON TABLE -->
+            <h3 style="margin-top:40px;">⚖️ Spread vs Méthodes Traditionnelles</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Opération</th>
+                        <th>Ancienne Méthode</th>
+                        <th>Avec Spread/Rest</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Concaténer arrays</strong></td>
+                        <td><code>arr1.concat(arr2)</code></td>
+                        <td><code>[...arr1, ...arr2]</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cloner array</strong></td>
+                        <td><code>arr.slice()</code></td>
+                        <td><code>[...arr]</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cloner objet</strong></td>
+                        <td><code>Object.assign({}, obj)</code></td>
+                        <td><code>{ ...obj }</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Max d'un array</strong></td>
+                        <td><code>Math.max.apply(null, arr)</code></td>
+                        <td><code>Math.max(...arr)</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Args variables</strong></td>
+                        <td><code>arguments</code> (pseudo-array)</td>
+                        <td><code>...args</code> (vrai array)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- PITFALLS -->
+            <div class="warning" style="margin-top:30px">
+                <strong>⚠️ Pièges Courants :</strong>
+                <ul style="margin:10px 0; padding-left:20px">
+                    <li><strong>Clone superficiel uniquement :</strong> <code>{...obj}</code> ne clone pas les objets
+                        imbriqués (shallow copy).</li>
+                    <li><strong>Rest doit être dernier :</strong> <code>function f(...args, x)</code> ❌ Erreur syntaxe.
+                    </li>
+                    <li><strong>Ordre important pour objets :</strong> <code>{ ...a, ...b }</code> → les props de
+                        <code>b</code> écrasent <code>a</code>.</li>
+                    <li><strong>Performance :</strong> Spread crée de nouveaux objets/arrays. Pour de grandes
+                        structures, considérez des alternatives.</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Utilisez spread/rest pour l'immutabilité (React, Redux). Préférez
+                <code>...rest</code> à <code>arguments</code>. Pour les clones profonds, utilisez
+                <code>structuredClone()</code> ou une bibliothèque.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="13_storage.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Storage</a>
+                <a href="15_classes.html" class="demo-btn" style="text-decoration:none">Suivant: Classes →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/14_spread.js"></script>
+</body>
+
+</html>

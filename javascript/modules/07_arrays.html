@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .method-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .method-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .method-card.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .method-name {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+            font-family: 'JetBrains Mono';
+        }
+
+        .method-desc {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .method-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .badge-transform {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-search {
+            background: #2196f3;
+            color: white;
+        }
+
+        .badge-test {
+            background: #ff9800;
+            color: white;
+        }
+
+        .badge-mutate {
+            background: #f44336;
+            color: white;
+        }
+
+        .builder {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .builder-chain {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 60px;
+            margin: 15px 0;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+        }
+
+        .chain-step {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 5px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .immutable-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .immutable-side {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .immutable-side.mutate {
+            border: 2px solid #f44336;
+        }
+
+        .immutable-side.immutable {
+            border: 2px solid #4caf50;
+        }
+
+        @media(max-width: 700px) {
+            .immutable-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s7" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">07</div>
+                <div>
+                    <h2 class="sec-title">Arrays Avancés</h2>
+                    <p class="sec-sub">Méthodes Fonctionnelles & Immutabilité</p>
+                </div>
+            </div>
+
+            <p>Les arrays en JS sont des objets puissants avec 30+ méthodes. Maîtriser les méthodes fonctionnelles est
+                essentiel pour le développement moderne.</p>
+
+            <!-- METHOD CATEGORIES -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🎯 Les 15 Méthodes
+                Essentielles</h3>
+
+            <div class="method-grid">
+                <!-- TRANSFORM -->
+                <div class="method-card" onclick="selectMethod('map')">
+                    <div class="method-name">map()</div>
+                    <div class="method-desc">Transforme chaque élément</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('filter')">
+                    <div class="method-name">filter()</div>
+                    <div class="method-desc">Filtre selon condition</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('reduce')">
+                    <div class="method-name">reduce()</div>
+                    <div class="method-desc">Accumule en une valeur</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <!-- SEARCH -->
+                <div class="method-card" onclick="selectMethod('find')">
+                    <div class="method-name">find()</div>
+                    <div class="method-desc">Premier élément trouvé</div>
+                    <span class="method-badge badge-search">Search</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('findIndex')">
+                    <div class="method-name">findIndex()</div>
+                    <div class="method-desc">Index du premier trouvé</div>
+                    <span class="method-badge badge-search">Search</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('includes')">
+                    <div class="method-name">includes()</div>
+                    <div class="method-desc">Contient la valeur ?</div>
+                    <span class="method-badge badge-search">Search</span>
+                </div>
+
+                <!-- TEST -->
+                <div class="method-card" onclick="selectMethod('some')">
+                    <div class="method-name">some()</div>
+                    <div class="method-desc">Au moins un respecte ?</div>
+                    <span class="method-badge badge-test">Test</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('every')">
+                    <div class="method-name">every()</div>
+                    <div class="method-desc">Tous respectent ?</div>
+                    <span class="method-badge badge-test">Test</span>
+                </div>
+
+                <!-- MUTATE -->
+                <div class="method-card" onclick="selectMethod('push')">
+                    <div class="method-name">push()</div>
+                    <div class="method-desc">Ajoute à la fin</div>
+                    <span class="method-badge badge-mutate">Mutate</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('splice')">
+                    <div class="method-name">splice()</div>
+                    <div class="method-desc">Modifie en place</div>
+                    <span class="method-badge badge-mutate">Mutate</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('sort')">
+                    <div class="method-name">sort()</div>
+                    <div class="method-desc">Trie en place</div>
+                    <span class="method-badge badge-mutate">Mutate</span>
+                </div>
+
+                <!-- OTHERS -->
+                <div class="method-card" onclick="selectMethod('slice')">
+                    <div class="method-name">slice()</div>
+                    <div class="method-desc">Copie une portion</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('flat')">
+                    <div class="method-name">flat()</div>
+                    <div class="method-desc">Aplatit les niveaux</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('join')">
+                    <div class="method-name">join()</div>
+                    <div class="method-desc">Convertit en string</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+
+                <div class="method-card" onclick="selectMethod('concat')">
+                    <div class="method-name">concat()</div>
+                    <div class="method-desc">Fusionne arrays</div>
+                    <span class="method-badge badge-transform">Transform</span>
+                </div>
+            </div>
+
+            <!-- METHOD BUILDER -->
+            <div class="builder">
+                <h3 style="margin-top:0; color:var(--accent)">🔨 Method Chain Builder</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Cliquez sur les méthodes ci-dessus pour construire une chaîne
+                    de transformation.</p>
+
+                <div style="margin-bottom:15px">
+                    <strong>Array de départ :</strong>
+                    <input type="text" id="builder-input" class="demo-input" value="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                        style="width:100%; margin-top:8px">
+                </div>
+
+                <div class="builder-chain" id="method-chain">
+                    <div style="opacity:0.5; text-align:center">Sélectionnez des méthodes pour construire une chaîne
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:15px">
+                    <button class="demo-btn" onclick="executeChain()">▶️ Exécuter</button>
+                    <button class="demo-btn" onclick="resetChain()" style="background:var(--bg2)">🔄 Reset</button>
+                </div>
+
+                <div id="chain-result"
+                    style="background:var(--bg); padding:15px; border-radius:8px; margin-top:15px; min-height:60px; font-family:'JetBrains Mono'">
+                    <div style="opacity:0.5; text-align:center">Résultat...</div>
+                </div>
+            </div>
+
+            <!-- IMMUTABILITY -->
+            <h3 style="margin-top:40px;">🔒 Immutabilité : Mutation vs Copie</h3>
+            <div class="immutable-demo">
+                <div class="immutable-side mutate">
+                    <div style="color:#f44336; font-weight:bold; margin-bottom:10px">❌ Mutation (Danger)</div>
+                    <pre><code class="language-javascript">const arr = [1, 2, 3];
+
+// Modifie l'original
+arr.push(4);
+arr.sort((a, b) => b - a);
+arr[0] = 99;
+
+// ⚠️ Effets de bord
+// ⚠️ Bugs difficiles à tracer</code></pre>
+                </div>
+
+                <div class="immutable-side immutable">
+                    <div style="color:#4caf50; font-weight:bold; margin-bottom:10px">✅ Immutable (Safe)</div>
+                    <pre><code class="language-javascript">const arr = [1, 2, 3];
+
+// Crée de nouveaux arrays
+const arr2 = [...arr, 4];
+const arr3 = [...arr].sort((a, b) => b - a);
+const arr4 = arr.map((x, i) => i === 0 ? 99 : x);
+
+// ✅ Original intact
+// ✅ Prédictible</code></pre>
+                </div>
+            </div>
+
+            <!-- REDUCE POWER -->
+            <h3 style="margin-top:40px;">⚡ Le Pouvoir de reduce()</h3>
+            <p><code>reduce()</code> est la méthode la plus puissante. Elle peut remplacer presque toutes les autres.
+            </p>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">const numbers = [1, 2, 3, 4, 5];
+
+// 1. Somme (classique)
+const sum = numbers.reduce((acc, n) => acc + n, 0); // 15
+
+// 2. Grouper par propriété
+const users = [{role: 'admin', name: 'Alice'}, {role: 'user', name: 'Bob'}];
+const byRole = users.reduce((acc, user) => {
+    (acc[user.role] = acc[user.role] || []).push(user);
+    return acc;
+}, {});
+// { admin: [{...}], user: [{...}] }
+
+// 3. Compter occurrences
+const fruits = ['🍎', '🍌', '🍎', '🍊', '🍌', '🍎'];
+const count = fruits.reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+}, {});
+// { '🍎': 3, '🍌': 2, '🍊': 1 }
+
+// 4. Flatten (aplatir)
+const nested = [[1, 2], [3, 4], [5]];
+const flat = nested.reduce((acc, arr) => acc.concat(arr), []);
+// [1, 2, 3, 4, 5]</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Privilégiez les méthodes immutables (<code>map</code>,
+                <code>filter</code>, <code>slice</code>) pour éviter les bugs. Utilisez le spread operator
+                <code>[...arr]</code> pour copier avant de muter.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="06_functions.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Fonctions</a>
+                <a href="08_objects.html" class="demo-btn" style="text-decoration:none">Suivant: Objects →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/07_arrays.js"></script>
+</body>
+
+</html>

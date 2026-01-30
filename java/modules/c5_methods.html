@@ -1,0 +1,135 @@
+<section id="c5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">Méthodes & Scope</h2>
+                <p class="sec-sub">Passage, Portée & Recursion</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Au Cœur de l'Exécution</h4>
+            <p>Une méthode n'est pas juste un bloc de code. C'est une interaction complexe avec la <strong>Stack
+                    (Pile)</strong> et la mémoire. Comprendre le <strong>Scope</strong> (portée) est vital pour éviter
+                les bugs silencieux.</p>
+            <p><strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <!-- 1. Scope & Shadowing -->
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔭 Scope & Shadowing (Portée)</h3>
+        <p>La portée définit où une variable est visible. Le piège classique : le <strong>masquage (Shadowing)</strong>.
+        </p>
+
+        <div class="grid2">
+            <div>
+                <h4>Les Types de Portée</h4>
+                <ul>
+                    <li><strong>Class Scope</strong> : Accessible partout dans la classe (Fields).</li>
+                    <li><strong>Method Scope</strong> : Variable locale, meurt à la fin de la méthode.</li>
+                    <li><strong>Block Scope</strong> : Dans un <code>if</code>, <code>for</code>. Meurt à l'accolade
+                        <code>}</code>.</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot warning"></span>Shadowing (Masquage)</div>
+                <pre><span class="kw">class</span> <span class="type">Person</span> {
+    <span class="type">String</span> <span class="var">name</span> = <span class="str">"Bob"</span>; <span class="com">// Field</span>
+
+    <span class="kw">void</span> <span class="mt">setName</span>(<span class="type">String</span> <span class="var">name</span>) {
+        <span class="com">// ICI : 'name' réfère au paramètre !</span>
+        <span class="com">// Le field est masqué.</span>
+        
+        <span class="var">name</span> = <span class="var">name</span>;      <span class="com">// ❌ Inutile (Self-assignment)</span>
+        <span class="kw">this</span>.<span class="var">name</span> = <span class="var">name</span>; <span class="com">// ✅ this force l'accès au field</span>
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- 2. Pass by Value -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔄 Pass-by-Value (Le Dogme)</h3>
+        <p><strong>Java est TOUJOURS Pass-by-Value.</strong> On ne passe jamais d'objets, on passe des <strong>copies de
+                références</strong>.</p>
+
+        <div class="analogy">
+            <p>La télécommande</p>
+            <p>Si je vous donne ma télécommande TV (référence), vous pouvez changer la chaîne (modifier l'objet). Mais
+                si vous peignez votre télécommande en rouge, la mienne ne change pas !</p>
+        </div>
+
+        <div class="code">
+            <pre><span class="kw">void</span> <span class="mt">test</span>(<span class="type">Dog</span> <span class="var">d</span>) {
+    <span class="var">d</span>.<span class="mt">bark</span>();      <span class="com">// Agit sur le VRAI chien (Modifie l'objet)</span>
+    <span class="var">d</span> = <span class="kw">new</span> <span class="type">Dog</span>(); <span class="com">// Change VOTRE télécommande (Local seulement)</span>
+}</pre>
+        </div>
+
+        <!-- 3. Overloading & Varargs -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔀 Overloading & Varargs</h3>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Surcharge (Overloading)</div>
+                <pre><span class="com">// Signature = Nom + Types Paramètres</span>
+<span class="kw">void</span> <span class="mt">print</span>(<span class="type">String</span> <span class="var">s</span>) { ... }
+<span class="kw">void</span> <span class="mt">print</span>(<span class="type">int</span> <span class="var">i</span>) { ... }
+
+<span class="com">// Le retour ne compte PAS !</span>
+<span class="com">// int print(String s) -> Erreur</span></pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Varargs (...)</div>
+                <pre><span class="kw">void</span> <span class="mt">sum</span>(<span class="type">String</span> <span class="var">msg</span>, <span class="kw">int</span>... <span class="var">nums</span>) {
+    <span class="com">// nums est un int[]</span>
+    <span class="kw">for</span> (<span class="kw">int</span> <span class="var">n</span> : <span class="var">nums</span>) { ... }
+}
+
+<span class="mt">sum</span>(<span class="str">"Total"</span>, <span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>); <span class="com">// OK</span></pre>
+            </div>
+        </div>
+
+        <!-- 4. Recursion & Stack -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🥞 Stack & Récursion</h3>
+        <p>Chaque appel de méthode empile une <strong>Frame</strong> (contenant variables locales et paramètres). Une
+            récursion infinie sature la pile : <code>StackOverflowError</code>.</p>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+                stateDiagram-v2
+                direction BT
+                s1: Frame (main)
+                s2: Frame (fact 5)
+                s3: Frame (fact 4)
+                s4: ...StackOverflow...
+
+                [*] --> s1
+                s1 --> s2
+                s2 --> s3
+                s3 --> s4
+            </div>
+        </div>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Danger Récursif</div>
+            <pre><span class="kw">int</span> <span class="mt">factorial</span>(<span class="kw">int</span> <span class="var">n</span>) {
+    <span class="kw">if</span> (<span class="var">n</span> == <span class="num">1</span>) <span class="kw">return</span> <span class="num">1</span>; <span class="com">// Cas de base VITAL</span>
+    <span class="kw">return</span> <span class="var">n</span> * <span class="mt">factorial</span>(<span class="var">n</span> - <span class="num">1</span>);
+}</pre>
+        </div>
+
+        <!-- 5. Covariant Return -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Expert : Retour Covariant</h4>
+            <p>Lorsqu'on redéfinit une méthode (`Override`), on peut retourner <strong>une sous-classe</strong> du type
+                original.</p>
+            <pre style="margin-top:0.5rem; background:transparent; padding:0; border:none;"><span class="kw">class</span> <span class="type">Factory</span> { <span class="type">Object</span> <span class="mt">make</span>() { ... } }
+<span class="kw">class</span> <span class="type">StringFactory</span> <span class="kw">extends</span> <span class="type">Factory</span> {
+    <span class="man">@Override</span>
+    <span class="type">String</span> <span class="mt">make</span>() { ... } <span class="com">// String est un Object -> OK !</span>
+}</pre>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,178 @@
+<section id="c10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Exceptions</h2>
+                <p class="sec-sub">Checked, Unchecked & Resources</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître les classes et les méthodes (C5, C6).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment gérer les imprévus sans faire crasher votre
+                application, et la différence entre un bug de programmation et un souci externe.</p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🚧 Gérer l'Imprévu</h3>
+        <p>Une <strong>Exception</strong> est un événement qui interrompt le flux normal des instructions. En Java, tout
+            ce qui peut être "lancé" hérite de la classe <code>Throwable</code>.</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>Le Panneau de Signalisation et l'Accident</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>🚧 Checked (Le Panneau)</h4>
+                    <p>Le compilateur vous prévient : "Attention, cette route peut être barrée (Fichier absent, Réseau
+                        coupé)". Vous <strong>DEVEZ</strong> prévoir un plan B (<code>catch</code>) avant même de
+                        démarrer.</p>
+                </div>
+                <div>
+                    <h4>💥 Unchecked (L'Accident)</h4>
+                    <p>C'est une erreur de conduite (<code>NullPointerException</code>, division par zéro). Ce n'est pas
+                        la route le problème, c'est votre code. Java ne vous oblige pas à le prévoir, il vous demande de
+                        <strong>mieux conduire</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart TD
+                T[Throwable] --> E[Error : Fatal / Matériel]
+                T --> Ex[Exception : Checked / Externe]
+                Ex --> R[RuntimeException : Unchecked / Bug]
+
+                style T fill:#1c2128,stroke:#ffa94d,stroke-width:2px,color:#f0f6fc
+                style E fill:#ff7b72,stroke:#3d444d,color:#0d1117
+                style Ex fill:#e3b341,stroke:#3d444d,color:#0d1117
+                style R fill:#ff7b72,stroke:#3d444d,color:#0d1117
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Hiérarchie : Les Errors
+                sont fatales (OOM). Les RuntimeExceptions sont des bugs de logique.</p>
+        </div>
+
+        <!-- Try-Catch-Finally -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔄 Le Bloc de Sécurité</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Syntaxe Multi-Catch (Java 7+)</div>
+                <pre><span class="kw">try</span> {
+    <span class="var">data</span> = <span class="var">api</span>.<span class="mt">fetch</span>();
+    <span class="var">file</span>.<span class="mt">save</span>(<span class="var">data</span>);
+} <span class="kw">catch</span> (<span class="type">IOException</span> | <span class="type">SQLException</span> <span class="var">e</span>) {
+    <span class="com">// Regrouper les erreurs similaires</span>
+    <span class="type">Log</span>.<span class="mt">error</span>(<span class="str">"Échec I/O"</span>, <span class="var">e</span>);
+} <span class="kw">finally</span> {
+    <span class="com">// Exécuté QUOI QU'IL ARRIVE</span>
+    <span class="type">System</span>.out.println(<span class="str">"Nettoyage..."</span>);
+}</pre>
+            </div>
+            <div>
+                <h4>Règles d'Or :</h4>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li><strong>Spécificité</strong> : Attrapez toujours l'exception la plus précise possible (pas juste
+                        <code>catch (Exception e)</code>).</li>
+                    <li><strong>Fail Fast</strong> : Lancez l'exception dès que possible.</li>
+                    <li><strong>No Swallowing</strong> : Ne laissez JAMAIS un bloc catch vide. Loggez au minimum
+                        l'erreur.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Try-with-Resources -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🧹 Gestion des Ressources (Java 7+)</h3>
+        <p>Le <strong>Try-with-Resources</strong> ferme automatiquement vos fichiers ou connexions, même en cas de
+            crash. Plus besoin de <code>finally</code> pour fermer les flux !</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Nettoyage Automatique</div>
+            <pre><span class="com">// Toute classe implémentant AutoCloseable</span>
+<span class="kw">try</span> (<span class="type">BufferedReader</span> <span class="var">br</span> = <span class="kw">new</span> <span class="type">BufferedReader</span>(<span class="kw">new</span> <span class="type">FileReader</span>(<span class="str">"test.txt"</span>))) {
+    <span class="type">System</span>.out.println(<span class="var">br</span>.<span class="mt">readLine</span>());
+} <span class="kw">catch</span> (<span class="type">IOException</span> <span class="var">e</span>) {
+    <span class="com">// br sera fermé automatiquement AVANT d'entrer ici</span>
+    <span class="var">e</span>.<span class="mt">printStackTrace</span>();
+}</pre>
+        </div>
+
+        <!-- Custom Exceptions -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🛡️ Créer sa propre Exception</h3>
+        <p>C'est utile pour donner du sens métier à vos erreurs (ex: <code>InsufficentBalanceException</code>).</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Business Exception</div>
+            <pre><span class="kw">public class</span> <span class="type">UserNotFoundException</span> <span class="kw">extends</span> <span class="type">RuntimeException</span> {
+    <span class="kw">public</span> <span class="mt">UserNotFoundException</span>(<span class="type">String</span> <span class="var">msg</span>) {
+        <span class="kw">super</span>(<span class="var">msg</span>);
+    }
+}
+
+<span class="com">// Utilisation</span>
+<span class="kw">if</span> (<span class="var">user</span> == <span class="kw">null</span>) <span class="kw">throw new</span> <span class="type">UserNotFoundException</span>(<span class="str">"ID "</span> + <span class="var">id</span>);</pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Suppressed Exceptions</strong> : Si une erreur survient pendant l'ouverture ET la fermeture d'une
+                ressource, Java garde la première et met les autres en "supprimées" (accessibles via
+                <code>getSuppressed()</code>).</p>
+            <p style="margin-top: 0.75rem;"><strong>Cost of Exceptions</strong> : Créer une exception coûte cher en
+                ressources car Java doit capturer la "Stack Trace" (le chemin parcouru). Ne les utilisez pas pour
+                contrôler le flux normal du programme.</p>
+            <p style="margin-top: 0.75rem;"><strong>Lombok @SneakyThrows</strong> : Un outil qui permet de lancer des
+                Checked exceptions sans les déclarer. À utiliser avec une extrême prudence !</p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : Traitement de Fichier Robuste</h4>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Pattern de production</div>
+                <pre><span class="kw">public void</span> <span class="mt">processOrder</span>(<span class="type">String</span> <span class="var">file</span>) {
+    <span class="kw">try</span> (<span class="var">var</span> <span class="var">input</span> = <span class="kw">new</span> <span class="type">Scanner</span>(<span class="kw">new</span> <span class="type">File</span>(<span class="var">file</span>))) {
+        <span class="com">// Traitement...</span>
+    } <span class="kw">catch</span> (<span class="type">FileNotFoundException</span> <span class="var">e</span>) {
+        <span class="kw">throw new</span> <span class="type">OrderException</span>(<span class="str">"Fichier de commande manquant"</span>, <span class="var">e</span>); <span class="com">// Chaining !</span>
+    }
+}</pre>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Le "Chaining"</strong> (passer <code>e</code> au constructeur de la
+                nouvelle exception) permet de garder l'erreur d'origine visible dans les logs.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Catch Throwable</strong> : Ne faites JAMAIS <code>catch (Throwable t)</code>. Vous pourriez
+                attraper des <code>OutMemoryError</code> que vous ne pouvez pas gérer, empêchant la JVM de s'arrêter
+                proprement.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Oublier throws</strong> : Si vous lancez une Checked Exception,
+                vous devez soit la <code>catch</code>, soit ajouter <code>throws MyException</code> à la signature de
+                votre méthode.</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Return dans finally</strong> : Évitez de mettre un
+                <code>return</code> dans un bloc <code>finally</code>, cela écrasera le retour (ou l'exception) du bloc
+                try principal.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Stack Walking API (Java 9)</strong> : Parcourir la pile d'exécution efficacement</li>
+                <li><strong>Exception Translation</strong> : Convertir des exceptions bas niveau (SQL) en exceptions
+                    haut niveau (Métier)</li>
+                <li><strong>Assertions</strong> : Utiliser <code>assert</code> pour valider des hypothèses pendant le
+                    développement</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

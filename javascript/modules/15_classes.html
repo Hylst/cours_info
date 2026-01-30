@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .class-card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .class-title {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .class-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .badge-public {
+            background: #4caf50;
+            color: white;
+        }
+
+        .badge-private {
+            background: #f44336;
+            color: white;
+        }
+
+        .badge-static {
+            background: #ff9800;
+            color: white;
+        }
+
+        .builder {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .builder-controls {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .builder-output {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 200px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.85rem;
+        }
+
+        .code-preview {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid var(--primary);
+        }
+
+        .inheritance-diagram {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .inheritance-box {
+            display: inline-block;
+            padding: 15px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .inheritance-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s15" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">15</div>
+                <div>
+                    <h2 class="sec-title">Classes ES6+</h2>
+                    <p class="sec-sub">Programmation Orientée Objet Moderne</p>
+                </div>
+            </div>
+
+            <p>Les classes JavaScript sont du <strong>sucre syntaxique</strong> sur les prototypes, mais apportent une
+                syntaxe claire et des fonctionnalités modernes comme les champs privés (#) et les propriétés statiques.
+            </p>
+
+            <!-- BASIC SYNTAX -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">📘 Syntaxe de Base
+            </h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">class User {
+    // Champs publics (ES2022)
+    role = 'user';
+    
+    // Champ privé (préfixe #)
+    #password;
+    
+    constructor(name, password) {
+        this.name = name;           // Propriété publique
+        this.#password = password;  // Propriété privée
+    }
+    
+    // Méthode publique
+    greet() {
+        return `Hello, ${this.name}!`;
+    }
+    
+    // Getter (accès comme propriété)
+    get displayName() {
+        return this.name.toUpperCase();
+    }
+    
+    // Setter (modification comme propriété)
+    set displayName(value) {
+        this.name = value.toLowerCase();
+    }
+    
+    // Méthode privée
+    #validatePassword() {
+        return this.#password.length >= 8;
+    }
+    
+    // Méthode statique (appelée sur la classe, pas l'instance)
+    static isValidName(name) {
+        return name.length > 2;
+    }
+}
+
+// Utilisation
+const user = new User('Alice', 'secret123');
+console.log(user.greet());           // "Hello, Alice!"
+console.log(user.displayName);       // "ALICE" (getter)
+user.displayName = 'Bob';            // Utilise le setter
+console.log(user.name);              // "bob"
+
+// console.log(user.#password);      // ❌ SyntaxError: Private field
+console.log(User.isValidName('Al')); // false (static)</code></pre>
+            </div>
+
+            <!-- CLASS FEATURES -->
+            <h3 style="margin-top:40px;">🔧 Fonctionnalités des Classes</h3>
+
+            <div class="class-grid">
+                <div class="class-card">
+                    <div class="class-title"><span class="class-badge badge-public">PUBLIC</span> Champs Publics</div>
+                    <pre style="margin:10px 0; font-size:0.85rem"><code class="language-javascript">class Counter {
+    count = 0;  // Initialisé
+    
+    increment() {
+        this.count++;
+    }
+}</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Accessibles de partout</div>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-title"><span class="class-badge badge-private">PRIVATE</span> Champs Privés</div>
+                    <pre style="margin:10px 0; font-size:0.85rem"><code class="language-javascript">class BankAccount {
+    #balance = 0;
+    
+    deposit(amount) {
+        this.#balance += amount;
+    }
+}</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Inaccessibles de l'extérieur</div>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-title"><span class="class-badge badge-static">STATIC</span> Méthodes Statiques
+                    </div>
+                    <pre style="margin:10px 0; font-size:0.85rem"><code class="language-javascript">class Math2 {
+    static add(a, b) {
+        return a + b;
+    }
+}
+Math2.add(2, 3); // 5</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Appelées sur la classe</div>
+                </div>
+
+                <div class="class-card">
+                    <div class="class-title">🔄 Getters / Setters</div>
+                    <pre style="margin:10px 0; font-size:0.85rem"><code class="language-javascript">class Circle {
+    #radius = 0;
+    
+    get area() {
+        return Math.PI * this.#radius ** 2;
+    }
+}</code></pre>
+                    <div style="font-size:0.85rem; opacity:0.8">Propriétés calculées</div>
+                </div>
+            </div>
+
+            <!-- INHERITANCE -->
+            <h3 style="margin-top:40px;">🧬 Héritage avec extends</h3>
+
+            <div class="inheritance-diagram">
+                <div class="inheritance-box" style="background:var(--accent)">Animal (Parent)</div>
+                <div class="inheritance-arrow">↓</div>
+                <div class="inheritance-box">Dog (Enfant)</div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// Classe parente
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    speak() {
+        return `${this.name} makes a sound`;
+    }
+}
+
+// Classe enfant (hérite de Animal)
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);  // ⚠️ Obligatoire : appelle le constructeur parent
+        this.breed = breed;
+    }
+    
+    // Override (surcharge) de la méthode parent
+    speak() {
+        return `${this.name} barks!`;
+    }
+    
+    // Appeler la méthode parent
+    speakLikeAnimal() {
+        return super.speak();  // Appelle Animal.speak()
+    }
+}
+
+const dog = new Dog('Rex', 'Labrador');
+console.log(dog.speak());              // "Rex barks!"
+console.log(dog.speakLikeAnimal());    // "Rex makes a sound"
+console.log(dog instanceof Dog);       // true
+console.log(dog instanceof Animal);    // true</code></pre>
+            </div>
+
+            <!-- INTERACTIVE BUILDER -->
+            <div class="builder">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Constructeur de Classe Interactif</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Créez une classe et voyez le code généré.</p>
+
+                <div class="builder-controls">
+                    <div style="display:grid; grid-template-columns: 120px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Nom de classe :</label>
+                        <input type="text" id="class-name" class="demo-input" placeholder="MyClass" value="Product">
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 120px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Propriétés :</label>
+                        <input type="text" id="class-props" class="demo-input" placeholder="name, price"
+                            value="name, price, stock">
+                    </div>
+
+                    <div style="display:flex; gap:10px; align-items:center">
+                        <label style="font-weight:500">
+                            <input type="checkbox" id="add-private" checked> Ajouter champ privé (#id)
+                        </label>
+                        <label style="font-weight:500">
+                            <input type="checkbox" id="add-static" checked> Ajouter méthode statique
+                        </label>
+                    </div>
+                </div>
+
+                <button class="demo-btn" onclick="generateClass()">🔨 Générer la Classe</button>
+
+                <div id="class-output" class="builder-output" style="margin-top:20px">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur "Générer" pour voir le code</div>
+                </div>
+            </div>
+
+            <!-- ADVANCED PATTERNS -->
+            <h3 style="margin-top:40px;">🎯 Patterns Avancés</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. SINGLETON PATTERN
+class Database {
+    static #instance = null;
+    
+    constructor() {
+        if (Database.#instance) {
+            return Database.#instance;
+        }
+        Database.#instance = this;
+        this.connection = 'Connected';
+    }
+    
+    static getInstance() {
+        if (!Database.#instance) {
+            Database.#instance = new Database();
+        }
+        return Database.#instance;
+    }
+}
+
+const db1 = Database.getInstance();
+const db2 = Database.getInstance();
+console.log(db1 === db2);  // true (même instance)
+
+// 2. FACTORY PATTERN
+class User {
+    constructor(name, role) {
+        this.name = name;
+        this.role = role;
+    }
+    
+    static createAdmin(name) {
+        return new User(name, 'admin');
+    }
+    
+    static createGuest(name) {
+        return new User(name, 'guest');
+    }
+}
+
+const admin = User.createAdmin('Alice');
+const guest = User.createGuest('Bob');
+
+// 3. BUILDER PATTERN
+class QueryBuilder {
+    #query = '';
+    
+    select(fields) {
+        this.#query += `SELECT ${fields} `;
+        return this;  // Chaînage
+    }
+    
+    from(table) {
+        this.#query += `FROM ${table} `;
+        return this;
+    }
+    
+    where(condition) {
+        this.#query += `WHERE ${condition}`;
+        return this;
+    }
+    
+    build() {
+        return this.#query.trim();
+    }
+}
+
+const query = new QueryBuilder()
+    .select('*')
+    .from('users')
+    .where('age > 18')
+    .build();
+// "SELECT * FROM users WHERE age > 18"</code></pre>
+            </div>
+
+            <!-- COMPARISON -->
+            <h3 style="margin-top:40px;">⚖️ Classes vs Prototypes</h3>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; margin:20px 0">
+                <div class="code-container">
+                    <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                            class="dot green"></span></div>
+                    <pre><code class="language-javascript">// Ancienne méthode (Prototype)
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.greet = function() {
+    return 'Hello ' + this.name;
+};
+
+const p = new Person('Alice');</code></pre>
+                </div>
+
+                <div class="code-container">
+                    <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                            class="dot green"></span></div>
+                    <pre><code class="language-javascript">// Nouvelle méthode (Class)
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    greet() {
+        return `Hello ${this.name}`;
+    }
+}
+
+const p = new Person('Alice');</code></pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Équivalence :</strong> Les classes sont du sucre syntaxique. Sous le capot, JavaScript
+                utilise toujours les prototypes. <code>Person.prototype</code> existe même avec la syntaxe class.
+            </div>
+
+            <!-- PITFALLS -->
+            <div class="warning" style="margin-top:30px">
+                <strong>⚠️ Pièges Courants :</strong>
+                <ul style="margin:10px 0; padding-left:20px">
+                    <li><strong>super() obligatoire :</strong> Dans un constructeur enfant, <code>super()</code> doit
+                        être appelé avant d'utiliser <code>this</code>.</li>
+                    <li><strong>Champs privés vraiment privés :</strong> <code>#field</code> n'est pas accessible même
+                        via <code>obj['#field']</code>. C'est une erreur de syntaxe.</li>
+                    <li><strong>this dans les callbacks :</strong> Utilisez les arrow functions ou
+                        <code>.bind(this)</code> pour préserver le contexte.</li>
+                    <li><strong>Pas de hoisting :</strong> Les classes ne sont pas "hoisted". Déclarez-les avant
+                        utilisation.</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Utilisez les champs privés (#) pour l'encapsulation. Préférez les
+                méthodes statiques pour les utilitaires. Utilisez <code>extends</code> avec parcimonie (composition >
+                héritage).
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="14_spread.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Spread</a>
+                <a href="16_utils.html" class="demo-btn" style="text-decoration:none">Suivant: Utilitaires →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/15_classes.js"></script>
+</body>
+
+</html>

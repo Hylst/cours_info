@@ -1,18 +1,69 @@
 :root {
-    --bg-color: #0d1117;
-    --text-color: #e6edf3;
-    --accent-color: #f89820;
+    /* ===== BASE COLORS ===== */
+    --bg-background: #0d1117;
+    --bg-card: #1c2128;
+    --bg-muted: #161b22;
+
+    /* ===== TEXT COLORS (WCAG AA Compliant) ===== */
+    --text-foreground: #f0f6fc;
+    --text-muted-foreground: #9ca3af;
+    --text-accent: #ffa94d;
     /* Java Orange */
-    --secondary-color: #5382a1;
+    --text-primary: #79c0ff;
     /* Java Blue */
-    --code-bg: #161b22;
-    --card-bg: #21262d;
-    --border-color: #30363d;
-    --success: #2ea043;
-    --warning: #d29922;
-    --danger: #f85149;
+
+    /* ===== BORDERS ===== */
+    --border-border: #3d444d;
+    --border-subtle: #21262d;
+
+    /* ===== FUNCTIONAL COLORS ===== */
+    --color-success: #3fb950;
+    --color-warning: #e3b341;
+    --color-danger: #ff7b72;
+    --color-info: #58a6ff;
+
+    /* ===== SYNTAX HIGHLIGHTING ===== */
+    --syntax-kw: #ff9e64;
+    /* Keywords */
+    --syntax-type: #f7d88c;
+    /* Types */
+    --syntax-str: #a5d6ff;
+    /* Strings */
+    --syntax-num: #79c0ff;
+    /* Numbers */
+    --syntax-com: #9ca3af;
+    /* Comments */
+    --syntax-anno: #d2a8ff;
+    /* Annotations */
+
+    /* ===== MERMAID DIAGRAM COLORS ===== */
+    /* Use these in Mermaid diagrams for consistency */
+    --mermaid-bg-dark: #0d1117;
+    /* Dark background */
+    --mermaid-bg-card: #1c2128;
+    /* Card background */
+    --mermaid-accent: #ffa94d;
+    /* Orange (highlight) */
+    --mermaid-primary: #79c0ff;
+    /* Blue (primary) */
+    --mermaid-success: #3fb950;
+    /* Green (success) */
+    --mermaid-danger: #ff7b72;
+    /* Red (danger) */
+    --mermaid-warning: #e3b341;
+    /* Yellow (warning) */
+    --mermaid-text-light: #f0f6fc;
+    /* Light text */
+    --mermaid-text-dark: #0d1117;
+    /* Dark text (for light backgrounds) */
+    --mermaid-border: #3d444d;
+    /* Borders */
+
+    /* ===== TYPOGRAPHY ===== */
     --font-main: 'Outfit', sans-serif;
     --font-code: 'JetBrains Mono', monospace;
+    --font-size-base: 17px;
+    --line-height-base: 1.7;
 }
 
 * {
@@ -21,19 +72,25 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-background);
+    color: var(--text-foreground);
     font-family: var(--font-main);
-    line-height: 1.6;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
     overflow-x: hidden;
 }
 
 /* Header */
 header {
     background: rgba(13, 17, 23, 0.95);
+    /* Keep strict value for transparency, or use var with opacity if needed in future */
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-border);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -58,11 +115,11 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--text-color);
+    color: var(--text-foreground);
 }
 
 .logo-icon {
-    color: var(--accent-color);
+    color: var(--text-accent);
     font-size: 1.8rem;
 }
 
@@ -72,7 +129,7 @@ nav {
 }
 
 nav a {
-    color: var(--text-color);
+    color: var(--text-foreground);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
@@ -81,7 +138,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    color: var(--text-accent);
     opacity: 1;
 }
 
@@ -95,24 +152,24 @@ nav a:hover {
 h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, #fff 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #fff 0%, var(--text-primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    /* Standard property */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    color: #8b949e;
-    max-width: 600px;
+    font-size: 1.25rem;
+    color: var(--text-muted-foreground);
+    max-width: 650px;
     margin: 0 auto;
+    line-height: 1.8;
 }
 
 /* Sections */
 section {
     padding: 3rem 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-border);
 }
 
 .sec-header {
@@ -127,17 +184,18 @@ section {
     font-size: 3rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.05);
+    /* Semantic Issue: Low opacity white for "watermark" style can stay, or use muted/0.1 */
     line-height: 1;
 }
 
 .sec-title {
     font-size: 2rem;
     margin-bottom: 0.2rem;
-    color: var(--text-color);
+    color: var(--text-foreground);
 }
 
 .sec-sub {
-    color: var(--accent-color);
+    color: var(--text-accent);
     font-family: var(--font-code);
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -146,8 +204,8 @@ section {
 
 /* Details/Summary */
 details {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border: 1px solid var(--border-border);
     border-radius: 8px;
     margin-bottom: 2rem;
     overflow: hidden;
@@ -163,7 +221,6 @@ summary {
     gap: 10px;
     transition: background 0.2s;
     list-style: none;
-    /* Hide default triangle */
 }
 
 summary::-webkit-details-marker {
@@ -175,14 +232,15 @@ summary:hover {
 }
 
 details[open] summary {
-    border-bottom: 1px solid var(--border-color);
-    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-border);
+    color: var(--text-accent);
 }
 
 details>div {
     padding: 1.5rem;
     line-height: 1.7;
-    color: #c9d1d9;
+    color: var(--text-foreground);
+    /* Was #c9d1d9, close to foreground */
 }
 
 details p+p {
@@ -191,6 +249,7 @@ details p+p {
 
 strong {
     color: #fff;
+    /* Could be --text-foreground or keep bright white for emphasis */
     font-weight: 600;
 }
 
@@ -201,9 +260,15 @@ strong {
     gap: 20px;
 }
 
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
 .code {
-    background: var(--code-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-border);
     border-radius: 8px;
     overflow: hidden;
     position: relative;
@@ -211,7 +276,7 @@ strong {
 }
 
 .code:hover {
-    border-color: var(--secondary-color);
+    border-color: var(--text-primary);
 }
 
 .code-head {
@@ -219,8 +284,8 @@ strong {
     background: rgba(0, 0, 0, 0.3);
     font-family: var(--font-code);
     font-size: 0.75rem;
-    color: #8b949e;
-    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted-foreground);
+    border-bottom: 1px solid var(--border-border);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -234,96 +299,411 @@ strong {
 }
 
 .dot.r {
-    background: var(--accent-color);
+    background: var(--text-accent);
 }
 
-/* Red/Orange for Java */
 .dot.b {
-    background: var(--secondary-color);
+    background: var(--text-primary);
 }
 
-/* Blue */
 .dot.g {
-    background: var(--text-color);
+    background: var(--text-foreground);
 }
-
-/* Grey */
 
 pre {
     padding: 15px;
     font-family: var(--font-code);
     font-size: 0.85rem;
-    color: #e6edf3;
+    color: var(--text-foreground);
     overflow-x: auto;
     white-space: pre;
 }
 
-/* Syntax Highlighting (Java Style) */
+/* Syntax Highlighting */
 .kw {
-    color: #fe8c00;
+    color: var(--syntax-kw);
     font-weight: bold;
 }
 
-/* Keywords: public, class, void */
 .type {
-    color: #f5d165;
+    color: var(--syntax-type);
     font-weight: bold;
 }
 
-/* Types: String, int */
 .str {
-    color: #a5d6ff;
+    color: var(--syntax-str);
 }
 
-/* Strings */
 .num {
-    color: #79c0ff;
+    color: var(--syntax-num);
 }
 
-/* Numbers */
 .com {
-    color: #8b949e;
+    color: var(--syntax-com);
     font-style: italic;
 }
 
-/* Comments */
 .anno {
-    color: #d2a8ff;
+    color: var(--syntax-anno);
 }
 
-/* Annotations @Override */
 .mt {
-    color: #d2a8ff;
+    color: var(--syntax-anno);
 }
-
-/* Methods */
 
 /* Footer */
 footer {
     padding: 3rem 0;
     text-align: center;
-    color: #8b949e;
-    border-top: 1px solid var(--border-color);
+    color: var(--text-muted-foreground);
+    border-top: 1px solid var(--border-border);
     margin-top: 4rem;
 }
 
 /* Utilities */
 .tip {
     background: rgba(83, 130, 161, 0.1);
-    border-left: 3px solid var(--secondary-color);
+    border-left: 3px solid var(--text-primary);
     padding: 1rem;
     border-radius: 4px;
     font-size: 0.9rem;
-    color: #c9d1d9;
+    color: var(--text-foreground);
 }
+
+.intro-box {
+    background: var(--bg-card) !important;
+    border-bottom: 1px solid var(--border-border) !important;
+    padding: 30px 0;
+}
+
+.intro-box h3 {
+    margin-top: 0;
+    color: var(--text-foreground) !important;
+}
+
+.intro-box p {
+    color: var(--text-foreground) !important;
+    opacity: 0.9;
+}
+
+/* Tool Cards (New) */
+.tool-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-border);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--text-accent);
+}
+
+.tool-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.tool-card h3 {
+    color: var(--text-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.tool-card p {
+    color: var(--text-muted-foreground);
+    font-size: 0.9rem;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
     .grid2 {
         grid-template-columns: 1fr;
     }
+}
 
-    h1 {
-        font-size: 2.5rem;
+/* --- Pedagogical Modules --- */
+
+/* Callouts - Enhanced Spacing */
+.callout {
+    padding: 2rem 2.25rem;
+    border-radius: 12px;
+    margin: 2.5rem 0;
+    border-left: 6px solid;
+    background: var(--bg-card);
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.callout h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    color: var(--text-foreground);
+    font-weight: 600;
+}
+
+.callout p {
+    color: var(--text-foreground);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.callout *:last-child {
+    margin-bottom: 0;
+}
+
+.callout-info {
+    border-color: var(--color-info);
+    background: linear-gradient(90deg, rgba(88, 166, 255, 0.15), var(--bg-card));
+}
+
+.callout-warning {
+    border-color: var(--color-warning);
+    background: linear-gradient(90deg, rgba(227, 179, 65, 0.15), var(--bg-card));
+}
+
+.callout-tip {
+    border-color: var(--color-success);
+    background: linear-gradient(90deg, rgba(63, 185, 80, 0.15), var(--bg-card));
+}
+
+.callout-recall {
+    border-color: var(--text-accent);
+    border-style: dashed;
+    background: linear-gradient(90deg, rgba(255, 169, 77, 0.1), var(--bg-card));
+}
+
+/* Analogy Block - Enhanced */
+.analogy {
+    background: linear-gradient(135deg, rgba(255, 169, 77, 0.08) 0%, var(--bg-muted) 100%);
+    border: 2px solid rgba(255, 169, 77, 0.3);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.analogy::before {
+    content: "💡 ANALOGIE";
+    display: block;
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    color: var(--text-accent);
+    margin-bottom: 1.25rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.analogy p {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-foreground);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+/* Use Case Block - Enhanced */
+.use-case {
+    background: linear-gradient(180deg, rgba(88, 166, 255, 0.08) 0%, var(--bg-card) 100%);
+    border: 2px solid rgba(88, 166, 255, 0.25);
+    border-radius: 12px;
+    padding: 2.25rem 2.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.use-case *:last-child,
+.analogy *:last-child {
+    margin-bottom: 0;
+}
+
+.use-case h4 {
+    color: var(--text-foreground);
+    border-bottom: 2px solid var(--color-info);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-code);
+    font-size: 1.1rem;
+}
+
+.use-case p,
+.use-case ul {
+    color: var(--text-foreground);
+    line-height: 1.8;
+}
+
+/* Diagram Container - DARK THEME for readability */
+.diagram-container {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    overflow-x: auto;
+    border: 1px solid var(--border-border);
+    /* Dark background ensures Mermaid text is readable */
+}
+
+/* Details Animation */
+details[open] summary~* {
+    animation: sweep .3s ease-in-out;
+}
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--color-info);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    border: none;
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    background: var(--text-primary);
+    transform: translateY(-5px);
+}
+
+/* Scroll Progress Bar */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-info), var(--color-success));
+    z-index: 1001;
+    transition: width 0.1s;
+}
+
+/* Animations Classes */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Hover Effects Enhancements */
+.sec-title {
+    transition: color 0.3s;
+}
+
+.sec-header:hover .sec-title {
+    color: var(--text-primary);
+}
+
+.analogy,
+.use-case,
+.callout {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analogy:hover,
+.use-case:hover,
+.callout:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* TOC Sidebar */
+#toc-sidebar {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 220px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    background: rgba(13, 17, 23, 0.9);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-border);
+    border-radius: 8px;
+    padding: 1rem;
+    z-index: 900;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-border) transparent;
+}
+
+@media (min-width: 1400px) {
+    #toc-sidebar {
+        display: block;
     }
 }
+
+#toc-sidebar ul {
+    list-style: none;
+}
+
+#toc-sidebar li {
+    margin-bottom: 0.5rem;
+}
+
+#toc-sidebar a {
+    display: block;
+    color: var(--text-muted-foreground);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#toc-sidebar a:hover {
+    color: var(--text-foreground);
+    padding-left: 5px;
+}
+
+#toc-sidebar a.active {
+    color: var(--text-accent);
+    font-weight: bold;
+    border-left: 2px solid var(--text-accent);
+    padding-left: 8px;
+}
+

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header injected by layout.js -->
+
+    <main class="container">
+        <section id="s13" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">13</div>
+                <div>
+                    <h2 class="sec-title">LocalStorage</h2>
+                    <p class="sec-sub">Persistance des données</p>
+                </div>
+            </div>
+
+            <p>Le Web Storage API fournit des mécanismes de stockage côté client : <strong>localStorage</strong>
+                (persistant) et <strong>sessionStorage</strong> (temporaire). Essentiel pour sauvegarder des préférences
+                utilisateur et des données hors ligne.</p>
+
+            <!-- LOCALSTORAGE VS SESSIONSTORAGE -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">📦 localStorage vs
+                sessionStorage</h3>
+
+            <table style="width:100%; border-collapse:collapse; margin:20px 0; font-size:0.9rem">
+                <thead>
+                    <tr style="border-bottom:2px solid var(--border)">
+                        <th style="text-align:left; padding:10px; color:var(--muted)">Caractéristique</th>
+                        <th style="text-align:left; padding:10px; color:var(--muted)">localStorage</th>
+                        <th style="text-align:left; padding:10px; color:var(--muted)">sessionStorage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                        <td style="padding:10px"><strong>Persistance</strong></td>
+                        <td style="padding:10px">✅ Permanent (jusqu'à suppression manuelle)</td>
+                        <td style="padding:10px">⏱️ Temporaire (fin de session)</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                        <td style="padding:10px"><strong>Portée</strong></td>
+                        <td style="padding:10px">Partagé entre tous les onglets du domaine</td>
+                        <td style="padding:10px">Isolé par onglet</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                        <td style="padding:10px"><strong>Capacité</strong></td>
+                        <td style="padding:10px">~5-10 MB (selon navigateur)</td>
+                        <td style="padding:10px">~5-10 MB (selon navigateur)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px"><strong>Cas d'usage</strong></td>
+                        <td style="padding:10px">Préférences, thème, cache</td>
+                        <td style="padding:10px">Formulaires multi-étapes, panier temporaire</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- BASIC OPERATIONS -->
+            <h3 style="margin-top:40px;">🔧 Opérations de Base</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <pre><code class="language-javascript">// CRÉER / MODIFIER
+localStorage.setItem("username", "Alice");
+sessionStorage.setItem("tempData", "xyz");
+
+// LIRE
+const user = localStorage.getItem("username");  // "Alice"
+const temp = sessionStorage.getItem("tempData"); // "xyz"
+
+// SUPPRIMER UNE CLÉ
+localStorage.removeItem("username");
+
+// TOUT SUPPRIMER
+localStorage.clear();
+sessionStorage.clear();
+
+// VÉRIFIER L'EXISTENCE
+if (localStorage.getItem("theme")) {
+    // La clé existe
+}
+
+// NOMBRE D'ÉLÉMENTS
+console.log(localStorage.length);  // 0, 1, 2...
+
+// ACCÉDER PAR INDEX
+const key = localStorage.key(0);  // Nom de la 1ère clé
+const value = localStorage.getItem(key);</code></pre>
+            </div>
+
+            <!-- JSON STORAGE -->
+            <h3 style="margin-top:40px;">📋 Stocker des Objets (JSON)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <pre><code class="language-javascript">// ❌ ERREUR FRÉQUENTE : Stocker directement un objet
+const user = { name: "Alice", age: 25 };
+localStorage.setItem("user", user);
+// Stocke "[object Object]" → INUTILISABLE !
+
+// ✅ SOLUTION : Sérialiser avec JSON.stringify
+localStorage.setItem("user", JSON.stringify(user));
+
+// RÉCUPÉRATION : Désérialiser avec JSON.parse
+const savedUser = localStorage.getItem("user");
+const parsedUser = savedUser ? JSON.parse(savedUser) : null;
+
+// PATTERN : Helper Functions
+const storage = {
+    set(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    },
+    get(key, defaultValue = null) {
+        const item = localStorage.getItem(key);
+        try {
+            return item ? JSON.parse(item) : defaultValue;
+        } catch {
+            return defaultValue;
+        }
+    },
+    remove(key) {
+        localStorage.removeItem(key);
+    }
+};
+
+// Usage
+storage.set("config", { theme: "dark", lang: "fr" });
+const config = storage.get("config", { theme: "light", lang: "en" });</code></pre>
+            </div>
+
+            <!-- PRACTICAL EXAMPLES -->
+            <h3 style="margin-top:40px;">💼 Cas d'Usage Pratiques</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <pre><code class="language-javascript">// 1. THÈME DARK/LIGHT PERSISTANT
+function saveTheme(theme) {
+    localStorage.setItem("theme", theme);
+    document.body.className = theme;
+}
+
+function loadTheme() {
+    const theme = localStorage.getItem("theme") || "light";
+    document.body.className = theme;
+}
+
+// Au chargement de la page
+loadTheme();
+
+// 2. FORMULAIRE MULTI-ÉTAPES (sessionStorage)
+function saveDraft() {
+    const formData = {
+        step1: { name: document.getElementById("name").value },
+        step2: { email: document.getElementById("email").value }
+    };
+    sessionStorage.setItem("formDraft", JSON.stringify(formData));
+}
+
+function loadDraft() {
+    const draft = sessionStorage.getItem("formDraft");
+    if (draft) {
+        const data = JSON.parse(draft);
+        // Remplir les champs
+    }
+}
+
+// 3. HISTORIQUE D'ACTIONS (avec limite)
+function addToHistory(action) {
+    const history = JSON.parse(localStorage.getItem("history") || "[]");
+    history.unshift(action);  // Ajouter au début
+    
+    // Limiter à 10 dernières actions
+    if (history.length > 10) history.pop();
+    
+    localStorage.setItem("history", JSON.stringify(history));
+}
+
+// 4. CACHE AVEC EXPIRATION
+function cacheWithExpiry(key, value, ttlMinutes) {
+    const item = {
+        value: value,
+        expiry: Date.now() + (ttlMinutes * 60 * 1000)
+    };
+    localStorage.setItem(key, JSON.stringify(item));
+}
+
+function getCachedItem(key) {
+    const itemStr = localStorage.getItem(key);
+    if (!itemStr) return null;
+    
+    const item = JSON.parse(itemStr);
+    if (Date.now() > item.expiry) {
+        localStorage.removeItem(key);
+        return null;
+    }
+    return item.value;
+}</code></pre>
+            </div>
+
+            <!-- INTERACTIVE DEMO -->
+            <div style="background:var(--bg2); padding:25px; border-radius:12px; margin:30px 0">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 Playground Storage</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez localStorage en temps réel. Les données persisteront
+                    même après rechargement de la page.</p>
+
+                <div style="display:grid; gap:12px; margin-bottom:15px">
+                    <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Clé :</label>
+                        <input type="text" id="storage-key" class="demo-input" placeholder="theme" value="username">
+                    </div>
+                    <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px; align-items:center">
+                        <label style="font-weight:500">Valeur :</label>
+                        <input type="text" id="storage-value" class="demo-input" placeholder="dark">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px">
+                    <button class="demo-btn" onclick="demoSetItem()">💾 setItem</button>
+                    <button class="demo-btn" onclick="demoGetItem()">📖 getItem</button>
+                    <button class="demo-btn" onclick="demoRemoveItem()">🗑️ removeItem</button>
+                    <button class="demo-btn" onclick="demoClearAll()"
+                        style="background:var(--bg2); border:1px solid var(--border)">🧹 clear()</button>
+                    <button class="demo-btn" onclick="demoListAll()"
+                        style="background:var(--bg2); border:1px solid var(--border)">📋 Lister tout</button>
+                </div>
+
+                <div id="storage-output"
+                    style="background:var(--bg); padding:20px; border-radius:8px; min-height:100px; font-family:'JetBrains Mono'; font-size:0.85rem">
+                    <div style="opacity:0.5; text-align:center">Sélectionnez une action</div>
+                </div>
+            </div>
+
+            <!-- STORAGE EVENT -->
+            <h3 style="margin-top:40px;">📡 Storage Event (Synchronisation entre onglets)</h3>
+
+            <div class="code-container">
+                <div class="code-header-mac">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <pre><code class="language-javascript">// Écouter les changements de localStorage dans AUTRES onglets
+window.addEventListener('storage', (e) => {
+    console.log('Clé modifiée:', e.key);
+    console.log('Ancienne valeur:', e.oldValue);
+    console.log('Nouvelle valeur:', e.newValue);
+    console.log('URL:', e.url);
+    
+    // Exemple : Synchroniser le thème
+    if (e.key === 'theme') {
+        document.body.className = e.newValue;
+    }
+});
+
+// ⚠️ ATTENTION : L'événement ne se déclenche PAS dans l'onglet qui a modifié le storage
+// Il ne se déclenche que dans les AUTRES onglets du même domaine</code></pre>
+            </div>
+
+            <!-- TIPS AND WARNINGS -->
+            <div class="tip">
+                <strong>Best Practice :</strong> Créez des helpers pour sérialiser/désérialiser automatiquement.
+                Utilisez <code>try/catch</code> lors du parsing JSON pour éviter les erreurs. Préfixez vos clés (ex:
+                <code>app_theme</code>) pour éviter les conflits. Utilisez <code>sessionStorage</code> pour les données
+                sensibles temporaires.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Sécurité :</strong> Ne stockez JAMAIS de mots de passe, tokens d'authentification ou données
+                sensibles dans <code>localStorage</code> ou <code>sessionStorage</code>. Ces storages sont vulnérables
+                aux attaques XSS (Cross-Site Scripting). Pour l'authentification, utilisez des cookies
+                <code>HttpOnly</code> et <code>Secure</code>.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Limites :</strong> Les données sont stockées en tant que <strong>strings uniquement</strong>.
+                La capacité est limitée (~5-10MB). Les opérations sont <strong>synchrones</strong> et peuvent bloquer le
+                thread. Pour de grandes quantités de données, utilisez <strong>IndexedDB</strong>.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="12_fetch.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">← Fetch</a>
+                <a href="14_spread.html" class="demo-btn" style="text-decoration:none">Suivant: Spread/Rest →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer injected by layout.js -->
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/13_storage.js"></script>
+</body>
+
+</html>

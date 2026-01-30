@@ -1,0 +1,212 @@
+<section id="c8">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">08</div>
+            <div>
+                <h2 class="sec-title">Interfaces</h2>
+                <p class="sec-sub">Contrats & Capacités</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître l'héritage (C7).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Pourquoi les interfaces sont plus puissantes que
+                l'héritage, et comment elles permettent de connecter des objets qui n'ont rien à voir entre eux.</p>
+            <p><strong>Temps de lecture</strong> : ~15 minutes | <strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔌 L'Interface : Le Contrat Universel</h3>
+        <p>Une <strong>interface</strong> est un "contrat" de service. Elle ne dit pas **comment** faire les choses,
+            mais **quoi** faire. C'est l'outil fondamental pour le <strong>découplage</strong> : vous dépendez d'une
+            capacité (ex: "Savoir Imprimer") plutôt que d'un objet précis (ex: "Imprimante HP Laserjet 3000").</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>La Prise Électrique Standard</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>🔌 Le Contrat (Interface)</h4>
+                    <p>La prise murale définit une forme standard (2 trous). Elle ne produit pas d'électricité
+                        elle-même, elle dit juste : "Si tu veux te brancher et recevoir du courant, tu dois avoir cette
+                        forme".</p>
+                </div>
+                <div>
+                    <h4>💡 L'Implémentation (Classe)</h4>
+                    <p>La lampe, l'aspirateur ou le chargeur <strong>implémentent</strong> cette forme. Le réseau
+                        électrique ne sait pas ce qu'il alimente, il sait juste que l'objet respecte le contrat.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                classDiagram
+                class Flyable {
+                <<interface>>
+                    +fly()*
+                    }
+                    Bird ..|> Flyable : implements
+                    Plane ..|> Flyable : implements
+                    Superman ..|> Flyable : implements
+                    style Flyable fill:#1c2128,stroke:#ffa94d,stroke-width:2px,color:#f0f6fc
+                    style Bird fill:#161b22,stroke:#3d444d,color:#f0f6fc
+                    style Plane fill:#161b22,stroke:#3d444d,color:#f0f6fc
+                    style Superman fill:#161b22,stroke:#3d444d,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">L'interface définit la
+                capacité "Voler". Oiseaux et Avions n'ont rien en commun génétiquement, mais partagent cette capacité.
+            </p>
+        </div>
+
+        <!-- Abstract Class vs Interface -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚖️ Classe Abstrait vs Interface</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Critère</th>
+                    <th>Abstract Class (Mère)</th>
+                    <th>Interface (Contrat)</th>
+                </tr>
+                <tr>
+                    <td><strong>Relation</strong></td>
+                    <td><strong>IS-A</strong> (Est un) : Un Chien est un Animal.</td>
+                    <td><strong>CAN-DO</strong> (Sait faire) : Un Avion sait voler.</td>
+                </tr>
+                <tr>
+                    <td><strong>Héritage</strong></td>
+                    <td>Unique (une seule mère).</td>
+                    <td><strong>Multiple</strong> (autant de capacités qu'on veut).</td>
+                </tr>
+                <tr>
+                    <td><strong>État</strong></td>
+                    <td>Peut avoir des variables d'instance (champs).</td>
+                    <td>Constantes uniquement (<code>public static final</code>).</td>
+                </tr>
+                <tr>
+                    <td><strong>Utilisation</strong></td>
+                    <td>Partager du code entre classes proches.</td>
+                    <td>Connecter des classes totalement différentes.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Evolution -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🚀 Évolution : L'Interface Moderne</h3>
+        <p>Depuis Java 8, 9 et 11, les interfaces ne sont plus seulement des listes de méthodes vides. Elles peuvent
+            contenir de la logique !</p>
+
+        <div class="code" style="margin-top: 1.5rem;">
+            <div class="code-head"><span class="dot g"></span>Méthodes Multiples (Java 8+)</div>
+            <pre><span class="kw">public interface</span> <span class="type">Smartphone</span> {
+    <span class="com">// 1. Méthode Abstraite (À implémenter obligatoirement)</span>
+    <span class="kw">void</span> <span class="mt">call</span>(<span class="type">String</span> <span class="var">number</span>);
+
+    <span class="com">// 2. Méthode Default (Java 8 : Comportement par défaut)</span>
+    <span class="kw">default void</span> <span class="mt">takePhoto</span>() {
+        <span class="type">System</span>.out.println(<span class="str">"Clic-clac !"</span>);
+    }
+
+    <span class="com">// 3. Méthode Static (Java 8 : Utilitaire lié au type)</span>
+    <span class="kw">static boolean</span> <span class="mt">isValidNumber</span>(<span class="type">String</span> <span class="var">n</span>) {
+        <span class="kw">return</span> <span class="var">n</span> != <span class="kw">null</span> && <span class="var">n</span>.length() == <span class="num">10</span>;
+    }
+
+    <span class="com">// 4. Méthode Private (Java 9 : Pour factoriser le code interne)</span>
+    <span class="kw">private void</span> <span class="mt">setupHardware</span>() { <span class="com">/* ... */</span> }
+}</pre>
+        </div>
+
+        <!-- Functional Interfaces -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚡ Interfaces Fonctionnelles & Lambdas</h3>
+        <div class="callout callout-tip">
+            <h4>💡 Le Coeur du Java Moderne</h4>
+            <p>Une interface avec <strong>une seule méthode abstraite</strong> est une <strong>Interface
+                    Fonctionnelle</strong>. Elle peut être remplacée par une expression <strong>Lambda</strong>.</p>
+            <p style="margin-top: 0.5rem;"><strong>Exemple</strong> : La capacité "Exécuter quelque chose".</p>
+            <div class="code" style="margin-top: 1rem;">
+                <pre><span class="man">@FunctionalInterface</span>
+<span class="kw">public interface</span> <span class="type">Clicker</span> {
+    <span class="kw">void</span> <span class="mt">onClick</span>();
+}
+
+<span class="com">// Version Classique</span>
+<span class="var">btn</span>.<span class="mt">setClicker</span>(<span class="kw">new</span> <span class="type">Clicker</span>() { <span class="man">@Override</span> <span class="kw">public void</span> <span class="mt">onClick</span>() { <span class="com">/* ... */</span> } });
+
+<span class="com">// Version Lambda (Java 8+)</span>
+<span class="var">btn</span>.<span class="mt">setClicker</span>(() -> <span class="type">System</span>.out.println(<span class="str">"Cliqué !"</span>));</pre>
+            </div>
+        </div>
+
+        <!-- Java Standard Interfaces -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">📚 Les Interfaces Standards à connaître</h3>
+        <ul style="margin-left: 1.5rem;">
+            <li><strong><code>Comparable<T></code></strong> : Pour trier des objets (méthode <code>compareTo</code>).
+            </li>
+            <li><strong><code>Serializable</code></strong> : Interface "Marqueur" (vide) pour dire à Java : "Tu peux
+                sauvegarder cet objet sur disque".</li>
+            <li><strong><code>AutoCloseable</code></strong> : Pour utiliser le <code>try-with-resources</code> (méthode
+                <code>close</code>).</li>
+        </ul>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Diamond Problem</strong> : Si vous implémentez 2 interfaces qui ont la même méthode
+                <code>default</code>, Java vous oblige à redéfinir la méthode pour lever l'ambiguïté.</p>
+            <p style="margin-top: 0.75rem;"><strong>Pourquoi pas de champs ?</strong> Une interface définit un
+                comportement (verbe), pas un état (nom). Elle est totalement "stateless".</p>
+            <p style="margin-top: 0.75rem;"><strong>API JDBC</strong> : C'est le meilleur exemple d'interfaces. Vous
+                utilisez l'interface <code>Connection</code>, et peu importe si c'est MySQL ou Oracle derrière, le code
+                reste le même.</p>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🎮 Cas Réel : Système de Paiement</h4>
+            <p><strong>Scénario</strong> : Votre site doit accepter PayPal, CB, et Apple Pay.</p>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot b"></span>Strategy Pattern</div>
+                <pre><span class="kw">public interface</span> <span class="type">PaymentMethod</span> {
+    <span class="kw">void</span> <span class="mt">pay</span>(<span class="kw">int</span> <span class="var">amount</span>);
+}
+
+<span class="kw">public class</span> <span class="type">Paypal</span> <span class="kw">implements</span> <span class="type">PaymentMethod</span> { <span class="com">/* ... */</span> }
+<span class="kw">public class</span> <span class="type">CreditCard</span> <span class="kw">implements</span> <span class="type">PaymentMethod</span> { <span class="com">/* ... */</span> }
+
+<span class="com">// Dans votre panier d'achat :</span>
+<span class="kw">public void</span> <span class="mt">checkout</span>(<span class="type">PaymentMethod</span> <span class="var">method</span>, <span class="kw">int</span> <span class="var">total</span>) {
+    <span class="var">method</span>.<span class="mt">pay</span>(<span class="var">total</span>); <span class="com">// On s'en fiche de la méthode, tant qu'elle sait "payer"</span>
+}</pre>
+            </div>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. Trop d'interfaces</strong> : N'abstraisez pas tout par plaisir. Si vous n'avez qu'une seule
+                implémentation prévue pour l'éternité, une classe simple suffit.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Casser la compatibilité</strong> : Ajouter une méthode abstraite
+                à une interface existante casse TOUTES les classes qui l'implémentent. Utilisez <code>default</code>
+                pour éviter cela.</p>
+            <p style="margin-top: 0.75rem;"><strong>3. Interface Pollution</strong> : Ne mettez pas de constantes
+                partout dans les interfaces (Anti-pattern "Constant Interface"). Utilisez des Enums ou des classes de
+                constantes.</p>
+        </div>
+
+        <!-- Pour Aller Plus Loin -->
+        <div class="callout callout-tip" style="margin-top: 2rem;">
+            <h4>🚀 Pour Aller Plus Loin</h4>
+            <p><strong>Concepts avancés</strong> :</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Mixins</strong> : Simuler l'héritage multiple via les méthodes <code>default</code></li>
+                <li><strong>Service Loader API</strong> : Charger des implémentations d'interfaces dynamiquement</li>
+                <li><strong>Dynamic Proxies</strong> : Créer des implémentations d'interfaces au runtime (utilisé par
+                    Spring)</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

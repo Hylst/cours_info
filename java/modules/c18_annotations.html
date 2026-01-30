@@ -1,0 +1,128 @@
+<section id="c18">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">18</div>
+            <div>
+                <h2 class="sec-title">Annotations & Reflection</h2>
+                <p class="sec-sub">La Magie des Frameworks</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Quoi ?</strong> : Les métadonnées (Annotations) et la capacité d'examiner/modifier le code au
+                moment de l'exécution (Réflexion).</p>
+            <p><strong>Pourquoi ?</strong> : C'est la base de Spring, Hibernate, JUnit, Jackson. Comprendre ça, c'est
+                comprendre comment "la magie" fonctionne.</p>
+            <p><strong>Temps de lecture</strong> : ~20 minutes | <strong>Niveau</strong> : ⭐⭐⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🏷️ Les Annotations</h3>
+        <p>Ce ne sont que des étiquettes collées sur le code. Par défaut, <strong>elles ne font rien</strong>. Il faut
+            un outil (Réflexion ou Processeur) pour les lire.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Définir une Annotation</div>
+            <pre><span class="man">@Retention</span>(<span class="type">RetentionPolicy</span>.<span class="const">RUNTIME</span>) <span class="com">// Visible au runtime</span>
+<span class="man">@Target</span>(<span class="type">ElementType</span>.<span class="const">METHOD</span>)         <span class="com">// Sur méthode uniquement</span>
+<span class="kw">public @interface</span> <span class="type">LogExecution</span> {
+    <span class="com">// Paramètres optionnels</span>
+    <span class="type">String</span> <span class="mt">level</span>() <span class="kw">default</span> <span class="str">"INFO"</span>;
+}
+
+<span class="com">// Utilisation</span>
+<span class="kw">class</span> <span class="type">Service</span> {
+    <span class="man">@LogExecution</span>(<span class="var">level</span>=<span class="str">"DEBUG"</span>)
+    <span class="kw">public void</span> <span class="mt">process</span>() { ... }
+}</pre>
+        </div>
+
+        <!-- Reflection -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🪞 La Réflexion (Introspection)</h3>
+        <p>Le <strong>Miroir magique</strong> : Java peut se regarder lui-même. Vous pouvez lister les méthodes d'une
+            classe, appeler des méthodes privées, créer des objets dynamiquement.</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Un mini-framework de test</div>
+            <pre><span class="kw">public void</span> <span class="mt">runTests</span>(<span class="type">Object</span> <span class="var">obj</span>) <span class="kw">throws</span> <span class="type">Exception</span> {
+    <span class="type">Class</span>&lt;?&gt; <span class="var">clazz</span> = <span class="var">obj</span>.<span class="mt">getClass</span>();
+    
+    <span class="com">// Parcourir toutes les méthodes</span>
+    <span class="kw">for</span> (<span class="type">Method</span> <span class="var">m</span> : <span class="var">clazz</span>.<span class="mt">getDeclaredMethods</span>()) {
+        
+        <span class="com">// Vérifier si l'annotation est présente</span>
+        <span class="kw">if</span> (<span class="var">m</span>.<span class="mt">isAnnotationPresent</span>(<span class="type">Test</span>.<span class="kw">class</span>)) {
+            <span class="type">System</span>.out.println(<span class="str">"Running "</span> + <span class="var">m</span>.<span class="mt">getName</span>());
+            
+            <span class="com">// Rendre accessible si private !</span>
+            <span class="var">m</span>.<span class="mt">setAccessible</span>(<span class="kw">true</span>);
+            
+            <span class="com">// Exécuter la méthode (invoke)</span>
+            <span class="var">m</span>.<span class="mt">invoke</span>(<span class="var">obj</span>);
+        }
+    }
+}</pre>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                Source[Code Java] -->|Compile| Bytecode[.class]
+                Bytecode -->|Load| JVM[JVM Runtime]
+
+                CodeUse[Code Normal] -->|Appel Direct| JVM
+                Reflect[Réflexion] -->|Appel Dynamique| Meta[Métadonnées<br />Class
+                <?>, Method, Field]
+                Meta -->|Invoke| JVM
+                
+                style Source fill:#1c2128,stroke:#f0f6fc,color:#f0f6fc
+                style Reflect fill:#ffa94d,stroke:#f0f6fc,color:#0d1117
+                style CodeUse fill:#79c0ff,stroke:#f0f6fc,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">La réflexion ajoute une couche d'indirection (Métadonnées), ce qui a un coût.</p>
+        </div>
+
+        <!-- Performance & Safety -->
+        <div class="grid2" style="margin-top: 2rem;">
+            <div class="callout callout-warning">
+                <h4>⚠️ Coût de Performance</h4>
+                <p>La réflexion est beaucoup plus lente que les appels directs.</p>
+                <ul>
+                    <li>Pas d'optimisation JIT (inlining)</li>
+                    <li>Vérifications de sécurité à chaque appel</li>
+                    <li>Boxing/Unboxing des primitives</li>
+                </ul>
+                <p><strong>Conseil</strong> : Utilisez-la au démarrage (configuration) mais évitez-la dans la boucle principale.</p>
+            </div>
+            <div class="callout callout-danger">
+                <h4>⛔ Rupture d'Encapsulation</h4>
+                <p><code>setAccessible(true)</code> permet de modifier des champs <code>private final</code>. C'est puissant mais dangereux.</p>
+                <p>Avec les <strong>Modules Java 9+</strong>, cette "ouverture" est restreinte. Le code qui abuse de la réflexion peut casser lors d'une mise à jour Java.</p>
+            </div>
+        </div>
+
+        <!-- Cas d'Usage -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : JSON Serializer</h4>
+            <div class="code" style="margin-top: 1rem;">
+                <div class="code-head"><span class="dot r"></span>ToJson Simplifié</div>
+                <pre><span class="kw">public String</span> <span class="mt">toJson</span>(<span class="type">Object</span> <span class="var">o</span>) <span class="kw">throws</span> <span class="type">Exception</span> {
+    <span class="type">StringBuilder</span> <span class="var">json</span> = <span class="kw">new</span> <span class="type">StringBuilder</span>(<span class="str">"{"</span>);
+    
+    <span class="kw">for</span> (<span class="type">Field</span> <span class="var">f</span> : <span class="var">o</span>.<span class="mt">getClass</span>().<span class="mt">getDeclaredFields</span>()) {
+        <span class="var">f</span>.<span class="mt">setAccessible</span>(<span class="kw">true</span>);
+        <span class="kw">if</span> (<span class="var">f</span>.<span class="mt">isAnnotationPresent</span>(<span class="type">JsonIgnore</span>.<span class="kw">class</span>)) <span class="kw">continue</span>;
+        
+        <span class="var">json</span>.append(<span class="str">"\""</span>).append(<span class="var">f</span>.<span class="mt">getName</span>()).append(<span class="str">"\": \""</span>)
+            .append(<span class="var">f</span>.<span class="mt">get</span>(<span class="var">o</span>)).append(<span class="str">"\","</span>);
+    }
+    
+    <span class="kw">return</span> <span class="var">json</span>.append(<span class="str">"}"</span>).toString();
+}</pre>
+            </div>
+        </div>
+
+    </div>
+</section>

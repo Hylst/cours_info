@@ -1,0 +1,154 @@
+<section id="c16">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">16</div>
+            <div>
+                <h2 class="sec-title">Threads & Concurrency</h2>
+                <p class="sec-sub">Du Synchronized aux Virtual Threads (Loom)</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Connaître le fonctionnement de base d'un processeur (Cœur/CPU).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Comment faire plusieurs choses "en même temps" sans que
+                tout s'écroule. La révolution de Java 21 (Virtual Threads).</p>
+            <p><strong>Temps de lecture</strong> : ~25 minutes | <strong>Niveau</strong> : ⭐⭐⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔄 Concurrence vs Parallélisme</h3>
+        <p><strong>Concurrence</strong> : Gérer plusieurs tâches qui progressent "en même temps" (mais pas forcément
+            exécutées au même instant exact). Ex: Un serveur web gérant 1000 clients sur 1 CPU.</p>
+        <p><strong>Parallélisme</strong> : Exécuter réellement plusieurs calculs au même instant exact (sur plusieurs
+            cœurs).</p>
+
+        <!-- Analogy -->
+        <div class="analogy">
+            <p>Le Restaurant : Serveurs vs Robots</p>
+            <div class="grid2" style="margin-top:1rem; text-align:left;">
+                <div>
+                    <h4>👔 Platform Thread (Serveur Humain)</h4>
+                    <p>Un thread classique est lié à l'OS. Il est lourd (2 Mo RAM), coûte cher à créer. Si vous avez 10
+                        000 clients, vous ne pouvez pas embaucher 10 000 serveurs, sinon le restaurant explose.</p>
+                </div>
+                <div>
+                    <h4>🤖 Virtual Thread (Robot Poids-Plume)</h4>
+                    <p>Depuis Java 21 (Project Loom), on a des threads virtuels. Ils pèsent quelques octets. Vous pouvez
+                        en avoir <strong>des millions</strong>. Quand un robot attend (I/O), il se range et laisse la
+                        place sans bloquer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                graph TD
+                subgraph JVM [JVM / Carrier Threads]
+                VT1[Virtual Thread 1] --- CT1[Carrier Thread A]
+                VT2[Virtual Thread 2] --- CT1
+                VT3[Virtual Thread 3] --- CT2[Carrier Thread B]
+                end
+                CT1 --> CPU1[CPU Core 1]
+                CT2 --> CPU2[CPU Core 2]
+
+                style VT1 fill:#3fb950,color:#f0f6fc
+                style VT2 fill:#3fb950,color:#f0f6fc
+                style VT3 fill:#3fb950,color:#f0f6fc
+                style CT1 fill:#79c0ff,color:#f0f6fc
+                style CT2 fill:#79c0ff,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">M:N Mapping : La JVM
+                monte et démonte les Virtual Threads sur les Threads OS (Carriers) dynamiquement.</p>
+        </div>
+
+        <!-- Safety Problems -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">💥 Les Dangers (Race Condition)</h3>
+        <p>Si deux threads modifient la même variable en même temps, le résultat est imprévisible.</p>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Code Dangereux</div>
+                <pre><span class="kw">class</span> <span class="type">Counter</span> {
+    <span class="kw">int</span> <span class="var">count</span> = <span class="num">0</span>;
+
+    <span class="com">// Non Thread-Safe !</span>
+    <span class="com">// T1 lit 0, T2 lit 0</span>
+    <span class="com">// T1 écrit 1, T2 écrit 1 -> Perte !</span>
+    <span class="kw">void</span> <span class="mt">increment</span>() {
+        <span class="var">count</span>++;
+    }
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Solution 1 : Synchronized</div>
+                <pre><span class="kw">class</span> <span class="type">Counter</span> {
+    <span class="kw">int</span> <span class="var">count</span> = <span class="num">0</span>;
+
+    <span class="com">// Un seul thread à la fois !</span>
+    <span class="com">// Les autres attendent (Lock)</span>
+    <span class="kw">synchronized void</span> <span class="mt">increment</span>() {
+        <span class="var">count</span>++;
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- Atomic -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚛️ Solution Moderne : Atomic</h3>
+        <p>Pour des opérations simples, n'utilisez pas <code>synchronized</code> (lent). Utilisez les classes
+            <code>Atomic</code> (CAS - Compare And Swap).</p>
+        <div class="code">
+            <pre><span class="type">AtomicInteger</span> <span class="var">counter</span> = <span class="kw">new</span> <span class="type">AtomicInteger</span>(<span class="num">0</span>);
+
+<span class="var">counter</span>.<span class="mt">incrementAndGet</span>(); <span class="com">// Thread-safe & Ultra rapide</span></pre>
+        </div>
+
+        <!-- Virtual Threads Example -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🚀 La Révolution Java 21</h3>
+        <p>Comment lancer 10 000 tâches simultanées aujourd'hui ? Ne créez pas 10 000 threads OS !</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Virtual Threads & Structured Concurrency</div>
+            <pre><span class="com">// Try-with-resources garantit que tout est fini à la sortie du bloc</span>
+<span class="kw">try</span> (<span class="var">var</span> <span class="var">executor</span> = <span class="type">Executors</span>.<span class="mt">newVirtualThreadPerTaskExecutor</span>()) {
+    
+    <span class="kw">for</span> (<span class="kw">int</span> <span class="var">i</span> = <span class="num">0</span>; <span class="var">i</span> < <span class="num">10_000</span>; <span class="var">i</span>++) {
+        <span class="var">executor</span>.<span class="mt">submit</span>(() -> {
+            <span class="com">// Simulation tâche lente (I/O)</span>
+            <span class="type">Thread</span>.<span class="mt">sleep</span>(<span class="type">Duration</span>.<span class="mt">ofSeconds</span>(<span class="num">1</span>));
+            <span class="kw">return</span> <span class="str">"Done"</span>;
+        });
+    }
+} <span class="com">// Ici, Java attend que les 10 000 soient finis !</span></pre>
+        </div>
+
+        <!-- Deadlock -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⛔ Le Cauchemar : Deadlock (Interblocage)</h4>
+            <p>Quand Thread A attend une ressource que Thread B possède, et Thread B attend une ressource que Thread A
+                possède.</p>
+            <p style="margin-top:0.5rem;"><strong>Exemple</strong> :<br>
+                T1 locks Resource 1, veut Resource 2.<br>
+                T2 locks Resource 2, veut Resource 1.<br>
+                → <strong>Blocage infini</strong>.</p>
+            <p><strong>Solution</strong> : Toujours acquérir les verrous dans le <strong>même ordre</strong> partout.
+            </p>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Volatile</strong> : Le mot-clé <code>volatile</code> garantit seulement la
+                <strong>visibilité</strong> (lecture mémoire fraîche), pas l'<strong>atomicité</strong>.
+                <code>volatile int i = 0; i++</code> n'est PAS thread-safe !</p>
+            <p style="margin-top: 0.75rem;"><strong>ThreadLocal</strong> : Permet d'avoir une variable propre à chaque
+                Thread (ex: Transaction ID). Attention, avec les Virtual Threads il faut éviter d'y stocker trop de
+                données !</p>
+            <p style="margin-top: 0.75rem;"><strong>ReentrantLock</strong> : Une alternative plus flexible à
+                <code>synchronized</code> qui permet des timeouts (`tryLock`).</p>
+        </div>
+
+    </div>
+</section>

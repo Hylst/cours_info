@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctions - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .fn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .fn-card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .fn-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .fn-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+        }
+
+        .fn-feature {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .closure-viz {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .scope-layer {
+            background: var(--card);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .scope-layer.outer {
+            border-left-color: #ff9800;
+        }
+
+        .scope-layer.inner {
+            border-left-color: #4caf50;
+            margin-left: 20px;
+        }
+
+        .var-item {
+            font-family: 'JetBrains Mono';
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .this-playground {
+            background: var(--bg2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .this-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .this-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .this-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+
+        .this-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-side {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .comparison-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .comparison-side.good {
+            border: 2px solid #4caf50;
+        }
+
+        .comparison-side.bad {
+            border: 2px solid #f44336;
+        }
+
+        @media(max-width: 700px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section id="s6" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">06</div>
+                <div>
+                    <h2 class="sec-title">Fonctions Avancées</h2>
+                    <p class="sec-sub">Types, Closures, this & Patterns</p>
+                </div>
+            </div>
+
+            <!-- INTRO -->
+            <p>Les fonctions sont des citoyens de première classe en JS. Elles peuvent être passées, retournées, et
+                stockées comme n'importe quelle valeur.</p>
+
+            <!-- FUNCTION TYPES -->
+            <h3 style="margin-top:30px; border-left: 4px solid var(--primary); padding-left: 12px;">🎯 Les 6 Types de
+                Fonctions</h3>
+
+            <div class="fn-grid">
+                <!-- 1. DECLARATION -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>1️⃣</span> Function Declaration</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">function greet(name) {
+    return `Hello ${name}`;
+}
+
+// ✅ Hoisted (disponible avant)
+// ✅ Nommée (stack traces)</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Fonctions réutilisables, hoisting souhaité
+                    </div>
+                </div>
+
+                <!-- 2. EXPRESSION -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>2️⃣</span> Function Expression</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const greet = function(name) {
+    return `Hello ${name}`;
+};
+
+// ❌ Pas hoisted
+// ✅ Assignable à variable</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Callbacks, assignation conditionnelle
+                    </div>
+                </div>
+
+                <!-- 3. ARROW -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>3️⃣</span> Arrow Function</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">const greet = (name) => `Hello ${name}`;
+
+// ✅ Syntaxe concise
+// ✅ Lexical this (hérite du parent)
+// ❌ Pas de 'arguments'</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Callbacks, méthodes array, pas besoin de `this`
+                    </div>
+                </div>
+
+                <!-- 4. IIFE -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>4️⃣</span> IIFE (Immediately Invoked)</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">(function() {
+    const secret = "privé";
+    console.log(secret);
+})();
+
+// ✅ Scope isolé
+// ✅ Exécution immédiate</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Isolation de scope, module pattern (legacy)
+                    </div>
+                </div>
+
+                <!-- 5. ASYNC -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>5️⃣</span> Async Function</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">async function fetchData() {
+    const res = await fetch(url);
+    return res.json();
+}
+
+// ✅ Retourne toujours Promise
+// ✅ Syntaxe await</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Opérations asynchrones (API, I/O)
+                    </div>
+                </div>
+
+                <!-- 6. GENERATOR -->
+                <div class="fn-card">
+                    <div class="fn-title"><span>6️⃣</span> Generator Function</div>
+                    <pre style="margin:10px 0"><code class="language-javascript">function* count() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+// ✅ Pause/Resume avec yield
+// ✅ Itérable</code></pre>
+                    <div class="fn-feature">
+                        <strong>Quand :</strong> Itération lazy, state machines
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLOSURES -->
+            <h3 style="margin-top:40px;">🔒 Closures : Mémoire Persistante</h3>
+            <p>Une closure permet à une fonction d'accéder aux variables de son scope parent, même après que ce parent
+                ait terminé son exécution.</p>
+
+            <div class="closure-viz">
+                <h4 style="margin-top:0; color:var(--accent)">📦 Visualisation Mémoire</h4>
+                <pre style="margin:15px 0"><code class="language-javascript">function createCounter() {
+    let count = 0; // ← Variable capturée
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+counter(); // 1
+counter(); // 2 (count persiste !)</code></pre>
+
+                <div style="margin-top:20px">
+                    <div class="scope-layer outer">
+                        <strong style="color:#ff9800">🌍 Global Scope</strong>
+                        <div class="var-item">counter: function</div>
+                    </div>
+                    <div class="scope-layer outer">
+                        <strong style="color:#ff9800">📦 createCounter() Scope (Fermé mais accessible)</strong>
+                        <div class="var-item">count: 2</div>
+                        <div class="scope-layer inner">
+                            <strong style="color:#4caf50">🔒 Fonction retournée (Closure)</strong>
+                            <div style="margin-top:8px; font-size:0.9rem">Accède à <code>count</code> via la closure
+                                chain</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THIS BINDING -->
+            <h3 style="margin-top:40px;">🎯 Le Mystère de `this`</h3>
+            <p>La valeur de `this` dépend de <strong>comment</strong> la fonction est appelée, pas où elle est définie.
+            </p>
+
+            <div class="comparison">
+                <div class="comparison-side good">
+                    <div class="comparison-title" style="color:#4caf50">✅ Arrow Function (Lexical this)</div>
+                    <pre><code class="language-javascript">const obj = {
+    name: "Alice",
+    greet: () => {
+        // this = window/global
+        console.log(this.name);
+    }
+};
+
+// ⚠️ Arrow hérite du parent</code></pre>
+                </div>
+                <div class="comparison-side good">
+                    <div class="comparison-title" style="color:#4caf50">✅ Regular Function</div>
+                    <pre><code class="language-javascript">const obj = {
+    name: "Alice",
+    greet: function() {
+        // this = obj
+        console.log(this.name);
+    }
+};
+
+obj.greet(); // "Alice"</code></pre>
+                </div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// Les 4 façons de lier 'this'
+
+// 1. Appel méthode : this = objet
+obj.method();
+
+// 2. Appel simple : this = undefined (strict) ou window
+fn();
+
+// 3. call/apply : this = premier argument
+fn.call(customThis, arg1, arg2);
+fn.apply(customThis, [arg1, arg2]);
+
+// 4. bind : crée nouvelle fonction avec this fixé
+const boundFn = fn.bind(customThis);
+boundFn();</code></pre>
+            </div>
+
+            <!-- THIS PLAYGROUND -->
+            <div class="this-playground">
+                <h3 style="margin-top:0; color:var(--accent)">🎮 This Playground</h3>
+                <p style="opacity:0.8; margin-bottom:20px">Testez comment `this` change selon le contexte d'appel.</p>
+
+                <div class="this-controls">
+                    <div class="this-btn" onclick="testThis('method')">obj.method()</div>
+                    <div class="this-btn" onclick="testThis('standalone')">fn()</div>
+                    <div class="this-btn" onclick="testThis('arrow')">Arrow Function</div>
+                    <div class="this-btn" onclick="testThis('call')">fn.call(custom)</div>
+                    <div class="this-btn" onclick="testThis('bind')">fn.bind(custom)</div>
+                </div>
+
+                <div id="this-output"
+                    style="background:var(--bg); padding:20px; border-radius:8px; min-height:100px; font-family:'JetBrains Mono'; font-size:0.9rem">
+                    <div style="opacity:0.5; text-align:center">Cliquez sur un bouton pour tester</div>
+                </div>
+            </div>
+
+            <!-- PURE VS IMPURE -->
+            <h3 style="margin-top:40px;">🧪 Pure Functions vs Side Effects</h3>
+            <div class="comparison">
+                <div class="comparison-side bad">
+                    <div class="comparison-title" style="color:#f44336">❌ Impure (Side Effects)</div>
+                    <pre><code class="language-javascript">let total = 0;
+
+function add(n) {
+    total += n; // Modifie état externe
+    return total;
+}
+
+// ❌ Non prédictible
+// ❌ Difficile à tester</code></pre>
+                </div>
+                <div class="comparison-side good">
+                    <div class="comparison-title" style="color:#4caf50">✅ Pure (Prédictible)</div>
+                    <pre><code class="language-javascript">function add(a, b) {
+    return a + b; // Pas d'effet de bord
+}
+
+// ✅ Même input = même output
+// ✅ Testable
+// ✅ Cacheable</code></pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>Best Practice :</strong> Privilégiez les fonctions pures. Elles sont plus faciles à tester,
+                débugger, et optimiser (memoization).
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="05_loops.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">←
+                    Boucles</a>
+                <a href="07_arrays.html" class="demo-btn" style="text-decoration:none">Suivant: Arrays →</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/06_functions.js"></script>
+</body>
+
+</html>

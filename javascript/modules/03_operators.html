@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opérateurs - Mémo JavaScript</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Logic Gates Visuals */
+        .logic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .logic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .logic-symbol {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .logic-name {
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Short-circuit viz */
+        .sc-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono';
+            overflow-x: auto;
+        }
+
+        .sc-step {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+        }
+
+        .sc-arrow {
+            color: var(--muted);
+        }
+
+        .sc-stop {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .sc-go {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        /* Comparison Table */
+        .cmp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .cmp-table th {
+            text-align: left;
+            color: var(--muted);
+            padding: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cmp-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .code-inline {
+            font-family: 'JetBrains Mono';
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header injected by layout.js -->
+
+    <main class="container">
+        <section id="s3" style="border:none; padding-top:40px">
+            <div class="sec-header">
+                <div class="sec-num">03</div>
+                <div>
+                    <h2 class="sec-title">Opérateurs</h2>
+                    <p class="sec-sub">Arithmétique, Logique & Short-circuiting</p>
+                </div>
+            </div>
+
+            <!-- LOGIC GATES -->
+            <div class="logic-grid">
+                <div class="logic-card"><span class="logic-symbol">+ - * /</span><span class="logic-name">Maths</span>
+                </div>
+                <div class="logic-card"><span class="logic-symbol">%</span><span class="logic-name">Modulo</span></div>
+                <div class="logic-card"><span class="logic-symbol">===</span><span class="logic-name">Strict</span>
+                </div>
+                <div class="logic-card"><span class="logic-symbol">&& || !</span><span class="logic-name">Logique</span>
+                </div>
+                <div class="logic-card"><span class="logic-symbol">??</span><span class="logic-name">Nullish</span>
+                </div>
+                <div class="logic-card"><span class="logic-symbol">?.</span><span class="logic-name">Optional</span>
+                </div>
+            </div>
+
+            <!-- EQUALITY -->
+            <details open>
+                <summary>⚖️ Égalité : Le Combat <code>==</code> vs <code>===</code></summary>
+                <div class="details-content">
+                    <p>En JS, n'utilisez <strong>JAMAIS</strong> l'égalité faible (<code>==</code>). Elle effectue une
+                        coercition de type imprévisible.</p>
+                    <table class="cmp-table">
+                        <thead>
+                            <tr>
+                                <th>Expression</th>
+                                <th>Résultat</th>
+                                <th>Pourquoi ?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="code-inline">5 == "5"</span></td>
+                                <td style="color:#f44336">true</td>
+                                <td>Coercition (String → Number)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="code-inline">5 === "5"</span></td>
+                                <td style="color:#4caf50">false</td>
+                                <td>Types différents (Number vs String)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="code-inline">null == undefined</span></td>
+                                <td style="color:#f44336">true</td>
+                                <td>Considérés égaux faiblement</td>
+                            </tr>
+                            <tr>
+                                <td><span class="code-inline">null === undefined</span></td>
+                                <td style="color:#4caf50">false</td>
+                                <td>Types différents</td>
+                            </tr>
+                            <tr>
+                                <td><span class="code-inline">[] == ![]</span></td>
+                                <td style="color:#f44336">true</td>
+                                <td>WTF Javascript...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <!-- SHORT CIRCUITING -->
+            <h3 style="margin-top:30px; margin-bottom: 15px;">⚡ Short-Circuiting (Court-circuit)</h3>
+            <p>Les opérateurs logiques s'arrêtent dès que le résultat est sûr. C'est très utile pour des conditions
+                concises.</p>
+
+            <div class="code-container">
+                <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                        class="dot green"></span></div>
+                <pre><code class="language-javascript">// 1. OR (||) : Cherche le premier TRUTHY
+// Utile pour les valeurs par défaut (Fallback)
+const name = inputName || "Anonyme"; 
+
+// 2. AND (&&) : S'arrête au premier FALSY
+// Utile pour exécuter si condition vraie
+isLogged && showAdminPanel();
+
+// 3. Nullish Coalescing (??)
+// Comme || mais ignore 0 et "" (juste null/undefined)
+const score = 0;
+const affichage = score || 10; // 10 (Car 0 est falsy) ❌
+const correct = score ?? 10;   // 0 (Car 0 est défini) ✅</code></pre>
+            </div>
+
+            <!-- INTERACTIVE DEMO -->
+            <div class="demo">
+                <div class="demo-title">🎛️ Logic Playground</div>
+                <div
+                    style="display:flex; gap:10px; align-items:center; justify-content:center; margin-bottom:20px; flex-wrap:wrap">
+                    <input type="text" id="op-input-1" class="demo-input" placeholder="Valeur A" value="true"
+                        style="width:100px; text-align:center">
+                    <select id="op-selector" class="demo-input" style="width:80px">
+                        <option value="&&">&&</option>
+                        <option value="||">||</option>
+                        <option value="??">??</option>
+                        <option value="===">===</option>
+                        <option value="==">==</option>
+                        <option value="+">+</option>
+                    </select>
+                    <input type="text" id="op-input-2" class="demo-input" placeholder="Valeur B" value="false"
+                        style="width:100px; text-align:center">
+                    <button class="demo-btn" onclick="demoOperators()">Calculer</button>
+                </div>
+
+                <div id="op-result" class="convention-card"
+                    style="text-align:center; padding:15px; font-family:'JetBrains Mono'; font-weight:bold; font-size:1.2rem; min-height:60px; display:flex; align-items:center; justify-content:center">
+                    Résultat...
+                </div>
+                <div id="op-details" style="text-align:center; font-size:0.85rem; color:var(--muted); margin-top:10px">
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>Astuce Pro :</strong> L'opérateur <code>??</code> (Nullish Coalescing) est arrivé avec ES2020.
+                Il est indispensable pour gérer correctement les `0` et les `false` dans les options de configuration,
+                là où `||` échouait souvent.
+            </div>
+
+            <div style="margin-top:40px; display:flex; gap:10px">
+                <a href="02_types.html" class="demo-btn" style="text-decoration:none; background:var(--bg2)">← Types</a>
+                <a href="04_conditions.html" class="demo-btn" style="text-decoration:none">Suivant: Conditions →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer injected by layout.js -->
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/modules/03_operators.js"></script>
+</body>
+
+</html>

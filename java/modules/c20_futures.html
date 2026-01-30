@@ -1,0 +1,134 @@
+<section id="c20">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">20</div>
+            <div>
+                <h2 class="sec-title">Futures & Async</h2>
+                <p class="sec-sub">CompletableFuture & Réactivité</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Threads (C16) et Lambdas (C8).</p>
+            <p><strong>L'Objectif</strong> : Ne pas bloquer le Thread principal (Main/UI) pendant une tâche longue (I/O,
+                Réseau), et enchaîner les tâches comme des dominos.</p>
+            <p><strong>Temps de lecture</strong> : ~20 minutes | <strong>Niveau</strong> : ⭐⭐⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🔮 La Promesse du Futur</h3>
+        <p>Un <code>Future</code> est une "promesse" qu'un résultat arrivera plus tard.
+            <br>Avant Java 8, <code>Future.get()</code> bloquait le thread (ce qui tue l'intérêt de l'async).
+            <br>Depuis Java 8, <code>CompletableFuture</code> permet de définir ce qui se passe <strong>après</strong>
+            (callback), sans bloquer.
+        </p>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart LR
+                Start((Start)) -->|Async| Fetch[Fetch URL<br />(2 sec)]
+                Fetch -->|thenApply| Parse[Parse JSON<br />(10ms)]
+                Fetch -->|exceptionally| Error[Handle Error]
+                Parse -->|thenAccept| Print[Print UI]
+
+                Start -->|Main Thread| Free[Thread Libre !]
+
+                style Start fill:#1c2128,stroke:#f0f6fc,color:#f0f6fc
+                style Fetch fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style Parse fill:#161b22,stroke:#ffa94d,color:#f0f6fc
+                style Print fill:#3fb950,stroke:#3d444d,color:#0d1117
+                style Error fill:#ff7b72,stroke:#3d444d,color:#0d1117
+                style Free fill:#3fb950,stroke:#f0f6fc,color:#0d1117
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Chaînage Non-Bloquant :
+                Le Main Thread continue sa vie pendant que le Fetch travaille.</p>
+        </div>
+
+        <!-- Basic Syntax -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🔗 Création et Chaînage</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>Async Pipeline</div>
+            <pre><span class="type">CompletableFuture</span>.<span class="mt">supplyAsync</span>(() -> {
+    <span class="com">// 1. Tâche longue (Thread séparé)</span>
+    <span class="kw">return</span> <span class="mt">fetchUserData</span>(<span class="str">"UserId"</span>);
+})
+.thenApply(<span class="var">user</span> -> {
+    <span class="com">// 2. Transformation (Dès que 1 est fini)</span>
+    <span class="kw">return</span> <span class="var">user</span>.<span class="mt">getEmail</span>();
+})
+.thenAccept(<span class="var">email</span> -> {
+    <span class="com">// 3. Consommation finale</span>
+    <span class="type">System</span>.out.println(<span class="str">"Email sent to "</span> + <span class="var">email</span>);
+})
+.exceptionally(<span class="var">ex</span> -> {
+    <span class="com">// 4. Gestion d'erreur centralisée</span>
+    <span class="type">System</span>.err.println(<span class="str">"Oops: "</span> + <span class="var">ex</span>.<span class="mt">getMessage</span>());
+    <span class="kw">return</span> <span class="kw">null</span>;
+});
+
+<span class="type">System</span>.out.println(<span class="str">"Je ne suis pas bloqué !"</span>);</pre>
+        </div>
+
+        <!-- Composition -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🧩 Composition Avancée</h3>
+
+        <div class="grid2">
+            <div>
+                <h4>1. thenCompose (FlatMap)</h4>
+                <p>Quand l'étape suivante est <strong>aussi</strong> asynchrone.</p>
+                <div class="code">
+                    <pre><span class="var">futureId</span>
+  .thenCompose(<span class="var">id</span> -> <span class="mt">fetchUserAsync</span>(<span class="var">id</span>))</pre>
+                </div>
+            </div>
+            <div>
+                <h4>2. thenCombine (Zip)</h4>
+                <p>Attendre 2 tâches indépendantes et combiner leurs résultats.</p>
+                <div class="code">
+                    <pre><span class="var">futurePrice</span>.thenCombine(<span class="var">futureRate</span>, 
+    (<span class="var">price</span>, <span class="var">rate</span>) -> <span class="var">price</span> * <span class="var">rate</span>)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join vs Get -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Join vs Get</h4>
+            <p>Pour récupérer le résultat final (ce qui redevient bloquant) :</p>
+            <ul>
+                <li>❌ <code>get()</code> : Lance une <code>CheckedException</code> (pénible).</li>
+                <li>✅ <code>join()</code> : Lance une <code>UncheckedException</code> (mieux pour les Streams/Lambdas).
+                </li>
+            </ul>
+        </div>
+
+        <!-- Virtual Threads impact -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Avec les Virtual Threads (Java 21) ?</h4>
+            <p>Les <code>CompletableFuture</code> sont puissants mais complexes (Callback Hell potentiel).
+                <br>Avec Java 21 et les Virtual Threads (Code Impératif), on peut souvent revenir à un code séquentiel
+                simple, car bloquer un Virtual Thread ne coûte rien !
+                <br><strong>Mais :</strong> CompletableFuture reste ROI pour la composition parallèle complexe (ex:
+                lancer 3 tâches, prendre la première qui répond).
+            </p>
+        </div>
+
+        <!-- AllOf -->
+        <div class="use-case" style="margin-top: 2rem;">
+            <h4>🚀 Cas Réel : Attendre Tout le monde</h4>
+            <div class="code" style="margin-top: 1rem;">
+                <pre><span class="type">var</span> <span class="var">f1</span> = <span class="mt">downloadAsync</span>(<span class="str">"img1.png"</span>);
+<span class="type">var</span> <span class="var">f2</span> = <span class="mt">downloadAsync</span>(<span class="str">"img2.png"</span>);
+<span class="type">var</span> <span class="var">f3</span> = <span class="mt">downloadAsync</span>(<span class="str">"img3.png"</span>);
+
+<span class="com">// Créer un Future qui finit quand TOUS sont finis</span>
+<span class="type">CompletableFuture</span>.<span class="mt">allOf</span>(<span class="var">f1</span>, <span class="var">f2</span>, <span class="var">f3</span>).<span class="mt">join</span>();
+
+<span class="type">System</span>.out.println(<span class="str">"Tous les téléchargements finis !"</span>);</pre>
+            </div>
+        </div>
+
+    </div>
+</section>

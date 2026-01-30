@@ -1,0 +1,200 @@
+<section id="c12">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">12</div>
+            <div>
+                <h2 class="sec-title">Collections</h2>
+                <p class="sec-sub">L'Arsenal du Développeur</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="callout callout-info">
+            <h4>🎓 Avant de Commencer</h4>
+            <p><strong>Prérequis</strong> : Generics (C11) et Comparaisons (equals/hashCode).</p>
+            <p><strong>Ce que vous allez apprendre</strong> : Choisir la bonne structure de données pour le bon
+                problème. Une mauvaise collection peut ralentir votre app de 1000x.</p>
+            <p><strong>Temps de lecture</strong> : ~20 minutes | <strong>Niveau</strong> : ⭐⭐⭐</p>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">🧰 La Hiérarchie Collections Framework</h3>
+
+        <!-- Diagram -->
+        <div class="diagram-container">
+            <div class="mermaid">
+                graph TD
+                I[Iterable] --> C[Collection]
+                C --> L[List<br />Ordonné, Doublons OK]
+                C --> S[Set<br />Unique, Pas d'ordre garanti]
+                C --> Q[Queue<br />FIFO / LIFO]
+
+                M[Map<br />Clé -> Valeur]
+
+                L --> AL[ArrayList]
+                L --> LL[LinkedList]
+
+                S --> HS[HashSet]
+                S --> TS[TreeSet<br />Trié]
+                S --> LHS[LinkedHashSet<br />Ordonné insertion]
+
+                M --> HM[HashMap]
+                M --> TM[TreeMap<br />Clé triée]
+                M --> LHM[LinkedHashMap]
+
+                style I fill:#1c2128,stroke:#ffa94d,color:#f0f6fc
+                style C fill:#1c2128,stroke:#ffa94d,color:#f0f6fc
+                style M fill:#1c2128,stroke:#ffa94d,stroke-width:2px,color:#f0f6fc
+
+                style AL fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style HS fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+                style HM fill:#161b22,stroke:#79c0ff,color:#f0f6fc
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color: var(--text-muted-foreground);">Note : Map ne fait PAS
+                partie de l'interface Collection, mais fait partie du Framework.</p>
+        </div>
+
+        <!-- Comparaison Rapide -->
+        <div class="grid3">
+            <div class="analogy" style="margin:1rem 0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">📚 List (Étagère)</p>
+                <p style="font-size:0.9rem;">Ordre strict (Index 0, 1, 2). Doublons autorisés. Accès rapide par
+                    position.</p>
+            </div>
+            <div class="analogy" style="margin:1rem 0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">🎱 Set (Sac)</p>
+                <p style="font-size:0.9rem;">Pas d'ordre (sauf TreeSet). <strong>Unicité garantie</strong>. Idéal pour
+                    dédoublonner.</p>
+            </div>
+            <div class="analogy" style="margin:1rem 0; padding:1.5rem;">
+                <p style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--text-accent);">🔑 Map (Annuaire)</p>
+                <p style="font-size:0.9rem;">Association Clé → Valeur. Clés uniques. Valeurs peuvent être dupliquées.
+                </p>
+            </div>
+        </div>
+
+        <!-- Big O Performance -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">⚡ Complexité Algorithmique (Big O)</h3>
+        <p>Pourquoi choisir <code>HashSet</code> plutôt que <code>ArrayList</code> pour la recherche ?</p>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Opération</th>
+                    <th>ArrayList</th>
+                    <th>LinkedList</th>
+                    <th>HashSet / HashMap</th>
+                    <th>TreeSet / TreeMap</th>
+                </tr>
+                <tr>
+                    <td><strong>Accès (get)</strong></td>
+                    <td>⚡ <strong>O(1)</strong></td>
+                    <td>🐢 O(n)</td>
+                    <td>⚡ <strong>O(1)</strong></td>
+                    <td>🐢 O(log n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ajout (add)</strong></td>
+                    <td>⚡ O(1)*</td>
+                    <td>⚡ O(1)</td>
+                    <td>⚡ <strong>O(1)</strong></td>
+                    <td>🐢 O(log n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Contains (search)</strong></td>
+                    <td>🐢 O(n)</td>
+                    <td>🐢 O(n)</td>
+                    <td>⚡ <strong>O(1)</strong></td>
+                    <td>🐢 O(log n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Remove</strong></td>
+                    <td>🐢 O(n) (décalage)</td>
+                    <td>⚡ O(1)**</td>
+                    <td>⚡ <strong>O(1)</strong></td>
+                    <td>🐢 O(log n)</td>
+                </tr>
+            </table>
+        </div>
+        <p style="font-size:0.85rem; margin-top:0.5rem; color:var(--text-muted-foreground);">* Amorti (parfois O(n) lors
+            du resize). ** Si on a déjà l'itérateur.</p>
+
+        <!-- Modern Java -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">✨ Java Moderne (9+) : Factory Methods</h3>
+        <p>Fini les <code>new ArrayList()</code> suivis de 10 <code>add()</code>. Place à l'immuabilité par défaut.</p>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Création Rapide (Immuable)</div>
+                <pre><span class="com">// List.of (Java 9)</span>
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">list</span> = <span class="type">List</span>.<span class="mt">of</span>(<span class="str">"A"</span>, <span class="str">"B"</span>, <span class="str">"C"</span>);
+
+<span class="com">// Map.of (jusqu'à 10 paires)</span>
+<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; <span class="var">map</span> = <span class="type">Map</span>.<span class="mt">of</span>(
+    <span class="str">"Key1"</span>, <span class="num">1</span>,
+    <span class="str">"Key2"</span>, <span class="num">2</span>
+);
+
+<span class="com">// Map.ofEntries (illimité)</span>
+<span class="var">map</span> = <span class="type">Map</span>.<span class="mt">ofEntries</span>(
+    <span class="type">entry</span>(<span class="str">"K1"</span>, <span class="num">1</span>),
+    <span class="type">entry</span>(<span class="str">"K2"</span>, <span class="num">2</span>)
+);</pre>
+            </div>
+            <div class="callout callout-warning">
+                <h4>⚠️ Attention : Immuable !</h4>
+                <p>Les collections créées avec <code>.of()</code> sont <strong>non modifiables</strong>.</p>
+                <div class="code" style="margin-top:0.5rem;">
+                    <pre><span class="var">list</span>.<span class="mt">add</span>(<span class="str">"D"</span>); <span class="com">// 💥 UnsupportedOperationException</span>
+<span class="var">list</span>.<span class="mt">set</span>(<span class="num">0</span>, <span class="str">"X"</span>); <span class="com">// 💥 Interdit aussi</span></pre>
+                </div>
+                <p style="margin-top:0.5rem;">Si vous voulez une liste modifiable
+                    :<br><code>new ArrayList<>(List.of(...))</code></p>
+            </div>
+        </div>
+
+        <!-- Implementing Map -->
+        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">🗺️ Map : Le Guide de Survie</h3>
+        <ul>
+            <li><strong>HashMap</strong> : Le standard. Rapide, ordre aléatoire. Utilise <code>hashCode()</code>.</li>
+            <li><strong>LinkedHashMap</strong> : Comme HashMap, mais garde l'ordre d'insertion. Un peu plus lent.</li>
+            <li><strong>TreeMap</strong> : Trie les clés (ordre alphabétique ou numérique). Plus lent (O(log n)).</li>
+        </ul>
+
+        <div class="code">
+            <div class="code-head"><span class="dot b"></span>Calculer des fréquences (Map moderne)</div>
+            <pre><span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; <span class="var">counts</span> = <span class="kw">new</span> <span class="type">HashMap</span>&lt;&gt;();
+<span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">words</span> = <span class="type">List</span>.<span class="mt">of</span>(<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"apple"</span>);
+
+<span class="kw">for</span> (<span class="type">String</span> <span class="var">w</span> : <span class="var">words</span>) {
+    <span class="com">// Java 8 : merge()</span>
+    <span class="var">counts</span>.<span class="mt">merge</span>(<span class="var">w</span>, <span class="num">1</span>, <span class="type">Integer</span>::<span class="mt">sum</span>);
+}
+<span class="com">// Résultat : {apple=2, banana=1}</span></pre>
+        </div>
+
+        <!-- Le Saviez-vous -->
+        <div class="callout callout-recall" style="margin-top: 2rem;">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p><strong>Capacity vs Size</strong> : Une <code>ArrayList</code> a une capacité interne (tableau). Si vous
+                ajoutez le 11ème élément (défaut 10), elle doit créer un nouveau tableau plus grand et tout copier.
+                Astuce : <code>new ArrayList<>(1000)</code> si vous connaissez la taille.</p>
+            <p style="margin-top: 0.75rem;"><strong>Fail-Fast</strong> : Si vous modifiez une liste pendant que vous
+                l'itérez (avec un for-each), Java lance une <code>ConcurrentModificationException</code>. Utilisez
+                <code>Iterator.remove()</code> ou <code>removeIf()</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>hashCode() Contract</strong> : Si vous mettez vos propres objets
+                dans un <code>HashMap</code> ou <code>HashSet</code>, vous DEVEZ redéfinir <code>equals()</code> ET
+                <code>hashCode()</code>. Sinon, vous perdrez vos objets.</p>
+        </div>
+
+        <!-- Pièges -->
+        <div class="callout callout-warning" style="margin-top: 2rem;">
+            <h4>⚠️ Pièges Courants</h4>
+            <p><strong>1. `Arrays.asList()`</strong> : Renvoie une liste de taille fixe. On peut faire
+                <code>set()</code> mais pas <code>add()</code>. Préférez <code>new ArrayList<>(List.of())</code>.</p>
+            <p style="margin-top: 0.75rem;"><strong>2. Clés Mutables dans Map</strong> : Ne jamais utiliser un objet
+                mutable comme clé dans une Map. Si l'objet change (et donc son hashcode), la Map ne le retrouvera plus
+                jamais.</p>
+        </div>
+
+    </div>
+</section>

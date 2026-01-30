@@ -1,0 +1,1208 @@
+{
+    "meta": {
+        "title": "Quiz JavaScript Expert - 100 Questions",
+        "total": 100
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "Quel mot-clé déclare une variable non réassignable ?",
+            "options": [
+                "var",
+                "let",
+                "const",
+                "static"
+            ],
+            "answer": 2,
+            "explanation": "const crée une référence en lecture seule (mais l'objet pointé peut être modifiable)."
+        },
+        {
+            "id": 2,
+            "question": "Quelle méthode transforme un tableau en chaîne ?",
+            "options": [
+                "join()",
+                "concat()",
+                "split()",
+                "pop()"
+            ],
+            "answer": 0,
+            "explanation": "['a','b'].join('-') donne 'a-b'."
+        },
+        {
+            "id": 3,
+            "question": "Que retourne `typeof []` ?",
+            "options": [
+                "array",
+                "object",
+                "list",
+                "undefined"
+            ],
+            "answer": 1,
+            "explanation": "En JS, les tableaux sont des objets. Array.isArray() permet de vérifier."
+        },
+        {
+            "id": 4,
+            "question": "Quelle est la sortie de `2 + '2'` ?",
+            "options": [
+                "4",
+                "'22'",
+                "NaN",
+                "Error"
+            ],
+            "answer": 1,
+            "explanation": "Le nombre est converti en chaîne (coercition) et concaténé."
+        },
+        {
+            "id": 5,
+            "question": "Comment créer une fonction fléchée ?",
+            "options": [
+                "func => {}",
+                "() => {}",
+                "-> {}",
+                "function() {}"
+            ],
+            "answer": 1,
+            "explanation": "Syntaxe ES6 : const maFonction = () => { ... }"
+        },
+        {
+            "id": 6,
+            "question": "Quelle méthode ajoute un élément à la fin d'un tableau ?",
+            "options": [
+                "push()",
+                "pop()",
+                "shift()",
+                "unshift()"
+            ],
+            "answer": 0,
+            "explanation": "push() ajoute, pop() retire le dernier."
+        },
+        {
+            "id": 7,
+            "question": "Que vaut `Boolean(0)` ?",
+            "options": [
+                "true",
+                "false",
+                "undefined",
+                "null"
+            ],
+            "answer": 1,
+            "explanation": "0 est une valeur 'falsy' en JavaScript."
+        },
+        {
+            "id": 8,
+            "question": "Quelle boucle est idéale pour itérer sur les clés d'un objet ?",
+            "options": [
+                "for...of",
+                "for...in",
+                "forEach",
+                "while"
+            ],
+            "answer": 1,
+            "explanation": "for(let key in object) itère sur les propriétés énumérables."
+        },
+        {
+            "id": 9,
+            "question": "Comment convertir une chaîne '123' en nombre ?",
+            "options": [
+                "Number('123')",
+                "parseInt('123')",
+                "+'123'",
+                "Toutes les réponses"
+            ],
+            "answer": 3,
+            "explanation": "Plusieurs façons de faire, chacune avec des subtilités."
+        },
+        {
+            "id": 10,
+            "question": "Quelle méthode permet de filtrer un tableau ?",
+            "options": [
+                "map()",
+                "filter()",
+                "reduce()",
+                "find()"
+            ],
+            "answer": 1,
+            "explanation": "filter() crée un nouveau tableau avec les éléments qui passent le test."
+        },
+        {
+            "id": 11,
+            "question": "Que fait `localStorage.setItem('cle', 'valeur')` ?",
+            "options": [
+                "Sauvegarde en session",
+                "Sauvegarde persistant",
+                "Sauvegarde cookie",
+                "Sauvegarde serveur"
+            ],
+            "answer": 1,
+            "explanation": "LocalStorage persiste même après fermeture du navigateur."
+        },
+        {
+            "id": 12,
+            "question": "Quel mot-clé est utilisé pour l'async/await ?",
+            "options": [
+                "async",
+                "await",
+                "promise",
+                "defer"
+            ],
+            "answer": 0,
+            "explanation": "On déclare la fonction avec 'async' pour pouvoir utiliser 'await'."
+        },
+        {
+            "id": 13,
+            "question": "Comment sélectionner un élément par son ID ?",
+            "options": [
+                "querySelector('#id')",
+                "getElementById('id')",
+                "Les deux",
+                "Aucun"
+            ],
+            "answer": 2,
+            "explanation": "Les deux fonctionnent. getElementById est un peu plus rapide."
+        },
+        {
+            "id": 14,
+            "question": "Que retourne `map()` ?",
+            "options": [
+                "Le même tableau modifié",
+                "Un nouveau tableau",
+                "Rien",
+                "Un booléen"
+            ],
+            "answer": 1,
+            "explanation": "Immutable : l'original n'est pas modifié."
+        },
+        {
+            "id": 15,
+            "question": "Quelle est la valeur de `null == undefined` ?",
+            "options": [
+                "true",
+                "false",
+                "Error",
+                "NaN"
+            ],
+            "answer": 0,
+            "explanation": "Vrai avec l'égalité souple (==), faux avec stricte (===)."
+        },
+        {
+            "id": 16,
+            "question": "Comment stopper la propagation d'un événement ?",
+            "options": [
+                "preventDefault()",
+                "stopPropagation()",
+                "stop()",
+                "return false"
+            ],
+            "answer": 1,
+            "explanation": "Empêche l'événement de remonter aux parents (bubbling)."
+        },
+        {
+            "id": 17,
+            "question": "Quel objet permet de faire des requêtes HTTP modernes ?",
+            "options": [
+                "XMLHTTPRequest",
+                "fetch",
+                "axios",
+                "ajax"
+            ],
+            "answer": 1,
+            "explanation": "Fetch API est native et basée sur les Promesses."
+        },
+        {
+            "id": 18,
+            "question": "Quelle méthode transforme un objet JS en JSON string ?",
+            "options": [
+                "JSON.parse()",
+                "JSON.stringify()",
+                "JSON.toString()",
+                "JSON.toObject()"
+            ],
+            "answer": 1,
+            "explanation": "Inverse de JSON.parse()."
+        },
+        {
+            "id": 19,
+            "question": "Que vaut `this` dans une fonction fléchée ?",
+            "options": [
+                "L'objet global",
+                "L'objet appelant",
+                "Le contexte lexical englobant",
+                "Undefined"
+            ],
+            "answer": 2,
+            "explanation": "Les Arrow Functions ne lient pas leur propre 'this'."
+        },
+        {
+            "id": 20,
+            "question": "Comment déclarer une classe en ES6 ?",
+            "options": [
+                "class MyClass {}",
+                "function MyClass() {}",
+                "new Class()",
+                "create MyClass"
+            ],
+            "answer": 0,
+            "explanation": "Sucre syntaxique sur les prototypes."
+        },
+        {
+            "id": 21,
+            "question": "Quelle méthode retire le PREMIER élément d'un tableau ?",
+            "options": [
+                "shift()",
+                "unshift()",
+                "pop()",
+                "push()"
+            ],
+            "answer": 0,
+            "explanation": "shift() décale tout vers la gauche."
+        },
+        {
+            "id": 22,
+            "question": "Que fait `...'spread'` ?",
+            "options": [
+                "Copie superficielle (shallow copy)",
+                "Copie profonde",
+                "Concatène",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Ex: const b = [...a]; copie les références du premier niveau."
+        },
+        {
+            "id": 23,
+            "question": "Quelle structure de données stocke des paires clé-valeur uniques ?",
+            "options": [
+                "Array",
+                "Set",
+                "Map",
+                "Object"
+            ],
+            "answer": 2,
+            "explanation": "Map accepte n'importe quel type comme clé, contrairement aux Objets (string/symbol)."
+        },
+        {
+            "id": 24,
+            "question": "Que retourne `Array.from('foo')` ?",
+            "options": [
+                "['foo']",
+                "['f', 'o', 'o']",
+                "Error",
+                "String"
+            ],
+            "answer": 1,
+            "explanation": "Crée un tableau à partir d'un itérable."
+        },
+        {
+            "id": 25,
+            "question": "Quelle méthode permet d'attendre plusieurs promesses ?",
+            "options": [
+                "Promise.all()",
+                "Promise.race()",
+                "Promise.any()",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "Chacune gère les promesses multiples différemment."
+        },
+        {
+            "id": 26,
+            "question": "Comment empêcher la modification d'un objet ?",
+            "options": [
+                "Object.freeze()",
+                "Object.seal()",
+                "const",
+                "static"
+            ],
+            "answer": 0,
+            "explanation": "freeze rend l'objet immuable. seal empêche l'ajout/suppression mais permet modif valeurs."
+        },
+        {
+            "id": 27,
+            "question": "Quelle est la portée de `var` ?",
+            "options": [
+                "Bloc",
+                "Fonction",
+                "Globale",
+                "Module"
+            ],
+            "answer": 1,
+            "explanation": "Var ignore les blocs { } (sauf fonctions), ce qui cause des fuites."
+        },
+        {
+            "id": 28,
+            "question": "Que signifie DOM ?",
+            "options": [
+                "Data Object Model",
+                "Document Object Model",
+                "Digital Object Mode",
+                "Display On Monitor"
+            ],
+            "answer": 1,
+            "explanation": "Structure arborescente de la page HTML."
+        },
+        {
+            "id": 29,
+            "question": "Quelle méthode permet de découper une chaîne ?",
+            "options": [
+                "slice()",
+                "splice()",
+                "cut()",
+                "chop()"
+            ],
+            "answer": 0,
+            "explanation": "slice(start, end) extrait une section."
+        },
+        {
+            "id": 30,
+            "question": "Que fait `navigator.geolocation` ?",
+            "options": [
+                "Donne la position GPS",
+                "La langue",
+                "L'OS",
+                "L'IP"
+            ],
+            "answer": 0,
+            "explanation": "API pour récupérer la latitude/longitude (avec permission)."
+        },
+        {
+            "id": 31,
+            "question": "Quel opérateur est le 'Nullish Coalescing' ?",
+            "options": [
+                "??",
+                "||",
+                "&&",
+                "?."
+            ],
+            "answer": 0,
+            "explanation": "a ?? b retourne b SEULEMENT si a est null ou undefined (pas 0 ou false)."
+        },
+        {
+            "id": 32,
+            "question": "Comment accéder optionnellement à une propriété profonde ?",
+            "options": [
+                "obj?.prop",
+                "obj.prop?",
+                "obj >> prop",
+                "obj && prop"
+            ],
+            "answer": 0,
+            "explanation": "Optional Chaining (?.) évite l'erreur 'Cannot read property of undefined'."
+        },
+        {
+            "id": 33,
+            "question": "Quelle méthode ajoute plusieurs tableaux ensemble ?",
+            "options": [
+                "concat()",
+                "join()",
+                "merge()",
+                "append()"
+            ],
+            "answer": 0,
+            "explanation": "arr1.concat(arr2)."
+        },
+        {
+            "id": 34,
+            "question": "Qu'est-ce qu'une IIFE ?",
+            "options": [
+                "Immediately Invoked Function Expression",
+                "Internal Interface",
+                "Iteration",
+                "If Else"
+            ],
+            "answer": 0,
+            "explanation": "(function(){ ... })(); s'exécute tout de suite pour isoler le scope."
+        },
+        {
+            "id": 35,
+            "question": "Quelle valeur représente 'Not a Number' ?",
+            "options": [
+                "NULL",
+                "NaN",
+                "Undefined",
+                "0"
+            ],
+            "answer": 1,
+            "explanation": "Résultat d'une opération mathématique invalide."
+        },
+        {
+            "id": 36,
+            "question": "Comment créer un délai en JS ?",
+            "options": [
+                "setTimeout()",
+                "delay()",
+                "wait()",
+                "sleep()"
+            ],
+            "answer": 0,
+            "explanation": "setTimeout(callback, ms). Pour un 'sleep' moderne: await new Promise..."
+        },
+        {
+            "id": 37,
+            "question": "Quelle méthode supprime les espaces début/fin ?",
+            "options": [
+                "trim()",
+                "strip()",
+                "clean()",
+                "cut()"
+            ],
+            "answer": 0,
+            "explanation": "'  hello  '.trim() donne 'hello'."
+        },
+        {
+            "id": 38,
+            "question": "Comment détecter si une propriété existe dans un objet ?",
+            "options": [
+                "'prop' in obj",
+                "obj.has('prop')",
+                "obj.contains('prop')",
+                "exists(obj.prop)"
+            ],
+            "answer": 0,
+            "explanation": "Ou obj.hasOwnProperty('prop')."
+        },
+        {
+            "id": 39,
+            "question": "Quelle boucle parcourt les valeurs d'un tableau itérable ?",
+            "options": [
+                "for...of",
+                "for...in",
+                "while",
+                "do...while"
+            ],
+            "answer": 0,
+            "explanation": "for(const item of array) donne la valeur (pas l'index)."
+        },
+        {
+            "id": 40,
+            "question": "Que retourne `10 % 3` ?",
+            "options": [
+                "1",
+                "3",
+                "3.33",
+                "0"
+            ],
+            "answer": 0,
+            "explanation": "Modulo (reste de la division). 10 = 3*3 + 1."
+        },
+        {
+            "id": 41,
+            "question": "Quelle méthode remplace une sous-chaîne ?",
+            "options": [
+                "replace()",
+                "replaceAll()",
+                "Les deux",
+                "substitute()"
+            ],
+            "answer": 2,
+            "explanation": "replace() la première occurrence (ou regex), replaceAll() toutes."
+        },
+        {
+            "id": 42,
+            "question": "Quelle API permet de dessiner en 2D/3D ?",
+            "options": [
+                "Canvas",
+                "SVG",
+                "WebGL",
+                "Toutes"
+            ],
+            "answer": 3,
+            "explanation": "<canvas> utilise JS pour dessiner (via context 2d ou webgl)."
+        },
+        {
+            "id": 43,
+            "question": "Comment générer un nombre aléatoire entre 0 et 1 ?",
+            "options": [
+                "Math.random()",
+                "Math.rand()",
+                "random()",
+                "Random.next()"
+            ],
+            "answer": 0,
+            "explanation": "Retourne un flottant pseudo-aléatoire [0, 1[."
+        },
+        {
+            "id": 44,
+            "question": "Quelle méthode trouve l'index d'un élément ?",
+            "options": [
+                "indexOf()",
+                "findIndex()",
+                "search()",
+                "Toutes"
+            ],
+            "answer": 0,
+            "explanation": "indexOf() pour une valeur simple, findIndex() avec une fonction de test."
+        },
+        {
+            "id": 45,
+            "question": "Qu'est-ce que le 'Hoisting' ?",
+            "options": [
+                "Remontée des déclarations en haut du scope",
+                "Hissage de drapeau",
+                "Compression",
+                "Suppression"
+            ],
+            "answer": 0,
+            "explanation": "Permet d'utiliser une fonction déclarée plus bas."
+        },
+        {
+            "id": 46,
+            "question": "Quelle est la différence entre `==` et `===` ?",
+            "options": [
+                "=== vérifie aussi le type",
+                "== vérifie aussi le type",
+                "Aucune",
+                "=== est plus lent"
+            ],
+            "answer": 0,
+            "explanation": "Toujours préférer === (égalité stricte)."
+        },
+        {
+            "id": 47,
+            "question": "Comment capturer une erreur ?",
+            "options": [
+                "try...catch",
+                "if...error",
+                "onError",
+                "catch...try"
+            ],
+            "answer": 0,
+            "explanation": "try { ... } catch(e) { ... } finally { ... }"
+        },
+        {
+            "id": 48,
+            "question": "Quelle classe permet de gérer les dates ?",
+            "options": [
+                "Date",
+                "Time",
+                "DateTime",
+                "Calendar"
+            ],
+            "answer": 0,
+            "explanation": "new Date()."
+        },
+        {
+            "id": 49,
+            "question": "Que fait `event.target` ?",
+            "options": [
+                "Cible l'élément qui a déclenché l'événement",
+                "Cible l'écouteur",
+                "Cible la fenêtre",
+                "Cible la souris"
+            ],
+            "answer": 0,
+            "explanation": "Différent de currentTarget (qui est l'élément portant l'écouteur)."
+        },
+        {
+            "id": 50,
+            "question": "Quelle méthode répète une chaîne ?",
+            "options": [
+                "repeat()",
+                "loop()",
+                "copy()",
+                "dup()"
+            ],
+            "answer": 0,
+            "explanation": "'ha'.repeat(3) -> 'hahaha'."
+        },
+        {
+            "id": 51,
+            "question": "Quelle méthode transforme un nombre en chaîne ?",
+            "options": [
+                "toString()",
+                "parseString()",
+                "stringify()",
+                "text()"
+            ],
+            "answer": 0,
+            "explanation": "(123).toString()."
+        },
+        {
+            "id": 52,
+            "question": "Quelle est la valeur par défaut d'une variable var/let non initialisée ?",
+            "options": [
+                "undefined",
+                "null",
+                "0",
+                "error"
+            ],
+            "answer": 0,
+            "explanation": "Déclarée mais pas définie."
+        },
+        {
+            "id": 53,
+            "question": "Comment faire un commentaire sur une ligne ?",
+            "options": [
+                "//",
+                "/* */",
+                "#",
+                "<!--"
+            ],
+            "answer": 0,
+            "explanation": "// commentaire."
+        },
+        {
+            "id": 54,
+            "question": "Quelle méthode crée un nouveau tableau avec les résultats d'une fonction ?",
+            "options": [
+                "map()",
+                "forEach()",
+                "filter()",
+                "every()"
+            ],
+            "answer": 0,
+            "explanation": "C'est la définition de map()."
+        },
+        {
+            "id": 55,
+            "question": "Comment valider si TOUS les éléments d'un tableau passent un test ?",
+            "options": [
+                "every()",
+                "some()",
+                "all()",
+                "check()"
+            ],
+            "answer": 0,
+            "explanation": "some() vérifie si Au MOINS UN passe le test."
+        },
+        {
+            "id": 56,
+            "question": "Quel mot-clé exporte une valeur depuis un module ?",
+            "options": [
+                "export",
+                "return",
+                "output",
+                "public"
+            ],
+            "answer": 0,
+            "explanation": "export default ... ou export const ..."
+        },
+        {
+            "id": 57,
+            "question": "Quel mode active des règles JS plus strictes ?",
+            "options": [
+                "'use strict'",
+                "'strict mode'",
+                "'safe'",
+                "'check'"
+            ],
+            "answer": 0,
+            "explanation": "'use strict' Empêche l'utilisation de variables non déclarées, etc."
+        },
+        {
+            "id": 58,
+            "question": "Quelle est l'extension standard d'un fichier module JS ?",
+            "options": [
+                ".js",
+                ".mjs",
+                ".mod",
+                ".jsx"
+            ],
+            "answer": 1,
+            "explanation": ".mjs indique explicitement un module ES6 (ou utiliser type: module dans package.json)."
+        },
+        {
+            "id": 59,
+            "question": "Comment accéder au dernier élément d'un tableau ?",
+            "options": [
+                "arr[arr.length - 1]",
+                "arr.last()",
+                "arr[-1]",
+                "arr.end()"
+            ],
+            "answer": 0,
+            "explanation": "arr.at(-1) fonctionne aussi maintenant (moderne)."
+        },
+        {
+            "id": 60,
+            "question": "Quelle valeur n'est PAS fausse (falsy) ?",
+            "options": [
+                "'false'",
+                "0",
+                "null",
+                "undefined"
+            ],
+            "answer": 0,
+            "explanation": "Une chaîne non vide est toujours vraie."
+        },
+        {
+            "id": 61,
+            "question": "Comment obtenir l'année actuelle ?",
+            "options": [
+                "new Date().getFullYear()",
+                "new Date().getYear()",
+                "Date.now()",
+                "Date.year"
+            ],
+            "answer": 0,
+            "explanation": "getYear() est déprécié (retourne années depuis 1900)."
+        },
+        {
+            "id": 62,
+            "question": "Quelle méthode parse une chaîne JSON ?",
+            "options": [
+                "JSON.parse()",
+                "JSON.decode()",
+                "JSON.from()",
+                "JSON.read()"
+            ],
+            "answer": 0,
+            "explanation": "Convertit le texte JSON en objet JS."
+        },
+        {
+            "id": 63,
+            "question": "Comment empêcher le comportement par défaut d'un formulaire (rechargement) ?",
+            "options": [
+                "e.preventDefault()",
+                "return false",
+                "e.stop()",
+                "e.cancel()"
+            ],
+            "answer": 0,
+            "explanation": "Essentiel pour les SPA (Single Page Apps)."
+        },
+        {
+            "id": 64,
+            "question": "Quelle propriété donne la longueur d'un tableau ?",
+            "options": [
+                "length",
+                "size",
+                "count",
+                "index"
+            ],
+            "answer": 0,
+            "explanation": "arr.length."
+        },
+        {
+            "id": 65,
+            "question": "Quel événement se déclenche quand le DOM est chargé ?",
+            "options": [
+                "DOMContentLoaded",
+                "load",
+                "ready",
+                "init"
+            ],
+            "answer": 0,
+            "explanation": "load attend aussi les images/styles. DOMContentLoaded est plus rapide (juste HTML)."
+        },
+        {
+            "id": 66,
+            "question": "Comment définir une constante ?",
+            "options": [
+                "const X = 10",
+                "let X = 10",
+                "var X = 10",
+                "constant X = 10"
+            ],
+            "answer": 0,
+            "explanation": "Convention : majuscules pour les constantes globales/config."
+        },
+        {
+            "id": 67,
+            "question": "Quelle fonction permet d'exécuter du code après X ms ?",
+            "options": [
+                "setTimeout",
+                "setInterval",
+                "setDelay",
+                "wait"
+            ],
+            "answer": 0,
+            "explanation": "Une seule fois. setInterval répète."
+        },
+        {
+            "id": 68,
+            "question": "Quelle méthode permet d'aplatir un tableau de tableaux ?",
+            "options": [
+                "flat()",
+                "flatten()",
+                "merge()",
+                "collapse()"
+            ],
+            "answer": 0,
+            "explanation": "[[1,2], [3]].flat() donne [1,2,3]."
+        },
+        {
+            "id": 69,
+            "question": "Comment arrondir 4.7 au plus proche entier (5) ?",
+            "options": [
+                "Math.round(4.7)",
+                "Math.ceil(4.7)",
+                "Math.floor(4.7)",
+                "Math.near(4.7)"
+            ],
+            "answer": 0,
+            "explanation": "round=arrondi, ceil=plafond, floor=plancher."
+        },
+        {
+            "id": 70,
+            "question": "Quelle est la valeur initiale de `let x;` ?",
+            "options": [
+                "undefined",
+                "null",
+                "0",
+                "error"
+            ],
+            "answer": 0,
+            "explanation": "Undefined par défaut."
+        },
+        {
+            "id": 71,
+            "question": "Comment faire un héritage de classe ?",
+            "options": [
+                "class B extends A",
+                "class B inherits A",
+                "class B : A",
+                "class B super A"
+            ],
+            "answer": 0,
+            "explanation": "extends permet d'hériter méthodes et propriétés."
+        },
+        {
+            "id": 72,
+            "question": "Gérer les erreurs dans une Promesse ?",
+            "options": [
+                ".catch()",
+                ".error()",
+                ".fail()",
+                ".except()"
+            ],
+            "answer": 0,
+            "explanation": "myPromise.then().catch(err => ...)"
+        },
+        {
+            "id": 73,
+            "question": "Quelle instruction stoppe une boucle ?",
+            "options": [
+                "break",
+                "stop",
+                "exit",
+                "return"
+            ],
+            "answer": 0,
+            "explanation": "break sort de la boucle. continue passe à l'itération suivante."
+        },
+        {
+            "id": 74,
+            "question": "Comment vérifier si une variable est un tableau ?",
+            "options": [
+                "Array.isArray(v)",
+                "v.isArray()",
+                "typeof v == 'array'",
+                "v instanceof Array"
+            ],
+            "answer": 0,
+            "explanation": "La méthode la plus robuste. typeof renvoie 'object'."
+        },
+        {
+            "id": 75,
+            "question": "Quelle méthode supprime des éléments n'importe où dans le tableau ?",
+            "options": [
+                "splice()",
+                "slice()",
+                "remove()",
+                "cut()"
+            ],
+            "answer": 0,
+            "explanation": "splice(index, nbToDelete, ...toAdd) modifie le tableau en place."
+        },
+        {
+            "id": 76,
+            "question": "Que fait `document.createElement('div')` ?",
+            "options": [
+                "Crée un élément HTML en mémoire",
+                "L'ajoute à la page",
+                "Crée et ajoute",
+                "Rien"
+            ],
+            "answer": 0,
+            "explanation": "Il faut ensuite l'ajouter avec appendChild()."
+        },
+        {
+            "id": 77,
+            "question": "Quelle nouveauté ES6 permet d'extraire des valeurs d'un objet ?",
+            "options": [
+                "Destructuring",
+                "Extracting",
+                "Unpacking",
+                "Spread"
+            ],
+            "answer": 0,
+            "explanation": "const { a, b } = obj;"
+        },
+        {
+            "id": 78,
+            "question": "Comment écrire une chaîne avec des variables (Template String) ?",
+            "options": [
+                "`Hello ${name}`",
+                "'Hello ' + name",
+                "\"Hello {name}\"",
+                "f'Hello {name}'"
+            ],
+            "answer": 0,
+            "explanation": "Backticks (accents graves) permettent l'interpolation."
+        },
+        {
+            "id": 79,
+            "question": "Quel mot-clé référence la classe parente ?",
+            "options": [
+                "super",
+                "parent",
+                "base",
+                "top"
+            ],
+            "answer": 0,
+            "explanation": "super() appelle le constructeur parent."
+        },
+        {
+            "id": 80,
+            "question": "Quel objet contient l'historique de navigation ?",
+            "options": [
+                "history",
+                "navigation",
+                "window.past",
+                "location"
+            ],
+            "answer": 0,
+            "explanation": "window.history (back, forward, pushState)."
+        },
+        {
+            "id": 81,
+            "question": "Quelle méthode permet de savoir si une chaîne commence par 'X' ?",
+            "options": [
+                "startsWith()",
+                "beginWith()",
+                "indexOf() == 0",
+                "match()"
+            ],
+            "answer": 0,
+            "explanation": "'abc'.startsWith('a') -> true."
+        },
+        {
+            "id": 82,
+            "question": "Comment ajouter une classe CSS à un élément ?",
+            "options": [
+                "el.classList.add('c')",
+                "el.className += ' c'",
+                "el.addClass('c')",
+                "Les deux 1ers"
+            ],
+            "answer": 3,
+            "explanation": "classList est l'API moderne."
+        },
+        {
+            "id": 83,
+            "question": "Quel est l'objet global dans le navigateur ?",
+            "options": [
+                "window",
+                "global",
+                "root",
+                "document"
+            ],
+            "answer": 0,
+            "explanation": "Dans Node.js c'est `global`."
+        },
+        {
+            "id": 84,
+            "question": "Comment faire une copie profonde d'un objet (simple) ?",
+            "options": [
+                "JSON.parse(JSON.stringify(obj))",
+                "{...obj}",
+                "Object.assign({}, obj)",
+                "obj.clone()"
+            ],
+            "answer": 0,
+            "explanation": "Les autres font des copies superficielles. StructuredClone() est la méthode moderne."
+        },
+        {
+            "id": 85,
+            "question": "Quelle fonction décode une URL ?",
+            "options": [
+                "decodeURI()",
+                "parseURI()",
+                "unscape()",
+                "decode()"
+            ],
+            "answer": 0,
+            "explanation": "Et encodeURI()."
+        },
+        {
+            "id": 86,
+            "question": "Comment définir une valeur par défaut dans une fonction ?",
+            "options": [
+                "function(a=1) {}",
+                "function(a || 1) {}",
+                "function(a:1) {}",
+                "def(a=1)"
+            ],
+            "answer": 0,
+            "explanation": "Paramètres par défaut ES6."
+        },
+        {
+            "id": 87,
+            "question": "Quel opérateur calcule la puissance ?",
+            "options": [
+                "**",
+                "^",
+                "pow",
+                "exp"
+            ],
+            "answer": 0,
+            "explanation": "2 ** 3 = 8."
+        },
+        {
+            "id": 88,
+            "question": "Quelle méthode vérifie si une chaîne contient un texte ?",
+            "options": [
+                "includes()",
+                "contains()",
+                "has()",
+                "inside()"
+            ],
+            "answer": 0,
+            "explanation": "String.prototype.includes()."
+        },
+        {
+            "id": 89,
+            "question": "Comment recharger la page ?",
+            "options": [
+                "location.reload()",
+                "window.refresh()",
+                "document.reload()",
+                "reload()"
+            ],
+            "answer": 0,
+            "explanation": "Force le rechargement."
+        },
+        {
+            "id": 90,
+            "question": "Quel est le résultat de `1 + 2 + '3'` ?",
+            "options": [
+                "'33'",
+                "'123'",
+                "6",
+                "Error"
+            ],
+            "answer": 0,
+            "explanation": "1+2=3, puis 3+'3' = '33'."
+        },
+        {
+            "id": 91,
+            "question": "Quelle méthode transforme un itérable en tableau ?",
+            "options": [
+                "Array.from()",
+                "Array.of()",
+                "toList()",
+                "makeArray()"
+            ],
+            "answer": 0,
+            "explanation": "Utile pour NodeList ou arguments."
+        },
+        {
+            "id": 92,
+            "question": "Comment supprimer un écouteur d'événement ?",
+            "options": [
+                "removeEventListener",
+                "deleteEvent",
+                "off",
+                "unbind"
+            ],
+            "answer": 0,
+            "explanation": "Nécessite la référence de la fonction callback."
+        },
+        {
+            "id": 93,
+            "question": "Quelle est la valeur de `undefined + 1` ?",
+            "options": [
+                "NaN",
+                "1",
+                "undefined",
+                "Error"
+            ],
+            "answer": 0,
+            "explanation": "Opération mathématique impossible."
+        },
+        {
+            "id": 94,
+            "question": "Quel mot-clé teste si une propriété est dans le prototype ?",
+            "options": [
+                "instanceof",
+                "in",
+                "typeof",
+                "is"
+            ],
+            "answer": 0,
+            "explanation": "obj instanceof Class."
+        },
+        {
+            "id": 95,
+            "question": "Comment obtenir les clés d'un objet sous forme de tableau ?",
+            "options": [
+                "Object.keys(obj)",
+                "obj.keys()",
+                "keys(obj)",
+                "Object.getNames(obj)"
+            ],
+            "answer": 0,
+            "explanation": "Et Object.values() pour les valeurs."
+        },
+        {
+            "id": 96,
+            "question": "Quelle fonction permet d'analyser un entier ?",
+            "options": [
+                "parseInt()",
+                "parseInteger()",
+                "toInt()",
+                "Integer()"
+            ],
+            "answer": 0,
+            "explanation": "parseInt(string, radix)."
+        },
+        {
+            "id": 97,
+            "question": "Comment faire une boucle infinie (à éviter) ?",
+            "options": [
+                "while(true)",
+                "for(;;)",
+                "Les deux",
+                "loop"
+            ],
+            "answer": 2,
+            "explanation": "Les 2 syntaxes bloquent le thread."
+        },
+        {
+            "id": 98,
+            "question": "Quel objet permet d'utiliser des expressions régulières ?",
+            "options": [
+                "RegExp",
+                "Regex",
+                "Pattern",
+                "Match"
+            ],
+            "answer": 0,
+            "explanation": "/pattern/ ou new RegExp('pattern')."
+        },
+        {
+            "id": 99,
+            "question": "Comment arrêter l'exécution d'une fonction ?",
+            "options": [
+                "return",
+                "stop",
+                "break",
+                "exit"
+            ],
+            "answer": 0,
+            "explanation": "Retourne éventuellement une valeur."
+        },
+        {
+            "id": 100,
+            "question": "Quelle année est sorti ES6 (ES2015) ?",
+            "options": [
+                "2015",
+                "2016",
+                "2014",
+                "2009"
+            ],
+            "answer": 0,
+            "explanation": "La plus grosse mise à jour de JS moderne."
+        }
+    ]
+}

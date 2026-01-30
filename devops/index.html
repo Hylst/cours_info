@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -92,6 +92,36 @@
                     Si l'adresse est mauvaise ou si le facteur (<strong>Router</strong>) ne connaît pas le chemin, la
                     lettre est perdue.</p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Pourquoi les Réseaux en DevOps ?</h3>
+                <p>En tant que <strong>DevOps</strong>, vous ne gérez pas seulement du code : vous gérez des
+                    <strong>systèmes distribués</strong> qui communiquent via le réseau. Comprendre les réseaux vous
+                    permet de :
+                </p>
+                <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Débugger efficacement</strong> : 80% des incidents en production sont liés au réseau ou
+                        à la connectivité</li>
+                    <li><strong>Optimiser la performance</strong> : Latence, bande passante, CDN, DNS caching</li>
+                    <li><strong>Sécuriser l'infrastructure</strong> : Firewalls, VPN, Network Policies, Zero Trust</li>
+                    <li><strong>Concevoir des architectures résilientes</strong> : Load Balancers, Service Mesh,
+                        Multi-Region</li>
+                </ul>
+                <p><em>Un DevOps qui ne comprend pas les réseaux est comme un pilote qui ne connaît pas la météo</em> :
+                    il ne saura pas pourquoi ça plante quand ça plante.</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ?</h4>
+                <p><strong>ARPANET</strong>, le précurseur d'Internet, a envoyé son premier message le <strong>29
+                        octobre 1969</strong> entre UCLA et Stanford. Le message était censé être "LOGIN" mais le
+                    système a planté après "LO". Premier bug réseau de l'histoire ! 🐛</p>
+                <p>Aujourd'hui, Internet compte <strong>5,3 milliards d'utilisateurs</strong> et transfère <strong>4,8
+                        zettaoctets</strong> de données par an (1 ZB = 1 milliard de TB).</p>
+            </div>
+
 
             <!-- MODÈLE TCP/IP -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🗂️ A. Modèle TCP/IP (Simplifié)</h3>
@@ -245,6 +275,151 @@
                 </div>
             </div>
 
+            <!-- Comparison: OSI vs TCP/IP -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 OSI vs TCP/IP : Quelle Différence ?</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col winner">
+                        <h4>🏆 Modèle TCP/IP (4 couches)</h4>
+                        <ul>
+                            <li><strong>Pragmatique</strong> : Basé sur l'implémentation réelle d'Internet</li>
+                            <li><strong>Simplif</strong> : 4 couches faciles à mémoriser</li>
+                            <li><strong>Standard Internet</strong> : Utilisé par tous les protocoles modernes</li>
+                            <li><strong>Focus DevOps</strong> : Application, Transport, Internet, Accès</li>
+                            <li><strong>Exemples concrets</strong> : HTTP/DNS (App), TCP/UDP (Transport), IP (Internet)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col">
+                        <h4>📖 Modèle OSI (7 couches)</h4>
+                        <ul>
+                            <li><strong>Théorique</strong> : Modèle académique de référence</li>
+                            <li><strong>Complexe</strong> : 7 couches (Physical, Data Link, Network, Transport, Session,
+                                Presentation, Application)</li>
+                            <li><strong>Rarement implémenté</strong> : Peu de protocoles suivent exactement ce modèle
+                            </li>
+                            <li><strong>Utile pour apprendre</strong> : Bon pour comprendre les concepts</li>
+                            <li><strong>Mnémonique</strong> : "Please Do Not Throw Sausage Pizza Away"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: Network Troubleshooting -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Latence Réseau Mystérieuse en Production</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">2.4s</span>
+                        <span class="metric-label">Latence initiale</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">45ms</span>
+                        <span class="metric-label">Après fix</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">-98%</span>
+                        <span class="metric-label">Amélioration</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : Une startup SaaS voit son API ralentir brutalement. Les utilisateurs EU
+                    se plaignent de timeouts (>2s), mais les utilisateurs US n'ont aucun problème.</p>
+                <p><strong>Investigation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><code>ping api.startup.com</code> depuis EU : <strong>350ms</strong> (anormal pour un serveur
+                        EU)</li>
+                    <li><code>traceroute</code> révèle que les paquets transitent par... les USA ! 🤦</li>
+                    <li>Le DNS renvoyait l'IP du serveur US au lieu de l'EU</li>
+                </ol>
+                <p><strong>Solution</strong> : Configurer <strong>Route 53 Geolocation Routing</strong> (ou équivalent
+                    GCP/Azure). Les requêtes EU sont désormais routées vers le datacenter EU.</p>
+                <p><strong>Résultat</strong> : Latence divisée par <strong>53x</strong>. Clients EU satisfaits. Leçon :
+                    <em>Le réseau, c'est de la géographie</em>.
+                </p>
+            </div>
+
+            <!-- Step-by-Step: Debug Network Issues -->
+            <div class="step-by-step">
+                <h4>🔍 Guide Pas-à-Pas : Débugger un Problème Réseau</h4>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h5>Vérifier la connectivité de base</h5>
+                        <p><code>ping [host]</code> - Est-ce que la machine répond ? Si non, problème de routage ou
+                            firewall.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h5>Tester la résolution DNS</h5>
+                        <p><code>dig [domain]</code> ou <code>nslookup</code> - Le nom de domaine se résout-il en IP
+                            correcte ? Cache DNS corrompu ?</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h5>Vérifier le chemin réseau</h5>
+                        <p><code>traceroute [host]</code> - Où les packets se perdent-ils ? Quel routeur pose problème ?
+                        </p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h5>Tester la couche applicative</h5>
+                        <p><code>curl -v https://[host]</code> - HTTP/HTTPS fonctionne ? Certificat TLS valide ? Code
+                            200/500 ?</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h5>Vérifier les ports et firewalls</h5>
+                        <p><code>telnet [host] [port]</code> ou <code>nc -zv [host] [port]</code> - Le port est-il
+                            ouvert ? Firewall bloque ?</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h5>Analyser les logs du serveur</h5>
+                        <p>Côté serveur : <code>tail -f /var/log/nginx/error.log</code> - Erreurs côté backend ?
+                            Timeouts database ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pitfall Box -->
+            <div class="pitfall-box">
+                <h4>⚠️ Pièges Courants en Réseau</h4>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Security Group mal configuré</strong> : "Ça marche en local mais pas en prod" → Vérifier
+                        les inbound rules</li>
+                    <li><strong>DNS caching</strong> : Changement d'IP non immédiat (TTL = 300s) → Attendre ou flush
+                        cache</li>
+                    <li><strong>NAT Gateway limits</strong> : Trop de connexions sortantes → Connection pool exhausted
+                    </li>
+                    <li><strong>MTU mismatch</strong> : Packets fragmentés → Perf dégradée (rare mais vicieux)</li>
+                </ul>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Réseaux pour DevOps</h4>
+                <ul>
+                    <li><strong>TCP/IP 4 couches</strong> : Application → Transport → Internet → Accès</li>
+                    <li><strong>Ports essentiels</strong> : 80 (HTTP), 443 (HTTPS), 22 (SSH), 3306 (MySQL), 5432
+                        (PostgreSQL)</li>
+                    <li><strong>Debug méthodique</strong> : Ping → DNS → Traceroute → Curl → Ports → Logs</li>
+                    <li><strong>Cloud networking</strong> : VPC, Security Groups, Load Balancers, Regions/AZ</li>
+                    <li><strong>80% des incidents</strong> sont liés au réseau → Maîtriser TCP/IP = sauver des nuits
+                    </li>
+                </ul>
+            </div>
+
+
             <!-- CLI TOOLS -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ E. Outils CLI Indispensables</h3>
             <table class="cmd-table">
@@ -325,6 +500,82 @@
                     des assiettes cassées et se font hurler dessus par les clients. <strong>DevOps, c'est casser ce
                         mur.</strong></p>
             </div>
+
+            <!-- Module Intro -->
+            <div class="module-intro">
+                <h3>📖 Pourquoi la Culture DevOps ?</h3>
+                <p>Le <strong>DevOps</strong> n'est pas un outil, un job title ou une certification. C'est un
+                    <strong>mouvement culturel</strong> né en 2007-2009 pour résoudre un problème structurel : <em>le
+                        conflit entre Dev (vitesse, changement) et Ops (stabilité, sécurité)</em>.
+                </p>
+                <p>Avant DevOps, le cycle typique était :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Dev</strong> : "On a codé une feature géniale en 2 semaines !"</li>
+                    <li><strong>Ops</strong> : "Ça va prendre 3 mois pour la déployer en prod (change requests, audits,
+                        testing...)"</li>
+                    <li><strong>Cycle de 6 mois entre l'idée et la valeur client</strong></li>
+                    <li>Pendant ce temps, vos concurrents déploient <strong>10 fois par jour</strong></li>
+                </ol>
+                <p>DevOps casse ce modèle en alignant les incentives : <em>"You build it, you run it"</em> (Amazon).
+                    Maintenant, tout le monde est responsable de la prod. Plus de mur./p>
+            </div>
+
+            <!-- Timeline historique -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📅 Timeline : Naissance du DevOps</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2007</div>
+                    <div class="timeline-content">
+                        <h5>Premier Agile System Administration</h5>
+                        <p>Patrick Debois organise une conférence en Belgique pour appliquer Agile aux Ops.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2009</div>
+                    <div class="timeline-content">
+                        <h5>Naissance officielle : DevOpsDays</h5>
+                        <p>Patrick Debois lance "DevOpsDays" à Gand. Le #devops hashtag explose sur Twitter.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2013</div>
+                    <div class="timeline-content">
+                        <h5>The Phoenix Project (livre culte)</h5>
+                        <p>Gene Kim publie le roman IT qui évangélise DevOps dans les entreprises.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2014</div>
+                    <div class="timeline-content">
+                        <h5>Premières DORA Metrics</h5>
+                        <p>Google lance le "State of DevOps Report" avec les 4 métriques clés.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020-2025</div>
+                    <div class="timeline-content">
+                        <h5>DevOps devient la norme</h5>
+                        <p>Platform Engineering, GitOps, FinOps émergent comme évolutions naturelles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ?</h4>
+                <p>Selon le <strong>2024 State of DevOps Report</strong> (Google/DORA) :</p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Les organisations <strong>Elite</strong> déploient <strong>208x plus fréquemment</strong> que
+                        les Low performers</li>
+                    <li>Elles ont un <strong>Lead Time 106x plus rapide</strong> (commit → prod)</li>
+                    <li>Leur <strong>MTTR est divisé par 2604</strong> (!) en cas de panne</li>
+                    <li>Elles passent <strong>47% moins de temps sur du "toil"</strong> (tâches manuelles répétitives)
+                    </li>
+                </ul>
+                <p><strong>ROI</strong> : Les entreprises DevOps mature perdent <strong>81% moins de chiffre
+                        d'affaires</strong> à cause de downtime.</p>
+            </div>
+
 
             <!-- 3 WAYS OF DEVOPS -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Les 3 Voies du DevOps</h3>
@@ -445,6 +696,55 @@
                     </ul>
                 </div>
             </details>
+
+            <!-- Case Study: Netflix -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Netflix - Transformation DevOps</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">1000+</span>
+                        <span class="metric-label">Déploiements/jour</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">16min</span>
+                        <span class="metric-label">Temps deploy moyen</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">99.99%</span>
+                        <span class="metric-label">Availability SLA</span>
+                    </div>
+                </div>
+                <p><strong>Contexte (2008)</strong> : Netflix migre de DVD-par-courrier vers le streaming.
+                    Infrastructure monolithique impossible à scaler.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>2008-2009</strong> : Migration massive vers AWS (7 ans de migration !)</li>
+                    <li><strong>2010</strong> : Adoption de Microservices (500+ services indépendants aujourd'hui)</li>
+                    <li><strong>2011</strong> : Création de Chaos Monkey (test continu de résilience)</li>
+                    <li><strong>Culture "Freedom & Responsibility"</strong> : Les ingénieurs déploient directement en
+                        prod</li>
+                    <li><strong>No Change Management Board</strong> : Zero approval manuelle pour déployer</li>
+                </ol>
+                <p><strong>Résultat</strong> : <strong>200M+ utilisateurs</strong>, streaming dans <strong>190
+                        pays</strong>, <strong>15% du trafic Internet mondial</strong>. DevOps n'est pas une option,
+                    c'est une nécessité pour l'échelle.</p>
+                <p><strong>Leçon clé</strong> : <em>"You build it, you run it"</em> force la qualité à la source.</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Culture DevOps</h4>
+                <ul>
+                    <li><strong>DevOps = Culture, pas un job title</strong> : Alignement Dev + Ops sur la valeur client
+                    </li>
+                    <li><strong>3 Voies</strong> : Flow (vitesse), Feedback (qualité), Learning (amélioration continue)
+                    </li>
+                    <li><strong>DORA Metrics</strong> : Deploy Frequency, Lead Time, MTTR, Change Failure Rate</li>
+                    <li><strong>Elite vs Low</strong> : 208x plus de déploiements, 106x lead time plus rapide</li>
+                    <li><strong>Anti-patterns</strong> : Blame culture, DevOps team séparé, manual gates</li>
+                    <li><strong>ROI mesurable</strong> : -81% de perte de CA due aux pannes</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -467,6 +767,34 @@
                     L'historique Git est la <strong>boîte noire</strong> qui permet de rejouer le crash en cas
                     d'accident.</p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Pourquoi Git est le standard absolu ?</h3>
+                <p>Avant Git, les développeurs utilisaient des systèmes <strong>centralisés</strong> (SVN, Perforce). Si
+                    le serveur tombait, tout le monde s'arrêtait de travailler. Git est <strong>distribué</strong> :</p>
+                <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Travail Offline</strong> : Chaque développeur a l'historique complet sur sa machine.
+                    </li>
+                    <li><strong>Branches légères</strong> : Créer une branche prend 1ms (c'est juste un pointeur).</li>
+                    <li><strong>Intégrité totale</strong> : Chaque commit est signé par un hash SHA-1 (impossible de
+                        modifier l'histoire sans que ça se voie).</li>
+                    <li><strong>Agilité</strong> : Permet de tester des idées folles sans polluer le code principal.
+                    </li>
+                </ul>
+                <p><em>En DevOps, Git est la Source de Vérité. Si c'est pas dans Git, ça n'existe pas en
+                        production.</em></p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ?</h4>
+                <p>Linus Torvalds (créateur de Linux) a écrit la première version de Git en seulement <strong>2
+                        semaines</strong> en 2005. Il était furieux d'avoir perdu l'accès gratuit à BitKeeper et voulait
+                    un outil qui soit "tout l'inverse de CVS/SVN".</p>
+                <p>Aujourd'hui, <strong>94% des développeurs</strong> utilisent Git.</p>
+            </div>
+
 
             <!-- GIT FLOW DIAGRAM -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Anatomie du Flux Git</h3>
@@ -626,6 +954,85 @@
                 </div>
             </div>
 
+            <!-- Comparison: Merge vs Rebase -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Merge vs Rebase : Le Grand Débat</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col">
+                        <h4>🌱 git merge</h4>
+                        <ul>
+                            <li><strong>Non-destructif</strong> : Préserve l'historique complet et chronologique.</li>
+                            <li><strong>Traçabilité</strong> : On voit exactement quand les branches ont fusionné.</li>
+                            <li><strong>Pollution</strong> : Crée beaucoup de "Merge commits" (historique en
+                                spaghettis).</li>
+                            <li><strong>Conflits</strong> : Une seule grosse résolution de conflits à la fin.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col winner">
+                        <h4>🚀 git rebase</h4>
+                        <ul>
+                            <li><strong>Historique Linéaire</strong> : Pas de commits de merge inutiles. C'est propre !
+                            </li>
+                            <li><strong>Plus lisible</strong> : Plus facile à suivre pour les autres développeurs.</li>
+                            <li><strong>Destructif</strong> : Réécrit l'histoire (⚠️ Ne jamais faire sur une branche
+                                publique partagee).</li>
+                            <li><strong>Conflits</strong> : On résout les conflits commit par commit (plus granulaire).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: Conflict Resolution -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Résolution de Conflits Explosive</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">42</span>
+                        <span class="metric-label">Fichiers en conflit</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">3h</span>
+                        <span class="metric-label">Temps de résolution</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Code perdu</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : Deux équipes ont travaillé sur la même refacto majeure pendant 2 semaines
+                    sans se synchroniser. Au moment du merge : l'enfer.</p>
+                <p><strong>Stratégie de survie</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Isolation</strong> : On ne résout pas ça sur le main. On crée une branche de "sync".
+                    </li>
+                    <li><strong>Communication</strong> : Les deux leads techniques s'asseyent ensemble (Pair
+                        Programming).</li>
+                    <li><strong>Outils</strong> : Utilisation de <code>git mergetool</code> avec VS Code ou IntelliJ
+                        pour visualiser les "3-way merges".</li>
+                    <li><strong>Granularité</strong> : Rebase interactif (<code>git rebase -i</code>) pour squasher les
+                        petits commits avant de merger.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Migration réussie. <strong>Leçon Apprise</strong> : Synchronisez-vous
+                    tous les jours (<code>git pull</code> fréquent) pour éviter les "Merges de la mort".</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Git Mastery</h4>
+                <ul>
+                    <li><strong>Git est distribué</strong> : Pas de SPOF (Single Point of Failure).</li>
+                    <li><strong>L'Atomicité</strong> : Un commit = une seule chose (une feature, un fix).</li>
+                    <li><strong>Conventional Commits</strong> : Utilisez <code>feat:</code>, <code>fix:</code>,
+                        <code>docs:</code> pour un historique clair.
+                    </li>
+                    <li><strong>Protection de Branche</strong> : Interdire de push directement sur <code>main</code>.
+                    </li>
+                    <li><strong>PR / Code Review</strong> : Git est avant tout un outil de collaboration et de qualité.
+                    </li>
+                </ul>
+            </div>
+
             <!-- Git Flow vs Trunk Based -->
             <div class="grid2" style="margin-top:30px;">
                 <div class="ref-card">
@@ -633,7 +1040,7 @@
                     <ul class="dense-list">
                         <li><strong>Trunk-Based (Moderne)</strong> : Une seule branche <code>main</code>. PRs
                             ultra-courtes (< 24h). Nécessite tests solides.</li>
-                        <li><strong>GitFlow (Legacy)</strong> : Branches <code>develop</code>, <code>release</code>,
+                        <li><strong>Trunk-Based (Legacy)</strong> : Branches <code>develop</code>, <code>release</code>,
                             <code>hotfix</code>. Crée des "Merge Hells".
                         </li>
                     </ul>
@@ -663,7 +1070,6 @@
                         style="background:rgba(0,0,0,0.2); padding:10px; border-radius:6px; margin-top:10px; border:1px solid var(--border);">
                         <code>Git (Désiré) == Cluster (Réel)</code>
                     </div>
-                </div>
             </details>
         </div>
     </section>
@@ -687,6 +1093,38 @@
                     Si ça bippe (Test échoué, Faille sécu), le passager n'embarque pas.
                     Cela garantit que l'avion (Branche Main) ne décolle qu'avec des passagers sûrs.</p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Pourquoi l'Intégration Continue (CI) ?</h3>
+                <p>Avant le CI, le "jour de l'intégration" était redouté. On fusionnait des mois de code en une fois,
+                    créant des conflits massifs et des bugs indétectables. Le CI prône l'intégration
+                    <strong>fréquente</strong> (plusieurs fois par jour).
+                </p>
+                <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Fail Fast</strong> : Détecter les erreurs quelques minutes après le commit, pas des
+                        semaines plus tard.</li>
+                    <li><strong>Standardisation</strong> : Chaque commit est testé dans le même environnement (fini le
+                        "ça marche sur ma machine").</li>
+                    <li><strong>Qualité Constante</strong> : Le workflow impose des seuils de qualité (coverage,
+                        linting).</li>
+                    <li><strong>Confiance</strong> : La branche principale est toujours stable et "déployable".</li>
+                </ul>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? Le coût exponentiel des bugs</h4>
+                <p>Réparer un bug détecté en <strong>Production</strong> coûte environ <strong>100 fois plus
+                        cher</strong> que s'il est détecté pendant le développement (phase de CI).</p>
+                <ul style="margin: 10px 0; padding-left: 20px; font-size: 0.9rem;">
+                    <li><strong>Dev/CI</strong> : 1.000 € (Corrigé en 15 min)</li>
+                    <li><strong>Staging</strong> : 10.000 € (Mobilise QA + Repush)</li>
+                    <li><strong>Production</strong> : 100.000 € (Impact client, Hotfix express, Stress, réputation)</li>
+                </ul>
+                <p><em>Le CI est votre meilleure assurance-vie technique.</em></p>
+            </div>
+
 
             <!-- CI PIPELINE SCHEMA -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Pipeline CI Typique</h3>
@@ -755,6 +1193,81 @@
                     </tr>
                 </tbody>
             </table>
+
+            <!-- Comparison Matrix: CI Features -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Matrice de Comparaison CI</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col winner">
+                        <h4>🏆 GitHub Actions / GitLab CI</h4>
+                        <ul>
+                            <li><strong>Pipeline-as-Code</strong> : YAML ultra-flexible et versionné.</li>
+                            <li><strong>Managed Runners</strong> : Pas besoin de gérer de serveurs de build.</li>
+                            <li><strong>Marketplace</strong> : Centaines d'actions réutilisables.</li>
+                            <li><strong>Intégré</strong> : Workflow unique pour code, tests et déploiement.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col">
+                        <h4>🏗️ Jenkins (Self-Managed)</h4>
+                        <ul>
+                            <li><strong>Extensibilité Totale</strong> : 1800+ plugins pour TOUT faire.</li>
+                            <li><strong>Complexité</strong> : Courbe d'apprentissage raide (Groovy).</li>
+                            <li><strong>Maintenance</strong> : Nécessite un admin Jenkins dédié (Patchs, Sécu).</li>
+                            <li><strong>Cost-Effective</strong> : Pour les énormes infrastructures existantes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: CI Migration -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Migration de Jenkins vers GitHub Actions</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">45min</span>
+                        <span class="metric-label">Temps de build (Avant)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">8min</span>
+                        <span class="metric-label">Temps de build (Après)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">-75%</span>
+                        <span class="metric-label">Coût maintenance</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : Une scale-up e-commerce avec 50 microservices passait trop de temps à
+                    maintenir ses pipelines Jenkins "flaky". Les builds étaient lents et bloquaient la prod.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Standardisation</strong> : Création de "Reusable Workflows" GitHub pour tous les
+                        services.</li>
+                    <li><strong>Parallélisation</strong> : Utilisation de la <code>matrix strategy</code> pour lancer
+                        les tests en parallèle.</li>
+                    <li><strong>Caching</strong> : Optimisation agressive des caches <code>npm</code> et
+                        <code>docker</code>.
+                    </li>
+                    <li><strong>Self-hosted Runners</strong> : Utilisation de runners sur Kubernetes pour les builds
+                        gourmands.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Développeurs plus productifs, pipelines stables, et infrastructure
+                    simplifiée.</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Continuous Integration</h4>
+                <ul>
+                    <li><strong>Fail Fast</strong> : La CI doit donner un résultat en moins de 10 minutes.</li>
+                    <li><strong>Tests Atomiques</strong> : Un pipeline sans tests n'est pas du CI, c'est du "Build
+                        Theater".</li>
+                    <li><strong>Honnêteté Technique</strong> : Ne jamais laisser un pipeline "rouge" plus d'une heure.
+                    </li>
+                    <li><strong>Artifacts</strong> : Le pipeline CI doit produire un artefact (image Docker, jar) prêt
+                        pour la CD.</li>
+                </ul>
+            </div>
+
 
             <div class="grid2" style="margin-top:25px;">
                 <div class="code">
@@ -828,6 +1341,35 @@
                 </p>
             </div>
 
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 CI vs CD vs Continuous Deployment : Ne les confondez plus !</h3>
+                <p>Beaucoup utilisent ces termes comme des synonymes, mais ils représentent des étapes de maturité
+                    différentes :</p>
+                <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Continuous Integration (CI)</strong> : Le code est buildé et testé automatiquement à
+                        chaque commit.</li>
+                    <li><strong>Continuous Delivery (CD)</strong> : Le code est prêt à être déployé en production à TOUT
+                        MOMENT, mais le clic final est <strong>manuel</strong> (décision business).</li>
+                    <li><strong>Continuous Deployment</strong> : Chaque commit qui passe les tests est déployé
+                        <strong>automatiquement</strong> en production, sans intervention humaine.
+                    </li>
+                </ul>
+                <p><em>En CD, la production est un simple artefact que l'on promeut.</em></p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? Déployer un Vendredi après-midi ?</h4>
+                <p>Dans les entreprises traditionnelles, c'est interdit (le "Friday Deploy" est tabou). En DevOps mature
+                    avec CD, c'est un non-événement.</p>
+                <p><strong>Pourquoi ?</strong> Parce que les outils de CD permettent un <strong>Rollback
+                        instantané</strong> et une isolation du trafic (Canary). Si le déploiement de 17h échoue, le
+                    système revient en arrière automatiquement en 30 secondes sans que les Ops ne sacrifient leur
+                    week-end.</p>
+            </div>
+
+
             <!-- STRATEGIES TABLE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Comparatif des Stratégies</h3>
             <table class="cmd-table">
@@ -899,6 +1441,72 @@
                 </div>
             </div>
 
+            <!-- Advanced CD Strategies -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔍 Stratégies de Déploiement Avancées</h3>
+            <div class="grid2">
+                <div class="info">
+                    <strong>🌑 Dark Launching (Feature Flags)</strong><br>
+                    Le code est déployé en prod mais reste <strong>invisible</strong> pour les utilisateurs. On l'active
+                    via une config (Feature Flag) pour certains segments d'utilisateurs. Permet de tester la performance
+                    en prod sans risque métier.
+                </div>
+                <div class="info" style="border-left-color:var(--kw)">
+                    <strong>👤 Shadow Deployment</strong><br>
+                    Le trafic réel est <strong>dupliqué</strong> vers la nouvelle version, mais les réponses ne sont pas
+                    renvoyées aux clients. On compare les sorties de V1 et V2 pour s'assurer que V2 est stable (parfait
+                    pour les migrations de DB ou refactos complexes).
+                </div>
+            </div>
+
+            <!-- Case Study: Amazon -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Amazon - Un déploiement toutes les 11.6 secondes</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">11.6s</span>
+                        <span class="metric-label">Déploiement moyen</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">10k+</span>
+                        <span class="metric-label">Serveurs mis à jour simultanément</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Downtime toléré</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : En 2001, Amazon était un monolithe. Un changement mineur pouvait bloquer
+                    des centaines de développeurs pendant des semaines.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Two-Pizza Teams</strong> : De petites équipes autonomes de 6-10 personnes gèrent un
+                        service de bout en bout.</li>
+                    <li><strong>Apollo</strong> : Création de leur propre outil de CD (devenu AWS CodeDeploy) pour
+                        automatiser chaque étape.</li>
+                    <li><strong>Service-Oriented Architecture (SOA)</strong> : Chaque service cache sa complexité
+                        derrière une API.</li>
+                </ol>
+                <p><strong>Résultat</strong> : En 2011 (déjà !), Amazon effectuait <strong>1.079 déploiements par
+                        heure</strong> en moyenne sur ses jours de semaine. Aujourd'hui, ce chiffre est bien plus élevé.
+                </p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Continuous Delivery</h4>
+                <ul>
+                    <li><strong>Automatisation Totale</strong> : Si un humain intervient manuellement, ce n'est pas du
+                        CD.</li>
+                    <li><strong>Infrastructure-as-Code</strong> : Le déploiement doit inclure les changements d'infra
+                        (VPC, DB, LB).</li>
+                    <li><strong>Observabilité</strong> : On ne déploie pas sans Dashboard. Si les erreurs montent, on
+                        rollback.</li>
+                    <li><strong>Rollback Automatique</strong> : Le succès d'un déploiement n'est pas le "Finish", c'est
+                        le maintien des métriques stables.</li>
+                </ul>
+            </div>
+
+
             <!-- ENVIRONMENT PROMOTION -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 B. Promotion d'Environnements</h3>
             <div class="git-flow" style="justify-content:center;">
@@ -946,6 +1554,28 @@
                         en haut.</strong>
                 </p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Docker : La fin de la "Matrix of Hell"</h3>
+                <p>Avant Docker, déployer une application était un cauchemar de compatibilité (la Matrix of Hell). On
+                    devait s'assurer que l'App A (Python 2.7) ne cassait pas l'App B (Python 3.5) sur le même serveur.
+                    Docker a apporté l'<strong>Isolation Hermétique</strong>.</p>
+                <p>Le concept clé : <strong>"Build once, run anywhere"</strong>. Le package contient tout : code,
+                    runtime, bibliothèques, variables d'environnement. Si ça marche sur votre laptop, ça marchera en
+                    prod.</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? La naissance d'une révolution</h4>
+                <p>En mars 2013, à la conférence PyCon, <strong>Solomon Hykes</strong> présente un projet interne de sa
+                    startup dotCloud : Docker. La démo de 5 minutes scotche l'assistance : lancer un container en moins
+                    d'une seconde. L'année d'après, dotCloud devient Docker Inc., et change le monde de l'IT pour
+                    toujours.</p>
+                <p>Aujourd'hui, Docker est l'unité de mesure de base du DevOps.</p>
+            </div>
+
 
             <!-- ARCHITECTURE DOCKER -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏗️ A. Architecture Docker</h3>
@@ -1173,29 +1803,79 @@
                 </tbody>
             </table>
 
-            <!-- VOLUMES & NETWORKING -->
-            <div class="grid2" style="margin-top:20px;">
-                <div class="ref-card">
-                    <h4>📁 Volumes (Persistence)</h4>
-                    <ul class="dense-list">
-                        <li><strong>Bind Mount</strong> : <code>-v ./host:/container</code> (Dev)</li>
-                        <li><strong>Named Volume</strong> : <code>-v mydata:/data</code> (Prod)</li>
-                        <li>Les données survivent à la destruction du container</li>
-                    </ul>
+
+
+            <!-- Comparison: VM vs Containers -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 VM vs Containers : Le Match</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col">
+                        <h4>🖥️ Machines Virtuelles (VM)</h4>
+                        <ul>
+                            <li><strong>Isolation Fort</strong> : Noyau OS dédié. Plus sécurisé.</li>
+                            <li><strong>Lourd</strong> : Plusieurs Go par VM. Consomme beaucoup de RAM.</li>
+                            <li><strong>Lent</strong> : Minutes pour démarrer.</li>
+                            <li><strong>Cas d'usage</strong> : Isolation totale, OS différents sur un même hôte.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col winner">
+                        <h4>🐳 Containers (Docker)</h4>
+                        <ul>
+                            <li><strong>Efficace</strong> : Partage le noyau de l'hôte. Quelques Mo.</li>
+                            <li><strong>Rapide</strong> : Millisecondes pour démarrer.</li>
+                            <li><strong>Portabilité</strong> : Garanti le fonctionnement identique partout.</li>
+                            <li><strong>Cas d'usage</strong> : Microservices, CI/CD, Cloud Native apps.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="ref-card">
-                    <h4>🌐 Networking</h4>
-                    <ul class="dense-list">
-                        <li><strong>bridge</strong> : Réseau isolé par défaut</li>
-                        <li><strong>host</strong> : Partage le réseau de l'hôte</li>
-                        <li><strong>Custom</strong> : <code>docker network create mynet</code></li>
-                        <li>Les services compose partagent un réseau automatique</li>
-                    </ul>
+            </div>
+
+            <!-- Case Study: Microservices Migration -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Migration Monolithe → Microservices</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">6 mois</span>
+                        <span class="metric-label">Cycle release (Avant)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">1 sem</span>
+                        <span class="metric-label">Cycle release (Après)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">-60%</span>
+                        <span class="metric-label">Coût infra</span>
+                    </div>
                 </div>
+                <p><strong>Contexte</strong> : Une banque traditionnelle gérait son application de trading avec un
+                    monolithe
+                    J2EE. Les déploiements étaient si risqués qu'ils n'avaient lieu que deux fois par an.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Containérisation</strong> : Migration graduelle vers Docker.</li>
+                    <li><strong>Découpage</strong> : Séparation du front, de l'auth et du moteur de prix en
+                        micro-services
+                        Docker.</li>
+                    <li><strong>Auto-scaling</strong> : Utilisation de Docker Swarm (puis K8s) pour gérer les pics de
+                        charge.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Temps de mise sur le marché divisé par 24. Coût de maintenance réduit
+                    grâce à
+                    l'optimisation des ressources Docker.</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Docker Deep Dive</h4>
+                <ul>
+                    <li><strong>Image vs Container</strong> : L'image est le plan, le container est la maison.</li>
+                    <li><strong>Isolation</strong> : Les containers partagent le kernel mais sont isolés.</li>
+                    <li><strong>Dockerfile</strong> : Automatisez la création d'images. Optimisez les layers.</li>
+                    <li><strong>Persistence</strong> : Utilisez les Volumes pour les données (DB, Logs).</li>
+                </ul>
             </div>
         </div>
     </section>
-
     <!-- MODULE 06: KUBERNETES AVANCÉ -->
     <section id="m6"
         style="background: radial-gradient(circle at center, rgba(50, 110, 200, 0.08) 0%, transparent 60%);">
@@ -1216,6 +1896,28 @@
                     et remplace ceux qui s'évanouissent (self-healing).
                 </p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Kubernetes : L'OS du Cloud</h3>
+                <p>Kubernetes (ou K8s) est devenu le standard de fait pour faire tourner des conteneurs en production à
+                    grande échelle. Il résout le problème du <strong>Cycle de Vie</strong> : comment je déploie, comment
+                    je scale, comment je répare et comment je connecte mes applications.</p>
+                <p>K8s ne s'occupe pas de "comment" l'app tourne (c'est le rôle de Docker/Containerd), mais de "où" et
+                    "combien" elle tourne pour garantir le service aux utilisateurs.</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? De Borg à Kubernetes</h4>
+                <p>Kubernetes a été créé par <strong>Google</strong> en 2014, basé sur leur système interne secret
+                    appelé <strong>Borg</strong>. Google lançait déjà des milliards de conteneurs par semaine avant même
+                    que Docker n'existe !</p>
+                <p><strong>Étymologie :</strong> Kubernetes vient du grec signifiant "timonier" ou "pilote" (celui qui
+                    tient le gouvernail). C'est pour ça que le logo a 7 branches (référence au nom de code original
+                    "Project Seven" de Star Trek).</p>
+            </div>
+
 
             <!-- POURQUOI K8S -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">❓ A. Pourquoi Kubernetes ?</h3>
@@ -1466,11 +2168,72 @@
                 </div>
             </div>
 
-            <div class="tip" style="margin-top:20px;">
-                <strong>💡 Conseil :</strong> Utilisez <code>kubectl explain &lt;resource&gt;</code> pour découvrir les
-                champs YAML disponibles.
-                Ex: <code>kubectl explain deployment.spec.strategy</code>
+
+
+            <!-- K8S Networking & Storage Deep Dive -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔍 Networking & Storage : Sous le capot</h3>
+            <div class="grid2">
+                <div class="info">
+                    <strong>🌐 CNI (Container Network Interface)</strong><br>
+                    K8s ne gère pas le réseau lui-même. Il délègue à un plugin <strong>CNI</strong> (Calico, Flannel,
+                    Cilium). C'est lui qui donne une IP unique à chaque Pod et gère les "Network Policies" (Pare-feu
+                    interne).
+                </div>
+                <div class="info" style="border-left-color:var(--num)">
+                    <strong>💾 PV vs PVC (Le stockage persistant)</strong><br>
+                    - <strong>PV (Persistent Volume)</strong> : La ressource physique (le disque dur). Géré par
+                    l'admin.<br>
+                    - <strong>PVC (Persistent Volume Claim)</strong> : La requête de l'utilisateur ("Je veux 10Go").<br>
+                    K8s fait le "match" entre les deux.
+                </div>
             </div>
+
+            <!-- Case Study: Pokémon GO -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Pokémon GO - Le crash test de Kubernetes</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">50x</span>
+                        <span class="metric-label">Trafic vs prévisions</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">1000+</span>
+                        <span class="metric-label">Nodes GKE (GCP)</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0.1s</span>
+                        <span class="metric-label">Latency max tolérée</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : Lors du lancement en 2016, Pokémon GO a reçu 50 fois le trafic prévu en
+                    quelques heures. Aucun système traditionnel n'aurait survécu.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Google Kubernetes Engine (GKE)</strong> : Niantic utilisait K8s pour scaler leur backend
+                        massivement de manière transparente.</li>
+                    <li><strong>Custom Autoscaler</strong> : Utilisation de métriques métier pour rajouter des milliers
+                        de
+                        containers en quelques minutes.</li>
+                    <li><strong>Global Load Balancing</strong> : Utilisation de l'architecture K8s pour router le trafic
+                        mondial vers les clusters les plus proches.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Malgré quelques lenteurs au début, le jeu est resté debout. C'est la
+                    preuve
+                    ultime que K8s est prêt pour le "Hyper-Scale".</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Kubernetes Mastery</h4>
+                <ul>
+                    <li><strong>Abstraction</strong> : K8s masque l'infrastructure. On déploie sur le cluster, pas sur
+                        des VM.</li>
+                    <li><strong>Déclaratif</strong> : On décrit l'état final, K8s se charge de la convergence.</li>
+                    <li><strong>Haute Disponibilité</strong> : Pods répartis, Liveness/Readiness probes.</li>
+                    <li><strong>Écosystème</strong> : C'est devenu l'OS du Cloud (Inbound de CNCF).</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
@@ -1494,6 +2257,33 @@
                     Si le mur tombe, il le reconstruit à l'identique.
                 </p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 IaC : Des "Pets" aux "Cattle"</h3>
+                <p>Le plus grand changement apporté par l'IaC est le changement de paradigme <strong>"Pets vs
+                        Cattle"</strong> (Animaux de compagnie vs Bétail) :</p>
+                <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Pets (Hier)</strong> : On donne un nom à nos serveurs (ex: "Zeus"). On les soigne
+                        manuellement. S'ils meurent, c'est la tragédie.</li>
+                    <li><strong>Cattle (Aujourd'hui)</strong> : Les serveurs n'ont plus de noms individuels, mais des
+                        numéros (ex: web-01, web-02). S'ils ont un problème, on les supprime et on les recrée via le
+                        code.</li>
+                </ul>
+                <p>L'Infrastructure as Code permet une <strong>Reproductibilité Totale</strong> et évite le "Snowflake
+                    Server" (serveur configuré à la main que personne n'ose toucher).</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? L'essor de Terraform</h4>
+                <p>En 2014, <strong>Mitchell Hashimoto</strong> (fondateur de HashiCorp) lance Terraform. Avant, chaque
+                    Cloud Provider avait son propre outil (CloudFormation pour AWS, ARM pour Azure). Terraform a réussi
+                    l'impossible : créer un langage <strong>Cloud Agnostic</strong> (HCL) qui peut parler à tous les
+                    Clouds via des "Providers".</p>
+                <p>C'est aujourd'hui l'outil d'IaC le plus utilisé au monde.</p>
+            </div>
+
 
             <!-- IaC LIFECYCLE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Cycle de vie IaC</h3>
@@ -1525,42 +2315,80 @@
 
             <!-- TOOLS TABLE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils IaC</h3>
-            <table class="cmd-table">
-                <thead>
-                    <tr>
-                        <th>Outil</th>
-                        <th>Type</th>
-                        <th>Language</th>
-                        <th>Usage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Terraform</strong></td>
-                        <td>Provisioning</td>
-                        <td>HCL</td>
-                        <td>Créer VPC, EC2, RDS, K8s...</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ansible</strong></td>
-                        <td>Configuration</td>
-                        <td>YAML</td>
-                        <td>Installer packages, configurer OS</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Pulumi</strong></td>
-                        <td>Provisioning</td>
-                        <td>Python/TS</td>
-                        <td>IaC en vrai langage</td>
-                    </tr>
-                    <tr>
-                        <td><strong>CloudFormation</strong></td>
-                        <td>Provisioning</td>
-                        <td>YAML/JSON</td>
-                        <td>AWS natif uniquement</td>
-                    </tr>
-                </tbody>
+            </tbody>
             </table>
+
+            <!-- Comparison: Terraform vs Ansible -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Provisioning vs Configuration</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col winner">
+                        <h4>🏗️ Terraform (Déclaratif)</h4>
+                        <ul>
+                            <li><strong>Provisioning</strong> : Créer des ressources (VPC, VM, DB).</li>
+                            <li><strong>State Management</strong> : Sait ce qu'il a créé (le fichier State).</li>
+                            <li><strong>Idempotent</strong> : Ne recrée pas si la ressource existe déjà.</li>
+                            <li><strong>Cycle de vie</strong> : Idéal pour "Infrastructure immutable".</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col">
+                        <h4>🛠️ Ansible (Impératif/Hybride)</h4>
+                        <ul>
+                            <li><strong>Configuration</strong> : Installer des logiciels, modifier des fichiers.</li>
+                            <li><strong>Stateless</strong> : Ne garde pas d'inventaire de l'état passé.</li>
+                            <li><strong>Agentless</strong> : Fonctionne via SSH (pas d'agent à installer).</li>
+                            <li><strong>Mutable</strong> : Idéal pour maintenir des serveurs existants.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: Capital One -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Capital One - L'IaC à l'échelle bancaire</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Infra dans le Cloud AWS</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">Thousands</span>
+                        <span class="metric-label">Nodes gérés par Terraform</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Accès manuel en prod</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : En 2015, Capital One décide de fermer tous ses datacenters pour migrer
+                    sur AWS. Le défi : garantir la sécurité et la conformité bancaire de manière automatisée.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Terraform First</strong> : Interdiction de créer une ressource via la console. Tout
+                        passe par une PR Git.</li>
+                    <li><strong>Policy as Code</strong> : Utilisation de Sentinel (HashiCorp) pour bloquer
+                        automatiquement les infras non-conformes (ex: Bucket S3 public).</li>
+                    <li><strong>Immutable Infrastructure</strong> : On ne patche jamais un serveur, on redéploie une
+                        nouvelle version de l'infra complète.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Réduction drastique des erreurs humaines et audit constant en temps réel.
+                </p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Infrastructure as Code</h4>
+                <ul>
+                    <li><strong>Versionnez tout</strong> : L'infra est du code, elle vit dans Git.</li>
+                    <li><strong>Évitez le Drift</strong> : Utilisez des outils comme Driftctl pour détecter les modifs
+                        manuelles.</li>
+                    <li><strong>Modularité</strong> : Ne répétez pas votre code (DRY - Don't Repeat Yourself). Utilisez
+                        des modules.</li>
+                    <li><strong>Sécurité</strong> : Scannez vos manifests IaC avec des outils comme Checkov ou Tfsec.
+                    </li>
+                </ul>
+            </div>
+
 
             <!-- CODE EXAMPLES -->
             <div class="grid2" style="margin-top:25px;">
@@ -1640,6 +2468,31 @@
                     complète.</p>
             </div>
 
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 Observabilité : Illuminer la Boîte Noire</h3>
+                <p>Dans un système monolithique simple, un log suffit. Dans un cluster Kubernetes avec 200
+                    microservices, c'est impossible. L'observabilité est la capacité de comprendre l'état interne d'un
+                    système <strong>uniquement</strong> en regardant ses sorties (Metrics, Logs, Traces).</p>
+                <p>On passe du monitoring <strong>Réactif</strong> ("Tiens, ça a crashé") à l'observabilité
+                    <strong>Proactive</strong> ("La latence monte sur le service X, ça va bientôt saturer").
+                </p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box">
+                <h4>💡 Le saviez-vous ? Les 4 Golden Signals</h4>
+                <p>Google a défini dans son livre SRE les <strong>4 signaux d'or</strong> du monitoring que tout
+                    dashboard devrait avoir :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>Latency</strong> : Temps de réponse (ms).</li>
+                    <li><strong>Traffic</strong> : Nombre de requêtes/sec.</li>
+                    <li><strong>Errors</strong> : Taux de succès vs échec.</li>
+                    <li><strong>Saturation</strong> : Utilisation des ressources (CPU, RAM, Disque).</li>
+                </ol>
+            </div>
+
+
             <!-- 3 PILLARS -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏛️ A. Les 3 Piliers</h3>
             <div class="grid3">
@@ -1671,36 +2524,79 @@
 
             <!-- STACKS TABLE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Stacks Populaires</h3>
-            <table class="cmd-table">
-                <thead>
-                    <tr>
-                        <th>Stack</th>
-                        <th>Logs</th>
-                        <th>Metrics</th>
-                        <th>Traces</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Open Source</strong></td>
-                        <td>Loki / ELK</td>
-                        <td>Prometheus + Grafana</td>
-                        <td>Jaeger</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Datadog</strong></td>
-                        <td>✅</td>
-                        <td>✅</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td><strong>AWS</strong></td>
-                        <td>CloudWatch Logs</td>
-                        <td>CloudWatch Metrics</td>
-                        <td>X-Ray</td>
-                    </tr>
-                </tbody>
-            </table>
+
+
+            <!-- Comparison: Logs vs Metrics vs Traces -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Les 3 Piliers : Quand utiliser quoi ?</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col">
+                        <h4>📜 Logs (Événements)</h4>
+                        <ul>
+                            <li><strong>Granularité</strong> : Haute (détails précis).</li>
+                            <li><strong>Coût</strong> : Élevé (stockage massif).</li>
+                            <li><strong>Usage</strong> : "Pourquoi cette requête spécifique a échoué ?"</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col winner">
+                        <h4>🕵️ Traces (Parcours)</h4>
+                        <ul>
+                            <li><strong>Granularité</strong> : Contextuelle (multi-services).</li>
+                            <li><strong>Coût</strong> : Moyen (échantillonnage nécessaire).</li>
+                            <li><strong>Usage</strong> : "Où est passée la seconde de latence entre A et B ?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: Uber -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Uber - Gérer 500 millions de métriques</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">500M</span>
+                        <span class="metric-label">Métriques persistées</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">9.5M</span>
+                        <span class="metric-label">Points écrits / sec</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Downtime toléré pour le monitoring</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : En grandissant, Uber a saturé toutes les solutions de métriques
+                    existantes (Graphite, Prometheus). Ils avaient besoin d'une base de données de séries temporelles
+                    (TSDB) capable de scaler horizontalement à l'infini.</p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>M3 Project</strong> : Ils ont créé leur propre stack open-source "M3" pour agréger et
+                        stocker les métriques.</li>
+                    <li><strong>Distributed Tracing</strong> : Création de <strong>Jaeger</strong> (donné à la CNCF)
+                        pour suivre chaque course Uber à travers des milliers de microservices Go et Java.</li>
+                    <li><strong>Adaptive Sampling</strong> : On ne garde pas 100% des traces (trop cher), mais 100% des
+                        traces en erreur et 1% des traces réussies.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Uber peut détecter une anomalie sur le prix ou la disponibilité des
+                    chauffeurs en moins de 10 secondes partout dans le monde.</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - Observability Mastery</h4>
+                <ul>
+                    <li><strong>Don't Log Everything</strong> : Le stockage des logs coûte cher. Filtrez à la source.
+                    </li>
+                    <li><strong>Tagging is King</strong> : Une métrique ou un log sans tags (env, service, version) est
+                        inutile.</li>
+                    <li><strong>Dashboards Actionnables</strong> : Un dashboard doit répondre à "Est-ce que ça marche ?"
+                        pas "Regarde ces jolis graphs".</li>
+                    <li><strong>OpenTelemetry</strong> : Utilisez le standard ouvert OTel pour ne pas être bloqué chez
+                        un fournisseur (Lock-in).</li>
+                </ul>
+            </div>
+
 
             <!-- PROMQL EXAMPLES -->
             <div class="grid2" style="margin-top:25px;">
@@ -1752,6 +2648,27 @@
                     DevSecOps = <strong>Garde du Corps</strong> (Accompagne tout le trajet pour éviter le problème).</p>
             </div>
 
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 DevSecOps : La Sécurité "Shift-Left"</h3>
+                <p>Le DevSecOps est l'intégration de la sécurité <strong>tout au long</strong> du cycle de vie DevOps,
+                    et non plus comme une étape finale avant la prod. L'idée est de "shifter à gauche" (plus tôt dans le
+                    pipeline) pour détecter les failles au moment où elles coûtent le moins cher à corriger.</p>
+                <p>La sécurité n'est plus la responsabilité d'une équipe isolée, mais une <strong>responsabilité
+                        partagée</strong> entre Devs et Ops, automatisée via des outils dans la CI/CD.</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box" style="border-left-color:var(--kw)">
+                <h4>💡 Le saviez-vous ? L'attaque SolarWinds (2020)</h4>
+                <p>C'est l'un des plus grands piratages de l'histoire. Les hackers n'ont pas attaqué les serveurs des
+                    clients, mais le <strong>pipeline de build</strong> du logiciel Orion (SolarWinds). Ils ont injecté
+                    un malware directement dans le code source officiel.</p>
+                <p>Cela a prouvé que la sécurité du <strong>Pipeline</strong> est aussi importante que la sécurité de
+                    l'<strong>Application</strong> elle-même. C'est ce qu'on appelle la Supply Chain Security.</p>
+            </div>
+
+
             <!-- SECURITY PIPELINE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Sécurité dans le Pipeline</h3>
             <div class="git-flow">
@@ -1788,42 +2705,80 @@
 
             <!-- TOOLS TABLE -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils DevSecOps</h3>
-            <table class="cmd-table">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Outil</th>
-                        <th>Cible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>SAST</strong></td>
-                        <td>SonarQube, Semgrep</td>
-                        <td>Code source (White Box)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>SCA</strong></td>
-                        <td>Snyk, Dependabot</td>
-                        <td>Dépendances (CVE)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Image Scan</strong></td>
-                        <td>Trivy, Clair</td>
-                        <td>Images Docker</td>
-                    </tr>
-                    <tr>
-                        <td><strong>DAST</strong></td>
-                        <td>OWASP ZAP, Burp</td>
-                        <td>App en exécution (Black Box)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Secrets</strong></td>
-                        <td>Vault, SealedSecrets</td>
-                        <td>Mots de passe, API keys</td>
-                    </tr>
-                </tbody>
+            </tbody>
             </table>
+
+            <!-- Comparison: SAST vs DAST -->
+            <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 SAST vs DAST : Lequel choisir ?</h3>
+            <div class="comparison-container">
+                <div class="comparison-table">
+                    <div class="comparison-col">
+                        <h4>🔍 SAST (Statique)</h4>
+                        <ul>
+                            <li><strong>Cible</strong> : Code source, manifests IaC.</li>
+                            <li><strong>Timing</strong> : Très tôt (avant le build).</li>
+                            <li><strong>Avantage</strong> : Trouve la ligne de code précise à corriger.</li>
+                            <li><strong>Limite</strong> : Ne voit pas les problèmes de runtime/config.</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col winner">
+                        <h4>🚀 DAST (Dynamique)</h4>
+                        <ul>
+                            <li><strong>Cible</strong> : Application en cours d'exécution.</li>
+                            <li><strong>Timing</strong> : Tard (Staging/Prod).</li>
+                            <li><strong>Avantage</strong> : Trouve les vraies failles exploitables (ex: SQLi).</li>
+                            <li><strong>Limite</strong> : Boîte noire, ne sait pas où est le problème dans le code.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study: Equifax -->
+            <div class="case-study">
+                <h4>📊 Cas d'étude : Equifax - L'oubli à 1.4 milliard de dollars</h4>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-value">147M</span>
+                        <span class="metric-label">Dossiers personnels volés</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2 mois</span>
+                        <span class="metric-label">Délai avant détection</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1.4B</span>
+                        <span class="metric-label">Coût total du cleanup/amendes</span>
+                    </div>
+                </div>
+                <p><strong>Contexte</strong> : En 2017, Equifax subit l'une des plus grosses fuites de données de
+                    l'histoire. La cause ? Une vulnérabilité connue dans le framework <strong>Apache Struts</strong>.
+                </p>
+                <p><strong>Transformation</strong> :</p>
+                <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                    <li><strong>SCA missing</strong> : Equifax n'avait pas d'outil d'analyse de dépendances (SCA) pour
+                        les prévenir qu'un patch de sécurité était disponible depuis des mois.</li>
+                    <li><strong>Patching manuel</strong> : Le processus de mise à jour était lent et manuel, laissant
+                        les serveurs exposés.</li>
+                </ol>
+                <p><strong>Résultat</strong> : Cette catastrophe a popularisé le terme DevSecOps. Aujourd'hui, un outil
+                    comme Snyk ou Dependabot aurait bloqué la CI/CD jusqu'à ce que la version de Struts soit mise à
+                    jour.</p>
+            </div>
+
+            <!-- Recall Box -->
+            <div class="recall-box">
+                <h4>🔄 À Retenir - DevSecOps Essentials</h4>
+                <ul>
+                    <li><strong>Shift-Left</strong> : Plus tôt vous trouvez une faille, moins elle coûte cher.</li>
+                    <li><strong>Automate Everything</strong> : Un audit manuel une fois par an est inutile. Scannez à
+                        chaque commit.</li>
+                    <li><strong>Secret Management</strong> : Jamais de MDP ou Clés en clair. Utilisez Vault ou
+                        équivalent.</li>
+                    <li><strong>Software Bill of Materials (SBOM)</strong> : Sachez exactement ce qu'il y a dans vos
+                        containers (inventaire des libs).</li>
+                </ul>
+            </div>
+
 
             <div class="grid2" style="margin-top:25px;">
                 <div>
@@ -1874,6 +2829,27 @@
                 <p>Imaginez un budget de "minutes de panne" par mois. Si vous le dépassez (trop de pannes), vous n'avez
                     plus le droit de déployer des nouveautés tant que vous n'avez pas stabilisé.</p>
             </div>
+
+            <!-- Introduction Contextuelle -->
+            <div class="module-intro">
+                <h3>📖 SRE : L'Ingénierie de la Fiabilité</h3>
+                <p>Le <strong>Site Reliability Engineering (SRE)</strong> est une discipline qui intègre des aspects du
+                    génie logiciel et les applique aux problèmes d'exploitation. Comme le dit Google : <em>"class SRE
+                        implements Interface DevOps"</em>.</p>
+                <p>L'objectif du SRE est de créer des systèmes logiciels ultra-scalables et hautement fiables.
+                    Contrairement au SysAdmin traditionnel, le SRE passe au moins <strong>50% de son temps</strong> à
+                    coder pour automatiser les tâches d'exploitation (réduire le Toil).</p>
+            </div>
+
+            <!-- Knowledge Box -->
+            <div class="knowledge-box" style="border-left-color:var(--num)">
+                <h4>💡 Le saviez-vous ? La naissance du SRE</h4>
+                <p>Le terme a été inventé par <strong>Ben Treynor Sloss</strong> chez Google en 2003. Il a constitué une
+                    équipe de software engineers pour gérer l'exploitation du moteur de recherche. Sa règle d'or : si
+                    une tâche doit être faite manuellement plus de deux fois, elle doit être automatisée.</p>
+                <p>Aujourd'hui, le livre "Google SRE Book" est considéré comme la bible du domaine.</p>
+            </div>
+
 
             <!-- SLI/SLO/SLA FLOW -->
             <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. La Chaîne SLI → SLO → SLA</h3>
@@ -1972,23 +2948,79 @@
                 </div>
             </div>
 
-            <!-- CHAOS ENGINEERING -->
-            <details style="margin-top:20px;">
-                <summary>🎲 Chaos Engineering</summary>
-                <div class="details-content">
-                    <p><strong>Principe :</strong> Introduire des pannes volontaires en production pour tester la
-                        résilience.</p>
-                    <ul class="dense-list" style="margin-top:10px;">
-                        <li><strong>Chaos Monkey</strong> (Netflix) : Tue des instances aléatoirement</li>
-                        <li><strong>Litmus</strong> : Chaos pour Kubernetes</li>
-                        <li><strong>Gremlin</strong> : Plateforme Chaos as a Service</li>
+        </div>
+
+        <!-- Comparison: SRE vs DevOps vs SysAdmin -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 SRE vs DevOps vs SysAdmin</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>👴 SysAdmin (Classique)</h4>
+                    <ul>
+                        <li><strong>Focus</strong> : Maintenir les serveurs en vie ("Keep the lights on").</li>
+                        <li><strong>Méthode</strong> : Ticket d'incident, interventions manuelles.</li>
+                        <li><strong>Échec</strong> : Mauvais, signe de faiblesse.</li>
                     </ul>
-                    <p style="margin-top:10px; color:var(--warning);">⚠️ À faire en production, avec "Blast Radius"
-                        contrôlé !</p>
                 </div>
-            </details>
+                <div class="comparison-col winner">
+                    <h4>🛠️ SRE (Moderne)</h4>
+                    <ul>
+                        <li><strong>Focus</strong> : Automatiser l'exploitation ("Engineer away the toil").</li>
+                        <li><strong>Méthode</strong> : Code, Error Budgets, Post-mortems.</li>
+                        <li><strong>Échec</strong> : Opportunité d'apprentissage, géré par le budget d'erreur.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Google -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Google - La culture du "Blameless Post-Mortem"</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">50%</span>
+                    <span class="metric-label">Temps max alloué à l'Ops</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">99.9...%</span>
+                    <span class="metric-label">Disponibilité critique (Search, Gmail)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">100%</span>
+                    <span class="metric-label">Post-mortems sans blâme</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Chez Google, quand un service tombe, on ne cherche pas "qui" a fait l'erreur,
+                mais "pourquoi" le système a permis à cette erreur d'arriver.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Blameless Culture</strong> : Un post-mortem n'inclut jamais de noms de personnes. Il se
+                    concentre sur les défaillances techniques ou de process.</li>
+                <li><strong>Error Budget enforcement</strong> : Si le budget d'erreur d'un mois est consommé, les
+                    releases sont bloquées. Point final. Isso force les Devs à s'intéresser à la stabilité.</li>
+                <li><strong>Burnout prevention</strong> : Les SRE ont le droit de renvoyer l'exploitation aux Devs si le
+                    Toil dépasse les 50%.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Une fiabilité légendaire malgré une complexité et un trafic quasi infinis.
+            </p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - SRE Mastery</h4>
+            <ul>
+                <li><strong>L'erreur est inévitable</strong> : Ne visez pas 100% de fiabilité (personne n'en a besoin,
+                    et c'est trop cher).</li>
+                <li><strong>Error Budget</strong> : C'est le contrat qui aligne Devs (vitesse) et SRE (stabilité).</li>
+                <li><strong>Post-Mortem</strong> : Toujours documenter les pannes pour ne plus jamais qu'elles ne se
+                    reproduisent.</li>
+                <li><strong>Automatisez le Toil</strong> : Si vous faites la même chose manuellement tous les jours,
+                    vous n'êtes pas SRE.</li>
+            </ul>
+        </div>
         </div>
     </section>
+
 
     <!-- SECTION QUIZ -->
     <section id="quiz-section" class="quiz-container">
@@ -1999,12 +3031,15 @@
     </section>
 
     <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
+        import '../assets/js/quiz-engine.js';
+        console.log("Quiz module script execution...");
+        if (window.QuizEngine) {
+            console.log("Initializing QuizEngine...");
             new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_devops.json', questionsPerSession: 10 });
-        });
+        } else {
+            console.error("QuizEngine not found on window object.");
+        }
     </script>
-    <script src="../../assets/js/quiz-engine.js"></script>
 
     <footer>
         <div class="container">

@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Python Data Science - Guide 2025</title>
+    <title>Mémo Python Data Science - Guide 2026</title>
     <meta name="description"
         content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
     <meta name="keywords"
-        content="Python, Data Science, Numpy, Pandas, Matplotlib, Scikit-Learn, Machine Learning, IA, Analyse de données">
+        content="Python, Data Science, IA, Intelligence Artificielle, Machine Learning, Deep Learning, Numpy, Pandas, Matplotlib, Scikit-Learn, TensorFlow, PyTorch, Analyse de données, MLOps, NLP, GenAI, LLM, cours, mémo, tutoriel, apprentissage automatique, réseau neuronal">
     <meta name="author" content="Geoffroy Streit">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#3b82f6">
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="https://hylst.fr/cours/docker/python_data/index.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="img/python-data-icon.webp">
+    <link rel="apple-touch-icon" href="img/python-data-icon.webp">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -21,12 +25,23 @@
         content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
     <meta property="og:url" content="https://hylst.fr/cours/docker/python_data/index.html">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://hylst.fr/cours/docker/python_data/img/python-data-social.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Python Data Science - Mémo complet Numpy, Pandas, ML, IA">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mémo Python Data Science">
     <meta name="twitter:description"
         content="Guide complet Python pour la Data Science : Numpy, Pandas, Matplotlib, Scikit-Learn.">
+    <meta name="twitter:image" content="https://hylst.fr/cours/docker/python_data/img/python-data-social.webp">
+    <meta name="twitter:image:alt" content="Python Data Science - Mémo complet">
+
+    <!-- Additional SEO -->
+    <meta name="language" content="French">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -41,7 +56,12 @@
             <div class="logo">
                 <div class="logo-icon">📊</div>Python Data
             </div>
-            <nav>
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav role="navigation">
                 <a href="#s0">Intro</a>
                 <a href="#s2">Acquisition</a>
                 <a href="#s3">Pandas</a>
@@ -1339,12 +1359,6 @@
         </div>
     </section>
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_data.json', questionsPerSession: 10 });
-        });
-    </script>
     <script src="../../assets/js/quiz-engine.js"></script>
     <script>
         window.addEventListener('load', () => {
@@ -1361,6 +1375,10 @@
                 d'infos utiles réunies, synthétisées et présentées, pour l'analyse, la DATA avec Python, et l'IA. Pour
                 consolider sa mémoire avec un cours concis, graphique et structuré, mais aussi pour le plaisir de
                 partager la connaissance et faciliter l'apprentissage des autres.</p>
+            <p style="margin-top:20px; font-size:.75rem; opacity:0.5">
+                <a href="https://hylst.fr/mentions-legales.html" target="_blank"
+                    style="color:var(--text); text-decoration:none">Mentions Légales</a>
+            </p>
         </div>
     </footer>
 
@@ -1368,6 +1386,7 @@
     <script src="assets/js/app_init.js"></script>
     <script src="assets/js/modules/utils.js"></script>
     <script src="assets/js/modules/nav.js"></script>
+    <script src="assets/js/modules/mobile_nav.js"></script>
     <script src="assets/js/modules/ecosystem.js"></script>
     <script src="assets/js/modules/numpy_viz.js"></script>
     <script src="assets/js/modules/numpy_performance.js"></script>

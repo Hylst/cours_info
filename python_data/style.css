@@ -1,6 +1,6 @@
 /* =====================================================
    COURS PYTHON DATA - STYLESHEET
-   Créé par Geoffroy Streit - 2025
+   Créé par Geoffroy Streit - 2026
    Thème Data Science (Bleu Sci-Fi & Orange)
    ===================================================== */
 
@@ -16,7 +16,9 @@
     --bg2: #1e293b;
     /* Bleu nuit plus clair */
     --card: #1e293b;
+    --card-bg-hover: rgba(30, 41, 59, 0.5);
     --text: #f1f5f9;
+    --text-bright: #f1f5f9;
     --muted: #94a3b8;
     --dim: #64748b;
     --border: #334155;
@@ -252,6 +254,38 @@ nav a {
 nav a:hover {
     background: var(--card);
     color: var(--text);
+}
+
+/* === HAMBURGER MENU === */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+    z-index: 101;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 /* === HERO === */
@@ -691,8 +725,34 @@ footer strong {
         font-size: 2.2rem;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
     nav {
-        display: none;
+        position: fixed;
+        top: 64px;
+        right: -100%;
+        width: 280px;
+        height: calc(100vh - 64px);
+        background: var(--card);
+        flex-direction: column;
+        padding: 20px;
+        transition: right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-left: 1px solid var(--border);
+        overflow-y: auto;
+        z-index: 100;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav a {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        border-radius: 8px;
     }
 
     .sec-header {

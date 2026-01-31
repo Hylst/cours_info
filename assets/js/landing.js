@@ -23,10 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach(card => observer.observe(card));
 
-    // --- 3D Tilt Effect ---
-    // Simple vanilla JS implementation of Tilt effect to avoid dependencies
+    // --- Dual-Layer Parallax Effect ---
     cards.forEach(card => {
         if (card.classList.contains('disabled')) return;
+
+        const icon = card.querySelector('.icon-wrapper');
+        const bg = card.querySelector('.card-bg-illu');
+        const overlay = card.querySelector('.data-art-overlay');
 
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
@@ -36,14 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -5; // Max 5 deg rotation
-            const rotateY = ((x - centerX) / centerX) * 5;
+            // Card Tilt (Subtle)
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            // Inner Parallax (Content moves opposite to tilt)
+            const moveX = (x - centerX) / 10;
+            const moveY = (y - centerY) / 10;
+
+            if (icon) icon.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            if (bg) bg.style.transform = `translate(${moveX * -1.5}px, ${moveY * -1.5}px)`; // Bg moves more and opposite
+            if (overlay) overlay.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            if (icon) icon.style.transform = 'translate(0, 0) scale(1)';
+            if (bg) bg.style.transform = 'translate(0, 0)';
+            if (overlay) overlay.style.transform = 'translate(0, 0)';
         });
     });
 

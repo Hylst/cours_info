@@ -14,8 +14,8 @@ export class Router {
     }
 
     async handleRoute() {
-        let hash = window.location.hash.slice(1) || 'intro';
-        if (hash === '') hash = 'intro';
+        let hash = window.location.hash.slice(1) || 'home';
+        if (hash === '') hash = 'home';
 
         // Find route match
         const route = this.routes.find(r => r.path === hash);
@@ -29,7 +29,7 @@ export class Router {
             if (route.onLoad) route.onLoad();
 
             // Scroll Logic
-            if (hash === 'intro') {
+            if (hash === 'home') {
                 // Return to menu -> Scroll to TOC (below intro content)
                 const toc = document.getElementById('toc-container');
                 if (toc) {
@@ -41,7 +41,7 @@ export class Router {
             }
         } else {
             console.warn(`Route not found: ${hash}`);
-            window.location.hash = '#intro';
+            window.location.hash = '#home';
         }
     }
 
@@ -54,12 +54,12 @@ export class Router {
             const html = await response.text();
 
             // Inject content
-            // Add Back Button if not Intro
-            if (hash !== 'intro') {
+            // Add Back Button if not Home
+            if (hash !== 'home') {
                 const backBtn = `
                     <div class="nav-actions" style="margin-bottom: 20px;">
-                        <a href="#intro" class="btn-back">
-                            <span class="icon">←</span> Menu Principal
+                        <a href="#home" class="btn-back">
+                            <span class="icon">←</span> Accueil / Menu
                         </a>
                     </div>`;
                 container.innerHTML = backBtn + html + backBtn;
@@ -77,7 +77,7 @@ export class Router {
             // Show/Hide TOC based on route
             const toc = document.getElementById('toc-container');
             if (toc) {
-                toc.style.display = (hash === 'intro') ? 'block' : 'none';
+                toc.style.display = (hash === 'home') ? 'block' : 'none';
             }
 
             // Re-initialize code copy buttons and other UI interactions

@@ -4,12 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hylst Cours Memos - Portail d'Apprentissage</title>
+    <title>Hylst Cours Memos - Portail d'Apprentissage Web, Data & IA</title>
+
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Ressources pédagogiques interactives pour le développement Web, Data & IA : PHP, JavaScript, Python, Réseaux, DevOps. Créées avec l'IA par un apprenant neurodivergent (TDAH/DYS) pour une approche claire, structurée et accessible à tous.">
+    <meta name="keywords"
+        content="formation, informatique, développement web, python, javascript, php, réseaux, data science, IA, devops, docker, git, mémos, apprentissage, neurodivergence, TDAH, accessibilité, pédagogie interactive">
+    <meta name="author" content="Geoffroy Streit (Hylst)">
+    content="formation, informatique, devops, php, python, javascript, réseaux, mémos, apprentissage">
+    <meta name="author" content="Geoffroy Streit">
+    <link rel="canonical" href="https://hylst.fr/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hylst.fr/">
+    <meta property="og:title" content="Hylst Cours Memos - Apprendre le Dev & l'IA autrement">
+    <meta property="og:description"
+        content="Mémos interactifs, visuels et modernes pour maîtriser l'essentiel du développement.">
+    <meta property="og:image" content="assets/img/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hylst.fr/">
+    <meta property="twitter:title" content="Hylst Cours Memos">
+    <meta property="twitter:description" content="Mémos interactifs et visuels pour les développeurs.">
+    <meta property="twitter:image" content="assets/img/og-image.png">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-512.png">
+    <link rel="icon" href="assets/img/favicon-512.png" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/landing.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -135,7 +167,8 @@
             <div class="card disabled">
                 <span class="badge">Bientôt</span>
                 <div class="icon-wrapper" style="opacity:0.3; filter:grayscale(1);">
-                    <div style="font-size:3rem; padding-top:20px;">☕</div>
+                    <img src="assets/img/icons/java.png" alt="Java icon"
+                        style="width:100%;height:100%;object-fit:contain;">
                 </div>
                 <h2>Java</h2>
                 <p>Backend & OOP</p>
@@ -144,7 +177,8 @@
             <div class="card disabled">
                 <span class="badge">Bientôt</span>
                 <div class="icon-wrapper" style="opacity:0.3; filter:grayscale(1);">
-                    <div style="font-size:3rem; padding-top:20px;">⚛️</div>
+                    <img src="assets/img/icons/react.png" alt="React icon"
+                        style="width:100%;height:100%;object-fit:contain;">
                 </div>
                 <h2>React</h2>
                 <p>Framework UI</p>
@@ -153,7 +187,8 @@
             <div class="card disabled">
                 <span class="badge">Bientôt</span>
                 <div class="icon-wrapper" style="opacity:0.3; filter:grayscale(1);">
-                    <div style="font-size:3rem; padding-top:20px;">🟢</div>
+                    <img src="assets/img/icons/nodejs.png" alt="Node.js icon"
+                        style="width:100%;height:100%;object-fit:contain;">
                 </div>
                 <h2>Node.js</h2>
                 <p>JS Backend Runtime</p>
@@ -182,13 +217,20 @@
         <section class="author-section">
             <div class="author-content">
                 <div class="author-img">👨‍💻</div>
-                <h3 class="author-name">Geoffroy Streit</h3>
+                <h3 class="author-name">Geoffroy Streit <span
+                        style="font-size:0.8em;font-weight:400;color:var(--text-secondary);">alias Hylst</span></h3>
                 <p class="author-bio">
                     Apprenant en reconversion Développement Web, Data & IA.<br>
-                    Passionné de technologie, d'humain, d'enseignement et de partage.
+                    Neurodivergent (TDAH / DYS) et « grand rêveur », je crée ces ressources avec l'aide de l'IA pour
+                    structurer, clarifier et partager les concepts essentiels du développement.<br>
+                    <strong>Objectif :</strong> Rassembler en un lieu accessible des mémos clairs, interactifs et
+                    pédagogiques pour aider à apprendre, réviser et découvrir.<br>
+                    <em>Cette plateforme est imparfaite et en constante évolution. Vos retours sont précieux !</em>
                 </p>
                 <p class="author-contact">
-                    📧 <a href="mailto:geoffroy.streit@gmail.com">geoffroy.streit@gmail.com</a>
+                    📧 <a href="mailto:geoffroy.streit@gmail.com">geoffroy.streit@gmail.com</a> |
+                    <a href="mentions-legales.html" target="_blank"
+                        style="color:var(--text-secondary);text-decoration:underline;">Mentions légales</a>
                 </p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/geoffroy-streit/" target="_blank">LinkedIn</a>
@@ -198,8 +240,11 @@
         </section>
 
         <section class="announcement-section">
-            <p>🚀 <strong>À venir :</strong> Bien d'autres sites éducatifs bien plus complets encore, sur lesquels je
-                travaille depuis plusieurs années, seront partagés ici dans les prochains mois. Restez à l'écoute !</p>
+            <p>🚀 <strong>En constante évolution :</strong> Cette collection s'enrichira régulièrement de nouveaux cours
+                (HTML, CSS, JS, PHP, Python, Réseaux, Cybersécurité, DevOps, Docker, Git et bien plus...), d'outils
+                interactifs et de ressources pour vous accompagner dans votre parcours d'apprentissage. Votre intérêt et
+                vos retours me motivent à améliorer ces contenus pour notre bénéfice commun. Ensemble, apprenons,
+                progressons et partageons ! 🌱</p>
         </section>
     </main>
 

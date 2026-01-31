@@ -6,7 +6,8 @@
     top: 100px;
     left: 20px;
     width: 200px;
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     flex-direction: column;
     gap: 5px;
     z-index: 90;
@@ -34,7 +35,7 @@
     background: rgba(55, 118, 171, 0.05);
 }
 
-@media (min-width: 1350px) {
+@media (min-width: 1200px) {
     .side-nav {
         display: flex;
     }

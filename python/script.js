@@ -1,6 +1,6 @@
 /* =====================================================
    COURS PYTHON - JAVASCRIPT (interactions UI)
-   Créé par Geoffroy Streit - 2025
+   Créé par Geoffroy Streit - 2026
    ===================================================== */
 
 // Copy code to clipboard
@@ -20,7 +20,7 @@ const timelineData = [
     { year: '1991', title: 'Naissance', desc: '<strong>1991 : Guido van Rossum</strong> publie la première version. Un langage propre et simple pour remplacer les scripts Shell et C.' },
     { year: '2000', title: 'Python 2', desc: '<strong>2000 : Python 2.0</strong> introduit les List Comprehensions et un Garbage Collector cyclique. C\'est l\'ère de l\'essor.' },
     { year: '2008', title: 'Python 3', desc: '<strong>2008 : Python 3.0</strong> brise la rétrocompatibilité pour corriger des défauts majeurs (Unicode par défaut, division entière stricte).' },
-    { year: '2025', title: 'Modern', desc: '<strong>2025 : Python 3.12+</strong> se concentre sur la performance (JIT), le typage statique optionnel robuste et l\'asynchrone.' }
+    { year: '2026', title: 'Modern', desc: '<strong>2026 : Python 3.13+</strong> se concentre sur la performance (JIT), le typage statique optionnel robuste et l\'asynchrone.' }
 ];
 
 function updateTimeline(index) {
@@ -408,6 +408,42 @@ function animateTask(id, duration, delay, callback) {
     }, delay);
 }
 
+// *args **kwargs Visualizer (Mod 03)
+function visualizeArgs() {
+    const input = document.getElementById('args-input').value;
+    const argsEl = document.getElementById('demo-args');
+    const kwargsEl = document.getElementById('demo-kwargs');
+
+    if (!input.trim()) {
+        argsEl.textContent = '()';
+        kwargsEl.textContent = '{}';
+        return;
+    }
+
+    const args = [];
+    const kwargs = {};
+
+    // Parse input: "1, 2, a=3, b=4"
+    const parts = input.split(',').map(p => p.trim());
+
+    parts.forEach(part => {
+        if (part.includes('=')) {
+            // keyword argument
+            const [key, val] = part.split('=').map(s => s.trim());
+            kwargs[key] = isNaN(val) ? val.replace(/['"]/g, '') : Number(val);
+        } else {
+            // positional argument
+            args.push(isNaN(part) ? part.replace(/['"]/g, '') : Number(part));
+        }
+    });
+
+    argsEl.textContent = '(' + args.map(v => typeof v === 'string' ? `"${v}"` : v).join(', ') + ')';
+    kwargsEl.textContent = '{' + Object.entries(kwargs).map(([k, v]) =>
+        `"${k}": ${typeof v === 'string' ? `"${v}"` : v}`
+    ).join(', ') + '}';
+}
+
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     console.log('🐍 Mémo Python chargé!');
@@ -480,4 +516,48 @@ document.addEventListener('DOMContentLoaded', function () {
             btt.classList.remove('visible');
         }
     });
+
+    // Mobile Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        hamburgerBtn.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scroll
+    }
+
+    if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        mobileMenuClose?.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on a link
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                setTimeout(closeMobileMenu, 300); // Small delay for smooth transition
+            });
+        });
+
+        // Close menu when clicking outside (on overlay background)
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+    }
 });

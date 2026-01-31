@@ -4,28 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Python - Guide 2025</title>
-    <meta name="description" content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
+    <title>Mémo Python - Guide 2026</title>
+    <meta name="description"
+        content="Guide Python complet 2026 : 18 modules couvrant variables, fonctions, POO, async, data science et web dev. Exemples interactifs et quiz.">
     <meta name="keywords"
-        content="Python, programmation, dev, scripting, POO, listes, fonctions, tutoriel, mémo, guide, cheat sheet">
+        content="Python, programmation, dev, scripting, POO, listes, fonctions, tutoriel, mémo, guide, cheat sheet, async, data science, web dev">
     <meta name="author" content="Geoffroy Streit">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#3776ab">
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="https://hylst.fr/cours/docker/python/">
+    <link rel="icon" type="image/webp" href="img/python_icon.webp">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Mémo Python - Guide complet">
+    <meta property="og:title" content="Mémo Python - Guide Complet 2026">
     <meta property="og:description"
-        content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
-    <meta property="og:url" content="https://hylst.fr/cours/docker/python/index.html">
+        content="Guide Python complet : 18 modules sur variables, fonctions, POO, async, data science et web dev. Exemples interactifs et quiz.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/python/">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://hylst.fr/cours/docker/python/img/python_share.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mémo Python - Guide complet">
+    <meta name="twitter:title" content="Mémo Python - Guide Complet 2026">
     <meta name="twitter:description"
-        content="Guide Python complet : variables, listes, fonctions, POO, fichiers, modules.">
+        content="Guide Python complet : 18 modules sur variables, fonctions, POO, async, data science et web dev.">
+    <meta name="twitter:image" content="https://hylst.fr/cours/docker/python/img/python_share.webp">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Mémo Python - Guide Complet 2026",
+        "description": "Guide Python complet avec 18 modules : variables, structures, fonctions, POO, collections, exceptions, fichiers, modules, strings, regex, générateurs, async, tests, référence, data science, écosystème et web dev.",
+        "provider": {
+            "@type": "Person",
+            "name": "Geoffroy Streit"
+        },
+        "educationalLevel": "Beginner to Advanced",
+        "inLanguage": "fr-FR",
+        "url": "https://hylst.fr/cours/docker/python/",
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT10H"
+        }
+    }
+    </script>
+
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -41,14 +70,51 @@
             <div class="logo">
                 <div class="logo-icon">🐍</div>Python
             </div>
-            <nav>
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="desktop-nav">
                 <a href="#s1">Variables</a>
                 <a href="#s3">Fonctions</a>
                 <a href="#s5">POO</a>
                 <a href="#s7">Fichiers</a>
+                <a href="#s14">Référence</a>
             </nav>
         </div>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">🐍</div>Python
+            </div>
+            <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Fermer le menu">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="#s0" class="mobile-menu-item">00 • Introduction</a>
+            <a href="#s1" class="mobile-menu-item">01 • Variables</a>
+            <a href="#s2" class="mobile-menu-item">02 • Structures</a>
+            <a href="#s3" class="mobile-menu-item">03 • Fonctions</a>
+            <a href="#s4" class="mobile-menu-item">04 • Collections</a>
+            <a href="#s5" class="mobile-menu-item">05 • POO</a>
+            <a href="#s6" class="mobile-menu-item">06 • Exceptions</a>
+            <a href="#s7" class="mobile-menu-item">07 • Fichiers</a>
+            <a href="#s8" class="mobile-menu-item">08 • Modules</a>
+            <a href="#s9" class="mobile-menu-item">09 • Strings</a>
+            <a href="#s10" class="mobile-menu-item">10 • Regex</a>
+            <a href="#s11" class="mobile-menu-item">11 • Générateurs</a>
+            <a href="#s12" class="mobile-menu-item">12 • Async</a>
+            <a href="#s13" class="mobile-menu-item">13 • Tests</a>
+            <a href="#s14" class="mobile-menu-item">14 • Référence</a>
+            <a href="#s15" class="mobile-menu-item">15 • Data Science</a>
+            <a href="#s16" class="mobile-menu-item">16 • Écosystème</a>
+            <a href="#s17" class="mobile-menu-item">17 • Web Dev</a>
+            <a href="#quiz-section" class="mobile-menu-item">Quiz</a>
+        </nav>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -121,7 +187,7 @@
                         <div class="point-label">Python 3</div>
                     </div>
                     <div class="timeline-point" onclick="updateTimeline(3)">
-                        <div class="point-dot">2025</div>
+                        <div class="point-dot">2026</div>
                         <div class="point-label">Modern</div>
                     </div>
                 </div>
@@ -245,7 +311,7 @@
             </table>
 
             <div class="tip">
-                <strong>💡 Règle d'or :</strong> En 2025, utilisez <strong>TOUJOURS Python 3.10+</strong>.
+                <strong>💡 Règle d'or :</strong> En 2026, utilisez <strong>TOUJOURS Python 3.10+</strong>.
                 Python 2 est mort et ne reçoit plus de correctifs de sécurité. Si vous héritez de code Python 2,
                 migrez-le avec l'outil <code>2to3</code>.
             </div>
@@ -2276,7 +2342,7 @@ my_project/
 
     <footer>
         <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo Python</strong> • 14 chapitres • Python 3.10+ • 2025</p>
+            <p style="margin-bottom:8px"><strong>Mémo Python</strong> • 18 modules • Python 3.10+ • 2026</p>
             <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
                 mémoire avec un
                 cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et

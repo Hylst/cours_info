@@ -46,8 +46,13 @@ const headerHTML = `
 const footerHTML = `
 <footer>
     <div class="container">
-        <p><strong>Mémo JavaScript</strong> • Créé par Geoffroy Streit - 2025-2026</p>
-        <p style="font-size:0.8rem; margin-top:5px; opacity:0.7">Guide interactif Vanilla JS | <a href="${rootPath}about.md" style="color:var(--accent); text-decoration:none">À propos</a></p>
+        <p><strong>Mémo JavaScript</strong> • Créé par Geoffroy Streit, assisté par IA</p>
+        <p style="font-size:0.85rem; margin-top:8px; line-height:1.5; max-width:800px; margin-left:auto; margin-right:auto; opacity:0.85">
+            Pour consolider sa mémoire avec un cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
+        </p>
+        <p style="font-size:0.75rem; margin-top:12px; opacity:0.6">
+            <a href="${rootPath}mentions-legales.html" style="color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--border)">Mentions légales</a>
+        </p>
     </div>
 </footer>
 <script src="${rootPath}assets/js/prism.js" onload="if(window.Prism)window.Prism.highlightAll()"></script>

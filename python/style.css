@@ -1,6 +1,6 @@
 /* =====================================================
    COURS PYTHON - STYLESHEET
-   Créé par Geoffroy Streit - 2025
+   Créé par Geoffroy Streit - 2026
    Thème bleu/jaune (couleurs Python officielles)
    ===================================================== */
 
@@ -148,6 +148,113 @@ nav a {
 nav a:hover {
     background: var(--card);
     color: var(--text);
+}
+
+/* === HAMBURGER MENU === */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 105;
+}
+
+.hamburger-btn span {
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* === MOBILE MENU OVERLAY === */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-close {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.mobile-menu-close:hover {
+    color: var(--primary);
+    transform: rotate(90deg);
+}
+
+.mobile-menu-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mobile-menu-item {
+    color: var(--text);
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.mobile-menu-item:hover,
+.mobile-menu-item:active {
+    background: var(--card);
+    border-left-color: var(--primary);
+    padding-left: 20px;
 }
 
 /* === HERO === */
@@ -543,8 +650,12 @@ footer strong {
         font-size: 2rem;
     }
 
-    nav {
+    .desktop-nav {
         display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
     }
 
     .sec-header {
@@ -553,6 +664,16 @@ footer strong {
 
     .toc-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-overlay {
+        display: none;
     }
 }
 

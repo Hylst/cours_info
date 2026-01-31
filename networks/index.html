@@ -4,9 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Réseaux | Guide 2025</title>
-    <meta name="description" content="Guide Réseaux : Modèle OSI, TCP/IP, DNS, Routing.">
+    <title>Mémo Réseaux | Guide Interactif 2026</title>
+    <meta name="description"
+        content="Cours interactif sur les réseaux : Modèle OSI, TCP/IP, Adressage IP, DNS, DHCP, Routage, Sécurité, Docker Networks. Quiz de 165 questions avec diagrammes animés.">
     <meta name="theme-color" content="#303030">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hylst.fr/cours/networks/">
+    <meta property="og:title" content="Mémo Réseaux | Guide Interactif 2026">
+    <meta property="og:description"
+        content="Cours interactif sur les réseaux : OSI, TCP/IP, DNS, DHCP, Routage, Sécurité. Quiz de 165 questions.">
+    <meta property="og:image" content="https://hylst.fr/cours/networks/img/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hylst.fr/cours/networks/">
+    <meta property="twitter:title" content="Mémo Réseaux | Guide Interactif 2026">
+    <meta property="twitter:description"
+        content="Cours interactif sur les réseaux : OSI, TCP/IP, DNS, DHCP, Routage, Sécurité. Quiz de 165 questions.">
+    <meta property="twitter:image" content="https://hylst.fr/cours/networks/img/og-image.png">
+
+    <link rel="canonical" href="https://hylst.fr/cours/networks/">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -20,6 +41,11 @@
             <div class="logo">
                 <div class="logo-icon">NET</div>Réseaux
             </div>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <a href="#s1">OSI</a>
                 <a href="#s2">Proto</a>
@@ -1060,7 +1086,7 @@ les paquets en temps réel.
             </p>
 
             <!-- DNS SECTION -->
-            <div class="code">
+            <div class="code" style="padding:18px;">
                 <div class="code-head">1. DNS (L'Annuaire)</div>
                 <div class="grid2" style="background:transparent; padding:0; border:none;">
                     <div>
@@ -1080,7 +1106,7 @@ les paquets en temps réel.
             </div>
 
             <!-- DHCP SECTION -->
-            <div class="code" style="margin-top:30px;">
+            <div class="code" style="margin-top:30px; padding:18px;">
                 <div class="code-head">2. DHCP (Le Bailleur)</div>
                 <p style="margin-top:10px; line-height:1.6; color:var(--text-color);">
                     <strong>Analogie :</strong> C'est comme un ticket de parking. On vous prête une place (IP) pour une
@@ -1093,19 +1119,6 @@ les paquets en temps réel.
                     <strong>R</strong>equest (Demande), <strong>A</strong>cknowledge (Valide).
                 </div>
             </div>
-            </ul>
-        </div>
-        <div class="info" style="border-left-color:var(--num);">
-            <strong>DHCP (Dynamic Host Config)</strong><br>
-            <span style="font-size:0.85rem; color:#888;">Le Distributeur d'IP</span>
-            <ul style="margin-top:10px; padding-left:15px; line-height:1.6;">
-                <li><strong>Discover</strong> : Client cherche serveur.</li>
-                <li><strong>Offer</strong> : Serveur propose une IP.</li>
-                <li><strong>Request</strong> : Client accepte l'IP.</li>
-                <li><strong>Acknowledge</strong> : Serveur confirme (Bail).</li>
-            </ul>
-        </div>
-        </div>
         </div>
     </section>
 
@@ -1125,7 +1138,7 @@ les paquets en temps réel.
                 routeurs.
             </p>
 
-            <div class="code">
+            <div class="code" style="padding:18px;">
                 <div class="code-head">Exemple Table Routage Simplifiée</div>
                 <pre>
 <span class="kw">Dest. Network</span>    <span class="fn">Gateway (Next Hop)</span>     <span class="num">Interface</span>
@@ -1162,7 +1175,7 @@ les paquets en temps réel.
                 droite pour se rapprocher de la destination.
             </p>
 
-            <div class="code">
+            <div class="code" style="padding:18px;">
                 <div class="code-head">Exemple de Table de Routage Simplifiée</div>
                 <table style="width:100%; font-family:consolas; font-size:0.9rem; color:var(--text-color);">
                     <tr style="border-bottom:1px solid #555; text-align:left;">

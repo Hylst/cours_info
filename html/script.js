@@ -11,6 +11,48 @@
  * Gère le slider pour redimensionner le conteneur d'image et simuler les media queries.
  */
 document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * 📱 MENU MOBILE BURGER
+     * Gère l'ouverture/fermeture du menu mobile
+     */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+
+            // Toggle états
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Fermer le menu au clic sur un lien
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Fermer le menu au clic sur le backdrop
+        document.body.addEventListener('click', (e) => {
+            if (document.body.classList.contains('menu-open') &&
+                !nav.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    }
+
+    /**
+     * 📱 SIMULATEUR DE RESPONSIVE DESIGN (Section 10)
+     * Gère le slider pour redimensionner le conteneur d'image et simuler les media queries.
+     */
     const slider = document.getElementById('resp-slider');
     const container = document.getElementById('resp-container');
     const valDisplay = document.getElementById('resp-val');

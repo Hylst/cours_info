@@ -53,17 +53,16 @@
 
     <!-- FOOTER -->
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
-        });
-    </script>
     <script src="../../assets/js/quiz-engine.js"></script>
     <script>
-        window.addEventListener('load', () => {
-            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialisation du Quiz si l'élément existe
+            if (window.QuizEngine && document.getElementById('quiz-app')) {
+                new window.QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: 'quiz_node.json',
+                    questionsPerSession: 10
+                });
             }
         });
     </script>

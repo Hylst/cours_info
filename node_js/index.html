@@ -972,7 +972,7 @@ npm prune</pre>
         </div>
 
         <div class="quiz-container">
-            <div id="quiz-wrapper">
+            <div id="quiz-app">
                 <!-- Le moteur de quiz injectera le contenu ici -->
                 <div class="loader">Chargement du quiz...</div>
             </div>
@@ -1001,17 +1001,16 @@ npm prune</pre>
     </div>
 </footer>
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
-        });
-    </script>
     <script src="../../assets/js/quiz-engine.js"></script>
     <script>
-        window.addEventListener('load', () => {
-            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
-                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialisation du Quiz si l'élément existe
+            if (window.QuizEngine && document.getElementById('quiz-app')) {
+                new window.QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: 'quiz_node.json',
+                    questionsPerSession: 10
+                });
             }
         });
     </script>

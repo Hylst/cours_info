@@ -80,7 +80,8 @@
                     <div class="warning">
                         <strong>⚡ Performance</strong>
                         <p>Tout composant qui consomme un Contexte (<code>useContext</code>) va se re-rendre à
-                            <strong>CHAQUE</strong> fois que la valeur du Provider change.</p>
+                            <strong>CHAQUE</strong> fois que la valeur du Provider change.
+                        </p>
                         <p>Pour éviter les re-rendus inutiles sur les gros objets complexes : séparez les contextes ou
                             utilisez <code>useMemo</code>.</p>
                     </div>
@@ -90,6 +91,55 @@
                         <h4>🛠️ Combo : Context + useReducer</h4>
                         <p style="font-size:0.9rem; margin-top:10px;">C'est la méthode standard pour gérer des états
                             complexes globaux (similaire à Redux mais natif).</p>
+                    </div>
+
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--blue);">
+                            <h4>📢 Analogie : Le Haut-Parleur</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                <strong>Props</strong> = Jeu du téléphone arabe. Vous chuchotez à votre voisin qui
+                                chuchote au suivant... L'information se déforme ou fatigue tout le monde.
+                                <br><br>
+                                <strong>Context</strong> = Un système de sonorisation. Le speaker (Provider) parle, et
+                                n'importe qui dans la salle (Consumer) peut écouter s'il le souhaite, sans déranger les
+                                voisins.
+                            </p>
+                        </div>
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--red);">
+                            <h4>🚫 Anti-Pattern : Context Hell</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                N'emballez pas toute votre app dans 50 Providers !
+                                <br>
+                                <code>&lt;User&gt;&lt;Theme&gt;&lt;Lang&gt;&lt;Data&gt...</code>
+                                <br>
+                                Préférez "Composant Composition" (passer les composants en props) quand c'est juste pour
+                                éviter le drilling d'un ou deux niveaux.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Pattern avancé : Split Context (Performance)</div>
+                        <pre><span class="c">// Problème : Si UserContext change, TOUT le monde re-render.</span>
+<span class="c">// Solution : Séparer "Data" et "Actions"</span>
+
+<span class="kw">const</span> <span class="var">UserContext</span> = <span class="fn">createContext</span>();
+<span class="kw">const</span> <span class="var">UserDispatchContext</span> = <span class="fn">createContext</span>();
+
+<span class="kw">function</span> <span class="fn">UserProvider</span>({ <span class="var">children</span> }) {
+    <span class="kw">const</span> [<span class="var">state</span>, <span class="var">dispatch</span>] = <span class="fn">useReducer</span>(<span class="var">reducer</span>, <span class="var">initial</span>);
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;UserContext.Provider</span> <span class="attr">value</span>={ <span class="var">state</span> }<span class="tag">&gt;</span>
+            <span class="tag">&lt;UserDispatchContext.Provider</span> <span class="attr">value</span>={ <span class="var">dispatch</span> }<span class="tag">&gt;</span>
+                { <span class="var">children</span> }
+            <span class="tag">&lt;/UserDispatchContext.Provider&gt;</span>
+        <span class="tag">&lt;/UserContext.Provider&gt;</span>
+    );
+}
+<span class="c">// Ainsi, un composant qui veut juste dispatch() ne re-rend pas quand state change !</span></pre>
                     </div>
 
                     <div class="nav-buttons">

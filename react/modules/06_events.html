@@ -97,6 +97,47 @@
                         <div id="demo-event-output" class="demo-output" style="margin-top:12px">En attente...</div>
                     </div>
 
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--blue);">
+                            <h4>🫧 Analogie : Les Bulles (Bubbling)</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                Quand vous cliquez sur un bouton, l'événement naît sur le bouton, puis remonte (comme
+                                une bulle d'air) vers le parent, puis le grand-parent, jusqu'à <code>window</code>.
+                                <br><br>
+                                C'est pour ça qu'un <code>onClick</code> sur une <code>div</code> parent capture aussi
+                                les clics de ses enfants !
+                            </p>
+                        </div>
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Advanced : Delegation (Interne)</div>
+                            <pre style="font-size:0.8rem; line-height:1.4"><span class="c">// React n'attache pas 1000 listeners !</span>
+<span class="c">// Il attache UN SEUL listener sur la racine (root).</span>
+<span class="c">// Quand vous cliquez, React regarde la cible et appelle votre fonction.</span>
+<span class="c">// => Gain de mémoire énorme.</span></pre>
+                        </div>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Pattern : Debouncing (Performance)</div>
+                        <pre><span class="c">// Éviter d'appeler une API à chaque frappe de clavier</span>
+<span class="kw">function</span> <span class="fn">Search</span>() {
+    <span class="kw">const</span> <span class="fn">handleChange</span> = (<span class="var">e</span>) => {
+        <span class="c">// On efface le timer précédent</span>
+        <span class="fn">clearTimeout</span>(<span class="fn">window</span>.<span class="var">timer</span>);
+        
+        <span class="c">// On attend 500ms avant de valider</span>
+        <span class="fn">window</span>.<span class="var">timer</span> = <span class="fn">setTimeout</span>(() => {
+            <span class="fn">fetchResults</span>(<span class="var">e</span>.<span class="prop">target</span>.<span class="prop">value</span>);
+        }, <span class="num">500</span>);
+    };
+    
+    <span class="kw">return</span> <span class="tag">&lt;input</span> <span class="attr">onChange</span>={ <span class="fn">handleChange</span> } <span class="tag">/&gt;</span>;
+}</pre>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="05_effect.html" class="btn-prev">← Effect</a>
                         <a href="07_lists.html" class="btn-next">Suivant : Lists →</a>

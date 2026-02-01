@@ -98,6 +98,42 @@
                         mutable
                         qui ne déclenche <strong>pas</strong> de re-render quand on la modifie.</div>
 
+
+                    <div class="ref-card"
+                        style="margin-top:20px; background:var(--bg2); border-left:4px solid var(--orange);">
+                        <h4>📝 Analogie : Le Post-it</h4>
+                        <p style="font-size:0.9rem; margin-top:10px;">
+                            <strong>State</strong> = Repeindre le mur. Tout le monde le voit, c'est lourd.
+                            <br>
+                            <strong>Ref</strong> = Coller un Post-it. L'info est là, modifiable, mais ne repeint pas le
+                            mur (pas de re-render).
+                        </p>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Advanced : useImperativeHandle</div>
+                        <pre><span class="c">// Permet de contrôler ce que le parent reçoit dans sa ref</span>
+<span class="kw">const</span> <span class="fn">VideoPlayer</span> = <span class="fn">forwardRef</span>((<span class="var">props</span>, <span class="var">ref</span>) => {
+    <span class="kw">const</span> <span class="var">videoRef</span> = <span class="fn">useRef</span>();
+    
+    <span class="fn">useImperativeHandle</span>(<span class="var">ref</span>, () => ({
+        <span class="fn">play</span>: () => <span class="var">videoRef</span>.<span class="prop">current</span>.<span class="fn">play</span>(),
+        <span class="fn">pause</span>: () => <span class="var">videoRef</span>.<span class="prop">current</span>.<span class="fn">pause</span>()
+        <span class="c">// Le parent n'a PAS accès au DOM direct, juste à ces 2 fonctions !</span>
+    }));
+
+    <span class="kw">return</span> <span class="tag">&lt;video</span> <span class="attr">ref</span>={ <span class="var">videoRef</span> } ... <span class="tag">/&gt;</span>;
+});</pre>
+                    </div>
+
+                    <div class="warning">
+                        <strong>⚠️ Danger</strong>
+                        <p>Ne lisez/écrivez JAMAIS <code>ref.current</code> pendant le rendu (dans le corps de la
+                            fonction).
+                            Faites-le toujours dans un <code>useEffect</code> ou un event handler.</p>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="11_context.html" class="btn-prev">← Context</a>
                         <a href="quiz.html" class="btn-next">Suivant : Quiz →</a>

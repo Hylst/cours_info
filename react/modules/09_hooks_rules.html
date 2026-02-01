@@ -81,6 +81,69 @@
                         <code>npm install eslint-plugin-react-hooks --save-dev</code>
                     </div>
 
+
+                    <div class="ref-card"
+                        style="margin-top:20px; background:var(--bg2); padding:20px; border-radius:10px; border-left:4px solid var(--purple);">
+                        <h4>🎧 Analogie : La Playlist Musicale (Mental Model)</h4>
+                        <p style="margin-top:10px;">Imaginez que React conserve les valeurs (State) de vos hooks dans
+                            une liste, comme une playlist MP3 :</p>
+                        <ul style="margin-top:10px; list-style:none; padding-left:10px;">
+                            <li>1. 🎵 <code>useState('Alice')</code> (Piste 1)</li>
+                            <li>2. 🎵 <code>useEffect(...)</code> (Piste 2)</li>
+                            <li>3. 🎵 <code>useState('Dark')</code> (Piste 3)</li>
+                        </ul>
+                        <p style="margin-top:10px;">Si au rendu suivant, vous mettez une condition et sautez la piste
+                            2...</p>
+                        <p>React va jouer la piste 3 (Theme) en pensant que c'est la piste 2 (Effect). <strong>Tout se
+                                décalle !</strong> 💥</p>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Visualisation du Crash</div>
+                        <pre style="line-height:1.2">
+<span class="c">// Rendu 1 (Normal)</span>
+[0] "Alice"
+[1] Effect
+[2] "Dark"
+
+<span class="c">// Rendu 2 (Avec condition if(false) sur le Hook 2)</span>
+[0] "Alice"
+[1] "Dark" <span class="c">// ⚠️ React essaye de lire un State comme un Effect !</span>
+[2] undefined <span class="c">// Perdu dans les limbes</span>
+</pre>
+                    </div>
+
+                    <details>
+                        <summary>🛡️ Le garde du corps : ESLint</summary>
+                        <div class="details-content">
+                            <p>Le plugin <code>eslint-plugin-react-hooks</code> est votre meilleur ami. Il vérifie deux
+                                choses :</p>
+                            <ol>
+                                <li><strong>Rules of Hooks</strong> : Vérifie que vous n'appelez pas de hooks dans des
+                                    conditions.</li>
+                                <li><strong>Exhaustive Deps</strong> : Vérifie que le tableau de dépendances de
+                                    <code>useEffect</code> ou <code>useMemo</code> est complet.</li>
+                            </ol>
+                            <p><strong>Ne désactivez jamais cette règle</strong> (<code>// eslint-disable-line</code>)
+                                sauf si vous savez EXACTEMENT ce que vous faites (et encore...).</p>
+                        </div>
+                    </details>
+
+                    <div class="grid2">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Astuce : Reset State</div>
+                            <pre><span class="c">// Si vous voulez RAZ un composant (et tous ses hooks)</span>
+<span class="c">// Changez sa prop "key" !</span>
+
+<span class="tag">&lt;UserProfile</span> <span class="attr">key</span>={ <span class="var">userId</span> } <span class="tag">/&gt;</span>
+
+<span class="c">// Si userId change, React détruit l'ancien composant</span>
+<span class="c">// et en recrée un neuf (State à 0).</span></pre>
+                        </div>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="08_forms.html" class="btn-prev">← Forms</a>
                         <a href="10_custom_hooks.html" class="btn-next">Suivant : Custom Hooks →</a>

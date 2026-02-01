@@ -104,6 +104,51 @@
                         puisse vérifier les règles des hooks (linting).
                     </div>
 
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--purple);">
+                            <h4>🧱 Analogie : Les Briques LEGO</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                Les Hooks sont des briques élémentaires.
+                                <br>
+                                Un <strong>Custom Hook</strong>, c'est quand vous assemblez 2-3 briques pour créer une
+                                "Porte" ou une "Roue". Ensuite, vous pouvez utiliser cette "Roue" partout sur votre
+                                voiture sans avoir à ré-assembler le pneu et la jante à chaque fois.
+                            </p>
+                        </div>
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Composition de Hooks</div>
+                            <pre style="font-size:0.8rem; line-height:1.4"><span class="c">// On peut utiliser un Custom Hook DANS un autre !</span>
+<span class="kw">function</span> <span class="fn">useDeviceType</span>() {
+    <span class="c">// On réutilise useWindowSize qu'on a créé avant</span>
+    <span class="kw">const</span> <span class="var">width</span> = <span class="fn">useWindowSize</span>();
+    
+    <span class="kw">if</span> (<span class="var">width</span> < <span class="num">768</span>) <span class="kw">return</span> <span class="str">"mobile"</span>;
+    <span class="kw">return</span> <span class="str">"desktop"</span>;
+}</pre>
+                        </div>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Advanced : Testing Concept</div>
+                        <pre><span class="c">// Comment tester un Hook sans composant ?</span>
+<span class="c">// Utilisez "renderHook" de React Testing Library</span>
+
+<span class="kw">import</span> { <span class="fn">renderHook</span>, <span class="fn">act</span> } <span class="kw">from</span> <span class="str">'@testing-library/react'</span>;
+
+<span class="fn">test</span>(<span class="str">'should increment'</span>, () => {
+    <span class="kw">const</span> { <span class="var">result</span> } = <span class="fn">renderHook</span>(() => <span class="fn">useCounter</span>());
+    
+    <span class="fn">act</span>(() => {
+        <span class="var">result</span>.<span class="prop">current</span>.<span class="fn">increment</span>();
+    });
+    
+    <span class="fn">expect</span>(<span class="var">result</span>.<span class="prop">current</span>.<span class="prop">count</span>).<span class="fn">toBe</span>(<span class="num">1</span>);
+});</pre>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="09_hooks_rules.html" class="btn-prev">← Hooks Rules</a>
                         <a href="11_context.html" class="btn-next">Suivant : Context API →</a>

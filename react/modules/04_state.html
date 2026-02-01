@@ -88,11 +88,53 @@
                             <p>Si deux composants frères (ex: Sidebar et Header) ont besoin de la même donnée (ex:
                                 <code>isMenuOpen</code>),
                                 il faut "remonter" cet état vers leur parent commun le plus proche, puis le redescendre
-                                via les props.</p>
+                                via les props.
+                            </p>
                             <p>Le parent détient le <code>useState</code> et passe la fonction
-                                <code>setIsMenuOpen</code> aux enfants.</p>
+                                <code>setIsMenuOpen</code> aux enfants.
+                            </p>
                         </div>
                     </details>
+
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--primary);">
+                            <h4>📸 Analogie : L'Instantané (Snapshot)</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                Le State n'est pas une variable normale qui change "en direct".
+                                <br>
+                                C'est une photo prise au moment du rendu. Même si vous changez le State, la variable
+                                <code>count</code> dans la fonction <em>actuelle</em> ne change pas ! Elle changera au
+                                <strong>prochain</strong> rendu (la prochaine photo).
+                            </p>
+                        </div>
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--red);">
+                            <h4>🚫 Anti-Pattern : Mutation Directe</h4>
+                            <pre style="margin-top:5px; font-size:0.8rem; background:var(--bg);">
+<span class="c">// NE MARCHE PAS</span>
+<span class="var">user</span>.<span class="prop">name</span> = <span class="str">"Alice"</span>;
+<span class="c">// React ne voit pas le changement !</span>
+
+<span class="c">// IL FAUT REMPLACER L'OBJET</span>
+<span class="fn">setUser</span>({ ...<span class="var">user</span>, <span class="prop">name</span>: <span class="str">"Alice"</span> });</pre>
+                        </div>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Concept : State Machine (Status)</div>
+                        <pre><span class="c">// Au lieu de pleins de booléens (isLoading, isError, isSuccess...)</span>
+<span class="c">// Utilisez un seul string d'état pour éviter les états impossibles.</span>
+<span class="kw">const</span> [<span class="var">status</span>, <span class="fn">setStatus</span>] = <span class="fn">useState</span>(<span class="str">"idle"</span>); <span class="c">// "loading" | "success" | "error"</span>
+
+<span class="kw">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+        {<span class="var">status</span> === <span class="str">"idle"</span> && <span class="tag">&lt;StartBtn /&gt;</span>}
+        {<span class="var">status</span> === <span class="str">"loading"</span> && <span class="tag">&lt;Spinner /&gt;</span>}
+        {<span class="var">status</span> === <span class="str">"error"</span> && <span class="tag">&lt;ErrorMsg /&gt;</span>}
+    <span class="tag">&lt;/div&gt;</span>
+);</pre>
+                    </div>
 
                     <div class="demo">
                         <div class="demo-title">Démo State (Simulé)</div>

@@ -97,6 +97,36 @@
                         </div>
                     </div>
 
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="ref-card" style="background:var(--bg2); border-left:4px solid var(--orange);">
+                            <h4>📋 Analogie : La Feuille d'Appel</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">
+                                Imaginez une classe d'élèves. Si vous les appelez par leur position ("Élève au 1er
+                                rang"), et qu'ils changent de place, tout est faux !
+                                <br>
+                                Si vous les appelez par leur <strong>ID unique</strong> (Matricule), ils peuvent bouger
+                                sans problème. C'est ça la <code>key</code>.
+                            </p>
+                        </div>
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Performance : Virtual List</div>
+                            <pre style="font-size:0.8rem; line-height:1.4"><span class="c">// Si vous avez 10 000 items, le DOM va ramer.</span>
+<span class="c">// Solution : N'afficher que ce qui est visible à l'écran.</span>
+<span class="c">// Librairie recommandée : react-window</span>
+
+<span class="tag">&lt;FixedSizeList</span>
+  <span class="attr">height</span>={500}
+  <span class="attr">width</span>={500}
+  <span class="attr">itemSize</span>={35}
+  <span class="attr">itemCount</span>={10000}
+<span class="tag">&gt;</span>
+  {Row}
+<span class="tag">&lt;/FixedSizeList&gt;</span></pre>
+                        </div>
+                    </div>
+
                     <div class="demo">
                         <div class="demo-title">Démo Listes</div>
                         <button class="demo-btn" onclick="demoLists()">Afficher la liste</button>

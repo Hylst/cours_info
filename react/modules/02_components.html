@@ -73,6 +73,50 @@
                         </div>
                     </div>
 
+
+                    <div class="grid2" style="margin-top:20px;">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Composition (Recommandé)</div>
+                            <pre><span class="c">// Assembler des composants idiots pour faire du complexe</span>
+<span class="kw">function</span> <span class="fn">App</span>() {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;Layout&gt;</span>
+            <span class="tag">&lt;Sidebar /&gt;</span>
+            <span class="tag">&lt;ChatBox&gt;</span>
+                <span class="tag">&lt;MessageList /&gt;</span>
+            <span class="tag">&lt;/ChatBox&gt;</span>
+        <span class="tag">&lt;/Layout&gt;</span>
+    );
+}</pre>
+                        </div>
+                        <div class="ref-card"
+                            style="border:1px solid var(--border); padding:20px; background:var(--bg2); border-radius:10px;">
+                            <h4>🧠 Modèle mental : Pureté</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">React est conçu autour du concept de
+                                <strong>fonctions pures</strong> :</p>
+                            <ul style="font-size:0.85rem; margin-top:5px;">
+                                <li>Mêmes entrées (props) = Même sortie (JSX).</li>
+                                <li>Pas d'effets de bord pendant le rendu (pas de fetch, pas de modification directe du
+                                    DOM).</li>
+                                <li>L'idempotence est cruciale pour le Mode Strict.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>📂 Structure des fichiers</summary>
+                        <div class="details-content">
+                            <p>Il n'y a pas de structure "officielle", mais voici deux standards populaires :</p>
+                            <ul>
+                                <li><strong>Par Type</strong> : <code>/components</code> (Boutons, Cards),
+                                    <code>/pages</code> (Home, About), <code>/hooks</code>.</li>
+                                <li><strong>Par Fonctionnalité</strong> (Feature) : <code>/features/auth/</code> (Login,
+                                    Register, auth-slice), plus scalable pour les grosses apps.</li>
+                            </ul>
+                        </div>
+                    </details>
+
                     <div class="tip"><strong>💡 Conseil</strong> : Utilisez toujours les <strong>Function
                             Components</strong>
                         avec les Hooks. Les classes sont tolérées mais plus recommandées.</div>

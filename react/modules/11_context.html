@@ -62,6 +62,36 @@
 }</pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Pattern : Provider Component</div>
+                        <pre><span class="c">// Encapsuler la logique dans un composant dédié</span>
+<span class="kw">export</span> <span class="kw">function</span> <span class="fn">ThemeProvider</span>({ <span class="var">children</span> }) {
+    <span class="kw">const</span> [<span class="var">theme</span>, <span class="fn">setTheme</span>] = <span class="fn">useState</span>(<span class="str">"light"</span>);
+    
+    <span class="kw">return</span> (
+        <span class="tag">&lt;ThemeContext.Provider</span> <span class="attr">value</span>={{ <span class="var">theme</span>, <span class="fn">setTheme</span> }}<span class="tag">&gt;</span>
+            {<span class="var">children</span>}
+        <span class="tag">&lt;/ThemeContext.Provider&gt;</span>
+    );
+}</pre>
+                    </div>
+
+                    <div class="warning">
+                        <strong>⚡ Performance</strong>
+                        <p>Tout composant qui consomme un Contexte (<code>useContext</code>) va se re-rendre à
+                            <strong>CHAQUE</strong> fois que la valeur du Provider change.</p>
+                        <p>Pour éviter les re-rendus inutiles sur les gros objets complexes : séparez les contextes ou
+                            utilisez <code>useMemo</code>.</p>
+                    </div>
+
+                    <div class="ref-card"
+                        style="border:1px solid var(--border); padding:20px; background:var(--bg2); border-radius:10px; margin-top:20px;">
+                        <h4>🛠️ Combo : Context + useReducer</h4>
+                        <p style="font-size:0.9rem; margin-top:10px;">C'est la méthode standard pour gérer des états
+                            complexes globaux (similaire à Redux mais natif).</p>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="10_custom_hooks.html" class="btn-prev">← Custom Hooks</a>
                         <a href="12_refs.html" class="btn-next">Suivant : Refs →</a>

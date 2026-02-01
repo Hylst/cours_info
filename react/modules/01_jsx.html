@@ -76,7 +76,39 @@
     <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="str">"container"</span> <span class="attr">style</span>={{ <span class="prop">color</span>: <span class="str">'red'</span> }}<span class="tag">&gt;</span>
         Contenu
     <span class="tag">&lt;/div&gt;</span>
+</pre>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Fragments</div>
+                        <pre><span class="c">// Retourner plusieurs éléments sans div parent inutile</span>
+<span class="kw">return</span> (
+    <span class="tag">&lt;&gt;</span>
+        <span class="tag">&lt;Header /&gt;</span>
+        <span class="tag">&lt;Main /&gt;</span>
+        <span class="tag">&lt;Footer /&gt;</span>
+    <span class="tag">&lt;/&gt;</span>
 );</pre>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Rendu Conditionnel</div>
+                        <pre><span class="c">// 1. Ternaire (If/Else)</span>
+<span class="tag">&lt;div&gt;</span>
+    {<span class="var">isLoggedIn</span> ? <span class="tag">&lt;UserMenu /&gt;</span> : <span class="tag">&lt;LoginBtn /&gt;</span>}
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="c">// 2. Court-circuit (&&)</span>
+{<span class="var">hasMessages</span> && <span class="tag">&lt;p&gt;</span>Nouveaux messages !<span class="tag">&lt;/p&gt;</span>}</pre>
+                    </div>
+
+                    <div class="info">
+                        <strong>🛡️ Sécurité XSS</strong>
+                        <p>Par défaut, React échappe le contenu injecté dans le JSX pour prévenir les failles XSS.
+                            Si vous devez vraiment injecter du HTML brut (risqué), utilisez
+                            <code>dangerouslySetInnerHTML</code>.</p>
                     </div>
 
                     <div class="demo">

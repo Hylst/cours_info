@@ -65,6 +65,35 @@
 }</pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Variables Muables (Persistance)</div>
+                        <pre><span class="c">// Stocker une valeur ENTRE les rendus sans provoquer de re-rendu</span>
+<span class="kw">function</span> <span class="fn">Timer</span>() {
+    <span class="kw">const</span> <span class="var">intervalRef</span> = <span class="fn">useRef</span>();
+
+    <span class="fn">useEffect</span>(() => {
+        <span class="var">intervalRef</span>.<span class="prop">current</span> = <span class="fn">setInterval</span>(..., <span class="num">1000</span>);
+        <span class="kw">return</span> () => <span class="fn">clearInterval</span>(<span class="var">intervalRef</span>.<span class="prop">current</span>);
+    }, []);
+    
+    <span class="c">// Ici on peut lire intervalRef.current n'importe quand</span>
+}</pre>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>ForwardRef</div>
+                        <pre><span class="c">// Transférer une ref d'un parent à un enfant (DOM réel)</span>
+<span class="kw">const</span> <span class="fn">MyInput</span> = <span class="fn">forwardRef</span>((<span class="var">props</span>, <span class="var">ref</span>) => {
+    <span class="kw">return</span> <span class="tag">&lt;input</span> {...<span class="var">props</span>} <span class="attr">ref</span>={<span class="var">ref</span>} <span class="tag">/&gt;</span>;
+});
+
+<span class="c">// Utilisation dans le parent</span>
+<span class="kw">const</span> <span class="var">ref</span> = <span class="fn">useRef</span>();
+<span class="tag">&lt;MyInput</span> <span class="attr">ref</span>={<span class="var">ref</span>} <span class="tag">/&gt;</span></pre>
+                    </div>
+
                     <div class="info"><strong>ℹ️ Note</strong> <code>useRef</code> permet aussi de stocker une valeur
                         mutable
                         qui ne déclenche <strong>pas</strong> de re-render quand on la modifie.</div>

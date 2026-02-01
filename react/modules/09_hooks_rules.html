@@ -60,6 +60,27 @@
                         </div>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Deep Dive : Pourquoi l'ordre compte ?</div>
+                        <pre><span class="c">// En interne, React stocke les Hooks dans un tableau (Linked List)</span>
+<span class="c">// Rendu N°1</span>
+[0] useState("Alice") <span class="c">// Nom</span>
+[1] useEffect(...)    <span class="c">// Document Title</span>
+[2] useState("Blue")  <span class="c">// Thème</span>
+
+<span class="c">// Si vous mettez une condition sur le useEffect et qu'elle passe à false...</span>
+<span class="c">// Rendu N°2 (BUG)</span>
+[0] useState("Alice") <span class="c">// OK</span>
+[1] useState("Blue")  <span class="c">// ERREUR ! React pense que c'est le useEffect.</span></pre>
+                    </div>
+
+                    <div class="info">
+                        <strong>🛠️ Outils</strong>
+                        <p>Ne comptez pas sur votre vigilance. Installez le plugin ESLint officiel :</p>
+                        <code>npm install eslint-plugin-react-hooks --save-dev</code>
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="08_forms.html" class="btn-prev">← Forms</a>
                         <a href="10_custom_hooks.html" class="btn-next">Suivant : Custom Hooks →</a>

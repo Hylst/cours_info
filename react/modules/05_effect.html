@@ -67,6 +67,46 @@
 }</pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Cleanup Function (Nettoyage)</div>
+                        <pre><span class="c">// Indispensable pour les Timers, EventListeners, WebSockets...</span>
+<span class="fn">useEffect</span>(() => {
+    <span class="kw">const</span> <span class="fn">handleResize</span> = () => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Resized"</span>);
+    
+    <span class="fn">window</span>.<span class="fn">addEventListener</span>(<span class="str">"resize"</span>, <span class="fn">handleResize</span>);
+
+    <span class="c">// Fonction retournée = exécutée avant le démontage (ou le prochain effet)</span>
+    <span class="kw">return</span> () => {
+        <span class="fn">window</span>.<span class="fn">removeEventListener</span>(<span class="str">"resize"</span>, <span class="fn">handleResize</span>);
+    };
+}, []);</pre>
+                    </div>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Appel API (Fetch)</div>
+                        <pre><span class="fn">useEffect</span>(() => {
+    <span class="kw">let</span> <span class="var">ignore</span> = <span class="kw">false</span>; <span class="c">// Pour éviter les Race Conditions</span>
+
+    <span class="kw">async</span> <span class="kw">function</span> <span class="fn">fetchData</span>() {
+        <span class="kw">const</span> <span class="var">res</span> = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/api/data"</span>);
+        <span class="kw">const</span> <span class="var">json</span> = <span class="kw">await</span> <span class="var">res</span>.<span class="fn">json</span>();
+        <span class="kw">if</span> (!<span class="var">ignore</span>) <span class="fn">setData</span>(<span class="var">json</span>);
+    }
+
+    <span class="fn">fetchData</span>();
+    <span class="kw">return</span> () => { <span class="var">ignore</span> = <span class="kw">true</span>; };
+}, [<span class="var">id</span>]); <span class="c">// Refetch si l'ID change</span></pre>
+                    </div>
+
+                    <div class="warning">
+                        <strong>⚠️ Piège courant</strong>
+                        <p>Ne mentez jamais au tableau de dépendances. Si vous utilisez une variable dans l'effet, elle
+                            <strong>doit</strong> être dans le tableau <code>[]</code>, sinon vous aurez des bugs de
+                            "stale closures" (vieilles valeurs).</p>
+                    </div>
+
                     <div class="demo">
                         <div class="demo-title">Démo Effect</div>
                         <button class="demo-btn" onclick="demoEffect()">Lancer un effet</button>

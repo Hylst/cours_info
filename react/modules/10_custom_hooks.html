@@ -66,6 +66,44 @@
 }</pre>
                     </div>
 
+                    <div class="grid2">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>useLocalStorage</div>
+                            <pre><span class="kw">function</span> <span class="fn">useLocalStorage</span>(<span class="var">key</span>, <span class="var">initial</span>) {
+    <span class="kw">const</span> [<span class="var">stored</span>, <span class="fn">setStored</span>] = <span class="fn">useState</span>(() => {
+        <span class="kw">return</span> <span class="fn">localStorage</span>.<span class="fn">getItem</span>(<span class="var">key</span>) || <span class="var">initial</span>;
+    });
+
+    <span class="fn">useEffect</span>(() => {
+        <span class="fn">localStorage</span>.<span class="fn">setItem</span>(<span class="var">key</span>, <span class="var">stored</span>);
+    }, [<span class="var">key</span>, <span class="var">stored</span>]);
+
+    <span class="kw">return</span> [<span class="var">stored</span>, <span class="fn">setStored</span>];
+}</pre>
+                        </div>
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>useWindowSize</div>
+                            <pre><span class="kw">function</span> <span class="fn">useWindowSize</span>() {
+    <span class="kw">const</span> [<span class="var">size</span>, <span class="fn">setSize</span>] = <span class="fn">useState</span>(<span class="fn">window</span>.<span class="prop">innerWidth</span>);
+    
+    <span class="fn">useEffect</span>(() => {
+        <span class="kw">const</span> <span class="fn">handle</span> = () => <span class="fn">setSize</span>(<span class="fn">window</span>.<span class="prop">innerWidth</span>);
+        <span class="fn">window</span>.<span class="fn">addEventListener</span>(<span class="str">"resize"</span>, <span class="fn">handle</span>);
+        <span class="kw">return</span> () => <span class="fn">window</span>.<span class="fn">removeEventListener</span>(...)
+    }, []);
+    
+    <span class="kw">return</span> <span class="var">size</span>;
+}</pre>
+                        </div>
+                    </div>
+
+                    <div class="tip">
+                        <strong>Règle d'or</strong> : Un Custom Hook doit toujours commencer par "use" pour que React
+                        puisse vérifier les règles des hooks (linting).
+                    </div>
+
                     <div class="nav-buttons">
                         <a href="09_hooks_rules.html" class="btn-prev">← Hooks Rules</a>
                         <a href="11_context.html" class="btn-next">Suivant : Context API →</a>

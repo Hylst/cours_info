@@ -62,6 +62,35 @@
 }</pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Passer des arguments</div>
+                        <pre><span class="c">// ❌ Incorrect (Exécuté immédiatement au rendu)</span>
+<span class="tag">&lt;button</span> <span class="attr">onClick</span>={ <span class="fn">delete</span>(<span class="var">id</span>) }<span class="tag">&gt;</span>Supprimer<span class="tag">&lt;/button&gt;</span>
+
+<span class="c">// ✅ Correct (Arrow Function Wrapper)</span>
+<span class="tag">&lt;button</span> <span class="attr">onClick</span>={ () => <span class="fn">delete</span>(<span class="var">id</span>) }<span class="tag">&gt;</span>Supprimer<span class="tag">&lt;/button&gt;</span></pre>
+                    </div>
+
+                    <div class="grid2">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Propagation (Bubbling)</div>
+                            <pre><span class="c">// Arrêter la propagation vers les parents</span>
+<span class="kw">const</span> <span class="fn">onClick</span> = (<span class="var">e</span>) => {
+    <span class="var">e</span>.<span class="fn">stopPropagation</span>();
+    <span class="fn">activate</span>();
+};</pre>
+                        </div>
+                        <div class="warning">
+                            <strong>⚡ Performance</strong>
+                            <p>Utiliser des fonctions fléchées en ligne <code>onClick={() => ...}</code> crée une
+                                nouvelle fonction à chaque rendu.</p>
+                            <p>Généralement négligeable, mais à éviter dans les grosses listes ou directives de
+                                performance (utilisez <code>useCallback</code>).</p>
+                        </div>
+                    </div>
+
                     <div class="demo">
                         <div class="demo-title">Démo Events</div>
                         <button class="demo-btn" onclick="demoEventClick(event)">Cliquez moi !</button>

@@ -63,6 +63,46 @@
 <span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="str">"Alice"</span> <span class="attr">age</span>={25} <span class="tag">/&gt;</span></pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>La Prop "children"</div>
+                        <pre><span class="c">// Pour créer des composants "conteneurs" (Cards, Layouts)</span>
+<span class="kw">function</span> <span class="fn">Card</span>({ <span class="var">children</span> }) {
+    <span class="kw">return</span> <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="str">"card"</span><span class="tag">&gt;</span>{<span class="var">children</span>}<span class="tag">&lt;/div&gt;</span>;
+}
+
+<span class="c">// Utilisation : Tout ce qui est entre les balises est passé dans "children"</span>
+<span class="tag">&lt;Card&gt;</span>
+    <span class="tag">&lt;h2&gt;</span>Titre<span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Texte<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/Card&gt;</span></pre>
+                    </div>
+
+                    <div class="grid2">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Valeurs par défaut</div>
+                            <pre><span class="kw">function</span> <span class="fn">Btn</span>({ <span class="var">label</span> = <span class="str">"OK"</span>, <span class="var">color</span> = <span class="str">"blue"</span> }) {
+    <span class="c">// Si label n'est pas passé, il vaut "OK"</span>
+    <span class="kw">return</span> <span class="tag">&lt;button</span> <span class="attr">className</span>={<span class="var">color</span>}<span class="tag">&gt;</span>{<span class="var">label</span>}<span class="tag">&lt;/button&gt;</span>;
+}</pre>
+                        </div>
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Spread Attributes</div>
+                            <pre><span class="c">// Transférer toutes les props restantes</span>
+<span class="kw">function</span> <span class="fn">Input</span>({ <span class="var">icon</span>, ...<span class="var">props</span> }) {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;div&gt;</span>
+            <span class="tag">&lt;Icon</span> <span class="attr">name</span>={<span class="var">icon</span>} <span class="tag">/&gt;</span>
+            <span class="c">// Passe value, onChange, placeholder...</span>
+            <span class="tag">&lt;input</span> {...<span class="var">props</span>} <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    );
+}</pre>
+                        </div>
+                    </div>
+
                     <div class="demo">
                         <div class="demo-title">Démo Props</div>
                         <button class="demo-btn" onclick="demoProps()">Générer composants</button>

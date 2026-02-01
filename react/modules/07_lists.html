@@ -66,6 +66,37 @@
 }</pre>
                     </div>
 
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Anti-Pattern : Index as Key</div>
+                        <pre><span class="c">// ❌ MAUVAIS : Si la liste change d'ordre, tout casse !</span>
+{<span class="var">items</span>.<span class="fn">map</span>((<span class="var">item</span>, <span class="var">index</span>) => (
+    <span class="tag">&lt;li</span> <span class="attr">key</span>={<span class="var">index</span>}<span class="tag">&gt;</span>{<span class="var">item</span>}<span class="tag">&lt;/li&gt;</span>
+))}
+
+<span class="c">// ✅ BON : Utilisez un ID unique et stable</span>
+{<span class="var">items</span>.<span class="fn">map</span>(<span class="var">item</span> => (
+    <span class="tag">&lt;li</span> <span class="attr">key</span>={<span class="var">item</span>.<span class="prop">id</span>}<span class="tag">&gt;</span>{<span class="var">item</span>.<span class="prop">text</span>}<span class="tag">&lt;/li&gt;</span>
+))}</pre>
+                    </div>
+
+                    <div class="grid2">
+                        <div class="ref-card"
+                            style="border:1px solid var(--border); padding:20px; background:var(--bg2); border-radius:10px;">
+                            <h4>🧠 État Dérivé (Derived State)</h4>
+                            <p style="font-size:0.9rem; margin-top:10px;">Ne créez pas de state inutile pour filtrer une
+                                liste !</p>
+                            <pre
+                                style="margin-top:10px; background:var(--bg); padding:10px; border-radius:6px; font-size:0.8rem;">
+<span class="c">// ❌ Inutile</span>
+<span class="kw">const</span> [<span class="var">filtered</span>, <span class="fn">setFiltered</span>] = <span class="fn">useState</span>([]);
+<span class="fn">useEffect</span>(() => { <span class="fn">setFiltered</span>(...) }, [<span class="var">search</span>]);
+
+<span class="c">// ✅ Juste une variable</span>
+<span class="kw">const</span> <span class="var">visibleTodos</span> = <span class="var">todos</span>.<span class="fn">filter</span>(<span class="var">t</span> => <span class="var">t</span>.<span class="prop">active</span>);</pre>
+                        </div>
+                    </div>
+
                     <div class="demo">
                         <div class="demo-title">Démo Listes</div>
                         <button class="demo-btn" onclick="demoLists()">Afficher la liste</button>

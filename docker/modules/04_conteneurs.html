@@ -8,39 +8,39 @@
                 <p class="chapter-subtitle">Cycle de vie et gestion avancée</p>
             </div>
         </div>
-    </div>
-    <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-        Un conteneur a un cycle de vie précis. Savoir le déboguer quand il crashe ou le nettoyer quand il ne sert
-        plus est indispensable pour garder un système propre et fonctionnel.
-    </p>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Un conteneur a un cycle de vie précis. Savoir le déboguer quand il crashe ou le nettoyer quand il ne sert
+            plus est indispensable pour garder un système propre et fonctionnel.
+        </p>
 
-    <div class="content-block">
-        <h3>Cycle de vie d'un conteneur</h3>
-        <div class="mermaid">
-            stateDiagram-v2
-            [*] --> Created : docker create
-            Created --> Running : docker start
-            Running --> Paused : docker pause
-            Paused --> Running : docker unpause
-            Running --> Stopped : docker stop
-            Stopped --> Running : docker start
-            Stopped --> [*] : docker rm
-            Running --> [*] : docker rm -f
+        <div class="content-block">
+            <h3>Cycle de vie d'un conteneur</h3>
+            <div class="mermaid">
+                stateDiagram-v2
+                [*] --> Created : docker create
+                Created --> Running : docker start
+                Running --> Paused : docker pause
+                Paused --> Running : docker unpause
+                Running --> Stopped : docker stop
+                Stopped --> Running : docker start
+                Stopped --> [*] : docker rm
+                Running --> [*] : docker rm -f
 
-            state Running {
-            [*] --> Executing
-            }
+                state Running {
+                [*] --> Executing
+                }
+            </div>
+            <p style="margin-top:10px; font-size:0.95rem;">Le cycle est fluide : un conteneur est conçu pour être
+                <strong>éphémère</strong>. On ne le met pas à jour, on le remplace.
+            </p>
         </div>
-        <p style="margin-top:10px; font-size:0.95rem;">Le cycle est fluide : un conteneur est conçu pour être
-            <strong>éphémère</strong>. On ne le met pas à jour, on le remplace.</p>
-    </div>
 
-    <div class="content-block">
-        <h3>Inspecter et débugger</h3>
-        <div class="code-block">
-            <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                    class="code-dot g"></span> Terminal</div>
-            <pre><span class="comment"># Infos détaillées (JSON)</span>
+        <div class="content-block">
+            <h3>Inspecter et débugger</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Infos détaillées (JSON)</span>
 <span class="cmd">docker inspect</span> mon-conteneur
 
 <span class="comment"># Logs en temps réel</span>
@@ -55,15 +55,15 @@
 <span class="comment"># Copier des fichiers</span>
 <span class="cmd">docker cp</span> fichier.txt mon-conteneur:/app/
 <span class="cmd">docker cp</span> mon-conteneur:/app/log.txt ./</pre>
+            </div>
         </div>
-    </div>
 
-    <div class="content-block">
-        <h3>Limiter les ressources</h3>
-        <div class="code-block">
-            <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                    class="code-dot g"></span> Terminal</div>
-            <pre><span class="comment"># Limiter la mémoire</span>
+        <div class="content-block">
+            <h3>Limiter les ressources</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Limiter la mémoire</span>
 <span class="cmd">docker run</span> <span class="flag">-d --memory</span> 512m nginx
 
 <span class="comment"># Limiter le CPU</span>
@@ -72,6 +72,7 @@
 <span class="comment"># Politique de redémarrage</span>
 <span class="cmd">docker run</span> <span class="flag">-d --restart</span> always nginx
 <span class="cmd">docker run</span> <span class="flag">-d --restart</span> on-failure:3 nginx</pre>
+            </div>
         </div>
     </div>
 </section>

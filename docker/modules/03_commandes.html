@@ -1,0 +1,82 @@
+<!-- CHAPTER 3 -->
+<section class="chapter" id="ch3">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">03</div>
+            <div>
+                <h2 class="chapter-title">Utiliser Docker</h2>
+                <p class="chapter-subtitle">Commandes essentielles au quotidien</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            C'est ici que tout commence. Savoir lancer, stopper et inspecter un conteneur est le quotidien du
+            développeur Docker. Maîtrisez ces commandes de base avant d'aller plus loin.
+        </p>
+
+        <div class="content-block">
+            <h3>Lancer un conteneur</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Lancer un conteneur interactif</span>
+<span class="cmd">docker run</span> <span class="flag">-it</span> ubuntu bash
+
+<span class="comment"># Lancer en arrière-plan (détaché)</span>
+<span class="cmd">docker run</span> <span class="flag">-d</span> nginx
+
+<span class="comment"># Nommer le conteneur</span>
+<span class="cmd">docker run</span> <span class="flag">-d --name</span> mon-nginx nginx
+
+<span class="comment"># Mapper un port (hôte:conteneur)</span>
+<span class="cmd">docker run</span> <span class="flag">-d -p</span> 8080:80 nginx
+
+<span class="comment"># Supprimer automatiquement à l'arrêt</span>
+<span class="cmd">docker run</span> <span class="flag">--rm</span> alpine echo "Hello"</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Commandes de base</h3>
+            <table>
+                <tr>
+                    <th>Commande</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>docker ps</code></td>
+                    <td>Lister les conteneurs en cours</td>
+                </tr>
+                <tr>
+                    <td><code>docker ps -a</code></td>
+                    <td>Lister tous les conteneurs</td>
+                </tr>
+                <tr>
+                    <td><code>docker stop ID</code></td>
+                    <td>Arrêter un conteneur</td>
+                </tr>
+                <tr>
+                    <td><code>docker start ID</code></td>
+                    <td>Démarrer un conteneur arrêté</td>
+                </tr>
+                <tr>
+                    <td><code>docker rm ID</code></td>
+                    <td>Supprimer un conteneur</td>
+                </tr>
+                <tr>
+                    <td><code>docker logs ID</code></td>
+                    <td>Voir les logs</td>
+                </tr>
+                <tr>
+                    <td><code>docker exec -it ID bash</code></td>
+                    <td>Entrer dans un conteneur</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 Astuce</strong>
+            <span>Utilisez les premiers caractères de l'ID : <code>docker stop a1b</code> au lieu de l'ID
+                complet.</span>
+        </div>
+    </div>
+</section>

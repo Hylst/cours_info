@@ -1,0 +1,100 @@
+<!-- CHAPTER 11 -->
+<section class="chapter" id="ch11">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">11</div>
+            <div>
+                <h2 class="chapter-title">Sécurité & Optimisation</h2>
+                <p class="chapter-subtitle">Production Ready</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Un conteneur mal configuré est une faille de sécurité. Apprenez les bonnes pratiques : utilisateur
+            non-root, images minimales (Alpine) et nettoyage régulier des ressources.
+        </p>
+
+        <div class="content-block">
+            <h3>Optimiser les images</h3>
+            <ul>
+                <li>Utiliser des images <strong>Alpine</strong> (légères)</li>
+                <li>Grouper les commandes RUN pour réduire les layers</li>
+                <li>Placer les instructions qui changent peu en premier (cache)</li>
+                <li>Utiliser le <strong>multi-stage build</strong> pour séparer build et runtime</li>
+            </ul>
+
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Dockerfile (Multi-stage)</div>
+                <pre><span class="comment"># Étape 1 : Build</span>
+<span class="cmd">FROM</span> node:18 <span class="flag">AS</span> builder
+<span class="cmd">WORKDIR</span> /app
+<span class="cmd">COPY</span> package*.json ./
+<span class="cmd">RUN</span> npm ci
+<span class="cmd">COPY</span> . .
+<span class="cmd">RUN</span> npm run build
+
+<span class="comment"># Étape 2 : Image finale légère</span>
+<span class="cmd">FROM</span> node:18-alpine
+<span class="cmd">WORKDIR</span> /app
+<span class="cmd">COPY</span> <span class="flag">--from=</span>builder /app/dist ./dist
+<span class="cmd">COPY</span> <span class="flag">--from=</span>builder /app/node_modules ./node_modules
+<span class="cmd">EXPOSE</span> 3000
+<span class="cmd">CMD</span> ["node", "dist/server.js"]</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Sécurité</h3>
+            <ul>
+                <li>Ne pas exécuter en <strong>root</strong> : utiliser <code>USER</code></li>
+                <li>Scanner les images : <code>docker scout</code></li>
+                <li>Utiliser des images officielles et les maintenir à jour</li>
+                <li>Ne jamais stocker de secrets dans l'image</li>
+                <li>Activer les <strong>healthchecks</strong></li>
+            </ul>
+
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Dockerfile</div>
+                <pre><span class="cmd">FROM</span> node:18-alpine
+
+<span class="comment"># Créer un utilisateur non-root</span>
+<span class="cmd">RUN</span> addgroup -S appgroup && adduser -S appuser -G appgroup
+<span class="cmd">USER</span> appuser
+
+<span class="cmd">WORKDIR</span> /app
+<span class="cmd">COPY</span> --chown=appuser:appgroup . .
+
+<span class="comment"># Healthcheck</span>
+<span class="cmd">HEALTHCHECK</span> --interval=30s --timeout=3s \
+  CMD wget -q --spider http://localhost:3000/health || exit 1
+
+<span class="cmd">CMD</span> ["node", "server.js"]</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Commandes de nettoyage</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Supprimer tous les conteneurs arrêtés</span>
+<span class="cmd">docker container prune</span>
+
+<span class="comment"># Supprimer les images orphelines</span>
+<span class="cmd">docker image prune</span>
+
+<span class="comment"># Nettoyage complet (attention !)</span>
+<span class="cmd">docker system prune</span> <span class="flag">-a --volumes</span>
+
+<span class="comment"># Voir l'espace disque utilisé</span>
+<span class="cmd">docker system df</span></pre>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Production</strong>
+            <span>Toujours spécifier un tag précis (<code>nginx:1.25</code>) plutôt que <code>latest</code>.</span>
+        </div>
+    </div>
+</section>

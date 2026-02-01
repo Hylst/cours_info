@@ -1,0 +1,83 @@
+<!-- CHAPTER 7 -->
+<section class="chapter" id="ch7">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">07</div>
+            <div>
+                <h2 class="chapter-title">Configurer le réseau</h2>
+                <p class="chapter-subtitle">Communication entre conteneurs</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            L'isolation est bien, mais la communication est mieux. Docker offre un réseau virtuel complet pour faire
+            dialoguer vos conteneurs entre eux ou avec le monde extérieur en toute sécurité.
+        </p>
+
+        <div class="content-block">
+            <h3>Types de réseaux</h3>
+            <table>
+                <tr>
+                    <th>Driver</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>bridge</code></td>
+                    <td>Réseau isolé par défaut (communication via IP)</td>
+                </tr>
+                <tr>
+                    <td><code>host</code></td>
+                    <td>Partage le réseau de l'hôte (pas d'isolation)</td>
+                </tr>
+                <tr>
+                    <td><code>none</code></td>
+                    <td>Aucun réseau</td>
+                </tr>
+                <tr>
+                    <td><code>overlay</code></td>
+                    <td>Communication multi-hôtes (Swarm)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-block">
+            <h3>Créer un réseau personnalisé</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Créer un réseau</span>
+<span class="cmd">docker network create</span> mon-reseau
+
+<span class="comment"># Lancer des conteneurs sur ce réseau</span>
+<span class="cmd">docker run</span> <span class="flag">-d --name</span> db <span class="flag">--network</span> mon-reseau mysql
+<span class="cmd">docker run</span> <span class="flag">-d --name</span> app <span class="flag">--network</span> mon-reseau node-app
+
+<span class="comment"># Les conteneurs peuvent se joindre par leur nom</span>
+<span class="comment"># L'app peut accéder à MySQL via "db:3306"</span></pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Exposer les ports</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Port spécifique</span>
+<span class="cmd">docker run</span> <span class="flag">-p</span> 8080:80 nginx
+
+<span class="comment"># Plusieurs ports</span>
+<span class="cmd">docker run</span> <span class="flag">-p</span> 80:80 <span class="flag">-p</span> 443:443 nginx
+
+<span class="comment"># Port aléatoire sur l'hôte</span>
+<span class="cmd">docker run</span> <span class="flag">-P</span> nginx
+
+<span class="comment"># Restreindre à localhost</span>
+<span class="cmd">docker run</span> <span class="flag">-p</span> 127.0.0.1:8080:80 nginx</pre>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <strong>💡 DNS intégré</strong>
+            <span>Sur un réseau custom, Docker fournit un DNS : les conteneurs se trouvent par leur nom.</span>
+        </div>
+    </div>
+</section>

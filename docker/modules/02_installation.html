@@ -1,0 +1,68 @@
+<!-- CHAPTER 2 -->
+<section class="chapter" id="ch2">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">02</div>
+            <div>
+                <h2 class="chapter-title">Installer Docker</h2>
+                <p class="chapter-subtitle">Configuration sur différents systèmes</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            L'installation varie selon l'OS, mais l'objectif est le même : obtenir le Docker Engine. Sur Desktop, c'est
+            une application tout-en-un ; sur serveur Linux, c'est un service système optimisé.
+        </p>
+
+        <div class="content-block">
+            <h3>Installation sur Linux (Ubuntu/Debian)</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Mise à jour et installation des dépendances</span>
+<span class="cmd">sudo apt update</span>
+<span class="cmd">sudo apt install</span> <span class="flag">-y</span> ca-certificates curl gnupg
+
+<span class="comment"># Ajout de la clé GPG officielle</span>
+<span class="cmd">curl -fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="cmd">sudo gpg --dearmor</span> <span class="flag">-o</span> /usr/share/keyrings/docker.gpg
+
+<span class="comment"># Ajout du dépôt Docker</span>
+<span class="cmd">echo</span> <span class="str">"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</span> | <span class="cmd">sudo tee</span> /etc/apt/sources.list.d/docker.list
+
+<span class="comment"># Installation de Docker Engine</span>
+<span class="cmd">sudo apt update</span>
+<span class="cmd">sudo apt install</span> <span class="flag">-y</span> docker-ce docker-ce-cli containerd.io docker-compose-plugin</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Windows & macOS</h3>
+            <p>Téléchargez et installez <strong>Docker Desktop</strong> depuis <a href="https://docker.com"
+                    style="color: var(--docker-blue);">docker.com</a>. L'installation inclut :</p>
+            <ul>
+                <li>Docker Engine</li>
+                <li>Docker CLI</li>
+                <li>Docker Compose</li>
+                <li>Interface graphique de gestion</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h3>Post-installation Linux</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Ajouter l'utilisateur au groupe docker (évite sudo)</span>
+<span class="cmd">sudo usermod -aG docker</span> $USER
+
+<span class="comment"># Appliquer les changements (ou se reconnecter)</span>
+<span class="cmd">newgrp docker</span>
+
+<span class="comment"># Vérifier l'installation</span>
+<span class="cmd">docker --version</span>
+<span class="output">Docker version 24.0.7, build afdd53b</span>
+
+<span class="cmd">docker run hello-world</span></pre>
+            </div>
+        </div>
+    </div>
+</section>

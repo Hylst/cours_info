@@ -1,0 +1,60 @@
+<!-- CHAPTER 9 -->
+<section class="chapter" id="ch9">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">09</div>
+            <div>
+                <h2 class="chapter-title">Compose Avancé</h2>
+                <p class="chapter-subtitle">Environnements et dépendances</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Allez plus loin avec Compose : gestion des variables d'environnement pour différents contextes
+            (dev/prod), dépendances entre services et redémarrages automatiques.
+        </p>
+
+        <div class="content-block">
+            <h3>Gestion des dépendances</h3>
+            <p>Attendre qu'un service soit réellement prêt (pas juste démarré).</p>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> docker-compose.yml</div>
+                <pre><span class="prop">services:</span>
+  <span class="prop">web:</span>
+    <span class="prop">depends_on:</span>
+      <span class="prop">db:</span>
+        <span class="prop">condition:</span> service_healthy
+
+  <span class="prop">db:</span>
+    <span class="prop">image:</span> postgres
+    <span class="prop">healthcheck:</span>
+      <span class="prop">test:</span> ["CMD-SHELL", "pg_isready -U postgres"]
+      <span class="prop">interval:</span> 10s
+      <span class="prop">timeout:</span> 5s
+      <span class="prop">retries:</span> 5</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Profils & Variables</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> .env</div>
+                <pre>APP_PORT=3000
+DB_PASSWORD=secure_pass</pre>
+            </div>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> docker-compose.yml</div>
+                <pre><span class="prop">services:</span>
+  <span class="prop">tools:</span>
+    <span class="prop">profiles:</span> ["debug"]  <span class="comment"># Ne démarre que si --profile debug</span>
+    <span class="prop">image:</span> adminer
+
+  <span class="prop">web:</span>
+    <span class="prop">ports:</span>
+      - <span class="str">"${APP_PORT}:80"</span></pre>
+            </div>
+        </div>
+    </div>
+</section>

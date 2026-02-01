@@ -1,0 +1,51 @@
+<!-- CHAPTER 10 -->
+<section class="chapter" id="ch10">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">10</div>
+            <div>
+                <h2 class="chapter-title">Intro Orchestration</h2>
+                <p class="chapter-subtitle">Au-delà du conteneur unique</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Quand vous avez 100 conteneurs sur 10 serveurs, Compose ne suffit plus. Swarm et Kubernetes entrent en
+            jeu pour automatiser le déploiement, la mise à l'échelle et la résilience.
+        </p>
+
+        <div class="content-block">
+            <h3>Swarm vs Kubernetes</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Docker Swarm</th>
+                    <th>Kubernetes (K8s)</th>
+                </tr>
+                <tr>
+                    <td><strong>Complexité</strong></td>
+                    <td>Faible (Intégré à Docker)</td>
+                    <td>Élevée (Courbe d'apprentissage)</td>
+                </tr>
+                <tr>
+                    <td><strong>Installation</strong></td>
+                    <td><code>docker swarm init</code></td>
+                    <td>Cluster complexe (Minikube, K3s)</td>
+                </tr>
+                <tr>
+                    <td><strong>Usage idéal</strong></td>
+                    <td>PME, Projets simples</td>
+                    <td>Enterprise, Cloud Scale</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong>💡 Concepts Clés</strong>
+            <ul>
+                <li><strong>Node</strong> : Serveur du cluster (Manager ou Worker).</li>
+                <li><strong>Service</strong> : Définition de l'état désiré (ex: 3 répliques de Nginx).</li>
+                <li><strong>Replica</strong> : Instance d'un conteneur qui tourne sur un Node.</li>
+            </ul>
+        </div>
+    </div>
+</section>

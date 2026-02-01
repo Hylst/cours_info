@@ -1,0 +1,87 @@
+<!-- CHAPTER 6 -->
+<section class="chapter" id="ch6">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">06</div>
+            <div>
+                <h2 class="chapter-title">Gérer les volumes</h2>
+                <p class="chapter-subtitle">Persistance et partage de données</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Les conteneurs sont éphémères, mais vos données ne doivent pas l'être. Les volumes sont le mécanisme
+            pour persister les bases de données et les fichiers au-delà de la vie du conteneur.
+        </p>
+
+        <div class="content-block">
+            <h3>Types de stockage</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Usage</th>
+                    <th>Exemple</th>
+                </tr>
+                <tr>
+                    <td><strong>Volume</strong></td>
+                    <td>Données persistantes gérées par Docker</td>
+                    <td><code>-v data:/app/data</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Bind mount</strong></td>
+                    <td>Partage de fichiers hôte ↔ conteneur</td>
+                    <td><code>-v ./src:/app/src</code></td>
+                </tr>
+                <tr>
+                    <td><strong>tmpfs</strong></td>
+                    <td>Données temporaires en RAM</td>
+                    <td><code>--tmpfs /tmp</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-block">
+            <h3>Volumes Docker</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Créer un volume</span>
+<span class="cmd">docker volume create</span> mes-donnees
+
+<span class="comment"># Lister les volumes</span>
+<span class="cmd">docker volume ls</span>
+
+<span class="comment"># Utiliser un volume</span>
+<span class="cmd">docker run</span> <span class="flag">-d -v</span> mes-donnees:/var/lib/mysql mysql
+
+<span class="comment"># Inspecter un volume</span>
+<span class="cmd">docker volume inspect</span> mes-donnees
+
+<span class="comment"># Supprimer les volumes orphelins</span>
+<span class="cmd">docker volume prune</span></pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Bind mounts (développement)</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Monter le dossier courant</span>
+<span class="cmd">docker run</span> <span class="flag">-d -v</span> $(pwd):/app node:18
+
+<span class="comment"># Syntaxe longue (plus explicite)</span>
+<span class="cmd">docker run</span> <span class="flag">-d \
+  --mount</span> type=bind,source=$(pwd)/src,target=/app/src \
+  node:18
+
+<span class="comment"># Volume en lecture seule</span>
+<span class="cmd">docker run</span> <span class="flag">-v</span> ./config:/app/config:ro nginx</pre>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 Best Practice</strong>
+            <span>Utilisez des volumes nommés en production, des bind mounts en développement.</span>
+        </div>
+    </div>
+</section>

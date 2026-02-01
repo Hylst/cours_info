@@ -1,0 +1,69 @@
+<!-- CHAPTER 1 -->
+<section class="chapter" id="ch1">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">01</div>
+            <div>
+                <h2 class="chapter-title">Découvrir Docker</h2>
+                <p class="chapter-subtitle">Concepts fondamentaux de la conteneurisation</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Avant de lancer des commandes, il faut comprendre la philosophie : un conteneur n'est pas une VM. C'est un
+            processus isolé, léger et éphémère. Cette distinction est cruciale pour bien architecturer vos applications.
+        </p>
+
+        <div class="content-block">
+            <h3>Qu'est-ce que Docker ?</h3>
+            <p>Docker est une plateforme de <strong>conteneurisation</strong> qui permet d'empaqueter une
+                application avec toutes ses dépendances dans une unité standardisée appelée
+                <strong>conteneur</strong>.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <h3>Conteneur vs Machine Virtuelle</h3>
+            <div class="mermaid">
+                graph TD
+                subgraph VM [Machine Virtuelle]
+                Hardware1[Serveur Physique] --> Hypervisor
+                Hypervisor --> GuestOS1[OS Invité 1]
+                Hypervisor --> GuestOS2[OS Invité 2]
+                GuestOS1 --> App1[App A + Libs]
+                GuestOS2 --> App2[App B + Libs]
+                end
+
+                subgraph Container [Docker Conteneurs]
+                Hardware2[Serveur Physique] --> HostOS[OS Hôte]
+                HostOS --> DockerEngine[Docker Engine]
+                DockerEngine --> C1[Conteneur A]
+                DockerEngine --> C2[Conteneur B]
+                end
+
+                style VM fill:#151d2e,stroke:#1e293b,color:#fff
+                style Container fill:#151d2e,stroke:#2496ED,stroke-width:2px,color:#fff
+            </div>
+            <p style="margin-top:20px; font-size:0.9rem; color:var(--text-secondary)">
+                Contrairement à la VM qui emporte tout un système d'exploitation (lourd, lent), le conteneur partage le
+                noyau de l'hôte mais isole les processus. Résultat : démarrage instantané et densité plus élevée.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <h3>Architecture Docker</h3>
+            <ul>
+                <li><strong>Docker Engine</strong> : le daemon qui gère les conteneurs</li>
+                <li><strong>Docker CLI</strong> : l'interface en ligne de commande</li>
+                <li><strong>Images</strong> : templates en lecture seule pour créer des conteneurs</li>
+                <li><strong>Conteneurs</strong> : instances exécutables d'images</li>
+                <li><strong>Registry</strong> : dépôt d'images (Docker Hub)</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <strong>💡 À retenir</strong>
+            <span>Un conteneur = processus isolé avec son propre système de fichiers, réseau et espace de
+                noms.</span>
+        </div>
+    </div>
+</section>

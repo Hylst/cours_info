@@ -1,0 +1,87 @@
+<!-- CHAPTER 5 -->
+<section class="chapter" id="ch5">
+    <div class="container">
+        <div class="chapter-header">
+            <div class="chapter-number">05</div>
+            <div>
+                <h2 class="chapter-title">Maîtriser les images</h2>
+                <p class="chapter-subtitle">Créer et gérer des images Docker</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            L'image est le plan de construction de votre conteneur. Apprendre à écrire un Dockerfile efficace,
+            multicouche et léger est une compétence clé pour optimiser les déploiements.
+        </p>
+
+        <div class="content-block">
+            <h3>Gestion des images</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Télécharger une image</span>
+<span class="cmd">docker pull</span> nginx:latest
+
+<span class="comment"># Lister les images locales</span>
+<span class="cmd">docker images</span>
+
+<span class="comment"># Supprimer une image</span>
+<span class="cmd">docker rmi</span> nginx
+
+<span class="comment"># Nettoyer les images non utilisées</span>
+<span class="cmd">docker image prune</span> <span class="flag">-a</span></pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Créer une image avec Dockerfile</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Dockerfile</div>
+                <pre><span class="comment"># Image de base</span>
+<span class="cmd">FROM</span> node:18-alpine
+
+<span class="comment"># Répertoire de travail</span>
+<span class="cmd">WORKDIR</span> /app
+
+<span class="comment"># Copie des fichiers de dépendances</span>
+<span class="cmd">COPY</span> package*.json ./
+
+<span class="comment"># Installation des dépendances</span>
+<span class="cmd">RUN</span> npm ci --only=production
+
+<span class="comment"># Copie du code source</span>
+<span class="cmd">COPY</span> . .
+
+<span class="comment"># Port exposé</span>
+<span class="cmd">EXPOSE</span> 3000
+
+<span class="comment"># Commande de démarrage</span>
+<span class="cmd">CMD</span> ["node", "server.js"]</pre>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Construire et publier</h3>
+            <div class="code-block">
+                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                        class="code-dot g"></span> Terminal</div>
+                <pre><span class="comment"># Build l'image</span>
+<span class="cmd">docker build</span> <span class="flag">-t</span> mon-app:1.0 .
+
+<span class="comment"># Tagger pour Docker Hub</span>
+<span class="cmd">docker tag</span> mon-app:1.0 username/mon-app:1.0
+
+<span class="comment"># Se connecter à Docker Hub</span>
+<span class="cmd">docker login</span>
+
+<span class="comment"># Publier l'image</span>
+<span class="cmd">docker push</span> username/mon-app:1.0</pre>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Important</strong>
+            <span>Ajoutez un fichier <code>.dockerignore</code> pour exclure node_modules, .git, etc.</span>
+        </div>
+    </div>
+</section>

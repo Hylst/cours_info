@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="devGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4dd0e1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0277bd;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="opsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#81c784;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e7d32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" fill="#1e272e"/>
+  
+  <!-- DEV Gear (Left) -->
+  <g transform="translate(156, 256)">
+    <circle cx="0" cy="0" r="80" fill="url(#devGradient)" opacity="0.2"/>
+    <path d="M 0,-100 L 15,-85 L 15,-50 L 0,-35 L -15,-50 L -15,-85 Z
+             M 70.7,-70.7 L 85,-85 L 100,0 L 85,15 L 50,15 L 35,0 Z
+             M 100,0 L 85,15 L 50,15 L 35,0 L 50,-15 L 85,-15 Z
+             M 70.7,70.7 L 85,85 L 0,100 L -15,85 L -15,50 L 0,35 Z
+             M 0,100 L -15,85 L -15,50 L 0,35 L 15,50 L 15,85 Z
+             M -70.7,70.7 L -85,85 L -100,0 L -85,-15 L -50,-15 L -35,0 Z
+             M -100,0 L -85,-15 L -50,-15 L -35,0 L -50,15 L -85,15 Z
+             M -70.7,-70.7 L -85,-85 L 0,-100 L 15,-85 L 15,-50 L 0,-35 Z"
+          fill="none" stroke="url(#devGradient)" stroke-width="8"/>
+    <circle cx="0" cy="0" r="50" fill="#1e272e" stroke="url(#devGradient)" stroke-width="8"/>
+    <text x="0" y="12" text-anchor="middle" fill="#4dd0e1" font-family="Arial, sans-serif" font-weight="bold" font-size="32">DEV</text>
+  </g>
+  
+  <!-- OPS Gear (Right) -->
+  <g transform="translate(356, 256)">
+    <circle cx="0" cy="0" r="80" fill="url(#opsGradient)" opacity="0.2"/>
+    <path d="M 0,-100 L 15,-85 L 15,-50 L 0,-35 L -15,-50 L -15,-85 Z
+             M 70.7,-70.7 L 85,-85 L 100,0 L 85,15 L 50,15 L 35,0 Z
+             M 100,0 L 85,15 L 50,15 L 35,0 L 50,-15 L 85,-15 Z
+             M 70.7,70.7 L 85,85 L 0,100 L -15,85 L -15,50 L 0,35 Z
+             M 0,100 L -15,85 L -15,50 L 0,35 L 15,50 L 15,85 Z
+             M -70.7,70.7 L -85,85 L -100,0 L -85,-15 L -50,-15 L -35,0 Z
+             M -100,0 L -85,-15 L -50,-15 L -35,0 L -50,15 L -85,15 Z
+             M -70.7,-70.7 L -85,-85 L 0,-100 L 15,-85 L 15,-50 L 0,-35 Z"
+          fill="none" stroke="url(#opsGradient)" stroke-width="8"/>
+    <circle cx="0" cy="0" r="50" fill="#1e272e" stroke="url(#opsGradient)" stroke-width="8"/>
+    <text x="0" y="12" text-anchor="middle" fill="#81c784" font-family="Arial, sans-serif" font-weight="bold" font-size="32">OPS</text>
+  </g>
+  
+  <!-- Connecting Infinity Symbol -->
+  <path d="M 206,256 Q 256,200 306,256 Q 356,312 406,256" 
+        fill="none" stroke="#00d2ff" stroke-width="4" stroke-dasharray="8,4" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="0" to="24" dur="2s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- CI/CD Arrows -->
+  <g opacity="0.7">
+    <!-- Top arrow -->
+    <path d="M 180,190 L 260,190" stroke="#4dd0e1" stroke-width="3" marker-end="url(#arrowDev)"/>
+    <defs>
+      <marker id="arrowDev" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#4dd0e1"/>
+      </marker>
+    </defs>
+    
+    <!-- Bottom arrow -->
+    <path d="M 332,322 L 252,322" stroke="#81c784" stroke-width="3" marker-end="url(#arrowOps)"/>
+    <defs>
+      <marker id="arrowOps" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#81c784"/>
+      </marker>
+    </defs>
+  </g>
+</svg>

@@ -1,5 +1,48 @@
 console.log("DevOps script loaded");
 
+// === MOBILE MENU TOGGLE ===
+(function () {
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav-menu');
+    const body = document.body;
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+
+    // Toggle on hamburger click
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Close on link click
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close on overlay click (clicking outside menu)
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') &&
+            !nav.contains(e.target) &&
+            !hamburger.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+})();
+
 // === K8S MAP TOOLTIPS ===
 document.querySelectorAll('.k8s-comp').forEach(comp => {
     comp.addEventListener('mouseenter', (e) => {

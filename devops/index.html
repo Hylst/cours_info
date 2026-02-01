@@ -8,12 +8,62 @@
     <meta name="description"
         content="Guide DevOps Expert : Culture, GitOps, CI/CD, Kubernetes, IaC, Observabilité, SRE.">
     <meta name="theme-color" content="#303030">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" sizes="512x512" href="icon.webp">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.webp">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hylst.fr/devops/">
+    <meta property="og:title" content="Mémo DevOps Expert | Guide Complet 2025">
+    <meta property="og:description"
+        content="Guide complet DevOps : Culture CALMS, CI/CD, Docker, Kubernetes, IaC, Observabilité, SRE. De la théorie à la pratique avec exemples concrets.">
+    <meta property="og:image" content="https://hylst.fr/devops/social-share.webp">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hylst.fr/devops/">
+    <meta name="twitter:title" content="Mémo DevOps Expert | Guide Complet 2025">
+    <meta name="twitter:description"
+        content="Guide complet DevOps : Culture CALMS, CI/CD, Docker, Kubernetes, IaC, Observabilité, SRE. De la théorie à la pratique.">
+    <meta name="twitter:image" content="https://hylst.fr/devops/social-share.webp">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hylst.fr/devops/">
+
+    <!-- Fonts & Styles -->
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Mémo DevOps Expert",
+      "description": "Guide complet DevOps couvrant la culture CALMS, CI/CD, Docker, Kubernetes, Infrastructure as Code, Observabilité et SRE",
+      "provider": {
+        "@type": "Person",
+        "name": "Geoffroy Streit"
+      },
+      "educationalLevel": "Intermediate to Advanced",
+      "inLanguage": "fr-FR",
+      "teaches": ["DevOps", "CI/CD", "Docker", "Kubernetes", "Infrastructure as Code", "Site Reliability Engineering"],
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "courseWorkload": "PT10H"
+      }
+    }
+    </script>
 </head>
+
 
 <body>
     <header>
@@ -21,14 +71,22 @@
             <div class="logo">
                 <div class="logo-icon">OPS</div>DevOps
             </div>
-            <nav>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav-menu">
                 <a href="#m0">Réseaux</a>
                 <a href="#m1">Culture</a>
                 <a href="#m2">Git</a>
-                <a href="#m3">CI/CD</a>
+                <a href="#m3">CI</a>
+                <a href="#m4">CD</a>
                 <a href="#m5">Docker</a>
                 <a href="#m6">K8s</a>
                 <a href="#m7">IaC</a>
+                <a href="#m8">Observ.</a>
+                <a href="#m9">SecOps</a>
                 <a href="#m10">SRE</a>
             </nav>
         </div>
@@ -517,7 +575,7 @@
                     <li>Pendant ce temps, vos concurrents déploient <strong>10 fois par jour</strong></li>
                 </ol>
                 <p>DevOps casse ce modèle en alignant les incentives : <em>"You build it, you run it"</em> (Amazon).
-                    Maintenant, tout le monde est responsable de la prod. Plus de mur./p>
+                    Maintenant, tout le monde est responsable de la prod. Plus de mur.</p>
             </div>
 
             <!-- Timeline historique -->

@@ -1,0 +1,507 @@
+<!-- MODULE 06: KUBERNETES AVANCÉ -->
+<section id="m6" style="background: radial-gradient(circle at center, rgba(50, 110, 200, 0.08) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#326de6; border-color:#326de6;">06</div>
+            <div>
+                <h2 class="sec-title" style="color:#326de6;">☸️ Kubernetes Avancé</h2>
+                <p class="sec-sub">L'OS du Cloud</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#326de6;">
+            <h4>🎼 Analogie : Le Chef d'Orchestre</h4>
+            <p><strong>Docker</strong> est un musicien talentueux (il sait jouer).<br>
+                <strong>Kubernetes</strong> est le Chef d'Orchestre. Il ne joue pas, mais il dit qui joue, à quel
+                volume (scaling),
+                et remplace ceux qui s'évanouissent (self-healing).
+            </p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Kubernetes : L'OS du Cloud</h3>
+            <p>Kubernetes (ou K8s) est devenu le standard de fait pour faire tourner des conteneurs en production à
+                grande échelle. Il résout le problème du <strong>Cycle de Vie</strong> : comment je déploie, comment
+                je scale, comment je répare et comment je connecte mes applications.</p>
+            <p>K8s ne s'occupe pas de "comment" l'app tourne (c'est le rôle de Docker/Containerd), mais de "où" et
+                "combien" elle tourne pour garantir le service aux utilisateurs.</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? De Borg à Kubernetes</h4>
+            <p>Kubernetes a été créé par <strong>Google</strong> en 2014, basé sur leur système interne secret
+                appelé <strong>Borg</strong>. Google lançait déjà des milliards de conteneurs par semaine avant même
+                que Docker n'existe !</p>
+            <p><strong>Étymologie :</strong> Kubernetes vient du grec signifiant "timonier" ou "pilote" (celui qui
+                tient le gouvernail). C'est pour ça que le logo a 7 branches (référence au nom de code original
+                "Project Seven" de Star Trek).</p>
+        </div>
+
+
+        <!-- POURQUOI K8S -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">❓ A. Pourquoi Kubernetes ?</h3>
+        <div class="grid2">
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4 style="color:#ff7675;">Docker seul ne suffit pas pour...</h4>
+                <ul class="dense-list">
+                    <li>Lancer 100 containers sur 10 serveurs</li>
+                    <li>Remplacer automatiquement un container crashé</li>
+                    <li>Mettre à jour sans downtime (Rolling Update)</li>
+                    <li>Répartir le trafic entre les instances (Load Balancing)</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#00cec9;">
+                <h4 style="color:#00cec9;">K8s apporte...</h4>
+                <ul class="dense-list">
+                    <li><span class="vocab-term"
+                            data-def="K8s maintient le nombre de Pods désiré. Si un Pod meurt, il le recrée immédiatement.">Self-Healing</span>
+                        : Recréation automatique</li>
+                    <li><span class="vocab-term"
+                            data-def="Augmenter ou réduire le nombre de Pods selon la charge (CPU, RAM, custom metrics).">Auto-Scaling</span>
+                        : HPA, VPA</li>
+                    <li><span class="vocab-term"
+                            data-def="Mise à jour progressive des Pods sans interruption de service.">Rolling
+                            Updates</span> : Zero-downtime</li>
+                    <li><span class="vocab-term"
+                            data-def="L'état désiré (YAML) est appliqué de manière idempotente. K8s converge vers cet état.">Déclaratif</span>
+                        : YAML = État souhaité</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- K8S ARCHITECTURE (keep existing interactive map) -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏗️ B. Architecture K8s</h3>
+        <div class="k8s-map-container"
+            style="position:relative; border:1px solid var(--border); border-radius:10px; padding:20px; background:var(--bg2); margin-bottom:25px;">
+            <h4 style="text-align:center; margin-bottom:20px;">🗺️ Survolez les composants</h4>
+            <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+                <div class="k8s-zone"
+                    style="border:2px dashed var(--primary); padding:15px; border-radius:8px; width:45%;">
+                    <div style="text-align:center; font-weight:bold; color:var(--primary); margin-bottom:10px;">
+                        Control Plane (Cerveau)</div>
+                    <div class="k8s-comp"
+                        data-tooltip="API Server : Le portier. TOUT passe par lui (kubectl, CI, autres composants). REST API.">
+                        API Server</div>
+                    <div class="k8s-comp"
+                        data-tooltip="etcd : La base de données. Stocke tout l'état du cluster en Key-Value. Critique à sauvegarder.">
+                        etcd</div>
+                    <div class="k8s-comp"
+                        data-tooltip="Scheduler : Place les Pods sur les Nodes (comme Tetris). Respecte les contraintes (CPU, affinité).">
+                        Scheduler</div>
+                    <div class="k8s-comp"
+                        data-tooltip="Controller Manager : Boucle de contrôle. Vérifie: 'L'état réel == État désiré ?' et corrige.">
+                        Controller Mgr</div>
+                </div>
+                <div class="k8s-zone" style="border:2px dashed var(--num); padding:15px; border-radius:8px; width:45%;">
+                    <div style="text-align:center; font-weight:bold; color:var(--num); margin-bottom:10px;">Worker
+                        Node (Muscles)</div>
+                    <div class="k8s-comp"
+                        data-tooltip="Kubelet : L'agent sur chaque Node. Reçoit les ordres, lance/stoppe les containers via CRI.">
+                        Kubelet</div>
+                    <div class="k8s-comp"
+                        data-tooltip="Kube-Proxy : Gère le réseau local du Node. Crée les règles iptables pour router le trafic.">
+                        Kube-Proxy</div>
+                    <div class="k8s-comp"
+                        data-tooltip="Container Runtime : Le moteur (containerd, CRI-O). Exécute réellement les containers.">
+                        Container Runtime</div>
+                    <div
+                        style="background:var(--card); padding:5px; margin-top:5px; text-align:center; font-size:0.8rem;">
+                        📦 Pods (Containers)</div>
+                </div>
+            </div>
+            <div id="k8s-tooltip"
+                style="margin-top:15px; text-align:center; height:1.5rem; color:var(--primary-bright); font-weight:bold;">
+                Survolez un composant...</div>
+        </div>
+
+        <!-- OBJETS K8S -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📦 C. Objets Fondamentaux</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Objet</th>
+                    <th>Rôle</th>
+                    <th>Durée de vie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="L'unité atomique de K8s. 1 ou plusieurs containers partageant network et storage. Éphémère, ne pas y attacher de données.">Pod</span>
+                    </td>
+                    <td>Exécute 1+ containers (IP partagée)</td>
+                    <td>Éphémère (peut être recréé)</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Gère un ensemble de Pods identiques (ReplicaSet). Assure le nombre désiré, permet rolling updates.">Deployment</span>
+                    </td>
+                    <td>Gère les Pods (répliques, updates)</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="IP stable et DNS pour accéder aux Pods. Types: ClusterIP (interne), NodePort, LoadBalancer.">Service</span>
+                    </td>
+                    <td>Expose les Pods (Load Balancing)</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Routeur HTTP/HTTPS L7. Route les requêtes vers les Services basé sur host/path.">Ingress</span>
+                    </td>
+                    <td>Routage HTTP externe</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Stocke des key-values en clair. Injecté dans les Pods comme variables d'env ou fichiers.">ConfigMap</span>
+                    </td>
+                    <td>Configuration (non-sensible)</td>
+                    <td>Permanent</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Comme ConfigMap mais encodé base64. Pour mots de passe, tokens. Chiffrable avec SealedSecrets.">Secret</span>
+                    </td>
+                    <td>Données sensibles (base64)</td>
+                    <td>Permanent</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- YAML EXAMPLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📝 D. Exemple YAML Complet</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>deployment.yaml</div>
+                <pre><span class="kw">apiVersion</span>: apps/v1
+<span class="kw">kind</span>: Deployment
+<span class="kw">metadata</span>:
+  <span class="kw">name</span>: my-app
+<span class="kw">spec</span>:
+  <span class="kw">replicas</span>: <span class="num">3</span>
+  <span class="kw">selector</span>:
+    <span class="kw">matchLabels</span>:
+      <span class="kw">app</span>: my-app
+  <span class="kw">template</span>:
+    <span class="kw">metadata</span>:
+      <span class="kw">labels</span>:
+        <span class="kw">app</span>: my-app
+    <span class="kw">spec</span>:
+      <span class="kw">containers</span>:
+      - <span class="kw">name</span>: app
+        <span class="kw">image</span>: myregistry/my-app:v1.0
+        <span class="kw">ports</span>:
+        - <span class="kw">containerPort</span>: <span class="num">3000</span>
+        <span class="kw">resources</span>:
+          <span class="kw">limits</span>:
+            <span class="kw">memory</span>: "256Mi"
+            <span class="kw">cpu</span>: "500m"</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>service.yaml</div>
+                <pre><span class="kw">apiVersion</span>: v1
+<span class="kw">kind</span>: Service
+<span class="kw">metadata</span>:
+  <span class="kw">name</span>: my-app-svc
+<span class="kw">spec</span>:
+  <span class="kw">type</span>: ClusterIP
+  <span class="kw">selector</span>:
+    <span class="kw">app</span>: my-app
+  <span class="kw">ports</span>:
+  - <span class="kw">port</span>: <span class="num">80</span>
+    <span class="kw">targetPort</span>: <span class="num">3000</span></pre>
+                <div style="padding:10px; font-size:0.85rem;">
+                    <strong>Flow :</strong><br>
+                    User → Ingress → Service → Pod
+                </div>
+            </div>
+        </div>
+
+        <!-- KUBECTL -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ E. Kubectl Essentiel</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>kubectl get pods</code></td>
+                    <td>Lister les pods (ajouter <code>-A</code> pour tous namespaces)</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl describe pod &lt;name&gt;</code></td>
+                    <td>Détails complets (events, status, volumes)</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl logs -f &lt;pod&gt;</code></td>
+                    <td>Suivre les logs en temps réel</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl exec -it &lt;pod&gt; -- sh</code></td>
+                    <td>Shell dans le pod</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl apply -f manifest.yaml</code></td>
+                    <td>Créer/Mettre à jour les ressources</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl delete -f manifest.yaml</code></td>
+                    <td>Supprimer les ressources</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl scale deploy &lt;name&gt; --replicas=5</code></td>
+                    <td>Scaler manuellement</td>
+                </tr>
+                <tr>
+                    <td><code>kubectl port-forward svc/my-svc 8080:80</code></td>
+                    <td>Accès local sans Ingress</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- HELM -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="ref-card" style="border-color:#0f1689;">
+                <h4>🎩 Helm (Package Manager)</h4>
+                <ul class="dense-list">
+                    <li><strong>Chart</strong> = Package d'app K8s (templates + values)</li>
+                    <li><code>helm install myrelease bitnami/nginx</code></li>
+                    <li><code>helm upgrade myrelease . -f values-prod.yaml</code></li>
+                    <li>Gère les releases, rollbacks, et templating</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h4>🚀 Stratégies de Déploiement</h4>
+                <ul class="dense-list">
+                    <li><strong>RollingUpdate</strong> : Remplace progressivement (défaut)</li>
+                    <li><strong>Recreate</strong> : Kill all, then create new</li>
+                    <li><strong>Blue/Green</strong> : Via 2 Deployments + switch Service</li>
+                    <li><strong>Canary</strong> : Via Ingress weights ou Service Mesh</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!-- K8S Networking & Storage Deep Dive -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔍 Networking & Storage : Sous le capot</h3>
+        <div class="grid2">
+            <div class="info">
+                <strong>🌐 CNI (Container Network Interface)</strong><br>
+                K8s ne gère pas le réseau lui-même. Il délègue à un plugin <strong>CNI</strong> (Calico, Flannel,
+                Cilium). C'est lui qui donne une IP unique à chaque Pod et gère les "Network Policies" (Pare-feu
+                interne).
+            </div>
+            <div class="info" style="border-left-color:var(--num)">
+                <strong>💾 PV vs PVC (Le stockage persistant)</strong><br>
+                - <strong>PV (Persistent Volume)</strong> : La ressource physique (le disque dur). Géré par
+                l'admin.<br>
+                - <strong>PVC (Persistent Volume Claim)</strong> : La requête de l'utilisateur ("Je veux 10Go").<br>
+                K8s fait le "match" entre les deux.
+            </div>
+        </div>
+
+        <!-- Case Study: Pokémon GO -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Pokémon GO - Le crash test de Kubernetes</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">50x</span>
+                    <span class="metric-label">Trafic vs prévisions</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">1000+</span>
+                    <span class="metric-label">Nodes GKE (GCP)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0.1s</span>
+                    <span class="metric-label">Latency max tolérée</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Lors du lancement en 2016, Pokémon GO a reçu 50 fois le trafic prévu en
+                quelques heures. Aucun système traditionnel n'aurait survécu.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Google Kubernetes Engine (GKE)</strong> : Niantic utilisait K8s pour scaler leur backend
+                    massivement de manière transparente.</li>
+                <li><strong>Custom Autoscaler</strong> : Utilisation de métriques métier pour rajouter des milliers
+                    de
+                    containers en quelques minutes.</li>
+                <li><strong>Global Load Balancing</strong> : Utilisation de l'architecture K8s pour router le trafic
+                    mondial vers les clusters les plus proches.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Malgré quelques lenteurs au début, le jeu est resté debout. C'est la
+                preuve
+                ultime que K8s est prêt pour le "Hyper-Scale".</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Kubernetes Mastery</h4>
+            <ul>
+                <li><strong>Abstraction</strong> : K8s masque l'infrastructure. On déploie sur le cluster, pas sur
+                    des VM.</li>
+                <li><strong>Déclaratif</strong> : On décrit l'état final, K8s se charge de la convergence.</li>
+                <li><strong>Haute Disponibilité</strong> : Pods répartis, Liveness/Readiness probes.</li>
+                <li><strong>Écosystème</strong> : C'est devenu l'OS du Cloud (Inbound de CNCF).</li>
+            </ul>
+        </div>
+
+        <!-- ADVANCED WORKLOADS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🏗️ F. Advanced Workloads</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #00b894;">
+                <span class="tool-icon">💾</span>
+                <h4>StatefulSet</h4>
+                <p>Pour les bases de données (Redis, Postgres). Garantit l'ordre (db-0, db-1), l'unicité réseau et le
+                    stockage stable.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #6c5ce7;">
+                <span class="tool-icon">👻</span>
+                <h4>DaemonSet</h4>
+                <p>Assure qu'une copie du Pod tourne sur <strong>chaque nœud</strong>. Idéal pour Logs (Fluentd) et
+                    Monitoring (Node Exporter).</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #e17055;">
+                <span class="tool-icon">⏱️</span>
+                <h4>Job / CronJob</h4>
+                <p>Tâches éphémères qui doivent se terminer (Batch processing, Backups). CronJob = Job planifié.</p>
+            </div>
+        </div>
+
+        <!-- EXTENDING K8S -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🧩 G. Extending Kubernetes (Operators)</h3>
+        <div class="module-intro">
+            <p>La puissance de K8s, c'est son extensibilité. Vous pouvez créer vos propres types de ressources via les
+                <strong>CRD (Custom Resource Definitions)</strong> et les piloter avec un <strong>Operator</strong>.
+            </p>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>prometheus.yaml (CRD Example)</div>
+                <pre><span class="kw">apiVersion:</span> monitoring.coreos.com/v1
+<span class="kw">kind:</span> Prometheus
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> k8s
+<span class="kw">spec:</span>
+  <span class="kw">replicas:</span> <span class="num">2</span>
+  <span class="kw">version:</span> v2.26.0
+  <span class="kw">serviceAccountName:</span> prometheus
+<span class="comment"># Ce n'est pas natif K8s !</span>
+<span class="comment"># L'Opérateur Prometheus va lire ça</span>
+<span class="comment"># et créer StatefulSets, Services, Configs...</span></pre>
+            </div>
+            <div class="info">
+                <strong>🤖 Le Pattern Operator</strong><br>
+                C'est coder l'intelligence d'un humain dans un logiciel.<br><br>
+                <em>Exemple : Postgres Operator</em><br>
+                Au lieu de configurer manuellement la réplication, le backup et le failover, vous créez un objet
+                <code>PostgresCluster</code>.
+                L'Opérateur détecte si le primaire tombe et promeut automatiquement un replica, met à jour le DNS, etc.
+            </div>
+        </div>
+
+        <!-- SECURITY & RBAC -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🛡️ H. Security & RBAC</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>role-binding.yaml</div>
+                <pre><span class="kw">kind:</span> Role
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> pod-reader
+<span class="kw">rules:</span>
+- <span class="kw">apiGroups:</span> [""]
+  <span class="kw">resources:</span> ["pods"]
+  <span class="kw">verbs:</span> ["get", "list", "watch"]
+---
+<span class="kw">kind:</span> RoleBinding
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> read-pods
+<span class="kw">subjects:</span>
+- <span class="kw">kind:</span> User
+  <span class="kw">name:</span> "jane@example.com"
+<span class="kw">roleRef:</span>
+  <span class="kw">kind:</span> Role
+  <span class="kw">name:</span> pod-reader</pre>
+            </div>
+            <div>
+                <h4 style="color:#ff7675; margin-bottom:15px;">🔐 Concepts Clés Access Control</h4>
+                <ul class="dense-list">
+                    <li><strong>ServiceAccount</strong> : L'identité d'un Pod (pour parler à l'API K8s).</li>
+                    <li><strong>Role / ClusterRole</strong> : Un ensemble de permissions (Quoi ?). Role = Namespace,
+                        ClusterRole = Global.</li>
+                    <li><strong>Binding</strong> : L'association "Qui" (User/SA) a le droit "Quoi" (Role).</li>
+                    <li><strong>Admission Controller</strong> : Intercepte les requêtes avant persistence (ex: OPA
+                        Gatekeeper pour interdire les images <code>:latest</code>).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- AUTOSCALING -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📈 I. Autoscaling Deep Dive</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>HPA (Horizontal)</h4>
+                    <p>Ajoute des <strong>Pods</strong> quand CPU > 80%.</p>
+                    <ul class="dense-list">
+                        <li>Rapide (secondes)</li>
+                        <li>Stateless apps</li>
+                    </ul>
+                </div>
+                <div class="comparison-col">
+                    <h4>VPA (Vertical)</h4>
+                    <p>Agrandit les <strong>Pods</strong> (plus de CPU/RAM). Redémarre le Pod.</p>
+                    <ul class="dense-list">
+                        <li>Pour Java/DBs lourdes</li>
+                        <li>Lent (restart requis)</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>Cluster Autoscaler</h4>
+                    <p>Ajoute des <strong>Nœuds</strong> (VMs) quand il n'y a plus de place pour les Pods.</p>
+                    <p><em>Nouveau : <strong>Karpenter</strong> (AWS) provisionne des nœuds "Just-in-time" en quelques
+                            secondes.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPENAI CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : OpenAI - K8s à l'échelle de l'Humanité</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">7,500+</span>
+                    <span class="metric-label">Nodes</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">100k+</span>
+                    <span class="metric-label">GPUs (A100/H100)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">IPfix</span>
+                    <span class="metric-label">Problème réseau majeur</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Pour entraîner GPT-4, OpenAI a dû pousser Kubernetes dans ses derniers
+                retranchements sur Azure.</p>
+            <p><strong>Défis & Solutions</strong> :</p>
+            <ul class="dense-list">
+                <li><strong>Etcd Latency</strong> : Avec 7500 nœuds, etcd saturait. Solution : Sharding d'events et
+                    tuning agressif des timeouts.</li>
+                <li><strong>IP Table Overflow</strong> : Le réseau classique (iptables) ne tenait pas la charge. Passage
+                    complet à IPVS ou eBPF.</li>
+                <li><strong>Job Scheduling</strong> : Besoin de lancer des Jobs MPI (Message Passing Interface)
+                    massivement parallèles. Utilisation de <strong>Cosmos</strong> (scheduler custom) sur K8s.</li>
+            </ul>
+        </div>
+    </div>
+</section>

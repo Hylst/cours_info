@@ -1,0 +1,409 @@
+<!-- MODULE 02: GIT MAÎTRISÉ -->
+<section id="m2" style="background: radial-gradient(circle at center, rgba(247, 140, 108, 0.08) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#f78c6c; border-color:#f78c6c;">02</div>
+            <div>
+                <h2 class="sec-title" style="color:#f78c6c;">🌿 Git Maîtrisé</h2>
+                <p class="sec-sub">Versioning, Branches & Scénarios Réels</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#f78c6c;">
+            <h4>🛫 Analogie : La Tour de Contrôle</h4>
+            <p>Git est la tour de contrôle. Rien ne décolle (déploiement) et rien n'atterrit (merge) sans passer par
+                elle.
+                L'historique Git est la <strong>boîte noire</strong> qui permet de rejouer le crash en cas
+                d'accident.</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Pourquoi Git est le standard absolu ?</h3>
+            <p>Avant Git, les développeurs utilisaient des systèmes <strong>centralisés</strong> (SVN, Perforce). Si
+                le serveur tombait, tout le monde s'arrêtait de travailler. Git est <strong>distribué</strong> :</p>
+            <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Travail Offline</strong> : Chaque développeur a l'historique complet sur sa machine.
+                </li>
+                <li><strong>Branches légères</strong> : Créer une branche prend 1ms (c'est juste un pointeur).</li>
+                <li><strong>Intégrité totale</strong> : Chaque commit est signé par un hash SHA-1 (impossible de
+                    modifier l'histoire sans que ça se voie).</li>
+                <li><strong>Agilité</strong> : Permet de tester des idées folles sans polluer le code principal.
+                </li>
+            </ul>
+            <p><em>En DevOps, Git est la Source de Vérité. Si c'est pas dans Git, ça n'existe pas en
+                    production.</em></p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ?</h4>
+            <p>Linus Torvalds (créateur de Linux) a écrit la première version de Git en seulement <strong>2
+                    semaines</strong> en 2005. Il était furieux d'avoir perdu l'accès gratuit à BitKeeper et voulait
+                un outil qui soit "tout l'inverse de CVS/SVN".</p>
+            <p>Aujourd'hui, <strong>94% des développeurs</strong> utilisent Git.</p>
+        </div>
+
+
+        <!-- GIT FLOW DIAGRAM -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Anatomie du Flux Git</h3>
+        <div class="git-flow">
+            <div class="git-stage">
+                <div class="stage-icon">📂</div>
+                <div class="stage-name">Working Dir</div>
+                <div style="font-size:0.75rem; color:var(--muted);">Fichiers modifiés</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">📋</div>
+                <div class="stage-name">Staging</div>
+                <div style="font-size:0.75rem; color:var(--muted);">git add</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage active">
+                <div class="stage-icon">💾</div>
+                <div class="stage-name">Local Repo</div>
+                <div style="font-size:0.75rem; color:var(--muted);">git commit</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">☁️</div>
+                <div class="stage-name">Remote</div>
+                <div style="font-size:0.75rem; color:var(--muted);">git push</div>
+            </div>
+        </div>
+
+        <!-- COMMANDES ESSENTIELLES -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ B. Commandes Essentielles</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Action</th>
+                    <th>Exemple</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>git clone</code></td>
+                    <td>Copier un repo distant en local</td>
+                    <td><code>git clone git@github.com:user/repo.git</code></td>
+                </tr>
+                <tr>
+                    <td><code>git add</code></td>
+                    <td>Ajouter au staging (préparer le commit)</td>
+                    <td><code>git add .</code> ou <code>git add fichier.js</code></td>
+                </tr>
+                <tr>
+                    <td><code>git commit</code></td>
+                    <td>Sauvegarder dans l'historique local</td>
+                    <td><code>git commit -m "feat: add login"</code></td>
+                </tr>
+                <tr>
+                    <td><code>git push</code></td>
+                    <td>Envoyer les commits vers le remote</td>
+                    <td><code>git push origin main</code></td>
+                </tr>
+                <tr>
+                    <td><code>git pull</code></td>
+                    <td>Récupérer les changements du remote</td>
+                    <td><code>git pull origin main</code></td>
+                </tr>
+                <tr>
+                    <td><code>git branch</code></td>
+                    <td>Lister / Créer des branches</td>
+                    <td><code>git branch feature/login</code></td>
+                </tr>
+                <tr>
+                    <td><code>git checkout</code></td>
+                    <td>Changer de branche / Restaurer fichier</td>
+                    <td><code>git checkout -b feature/api</code></td>
+                </tr>
+                <tr>
+                    <td><code>git merge</code></td>
+                    <td>Fusionner une branche dans l'actuelle</td>
+                    <td><code>git merge feature/login</code></td>
+                </tr>
+                <tr>
+                    <td><code>git rebase</code></td>
+                    <td>Réécrire l'historique (plus propre que merge)</td>
+                    <td><code>git rebase main</code></td>
+                </tr>
+                <tr>
+                    <td><code>git stash</code></td>
+                    <td>Mettre de côté les modifs temporairement</td>
+                    <td><code>git stash</code> puis <code>git stash pop</code></td>
+                </tr>
+                <tr>
+                    <td><code>git log</code></td>
+                    <td>Voir l'historique des commits</td>
+                    <td><code>git log --oneline -10</code></td>
+                </tr>
+                <tr>
+                    <td><code>git reset</code></td>
+                    <td>Annuler des commits (⚠️ Dangereux)</td>
+                    <td><code>git reset --soft HEAD~1</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SCENARIOS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🎬 C. Scénarios Réels (3 Cas)</h3>
+
+        <!-- Scénario 1: Solo Dev -->
+        <div class="scenario-box" style="border-left-color:#55efc4;">
+            <h4><span style="color:#55efc4;">🧑‍💻</span> Scénario 1 : Solo Developer</h4>
+            <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Vous travaillez seul sur un projet
+                perso.</p>
+            <div class="steps">
+                <div class="step"><code>git clone</code> - Récupérer le repo</div>
+                <div class="step"><code>git checkout -b feature/ma-fonctionnalité</code> - Créer une branche</div>
+                <div class="step">Coder, tester...</div>
+                <div class="step"><code>git add . && git commit -m "feat: ..."</code> - Commit</div>
+                <div class="step"><code>git push origin feature/ma-fonctionnalité</code> - Push</div>
+                <div class="step">Créer une PR sur GitHub → Merge → Supprimer la branche</div>
+            </div>
+        </div>
+
+        <!-- Scénario 2: Équipe -->
+        <div class="scenario-box" style="border-left-color:#74b9ff;">
+            <h4><span style="color:#74b9ff;">👥</span> Scénario 2 : Équipe (Feature Branch)</h4>
+            <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Vous développez en parallèle avec
+                d'autres devs.</p>
+            <div class="steps">
+                <div class="step"><code>git pull origin main</code> - Toujours partir d'un main à jour</div>
+                <div class="step"><code>git checkout -b feature/api-users</code> - Votre branche</div>
+                <div class="step">Coder la feature (plusieurs commits)</div>
+                <div class="step"><code>git fetch && git rebase origin/main</code> - Se resynchroniser AVANT la PR
+                </div>
+                <div class="step">Résoudre les conflits si nécessaire</div>
+                <div class="step"><code>git push -f origin feature/api-users</code> - Force push après rebase</div>
+                <div class="step">PR → Code Review → Merge (Squash ou Rebase)</div>
+            </div>
+            <div class="tip" style="margin-top:15px; font-size:0.85rem;">
+                <strong>💡 Règle d'or :</strong> Rebaser AVANT de push, jamais après (sinon conflits pour les
+                autres).
+            </div>
+        </div>
+
+        <!-- Scénario 3: Hotfix -->
+        <div class="scenario-box" style="border-left-color:#ff7675;">
+            <h4><span style="color:#ff7675;">🚨</span> Scénario 3 : Hotfix en Production</h4>
+            <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Bug critique en prod, il faut
+                corriger MAINTENANT.</p>
+            <div class="steps">
+                <div class="step"><code>git checkout main && git pull</code> - Partir de la prod actuelle</div>
+                <div class="step"><code>git checkout -b hotfix/fix-crash-login</code> - Branche hotfix</div>
+                <div class="step">Corriger le bug (code minimal)</div>
+                <div class="step"><code>git commit -m "fix: resolve crash on login"</code></div>
+                <div class="step">PR prioritaire → Review express → Merge dans main</div>
+                <div class="step">Déployer immédiatement (CI/CD)</div>
+                <div class="step"><code>git cherry-pick &lt;commit-hash&gt;</code> - Reporter le fix sur les autres
+                    branches si nécessaire</div>
+            </div>
+        </div>
+
+        <!-- Comparison: Merge vs Rebase -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Merge vs Rebase : Le Grand Débat</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>🌱 git merge</h4>
+                    <ul>
+                        <li><strong>Non-destructif</strong> : Préserve l'historique complet et chronologique.</li>
+                        <li><strong>Traçabilité</strong> : On voit exactement quand les branches ont fusionné.</li>
+                        <li><strong>Pollution</strong> : Crée beaucoup de "Merge commits" (historique en
+                            spaghettis).</li>
+                        <li><strong>Conflits</strong> : Une seule grosse résolution de conflits à la fin.</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🚀 git rebase</h4>
+                    <ul>
+                        <li><strong>Historique Linéaire</strong> : Pas de commits de merge inutiles. C'est propre !
+                        </li>
+                        <li><strong>Plus lisible</strong> : Plus facile à suivre pour les autres développeurs.</li>
+                        <li><strong>Destructif</strong> : Réécrit l'histoire (⚠️ Ne jamais faire sur une branche
+                            publique partagee).</li>
+                        <li><strong>Conflits</strong> : On résout les conflits commit par commit (plus granulaire).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Conflict Resolution -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Résolution de Conflits Explosive</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">42</span>
+                    <span class="metric-label">Fichiers en conflit</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3h</span>
+                    <span class="metric-label">Temps de résolution</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Code perdu</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Deux équipes ont travaillé sur la même refacto majeure pendant 2 semaines
+                sans se synchroniser. Au moment du merge : l'enfer.</p>
+            <p><strong>Stratégie de survie</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Isolation</strong> : On ne résout pas ça sur le main. On crée une branche de "sync".
+                </li>
+                <li><strong>Communication</strong> : Les deux leads techniques s'asseyent ensemble (Pair
+                    Programming).</li>
+                <li><strong>Outils</strong> : Utilisation de <code>git mergetool</code> avec VS Code ou IntelliJ
+                    pour visualiser les "3-way merges".</li>
+                <li><strong>Granularité</strong> : Rebase interactif (<code>git rebase -i</code>) pour squasher les
+                    petits commits avant de merger.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Migration réussie. <strong>Leçon Apprise</strong> : Synchronisez-vous
+                tous les jours (<code>git pull</code> fréquent) pour éviter les "Merges de la mort".</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Git Mastery</h4>
+            <ul>
+                <li><strong>Git est distribué</strong> : Pas de SPOF (Single Point of Failure).</li>
+                <li><strong>L'Atomicité</strong> : Un commit = une seule chose (une feature, un fix).</li>
+                <li><strong>Conventional Commits</strong> : Utilisez <code>feat:</code>, <code>fix:</code>,
+                    <code>docs:</code> pour un historique clair.
+                </li>
+                <li><strong>Protection de Branche</strong> : Interdire de push directement sur <code>main</code>.
+                </li>
+                <li><strong>PR / Code Review</strong> : Git est avant tout un outil de collaboration et de qualité.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Git Flow vs Trunk Based -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="ref-card">
+                <h4>Git Flow vs Trunk Based</h4>
+                <ul class="dense-list">
+                    <li><strong>Trunk-Based (Moderne)</strong> : Une seule branche <code>main</code>. PRs
+                        ultra-courtes (< 24h). Nécessite tests solides.</li>
+                    <li><strong>Trunk-Based (Legacy)</strong> : Branches <code>develop</code>, <code>release</code>,
+                        <code>hotfix</code>. Crée des "Merge Hells".
+                    </li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h4>Conventional Commits</h4>
+                <p style="margin-bottom:10px; font-size:0.9rem;">Standardiser les messages pour automatiser le
+                    Changelog.</p>
+                <div class="code-block"
+                    style="background:#222; padding:10px; font-family:monospace; font-size:0.85rem;">
+                    <span style="color:var(--kw)">feat</span>(auth): add google oauth login<br>
+                    <span style="color:var(--num)">fix</span>(api): resolve timeout on user fetch<br>
+                    <span style="color:var(--c)">chore</span>: update dependencies
+                </div>
+            </div>
+        </div>
+
+        <!-- GIT INTERNALS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔧 D. Git Under the Hood</h3>
+        <div class="module-intro">
+            <p>Git n'est pas magique. C'est un système de fichiers adressable par le contenu. Tout est stocké dans le
+                dossier <code>.git</code>.</p>
+        </div>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Structure du dossier .git</div>
+                <pre><span class="c">.git/</span>
+├── <span class="kw">HEAD</span>         <span class="c"># Pointeur actuel (ref: refs/heads/main)</span>
+├── <span class="kw">config</span>       <span class="c"># Config locale (remote url, user)</span>
+├── <span class="kw">index</span>        <span class="c"># La zone de Staging (binaire)</span>
+├── <span class="kw">refs/</span>        <span class="c"># Pointeurs (branches, tags)</span>
+│   ├── heads/   <span class="c"># Branches locales (main contient le hash)</span>
+│   └── remotes/ <span class="c"># Branches distantes</span>
+└── <span class="kw">objects/</span>     <span class="c"># LA BASE DE DONNÉES</span>
+    ├── a1/      <span class="c"># Hash SHA-1 (les 2 premiers chars)</span>
+    └── ...</pre>
+            </div>
+            <div>
+                <h4 style="color:#f78c6c; margin-bottom:15px;">Les 3 Objets Git</h4>
+                <ul class="dense-list">
+                    <li><strong>Blob</strong> : Le contenu d'un fichier (sans le nom).</li>
+                    <li><strong>Tree</strong> : Un dossier. Associe des noms de fichiers à des Blobs.</li>
+                    <li><strong>Commit</strong> : Metadonnées (Auteur, Date, Message) + Pointeur vers un Tree Racine +
+                        Pointeur vers le Parent.</li>
+                </ul>
+                <div class="tip" style="margin-top:15px;">
+                    <strong>SHA-1</strong> : Tout changement (même un espace) change le Hash du Blob, donc du Tree, donc
+                    du Commit. L'historique est immuable.
+                </div>
+            </div>
+        </div>
+
+        <!-- ADVANCED DEBUGGING -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🕵️ E. Advanced Debugging</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #74b9ff;">
+                <span class="tool-icon">🔍</span>
+                <h4>Git Bisect</h4>
+                <p>Trouver le commit qui a introduit un bug par <strong>dichotomie</strong>.<br>
+                    <code>git bisect start</code><br>
+                    <code>git bisect bad</code> (ici)<br>
+                    <code>git bisect good v1.0</code><br>
+                    Git vous balade dans l'historique jusqu'au coupable.
+                </p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #e17055;">
+                <span class="tool-icon">🚑</span>
+                <h4>Git Reflog</h4>
+                <p>Vous avez fait un <code>reset --hard</code> et tout perdu ?<br>
+                    <strong>NON !</strong> <code>git reflog</code> liste TOUS les mouvements de HEAD (même les
+                    annulés).<br>
+                    <code>git reset --hard HEAD@{1}</code> pour revenir.
+                </p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #00cec9;">
+                <span class="tool-icon">🧠</span>
+                <h4>Git Rerere</h4>
+                <p><em>"Reuse Recorded Resolution"</em>.<br>
+                    Git se souvient comment vous avez résolu un conflit. S'il se reproduit (ex: rebase interactif), il
+                    le résout <strong>tout seul</strong>.</p>
+            </div>
+        </div>
+
+        <!-- PERFORMANCE & LFS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚅 F. Performance & Large Files</h3>
+        <div class="grid2">
+            <div class="ref-card" style="border-color:#a29bfe;">
+                <h4>🐘 Git LFS (Large File Storage)</h4>
+                <p>Git est nul pour les gros fichiers binaires (PSD, MP4). Chaque modif re-stocke tout le fichier.</p>
+                <p><strong>Solution</strong> : Git stocke un pointeur texte (2kb), et le fichier réel va dans un
+                    stockage à part (LFS Store).</p>
+                <code>git lfs track "*.psd"</code>
+            </div>
+            <div class="ref-card" style="border-color:#ffeaa7;">
+                <h4>🤏 Partial Clone & Shallow Clone</h4>
+                <p>Le repo fait 10Go ? Pas besoin de tout télécharger.</p>
+                <ul class="dense-list">
+                    <li><strong>Shallow</strong> (<code>--depth 1</code>) : Juste le dernier commit (idéal pour CI).
+                    </li>
+                    <li><strong>Partial</strong> (<code>--filter=blob:none</code>) : Télécharge l'historique mais PAS
+                        les fichiers. Les fichiers sont téléchargés à la demande (au checkout).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="details-content">
+            <p>GitOps = <strong>IaC + PRs + Convergence Agent</strong>.</p>
+            <p>Au lieu de faire <code>kubectl apply -f file.yaml</code> (impératif, manuel), vous commitez le
+                fichier yaml dans Git.</p>
+            <p><strong>ArgoCD</strong> (l'agent dans le cluster) voit le changement Git, compare avec l'état
+                réel, et force la synchronisation.</p>
+            <div
+                style="background:rgba(0,0,0,0.2); padding:10px; border-radius:6px; margin-top:10px; border:1px solid var(--border);">
+                <code>Git (Désiré) == Cluster (Réel)</code>
+            </div>
+            </details>
+        </div>
+</section>

@@ -1,0 +1,310 @@
+<!-- MODULE 03: CONTINUOUS INTEGRATION -->
+<section id="m3" style="background: radial-gradient(circle at center, rgba(85, 239, 196, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#55efc4; border-color:#55efc4;">03</div>
+            <div>
+                <h2 class="sec-title" style="color:#55efc4;">⚡ Continuous Integration (CI)</h2>
+                <p class="sec-sub">Build, Test, Inspect - Automatiquement</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#55efc4;">
+            <h4>🛡️ Analogie : Le Portique de Sécurité</h4>
+            <p>Le CI est comme le portique de sécurité à l'aéroport. Chaque passager (Commit) doit passer au
+                scanner.
+                Si ça bippe (Test échoué, Faille sécu), le passager n'embarque pas.
+                Cela garantit que l'avion (Branche Main) ne décolle qu'avec des passagers sûrs.</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Pourquoi l'Intégration Continue (CI) ?</h3>
+            <p>Avant le CI, le "jour de l'intégration" était redouté. On fusionnait des mois de code en une fois,
+                créant des conflits massifs et des bugs indétectables. Le CI prône l'intégration
+                <strong>fréquente</strong> (plusieurs fois par jour).
+            </p>
+            <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Fail Fast</strong> : Détecter les erreurs quelques minutes après le commit, pas des
+                    semaines plus tard.</li>
+                <li><strong>Standardisation</strong> : Chaque commit est testé dans le même environnement (fini le
+                    "ça marche sur ma machine").</li>
+                <li><strong>Qualité Constante</strong> : Le workflow impose des seuils de qualité (coverage,
+                    linting).</li>
+                <li><strong>Confiance</strong> : La branche principale est toujours stable et "déployable".</li>
+            </ul>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? Le coût exponentiel des bugs</h4>
+            <p>Réparer un bug détecté en <strong>Production</strong> coûte environ <strong>100 fois plus
+                    cher</strong> que s'il est détecté pendant le développement (phase de CI).</p>
+            <ul style="margin: 10px 0; padding-left: 20px; font-size: 0.9rem;">
+                <li><strong>Dev/CI</strong> : 1.000 € (Corrigé en 15 min)</li>
+                <li><strong>Staging</strong> : 10.000 € (Mobilise QA + Repush)</li>
+                <li><strong>Production</strong> : 100.000 € (Impact client, Hotfix express, Stress, réputation)</li>
+            </ul>
+            <p><em>Le CI est votre meilleure assurance-vie technique.</em></p>
+        </div>
+
+
+        <!-- CI PIPELINE SCHEMA -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Pipeline CI Typique</h3>
+        <div class="git-flow">
+            <div class="git-stage">
+                <div class="stage-icon">📥</div>
+                <div class="stage-name">Checkout</div>
+                <div style="font-size:0.7rem; color:var(--muted);">Clone code</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">📦</div>
+                <div class="stage-name">Install</div>
+                <div style="font-size:0.7rem; color:var(--muted);">npm ci</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">🔨</div>
+                <div class="stage-name">Build</div>
+                <div style="font-size:0.7rem; color:var(--muted);">Compile</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">🧪</div>
+                <div class="stage-name">Test</div>
+                <div style="font-size:0.7rem; color:var(--muted);">Unit + E2E</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage">
+                <div class="stage-icon">🔍</div>
+                <div class="stage-name">Scan</div>
+                <div style="font-size:0.7rem; color:var(--muted);">SAST/SCA</div>
+            </div>
+        </div>
+
+        <!-- TOOLS TABLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils CI Populaires</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Outil</th>
+                    <th>Hébergement</th>
+                    <th>Forces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>GitHub Actions</strong></td>
+                    <td>Cloud (GitHub)</td>
+                    <td>Gratuit, intégré, marketplace riche</td>
+                </tr>
+                <tr>
+                    <td><strong>GitLab CI</strong></td>
+                    <td>Cloud / Self-hosted</td>
+                    <td>Complet (CI+CD+Registry), YAML puissant</td>
+                </tr>
+                <tr>
+                    <td><strong>Jenkins</strong></td>
+                    <td>Self-hosted</td>
+                    <td>Ultra flexible, plugins nombreux, complexe</td>
+                </tr>
+                <tr>
+                    <td><strong>CircleCI</strong></td>
+                    <td>Cloud</td>
+                    <td>Rapide, config simple, parallelism</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Comparison Matrix: CI Features -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Matrice de Comparaison CI</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col winner">
+                    <h4>🏆 GitHub Actions / GitLab CI</h4>
+                    <ul>
+                        <li><strong>Pipeline-as-Code</strong> : YAML ultra-flexible et versionné.</li>
+                        <li><strong>Managed Runners</strong> : Pas besoin de gérer de serveurs de build.</li>
+                        <li><strong>Marketplace</strong> : Centaines d'actions réutilisables.</li>
+                        <li><strong>Intégré</strong> : Workflow unique pour code, tests et déploiement.</li>
+                    </ul>
+                </div>
+                <div class="comparison-col">
+                    <h4>🏗️ Jenkins (Self-Managed)</h4>
+                    <ul>
+                        <li><strong>Extensibilité Totale</strong> : 1800+ plugins pour TOUT faire.</li>
+                        <li><strong>Complexité</strong> : Courbe d'apprentissage raide (Groovy).</li>
+                        <li><strong>Maintenance</strong> : Nécessite un admin Jenkins dédié (Patchs, Sécu).</li>
+                        <li><strong>Cost-Effective</strong> : Pour les énormes infrastructures existantes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: CI Migration -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Migration de Jenkins vers GitHub Actions</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">45min</span>
+                    <span class="metric-label">Temps de build (Avant)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">8min</span>
+                    <span class="metric-label">Temps de build (Après)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">-75%</span>
+                    <span class="metric-label">Coût maintenance</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Une scale-up e-commerce avec 50 microservices passait trop de temps à
+                maintenir ses pipelines Jenkins "flaky". Les builds étaient lents et bloquaient la prod.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Standardisation</strong> : Création de "Reusable Workflows" GitHub pour tous les
+                    services.</li>
+                <li><strong>Parallélisation</strong> : Utilisation de la <code>matrix strategy</code> pour lancer
+                    les tests en parallèle.</li>
+                <li><strong>Caching</strong> : Optimisation agressive des caches <code>npm</code> et
+                    <code>docker</code>.
+                </li>
+                <li><strong>Self-hosted Runners</strong> : Utilisation de runners sur Kubernetes pour les builds
+                    gourmands.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Développeurs plus productifs, pipelines stables, et infrastructure
+                simplifiée.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Continuous Integration</h4>
+            <ul>
+                <li><strong>Fail Fast</strong> : La CI doit donner un résultat en moins de 10 minutes.</li>
+                <li><strong>Tests Atomiques</strong> : Un pipeline sans tests n'est pas du CI, c'est du "Build
+                    Theater".</li>
+                <li><strong>Honnêteté Technique</strong> : Ne jamais laisser un pipeline "rouge" plus d'une heure.
+                </li>
+                <li><strong>Artifacts</strong> : Le pipeline CI doit produire un artefact (image Docker, jar) prêt
+                    pour la CD.</li>
+            </ul>
+        </div>
+
+
+        <div class="grid2" style="margin-top:25px;">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>.github/workflows/ci.yml</div>
+                <pre><span class="kw">name:</span> CI Pipeline
+<span class="kw">on:</span> [push, pull_request]
+
+<span class="kw">jobs:</span>
+  <span class="fn">build-and-test:</span>
+    <span class="kw">runs-on:</span> ubuntu-latest
+    <span class="kw">steps:</span>
+      - <span class="kw">uses:</span> actions/checkout@v4
+      - <span class="kw">uses:</span> actions/setup-node@v4
+        <span class="kw">with:</span>
+          <span class="kw">node-version:</span> 20
+          <span class="kw">cache:</span> 'npm'
+      - <span class="kw">run:</span> npm ci
+      - <span class="kw">run:</span> npm run lint
+      - <span class="kw">run:</span> npm test -- --coverage
+      - <span class="kw">run:</span> npm run build</pre>
+            </div>
+            <div>
+                <h4 style="color:#55efc4; margin-bottom:15px;">✅ Best Practices CI</h4>
+                <ul class="dense-list">
+                    <li><strong>Fast Feedback</strong> : Pipeline &lt; 10 min (idéal &lt; 5 min)</li>
+                    <li><strong>Cache</strong> : Cacher node_modules, Maven repo, etc.</li>
+                    <li><strong>Parallélisation</strong> : Tests en parallèle (matrix)</li>
+                    <li><strong>Fail Fast</strong> : Arrêter dès le premier échec</li>
+                    <li><strong>No Flaky Tests</strong> : Tests instables = dette technique</li>
+                </ul>
+
+                <div class="tip" style="margin-top:15px;">
+                    <strong>Shift Left</strong> : Bug en Prod = 100x plus cher qu'en Dev.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- OPTIMIZATION STRATEGIES -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">⚡ C. Pipeline Optimization Strategies</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot b"></span>Matrix Strategy & Caching</div>
+                <pre><span class="kw">strategy:</span>
+  <span class="kw">matrix:</span>
+    <span class="kw">node:</span> [18, 20, 22]
+    <span class="kw">os:</span> [ubuntu-latest, windows-latest]
+<span class="kw">steps:</span>
+  - <span class="kw">uses:</span> actions/cache@v4
+    <span class="kw">with:</span>
+      <span class="kw">path:</span> ~/.npm
+      <span class="kw">key:</span> npm-${{ hashFiles('package-lock.json') }}
+  - <span class="kw">run:</span> npm test</pre>
+            </div>
+            <div>
+                <h4 style="color:#0984e3; margin-bottom:15px;">Gagner du temps (et de l'argent)</h4>
+                <ul class="dense-list">
+                    <li><strong>Matrix</strong> : Lancer 6 jobs en parallèle (3 nodes * 2 OS) en écrivant 1 seule
+                        config.</li>
+                    <li><strong>Caching</strong> : Si `package-lock.json` n'a pas changé, on réutilise le dossier
+                        `node_modules` du build précédent (gain: minutes → secondes).</li>
+                    <li><strong>Path Filtering</strong> : Ne lancez pas le build "Backend" si seul le dossier "Frontend"
+                        a changé.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECURITY IN CI -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔐 D. Security in CI</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #ff7675;">
+                <span class="tool-icon">🔑</span>
+                <h4>Secrets Management</h4>
+                <p><strong>NE JAMAIS</strong> commiter de secrets.<br>Utilisez <code>${{ secrets.AWS_KEY }}</code>
+                    injecté à la volée en mémoire par le runner CI.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #6c5ce7;">
+                <span class="tool-icon">🆔</span>
+                <h4>OIDC (OpenID Connect)</h4>
+                <p>Fini les clés AWS longue durée !<br>
+                    GitHub assume un rôle IAM temporaire (1h) pour déployer. Plus de rotation de clés à gérer.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #00b894;">
+                <span class="tool-icon">📜</span>
+                <h4>SLSA & Signing</h4>
+                <p>Signer les artefacts de build (Sigstore/Cosign). Garantit que le binaire en prod vient bien de VOTRE
+                    pipeline CI.</p>
+            </div>
+        </div>
+
+        <!-- ADVANCED CONCEPTS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚀 E. Advanced Concepts</h3>
+        <div class="grid2">
+            <div class="ref-card" style="border-color:#2d3436;">
+                <h4>🐳 Docker-in-Docker (DinD)</h4>
+                <p>Pour builder une image Docker <strong>depuis</strong> un container CI, il faut exposer le socket
+                    Docker de l'hôte.</p>
+                <p><em>Risqué mais nécessaire pour construire des images.</em></p>
+            </div>
+            <div class="ref-card" style="border-color:#fdcb6e;">
+                <h4>🗡️ Dagger.io (Pipeline-as-Code)</h4>
+                <p>Écrire son pipeline CI en YAML c'est limitant. Dagger permet d'écrire le pipeline en <strong>Go,
+                        Python ou TypeScript</strong>.</p>
+                <p>Avantage : Vous pouvez lancer le pipeline <strong>en local</strong> exactement comme dans le CI.</p>
+            </div>
+        </div>
+        <div class="details-content">
+            <ul class="dense-list">
+                <li><strong>Slow Pipeline</strong> : &gt;30 min = Devs commitent moins souvent</li>
+                <li><strong>Flaky Tests</strong> : Tests qui passent "parfois" détruisent la confiance</li>
+                <li><strong>Ignorer les échecs</strong> : "C'est pas grave, on merge quand même"</li>
+                <li><strong>CI sans tests</strong> : "CI Theater" - juste du lint et build</li>
+            </ul>
+        </div>
+        </details>
+    </div>
+</section>

@@ -1,0 +1,440 @@
+<!-- MODULE 04: CONTINUOUS DELIVERY -->
+<section id="m4" style="background: radial-gradient(circle at center, rgba(116, 185, 255, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#74b9ff; border-color:#74b9ff;">04</div>
+            <div>
+                <h2 class="sec-title" style="color:#74b9ff;">🚀 Continuous Delivery (CD)</h2>
+                <p class="sec-sub">Deploy Strategies & GitOps</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#74b9ff;">
+            <h4>🚦 Analogie : Le Changement de Roue</h4>
+            <p><strong>Rolling Update</strong> : On change les roues (Pods) une par une pendant que la voiture
+                roule. Lent mais sûr.<br>
+                <strong>Blue/Green</strong> : On prépare une 2ème voiture identique, on transfère les passagers, et
+                on détruit la 1ère.
+            </p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 CI vs CD vs Continuous Deployment : Ne les confondez plus !</h3>
+            <p>Beaucoup utilisent ces termes comme des synonymes, mais ils représentent des étapes de maturité
+                différentes :</p>
+            <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Continuous Integration (CI)</strong> : Le code est buildé et testé automatiquement à
+                    chaque commit.</li>
+                <li><strong>Continuous Delivery (CD)</strong> : Le code est prêt à être déployé en production à TOUT
+                    MOMENT, mais le clic final est <strong>manuel</strong> (décision business).</li>
+                <li><strong>Continuous Deployment</strong> : Chaque commit qui passe les tests est déployé
+                    <strong>automatiquement</strong> en production, sans intervention humaine.
+                </li>
+            </ul>
+            <p><em>En CD, la production est un simple artefact que l'on promeut.</em></p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? Déployer un Vendredi après-midi ?</h4>
+            <p>Dans les entreprises traditionnelles, c'est interdit (le "Friday Deploy" est tabou). En DevOps mature
+                avec CD, c'est un non-événement.</p>
+            <p><strong>Pourquoi ?</strong> Parce que les outils de CD permettent un <strong>Rollback
+                    instantané</strong> et une isolation du trafic (Canary). Si le déploiement de 17h échoue, le
+                système revient en arrière automatiquement en 30 secondes sans que les Ops ne sacrifient leur
+                week-end.</p>
+        </div>
+
+
+        <!-- STRATEGIES TABLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. Comparatif des Stratégies</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Stratégie</th>
+                    <th>Risque</th>
+                    <th>Rollback</th>
+                    <th>Coût</th>
+                    <th>Cas d'usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Remplace les instances une par une. Zero-downtime mais rollback lent.">Rolling
+                            Update</span></td>
+                    <td style="color:#fdcb6e;">Moyen</td>
+                    <td>Lent</td>
+                    <td>Faible</td>
+                    <td>Défaut K8s</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="2 environnements identiques. Bascule instantanée du routeur.">Blue/Green</span>
+                    </td>
+                    <td style="color:#00cec9;">Faible</td>
+                    <td>Instant</td>
+                    <td style="color:#ff7675;">2x infra</td>
+                    <td>Critique, besoin rollback rapide</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Déploie sur un petit % d'users. Si OK, augmente progressivement.">Canary</span>
+                    </td>
+                    <td style="color:#00cec9;">Faible</td>
+                    <td>Rapide</td>
+                    <td>Moyen</td>
+                    <td>Test sur users réels</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Tout arrêter, tout redéployer. Downtime garanti.">Recreate</span></td>
+                    <td style="color:#ff7675;">Élevé</td>
+                    <td>Lent</td>
+                    <td>Faible</td>
+                    <td>Dev, non-prod</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- DEPLOYMENT SIMULATOR -->
+        <div class="interactive-demo"
+            style="background:var(--bg2); padding:20px; border-radius:10px; border:1px solid var(--border); margin:25px 0;">
+            <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">🎮 Simulateur de Déploiement
+                <span style="font-size:0.8rem; color:var(--muted); font-weight:normal;">(Cliquez pour tester)</span>
+            </h4>
+            <div class="strategy-controls" style="display:flex; gap:10px; margin-bottom:20px;">
+                <button class="btn-strategy" onclick="simDeploy('rolling')">Rolling Update</button>
+                <button class="btn-strategy" onclick="simDeploy('bluegreen')">Blue / Green</button>
+                <button class="btn-strategy" onclick="simDeploy('canary')">Canary</button>
+            </div>
+            <div id="sim-visual"
+                style="height:100px; background:#111; border-radius:6px; display:flex; align-items:center; justify-content:space-around; padding:10px;">
+                <div style="color:var(--muted);">Sélectionnez une stratégie...</div>
+            </div>
+            <div id="sim-status"
+                style="margin-top:10px; font-family:monospace; color:var(--primary-bright); font-size:0.9rem;">Prêt.
+            </div>
+        </div>
+
+        <!-- Advanced CD Strategies -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔍 Stratégies de Déploiement Avancées</h3>
+        <div class="grid2">
+            <div class="info">
+                <strong>🌑 Dark Launching (Feature Flags)</strong><br>
+                Le code est déployé en prod mais reste <strong>invisible</strong> pour les utilisateurs. On l'active
+                via une config (Feature Flag) pour certains segments d'utilisateurs. Permet de tester la performance
+                en prod sans risque métier.
+            </div>
+            <div class="info" style="border-left-color:var(--kw)">
+                <strong>👤 Shadow Deployment</strong><br>
+                Le trafic réel est <strong>dupliqué</strong> vers la nouvelle version, mais les réponses ne sont pas
+                renvoyées aux clients. On compare les sorties de V1 et V2 pour s'assurer que V2 est stable (parfait
+                pour les migrations de DB ou refactos complexes).
+            </div>
+        </div>
+
+        <!-- Case Study: Amazon -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Amazon - Un déploiement toutes les 11.6 secondes</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">11.6s</span>
+                    <span class="metric-label">Déploiement moyen</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">10k+</span>
+                    <span class="metric-label">Serveurs mis à jour simultanément</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Downtime toléré</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : En 2001, Amazon était un monolithe. Un changement mineur pouvait bloquer
+                des centaines de développeurs pendant des semaines.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Two-Pizza Teams</strong> : De petites équipes autonomes de 6-10 personnes gèrent un
+                    service de bout en bout.</li>
+                <li><strong>Apollo</strong> : Création de leur propre outil de CD (devenu AWS CodeDeploy) pour
+                    automatiser chaque étape.</li>
+                <li><strong>Service-Oriented Architecture (SOA)</strong> : Chaque service cache sa complexité
+                    derrière une API.</li>
+            </ol>
+            <p><strong>Résultat</strong> : En 2011 (déjà !), Amazon effectuait <strong>1.079 déploiements par
+                    heure</strong> en moyenne sur ses jours de semaine. Aujourd'hui, ce chiffre est bien plus élevé.
+            </p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Continuous Delivery</h4>
+            <ul>
+                <li><strong>Automatisation Totale</strong> : Si un humain intervient manuellement, ce n'est pas du
+                    CD.</li>
+                <li><strong>Infrastructure-as-Code</strong> : Le déploiement doit inclure les changements d'infra
+                    (VPC, DB, LB).</li>
+                <li><strong>Observabilité</strong> : On ne déploie pas sans Dashboard. Si les erreurs montent, on
+                    rollback.</li>
+                <li><strong>Rollback Automatique</strong> : Le succès d'un déploiement n'est pas le "Finish", c'est
+                    le maintien des métriques stables.</li>
+            </ul>
+        </div>
+
+
+        <!-- ENVIRONMENT PROMOTION -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 B. Promotion d'Environnements</h3>
+        <div class="git-flow" style="justify-content:center;">
+            <div class="git-stage" style="background:#636e72;">
+                <div class="stage-icon">🧪</div>
+                <div class="stage-name">Dev</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                <div class="stage-icon">🔍</div>
+                <div class="stage-name">Staging</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#00b894;">
+                <div class="stage-icon">🚀</div>
+                <div class="stage-name">Production</div>
+            </div>
+        </div>
+        <div class="tip" style="margin-top:15px;">
+            <strong>Règle d'or :</strong> Ce qui marche en Staging DOIT marcher en Prod (même image, même config
+            externalisée).
+        </div>
+
+        <!-- GITOPS DEEP DIVE -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔄 C. GitOps - Git comme Source de Vérité</h3>
+        <div class="module-intro">
+            <p><strong>GitOps</strong> est une évolution du CD où l'état désiré de l'infrastructure et des applications
+                est
+                <strong>déclaré dans Git</strong>, et un agent automatique synchronise continuellement l'état réel du
+                cluster
+                avec ce qui est dans Git.
+            </p>
+            <p><em>"If it's not in Git, it doesn't exist in production."</em></p>
+        </div>
+
+        <div class="grid2" style="margin-top:25px;">
+            <div class="ref-card" style="border-color:#74b9ff;">
+                <h4>🔱 ArgoCD</h4>
+                <ul class="dense-list">
+                    <li><strong>Pull-based</strong> : Argo surveille Git et applique les changements sur K8s</li>
+                    <li><strong>Web UI</strong> : Dashboard visuel de l'état de sync</li>
+                    <li><strong>Auto-sync</strong> : Peut corriger automatiquement les drifts</li>
+                    <li><strong>RBAC</strong> : Contrôle d'accès granulaire par app/projet</li>
+                    <li>Idéal pour : Multi-tenant, équipes multiples</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#74b9ff;">
+                <h4>🌊 FluxCD</h4>
+                <ul class="dense-list">
+                    <li><strong>GitOps Toolkit</strong> : Composable, modulaire</li>
+                    <li><strong>Multi-source</strong> : Git, Helm repos, OCI registries</li>
+                    <li><strong>Image automation</strong> : Met à jour Git quand une nouvelle image est push</li>
+                    <li><strong>Progressive delivery</strong> : Intégré avec Flagger (Canary)</li>
+                    <li>Idéal pour : Pipelines complexes, automatisation poussée</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top:20px;">
+            <div class="code-head"><span class="dot g"></span>argocd-app.yaml</div>
+            <pre><span class="kw">apiVersion:</span> argoproj.io/v1alpha1
+<span class="kw">kind:</span> Application
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> myapp
+  <span class="kw">namespace:</span> argocd
+<span class="kw">spec:</span>
+  <span class="kw">project:</span> default
+  <span class="kw">source:</span>
+    <span class="kw">repoURL:</span> https://github.com/org/repo
+    <span class="kw">targetRevision:</span> main
+    <span class="kw">path:</span> k8s/prod
+  <span class="kw">destination:</span>
+    <span class="kw">server:</span> https://kubernetes.default.svc
+    <span class="kw">namespace:</span> production
+  <span class="kw">syncPolicy:</span>
+    <span class="kw">automated:</span>
+      <span class="kw">prune:</span> <span class="num">true</span>       <span class="comment"># Supprimer ressources obsolètes</span>
+      <span class="kw">selfHeal:</span> <span class="num">true</span>   <span class="comment"># Corriger les drifts manuels</span></pre>
+        </div>
+
+        <div class="info" style="margin-top:20px; border-left-color:#74b9ff;">
+            <strong>🔒 Avantage Sécurité GitOps</strong><br>
+            Avec GitOps, les développeurs ne déploient plus directement sur le cluster (pas de
+            <code>kubectl apply</code>).
+            Ils font une PR sur Git. Cela crée un <strong>audit trail complet</strong> et permet des approvals formels
+            avant tout déploiement en production.
+        </div>
+
+        <!-- FEATURE FLAGS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚩 D. Feature Flags & Progressive Delivery</h3>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>🎚️ Feature Toggles</h4>
+                <p style="margin-bottom:10px;">Déployez le code en prod, mais <strong>activez la fonctionnalité</strong>
+                    seulement pour certains utilisateurs via une configuration externe.</p>
+                <ul class="dense-list">
+                    <li><strong>Kill Switch</strong> : Désactiver une feature cassée sans redéployer</li>
+                    <li><strong>A/B Testing</strong> : 50% users version A, 50% version B</li>
+                    <li><strong>Canary Users</strong> : Beta testers internes d'abord</li>
+                    <li><strong>Gradual Rollout</strong> : 5% → 25% → 100%</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>feature-flag.js</div>
+                <pre><span class="kw">const</span> featureEnabled = <span class="kw">await</span> <span class="fn">launchDarkly</span>
+  .<span class="fn">variation</span>(<span class="str">'new-checkout'</span>, user, <span class="num">false</span>);
+
+<span class="kw">if</span> (featureEnabled) {
+  <span class="comment">// Nouvelle expérience checkout</span>
+  <span class="kw">return</span> <span class="fn">renderNewCheckout</span>();
+} <span class="kw">else</span> {
+  <span class="comment">// Ancienne version stable</span>
+  <span class="kw">return</span> <span class="fn">renderOldCheckout</span>();
+}</pre>
+            </div>
+        </div>
+
+        <div class="tip" style="margin-top:15px;">
+            <strong>⚠️ Attention : Dette Technique</strong> Les feature flags doivent être <strong>temporaires</strong>.
+            Si vous ne les nettoyez pas après validation, votre code devient un spaghetti de if/else impossibles à
+            maintenir.
+        </div>
+
+        <!-- ROLLBACK STRATEGIES -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">⏮️ E. Stratégies de Rollback</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Scénario</th>
+                    <th>Stratégie</th>
+                    <th>Défi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>App Stateless</td>
+                    <td>Rollback image K8s instantané</td>
+                    <td style="color:#00b894;">Aucun</td>
+                </tr>
+                <tr>
+                    <td>App + Migration DB</td>
+                    <td>Backward-compatible migrations</td>
+                    <td style="color:#fdcb6e;">Schéma doit supporter V1 et V2</td>
+                </tr>
+                <tr>
+                    <td>Breaking change DB</td>
+                    <td>Blue/Green avec DB snapshot</td>
+                    <td style="color:#ff7675;">Coûteux, perte de données post-deploy</td>
+                </tr>
+                <tr>
+                    <td>Feature Flag activée</td>
+                    <td>Toggle OFF via dashboard</td>
+                    <td style="color:#00b894;">Instant, sans redéploiement</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info" style="margin-top:20px; border-left-color:#ff7675;">
+            <strong>🗄️ Migrations de Base de Données</strong><br>
+            Règle d'or : toute migration doit être <strong>forward ET backward compatible</strong>.
+            Exemple : Ajouter une colonne ? Rendez-la <code>NULL</code> d'abord. Supprimer une colonne ?
+            Laissez-la 2-3 versions avant de la drop réellement (expand/contract pattern).
+        </div>
+
+        <!-- NETFLIX CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : Netflix - Spinnaker, le CD à l'échelle mondiale</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">4000+</span>
+                    <span class="metric-label">Déploiements/jour</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">190+</span>
+                    <span class="metric-label">Pays desservis</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Downtime autorisé</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Netflix sert 220M+ abonnés mondiaux avec des pics massifs (ex: lancement
+                Stranger Things).
+                Un déploiement raté = millions de $ perdus.</p>
+            <p><strong>Solution</strong> : Netflix a créé <strong>Spinnaker</strong>, un outil CD open-source
+                multi-cloud.</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Canary Analysis automatique</strong> : Compare les métriques (latence, erreurs) entre Canary
+                    et Baseline.
+                    Si divergence > seuil, rollback auto.</li>
+                <li><strong>Red/Black Deploy</strong> : Variante de Blue/Green adaptée à AWS avec ELB switching.</li>
+                <li><strong>Chaos Engineering</strong> : Simian Army (Chaos Monkey) teste la résilience en tuant des
+                    instances aléatoirement,
+                    même en prod.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Netflix peut déployer une nouvelle version en 16 minutes à l'échelle mondiale
+                avec un taux
+                d'échec < 0.01%.</p>
+        </div>
+
+        <!-- ETSY CASE STUDY -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Etsy - "Deploy on Day One"</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">50+</span>
+                    <span class="metric-label">Déploiements/jour</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Day 1</span>
+                    <span class="metric-label">Premier deploy d'un nouveau dev</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">15min</span>
+                    <span class="metric-label">Temps moyen commit → prod</span>
+                </div>
+            </div>
+            <p><strong>Philosophie</strong> : Chez Etsy, un nouveau développeur doit déployer en production <strong>le
+                    premier jour</strong>.
+                Cela force la compagnie à avoir un pipeline CD ultra-safe et accessible.</p>
+            <p><strong>Pratiques clés</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Feature Flags partout</strong> : Aucun code ne va en prod sans flag. Les juniors peuvent
+                    déployer sans risque.</li>
+                <li><strong>Dashboards en temps réel</strong> : Chaque développeur suit les métriques métier post-deploy
+                    (taux de conversion, erreurs).</li>
+                <li><strong>Try/Buy/Build</strong> : Prioriser les outils existants avant de construire.</li>
+            </ol>
+            <p><strong>Impact culturel</strong> : Les développeurs se sentent responsables du code en production dès
+                J+1,
+                ce qui renforce la qualité et la confiance.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Continuous Delivery</h4>
+            <ul>
+                <li><strong>Automatisation Totale</strong> : Si un humain intervient manuellement, ce n'est pas du
+                    CD.</li>
+                <li><strong>Infrastructure-as-Code</strong> : Le déploiement doit inclure les changements d'infra
+                    (VPC, DB, LB).</li>
+                <li><strong>Observabilité</strong> : On ne déploie pas sans Dashboard. Si les erreurs montent, on
+                    rollback.</li>
+                <li><strong>Rollback Automatique</strong> : Le succès d'un déploiement n'est pas le "Finish", c'est
+                    le maintien des métriques stables.</li>
+                <li><strong>GitOps</strong> : Git devient la source de vérité unique. Audit, sécurité, traçabilité
+                    garantis.</li>
+                <li><strong>Feature Flags</strong> : Séparez le déploiement de code (deploy) de l'activation de
+                    fonctionnalité (release).</li>
+            </ul>
+        </div>
+
+    </div>
+</section>

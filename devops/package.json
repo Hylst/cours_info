@@ -1,0 +1,22 @@
+{
+    "name": "devops-memo",
+    "version": "1.0.0",
+    "description": "DevOps course memo website - Modular architecture",
+    "main": "build.js",
+    "scripts": {
+        "build": "node build.js",
+        "watch": "nodemon --watch src -e html --exec \"npm run build\"",
+        "serve": "npm run build && npx serve ."
+    },
+    "keywords": [
+        "devops",
+        "education",
+        "memo",
+        "static-site"
+    ],
+    "author": "Geoffroy Streit",
+    "license": "MIT",
+    "devDependencies": {
+        "nodemon": "^3.0.0"
+    }
+}

@@ -1,0 +1,14 @@
+<section id="quiz">
+    <div id="quiz-app"></div>
+</section>
+
+<script type="module">
+    import '../assets/js/quiz-engine.js';
+    console.log("Quiz module script execution...");
+    if (window.QuizEngine) {
+        console.log("Initializing QuizEngine...");
+        new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_devops.json', questionsPerSession: 10 });
+    } else {
+        console.error("QuizEngine not found on window object.");
+    }
+</script>

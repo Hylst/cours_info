@@ -1,0 +1,297 @@
+<!-- MODULE 07: INFRASTRUCTURE AS CODE -->
+<section id="m7" style="background: radial-gradient(circle at center, rgba(108, 92, 231, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#6c5ce7; border-color:#6c5ce7;">07</div>
+            <div>
+                <h2 class="sec-title" style="color:#6c5ce7;">🏗️ Infrastructure as Code</h2>
+                <p class="sec-sub">Terraform, Ansible & Automation</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#6c5ce7;">
+            <h4>📐 Analogie : L'Architecte vs Le Maçon</h4>
+            <p><strong>ClickOps (Manuel)</strong> : Vous dites au maçon "Pose une brique ici, puis une autre là". Si
+                le mur tombe, il faut tout redire.<br>
+                <strong>IaC (Terraform)</strong> : Vous donnez le plan 3D (Code) au robot. Il construit tout seul.
+                Si le mur tombe, il le reconstruit à l'identique.
+            </p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 IaC : Des "Pets" aux "Cattle"</h3>
+            <p>Le plus grand changement apporté par l'IaC est le changement de paradigme <strong>"Pets vs
+                    Cattle"</strong> (Animaux de compagnie vs Bétail) :</p>
+            <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Pets (Hier)</strong> : On donne un nom à nos serveurs (ex: "Zeus"). On les soigne
+                    manuellement. S'ils meurent, c'est la tragédie.</li>
+                <li><strong>Cattle (Aujourd'hui)</strong> : Les serveurs n'ont plus de noms individuels, mais des
+                    numéros (ex: web-01, web-02). S'ils ont un problème, on les supprime et on les recrée via le
+                    code.</li>
+            </ul>
+            <p>L'Infrastructure as Code permet une <strong>Reproductibilité Totale</strong> et évite le "Snowflake
+                Server" (serveur configuré à la main que personne n'ose toucher).</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? L'essor de Terraform</h4>
+            <p>En 2014, <strong>Mitchell Hashimoto</strong> (fondateur de HashiCorp) lance Terraform. Avant, chaque
+                Cloud Provider avait son propre outil (CloudFormation pour AWS, ARM pour Azure). Terraform a réussi
+                l'impossible : créer un langage <strong>Cloud Agnostic</strong> (HCL) qui peut parler à tous les
+                Clouds via des "Providers".</p>
+            <p>C'est aujourd'hui l'outil d'IaC le plus utilisé au monde.</p>
+        </div>
+
+
+        <!-- IaC LIFECYCLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Cycle de vie IaC</h3>
+        <div class="git-flow" style="justify-content:center;">
+            <div class="git-stage" style="background:#6c5ce7;">
+                <div class="stage-icon">📝</div>
+                <div class="stage-name">Write</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">.tf / .yaml</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                <div class="stage-icon">🔍</div>
+                <div class="stage-name">Plan</div>
+                <div style="font-size:0.7rem; color:rgba(0,0,0,0.6);">Dry-run</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#00b894;">
+                <div class="stage-icon">🚀</div>
+                <div class="stage-name">Apply</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Create/Update</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#ff7675;">
+                <div class="stage-icon">💥</div>
+                <div class="stage-name">Destroy</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Cleanup</div>
+            </div>
+        </div>
+
+        <!-- TOOLS TABLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils IaC</h3>
+        </tbody>
+        </table>
+
+        <!-- Comparison: Terraform vs Ansible -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Provisioning vs Configuration</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col winner">
+                    <h4>🏗️ Terraform (Déclaratif)</h4>
+                    <ul>
+                        <li><strong>Provisioning</strong> : Créer des ressources (VPC, VM, DB).</li>
+                        <li><strong>State Management</strong> : Sait ce qu'il a créé (le fichier State).</li>
+                        <li><strong>Idempotent</strong> : Ne recrée pas si la ressource existe déjà.</li>
+                        <li><strong>Cycle de vie</strong> : Idéal pour "Infrastructure immutable".</li>
+                    </ul>
+                </div>
+                <div class="comparison-col">
+                    <h4>🛠️ Ansible (Impératif/Hybride)</h4>
+                    <ul>
+                        <li><strong>Configuration</strong> : Installer des logiciels, modifier des fichiers.</li>
+                        <li><strong>Stateless</strong> : Ne garde pas d'inventaire de l'état passé.</li>
+                        <li><strong>Agentless</strong> : Fonctionne via SSH (pas d'agent à installer).</li>
+                        <li><strong>Mutable</strong> : Idéal pour maintenir des serveurs existants.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Capital One -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Capital One - L'IaC à l'échelle bancaire</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">100%</span>
+                    <span class="metric-label">Infra dans le Cloud AWS</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Thousands</span>
+                    <span class="metric-label">Nodes gérés par Terraform</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Accès manuel en prod</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : En 2015, Capital One décide de fermer tous ses datacenters pour migrer
+                sur AWS. Le défi : garantir la sécurité et la conformité bancaire de manière automatisée.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Terraform First</strong> : Interdiction de créer une ressource via la console. Tout
+                    passe par une PR Git.</li>
+                <li><strong>Policy as Code</strong> : Utilisation de Sentinel (HashiCorp) pour bloquer
+                    automatiquement les infras non-conformes (ex: Bucket S3 public).</li>
+                <li><strong>Immutable Infrastructure</strong> : On ne patche jamais un serveur, on redéploie une
+                    nouvelle version de l'infra complète.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Réduction drastique des erreurs humaines et audit constant en temps réel.
+            </p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Infrastructure as Code</h4>
+            <ul>
+                <li><strong>Versionnez tout</strong> : L'infra est du code, elle vit dans Git.</li>
+                <li><strong>Évitez le Drift</strong> : Utilisez des outils comme Driftctl pour détecter les modifs
+                    manuelles.</li>
+                <li><strong>Modularité</strong> : Ne répétez pas votre code (DRY - Don't Repeat Yourself). Utilisez
+                    des modules.</li>
+                <li><strong>Sécurité</strong> : Scannez vos manifests IaC avec des outils comme Checkov ou Tfsec.
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- CODE EXAMPLES -->
+        <div class="grid2" style="margin-top:25px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>main.tf (Terraform)</div>
+                <pre><span class="kw">resource</span> <span class="str">"aws_vpc"</span> <span class="str">"main"</span> {
+  <span class="kw">cidr_block</span> = <span class="str">"10.0.0.0/16"</span>
+  <span class="kw">tags</span> = { Name = <span class="str">"prod-vpc"</span> }
+}
+
+<span class="kw">resource</span> <span class="str">"aws_instance"</span> <span class="str">"web"</span> {
+  <span class="kw">ami</span>           = <span class="str">"ami-0c55b159cbfafe1f0"</span>
+  <span class="kw">instance_type</span> = <span class="str">"t3.micro"</span>
+  <span class="kw">vpc_security_group_ids</span> = [
+    aws_security_group.web.id
+  ]
+}</pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>playbook.yml (Ansible)</div>
+                <pre><span class="kw">- name:</span> Configure Web Server
+  <span class="kw">hosts:</span> webservers
+  <span class="kw">become:</span> yes
+  <span class="kw">tasks:</span>
+    - <span class="kw">name:</span> Install Nginx
+      <span class="fn">apt:</span>
+        <span class="kw">name:</span> nginx
+        <span class="kw">state:</span> present
+    - <span class="kw">name:</span> Start Nginx
+      <span class="fn">service:</span>
+        <span class="kw">name:</span> nginx
+        <span class="kw">state:</span> started
+        <span class="kw">enabled:</span> yes</pre>
+            </div>
+        </div>
+
+        <!-- ADVANCED TERRAFORM -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🧱 C. Advanced Terraform Patterns</h3>
+        <div class="grid2">
+            <div class="info">
+                <strong>📦 Modules (Reusability)</strong><br>
+                Au lieu de copier-coller 50 fois le code d'un VPC, créez un module.<br>
+                <code>module "vpc_prod" { source = "./modules/vpc" }</code><br>
+                <em>DRY (Don't Repeat Yourself) est roi.</em>
+            </div>
+            <div class="info" style="border-left-color:var(--num)">
+                <strong>🗂️ Workspaces (Environments)</strong><br>
+                Gérer Dev, Staging et Prod avec le <strong>même code</strong>.<br>
+                <code>terraform workspace select prod</code><br>
+                Chaque workspace a son propre fichier d'état (tfstate) isolé.
+            </div>
+        </div>
+
+        <!-- REMOTE STATE & LOCKING -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔒 D. Remote State & Locking</h3>
+        <div class="module-intro">
+            <p>En équipe, stocker le fichier <code>terraform.tfstate</code> sur son PC est <strong>interdit</strong>.
+                S'il est perdu, l'infra est orpheline. Si deux devs appliquent en même temps, c'est la corruption.</p>
+        </div>
+        <div class="code">
+            <div class="code-head"><span class="dot g"></span>backend.tf (AWS S3 + DynamoDB)</div>
+            <pre><span class="kw">terraform</span> {
+  <span class="kw">backend</span> "s3" {
+    <span class="kw">bucket</span>         = "my-tf-state-bucket"
+    <span class="kw">key</span>            = "prod/terraform.tfstate"
+    <span class="kw">region</span>         = "us-east-1"
+    <span class="kw">dynamodb_table</span> = "tf-state-locks" <span class="comment"># Gère le verrouillage</span>
+  }
+}</pre>
+            <div style="padding:10px; font-size:0.85rem; color:#a4b0be;">
+                Si Jean lance un <code>terraform apply</code>, DynamoDB verrouille le state. Si Alice essaie en même
+                temps, elle reçoit : <span style="color:#ff7675;">Error: distinct locking</span>.
+            </div>
+        </div>
+
+        <!-- BEYOND TERRAFORM -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚀 E. Beyond Terraform</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #6c5ce7;">
+                <span class="tool-icon">☸️</span>
+                <h4>Crossplane</h4>
+                <p>L'IaC <strong>dans</strong> Kubernetes. Créez une base de données AWS RDS en faisant un
+                    <code>kubectl apply -f rds.yaml</code>. K8s réconcilie l'infra cloud en continu.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #00b894;">
+                <span class="tool-icon">🌊</span>
+                <h4>Atlantis</h4>
+                <p>GitOps pour Terraform. Le bot Atlantis commente le résultat de <code>terraform plan</code>
+                    directement dans votre Pull Request GitHub.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #e17055;">
+                <span class="tool-icon">🛡️</span>
+                <h4>Checkov</h4>
+                <p>Scanner de sécurité statique pour IaC. Bloque le déploiement si un Security Group est ouvert sur
+                    0.0.0.0/0.</p>
+            </div>
+        </div>
+
+        <!-- HASHICORP CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : HashiCorp - Dogfooding Extreme</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">15k+</span>
+                    <span class="metric-label">Applies / jour</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">99.99%</span>
+                    <span class="metric-label">Uptime Platform</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Comment HashiCorp gère son propre cloud (HCP) ? En utilisant leurs propres
+                outils à l'extrême.</p>
+            <p><strong>Architecture</strong> :</p>
+            <ul class="dense-list">
+                <li><strong>Nomad & Consul</strong> : Orchestration et Service Mesh (alternative à K8s).</li>
+                <li><strong>Sentinel Policy as Code</strong> : Tout est vérifié. Impossible de déployer une ressource
+                    sans tag "Owner" ou qui coûte plus de X$ sans approval.</li>
+                <li><strong>Ephemeral Environments</strong> : Chaque Pull Request crée un environnement complet éphémère
+                    qui est détruit après le merge.</li>
+            </ul>
+        </div>
+
+        <!-- DRIFT WARNING (Moved) -->
+        <div class="grid2" style="margin-top:25px;">
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4 style="color:#ff7675;">⚠️ Le Danger : Drift</h4>
+                <p>Si quelqu'un modifie l'infra manuellement dans la console AWS, le code et la réalité divergent.
+                </p>
+                <div style="background:#222; padding:8px; margin-top:8px; font-family:monospace; font-size:0.8rem;">
+                    $ terraform plan<br>
+                    <span style="color:#fdcb6e">~ update SG rule (Drift detected)</span>
+                </div>
+            </div>
+            <div class="ref-card" style="border-color:#00b894;">
+                <h4 style="color:#00b894;">✅ Best Practices</h4>
+                <ul class="dense-list">
+                    <li><strong>Remote State</strong> : S3/GCS + Locking (DynamoDB)</li>
+                    <li><strong>Modules</strong> : Réutiliser via modules</li>
+                    <li><strong>Review</strong> : terraform plan dans PR</li>
+                    <li><strong>Immutable</strong> : Recréer plutôt que patcher</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

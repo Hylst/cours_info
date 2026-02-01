@@ -1,0 +1,569 @@
+<!-- MODULE 08: OBSERVABILITY -->
+<section id="m8" style="background: radial-gradient(circle at center, rgba(253, 203, 110, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fdcb6e; border-color:#fdcb6e;">08</div>
+            <div>
+                <h2 class="sec-title" style="color:#fdcb6e;">👁️ Observabilité</h2>
+                <p class="sec-sub">Logs, Metrics, Traces - Les 3 Piliers</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#fdcb6e;">
+            <h4>🏎️ Analogie : Le Tableau de Bord F1</h4>
+            <p>Le <strong>Monitoring</strong> vous dit "Le moteur fume" (C'est cassé).<br>
+                L'<strong>Observabilité</strong> vous permet de demander "Pourquoi ?" en regardant la télémétrie
+                complète.</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Observabilité : Illuminer la Boîte Noire</h3>
+            <p>Dans un système monolithique simple, un log suffit. Dans un cluster Kubernetes avec 200
+                microservices, c'est impossible. L'observabilité est la capacité de comprendre l'état interne d'un
+                système <strong>uniquement</strong> en regardant ses sorties (Metrics, Logs, Traces).</p>
+            <p>On passe du monitoring <strong>Réactif</strong> ("Tiens, ça a crashé") à l'observabilité
+                <strong>Proactive</strong> ("La latence monte sur le service X, ça va bientôt saturer").
+            </p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? Les 4 Golden Signals</h4>
+            <p>Google a défini dans son livre SRE les <strong>4 signaux d'or</strong> du monitoring que tout
+                dashboard devrait avoir :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Latency</strong> : Temps de réponse (ms).</li>
+                <li><strong>Traffic</strong> : Nombre de requêtes/sec.</li>
+                <li><strong>Errors</strong> : Taux de succès vs échec.</li>
+                <li><strong>Saturation</strong> : Utilisation des ressources (CPU, RAM, Disque).</li>
+            </ol>
+        </div>
+
+
+        <!-- 3 PILLARS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏛️ A. Les 3 Piliers</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #00cec9;">
+                <span class="tool-icon">📜</span>
+                <h4>Logs</h4>
+                <p><strong>Quoi ?</strong> Événements textuels horodatés<br>
+                    <strong>Usage :</strong> Debugging, audit trail<br>
+                    <em>Outils: ELK, Loki, CloudWatch</em>
+                </p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #74b9ff;">
+                <span class="tool-icon">📈</span>
+                <h4>Metrics</h4>
+                <p><strong>Quoi ?</strong> Chiffres agrégés dans le temps<br>
+                    <strong>Usage :</strong> Alerting, dashboards<br>
+                    <em>Outils: Prometheus, Datadog</em>
+                </p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #a29bfe;">
+                <span class="tool-icon">🕵️</span>
+                <h4>Traces</h4>
+                <p><strong>Quoi ?</strong> Suivi d'une requête multi-services<br>
+                    <strong>Usage :</strong> Latency, bottlenecks<br>
+                    <em>Outils: Jaeger, OpenTelemetry</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- STACKS TABLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Stacks Populaires</h3>
+
+
+        <!-- Comparison: Logs vs Metrics vs Traces -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 Les 3 Piliers : Quand utiliser quoi ?</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>📜 Logs (Événements)</h4>
+                    <ul>
+                        <li><strong>Granularité</strong> : Haute (détails précis).</li>
+                        <li><strong>Coût</strong> : Élevé (stockage massif).</li>
+                        <li><strong>Usage</strong> : "Pourquoi cette requête spécifique a échoué ?"</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🕵️ Traces (Parcours)</h4>
+                    <ul>
+                        <li><strong>Granularité</strong> : Contextuelle (multi-services).</li>
+                        <li><strong>Coût</strong> : Moyen (échantillonnage nécessaire).</li>
+                        <li><strong>Usage</strong> : "Où est passée la seconde de latence entre A et B ?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Uber -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Uber - Gérer 500 millions de métriques</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">500M</span>
+                    <span class="metric-label">Métriques persistées</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">9.5M</span>
+                    <span class="metric-label">Points écrits / sec</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">Downtime toléré pour le monitoring</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : En grandissant, Uber a saturé toutes les solutions de métriques
+                existantes (Graphite, Prometheus). Ils avaient besoin d'une base de données de séries temporelles
+                (TSDB) capable de scaler horizontalement à l'infini.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>M3 Project</strong> : Ils ont créé leur propre stack open-source "M3" pour agréger et
+                    stocker les métriques.</li>
+                <li><strong>Distributed Tracing</strong> : Création de <strong>Jaeger</strong> (donné à la CNCF)
+                    pour suivre chaque course Uber à travers des milliers de microservices Go et Java.</li>
+                <li><strong>Adaptive Sampling</strong> : On ne garde pas 100% des traces (trop cher), mais 100% des
+                    traces en erreur et 1% des traces réussies.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Uber peut détecter une anomalie sur le prix ou la disponibilité des
+                chauffeurs en moins de 10 secondes partout dans le monde.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Observability Mastery</h4>
+            <ul>
+                <li><strong>Don't Log Everything</strong> : Le stockage des logs coûte cher. Filtrez à la source.
+                </li>
+                <li><strong>Tagging is King</strong> : Une métrique ou un log sans tags (env, service, version) est
+                    inutile.</li>
+                <li><strong>Dashboards Actionnables</strong> : Un dashboard doit répondre à "Est-ce que ça marche ?"
+                    pas "Regarde ces jolis graphs".</li>
+                <li><strong>OpenTelemetry</strong> : Utilisez le standard ouvert OTel pour ne pas être bloqué chez
+                    un fournisseur (Lock-in).</li>
+            </ul>
+        </div>
+
+        <!-- OPENTELEMETRY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🌐 C. OpenTelemetry - Le Standard Unifié</h3>
+        <div class="module-intro">
+            <p><strong>OpenTelemetry (OTel)</strong> est le standard CNCF (graduated project) pour l'instrumentation,
+                la collecte et l'export de télémétrie (logs, metrics, traces). C'est la fusion de OpenTracing +
+                OpenCensus.</p>
+            <p><strong>Problème résolu</strong> : Avant OTel, chaque vendor (Datadog, New Relic, Jaeger) avait son
+                propre SDK.
+                Changer de vendor = réécrire toute l'instrumentation. OTel = <strong>vendor-neutral</strong>.</p>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="ref-card" style="border-color:#fdcb6e;">
+                <h4>📊 Architecture OTel</h4>
+                <ul class="dense-list">
+                    <li><strong>Instrumentation</strong> : SDKs dans l'app (auto ou manuel)</li>
+                    <li><strong>Collector</strong> : Agent qui reçoit, transforme, exporte</li>
+                    <li><strong>Exporters</strong> : Envoie vers Jaeger, Prometheus, Datadog, etc.</li>
+                    <li><strong>Context Propagation</strong> : Trace ID suit la requête partout</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>otel-collector.yaml</div>
+                <pre><span class="kw">receivers:</span>
+  <span class="kw">otlp:</span>      <span class="comment"># Reçoit traces/metrics via gRPC</span>
+    <span class="kw">protocols:</span>
+      <span class="kw">grpc:</span>
+        <span class="kw">endpoint:</span> 0.0.0.0:4317
+
+<span class="kw">processors:</span>
+  <span class="kw">batch:</span>     <span class="comment"># Agrège avant export</span>
+  <span class="kw">memory_limiter:</span>
+    <span class="kw">limit_mib:</span> <span class="num">512</span>
+
+<span class="kw">exporters:</span>
+  <span class="kw">jaeger:</span>
+    <span class="kw">endpoint:</span> jaeger:14250
+  <span class="kw">prometheus:</span>
+    <span class="kw">endpoint:</span> prometheus:9090</pre>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:15px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Auto-instrumentation (Python)</div>
+                <pre><span class="kw">from</span> opentelemetry <span class="kw">import</span> trace
+<span class="kw">from</span> opentelemetry.sdk.trace <span class="kw">import</span> TracerProvider
+<span class="kw">from</span> opentelemetry.sdk.trace.export <span class="kw">import</span> BatchSpanProcessor
+<span class="kw">from</span> opentelemetry.exporter.otlp.proto.grpc.trace_exporter <span class="kw">import</span> OTLPSpanExporter
+
+<span class="comment"># Setup tracer</span>
+trace.<span class="fn">set_tracer_provider</span>(TracerProvider())
+tracer = trace.<span class="fn">get_tracer</span>(__name__)
+
+<span class="comment"># Export vers Collector</span>
+otlp_exporter = <span class="fn">OTLPSpanExporter</span>(endpoint=<span class="str">"localhost:4317"</span>)
+span_processor = <span class="fn">BatchSpanProcessor</span>(otlp_exporter)
+trace.<span class="fn">get_tracer_provider</span>().<span class="fn">add_span_processor</span>(span_processor)</pre>
+            </div>
+            <div class="info" style="border-left-color:#fdcb6e;">
+                <strong>🔄 Sampling Strategies</strong><br>
+                <strong>Head-based</strong> : Décision au début de la trace (1% de tout)<br>
+                <strong>Tail-based</strong> : Décision à la fin (100% des erreurs, 1% du succès)<br>
+                Tail-based est plus intelligent mais plus coûteux en compute.
+            </div>
+        </div>
+
+        <!-- EBPF FOR OBSERVABILITY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔬 D. eBPF for Observability</h3>
+        <div class="module-intro">
+            <p><strong>eBPF</strong> (extended Berkeley Packet Filter) permet d'exécuter du code dans le kernel Linux
+                sans modifier le kernel. C'est révolutionnaire pour l'observabilité : <strong>zero
+                    instrumentation</strong>.</p>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>🦅 Pixie (eBPF-based Observability)</h4>
+                <p style="margin-bottom:10px;">Observabilité automatique de K8s sans changer une ligne de code.</p>
+                <ul class="dense-list">
+                    <li>Capture automatique HTTP/gRPC/MySQL/Postgres requests</li>
+                    <li>Cartes de dépendances générées automatiquement</li>
+                    <li>Flamegraphs CPU sans profiler SDK</li>
+                    <li>Deploy : <code>kubectl apply -f pixie.yaml</code></li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#fdcb6e;">
+                <h4>🔍 Avantages eBPF</h4>
+                <ul class="dense-list">
+                    <li><strong>Zero overhead</strong> : Pas de sidecars, pas de SDK</li>
+                    <li><strong>Language-agnostic</strong> : Fonctionne avec Java, Go, Rust, C++</li>
+                    <li><strong>Kernel-level visibility</strong> : Voit TOUT (syscalls, network packets)</li>
+                    <li><strong>Security</strong> : Falco utilise eBPF pour détecter intrusions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning" style="margin-top:15px;">
+            <strong>⚠️ Limite eBPF</strong><br>
+            eBPF ne capture pas le <strong>contexte business</strong> (user ID, transaction ID). Pour cela,
+            vous devez quand même instrumenter manuellement avec OTel ou des logs structurés.
+        </div>
+
+        <!-- SLI/SLO/SLA -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🎯 E. SLI/SLO/Error Budgets</h3>
+        <div class="comparison-container">
+            <div class="comparison-table" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="comparison-col">
+                    <h4>📏 SLI (Indicator)</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Quoi ?</strong> Métrique quantifiable de la
+                        qualité du service.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Exemples : Latency P99, Success rate, Throughput
+                    </p>
+                    <p style="font-size:0.85rem; margin-top:8px;">Mesure CE QUI SE PASSE réellement.</p>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🎯 SLO (Objective)</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Quoi ?</strong> Target pour un SLI sur une
+                        période.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Exemples : "99.9% des requêtes < 200ms sur 30
+                            jours"</p>
+                            <p style="font-size:0.85rem; margin-top:8px;">Définit CE QU'ON VEUT atteindre.</p>
+                </div>
+                <div class="comparison-col">
+                    <h4>📜 SLA (Agreement)</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Quoi ?</strong> Contrat légal avec
+                        pénalités financières.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Exemples : "99.95% uptime ou remboursement"</p>
+                    <p style="font-size:0.85rem; margin-top:8px;">Engage la RESPONSABILITÉ juridique.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div>
+                <h4 style="color:#fdcb6e; margin-bottom:15px;">💰 Error Budget</h4>
+                <p style="margin-bottom:10px;">Si SLO = 99.9% uptime, alors Error Budget = <strong>0.1% downtime
+                        autorisé</strong> = 43 minutes/mois.</p>
+                <ul class="dense-list">
+                    <li>Budget consommé → Freeze features, focus stabilité</li>
+                    <li>Budget restant → OK pour déployer features risquées</li>
+                    <li>Alignement Dev/SRE : même métrique, même objectif</li>
+                </ul>
+                <div class="tip" style="margin-top:10px;">
+                    Formule : <code>Error Budget = (1 - SLO) × période</code><br>
+                    Ex: (1 - 0.999) × 30 jours × 24h × 60min = 43.2 minutes
+                </div>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>SLO Burn Rate Alerting</div>
+                <pre><span class="comment"># Alerte si on consomme Error Budget trop vite</span>
+<span class="kw">alert:</span> ErrorBudgetBurn
+<span class="kw">expr:</span> |
+  (
+    <span class="num">1</span> - <span class="fn">sum</span>(<span class="fn">rate</span>(http_requests_total{status=~<span class="str">"2.."</span>}[1h]))
+        / <span class="fn">sum</span>(<span class="fn">rate</span>(http_requests_total[1h]))
+  ) > (<span class="num">14.4</span> * (<span class="num">1</span> - <span class="num">0.999</span>))
+  <span class="comment"># 14.4x = consomme budget en 2h au lieu de 30j</span>
+<span class="kw">for:</span> 5m
+<span class="kw">labels:</span>
+  <span class="kw">severity:</span> critical
+<span class="kw">annotations:</span>
+  <span class="kw">summary:</span> <span class="str">"Burning error budget 14x faster"</span></pre>
+            </div>
+        </div>
+
+        <!-- CARDINALITY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">💸 F. Cardinality & Cost Management</h3>
+        <div class="module-intro">
+            <p><strong>Cardinality</strong> = nombre de combinaisons uniques de tags (labels).
+                C'est LE problème #1 qui fait exploser les coûts de monitoring.</p>
+        </div>
+
+        <div class="grid2">
+            <div class="info" style="border-left-color:#ff7675;">
+                <strong>🚨 Explosion de Cardinality</strong><br>
+                Métrique : <code>http_requests{service, method, path, user_id, request_id}</code><br>
+                Si 10 services × 5 methods × 1000 paths × 10M users × infinité request_id = 🔥💸<br>
+                <strong>Solution</strong> : JAMAIS mettre user_id ou request_id en tag. Utiliser des logs pour ça.
+            </div>
+            <div>
+                <h4 style="color:#00b894; margin-bottom:15px;">✅ Cardinality Best Practices</h4>
+                <ul class="dense-list">
+                    <li><strong>Low cardinality tags OK</strong> : env, service, region, status_code</li>
+                    <li><strong>High cardinality tags NO</strong> : user_id, request_id, timestamp</li>
+                    <li><strong>Agrégation intelligente</strong> : /users/123 → /users/:id</li>
+                    <li><strong>Monitoring de cardinality</strong> : Alerter si spike</li>
+                </ul>
+            </div>
+        </div>
+
+        <table class="cmd-table" style="margin-top:20px;">
+            <thead>
+                <tr>
+                    <th>Stratégie</th>
+                    <th>Coût</th>
+                    <th>Granularité</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>100% des métriques</td>
+                    <td style="color:#ff7675;">$$$$</td>
+                    <td style="color:#00b894;">Max</td>
+                    <td>Dev/Staging uniquement</td>
+                </tr>
+                <tr>
+                    <td>Sampling (10%)</td>
+                    <td style="color:#fdcb6e;">$$</td>
+                    <td style="color:#fdcb6e;">Moyen</td>
+                    <td>Production standard</td>
+                </tr>
+                <tr>
+                    <td>Tail-based (erreurs only)</td>
+                    <td style="color:#00b894;">$</td>
+                    <td style="color:#00b894;">Intelligent</td>
+                    <td>Production optimisé</td>
+                </tr>
+                <tr>
+                    <td>Retention 7j vs 90j</td>
+                    <td style="color:#00b894;">$ vs $$$</td>
+                    <td>-</td>
+                    <td>Compliance requirements</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- DISTRIBUTED TRACING ADVANCED -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🕸️ G. Distributed Tracing Avancé</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Trace Context Propagation (W3C)</div>
+                <pre><span class="comment"># Headers HTTP propagés automatiquement</span>
+traceparent: <span class="str">00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01</span>
+             <span class="comment">│  │                                │                │</span>
+             <span class="comment">│  └─ Trace ID (128-bit)           │                └─ Sampled?</span>
+             <span class="comment">│                                   └─ Span ID (64-bit)</span>
+             <span class="comment">└─ Version</span>
+
+<span class="comment"># Chaque service ajoute son span à la trace</span>
+<span class="kw">GET</span> /api/orders → <span class="fn">create_span</span>(<span class="str">"fetch_order"</span>) {
+  <span class="kw">call</span> payment_service  <span class="comment"># Passe traceparent</span>
+  <span class="kw">call</span> inventory_service <span class="comment"># Passe traceparent</span>
+}</pre>
+            </div>
+            <div>
+                <h4 style="color:#fdcb6e; margin-bottom:15px;">🏷️ Span Tags & Baggage</h4>
+                <ul class="dense-list">
+                    <li><strong>Tags</strong> : Metadata du span (http.method, db.statement)</li>
+                    <li><strong>Baggage</strong> : Key-value propagés à TOUS les spans enfants</li>
+                    <li><strong>Use case baggage</strong> : user_tier (premium/free) pour sampling</li>
+                    <li><strong>Warning</strong> : Baggage augmente taille des headers → latency</li>
+                </ul>
+                <div class="tip" style="margin-top:10px;">
+                    <strong>Correlation avec logs</strong> : Injectez trace_id dans vos logs structurés
+                    pour naviguer de la trace vers les logs d'un span spécifique.
+                </div>
+            </div>
+        </div>
+
+        <!-- OBSERVABILITY PLATFORMS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🏢 H. Observability Platforms Comparison</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Type</th>
+                    <th>Forces</th>
+                    <th>Faiblesses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Datadog</strong></td>
+                    <td>Commercial (SaaS)</td>
+                    <td>All-in-one, APM excellent, UX top</td>
+                    <td style="color:#ff7675;">Très cher (cardinality pricing)</td>
+                </tr>
+                <tr>
+                    <td><strong>Grafana Stack</strong></td>
+                    <td>Open-source</td>
+                    <td>Loki (logs), Tempo (traces), Mimir (metrics), gratuit</td>
+                    <td style="color:#fdcb6e;">Self-hosted = ops overhead</td>
+                </tr>
+                <tr>
+                    <td><strong>Elastic (ELK)</strong></td>
+                    <td>Open-core</td>
+                    <td>Search puissant, mature, large écosystème</td>
+                    <td style="color:#fdcb6e;">Ressource hungry (Java heap)</td>
+                </tr>
+                <tr>
+                    <td><strong>New Relic</strong></td>
+                    <td>Commercial (SaaS)</td>
+                    <td>Ingestion illimitée, pricing par user</td>
+                    <td style="color:#fdcb6e;">Query language moins flexible</td>
+                </tr>
+                <tr>
+                    <td><strong>Honeycomb</strong></td>
+                    <td>Commercial (SaaS)</td>
+                    <td>High-cardinality native, best pour debug</td>
+                    <td style="color:#ff7675;">Focus traces uniquement</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SHOPIFY CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : Shopify - Migration vers OpenTelemetry</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">1000+</span>
+                    <span class="metric-label">Services instrumentés</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">6 mois</span>
+                    <span class="metric-label">Durée migration complète</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">-40%</span>
+                    <span class="metric-label">Réduction coût observabilité</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Shopify utilisait un mix de Datadog SDK + custom instrumentation.
+                Changer de vendor = 6 mois de refactoring. Inacceptable.</p>
+            <p><strong>Migration OTel</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Phase 1</strong> : Deploy OTel Collector en sidecar (sans changer app code)</li>
+                <li><strong>Phase 2</strong> : Auto-instrumentation pour Ruby/Go (80% du backend)</li>
+                <li><strong>Phase 3</strong> : Migration des custom spans vers OTel SDK</li>
+                <li><strong>Phase 4</strong> : Multi-vendor export (Datadog + Honeycomb pour A/B test)</li>
+            </ol>
+            <p><strong>Résultat</strong> : Vendor-agnostic. Peut changer de backend observability sans toucher au code.
+                Coût réduit de 40% en optimisant sampling.</p>
+        </div>
+
+        <!-- AIRBNB CASE STUDY -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Airbnb - Cardinality Explosion Incident</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">10M</span>
+                    <span class="metric-label">Métriques uniques créées en 1h</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$50K</span>
+                    <span class="metric-label">Surcoût Datadog ce mois-là</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3h</span>
+                    <span class="metric-label">Dashboard Prometheus down</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Un développeur a ajouté un tag <code>listing_id</code> (7M valeurs uniques)
+                à une métrique de latency.</p>
+            <p><strong>Impact immédiat</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li>Prometheus TSDB saturée → toutes les queries timeoutent</li>
+                <li>Datadog facture 10M nouvelles métriques × $0.05 = $500K/an projeté</li>
+                <li>Alertes cassées → équipes aveugles pendant 3h</li>
+            </ol>
+            <p><strong>Fix</strong> : Tag <code>listing_id</code> supprimé. Remplacé par aggregation dans logs.
+                Ajout de <strong>cardinality guard</strong> : CI bloque si une métrique a >1000 combinaisons de tags.
+            </p>
+            <p><strong>Leçon</strong> : La cardinality peut détruire votre observability ET votre budget. Reviewez les
+                tags comme du code critique.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Observability Mastery</h4>
+            <ul>
+                <li><strong>Don't Log Everything</strong> : Le stockage des logs coûte cher. Filtrez à la source.
+                </li>
+                <li><strong>Tagging is King</strong> : Une métrique ou un log sans tags (env, service, version) est
+                    inutile.</li>
+                <li><strong>Dashboards Actionnables</strong> : Un dashboard doit répondre à "Est-ce que ça marche ?"
+                    pas "Regarde ces jolis graphs".</li>
+                <li><strong>OpenTelemetry</strong> : Utilisez le standard ouvert OTel pour ne pas être bloqué chez
+                    un fournisseur (Lock-in).</li>
+                <li><strong>eBPF = Future</strong> : Observabilité zero-instrumentation au niveau kernel (Pixie, Falco).
+                </li>
+                <li><strong>SLO/Error Budgets</strong> : Alignez Dev et SRE sur des métriques business objectives.</li>
+                <li><strong>Cardinality = Enemy #1</strong> : High-cardinality tags explosent les coûts et cassent les
+                    TSDB.</li>
+                <li><strong>Sampling intelligent</strong> : Tail-based sampling = 100% erreurs + 1% succès = best ROI.
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- PROMQL EXAMPLES -->
+        <div class="grid2" style="margin-top:25px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>PromQL Essentiels</div>
+                <pre><span class="c"># Taux d'erreurs HTTP (5xx)</span>
+<span class="fn">rate</span>(http_requests_total{status=~"5.."}[5m])
+  / <span class="fn">rate</span>(http_requests_total[5m])
+
+<span class="c"># Latence P99</span>
+<span class="fn">histogram_quantile</span>(0.99,
+  <span class="fn">rate</span>(http_duration_seconds_bucket[5m]))
+
+<span class="c"># CPU usage par pod</span>
+<span class="fn">sum by</span>(pod)(rate(container_cpu_usage_seconds_total[5m]))</pre>
+            </div>
+            <div>
+                <h4 style="color:#fdcb6e; margin-bottom:15px;">🚨 Alerting Best Practices</h4>
+                <ul class="dense-list">
+                    <li><strong>SLO-based</strong> : Alerter sur Error Budget burn rate</li>
+                    <li><strong>Pas trop d'alertes</strong> : Alert fatigue = tout ignorer</li>
+                    <li><strong>Runbooks</strong> : Chaque alerte → action claire</li>
+                    <li><strong>Escalation</strong> : PagerDuty, OpsGenie</li>
+                </ul>
+                <div class="tip" style="margin-top:15px;">
+                    <strong>Correlation ID</strong> : Injectez un ID unique dans logs, metrics et traces pour les
+                    relier.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

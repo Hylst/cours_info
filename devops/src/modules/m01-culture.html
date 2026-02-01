@@ -1,0 +1,487 @@
+<!-- MODULE 01: CULTURE DEVOPS -->
+<section id="m1" style="background: radial-gradient(circle at center, rgba(130, 170, 255, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">01</div>
+            <div>
+                <h2 class="sec-title">🎭 La Culture DevOps</h2>
+                <p class="sec-sub">C.A.L.M.S, 3 Ways & DORA Metrics</p>
+            </div>
+        </div>
+
+        <div class="analogy-box">
+            <h4>🧠 Analogie : Le Mur de la Confusion</h4>
+            <p>Imaginez un restaurant où les Cuisiniers (Dev) et les Serveurs (Ops) sont séparés par un mur en
+                béton.
+                Les cuisiniers lancent les plats par-dessus le mur sans savoir s'il y a des clients. Les serveurs
+                reçoivent
+                des assiettes cassées et se font hurler dessus par les clients. <strong>DevOps, c'est casser ce
+                    mur.</strong></p>
+        </div>
+
+        <!-- Module Intro -->
+        <div class="module-intro">
+            <h3>📖 Pourquoi la Culture DevOps ?</h3>
+            <p>Le <strong>DevOps</strong> n'est pas un outil, un job title ou une certification. C'est un
+                <strong>mouvement culturel</strong> né en 2007-2009 pour résoudre un problème structurel : <em>le
+                    conflit entre Dev (vitesse, changement) et Ops (stabilité, sécurité)</em>.
+            </p>
+            <p>Avant DevOps, le cycle typique était :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Dev</strong> : "On a codé une feature géniale en 2 semaines !"</li>
+                <li><strong>Ops</strong> : "Ça va prendre 3 mois pour la déployer en prod (change requests, audits,
+                    testing...)"</li>
+                <li><strong>Cycle de 6 mois entre l'idée et la valeur client</strong></li>
+                <li>Pendant ce temps, vos concurrents déploient <strong>10 fois par jour</strong></li>
+            </ol>
+            <p>DevOps casse ce modèle en alignant les incentives : <em>"You build it, you run it"</em> (Amazon).
+                Maintenant, tout le monde est responsable de la prod. Plus de mur.</p>
+        </div>
+
+        <!-- Timeline historique -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📅 Timeline : Naissance du DevOps</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2007</div>
+                <div class="timeline-content">
+                    <h5>Premier Agile System Administration</h5>
+                    <p>Patrick Debois organise une conférence en Belgique pour appliquer Agile aux Ops.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2009</div>
+                <div class="timeline-content">
+                    <h5>Naissance officielle : DevOpsDays</h5>
+                    <p>Patrick Debois lance "DevOpsDays" à Gand. Le #devops hashtag explose sur Twitter.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2013</div>
+                <div class="timeline-content">
+                    <h5>The Phoenix Project (livre culte)</h5>
+                    <p>Gene Kim publie le roman IT qui évangélise DevOps dans les entreprises.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2014</div>
+                <div class="timeline-content">
+                    <h5>Premières DORA Metrics</h5>
+                    <p>Google lance le "State of DevOps Report" avec les 4 métriques clés.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2020-2025</div>
+                <div class="timeline-content">
+                    <h5>DevOps devient la norme</h5>
+                    <p>Platform Engineering, GitOps, FinOps émergent comme évolutions naturelles.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ?</h4>
+            <p>Selon le <strong>2024 State of DevOps Report</strong> (Google/DORA) :</p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Les organisations <strong>Elite</strong> déploient <strong>208x plus fréquemment</strong> que
+                    les Low performers</li>
+                <li>Elles ont un <strong>Lead Time 106x plus rapide</strong> (commit → prod)</li>
+                <li>Leur <strong>MTTR est divisé par 2604</strong> (!) en cas de panne</li>
+                <li>Elles passent <strong>47% moins de temps sur du "toil"</strong> (tâches manuelles répétitives)
+                </li>
+            </ul>
+            <p><strong>ROI</strong> : Les entreprises DevOps mature perdent <strong>81% moins de chiffre
+                    d'affaires</strong> à cause de downtime.</p>
+        </div>
+
+
+        <!-- 3 WAYS OF DEVOPS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Les 3 Voies du DevOps</h3>
+        <div class="git-flow" style="justify-content:center;">
+            <div class="git-stage" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="stage-icon">➡️</div>
+                <div class="stage-name">1. Flow</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Dev → Ops → Client</div>
+            </div>
+            <div class="git-stage" style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="stage-icon">⬅️</div>
+                <div class="stage-name">2. Feedback</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Monitoring → Dev</div>
+            </div>
+            <div class="git-stage" style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="stage-icon">🔁</div>
+                <div class="stage-name">3. Learning</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.8);">Expérimentation</div>
+            </div>
+        </div>
+
+        <details style="margin-top:20px;">
+            <summary>💡 C.A.L.M.S Framework (Détails)</summary>
+            <div class="details-content">
+                <ul class="dense-list">
+                    <li><strong>Culture</strong> : Responsabilité partagée (You build it, you run it)</li>
+                    <li><strong>Automation</strong> : Si tu le fais 2 fois, automatise-le</li>
+                    <li><strong>Lean</strong> : Inspiré de Toyota. Réduire le gaspillage</li>
+                    <li><strong>Measurement</strong> : On ne peut pas améliorer ce qu'on ne mesure pas</li>
+                    <li><strong>Sharing</strong> : Post-mortems sans blâme. Partage des connaissances</li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- DORA METRICS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 B. DORA Metrics (Mesurer la Performance)
+        </h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Métrique</th>
+                    <th>Elite</th>
+                    <th>High</th>
+                    <th>Medium</th>
+                    <th>Low</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Combien de fois on déploie en production. Elite = plusieurs fois par jour.">Deploy
+                            Frequency</span></td>
+                    <td style="color:#00cec9;">Plusieurs/jour</td>
+                    <td>1x/jour - 1x/sem</td>
+                    <td>1x/sem - 1x/mois</td>
+                    <td style="color:#ff7675;">&gt;1 mois</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Temps entre le commit et la mise en production. Mesure la vélocité du pipeline.">Lead
+                            Time for Changes</span></td>
+                    <td style="color:#00cec9;">&lt;1 heure</td>
+                    <td>1 jour - 1 sem</td>
+                    <td>1 sem - 1 mois</td>
+                    <td style="color:#ff7675;">&gt;1 mois</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Mean Time To Recovery. Temps pour restaurer le service après une panne.">MTTR</span>
+                    </td>
+                    <td style="color:#00cec9;">&lt;1 heure</td>
+                    <td>&lt;1 jour</td>
+                    <td>1 jour - 1 sem</td>
+                    <td style="color:#ff7675;">&gt;1 sem</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Pourcentage de déploiements qui causent une panne ou un rollback.">Change
+                            Failure Rate</span></td>
+                    <td style="color:#00cec9;">0-15%</td>
+                    <td>16-30%</td>
+                    <td>16-30%</td>
+                    <td style="color:#ff7675;">&gt;30%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- SILOS VS FLOW -->
+        <div class="grid2" style="margin-top:25px;">
+            <div class="info">
+                <strong>❌ Avant DevOps (Silos)</strong><br>
+                Les Devs sont payés pour le <em>Changement</em> (Features).<br>
+                Les Ops sont payés pour la <em>Stabilité</em> (Uptime).<br>
+                <span style="color:var(--danger)">➔ Conflit d'intérêts structurel.</span>
+            </div>
+            <div class="info" style="border-left-color:var(--success)">
+                <strong>✅ Avec DevOps (Flow)</strong><br>
+                Le "Mur" disparait. Une seule équipe "Produit".<br>
+                Le monitoring de Prod informe le prochain Sprint.<br>
+                <span style="color:var(--success)">➔ Alignement sur la valeur business.</span>
+            </div>
+        </div>
+
+        <!-- TEAM TOPOLOGIES -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">👥 C. Team Topologies</h3>
+        <div class="module-intro">
+            <p><strong>Team Topologies</strong> (livre de Matthew Skelton & Manuel Pais, 2019) définit 4 archétypes
+                d'équipes
+                et 3 modes d'interaction pour optimiser la vélocité et la cognitive load.</p>
+            <p><strong>Concept clé</strong> : La loi de Conway dit que l'architecture logicielle reflète la structure
+                organisationnelle.
+                Team Topologies inverse cela : <em>organisez vos équipes POUR l'architecture que vous voulez</em>.</p>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="ref-card" style="border-color:#667eea;">
+                <h4>🚀 Stream-Aligned Teams</h4>
+                <p style="margin-bottom:10px;">Équipes autonomes responsables d'un flux de valeur business complet
+                    (feature team).</p>
+                <ul class="dense-list">
+                    <li>Propriété end-to-end d'un service/produit</li>
+                    <li>Cross-functional (dev, ops, design, product)</li>
+                    <li>Livrent directement de la valeur client</li>
+                    <li>Exemple : Team "Checkout", Team "Recommendations"</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#f5576c;">
+                <h4>🛤️ Platform Teams</h4>
+                <p style="margin-bottom:10px;">Construisent des plateformes internes pour accélérer les Stream-Aligned
+                    Teams.</p>
+                <ul class="dense-list">
+                    <li>Fournissent des services réutilisables (CI/CD, monitoring, K8s)</li>
+                    <li>Traitent les autres équipes comme des clients</li>
+                    <li>Focus sur la DX (Developer Experience)</li>
+                    <li>Exemple : Team "Cloud Platform", Team "Data Platform"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:15px;">
+            <div class="ref-card" style="border-color:#4facfe;">
+                <h4>🎓 Enabling Teams</h4>
+                <p style="margin-bottom:10px;">Équipes spécialistes qui aident les autres à surmonter des obstacles.</p>
+                <ul class="dense-list">
+                    <li>Expertise technique pointue (ex: sécurité, perf)</li>
+                    <li>Missions temporaires (3-6 mois)</li>
+                    <li>Transfert de connaissances, puis se retire</li>
+                    <li>Exemple : Team "Security Champions", Team "Observability"</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h4>🧩 Complicated-Subsystem Teams</h4>
+                <p style="margin-bottom:10px;">Gèrent des composants très complexes nécessitant expertise spécialisée.
+                </p>
+                <ul class="dense-list">
+                    <li>Sous-systèmes techniques critiques</li>
+                    <li>Expertise mathématique/algorithmique</li>
+                    <li>API claire vers les autres équipes</li>
+                    <li>Exemple : Team "ML Inference Engine", Team "Video Codec"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info" style="margin-top:20px; border-left-color:#667eea;">
+            <strong>🧠 Cognitive Load</strong><br>
+            Une équipe ne peut maîtriser qu'un nombre limité de services/domaines. Team Topologies recommande de limiter
+            la cognitive load à <strong>7-9 services max par équipe</strong>. Au-delà, fragmentez en plusieurs
+            Stream-Aligned Teams.
+        </div>
+
+        <!-- PSYCHOLOGICAL SAFETY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🧘 D. Psychological Safety (Google's Project
+            Aristotle)</h3>
+        <div class="module-intro">
+            <p>En 2012-2015, Google a analysé 180 équipes pour comprendre ce qui rend une équipe performante.
+                Le résultat : la <strong>Psychological Safety</strong> est le facteur #1, devant l'intelligence
+                individuelle ou la séniorité.</p>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h4 style="color:#00b894; margin-bottom:15px;">✅ Qu'est-ce que la Psychological Safety ?</h4>
+                <p style="margin-bottom:10px;">La conviction qu'on peut prendre des risques interpersonnels (poser des
+                    questions, admettre une erreur,
+                    proposer une idée folle) sans être puni ou humilié.</p>
+                <ul class="dense-list">
+                    <li><strong>Blameless Post-Mortems</strong> : On analyse les causes systémiques, pas les coupables
+                    </li>
+                    <li><strong>Echec = Apprentissage</strong> : Netflix encourage l'expérimentation, même si ça casse
+                    </li>
+                    <li><strong>Speak Up</strong> : Les juniors peuvent challenger les seniors sans crainte</li>
+                    <li><strong>Failure Fridays</strong> : Partager publiquement ses échecs de la semaine</li>
+                </ul>
+            </div>
+            <div class="case-study" style="margin:0;">
+                <h4>📖 Exemple : Etsy's "Just Culture"</h4>
+                <p>Chez Etsy, après un incident, l'équipe fait un <strong>blameless post-mortem</strong> public (diffusé
+                    en live sur Zoom).</p>
+                <p><strong>Questions posées</strong> :</p>
+                <ol style="margin: 5px 0; padding-left: 20px; font-size:0.9rem;">
+                    <li>Quels était les signaux faibles qu'on a manqués ?</li>
+                    <li>Quels process ont échoué ?</li>
+                    <li>Comment automatiser la détection de ce problème ?</li>
+                </ol>
+                <p style="font-size:0.85rem; margin-top:8px; color:var(--muted);">Jamais : "Pourquoi X a fait cette
+                    erreur ?"
+                    → "Pourquoi notre SYSTÈME a permis à cette erreur de se produire ?"</p>
+            </div>
+        </div>
+
+        <div class="warning" style="margin-top:15px;">
+            <strong>⚠️ Hero Culture = Anti-Pattern</strong><br>
+            Glorifier les "heroes" qui sauvent la prod à 3h du matin crée une culture toxique.
+            Le vrai DevOps = <strong>aucun héros nécessaire</strong>, car les systèmes sont résilients et automatisés.
+        </div>
+
+        <!-- ANTI-PATTERNS EXPANDED -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">⚠️ E. DevOps Anti-Patterns (Détails)</h3>
+        <div class="comparison-container">
+            <div class="comparison-table" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="comparison-col">
+                    <h4>🚫 "DevOps Team" Silo</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Problème</strong> : Créer une équipe
+                        "DevOps" séparée recrée un silo.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Les Devs jettent du code par-dessus le mur vers
+                        "DevOps" au lieu d'Ops.
+                        Rien n'a changé.</p>
+                    <p style="font-size:0.85rem; margin-top:8px;"><strong>Solution</strong> : Embedded SREs ou Platform
+                        Teams qui servent les Stream-Aligned Teams.</p>
+                </div>
+                <div class="comparison-col">
+                    <h4>🐌 Manual Approvals</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Problème</strong> : Un Change Advisory
+                        Board (CAB) qui valide manuellement chaque deploy.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Lead Time explose (2-4 semaines pour 1
+                        changement).
+                        Les développeurs contournent le processus.</p>
+                    <p style="font-size:0.85rem; margin-top:8px;"><strong>Solution</strong> : Pre-approved changes via
+                        CI/CD + automated compliance checks (OPA).</p>
+                </div>
+                <div class="comparison-col">
+                    <h4>🎭 CI/CD Theater</h4>
+                    <p style="font-size:0.85rem; margin-bottom:8px;"><strong>Problème</strong> : Pipeline qui tourne
+                        mais ne teste rien de significatif.</p>
+                    <p style="font-size:0.85rem; color:var(--muted);">Exemple : 1 seul test unitaire trivial, zero test
+                        d'intégration,
+                        pas de scan de sécu.</p>
+                    <p style="font-size:0.85rem; margin-top:8px;"><strong>Solution</strong> : Code coverage > 70%,
+                        contract testing, DAST/SAST obligatoires.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="info" style="border-left-color:#ff7675;">
+                <strong>🔧 Tool-Focused Transformation</strong><br>
+                Acheter Jenkins/GitLab/CircleCI ne rend pas une entreprise DevOps.
+                Les outils sont des <strong>enablers</strong>, pas la solution. La culture doit changer d'abord.
+            </div>
+            <div class="info" style="border-left-color:#fdcb6e;">
+                <strong>🐄 Pets vs Cattle</strong><br>
+                <strong>Pets</strong> : Serveurs nommés ("prod-db-01") configurés manuellement. Si mort = panique.<br>
+                <strong>Cattle</strong> : Instances éphémères (auto-scaling). Si mort = le load balancer route ailleurs.
+            </div>
+        </div>
+
+        <!-- ING BANK CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : ING Bank - Transformation Agile/DevOps (Squads)</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">350+</span>
+                    <span class="metric-label">Squads autonomes</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">13</span>
+                    <span class="metric-label">Tribus (Tribes)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3500</span>
+                    <span class="metric-label">Employés IT reorganisés</span>
+                </div>
+            </div>
+            <p><strong>Contexte (2015)</strong> : ING Netherlands, banque traditionnelle, voit les fintechs (Revolut,
+                N26) menacer son modèle.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Spotify Model adapté</strong> : 350 Squads (équipes cross-functional de 9 personnes)
+                    organisées en 13 Tribes.</li>
+                <li><strong>Fin des départements</strong> : Plus de "département Dev" séparé du "département Ops". Tout
+                    le monde dans les Squads.</li>
+                <li><strong>Product Mindset</strong> : Chaque Squad possède un produit end-to-end (ex: "Mobile Payments
+                    Squad").</li>
+                <li><strong>Autonomous Teams</strong> : Les Squads choisissent leur stack tech (dans les guardrails de
+                    sécurité).</li>
+            </ol>
+            <p><strong>Résultat</strong> : Lead time divisé par <strong>10x</strong>. Time-to-market de nouvelles
+                features :
+                <strong>6 mois → 3 semaines</strong>. Employee satisfaction +20%.
+            </p>
+            <p><strong>Leçon</strong> : La transformation DevOps nécessite un changement organisationnel radical, pas
+                juste des outils.</p>
+        </div>
+
+        <!-- TARGET CASE STUDY -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Target - DevOps après le Breach de 2013</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">110M</span>
+                    <span class="metric-label">Cartes bancaires volées</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$292M</span>
+                    <span class="metric-label">Coût du cleanup</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">3 ans</span>
+                    <span class="metric-label">Transformation complète</span>
+                </div>
+            </div>
+            <p><strong>Contexte (2013)</strong> : Target subit l'une des plus grosses fuites de données de l'histoire du
+                retail.
+                Cause : systèmes legacy, silos Ops/Security, aucune automatisation.</p>
+            <p><strong>Transformation DevOps/DevSecOps</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Security Champions</strong> : Embedded security engineers dans chaque équipe produit.</li>
+                <li><strong>CI/CD avec Security Gates</strong> : SAST/DAST automatiques. Aucun deploy sans scan clean.
+                </li>
+                <li><strong>Blameless Post-Mortems</strong> : Culture shift de "qui a fait cette erreur ?" vers "comment
+                    notre système a échoué ?"</li>
+                <li><strong>Platform Team</strong> : Création d'une équipe Cloud Platform interne pour standardiser
+                    l'infra.</li>
+            </ol>
+            <p><strong>Résultat</strong> : En 2018, Target déploie <strong>50+ fois/jour</strong> vs
+                <strong>1x/mois</strong> en 2013.
+                Zero breach majeur depuis 2013. Confiance client restaurée.</p>
+            <p><strong>Leçon</strong> : Les crises forcent le changement. DevOps + DevSecOps ne sont pas optionnels dans
+                le retail moderne.</p>
+        </div>
+
+        <!-- Case Study: Netflix -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Netflix - Transformation DevOps</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">1000+</span>
+                    <span class="metric-label">Déploiements/jour</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">16min</span>
+                    <span class="metric-label">Temps deploy moyen</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">99.99%</span>
+                    <span class="metric-label">Availability SLA</span>
+                </div>
+            </div>
+            <p><strong>Contexte (2008)</strong> : Netflix migre de DVD-par-courrier vers le streaming.
+                Infrastructure monolithique impossible à scaler.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>2008-2009</strong> : Migration massive vers AWS (7 ans de migration !)</li>
+                <li><strong>2010</strong> : Adoption de Microservices (500+ services indépendants aujourd'hui)</li>
+                <li><strong>2011</strong> : Création de Chaos Monkey (test continu de résilience)</li>
+                <li><strong>Culture "Freedom & Responsibility"</strong> : Les ingénieurs déploient directement en
+                    prod</li>
+                <li><strong>No Change Management Board</strong> : Zero approval manuelle pour déployer</li>
+            </ol>
+            <p><strong>Résultat</strong> : <strong>200M+ utilisateurs</strong>, streaming dans <strong>190
+                    pays</strong>, <strong>15% du trafic Internet mondial</strong>. DevOps n'est pas une option,
+                c'est une nécessité pour l'échelle.</p>
+            <p><strong>Leçon clé</strong> : <em>"You build it, you run it"</em> force la qualité à la source.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Culture DevOps</h4>
+            <ul>
+                <li><strong>DevOps = Culture, pas un job title</strong> : Alignement Dev + Ops sur la valeur client
+                </li>
+                <li><strong>3 Voies</strong> : Flow (vitesse), Feedback (qualité), Learning (amélioration continue)
+                </li>
+                <li><strong>DORA Metrics</strong> : Deploy Frequency, Lead Time, MTTR, Change Failure Rate</li>
+                <li><strong>Elite vs Low</strong> : 208x plus de déploiements, 106x lead time plus rapide</li>
+                <li><strong>Anti-patterns</strong> : Blame culture, DevOps team séparé, manual gates</li>
+                <li><strong>ROI mesurable</strong> : -81% de perte de CA due aux pannes</li>
+            </ul>
+        </div>
+    </div>
+</section>

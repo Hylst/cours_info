@@ -1,0 +1,442 @@
+<!-- MODULE 05: DOCKER DEEP DIVE -->
+<section id="m5" style="background: radial-gradient(circle at center, rgba(36, 150, 237, 0.08) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#2496ed; border-color:#2496ed;">05</div>
+            <div>
+                <h2 class="sec-title" style="color:#2496ed;">🐳 Docker Deep Dive</h2>
+                <p class="sec-sub">Containers, Images & Orchestration Locale</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#2496ed;">
+            <h4>🍰 Analogie : Le Gâteau Mille-Feuille</h4>
+            <p>Une image Docker est un gâteau à étages (Layers). Chaque instruction <code>RUN</code>,
+                <code>COPY</code> ajoute une couche.
+                Si vous changez la cerise (code), on ne recuit pas tout le gâteau, on change juste la dernière
+                couche.
+                <strong>L'optimisation, c'est mettre les ingrédients lourds (OS, Deps) en bas, et les légers (Code)
+                    en haut.</strong>
+            </p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Docker : La fin de la "Matrix of Hell"</h3>
+            <p>Avant Docker, déployer une application était un cauchemar de compatibilité (la Matrix of Hell). On
+                devait s'assurer que l'App A (Python 2.7) ne cassait pas l'App B (Python 3.5) sur le même serveur.
+                Docker a apporté l'<strong>Isolation Hermétique</strong>.</p>
+            <p>Le concept clé : <strong>"Build once, run anywhere"</strong>. Le package contient tout : code,
+                runtime, bibliothèques, variables d'environnement. Si ça marche sur votre laptop, ça marchera en
+                prod.</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ? La naissance d'une révolution</h4>
+            <p>En mars 2013, à la conférence PyCon, <strong>Solomon Hykes</strong> présente un projet interne de sa
+                startup dotCloud : Docker. La démo de 5 minutes scotche l'assistance : lancer un container en moins
+                d'une seconde. L'année d'après, dotCloud devient Docker Inc., et change le monde de l'IT pour
+                toujours.</p>
+            <p>Aujourd'hui, Docker est l'unité de mesure de base du DevOps.</p>
+        </div>
+
+
+        <!-- ARCHITECTURE DOCKER -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🏗️ A. Architecture Docker</h3>
+        <div class="docker-arch">
+            <div class="docker-component">
+                <div class="comp-icon">💻</div>
+                <div class="comp-name">Docker CLI</div>
+                <div class="comp-desc">Commandes utilisateur</div>
+            </div>
+            <div class="docker-component">
+                <div class="comp-icon">⚙️</div>
+                <div class="comp-name">Docker Daemon</div>
+                <div class="comp-desc">dockerd (Processus en arrière-plan)</div>
+            </div>
+            <div class="docker-component">
+                <div class="comp-icon">📦</div>
+                <div class="comp-name">Image</div>
+                <div class="comp-desc">Template read-only (Layers)</div>
+            </div>
+            <div class="docker-component">
+                <div class="comp-icon">🚀</div>
+                <div class="comp-name">Container</div>
+                <div class="comp-desc">Instance en cours d'exécution</div>
+            </div>
+            <div class="docker-component">
+                <div class="comp-icon">☁️</div>
+                <div class="comp-name">Registry</div>
+                <div class="comp-desc">Docker Hub, GHCR, ECR</div>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="ref-card" style="border-color:#2496ed;">
+                <h4>Image vs Container</h4>
+                <ul class="dense-list">
+                    <li><strong>Image</strong> = Recette (figée, versionnée, partageable)</li>
+                    <li><strong>Container</strong> = Gâteau (instance vivante de l'image)</li>
+                    <li>1 Image → N Containers identiques</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h4>Isolation vs Virtualisation</h4>
+                <ul class="dense-list">
+                    <li><strong>VM</strong> : OS complet virtualisé (lourd, Go)</li>
+                    <li><strong>Container</strong> : Partage le kernel de l'hôte (léger, Mo)</li>
+                    <li>Démarrage : VM = minutes, Container = secondes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DOCKERFILE INSTRUCTIONS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📜 B. Instructions Dockerfile</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Instruction</th>
+                    <th>Rôle</th>
+                    <th>Exemple</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>FROM</code></td>
+                    <td>Image de base (obligatoire en 1er)</td>
+                    <td><code>FROM node:20-alpine</code></td>
+                </tr>
+                <tr>
+                    <td><code>WORKDIR</code></td>
+                    <td>Définit le dossier de travail</td>
+                    <td><code>WORKDIR /app</code></td>
+                </tr>
+                <tr>
+                    <td><code>COPY</code></td>
+                    <td>Copie fichiers locaux → image</td>
+                    <td><code>COPY package*.json ./</code></td>
+                </tr>
+                <tr>
+                    <td><code>RUN</code></td>
+                    <td>Exécute une commande (Build Time)</td>
+                    <td><code>RUN npm install</code></td>
+                </tr>
+                <tr>
+                    <td><code>ENV</code></td>
+                    <td>Définit une variable d'environnement</td>
+                    <td><code>ENV NODE_ENV=production</code></td>
+                </tr>
+                <tr>
+                    <td><code>EXPOSE</code></td>
+                    <td>Documente le port (ne l'ouvre pas !)</td>
+                    <td><code>EXPOSE 3000</code></td>
+                </tr>
+                <tr>
+                    <td><code>CMD</code></td>
+                    <td>Commande par défaut au run</td>
+                    <td><code>CMD ["node", "server.js"]</code></td>
+                </tr>
+                <tr>
+                    <td><code>ENTRYPOINT</code></td>
+                    <td>Point d'entrée fixe (CMD = arguments)</td>
+                    <td><code>ENTRYPOINT ["python"]</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- MULTI-STAGE BUILD -->
+        <div class="grid2" style="margin-top:20px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Dockerfile Multi-Stage (Node.js)</div>
+                <pre><span class="c"># --- Build Stage ---</span>
+<span class="kw">FROM</span> node:20-slim <span class="kw">AS</span> builder
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> package*.json ./
+<span class="kw">RUN</span> npm ci
+<span class="kw">COPY</span> . .
+<span class="kw">RUN</span> npm run build
+
+<span class="c"># --- Run Stage (Distroless) ---</span>
+<span class="kw">FROM</span> gcr.io/distroless/nodejs20-debian12
+<span class="kw">WORKDIR</span> /app
+<span class="kw">COPY</span> --from=builder /app/dist ./dist
+<span class="kw">CMD</span> ["dist/main.js"]</pre>
+            </div>
+            <div class="ref-card">
+                <h4>Best Practices (2025)</h4>
+                <ul class="dense-list">
+                    <li><strong>Multi-Stage</strong> : Compile dans une image "grosse", run dans une "minuscule"
+                    </li>
+                    <li><strong>.dockerignore</strong> : Exclure <code>node_modules</code>, <code>.git</code></li>
+                    <li><strong>USER</strong> : Ne jamais run en root (<code>USER 1001</code>)</li>
+                    <li><strong>Layers</strong> : Mettre les deps avant le code (cache)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DOCKER-COMPOSE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🎼 C. Docker Compose (Multi-Services)</h3>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>docker-compose.yml</div>
+                <pre><span class="kw">version</span>: '3.8'
+<span class="kw">services</span>:
+  <span class="fn">app</span>:
+    <span class="kw">build</span>: .
+    <span class="kw">ports</span>:
+      - "3000:3000"
+    <span class="kw">environment</span>:
+      - DATABASE_URL=postgres://db:5432
+    <span class="kw">depends_on</span>:
+      - db
+
+  <span class="fn">db</span>:
+    <span class="kw">image</span>: postgres:15
+    <span class="kw">volumes</span>:
+      - pgdata:/var/lib/postgresql/data
+    <span class="kw">environment</span>:
+      POSTGRES_PASSWORD: secret
+
+<span class="kw">volumes</span>:
+  pgdata:</pre>
+            </div>
+            <div>
+                <h4 style="color:#2496ed; margin-bottom:15px;">Concepts Clés</h4>
+                <ul class="dense-list">
+                    <li><span class="vocab-term"
+                            data-def="Un conteneur défini dans docker-compose. Peut être build ou image.">services</span>
+                        : Chaque conteneur est un service</li>
+                    <li><span class="vocab-term"
+                            data-def="Mappe les ports hôte:conteneur. Ex: 8080:80 = l'hôte écoute sur 8080, forward vers 80 du conteneur.">ports</span>
+                        : Mappage Hôte → Container</li>
+                    <li><span class="vocab-term"
+                            data-def="Stockage persistant. Survit à la destruction du conteneur. Named volumes recommandés.">volumes</span>
+                        : Persistence des données</li>
+                    <li><span class="vocab-term"
+                            data-def="Définit l'ordre de démarrage. Le service attend que la dépendance soit 'up' (pas forcément 'ready').">depends_on</span>
+                        : Ordre de démarrage</li>
+                </ul>
+                <div class="tip" style="margin-top:15px; font-size:0.85rem;">
+                    <strong>💡 Commande :</strong> <code>docker compose up -d</code> pour lancer en background.
+                </div>
+            </div>
+        </div>
+
+        <!-- CLI COMMANDS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ D. Commandes CLI Essentielles</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>docker build -t myapp .</code></td>
+                    <td>Construire une image depuis le Dockerfile</td>
+                </tr>
+                <tr>
+                    <td><code>docker run -d -p 8080:80 nginx</code></td>
+                    <td>Lancer un container en arrière-plan</td>
+                </tr>
+                <tr>
+                    <td><code>docker ps</code></td>
+                    <td>Lister les containers actifs</td>
+                </tr>
+                <tr>
+                    <td><code>docker logs -f &lt;id&gt;</code></td>
+                    <td>Suivre les logs en temps réel</td>
+                </tr>
+                <tr>
+                    <td><code>docker exec -it &lt;id&gt; sh</code></td>
+                    <td>Ouvrir un shell dans le container</td>
+                </tr>
+                <tr>
+                    <td><code>docker stop &lt;id&gt;</code></td>
+                    <td>Arrêter un container</td>
+                </tr>
+                <tr>
+                    <td><code>docker rm &lt;id&gt;</code></td>
+                    <td>Supprimer un container arrêté</td>
+                </tr>
+                <tr>
+                    <td><code>docker system prune -a</code></td>
+                    <td>⚠️ Nettoyer tout (images, containers, volumes orphans)</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <!-- MODERN BUILD (BUILDKIT) -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">⚡ E. Modern Build (BuildKit)</h3>
+        <div class="module-intro">
+            <p>Depuis Docker 18.09, <strong>BuildKit</strong> est le moteur de build par défaut. Il permet des builds
+                parallélisés, plus sûrs et plus rapides grâce au cache intelligent.</p>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Dockerfile (BuildKit Syntax)</div>
+                <pre><span class="c"># Syntax directive (facultatif mais recommandé)</span>
+<span class="c"># syntax=docker/dockerfile:1</span>
+
+<span class="kw">FROM</span> node:20-alpine
+<span class="kw">WORKDIR</span> /app
+
+<span class="c"># Mount Cache : Accélère npm ci x10</span>
+<span class="kw">RUN</span> --mount=type=cache,target=/root/.npm \
+    npm ci
+
+<span class="c"># Mount Secret : Clé SSH sécurisée</span>
+<span class="kw">RUN</span> --mount=type=secret,id=ssh_key \
+    git clone git@github.com:priv/repo.git
+
+<span class="kw">CMD</span> ["node", "app.js"]</pre>
+            </div>
+            <div class="info">
+                <strong>🚀 Pourquoi BuildKit ?</strong>
+                <ul class="dense-list">
+                    <li><strong>Concurrent Build</strong> : Si 2 étapes ne dépendent pas l'une de l'autre, elles se
+                        lancent EN MÊME TEMPS.</li>
+                    <li><strong>Secrets</strong> : Les secrets montés ne sont JAMAIS persistés dans l'image finale
+                        (contrairement à COPY).</li>
+                    <li><strong>Cache Mounts</strong> : Garde le dossier <code>node_modules</code> ou <code>.m2</code>
+                        entre les builds.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECURITY & OPTIMIZATION -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🛡️ F. Sécurité & Optimisation</h3>
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #ff7675;">
+                <span class="tool-icon">🧹</span>
+                <h4>Distroless</h4>
+                <p>Images Google contenant <strong>uniquement</strong> l'app et ses deps runtime. Pas de Shell, pas de
+                    package manager, pas de <code>ls</code>. Surface d'attaque minimale.</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #fdcb6e;">
+                <span class="tool-icon">🔍</span>
+                <h4>Scanning (Trivy)</h4>
+                <p>Scanner les CVEs (failles connues) avant de push.<br><code>trivy image myapp:latest</code></p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #74b9ff;">
+                <span class="tool-icon">👤</span>
+                <h4>Rootless</h4>
+                <p>Ne JAMAIS faire tourner en root.<br>Ajouter <code>USER node</code> ou <code>USER 1001</code> à la fin
+                    du Dockerfile.</p>
+            </div>
+        </div>
+
+        <!-- DOCKER CONTEXT -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🌐 G. Docker Context</h3>
+        <div class="module-intro">
+            <p>Comment contrôler un Docker sur un serveur distant (prod) depuis son laptop sans ouvrir le port 2375
+                (dangereux) ?<br>
+                Réponse : <strong>Docker Context over SSH</strong>.</p>
+        </div>
+        <div class="code" style="margin-top:15px;">
+            <div class="code-head"><span class="dot b"></span>Terminal</div>
+            <pre><span class="prompt">$</span> docker context create remote-prod --docker "host=ssh://admin@192.168.1.50"
+<span class="prompt">$</span> docker context use remote-prod
+<span class="prompt">$</span> docker ps
+<span class="comment"># Affiche les containers du serveur PROD, sécurisé via SSH !</span></pre>
+        </div>
+
+        <!-- SPOTIFY CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : Spotify - L'Autonomie à l'échelle</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">500+</span>
+                    <span class="metric-label">Équipes de dev</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">20k+</span>
+                    <span class="metric-label">Services par jour</span>
+                </div>
+            </div>
+            <p><strong>Challenge</strong> : Comment permettre à 500 équipes de déployer sans qu'une équipe "Ops"
+                centrale ne devienne un goulot d'étranglement ?</p>
+            <p><strong>Solution : Golden Paths</strong>.</p>
+            <ul class="dense-list">
+                <li>Spotify fournit des "Golden Paths" (Templates Dockerfile + Pipeline CI/CD pré-approuvés).</li>
+                <li>Si une équipe utilise le Golden Path Docker, elle déploie en prod <strong>sans validation
+                        humaine</strong>.</li>
+                <li>Si elle veut faire du custom, elle doit gérer sa propre sécurité et astreinte.</li>
+            </ul>
+            <p><strong>Résultat</strong> : Docker a permis de standardiser l'unité de déploiement, rendant l'autonomie
+                possible.</p>
+        </div>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>🖥️ Machines Virtuelles (VM)</h4>
+                    <ul>
+                        <li><strong>Isolation Fort</strong> : Noyau OS dédié. Plus sécurisé.</li>
+                        <li><strong>Lourd</strong> : Plusieurs Go par VM. Consomme beaucoup de RAM.</li>
+                        <li><strong>Lent</strong> : Minutes pour démarrer.</li>
+                        <li><strong>Cas d'usage</strong> : Isolation totale, OS différents sur un même hôte.</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🐳 Containers (Docker)</h4>
+                    <ul>
+                        <li><strong>Efficace</strong> : Partage le noyau de l'hôte. Quelques Mo.</li>
+                        <li><strong>Rapide</strong> : Millisecondes pour démarrer.</li>
+                        <li><strong>Portabilité</strong> : Garanti le fonctionnement identique partout.</li>
+                        <li><strong>Cas d'usage</strong> : Microservices, CI/CD, Cloud Native apps.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Microservices Migration -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Migration Monolithe → Microservices</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">6 mois</span>
+                    <span class="metric-label">Cycle release (Avant)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">1 sem</span>
+                    <span class="metric-label">Cycle release (Après)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">-60%</span>
+                    <span class="metric-label">Coût infra</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Une banque traditionnelle gérait son application de trading avec un
+                monolithe
+                J2EE. Les déploiements étaient si risqués qu'ils n'avaient lieu que deux fois par an.</p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Containérisation</strong> : Migration graduelle vers Docker.</li>
+                <li><strong>Découpage</strong> : Séparation du front, de l'auth et du moteur de prix en
+                    micro-services
+                    Docker.</li>
+                <li><strong>Auto-scaling</strong> : Utilisation de Docker Swarm (puis K8s) pour gérer les pics de
+                    charge.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Temps de mise sur le marché divisé par 24. Coût de maintenance réduit
+                grâce à
+                l'optimisation des ressources Docker.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Docker Deep Dive</h4>
+            <ul>
+                <li><strong>Image vs Container</strong> : L'image est le plan, le container est la maison.</li>
+                <li><strong>Isolation</strong> : Les containers partagent le kernel mais sont isolés.</li>
+                <li><strong>Dockerfile</strong> : Automatisez la création d'images. Optimisez les layers.</li>
+                <li><strong>Persistence</strong> : Utilisez les Volumes pour les données (DB, Logs).</li>
+            </ul>
+        </div>
+    </div>
+</section>

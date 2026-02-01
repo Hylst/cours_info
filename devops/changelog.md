@@ -48,6 +48,16 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - Création de `structure.md` : Architecture technique complète
 - Création de `changelog.md` : Historique des versions (ce fichier)
 
+#### 📚 Enrichissement Contenu (Expert Level)
+- **Rounds 1-4** : Enrichissement massif de tous les modules (M00 à M10).
+- **Nouveaux Concepts** :
+  - **M06 (K8s)** : Operators, CRDs, StatefulSets.
+  - **M05 (Docker)** : BuildKit, Distroless, Context.
+  - **M02 (Git)** : Internals, Bisect, GitOps.
+  - **M10 (SRE)** : Golden Signals, Chaos Engineering.
+- **Cas d'Étude Réels** : Ajout de 10+ cas (Spotify, Netflix, Uber, OpenAI, HashiCorp).
+- **Volume** : +2500 lignes de contenu pédagogique.
+
 ### 🔧 Corrigé
 
 #### HTML

@@ -1,0 +1,598 @@
+<!-- MODULE 00: RÉSEAUX & CLOUD ESSENTIELS -->
+<section id="m0" style="background: radial-gradient(circle at center, rgba(116, 185, 255, 0.08) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#74b9ff; border-color:#74b9ff;">00</div>
+            <div>
+                <h2 class="sec-title" style="color:#74b9ff;">📡 Réseaux & Cloud Essentiels</h2>
+                <p class="sec-sub">Les Fondations Invisibles</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#74b9ff;">
+            <h4>📬 Analogie : Le Système Postal</h4>
+            <p>Internet est un système postal géant. Chaque paquet de données est une lettre avec une adresse
+                (<strong>IP</strong>),
+                un code postal (<strong>Port</strong>), et un chemin de distribution (<strong>Routage</strong>).
+                Si l'adresse est mauvaise ou si le facteur (<strong>Router</strong>) ne connaît pas le chemin, la
+                lettre est perdue.</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 Pourquoi les Réseaux en DevOps ?</h3>
+            <p>En tant que <strong>DevOps</strong>, vous ne gérez pas seulement du code : vous gérez des
+                <strong>systèmes distribués</strong> qui communiquent via le réseau. Comprendre les réseaux vous
+                permet de :
+            </p>
+            <ul style="margin: 15px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Débugger efficacement</strong> : 80% des incidents en production sont liés au réseau ou
+                    à la connectivité</li>
+                <li><strong>Optimiser la performance</strong> : Latence, bande passante, CDN, DNS caching</li>
+                <li><strong>Sécuriser l'infrastructure</strong> : Firewalls, VPN, Network Policies, Zero Trust</li>
+                <li><strong>Concevoir des architectures résilientes</strong> : Load Balancers, Service Mesh,
+                    Multi-Region</li>
+            </ul>
+            <p><em>Un DevOps qui ne comprend pas les réseaux est comme un pilote qui ne connaît pas la météo</em> :
+                il ne saura pas pourquoi ça plante quand ça plante.</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box">
+            <h4>💡 Le saviez-vous ?</h4>
+            <p><strong>ARPANET</strong>, le précurseur d'Internet, a envoyé son premier message le <strong>29
+                    octobre 1969</strong> entre UCLA et Stanford. Le message était censé être "LOGIN" mais le
+                système a planté après "LO". Premier bug réseau de l'histoire ! 🐛</p>
+            <p>Aujourd'hui, Internet compte <strong>5,3 milliards d'utilisateurs</strong> et transfère <strong>4,8
+                    zettaoctets</strong> de données par an (1 ZB = 1 milliard de TB).</p>
+        </div>
+
+
+        <!-- MODÈLE TCP/IP -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🗂️ A. Modèle TCP/IP (Simplifié)</h3>
+        <div class="net-diagram">
+            <div class="net-layer" style="border-color:#e17055;">
+                <div class="layer-num">Couche 4</div>
+                <div class="layer-name">Application</div>
+                <div class="layer-proto">HTTP, HTTPS, SSH, DNS, FTP</div>
+            </div>
+            <div class="net-layer" style="border-color:#fdcb6e;">
+                <div class="layer-num">Couche 3</div>
+                <div class="layer-name">Transport</div>
+                <div class="layer-proto">TCP, UDP</div>
+            </div>
+            <div class="net-layer" style="border-color:#00cec9;">
+                <div class="layer-num">Couche 2</div>
+                <div class="layer-name">Internet</div>
+                <div class="layer-proto">IP, ICMP</div>
+            </div>
+            <div class="net-layer" style="border-color:#a29bfe;">
+                <div class="layer-num">Couche 1</div>
+                <div class="layer-name">Accès Réseau</div>
+                <div class="layer-proto">Ethernet, Wifi</div>
+            </div>
+        </div>
+
+        <!-- PROTOCOLES CLÉS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔌 B. Protocoles Clés</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Protocole</th>
+                    <th>Port</th>
+                    <th>Rôle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="HyperText Transfer Protocol. Le langage du web. Version sécurisée: HTTPS (port 443).">HTTP/HTTPS</span>
+                    </td>
+                    <td><code>80 / 443</code></td>
+                    <td>Communication Web (Pages, APIs REST)</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Secure Shell. Connexion chiffrée à un serveur distant. Utilise une paire de clés (publique/privée).">SSH</span>
+                    </td>
+                    <td><code>22</code></td>
+                    <td>Accès distant sécurisé aux serveurs</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Domain Name System. Traduit les noms (google.com) en adresses IP (142.250.x.x). L'annuaire d'internet.">DNS</span>
+                    </td>
+                    <td><code>53</code></td>
+                    <td>Résolution de noms de domaine</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Transmission Control Protocol. Fiable, ordonné, avec accusé de réception. Utilisé pour HTTP, SSH. 'La lettre recommandée'.">TCP</span>
+                    </td>
+                    <td>-</td>
+                    <td>Transport fiable (Connexion établie)</td>
+                </tr>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="User Datagram Protocol. Rapide mais sans garantie. Utilisé pour le streaming, les jeux. 'Le flyer jeté dans la boîte aux lettres'.">UDP</span>
+                    </td>
+                    <td>-</td>
+                    <td>Transport rapide (Sans connexion)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- CONCEPTS RÉSEAU -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🌐 C. Concepts Réseau Essentiels</h3>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Adressage</h4>
+                <ul class="dense-list">
+                    <li><span class="vocab-term"
+                            data-def="Internet Protocol address. L'adresse unique d'une machine sur le réseau. IPv4 (ex: 192.168.1.1) ou IPv6.">IP</span>
+                        : Adresse de la machine (ex: <code>192.168.1.1</code>)</li>
+                    <li><span class="vocab-term"
+                            data-def="Classless Inter-Domain Routing. Notation compacte pour définir une plage d'IPs. Ex: 10.0.0.0/24 = 256 adresses.">CIDR</span>
+                        : Notation de plage (<code>/24</code> = 256 IPs)</li>
+                    <li><span class="vocab-term"
+                            data-def="Un numéro (0-65535) qui identifie un service sur une machine. Ex: 80=HTTP, 22=SSH, 3306=MySQL.">Port</span>
+                        : Numéro du service (ex: <code>:8080</code>)</li>
+                    <li><span class="vocab-term"
+                            data-def="Système qui partage une IP publique entre plusieurs IPs privées. Utilisé par tous les routeurs domestiques.">NAT</span>
+                        : Traduction d'adresses (Privé ↔ Public)</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h4>Sécurité</h4>
+                <ul class="dense-list">
+                    <li><span class="vocab-term"
+                            data-def="Barrière qui filtre le trafic réseau selon des règles (autoriser/bloquer ports, IPs).">Firewall</span>
+                        : Filtre le trafic (Autoriser/Bloquer)</li>
+                    <li><span class="vocab-term"
+                            data-def="Time To Live. Nombre de sauts (routeurs) avant que le paquet soit abandonné. Évite les boucles infinies.">TTL</span>
+                        : Durée de vie du paquet (max sauts)</li>
+                    <li><span class="vocab-term"
+                            data-def="Transport Layer Security. Protocole de chiffrement qui sécurise HTTPS. Le cadenas dans votre navigateur.">TLS/SSL</span>
+                        : Chiffrement des échanges (HTTPS)</li>
+                    <li><span class="vocab-term"
+                            data-def="Mutual TLS. Les DEUX parties (client ET serveur) s'authentifient mutuellement. Standard en microservices.">mTLS</span>
+                        : Authentification mutuelle (K8s)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CLOUD ESSENTIALS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">☁️ D. Cloud Essentials (AWS/GCP/Azure)</h3>
+        <div class="grid3">
+            <div class="tool-card">
+                <h4><span class="vocab-term"
+                        data-def="Virtual Private Cloud. Votre réseau privé isolé dans le cloud. Vous définissez les subnets, routes, et règles de sécurité.">VPC</span>
+                </h4>
+                <p>Réseau privé isolé. Contient vos Subnets (Public/Privé).</p>
+            </div>
+            <div class="tool-card">
+                <h4><span class="vocab-term"
+                        data-def="Security Group. Firewall virtuel au niveau de l'instance. Règles: 'Autoriser SSH depuis 10.0.0.0/8'.">Security
+                        Group</span></h4>
+                <p>Firewall au niveau de l'instance (Autoriser ports/IPs).</p>
+            </div>
+            <div class="tool-card">
+                <h4><span class="vocab-term"
+                        data-def="Identity and Access Management. Gère QUI peut faire QUOI sur vos ressources cloud. Users, Roles, Policies.">IAM</span>
+                </h4>
+                <p>Gestion des identités et permissions (Rôles, Policies).</p>
+            </div>
+            <div class="tool-card">
+                <h4><span class="vocab-term"
+                        data-def="Load Balancer. Répartit le trafic entre plusieurs serveurs. Types: ALB (HTTP), NLB (TCP), CLB (Legacy).">Load
+                        Balancer</span></h4>
+                <p>Distribue le trafic. ALB (L7/HTTP), NLB (L4/TCP).</p>
+            </div>
+            <div class="tool-card">
+                <h4>Region / AZ</h4>
+                <p>Region = Zone géographique. AZ = Datacenter isolé dans la Region (Haute Dispo).</p>
+            </div>
+            <div class="tool-card">
+                <h4><span class="vocab-term"
+                        data-def="Content Delivery Network. Réseau mondial de caches. Sert le contenu depuis le serveur le plus proche de l'utilisateur.">CDN</span>
+                </h4>
+                <p>Cache global (CloudFront, Cloudflare). Réduit la latence.</p>
+            </div>
+        </div>
+
+        <!-- Comparison: OSI vs TCP/IP -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 OSI vs TCP/IP : Quelle Différence ?</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col winner">
+                    <h4>🏆 Modèle TCP/IP (4 couches)</h4>
+                    <ul>
+                        <li><strong>Pragmatique</strong> : Basé sur l'implémentation réelle d'Internet</li>
+                        <li><strong>Simplif</strong> : 4 couches faciles à mémoriser</li>
+                        <li><strong>Standard Internet</strong> : Utilisé par tous les protocoles modernes</li>
+                        <li><strong>Focus DevOps</strong> : Application, Transport, Internet, Accès</li>
+                        <li><strong>Exemples concrets</strong> : HTTP/DNS (App), TCP/UDP (Transport), IP (Internet)
+                        </li>
+                    </ul>
+                </div>
+                <div class="comparison-col">
+                    <h4>📖 Modèle OSI (7 couches)</h4>
+                    <ul>
+                        <li><strong>Théorique</strong> : Modèle académique de référence</li>
+                        <li><strong>Complexe</strong> : 7 couches (Physical, Data Link, Network, Transport, Session,
+                            Presentation, Application)</li>
+                        <li><strong>Rarement implémenté</strong> : Peu de protocoles suivent exactement ce modèle
+                        </li>
+                        <li><strong>Utile pour apprendre</strong> : Bon pour comprendre les concepts</li>
+                        <li><strong>Mnémonique</strong> : "Please Do Not Throw Sausage Pizza Away"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Network Troubleshooting -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Latence Réseau Mystérieuse en Production</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">2.4s</span>
+                    <span class="metric-label">Latence initiale</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">45ms</span>
+                    <span class="metric-label">Après fix</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">-98%</span>
+                    <span class="metric-label">Amélioration</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Une startup SaaS voit son API ralentir brutalement. Les utilisateurs EU
+                se plaignent de timeouts (>2s), mais les utilisateurs US n'ont aucun problème.</p>
+            <p><strong>Investigation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><code>ping api.startup.com</code> depuis EU : <strong>350ms</strong> (anormal pour un serveur
+                    EU)</li>
+                <li><code>traceroute</code> révèle que les paquets transitent par... les USA ! 🤦</li>
+                <li>Le DNS renvoyait l'IP du serveur US au lieu de l'EU</li>
+            </ol>
+            <p><strong>Solution</strong> : Configurer <strong>Route 53 Geolocation Routing</strong> (ou équivalent
+                GCP/Azure). Les requêtes EU sont désormais routées vers le datacenter EU.</p>
+            <p><strong>Résultat</strong> : Latence divisée par <strong>53x</strong>. Clients EU satisfaits. Leçon :
+                <em>Le réseau, c'est de la géographie</em>.
+            </p>
+        </div>
+
+        <!-- Step-by-Step: Debug Network Issues -->
+        <div class="step-by-step">
+            <h4>🔍 Guide Pas-à-Pas : Débugger un Problème Réseau</h4>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h5>Vérifier la connectivité de base</h5>
+                    <p><code>ping [host]</code> - Est-ce que la machine répond ? Si non, problème de routage ou
+                        firewall.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h5>Tester la résolution DNS</h5>
+                    <p><code>dig [domain]</code> ou <code>nslookup</code> - Le nom de domaine se résout-il en IP
+                        correcte ? Cache DNS corrompu ?</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h5>Vérifier le chemin réseau</h5>
+                    <p><code>traceroute [host]</code> - Où les packets se perdent-ils ? Quel routeur pose problème ?
+                    </p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h5>Tester la couche applicative</h5>
+                    <p><code>curl -v https://[host]</code> - HTTP/HTTPS fonctionne ? Certificat TLS valide ? Code
+                        200/500 ?</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h5>Vérifier les ports et firewalls</h5>
+                    <p><code>telnet [host] [port]</code> ou <code>nc -zv [host] [port]</code> - Le port est-il
+                        ouvert ? Firewall bloque ?</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h5>Analyser les logs du serveur</h5>
+                    <p>Côté serveur : <code>tail -f /var/log/nginx/error.log</code> - Erreurs côté backend ?
+                        Timeouts database ?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pitfall Box -->
+        <div class="pitfall-box">
+            <h4>⚠️ Pièges Courants en Réseau</h4>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li><strong>Security Group mal configuré</strong> : "Ça marche en local mais pas en prod" → Vérifier
+                    les inbound rules</li>
+                <li><strong>DNS caching</strong> : Changement d'IP non immédiat (TTL = 300s) → Attendre ou flush
+                    cache</li>
+                <li><strong>NAT Gateway limits</strong> : Trop de connexions sortantes → Connection pool exhausted
+                </li>
+                <li><strong>MTU mismatch</strong> : Packets fragmentés → Perf dégradée (rare mais vicieux)</li>
+            </ul>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - Réseaux pour DevOps</h4>
+            <ul>
+                <li><strong>TCP/IP 4 couches</strong> : Application → Transport → Internet → Accès</li>
+                <li><strong>Ports essentiels</strong> : 80 (HTTP), 443 (HTTPS), 22 (SSH), 3306 (MySQL), 5432
+                    (PostgreSQL)</li>
+                <li><strong>Debug méthodique</strong> : Ping → DNS → Traceroute → Curl → Ports → Logs</li>
+                <li><strong>Cloud networking</strong> : VPC, Security Groups, Load Balancers, Regions/AZ</li>
+                <li><strong>80% des incidents</strong> sont liés au réseau → Maîtriser TCP/IP = sauver des nuits
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- CLI TOOLS -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">⌨️ E. Outils CLI Indispensables</h3>
+        <table class="cmd-table">
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Usage</th>
+                    <th>Exemple</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ping</code></td>
+                    <td>Tester si un hôte répond (ICMP)</td>
+                    <td><code>ping google.com</code></td>
+                </tr>
+                <tr>
+                    <td><code>traceroute</code></td>
+                    <td>Voir le chemin des paquets (chaque routeur)</td>
+                    <td><code>traceroute cloudflare.com</code></td>
+                </tr>
+                <tr>
+                    <td><code>nslookup / dig</code></td>
+                    <td>Requête DNS (Nom → IP)</td>
+                    <td><code>dig github.com</code></td>
+                </tr>
+                <tr>
+                    <td><code>curl</code></td>
+                    <td>Requête HTTP en ligne de commande</td>
+                    <td><code>curl -I https://api.github.com</code></td>
+                </tr>
+                <tr>
+                    <td><code>ssh</code></td>
+                    <td>Connexion distante sécurisée</td>
+                    <td><code>ssh user@192.168.1.100</code></td>
+                </tr>
+                <tr>
+                    <td><code>netstat / ss</code></td>
+                    <td>Voir les ports ouverts et connexions</td>
+                    <td><code>ss -tulnp</code></td>
+                </tr>
+                <tr>
+                    <td><code>openssl</code></td>
+                    <td>Vérifier certificats TLS</td>
+                    <td><code>openssl s_client -connect google.com:443</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip">
+            <strong>💡 Astuce Debug</strong> : Si une app ne marche pas, vérifiez dans l'ordre :
+            1) <code>ping</code> (réseau de base),
+            2) <code>curl</code> (HTTP),
+            3) <code>ss</code> (port ouvert ?),
+            4) Logs applicatifs.
+        </div>
+        <!-- INGRESS & API GATEWAY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚪 F. Ingress Controllers & API Gateways</h3>
+        <div class="module-intro">
+            <p>Dans Kubernetes, les Services (ClusterIP) sont internes. Pour exposer vos apps au monde extérieur,
+                vous avez besoin d'un <strong>Ingress Controller</strong> (ex: Nginx, Traefik) qui route le trafic
+                HTTP/S entrant.</p>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>ingress.yaml</div>
+                <pre><span class="kw">apiVersion:</span> networking.k8s.io/v1
+<span class="kw">kind:</span> Ingress
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> my-app-ingress
+  <span class="kw">annotations:</span>
+    <span class="kw">nginx.ingress.kubernetes.io/rewrite-target:</span> /
+<span class="kw">spec:</span>
+  <span class="kw">rules:</span>
+  - <span class="kw">host:</span> myapp.com
+    <span class="kw">http:</span>
+      <span class="kw">paths:</span>
+      - <span class="kw">path:</span> /api/v1
+        <span class="kw">pathType:</span> Prefix
+        <span class="kw">backend:</span>
+          <span class="kw">service:</span>
+            <span class="kw">name:</span> api-service
+            <span class="kw">port:</span>
+              <span class="kw">number:</span> 80</pre>
+            </div>
+            <div>
+                <h4 style="color:#74b9ff; margin-bottom:15px;">🚦 Rôles Clés de l'Ingress</h4>
+                <ul class="dense-list">
+                    <li><strong>Host-based Routing</strong> : <code>api.site.com</code> → Service A,
+                        <code>blog.site.com</code> → Service B</li>
+                    <li><strong>Path-based Routing</strong> : <code>/api</code> → Backend, <code>/static</code> → CDN
+                    </li>
+                    <li><strong>TLS Termination</strong> : Décrypte le HTTPS ici pour soulager les pods</li>
+                    <li><strong>Rate Limiting</strong> : Bloque si > 100 req/s par IP</li>
+                </ul>
+                <div class="ref-card" style="margin-top:15px; border-color:#00cec9;">
+                    <h5>Ingress vs API Gateway</h5>
+                    <p style="font-size:0.85rem;"><strong>Ingress (Nginx)</strong> : Routing basique L7.<br>
+                        <strong>API Gateway (Kong, Tyk)</strong> : + Auth (Oauth2), Monetization, Analytics avancés.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVICE MESH -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🕸️ G. Service Mesh (Istio / Linkerd)</h3>
+        <div class="module-intro">
+            <p>Quand vous avez 100+ microservices, la complexité réseau explose. Le <strong>Service Mesh</strong> ajoute
+                un
+                proxy "Sidecar" (Envoy) à côté de CHAQUE conteneur pour gérer le réseau intelligemment.</p>
+        </div>
+
+        <div class="grid3">
+            <div class="tool-card" style="border-top:3px solid #6c5ce7;">
+                <span class="tool-icon">🔒</span>
+                <h4>mTLS Zero-Trust</h4>
+                <p>Chiffrement automatique entre TOUS les services. Service A ne parle à Service B que s'il a le bon
+                    certificat (géré par le Mesh).</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #00b894;">
+                <span class="tool-icon">🚦</span>
+                <h4>Traffic Splitting</h4>
+                <p>Canary Release programmable : "Envoie 5% du trafic à la v2, si < 1% d'erreurs, passe à 10%".</p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #e17055;">
+                <span class="tool-icon">🛡️</span>
+                <h4>Resiliency</h4>
+                <p>Circuit Breakers, Retries automatiques, Timeouts. Empêche une panne en cascade.</p>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top:20px;">
+            <div class="code-head"><span class="dot g"></span>Istio VirtualService (Canary)</div>
+            <pre><span class="kw">apiVersion:</span> networking.istio.io/v1alpha3
+<span class="kw">kind:</span> VirtualService
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> reviews-route
+<span class="kw">spec:</span>
+  <span class="kw">hosts:</span>
+  - reviews
+  <span class="kw">http:</span>
+  - <span class="kw">route:</span>
+    - <span class="kw">destination:</span>
+        <span class="kw">host:</span> reviews
+        <span class="kw">subset:</span> v1
+      <span class="kw">weight:</span> <span class="num">90</span>
+    - <span class="kw">destination:</span>
+        <span class="kw">host:</span> reviews
+        <span class="kw">subset:</span> v2
+      <span class="kw">weight:</span> <span class="num">10</span></pre>
+        </div>
+
+        <!-- SDN & NETWORK POLICIES -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🛡️ H. SDN & Kubernetes Network Policies</h3>
+        <div class="module-intro">
+            <p>Par défaut dans K8s, <strong>tous les pods peuvent parler à tous les pods</strong> (Open Bar).
+                C'est un risque de sécurité majeur. Les <strong>Network Policies</strong> agissent comme un firewall
+                interne.</p>
+            <p>Cela nécessite un plugin CNI (Container Network Interface) compatible comme <strong>Calico</strong> ou
+                <strong>Cilium</strong> (basé sur eBPF).</p>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Default Deny All (Best Practice)</div>
+                <pre><span class="kw">apiVersion:</span> networking.k8s.io/v1
+<span class="kw">kind:</span> NetworkPolicy
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> default-deny-all
+<span class="kw">spec:</span>
+  <span class="kw">podSelector:</span> {}
+  <span class="kw">policyTypes:</span>
+  - Ingress
+  - Egress
+<span class="comment"># Résultat : Plus rien ne rentre ni ne sort !</span>
+<span class="comment"># Il faut ensuite whitelister explicitement.</span></pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Allow Frontend to Backend</div>
+                <pre><span class="kw">kind:</span> NetworkPolicy
+<span class="kw">spec:</span>
+  <span class="kw">podSelector:</span>
+    <span class="kw">matchLabels:</span>
+      <span class="kw">app:</span> backend
+  <span class="kw">ingress:</span>
+  - <span class="kw">from:</span>
+    - <span class="kw">podSelector:</span>
+        <span class="kw">matchLabels:</span>
+          <span class="kw">app:</span> frontend
+    <span class="kw">ports:</span>
+    - <span class="kw">port:</span> 8080</pre>
+            </div>
+        </div>
+
+        <!-- CLOUDFLARE CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : Cloudflare - Une Architecture Anycast Globale</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">300+</span>
+                    <span class="metric-label">Datacenters</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">172 Tbps</span>
+                    <span class="metric-label">Capacité réseau</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">50ms</span>
+                    <span class="metric-label">Latence pour 95% du monde</span>
+                </div>
+            </div>
+            <p><strong>Architecture Anycast</strong> :</p>
+            <p>Normalement, 1 IP = 1 Serveur (Unicast). Avec <strong>Anycast</strong>, la même IP (ex: 1.1.1.1) est
+                annoncée
+                par 300 datacenters dans le monde. Le protocole de routage BGP dirige automatiquement l'utilisateur vers
+                le datacenter le plus proche.</p>
+            <p><strong>Avantages</strong> :</p>
+            <ul class="dense-list">
+                <li><strong>DDoS Mitigation</strong> : Une attaque de 1 Tbps est diluée sur 300 centres. Aucun centre ne
+                    tombe.</li>
+                <li><strong>Performance</strong> : Pas de latence transatlantique si vous êtes local.</li>
+                <li><strong>Haute Dispo</strong> : Si Paris tombe, le trafic est rerouté vers Londres ou Francfort en
+                    quelques secondes via BGP.</li>
+            </ul>
+        </div>
+
+        <!-- AWS GLOBAL ACCELERATOR CASE STUDY -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : AWS Global Accelerator vs Internet Public</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">-60%</span>
+                    <span class="metric-label">Réduction Latence Jitter</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">2x</span>
+                    <span class="metric-label">Débit TCP traversée océan</span>
+                </div>
+            </div>
+            <p><strong>Problème</strong> : Internet public ("The Wild West") est imprévisible. Routes instables, packet
+                loss, peering saturé.</p>
+            <p><strong>Solution</strong> : Global Accelerator vous donne une IP statique Anycast qui entre dans le
+                réseau backbone privé d'AWS
+                au point de présence (PoP) le plus proche de l'utilisateur.</p>
+            <p><strong>Résultat</strong> : Vos paquets voyagent sur la fibre privée d'AWS (optimisée, pas de congestion)
+                au lieu de sauter
+                entre 15 FAI publics douteux. Idéal pour Gaming, VoIP, Finance.</p>
+        </div>
+    </div>
+</section>

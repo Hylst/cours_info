@@ -1,0 +1,620 @@
+<!-- MODULE 09: DEVSECOPS -->
+<section id="m9" style="background: radial-gradient(circle at center, rgba(255, 118, 117, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#ff7675; border-color:#ff7675;">09</div>
+            <div>
+                <h2 class="sec-title" style="color:#ff7675;">🔐 DevSecOps</h2>
+                <p class="sec-sub">Security Shift-Left & Automation</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#ff7675;">
+            <h4>👮 Analogie : Garde du Corps vs Police</h4>
+            <p>Sécurité traditionnelle = <strong>Police</strong> (Intervient après le crime/déploiement).<br>
+                DevSecOps = <strong>Garde du Corps</strong> (Accompagne tout le trajet pour éviter le problème).</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 DevSecOps : La Sécurité "Shift-Left"</h3>
+            <p>Le DevSecOps est l'intégration de la sécurité <strong>tout au long</strong> du cycle de vie DevOps,
+                et non plus comme une étape finale avant la prod. L'idée est de "shifter à gauche" (plus tôt dans le
+                pipeline) pour détecter les failles au moment où elles coûtent le moins cher à corriger.</p>
+            <p>La sécurité n'est plus la responsabilité d'une équipe isolée, mais une <strong>responsabilité
+                    partagée</strong> entre Devs et Ops, automatisée via des outils dans la CI/CD.</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box" style="border-left-color:var(--kw)">
+            <h4>💡 Le saviez-vous ? L'attaque SolarWinds (2020)</h4>
+            <p>C'est l'un des plus grands piratages de l'histoire. Les hackers n'ont pas attaqué les serveurs des
+                clients, mais le <strong>pipeline de build</strong> du logiciel Orion (SolarWinds). Ils ont injecté
+                un malware directement dans le code source officiel.</p>
+            <p>Cela a prouvé que la sécurité du <strong>Pipeline</strong> est aussi importante que la sécurité de
+                l'<strong>Application</strong> elle-même. C'est ce qu'on appelle la Supply Chain Security.</p>
+        </div>
+
+
+        <!-- SECURITY PIPELINE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🔄 A. Sécurité dans le Pipeline</h3>
+        <div class="git-flow">
+            <div class="git-stage" style="background:#636e72;">
+                <div class="stage-icon">📝</div>
+                <div class="stage-name">Code</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">Pre-commit hooks</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#ff7675;">
+                <div class="stage-icon">🔍</div>
+                <div class="stage-name">SAST</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">SonarQube</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                <div class="stage-icon">📦</div>
+                <div class="stage-name">SCA</div>
+                <div style="font-size:0.65rem; color:rgba(0,0,0,0.6);">Snyk</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#74b9ff;">
+                <div class="stage-icon">🐳</div>
+                <div class="stage-name">Image Scan</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">Trivy</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#a29bfe;">
+                <div class="stage-icon">🚀</div>
+                <div class="stage-name">DAST</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.7);">OWASP ZAP</div>
+            </div>
+        </div>
+
+        <!-- TOOLS TABLE -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛠️ B. Outils DevSecOps</h3>
+        </tbody>
+        </table>
+
+        <!-- Comparison: SAST vs DAST -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 SAST vs DAST : Lequel choisir ?</h3>
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>🔍 SAST (Statique)</h4>
+                    <ul>
+                        <li><strong>Cible</strong> : Code source, manifests IaC.</li>
+                        <li><strong>Timing</strong> : Très tôt (avant le build).</li>
+                        <li><strong>Avantage</strong> : Trouve la ligne de code précise à corriger.</li>
+                        <li><strong>Limite</strong> : Ne voit pas les problèmes de runtime/config.</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🚀 DAST (Dynamique)</h4>
+                    <ul>
+                        <li><strong>Cible</strong> : Application en cours d'exécution.</li>
+                        <li><strong>Timing</strong> : Tard (Staging/Prod).</li>
+                        <li><strong>Avantage</strong> : Trouve les vraies failles exploitables (ex: SQLi).</li>
+                        <li><strong>Limite</strong> : Boîte noire, ne sait pas où est le problème dans le code.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study: Equifax -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : Equifax - L'oubli à 1.4 milliard de dollars</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">147M</span>
+                    <span class="metric-label">Dossiers personnels volés</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">2 mois</span>
+                    <span class="metric-label">Délai avant détection</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$1.4B</span>
+                    <span class="metric-label">Coût total du cleanup/amendes</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : En 2017, Equifax subit l'une des plus grosses fuites de données de
+                l'histoire. La cause ? Une vulnérabilité connue dans le framework <strong>Apache Struts</strong>.
+            </p>
+            <p><strong>Transformation</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>SCA missing</strong> : Equifax n'avait pas d'outil d'analyse de dépendances (SCA) pour
+                    les prévenir qu'un patch de sécurité était disponible depuis des mois.</li>
+                <li><strong>Patching manuel</strong> : Le processus de mise à jour était lent et manuel, laissant
+                    les serveurs exposés.</li>
+            </ol>
+            <p><strong>Résultat</strong> : Cette catastrophe a popularisé le terme DevSecOps. Aujourd'hui, un outil
+                comme Snyk ou Dependabot aurait bloqué la CI/CD jusqu'à ce que la version de Struts soit mise à
+                jour.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - DevSecOps Essentials</h4>
+            <ul>
+                <li><strong>Shift-Left</strong> : Plus tôt vous trouvez une faille, moins elle coûte cher.</li>
+                <li><strong>Automate Everything</strong> : Un audit manuel une fois par an est inutile. Scannez à
+                    chaque commit.</li>
+                <li><strong>Secret Management</strong> : Jamais de MDP ou Clés en clair. Utilisez Vault ou
+                    équivalent.</li>
+                <li><strong>Software Bill of Materials (SBOM)</strong> : Sachez exactement ce qu'il y a dans vos
+                    containers (inventaire des libs).</li>
+            </ul>
+        </div>
+
+        <!-- SUPPLY CHAIN SECURITY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔗 C. Supply Chain Security</h3>
+        <div class="module-intro">
+            <p>L'attaque SolarWinds a prouvé qu'un attaquant ne cible plus seulement votre code, mais aussi votre
+                <strong>pipeline de build</strong> et vos <strong>dépendances</strong>. La Supply Chain Security
+                consiste
+                à sécuriser TOUT le processus de création du logiciel.
+            </p>
+        </div>
+
+        <div class="grid2" style="margin-top:25px;">
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4>📋 SBOM (Software Bill of Materials)</h4>
+                <p style="margin-bottom:10px;">Un inventaire complet de tous les composants (dépendances, libraries,
+                    versions)
+                    contenus dans votre application.</p>
+                <ul class="dense-list">
+                    <li><strong>Format</strong> : CycloneDX, SPDX (standard ISO)</li>
+                    <li><strong>Génération</strong> : Syft, Trivy, Grype</li>
+                    <li><strong>Utilité</strong> : Détecter rapidement si vous êtes affecté par une CVE (ex: Log4Shell)
+                    </li>
+                    <li><strong>Réglementation</strong> : Exigé par certains contrats gouvernementaux (USA)</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Générer un SBOM</div>
+                <pre><span class="comment"># Avec Syft (Anchore)</span>
+<span class="fn">syft</span> packages myimage:v1.0 -o cyclonedx-json > sbom.json
+
+<span class="comment"># Avec Trivy</span>
+<span class="fn">trivy</span> image --format cyclonedx myimage:v1.0 > sbom.cdx
+
+<span class="comment"># Vérifier si Log4j vulnérable dans l'SBOM</span>
+<span class="fn">grype</span> sbom:sbom.json | <span class="fn">grep</span> log4j</pre>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="ref-card">
+                <h4>🏅 SLSA Framework (Google)</h4>
+                <p style="margin-bottom:10px;"><strong>Supply-chain Levels for Software Artifacts</strong> :
+                    Un framework de maturité sécurité pour builds reproductibles.</p>
+                <ul class="dense-list">
+                    <li><strong>Level 0</strong> : Pas de garantie de provenance</li>
+                    <li><strong>Level 1</strong> : Build pipeline documenté</li>
+                    <li><strong>Level 2</strong> : Build service hébergé (GitHub Actions) avec audit trail</li>
+                    <li><strong>Level 3</strong> : Builds reproductibles bit-for-bit + signatures cryptographiques</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4>🔏 Sigstore & Cosign</h4>
+                <p style="margin-bottom:10px;">Signer cryptographiquement les artefacts (images, binaires)
+                    pour prouver leur authenticité.</p>
+                <ul class="dense-list">
+                    <li><strong>Cosign</strong> : Signe des images OCI (Docker)</li>
+                    <li><strong>Fulcio</strong> : Autorité de certification éphémère</li>
+                    <li><strong>Rekor</strong> : Ledger public immuable (blockchain-like)</li>
+                    <li>Utilisé par: Kubernetes, GitHub, npm</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top:20px;">
+            <div class="code-head"><span class="dot r"></span>Signer & vérifier une image</div>
+            <pre><span class="comment"># Signer une image Docker</span>
+<span class="fn">cosign</span> sign --key cosign.key gcr.io/myapp:v1.0
+
+<span class="comment"># Vérifier la signature avant déploiement</span>
+<span class="fn">cosign</span> verify --key cosign.pub gcr.io/myapp:v1.0
+
+<span class="comment"># Policy dans K8s : bloquer images non-signées</span>
+<span class="kw">apiVersion:</span> kyverno.io/v1
+<span class="kw">kind:</span> ClusterPolicy
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> verify-image
+<span class="kw">spec:</span>
+  <span class="kw">validationFailureAction:</span> enforce
+  <span class="kw">rules:</span>
+  - <span class="kw">name:</span> check-signature
+    <span class="kw">verifyImages:</span>
+    - <span class="kw">imageReferences:</span>
+      - <span class="str">"gcr.io/myapp:*"</span>
+      <span class="kw">attestors:</span>
+      - <span class="kw">entries:</span>
+        - <span class="kw">keys:</span>
+            <span class="kw">publicKeys:</span> |-
+              -----BEGIN PUBLIC KEY-----
+              ...</pre>
+        </div>
+
+        <!-- SECRETS MANAGEMENT -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🔐 D. Secrets Management</h3>
+        <div class="info" style="border-left-color:#ff7675;">
+            <strong>🚨 Le problème</strong> : Un secret (API key, password, token) commité sur GitHub est scanné par des
+            bots
+            en <strong>quelques secondes</strong> et exploité. 82% des breaches impliquent des credentials volées.
+        </div>
+
+        <table class="cmd-table" style="margin-top:20px;">
+            <thead>
+                <tr>
+                    <th>Solution</th>
+                    <th>Use Case</th>
+                    <th>Chiffrement</th>
+                    <th>Rotation Auto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="vocab-term"
+                            data-def="Coffre-fort centralisé avec API. Secrets chiffrés au repos (AES-256) et en transit.">HashiCorp
+                            Vault</span></td>
+                    <td>Multi-cloud, entreprise</td>
+                    <td style="color:#00b894;">✓ AES-256</td>
+                    <td style="color:#00b894;">✓ Dynamic secrets</td>
+                </tr>
+                <tr>
+                    <td>AWS Secrets Manager</td>
+                    <td>AWS uniquement</td>
+                    <td style="color:#00b894;">✓ KMS</td>
+                    <td style="color:#00b894;">✓ RDS/Lambda</td>
+                </tr>
+                <tr>
+                    <td>Sealed Secrets (K8s)</td>
+                    <td>GitOps workflows</td>
+                    <td style="color:#00b894;">✓ Asymétrique</td>
+                    <td style="color:#ff7675;">✗ Manuel</td>
+                </tr>
+                <tr>
+                    <td>SOPS (Mozilla)</td>
+                    <td>Fichiers config chiffrés</td>
+                    <td style="color:#00b894;">✓ GPG/KMS</td>
+                    <td style="color:#ff7675;">✗ Manuel</td>
+                </tr>
+                <tr>
+                    <td>External Secrets Operator</td>
+                    <td>Sync Vault → K8s</td>
+                    <td style="color:#00b894;">✓ Source + K8s</td>
+                    <td style="color:#00b894;">✓ Polling</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>vault-setup.sh</div>
+                <pre><span class="comment"># Init Vault (dev mode)</span>
+<span class="fn">vault</span> server -dev
+
+<span class="comment"># Créer un secret</span>
+<span class="fn">vault</span> kv put secret/myapp/db \
+  username=<span class="str">"dbuser"</span> \
+  password=<span class="str">"superSecret123"</span>
+
+<span class="comment"># Dynamic secret: Créer un user MySQL temporaire</span>
+<span class="fn">vault</span> read database/creds/readonly
+<span class="comment"># → génère password valide 1h puis auto-révoqué</span></pre>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>sealed-secret.yaml</div>
+                <pre><span class="comment"># Chiffrer un Secret K8s pour le commiter dans Git</span>
+<span class="fn">kubeseal</span> --format yaml < secret.yaml > sealed-secret.yaml
+
+<span class="comment"># Dans sealed-secret.yaml (safe to commit):</span>
+<span class="kw">apiVersion:</span> bitnami.com/v1alpha1
+<span class="kw">kind:</span> SealedSecret
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> myapp-secret
+<span class="kw">spec:</span>
+  <span class="kw">encryptedData:</span>
+    <span class="kw">password:</span> AgB7w8H3ks... <span class="comment"># Chiffré</span></pre>
+            </div>
+        </div>
+
+        <div class="tip" style="margin-top:15px;">
+            <strong>🔄 Best Practice : Secret Rotation</strong> Les secrets doivent être rotés régulièrement (30-90
+            jours).
+            Automatisez cela avec Vault ou External Secrets Operator. Un secret compromis qui ne change jamais = porte
+            ouverte permanente.
+        </div>
+
+        <!-- ZERO TRUST -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🛡️ E. Zero Trust Architecture</h3>
+        <div class="module-intro">
+            <p>Le modèle traditionnel : <em>"Trust but verify"</em> (le réseau interne est sûr).<br>
+                <strong>Zero Trust</strong> : <em>"Never trust, always verify"</em> (même à l'intérieur du réseau, tout
+                doit être authentifié/autorisé).
+            </p>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-table">
+                <div class="comparison-col">
+                    <h4>🏰 Périmètre Traditionnel</h4>
+                    <ul>
+                        <li><strong>Défense</strong> : Firewall externe fort, réseau interne "sûr".</li>
+                        <li><strong>Accès</strong> : VPN → accès total au réseau.</li>
+                        <li><strong>Latéral Movement</strong> : Facile une fois inside.</li>
+                        <li><strong>Problème</strong> : 1 breach = tout le réseau compromis.</li>
+                    </ul>
+                </div>
+                <div class="comparison-col winner">
+                    <h4>🔒 Zero Trust</h4>
+                    <ul>
+                        <li><strong>Défense</strong> : Chaque service/utilisateur est une frontière.</li>
+                        <li><strong>Accès</strong> : Identity-based, least privilege par défaut.</li>
+                        <li><strong>Latéral Movement</strong> : Impossible sans réauth.</li>
+                        <li><strong>Avantage</strong> : Breach confinée à un seul service.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div class="ref-card">
+                <h4>🔑 BeyondCorp (Google)</h4>
+                <p style="margin-bottom:10px;">Implémentation Zero Trust chez Google. Accès basé sur l'identité de
+                    l'utilisateur
+                    et l'état du device, pas le réseau.</p>
+                <ul class="dense-list">
+                    <li>Aucun VPN corporate</li>
+                    <li>Chaque requête = auth + context-aware policy</li>
+                    <li>Device inventory centralisé</li>
+                    <li>Accès granulaire par service, pas par réseau</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4>🕸️ Service Mesh (Istio/Linkerd)</h4>
+                <p style="margin-bottom:10px;">Applique Zero Trust entre microservices K8s via mTLS automatique.</p>
+                <ul class="dense-list">
+                    <li><strong>mTLS</strong> : Chiffrement service-to-service</li>
+                    <li><strong>Policy</strong> : "payment-svc peut appeler order-svc"</li>
+                    <li><strong>Observability</strong> : Traces distribuées automatiques</li>
+                    <li><strong>Micro-segmentation</strong> : Isolation par namespace</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COMPLIANCE AS CODE -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📜 F. Compliance as Code</h3>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>⚖️ Open Policy Agent (OPA)</h4>
+                <p style="margin-bottom:10px;">Moteur de policy généraliste. Écrivez des règles en Rego (DSL)
+                    pour valider des configs K8s, Terraform, API calls.</p>
+                <ul class="dense-list">
+                    <li>Bloque pods privileged</li>
+                    <li>Force resource limits CPU/RAM</li>
+                    <li>Vérifie que images viennent d'un registry approuvé</li>
+                    <li>CNCF graduated project</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>policy.rego (OPA)</div>
+                <pre><span class="kw">package</span> kubernetes.admission
+
+<span class="kw">deny</span>[msg] {
+  <span class="comment"># Bloquer containers tournant en root</span>
+  input.request.object.spec.containers[_].securityContext.runAsNonRoot <span class="kw">!=</span> <span class="num">true</span>
+  msg := <span class="str">"Container must not run as root"</span>
+}
+
+<span class="kw">deny</span>[msg] {
+  <span class="comment"># Images doivent venir de gcr.io uniquement</span>
+  image := input.request.object.spec.containers[_].image
+  <span class="kw">not</span> <span class="fn">startswith</span>(image, <span class="str">"gcr.io/"</span>)
+  msg := <span class="fn">sprintf</span>(<span class="str">"Image %v not from approved registry"</span>, [image])
+}</pre>
+            </div>
+        </div>
+
+        <div class="ref-card" style="margin-top:20px; border-color:#74b9ff;">
+            <h4>🔰 Kyverno (K8s native)</h4>
+            <p style="margin-bottom:10px;">Alternative à OPA, policies écrites en YAML (pas de DSL).
+                Plus facile pour les débutants.</p>
+            <ul class="dense-list">
+                <li><strong>Validate</strong> : Bloquer ressources non-conformes</li>
+                <li><strong>Mutate</strong> : Auto-ajouter labels/annotations</li>
+                <li><strong>Generate</strong> : Créer NetworkPolicies automatiquement</li>
+                <li><strong>Verify</strong> : Vérifier signatures d'images (Cosign)</li>
+            </ul>
+        </div>
+
+        <!-- RUNTIME SECURITY -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚨 G. Runtime Security</h3>
+        <div class="module-intro">
+            <p>SAST/DAST trouvent les failles AVANT la prod. Mais que se passe-t-il si un attaquant exploite
+                une 0-day inconnue EN PRODUCTION ? C'est là qu'intervient la <strong>Runtime Security</strong>.</p>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4>🦅 Falco (CNCF)</h4>
+                <p style="margin-bottom:10px;">Détecteur d'intrusion pour containers. Surveille syscalls au niveau
+                    kernel.</p>
+                <ul class="dense-list">
+                    <li><strong>Alerte</strong> : "Shell spawned in container" → suspect</li>
+                    <li><strong>Alerte</strong> : "File sensitive read (/etc/shadow)"</li>
+                    <li><strong>Alerte</strong> : "Connexion réseau inattendue"</li>
+                    <li>Règles customisables en YAML</li>
+                </ul>
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>falco-rule.yaml</div>
+                <pre><span class="kw">- rule:</span> Shell in Container
+  <span class="kw">desc:</span> Detecter un shell dans un container
+  <span class="kw">condition:</span> >
+    container.id <span class="kw">!=</span> host
+    <span class="kw">and</span> proc.name = bash
+  <span class="kw">output:</span> >
+    Shell opened in container
+    (user=%user.name container=%container.name 
+     image=%container.image)
+  <span class="kw">priority:</span> WARNING</pre>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:20px;">
+            <div>
+                <h4 style="color:#ff7675; margin-bottom:15px;">🔒 Pod Security Standards (K8s)</h4>
+                <ul class="dense-list">
+                    <li><strong>Privileged</strong> : Aucune restriction (dangereux)</li>
+                    <li><strong>Baseline</strong> : Bloque known privilege escalations</li>
+                    <li><strong>Restricted</strong> : Hardening maximal (runAsNonRoot, readOnlyRoot, drop ALL
+                        capabilities)</li>
+                </ul>
+                <div class="code" style="margin-top:10px;">
+                    <div class="code-head"><span class="dot g"></span>namespace-policy</div>
+                    <pre><span class="kw">apiVersion:</span> v1
+<span class="kw">kind:</span> Namespace
+<span class="kw">metadata:</span>
+  <span class="kw">name:</span> production
+  <span class="kw">labels:</span>
+    <span class="kw">pod-security.kubernetes.io/enforce:</span> restricted</pre>
+                </div>
+            </div>
+            <div class="ref-card">
+                <h4>🌐 Network Policies</h4>
+                <p style="margin-bottom:10px;">Firewall applicatif au niveau Pod. Par défaut, tout Pod peut parler à
+                    tout le monde.</p>
+                <ul class="dense-list">
+                    <li>Principe : Default deny, whitelist explicite</li>
+                    <li>Exemple : "frontend peut → backend:8080"</li>
+                    <li>Exemple : "Aucun pod ne peut → Internet sauf monitoring"</li>
+                    <li>CNI required : Calico, Cilium, Weave</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LOG4SHELL CASE STUDY -->
+        <div class="case-study" style="margin-top:30px;">
+            <h4>📊 Cas d'étude : Log4Shell (CVE-2021-44228) - La panique mondiale</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">10/10</span>
+                    <span class="metric-label">CVSS Score (critique max)</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">72h</span>
+                    <span class="metric-label">Pour patcher 80% des systèmes</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Millions</span>
+                    <span class="metric-label">Serveurs affectés mondialement</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : En décembre 2021, une RCE (Remote Code Execution) est découverte dans Log4j
+                2,
+                la bibliothèque Java de logging la plus utilisée au monde. Un simple string dans les logs = code
+                arbitraire exécuté.</p>
+            <p><strong>Impact DevSecOps</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>SBOM critique</strong> : Les entreprises avec SBOM ont pu identifier en 10 minutes quelles
+                    apps étaient affectées.
+                    Les autres ont cherché pendant des semaines.</li>
+                <li><strong>SCA en CI/CD</strong> : Snyk/Dependabot ont bloqué automatiquement les builds tant que Log4j
+                    n'était pas patché.</li>
+                <li><strong>Signature d'images</strong> : Certaines entreprises ont temporairement bloqué le déploiement
+                    d'images non-vérifiées.</li>
+            </ol>
+            <p><strong>Leçon</strong> : Sans DevSecOps automation, cette crise aurait duré des mois. Les entreprises
+                matures
+                ont patché en 48-72h grâce à des pipelines automatisés et des SBOM à jour.</p>
+        </div>
+
+        <!-- CircleCI CASE STUDY -->
+        <div class="case-study">
+            <h4>📊 Cas d'étude : CircleCI Breach (2023) - Le vol de secrets à grande échelle</h4>
+            <div class="case-metrics">
+                <div class="metric">
+                    <span class="metric-value">1.6M</span>
+                    <span class="metric-label">Secrets potentiellement exposés</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">36K</span>
+                    <span class="metric-label">Organisations utilisatrices</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">30 jours</span>
+                    <span class="metric-label">Durée de l'infiltration</span>
+                </div>
+            </div>
+            <p><strong>Contexte</strong> : Un attaquant a compromis un laptop d'employé CircleCI via malware,
+                obtenant accès à la session de production et volant des secrets stockés (env vars, SSH keys, API
+                tokens).</p>
+            <p><strong>Lessons learned</strong> :</p>
+            <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+                <li><strong>Ne jamais stocker secrets en clair</strong> : Même dans un "CI/CD sécurisé". Utilisez Vault
+                    avec injection runtime.</li>
+                <li><strong>Rotation obligatoire</strong> : Secrets doivent expirer (TTL) et être rotés régulièrement.
+                </li>
+                <li><strong>Least Privilege</strong> : Limitez les permissions des secrets (ex: un token GitHub ne
+                    devrait pas avoir accès à tout l'org).</li>
+            </ol>
+            <p><strong>Résultat</strong> : CircleCI a demandé à TOUTES ses organisations de roter leurs secrets.
+                Un rappel brutal que la sécurité des secrets est critique.</p>
+        </div>
+
+        <!-- Recall Box -->
+        <div class="recall-box">
+            <h4>🔄 À Retenir - DevSecOps Essentials</h4>
+            <ul>
+                <li><strong>Shift-Left</strong> : Plus tôt vous trouvez une faille, moins elle coûte cher.</li>
+                <li><strong>Automate Everything</strong> : Un audit manuel une fois par an est inutile. Scannez à
+                    chaque commit.</li>
+                <li><strong>Secret Management</strong> : Jamais de MDP ou Clés en clair. Utilisez Vault ou
+                    équivalent.</li>
+                <li><strong>Software Bill of Materials (SBOM)</strong> : Sachez exactement ce qu'il y a dans vos
+                    containers (inventaire des libs).</li>
+                <li><strong>Supply Chain Security</strong> : Signez vos artefacts (Cosign), suivez SLSA, générez des
+                    SBOMs.</li>
+                <li><strong>Zero Trust</strong> : Ne faites confiance à rien, vérifiez tout (mTLS, identity-based
+                    access).</li>
+                <li><strong>Compliance as Code</strong> : Policies OPA/Kyverno pour bloquer configs dangereuses
+                    automatiquement.</li>
+                <li><strong>Runtime Security</strong> : Falco + Pod Security Standards pour détecter intrusions en
+                    production.</li>
+            </ul>
+        </div>
+
+
+        <div class="grid2" style="margin-top:25px;">
+            <div>
+                <h4 style="color:#ff7675; margin-bottom:15px;">🛡️ Container Security</h4>
+                <ul class="dense-list">
+                    <li><strong>Distroless</strong> : Images minimales (pas de shell)</li>
+                    <li><strong>Non-root</strong> : <code>USER 1000</code> dans Dockerfile</li>
+                    <li><strong>Read-only</strong> : <code>readOnlyRootFilesystem: true</code></li>
+                    <li><strong>Scan Base Images</strong> : Trivy dans CI</li>
+                </ul>
+            </div>
+            <div class="ref-card" style="border-color:#ff7675;">
+                <h4 style="color:#ff7675;">⚠️ OWASP Top 10 (2024)</h4>
+                <ol class="dense-list" style="padding-left:18px;">
+                    <li>Broken Access Control</li>
+                    <li>Cryptographic Failures</li>
+                    <li>Injection (SQL, XSS)</li>
+                    <li>Insecure Design</li>
+                    <li>Security Misconfiguration</li>
+                </ol>
+                <p style="font-size:0.8rem; margin-top:8px; color:var(--muted);">Les 5 autres: SSRF, Vulnerable
+                    Components, Auth Failures, Logging Failures, Security Testing</p>
+            </div>
+        </div>
+
+        <div class="warning" style="margin-top:20px;">
+            <strong>⚡ Secrets Management</strong><br>
+            Un <code>AWS_KEY</code> commité sur GitHub est piraté en <strong>3 secondes</strong>. Utilisez un
+            coffre-fort (Vault, SealedSecrets) injecté au runtime.
+        </div>
+    </div>
+</section>

@@ -1,0 +1,273 @@
+﻿<!-- MODULE 10: SRE & FIABILITÉ -->
+<section id="m10" style="background: radial-gradient(circle at center, rgba(0, 206, 201, 0.06) 0%, transparent 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#00cec9; border-color:#00cec9;">10</div>
+            <div>
+                <h2 class="sec-title" style="color:#00cec9;">⚙️ SRE & Fiabilité</h2>
+                <p class="sec-sub">Site Reliability Engineering</p>
+            </div>
+        </div>
+
+        <div class="analogy-box" style="border-left-color:#00cec9;">
+            <h4>📉 Analogie : Le Budget d'Erreur</h4>
+            <p>Imaginez un budget de "minutes de panne" par mois. Si vous le dépassez (trop de pannes), vous n'avez
+                plus le droit de déployer des nouveautés tant que vous n'avez pas stabilisé.</p>
+        </div>
+
+        <!-- Introduction Contextuelle -->
+        <div class="module-intro">
+            <h3>📖 SRE : L'Ingénierie de la Fiabilité</h3>
+            <p>Le <strong>Site Reliability Engineering (SRE)</strong> est une discipline qui intègre des aspects du
+                génie logiciel et les applique aux problèmes d'exploitation. Comme le dit Google : <em>"class SRE
+                    implements Interface DevOps"</em>.</p>
+            <p>L'objectif du SRE est de créer des systèmes logiciels ultra-scalables et hautement fiables.
+                Contrairement au SysAdmin traditionnel, le SRE passe au moins <strong>50% de son temps</strong> à
+                coder pour automatiser les tâches d'exploitation (réduire le Toil).</p>
+        </div>
+
+        <!-- Knowledge Box -->
+        <div class="knowledge-box" style="border-left-color:var(--num)">
+            <h4>💡 Le saviez-vous ? La naissance du SRE</h4>
+            <p>Le terme a été inventé par <strong>Ben Treynor Sloss</strong> chez Google en 2003. Il a constitué une
+                équipe de software engineers pour gérer l'exploitation du moteur de recherche. Sa règle d'or : si
+                une tâche doit être faite manuellement plus de deux fois, elle doit être automatisée.</p>
+            <p>Aujourd'hui, le livre "Google SRE Book" est considéré comme la bible du domaine.</p>
+        </div>
+
+
+        <!-- SLI/SLO/SLA FLOW -->
+        <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">📊 A. La Chaîne SLI → SLO → SLA</h3>
+        <div class="git-flow" style="justify-content:center;">
+            <div class="git-stage" style="background:#74b9ff;">
+                <div class="stage-icon">📏</div>
+                <div class="stage-name">SLI</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">Mesure (99.95%)</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#00cec9;">
+                <div class="stage-icon">🎯</div>
+                <div class="stage-name">SLO</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">Objectif (99.9%)</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#fdcb6e; color:#2d3436;">
+                <div class="stage-icon">📜</div>
+                <div class="stage-name">SLA</div>
+                <div style="font-size:0.65rem; color:rgba(0,0,0,0.6);">Contrat (99.5%)</div>
+            </div>
+            <div class="git-arrow">→</div>
+            <div class="git-stage" style="background:#ff7675;">
+                <div class="stage-icon">💰</div>
+                <div class="stage-name">Error Budget</div>
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.8);">0.1% = 8.76h/an</div>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:25px;">
+            <div class="ref-card" style="border-color:#00cec9;">
+                <h4>🧮 Calculateur SLO</h4>
+                <p style="margin-bottom:10px;">Combien de downtime autorisé (Error Budget) ?</p>
+                <div style="background:#222; padding:15px; border-radius:8px; border:1px solid var(--border);">
+                    Disponibilité (%) : <input type="number" id="slo-input" class="calc-input" value="99.9"
+                        step="0.1"><br>
+                    <button class="btn-strategy"
+                        style="background:#00cec9; color:#2d3436; margin-top:10px; padding:6px 12px; border:none;"
+                        onclick="calcSLO()">Calculer</button>
+                    <div id="slo-res" style="margin-top:15px; font-weight:bold; color:#00cec9;">Downtime/An : --
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#00cec9; margin-bottom:15px;">📋 Exemples SLOs Réels</h4>
+                <table class="cmd-table" style="font-size:0.85rem;">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>SLI</th>
+                            <th>SLO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>API</td>
+                            <td>Latency P99</td>
+                            <td>&lt; 200ms</td>
+                        </tr>
+                        <tr>
+                            <td>Web</td>
+                            <td>Availability</td>
+                            <td>99.9%</td>
+                        </tr>
+                        <tr>
+                            <td>DB</td>
+                            <td>Error Rate</td>
+                            <td>&lt; 0.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- GOLDEN SIGNALS -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📡 B. The 4 Golden Signals</h3>
+        <div class="module-intro">
+            <p>Si vous ne devez mesurer que 4 choses, mesurez celles-ci (Google SRE Book).</p>
+        </div>
+        <div class="grid4" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="tool-card" style="border-top:3px solid #ff7675;">
+                <span class="tool-icon">⏱️</span>
+                <h4>Latency</h4>
+                <p>Le temps pour servir une requête (ms).<br><em>Distinguerez succès (200) et erreurs (500).</em></p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #fdcb6e;">
+                <span class="tool-icon">🚦</span>
+                <h4>Traffic</h4>
+                <p>La demande sur votre système.<br><em>RPM (Req/min) ou I/O par sec.</em></p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #e17055;">
+                <span class="tool-icon">💥</span>
+                <h4>Errors</h4>
+                <p>Le taux d'échec.<br><em>500, mais aussi 200 avec mauvais contenu !</em></p>
+            </div>
+            <div class="tool-card" style="border-top:3px solid #74b9ff;">
+                <span class="tool-icon">🔋</span>
+                <h4>Saturation</h4>
+                <p>Le niveau de "remplissage".<br><em>CPU, RAM, Disque, Thread Pool.</em></p>
+            </div>
+        </div>
+
+        <!-- INCIDENT COMMAND -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🚒 C. Incident Command System (ICS)</h3>
+        <div class="grid2">
+            <div class="info">
+                <strong>Pourquoi l'ICS ?</strong><br>
+                Inspiré des pompiers 🇺🇸. Lors d'une panne majeure, la démocratie ne fonctionne pas. Il faut une
+                hiérarchie claire.
+            </div>
+            <div class="code">
+                <div class="code-head"><span class="dot r"></span>Rôles en Crise</div>
+                <ul class="dense-list" style="margin:10px;">
+                    <li>👑 <strong>Commander</strong> : Chef d'orchestre. Ne touche PAS au clavier. Prend les décisions.
+                    </li>
+                    <li>✍️ <strong>Scribe</strong> : Note TOUT (Time, Action, Result) pour le post-mortem.</li>
+                    <li>🛠️ <strong>Ops Lead</strong> : Dirige les techniciens qui réparent.</li>
+                    <li>📣 <strong>Comms</strong> : Parle aux clients/stakeholders.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CHAOS ENGINEERING -->
+        <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">🐒 D. Chaos Engineering</h3>
+        <div class="grid2">
+            <div class="ref-card" style="border-color:#6c5ce7;">
+                <h4>L'Antifragilité</h4>
+                <p><em>"Ce qui ne me tue pas me rend plus fort"</em>. Le Chaos Engineering consiste à injecter des
+                    pannes en prod pour vérifier que le système tient le coup.</p>
+            </div>
+            <div class="ref-card" style="border-color:#fab1a0;">
+                <h4>Outils du Chaos</h4>
+                <ul class="dense-list">
+                    <li><strong>Chaos Monkey (Netflix)</strong> : Tue des instances EC2 au hasard.</li>
+                    <li><strong>Gremlin</strong> : SaaS pour simuler latence, perte de paquets, CPU spike...</li>
+                    <li><strong>Chaos Mesh (K8s)</strong> : Pod Kill, Network Partition dans Kubernetes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="ref-card">
+            <h4>⚡ Réduire le Toil</h4>
+            <p style="font-size:0.9rem; margin-bottom:10px;"><span class="vocab-term"
+                    data-def="Travail répétitif, manuel, sans valeur ajoutée. L'ennemi du SRE.">Toil</span> =
+                Travail manuel répétitif sans valeur</p>
+            <ul class="dense-list">
+                <li>Automatiser les tâches &gt; 2 fois</li>
+                <li>Self-service pour les devs</li>
+                <li>Objectif : &lt;50% du temps en Toil</li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Comparison: SRE vs DevOps vs SysAdmin -->
+    <h3 style="color:#fff; margin-top:40px; margin-bottom:15px;">📊 SRE vs DevOps vs SysAdmin</h3>
+    <div class="comparison-container">
+        <div class="comparison-table" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="comparison-col">
+                <h4>👴 SysAdmin (Classique)</h4>
+                <ul>
+                    <li><strong>Focus</strong> : Maintenir les serveurs en vie ("Keep the lights on").</li>
+                    <li><strong>Méthode</strong> : Ticket d'incident, interventions manuelles.</li>
+                    <li><strong>Échec</strong> : Mauvais, signe de faiblesse.</li>
+                    <li><strong>Automatisation</strong> : Minimale, scripts bash ad-hoc.</li>
+                </ul>
+            </div>
+            <div class="comparison-col">
+                <h4>🔄 DevOps (Collaboratif)</h4>
+                <ul>
+                    <li><strong>Focus</strong> : Casser les silos Dev/Ops ("You build it, you run it").</li>
+                    <li><strong>Méthode</strong> : CI/CD, Infrastructure as Code, feedback loops.</li>
+                    <li><strong>Échec</strong> : Opportunité d'amélioration continue.</li>
+                    <li><strong>Automatisation</strong> : Pipelines, déploiements automatisés.</li>
+                </ul>
+            </div>
+            <div class="comparison-col winner">
+                <h4>🛠️ SRE (Moderne)</h4>
+                <ul>
+                    <li><strong>Focus</strong> : Automatiser l'exploitation ("Engineer away the toil").</li>
+                    <li><strong>Méthode</strong> : Code, Error Budgets, Post-mortems.</li>
+                    <li><strong>Échec</strong> : Opportunité d'apprentissage, géré par le budget d'erreur.</li>
+                    <li><strong>Automatisation</strong> : Tout est code, 50% du temps minimum sur l'engineering.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Study: Google -->
+    <div class="case-study">
+        <h4>📊 Cas d'étude : Google - La culture du "Blameless Post-Mortem"</h4>
+        <div class="case-metrics">
+            <div class="metric">
+                <span class="metric-value">50%</span>
+                <span class="metric-label">Temps max alloué à l'Ops</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">99.9...%</span>
+                <span class="metric-label">Disponibilité critique (Search, Gmail)</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">100%</span>
+                <span class="metric-label">Post-mortems sans blâme</span>
+            </div>
+        </div>
+        <p><strong>Contexte</strong> : Chez Google, quand un service tombe, on ne cherche pas "qui" a fait l'erreur,
+            mais "pourquoi" le système a permis à cette erreur d'arriver.</p>
+        <p><strong>Transformation</strong> :</p>
+        <ol style="margin: 10px 0; padding-left: 25px; color: var(--text);">
+            <li><strong>Blameless Culture</strong> : Un post-mortem n'inclut jamais de noms de personnes. Il se
+                concentre sur les défaillances techniques ou de process.</li>
+            <li><strong>Error Budget enforcement</strong> : Si le budget d'erreur d'un mois est consommé, les
+                releases sont bloquées. Point final. Isso force les Devs à s'intéresser à la stabilité.</li>
+            <li><strong>Burnout prevention</strong> : Les SRE ont le droit de renvoyer l'exploitation aux Devs si le
+                Toil dépasse les 50%.</li>
+        </ol>
+        <p><strong>Résultat</strong> : Une fiabilité légendaire malgré une complexité et un trafic quasi infinis.
+        </p>
+    </div>
+
+    <!-- Recall Box -->
+    <div class="recall-box">
+        <h4>🔄 À Retenir - SRE Mastery</h4>
+        <ul>
+            <li><strong>L'erreur est inévitable</strong> : Ne visez pas 100% de fiabilité (personne n'en a besoin,
+                et c'est trop cher).</li>
+            <li><strong>Error Budget</strong> : C'est le contrat qui aligne Devs (vitesse) et SRE (stabilité).</li>
+            <li><strong>Post-Mortem</strong> : Toujours documenter les pannes pour ne plus jamais qu'elles ne se
+                reproduisent.</li>
+            <li><strong>Automatisez le Toil</strong> : Si vous faites la même chose manuellement tous les jours,
+                vous n'êtes pas SRE.</li>
+        </ul>
+    </div>
+    </div>
+</section>

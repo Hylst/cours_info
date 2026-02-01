@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémo Node.js - Backend JavaScript | Guide 2025</title>
+    <meta name="description"
+        content="Guide Node.js : Event Loop, Modules, File System, HTTP, Express.js. Démos interactives et syntaxe moderne.">
+    <meta name="keywords" content="Node.js, Backend, JavaScript, Express, Server, API, NPM, Modules">
+    <meta name="author" content="Geoffroy Streit">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#303030">
+    <link rel="canonical" href="index.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Mémo Node.js - Backend JavaScript">
+    <meta property="og:description" content="Guide Node.js : Event Loop, Modules, File System, HTTP, Express.js.">
+    <meta property="og:url" content="https://hylst.fr/cours/docker/node_js/index.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://hylst.fr/cours/docker/assets/img/nodejs-share.webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mémo Node.js - Backend JavaScript">
+    <meta name="twitter:description" content="Guide Node.js : Event Loop, Modules, File System, HTTP, Express.js.">
+    <meta name="twitter:image" content="https://hylst.fr/cours/docker/assets/img/nodejs-share.webp">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/icons/favicon.ico">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mémo Node.js</h1>
+            <p>JavaScript côté serveur. Runtime asynchrone orienté événements.</p>
+        </div>
+    </section>
+
+    <!-- SECTIONS -->
+
+    <!-- FOOTER -->
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_node.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

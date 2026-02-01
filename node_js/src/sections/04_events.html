@@ -1,0 +1,70 @@
+<!-- S4: EVENTS -->
+<section id="s4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Events</h2>
+                <p class="sec-sub">Architecture et Design Patterns</p>
+            </div>
+        </div>
+
+        <div class="intro-box" style="padding:15px; margin:0; border:var(--border);">
+            <h4>Architecture Orientée Événements</h4>
+            <p>Node.js est construit autour de l'observer pattern. Le core de Node (<code>net.Server</code>,
+                <code>fs.ReadStream</code>) émet des événements.</p>
+        </div>
+
+        <details>
+            <summary>⚠️ Gestion des Fuites Mémoire (MaxListeners)</summary>
+            <div class="details-content">
+                <p>Si vous attachez trop de listeners à un même événement (plus de 10 par défaut), Node.js vous avertira
+                    :</p>
+                <code
+                    style="color:yellow">MaxListenersExceededWarning: Possible EventEmitter memory leak detected.</code>
+                <p>Pourquoi ? Si vous ajoutez un listener dans une boucle ou une requête sans le retirer, ils
+                    s'accumulent indéfiniment.</p>
+                <pre
+                    style="margin-top:10px; background:#111; padding:5px;"><span class="var">myEmitter</span>.<span class="fn">setMaxListeners</span>(<span class="num">20</span>); <span class="c">// Augmenter la limite</span></pre>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Méthodes clés</div>
+                <pre><span class="c">// 1. on() : Écoute permanente</span>
+<span class="var">emitter</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">cb</span>);
+
+<span class="c">// 2. once() : Écoute UNE SEULE fois</span>
+<span class="var">emitter</span>.<span class="fn">once</span>(<span class="str">'init'</span>, () => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Démarré'</span>));
+
+<span class="c">// 3. off() / removeListener() : Arrêter</span>
+<span class="kw">const</span> <span class="fn">log</span> = (<span class="var">msg</span>) => <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">msg</span>);
+<span class="var">emitter</span>.<span class="fn">on</span>(<span class="str">'msg'</span>, <span class="fn">log</span>);
+<span class="var">emitter</span>.<span class="fn">off</span>(<span class="str">'msg'</span>, <span class="fn">log</span>);</pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head">🚨 L'événement 'error'</div>
+                <pre style="border-left:3px solid red;">
+<span class="c">// Si 'error' est émis SANS listener...</span>
+<span class="c">// Node CRASH immédiatement !</span>
+
+<span class="var">myEmitter</span>.<span class="fn">on</span>(<span class="str">'error'</span>, (<span class="var">err</span>) => {
+    <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">'Erreur gérée :'</span>, <span class="var">err</span>);
+});
+
+<span class="var">myEmitter</span>.<span class="fn">emit</span>(<span class="str">'error'</span>, <span class="kw">new</span> <span class="fn">Error</span>(<span class="str">'Oups'</span>));
+<span class="c">// -> "Erreur gérée : Oups" 
+// (Le process continue)</span></pre>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo-title">Event Simulation</div>
+            <button class="demo-btn" onclick="demoSubscribe()">1. S'abonner (ON)</button>
+            <button class="demo-btn" onclick="demoEmit()">2. Émettre (EMIT)</button>
+            <div id="demo-events-output" class="demo-output">Log des événements...</div>
+        </div>
+    </div>
+</section>

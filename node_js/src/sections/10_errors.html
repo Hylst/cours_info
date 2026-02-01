@@ -1,0 +1,59 @@
+<!-- S10: ERROR HANDLING -->
+<section id="s10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Gestion d'Erreurs</h2>
+                <p class="sec-sub">Robustesse, Custom Errors & Crash Prevention</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Custom Error Class</div>
+                <pre><span class="kw">class</span> <span class="fn">ApiError</span> <span class="kw">extends</span> <span class="fn">Error</span> {
+  <span class="fn">constructor</span>(<span class="var">message</span>, <span class="var">statusCode</span>) {
+    <span class="kw">super</span>(<span class="var">message</span>);
+    <span class="kw">this</span>.<span class="var">statusCode</span> = <span class="var">statusCode</span>;
+    <span class="kw">this</span>.<span class="var">isOperational</span> = <span class="kw">true</span>;
+    <span class="fn">Error</span>.<span class="fn">captureStackTrace</span>(<span class="kw">this</span>, <span class="kw">this</span>.<span class="fn">constructor</span>);
+  }
+}
+
+<span class="kw">throw</span> <span class="kw">new</span> <span class="fn">ApiError</span>(<span class="str">"Produit non trouvé"</span>, <span class="num">404</span>);</pre>
+            </div>
+
+            <div class="warning">
+                <strong>🚨 Erreurs Fatales</strong><br>
+                Certaines erreurs ne peuvent pas être capturées par un `try/catch` (ex: syntaxe, manque de mémoire).
+                Pour le reste, utilisez :
+                <ul style="margin-top:5px; font-size:0.85rem">
+                    <li><code>process.on('uncaughtException')</code></li>
+                    <li><code>process.on('unhandledRejection')</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Best Practices : Async/Await</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Le pattern "Catch-All" Express</div>
+            <pre><span class="c">// Un wrapper pour éviter les try/catch répétitifs</span>
+<span class="kw">const</span> <span class="fn">catchAsync</span> = <span class="var">fn</span> => (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="var">fn</span>(<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>).<span class="fn">catch</span>(<span class="var">next</span>);
+};
+
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/data'</span>, <span class="fn">catchAsync</span>(<span class="kw">async</span> (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="kw">const</span> <span class="var">result</span> = <span class="kw">await</span> <span class="fn">heavyTask</span>();
+    <span class="var">res</span>.<span class="fn">json</span>(<span class="var">result</span>);
+}));</pre>
+        </div>
+
+        <div class="tip">
+            <strong>💡 Operational vs Programmer Errors</strong><br>
+            - <strong>Operational</strong> : On s'y attend (ex: timeout, 404). On doit les gérer proprement.<br>
+            - <strong>Programmer</strong> : Bugs (ex: undefined is not a function). Solution : <strong>CRASH &
+                RESTART</strong> (via PM2). Ne jamais essayer de continuer une app corrompue.
+        </div>
+    </div>
+</section>

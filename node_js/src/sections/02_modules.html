@@ -1,0 +1,102 @@
+<!-- S2: MODULES -->
+<section id="s2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Modules</h2>
+                <p class="sec-sub">CommonJS, ESM & Internals</p>
+            </div>
+        </div>
+
+        <div class="tip">
+            <strong>💡 Le Singleton</strong>
+            Un module n'est exécuté qu'une <strong>seule fois</strong>. Le résultat est mis en cache.
+            Au prochain `import`/`require`, Node retourne l'objet cached. Si vous modifiez l'objet exporté, tous les
+            autres fichiers verront la modification (Mutable).
+        </div>
+
+        <details>
+            <summary>🔍 CommonJS (CJS) - Under the hood</summary>
+            <div class="details-content">
+                <p>Quand Node exécute un fichier JS en CJS, il ne l'exécute pas "nu". Il l'enveloppe dans une fonction
+                    (IIFE) :</p>
+                <code
+                    style="display:block; background:#000; padding:10px; margin:10px 0; border-radius:5px; color:#83cd29">
+                        (function(exports, require, module, __filename, __dirname) {<br>
+                        &nbsp;&nbsp;&nbsp;// Votre code vit ici<br>
+                        });
+                    </code>
+                <p>C'est pour cela que <code>__dirname</code>, <code>exports</code>, etc. sont disponibles "globalement"
+                    (mais en fait locaux à la fonction).</p>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">CommonJS (Legacy)</div>
+                <pre><span class="c">// export</span>
+<span class="var">module</span>.<span class="var">exports</span> = { <span class="fn">hello</span> };
+
+<span class="c">// import</span>
+<span class="kw">const</span> <span class="var">lib</span> = <span class="fn">require</span>(<span class="str">'./lib'</span>);
+
+<span class="c">// Dynamic Import (Possible)</span>
+<span class="kw">if</span> (cond) <span class="fn">require</span>(<span class="str">'./opt'</span>);</pre>
+            </div>
+
+            <div class="code">
+                <div class="code-head">ES Modules (Standard)</div>
+                <pre><span class="c">// export</span>
+<span class="kw">export</span> <span class="kw">default</span> <span class="kw">function</span>() {}
+<span class="kw">export</span> <span class="kw">const</span> <span class="var">val</span> = <span class="num">42</span>;
+
+<span class="c">// import</span>
+<span class="kw">import</span> <span class="var">fn</span>, { <span class="var">val</span> } <span class="kw">from</span> <span class="str">'./lib.mjs'</span>;
+
+<span class="c">// Top-level await (Cool!)</span>
+<span class="kw">const</span> <span class="var">data</span> = <span class="kw">await</span> <span class="fn">fetch</span>(...);</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px; margin-bottom:15px; font-size:1.3rem;">ESM : Les pièges classiques</h3>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>❌ __dirname n'existe pas</h4>
+                <p>En ESM, `__dirname` n'est pas défini.</p>
+                <pre
+                    style="margin-top:5px; background:var(--bg); padding:8px;"><span class="c">// Remplacement :</span>
+<span class="kw">import</span> { <span class="fn">fileURLToPath</span> } <span class="kw">from</span> <span class="str">'url'</span>;
+<span class="kw">import</span> { <span class="fn">dirname</span> } <span class="kw">from</span> <span class="str">'path'</span>;
+
+<span class="kw">const</span> <span class="var">__filename</span> = <span class="fn">fileURLToPath</span>(<span class="kw">import</span>.<span class="var">meta</span>.<span class="var">url</span>);
+<span class="kw">const</span> <span class="var">__dirname</span> = <span class="fn">dirname</span>(<span class="var">__filename</span>);</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>⚠️ Extensions obligatoires</h4>
+                <p>En ESM natif, l'import relatif DOIT avoir l'extension.</p>
+                <pre
+                    style="margin-top:5px; background:var(--bg); padding:8px;"><span class="c">// BAD</span>
+<span class="kw">import</span> <span class="var">utils</span> <span class="kw">from</span> <span class="str">'./utils'</span>;
+
+<span class="c">// GOOD</span>
+<span class="kw">import</span> <span class="var">utils</span> <span class="kw">from</span> <span class="str">'./utils.js'</span>;</pre>
+            </div>
+        </div>
+
+        <details>
+            <summary>🔄 Cycles & Dépendances Circulaires</summary>
+            <div class="details-content">
+                <p>Si A importe B, et B importe A...</p>
+                <ul>
+                    <li><strong>CJS</strong> : Retourne un objet export partiel (vide ou incomplet) pour casser la
+                        boucle. Peut causer des crashs.</li>
+                    <li><strong>ESM</strong> : Gère mieux les références (Binding live), mais reste dangereux.</li>
+                </ul>
+                <p><strong>Solution</strong> : Refactoriser. Extraire la partie commune dans un Module C.</p>
+            </div>
+        </details>
+    </div>
+</section>

@@ -1,0 +1,73 @@
+<!-- S7: NPM -->
+<section id="s7">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">07</div>
+            <div>
+                <h2 class="sec-title">NPM & Packages</h2>
+                <p class="sec-sub">Gestionnaire de paquets, Scripts & Versioning</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>🚀 NPX vs NPM</h3>
+                <ul style="margin-top:10px; color:var(--muted)">
+                    <li><strong>NPM</strong> : Installe les paquets (local ou global).</li>
+                    <li><strong>NPX</strong> : <em>Exécute</em> un binaire sans l'installer globalement (ex:
+                        <code>npx create-react-app</code>).</li>
+                </ul>
+            </div>
+
+            <div class="ref-card">
+                <h4>Semantic Versioning (SemVer)</h4>
+                <p style="font-family:monospace; font-size:1.1rem; color:var(--primary-bright)">MAJOR.MINOR.PATCH</p>
+                <ul style="font-size:0.85rem; margin-top:5px; color:var(--muted)">
+                    <li><strong>^</strong>1.2.3 : Update Minor & Patch (Safe)</li>
+                    <li><strong>~</strong>1.2.3 : Update Patch only (Very Safe)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:25px;">Scripts & Lifecycle</h3>
+        <div class="code">
+            <div class="code-head">package.json</div>
+            <pre><span class="str">"scripts"</span>: {
+  <span class="str">"start"</span>: <span class="str">"node index.js"</span>,
+  <span class="str">"dev"</span>: <span class="str">"nodemon index.js"</span>,
+  <span class="str">"test"</span>: <span class="str">"jest"</span>,
+  <span class="str">"build"</span>: <span class="str">"tsc"</span>,
+  <span class="str">"prebuild"</span>: <span class="str">"rimraf dist"</span> <span class="c">// S'exécute AVANT build</span>
+}</pre>
+        </div>
+
+        <div class="tip">
+            <strong>🔒 Package-lock.json</strong><br>
+            Ce fichier est CRUCIAL. Il verrouille l'arbre exact des dépendances. DOIT être commité.
+            Il garantit que "ça marche chez moi" = "ça marche en prod".
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Commandes Avancées</div>
+                <pre><span class="c"># Auditer les vulnérabilités</span>
+npm audit
+
+<span class="c"># Mettre à jour les paquets (selon package.json)</span>
+npm update
+
+<span class="c"># Installer version précise</span>
+npm i express@4.17.1
+
+<span class="c"># Prune (supprimer packages inutiles)</span>
+npm prune</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Alternatives</h4>
+                <p><strong>Yarn</strong> ou <strong>PNPM</strong> (plus rapide, gestion disque optimisée) sont très
+                    populaires en entreprise.</p>
+            </div>
+        </div>
+    </div>
+</section>

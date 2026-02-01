@@ -1,0 +1,85 @@
+<!-- S3: FILE SYSTEM -->
+<section id="s3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">File System (fs)</h2>
+                <p class="sec-sub">Manipulation de fichiers & Chemins</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot g"></span>Le module Path (Vital)</div>
+                <pre><span class="kw">import</span> <span class="var">path</span> <span class="kw">from</span> <span class="str">'node:path'</span>;
+
+<span class="c">// ⚠️ NE JAMAIS faire 'dir/file.txt' (Windows utilise \)</span>
+<span class="c">// Toujours utiliser path.join()</span>
+<span class="kw">const</span> <span class="var">filePath</span> = <span class="var">path</span>.<span class="fn">join</span>(<span class="str">'data'</span>, <span class="str">'logs'</span>, <span class="str">'error.log'</span>);
+<span class="c">// -> "data/logs/error.log" (Linux)</span>
+<span class="c">// -> "data\logs\error.log" (Windows)</span>
+
+<span class="kw">const</span> <span class="var">abs</span> = <span class="var">path</span>.<span class="fn">resolve</span>(<span class="str">'config.json'</span>);
+<span class="c">// -> Chemin absolu depuis racine process</span></pre>
+            </div>
+
+            <div class="intro-box" style="padding:15px; margin:0; border:1px solid var(--border);">
+                <h4>Les 3 modes d'accès</h4>
+                <ul style="padding-left:20px; color:var(--muted)">
+                    <li><strong style="color:#dba4a4">Sync</strong> (<code>readFileSync</code>) : Bloque tout le thread.
+                        Uniquement pour charger une config au démarrage.</li>
+                    <li><strong style="color:var(--text)">Callback</strong> (<code>readFile</code>) : Legacy, rapide,
+                        mais verbeux.</li>
+                    <li><strong style="color:var(--primary-bright)">Promise</strong> (<code>fs/promises</code>) : Le
+                        standard moderne. Compatible async/await.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Streaming (Big Files)</h3>
+        <p style="margin-bottom:15px; color:var(--muted)">Pour les gros fichiers (ex: Vidéo, Log de 1GB), ne jamais tout
+            charger en RAM !</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Lecture Streamée</div>
+            <pre><span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+
+<span class="kw">const</span> <span class="var">stream</span> = <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'giant-video.mp4'</span>, { 
+    <span class="var">highWaterMark</span>: <span class="num">64</span> * <span class="num">1024</span> <span class="c">// Lire par chunk de 64KB</span>
+});
+
+<span class="var">stream</span>.<span class="fn">on</span>(<span class="str">'data'</span>, (<span class="var">chunk</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Reçu ${chunk.length} bytes`</span>);
+    <span class="c">// Envoyer au client au fur et à mesure...</span>
+});
+
+<span class="var">stream</span>.<span class="fn">on</span>(<span class="str">'end'</span>, () => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Terminé'</span>));</pre>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Dossiers & Arborescence</h4>
+                <p>Pour lister efficacement des dossiers géants, utilisez <code>opendir</code> (Itérateur) plutôt que
+                    <code>readdir</code> (Tableau complet).</p>
+                <pre
+                    style="margin-top:5px; font-size:0.8rem;"><span class="kw">const</span> <span class="var">dir</span> = <span class="kw">await</span> <span class="var">fs</span>.<span class="fn">opendir</span>(<span class="str">'./img'</span>);
+<span class="kw">for</span> <span class="kw">await</span> (<span class="kw">const</span> <span class="var">dirent</span> <span class="kw">of</span> <span class="var">dir</span>)
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">dirent</span>.<span class="var">name</span>);</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Watch Mode</h4>
+                <p>Surveiller les changements de fichiers.</p>
+                <code style="color:var(--kw)">fs.watch('config.json', (evt, file) => reload())</code>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo-title">Virtual File System</div>
+            <button class="demo-btn" onclick="demoFSRead()">Lire Fichier</button>
+            <button class="demo-btn" onclick="demoFSWrite()">Écrire Fichier</button>
+            <div id="demo-fs-output" class="demo-output">En attente d'opération...</div>
+        </div>
+    </div>
+</section>

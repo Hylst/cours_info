@@ -1,0 +1,125 @@
+<!-- S1: RUNTIME -->
+<section id="s1">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">01</div>
+            <div>
+                <h2 class="sec-title">Runtime & Async</h2>
+                <p class="sec-sub">Event Loop, Libuv & Architecture Non-Bloquante</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>Architecture Node.js</h3>
+                <p>Node.js combine le moteur <strong>V8</strong> (Chrome) avec <strong>Libuv</strong>.</p>
+                <ul style="margin-top:10px; line-height:1.6; color:var(--muted)">
+                    <li><strong>V8 Engine</strong> : Compile et exécute le JS.</li>
+                    <li><strong>Libuv</strong> : Gère l'Event Loop, les Thread Pool (pour I/O lourds) et les événements
+                        système.</li>
+                    <li><strong>Single Threaded</strong> : Un seul stack d'exécution JS (Main Thread).</li>
+                </ul>
+            </div>
+            <div class="warning">
+                <strong>⚠️ Don't Block the Loop !</strong><br>
+                Le JSON.parse d'un fichier de 100MB ou une boucle `while(true)` bloquera TOUS les utilisateurs. Pour du
+                calcul lourd, utilisez les <strong>Worker Threads</strong>.
+            </div>
+        </div>
+
+        <details open>
+            <summary>💡 Deep Dive: L'Event Loop</summary>
+            <div class="details-content">
+                <p>L'Event Loop orchestre tout. Elle tourne en boucle et passe par différentes <strong>Phases</strong> :
+                </p>
+
+                <div
+                    style="background:var(--bg); padding:15px; border-radius:8px; margin:15px 0; font-family:monospace; border:1px solid var(--border);">
+                    ┌───────────────────────────┐<br>
+                    │ Timers (setTimeout) │ ◀── Le callback est exécuté ici<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Pending Callbacks │ ◀── Erreurs système (OS)<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Idle, Prepare │ ◀── Usage interne<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ POLL │ ◀── 🚨 LE COEUR : I/O, FS, Network<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Check (setImmediate) │ ◀── Exécuté juste après Poll<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Close Callbacks │ ◀── socket.on('close', ...)<br>
+                    └───────────────────────────┘
+                </div>
+
+                <h4 style="color:var(--accent); margin-top:20px;">Microtasks vs Macrotasks</h4>
+                <p>Entre chaque phase, Node.js vide DEUX queues prioritaires :</p>
+                <ol>
+                    <li><strong>process.nextTick()</strong> : Priorité ABSOLUE. S'exécute immédiatement après le code
+                        courant, avant même les promesses. ⚠️ Danger de boucle infinie.</li>
+                    <li><strong>Promise (Microtasks)</strong> : S'exécute après nextTick, avant de passer à la phase
+                        suivante de l'Event Loop.</li>
+                </ol>
+            </div>
+        </details>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Priorité d'exécution (Piège Classique)</div>
+            <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"1. Start"</span>);
+
+<span class="fn">setTimeout</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"5. Timeout (Macrotask)"</span>), <span class="num">0</span>);
+
+<span class="fn">setImmediate</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"6. Check Phase"</span>));
+
+<span class="kw">new</span> <span class="fn">Promise</span>(resolve => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"2. Promise Init (Sync)"</span>);
+    <span class="fn">resolve</span>();
+}).<span class="fn">then</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"4. Promise .then (Microtask)"</span>));
+
+<span class="var">process</span>.<span class="fn">nextTick</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"3. NextTick (Top Priority)"</span>));
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"End Stack"</span>);
+
+<span class="c">/* Ordre Réel :
+   1. Start
+   2. Promise Init
+   End Stack
+   3. NextTick
+   4. Promise .then
+   5. Timeout
+   6. Check Phase
+*/</span></pre>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Worker Threads</h4>
+                <p style="font-size:0.9rem">Pour les tâches CPU-Intensive (crypto, compression, traitement image).</p>
+                <div class="code" style="margin:5px 0;">
+                    <pre
+                        style="padding:10px;"><span class="kw">import</span> { <span class="fn">Worker</span> } <span class="kw">from</span> <span class="str">'node:worker_threads'</span>;</pre>
+                </div>
+            </div>
+            <div class="ref-card">
+                <h4>Cluster Mode</h4>
+                <p style="font-size:0.9rem">Pour scaler sur plusieurs coeurs CPU (via PM2 ou module natif).</p>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo-title">Simulateur Event Loop</div>
+            <p style="font-size:0.85rem; margin-bottom:10px; opacity:0.8">Visualisez l'ordre d'exécution réel entre les
+                différentes queues.</p>
+            <button class="demo-btn" onclick="demoEventLoop()">Lancer simulation</button>
+            <div id="demo-loop-output" class="demo-output">En attente...</div>
+        </div>
+    </div>
+</section>

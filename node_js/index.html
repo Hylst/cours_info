@@ -19,11 +19,13 @@
     <meta property="og:description" content="Guide Node.js : Event Loop, Modules, File System, HTTP, Express.js.">
     <meta property="og:url" content="https://hylst.fr/cours/docker/node_js/index.html">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://hylst.fr/cours/docker/assets/img/nodejs-share.webp">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mémo Node.js - Backend JavaScript">
     <meta name="twitter:description" content="Guide Node.js : Event Loop, Modules, File System, HTTP, Express.js.">
+    <meta name="twitter:image" content="https://hylst.fr/cours/docker/assets/img/nodejs-share.webp">
 
     <!-- Fonts -->
     <link
@@ -31,26 +33,35 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/quiz-style.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/icons/favicon.ico">
 </head>
 
 <body>
 
     <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">JS</div>Node.js
-            </div>
-            <nav>
-                <a href="#s1">Intro</a>
-                <a href="#s2">Modules</a>
-                <a href="#s3">FS</a>
-                <a href="#s4">Events</a>
-                <a href="#s5">HTTP</a>
-                <a href="#s6">Express</a>
-                <a href="#s9">Avancé</a>
-            </nav>
+    <div class="container header-content">
+        <div class="logo">
+            <div class="logo-icon">JS</div>Node.js
         </div>
-    </header>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-menu">
+            <a href="#s1">Intro</a>
+            <a href="#s2">Modules</a>
+            <a href="#s3">FS</a>
+            <a href="#s4">Events</a>
+            <a href="#s5">HTTP</a>
+            <a href="#s6">Express</a>
+            <a href="#s9">Avancé</a>
+            <a href="#quiz-section" class="quiz-btn">Quiz</a>
+        </nav>
+    </div>
+</header>
 
     <section class="hero">
         <div class="container">
@@ -60,568 +71,935 @@
     </section>
 
     <!-- INTRO GENERAL -->
-    <div class="intro-box">
-        <div class="container">
-            <h3>Qu'est-ce que Node.js ?</h3>
-            <p style="max-width:800px;">
-                Node.js n'est pas un framework, c'est un <strong>Runtime</strong> (environnement d'exécution) qui permet
-                d'exécuter du JavaScript
-                hors du navigateur (côté serveur). Il est construit sur le moteur <strong>V8</strong> de Chrome.
-            </p>
-            <p style="color:var(--muted); font-size:0.95rem; margin-top:10px">
-                Sa force réside dans son architecture <strong>Non-Bloquante</strong> et
-                <strong>Single-Threaded</strong>, ce qui le rend
-                extrêmement performant pour les applications I/O intensive (API, temps réel, streaming).
-            </p>
-        </div>
-    </div>
-
-    <div class="toc">
-        <div class="container">
-            <div class="toc-grid">
-                <a href="#s1" class="toc-item"><span class="toc-num">01</span>Runtime & Async</a>
-                <a href="#s2" class="toc-item"><span class="toc-num">02</span>Modules (CJS/ESM)</a>
-                <a href="#s3" class="toc-item"><span class="toc-num">03</span>File System (fs)</a>
-                <a href="#s4" class="toc-item"><span class="toc-num">04</span>Events (Emitter)</a>
-                <a href="#s5" class="toc-item"><span class="toc-num">05</span>HTTP Server</a>
-                <a href="#s6" class="toc-item"><span class="toc-num">06</span>Express.js</a>
-                <a href="#s7" class="toc-item"><span class="toc-num">07</span>NPM & Scripts</a>
-                <a href="#s8" class="toc-item"><span class="toc-num">08</span>Variables d'Env</a>
-                <a href="#s9" class="toc-item"><span class="toc-num">09</span>Streams & Buffers</a>
-                <a href="#s10" class="toc-item"><span class="toc-num">10</span>Error Handling</a>
-                <a href="#s11" class="toc-item"><span class="toc-num">11</span>OS & Process</a>
+<div class="intro-box">
+    <div class="container">
+        <div class="grid2">
+            <div>
+                <h3>Qu'est-ce que Node.js ?</h3>
+                <p style="max-width:800px;">
+                    Node.js est un <strong>Runtime</strong> JavaScript bâti sur le moteur <strong>V8</strong> de Chrome.
+                    Il permet de porter la puissance du Web côté serveur avec une approche unifiée.
+                </p>
+                <p style="color:var(--muted); font-size:0.95rem; margin-top:10px">
+                    Créé par <strong>Ryan Dahl</strong> en 2009, il a révolutionné le backend en prouvant qu'un modèle
+                    asynchrone basé sur les événements peut surpasser les modèles multi-threadés classiques pour les
+                    entrées/sorties (I/O).
+                </p>
+            </div>
+            <div class="ref-card" style="border:1px solid var(--primary); background:rgba(104, 160, 99, 0.05)">
+                <h4>Les piliers</h4>
+                <ul style="font-size:0.85rem; line-height:1.6">
+                    <li>🚀 <strong>V8</strong> : Vitesse d'exécution quasi-native</li>
+                    <li>🧵 <strong>Asynchrone</strong> : Rien n'est bloquant (par défaut)</li>
+                    <li>📦 <strong>NPM</strong> : Le plus grand écosystème au monde</li>
+                    <li>🔄 <strong>JSON</strong> : Langage natif de bout en bout</li>
+                </ul>
             </div>
         </div>
     </div>
-
-    <!-- S1: RUNTIME -->
-    <section id="s1">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">01</div>
-                <div>
-                    <h2 class="sec-title">Runtime & Async</h2>
-                    <p class="sec-sub">Event Loop & Non-Blocking I/O</p>
-                </div>
+</div>
+<div class="toc">
+    <div class="container">
+        <div class="toc-grid">
+            <a href="#s1" class="toc-item"><span class="toc-num">01</span>Runtime & Async</a>
+            <a href="#s2" class="toc-item"><span class="toc-num">02</span>Modules (CJS/ESM)</a>
+            <a href="#s3" class="toc-item"><span class="toc-num">03</span>File System (fs)</a>
+            <a href="#s4" class="toc-item"><span class="toc-num">04</span>Events (Emitter)</a>
+            <a href="#s5" class="toc-item"><span class="toc-num">05</span>HTTP Server</a>
+            <a href="#s6" class="toc-item"><span class="toc-num">06</span>Express.js</a>
+            <a href="#s7" class="toc-item"><span class="toc-num">07</span>NPM & Scripts</a>
+            <a href="#s8" class="toc-item"><span class="toc-num">08</span>Variables d'Env</a>
+            <a href="#s9" class="toc-item"><span class="toc-num">09</span>Streams & Buffers</a>
+            <a href="#s10" class="toc-item"><span class="toc-num">10</span>Error Handling</a>
+            <a href="#s11" class="toc-item"><span class="toc-num">11</span>OS & Process</a>
+        </div>
+    </div>
+</div>
+<!-- S1: RUNTIME -->
+<section id="s1">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">01</div>
+            <div>
+                <h2 class="sec-title">Runtime & Async</h2>
+                <p class="sec-sub">Event Loop, Libuv & Architecture Non-Bloquante</p>
             </div>
+        </div>
 
-            <details>
-                <summary>💡 Comprendre l'Event Loop</summary>
-                <div class="details-content">
-                    <p>Node.js est <strong>Single-Threaded</strong> : il n'a qu'un seul fil d'exécution principal.</p>
-                    <p>Pourtant, il peut gérer des milliers de requêtes simultanées. Comment ? Grâce à l'<strong>Event
-                            Loop</strong>.
-                        Les opérations lourdes (lecture fichier, requête DB) sont déléguées au système (C++ threads,
-                        libuv), et Node continue d'exécuter le reste du code.</p>
-                    <p>Une fois l'opération finie, le Callback est placé dans une file d'attente pour être exécuté dès
-                        que le fil principal est libre.</p>
+        <div class="grid2">
+            <div>
+                <h3>Architecture Node.js</h3>
+                <p>Node.js combine le moteur <strong>V8</strong> (Chrome) avec <strong>Libuv</strong>.</p>
+                <ul style="margin-top:10px; line-height:1.6; color:var(--muted)">
+                    <li><strong>V8 Engine</strong> : Compile et exécute le JS.</li>
+                    <li><strong>Libuv</strong> : Gère l'Event Loop, les Thread Pool (pour I/O lourds) et les événements
+                        système.</li>
+                    <li><strong>Single Threaded</strong> : Un seul stack d'exécution JS (Main Thread).</li>
+                </ul>
+            </div>
+            <div class="warning">
+                <strong>⚠️ Don't Block the Loop !</strong><br>
+                Le JSON.parse d'un fichier de 100MB ou une boucle `while(true)` bloquera TOUS les utilisateurs. Pour du
+                calcul lourd, utilisez les <strong>Worker Threads</strong>.
+            </div>
+        </div>
 
-                    <h4 style="margin-top:15px; color:var(--accent)">Les Phases (Simplifié)</h4>
-                    <ul>
-                        <li><strong>Timers</strong> : <code>setTimeout()</code>, <code>setInterval()</code></li>
-                        <li><strong>Poll</strong> : I/O (lecture fichier, réseau)</li>
-                        <li><strong>Check</strong> : <code>setImmediate()</code></li>
-                        <li><strong>Microtasks</strong> (Prioritaire) : <code>Promise</code>,
-                            <code>process.nextTick()</code>
-                        </li>
-                    </ul>
+        <details open>
+            <summary>💡 Deep Dive: L'Event Loop</summary>
+            <div class="details-content">
+                <p>L'Event Loop orchestre tout. Elle tourne en boucle et passe par différentes <strong>Phases</strong> :
+                </p>
+
+                <div
+                    style="background:var(--bg); padding:15px; border-radius:8px; margin:15px 0; font-family:monospace; border:1px solid var(--border);">
+                    ┌───────────────────────────┐<br>
+                    │ Timers (setTimeout) │ ◀── Le callback est exécuté ici<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Pending Callbacks │ ◀── Erreurs système (OS)<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Idle, Prepare │ ◀── Usage interne<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ POLL │ ◀── 🚨 LE COEUR : I/O, FS, Network<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Check (setImmediate) │ ◀── Exécuté juste après Poll<br>
+                    └─────────────┬─────────────┘<br>
+                    │<br>
+                    ┌─────────────▼─────────────┐<br>
+                    │ Close Callbacks │ ◀── socket.on('close', ...)<br>
+                    └───────────────────────────┘
                 </div>
-            </details>
 
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>Asynchrone simple</div>
-                <pre><span class="c">// 1. Code Synchrone</span>
-<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Début"</span>);
+                <h4 style="color:var(--accent); margin-top:20px;">Microtasks vs Macrotasks</h4>
+                <p>Entre chaque phase, Node.js vide DEUX queues prioritaires :</p>
+                <ol>
+                    <li><strong>process.nextTick()</strong> : Priorité ABSOLUE. S'exécute immédiatement après le code
+                        courant, avant même les promesses. ⚠️ Danger de boucle infinie.</li>
+                    <li><strong>Promise (Microtasks)</strong> : S'exécute après nextTick, avant de passer à la phase
+                        suivante de l'Event Loop.</li>
+                </ol>
+            </div>
+        </details>
 
-<span class="c">// 2. Opération Asynchrone (non-bloquante)</span>
-<span class="fn">setTimeout</span>(() => {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Timeout Fini"</span>);
-}, <span class="num">0</span>);
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Priorité d'exécution (Piège Classique)</div>
+            <pre><span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"1. Start"</span>);
 
-<span class="c">// 3. Suite immédiate</span>
-<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"Fin"</span>);
+<span class="fn">setTimeout</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"5. Timeout (Macrotask)"</span>), <span class="num">0</span>);
 
-<span class="c">/* Ordre de sortie :
-   > Début
-   > Fin
-   > Timeout Fini (même avec 0ms !)
+<span class="fn">setImmediate</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"6. Check Phase"</span>));
+
+<span class="kw">new</span> <span class="fn">Promise</span>(resolve => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"2. Promise Init (Sync)"</span>);
+    <span class="fn">resolve</span>();
+}).<span class="fn">then</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"4. Promise .then (Microtask)"</span>));
+
+<span class="var">process</span>.<span class="fn">nextTick</span>(() => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"3. NextTick (Top Priority)"</span>));
+
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">"End Stack"</span>);
+
+<span class="c">/* Ordre Réel :
+   1. Start
+   2. Promise Init
+   End Stack
+   3. NextTick
+   4. Promise .then
+   5. Timeout
+   6. Check Phase
 */</span></pre>
-            </div>
+        </div>
 
-            <div class="demo">
-                <div class="demo-title">Simulateur Event Loop</div>
-                <button class="demo-btn" onclick="demoEventLoop()">Lancer simulation</button>
-                <div id="demo-loop-output" class="demo-output">En attente...</div>
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Worker Threads</h4>
+                <p style="font-size:0.9rem">Pour les tâches CPU-Intensive (crypto, compression, traitement image).</p>
+                <div class="code" style="margin:5px 0;">
+                    <pre
+                        style="padding:10px;"><span class="kw">import</span> { <span class="fn">Worker</span> } <span class="kw">from</span> <span class="str">'node:worker_threads'</span>;</pre>
+                </div>
+            </div>
+            <div class="ref-card">
+                <h4>Cluster Mode</h4>
+                <p style="font-size:0.9rem">Pour scaler sur plusieurs coeurs CPU (via PM2 ou module natif).</p>
             </div>
         </div>
-    </section>
 
-    <!-- S2: MODULES -->
-    <section id="s2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">Modules</h2>
-                    <p class="sec-sub">CommonJS vs ES Modules</p>
-                </div>
-            </div>
-
-            <details>
-                <summary>💡 Les systèmes de modules</summary>
-                <div class="details-content">
-                    <p>Historiquement, Node utilisait <strong>CommonJS</strong> (<code>require</code>). C'est le
-                        standard par défaut.</p>
-                    <p>Depuis les versions récentes, Node supporte officiellement les <strong>ES Modules</strong>
-                        (<code>import/export</code>), le standard du web moderne.</p>
-                    <p>Pour utiliser ESM, ajoutez <code>"type": "module"</code> dans votre <code>package.json</code> ou
-                        utilisez l'extension <code>.mjs</code>.</p>
-
-                    <table style="margin-top:15px; width:100%">
-                        <tr>
-                            <th>Feature</th>
-                            <th>CommonJS (CJS)</th>
-                            <th>ES Modules (ESM)</th>
-                        </tr>
-                        <tr>
-                            <td>Syntaxe</td>
-                            <td><code>require</code> / <code>module.exports</code></td>
-                            <td><code>import</code> / <code>export</code></td>
-                        </tr>
-                        <tr>
-                            <td>Chargement</td>
-                            <td>Synchrone (Dynamique)</td>
-                            <td>Asynchrone (Statique)</td>
-                        </tr>
-                        <tr>
-                            <td>Scope</td>
-                            <td>Wrapper function (exports, require...)</td>
-                            <td>Global lexical scope</td>
-                        </tr>
-                        <tr>
-                            <td>Top-level await</td>
-                            <td>❌ Non</td>
-                            <td>✅ Oui</td>
-                        </tr>
-                    </table>
-                </div>
-            </details>
-
-            <div class="grid2">
-                <div class="code">
-                    <div class="code-head">CommonJS (Legacy/Default)</div>
-                    <pre><span class="c">// math.js</span>
-<span class="kw">const</span> <span class="fn">add</span> = (<span class="var">a</span>, <span class="var">b</span>) => <span class="var">a</span> + <span class="var">b</span>;
-<span class="var">module</span>.<span class="var">exports</span> = { <span class="fn">add</span> };
-
-<span class="c">// index.js</span>
-<span class="kw">const</span> { <span class="fn">add</span> } = <span class="fn">require</span>(<span class="str">'./math'</span>);
-<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">add</span>(<span class="num">2</span>, <span class="num">3</span>));</pre>
-                </div>
-
-                <div class="code">
-                    <div class="code-head">ES Modules (Modern)</div>
-                    <pre><span class="c">// math.mjs</span>
-<span class="kw">export</span> <span class="kw">const</span> <span class="fn">add</span> = (<span class="var">a</span>, <span class="var">b</span>) => <span class="var">a</span> + <span class="var">b</span>;
-
-<span class="c">// index.mjs</span>
-<span class="kw">import</span> { <span class="fn">add</span> } <span class="kw">from</span> <span class="str">'./math.mjs'</span>;
-<span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">add</span>(<span class="num">2</span>, <span class="num">3</span>));</pre>
-                </div>
+        <div class="demo">
+            <div class="demo-title">Simulateur Event Loop</div>
+            <p style="font-size:0.85rem; margin-bottom:10px; opacity:0.8">Visualisez l'ordre d'exécution réel entre les
+                différentes queues.</p>
+            <button class="demo-btn" onclick="demoEventLoop()">Lancer simulation</button>
+            <div id="demo-loop-output" class="demo-output">En attente...</div>
+        </div>
+    </div>
+</section>
+<!-- S2: MODULES -->
+<section id="s2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Modules</h2>
+                <p class="sec-sub">CommonJS, ESM & Internals</p>
             </div>
         </div>
-    </section>
 
-    <!-- S3: FILE SYSTEM -->
-    <section id="s3">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">File System (fs)</h2>
-                    <p class="sec-sub">Lire et écrire des fichiers</p>
-                </div>
+        <div class="tip">
+            <strong>💡 Le Singleton</strong>
+            Un module n'est exécuté qu'une <strong>seule fois</strong>. Le résultat est mis en cache.
+            Au prochain `import`/`require`, Node retourne l'objet cached. Si vous modifiez l'objet exporté, tous les
+            autres fichiers verront la modification (Mutable).
+        </div>
+
+        <details>
+            <summary>🔍 CommonJS (CJS) - Under the hood</summary>
+            <div class="details-content">
+                <p>Quand Node exécute un fichier JS en CJS, il ne l'exécute pas "nu". Il l'enveloppe dans une fonction
+                    (IIFE) :</p>
+                <code
+                    style="display:block; background:#000; padding:10px; margin:10px 0; border-radius:5px; color:#83cd29">
+                        (function(exports, require, module, __filename, __dirname) {<br>
+                        &nbsp;&nbsp;&nbsp;// Votre code vit ici<br>
+                        });
+                    </code>
+                <p>C'est pour cela que <code>__dirname</code>, <code>exports</code>, etc. sont disponibles "globalement"
+                    (mais en fait locaux à la fonction).</p>
             </div>
+        </details>
 
-            <details>
-                <summary>💡 Sync vs Async</summary>
-                <div class="details-content">
-                    <p>Le module <code>fs</code> offre 3 façons de faire :</p>
-                    <ol>
-                        <li><strong>Synchrone</strong> (<code>readFileSync</code>) : Bloque tout le serveur. À éviter
-                            (sauf au démarrage).</li>
-                        <li><strong>Callback</strong> (<code>readFile</code>) : Non-bloquant, mais risque de "Callback
-                            Hell".</li>
-                        <li><strong>Promises</strong> (<code>fs/promises</code>) : Le standard moderne avec
-                            <code>async/await</code>.
-                        </li>
-                    </ol>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">CommonJS (Legacy)</div>
+                <pre><span class="c">// export</span>
+<span class="var">module</span>.<span class="var">exports</span> = { <span class="fn">hello</span> };
 
-                    <h4 style="margin-top:15px; color:var(--accent)">Le Buffer</h4>
-                    <p>Node.js gère les données binaires via la classe <code>Buffer</code>. C'est un tableau d'octets de
-                        taille fixe. Les méthodes <code>fs</code> retournent souvent des Buffers si aucun encodage n'est
-                        spécifié.</p>
-                </div>
-            </details>
+<span class="c">// import</span>
+<span class="kw">const</span> <span class="var">lib</span> = <span class="fn">require</span>(<span class="str">'./lib'</span>);
+
+<span class="c">// Dynamic Import (Possible)</span>
+<span class="kw">if</span> (cond) <span class="fn">require</span>(<span class="str">'./opt'</span>);</pre>
+            </div>
 
             <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>fs/promises (Moderne)</div>
-                <pre><span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs/promises'</span>;
+                <div class="code-head">ES Modules (Standard)</div>
+                <pre><span class="c">// export</span>
+<span class="kw">export</span> <span class="kw">default</span> <span class="kw">function</span>() {}
+<span class="kw">export</span> <span class="kw">const</span> <span class="var">val</span> = <span class="num">42</span>;
 
-<span class="kw">async</span> <span class="kw">function</span> <span class="fn">readConfig</span>() {
-    <span class="kw">try</span> {
-        <span class="kw">const</span> <span class="var">data</span> = <span class="kw">await</span> <span class="var">fs</span>.<span class="fn">readFile</span>(<span class="str">'config.json'</span>, <span class="str">'utf8'</span>);
-        <span class="fn">console</span>.<span class="fn">log</span>(<span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="var">data</span>));
-    } <span class="kw">catch</span> (<span class="var">err</span>) {
-        <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"Erreur lecture:"</span>, <span class="var">err</span>);
-    }
-}</pre>
-            </div>
+<span class="c">// import</span>
+<span class="kw">import</span> <span class="var">fn</span>, { <span class="var">val</span> } <span class="kw">from</span> <span class="str">'./lib.mjs'</span>;
 
-            <div class="demo">
-                <div class="demo-title">Virtual File System</div>
-                <button class="demo-btn" onclick="demoFSRead()">Lire Fichier</button>
-                <button class="demo-btn" onclick="demoFSWrite()">Écrire Fichier</button>
-                <div id="demo-fs-output" class="demo-output">En attente d'opération...</div>
+<span class="c">// Top-level await (Cool!)</span>
+<span class="kw">const</span> <span class="var">data</span> = <span class="kw">await</span> <span class="fn">fetch</span>(...);</pre>
             </div>
         </div>
-    </section>
 
-    <!-- S4: EVENTS -->
-    <section id="s4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Events</h2>
-                    <p class="sec-sub">Architecture Événementielle</p>
-                </div>
+        <h3 style="margin-top:30px; margin-bottom:15px; font-size:1.3rem;">ESM : Les pièges classiques</h3>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>❌ __dirname n'existe pas</h4>
+                <p>En ESM, `__dirname` n'est pas défini.</p>
+                <pre
+                    style="margin-top:5px; background:var(--bg); padding:8px;"><span class="c">// Remplacement :</span>
+<span class="kw">import</span> { <span class="fn">fileURLToPath</span> } <span class="kw">from</span> <span class="str">'url'</span>;
+<span class="kw">import</span> { <span class="fn">dirname</span> } <span class="kw">from</span> <span class="str">'path'</span>;
+
+<span class="kw">const</span> <span class="var">__filename</span> = <span class="fn">fileURLToPath</span>(<span class="kw">import</span>.<span class="var">meta</span>.<span class="var">url</span>);
+<span class="kw">const</span> <span class="var">__dirname</span> = <span class="fn">dirname</span>(<span class="var">__filename</span>);</pre>
             </div>
 
-            <details>
-                <summary>💡 EventEmitter</summary>
-                <div class="details-content">
-                    <p>Une grande partie de Node API (Streams, HTTP, Sockets) est hérité de la classe
-                        <code>EventEmitter</code>.
-                    </p>
-                    <p>Le principe est le pattern <strong>Observer</strong> : on "écoute" des événements
-                        (<code>.on</code>) et on en "émet" (<code>.emit</code>). C'est ce qui permet de découpler la
-                        logique.</p>
-                </div>
-            </details>
+            <div class="ref-card">
+                <h4>⚠️ Extensions obligatoires</h4>
+                <p>En ESM natif, l'import relatif DOIT avoir l'extension.</p>
+                <pre
+                    style="margin-top:5px; background:var(--bg); padding:8px;"><span class="c">// BAD</span>
+<span class="kw">import</span> <span class="var">utils</span> <span class="kw">from</span> <span class="str">'./utils'</span>;
 
+<span class="c">// GOOD</span>
+<span class="kw">import</span> <span class="var">utils</span> <span class="kw">from</span> <span class="str">'./utils.js'</span>;</pre>
+            </div>
+        </div>
+
+        <details>
+            <summary>🔄 Cycles & Dépendances Circulaires</summary>
+            <div class="details-content">
+                <p>Si A importe B, et B importe A...</p>
+                <ul>
+                    <li><strong>CJS</strong> : Retourne un objet export partiel (vide ou incomplet) pour casser la
+                        boucle. Peut causer des crashs.</li>
+                    <li><strong>ESM</strong> : Gère mieux les références (Binding live), mais reste dangereux.</li>
+                </ul>
+                <p><strong>Solution</strong> : Refactoriser. Extraire la partie commune dans un Module C.</p>
+            </div>
+        </details>
+    </div>
+</section>
+<!-- S3: FILE SYSTEM -->
+<section id="s3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">File System (fs)</h2>
+                <p class="sec-sub">Manipulation de fichiers & Chemins</p>
+            </div>
+        </div>
+
+        <div class="grid2">
             <div class="code">
-                <div class="code-head">Exemple Custom Emitter</div>
-                <pre><span class="kw">import</span> { <span class="fn">EventEmitter</span> } <span class="kw">from</span> <span class="str">'node:events'</span>;
+                <div class="code-head"><span class="dot g"></span>Le module Path (Vital)</div>
+                <pre><span class="kw">import</span> <span class="var">path</span> <span class="kw">from</span> <span class="str">'node:path'</span>;
 
-<span class="kw">const</span> <span class="var">myEmitter</span> = <span class="kw">new</span> <span class="fn">EventEmitter</span>();
+<span class="c">// ⚠️ NE JAMAIS faire 'dir/file.txt' (Windows utilise \)</span>
+<span class="c">// Toujours utiliser path.join()</span>
+<span class="kw">const</span> <span class="var">filePath</span> = <span class="var">path</span>.<span class="fn">join</span>(<span class="str">'data'</span>, <span class="str">'logs'</span>, <span class="str">'error.log'</span>);
+<span class="c">// -> "data/logs/error.log" (Linux)</span>
+<span class="c">// -> "data\logs\error.log" (Windows)</span>
 
-<span class="c">// 1. Écouter (Subscribe)</span>
-<span class="var">myEmitter</span>.<span class="fn">on</span>(<span class="str">'userLogin'</span>, (<span class="var">user</span>) => {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Bienvenue ${user} !`</span>);
+<span class="kw">const</span> <span class="var">abs</span> = <span class="var">path</span>.<span class="fn">resolve</span>(<span class="str">'config.json'</span>);
+<span class="c">// -> Chemin absolu depuis racine process</span></pre>
+            </div>
+
+            <div class="intro-box" style="padding:15px; margin:0; border:1px solid var(--border);">
+                <h4>Les 3 modes d'accès</h4>
+                <ul style="padding-left:20px; color:var(--muted)">
+                    <li><strong style="color:#dba4a4">Sync</strong> (<code>readFileSync</code>) : Bloque tout le thread.
+                        Uniquement pour charger une config au démarrage.</li>
+                    <li><strong style="color:var(--text)">Callback</strong> (<code>readFile</code>) : Legacy, rapide,
+                        mais verbeux.</li>
+                    <li><strong style="color:var(--primary-bright)">Promise</strong> (<code>fs/promises</code>) : Le
+                        standard moderne. Compatible async/await.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Streaming (Big Files)</h3>
+        <p style="margin-bottom:15px; color:var(--muted)">Pour les gros fichiers (ex: Vidéo, Log de 1GB), ne jamais tout
+            charger en RAM !</p>
+
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Lecture Streamée</div>
+            <pre><span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+
+<span class="kw">const</span> <span class="var">stream</span> = <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'giant-video.mp4'</span>, { 
+    <span class="var">highWaterMark</span>: <span class="num">64</span> * <span class="num">1024</span> <span class="c">// Lire par chunk de 64KB</span>
 });
 
-<span class="c">// 2. Émettre (Publish)</span>
-<span class="var">myEmitter</span>.<span class="fn">emit</span>(<span class="str">'userLogin'</span>, <span class="str">'Alice'</span>);</pre>
+<span class="var">stream</span>.<span class="fn">on</span>(<span class="str">'data'</span>, (<span class="var">chunk</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Reçu ${chunk.length} bytes`</span>);
+    <span class="c">// Envoyer au client au fur et à mesure...</span>
+});
+
+<span class="var">stream</span>.<span class="fn">on</span>(<span class="str">'end'</span>, () => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Terminé'</span>));</pre>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>Dossiers & Arborescence</h4>
+                <p>Pour lister efficacement des dossiers géants, utilisez <code>opendir</code> (Itérateur) plutôt que
+                    <code>readdir</code> (Tableau complet).</p>
+                <pre
+                    style="margin-top:5px; font-size:0.8rem;"><span class="kw">const</span> <span class="var">dir</span> = <span class="kw">await</span> <span class="var">fs</span>.<span class="fn">opendir</span>(<span class="str">'./img'</span>);
+<span class="kw">for</span> <span class="kw">await</span> (<span class="kw">const</span> <span class="var">dirent</span> <span class="kw">of</span> <span class="var">dir</span>)
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">dirent</span>.<span class="var">name</span>);</pre>
             </div>
 
-            <div class="demo">
-                <div class="demo-title">Event Simulation</div>
-                <button class="demo-btn" onclick="demoSubscribe()">1. S'abonner (ON)</button>
-                <button class="demo-btn" onclick="demoEmit()">2. Émettre (EMIT)</button>
-                <div id="demo-events-output" class="demo-output">Log des événements...</div>
+            <div class="ref-card">
+                <h4>Watch Mode</h4>
+                <p>Surveiller les changements de fichiers.</p>
+                <code style="color:var(--kw)">fs.watch('config.json', (evt, file) => reload())</code>
             </div>
         </div>
-    </section>
 
-    <!-- S5: HTTP -->
-    <section id="s5">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">05</div>
-                <div>
-                    <h2 class="sec-title">HTTP (Natif)</h2>
-                    <p class="sec-sub">Créer un serveur sans framework</p>
-                </div>
+        <div class="demo">
+            <div class="demo-title">Virtual File System</div>
+            <button class="demo-btn" onclick="demoFSRead()">Lire Fichier</button>
+            <button class="demo-btn" onclick="demoFSWrite()">Écrire Fichier</button>
+            <div id="demo-fs-output" class="demo-output">En attente d'opération...</div>
+        </div>
+    </div>
+</section>
+<!-- S4: EVENTS -->
+<section id="s4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Events</h2>
+                <p class="sec-sub">Architecture et Design Patterns</p>
+            </div>
+        </div>
+
+        <div class="intro-box" style="padding:15px; margin:0; border:var(--border);">
+            <h4>Architecture Orientée Événements</h4>
+            <p>Node.js est construit autour de l'observer pattern. Le core de Node (<code>net.Server</code>,
+                <code>fs.ReadStream</code>) émet des événements.</p>
+        </div>
+
+        <details>
+            <summary>⚠️ Gestion des Fuites Mémoire (MaxListeners)</summary>
+            <div class="details-content">
+                <p>Si vous attachez trop de listeners à un même événement (plus de 10 par défaut), Node.js vous avertira
+                    :</p>
+                <code
+                    style="color:yellow">MaxListenersExceededWarning: Possible EventEmitter memory leak detected.</code>
+                <p>Pourquoi ? Si vous ajoutez un listener dans une boucle ou une requête sans le retirer, ils
+                    s'accumulent indéfiniment.</p>
+                <pre
+                    style="margin-top:10px; background:#111; padding:5px;"><span class="var">myEmitter</span>.<span class="fn">setMaxListeners</span>(<span class="num">20</span>); <span class="c">// Augmenter la limite</span></pre>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Méthodes clés</div>
+                <pre><span class="c">// 1. on() : Écoute permanente</span>
+<span class="var">emitter</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">cb</span>);
+
+<span class="c">// 2. once() : Écoute UNE SEULE fois</span>
+<span class="var">emitter</span>.<span class="fn">once</span>(<span class="str">'init'</span>, () => <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Démarré'</span>));
+
+<span class="c">// 3. off() / removeListener() : Arrêter</span>
+<span class="kw">const</span> <span class="fn">log</span> = (<span class="var">msg</span>) => <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">msg</span>);
+<span class="var">emitter</span>.<span class="fn">on</span>(<span class="str">'msg'</span>, <span class="fn">log</span>);
+<span class="var">emitter</span>.<span class="fn">off</span>(<span class="str">'msg'</span>, <span class="fn">log</span>);</pre>
             </div>
 
             <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>http.createServer</div>
+                <div class="code-head">🚨 L'événement 'error'</div>
+                <pre style="border-left:3px solid red;">
+<span class="c">// Si 'error' est émis SANS listener...</span>
+<span class="c">// Node CRASH immédiatement !</span>
+
+<span class="var">myEmitter</span>.<span class="fn">on</span>(<span class="str">'error'</span>, (<span class="var">err</span>) => {
+    <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">'Erreur gérée :'</span>, <span class="var">err</span>);
+});
+
+<span class="var">myEmitter</span>.<span class="fn">emit</span>(<span class="str">'error'</span>, <span class="kw">new</span> <span class="fn">Error</span>(<span class="str">'Oups'</span>));
+<span class="c">// -> "Erreur gérée : Oups" 
+// (Le process continue)</span></pre>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo-title">Event Simulation</div>
+            <button class="demo-btn" onclick="demoSubscribe()">1. S'abonner (ON)</button>
+            <button class="demo-btn" onclick="demoEmit()">2. Émettre (EMIT)</button>
+            <div id="demo-events-output" class="demo-output">Log des événements...</div>
+        </div>
+    </div>
+</section>
+<!-- S5: HTTP -->
+<section id="s5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">HTTP (Natif)</h2>
+                <p class="sec-sub">Bas niveau & Anatomie des requêtes</p>
+            </div>
+        </div>
+
+        <div class="intro-box" style="padding:15px; border:1px solid var(--border);">
+            <h4>Anatomie d'une Transaction</h4>
+            <p>Node hérite de <code>http.IncomingMessage</code> (Request) et <code>http.ServerResponse</code>
+                (Response).</p>
+            <ul style="margin-top:10px; color:var(--muted)">
+                <li><strong>Request</strong> : Readable Stream (Body) + Headers.</li>
+                <li><strong>Response</strong> : Writable Stream.</li>
+            </ul>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Serveur Raw (Sans Framework)</div>
                 <pre><span class="kw">import</span> <span class="var">http</span> <span class="kw">from</span> <span class="str">'node:http'</span>;
 
-<span class="kw">const</span> <span class="var">server</span> = <span class="var">http</span>.<span class="fn">createServer</span>((<span class="var">req</span>, <span class="var">res</span>) => {
-    <span class="c">// Router basique</span>
-    <span class="kw">if</span> (<span class="var">req</span>.<span class="var">url</span> === <span class="str">'/'</span>) {
-        <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'text/plain'</span> });
-        <span class="var">res</span>.<span class="fn">end</span>(<span class="str">'Accueil'</span>);
-    } <span class="kw">else</span> <span class="kw">if</span> (<span class="var">req</span>.<span class="var">url</span>.<span class="fn">startsWith</span>(<span class="str">'/api'</span>)) {
-        <span class="c">// Parse URL moderne</span>
-        <span class="kw">const</span> <span class="var">url</span> = <span class="kw">new</span> <span class="fn">URL</span>(<span class="var">req</span>.<span class="var">url</span>, <span class="str">`http://${req.headers.host}`</span>);
-        <span class="kw">const</span> <span class="var">id</span> = <span class="var">url</span>.<span class="var">searchParams</span>.<span class="fn">get</span>(<span class="str">'id'</span>);
-
-        <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> });
-        <span class="var">res</span>.<span class="fn">end</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="var">data</span>: <span class="num">42</span>, <span class="var">queryId</span>: <span class="var">id</span> }));
+<span class="var">http</span>.<span class="fn">createServer</span>((<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="c">// 1. Routing manuel (verbe + url)</span>
+    <span class="kw">if</span> (<span class="var">req</span>.<span class="var">method</span> === <span class="str">'POST'</span> && <span class="var">req</span>.<span class="var">url</span> === <span class="str">'/echo'</span>) {
+        
+        <span class="c">// 2. Lire le Body (Stream)</span>
+        <span class="kw">let</span> <span class="var">body</span> = [];
+        <span class="var">req</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">chunk</span> => <span class="var">body</span>.<span class="fn">push</span>(<span class="var">chunk</span>));
+        
+        <span class="var">req</span>.<span class="fn">on</span>(<span class="str">'end'</span>, () => {
+            <span class="var">body</span> = <span class="fn">Buffer</span>.<span class="fn">concat</span>(<span class="var">body</span>).<span class="fn">toString</span>();
+            
+            <span class="c">// 3. Envoyer Réponse (Headers + Data)</span>
+            <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> });
+            <span class="var">res</span>.<span class="fn">end</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="var">echo</span>: <span class="var">body</span> }));
+        });
+    } <span class="kw">else</span> {
+        <span class="var">res</span>.<span class="fn">statusCode</span> = <span class="num">404</span>;
+        <span class="var">res</span>.<span class="fn">end</span>();
     }
+}).<span class="fn">listen</span>(<span class="num">3000</span>);</pre>
+            </div>
+
+            <div>
+                <h3>HTTPS / SSL</h3>
+                <p>Pour activer HTTPS, il faut charger les certificats (clé privée et cert public).</p>
+                <pre
+                    style="background:var(--bg); border:1px solid var(--border); padding:10px; margin-top:10px; border-radius:5px; font-size:0.8rem;"><span class="kw">import</span> <span class="var">https</span> <span class="kw">from</span> <span class="str">'node:https'</span>;
+<span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+
+<span class="kw">const</span> <span class="var">options</span> = {
+  <span class="var">key</span>: <span class="var">fs</span>.<span class="fn">readFileSync</span>(<span class="str">'key.pem'</span>),
+  <span class="var">cert</span>: <span class="var">fs</span>.<span class="fn">readFileSync</span>(<span class="str">'cert.pem'</span>)
+};
+
+<span class="var">https</span>.<span class="fn">createServer</span>(<span class="var">options</span>, <span class="var">app</span>).<span class="fn">listen</span>(<span class="num">443</span>);</pre>
+                <p style="margin-top:10px; font-size:0.85rem; color:var(--muted)">En prod, c'est souvent le Reverse
+                    Proxy (Nginx) qui gère le SSL, pas Node directement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- S6: EXPRESS -->
+<section id="s6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">Express.js</h2>
+                <p class="sec-sub">Middlewares, Routing & Static Files</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>⚙️ Les Middlewares : La chaîne de production</summary>
+            <div class="details-content">
+                <p>Tout est middleware dans Express. C'est une fonction qui a accès à <code>req</code>,
+                    <code>res</code>, et <code>next</code>.</p>
+                <p>Si vous n'appelez pas <code>next()</code> ou si vous ne répondez pas (<code>res.send</code>), la
+                    requête <strong>pend indéfiniment</strong>.</p>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot y"></span>Chain of Responsibility</div>
+                <pre><span class="c">// Middleware 1 : Logger</span>
+<span class="var">app</span>.<span class="fn">use</span>((<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Request: ${req.url}`</span>);
+    <span class="fn">next</span>(); <span class="c">// ➡️ Passe au suivant</span>
 });
 
-<span class="var">server</span>.<span class="fn">listen</span>(<span class="num">3000</span>, () => {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Serveur sur http://localhost:3000'</span>);
+<span class="c">// Middleware 2 : Auth Guard</span>
+<span class="var">app</span>.<span class="fn">use</span>(<span class="str">'/admin'</span>, (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="kw">if</span> (!<span class="var">req</span>.<span class="var">auth</span>) <span class="kw">return</span> <span class="var">res</span>.<span class="fn">sendStatus</span>(<span class="num">403</span>);
+    <span class="fn">next</span>(); <span class="c">// ➡️ Passe au controller</span>
+});
+
+<span class="c">// Route Handler (Final Middleware)</span>
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/admin'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="var">res</span>.<span class="fn">send</span>(<span class="str">'Welcome Admin'</span>);
 });</pre>
             </div>
 
-            <div class="tip"><strong>💡 Note</strong> En production, on utilise rarement <code>http</code> directement.
-                On préfère un framework comme <strong>Express</strong>, <strong>Fastify</strong> ou
-                <strong>NestJS</strong> pour simplifier le routing et les middlewares.
-            </div>
-        </div>
-    </section>
+            <div>
+                <h3>Features Essentielles</h3>
 
-    <!-- S6: EXPRESS -->
-    <section id="s6">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">06</div>
-                <div>
-                    <h2 class="sec-title">Express.js</h2>
-                    <p class="sec-sub">Le standard de facto</p>
+                <div class="ref-card">
+                    <h4>📁 Fichiers Statiques</h4>
+                    <p>Servir CSS, Images, JS du frontend.</p>
+                    <pre
+                        style="margin-top:5px; background:var(--bg);"><span class="var">app</span>.<span class="fn">use</span>(<span class="var">express</span>.<span class="fn">static</span>(<span class="str">'public'</span>));</pre>
                 </div>
-            </div>
 
-            <details>
-                <summary>💡 Pourquoi Express ?</summary>
-                <div class="details-content">
-                    <p>Express simplifie drastiquement le code HTTP natif.</p>
-                    <p>Il introduit le concept de <strong>Middleware</strong> : des fonctions qui s'exécutent les unes
-                        après les autres (ex: logger -> vérifier auth -> parser JSON -> controller).</p>
-
-                    <div
-                        style="background:var(--code-bg); padding:10px; border-radius:4px; margin-top:10px; font-family:monospace; font-size:0.85rem;">
-                        Request ➡️ Middleware 1 (Log) ➡️ Middleware 2 (Auth) ➡️ Route Handler ➡️ Response
-                    </div>
-                </div>
-            </details>
-
-            <div class="code">
-                <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
-                        class="dot g"></span>API REST avec Express</div>
-                <pre><span class="kw">import</span> <span class="var">express</span> <span class="kw">from</span> <span class="str">'express'</span>;
-<span class="kw">const</span> <span class="var">app</span> = <span class="fn">express</span>();
-
-<span class="c">// Middleware pour parser le JSON</span>
-<span class="var">app</span>.<span class="fn">use</span>(<span class="var">express</span>.<span class="fn">json</span>());
-
-<span class="c">// Routes</span>
-<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/users'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
-    <span class="var">res</span>.<span class="fn">json</span>([{ <span class="var">id</span>: <span class="num">1</span>, <span class="var">name</span>: <span class="str">"Bob"</span> }]);
-});
-
-<span class="var">app</span>.<span class="fn">post</span>(<span class="str">'/users'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
-    <span class="kw">const</span> <span class="var">newUser</span> = <span class="var">req</span>.<span class="var">body</span>;
-    <span class="c">// Sauvegarder user...</span>
-    <span class="var">res</span>.<span class="fn">status</span>(<span class="num">201</span>).<span class="fn">send</span>(<span class="str">"Créé"</span>);
-});
-
-<span class="var">app</span>.<span class="fn">listen</span>(<span class="num">3000</span>);</pre>
-            </div>
-        </div>
-    </section>
-
-    <!-- S7: NPM -->
-    <section id="s7">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">07</div>
-                <div>
-                    <h2 class="sec-title">NPM & Scripts</h2>
-                    <p class="sec-sub">package.json</p>
-                </div>
-            </div>
-
-            <div class="code">
-                <div class="code-head">Commandes Utiles</div>
-                <pre><span class="c"># Initialiser un projet</span>
-npm init -y
-
-<span class="c"># Installer des dépendances (Production)</span>
-npm install express mongoose
-
-<span class="c"># Installer des dépendances (Développement)</span>
-npm install -D nodemon jest
-
-<span class="c"># Lancer un script défini dans package.json</span>
-npm run start
-npm run dev</pre>
-            </div>
-
-            <div class="grid2">
-                <div class="ref-card"
-                    style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
-                    <h4>Dependencies</h4>
-                    <p style="font-size:0.9rem">Librairies nécessaires pour que l'app tourne (Express, React, Axios).
-                    </p>
-                </div>
-                <div class="ref-card"
-                    style="background:var(--card); padding:15px; border-radius:8px; border:1px solid var(--border);">
-                    <h4>DevDependencies</h4>
-                    <p style="font-size:0.9rem">Outils de travail uniquement (Linter, Tests, Bundler).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- S8: ENV -->
-    <section id="s8">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">08</div>
-                <div>
-                    <h2 class="sec-title">Environnement</h2>
-                    <p class="sec-sub">process.env</p>
-                </div>
-            </div>
-
-            <div class="warning"><strong>⚠️ Sécurité</strong> Ne jamais commiter de mots de passe ou clés API dans le
-                code ! Utilisez toujours des variables d'environnement.</div>
-
-            <div class="code">
-                <div class="code-head">.env & dotenv</div>
-                <pre><span class="c">// fichier .env</span>
-DB_HOST=localhost
-API_KEY=12345secret
+                <div class="ref-card">
+                    <h4>🔀 Le Router (Modularité)</h4>
+                    <p>Pour ne pas avoir un fichier de 5000 lignes.</p>
+                    <pre
+                        style="margin-top:5px; background:var(--bg);"><span class="c">// users.js</span>
+<span class="kw">const</span> <span class="var">router</span> = <span class="var">express</span>.<span class="fn">Router</span>();
+<span class="var">router</span>.<span class="fn">get</span>(<span class="str">'/'</span>, <span class="var">getAll</span>);
+<span class="kw">export</span> <span class="kw">default</span> <span class="var">router</span>;
 
 <span class="c">// app.js</span>
-<span class="kw">import</span> <span class="str">'dotenv/config'</span>;
-
-<span class="fn">console</span>.<span class="fn">log</span>(<span class="var">process</span>.<span class="var">env</span>.<span class="var">DB_HOST</span>); <span class="c">// "localhost"</span></pre>
+<span class="var">app</span>.<span class="fn">use</span>(<span class="str">'/users'</span>, <span class="var">userRouter</span>);</pre>
+                </div>
             </div>
         </div>
-    </section>
 
-    </section>
+        <div class="code" style="margin-top:20px">
+            <div class="code-head">Template Engines (Server-Side Rendering)</div>
+            <div style="padding:10px; color:var(--muted); font-size:0.9rem;">
+                Bien que Node soit souvent utilisé pour des API JSON (avec React/Vue en front), on peut générer du HTML
+                avec <strong>EJS</strong>, <strong>Pug</strong> ou <strong>Handlebars</strong>.
+            </div>
+            <pre><span class="var">app</span>.<span class="fn">set</span>(<span class="str">'view engine'</span>, <span class="str">'ejs'</span>);
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="var">res</span>.<span class="fn">render</span>(<span class="str">'index'</span>, { <span class="var">title</span>: <span class="str">'Mon Site'</span> });
+});</pre>
+        </div>
+    </div>
+</section>
+<!-- S7: NPM -->
+<section id="s7">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">07</div>
+            <div>
+                <h2 class="sec-title">NPM & Packages</h2>
+                <p class="sec-sub">Gestionnaire de paquets, Scripts & Versioning</p>
+            </div>
+        </div>
 
-    <!-- S9: STREAMS -->
-    <section id="s9">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">09</div>
-                <div>
-                    <h2 class="sec-title">Streams & Buffers</h2>
-                    <p class="sec-sub">Performance et gros volumes</p>
-                </div>
+        <div class="grid2">
+            <div>
+                <h3>🚀 NPX vs NPM</h3>
+                <ul style="margin-top:10px; color:var(--muted)">
+                    <li><strong>NPM</strong> : Installe les paquets (local ou global).</li>
+                    <li><strong>NPX</strong> : <em>Exécute</em> un binaire sans l'installer globalement (ex:
+                        <code>npx create-react-app</code>).</li>
+                </ul>
             </div>
 
-            <details>
-                <summary>💡 Pourquoi les Streams ?</summary>
-                <div class="details-content">
-                    <p>Pour lire un fichier de 10 Go, impossible de tout charger en mémoire (RAM). On utilise des
-                        <strong>Streams</strong> pour lire/écrire morceau par morceau (chunks).
-                    </p>
-                    <p>Le <strong>Pipe</strong> (<code>|</code>) connecte une source (ex: lecture fichier) à une
-                        destination (ex: réponse HTTP) sans surcharge mémoire.</p>
-                </div>
-            </details>
+            <div class="ref-card">
+                <h4>Semantic Versioning (SemVer)</h4>
+                <p style="font-family:monospace; font-size:1.1rem; color:var(--primary-bright)">MAJOR.MINOR.PATCH</p>
+                <ul style="font-size:0.85rem; margin-top:5px; color:var(--muted)">
+                    <li><strong>^</strong>1.2.3 : Update Minor & Patch (Safe)</li>
+                    <li><strong>~</strong>1.2.3 : Update Patch only (Very Safe)</li>
+                </ul>
+            </div>
+        </div>
 
+        <h3 style="margin-top:25px;">Scripts & Lifecycle</h3>
+        <div class="code">
+            <div class="code-head">package.json</div>
+            <pre><span class="str">"scripts"</span>: {
+  <span class="str">"start"</span>: <span class="str">"node index.js"</span>,
+  <span class="str">"dev"</span>: <span class="str">"nodemon index.js"</span>,
+  <span class="str">"test"</span>: <span class="str">"jest"</span>,
+  <span class="str">"build"</span>: <span class="str">"tsc"</span>,
+  <span class="str">"prebuild"</span>: <span class="str">"rimraf dist"</span> <span class="c">// S'exécute AVANT build</span>
+}</pre>
+        </div>
+
+        <div class="tip">
+            <strong>🔒 Package-lock.json</strong><br>
+            Ce fichier est CRUCIAL. Il verrouille l'arbre exact des dépendances. DOIT être commité.
+            Il garantit que "ça marche chez moi" = "ça marche en prod".
+        </div>
+
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Pipeline Optimisé</div>
-                <pre><span class="kw">import</span> { <span class="fn">pipeline</span> } <span class="kw">from</span> <span class="str">'node:stream/promises'</span>;
+                <div class="code-head">Commandes Avancées</div>
+                <pre><span class="c"># Auditer les vulnérabilités</span>
+npm audit
+
+<span class="c"># Mettre à jour les paquets (selon package.json)</span>
+npm update
+
+<span class="c"># Installer version précise</span>
+npm i express@4.17.1
+
+<span class="c"># Prune (supprimer packages inutiles)</span>
+npm prune</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Alternatives</h4>
+                <p><strong>Yarn</strong> ou <strong>PNPM</strong> (plus rapide, gestion disque optimisée) sont très
+                    populaires en entreprise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- S8: ENV -->
+<section id="s8">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">08</div>
+            <div>
+                <h2 class="sec-title">Configurations</h2>
+                <p class="sec-sub">Variables d'Environnement (12-Factor App)</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Sécurité & Git</strong><br>
+            Ajoutez TOUJOURS <code>.env</code> à votre <code>.gitignore</code>.<br>
+            Commitez un fichier <code>.env.example</code> avec les clés vides pour l'équipe.
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Utilisation Standard</div>
+                <pre><span class="c">// npm i dotenv</span>
+<span class="kw">import</span> <span class="str">'dotenv/config'</span>;
+
+<span class="kw">const</span> <span class="var">PORT</span> = <span class="var">process</span>.<span class="var">env</span>.<span class="var">PORT</span> || <span class="num">3000</span>;
+<span class="kw">const</span> <span class="var">DB_URL</span> = <span class="var">process</span>.<span class="var">env</span>.<span class="var">DB_URL</span>;
+
+<span class="kw">if</span> (!<span class="var">DB_URL</span>) {
+    <span class="kw">throw</span> <span class="kw">new</span> <span class="fn">Error</span>(<span class="str">"DB_URL manquante !"</span>);
+}</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Typage & Validation</h4>
+                <p>En production, il est vital de valider les variables au démarrage. Utilisez <strong>Zod</strong>,
+                    <strong>Joi</strong> ou <strong>Envalid</strong>.</p>
+                <pre
+                    style="margin-top:10px; font-size:0.8rem; background:var(--bg); border-radius:4px; padding:8px;"><span class="kw">import</span> { <span class="var">z</span> } <span class="kw">from</span> <span class="str">'zod'</span>;
+
+<span class="kw">const</span> <span class="var">envSchema</span> = <span class="var">z</span>.<span class="fn">object</span>({
+  <span class="var">PORT</span>: <span class="var">z</span>.<span class="fn">coerce</span>.<span class="fn">number</span>(),
+  <span class="var">API_KEY</span>: <span class="var">z</span>.<span class="fn">string</span>().<span class="fn">min</span>(<span class="num">10</span>)
+});
+
+<span class="kw">export</span> <span class="kw">const</span> <span class="var">env</span> = <span class="var">envSchema</span>.<span class="fn">parse</span>(<span class="var">process</span>.<span class="var">env</span>);</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Cross-Env</h3>
+        <p style="color:var(--muted); margin-bottom:10px;">Windows et Linux/Mac gèrent les variables différemment dans
+            le terminal.</p>
+        <div class="code">
+            <div class="code-head">Solution (package.json)</div>
+            <pre><span class="c">// Sans cross-env (Bug sur Windows)</span>
+<span class="str">"start"</span>: <span class="str">"NODE_ENV=production node app.js"</span>
+
+<span class="c">// Avec cross-env (Universel)</span>
+<span class="str">"start"</span>: <span class="str">"cross-env NODE_ENV=production node app.js"</span></pre>
+        </div>
+    </div>
+</section>
+<!-- S9: STREAMS -->
+<section id="s9">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">09</div>
+            <div>
+                <h2 class="sec-title">Streams</h2>
+                <p class="sec-sub">Flux de données, Backpressure & Pipeline</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>Les 4 Types de Streams</h3>
+                <ul style="margin-top:10px; line-height:1.7; color:var(--muted)">
+                    <li><strong style="color:var(--primary-bright)">Readable</strong> : Source (fs.read, req). On lit.
+                    </li>
+                    <li><strong style="color:var(--primary-bright)">Writable</strong> : Destination (fs.write, res). On
+                        écrit.</li>
+                    <li><strong style="color:var(--primary-bright)">Duplex</strong> : Les deux (Socket TCP).</li>
+                    <li><strong style="color:var(--primary-bright)">Transform</strong> : Modifie les données à la volée
+                        (Gzip, Crypto).</li>
+                </ul>
+            </div>
+
+            <div class="intro-box" style="padding:15px; margin:0; border:1px solid var(--border);">
+                <h4>🌊 Backpressure</h4>
+                <p>Si le disque écrit moins vite que le réseau ne lit, la mémoire explose. </p>
+                <p>Le <strong>Pipe</strong> gère automatiquement la "Backpressure" : il dit à la source de pauser
+                    (pause/resume) le temps que la destination rattrape.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Modern Streams (Pipeline)</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Pipeline Async (Best Practice)</div>
+            <pre><span class="kw">import</span> { <span class="fn">pipeline</span> } <span class="kw">from</span> <span class="str">'node:stream/promises'</span>;
 <span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
 <span class="kw">import</span> <span class="var">zlib</span> <span class="kw">from</span> <span class="str">'node:zlib'</span>;
 
-<span class="kw">async</span> <span class="kw">function</span> <span class="fn">compressBigFile</span>() {
+<span class="kw">async</span> <span class="kw">function</span> <span class="fn">archiveLog</span>() {
     <span class="kw">await</span> <span class="fn">pipeline</span>(
-        <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'bigfile.txt'</span>), <span class="c">// Source</span>
-        <span class="var">zlib</span>.<span class="fn">createGzip</span>(),                  <span class="c">// Transform (Zip)</span>
-        <span class="var">fs</span>.<span class="fn">createWriteStream</span>(<span class="str">'bigfile.txt.gz'</span>) <span class="c">// Destination</span>
+        <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'app.log'</span>),     <span class="c">// 1. Lire</span>
+        <span class="var">zlib</span>.<span class="fn">createGzip</span>(),                  <span class="c">// 2. Compresser</span>
+        <span class="var">fs</span>.<span class="fn">createWriteStream</span>(<span class="str">'app.log.gz'</span>)  <span class="c">// 3. Écrire</span>
     );
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Compression finie sans exploser la RAM !'</span>);
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Succès !'</span>);
+    <span class="c">// Pipeline gère aussi la fermeture auto des streams et les erreurs !</span>
+}</pre>
+        </div>
+
+        <div class="details-content" style="margin-top:15px; background:var(--bg2); border-radius:8px; padding:15px;">
+            <h4 style="color:var(--accent)">Generators & Streams</h4>
+            <p>On peut transformer un Stream en async iterator.</p>
+            <div class="code" style="margin-top:10px; margin-bottom:0;">
+                <pre><span class="kw">for</span> <span class="kw">await</span> (<span class="kw">const</span> <span class="var">chunk</span> <span class="kw">of</span> <span class="var">stream</span>) {
+    <span class="fn">process</span>(<span class="var">chunk</span>);
 }</pre>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- S10: ERROR HANDLING -->
+<section id="s10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Gestion d'Erreurs</h2>
+                <p class="sec-sub">Robustesse, Custom Errors & Crash Prevention</p>
+            </div>
+        </div>
 
-    <!-- S10: ERROR HANDLING -->
-    <section id="s10">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">10</div>
-                <div>
-                    <h2 class="sec-title">Gestion d'Erreurs</h2>
-                    <p class="sec-sub">Best Practices</p>
-                </div>
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Custom Error Class</div>
+                <pre><span class="kw">class</span> <span class="fn">ApiError</span> <span class="kw">extends</span> <span class="fn">Error</span> {
+  <span class="fn">constructor</span>(<span class="var">message</span>, <span class="var">statusCode</span>) {
+    <span class="kw">super</span>(<span class="var">message</span>);
+    <span class="kw">this</span>.<span class="var">statusCode</span> = <span class="var">statusCode</span>;
+    <span class="kw">this</span>.<span class="var">isOperational</span> = <span class="kw">true</span>;
+    <span class="fn">Error</span>.<span class="fn">captureStackTrace</span>(<span class="kw">this</span>, <span class="kw">this</span>.<span class="fn">constructor</span>);
+  }
+}
+
+<span class="kw">throw</span> <span class="kw">new</span> <span class="fn">ApiError</span>(<span class="str">"Produit non trouvé"</span>, <span class="num">404</span>);</pre>
             </div>
 
             <div class="warning">
-                <strong>⚠️ Règle d'or</strong> Ne jamais "avaler" une erreur silencieusement. Logguez-la toujours
-                (console.error ou monitoring) et informez l'utilisateur (code 500).
+                <strong>🚨 Erreurs Fatales</strong><br>
+                Certaines erreurs ne peuvent pas être capturées par un `try/catch` (ex: syntaxe, manque de mémoire).
+                Pour le reste, utilisez :
+                <ul style="margin-top:5px; font-size:0.85rem">
+                    <li><code>process.on('uncaughtException')</code></li>
+                    <li><code>process.on('unhandledRejection')</code></li>
+                </ul>
             </div>
+        </div>
 
+        <h3 style="margin-top:30px;">Best Practices : Async/Await</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Le pattern "Catch-All" Express</div>
+            <pre><span class="c">// Un wrapper pour éviter les try/catch répétitifs</span>
+<span class="kw">const</span> <span class="fn">catchAsync</span> = <span class="var">fn</span> => (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="var">fn</span>(<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>).<span class="fn">catch</span>(<span class="var">next</span>);
+};
+
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/data'</span>, <span class="fn">catchAsync</span>(<span class="kw">async</span> (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="kw">const</span> <span class="var">result</span> = <span class="kw">await</span> <span class="fn">heavyTask</span>();
+    <span class="var">res</span>.<span class="fn">json</span>(<span class="var">result</span>);
+}));</pre>
+        </div>
+
+        <div class="tip">
+            <strong>💡 Operational vs Programmer Errors</strong><br>
+            - <strong>Operational</strong> : On s'y attend (ex: timeout, 404). On doit les gérer proprement.<br>
+            - <strong>Programmer</strong> : Bugs (ex: undefined is not a function). Solution : <strong>CRASH &
+                RESTART</strong> (via PM2). Ne jamais essayer de continuer une app corrompue.
+        </div>
+    </div>
+</section>
+<!-- S11: PROCESS OS -->
+<section id="s11">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">11</div>
+            <div>
+                <h2 class="sec-title">Process & OS</h2>
+                <p class="sec-sub">Gestion du système & Multi-processus</p>
+            </div>
+        </div>
+
+        <div class="grid2">
             <div class="code">
-                <div class="code-head"><span class="dot r"></span>Express Global Handler</div>
-                <pre><span class="c">// 1. Wrapper pour Async (ou utiliser 'express-async-errors')</span>
-<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/async'</span>, <span class="kw">async</span> (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
-    <span class="kw">try</span> {
-        <span class="kw">await</span> <span class="fn">someRiskyAction</span>();
-    } <span class="kw">catch</span> (<span class="var">err</span>) {
-        <span class="fn">next</span>(<span class="var">err</span>); <span class="c">// Passe l'erreur à Express</span>
-    }
+                <div class="code-head">Child Processes (L'art de déléguer)</div>
+                <pre><span class="kw">import</span> { <span class="fn">spawn</span>, <span class="fn">exec</span> } <span class="kw">from</span> <span class="str">'node:child_process'</span>;
+
+<span class="c">// exec : Petit script (Bufferise tout la sortie)</span>
+<span class="fn">exec</span>(<span class="str">'ls -lh'</span>, (<span class="var">err</span>, <span class="var">stdout</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">stdout</span>);
 });
 
-<span class="c">// 2. Middleware d'erreur (à la fin de app.js)</span>
-<span class="var">app</span>.<span class="fn">use</span>((<span class="var">err</span>, <span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
-    <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">"🔥 Crash:"</span>, <span class="var">err</span>.<span class="var">stack</span>);
-    <span class="var">res</span>.<span class="fn">status</span>(<span class="num">500</span>).<span class="fn">json</span>({ <span class="var">error</span>: <span class="str">"Erreur interne"</span> });
+<span class="c">// spawn : Flux de données (Longues tâches)</span>
+<span class="kw">const</span> <span class="var">ls</span> = <span class="fn">spawn</span>(<span class="str">'find'</span>, [<span class="str">'/'</span>]);
+<span class="var">ls</span>.<span class="var">stdout</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">data</span> => <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">data</span>));</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Arguments & CWD</h4>
+                <p style="font-size:0.85rem; color:var(--muted)">Accéder aux arguments passés en console :</p>
+                <code style="color:var(--primary-bright)">process.argv[2]</code>
+                <p style="margin-top:10px; font-size:0.85rem; color:var(--muted)">Dossier actuel :</p>
+                <code style="color:var(--primary-bright)">process.cwd()</code>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Graceful Shutdown (Standard de Production)</h3>
+        <p style="color:var(--muted); margin-bottom:10px;">Indispensable en Docker pour ne pas couper les requêtes HTTP
+            en cours lors d'un déploiement.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot y"></span>SIGINT / SIGTERM</div>
+            <pre><span class="var">process</span>.<span class="fn">on</span>(<span class="str">'SIGTERM'</span>, () => {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Ressu SIGTERM. Fermeture propre...'</span>);
+  <span class="var">server</span>.<span class="fn">close</span>(() => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Serveur fermé. Fin du process.'</span>);
+    <span class="var">db</span>.<span class="fn">disconnect</span>();
+    <span class="var">process</span>.<span class="fn">exit</span>(<span class="num">0</span>);
+  });
 });</pre>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>os module</h4>
+                <ul style="font-size:0.85rem; line-height:1.6; color:var(--muted)">
+                    <li><code>os.uptime()</code> : Temps de marche</li>
+                    <li><code>os.loadavg()</code> : Charge CPU</li>
+                    <li><code>os.networkInterfaces()</code> : IPs locales</li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- S11: PROCESS OS -->
-    <section id="s11">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">11</div>
-                <div>
-                    <h2 class="sec-title">Process & OS</h2>
-                    <p class="sec-sub">Intéractions Système</p>
-                </div>
-            </div>
-
-            <div class="grid2">
-                <div>
-                    <h3>Infos Système (os)</h3>
-                    <p style="margin-bottom:10px;">Module natif pour monitorer le serveur.</p>
-                    <ul style="line-height:1.8; color:var(--muted);">
-                        <li><code>os.cpus()</code> : Coeurs CPU (pour Cluster)</li>
-                        <li><code>os.freemem()</code> : RAM libre</li>
-                        <li><code>os.homedir()</code> : Dossier utilisateur</li>
-                    </ul>
-                </div>
-                <div class="code">
-                    <div class="code-head"><span class="dot g"></span>Graceful Shutdown</div>
-                    <pre><span class="c">// Intercepter l'arrêt (CTRL+C ou Docker stop)</span>
-<span class="var">process</span>.<span class="fn">on</span>(<span class="str">'SIGTERM'</span>, () => {
-    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'🛑 Arrêt demandé...'</span>);
-    
-    <span class="var">server</span>.<span class="fn">close</span>(() => {
-        <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'✅ Connexions fermées. Bye !'</span>);
-        <span class="var">process</span>.<span class="fn">exit</span>(<span class="num">0</span>);
-    });
-});</pre>
-                </div>
+    </div>
+</section>
+<!-- S99: QUIZ -->
+<section id="quiz-section">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">99</div>
+            <div>
+                <h2 class="sec-title">Quiz Expert</h2>
+                <p class="sec-sub">Testez vos connaissances sur Node.js</p>
             </div>
         </div>
-    </section>
 
-    <!-- SECTION QUIZ -->
-    <section id="quiz-section" class="quiz-container">
-        <div class="container">
-            <h2>Testez vos connaissances</h2>
-            <div id="quiz-app"></div>
+        <div class="quiz-container">
+            <div id="quiz-wrapper">
+                <!-- Le moteur de quiz injectera le contenu ici -->
+                <div class="loader">Chargement du quiz...</div>
+            </div>
         </div>
-    </section>
+
+        <div class="ref-card" style="margin-top:40px; border-style:dashed;">
+            <h4>🎓 Conseils pour l'examen</h4>
+            <p style="font-size:0.9rem; color:var(--muted)">
+                Ce quiz couvre des notions allant du débutant à l'expert. Si vous obtenez plus de 80%, vous maîtrisez
+                les concepts fondamentaux de l'architecture Node.js.
+            </p>
+            <button class="demo-btn" style="margin-top:10px" onclick="resetQuiz()">Recommencer le Quiz</button>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+    <div class="container">
+        <p><strong>Mémo Node.js</strong> • 2025 Edition</p>
+        <p style="font-size:0.9rem; margin-top:12px; line-height:1.6; opacity:0.8;">
+            Créé par Geoffroy Streit, assisté par IA — Pour consolider sa mémoire avec un cours concis, graphique et
+            structuré, mais
+            aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
+        </p>
+    </div>
+</footer>
 
     <script type="module">
         import '../../assets/js/quiz-engine.js';
@@ -637,17 +1015,6 @@ API_KEY=12345secret
             }
         });
     </script>
-
-    <footer>
-        <div class="container">
-            <p><strong>Mémo Node.js</strong> • 2025 Edition</p>
-            <p style="font-size:0.9rem; margin-top:12px; line-height:1.6; opacity:0.8;">
-                Créé par Geoffroy Streit, assisté par IA — Pour consolider sa mémoire avec un cours concis, graphique et
-                structuré, mais
-                aussi pour le plaisir de partager la connaissance et faciliter l'apprentissage des autres.
-            </p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>

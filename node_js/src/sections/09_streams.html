@@ -1,0 +1,62 @@
+<!-- S9: STREAMS -->
+<section id="s9">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">09</div>
+            <div>
+                <h2 class="sec-title">Streams</h2>
+                <p class="sec-sub">Flux de données, Backpressure & Pipeline</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>Les 4 Types de Streams</h3>
+                <ul style="margin-top:10px; line-height:1.7; color:var(--muted)">
+                    <li><strong style="color:var(--primary-bright)">Readable</strong> : Source (fs.read, req). On lit.
+                    </li>
+                    <li><strong style="color:var(--primary-bright)">Writable</strong> : Destination (fs.write, res). On
+                        écrit.</li>
+                    <li><strong style="color:var(--primary-bright)">Duplex</strong> : Les deux (Socket TCP).</li>
+                    <li><strong style="color:var(--primary-bright)">Transform</strong> : Modifie les données à la volée
+                        (Gzip, Crypto).</li>
+                </ul>
+            </div>
+
+            <div class="intro-box" style="padding:15px; margin:0; border:1px solid var(--border);">
+                <h4>🌊 Backpressure</h4>
+                <p>Si le disque écrit moins vite que le réseau ne lit, la mémoire explose. </p>
+                <p>Le <strong>Pipe</strong> gère automatiquement la "Backpressure" : il dit à la source de pauser
+                    (pause/resume) le temps que la destination rattrape.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Modern Streams (Pipeline)</h3>
+        <div class="code">
+            <div class="code-head"><span class="dot r"></span>Pipeline Async (Best Practice)</div>
+            <pre><span class="kw">import</span> { <span class="fn">pipeline</span> } <span class="kw">from</span> <span class="str">'node:stream/promises'</span>;
+<span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+<span class="kw">import</span> <span class="var">zlib</span> <span class="kw">from</span> <span class="str">'node:zlib'</span>;
+
+<span class="kw">async</span> <span class="kw">function</span> <span class="fn">archiveLog</span>() {
+    <span class="kw">await</span> <span class="fn">pipeline</span>(
+        <span class="var">fs</span>.<span class="fn">createReadStream</span>(<span class="str">'app.log'</span>),     <span class="c">// 1. Lire</span>
+        <span class="var">zlib</span>.<span class="fn">createGzip</span>(),                  <span class="c">// 2. Compresser</span>
+        <span class="var">fs</span>.<span class="fn">createWriteStream</span>(<span class="str">'app.log.gz'</span>)  <span class="c">// 3. Écrire</span>
+    );
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Succès !'</span>);
+    <span class="c">// Pipeline gère aussi la fermeture auto des streams et les erreurs !</span>
+}</pre>
+        </div>
+
+        <div class="details-content" style="margin-top:15px; background:var(--bg2); border-radius:8px; padding:15px;">
+            <h4 style="color:var(--accent)">Generators & Streams</h4>
+            <p>On peut transformer un Stream en async iterator.</p>
+            <div class="code" style="margin-top:10px; margin-bottom:0;">
+                <pre><span class="kw">for</span> <span class="kw">await</span> (<span class="kw">const</span> <span class="var">chunk</span> <span class="kw">of</span> <span class="var">stream</span>) {
+    <span class="fn">process</span>(<span class="var">chunk</span>);
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>

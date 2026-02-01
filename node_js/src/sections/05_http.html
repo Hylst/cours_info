@@ -1,0 +1,67 @@
+<!-- S5: HTTP -->
+<section id="s5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">HTTP (Natif)</h2>
+                <p class="sec-sub">Bas niveau & Anatomie des requêtes</p>
+            </div>
+        </div>
+
+        <div class="intro-box" style="padding:15px; border:1px solid var(--border);">
+            <h4>Anatomie d'une Transaction</h4>
+            <p>Node hérite de <code>http.IncomingMessage</code> (Request) et <code>http.ServerResponse</code>
+                (Response).</p>
+            <ul style="margin-top:10px; color:var(--muted)">
+                <li><strong>Request</strong> : Readable Stream (Body) + Headers.</li>
+                <li><strong>Response</strong> : Writable Stream.</li>
+            </ul>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Serveur Raw (Sans Framework)</div>
+                <pre><span class="kw">import</span> <span class="var">http</span> <span class="kw">from</span> <span class="str">'node:http'</span>;
+
+<span class="var">http</span>.<span class="fn">createServer</span>((<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="c">// 1. Routing manuel (verbe + url)</span>
+    <span class="kw">if</span> (<span class="var">req</span>.<span class="var">method</span> === <span class="str">'POST'</span> && <span class="var">req</span>.<span class="var">url</span> === <span class="str">'/echo'</span>) {
+        
+        <span class="c">// 2. Lire le Body (Stream)</span>
+        <span class="kw">let</span> <span class="var">body</span> = [];
+        <span class="var">req</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">chunk</span> => <span class="var">body</span>.<span class="fn">push</span>(<span class="var">chunk</span>));
+        
+        <span class="var">req</span>.<span class="fn">on</span>(<span class="str">'end'</span>, () => {
+            <span class="var">body</span> = <span class="fn">Buffer</span>.<span class="fn">concat</span>(<span class="var">body</span>).<span class="fn">toString</span>();
+            
+            <span class="c">// 3. Envoyer Réponse (Headers + Data)</span>
+            <span class="var">res</span>.<span class="fn">writeHead</span>(<span class="num">200</span>, { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> });
+            <span class="var">res</span>.<span class="fn">end</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>({ <span class="var">echo</span>: <span class="var">body</span> }));
+        });
+    } <span class="kw">else</span> {
+        <span class="var">res</span>.<span class="fn">statusCode</span> = <span class="num">404</span>;
+        <span class="var">res</span>.<span class="fn">end</span>();
+    }
+}).<span class="fn">listen</span>(<span class="num">3000</span>);</pre>
+            </div>
+
+            <div>
+                <h3>HTTPS / SSL</h3>
+                <p>Pour activer HTTPS, il faut charger les certificats (clé privée et cert public).</p>
+                <pre
+                    style="background:var(--bg); border:1px solid var(--border); padding:10px; margin-top:10px; border-radius:5px; font-size:0.8rem;"><span class="kw">import</span> <span class="var">https</span> <span class="kw">from</span> <span class="str">'node:https'</span>;
+<span class="kw">import</span> <span class="var">fs</span> <span class="kw">from</span> <span class="str">'node:fs'</span>;
+
+<span class="kw">const</span> <span class="var">options</span> = {
+  <span class="var">key</span>: <span class="var">fs</span>.<span class="fn">readFileSync</span>(<span class="str">'key.pem'</span>),
+  <span class="var">cert</span>: <span class="var">fs</span>.<span class="fn">readFileSync</span>(<span class="str">'cert.pem'</span>)
+};
+
+<span class="var">https</span>.<span class="fn">createServer</span>(<span class="var">options</span>, <span class="var">app</span>).<span class="fn">listen</span>(<span class="num">443</span>);</pre>
+                <p style="margin-top:10px; font-size:0.85rem; color:var(--muted)">En prod, c'est souvent le Reverse
+                    Proxy (Nginx) qui gère le SSL, pas Node directement.</p>
+            </div>
+        </div>
+    </div>
+</section>

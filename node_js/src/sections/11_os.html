@@ -1,0 +1,62 @@
+<!-- S11: PROCESS OS -->
+<section id="s11">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">11</div>
+            <div>
+                <h2 class="sec-title">Process & OS</h2>
+                <p class="sec-sub">Gestion du système & Multi-processus</p>
+            </div>
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Child Processes (L'art de déléguer)</div>
+                <pre><span class="kw">import</span> { <span class="fn">spawn</span>, <span class="fn">exec</span> } <span class="kw">from</span> <span class="str">'node:child_process'</span>;
+
+<span class="c">// exec : Petit script (Bufferise tout la sortie)</span>
+<span class="fn">exec</span>(<span class="str">'ls -lh'</span>, (<span class="var">err</span>, <span class="var">stdout</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">stdout</span>);
+});
+
+<span class="c">// spawn : Flux de données (Longues tâches)</span>
+<span class="kw">const</span> <span class="var">ls</span> = <span class="fn">spawn</span>(<span class="str">'find'</span>, [<span class="str">'/'</span>]);
+<span class="var">ls</span>.<span class="var">stdout</span>.<span class="fn">on</span>(<span class="str">'data'</span>, <span class="var">data</span> => <span class="fn">console</span>.<span class="fn">log</span>(<span class="var">data</span>));</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Arguments & CWD</h4>
+                <p style="font-size:0.85rem; color:var(--muted)">Accéder aux arguments passés en console :</p>
+                <code style="color:var(--primary-bright)">process.argv[2]</code>
+                <p style="margin-top:10px; font-size:0.85rem; color:var(--muted)">Dossier actuel :</p>
+                <code style="color:var(--primary-bright)">process.cwd()</code>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Graceful Shutdown (Standard de Production)</h3>
+        <p style="color:var(--muted); margin-bottom:10px;">Indispensable en Docker pour ne pas couper les requêtes HTTP
+            en cours lors d'un déploiement.</p>
+        <div class="code">
+            <div class="code-head"><span class="dot y"></span>SIGINT / SIGTERM</div>
+            <pre><span class="var">process</span>.<span class="fn">on</span>(<span class="str">'SIGTERM'</span>, () => {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Ressu SIGTERM. Fermeture propre...'</span>);
+  <span class="var">server</span>.<span class="fn">close</span>(() => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">'Serveur fermé. Fin du process.'</span>);
+    <span class="var">db</span>.<span class="fn">disconnect</span>();
+    <span class="var">process</span>.<span class="fn">exit</span>(<span class="num">0</span>);
+  });
+});</pre>
+        </div>
+
+        <div class="grid2">
+            <div class="ref-card">
+                <h4>os module</h4>
+                <ul style="font-size:0.85rem; line-height:1.6; color:var(--muted)">
+                    <li><code>os.uptime()</code> : Temps de marche</li>
+                    <li><code>os.loadavg()</code> : Charge CPU</li>
+                    <li><code>os.networkInterfaces()</code> : IPs locales</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

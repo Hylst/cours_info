@@ -1,0 +1,60 @@
+<!-- S8: ENV -->
+<section id="s8">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">08</div>
+            <div>
+                <h2 class="sec-title">Configurations</h2>
+                <p class="sec-sub">Variables d'Environnement (12-Factor App)</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Sécurité & Git</strong><br>
+            Ajoutez TOUJOURS <code>.env</code> à votre <code>.gitignore</code>.<br>
+            Commitez un fichier <code>.env.example</code> avec les clés vides pour l'équipe.
+        </div>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head">Utilisation Standard</div>
+                <pre><span class="c">// npm i dotenv</span>
+<span class="kw">import</span> <span class="str">'dotenv/config'</span>;
+
+<span class="kw">const</span> <span class="var">PORT</span> = <span class="var">process</span>.<span class="var">env</span>.<span class="var">PORT</span> || <span class="num">3000</span>;
+<span class="kw">const</span> <span class="var">DB_URL</span> = <span class="var">process</span>.<span class="var">env</span>.<span class="var">DB_URL</span>;
+
+<span class="kw">if</span> (!<span class="var">DB_URL</span>) {
+    <span class="kw">throw</span> <span class="kw">new</span> <span class="fn">Error</span>(<span class="str">"DB_URL manquante !"</span>);
+}</pre>
+            </div>
+
+            <div class="ref-card">
+                <h4>Typage & Validation</h4>
+                <p>En production, il est vital de valider les variables au démarrage. Utilisez <strong>Zod</strong>,
+                    <strong>Joi</strong> ou <strong>Envalid</strong>.</p>
+                <pre
+                    style="margin-top:10px; font-size:0.8rem; background:var(--bg); border-radius:4px; padding:8px;"><span class="kw">import</span> { <span class="var">z</span> } <span class="kw">from</span> <span class="str">'zod'</span>;
+
+<span class="kw">const</span> <span class="var">envSchema</span> = <span class="var">z</span>.<span class="fn">object</span>({
+  <span class="var">PORT</span>: <span class="var">z</span>.<span class="fn">coerce</span>.<span class="fn">number</span>(),
+  <span class="var">API_KEY</span>: <span class="var">z</span>.<span class="fn">string</span>().<span class="fn">min</span>(<span class="num">10</span>)
+});
+
+<span class="kw">export</span> <span class="kw">const</span> <span class="var">env</span> = <span class="var">envSchema</span>.<span class="fn">parse</span>(<span class="var">process</span>.<span class="var">env</span>);</pre>
+            </div>
+        </div>
+
+        <h3 style="margin-top:30px;">Cross-Env</h3>
+        <p style="color:var(--muted); margin-bottom:10px;">Windows et Linux/Mac gèrent les variables différemment dans
+            le terminal.</p>
+        <div class="code">
+            <div class="code-head">Solution (package.json)</div>
+            <pre><span class="c">// Sans cross-env (Bug sur Windows)</span>
+<span class="str">"start"</span>: <span class="str">"NODE_ENV=production node app.js"</span>
+
+<span class="c">// Avec cross-env (Universel)</span>
+<span class="str">"start"</span>: <span class="str">"cross-env NODE_ENV=production node app.js"</span></pre>
+        </div>
+    </div>
+</section>

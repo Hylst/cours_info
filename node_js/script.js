@@ -16,6 +16,28 @@ function clearLog(id) {
     document.getElementById(id).innerHTML = '';
 }
 
+// --- UI: MOBILE MENU ---
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.mobile-menu-btn');
+    const menu = document.querySelector('.nav-menu');
+    const links = document.querySelectorAll('.nav-menu a');
+
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+
+        // Fermer le menu au clic sur un lien
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                btn.classList.remove('active');
+                menu.classList.remove('active');
+            });
+        });
+    }
+});
+
 // --- DEMO 1: EVENT LOOP ---
 async function demoEventLoop() {
     const out = 'demo-loop-output';

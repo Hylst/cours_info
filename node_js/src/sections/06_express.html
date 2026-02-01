@@ -1,0 +1,80 @@
+<!-- S6: EXPRESS -->
+<section id="s6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">Express.js</h2>
+                <p class="sec-sub">Middlewares, Routing & Static Files</p>
+            </div>
+        </div>
+
+        <details>
+            <summary>⚙️ Les Middlewares : La chaîne de production</summary>
+            <div class="details-content">
+                <p>Tout est middleware dans Express. C'est une fonction qui a accès à <code>req</code>,
+                    <code>res</code>, et <code>next</code>.</p>
+                <p>Si vous n'appelez pas <code>next()</code> ou si vous ne répondez pas (<code>res.send</code>), la
+                    requête <strong>pend indéfiniment</strong>.</p>
+            </div>
+        </details>
+
+        <div class="grid2">
+            <div class="code">
+                <div class="code-head"><span class="dot y"></span>Chain of Responsibility</div>
+                <pre><span class="c">// Middleware 1 : Logger</span>
+<span class="var">app</span>.<span class="fn">use</span>((<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Request: ${req.url}`</span>);
+    <span class="fn">next</span>(); <span class="c">// ➡️ Passe au suivant</span>
+});
+
+<span class="c">// Middleware 2 : Auth Guard</span>
+<span class="var">app</span>.<span class="fn">use</span>(<span class="str">'/admin'</span>, (<span class="var">req</span>, <span class="var">res</span>, <span class="var">next</span>) => {
+    <span class="kw">if</span> (!<span class="var">req</span>.<span class="var">auth</span>) <span class="kw">return</span> <span class="var">res</span>.<span class="fn">sendStatus</span>(<span class="num">403</span>);
+    <span class="fn">next</span>(); <span class="c">// ➡️ Passe au controller</span>
+});
+
+<span class="c">// Route Handler (Final Middleware)</span>
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/admin'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="var">res</span>.<span class="fn">send</span>(<span class="str">'Welcome Admin'</span>);
+});</pre>
+            </div>
+
+            <div>
+                <h3>Features Essentielles</h3>
+
+                <div class="ref-card">
+                    <h4>📁 Fichiers Statiques</h4>
+                    <p>Servir CSS, Images, JS du frontend.</p>
+                    <pre
+                        style="margin-top:5px; background:var(--bg);"><span class="var">app</span>.<span class="fn">use</span>(<span class="var">express</span>.<span class="fn">static</span>(<span class="str">'public'</span>));</pre>
+                </div>
+
+                <div class="ref-card">
+                    <h4>🔀 Le Router (Modularité)</h4>
+                    <p>Pour ne pas avoir un fichier de 5000 lignes.</p>
+                    <pre
+                        style="margin-top:5px; background:var(--bg);"><span class="c">// users.js</span>
+<span class="kw">const</span> <span class="var">router</span> = <span class="var">express</span>.<span class="fn">Router</span>();
+<span class="var">router</span>.<span class="fn">get</span>(<span class="str">'/'</span>, <span class="var">getAll</span>);
+<span class="kw">export</span> <span class="kw">default</span> <span class="var">router</span>;
+
+<span class="c">// app.js</span>
+<span class="var">app</span>.<span class="fn">use</span>(<span class="str">'/users'</span>, <span class="var">userRouter</span>);</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="code" style="margin-top:20px">
+            <div class="code-head">Template Engines (Server-Side Rendering)</div>
+            <div style="padding:10px; color:var(--muted); font-size:0.9rem;">
+                Bien que Node soit souvent utilisé pour des API JSON (avec React/Vue en front), on peut générer du HTML
+                avec <strong>EJS</strong>, <strong>Pug</strong> ou <strong>Handlebars</strong>.
+            </div>
+            <pre><span class="var">app</span>.<span class="fn">set</span>(<span class="str">'view engine'</span>, <span class="str">'ejs'</span>);
+<span class="var">app</span>.<span class="fn">get</span>(<span class="str">'/'</span>, (<span class="var">req</span>, <span class="var">res</span>) => {
+    <span class="var">res</span>.<span class="fn">render</span>(<span class="str">'index'</span>, { <span class="var">title</span>: <span class="str">'Mon Site'</span> });
+});</pre>
+        </div>
+    </div>
+</section>

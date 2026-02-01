@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Props - Mémo React.js</title>
+    <meta name="description"
+        content="Les Props en React : passer des données entre composants, communication parent-enfant.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s3" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">03</div>
+                        <div>
+                            <h2 class="sec-title">Props</h2>
+                            <p class="sec-sub">Passer des données</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Communication Parent-Enfant</summary>
+                        <div class="details-content">
+                            <p>Les <strong>Props</strong> (propriétés) sont le moyen de passer des données d'un
+                                composant parent
+                                vers un enfant. C'est un flux de données <strong>unidirectionnel</strong> (vers le bas).
+                            </p>
+                            <p>Une règle absolue : les props sont <strong>immuables</strong> (read-only). Un composant
+                                enfant ne
+                                peut pas modifier les props qu'il reçoit. S'il a besoin de communiquer un changement
+                                vers le
+                                haut, le parent doit lui passer une fonction (callback) via les props.</p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Props</div>
+                        <pre><span class="c">// Définition (Destructuring immédiat recommandé)</span>
+<span class="kw">function</span> <span class="fn">UserCard</span>({ <span class="var">name</span>, <span class="var">age</span> }) {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;div&gt;</span>
+            <span class="tag">&lt;h3&gt;</span>{<span class="var">name</span>}<span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;p&gt;</span>Age: {<span class="var">age</span>}<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    );
+}
+
+<span class="c">// Utilisation</span>
+<span class="tag">&lt;UserCard</span> <span class="attr">name</span>=<span class="str">"Alice"</span> <span class="attr">age</span>={25} <span class="tag">/&gt;</span></pre>
+                    </div>
+
+                    <div class="demo">
+                        <div class="demo-title">Démo Props</div>
+                        <button class="demo-btn" onclick="demoProps()">Générer composants</button>
+                        <div id="demo-props-output" class="demo-output" style="margin-top:12px">Résultat</div>
+                    </div>
+
+                    <div class="info"><strong>ℹ️ Note</strong> Les Props sont en <strong>lecture seule</strong>
+                        (Read-Only). Un
+                        composant ne doit jamais modifier ses propres props.</div>
+
+                    <div class="nav-buttons">
+                        <a href="02_components.html" class="btn-prev">← Components</a>
+                        <a href="04_state.html" class="btn-next">Suivant : State →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

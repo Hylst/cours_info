@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components - Mémo React.js</title>
+    <meta name="description" content="Les composants React : Function vs Class components, logique et réutilisabilité.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s2" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">02</div>
+                        <div>
+                            <h2 class="sec-title">Components</h2>
+                            <p class="sec-sub">Fonctions vs Classes</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Logique des Composants</summary>
+                        <div class="details-content">
+                            <p>Un composant React est comme une fonction JavaScript qui retourne des éléments
+                                d'interface (JSX).
+                            </p>
+                            <p>Ils permettent de découper l'interface en petits morceaux indépendants, réutilisables et
+                                isolés.
+                                Par exemple, un bouton, un formulaire, ou une carte utilisateur.</p>
+                            <p><strong>Note :</strong> Les noms de composants doivent obligatoirement commencer par une
+                                <strong>majuscule</strong> (ex: <code>UserCard</code>). Si ça commence par une
+                                minuscule, React
+                                pense que c'est une balise HTML standard.
+                            </p>
+                        </div>
+                    </details>
+
+                    <div class="grid2">
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Function Component (Moderne)</div>
+                            <pre><span class="kw">function</span> <span class="fn">Welcome</span>() {
+    <span class="kw">return</span> <span class="tag">&lt;h1&gt;</span>Bonjour<span class="tag">&lt;/h1&gt;</span>;
+}
+
+<span class="c">// Arrow Function</span>
+<span class="kw">const</span> <span class="fn">Welcome</span> = () => <span class="tag">&lt;h1&gt;</span>Hi<span class="tag">&lt;/h1&gt;</span>;
+
+<span class="c">// Utilisation</span>
+<span class="tag">&lt;Welcome /&gt;</span></pre>
+                        </div>
+
+                        <div class="code">
+                            <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                    class="dot g"></span>Class Component (Legacy)</div>
+                            <pre><span class="kw">class</span> <span class="fn">Welcome</span> <span class="kw">extends</span> <span class="fn">React.Component</span> {
+    <span class="fn">render</span>() {
+        <span class="kw">return</span> <span class="tag">&lt;h1&gt;</span>Bonjour<span class="tag">&lt;/h1&gt;</span>;
+    }
+}</pre>
+                        </div>
+                    </div>
+
+                    <div class="tip"><strong>💡 Conseil</strong> : Utilisez toujours les <strong>Function
+                            Components</strong>
+                        avec les Hooks. Les classes sont tolérées mais plus recommandées.</div>
+
+                    <div class="nav-buttons">
+                        <a href="01_jsx.html" class="btn-prev">← JSX</a>
+                        <a href="03_props.html" class="btn-next">Suivant : Props →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

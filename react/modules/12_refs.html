@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refs - Mémo React.js</title>
+    <meta name="description" content="useRef Hook : références muables et accès direct au DOM en React.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s12" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">12</div>
+                        <div>
+                            <h2 class="sec-title">Refs</h2>
+                            <p class="sec-sub">useRef Hook</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Échapper au cycle React</summary>
+                        <div class="details-content">
+                            <p>Parfois, on a besoin de sortir du modèle "State -> UI". Par exemple pour mettre le focus
+                                sur un
+                                champ, lire la position de scroll, ou intégrer une librairie tierce (D3.js, Maps).</p>
+                            <p><code>useRef</code> est parfait pour ça : il crée un objet persistant (comme state) mais
+                                qui
+                                <strong>ne déclenche pas de re-render</strong> quand on le modifie. C'est souvent
+                                utilisé pour
+                                stocker une référence vers un élément DOM réel.
+                            </p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Accès direct au DOM</div>
+                        <pre><span class="kw">function</span> <span class="fn">TextInput</span>() {
+    <span class="kw">const</span> <span class="var">inputRef</span> = <span class="fn">useRef</span>(<span class="kw">null</span>);
+
+    <span class="kw">const</span> <span class="fn">focus</span> = () => {
+        <span class="c">// Accès direct à l'élément DOM</span>
+        <span class="var">inputRef</span>.<span class="prop">current</span>.<span class="fn">focus</span>();
+    };
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;&gt;</span>
+            <span class="tag">&lt;input</span> <span class="attr">ref</span>={ <span class="var">inputRef</span> } <span class="tag">/&gt;</span>
+            <span class="tag">&lt;button</span> <span class="attr">onClick</span>={ <span class="fn">focus</span> }<span class="tag">&gt;</span>Focus<span class="tag">&lt;/button&gt;</span>
+        <span class="tag">&lt;/&gt;</span>
+    );
+}</pre>
+                    </div>
+
+                    <div class="info"><strong>ℹ️ Note</strong> <code>useRef</code> permet aussi de stocker une valeur
+                        mutable
+                        qui ne déclenche <strong>pas</strong> de re-render quand on la modifie.</div>
+
+                    <div class="nav-buttons">
+                        <a href="11_context.html" class="btn-prev">← Context</a>
+                        <a href="quiz.html" class="btn-next">Suivant : Quiz →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

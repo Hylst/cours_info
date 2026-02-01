@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX - Mémo React.js</title>
+    <meta name="description"
+        content="Comprendre le JSX (JavaScript XML) : syntaxe, différence avec HTML, et compilation.">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Scripts -->
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header> <!-- Injected by nav.js -->
+
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside> <!-- Injected by nav.js -->
+
+        <main>
+            <section id="s1" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">01</div>
+                        <div>
+                            <h2 class="sec-title">JSX</h2>
+                            <p class="sec-sub">JavaScript XML</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Comprendre le JSX</summary>
+                        <div class="details-content">
+                            <p>Le <strong>JSX</strong> (JavaScript XML) n'est pas du HTML valide. C'est du "sucre
+                                syntaxique"
+                                qui est compilé (par Babel ou SWC) en appels de fonction JavaScript standards.</p>
+                            <p>Au lieu d'écrire <code>React.createElement('div', { id: 'app' }, 'Content')</code>, vous
+                                écrivez
+                                simplement <code>&lt;div id="app"&gt;Content&lt;/div&gt;</code>.</p>
+                            <p><strong>Différences clés avec HTML :</strong></p>
+                            <ul>
+                                <li>Les balises doivent toujours être fermées (ex: <code>&lt;img /&gt;</code>).</li>
+                                <li>Un composant ne peut retourner qu'un seul élément parent (ou un Fragment
+                                    <code>&lt;&gt;...&lt;/&gt;</code>).
+                                </li>
+                                <li>On utilise <code>camelCase</code> pour les attributs (<code>onclick</code> →
+                                    <code>onClick</code>).
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Syntaxe</div>
+                        <pre><span class="c">// JSX permet d'écrire du HTML dans le JS</span>
+<span class="kw">const</span> <span class="var">element</span> = <span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span>;
+
+<span class="c">// Interpolation avec {}</span>
+<span class="kw">const</span> <span class="var">name</span> = <span class="str">"Alice"</span>;
+<span class="kw">const</span> <span class="var">title</span> = <span class="tag">&lt;h2&gt;</span>Bonjour {<span class="var">name</span>}<span class="tag">&lt;/h2&gt;</span>;
+
+<span class="c">// Classes et Styles</span>
+<span class="kw">const</span> <span class="var">box</span> = (
+    <span class="tag">&lt;div</span> <span class="attr">className</span>=<span class="str">"container"</span> <span class="attr">style</span>={{ <span class="prop">color</span>: <span class="str">'red'</span> }}<span class="tag">&gt;</span>
+        Contenu
+    <span class="tag">&lt;/div&gt;</span>
+);</pre>
+                    </div>
+
+                    <div class="demo">
+                        <div class="demo-title">Démo Virtual DOM</div>
+                        <button class="demo-btn" onclick="demoJSX()">Voir la structure JS</button>
+                        <div id="demo-jsx-output" class="demo-output" style="margin-top:12px">Cliquez pour voir</div>
+                    </div>
+
+                    <div class="warning"><strong>⚠️ Attention</strong> Utilisez <code>className</code> au lieu de
+                        <code>class</code>, et <code>htmlFor</code> au lieu de <code>for</code>.
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="../index.html" class="btn-prev">← Accueil</a>
+                        <a href="02_components.html" class="btn-next">Suivant : Components →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

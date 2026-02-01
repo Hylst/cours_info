@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooks Rules - Mémo React.js</title>
+    <meta name="description" content="Les règles d'or des Hooks en React : pas de conditions, top level uniquement.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s9" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">09</div>
+                        <div>
+                            <h2 class="sec-title">Règles des Hooks</h2>
+                            <p class="sec-sub">À respecter impérativement</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 La "Magie" des Hooks</summary>
+                        <div class="details-content">
+                            <p>React ne scanne pas votre code pour trouver les Hooks. Il compte simplement l'ordre
+                                d'appel.</p>
+                            <p>"Au premier rendu, le 1er Hook est un useState(0). Le 2ème est un useEffect..."</p>
+                            <p>Si vous mettez un Hook dans un <code>if</code>, l'ordre des appels change au rendu
+                                suivant, et
+                                React perd le fil ("Attends, le 2ème Hook était un useEffect, pourquoi c'est un useState
+                                maintenant ?"). C'est pour ça que l'ordre doit être stable.</p>
+                        </div>
+                    </details>
+
+                    <div class="grid2">
+                        <div class="ref-card">
+                            <h4>1. Top Level Uniquement</h4>
+                            <p>Ne jamais appeler un Hook dans une boucle, une condition ou une fonction imbriquée.</p>
+                        </div>
+                        <div class="ref-card">
+                            <h4>2. React Functions Uniquement</h4>
+                            <p>Appeler les Hooks seulement depuis des composants React ou des Custom Hooks.</p>
+                        </div>
+                        <div class="ref-card">
+                            <h4>3. Nommage</h4>
+                            <p>Les Custom Hooks doivent toujours commencer par <code>use...</code> (ex:
+                                <code>useAuth</code>).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="08_forms.html" class="btn-prev">← Forms</a>
+                        <a href="10_custom_hooks.html" class="btn-next">Suivant : Custom Hooks →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

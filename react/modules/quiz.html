@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Mémo React.js</title>
+    <meta name="description" content="Testez vos connaissances sur React.js avec ce quiz interactif.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="quiz-section" class="quiz-container module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div>
+                            <h2 class="sec-title">Testez vos connaissances</h2>
+                            <p class="sec-sub">Quiz React.js</p>
+                        </div>
+                    </div>
+                    <div id="quiz-app"></div>
+
+                    <div class="nav-buttons">
+                        <a href="12_refs.html" class="btn-prev">← Refs</a>
+                        <a href="../index.html" class="btn-next">Retour Accueil</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // jsonPath relative to this file? Or relative to domain root? 
+            // Usually fetch is relative to current URL.
+            // quiz.html is in modules/. json is in ../.
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: '../quiz_react.json', questionsPerSession: 10 });
+        });
+    </script>
+    <script src="../../assets/js/quiz-engine.js" nomodule></script>
+    <script>
+        window.addEventListener('load', () => {
+            if (window.QuizEngine && !document.querySelector('.quiz-intro')) {
+                new window.QuizEngine({ containerId: 'quiz-app', jsonPath: '../quiz_react.json', questionsPerSession: 10 });
+            }
+        });
+    </script>
+</body>
+
+</html>

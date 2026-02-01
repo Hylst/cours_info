@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context API - Mémo React.js</title>
+    <meta name="description" content="React Context API : éviter le Prop Drilling et gérer l'état global.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s11" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">11</div>
+                        <div>
+                            <h2 class="sec-title">Context API</h2>
+                            <p class="sec-sub">Éviter le Prop Drilling</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Prop Drilling vs Context</summary>
+                        <div class="details-content">
+                            <p>Le "Prop Drilling", c'est quand vous devez passer une donnée du Grand-Parent -> Parent ->
+                                Enfant
+                                -> Petit-Enfant, alors que seul le Petit-Enfant en a besoin. C'est lourd.</p>
+                            <p>Le <strong>Context</strong> permet de "téléporter" la donnée directement. Attention :
+                                n'en abusez
+                                pas, car cela rend les composants moins réutilisables (ils deviennent dépendants du
+                                contexte).
+                            </p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>useContext</div>
+                        <pre><span class="c">// 1. Création</span>
+<span class="kw">const</span> <span class="var">ThemeContext</span> = <span class="fn">createContext</span>(<span class="str">"light"</span>);
+
+<span class="c">// 2. Provider (Parent)</span>
+<span class="tag">&lt;ThemeContext.Provider</span> <span class="attr">value</span>=<span class="str">"dark"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;App /&gt;</span>
+<span class="tag">&lt;/ThemeContext.Provider&gt;</span>
+
+<span class="c">// 3. Consumer (Enfant, n'importe où)</span>
+<span class="kw">function</span> <span class="fn">ThemedButton</span>() {
+    <span class="kw">const</span> <span class="var">theme</span> = <span class="fn">useContext</span>(<span class="var">ThemeContext</span>);
+    <span class="kw">return</span> <span class="tag">&lt;button</span> <span class="attr">className</span>={ <span class="var">theme</span> }<span class="tag">&gt;</span>OK<span class="tag">&lt;/button&gt;</span>;
+}</pre>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="10_custom_hooks.html" class="btn-prev">← Custom Hooks</a>
+                        <a href="12_refs.html" class="btn-next">Suivant : Refs →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

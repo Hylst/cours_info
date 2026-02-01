@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Mémo React.js</title>
+    <meta name="description" content="Gestion des événements en React : SyntheticEvent, onClick, onSubmit.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s6" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">06</div>
+                        <div>
+                            <h2 class="sec-title">Events</h2>
+                            <p class="sec-sub">onClick, onSubmit...</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Synthetic Events</summary>
+                        <div class="details-content">
+                            <p>React n'utilise pas directement les événements natifs du navigateur. Il utilise une
+                                couche
+                                d'abstraction appelée <strong>SyntheticEvent</strong>.</p>
+                            <p>Cela garantit que votre gestion des événements fonctionne de manière identique sur tous
+                                les
+                                navigateurs (IE, Chrome, Firefox). Pour vous, c'est transparent, vous utilisez
+                                <code>e.preventDefault()</code> comme d'habitude.
+                            </p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Synthetic Events</div>
+                        <pre><span class="c">// CamelCase obligatoire (onClick, pas onclick)</span>
+<span class="kw">function</span> <span class="fn">Button</span>() {
+    <span class="kw">const</span> <span class="fn">handleClick</span> = (<span class="var">e</span>) => {
+        <span class="var">e</span>.<span class="fn">preventDefault</span>();
+        <span class="fn">alert</span>(<span class="str">"Click!"</span>);
+    };
+
+    <span class="kw">return</span> (
+        <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span> <span class="attr">onClick</span>={ <span class="fn">handleClick</span> }<span class="tag">&gt;</span>
+            Clique-moi
+        <span class="tag">&lt;/a&gt;</span>
+    );
+}</pre>
+                    </div>
+
+                    <div class="demo">
+                        <div class="demo-title">Démo Events</div>
+                        <button class="demo-btn" onclick="demoEventClick(event)">Cliquez moi !</button>
+                        <div id="demo-event-output" class="demo-output" style="margin-top:12px">En attente...</div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="05_effect.html" class="btn-prev">← Effect</a>
+                        <a href="07_lists.html" class="btn-next">Suivant : Lists →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

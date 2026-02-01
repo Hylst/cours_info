@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Hooks - Mémo React.js</title>
+    <meta name="description" content="Créer des Custom Hooks en React pour réutiliser la logique d'état.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s10" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">10</div>
+                        <div>
+                            <h2 class="sec-title">Custom Hooks</h2>
+                            <p class="sec-sub">Réutiliser la logique</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Pourquoi créer des Custom Hooks ?</summary>
+                        <div class="details-content">
+                            <p>Les Custom Hooks permettent d'extraire de la <strong>logique d'état</strong> (pas de
+                                l'UI) pour
+                                la réutiliser.</p>
+                            <p>Par exemple, si plusieurs composants doivent savoir si l'utilisateur est en ligne ou hors
+                                ligne,
+                                au lieu de copier-coller les <code>useState</code> et <code>useEffect</code> d'écouteur
+                                d'événement, vous créez un hook <code>useOnlineStatus</code> simple à utiliser.</p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>useFetch (Exemple)</div>
+                        <pre><span class="c">// Extraction de la logique</span>
+<span class="kw">function</span> <span class="fn">useFetch</span>(<span class="var">url</span>) {
+    <span class="kw">const</span> [<span class="var">data</span>, <span class="fn">setData</span>] = <span class="fn">useState</span>(<span class="kw">null</span>);
+
+    <span class="fn">useEffect</span>(() => {
+        <span class="fn">fetch</span>(<span class="var">url</span>)
+            .<span class="fn">then</span>(<span class="var">res</span> => <span class="var">res</span>.<span class="fn">json</span>())
+            .<span class="fn">then</span>(<span class="var">d</span> => <span class="fn">setData</span>(<span class="var">d</span>));
+    }, [<span class="var">url</span>]);
+
+    <span class="kw">return</span> <span class="var">data</span>;
+}
+
+<span class="c">// Utilisation</span>
+<span class="kw">function</span> <span class="fn">App</span>() {
+    <span class="kw">const</span> <span class="var">user</span> = <span class="fn">useFetch</span>(<span class="str">"/api/user"</span>);
+    <span class="kw">return</span> <span class="var">user</span> && <span class="tag">&lt;div&gt;</span>{<span class="var">user</span>.<span class="prop">name</span>}<span class="tag">&lt;/div&gt;</span>;
+}</pre>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="09_hooks_rules.html" class="btn-prev">← Hooks Rules</a>
+                        <a href="11_context.html" class="btn-next">Suivant : Context API →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

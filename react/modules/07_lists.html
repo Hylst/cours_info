@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists & Keys - Mémo React.js</title>
+    <meta name="description" content="Afficher des listes en React : méthode .map() et importance de la prop Key.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s7" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">07</div>
+                        <div>
+                            <h2 class="sec-title">Listes & Keys</h2>
+                            <p class="sec-sub">Rendu de tableaux</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 L'importance des Keys</summary>
+                        <div class="details-content">
+                            <p>Quand React met à jour une liste, il a besoin d'identifier quel élément a changé, a été
+                                ajouté ou
+                                supprimé. La prop <code>key</code> sert d'identifiant unique.</p>
+                            <p>Si vous utilisez l'index du tableau (0, 1, 2) comme key et que vous supprimez le premier
+                                élément,
+                                React va se mélanger les pinceaux et réutiliser le DOM du premier élément pour le
+                                second,
+                                causant des bugs d'affichage ou de performance.</p>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>Map & Key</div>
+                        <pre><span class="kw">const</span> <span class="var">users</span> = [
+    { <span class="prop">id</span>: <span class="num">1</span>, <span class="prop">name</span>: <span class="str">"Alice"</span> },
+    { <span class="prop">id</span>: <span class="num">2</span>, <span class="prop">name</span>: <span class="str">"Bob"</span> }
+];
+
+<span class="kw">function</span> <span class="fn">UserList</span>() {
+    <span class="kw">return</span> (
+        <span class="tag">&lt;ul&gt;</span>
+            {<span class="var">users</span>.<span class="fn">map</span>(<span class="var">user</span> => (
+                <span class="c">// KEY est obligatoire et doit être unique (ID)</span>
+                <span class="tag">&lt;li</span> <span class="attr">key</span>={ <span class="var">user</span>.<span class="prop">id</span> }<span class="tag">&gt;</span>
+                    { <span class="var">user</span>.<span class="prop">name</span> }
+                <span class="tag">&lt;/li&gt;</span>
+            ))}
+        <span class="tag">&lt;/ul&gt;</span>
+    );
+}</pre>
+                    </div>
+
+                    <div class="demo">
+                        <div class="demo-title">Démo Listes</div>
+                        <button class="demo-btn" onclick="demoLists()">Afficher la liste</button>
+                        <div id="demo-lists-output" class="demo-output" style="margin-top:12px">Résultat</div>
+                    </div>
+
+                    <div class="warning"><strong>⚠️ Erreur Classique</strong> Ne pas utiliser l'index du tableau comme
+                        <code>key</code> si la liste peut changer (tri, ajout, suppression). Utilisez un ID unique.
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="06_events.html" class="btn-prev">← Events</a>
+                        <a href="08_forms.html" class="btn-next">Suivant : Forms →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

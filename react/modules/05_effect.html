@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effect - Mémo React.js</title>
+    <meta name="description" content="useEffect Hook : gérer les effets de bord (side effects) dans React.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/quiz-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/nav.js" defer></script>
+    <script src="../script.js" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <div class="main-layout">
+        <aside id="sidebar-container"></aside>
+        <main>
+            <section id="s5" class="module-content">
+                <div class="container">
+                    <div class="sec-header">
+                        <div class="sec-num">05</div>
+                        <div>
+                            <h2 class="sec-title">Effect (Effets)</h2>
+                            <p class="sec-sub">useEffect Hook</p>
+                        </div>
+                    </div>
+
+                    <details>
+                        <summary>💡 Effets de bord et Cycle de vie</summary>
+                        <div class="details-content">
+                            <p>Les composants doivent être purs (mêmes entrées = même sortie). Mais parfois, on doit
+                                interagir
+                                avec l'extérieur : appel API, modification du titre du document, abonnement à un
+                                WebSocket.
+                                C'est ce qu'on appelle des <strong>effets de bord</strong>.</p>
+                            <p><code>useEffect</code> permet d'isoler ce code. Le tableau de dépendances <code>[]</code>
+                                à la
+                                fin contrôle quand l'effet se déclenche :</p>
+                            <ul>
+                                <li><code>[]</code> (vide) : Uniquement au montage (apparition).</li>
+                                <li><code>[count]</code> : Au montage ET quand 'count' change.</li>
+                                <li>Pas de tableau : À CHAQUE rendu (dangereux).</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="code">
+                        <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span
+                                class="dot g"></span>useEffect</div>
+                        <pre><span class="kw">import</span> { <span class="fn">useEffect</span> } <span class="kw">from</span> <span class="str">'react'</span>;
+
+<span class="kw">function</span> <span class="fn">App</span>() {
+    <span class="fn">useEffect</span>(() => {
+        <span class="c">// Code exécuté après chaque rendu</span>
+        <span class="fn">document</span>.<span class="prop">title</span> = <span class="str">"Chargé !"</span>;
+        
+        <span class="c">// Fonction de nettoyage optionnelle (ex: clearInterval)</span>
+        <span class="kw">return</span> () => { <span class="c">/* Cleanup */</span> };
+    }, []); <span class="c">// [] = Exécuter une SEULE fois (mount)</span>
+    
+    <span class="c">// [prop] = Ré-exécuter si 'prop' change</span>
+}</pre>
+                    </div>
+
+                    <div class="demo">
+                        <div class="demo-title">Démo Effect</div>
+                        <button class="demo-btn" onclick="demoEffect()">Lancer un effet</button>
+                        <div id="demo-effect-output" class="demo-output" style="margin-top:12px">En attente...</div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <a href="04_state.html" class="btn-prev">← State</a>
+                        <a href="06_events.html" class="btn-next">Suivant : Events →</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

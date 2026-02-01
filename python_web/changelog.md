@@ -1,5 +1,49 @@
 # Changelog
 
+## 2026-02-01
+### ✨ Améliorations Majeures
+- **Corrections de base**:
+  - Correction de l'année 2025 → 2026 dans le footer
+  - Suppression des balises meta Open Graph en double
+  - Correction de l'URL canonique (relative → absolue)
+  
+- **Navigation Responsive**:
+  - Ajout d'un menu hamburger fonctionnel pour mobile
+  - Navigation desktop enrichie (8 liens au lieu de 5)
+  - Menu mobile complet avec accès aux 14 modules + quiz
+  - Animation smooth du menu hamburger (transformation en X)
+  - Scroll-lock lors de l'ouverture du menu mobile
+  - Fermeture automatique au clic sur un lien
+  
+- **Ressources Visuelles Personnalisées**:
+  - Création d'une icône SVG personnalisée (serpent Python + globe web)
+  - Favicon SVG moderne et scalable
+  - Image sociale optimisée WebP (1200x630px) pour réseaux sociaux
+  - Remplacement de l'emoji par l'icône SVG dans le logo
+  
+- **SEO & Métadonnées**:
+  - Meta tags Open Graph optimisés et consolidés
+  - Meta tags Twitter Card mis à jour
+  - Chemins d'images pointant vers les nouvelles ressources WebP
+  - Dimensions d'image spécifiées pour og:image
+  
+- **Documentation Complète**:
+  - `readme.md` : Enrichi avec fonctionnalités, responsive design, Dockerfile
+  - `about.md` : Ajout auteur, contact, hébergement, fonctionnalités clés
+  - `structure.md` : Documentation assets, navigation responsive, optimisation
+  - Toutes les docs mises à jour avec infos 2026
+
+### 🎨 Améliorations CSS
+- Refactorisation des styles de navigation (`.nav-desktop`, `.nav-mobile`)
+- Ajout styles hamburger menu avec animations
+- Media queries améliorées pour mobile responsive
+- Respect strict des variables CSS (pas de hardcoding)
+
+### 🔧 Améliorations JavaScript
+- Ajout logique togglehamburger menu
+- Gestion du scroll-lock body
+- Event listeners sur liens mobiles pour fermeture auto
+
 ## 2026-01-27
 ### Done
 - Modularisation du site avec layout, parts et content.

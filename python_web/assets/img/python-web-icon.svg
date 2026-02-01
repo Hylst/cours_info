@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Dégradé vert moderne -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06d6a0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond arrondi -->
+  <rect width="100" height="100" rx="20" fill="url(#grad)" />
+  
+  <!-- Serpent Python stylisé  (forme simplifiée) -->
+  <path d="M30,35 Q25,25 35,20 Q45,15 50,25 L50,40 Q50,50 40,50 Q30,50 30,60 L30,75 Q30,85 40,85 Q50,85 50,75 L50,60" 
+        fill="none" stroke="#0a0f0d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  
+  <!-- Globe/Web (cercle avec lignes) -->
+  <circle cx="70" cy="70" r="18" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.9"/>
+  <ellipse cx="70" cy="70" rx="7" ry="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  <line x1="52" y1="70" x2="88" y2="70" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  <line x1="70" y1="52" x2="70" y2="88" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Accents lumineux -->
+  <circle cx="35" cy="25" r="3" fill="#ffffff" opacity="0.9"/>
+  <circle cx="30" cy="80" r="2.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="85" cy="60" r="2" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Code brackets stylisés -->
+  <text x="15" y="30" font-family="monospace" font-size="20" font-weight="bold" fill="#0a0f0d" opacity="0.15">&lt;/&gt;</text>
+</svg>

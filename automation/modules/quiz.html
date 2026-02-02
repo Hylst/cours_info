@@ -1,0 +1,14 @@
+<!-- QUIZ -->
+<section id="quiz-section" class="quiz-container">
+    <div class="container">
+        <h2>Validation des Acquis</h2>
+        <div id="quiz-app"></div>
+    </div>
+</section>
+
+<script type="module">
+    import '../../assets/js/quiz-engine.js';
+    document.addEventListener('DOMContentLoaded', () => {
+        new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_automation.json', questionsPerSession: 20 });
+    });
+</script>

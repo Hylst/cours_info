@@ -1,0 +1,166 @@
+<!-- MODULE 5: LA STACK BUILDER (ULTIMATE GUIDE) -->
+<section id="m5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">La Stack Builder</h2>
+                <p class="sec-sub">Choisir son Arme : Vitesse ou Contrôle ?</p>
+            </div>
+        </div>
+
+        <!-- 5.1 INTRO -->
+        <div class="concept-box" style="margin-bottom:30px;">
+            <strong>Le Dilemme :</strong> Il n'y a pas de "Meilleure Stack". Il y a la bonne stack pour le bon stade
+            de projet.<br>
+            <em style="color:#b2bec3;">Attention : Passer du "Tout SaaS" au "Self-Hosted" change votre métier de
+                "Marketer" à "DevOps".</em>
+        </div>
+
+        <!-- 5.2 THE 3 STACKS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Profils (Personas)</h3>
+        <div class="grid3">
+            <!-- SOLO STARTER -->
+            <div class="scenario-card" style="border-top: 3px solid #fab1a0;">
+                <h4 style="color:#fab1a0;">🚀 1. Solo Starter</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux lancer mon MVP en 48h."</em></p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Softr</strong> (Portail Client) ou <strong>Framer</strong> (Landing).</dd>
+                    <dt>Back</dt>
+                    <dd><strong>Airtable</strong> (Visuel, simple).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>Make</strong> (Intuitif, pay-per-op).</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Coûte cher à l'échelle (Make).
+                </div>
+            </div>
+
+            <!-- PRODUCT BUILDER -->
+            <div class="scenario-card" style="border-top: 3px solid #00cec9; background: rgba(0, 206, 201, 0.05);">
+                <h4 style="color:#00cec9;">🛠️ 2. Product Builder</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux scaler et posséder ma donnée."</em>
+                </p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Appsmith</strong> (Outils Internes) ou <strong>FlutterFlow</strong> (Mobile App).
+                    </dd>
+                    <dt>Back</dt>
+                    <dd><strong>Supabase</strong> (Postgres Open Source).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>n8n</strong> (Self-Hosted, illimité).</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">✅ Rapport Puissance/Prix imbattable.
+                </div>
+            </div>
+
+            <!-- ENTERPRISE -->
+            <div class="scenario-card" style="border-top: 3px solid #a29bfe;">
+                <h4 style="color:#a29bfe;">🏢 3. Enterprise</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Sécurité, SSO, Compliance."</em></p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Retool</strong> (Le standard Corporate).</dd>
+                    <dt>Back</dt>
+                    <dd><strong>Xano</strong> (Certifié, Scalable).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>n8n Enterprise</strong> ou Custom Code.</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Très cher (Retool ~$50/user).
+                </div>
+            </div>
+        </div>
+
+        <!-- 5.3 DEEP DIVE TOOLS -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Deep Dive : Les Piliers</h3>
+
+        <div class="grid2">
+            <!-- SUPABASE -->
+            <div class="scenario-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h4>⚡ Supabase (Backend)</h4>
+                    <span class="tool-chip" style="background:#3ECF8E; color:#000; font-weight:bold;">Open
+                        Source</span>
+                </div>
+                <p style="font-size:0.85rem; margin-top:10px;">L'alternative à Firebase. C'est une vraie base
+                    <strong>PostgreSQL</strong> avec une couche d'API automatique.
+                </p>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
+                    <li><strong>Auth :</strong> Gestion utilisateurs (Magic Link, Google, Apple) incluse.</li>
+                    <li><strong>Realtime :</strong> Écouter les changements de la base en direct.</li>
+                    <li><strong>Storage :</strong> Hébergement de fichiers (Images, PDF).</li>
+                </ul>
+            </div>
+
+            <!-- APPSMITH -->
+            <div class="scenario-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h4>🎨 Appsmith (Frontend)</h4>
+                    <span class="tool-chip" style="background:#FF6D2C; color:#fff; font-weight:bold;">JS
+                        Power</span>
+                </div>
+                <p style="font-size:0.85rem; margin-top:10px;">Pour construire des Dashboards Admin, CRM, et outils
+                    internes.</p>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
+                    <li><strong>Drag & Drop :</strong> Boutons, Tableaux, Graphiques.</li>
+                    <li><strong>JS Everywhere :</strong> <code>{{ Table1.selectedRow.email }}</code>. Tout est
+                        connectable.</li>
+                    <li><strong>Git Sync :</strong> Versionnez vos apps comme du code.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="scenario-card" style="margin-top:20px; border-left: 3px solid #000;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4>📧 Resend (Transactional)</h4>
+                <span class="tool-chip" style="border:1px solid #fff;">Dev Friend</span>
+            </div>
+            <p style="font-size:0.85rem; margin-top:10px;">Le standard moderne pour envoyer des emails (Welcome,
+                Reset Password). Remplace SendGrid/Mailgun. API ultra-simple et templates React.</p>
+        </div>
+
+        <!-- 5.4 INTEGRATION PATTERN -->
+        <div class="concept-box" style="margin-top:30px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">C. Le "Glue Pattern" (Exemple d'Architecture)</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Comment tout connecter pour un flux
+                d'inscription utilisateur :</p>
+
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <code style="display:block; padding:10px; border-radius:6px; font-size:0.8rem; line-height:1.6;">
+                        <span style="color:#fab1a0;">1. Front (FlutterFlow)</span> : L'user remplit le formulaire.<br>
+                        ⬇️ <em>API Call</em><br>
+                        <span style="color:#3ECF8E;">2. Back (Supabase Auth)</span> : Crée l'user et sécurise le mot de passe.<br>
+                        ⬇️ <em>Webhook (Trigger)</em><br>
+                        <span style="color:#0984e3;">3. Logic (n8n)</span> : Reçoit l'ID du nouvel user.<br>
+                        ⬇️ <em>Enrichissement</em><br>
+                        <span style="color:#a29bfe;">4. Agent IA</span> : "Génère un message de bienvenue personnalisé".<br>
+                        ⬇️ <em>API Call</em><br>
+                        <span style="color:#fff;">5. Email (Resend)</span> : Envoie le mail.<br>
+                        ⬇️ <em>Notification</em><br>
+                        <span style="color:#74b9ff;">6. Slack</span> : "Nouveau client inscrit !"
+                    </code>
+            </div>
+        </div>
+
+        <!-- 5.5 RESOURCES -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>💰 Free Tiers (2025)</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><strong>Supabase :</strong> 500MB Data (Généreux).</li>
+                    <li><strong>Resend :</strong> 3000 mails/mois (Suffisant MVP).</li>
+                    <li><strong>n8n :</strong> Desktop (Gratuit/Illimité) ou Cloud (20€/mois).</li>
+                    <li><strong>Appsmith :</strong> Cloud Community (Gratuit).</li>
+                </ul>
+            </div>
+            <div class="scenario-card">
+                <h4>📚 Ressources</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><a href="https://supabase.com" target="_blank" style="color:#3ECF8E;">supabase.com</a></li>
+                    <li><a href="https://n8n.io" target="_blank" style="color:#ff6b6b;">n8n.io</a></li>
+                    <li><a href="https://resend.com" target="_blank" style="color:#fff;">resend.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

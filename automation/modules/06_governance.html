@@ -1,0 +1,126 @@
+<!-- MODULE 6: GOUVERNANCE (INDUSTRIAL GRADE) -->
+<section id="m6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">Gouvernance & Sécurité</h2>
+                <p class="sec-sub">Du Bricolage à l'Industrie</p>
+            </div>
+        </div>
+
+        <!-- 6.1 INTRO -->
+        <div class="concept-box" style="margin-bottom:30px; border-left-color: #ff7675;">
+            <strong>L'Enjeu :</strong> Une automatisation mal conçue peut coûter 10 000€ en 5 minutes (boucle
+            infinie d'API) ou fuiter toute votre BDD client.
+            <br><em>Règle d'or : "Si ça marche sur ma machine", ce n'est pas prêt pour la production.</em>
+        </div>
+
+        <!-- 6.2 SECURITY PILLARS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Piliers de la Sécurité</h3>
+        <div class="grid3">
+            <!-- SECRETS -->
+            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
+                <h4>🔐 1. Secrets Management</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Ne mettez JAMAIS vos clés API en dur dans le code.
+                </p>
+                <ul class="vocab-list">
+                    <dt>Env Vars</dt>
+                    <dd>Utilisez les variables d'environnement (<code>.env</code>) pour stocker les clés.</dd>
+                    <dt>Rotation</dt>
+                    <dd>Changez vos clés régulièrement (tous les 90j).</dd>
+                    <dt>Outil</dt>
+                    <dd><strong>Doppler</strong> (Gestionnaire de secrets universel).</dd>
+                </ul>
+            </div>
+
+            <!-- RBAC -->
+            <div class="scenario-card" style="border-top: 3px solid #fdcb6e;">
+                <h4>👮 2. RBAC (Access Control)</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Role-Based Access Control. Moindre privilège.</p>
+                <ul class="vocab-list">
+                    <dt>Admin</dt>
+                    <dd>Peut tout casser (CTO uniquement).</dd>
+                    <dt>Editor</dt>
+                    <dd>Peut créer des workflows, mais pas voir les clés de prod.</dd>
+                    <dt>Viewer</dt>
+                    <dd>Peut voir les logs (Support Client).</dd>
+                </ul>
+            </div>
+
+            <!-- AUDIT -->
+            <div class="scenario-card" style="border-top: 3px solid #74b9ff;">
+                <h4>📜 3. Audit Logs</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Qui a fait quoi et quand ? Vital pour le RGPD.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><em>"Qui a supprimé la table Users ?"</em></li>
+                    <li><em>"Pourquoi le workflow de paiement a changé hier ?"</em></li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">Oubliez ça et vous échouerez l'audit
+                    de sécurité.</div>
+            </div>
+        </div>
+
+        <!-- 6.3 CI/CD PIPELINE -->
+        <div class="concept-box" style="margin-top:40px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">B. La Méthode "Dev -> Staging -> Prod"</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Même en No-Code, on respecte le cycle de
+                vie logiciel.</p>
+
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#fab1a0;">DYI (Dev)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">L'espace "bac à sable". On casse tout, on teste
+                        avec des fausses données. Connecté à Stripe Test.</p>
+                </div>
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#ffeaa7;">Staging (Pre-Prod)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">La copie conforme de la prod. On valide que tout
+                        marche ensemble ("Integration Test").</p>
+                </div>
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#55efc4;">Production (Live)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">La vraie vie. On n'y touche JAMAIS directement
+                        ("Read Only"). On déploie depuis Staging.</p>
+                </div>
+            </div>
+
+            <div class="tip" style="margin-top:15px; font-size:0.8rem;">
+                <strong>Git Sync :</strong> Des outils comme n8n et Appsmith permettent de synchroniser vos
+                modifications avec GitHub. C'est votre "Gilet de sauvetage" (Rollback) si une mise à jour plante
+                tout.
+            </div>
+        </div>
+
+        <!-- 6.4 ERROR HANDLING -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Gestion des Erreurs (Robustesse)</h3>
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>🚑 Le Pattern "Dead Letter Queue"</h4>
+                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">Que se passe-t-il si l'API Stripe
+                    est en panne pendant un paiement ?</p>
+                <ol class="clean-list" style="font-size:0.8rem;">
+                    <li style="margin-bottom:5px;">1. Le Workflow détecte l'erreur (Node "Catch").</li>
+                    <li style="margin-bottom:5px;">2. Il n'arrête pas le système.</li>
+                    <li style="margin-bottom:5px;">3. Il envoie les données du client dans une table "Erreurs" (La
+                        DLQ).</li>
+                    <li>4. Une alerte part sur Slack : "Paiement échoué, à rejouer plus tard".</li>
+                </ol>
+                <div style="font-size:0.75rem; color:#ff7675; margin-top:10px; font-weight:bold;">Résultat : 0% de
+                    perte de donnée.</div>
+            </div>
+
+            <div class="scenario-card">
+                <h4>🤝 Le Pattern "Human-in-the-Loop"</h4>
+                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">L'IA n'a pas le droit de tout
+                    faire toute seule.</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    Trigger -> IA (Draft Reply) -> <span style="color:#ffeaa7;">WAIT FOR APPROVAL</span> -> Slack
+                    (Boutons : Valider / Modifier) -> Send Email
+                </div>
+                <p style="font-size:0.8rem; margin-top:10px;">Utilisez l'Humain comme validateur final pour les
+                    actions critiques (Remboursement > 100€, Publication, Suppression).</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,111 @@
+<!-- MODULE 3: n8n (DEEP DIVE) -->
+<section id="m3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">Architecture n8n</h2>
+                <p class="sec-sub">L'OS de l'Automatisation</p>
+            </div>
+        </div>
+
+        <div class="img-container">
+            <img src="assets/n8n_architecture_2025_1766252310261.jpg" alt="Architecture n8n Isométrique">
+        </div>
+
+        <div class="feature-grid" style="margin-bottom:30px;">
+            <div class="scenario-card">
+                <h4>Qu'est-ce que n8n ?</h4>
+                <p>Un outil d'automatisation de flux (workflow automation) <strong>"Fair-code"</strong>.
+                    Contrairement à Zapier, le code source est visible, vous pouvez l'héberger vous-même
+                    (Self-Hosted), et vous possédez vos données.</p>
+            </div>
+            <div class="scenario-card">
+                <h4>Le Moteur (Node.js)</h4>
+                <p>n8n tourne sur Node.js. Chaque "Nœud" est une mini-fonction JavaScript qui reçoit des données,
+                    les transforme, et les passe au suivant.</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #0984e3;">
+            <strong>Le Concept Clé : "Items & Data Flow"</strong><br>
+            C'est ce qui bloque 90% des débutants. n8n ne traite pas une tâche à la fois, mais des <strong>Tableaux
+                d'Objets JSON</strong>.
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. La Structure de Données</h3>
+                <p>Chaque nœud reçoit et renvoie un tableau d'objets. Chaque objet a toujours cette forme :</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    [
+                    {
+                    "json": {
+                    "nom": "Dupont",
+                    "id": 123
+                    },
+                    "binary": { ... } // (Optionnel) Fichiers
+                    },
+                    {
+                    "json": {
+                    "nom": "Durand",
+                    "id": 124
+                    },
+                    "binary": { ... }
+                    }
+                    ]
+                </div>
+                <p class="comment" style="margin-top:5px; font-size:0.8rem;">Si ce tableau contient 5 objets
+                    ("Items"), le nœud suivant s'exécutera <strong>5 fois</strong> (une fois pour chaque item).
+                    C'est automatique.</p>
+            </div>
+            <div>
+                <h3>2. Les Types de Nœuds</h3>
+                <ul class="vocab-list">
+                    <dt>Triggers (Déclencheurs)</dt>
+                    <dd>Le point de départ.
+                        <ul>
+                            <li><strong>Webhook :</strong> Passif (Attend qu'on l'appelle).</li>
+                            <li><strong>Cron / Schedule :</strong> Actif (Toutes les 10min).</li>
+                            <li><strong>Polling :</strong> Vérifie "Y a-t-il du nouveau ?"</li>
+                        </ul>
+                    </dd>
+                    <dt>Regular Nodes (Actions)</dt>
+                    <dd>Font le travail : "Créer ligne Airtable", "Envoyer Slack", "HTTP Request".</dd>
+                    <dt>Logic Nodes (Contrôle)</dt>
+                    <dd><strong>If</strong>, <strong>Switch</strong>, <strong>Merge</strong>, <strong>Code</strong>.
+                        Ils dirigent le trafic.</dd>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card" style="border-color: #00cec9;">
+                <h4>3. L'API Universelle (HTTP Request)</h4>
+                <p>Si un service n'existe pas dans n8n, utilisez le nœud <strong>HTTP Request</strong>. C'est le
+                    couteau suisse.</p>
+                <ul class="clean-list" style="margin-top:10px;">
+                    <li><strong>Auth :</strong> Basic, Header, OAuth2 (Géré par n8n Credentials).</li>
+                    <li><strong>Method :</strong> GET (Lire), POST (Créer), PUT (Modifier), DELETE (Supprimer).</li>
+                </ul>
+            </div>
+            <div class="scenario-card" style="border-color: #fab1a0;">
+                <h4>4. Hosting & Requirements</h4>
+                <p>Pour la production, oubliez `npx n8n`. Utilisez Docker.</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    docker run -it --rm \
+                    --name n8n \
+                    -p 5678:5678 \
+                    -v ~/.n8n:/home/node/.n8n \
+                    n8nio/n8n
+                </div>
+            </div>
+        </div>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>Attention à la RAM :</strong> n8n garde l'historique d'exécution en mémoire vive avant de le
+            dumper en base. Si vous traitez 100,000 lignes d'un coup, ça crashera. Utilisez la fonction
+            <code>Split in Batches</code> pour traiter par paquets de 100.
+        </div>
+    </div>
+</section>

@@ -1,0 +1,165 @@
+<!-- MODULE 4: AGENTS & MCP (DEEP DIVE) -->
+<section id="m4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Agents & MCP</h2>
+                <p class="sec-sub">Le Cerveau avec des Mains</p>
+            </div>
+        </div>
+
+        <div class="img-container">
+            <img src="assets/ai_agents_swarm_1766252324847.jpg" alt="Essaim d'agents IA">
+        </div>
+
+        <!-- 4.1 AGENTIC AI THEORY -->
+        <div class="concept-box" style="border-left-color: #fab1a0;">
+            <strong>L'Analogie Ultime :</strong><br>
+            Une IA classique (ChatGPT) est un <strong>Encyclopédiste paralysé</strong> dans un bocal. Il sait tout,
+            mais ne peut rien toucher.<br>
+            Un <strong>Agent IA</strong> est ce même encyclopédiste à qui on a greffé des bras (Tools) et donné un
+            accès internet.
+        </div>
+
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>🧠 La Formule Magique</h4>
+                <div class="code-block" style="font-size:0.85rem; padding:10px;">
+                    Agent = LLM + Tools + ReAct Loop
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem;"><strong>ReAct</strong> (Reasoning + Acting) est la
+                    boucle infinie :</p>
+                <ol style="margin-left:20px; font-size:0.9rem; color:#b2bec3; margin-top:5px;">
+                    <li><strong>OBSERVE :</strong> "L'utilisateur veut la météo."</li>
+                    <li><strong>REASON :</strong> "Je ne connais pas la météo. J'ai un outil météo."</li>
+                    <li><strong>ACT :</strong> "J'appelle `get_weather(Paris)`."</li>
+                    <li><strong>OBSERVE :</strong> "L'outil a répondu 15°C."</li>
+                    <li><strong>ACT :</strong> "Je réponds à l'utilisateur."</li>
+                </ol>
+            </div>
+
+            <div class="scenario-card" style="border-color: #fab1a0;">
+                <h4>🤖 Les Types d'Agents</h4>
+                <ul class="vocab-list">
+                    <dt>Single Agent</dt>
+                    <dd>Un seul cerveau avec plusieurs outils (ex: Le bot Support Client).</dd>
+                    <dt>Multi-Agent (Swarm)</dt>
+                    <dd>Une équipe de spécialistes. Un "Manager" délègue à un "Coder", un "Reviewer" et un
+                        "Designer".
+                        <br><em style="font-size:0.8rem;">Outils : CrewAI, AutoGen, LangGraph.</em>
+                    </dd>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4.2 MCP THEORY -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(224, 86, 253, 0.05); border-left-color: #e056fd;">
+            <h3 style="color:#e056fd; margin-bottom:10px;">Le Standard MCP (Model Context Protocol)</h3>
+            <p style="color:#dfe6e9;">C'est l'<strong>USB-C de l'IA</strong>. Avant MCP, connecter Claude à Google
+                Drive demandait du code complexe. Avec MCP, c'est du Plug & Play.</p>
+
+            <div class="feature-grid"
+                style="margin-top:20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div>
+                    <strong>Host (L'Hôte)</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">L'application où vous chattez (Claude Desktop,
+                        Cursor, n8n).</p>
+                </div>
+                <div>
+                    <strong>Server (L'Outil)</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">Le connecteur qui "parle" à la donnée (Google Drive
+                        MCP, Slack MCP, GitHub MCP).</p>
+                </div>
+                <div>
+                    <strong>Client</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">Le protocole qui relie les deux.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4.3 COMPARISON -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>🆚 Le Match des Connexions</h4>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.9rem;">
+                    <li style="margin-bottom:10px;">
+                        <strong style="color:#ff7675;">API (Classique) :</strong><br>
+                        Complexe. Demandé d'apprendre la doc par cœur. Code manuel.
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <strong style="color:#74b9ff;">Webhook :</strong><br>
+                        Passif. "Si X arrive, fais Y". L'IA subit l'événement, elle ne peut pas "chercher".
+                    </li>
+                    <li>
+                        <strong style="color:#e056fd;">MCP (Agentic) :</strong><br>
+                        Actif & Découvrable. L'outil dit "Hey, je sais envoyer des mails !". L'IA répond "Cool, je
+                        t'utiliserai si besoin".
+                    </li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <h4> Vocabulaire Agentique</h4>
+                <div style="margin-top:15px;">
+                    <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
+                        data-def="La capacité d'une IA à utiliser des fonctions externes (API, Calculatrice, Recherche) pour combler ses lacunes.">Tool
+                        Calling</button>
+                    <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
+                        data-def="Boucle de réflexion. L'agent 'parle tout seul' pour planifier ses actions avant d'agir.">ReAct
+                        Loop</button>
+                    <button class="vocab-chip" style="border-color:#e056fd; color:#e056fd;"
+                        data-def="Un fichier JSON qui décrit à l'IA comment utiliser un outil (Nom, Description, Paramètres).">JSON
+                        Schema</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE TUTO (KEPT) -->
+<section id="tuto" style="background: rgba(0,0,0,0.2); padding: 40px 0;">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fab1a0; border-color:#fab1a0;">Tp</div>
+            <h2 class="sec-title">Atelier Pratique</h2>
+        </div>
+        <div class="tutorial-step">
+            <h4>Objectif : Agent Interne</h4>
+            <p>Créer un workflow n8n qui reçoit une demande, active un Agent IA, qui consulte un outil via MCP
+                (Brave Search) et répond.</p>
+            <div class="code-block" style="margin-top:10px;">
+                Trigger (Webhook) -> OpenAI (Tool Calling) -> Router -> MCP Client -> OpenAI (Synthèse) -> Response
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE EXPERT (KEPT) -->
+<section id="mcp-deep"
+    style="background: rgba(224, 86, 253, 0.05); padding: 40px 0; border: 1px solid rgba(224, 86, 253, 0.1);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:var(--mcp-color); border-color:var(--mcp-color);">XP</div>
+            <h2 class="sec-title" style="color:var(--mcp-color);">Mastery : MCP & n8n</h2>
+        </div>
+        <div class="feature-grid">
+            <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
+                <h4>Le "Bridge" (Pour Claude)</h4>
+                <p>Exposer vos workflows n8n comme des outils locaux pour Claude Desktop.</p>
+                <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
+                    npm install -g @modelcontextprotocol/server-n8n
+                </div>
+            </div>
+            <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
+                <h4>Le Schema Sticky Note</h4>
+                <p>Décrivez vos outils directement dans le canvas n8n pour que le Bridge les détecte.</p>
+                <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
+                    @mcp-tool: search_client
+                    inputSchema: { "email": "string" }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

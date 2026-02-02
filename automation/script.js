@@ -19,8 +19,30 @@ function clearLog(id) {
 
 console.log("Course Script Loaded");
 
-// --- TOAST V2 ---
+/* =====================================================
+   MENU MOBILE TOGGLE
+   ===================================================== */
+function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.mobile-menu-btn');
+
+    if (nav) nav.classList.toggle('active');
+    if (btn) btn.classList.toggle('active');
+}
+
+// Close menu when clicking a link
 document.addEventListener('DOMContentLoaded', () => {
+    // Menu mobile interactions
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            const nav = document.querySelector('.nav-links');
+            const btn = document.querySelector('.mobile-menu-btn');
+            if (nav) nav.classList.remove('active');
+            if (btn) btn.classList.remove('active');
+        });
+    });
+
+    // --- TOAST V2 ---
     // Inject Toast Container if not present
     if (!document.querySelector('.toast-container')) {
         const toast = document.createElement('div');

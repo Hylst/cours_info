@@ -4,10 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mémo Automatisation | Masterclass 2025</title>
+    <title>Mémo Automatisation | IT & AI Masterclass</title>
     <meta name="description"
-        content="Guide expert 2025 : No-Code, Low-Code, n8n, Agents, MCP et Roadmap Product Builder.">
+        content="Guide expert 2025 : No-Code, Low-Code, n8n, Agents IA, MCP et Server-Side Stack. Devenez un Product Builder complet.">
     <meta name="theme-color" content="#1a1a1a">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mémo Automatisation | Masterclass 2025">
+    <meta property="og:description"
+        content="Guide ultime pour maîtriser l'automatisation, le Low-Code et les Agents IA.">
+    <meta property="og:image" content="assets/social_card.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -208,779 +218,782 @@
 </head>
 
 <body>
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">AI</div>Auto
-            </div>
-            <nav>
-                <a href="#m1">Eco</a>
-                <a href="#m2">IA</a>
-                <a href="#m3">n8n</a>
-                <a href="#tuto">Atelier</a>
-                <a href="#mcp-deep">Expert</a>
-                <a href="#m5">Stack</a>
-                <a href="#m7">OSS</a>
-                <a href="#m9">Map</a>
-                <a href="#m8">Biz</a>
-                <a href="#m11">Bonus</a>
-            </nav>
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <div class="logo-icon">AI</div>Auto
         </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <span class="module-badge badge-1">Edition Décembre 2025</span>
-            <h1>L'Automatisation & Le Low-Code</h1>
-            <p>Devenez un "Product Builder" complet. Maîtrisez le No-Code pour la vitesse, le Low-Code pour la
-                puissance, et l'IA pour l'intelligence.</p>
-        </div>
-    </section>
+        <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <!-- MODULE 1: LE GRAND PANORAMA (DEEP DIVE) -->
-    <section id="m1">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">01</div>
-                <div>
-                    <h2 class="sec-title">L'Écosystème 2025</h2>
-                    <p class="sec-sub">No-Code, Low-Code & Vibe Coding</p>
-                </div>
-            </div>
-
-            <div class="img-container">
-                <img src="assets/vibe_coding_2025_1766252294176.jpg" alt="Interface Vibe Coding Futuriste 2025">
-            </div>
-
-            <div class="concept-box">
-                <strong>La Triade du Builder 2025 :</strong><br>
-                Le marché a mûri. On ne dit plus juste "No-Code". On distingue trois approches selon le besoin :
-                <strong>Vitesse</strong>, <strong>Puissance</strong>, ou <strong>Intelligence</strong>.
-            </div>
-
-            <!-- 1.1 NO-CODE -->
-            <div class="concept-box" style="border-left-color: #ff7675; background: rgba(255, 118, 117, 0.05);">
-                <h3 style="color:#ff7675; margin-bottom:10px;">A. Le No-Code (Visual First)</h3>
-                <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "Je vois ce que je
-                    construis." Idéal pour le Marketing, le Design et les MVP rapides. La barrière technique est nulle.
-                </p>
-
-                <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 La Stack No-Code Incontournable :</h4>
-                <div class="feature-grid"
-                    style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Webflow / Framer</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Sites vitrines "Pixel Perfect". Le standard des
-                            designers.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Bubble</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Le roi des WebApps. BDD + Frontend + Workflows
-                            tout-en-un.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Softr / Glide</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Transformez un Airtable/Google Sheet en appli en 5
-                            minutes.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Make / Zapier</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">La colle du web. Connectez vos apps entre elles.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top:20px;">
-                    <div style="font-size:0.8rem; color:#ff7675; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
-                        CLICABLE :</div>
-                    <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
-                        data-def="What You See Is What You Get. L'interface d'édition ressemble exactement au résultat final.">WYSIWYG</button>
-                    <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
-                        data-def="Glisser-Déposer. Construire une interface en déplaçant des blocs à la souris.">Drag &
-                        Drop</button>
-                    <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
-                        data-def="Content Management System. Système de gestion de contenu (comme WordPress ou la base de données de Webflow).">CMS</button>
-                    <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
-                        data-def="Design qui s'adapte automatiquement à la taille de l'écran (Mobile, Tablette, Desktop).">Responsive</button>
-                </div>
-            </div>
-
-            <!-- 1.2 LOW-CODE -->
-            <div class="concept-box"
-                style="border-left-color: #74b9ff; background: rgba(116, 185, 255, 0.05); margin-top:30px;">
-                <h3 style="color:#74b9ff; margin-bottom:10px;">B. Le Low-Code (Logic First)</h3>
-                <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "Je ne réinvente pas la
-                    roue, mais je veux du custom." Pour les DSI, les outils internes et le Backend robuste.</p>
-
-                <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 La Stack Low-Code Robuste :</h4>
-                <div class="feature-grid"
-                    style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Appsmith / Retool</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Dashboards admin & outils internes. On peut injecter
-                            du JS partout.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Supabase / Xano</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">"Backend as a Service". Base de données + Auth + API
-                            prêtes à l'emploi.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>n8n</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Automation complexe avec code Python/JS.
-                            Dockerisable.</p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>FlutterFlow</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3;">Créez de vraies apps mobiles natives (iOS/Android)
-                            avec export de code.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top:20px;">
-                    <div style="font-size:0.8rem; color:#74b9ff; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
-                        CLICABLE :</div>
-                    <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
-                        data-def="Create, Read, Update, Delete. Les 4 opérations fondamentales de toute base de données.">CRUD</button>
-                    <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
-                        data-def="Representational State Transfer. Le standard de communication entre serveurs web moderne.">REST
-                        API</button>
-                    <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
-                        data-def="Faille de sécurité où un pirate injecte du code malveillant via un formulaire. Le Low-Code protège souvent contre ça.">SQL
-                        Injection</button>
-                    <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
-                        data-def="Gestion des identités (Login, Signup, Reset Password, 2FA). Complexe à coder, facile en Low-Code (Auth0, Supabase Auth).">Identity
-                        Mgmt</button>
-                </div>
-            </div>
-
-            <!-- 1.3 VIBE CODING -->
-            <div class="concept-box"
-                style="border-left-color: #a29bfe; background: rgba(162, 155, 254, 0.05); margin-top:30px;">
-                <h3 style="color:#a29bfe; margin-bottom:10px;">C. Le Vibe Coding (AI First)</h3>
-                <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "L'anglais est le nouveau
-                    langage de programmation." Vous êtes l'architecte, l'IA est l'ouvrier.</p>
-
-                <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 Le Laboratoire 2025 :</h4>
-                <div class="feature-grid"
-                    style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>AI IDEs</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
-                            • <strong>Cursor</strong> (Le standard)<br>
-                            • <strong>Windsurf</strong> (Context aware)<br>
-                            • <strong>Trae</strong> (L'outsider)<br>
-                            • <strong>AntiGravity</strong> (Deepmind)
-                        </p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Generators</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
-                            • <strong>bolt.new</strong> (Full Stack)<br>
-                            • <strong>lovable.dev</strong> (SaaS fast)<br>
-                            • <strong>v0.dev</strong> (UI React/Tailwind)
-                        </p>
-                    </div>
-                    <div class="scenario-card" style="padding:15px;">
-                        <strong>Agents</strong>
-                        <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
-                            • <strong>Claude Code</strong> (CLI Refactor)<br>
-                            • <strong>Replit Agent</strong> (Zero to Cloud)
-                        </p>
-                    </div>
-                </div>
-
-                <div style="margin-top:20px;">
-                    <div style="font-size:0.8rem; color:#a29bfe; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
-                        CLICABLE :</div>
-                    <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
-                        data-def="La quantité de texte (tokens) que l'IA peut 'lire' en une fois. 200k tokens = un livre entier.">Context
-                        Window</button>
-                    <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
-                        data-def="Les morceaux de mots que l'IA traite. 1000 tokens ≈ 750 mots. C'est l'unité de facturation.">Tokens</button>
-                    <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
-                        data-def="Retrieval Augmented Generation. Technique pour donner à l'IA accès à VOS documents privés avant de répondre.">RAG</button>
-                    <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
-                        data-def="Quand l'IA invente des faits de manière très convaincante. Toujours vérifier le code généré !">Hallucination</button>
-                </div>
+        <nav class="nav-links">
+            <a href="#m1">Eco</a>
+            <a href="#m2">IA</a>
+            <a href="#m3">n8n</a>
+            <a href="#tuto">Atelier</a>
+            <a href="#mcp-deep">Expert</a>
+            <a href="#m5">Stack</a>
+            <a href="#m7">OSS</a>
+            <a href="#m9">Map</a>
+            <a href="#m10">Biz</a>
+            <a href="#m11">Bonus</a>
+            <!-- Close btn for mobile -->
+            <button class="close-menu-btn" onclick="toggleMenu()">×</button>
+        </nav>
+    </div>
+</header>
+<section class="hero">
+    <div class="container">
+        <span class="module-badge badge-1">Edition 2025</span>
+        <h1>L'Automatisation & Le Low-Code</h1>
+        <p>Devenez un "Product Builder" complet. Maîtrisez le No-Code pour la vitesse, le Low-Code pour la
+            puissance, et l'IA pour l'intelligence.</p>
+    </div>
+</section>
+<!-- MODULE 1: LE GRAND PANORAMA (DEEP DIVE) -->
+<section id="m1">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">01</div>
+            <div>
+                <h2 class="sec-title">L'Écosystème 2025</h2>
+                <p class="sec-sub">No-Code, Low-Code & Vibe Coding</p>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 2: INTELLIGENCE ARTIFICIELLE (ULTRA-DEEP) -->
-    <section id="m2">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">02</div>
-                <div>
-                    <h2 class="sec-title">Intelligence Artificielle</h2>
-                    <p class="sec-sub">Fondations & Concepts</p>
+        <div class="img-container">
+            <img src="assets/vibe_coding_2025_1766252294176.jpg" alt="Interface Vibe Coding Futuriste 2025">
+        </div>
+
+        <div class="concept-box">
+            <strong>La Triade du Builder 2025 :</strong><br>
+            Le marché a mûri. On ne dit plus juste "No-Code". On distingue trois approches selon le besoin :
+            <strong>Vitesse</strong>, <strong>Puissance</strong>, ou <strong>Intelligence</strong>.
+        </div>
+
+        <!-- 1.1 NO-CODE -->
+        <div class="concept-box" style="border-left-color: #ff7675; background: rgba(255, 118, 117, 0.05);">
+            <h3 style="color:#ff7675; margin-bottom:10px;">A. Le No-Code (Visual First)</h3>
+            <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "Je vois ce que je
+                construis." Idéal pour le Marketing, le Design et les MVP rapides. La barrière technique est nulle.
+            </p>
+
+            <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 La Stack No-Code Incontournable :</h4>
+            <div class="feature-grid"
+                style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Webflow / Framer</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Sites vitrines "Pixel Perfect". Le standard des
+                        designers.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Bubble</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Le roi des WebApps. BDD + Frontend + Workflows
+                        tout-en-un.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Softr / Glide</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Transformez un Airtable/Google Sheet en appli en 5
+                        minutes.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Make / Zapier</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">La colle du web. Connectez vos apps entre elles.</p>
                 </div>
             </div>
 
-            <!-- 0. INTRO -->
-            <div class="concept-box" style="margin-bottom:30px;">
-                <strong>Objectif :</strong> Comprendre la mécanique réelle pour mieux orchestrer les Agents.<br>
-                <em>Public : Product Builders avancés. Pas de maths complexes, juste de la logique métier.</em>
+            <div style="margin-top:20px;">
+                <div style="font-size:0.8rem; color:#ff7675; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
+                    CLICABLE :</div>
+                <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
+                    data-def="What You See Is What You Get. L'interface d'édition ressemble exactement au résultat final.">WYSIWYG</button>
+                <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
+                    data-def="Glisser-Déposer. Construire une interface en déplaçant des blocs à la souris.">Drag &
+                    Drop</button>
+                <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
+                    data-def="Content Management System. Système de gestion de contenu (comme WordPress ou la base de données de Webflow).">CMS</button>
+                <button class="vocab-chip" style="border-color:#ff7675; color:#ff7675;"
+                    data-def="Design qui s'adapte automatiquement à la taille de l'écran (Mobile, Tablette, Desktop).">Responsive</button>
+            </div>
+        </div>
+
+        <!-- 1.2 LOW-CODE -->
+        <div class="concept-box"
+            style="border-left-color: #74b9ff; background: rgba(116, 185, 255, 0.05); margin-top:30px;">
+            <h3 style="color:#74b9ff; margin-bottom:10px;">B. Le Low-Code (Logic First)</h3>
+            <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "Je ne réinvente pas la
+                roue, mais je veux du custom." Pour les DSI, les outils internes et le Backend robuste.</p>
+
+            <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 La Stack Low-Code Robuste :</h4>
+            <div class="feature-grid"
+                style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Appsmith / Retool</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Dashboards admin & outils internes. On peut injecter
+                        du JS partout.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Supabase / Xano</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">"Backend as a Service". Base de données + Auth + API
+                        prêtes à l'emploi.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>n8n</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Automation complexe avec code Python/JS.
+                        Dockerisable.</p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>FlutterFlow</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3;">Créez de vraies apps mobiles natives (iOS/Android)
+                        avec export de code.</p>
+                </div>
             </div>
 
-            <!-- 1. DEMYSTIFICATION -->
-            <div class="grid2">
-                <div class="scenario-card" style="border-left: 3px solid #ff7675;">
-                    <h4>⚠️ Erreur Fréquente</h4>
-                    <p>Ne confondez pas <strong>Intelligence Biologique</strong> (Compréhension, Sens, Conscience) et
-                        <strong>Intelligence Statistique</strong> (Corrélation, Prédiction, Probabilité).
+            <div style="margin-top:20px;">
+                <div style="font-size:0.8rem; color:#74b9ff; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
+                    CLICABLE :</div>
+                <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
+                    data-def="Create, Read, Update, Delete. Les 4 opérations fondamentales de toute base de données.">CRUD</button>
+                <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
+                    data-def="Representational State Transfer. Le standard de communication entre serveurs web moderne.">REST
+                    API</button>
+                <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
+                    data-def="Faille de sécurité où un pirate injecte du code malveillant via un formulaire. Le Low-Code protège souvent contre ça.">SQL
+                    Injection</button>
+                <button class="vocab-chip" style="border-color:#74b9ff; color:#74b9ff;"
+                    data-def="Gestion des identités (Login, Signup, Reset Password, 2FA). Complexe à coder, facile en Low-Code (Auth0, Supabase Auth).">Identity
+                    Mgmt</button>
+            </div>
+        </div>
+
+        <!-- 1.3 VIBE CODING -->
+        <div class="concept-box"
+            style="border-left-color: #a29bfe; background: rgba(162, 155, 254, 0.05); margin-top:30px;">
+            <h3 style="color:#a29bfe; margin-bottom:10px;">C. Le Vibe Coding (AI First)</h3>
+            <p style="color:#dfe6e9; margin-bottom:15px;"><strong>Philosophie :</strong> "L'anglais est le nouveau
+                langage de programmation." Vous êtes l'architecte, l'IA est l'ouvrier.</p>
+
+            <h4 style="color:#fff; font-size:0.9rem; margin-top:20px;">🛠 Le Laboratoire 2025 :</h4>
+            <div class="feature-grid"
+                style="margin-top:10px; gap:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>AI IDEs</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                        • <strong>Cursor</strong> (Le standard)<br>
+                        • <strong>Windsurf</strong> (Context aware)<br>
+                        • <strong>Trae</strong> (L'outsider)<br>
+                        • <strong>AntiGravity</strong> (Deepmind)
                     </p>
                 </div>
-                <div class="scenario-card" style="border-left: 3px solid #74b9ff;">
-                    <h4>🧠 L'Analogie</h4>
-                    <p>"L'IA sait expliquer la gravité avec une précision Nobel, sans jamais avoir ressenti le poids de
-                        son propre corps."</p>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Generators</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                        • <strong>bolt.new</strong> (Full Stack)<br>
+                        • <strong>lovable.dev</strong> (SaaS fast)<br>
+                        • <strong>v0.dev</strong> (UI React/Tailwind)
+                    </p>
+                </div>
+                <div class="scenario-card" style="padding:15px;">
+                    <strong>Agents</strong>
+                    <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                        • <strong>Claude Code</strong> (CLI Refactor)<br>
+                        • <strong>Replit Agent</strong> (Zero to Cloud)
+                    </p>
                 </div>
             </div>
 
-            <!-- 2. FONDATIONS ML & DL -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">A. Machine Learning & Deep Learning</h3>
-            <div class="grid2">
-                <div>
-                    <div class="tutorial-step">
-                        <h4 style="color:#b2bec3;">Le Pipeline ML Simplifié</h4>
-                        <ol class="clean-list"
-                            style="margin-left:15px; border-left: 1px solid rgba(255,255,255,0.1); padding-left:15px;">
-                            <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Data :</strong> Le carburant
-                                (Images, Textes, Logs).</li>
-                            <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Training :</strong>
-                                L'entrainement (Calculs massifs sur GPU).</li>
-                            <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Model :</strong> Le moteur
-                                figé (Le fichier "poids").</li>
-                            <li><strong style="color:#a29bfe;">Inference :</strong> La prédiction (L'usage quotidien).
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div>
-                    <h4 style="color:#b2bec3;">Les Types d'Apprentissage</h4>
-                    <ul class="vocab-list">
-                        <dt>Supervisé</dt>
-                        <dd>On donne l'exemple. <em>Input: Photo Chat -> Output: "Chat".</em><br>Usage: Spam, Fraude.
-                        </dd>
-                        <dt>Non-Supervisé</dt>
-                        <dd>On laisse chercher les patterns. <em>Input: Clients -> Output: Clusters.</em><br>Usage:
-                            Segmentation.</dd>
-                        <dt>Renforcement (RL)</dt>
-                        <dd>Punition / Récompense. <em>Input: Mario -> Output: Score.</em><br>Usage: Robotique, AlphaGo,
-                            <strong>ChatGPT (RLHF)</strong>.
-                        </dd>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 3. ARCHITECTURES MODERNES -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Architectures Clés</h3>
-            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="scenario-card">
-                    <strong>CNN</strong>
-                    <p style="font-size:0.8rem; color:#b2bec3;">Vision & Pixels. "Voit" les bords, puis les formes, puis
-                        les objets.</p>
-                </div>
-                <div class="scenario-card">
-                    <strong>Transformers</strong>
-                    <p style="font-size:0.8rem; color:#b2bec3;">Langage & Séquences. Gère l'<strong>Attention</strong>
-                        (Le contexte entre les mots lointains).</p>
-                </div>
-                <div class="scenario-card" style="border: 1px solid #a29bfe;">
-                    <strong style="color:#a29bfe;">Vectors / Embeddings</strong>
-                    <p style="font-size:0.8rem; color:#b2bec3;">La clé du RAG. Transforme du texte en liste de nombres
-                        (coordonnées GPS du sens).</p>
-                    <div style="font-size:0.7rem; margin-top:5px; font-family:monospace; color:#636e72;">Chat = [0.1,
-                        0.9, 0.3]<br>Chien = [0.1, 0.8, 0.4]</div>
-                </div>
-            </div>
-
-            <!-- 4. RAG & LLM -->
-            <div class="concept-box"
-                style="margin-top:30px; background: rgba(162, 155, 254, 0.05); border-left-color: #a29bfe;">
-                <h3 style="color:#a29bfe; margin-bottom:10px;">C. Le RAG (Retrieval Augmented Generation)</h3>
-                <p style="margin-bottom:15px; font-size:0.9rem;">Le LLM a une "mémoire figée" (sa date de training). Le
-                    RAG lui donne une "mémoire vive" (VOS documents).</p>
-                <div class="tutorial-step" style="margin-bottom:0;">
-                    <h4 style="font-size:0.9rem;">Le Pipeline RAG :</h4>
-                    <code
-                        style="display:block; background:#000; padding:10px; border-radius:6px; font-size:0.8rem; color:#fab1a0;">
-                        Question User -> Recherche Vectorielle (Base de connaissance) -> Récupération des chunks pertinents -> Injection dans le Prompt -> Réponse du LLM
-                    </code>
-                </div>
-            </div>
-
-            <!-- 5. PROMPTING FRAMEWORK -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">D. Prompt Engineering : La Méthode</h3>
-            <div class="grid2">
-                <div class="scenario-card" style="border-color: #ffeaa7;">
-                    <h4>Framework "CRISPE"</h4>
-                    <ul class="clean-list" style="font-size:0.9rem;">
-                        <li><strong>C</strong>ontext : "Tu es un expert Sr..."</li>
-                        <li><strong>R</strong>ole : "Agis comme un CTO..."</li>
-                        <li><strong>I</strong>ntent : "Le but est de..."</li>
-                        <li><strong>S</strong>pecifics : "Pas de jargon..."</li>
-                        <li><strong>P</strong>arameters : "Tableau Markdown..."</li>
-                        <li><strong>E</strong>xample : "Comme ceci..." (Few-Shot)</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Techniques Avancées</h4>
-                    <ul class="vocab-list">
-                        <dt>Chain of Thought (CoT)</dt>
-                        <dd>"Pense étape par étape". Force le modèle à décomposer la logique.</dd>
-                        <dt>Few-Shot</dt>
-                        <dd>Donner 2 ou 3 exemples de couples (Input -> Output) dans le prompt.</dd>
-                        <dt>System Prompt</dt>
-                        <dd>Les instructions "Dieu" inamovibles, invisibles pour l'utilisateur final.</dd>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 6. SPECS & RISKS -->
-            <div class="grid2" style="margin-top:30px;">
-                <div class="scenario-card">
-                    <h4>⚙️ Specs Techniques</h4>
-                    <ul class="clean-list" style="font-size:0.85rem;">
-                        <li style="margin-bottom:5px;"><strong>Tokens :</strong> Unité de facturation. (IN + OUT).</li>
-                        <li style="margin-bottom:5px;"><strong>Window :</strong> Mémoire à court terme (128k = ~300
-                            pages).</li>
-                        <li style="margin-bottom:5px;"><strong>Temperature :</strong> Créativité (0 = Robot, 1 = Poète).
-                        </li>
-                    </ul>
-                </div>
-                <div class="scenario-card" style="border-color: #ff7675;">
-                    <h4>⚠️ Risques & Mitigation</h4>
-                    <ul class="clean-list" style="font-size:0.85rem;">
-                        <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Hallucinations :</strong> Le
-                            modèle invente pour combler. <br>-> <em>Solution : RAG + "Si tu ne sais pas, dis-le".</em>
-                        </li>
-                        <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Biais :</strong> Reflet
-                            d'Internet.</li>
-                        <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Oubli :</strong> Dépassement de
-                            fenêtre.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 7. BRIDGE AUTOMATION -->
-            <div class="tip" style="margin-top:20px;">
-                <strong>Pourquoi maîtriser ça pour l'automatisation ?</strong><br>
-                Si vous ne comprenez pas les <strong>Tokens</strong>, vous exploserez votre budget API. Si vous ne
-                comprenez pas le <strong>RAG</strong>, vos bots de support diront n'importe quoi. Si vous ne structurez
-                pas vos <strong>Prompts</strong>, n8n ne pourra pas parser le JSON de réponse.
+            <div style="margin-top:20px;">
+                <div style="font-size:0.8rem; color:#a29bfe; margin-bottom:8px; font-weight:bold;">VOCABULAIRE
+                    CLICABLE :</div>
+                <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
+                    data-def="La quantité de texte (tokens) que l'IA peut 'lire' en une fois. 200k tokens = un livre entier.">Context
+                    Window</button>
+                <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
+                    data-def="Les morceaux de mots que l'IA traite. 1000 tokens ≈ 750 mots. C'est l'unité de facturation.">Tokens</button>
+                <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
+                    data-def="Retrieval Augmented Generation. Technique pour donner à l'IA accès à VOS documents privés avant de répondre.">RAG</button>
+                <button class="vocab-chip" style="border-color:#a29bfe; color:#a29bfe;"
+                    data-def="Quand l'IA invente des faits de manière très convaincante. Toujours vérifier le code généré !">Hallucination</button>
             </div>
         </div>
-    </section>
-
-    <!-- MODULE 3: n8n (DEEP DIVE) -->
-    <section id="m3">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">03</div>
-                <div>
-                    <h2 class="sec-title">Architecture n8n</h2>
-                    <p class="sec-sub">L'OS de l'Automatisation</p>
-                </div>
-            </div>
-
-            <div class="img-container">
-                <img src="assets/n8n_architecture_2025_1766252310261.jpg" alt="Architecture n8n Isométrique">
-            </div>
-
-            <div class="feature-grid" style="margin-bottom:30px;">
-                <div class="scenario-card">
-                    <h4>Qu'est-ce que n8n ?</h4>
-                    <p>Un outil d'automatisation de flux (workflow automation) <strong>"Fair-code"</strong>.
-                        Contrairement à Zapier, le code source est visible, vous pouvez l'héberger vous-même
-                        (Self-Hosted), et vous possédez vos données.</p>
-                </div>
-                <div class="scenario-card">
-                    <h4>Le Moteur (Node.js)</h4>
-                    <p>n8n tourne sur Node.js. Chaque "Nœud" est une mini-fonction JavaScript qui reçoit des données,
-                        les transforme, et les passe au suivant.</p>
-                </div>
-            </div>
-
-            <div class="concept-box" style="border-left-color: #0984e3;">
-                <strong>Le Concept Clé : "Items & Data Flow"</strong><br>
-                C'est ce qui bloque 90% des débutants. n8n ne traite pas une tâche à la fois, mais des <strong>Tableaux
-                    d'Objets JSON</strong>.
-            </div>
-
-            <div class="grid2">
-                <div>
-                    <h3>1. La Structure de Données</h3>
-                    <p>Chaque nœud reçoit et renvoie un tableau d'objets. Chaque objet a toujours cette forme :</p>
-                    <div class="code-block" style="font-size:0.8rem;">
-                        [
-                        {
-                        "json": {
-                        "nom": "Dupont",
-                        "id": 123
-                        },
-                        "binary": { ... } // (Optionnel) Fichiers
-                        },
-                        {
-                        "json": {
-                        "nom": "Durand",
-                        "id": 124
-                        },
-                        "binary": { ... }
-                        }
-                        ]
-                    </div>
-                    <p class="comment" style="margin-top:5px; font-size:0.8rem;">Si ce tableau contient 5 objets
-                        ("Items"), le nœud suivant s'exécutera <strong>5 fois</strong> (une fois pour chaque item).
-                        C'est automatique.</p>
-                </div>
-                <div>
-                    <h3>2. Les Types de Nœuds</h3>
-                    <ul class="vocab-list">
-                        <dt>Triggers (Déclencheurs)</dt>
-                        <dd>Le point de départ.
-                            <ul>
-                                <li><strong>Webhook :</strong> Passif (Attend qu'on l'appelle).</li>
-                                <li><strong>Cron / Schedule :</strong> Actif (Toutes les 10min).</li>
-                                <li><strong>Polling :</strong> Vérifie "Y a-t-il du nouveau ?"</li>
-                            </ul>
-                        </dd>
-                        <dt>Regular Nodes (Actions)</dt>
-                        <dd>Font le travail : "Créer ligne Airtable", "Envoyer Slack", "HTTP Request".</dd>
-                        <dt>Logic Nodes (Contrôle)</dt>
-                        <dd><strong>If</strong>, <strong>Switch</strong>, <strong>Merge</strong>, <strong>Code</strong>.
-                            Ils dirigent le trafic.</dd>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid2" style="margin-top:30px;">
-                <div class="scenario-card" style="border-color: #00cec9;">
-                    <h4>3. L'API Universelle (HTTP Request)</h4>
-                    <p>Si un service n'existe pas dans n8n, utilisez le nœud <strong>HTTP Request</strong>. C'est le
-                        couteau suisse.</p>
-                    <ul class="clean-list" style="margin-top:10px;">
-                        <li><strong>Auth :</strong> Basic, Header, OAuth2 (Géré par n8n Credentials).</li>
-                        <li><strong>Method :</strong> GET (Lire), POST (Créer), PUT (Modifier), DELETE (Supprimer).</li>
-                    </ul>
-                </div>
-                <div class="scenario-card" style="border-color: #fab1a0;">
-                    <h4>4. Hosting & Requirements</h4>
-                    <p>Pour la production, oubliez `npx n8n`. Utilisez Docker.</p>
-                    <div class="code-block" style="font-size:0.8rem;">
-                        docker run -it --rm \
-                        --name n8n \
-                        -p 5678:5678 \
-                        -v ~/.n8n:/home/node/.n8n \
-                        n8nio/n8n
-                    </div>
-                </div>
-            </div>
-
-            <div class="tip" style="margin-top:20px;">
-                <strong>Attention à la RAM :</strong> n8n garde l'historique d'exécution en mémoire vive avant de le
-                dumper en base. Si vous traitez 100,000 lignes d'un coup, ça crashera. Utilisez la fonction
-                <code>Split in Batches</code> pour traiter par paquets de 100.
+    </div>
+</section>
+<!-- MODULE 2: INTELLIGENCE ARTIFICIELLE (ULTRA-DEEP) -->
+<section id="m2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Intelligence Artificielle</h2>
+                <p class="sec-sub">Fondations & Concepts</p>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 4: AGENTS & MCP (DEEP DIVE) -->
-    <section id="m4">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">04</div>
-                <div>
-                    <h2 class="sec-title">Agents & MCP</h2>
-                    <p class="sec-sub">Le Cerveau avec des Mains</p>
-                </div>
+        <!-- 0. INTRO -->
+        <div class="concept-box" style="margin-bottom:30px;">
+            <strong>Objectif :</strong> Comprendre la mécanique réelle pour mieux orchestrer les Agents.<br>
+            <em>Public : Product Builders avancés. Pas de maths complexes, juste de la logique métier.</em>
+        </div>
+
+        <!-- 1. DEMYSTIFICATION -->
+        <div class="grid2">
+            <div class="scenario-card" style="border-left: 3px solid #ff7675;">
+                <h4>⚠️ Erreur Fréquente</h4>
+                <p>Ne confondez pas <strong>Intelligence Biologique</strong> (Compréhension, Sens, Conscience) et
+                    <strong>Intelligence Statistique</strong> (Corrélation, Prédiction, Probabilité).
+                </p>
             </div>
-
-            <div class="img-container">
-                <img src="assets/ai_agents_swarm_1766252324847.jpg" alt="Essaim d'agents IA">
+            <div class="scenario-card" style="border-left: 3px solid #74b9ff;">
+                <h4>🧠 L'Analogie</h4>
+                <p>"L'IA sait expliquer la gravité avec une précision Nobel, sans jamais avoir ressenti le poids de
+                    son propre corps."</p>
             </div>
+        </div>
 
-            <!-- 4.1 AGENTIC AI THEORY -->
-            <div class="concept-box" style="border-left-color: #fab1a0;">
-                <strong>L'Analogie Ultime :</strong><br>
-                Une IA classique (ChatGPT) est un <strong>Encyclopédiste paralysé</strong> dans un bocal. Il sait tout,
-                mais ne peut rien toucher.<br>
-                Un <strong>Agent IA</strong> est ce même encyclopédiste à qui on a greffé des bras (Tools) et donné un
-                accès internet.
-            </div>
-
-            <div class="grid2">
-                <div class="scenario-card">
-                    <h4>🧠 La Formule Magique</h4>
-                    <div class="code-block" style="font-size:0.85rem; padding:10px;">
-                        Agent = LLM + Tools + ReAct Loop
-                    </div>
-                    <p style="margin-top:10px; font-size:0.9rem;"><strong>ReAct</strong> (Reasoning + Acting) est la
-                        boucle infinie :</p>
-                    <ol style="margin-left:20px; font-size:0.9rem; color:#b2bec3; margin-top:5px;">
-                        <li><strong>OBSERVE :</strong> "L'utilisateur veut la météo."</li>
-                        <li><strong>REASON :</strong> "Je ne connais pas la météo. J'ai un outil météo."</li>
-                        <li><strong>ACT :</strong> "J'appelle `get_weather(Paris)`."</li>
-                        <li><strong>OBSERVE :</strong> "L'outil a répondu 15°C."</li>
-                        <li><strong>ACT :</strong> "Je réponds à l'utilisateur."</li>
+        <!-- 2. FONDATIONS ML & DL -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">A. Machine Learning & Deep Learning</h3>
+        <div class="grid2">
+            <div>
+                <div class="tutorial-step">
+                    <h4 style="color:#b2bec3;">Le Pipeline ML Simplifié</h4>
+                    <ol class="clean-list"
+                        style="margin-left:15px; border-left: 1px solid rgba(255,255,255,0.1); padding-left:15px;">
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Data :</strong> Le carburant
+                            (Images, Textes, Logs).</li>
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Training :</strong>
+                            L'entrainement (Calculs massifs sur GPU).</li>
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Model :</strong> Le moteur
+                            figé (Le fichier "poids").</li>
+                        <li><strong style="color:#a29bfe;">Inference :</strong> La prédiction (L'usage quotidien).
+                        </li>
                     </ol>
                 </div>
-
-                <div class="scenario-card" style="border-color: #fab1a0;">
-                    <h4>🤖 Les Types d'Agents</h4>
-                    <ul class="vocab-list">
-                        <dt>Single Agent</dt>
-                        <dd>Un seul cerveau avec plusieurs outils (ex: Le bot Support Client).</dd>
-                        <dt>Multi-Agent (Swarm)</dt>
-                        <dd>Une équipe de spécialistes. Un "Manager" délègue à un "Coder", un "Reviewer" et un
-                            "Designer".
-                            <br><em style="font-size:0.8rem;">Outils : CrewAI, AutoGen, LangGraph.</em>
-                        </dd>
-                    </ul>
-                </div>
             </div>
-
-            <!-- 4.2 MCP THEORY -->
-            <div class="concept-box"
-                style="margin-top:30px; background: rgba(224, 86, 253, 0.05); border-left-color: #e056fd;">
-                <h3 style="color:#e056fd; margin-bottom:10px;">Le Standard MCP (Model Context Protocol)</h3>
-                <p style="color:#dfe6e9;">C'est l'<strong>USB-C de l'IA</strong>. Avant MCP, connecter Claude à Google
-                    Drive demandait du code complexe. Avec MCP, c'est du Plug & Play.</p>
-
-                <div class="feature-grid"
-                    style="margin-top:20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div>
-                        <strong>Host (L'Hôte)</strong>
-                        <p style="font-size:0.85rem; color:#b2bec3;">L'application où vous chattez (Claude Desktop,
-                            Cursor, n8n).</p>
-                    </div>
-                    <div>
-                        <strong>Server (L'Outil)</strong>
-                        <p style="font-size:0.85rem; color:#b2bec3;">Le connecteur qui "parle" à la donnée (Google Drive
-                            MCP, Slack MCP, GitHub MCP).</p>
-                    </div>
-                    <div>
-                        <strong>Client</strong>
-                        <p style="font-size:0.85rem; color:#b2bec3;">Le protocole qui relie les deux.</p>
-                    </div>
-                </div>
+            <div>
+                <h4 style="color:#b2bec3;">Les Types d'Apprentissage</h4>
+                <ul class="vocab-list">
+                    <dt>Supervisé</dt>
+                    <dd>On donne l'exemple. <em>Input: Photo Chat -> Output: "Chat".</em><br>Usage: Spam, Fraude.
+                    </dd>
+                    <dt>Non-Supervisé</dt>
+                    <dd>On laisse chercher les patterns. <em>Input: Clients -> Output: Clusters.</em><br>Usage:
+                        Segmentation.</dd>
+                    <dt>Renforcement (RL)</dt>
+                    <dd>Punition / Récompense. <em>Input: Mario -> Output: Score.</em><br>Usage: Robotique, AlphaGo,
+                        <strong>ChatGPT (RLHF)</strong>.
+                    </dd>
+                </ul>
             </div>
+        </div>
 
-            <!-- 4.3 COMPARISON -->
-            <div class="grid2" style="margin-top:30px;">
-                <div class="scenario-card">
-                    <h4>🆚 Le Match des Connexions</h4>
-                    <ul class="clean-list" style="margin-top:10px; font-size:0.9rem;">
-                        <li style="margin-bottom:10px;">
-                            <strong style="color:#ff7675;">API (Classique) :</strong><br>
-                            Complexe. Demandé d'apprendre la doc par cœur. Code manuel.
-                        </li>
-                        <li style="margin-bottom:10px;">
-                            <strong style="color:#74b9ff;">Webhook :</strong><br>
-                            Passif. "Si X arrive, fais Y". L'IA subit l'événement, elle ne peut pas "chercher".
-                        </li>
-                        <li>
-                            <strong style="color:#e056fd;">MCP (Agentic) :</strong><br>
-                            Actif & Découvrable. L'outil dit "Hey, je sais envoyer des mails !". L'IA répond "Cool, je
-                            t'utiliserai si besoin".
-                        </li>
-                    </ul>
+        <!-- 3. ARCHITECTURES MODERNES -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Architectures Clés</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="scenario-card">
+                <strong>CNN</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Vision & Pixels. "Voit" les bords, puis les formes, puis
+                    les objets.</p>
+            </div>
+            <div class="scenario-card">
+                <strong>Transformers</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Langage & Séquences. Gère l'<strong>Attention</strong>
+                    (Le contexte entre les mots lointains).</p>
+            </div>
+            <div class="scenario-card" style="border: 1px solid #a29bfe;">
+                <strong style="color:#a29bfe;">Vectors / Embeddings</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">La clé du RAG. Transforme du texte en liste de nombres
+                    (coordonnées GPS du sens).</p>
+                <div style="font-size:0.7rem; margin-top:5px; font-family:monospace; color:#636e72;">Chat = [0.1,
+                    0.9, 0.3]<br>Chien = [0.1, 0.8, 0.4]</div>
+            </div>
+        </div>
+
+        <!-- 4. RAG & LLM -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(162, 155, 254, 0.05); border-left-color: #a29bfe;">
+            <h3 style="color:#a29bfe; margin-bottom:10px;">C. Le RAG (Retrieval Augmented Generation)</h3>
+            <p style="margin-bottom:15px; font-size:0.9rem;">Le LLM a une "mémoire figée" (sa date de training). Le
+                RAG lui donne une "mémoire vive" (VOS documents).</p>
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <h4 style="font-size:0.9rem;">Le Pipeline RAG :</h4>
+                <code
+                    style="display:block; background:#000; padding:10px; border-radius:6px; font-size:0.8rem; color:#fab1a0;">
+                        Question User -> Recherche Vectorielle (Base de connaissance) -> Récupération des chunks pertinents -> Injection dans le Prompt -> Réponse du LLM
+                    </code>
+            </div>
+        </div>
+
+        <!-- 5. PROMPTING FRAMEWORK -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">D. Prompt Engineering : La Méthode</h3>
+        <div class="grid2">
+            <div class="scenario-card" style="border-color: #ffeaa7;">
+                <h4>Framework "CRISPE"</h4>
+                <ul class="clean-list" style="font-size:0.9rem;">
+                    <li><strong>C</strong>ontext : "Tu es un expert Sr..."</li>
+                    <li><strong>R</strong>ole : "Agis comme un CTO..."</li>
+                    <li><strong>I</strong>ntent : "Le but est de..."</li>
+                    <li><strong>S</strong>pecifics : "Pas de jargon..."</li>
+                    <li><strong>P</strong>arameters : "Tableau Markdown..."</li>
+                    <li><strong>E</strong>xample : "Comme ceci..." (Few-Shot)</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Techniques Avancées</h4>
+                <ul class="vocab-list">
+                    <dt>Chain of Thought (CoT)</dt>
+                    <dd>"Pense étape par étape". Force le modèle à décomposer la logique.</dd>
+                    <dt>Few-Shot</dt>
+                    <dd>Donner 2 ou 3 exemples de couples (Input -> Output) dans le prompt.</dd>
+                    <dt>System Prompt</dt>
+                    <dd>Les instructions "Dieu" inamovibles, invisibles pour l'utilisateur final.</dd>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. SPECS & RISKS -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>⚙️ Specs Techniques</h4>
+                <ul class="clean-list" style="font-size:0.85rem;">
+                    <li style="margin-bottom:5px;"><strong>Tokens :</strong> Unité de facturation. (IN + OUT).</li>
+                    <li style="margin-bottom:5px;"><strong>Window :</strong> Mémoire à court terme (128k = ~300
+                        pages).</li>
+                    <li style="margin-bottom:5px;"><strong>Temperature :</strong> Créativité (0 = Robot, 1 = Poète).
+                    </li>
+                </ul>
+            </div>
+            <div class="scenario-card" style="border-color: #ff7675;">
+                <h4>⚠️ Risques & Mitigation</h4>
+                <ul class="clean-list" style="font-size:0.85rem;">
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Hallucinations :</strong> Le
+                        modèle invente pour combler. <br>-> <em>Solution : RAG + "Si tu ne sais pas, dis-le".</em>
+                    </li>
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Biais :</strong> Reflet
+                        d'Internet.</li>
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Oubli :</strong> Dépassement de
+                        fenêtre.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. BRIDGE AUTOMATION -->
+        <div class="tip" style="margin-top:20px;">
+            <strong>Pourquoi maîtriser ça pour l'automatisation ?</strong><br>
+            Si vous ne comprenez pas les <strong>Tokens</strong>, vous exploserez votre budget API. Si vous ne
+            comprenez pas le <strong>RAG</strong>, vos bots de support diront n'importe quoi. Si vous ne structurez
+            pas vos <strong>Prompts</strong>, n8n ne pourra pas parser le JSON de réponse.
+        </div>
+    </div>
+</section>
+<!-- MODULE 3: n8n (DEEP DIVE) -->
+<section id="m3">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">03</div>
+            <div>
+                <h2 class="sec-title">Architecture n8n</h2>
+                <p class="sec-sub">L'OS de l'Automatisation</p>
+            </div>
+        </div>
+
+        <div class="img-container">
+            <img src="assets/n8n_architecture_2025_1766252310261.jpg" alt="Architecture n8n Isométrique">
+        </div>
+
+        <div class="feature-grid" style="margin-bottom:30px;">
+            <div class="scenario-card">
+                <h4>Qu'est-ce que n8n ?</h4>
+                <p>Un outil d'automatisation de flux (workflow automation) <strong>"Fair-code"</strong>.
+                    Contrairement à Zapier, le code source est visible, vous pouvez l'héberger vous-même
+                    (Self-Hosted), et vous possédez vos données.</p>
+            </div>
+            <div class="scenario-card">
+                <h4>Le Moteur (Node.js)</h4>
+                <p>n8n tourne sur Node.js. Chaque "Nœud" est une mini-fonction JavaScript qui reçoit des données,
+                    les transforme, et les passe au suivant.</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #0984e3;">
+            <strong>Le Concept Clé : "Items & Data Flow"</strong><br>
+            C'est ce qui bloque 90% des débutants. n8n ne traite pas une tâche à la fois, mais des <strong>Tableaux
+                d'Objets JSON</strong>.
+        </div>
+
+        <div class="grid2">
+            <div>
+                <h3>1. La Structure de Données</h3>
+                <p>Chaque nœud reçoit et renvoie un tableau d'objets. Chaque objet a toujours cette forme :</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    [
+                    {
+                    "json": {
+                    "nom": "Dupont",
+                    "id": 123
+                    },
+                    "binary": { ... } // (Optionnel) Fichiers
+                    },
+                    {
+                    "json": {
+                    "nom": "Durand",
+                    "id": 124
+                    },
+                    "binary": { ... }
+                    }
+                    ]
                 </div>
+                <p class="comment" style="margin-top:5px; font-size:0.8rem;">Si ce tableau contient 5 objets
+                    ("Items"), le nœud suivant s'exécutera <strong>5 fois</strong> (une fois pour chaque item).
+                    C'est automatique.</p>
+            </div>
+            <div>
+                <h3>2. Les Types de Nœuds</h3>
+                <ul class="vocab-list">
+                    <dt>Triggers (Déclencheurs)</dt>
+                    <dd>Le point de départ.
+                        <ul>
+                            <li><strong>Webhook :</strong> Passif (Attend qu'on l'appelle).</li>
+                            <li><strong>Cron / Schedule :</strong> Actif (Toutes les 10min).</li>
+                            <li><strong>Polling :</strong> Vérifie "Y a-t-il du nouveau ?"</li>
+                        </ul>
+                    </dd>
+                    <dt>Regular Nodes (Actions)</dt>
+                    <dd>Font le travail : "Créer ligne Airtable", "Envoyer Slack", "HTTP Request".</dd>
+                    <dt>Logic Nodes (Contrôle)</dt>
+                    <dd><strong>If</strong>, <strong>Switch</strong>, <strong>Merge</strong>, <strong>Code</strong>.
+                        Ils dirigent le trafic.</dd>
+                </ul>
+            </div>
+        </div>
 
-                <div class="scenario-card">
-                    <h4> Vocabulaire Agentique</h4>
-                    <div style="margin-top:15px;">
-                        <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
-                            data-def="La capacité d'une IA à utiliser des fonctions externes (API, Calculatrice, Recherche) pour combler ses lacunes.">Tool
-                            Calling</button>
-                        <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
-                            data-def="Boucle de réflexion. L'agent 'parle tout seul' pour planifier ses actions avant d'agir.">ReAct
-                            Loop</button>
-                        <button class="vocab-chip" style="border-color:#e056fd; color:#e056fd;"
-                            data-def="Un fichier JSON qui décrit à l'IA comment utiliser un outil (Nom, Description, Paramètres).">JSON
-                            Schema</button>
-                    </div>
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card" style="border-color: #00cec9;">
+                <h4>3. L'API Universelle (HTTP Request)</h4>
+                <p>Si un service n'existe pas dans n8n, utilisez le nœud <strong>HTTP Request</strong>. C'est le
+                    couteau suisse.</p>
+                <ul class="clean-list" style="margin-top:10px;">
+                    <li><strong>Auth :</strong> Basic, Header, OAuth2 (Géré par n8n Credentials).</li>
+                    <li><strong>Method :</strong> GET (Lire), POST (Créer), PUT (Modifier), DELETE (Supprimer).</li>
+                </ul>
+            </div>
+            <div class="scenario-card" style="border-color: #fab1a0;">
+                <h4>4. Hosting & Requirements</h4>
+                <p>Pour la production, oubliez `npx n8n`. Utilisez Docker.</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    docker run -it --rm \
+                    --name n8n \
+                    -p 5678:5678 \
+                    -v ~/.n8n:/home/node/.n8n \
+                    n8nio/n8n
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE TUTO (KEPT) -->
-    <section id="tuto" style="background: rgba(0,0,0,0.2); padding: 40px 0;">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num" style="color:#fab1a0; border-color:#fab1a0;">Tp</div>
-                <h2 class="sec-title">Atelier Pratique</h2>
-            </div>
-            <div class="tutorial-step">
-                <h4>Objectif : Agent Interne</h4>
-                <p>Créer un workflow n8n qui reçoit une demande, active un Agent IA, qui consulte un outil via MCP
-                    (Brave Search) et répond.</p>
-                <div class="code-block" style="margin-top:10px;">
-                    Trigger (Webhook) -> OpenAI (Tool Calling) -> Router -> MCP Client -> OpenAI (Synthèse) -> Response
-                </div>
+        <div class="tip" style="margin-top:20px;">
+            <strong>Attention à la RAM :</strong> n8n garde l'historique d'exécution en mémoire vive avant de le
+            dumper en base. Si vous traitez 100,000 lignes d'un coup, ça crashera. Utilisez la fonction
+            <code>Split in Batches</code> pour traiter par paquets de 100.
+        </div>
+    </div>
+</section>
+<!-- MODULE 4: AGENTS & MCP (DEEP DIVE) -->
+<section id="m4">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">04</div>
+            <div>
+                <h2 class="sec-title">Agents & MCP</h2>
+                <p class="sec-sub">Le Cerveau avec des Mains</p>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE EXPERT (KEPT) -->
-    <section id="mcp-deep"
-        style="background: rgba(224, 86, 253, 0.05); padding: 40px 0; border: 1px solid rgba(224, 86, 253, 0.1);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num" style="color:var(--mcp-color); border-color:var(--mcp-color);">XP</div>
-                <h2 class="sec-title" style="color:var(--mcp-color);">Mastery : MCP & n8n</h2>
+        <div class="img-container">
+            <img src="assets/ai_agents_swarm_1766252324847.jpg" alt="Essaim d'agents IA">
+        </div>
+
+        <!-- 4.1 AGENTIC AI THEORY -->
+        <div class="concept-box" style="border-left-color: #fab1a0;">
+            <strong>L'Analogie Ultime :</strong><br>
+            Une IA classique (ChatGPT) est un <strong>Encyclopédiste paralysé</strong> dans un bocal. Il sait tout,
+            mais ne peut rien toucher.<br>
+            Un <strong>Agent IA</strong> est ce même encyclopédiste à qui on a greffé des bras (Tools) et donné un
+            accès internet.
+        </div>
+
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>🧠 La Formule Magique</h4>
+                <div class="code-block" style="font-size:0.85rem; padding:10px;">
+                    Agent = LLM + Tools + ReAct Loop
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem;"><strong>ReAct</strong> (Reasoning + Acting) est la
+                    boucle infinie :</p>
+                <ol style="margin-left:20px; font-size:0.9rem; color:#b2bec3; margin-top:5px;">
+                    <li><strong>OBSERVE :</strong> "L'utilisateur veut la météo."</li>
+                    <li><strong>REASON :</strong> "Je ne connais pas la météo. J'ai un outil météo."</li>
+                    <li><strong>ACT :</strong> "J'appelle `get_weather(Paris)`."</li>
+                    <li><strong>OBSERVE :</strong> "L'outil a répondu 15°C."</li>
+                    <li><strong>ACT :</strong> "Je réponds à l'utilisateur."</li>
+                </ol>
             </div>
-            <div class="feature-grid">
-                <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
-                    <h4>Le "Bridge" (Pour Claude)</h4>
-                    <p>Exposer vos workflows n8n comme des outils locaux pour Claude Desktop.</p>
-                    <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
-                        npm install -g @modelcontextprotocol/server-n8n
-                    </div>
-                </div>
-                <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
-                    <h4>Le Schema Sticky Note</h4>
-                    <p>Décrivez vos outils directement dans le canvas n8n pour que le Bridge les détecte.</p>
-                    <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
-                        @mcp-tool: search_client
-                        inputSchema: { "email": "string" }
-                    </div>
-                </div>
+
+            <div class="scenario-card" style="border-color: #fab1a0;">
+                <h4>🤖 Les Types d'Agents</h4>
+                <ul class="vocab-list">
+                    <dt>Single Agent</dt>
+                    <dd>Un seul cerveau avec plusieurs outils (ex: Le bot Support Client).</dd>
+                    <dt>Multi-Agent (Swarm)</dt>
+                    <dd>Une équipe de spécialistes. Un "Manager" délègue à un "Coder", un "Reviewer" et un
+                        "Designer".
+                        <br><em style="font-size:0.8rem;">Outils : CrewAI, AutoGen, LangGraph.</em>
+                    </dd>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 5: LA STACK BUILDER (ULTIMATE GUIDE) -->
-    <section id="m5">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">05</div>
+        <!-- 4.2 MCP THEORY -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(224, 86, 253, 0.05); border-left-color: #e056fd;">
+            <h3 style="color:#e056fd; margin-bottom:10px;">Le Standard MCP (Model Context Protocol)</h3>
+            <p style="color:#dfe6e9;">C'est l'<strong>USB-C de l'IA</strong>. Avant MCP, connecter Claude à Google
+                Drive demandait du code complexe. Avec MCP, c'est du Plug & Play.</p>
+
+            <div class="feature-grid"
+                style="margin-top:20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div>
-                    <h2 class="sec-title">La Stack Builder</h2>
-                    <p class="sec-sub">Choisir son Arme : Vitesse ou Contrôle ?</p>
+                    <strong>Host (L'Hôte)</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">L'application où vous chattez (Claude Desktop,
+                        Cursor, n8n).</p>
+                </div>
+                <div>
+                    <strong>Server (L'Outil)</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">Le connecteur qui "parle" à la donnée (Google Drive
+                        MCP, Slack MCP, GitHub MCP).</p>
+                </div>
+                <div>
+                    <strong>Client</strong>
+                    <p style="font-size:0.85rem; color:#b2bec3;">Le protocole qui relie les deux.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4.3 COMPARISON -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>🆚 Le Match des Connexions</h4>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.9rem;">
+                    <li style="margin-bottom:10px;">
+                        <strong style="color:#ff7675;">API (Classique) :</strong><br>
+                        Complexe. Demandé d'apprendre la doc par cœur. Code manuel.
+                    </li>
+                    <li style="margin-bottom:10px;">
+                        <strong style="color:#74b9ff;">Webhook :</strong><br>
+                        Passif. "Si X arrive, fais Y". L'IA subit l'événement, elle ne peut pas "chercher".
+                    </li>
+                    <li>
+                        <strong style="color:#e056fd;">MCP (Agentic) :</strong><br>
+                        Actif & Découvrable. L'outil dit "Hey, je sais envoyer des mails !". L'IA répond "Cool, je
+                        t'utiliserai si besoin".
+                    </li>
+                </ul>
+            </div>
+
+            <div class="scenario-card">
+                <h4> Vocabulaire Agentique</h4>
+                <div style="margin-top:15px;">
+                    <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
+                        data-def="La capacité d'une IA à utiliser des fonctions externes (API, Calculatrice, Recherche) pour combler ses lacunes.">Tool
+                        Calling</button>
+                    <button class="vocab-chip" style="border-color:#fab1a0; color:#fab1a0;"
+                        data-def="Boucle de réflexion. L'agent 'parle tout seul' pour planifier ses actions avant d'agir.">ReAct
+                        Loop</button>
+                    <button class="vocab-chip" style="border-color:#e056fd; color:#e056fd;"
+                        data-def="Un fichier JSON qui décrit à l'IA comment utiliser un outil (Nom, Description, Paramètres).">JSON
+                        Schema</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE TUTO (KEPT) -->
+<section id="tuto" style="background: rgba(0,0,0,0.2); padding: 40px 0;">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fab1a0; border-color:#fab1a0;">Tp</div>
+            <h2 class="sec-title">Atelier Pratique</h2>
+        </div>
+        <div class="tutorial-step">
+            <h4>Objectif : Agent Interne</h4>
+            <p>Créer un workflow n8n qui reçoit une demande, active un Agent IA, qui consulte un outil via MCP
+                (Brave Search) et répond.</p>
+            <div class="code-block" style="margin-top:10px;">
+                Trigger (Webhook) -> OpenAI (Tool Calling) -> Router -> MCP Client -> OpenAI (Synthèse) -> Response
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODULE EXPERT (KEPT) -->
+<section id="mcp-deep"
+    style="background: rgba(224, 86, 253, 0.05); padding: 40px 0; border: 1px solid rgba(224, 86, 253, 0.1);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:var(--mcp-color); border-color:var(--mcp-color);">XP</div>
+            <h2 class="sec-title" style="color:var(--mcp-color);">Mastery : MCP & n8n</h2>
+        </div>
+        <div class="feature-grid">
+            <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
+                <h4>Le "Bridge" (Pour Claude)</h4>
+                <p>Exposer vos workflows n8n comme des outils locaux pour Claude Desktop.</p>
+                <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
+                    npm install -g @modelcontextprotocol/server-n8n
+                </div>
+            </div>
+            <div class="scenario-card" style="border-left: 3px solid var(--mcp-color);">
+                <h4>Le Schema Sticky Note</h4>
+                <p>Décrivez vos outils directement dans le canvas n8n pour que le Bridge les détecte.</p>
+                <div class="code-block" style="margin-top:10px; font-size:0.8rem;">
+                    @mcp-tool: search_client
+                    inputSchema: { "email": "string" }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODULE 5: LA STACK BUILDER (ULTIMATE GUIDE) -->
+<section id="m5">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">05</div>
+            <div>
+                <h2 class="sec-title">La Stack Builder</h2>
+                <p class="sec-sub">Choisir son Arme : Vitesse ou Contrôle ?</p>
+            </div>
+        </div>
+
+        <!-- 5.1 INTRO -->
+        <div class="concept-box" style="margin-bottom:30px;">
+            <strong>Le Dilemme :</strong> Il n'y a pas de "Meilleure Stack". Il y a la bonne stack pour le bon stade
+            de projet.<br>
+            <em style="color:#b2bec3;">Attention : Passer du "Tout SaaS" au "Self-Hosted" change votre métier de
+                "Marketer" à "DevOps".</em>
+        </div>
+
+        <!-- 5.2 THE 3 STACKS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Profils (Personas)</h3>
+        <div class="grid3">
+            <!-- SOLO STARTER -->
+            <div class="scenario-card" style="border-top: 3px solid #fab1a0;">
+                <h4 style="color:#fab1a0;">🚀 1. Solo Starter</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux lancer mon MVP en 48h."</em></p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Softr</strong> (Portail Client) ou <strong>Framer</strong> (Landing).</dd>
+                    <dt>Back</dt>
+                    <dd><strong>Airtable</strong> (Visuel, simple).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>Make</strong> (Intuitif, pay-per-op).</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Coûte cher à l'échelle (Make).
                 </div>
             </div>
 
-            <!-- 5.1 INTRO -->
-            <div class="concept-box" style="margin-bottom:30px;">
-                <strong>Le Dilemme :</strong> Il n'y a pas de "Meilleure Stack". Il y a la bonne stack pour le bon stade
-                de projet.<br>
-                <em style="color:#b2bec3;">Attention : Passer du "Tout SaaS" au "Self-Hosted" change votre métier de
-                    "Marketer" à "DevOps".</em>
-            </div>
-
-            <!-- 5.2 THE 3 STACKS -->
-            <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Profils (Personas)</h3>
-            <div class="grid3">
-                <!-- SOLO STARTER -->
-                <div class="scenario-card" style="border-top: 3px solid #fab1a0;">
-                    <h4 style="color:#fab1a0;">🚀 1. Solo Starter</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux lancer mon MVP en 48h."</em></p>
-                    <ul class="vocab-list">
-                        <dt>Front</dt>
-                        <dd><strong>Softr</strong> (Portail Client) ou <strong>Framer</strong> (Landing).</dd>
-                        <dt>Back</dt>
-                        <dd><strong>Airtable</strong> (Visuel, simple).</dd>
-                        <dt>Logic</dt>
-                        <dd><strong>Make</strong> (Intuitif, pay-per-op).</dd>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Coûte cher à l'échelle (Make).
-                    </div>
-                </div>
-
-                <!-- PRODUCT BUILDER -->
-                <div class="scenario-card" style="border-top: 3px solid #00cec9; background: rgba(0, 206, 201, 0.05);">
-                    <h4 style="color:#00cec9;">🛠️ 2. Product Builder</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux scaler et posséder ma donnée."</em>
-                    </p>
-                    <ul class="vocab-list">
-                        <dt>Front</dt>
-                        <dd><strong>Appsmith</strong> (Outils Internes) ou <strong>FlutterFlow</strong> (Mobile App).
-                        </dd>
-                        <dt>Back</dt>
-                        <dd><strong>Supabase</strong> (Postgres Open Source).</dd>
-                        <dt>Logic</dt>
-                        <dd><strong>n8n</strong> (Self-Hosted, illimité).</dd>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">✅ Rapport Puissance/Prix imbattable.
-                    </div>
-                </div>
-
-                <!-- ENTERPRISE -->
-                <div class="scenario-card" style="border-top: 3px solid #a29bfe;">
-                    <h4 style="color:#a29bfe;">🏢 3. Enterprise</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Sécurité, SSO, Compliance."</em></p>
-                    <ul class="vocab-list">
-                        <dt>Front</dt>
-                        <dd><strong>Retool</strong> (Le standard Corporate).</dd>
-                        <dt>Back</dt>
-                        <dd><strong>Xano</strong> (Certifié, Scalable).</dd>
-                        <dt>Logic</dt>
-                        <dd><strong>n8n Enterprise</strong> ou Custom Code.</dd>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Très cher (Retool ~$50/user).
-                    </div>
+            <!-- PRODUCT BUILDER -->
+            <div class="scenario-card" style="border-top: 3px solid #00cec9; background: rgba(0, 206, 201, 0.05);">
+                <h4 style="color:#00cec9;">🛠️ 2. Product Builder</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je veux scaler et posséder ma donnée."</em>
+                </p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Appsmith</strong> (Outils Internes) ou <strong>FlutterFlow</strong> (Mobile App).
+                    </dd>
+                    <dt>Back</dt>
+                    <dd><strong>Supabase</strong> (Postgres Open Source).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>n8n</strong> (Self-Hosted, illimité).</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">✅ Rapport Puissance/Prix imbattable.
                 </div>
             </div>
 
-            <!-- 5.3 DEEP DIVE TOOLS -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Deep Dive : Les Piliers</h3>
-
-            <div class="grid2">
-                <!-- SUPABASE -->
-                <div class="scenario-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <h4>⚡ Supabase (Backend)</h4>
-                        <span class="tool-chip" style="background:#3ECF8E; color:#000; font-weight:bold;">Open
-                            Source</span>
-                    </div>
-                    <p style="font-size:0.85rem; margin-top:10px;">L'alternative à Firebase. C'est une vraie base
-                        <strong>PostgreSQL</strong> avec une couche d'API automatique.
-                    </p>
-                    <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
-                        <li><strong>Auth :</strong> Gestion utilisateurs (Magic Link, Google, Apple) incluse.</li>
-                        <li><strong>Realtime :</strong> Écouter les changements de la base en direct.</li>
-                        <li><strong>Storage :</strong> Hébergement de fichiers (Images, PDF).</li>
-                    </ul>
-                </div>
-
-                <!-- APPSMITH -->
-                <div class="scenario-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <h4>🎨 Appsmith (Frontend)</h4>
-                        <span class="tool-chip" style="background:#FF6D2C; color:#fff; font-weight:bold;">JS
-                            Power</span>
-                    </div>
-                    <p style="font-size:0.85rem; margin-top:10px;">Pour construire des Dashboards Admin, CRM, et outils
-                        internes.</p>
-                    <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
-                        <li><strong>Drag & Drop :</strong> Boutons, Tableaux, Graphiques.</li>
-                        <li><strong>JS Everywhere :</strong> <code>{{ Table1.selectedRow.email }}</code>. Tout est
-                            connectable.</li>
-                        <li><strong>Git Sync :</strong> Versionnez vos apps comme du code.</li>
-                    </ul>
+            <!-- ENTERPRISE -->
+            <div class="scenario-card" style="border-top: 3px solid #a29bfe;">
+                <h4 style="color:#a29bfe;">🏢 3. Enterprise</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Sécurité, SSO, Compliance."</em></p>
+                <ul class="vocab-list">
+                    <dt>Front</dt>
+                    <dd><strong>Retool</strong> (Le standard Corporate).</dd>
+                    <dt>Back</dt>
+                    <dd><strong>Xano</strong> (Certifié, Scalable).</dd>
+                    <dt>Logic</dt>
+                    <dd><strong>n8n Enterprise</strong> ou Custom Code.</dd>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">❌ Très cher (Retool ~$50/user).
                 </div>
             </div>
+        </div>
 
-            <div class="scenario-card" style="margin-top:20px; border-left: 3px solid #000;">
+        <!-- 5.3 DEEP DIVE TOOLS -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Deep Dive : Les Piliers</h3>
+
+        <div class="grid2">
+            <!-- SUPABASE -->
+            <div class="scenario-card">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h4>📧 Resend (Transactional)</h4>
-                    <span class="tool-chip" style="border:1px solid #fff;">Dev Friend</span>
+                    <h4>⚡ Supabase (Backend)</h4>
+                    <span class="tool-chip" style="background:#3ECF8E; color:#000; font-weight:bold;">Open
+                        Source</span>
                 </div>
-                <p style="font-size:0.85rem; margin-top:10px;">Le standard moderne pour envoyer des emails (Welcome,
-                    Reset Password). Remplace SendGrid/Mailgun. API ultra-simple et templates React.</p>
+                <p style="font-size:0.85rem; margin-top:10px;">L'alternative à Firebase. C'est une vraie base
+                    <strong>PostgreSQL</strong> avec une couche d'API automatique.
+                </p>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
+                    <li><strong>Auth :</strong> Gestion utilisateurs (Magic Link, Google, Apple) incluse.</li>
+                    <li><strong>Realtime :</strong> Écouter les changements de la base en direct.</li>
+                    <li><strong>Storage :</strong> Hébergement de fichiers (Images, PDF).</li>
+                </ul>
             </div>
 
-            <!-- 5.4 INTEGRATION PATTERN -->
-            <div class="concept-box" style="margin-top:30px; background: rgba(255, 255, 255, 0.05);">
-                <h3 style="color:#fff; margin-bottom:10px;">C. Le "Glue Pattern" (Exemple d'Architecture)</h3>
-                <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Comment tout connecter pour un flux
-                    d'inscription utilisateur :</p>
+            <!-- APPSMITH -->
+            <div class="scenario-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h4>🎨 Appsmith (Frontend)</h4>
+                    <span class="tool-chip" style="background:#FF6D2C; color:#fff; font-weight:bold;">JS
+                        Power</span>
+                </div>
+                <p style="font-size:0.85rem; margin-top:10px;">Pour construire des Dashboards Admin, CRM, et outils
+                    internes.</p>
+                <ul class="clean-list" style="margin-top:10px; font-size:0.8rem;">
+                    <li><strong>Drag & Drop :</strong> Boutons, Tableaux, Graphiques.</li>
+                    <li><strong>JS Everywhere :</strong> <code>{{ Table1.selectedRow.email }}</code>. Tout est
+                        connectable.</li>
+                    <li><strong>Git Sync :</strong> Versionnez vos apps comme du code.</li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="tutorial-step" style="margin-bottom:0;">
-                    <code style="display:block; padding:10px; border-radius:6px; font-size:0.8rem; line-height:1.6;">
+        <div class="scenario-card" style="margin-top:20px; border-left: 3px solid #000;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4>📧 Resend (Transactional)</h4>
+                <span class="tool-chip" style="border:1px solid #fff;">Dev Friend</span>
+            </div>
+            <p style="font-size:0.85rem; margin-top:10px;">Le standard moderne pour envoyer des emails (Welcome,
+                Reset Password). Remplace SendGrid/Mailgun. API ultra-simple et templates React.</p>
+        </div>
+
+        <!-- 5.4 INTEGRATION PATTERN -->
+        <div class="concept-box" style="margin-top:30px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">C. Le "Glue Pattern" (Exemple d'Architecture)</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Comment tout connecter pour un flux
+                d'inscription utilisateur :</p>
+
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <code style="display:block; padding:10px; border-radius:6px; font-size:0.8rem; line-height:1.6;">
                         <span style="color:#fab1a0;">1. Front (FlutterFlow)</span> : L'user remplit le formulaire.<br>
                         ⬇️ <em>API Call</em><br>
                         <span style="color:#3ECF8E;">2. Back (Supabase Auth)</span> : Crée l'user et sécurise le mot de passe.<br>
@@ -993,960 +1006,952 @@
                         ⬇️ <em>Notification</em><br>
                         <span style="color:#74b9ff;">6. Slack</span> : "Nouveau client inscrit !"
                     </code>
-                </div>
-            </div>
-
-            <!-- 5.5 RESOURCES -->
-            <div class="grid2" style="margin-top:30px;">
-                <div class="scenario-card">
-                    <h4>💰 Free Tiers (2025)</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li><strong>Supabase :</strong> 500MB Data (Généreux).</li>
-                        <li><strong>Resend :</strong> 3000 mails/mois (Suffisant MVP).</li>
-                        <li><strong>n8n :</strong> Desktop (Gratuit/Illimité) ou Cloud (20€/mois).</li>
-                        <li><strong>Appsmith :</strong> Cloud Community (Gratuit).</li>
-                    </ul>
-                </div>
-                <div class="scenario-card">
-                    <h4>📚 Ressources</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li><a href="https://supabase.com" target="_blank" style="color:#3ECF8E;">supabase.com</a></li>
-                        <li><a href="https://n8n.io" target="_blank" style="color:#ff6b6b;">n8n.io</a></li>
-                        <li><a href="https://resend.com" target="_blank" style="color:#fff;">resend.com</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 6: GOUVERNANCE (INDUSTRIAL GRADE) -->
-    <section id="m6">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">06</div>
-                <div>
-                    <h2 class="sec-title">Gouvernance & Sécurité</h2>
-                    <p class="sec-sub">Du Bricolage à l'Industrie</p>
+        <!-- 5.5 RESOURCES -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>💰 Free Tiers (2025)</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><strong>Supabase :</strong> 500MB Data (Généreux).</li>
+                    <li><strong>Resend :</strong> 3000 mails/mois (Suffisant MVP).</li>
+                    <li><strong>n8n :</strong> Desktop (Gratuit/Illimité) ou Cloud (20€/mois).</li>
+                    <li><strong>Appsmith :</strong> Cloud Community (Gratuit).</li>
+                </ul>
+            </div>
+            <div class="scenario-card">
+                <h4>📚 Ressources</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><a href="https://supabase.com" target="_blank" style="color:#3ECF8E;">supabase.com</a></li>
+                    <li><a href="https://n8n.io" target="_blank" style="color:#ff6b6b;">n8n.io</a></li>
+                    <li><a href="https://resend.com" target="_blank" style="color:#fff;">resend.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODULE 6: GOUVERNANCE (INDUSTRIAL GRADE) -->
+<section id="m6">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">06</div>
+            <div>
+                <h2 class="sec-title">Gouvernance & Sécurité</h2>
+                <p class="sec-sub">Du Bricolage à l'Industrie</p>
+            </div>
+        </div>
+
+        <!-- 6.1 INTRO -->
+        <div class="concept-box" style="margin-bottom:30px; border-left-color: #ff7675;">
+            <strong>L'Enjeu :</strong> Une automatisation mal conçue peut coûter 10 000€ en 5 minutes (boucle
+            infinie d'API) ou fuiter toute votre BDD client.
+            <br><em>Règle d'or : "Si ça marche sur ma machine", ce n'est pas prêt pour la production.</em>
+        </div>
+
+        <!-- 6.2 SECURITY PILLARS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Piliers de la Sécurité</h3>
+        <div class="grid3">
+            <!-- SECRETS -->
+            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
+                <h4>🔐 1. Secrets Management</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Ne mettez JAMAIS vos clés API en dur dans le code.
+                </p>
+                <ul class="vocab-list">
+                    <dt>Env Vars</dt>
+                    <dd>Utilisez les variables d'environnement (<code>.env</code>) pour stocker les clés.</dd>
+                    <dt>Rotation</dt>
+                    <dd>Changez vos clés régulièrement (tous les 90j).</dd>
+                    <dt>Outil</dt>
+                    <dd><strong>Doppler</strong> (Gestionnaire de secrets universel).</dd>
+                </ul>
+            </div>
+
+            <!-- RBAC -->
+            <div class="scenario-card" style="border-top: 3px solid #fdcb6e;">
+                <h4>👮 2. RBAC (Access Control)</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Role-Based Access Control. Moindre privilège.</p>
+                <ul class="vocab-list">
+                    <dt>Admin</dt>
+                    <dd>Peut tout casser (CTO uniquement).</dd>
+                    <dt>Editor</dt>
+                    <dd>Peut créer des workflows, mais pas voir les clés de prod.</dd>
+                    <dt>Viewer</dt>
+                    <dd>Peut voir les logs (Support Client).</dd>
+                </ul>
+            </div>
+
+            <!-- AUDIT -->
+            <div class="scenario-card" style="border-top: 3px solid #74b9ff;">
+                <h4>📜 3. Audit Logs</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;">Qui a fait quoi et quand ? Vital pour le RGPD.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><em>"Qui a supprimé la table Users ?"</em></li>
+                    <li><em>"Pourquoi le workflow de paiement a changé hier ?"</em></li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">Oubliez ça et vous échouerez l'audit
+                    de sécurité.</div>
+            </div>
+        </div>
+
+        <!-- 6.3 CI/CD PIPELINE -->
+        <div class="concept-box" style="margin-top:40px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">B. La Méthode "Dev -> Staging -> Prod"</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Même en No-Code, on respecte le cycle de
+                vie logiciel.</p>
+
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#fab1a0;">DYI (Dev)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">L'espace "bac à sable". On casse tout, on teste
+                        avec des fausses données. Connecté à Stripe Test.</p>
+                </div>
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#ffeaa7;">Staging (Pre-Prod)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">La copie conforme de la prod. On valide que tout
+                        marche ensemble ("Integration Test").</p>
+                </div>
+                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
+                    <strong style="color:#55efc4;">Production (Live)</strong>
+                    <p style="font-size:0.8rem; margin-top:5px;">La vraie vie. On n'y touche JAMAIS directement
+                        ("Read Only"). On déploie depuis Staging.</p>
                 </div>
             </div>
 
-            <!-- 6.1 INTRO -->
-            <div class="concept-box" style="margin-bottom:30px; border-left-color: #ff7675;">
-                <strong>L'Enjeu :</strong> Une automatisation mal conçue peut coûter 10 000€ en 5 minutes (boucle
-                infinie d'API) ou fuiter toute votre BDD client.
-                <br><em>Règle d'or : "Si ça marche sur ma machine", ce n'est pas prêt pour la production.</em>
+            <div class="tip" style="margin-top:15px; font-size:0.8rem;">
+                <strong>Git Sync :</strong> Des outils comme n8n et Appsmith permettent de synchroniser vos
+                modifications avec GitHub. C'est votre "Gilet de sauvetage" (Rollback) si une mise à jour plante
+                tout.
+            </div>
+        </div>
+
+        <!-- 6.4 ERROR HANDLING -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Gestion des Erreurs (Robustesse)</h3>
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>🚑 Le Pattern "Dead Letter Queue"</h4>
+                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">Que se passe-t-il si l'API Stripe
+                    est en panne pendant un paiement ?</p>
+                <ol class="clean-list" style="font-size:0.8rem;">
+                    <li style="margin-bottom:5px;">1. Le Workflow détecte l'erreur (Node "Catch").</li>
+                    <li style="margin-bottom:5px;">2. Il n'arrête pas le système.</li>
+                    <li style="margin-bottom:5px;">3. Il envoie les données du client dans une table "Erreurs" (La
+                        DLQ).</li>
+                    <li>4. Une alerte part sur Slack : "Paiement échoué, à rejouer plus tard".</li>
+                </ol>
+                <div style="font-size:0.75rem; color:#ff7675; margin-top:10px; font-weight:bold;">Résultat : 0% de
+                    perte de donnée.</div>
             </div>
 
-            <!-- 6.2 SECURITY PILLARS -->
-            <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Piliers de la Sécurité</h3>
-            <div class="grid3">
-                <!-- SECRETS -->
-                <div class="scenario-card" style="border-top: 3px solid #ff7675;">
-                    <h4>🔐 1. Secrets Management</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;">Ne mettez JAMAIS vos clés API en dur dans le code.
-                    </p>
-                    <ul class="vocab-list">
-                        <dt>Env Vars</dt>
-                        <dd>Utilisez les variables d'environnement (<code>.env</code>) pour stocker les clés.</dd>
-                        <dt>Rotation</dt>
-                        <dd>Changez vos clés régulièrement (tous les 90j).</dd>
-                        <dt>Outil</dt>
-                        <dd><strong>Doppler</strong> (Gestionnaire de secrets universel).</dd>
-                    </ul>
+            <div class="scenario-card">
+                <h4>🤝 Le Pattern "Human-in-the-Loop"</h4>
+                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">L'IA n'a pas le droit de tout
+                    faire toute seule.</p>
+                <div class="code-block" style="font-size:0.8rem;">
+                    Trigger -> IA (Draft Reply) -> <span style="color:#ffeaa7;">WAIT FOR APPROVAL</span> -> Slack
+                    (Boutons : Valider / Modifier) -> Send Email
                 </div>
+                <p style="font-size:0.8rem; margin-top:10px;">Utilisez l'Humain comme validateur final pour les
+                    actions critiques (Remboursement > 100€, Publication, Suppression).</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODULE 7: OPEN SOURCE SELF-HOSTABLE APPS 2025 -->
+<section id="m7" style="background: radial-gradient(circle at 50% 50%, rgba(0, 206, 201, 0.08) 0%, rgba(0,0,0,0) 70%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#00cec9; border-color:#00cec9;">07</div>
+            <div>
+                <h2 class="sec-title" style="color:#00cec9;">🧱 Apps Open Source Self-Hostables</h2>
+                <p class="sec-sub">La Stack No-Code / Low-Code / Vibe-Code de 2025</p>
+            </div>
+        </div>
 
-                <!-- RBAC -->
-                <div class="scenario-card" style="border-top: 3px solid #fdcb6e;">
-                    <h4>👮 2. RBAC (Access Control)</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;">Role-Based Access Control. Moindre privilège.</p>
-                    <ul class="vocab-list">
-                        <dt>Admin</dt>
-                        <dd>Peut tout casser (CTO uniquement).</dd>
-                        <dt>Editor</dt>
-                        <dd>Peut créer des workflows, mais pas voir les clés de prod.</dd>
-                        <dt>Viewer</dt>
-                        <dd>Peut voir les logs (Support Client).</dd>
-                    </ul>
-                </div>
+        <div class="concept-box" style="margin-bottom:30px; border-left-color: #00cec9;">
+            <strong>Pourquoi Self-Hosted ?</strong> Souveraineté des données, zéro limite de lignes/exécutions,
+            coût maîtrisé (VPS + Docker + Coolify). <br>
+            <em>100% Open Source. 100% Contrôle.</em>
+        </div>
 
-                <!-- AUDIT -->
-                <div class="scenario-card" style="border-top: 3px solid #74b9ff;">
-                    <h4>📜 3. Audit Logs</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;">Qui a fait quoi et quand ? Vital pour le RGPD.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li><em>"Qui a supprimé la table Users ?"</em></li>
-                        <li><em>"Pourquoi le workflow de paiement a changé hier ?"</em></li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">Oubliez ça et vous échouerez l'audit
-                        de sécurité.</div>
+        <!-- 7.1 APPS INTERNES (CRUD) -->
+        <h3 class="sec-title-small" style="color:#fff;">🧩 1. Construction d'Apps Internes (CRUD, Dashboards)</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <!-- NocoBase -->
+            <div class="scenario-card" style="border-top: 4px solid #00cec9;">
+                <h4>⭐ NocoBase <span style="color:#00cec9; font-size:0.75rem;">(Référence 2025)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Plateforme no-code/low-code très complète, pensée
+                    comme un framework d'apps métiers.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Modélisation de données visuelle</li>
+                    <li>✅ CRUD avancé (tables, formulaires, kanban, calendar)</li>
+                    <li>✅ Permissions fines, rôles</li>
+                    <li>✅ Automatisations internes</li>
+                    <li>✅ Système de plugins très puissant</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Idéal pour CRM, ERP légers,
+                    outils internes complexes.</div>
+            </div>
+
+            <!-- Appsmith -->
+            <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
+                <h4>⭐ Appsmith</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Builder open-source pour apps internes
+                    data-driven.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ UI riche (tables, charts, forms)</li>
+                    <li>✅ Connexion directe aux BDD & APIs</li>
+                    <li>✅ JavaScript pour logique avancée</li>
+                    <li>✅ Très populaire, très stable</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#ff6b6b; margin-top:10px;">👉 Idéal comme "front universel" sur
+                    Strapi / Directus / Supabase.</div>
+            </div>
+
+            <!-- Budibase -->
+            <div class="scenario-card">
+                <h4>Budibase</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Low-code orienté équipes IT.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Très rapide à prendre en main</li>
+                    <li>✅ Bon compromis no-code / low-code</li>
+                    <li>✅ Formulaires, portails internes</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins extensible que NocoBase,
+                    mais plus simple.</div>
+            </div>
+
+            <!-- ToolJet -->
+            <div class="scenario-card">
+                <h4>ToolJet</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Builder open-source orienté dashboards &
+                    formulaires data.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Simple, rapide</li>
+                    <li>✅ Bon pour prototypes et outils légers</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins structurant pour des apps
+                    complexes long terme.</div>
+            </div>
+        </div>
+
+        <!-- 7.2 AUTOMATION NO-CODE -->
+        <h3 class="sec-title-small" style="color:#fff;">🔁 2. Automation No-Code (Zapier / Make Self-Hostés)</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <!-- n8n -->
+            <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
+                <h4>⭐ n8n <span style="color:#ff6b6b; font-size:0.75rem;">(Standard de Facto)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Workflow automation open-source et extensible.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Visuel + JavaScript</li>
+                    <li>✅ Grande communauté</li>
+                    <li>✅ APIs, BDD, IA, Webhooks</li>
+                    <li>✅ Orchestration complexe</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#ff6b6b; margin-top:10px;">👉 Pilier central de toute stack
+                    no-code moderne.</div>
+            </div>
+
+            <!-- Activepieces -->
+            <div class="scenario-card">
+                <h4>Activepieces</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Alternative "Zapier-like" plus simple.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ UX claire</li>
+                    <li>✅ Courbe d'apprentissage douce</li>
+                    <li>✅ Self-hostable</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins puissant que n8n, mais plus
+                    accessible.</div>
+            </div>
+
+            <!-- Windmill -->
+            <div class="scenario-card">
+                <h4>Windmill <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Plus low-code / dev-oriented.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Scripts + Workflows</li>
+                    <li>✅ Pour publics techniques</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7.3 BASES DE DONNÉES NO-CODE -->
+        <h3 class="sec-title-small" style="color:#fff;">🗄️ 3. Bases de Données No-Code (Type Airtable)</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <!-- NocoDB -->
+            <div class="scenario-card" style="border-top: 4px solid #3ECF8E;">
+                <h4>⭐ NocoDB</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Transforme Postgres/MySQL en Airtable-like.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Garde ta vraie base SQL</li>
+                    <li>✅ API auto-générée</li>
+                    <li>✅ Équipes mixtes (Tech + Métier)</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#3ECF8E; margin-top:10px;">👉 Très solide pour projets sérieux.
                 </div>
             </div>
 
-            <!-- 6.3 CI/CD PIPELINE -->
-            <div class="concept-box" style="margin-top:40px; background: rgba(255, 255, 255, 0.05);">
-                <h3 style="color:#fff; margin-bottom:10px;">B. La Méthode "Dev -> Staging -> Prod"</h3>
-                <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Même en No-Code, on respecte le cycle de
-                    vie logiciel.</p>
-
-                <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                        <strong style="color:#fab1a0;">DYI (Dev)</strong>
-                        <p style="font-size:0.8rem; margin-top:5px;">L'espace "bac à sable". On casse tout, on teste
-                            avec des fausses données. Connecté à Stripe Test.</p>
-                    </div>
-                    <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                        <strong style="color:#ffeaa7;">Staging (Pre-Prod)</strong>
-                        <p style="font-size:0.8rem; margin-top:5px;">La copie conforme de la prod. On valide que tout
-                            marche ensemble ("Integration Test").</p>
-                    </div>
-                    <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                        <strong style="color:#55efc4;">Production (Live)</strong>
-                        <p style="font-size:0.8rem; margin-top:5px;">La vraie vie. On n'y touche JAMAIS directement
-                            ("Read Only"). On déploie depuis Staging.</p>
-                    </div>
-                </div>
-
-                <div class="tip" style="margin-top:15px; font-size:0.8rem;">
-                    <strong>Git Sync :</strong> Des outils comme n8n et Appsmith permettent de synchroniser vos
-                    modifications avec GitHub. C'est votre "Gilet de sauvetage" (Rollback) si une mise à jour plante
-                    tout.
-                </div>
+            <!-- APITable -->
+            <div class="scenario-card">
+                <h4>APITable</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Base no-code collaborative "clé en main".</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ UX proche d'Airtable</li>
+                    <li>✅ Collaboration native</li>
+                    <li>✅ Simple à déployer</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Plus "produit fini", moins
+                    flexible que NocoDB.</div>
             </div>
 
-            <!-- 6.4 ERROR HANDLING -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Gestion des Erreurs (Robustesse)</h3>
+            <!-- Baserow -->
+            <div class="scenario-card">
+                <h4>Baserow <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">L'Airtable OSS le plus simple.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Très bonne UX</li>
+                    <li>✅ Plus simple qu'APITable</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7.4 BACKEND / CMS HEADLESS -->
+        <h3 class="sec-title-small" style="color:#fff;">🌐 4. Backend / CMS Headless (API-First)</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <!-- Directus -->
+            <div class="scenario-card" style="border-top: 4px solid #a29bfe;">
+                <h4>⭐ Directus <span style="color:#a29bfe; font-size:0.75rem;">(Préféré en 2025)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">CMS + Data Platform API-first.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Se connecte à une DB existante</li>
+                    <li>✅ REST + GraphQL</li>
+                    <li>✅ Permissions fines</li>
+                    <li>✅ Parfait pour stacks no-code / IA</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#a29bfe; margin-top:10px;">👉 Excellent pour Appsmith / n8n /
+                    automatisation.</div>
+            </div>
+
+            <!-- Strapi -->
+            <div class="scenario-card">
+                <h4>Strapi</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">CMS headless historique.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Très populaire</li>
+                    <li>✅ Bon pour contenu éditorial</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins flexible que Directus pour
+                    data métier.</div>
+            </div>
+        </div>
+
+        <!-- 7.5 SITES / FORMULAIRES / FRONT -->
+        <h3 class="sec-title-small" style="color:#fff;">🎨 5. Sites Web, Formulaires, Front "Vibe Code"</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <!-- Webstudio -->
+            <div class="scenario-card">
+                <h4>Webstudio</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Builder visuel open-source orienté web moderne.
+                </p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ HTML/CSS propre</li>
+                    <li>✅ Alternative OSS à Webflow</li>
+                </ul>
+            </div>
+
+            <!-- Plasmic -->
+            <div class="scenario-card">
+                <h4>Plasmic <span style="font-size:0.7rem;">(OSS partiel)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Front React visuel.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Low-code frontend avancé</li>
+                </ul>
+            </div>
+
+            <!-- Appsmith/ToolJet -->
+            <div class="scenario-card">
+                <h4>Appsmith / ToolJet (Réutilisés)</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Très efficaces pour portails internes.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Admin, dashboards</li>
+                    <li>✅ "Vibe code" rapide</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7.6 NO-CODE + IA -->
+        <h3 class="sec-title-small" style="color:#fff;">🤖 6. No-Code + IA (Workflows Augmentés)</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <!-- n8n + IA -->
+            <div class="scenario-card" style="border-top: 4px solid #e056fd;">
+                <h4>⭐ n8n + IA</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Appels LLM (GPT, Claude, Local)</li>
+                    <li>✅ RAG Pipelines</li>
+                    <li>✅ Agents simples</li>
+                    <li>✅ Orchestration IA + Métier</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#e056fd; margin-top:10px;">👉 Incontournable.</div>
+            </div>
+
+            <!-- NocoBase + IA -->
+            <div class="scenario-card">
+                <h4>NocoBase + Plugins IA</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ "AI Employees"</li>
+                    <li>✅ Génération, classification</li>
+                    <li>✅ IA intégrée aux apps métiers</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Fort pour entreprises.</div>
+            </div>
+
+            <!-- Flowise -->
+            <div class="scenario-card">
+                <h4>Flowise <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Builder visuel pour LLM / Agents / RAG.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Complément parfait à n8n</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7.7 STACK IDEALE 2025 -->
+        <div class="concept-box"
+            style="margin-top:20px; background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0,0,0,0) 100%); border-left-color: #a29bfe;">
+            <h3 style="color:#a29bfe; margin-bottom:15px;">🧠 Stack "Idéale" Générique 2025</h3>
+            <div class="code-block" style="font-size:0.9rem; text-align:center; line-height:1.8;">
+                <span style="color:#a29bfe;">Directus</span> (data & API)<br>
+                ↓<br>
+                <span style="color:#3ECF8E;">NocoDB</span> (édition no-code si besoin)<br>
+                ↓<br>
+                <span style="color:#ff6b6b;">n8n</span> (automatisation + IA)<br>
+                ↓<br>
+                <span style="color:#00cec9;">Appsmith / NocoBase</span> (apps internes)
+            </div>
+            <div style="margin-top:15px; text-align:center; font-size:0.85rem; color:#b2bec3;">
+                <strong>100% Open Source</strong> • <strong>100% Self-Hostable</strong> • <strong>VPS + Docker +
+                    Coolify</strong>
+            </div>
+        </div>
+
+        <!-- 7.8 CHOIX INTELLIGENT -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">✅ Choisir Intelligemment (Résumé)</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
+            <div
+                style="padding:12px; background:rgba(0,206,201,0.1); border-radius:8px; border-left:3px solid #00cec9;">
+                <strong style="font-size:0.8rem;">🧩 Apps Internes</strong>
+                <div style="font-size:0.75rem; margin-top:5px;">⭐ NocoBase<br><span style="color:#b2bec3;">Alt:
+                        Appsmith</span></div>
+            </div>
+            <div
+                style="padding:12px; background:rgba(255,107,107,0.1); border-radius:8px; border-left:3px solid #ff6b6b;">
+                <strong style="font-size:0.8rem;">🔁 Automatisation</strong>
+                <div style="font-size:0.75rem; margin-top:5px;">⭐ n8n<br><span style="color:#b2bec3;">Alt:
+                        Activepieces</span></div>
+            </div>
+            <div
+                style="padding:12px; background:rgba(62,207,142,0.1); border-radius:8px; border-left:3px solid #3ECF8E;">
+                <strong style="font-size:0.8rem;">🗄️ Base Airtable</strong>
+                <div style="font-size:0.75rem; margin-top:5px;">⭐ NocoDB<br><span style="color:#b2bec3;">Alt:
+                        APITable</span></div>
+            </div>
+            <div
+                style="padding:12px; background:rgba(162,155,254,0.1); border-radius:8px; border-left:3px solid #a29bfe;">
+                <strong style="font-size:0.8rem;">🌐 Backend / API</strong>
+                <div style="font-size:0.75rem; margin-top:5px;">⭐ Directus<br><span style="color:#b2bec3;">Alt:
+                        Strapi</span></div>
+            </div>
+            <div
+                style="padding:12px; background:rgba(224,86,253,0.1); border-radius:8px; border-left:3px solid #e056fd;">
+                <strong style="font-size:0.8rem;">🤖 IA Workflows</strong>
+                <div style="font-size:0.75rem; margin-top:5px;">⭐ n8n<br><span style="color:#b2bec3;">Alt:
+                        Flowise</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODULE 9: ROADMAP 2025 (FULL) -->
+<section id="m9" style="background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.1) 0%, rgba(0,0,0,0) 70%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:var(--nocode-color); border-color:var(--nocode-color);">09</div>
+            <div>
+                <h2 class="sec-title" style="color:var(--nocode-color);">Roadmap 2025</h2>
+                <p class="sec-sub">Devenir Product Builder (Niveau 1 à 5)</p>
+            </div>
+        </div>
+
+        <!-- LEVEL 1 -->
+        <div class="roadmap-step">
+            <div class="roadmap-num" style="background:var(--nocode-color); color:#fff; border:none;">1</div>
+            <div>
+                <h4>🧠 Level 1: The "Data Thinker" (Mindset)</h4>
+                <p style="font-size:0.9rem; margin-bottom:5px;">Arrêtez de penser "Outils". Commencez à penser
+                    "Structure de Données".</p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li><strong>Skills :</strong> JSON, Logique Booléenne (IF/ELSE), Relations (One-to-Many).</li>
+                    <li><strong>Challenge :</strong> Connectez un Typeform à un Google Sheet sans erreur de format.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LEVEL 2 -->
+        <div class="roadmap-step">
+            <div class="roadmap-num" style="background:#0984e3; color:#fff; border:none;">2</div>
+            <div>
+                <h4>🔗 Level 2: The "Connector" (API & Webhooks)</h4>
+                <p style="font-size:0.9rem; margin-bottom:5px;">Faites parler les applications entre elles.</p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li><strong>Skills :</strong> HTTP Request (GET/POST), Webhooks, Make/Zapier.</li>
+                    <li><strong>Challenge :</strong> Envoyez une notif Slack quand une ligne est ajoutée sur
+                        Airtable via Make.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LEVEL 3 -->
+        <div class="roadmap-step">
+            <div class="roadmap-num" style="background:#00cec9; color:#fff; border:none;">3</div>
+            <div>
+                <h4>🛠️ Level 3: The "Full Stack Builder" (Independence)</h4>
+                <p style="font-size:0.9rem; margin-bottom:5px;">Sortez des limites du SaaS. Devenez propriétaire de
+                    votre stack.</p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li><strong>Skills :</strong> Supabase (Postgres), Appsmith (UI), n8n (Self-hosted logic).</li>
+                    <li><strong>Challenge :</strong> Créez un CRM interne avec Login sécurisé et Dashboard admin.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LEVEL 4 -->
+        <div class="roadmap-step">
+            <div class="roadmap-num" style="background:#a29bfe; color:#fff; border:none;">4</div>
+            <div>
+                <h4>🤖 Level 4: The "AI Architect" (Intelligence)</h4>
+                <p style="font-size:0.9rem; margin-bottom:5px;">Ne faites plus le travail. Orchestrez des agents.
+                </p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li><strong>Skills :</strong> Prompt Engineering, RAG Pipelines, Vector DBs, MCP.</li>
+                    <li><strong>Challenge :</strong> "Chat with my PDF" bot avec n8n et un LLM Open Source.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LEVEL 5 -->
+        <div class="roadmap-step">
+            <div class="roadmap-num" style="background:#ff7675; color:#fff; border:none;">5</div>
+            <div>
+                <h4>🏭 Level 5: The "Industrialist" (Scale & Ops)</h4>
+                <p style="font-size:0.9rem; margin-bottom:5px;">Sécurisez et scalez pour l'entreprise.</p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li><strong>Skills :</strong> Versioning (Git), Error Handling (DLQ), Secrets Mgmt, RBAC.</li>
+                    <li><strong>Challenge :</strong> Passez un audit de sécurité sans sueur froide.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="concept-box" style="margin-top:30px; text-align:center;">
+            <strong style="color:#fff;">Votre objectif 2025 :</strong><br>
+            Ne restez pas bloqué au niveau 2. Le marché est saturé de "Connecteurs".
+            <br>La valeur est au niveau 4 et 5.
+        </div>
+    </div>
+</section>
+<!-- MODULE 10: BUSINESS & ROI (THE MONEY MODULE) -->
+<section id="m10">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">10</div>
+            <div>
+                <h2 class="sec-title">Business & ROI</h2>
+                <p class="sec-sub">L'Automatisation est un Levier Financier</p>
+            </div>
+        </div>
+
+        <!-- 10.1 INTRO -->
+        <div class="concept-box" style="margin-bottom:30px;">
+            <strong>L'Équation :</strong> On ne code pas pour "s'amuser". On code pour augmenter la marge.<br>
+            <em>Value = (Temps Gagné x Taux Horaire) x Fréquence.</em>
+        </div>
+
+        <!-- 10.2 ROI CALCULATOR -->
+        <div class="scenario-card"
+            style="border-left: 4px solid #fab1a0; background: linear-gradient(90deg, rgba(250, 177, 160, 0.1) 0%, rgba(0,0,0,0) 100%);">
+            <h4>💰 Le Calcul de Rentabilité (Exemple Réel)</h4>
+            <p style="margin-bottom:15px; font-size:0.9rem;">Processus : "Saisir les factures PDF dans Excel"
+                (1h/jour).</p>
+
             <div class="grid2">
-                <div class="scenario-card">
-                    <h4>🚑 Le Pattern "Dead Letter Queue"</h4>
-                    <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">Que se passe-t-il si l'API Stripe
-                        est en panne pendant un paiement ?</p>
-                    <ol class="clean-list" style="font-size:0.8rem;">
-                        <li style="margin-bottom:5px;">1. Le Workflow détecte l'erreur (Node "Catch").</li>
-                        <li style="margin-bottom:5px;">2. Il n'arrête pas le système.</li>
-                        <li style="margin-bottom:5px;">3. Il envoie les données du client dans une table "Erreurs" (La
-                            DLQ).</li>
-                        <li>4. Une alerte part sur Slack : "Paiement échoué, à rejouer plus tard".</li>
-                    </ol>
-                    <div style="font-size:0.75rem; color:#ff7675; margin-top:10px; font-weight:bold;">Résultat : 0% de
-                        perte de donnée.</div>
+                <div>
+                    <strong style="color:#ff7675;">Coût Humain (Avant)</strong>
+                    <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
+                        <li>Temps : 1h/jour x 220 jours = 220h</li>
+                        <li>Coût : 220h x 50€/h = <strong>11 000€ / an</strong></li>
+                        <li><em>+ Erreurs humaines de saisie.</em></li>
+                    </ul>
                 </div>
-
-                <div class="scenario-card">
-                    <h4>🤝 Le Pattern "Human-in-the-Loop"</h4>
-                    <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">L'IA n'a pas le droit de tout
-                        faire toute seule.</p>
-                    <div class="code-block" style="font-size:0.8rem;">
-                        Trigger -> IA (Draft Reply) -> <span style="color:#ffeaa7;">WAIT FOR APPROVAL</span> -> Slack
-                        (Boutons : Valider / Modifier) -> Send Email
-                    </div>
-                    <p style="font-size:0.8rem; margin-top:10px;">Utilisez l'Humain comme validateur final pour les
-                        actions critiques (Remboursement > 100€, Publication, Suppression).</p>
+                <div>
+                    <strong style="color:#55efc4;">Coût Machine (Après)</strong>
+                    <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
+                        <li>Dev (One-shot) : 2 jours = 1 000€</li>
+                        <li>Run : n8n (20€) + GPT-4 (30€) = 600€/an</li>
+                        <li><strong>Total : 1 600€ la 1ère année</strong></li>
+                    </ul>
                 </div>
+            </div>
+            <div
+                style="margin-top:15px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1); text-align:center; font-weight:bold; color:#55efc4;">
+                GAIN NET : +9 400€ dès la première année.
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 7: OPEN SOURCE SELF-HOSTABLE APPS 2025 -->
-    <section id="m7"
-        style="background: radial-gradient(circle at 50% 50%, rgba(0, 206, 201, 0.08) 0%, rgba(0,0,0,0) 70%);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num" style="color:#00cec9; border-color:#00cec9;">07</div>
-                <div>
-                    <h2 class="sec-title" style="color:#00cec9;">🧱 Apps Open Source Self-Hostables</h2>
-                    <p class="sec-sub">La Stack No-Code / Low-Code / Vibe-Code de 2025</p>
-                </div>
+        <!-- 10.3 PRICING MODELS -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">Modèles de Pricing (Freelances)</h3>
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>🛠️ Au Projet (One-Shot)</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je te construis ton CRM pour 3000€."</em></p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li>✅ Gros cashflow immédiat.</li>
+                    <li>❌ Revenu instable ("Feast or Famine").</li>
+                    <li>❌ Le client revient râler 6 mois après quand l'API change.</li>
+                </ul>
             </div>
-
-            <div class="concept-box" style="margin-bottom:30px; border-left-color: #00cec9;">
-                <strong>Pourquoi Self-Hosted ?</strong> Souveraineté des données, zéro limite de lignes/exécutions,
-                coût maîtrisé (VPS + Docker + Coolify). <br>
-                <em>100% Open Source. 100% Contrôle.</em>
-            </div>
-
-            <!-- 7.1 APPS INTERNES (CRUD) -->
-            <h3 class="sec-title-small" style="color:#fff;">🧩 1. Construction d'Apps Internes (CRUD, Dashboards)</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <!-- NocoBase -->
-                <div class="scenario-card" style="border-top: 4px solid #00cec9;">
-                    <h4>⭐ NocoBase <span style="color:#00cec9; font-size:0.75rem;">(Référence 2025)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Plateforme no-code/low-code très complète, pensée
-                        comme un framework d'apps métiers.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Modélisation de données visuelle</li>
-                        <li>✅ CRUD avancé (tables, formulaires, kanban, calendar)</li>
-                        <li>✅ Permissions fines, rôles</li>
-                        <li>✅ Automatisations internes</li>
-                        <li>✅ Système de plugins très puissant</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Idéal pour CRM, ERP légers,
-                        outils internes complexes.</div>
-                </div>
-
-                <!-- Appsmith -->
-                <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
-                    <h4>⭐ Appsmith</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Builder open-source pour apps internes
-                        data-driven.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ UI riche (tables, charts, forms)</li>
-                        <li>✅ Connexion directe aux BDD & APIs</li>
-                        <li>✅ JavaScript pour logique avancée</li>
-                        <li>✅ Très populaire, très stable</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#ff6b6b; margin-top:10px;">👉 Idéal comme "front universel" sur
-                        Strapi / Directus / Supabase.</div>
-                </div>
-
-                <!-- Budibase -->
-                <div class="scenario-card">
-                    <h4>Budibase</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Low-code orienté équipes IT.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Très rapide à prendre en main</li>
-                        <li>✅ Bon compromis no-code / low-code</li>
-                        <li>✅ Formulaires, portails internes</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins extensible que NocoBase,
-                        mais plus simple.</div>
-                </div>
-
-                <!-- ToolJet -->
-                <div class="scenario-card">
-                    <h4>ToolJet</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Builder open-source orienté dashboards &
-                        formulaires data.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Simple, rapide</li>
-                        <li>✅ Bon pour prototypes et outils légers</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins structurant pour des apps
-                        complexes long terme.</div>
-                </div>
-            </div>
-
-            <!-- 7.2 AUTOMATION NO-CODE -->
-            <h3 class="sec-title-small" style="color:#fff;">🔁 2. Automation No-Code (Zapier / Make Self-Hostés)</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <!-- n8n -->
-                <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
-                    <h4>⭐ n8n <span style="color:#ff6b6b; font-size:0.75rem;">(Standard de Facto)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Workflow automation open-source et extensible.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Visuel + JavaScript</li>
-                        <li>✅ Grande communauté</li>
-                        <li>✅ APIs, BDD, IA, Webhooks</li>
-                        <li>✅ Orchestration complexe</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#ff6b6b; margin-top:10px;">👉 Pilier central de toute stack
-                        no-code moderne.</div>
-                </div>
-
-                <!-- Activepieces -->
-                <div class="scenario-card">
-                    <h4>Activepieces</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Alternative "Zapier-like" plus simple.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ UX claire</li>
-                        <li>✅ Courbe d'apprentissage douce</li>
-                        <li>✅ Self-hostable</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins puissant que n8n, mais plus
-                        accessible.</div>
-                </div>
-
-                <!-- Windmill -->
-                <div class="scenario-card">
-                    <h4>Windmill <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Plus low-code / dev-oriented.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Scripts + Workflows</li>
-                        <li>✅ Pour publics techniques</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 7.3 BASES DE DONNÉES NO-CODE -->
-            <h3 class="sec-title-small" style="color:#fff;">🗄️ 3. Bases de Données No-Code (Type Airtable)</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <!-- NocoDB -->
-                <div class="scenario-card" style="border-top: 4px solid #3ECF8E;">
-                    <h4>⭐ NocoDB</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Transforme Postgres/MySQL en Airtable-like.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Garde ta vraie base SQL</li>
-                        <li>✅ API auto-générée</li>
-                        <li>✅ Équipes mixtes (Tech + Métier)</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#3ECF8E; margin-top:10px;">👉 Très solide pour projets sérieux.
-                    </div>
-                </div>
-
-                <!-- APITable -->
-                <div class="scenario-card">
-                    <h4>APITable</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Base no-code collaborative "clé en main".</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ UX proche d'Airtable</li>
-                        <li>✅ Collaboration native</li>
-                        <li>✅ Simple à déployer</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Plus "produit fini", moins
-                        flexible que NocoDB.</div>
-                </div>
-
-                <!-- Baserow -->
-                <div class="scenario-card">
-                    <h4>Baserow <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">L'Airtable OSS le plus simple.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Très bonne UX</li>
-                        <li>✅ Plus simple qu'APITable</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 7.4 BACKEND / CMS HEADLESS -->
-            <h3 class="sec-title-small" style="color:#fff;">🌐 4. Backend / CMS Headless (API-First)</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <!-- Directus -->
-                <div class="scenario-card" style="border-top: 4px solid #a29bfe;">
-                    <h4>⭐ Directus <span style="color:#a29bfe; font-size:0.75rem;">(Préféré en 2025)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">CMS + Data Platform API-first.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Se connecte à une DB existante</li>
-                        <li>✅ REST + GraphQL</li>
-                        <li>✅ Permissions fines</li>
-                        <li>✅ Parfait pour stacks no-code / IA</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#a29bfe; margin-top:10px;">👉 Excellent pour Appsmith / n8n /
-                        automatisation.</div>
-                </div>
-
-                <!-- Strapi -->
-                <div class="scenario-card">
-                    <h4>Strapi</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">CMS headless historique.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Très populaire</li>
-                        <li>✅ Bon pour contenu éditorial</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Moins flexible que Directus pour
-                        data métier.</div>
-                </div>
-            </div>
-
-            <!-- 7.5 SITES / FORMULAIRES / FRONT -->
-            <h3 class="sec-title-small" style="color:#fff;">🎨 5. Sites Web, Formulaires, Front "Vibe Code"</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <!-- Webstudio -->
-                <div class="scenario-card">
-                    <h4>Webstudio</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Builder visuel open-source orienté web moderne.
-                    </p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ HTML/CSS propre</li>
-                        <li>✅ Alternative OSS à Webflow</li>
-                    </ul>
-                </div>
-
-                <!-- Plasmic -->
-                <div class="scenario-card">
-                    <h4>Plasmic <span style="font-size:0.7rem;">(OSS partiel)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Front React visuel.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Low-code frontend avancé</li>
-                    </ul>
-                </div>
-
-                <!-- Appsmith/ToolJet -->
-                <div class="scenario-card">
-                    <h4>Appsmith / ToolJet (Réutilisés)</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Très efficaces pour portails internes.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Admin, dashboards</li>
-                        <li>✅ "Vibe code" rapide</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 7.6 NO-CODE + IA -->
-            <h3 class="sec-title-small" style="color:#fff;">🤖 6. No-Code + IA (Workflows Augmentés)</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <!-- n8n + IA -->
-                <div class="scenario-card" style="border-top: 4px solid #e056fd;">
-                    <h4>⭐ n8n + IA</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Appels LLM (GPT, Claude, Local)</li>
-                        <li>✅ RAG Pipelines</li>
-                        <li>✅ Agents simples</li>
-                        <li>✅ Orchestration IA + Métier</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#e056fd; margin-top:10px;">👉 Incontournable.</div>
-                </div>
-
-                <!-- NocoBase + IA -->
-                <div class="scenario-card">
-                    <h4>NocoBase + Plugins IA</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ "AI Employees"</li>
-                        <li>✅ Génération, classification</li>
-                        <li>✅ IA intégrée aux apps métiers</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Fort pour entreprises.</div>
-                </div>
-
-                <!-- Flowise -->
-                <div class="scenario-card">
-                    <h4>Flowise <span style="font-size:0.7rem; color:#a29bfe;">(Bonus)</span></h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Builder visuel pour LLM / Agents / RAG.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Complément parfait à n8n</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 7.7 STACK IDEALE 2025 -->
-            <div class="concept-box"
-                style="margin-top:20px; background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0,0,0,0) 100%); border-left-color: #a29bfe;">
-                <h3 style="color:#a29bfe; margin-bottom:15px;">🧠 Stack "Idéale" Générique 2025</h3>
-                <div class="code-block" style="font-size:0.9rem; text-align:center; line-height:1.8;">
-                    <span style="color:#a29bfe;">Directus</span> (data & API)<br>
-                    ↓<br>
-                    <span style="color:#3ECF8E;">NocoDB</span> (édition no-code si besoin)<br>
-                    ↓<br>
-                    <span style="color:#ff6b6b;">n8n</span> (automatisation + IA)<br>
-                    ↓<br>
-                    <span style="color:#00cec9;">Appsmith / NocoBase</span> (apps internes)
-                </div>
-                <div style="margin-top:15px; text-align:center; font-size:0.85rem; color:#b2bec3;">
-                    <strong>100% Open Source</strong> • <strong>100% Self-Hostable</strong> • <strong>VPS + Docker +
-                        Coolify</strong>
-                </div>
-            </div>
-
-            <!-- 7.8 CHOIX INTELLIGENT -->
-            <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">✅ Choisir Intelligemment (Résumé)</h3>
-            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">
-                <div
-                    style="padding:12px; background:rgba(0,206,201,0.1); border-radius:8px; border-left:3px solid #00cec9;">
-                    <strong style="font-size:0.8rem;">🧩 Apps Internes</strong>
-                    <div style="font-size:0.75rem; margin-top:5px;">⭐ NocoBase<br><span style="color:#b2bec3;">Alt:
-                            Appsmith</span></div>
-                </div>
-                <div
-                    style="padding:12px; background:rgba(255,107,107,0.1); border-radius:8px; border-left:3px solid #ff6b6b;">
-                    <strong style="font-size:0.8rem;">🔁 Automatisation</strong>
-                    <div style="font-size:0.75rem; margin-top:5px;">⭐ n8n<br><span style="color:#b2bec3;">Alt:
-                            Activepieces</span></div>
-                </div>
-                <div
-                    style="padding:12px; background:rgba(62,207,142,0.1); border-radius:8px; border-left:3px solid #3ECF8E;">
-                    <strong style="font-size:0.8rem;">🗄️ Base Airtable</strong>
-                    <div style="font-size:0.75rem; margin-top:5px;">⭐ NocoDB<br><span style="color:#b2bec3;">Alt:
-                            APITable</span></div>
-                </div>
-                <div
-                    style="padding:12px; background:rgba(162,155,254,0.1); border-radius:8px; border-left:3px solid #a29bfe;">
-                    <strong style="font-size:0.8rem;">🌐 Backend / API</strong>
-                    <div style="font-size:0.75rem; margin-top:5px;">⭐ Directus<br><span style="color:#b2bec3;">Alt:
-                            Strapi</span></div>
-                </div>
-                <div
-                    style="padding:12px; background:rgba(224,86,253,0.1); border-radius:8px; border-left:3px solid #e056fd;">
-                    <strong style="font-size:0.8rem;">🤖 IA Workflows</strong>
-                    <div style="font-size:0.75rem; margin-top:5px;">⭐ n8n<br><span style="color:#b2bec3;">Alt:
-                            Flowise</span></div>
-                </div>
+            <div class="scenario-card" style="border-color: var(--accent);">
+                <h4>🔄 RaaS (Retainer as a Service)</h4>
+                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je maintiens et optimise tes ops pour
+                        500€/mois."</em></p>
+                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
+                    <li>✅ Revenu récurrent (MRR).</li>
+                    <li>✅ Vous vendez la "tranquillité d'esprit", pas du code.</li>
+                    <li>✅ Relation long terme = Upsell facile.</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 9: ROADMAP 2025 (FULL) -->
-    <section id="m9"
-        style="background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.1) 0%, rgba(0,0,0,0) 70%);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num" style="color:var(--nocode-color); border-color:var(--nocode-color);">09</div>
-                <div>
-                    <h2 class="sec-title" style="color:var(--nocode-color);">Roadmap 2025</h2>
-                    <p class="sec-sub">Devenir Product Builder (Niveau 1 à 5)</p>
-                </div>
-            </div>
+        <!-- 10.4 INTERNAL SALES -->
+        <div class="tip" style="margin-top:30px;">
+            <strong>Pitching to the Boss :</strong> Ne vendez pas "J'ai fait un script Python".<br>
+            Vendez : "J'ai économisé l'équivalent de 0.5 ETP (Équivalent Temps Plein) pour qu'on puisse se
+            concentrer sur les ventes."
+        </div>
 
-            <!-- LEVEL 1 -->
-            <div class="roadmap-step">
-                <div class="roadmap-num" style="background:var(--nocode-color); color:#fff; border:none;">1</div>
-                <div>
-                    <h4>🧠 Level 1: The "Data Thinker" (Mindset)</h4>
-                    <p style="font-size:0.9rem; margin-bottom:5px;">Arrêtez de penser "Outils". Commencez à penser
-                        "Structure de Données".</p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li><strong>Skills :</strong> JSON, Logique Booléenne (IF/ELSE), Relations (One-to-Many).</li>
-                        <li><strong>Challenge :</strong> Connectez un Typeform à un Google Sheet sans erreur de format.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- LEVEL 2 -->
-            <div class="roadmap-step">
-                <div class="roadmap-num" style="background:#0984e3; color:#fff; border:none;">2</div>
-                <div>
-                    <h4>🔗 Level 2: The "Connector" (API & Webhooks)</h4>
-                    <p style="font-size:0.9rem; margin-bottom:5px;">Faites parler les applications entre elles.</p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li><strong>Skills :</strong> HTTP Request (GET/POST), Webhooks, Make/Zapier.</li>
-                        <li><strong>Challenge :</strong> Envoyez une notif Slack quand une ligne est ajoutée sur
-                            Airtable via Make.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- LEVEL 3 -->
-            <div class="roadmap-step">
-                <div class="roadmap-num" style="background:#00cec9; color:#fff; border:none;">3</div>
-                <div>
-                    <h4>🛠️ Level 3: The "Full Stack Builder" (Independence)</h4>
-                    <p style="font-size:0.9rem; margin-bottom:5px;">Sortez des limites du SaaS. Devenez propriétaire de
-                        votre stack.</p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li><strong>Skills :</strong> Supabase (Postgres), Appsmith (UI), n8n (Self-hosted logic).</li>
-                        <li><strong>Challenge :</strong> Créez un CRM interne avec Login sécurisé et Dashboard admin.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- LEVEL 4 -->
-            <div class="roadmap-step">
-                <div class="roadmap-num" style="background:#a29bfe; color:#fff; border:none;">4</div>
-                <div>
-                    <h4>🤖 Level 4: The "AI Architect" (Intelligence)</h4>
-                    <p style="font-size:0.9rem; margin-bottom:5px;">Ne faites plus le travail. Orchestrez des agents.
-                    </p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li><strong>Skills :</strong> Prompt Engineering, RAG Pipelines, Vector DBs, MCP.</li>
-                        <li><strong>Challenge :</strong> "Chat with my PDF" bot avec n8n et un LLM Open Source.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- LEVEL 5 -->
-            <div class="roadmap-step">
-                <div class="roadmap-num" style="background:#ff7675; color:#fff; border:none;">5</div>
-                <div>
-                    <h4>🏭 Level 5: The "Industrialist" (Scale & Ops)</h4>
-                    <p style="font-size:0.9rem; margin-bottom:5px;">Sécurisez et scalez pour l'entreprise.</p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li><strong>Skills :</strong> Versioning (Git), Error Handling (DLQ), Secrets Mgmt, RBAC.</li>
-                        <li><strong>Challenge :</strong> Passez un audit de sécurité sans sueur froide.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="concept-box" style="margin-top:30px; text-align:center;">
-                <strong style="color:#fff;">Votre objectif 2025 :</strong><br>
-                Ne restez pas bloqué au niveau 2. Le marché est saturé de "Connecteurs".
-                <br>La valeur est au niveau 4 et 5.
+        <div class="concept-box"
+            style="margin-top:40px; text-align:center; background:transparent; border:1px solid var(--accent);">
+            <h3 style="color:var(--accent);">Conclusion</h3>
+            <p>L'IA et le No-Code ne vont pas remplacer les humains.<br>
+                Les humains qui utilisent l'IA et le No-Code vont remplacer ceux qui ne le font pas.</p>
+            <br>
+            <strong>👋 À vous de jouer.</strong>
+        </div>
+    </div>
+</section>
+<!-- MODULE 11: BONUS RESSOURCES - OPEN SOURCE SELF-HOSTABLE APPS -->
+<section id="m11" style="background: linear-gradient(180deg, rgba(108, 92, 231, 0.05) 0%, rgba(0,0,0,0) 100%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fdcb6e; border-color:#fdcb6e;">11</div>
+            <div>
+                <h2 class="sec-title" style="color:#fdcb6e;">🎁 Bonus Ressources</h2>
+                <p class="sec-sub">Apps Open Source Self-Hostables 2025 (IT Général)</p>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 10: BUSINESS & ROI (THE MONEY MODULE) -->
-    <section id="m10">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num">10</div>
-                <div>
-                    <h2 class="sec-title">Business & ROI</h2>
-                    <p class="sec-sub">L'Automatisation est un Levier Financier</p>
-                </div>
+        <div class="concept-box" style="margin-bottom:30px; border-left-color: #fdcb6e;">
+            <strong>Au-delà du No-Code</strong> : Les outils essentiels pour bâtir un écosystème IT complet,
+            souverain et professionnel.
+            <br><em>Chaque catégorie = une brique de votre infrastructure.</em>
+        </div>
+
+        <!-- 11.1 GESTION DOCKER & INFRA -->
+        <h3 class="sec-title-small" style="color:#fff;">⚙️ 1. Gestion de Services, Docker & Infra</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #74b9ff;">
+                <h4>⭐ Portainer</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Tableau de bord web pour gérer Docker / Compose.
+                </p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Containers, images, volumes, réseaux</li>
+                    <li>✅ Stacks applicatives</li>
+                    <li>✅ Permissions multi-utilisateurs</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#74b9ff; margin-top:10px;">👉 Indispensable pour gérer un VPS
+                    sans CLI permanente.</div>
+                <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Dockge (moderne,
+                        docker-compose), Rancher (K8s)</em></div>
             </div>
-
-            <!-- 10.1 INTRO -->
-            <div class="concept-box" style="margin-bottom:30px;">
-                <strong>L'Équation :</strong> On ne code pas pour "s'amuser". On code pour augmenter la marge.<br>
-                <em>Value = (Temps Gagné x Taux Horaire) x Fréquence.</em>
-            </div>
-
-            <!-- 10.2 ROI CALCULATOR -->
-            <div class="scenario-card"
-                style="border-left: 4px solid #fab1a0; background: linear-gradient(90deg, rgba(250, 177, 160, 0.1) 0%, rgba(0,0,0,0) 100%);">
-                <h4>💰 Le Calcul de Rentabilité (Exemple Réel)</h4>
-                <p style="margin-bottom:15px; font-size:0.9rem;">Processus : "Saisir les factures PDF dans Excel"
-                    (1h/jour).</p>
-
-                <div class="grid2">
-                    <div>
-                        <strong style="color:#ff7675;">Coût Humain (Avant)</strong>
-                        <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
-                            <li>Temps : 1h/jour x 220 jours = 220h</li>
-                            <li>Coût : 220h x 50€/h = <strong>11 000€ / an</strong></li>
-                            <li><em>+ Erreurs humaines de saisie.</em></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <strong style="color:#55efc4;">Coût Machine (Après)</strong>
-                        <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
-                            <li>Dev (One-shot) : 2 jours = 1 000€</li>
-                            <li>Run : n8n (20€) + GPT-4 (30€) = 600€/an</li>
-                            <li><strong>Total : 1 600€ la 1ère année</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    style="margin-top:15px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1); text-align:center; font-weight:bold; color:#55efc4;">
-                    GAIN NET : +9 400€ dès la première année.
-                </div>
-            </div>
-
-            <!-- 10.3 PRICING MODELS -->
-            <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">Modèles de Pricing (Freelances)</h3>
-            <div class="grid2">
-                <div class="scenario-card">
-                    <h4>🛠️ Au Projet (One-Shot)</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je te construis ton CRM pour 3000€."</em></p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li>✅ Gros cashflow immédiat.</li>
-                        <li>❌ Revenu instable ("Feast or Famine").</li>
-                        <li>❌ Le client revient râler 6 mois après quand l'API change.</li>
-                    </ul>
-                </div>
-                <div class="scenario-card" style="border-color: var(--accent);">
-                    <h4>🔄 RaaS (Retainer as a Service)</h4>
-                    <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je maintiens et optimise tes ops pour
-                            500€/mois."</em></p>
-                    <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                        <li>✅ Revenu récurrent (MRR).</li>
-                        <li>✅ Vous vendez la "tranquillité d'esprit", pas du code.</li>
-                        <li>✅ Relation long terme = Upsell facile.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 10.4 INTERNAL SALES -->
-            <div class="tip" style="margin-top:30px;">
-                <strong>Pitching to the Boss :</strong> Ne vendez pas "J'ai fait un script Python".<br>
-                Vendez : "J'ai économisé l'équivalent de 0.5 ETP (Équivalent Temps Plein) pour qu'on puisse se
-                concentrer sur les ventes."
-            </div>
-
-            <div class="concept-box"
-                style="margin-top:40px; text-align:center; background:transparent; border:1px solid var(--accent);">
-                <h3 style="color:var(--accent);">Conclusion</h3>
-                <p>L'IA et le No-Code ne vont pas remplacer les humains.<br>
-                    Les humains qui utilisent l'IA et le No-Code vont remplacer ceux qui ne le font pas.</p>
-                <br>
-                <strong>👋 À vous de jouer.</strong>
+            <div class="scenario-card" style="border-top: 4px solid #a29bfe;">
+                <h4>⭐ Homarr / Dashy / Heimdall</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Dashboards "Homepage" pour lister tous vos
+                    services.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Liens, statuts, icônes</li>
+                    <li>✅ Homarr : moderne, self-hosting</li>
+                    <li>✅ Dashy : ultra personnalisable (YAML)</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#a29bfe; margin-top:10px;">👉 Point d'entrée unique vers votre
+                    écosystème.</div>
             </div>
         </div>
-    </section>
 
-    <!-- MODULE 11: BONUS RESSOURCES - OPEN SOURCE SELF-HOSTABLE APPS -->
-    <section id="m11" style="background: linear-gradient(180deg, rgba(108, 92, 231, 0.05) 0%, rgba(0,0,0,0) 100%);">
-        <div class="container">
-            <div class="sec-header">
-                <div class="sec-num" style="color:#fdcb6e; border-color:#fdcb6e;">11</div>
-                <div>
-                    <h2 class="sec-title" style="color:#fdcb6e;">🎁 Bonus Ressources</h2>
-                    <p class="sec-sub">Apps Open Source Self-Hostables 2025 (IT Général)</p>
+        <!-- 11.2 STOCKAGE & SYNC -->
+        <h3 class="sec-title-small" style="color:#fff;">💾 2. Stockage & Synchronisation de Fichiers</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #00cec9;">
+                <h4>⭐ Nextcloud</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Alternative complète à Google Drive / Workspace.
+                </p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Fichiers, partage</li>
+                    <li>✅ Calendrier, contacts, tâches</li>
+                    <li>✅ Collaboration (OnlyOffice)</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Très polyvalent, mais lourd.
                 </div>
             </div>
-
-            <div class="concept-box" style="margin-bottom:30px; border-left-color: #fdcb6e;">
-                <strong>Au-delà du No-Code</strong> : Les outils essentiels pour bâtir un écosystème IT complet,
-                souverain et professionnel.
-                <br><em>Chaque catégorie = une brique de votre infrastructure.</em>
+            <div class="scenario-card" style="border-top: 4px solid #55efc4;">
+                <h4>⭐ Seafile</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Stockage & synchro ultra performant.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Clients desktop & mobile</li>
+                    <li>✅ Chiffrement, sync rapide</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#55efc4; margin-top:10px;">👉 Plus léger que Nextcloud.</div>
             </div>
-
-            <!-- 11.1 GESTION DOCKER & INFRA -->
-            <h3 class="sec-title-small" style="color:#fff;">⚙️ 1. Gestion de Services, Docker & Infra</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #74b9ff;">
-                    <h4>⭐ Portainer</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Tableau de bord web pour gérer Docker / Compose.
-                    </p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Containers, images, volumes, réseaux</li>
-                        <li>✅ Stacks applicatives</li>
-                        <li>✅ Permissions multi-utilisateurs</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#74b9ff; margin-top:10px;">👉 Indispensable pour gérer un VPS
-                        sans CLI permanente.</div>
-                    <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Dockge (moderne,
-                            docker-compose), Rancher (K8s)</em></div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #a29bfe;">
-                    <h4>⭐ Homarr / Dashy / Heimdall</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Dashboards "Homepage" pour lister tous vos
-                        services.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Liens, statuts, icônes</li>
-                        <li>✅ Homarr : moderne, self-hosting</li>
-                        <li>✅ Dashy : ultra personnalisable (YAML)</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#a29bfe; margin-top:10px;">👉 Point d'entrée unique vers votre
-                        écosystème.</div>
-                </div>
-            </div>
-
-            <!-- 11.2 STOCKAGE & SYNC -->
-            <h3 class="sec-title-small" style="color:#fff;">💾 2. Stockage & Synchronisation de Fichiers</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #00cec9;">
-                    <h4>⭐ Nextcloud</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Alternative complète à Google Drive / Workspace.
-                    </p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Fichiers, partage</li>
-                        <li>✅ Calendrier, contacts, tâches</li>
-                        <li>✅ Collaboration (OnlyOffice)</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Très polyvalent, mais lourd.
-                    </div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #55efc4;">
-                    <h4>⭐ Seafile</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Stockage & synchro ultra performant.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Clients desktop & mobile</li>
-                        <li>✅ Chiffrement, sync rapide</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#55efc4; margin-top:10px;">👉 Plus léger que Nextcloud.</div>
-                </div>
-                <div class="scenario-card">
-                    <h4>ownCloud</h4>
-                    <p style="font-size:0.85rem;">Plus orienté entreprises / conformité.</p>
-                </div>
-            </div>
-
-            <!-- 11.3 NOTES & WIKIS -->
-            <h3 class="sec-title-small" style="color:#fff;">📝 3. Notes, Documentation, Wikis</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #fd79a8;">
-                    <h4>⭐ Wiki.js</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Wiki moderne et propre.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Markdown + éditeur visuel</li>
-                        <li>✅ Permissions avancées</li>
-                        <li>✅ Stockage Git, DB, S3</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#fd79a8; margin-top:10px;">👉 Excellent pour docs internes &
-                        projets IT.</div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #fab1a0;">
-                    <h4>⭐ HedgeDoc</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Notes collaboratives Markdown temps réel.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Brainstorming, docs rapides</li>
-                    </ul>
-                    <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Outline (Notion-like),
-                            BookStack (wiki hiérarchique)</em></div>
-                </div>
-            </div>
-
-            <!-- 11.4 COMMUNICATION & CHAT -->
-            <h3 class="sec-title-small" style="color:#fff;">💬 4. Communication & Chat</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #6c5ce7;">
-                    <h4>⭐ Matrix (Synapse) + Element</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Messagerie décentralisée.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Salons, messages privés</li>
-                        <li>✅ Ponts Slack/WhatsApp/Telegram</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#6c5ce7; margin-top:10px;">👉 Standard open-source du chat
-                        moderne.</div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #ff7675;">
-                    <h4>⭐ Rocket.Chat / Mattermost</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Alternatives Slack auto-hébergées.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Chat équipe, intégrations, bots</li>
-                        <li>✅ Mattermost : très utilisé DevOps</li>
-                    </ul>
-                </div>
-                <div class="scenario-card">
-                    <h4>Mumble</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Serveur voix basse latence.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Réunions, gaming, usage pro</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Simple, robuste, efficace.</div>
-                </div>
-            </div>
-
-            <!-- 11.5 EMAILS & NEWSLETTERS -->
-            <h3 class="sec-title-small" style="color:#fff;">📧 5. Emails & Newsletters</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #ffeaa7;">
-                    <h4>⭐ Mailcow</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Stack mail complète clé en main.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ SMTP / IMAP / Webmail</li>
-                        <li>✅ Antispam, Antivirus</li>
-                        <li>✅ Admin UI complète</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#ffeaa7; margin-top:10px;">👉 La référence pour mail
-                        auto-hébergé.</div>
-                    <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Mailu (plus
-                            léger/modulaire)</em></div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #00b894;">
-                    <h4>⭐ Listmonk</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de newsletters et mailing lists.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Très rapide, API</li>
-                        <li>✅ Interface moderne</li>
-                        <li>✅ Scaling élevé</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#00b894; margin-top:10px;">👉 Bien meilleur que beaucoup de
-                        SaaS.</div>
-                </div>
-            </div>
-
-            <!-- 11.6 AUTOMATISATION (Rappel) -->
-            <h3 class="sec-title-small" style="color:#fff;">🔁 6. Automatisation & No-Code (Rappel)</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
-                    <h4>⭐ n8n</h4>
-                    <p style="font-size:0.85rem;">Pilier central : APIs, BDD, SaaS, Webhooks, IA.</p>
-                </div>
-                <div class="scenario-card">
-                    <h4>Activepieces</h4>
-                    <p style="font-size:0.85rem;">Alternative Zapier-like plus simple.</p>
-                </div>
-                <div class="scenario-card">
-                    <h4>Apache Airflow</h4>
-                    <p style="font-size:0.85rem;">Orchestrateur data/ETL (plus technique).</p>
-                </div>
-            </div>
-
-            <!-- 11.7 MÉDIAS -->
-            <h3 class="sec-title-small" style="color:#fff;">🎬 7. Médias (Photos, Vidéos, Musique)</h3>
-            <div class="grid3" style="margin-bottom:30px;">
-                <div class="scenario-card" style="border-top: 4px solid #e17055;">
-                    <h4>⭐ Jellyfin</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Serveur multimédia open-source.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Films, séries, musique</li>
-                        <li>✅ Clients TV, mobile, web</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#e17055; margin-top:10px;">👉 Alternative libre à Plex.</div>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #81ecec;">
-                    <h4>⭐ PhotoPrism</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de photos type Google Photos.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ Classement, tags, recherche</li>
-                    </ul>
-                </div>
-                <div class="scenario-card" style="border-top: 4px solid #00cec9;">
-                    <h4>⭐ Immich</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Alternative moderne à Google Photos.</p>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>✅ UX très soignée</li>
-                        <li>✅ Synchro mobile</li>
-                        <li>✅ Reconnaissance faciale</li>
-                    </ul>
-                    <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Très populaire en 2025.</div>
-                </div>
-            </div>
-
-            <!-- 11.8 PRODUCTIVITÉ -->
-            <h3 class="sec-title-small" style="color:#fff;">🧠 8. Productivité Personnelle & Collaboration</h3>
-            <div class="grid2" style="margin-bottom:30px;">
-                <div class="scenario-card">
-                    <h4>⭐ Joplin Server</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Synchro pour notes Joplin chiffrées (alt.
-                        Evernote).</p>
-                </div>
-                <div class="scenario-card">
-                    <h4>⭐ WBO / Excalidraw</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Tableaux blancs collaboratifs (schémas, ateliers).
-                    </p>
-                </div>
-                <div class="scenario-card">
-                    <h4>Radicale</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Serveur CalDAV/CardDAV (agenda, contacts).</p>
-                    <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Remplace Google
-                        Calendar/Contacts.</div>
-                </div>
-                <div class="scenario-card">
-                    <h4>Vikunja / Focalboard</h4>
-                    <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de tâches / Kanban open-source.</p>
-                </div>
-            </div>
-
-            <!-- 11.9 BONUS IT MODERNE -->
-            <h3 class="sec-title-small" style="color:#fff;">🧩 9. Bonus IT / Vibe Coding Moderne</h3>
-            <div class="grid3" style="margin-bottom:20px;">
-                <!-- AUTH -->
-                <div class="scenario-card" style="border-left: 3px solid #e056fd;">
-                    <h4>🔐 Auth & Identité</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>⭐ Keycloak</li>
-                        <li>Authelia</li>
-                        <li>Ory (Hydra, Kratos)</li>
-                    </ul>
-                </div>
-                <!-- MONITORING -->
-                <div class="scenario-card" style="border-left: 3px solid #00cec9;">
-                    <h4>📊 Monitoring & Logs</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>⭐ Grafana + Prometheus</li>
-                        <li>⭐ Uptime Kuma</li>
-                        <li>Netdata</li>
-                        <li>Loki (logs)</li>
-                    </ul>
-                </div>
-                <!-- IA SELF-HOSTED -->
-                <div class="scenario-card" style="border-left: 3px solid #a29bfe;">
-                    <h4>🧠 IA Self-Hostée</h4>
-                    <ul class="clean-list" style="font-size:0.8rem;">
-                        <li>⭐ Ollama</li>
-                        <li>LocalAI</li>
-                        <li>Flowise</li>
-                        <li>Qdrant / Milvus (Vector DB)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tip" style="margin-top:20px;">
-                <strong>💡 Conseil Final :</strong> Commencez petit (Portainer + Homarr + n8n), puis ajoutez les briques
-                selon vos besoins réels.
-                <br>Un VPS 4€/mois peut déjà héberger une stack impressionnante.
+            <div class="scenario-card">
+                <h4>ownCloud</h4>
+                <p style="font-size:0.85rem;">Plus orienté entreprises / conformité.</p>
             </div>
         </div>
-    </section>
 
-    <!-- QUIZ -->
-    <section id="quiz-section" class="quiz-container">
-        <div class="container">
-            <h2>Validation des Acquis</h2>
-            <div id="quiz-app"></div>
+        <!-- 11.3 NOTES & WIKIS -->
+        <h3 class="sec-title-small" style="color:#fff;">📝 3. Notes, Documentation, Wikis</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #fd79a8;">
+                <h4>⭐ Wiki.js</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Wiki moderne et propre.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Markdown + éditeur visuel</li>
+                    <li>✅ Permissions avancées</li>
+                    <li>✅ Stockage Git, DB, S3</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#fd79a8; margin-top:10px;">👉 Excellent pour docs internes &
+                    projets IT.</div>
+            </div>
+            <div class="scenario-card" style="border-top: 4px solid #fab1a0;">
+                <h4>⭐ HedgeDoc</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Notes collaboratives Markdown temps réel.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Brainstorming, docs rapides</li>
+                </ul>
+                <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Outline (Notion-like),
+                        BookStack (wiki hiérarchique)</em></div>
+            </div>
         </div>
-    </section>
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_automation.json', questionsPerSession: 20 });
-        });
-    </script>
-    <script src="../../assets/js/quiz-engine.js"></script>
-    <footer>
-        <div class="container">
-            <p style="margin-bottom:8px"><strong>Mémo Automatisation</strong> • Agents & Stack • Industrial Grade • 2025
-            </p>
-            <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
-                mémoire avec un
-                cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
-                faciliter l'apprentissage des autres.</p>
+        <!-- 11.4 COMMUNICATION & CHAT -->
+        <h3 class="sec-title-small" style="color:#fff;">💬 4. Communication & Chat</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #6c5ce7;">
+                <h4>⭐ Matrix (Synapse) + Element</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Messagerie décentralisée.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Salons, messages privés</li>
+                    <li>✅ Ponts Slack/WhatsApp/Telegram</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#6c5ce7; margin-top:10px;">👉 Standard open-source du chat
+                    moderne.</div>
+            </div>
+            <div class="scenario-card" style="border-top: 4px solid #ff7675;">
+                <h4>⭐ Rocket.Chat / Mattermost</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Alternatives Slack auto-hébergées.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Chat équipe, intégrations, bots</li>
+                    <li>✅ Mattermost : très utilisé DevOps</li>
+                </ul>
+            </div>
+            <div class="scenario-card">
+                <h4>Mumble</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Serveur voix basse latence.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Réunions, gaming, usage pro</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Simple, robuste, efficace.</div>
+            </div>
         </div>
-    </footer>
-    <script src="script.js"></script>
+
+        <!-- 11.5 EMAILS & NEWSLETTERS -->
+        <h3 class="sec-title-small" style="color:#fff;">📧 5. Emails & Newsletters</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #ffeaa7;">
+                <h4>⭐ Mailcow</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Stack mail complète clé en main.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ SMTP / IMAP / Webmail</li>
+                    <li>✅ Antispam, Antivirus</li>
+                    <li>✅ Admin UI complète</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#ffeaa7; margin-top:10px;">👉 La référence pour mail
+                    auto-hébergé.</div>
+                <div style="font-size:0.7rem; color:#b2bec3; margin-top:8px;"><em>Alt: Mailu (plus
+                        léger/modulaire)</em></div>
+            </div>
+            <div class="scenario-card" style="border-top: 4px solid #00b894;">
+                <h4>⭐ Listmonk</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de newsletters et mailing lists.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Très rapide, API</li>
+                    <li>✅ Interface moderne</li>
+                    <li>✅ Scaling élevé</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#00b894; margin-top:10px;">👉 Bien meilleur que beaucoup de
+                    SaaS.</div>
+            </div>
+        </div>
+
+        <!-- 11.6 AUTOMATISATION (Rappel) -->
+        <h3 class="sec-title-small" style="color:#fff;">🔁 6. Automatisation & No-Code (Rappel)</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #ff6b6b;">
+                <h4>⭐ n8n</h4>
+                <p style="font-size:0.85rem;">Pilier central : APIs, BDD, SaaS, Webhooks, IA.</p>
+            </div>
+            <div class="scenario-card">
+                <h4>Activepieces</h4>
+                <p style="font-size:0.85rem;">Alternative Zapier-like plus simple.</p>
+            </div>
+            <div class="scenario-card">
+                <h4>Apache Airflow</h4>
+                <p style="font-size:0.85rem;">Orchestrateur data/ETL (plus technique).</p>
+            </div>
+        </div>
+
+        <!-- 11.7 MÉDIAS -->
+        <h3 class="sec-title-small" style="color:#fff;">🎬 7. Médias (Photos, Vidéos, Musique)</h3>
+        <div class="grid3" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-top: 4px solid #e17055;">
+                <h4>⭐ Jellyfin</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Serveur multimédia open-source.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Films, séries, musique</li>
+                    <li>✅ Clients TV, mobile, web</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#e17055; margin-top:10px;">👉 Alternative libre à Plex.</div>
+            </div>
+            <div class="scenario-card" style="border-top: 4px solid #81ecec;">
+                <h4>⭐ PhotoPrism</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de photos type Google Photos.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ Classement, tags, recherche</li>
+                </ul>
+            </div>
+            <div class="scenario-card" style="border-top: 4px solid #00cec9;">
+                <h4>⭐ Immich</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Alternative moderne à Google Photos.</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>✅ UX très soignée</li>
+                    <li>✅ Synchro mobile</li>
+                    <li>✅ Reconnaissance faciale</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#00cec9; margin-top:10px;">👉 Très populaire en 2025.</div>
+            </div>
+        </div>
+
+        <!-- 11.8 PRODUCTIVITÉ -->
+        <h3 class="sec-title-small" style="color:#fff;">🧠 8. Productivité Personnelle & Collaboration</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card">
+                <h4>⭐ Joplin Server</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Synchro pour notes Joplin chiffrées (alt.
+                    Evernote).</p>
+            </div>
+            <div class="scenario-card">
+                <h4>⭐ WBO / Excalidraw</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Tableaux blancs collaboratifs (schémas, ateliers).
+                </p>
+            </div>
+            <div class="scenario-card">
+                <h4>Radicale</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Serveur CalDAV/CardDAV (agenda, contacts).</p>
+                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">👉 Remplace Google
+                    Calendar/Contacts.</div>
+            </div>
+            <div class="scenario-card">
+                <h4>Vikunja / Focalboard</h4>
+                <p style="font-size:0.85rem; margin-bottom:10px;">Gestion de tâches / Kanban open-source.</p>
+            </div>
+        </div>
+
+        <!-- 11.9 BONUS IT MODERNE -->
+        <h3 class="sec-title-small" style="color:#fff;">🧩 9. Bonus IT / Vibe Coding Moderne</h3>
+        <div class="grid3" style="margin-bottom:20px;">
+            <!-- AUTH -->
+            <div class="scenario-card" style="border-left: 3px solid #e056fd;">
+                <h4>🔐 Auth & Identité</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>⭐ Keycloak</li>
+                    <li>Authelia</li>
+                    <li>Ory (Hydra, Kratos)</li>
+                </ul>
+            </div>
+            <!-- MONITORING -->
+            <div class="scenario-card" style="border-left: 3px solid #00cec9;">
+                <h4>📊 Monitoring & Logs</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>⭐ Grafana + Prometheus</li>
+                    <li>⭐ Uptime Kuma</li>
+                    <li>Netdata</li>
+                    <li>Loki (logs)</li>
+                </ul>
+            </div>
+            <!-- IA SELF-HOSTED -->
+            <div class="scenario-card" style="border-left: 3px solid #a29bfe;">
+                <h4>🧠 IA Self-Hostée</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>⭐ Ollama</li>
+                    <li>LocalAI</li>
+                    <li>Flowise</li>
+                    <li>Qdrant / Milvus (Vector DB)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>💡 Conseil Final :</strong> Commencez petit (Portainer + Homarr + n8n), puis ajoutez les briques
+            selon vos besoins réels.
+            <br>Un VPS 4€/mois peut déjà héberger une stack impressionnante.
+        </div>
+    </div>
+</section>
+<!-- QUIZ -->
+<section id="quiz-section" class="quiz-container">
+    <div class="container">
+        <h2>Validation des Acquis</h2>
+        <div id="quiz-app"></div>
+    </div>
+</section>
+
+<script type="module">
+    import '../../assets/js/quiz-engine.js';
+    document.addEventListener('DOMContentLoaded', () => {
+        new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_automation.json', questionsPerSession: 20 });
+    });
+</script>
+<script src="../../assets/js/quiz-engine.js"></script>
+<footer>
+    <div class="container">
+        <p style="margin-bottom:8px"><strong>Mémo Automatisation</strong> • Agents & Stack • Industrial Grade • 2025
+        </p>
+        <p style="font-size:.8rem">Créé par <strong>Geoffroy Streit</strong>, assisté par IA — Pour consolider sa
+            mémoire avec un
+            cours concis, graphique et structuré, mais aussi pour le plaisir de partager la connaissance et
+            faciliter l'apprentissage des autres.</p>
+    </div>
+</footer>
+<script src="script.js"></script>
 </body>
 
 </html>

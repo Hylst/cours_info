@@ -1,0 +1,167 @@
+<!-- MODULE 2: INTELLIGENCE ARTIFICIELLE (ULTRA-DEEP) -->
+<section id="m2">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num">02</div>
+            <div>
+                <h2 class="sec-title">Intelligence Artificielle</h2>
+                <p class="sec-sub">Fondations & Concepts</p>
+            </div>
+        </div>
+
+        <!-- 0. INTRO -->
+        <div class="concept-box" style="margin-bottom:30px;">
+            <strong>Objectif :</strong> Comprendre la mécanique réelle pour mieux orchestrer les Agents.<br>
+            <em>Public : Product Builders avancés. Pas de maths complexes, juste de la logique métier.</em>
+        </div>
+
+        <!-- 1. DEMYSTIFICATION -->
+        <div class="grid2">
+            <div class="scenario-card" style="border-left: 3px solid #ff7675;">
+                <h4>⚠️ Erreur Fréquente</h4>
+                <p>Ne confondez pas <strong>Intelligence Biologique</strong> (Compréhension, Sens, Conscience) et
+                    <strong>Intelligence Statistique</strong> (Corrélation, Prédiction, Probabilité).
+                </p>
+            </div>
+            <div class="scenario-card" style="border-left: 3px solid #74b9ff;">
+                <h4>🧠 L'Analogie</h4>
+                <p>"L'IA sait expliquer la gravité avec une précision Nobel, sans jamais avoir ressenti le poids de
+                    son propre corps."</p>
+            </div>
+        </div>
+
+        <!-- 2. FONDATIONS ML & DL -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">A. Machine Learning & Deep Learning</h3>
+        <div class="grid2">
+            <div>
+                <div class="tutorial-step">
+                    <h4 style="color:#b2bec3;">Le Pipeline ML Simplifié</h4>
+                    <ol class="clean-list"
+                        style="margin-left:15px; border-left: 1px solid rgba(255,255,255,0.1); padding-left:15px;">
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Data :</strong> Le carburant
+                            (Images, Textes, Logs).</li>
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Training :</strong>
+                            L'entrainement (Calculs massifs sur GPU).</li>
+                        <li style="margin-bottom:5px;"><strong style="color:#a29bfe;">Model :</strong> Le moteur
+                            figé (Le fichier "poids").</li>
+                        <li><strong style="color:#a29bfe;">Inference :</strong> La prédiction (L'usage quotidien).
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#b2bec3;">Les Types d'Apprentissage</h4>
+                <ul class="vocab-list">
+                    <dt>Supervisé</dt>
+                    <dd>On donne l'exemple. <em>Input: Photo Chat -> Output: "Chat".</em><br>Usage: Spam, Fraude.
+                    </dd>
+                    <dt>Non-Supervisé</dt>
+                    <dd>On laisse chercher les patterns. <em>Input: Clients -> Output: Clusters.</em><br>Usage:
+                        Segmentation.</dd>
+                    <dt>Renforcement (RL)</dt>
+                    <dd>Punition / Récompense. <em>Input: Mario -> Output: Score.</em><br>Usage: Robotique, AlphaGo,
+                        <strong>ChatGPT (RLHF)</strong>.
+                    </dd>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. ARCHITECTURES MODERNES -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Architectures Clés</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="scenario-card">
+                <strong>CNN</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Vision & Pixels. "Voit" les bords, puis les formes, puis
+                    les objets.</p>
+            </div>
+            <div class="scenario-card">
+                <strong>Transformers</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Langage & Séquences. Gère l'<strong>Attention</strong>
+                    (Le contexte entre les mots lointains).</p>
+            </div>
+            <div class="scenario-card" style="border: 1px solid #a29bfe;">
+                <strong style="color:#a29bfe;">Vectors / Embeddings</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">La clé du RAG. Transforme du texte en liste de nombres
+                    (coordonnées GPS du sens).</p>
+                <div style="font-size:0.7rem; margin-top:5px; font-family:monospace; color:#636e72;">Chat = [0.1,
+                    0.9, 0.3]<br>Chien = [0.1, 0.8, 0.4]</div>
+            </div>
+        </div>
+
+        <!-- 4. RAG & LLM -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(162, 155, 254, 0.05); border-left-color: #a29bfe;">
+            <h3 style="color:#a29bfe; margin-bottom:10px;">C. Le RAG (Retrieval Augmented Generation)</h3>
+            <p style="margin-bottom:15px; font-size:0.9rem;">Le LLM a une "mémoire figée" (sa date de training). Le
+                RAG lui donne une "mémoire vive" (VOS documents).</p>
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <h4 style="font-size:0.9rem;">Le Pipeline RAG :</h4>
+                <code
+                    style="display:block; background:#000; padding:10px; border-radius:6px; font-size:0.8rem; color:#fab1a0;">
+                        Question User -> Recherche Vectorielle (Base de connaissance) -> Récupération des chunks pertinents -> Injection dans le Prompt -> Réponse du LLM
+                    </code>
+            </div>
+        </div>
+
+        <!-- 5. PROMPTING FRAMEWORK -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">D. Prompt Engineering : La Méthode</h3>
+        <div class="grid2">
+            <div class="scenario-card" style="border-color: #ffeaa7;">
+                <h4>Framework "CRISPE"</h4>
+                <ul class="clean-list" style="font-size:0.9rem;">
+                    <li><strong>C</strong>ontext : "Tu es un expert Sr..."</li>
+                    <li><strong>R</strong>ole : "Agis comme un CTO..."</li>
+                    <li><strong>I</strong>ntent : "Le but est de..."</li>
+                    <li><strong>S</strong>pecifics : "Pas de jargon..."</li>
+                    <li><strong>P</strong>arameters : "Tableau Markdown..."</li>
+                    <li><strong>E</strong>xample : "Comme ceci..." (Few-Shot)</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Techniques Avancées</h4>
+                <ul class="vocab-list">
+                    <dt>Chain of Thought (CoT)</dt>
+                    <dd>"Pense étape par étape". Force le modèle à décomposer la logique.</dd>
+                    <dt>Few-Shot</dt>
+                    <dd>Donner 2 ou 3 exemples de couples (Input -> Output) dans le prompt.</dd>
+                    <dt>System Prompt</dt>
+                    <dd>Les instructions "Dieu" inamovibles, invisibles pour l'utilisateur final.</dd>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. SPECS & RISKS -->
+        <div class="grid2" style="margin-top:30px;">
+            <div class="scenario-card">
+                <h4>⚙️ Specs Techniques</h4>
+                <ul class="clean-list" style="font-size:0.85rem;">
+                    <li style="margin-bottom:5px;"><strong>Tokens :</strong> Unité de facturation. (IN + OUT).</li>
+                    <li style="margin-bottom:5px;"><strong>Window :</strong> Mémoire à court terme (128k = ~300
+                        pages).</li>
+                    <li style="margin-bottom:5px;"><strong>Temperature :</strong> Créativité (0 = Robot, 1 = Poète).
+                    </li>
+                </ul>
+            </div>
+            <div class="scenario-card" style="border-color: #ff7675;">
+                <h4>⚠️ Risques & Mitigation</h4>
+                <ul class="clean-list" style="font-size:0.85rem;">
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Hallucinations :</strong> Le
+                        modèle invente pour combler. <br>-> <em>Solution : RAG + "Si tu ne sais pas, dis-le".</em>
+                    </li>
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Biais :</strong> Reflet
+                        d'Internet.</li>
+                    <li style="margin-bottom:5px;"><strong style="color:#ff7675;">Oubli :</strong> Dépassement de
+                        fenêtre.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. BRIDGE AUTOMATION -->
+        <div class="tip" style="margin-top:20px;">
+            <strong>Pourquoi maîtriser ça pour l'automatisation ?</strong><br>
+            Si vous ne comprenez pas les <strong>Tokens</strong>, vous exploserez votre budget API. Si vous ne
+            comprenez pas le <strong>RAG</strong>, vos bots de support diront n'importe quoi. Si vous ne structurez
+            pas vos <strong>Prompts</strong>, n8n ne pourra pas parser le JSON de réponse.
+        </div>
+    </div>
+</section>

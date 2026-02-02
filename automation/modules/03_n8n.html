@@ -1,11 +1,11 @@
-<!-- MODULE 3: n8n (DEEP DIVE) -->
+<!-- MODULE 3: n8n (DEEP DIVE & MASTERY) -->
 <section id="m3">
     <div class="container">
         <div class="sec-header">
             <div class="sec-num">03</div>
             <div>
                 <h2 class="sec-title">Architecture n8n</h2>
-                <p class="sec-sub">L'OS de l'Automatisation</p>
+                <p class="sec-sub">Maîtriser l'OS de l'Automatisation</p>
             </div>
         </div>
 
@@ -13,99 +13,129 @@
             <img src="assets/n8n_architecture_2025_1766252310261.jpg" alt="Architecture n8n Isométrique">
         </div>
 
-        <div class="feature-grid" style="margin-bottom:30px;">
-            <div class="scenario-card">
-                <h4>Qu'est-ce que n8n ?</h4>
-                <p>Un outil d'automatisation de flux (workflow automation) <strong>"Fair-code"</strong>.
-                    Contrairement à Zapier, le code source est visible, vous pouvez l'héberger vous-même
-                    (Self-Hosted), et vous possédez vos données.</p>
-            </div>
-            <div class="scenario-card">
-                <h4>Le Moteur (Node.js)</h4>
-                <p>n8n tourne sur Node.js. Chaque "Nœud" est une mini-fonction JavaScript qui reçoit des données,
-                    les transforme, et les passe au suivant.</p>
-            </div>
-        </div>
-
-        <div class="concept-box" style="border-left-color: #0984e3;">
-            <strong>Le Concept Clé : "Items & Data Flow"</strong><br>
-            C'est ce qui bloque 90% des débutants. n8n ne traite pas une tâche à la fois, mais des <strong>Tableaux
-                d'Objets JSON</strong>.
+        <!-- 3.1 CORE CONCEPTS (Revised) -->
+        <div class="concept-box" style="border-left-color: #ff6b6b;">
+            <strong>Le Piège Classique :</strong><br>
+            n8n n'est pas "juste" un Zapier moins cher. C'est un environnement de <em
+                style="color:#ff6b6b;">développement visuel</em>.
+            Si vous ne comprenez pas le passage des données (Items), vous serez bloqué au premier <code>IF</code>.
         </div>
 
         <div class="grid2">
             <div>
-                <h3>1. La Structure de Données</h3>
-                <p>Chaque nœud reçoit et renvoie un tableau d'objets. Chaque objet a toujours cette forme :</p>
+                <h3>1. La Structure "Item"</h3>
+                <p>Tout tourne autour du JSON. Un nceud reçoit un <strong>Tableau</strong> et renvoie un
+                    <strong>Tableau</strong>.
+                </p>
                 <div class="code-block" style="font-size:0.8rem;">
                     [
                     {
-                    "json": {
-                    "nom": "Dupont",
-                    "id": 123
-                    },
-                    "binary": { ... } // (Optionnel) Fichiers
+                    "json": { "email": "alice@corp.com", "id": 1 },
+                    "pair": 0
                     },
                     {
-                    "json": {
-                    "nom": "Durand",
-                    "id": 124
-                    },
-                    "binary": { ... }
+                    "json": { "email": "bob@corp.com", "id": 2 },
+                    "pair": 1
                     }
                     ]
                 </div>
-                <p class="comment" style="margin-top:5px; font-size:0.8rem;">Si ce tableau contient 5 objets
-                    ("Items"), le nœud suivant s'exécutera <strong>5 fois</strong> (une fois pour chaque item).
-                    C'est automatique.</p>
             </div>
             <div>
-                <h3>2. Les Types de Nœuds</h3>
+                <h3>2. L'Expression Language</h3>
+                <p>Pour rendre les nœuds dynamiques, on utilise des expressions JavaScript (doubles accolades).</p>
                 <ul class="vocab-list">
-                    <dt>Triggers (Déclencheurs)</dt>
-                    <dd>Le point de départ.
-                        <ul>
-                            <li><strong>Webhook :</strong> Passif (Attend qu'on l'appelle).</li>
-                            <li><strong>Cron / Schedule :</strong> Actif (Toutes les 10min).</li>
-                            <li><strong>Polling :</strong> Vérifie "Y a-t-il du nouveau ?"</li>
-                        </ul>
-                    </dd>
-                    <dt>Regular Nodes (Actions)</dt>
-                    <dd>Font le travail : "Créer ligne Airtable", "Envoyer Slack", "HTTP Request".</dd>
-                    <dt>Logic Nodes (Contrôle)</dt>
-                    <dd><strong>If</strong>, <strong>Switch</strong>, <strong>Merge</strong>, <strong>Code</strong>.
-                        Ils dirigent le trafic.</dd>
+                    <dt>{{ $json.email }}</dt>
+                    <dd>Accède à la propriété "email" de l'item courant.</dd>
+                    <dt>{{ $now.plus(1, 'days') }}</dt>
+                    <dd>Gère les dates (librairie Luxon intégrée).</dd>
+                    <dt>{{ $node["Trigger"].json.id }}</dt>
+                    <dd>Va chercher une donnée spécifique dans un nœud précédent (Back-reference).</dd>
                 </ul>
             </div>
         </div>
 
-        <div class="grid2" style="margin-top:30px;">
-            <div class="scenario-card" style="border-color: #00cec9;">
-                <h4>3. L'API Universelle (HTTP Request)</h4>
-                <p>Si un service n'existe pas dans n8n, utilisez le nœud <strong>HTTP Request</strong>. C'est le
-                    couteau suisse.</p>
-                <ul class="clean-list" style="margin-top:10px;">
-                    <li><strong>Auth :</strong> Basic, Header, OAuth2 (Géré par n8n Credentials).</li>
-                    <li><strong>Method :</strong> GET (Lire), POST (Créer), PUT (Modifier), DELETE (Supprimer).</li>
+        <!-- 3.2 DEBUGGING GUIDE (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">🛠 Debugging & Optimisation</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-left: 3px solid #e17055;">
+                <h4>🔍 Lire les Logs</h4>
+                <p style="font-size:0.85rem; margin-top:5px;">Dans l'historique d'exécution :</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><strong>Input :</strong> Ce qui est rentré dans le nœud.</li>
+                    <li><strong>Output :</strong> Ce qui en est sorti.</li>
+                    <li><em>Si Output est vide, le nœud a filtré toutes les données.</em></li>
                 </ul>
             </div>
-            <div class="scenario-card" style="border-color: #fab1a0;">
-                <h4>4. Hosting & Requirements</h4>
-                <p>Pour la production, oubliez `npx n8n`. Utilisez Docker.</p>
-                <div class="code-block" style="font-size:0.8rem;">
-                    docker run -it --rm \
-                    --name n8n \
-                    -p 5678:5678 \
-                    -v ~/.n8n:/home/node/.n8n \
-                    n8nio/n8n
-                </div>
+            <div class="scenario-card" style="border-left: 3px solid #00cec9;">
+                <h4>📌 Pin Data</h4>
+                <p style="font-size:0.85rem; margin-top:5px;">Ne rejouez pas tout le workflow à chaque test API !
+                </p>
+                <p style="font-size:0.8rem; color:#b2bec3;">Cliquez sur l'épingle d'un nœud pour figer ses données
+                    de sortie. Le nœud suivant utilisera ces données "mockées" sans rappeler l'API précédente.</p>
+            </div>
+        </div>
+
+        <!-- 3.3 CORE NODES DEEP DIVE (NEW) -->
+        <h3 class="sec-title-small" style="color:#fff;">🧩 Les Nœuds Indispensables</h3>
+        <div class="feature-grid"
+            style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom:30px;">
+            <div class="scenario-card">
+                <strong>Merge Node</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    • <strong>Append :</strong> Met les tableaux bout à bout.<br>
+                    • <strong>Wait (Mode "Pass-through") :</strong> Attend que la branche A soit finie avant de
+                    lancer la B. Vital pour séquencer les actions.
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Switch / If</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    Dirige le trafic. Le "Switch" est plus propre que des "If" en cascade.<br>
+                    <em>Ex: Routez par "Type de Client" (VIP, Standard, Prospect).</em>
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Split In Batches</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    Pour ne pas faire exploser la RAM ou les limites API.<br>
+                    <em>"Traite ces 1000 emails par paquets de 10."</em>
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Code Node</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    L'échappatoire. Quand le No-Code est trop lourd, 5 lignes de JS résolvent le problème.
+                    Manipulation complexe d'Arrays ou Regex.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3.4 USE CASE: LEAD ENRICHMENT (NEW) -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(0, 206, 201, 0.05); border-left-color: #00cec9;">
+            <h3 style="color:#00cec9; margin-bottom:15px;">Cas Pratique : Lead Enrichment Machine</h3>
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <code style="display:block; padding:10px; border-radius:6px; font-size:0.8rem; line-height:1.6;">
+                        <span style="color:#ff7675;">1. Webhook</span> : Reçoit l'email depuis Typeform.<br>
+                        ⬇️<br>
+                        <span style="color:#fab1a0;">2. API Clearbit/Apollo</span> : "Qui est ce prospect ?" (Job, Taille boîte).<br>
+                        ⬇️<br>
+                        <span style="color:#ffeaa7;">3. IF</span> : Est-ce un CEO de +50 employés ?<br>
+                        ├── <strong style="color:#55efc4;">OUI</strong> :<br>
+                        │   ├── <span style="color:#a29bfe;">AI Agent</span> : Rédige une intro personnalisée LinkedIn.<br>
+                        │   ├── <span style="color:#0984e3;">HubSpot</span> : Crée le deal "Hot Lead".<br>
+                        │   └── <span style="color:#fff;">Slack</span> : Notifie l'équipe Sales 🔥.<br>
+                        └── <strong style="color:#636e72;">NON</strong> :<br>
+                            └── <span style="color:#dfe6e9;">Mailchimp</span> : Ajoute à la newsletter classique.
+                    </code>
             </div>
         </div>
 
         <div class="tip" style="margin-top:20px;">
-            <strong>Attention à la RAM :</strong> n8n garde l'historique d'exécution en mémoire vive avant de le
-            dumper en base. Si vous traitez 100,000 lignes d'un coup, ça crashera. Utilisez la fonction
-            <code>Split in Batches</code> pour traiter par paquets de 100.
+            <strong>Astuce Pro :</strong> Nommez TOUJOURS vos nœuds (ex: "Get_User_Data" au lieu de "HTTP Request
+            1").
+            Votre "Future You" (dans 3 mois) vous remerciera quand il faudra déboguer <code>$node["HTTP Request
+                    43"]</code>.
         </div>
     </div>
 </section>

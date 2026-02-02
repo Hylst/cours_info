@@ -1,0 +1,104 @@
+<!-- MODULE 8: DATA MODELING (NEW) -->
+<section id="m8"
+    style="background: radial-gradient(circle at 10% 50%, rgba(62, 207, 142, 0.05) 0%, rgba(0,0,0,0) 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#3ECF8E; border-color:#3ECF8E;">08</div>
+            <div>
+                <h2 class="sec-title" style="color:#3ECF8E;">Data Modeling 101</h2>
+                <p class="sec-sub">La colonne vertébrale de tout projet</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #3ECF8E;">
+            <strong>Le Secret :</strong><br>
+            Une mauvaise application avec une bonne base de données peut être sauvée.<br>
+            Une belle application avec une mauvaise base de données devra être entièrement reconstruite.
+        </div>
+
+        <!-- 8.1 RELATIONAL DB BASICS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Concepts Relationnels (SQL)</h3>
+        <div class="grid2">
+            <div>
+                <h3>1. Tables & Records</h3>
+                <p>Oubliez Excel. Une base de données n'est pas une "feuille unique". C'est une collection de
+                    <strong>Tables</strong> (Clients, Commandes, Produits).</p>
+                <ul class="vocab-list">
+                    <dt>Primary Key (PK)</dt>
+                    <dd>L'ID unique d'une ligne. (ex: <code>user_id: 42</code>). Ne change jamais.</dd>
+                    <dt>Foreign Key (FK)</dt>
+                    <dd>La référence vers une autre table. (ex: Dans la table Commandes, j'ai
+                        <code>customer_id: 42</code>).</dd>
+                </ul>
+            </div>
+            <div>
+                <h3>2. Les Relations</h3>
+                <ul class="clean-list" style="margin-top:15px; font-size:0.9rem;">
+                    <li style="margin-bottom:15px;">
+                        <strong style="color:#3ECF8E;">One-to-Many (1:N)</strong><br>
+                        Un Client a <em>plusieurs</em> Commandes. Une Commande appartient à <em>un seul</em> Client.<br>
+                        <em>C'est 90% des cas.</em>
+                    </li>
+                    <li style="margin-bottom:15px;">
+                        <strong style="color:#ffeaa7;">Many-to-Many (N:N)</strong><br>
+                        Un Étudiant a plusieurs Cours. Un Cours a plusieurs Étudiants.<br>
+                        <em>Nécessite une "Table de Jonction" (ex: Inscriptions).</em>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8.2 NORMALIZATION (SIMPLIFIED) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. La Normalisation (Sanity Check)</h3>
+        <div class="feature-grid">
+            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
+                <h4>❌ Erreur de Débutant (Flat Data)</h4>
+                <pre style="font-size:0.7rem; color:#b2bec3; override:hidden;">
+Table Commandes:
+- ID: 1
+- Client: "Jean Dupont"
+- Email: "jean@email.com"  <-- DUPLICATION !
+- Produit: "iPhone 15"
+                    </pre>
+                <p style="font-size:0.8rem; margin-top:5px;">Si Jean change d'email, vous devez modifier 50 commandes.
+                    Risque d'erreur : 100%.</p>
+            </div>
+            <div class="scenario-card" style="border-top: 3px solid #55efc4;">
+                <h4>✅ Donnée Normalisée</h4>
+                <pre style="font-size:0.7rem; color:#b2bec3; override:hidden;">
+Table Clients:
+- ID: 42, Nom: "Jean", Email: "jean@new.com"
+
+Table Commandes:
+- ID: 1, client_id: 42, product: "iPhone"
+                    </pre>
+                <p style="font-size:0.8rem; margin-top:5px;">On change l'email à un seul endroit. Tout se met à jour par
+                    magie (via la relation).</p>
+            </div>
+        </div>
+
+        <!-- 8.3 DATA TYPES -->
+        <div class="concept-box" style="margin-top:30px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">C. Les Types de Données (Typage)</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">En No-Code comme en Code, soyez stricts.</p>
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px;">
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#a29bfe;">String</strong><br>Texte ("Hello")
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#0984e3;">Integer</strong><br>Entier (42)
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#55efc4;">Boolean</strong><br>Oui/Non (true)
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#ffeaa7;">JSON B</strong><br>Donnée flexible ({...})
+                </div>
+            </div>
+            <div class="tip" style="margin-top:15px;">
+                <strong>Pourquoi c'est important ?</strong> Vous ne pouvez pas faire une somme sur du texte "12€". Vous
+                devez stocker <code>12</code> (Int) et <code>EUR</code> (String) séparément.
+            </div>
+        </div>
+    </div>
+</section>

@@ -234,14 +234,17 @@
             <a href="#m1">Eco</a>
             <a href="#m2">IA</a>
             <a href="#m3">n8n</a>
-            <a href="#tuto">Atelier</a>
-            <a href="#mcp-deep">Expert</a>
+            <a href="#m4">Agent</a>
             <a href="#m5">Stack</a>
+            <a href="#m6">Gouv</a>
             <a href="#m7">OSS</a>
+            <a href="#m8" style="color:#3ECF8E;">Data</a>
+            <a href="#m12" style="color:#0984e3;">API</a>
+            <a href="#m13" style="color:#e17055;">UI</a>
+            <a href="#m14" style="color:#fd79a8;">Code</a>
             <a href="#m9">Map</a>
             <a href="#m10">Biz</a>
             <a href="#m11">Bonus</a>
-            <!-- Close btn for mobile -->
             <button class="close-menu-btn" onclick="toggleMenu()">×</button>
         </nav>
     </div>
@@ -589,14 +592,14 @@
         </div>
     </div>
 </section>
-<!-- MODULE 3: n8n (DEEP DIVE) -->
+<!-- MODULE 3: n8n (DEEP DIVE & MASTERY) -->
 <section id="m3">
     <div class="container">
         <div class="sec-header">
             <div class="sec-num">03</div>
             <div>
                 <h2 class="sec-title">Architecture n8n</h2>
-                <p class="sec-sub">L'OS de l'Automatisation</p>
+                <p class="sec-sub">Maîtriser l'OS de l'Automatisation</p>
             </div>
         </div>
 
@@ -604,99 +607,129 @@
             <img src="assets/n8n_architecture_2025_1766252310261.jpg" alt="Architecture n8n Isométrique">
         </div>
 
-        <div class="feature-grid" style="margin-bottom:30px;">
-            <div class="scenario-card">
-                <h4>Qu'est-ce que n8n ?</h4>
-                <p>Un outil d'automatisation de flux (workflow automation) <strong>"Fair-code"</strong>.
-                    Contrairement à Zapier, le code source est visible, vous pouvez l'héberger vous-même
-                    (Self-Hosted), et vous possédez vos données.</p>
-            </div>
-            <div class="scenario-card">
-                <h4>Le Moteur (Node.js)</h4>
-                <p>n8n tourne sur Node.js. Chaque "Nœud" est une mini-fonction JavaScript qui reçoit des données,
-                    les transforme, et les passe au suivant.</p>
-            </div>
-        </div>
-
-        <div class="concept-box" style="border-left-color: #0984e3;">
-            <strong>Le Concept Clé : "Items & Data Flow"</strong><br>
-            C'est ce qui bloque 90% des débutants. n8n ne traite pas une tâche à la fois, mais des <strong>Tableaux
-                d'Objets JSON</strong>.
+        <!-- 3.1 CORE CONCEPTS (Revised) -->
+        <div class="concept-box" style="border-left-color: #ff6b6b;">
+            <strong>Le Piège Classique :</strong><br>
+            n8n n'est pas "juste" un Zapier moins cher. C'est un environnement de <em
+                style="color:#ff6b6b;">développement visuel</em>.
+            Si vous ne comprenez pas le passage des données (Items), vous serez bloqué au premier <code>IF</code>.
         </div>
 
         <div class="grid2">
             <div>
-                <h3>1. La Structure de Données</h3>
-                <p>Chaque nœud reçoit et renvoie un tableau d'objets. Chaque objet a toujours cette forme :</p>
+                <h3>1. La Structure "Item"</h3>
+                <p>Tout tourne autour du JSON. Un nceud reçoit un <strong>Tableau</strong> et renvoie un
+                    <strong>Tableau</strong>.
+                </p>
                 <div class="code-block" style="font-size:0.8rem;">
                     [
                     {
-                    "json": {
-                    "nom": "Dupont",
-                    "id": 123
-                    },
-                    "binary": { ... } // (Optionnel) Fichiers
+                    "json": { "email": "alice@corp.com", "id": 1 },
+                    "pair": 0
                     },
                     {
-                    "json": {
-                    "nom": "Durand",
-                    "id": 124
-                    },
-                    "binary": { ... }
+                    "json": { "email": "bob@corp.com", "id": 2 },
+                    "pair": 1
                     }
                     ]
                 </div>
-                <p class="comment" style="margin-top:5px; font-size:0.8rem;">Si ce tableau contient 5 objets
-                    ("Items"), le nœud suivant s'exécutera <strong>5 fois</strong> (une fois pour chaque item).
-                    C'est automatique.</p>
             </div>
             <div>
-                <h3>2. Les Types de Nœuds</h3>
+                <h3>2. L'Expression Language</h3>
+                <p>Pour rendre les nœuds dynamiques, on utilise des expressions JavaScript (doubles accolades).</p>
                 <ul class="vocab-list">
-                    <dt>Triggers (Déclencheurs)</dt>
-                    <dd>Le point de départ.
-                        <ul>
-                            <li><strong>Webhook :</strong> Passif (Attend qu'on l'appelle).</li>
-                            <li><strong>Cron / Schedule :</strong> Actif (Toutes les 10min).</li>
-                            <li><strong>Polling :</strong> Vérifie "Y a-t-il du nouveau ?"</li>
-                        </ul>
-                    </dd>
-                    <dt>Regular Nodes (Actions)</dt>
-                    <dd>Font le travail : "Créer ligne Airtable", "Envoyer Slack", "HTTP Request".</dd>
-                    <dt>Logic Nodes (Contrôle)</dt>
-                    <dd><strong>If</strong>, <strong>Switch</strong>, <strong>Merge</strong>, <strong>Code</strong>.
-                        Ils dirigent le trafic.</dd>
+                    <dt>{{ $json.email }}</dt>
+                    <dd>Accède à la propriété "email" de l'item courant.</dd>
+                    <dt>{{ $now.plus(1, 'days') }}</dt>
+                    <dd>Gère les dates (librairie Luxon intégrée).</dd>
+                    <dt>{{ $node["Trigger"].json.id }}</dt>
+                    <dd>Va chercher une donnée spécifique dans un nœud précédent (Back-reference).</dd>
                 </ul>
             </div>
         </div>
 
-        <div class="grid2" style="margin-top:30px;">
-            <div class="scenario-card" style="border-color: #00cec9;">
-                <h4>3. L'API Universelle (HTTP Request)</h4>
-                <p>Si un service n'existe pas dans n8n, utilisez le nœud <strong>HTTP Request</strong>. C'est le
-                    couteau suisse.</p>
-                <ul class="clean-list" style="margin-top:10px;">
-                    <li><strong>Auth :</strong> Basic, Header, OAuth2 (Géré par n8n Credentials).</li>
-                    <li><strong>Method :</strong> GET (Lire), POST (Créer), PUT (Modifier), DELETE (Supprimer).</li>
+        <!-- 3.2 DEBUGGING GUIDE (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">🛠 Debugging & Optimisation</h3>
+        <div class="grid2" style="margin-bottom:30px;">
+            <div class="scenario-card" style="border-left: 3px solid #e17055;">
+                <h4>🔍 Lire les Logs</h4>
+                <p style="font-size:0.85rem; margin-top:5px;">Dans l'historique d'exécution :</p>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><strong>Input :</strong> Ce qui est rentré dans le nœud.</li>
+                    <li><strong>Output :</strong> Ce qui en est sorti.</li>
+                    <li><em>Si Output est vide, le nœud a filtré toutes les données.</em></li>
                 </ul>
             </div>
-            <div class="scenario-card" style="border-color: #fab1a0;">
-                <h4>4. Hosting & Requirements</h4>
-                <p>Pour la production, oubliez `npx n8n`. Utilisez Docker.</p>
-                <div class="code-block" style="font-size:0.8rem;">
-                    docker run -it --rm \
-                    --name n8n \
-                    -p 5678:5678 \
-                    -v ~/.n8n:/home/node/.n8n \
-                    n8nio/n8n
-                </div>
+            <div class="scenario-card" style="border-left: 3px solid #00cec9;">
+                <h4>📌 Pin Data</h4>
+                <p style="font-size:0.85rem; margin-top:5px;">Ne rejouez pas tout le workflow à chaque test API !
+                </p>
+                <p style="font-size:0.8rem; color:#b2bec3;">Cliquez sur l'épingle d'un nœud pour figer ses données
+                    de sortie. Le nœud suivant utilisera ces données "mockées" sans rappeler l'API précédente.</p>
+            </div>
+        </div>
+
+        <!-- 3.3 CORE NODES DEEP DIVE (NEW) -->
+        <h3 class="sec-title-small" style="color:#fff;">🧩 Les Nœuds Indispensables</h3>
+        <div class="feature-grid"
+            style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom:30px;">
+            <div class="scenario-card">
+                <strong>Merge Node</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    • <strong>Append :</strong> Met les tableaux bout à bout.<br>
+                    • <strong>Wait (Mode "Pass-through") :</strong> Attend que la branche A soit finie avant de
+                    lancer la B. Vital pour séquencer les actions.
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Switch / If</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    Dirige le trafic. Le "Switch" est plus propre que des "If" en cascade.<br>
+                    <em>Ex: Routez par "Type de Client" (VIP, Standard, Prospect).</em>
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Split In Batches</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    Pour ne pas faire exploser la RAM ou les limites API.<br>
+                    <em>"Traite ces 1000 emails par paquets de 10."</em>
+                </p>
+            </div>
+            <div class="scenario-card">
+                <strong>Code Node</strong>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">
+                    L'échappatoire. Quand le No-Code est trop lourd, 5 lignes de JS résolvent le problème.
+                    Manipulation complexe d'Arrays ou Regex.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3.4 USE CASE: LEAD ENRICHMENT (NEW) -->
+        <div class="concept-box"
+            style="margin-top:30px; background: rgba(0, 206, 201, 0.05); border-left-color: #00cec9;">
+            <h3 style="color:#00cec9; margin-bottom:15px;">Cas Pratique : Lead Enrichment Machine</h3>
+            <div class="tutorial-step" style="margin-bottom:0;">
+                <code style="display:block; padding:10px; border-radius:6px; font-size:0.8rem; line-height:1.6;">
+                        <span style="color:#ff7675;">1. Webhook</span> : Reçoit l'email depuis Typeform.<br>
+                        ⬇️<br>
+                        <span style="color:#fab1a0;">2. API Clearbit/Apollo</span> : "Qui est ce prospect ?" (Job, Taille boîte).<br>
+                        ⬇️<br>
+                        <span style="color:#ffeaa7;">3. IF</span> : Est-ce un CEO de +50 employés ?<br>
+                        ├── <strong style="color:#55efc4;">OUI</strong> :<br>
+                        │   ├── <span style="color:#a29bfe;">AI Agent</span> : Rédige une intro personnalisée LinkedIn.<br>
+                        │   ├── <span style="color:#0984e3;">HubSpot</span> : Crée le deal "Hot Lead".<br>
+                        │   └── <span style="color:#fff;">Slack</span> : Notifie l'équipe Sales 🔥.<br>
+                        └── <strong style="color:#636e72;">NON</strong> :<br>
+                            └── <span style="color:#dfe6e9;">Mailchimp</span> : Ajoute à la newsletter classique.
+                    </code>
             </div>
         </div>
 
         <div class="tip" style="margin-top:20px;">
-            <strong>Attention à la RAM :</strong> n8n garde l'historique d'exécution en mémoire vive avant de le
-            dumper en base. Si vous traitez 100,000 lignes d'un coup, ça crashera. Utilisez la fonction
-            <code>Split in Batches</code> pour traiter par paquets de 100.
+            <strong>Astuce Pro :</strong> Nommez TOUJOURS vos nœuds (ex: "Get_User_Data" au lieu de "HTTP Request
+            1").
+            Votre "Future You" (dans 3 mois) vous remerciera quand il faudra déboguer <code>$node["HTTP Request
+                    43"]</code>.
         </div>
     </div>
 </section>
@@ -1031,128 +1064,109 @@
         </div>
     </div>
 </section>
-<!-- MODULE 6: GOUVERNANCE (INDUSTRIAL GRADE) -->
+<!-- MODULE 6: GOUVERNANCE & STANDARDS (XP PRO) -->
 <section id="m6">
     <div class="container">
         <div class="sec-header">
             <div class="sec-num">06</div>
             <div>
-                <h2 class="sec-title">Gouvernance & Sécurité</h2>
-                <p class="sec-sub">Du Bricolage à l'Industrie</p>
+                <h2 class="sec-title">Gouvernance & Standards</h2>
+                <p class="sec-sub">Professionnaliser le Chaos</p>
             </div>
         </div>
 
-        <!-- 6.1 INTRO -->
         <div class="concept-box" style="margin-bottom:30px; border-left-color: #ff7675;">
-            <strong>L'Enjeu :</strong> Une automatisation mal conçue peut coûter 10 000€ en 5 minutes (boucle
-            infinie d'API) ou fuiter toute votre BDD client.
-            <br><em>Règle d'or : "Si ça marche sur ma machine", ce n'est pas prêt pour la production.</em>
+            <strong>Le Scénario Catastrophe :</strong><br>
+            Le freelance part. Le workflow critique plante. Personne ne sait ce qu'il fait, il n'y a pas de
+            documentation, et la clé API est sur le compte personnel Gmail de l'ancien stagiaire.
         </div>
 
-        <!-- 6.2 SECURITY PILLARS -->
-        <h3 class="sec-title-small" style="color:#fff;">A. Les 3 Piliers de la Sécurité</h3>
-        <div class="grid3">
-            <!-- SECRETS -->
-            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
-                <h4>🔐 1. Secrets Management</h4>
-                <p style="font-size:0.8rem; margin-bottom:10px;">Ne mettez JAMAIS vos clés API en dur dans le code.
-                </p>
-                <ul class="vocab-list">
-                    <dt>Env Vars</dt>
-                    <dd>Utilisez les variables d'environnement (<code>.env</code>) pour stocker les clés.</dd>
-                    <dt>Rotation</dt>
-                    <dd>Changez vos clés régulièrement (tous les 90j).</dd>
-                    <dt>Outil</dt>
-                    <dd><strong>Doppler</strong> (Gestionnaire de secrets universel).</dd>
-                </ul>
-            </div>
-
-            <!-- RBAC -->
-            <div class="scenario-card" style="border-top: 3px solid #fdcb6e;">
-                <h4>👮 2. RBAC (Access Control)</h4>
-                <p style="font-size:0.8rem; margin-bottom:10px;">Role-Based Access Control. Moindre privilège.</p>
-                <ul class="vocab-list">
-                    <dt>Admin</dt>
-                    <dd>Peut tout casser (CTO uniquement).</dd>
-                    <dt>Editor</dt>
-                    <dd>Peut créer des workflows, mais pas voir les clés de prod.</dd>
-                    <dt>Viewer</dt>
-                    <dd>Peut voir les logs (Support Client).</dd>
-                </ul>
-            </div>
-
-            <!-- AUDIT -->
-            <div class="scenario-card" style="border-top: 3px solid #74b9ff;">
-                <h4>📜 3. Audit Logs</h4>
-                <p style="font-size:0.8rem; margin-bottom:10px;">Qui a fait quoi et quand ? Vital pour le RGPD.</p>
-                <ul class="clean-list" style="font-size:0.8rem;">
-                    <li><em>"Qui a supprimé la table Users ?"</em></li>
-                    <li><em>"Pourquoi le workflow de paiement a changé hier ?"</em></li>
-                </ul>
-                <div style="font-size:0.75rem; color:#b2bec3; margin-top:10px;">Oubliez ça et vous échouerez l'audit
-                    de sécurité.</div>
-            </div>
-        </div>
-
-        <!-- 6.3 CI/CD PIPELINE -->
-        <div class="concept-box" style="margin-top:40px; background: rgba(255, 255, 255, 0.05);">
-            <h3 style="color:#fff; margin-bottom:10px;">B. La Méthode "Dev -> Staging -> Prod"</h3>
-            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">Même en No-Code, on respecte le cycle de
-                vie logiciel.</p>
-
-            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                    <strong style="color:#fab1a0;">DYI (Dev)</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">L'espace "bac à sable". On casse tout, on teste
-                        avec des fausses données. Connecté à Stripe Test.</p>
-                </div>
-                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                    <strong style="color:#ffeaa7;">Staging (Pre-Prod)</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">La copie conforme de la prod. On valide que tout
-                        marche ensemble ("Integration Test").</p>
-                </div>
-                <div style="padding:15px; background:rgba(0,0,0,0.3); border-radius:8px;">
-                    <strong style="color:#55efc4;">Production (Live)</strong>
-                    <p style="font-size:0.8rem; margin-top:5px;">La vraie vie. On n'y touche JAMAIS directement
-                        ("Read Only"). On déploie depuis Staging.</p>
-                </div>
-            </div>
-
-            <div class="tip" style="margin-top:15px; font-size:0.8rem;">
-                <strong>Git Sync :</strong> Des outils comme n8n et Appsmith permettent de synchroniser vos
-                modifications avec GitHub. C'est votre "Gilet de sauvetage" (Rollback) si une mise à jour plante
-                tout.
-            </div>
-        </div>
-
-        <!-- 6.4 ERROR HANDLING -->
-        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Gestion des Erreurs (Robustesse)</h3>
+        <!-- 6.1 NAMING CONVENTIONS (NEW) -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Conventions de Nommage (Naming)</h3>
+        <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">La première règle de la maintenance : tout
+            doit être lisible sans ouvrir le code.</p>
         <div class="grid2">
             <div class="scenario-card">
-                <h4>🚑 Le Pattern "Dead Letter Queue"</h4>
-                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">Que se passe-t-il si l'API Stripe
-                    est en panne pendant un paiement ?</p>
-                <ol class="clean-list" style="font-size:0.8rem;">
-                    <li style="margin-bottom:5px;">1. Le Workflow détecte l'erreur (Node "Catch").</li>
-                    <li style="margin-bottom:5px;">2. Il n'arrête pas le système.</li>
-                    <li style="margin-bottom:5px;">3. Il envoie les données du client dans une table "Erreurs" (La
-                        DLQ).</li>
-                    <li>4. Une alerte part sur Slack : "Paiement échoué, à rejouer plus tard".</li>
-                </ol>
-                <div style="font-size:0.75rem; color:#ff7675; margin-top:10px; font-weight:bold;">Résultat : 0% de
-                    perte de donnée.</div>
+                <h4>Workflows</h4>
+                <p style="font-size:0.8rem; margin-bottom:5px;"><code>[ENV] - [DEPT] - [ACTION]</code></p>
+                <ul class="clean-list" style="font-size:0.8rem; font-family:'JetBrains Mono', monospace;">
+                    <li style="color:#55efc4;">PROD - SALES - Enrich Leads</li>
+                    <li style="color:#ffeaa7;">DEV - MKT - Sync Newsletter</li>
+                    <li style="color:#ff7675;">TEST - IT - Sandbox Stripe</li>
+                </ul>
+            </div>
+            <div class="scenario-card">
+                <h4>Nodes (Nœuds)</h4>
+                <p style="font-size:0.8rem; margin-bottom:5px;"><code>[Verbe] [Objet]</code></p>
+                <ul class="clean-list" style="font-size:0.8rem; font-family:'JetBrains Mono', monospace;">
+                    <li>Create Airtable Record</li>
+                    <li>Get User Email</li>
+                    <li>Format Date</li>
+                    <li><del style="color:#636e72;">HTTP Request 2</del> ❌</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6.2 DOCUMENTATION TEMPLATE (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. La Documentation "Sticky Note"</h3>
+        <div class="feature-grid">
+            <div class="scenario-card" style="border-top: 3px solid #74b9ff;">
+                <p style="font-size:0.85rem;">Dans n8n/Make, ajoutez une "Note" visible au début du workflow avec ce
+                    template :</p>
+                <div class="code-block" style="margin-top:10px; font-size:0.75rem;">
+                    # Tître du Workflow
+                    **Owner:** @Geoffroy
+                    **Last Updated:** 2025-02-02
+                    **But:** Synchroniser les nouveaux clients Stripe vers Airtable.
+
+                    **Inputs:** Webhook Stripe (payment.succeeded)
+                    **Outputs:** Ligne Airtable + Notif Slack
+                    **Dépendances:** API Stripe, Table 'Clients'
+                </div>
+            </div>
+        </div>
+
+        <!-- 6.3 SECURITY & GDPR checklist (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Checklists de Sécurité & RGPD</h3>
+        <div class="grid2">
+            <!-- SECRETS -->
+            <div class="scenario-card" style="border-color: #ff7675;">
+                <h4>🔐 Gestion des Secrets</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li>❌ Jamais de clé API dans le JSON du workflow.</li>
+                    <li>✅ Utiliser le système "Credentials" de n8n.</li>
+                    <li>✅ Utiliser des Variables d'Environnement pour les URL/Tokens globaux.</li>
+                    <li>✅ Créer des clés API "Service Account" (pas liées à une personne physique).</li>
+                </ul>
             </div>
 
+            <!-- GDPR -->
+            <div class="scenario-card" style="border-color: #fdcb6e;">
+                <h4>🇪🇺 Checklist RGPD</h4>
+                <ul class="clean-list" style="font-size:0.8rem;">
+                    <li><strong>Minimisation :</strong> Ne transférez que les champs nécessaires (pas tout le JSON
+                        User).</li>
+                    <li><strong>Droit à l'oubli :</strong> Si un user est supprimé en base, avez-vous un workflow
+                        pour le supprimer de Mailchimp/Slack ?</li>
+                    <li><strong>Hébergement :</strong> Vos serveurs n8n/Supabase sont-ils en UE ?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6.4 ERROR HANDLING PATTERNS (Enhanced) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">D. Patterns de Robustesse</h3>
+        <div class="grid2">
             <div class="scenario-card">
-                <h4>🤝 Le Pattern "Human-in-the-Loop"</h4>
-                <p style="font-size:0.85rem; margin-top:5px; margin-bottom:10px;">L'IA n'a pas le droit de tout
-                    faire toute seule.</p>
-                <div class="code-block" style="font-size:0.8rem;">
-                    Trigger -> IA (Draft Reply) -> <span style="color:#ffeaa7;">WAIT FOR APPROVAL</span> -> Slack
-                    (Boutons : Valider / Modifier) -> Send Email
-                </div>
-                <p style="font-size:0.8rem; margin-top:10px;">Utilisez l'Humain comme validateur final pour les
-                    actions critiques (Remboursement > 100€, Publication, Suppression).</p>
+                <h4>Warning Node</h4>
+                <p style="font-size:0.8rem;">Si une branche critique échoue (ex: Paiement), ne la laissez pas "juste"
+                    planter.
+                    Activez "Continue On Fail" et connectez un nœud d'alerte.</p>
+            </div>
+            <div class="scenario-card">
+                <h4>Idempotence</h4>
+                <p style="font-size:0.8rem;">Si le workflow tourne 2 fois par erreur, que se passe-t-il ?
+                    <br><em>Bonne pratique : "Upsert" (Update si existe, Create sinon) au lieu de "Create".</em>
+                </p>
             </div>
         </div>
     </div>
@@ -1471,14 +1485,407 @@
         </div>
     </div>
 </section>
-<!-- MODULE 9: ROADMAP 2025 (FULL) -->
-<section id="m9" style="background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.1) 0%, rgba(0,0,0,0) 70%);">
+<!-- MODULE 8: DATA MODELING (NEW) -->
+<section id="m8"
+    style="background: radial-gradient(circle at 10% 50%, rgba(62, 207, 142, 0.05) 0%, rgba(0,0,0,0) 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#3ECF8E; border-color:#3ECF8E;">08</div>
+            <div>
+                <h2 class="sec-title" style="color:#3ECF8E;">Data Modeling 101</h2>
+                <p class="sec-sub">La colonne vertébrale de tout projet</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #3ECF8E;">
+            <strong>Le Secret :</strong><br>
+            Une mauvaise application avec une bonne base de données peut être sauvée.<br>
+            Une belle application avec une mauvaise base de données devra être entièrement reconstruite.
+        </div>
+
+        <!-- 8.1 RELATIONAL DB BASICS -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Concepts Relationnels (SQL)</h3>
+        <div class="grid2">
+            <div>
+                <h3>1. Tables & Records</h3>
+                <p>Oubliez Excel. Une base de données n'est pas une "feuille unique". C'est une collection de
+                    <strong>Tables</strong> (Clients, Commandes, Produits).</p>
+                <ul class="vocab-list">
+                    <dt>Primary Key (PK)</dt>
+                    <dd>L'ID unique d'une ligne. (ex: <code>user_id: 42</code>). Ne change jamais.</dd>
+                    <dt>Foreign Key (FK)</dt>
+                    <dd>La référence vers une autre table. (ex: Dans la table Commandes, j'ai
+                        <code>customer_id: 42</code>).</dd>
+                </ul>
+            </div>
+            <div>
+                <h3>2. Les Relations</h3>
+                <ul class="clean-list" style="margin-top:15px; font-size:0.9rem;">
+                    <li style="margin-bottom:15px;">
+                        <strong style="color:#3ECF8E;">One-to-Many (1:N)</strong><br>
+                        Un Client a <em>plusieurs</em> Commandes. Une Commande appartient à <em>un seul</em> Client.<br>
+                        <em>C'est 90% des cas.</em>
+                    </li>
+                    <li style="margin-bottom:15px;">
+                        <strong style="color:#ffeaa7;">Many-to-Many (N:N)</strong><br>
+                        Un Étudiant a plusieurs Cours. Un Cours a plusieurs Étudiants.<br>
+                        <em>Nécessite une "Table de Jonction" (ex: Inscriptions).</em>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8.2 NORMALIZATION (SIMPLIFIED) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. La Normalisation (Sanity Check)</h3>
+        <div class="feature-grid">
+            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
+                <h4>❌ Erreur de Débutant (Flat Data)</h4>
+                <pre style="font-size:0.7rem; color:#b2bec3; override:hidden;">
+Table Commandes:
+- ID: 1
+- Client: "Jean Dupont"
+- Email: "jean@email.com"  <-- DUPLICATION !
+- Produit: "iPhone 15"
+                    </pre>
+                <p style="font-size:0.8rem; margin-top:5px;">Si Jean change d'email, vous devez modifier 50 commandes.
+                    Risque d'erreur : 100%.</p>
+            </div>
+            <div class="scenario-card" style="border-top: 3px solid #55efc4;">
+                <h4>✅ Donnée Normalisée</h4>
+                <pre style="font-size:0.7rem; color:#b2bec3; override:hidden;">
+Table Clients:
+- ID: 42, Nom: "Jean", Email: "jean@new.com"
+
+Table Commandes:
+- ID: 1, client_id: 42, product: "iPhone"
+                    </pre>
+                <p style="font-size:0.8rem; margin-top:5px;">On change l'email à un seul endroit. Tout se met à jour par
+                    magie (via la relation).</p>
+            </div>
+        </div>
+
+        <!-- 8.3 DATA TYPES -->
+        <div class="concept-box" style="margin-top:30px; background: rgba(255, 255, 255, 0.05);">
+            <h3 style="color:#fff; margin-bottom:10px;">C. Les Types de Données (Typage)</h3>
+            <p style="color:#b2bec3; font-size:0.9rem; margin-bottom:15px;">En No-Code comme en Code, soyez stricts.</p>
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:10px;">
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#a29bfe;">String</strong><br>Texte ("Hello")
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#0984e3;">Integer</strong><br>Entier (42)
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#55efc4;">Boolean</strong><br>Oui/Non (true)
+                </div>
+                <div style="background:#000; padding:10px; border-radius:6px; border:1px solid #333;">
+                    <strong style="color:#ffeaa7;">JSON B</strong><br>Donnée flexible ({...})
+                </div>
+            </div>
+            <div class="tip" style="margin-top:15px;">
+                <strong>Pourquoi c'est important ?</strong> Vous ne pouvez pas faire une somme sur du texte "12€". Vous
+                devez stocker <code>12</code> (Int) et <code>EUR</code> (String) séparément.
+            </div>
+        </div>
+    </div>
+</section>
+<!-- MODULE 12: API MASTERY (NEW) -->
+<section id="m12"
+    style="background: radial-gradient(circle at 90% 10%, rgba(9, 132, 227, 0.05) 0%, rgba(0,0,0,0) 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#0984e3; border-color:#0984e3;">12</div>
+            <div>
+                <h2 class="sec-title" style="color:#0984e3;">API Mastery</h2>
+                <p class="sec-sub">Lire la documentation comme un pro</p>
+            </div>
+        </div>
+
+        <!-- 12.1 ANATOMY -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Anatomie d'une Requête HTTP</h3>
+        <div class="code-block" style="font-size:0.9rem; line-height:1.6;">
+            <span style="color:#ff7675;">POST</span> <span
+                style="color:#74b9ff;">https://api.stripe.com/v1/charges</span><br>
+            <span style="color:#a29bfe;">Authorization:</span> Bearer sk_test_4eC39H...<br>
+            <span style="color:#a29bfe;">Content-Type:</span> application/json<br>
+            <br>
+            {<br>
+            &nbsp;&nbsp;"amount": 2000,<br>
+            &nbsp;&nbsp;"currency": "usd",<br>
+            &nbsp;&nbsp;"source": "tok_visa"<br>
+            }
+        </div>
+        <div class="feature-grid" style="margin-top:15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div>
+                <strong>1. Method (Verbe)</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;"><code>GET</code> (Lire), <code>POST</code> (Écrire),
+                    <code>PUT/PATCH</code> (Modifier), <code>DELETE</code> (Supprimer).</p>
+            </div>
+            <div>
+                <strong>2. Endpoint (URL)</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">L'adresse du guichet unique.</p>
+            </div>
+            <div>
+                <strong>3. Headers</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Les métadonnées (Auth, Format). Le "sticker sur
+                    l'enveloppe".</p>
+            </div>
+            <div>
+                <strong>4. Body (Payload)</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Le contenu du colis (généralement en JSON).</p>
+            </div>
+        </div>
+
+        <!-- 12.2 AUTHENTICATION -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Les Types d'Authentification</h3>
+        <div class="grid2">
+            <div class="scenario-card">
+                <h4>Basic Auth / API Key</h4>
+                <p style="font-size:0.85rem; margin-bottom:5px;">Simple & Rapide.</p>
+                <code style="font-size:0.75rem; background:#000; padding:2px 5px;">Authorization: Api-Key 12345</code>
+                <p style="font-size:0.8rem; color:#b2bec3; margin-top:5px;">Souvent passé en Header ou en Query Param
+                    (<code>?key=123</code>).</p>
+            </div>
+            <div class="scenario-card" style="border-color: #fab1a0;">
+                <h4>OAuth2 (Le Cauchemar nécessaire)</h4>
+                <p style="font-size:0.85rem; margin-bottom:5px;">Sécurisé & Temporaire.</p>
+                <ul class="clean-list" style="font-size:0.75rem;">
+                    <li>1. Redirection vers Google ("Accepter ?").</li>
+                    <li>2. Reçoit un <code>code</code>.</li>
+                    <li>3. Échange <code>code</code> contre <code>Access Token</code> (valide 1h).</li>
+                    <li>4. Utilise <code>Refresh Token</code> pour renouveler.</li>
+                </ul>
+                <div style="font-size:0.75rem; color:#fab1a0; margin-top:5px;">Heureusement, n8n gère ça pour vous !
+                </div>
+            </div>
+        </div>
+
+        <!-- 12.3 WEBHOOKS VS POLLING -->
+        <div class="concept-box" style="margin-top:30px; border-left-color: #fdcb6e;">
+            <strong>Polling vs Webhooks :</strong><br>
+            <ul class="clean-list" style="margin-top:10px;">
+                <li><strong>Polling (L'enfant impatient) :</strong> "On est arrivé ? On est arrivé ?" (Demande toutes
+                    les 5min). Gaspille des ressources.</li>
+                <li><strong>Webhook (Le coup de fil) :</strong> "Appelle-moi quand tu arrives." Le serveur vous notifie
+                    instantanément.</li>
+            </ul>
+            <em>Préférez toujours les Webhooks quand c'est possible.</em>
+        </div>
+
+        <!-- 12.4 CURL DECODING -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Traduire le "cURL"</h3>
+        <p style="font-size:0.9rem; margin-bottom:15px; color:#b2bec3;">Les docs donnent souvent des exemples en ligne
+            de commande (cURL). Vous devez savoir les lire pour les mettre dans n8n.</p>
+        <div class="code-block" style="font-size:0.8rem;">
+            curl -X POST https://api.site.com/users \<br>
+            -H "Authorization: Bearer 123" \<br>
+            -d '{"name":"Bob"}'
+        </div>
+        <div class="tutorial-step" style="margin-top:10px;">
+            <ul class="clean-list" style="font-size:0.8rem;">
+                <li><code>-X POST</code> -> Méthode</li>
+                <li><code>-H "..."</code> -> Header</li>
+                <li><code>-d '...'</code> -> Body (Data)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- MODULE 13: UI/UX FOR INTERNAL TOOLS (NEW) -->
+<section id="m13"
+    style="background: radial-gradient(circle at 50% 90%, rgba(225, 112, 85, 0.05) 0%, rgba(0,0,0,0) 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#e17055; border-color:#e17055;">13</div>
+            <div>
+                <h2 class="sec-title" style="color:#e17055;">UI/UX Tools</h2>
+                <p class="sec-sub">Rendre vos outils utilisables</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #e17055;">
+            <strong>La Loi du Moindre Effort :</strong><br>
+            Si votre outil interne est moche et compliqué, vos collègues continueront d'utiliser Excel.<br>
+            L'adoption est le seul KPI qui compte.
+        </div>
+
+        <!-- 13.1 THE DASH FRAMEWORK -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Le Framework D.A.S.H.</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">D - Density (Densité)</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Ne bourrez pas l'écran. Laissez de l'espace blanc. Une info
+                    importante doit respirer.</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">A - Actionable</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Un Dashboard sans boutons ne sert à rien. Ajoutez "Valider",
+                    "Refuser", "Editer" à côté des données.</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">S - Status</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">L'utilisateur doit toujours savoir ce qui se passe.
+                    (Spinners de chargement, Toasts de succès).</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">H - Hierarchy</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Le titre en gros, le détail en petit. La couleur rouge pour
+                    l'urgence.</p>
+            </div>
+        </div>
+
+        <!-- 13.2 FEEDBACK LOOPS -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Les Feedbacks (Dialoguer avec l'User)</h3>
+        <div class="grid2">
+            <div class="scenario-card" style="border-left: 3px solid #55efc4;">
+                <h4>✅ Happy Path (Succès)</h4>
+                <p style="font-size:0.85rem;">Quand l'action marche, affichez un "Toast" vert : <em>"Client sauvegardé
+                        avec succès !"</em>.</p>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Ne laissez pas l'utilisateur deviner si le
+                    clic a fonctionné.</p>
+            </div>
+            <div class="scenario-card" style="border-left: 3px solid #ff7675;">
+                <h4>❌ Unhappy Path (Erreur)</h4>
+                <p style="font-size:0.85rem;">Ne dites pas <em>"Error 500"</em>.</p>
+                <p style="font-size:0.85rem; color:#ff7675;">Dites : <em>"Impossible de sauvegarder car l'email existe
+                        déjà."</em></p>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Guidez la correction de l'erreur.</p>
+            </div>
+        </div>
+
+        <!-- 13.3 FORM DESIGN -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Check-list Formulaires</h3>
+        <ul class="clean-list" style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px;">
+            <li style="margin-bottom:10px;">✅ <strong>Labels clairs :</strong> Pas de "Champ 1". Mettez "Numéro de
+                Facture".</li>
+            <li style="margin-bottom:10px;">✅ <strong>Placeholders :</strong> Donnez un exemple (ex:
+                "J.dupont@email.com").</li>
+            <li style="margin-bottom:10px;">✅ <strong>Validation temps réel :</strong> Dites que l'email est invalide
+                <em>avant</em> le clic sur "Envoyer".</li>
+            <li style="margin-bottom:10px;">✅ <strong>Valeurs par défaut :</strong> Pré-remplissez ce que vous savez
+                déjà (Date d'aujourd'hui, User courant).</li>
+        </ul>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>Le test "Maman" :</strong> Si vous montrez votre outil à quelqu'un qui ne connaît pas le projet,
+            comprend-il en 5 secondes sur quel bouton cliquer ? Si non, simplifiez.
+        </div>
+    </div>
+</section>
+<!-- MODULE 14: CODE SNIPPETS (NEW) -->
+<section id="m14" style="background: #000;">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fd79a8; border-color:#fd79a8;">14</div>
+            <div>
+                <h2 class="sec-title" style="color:#fd79a8;">Code Snippets (JS)</h2>
+                <p class="sec-sub">Les 20% de code qui font 80% du travail</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #fd79a8; background: rgba(253, 121, 168, 0.05);">
+            <strong>Pourquoi coder ?</strong><br>
+            Les nœuds No-Code sont super, mais parfois un nœud "Code" de 3 lignes remplace 15 nœuds "Loop/If/Filter" et
+            tourne 100x plus vite.
+        </div>
+
+        <!-- 14.1 ARRAY MANIPULATION -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Arrays (Listes)</h3>
+        <div class="grid2">
+            <div>
+                <h4 style="color:#a29bfe;">.map()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Transformer une liste. (ex: Garder juste les emails).</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const users = [
+                    {name: "A", email: "a@test.com"},
+                    {name: "B", email: "b@test.com"}
+                    ];
+
+                    // Résultat: ["a@test.com", "b@test.com"]
+                    const emails = users.map(u => u.email);
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#a29bfe;">.filter()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Garder ce qui matche une condition.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const nums = [1, 5, 10, 2];
+
+                    // Résultat: [5, 10]
+                    const big = nums.filter(n => n > 4);
+                </div>
+            </div>
+        </div>
+
+        <!-- 14.2 STRING MANIPULATION -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">B. Strings (Texte)</h3>
+        <div class="grid2">
+            <div>
+                <h4 style="color:#ffeaa7;">.split()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Couper du texte.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const name = "Jean Dupont";
+
+                    // Résultat: "Jean"
+                    const firstname = name.split(" ")[0];
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#ffeaa7;">Template Literals</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Injecter des variables proprement.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const item = "Pomme";
+                    const price = 10;
+
+                    // "Le prix de Pomme est 10€"
+                    const msg = `Le prix de ${item} est ${price}€`;
+                </div>
+            </div>
+        </div>
+
+        <!-- 14.3 DATE MANIPULATION -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">C. Dates (L'Enfer)</h3>
+        <div class="feature-grid">
+            <div class="scenario-card">
+                <strong>ISO 8601 (Le standard)</strong>
+                <div class="code-block" style="margin-top:5px; font-size:0.75rem; color:#55efc4;">
+                    2025-02-02T14:00:00.000Z</div>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Utilisez toujours ce format en interne dans
+                    n8n.</p>
+            </div>
+            <div class="scenario-card">
+                <strong>Format (Luxon)</strong>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Dans n8n expressions :</p>
+                <div class="code-block" style="margin-top:5px; font-size:0.75rem;">{{ $now.toFormat('dd/MM/yyyy') }}
+                </div>
+                <p style="font-size:0.8rem; color:#a29bfe;">-> 02/02/2025</p>
+            </div>
+        </div>
+
+        <!-- 14.4 REGEX BASICS -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">D. Regex (Expressions Régulières)</h3>
+        <p style="font-size:0.85rem; margin-bottom:10px;">Pour extraire des motifs complexes.</p>
+        <div class="code-block" style="font-size:0.8rem;">
+            const text = "Contactez-moi au 06 12 34 56 78 merci.";<br>
+            <span style="color:#636e72;">// Trouve un motif de 10 chiffres (simplifié)</span><br>
+            const phone = text.match(/\d{10,}/);
+        </div>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>Outil indispensable :</strong> Utilisez <a href="https://regex101.com" target="_blank"
+                style="color:#fd79a8;">Regex101.com</a> pour tester vos regex avant de les mettre en prod. L'IA
+            (ChatGPT) est aussi excellente pour générer des Regex.
+        </div>
+    </div>
+</section>
+<!-- MODULE 9: ROADMAP 2025 (ENRICHIES) -->
+<section id="m9"
+    style="background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.08) 0%, rgba(0,0,0,0) 70%);">
     <div class="container">
         <div class="sec-header">
             <div class="sec-num" style="color:var(--nocode-color); border-color:var(--nocode-color);">09</div>
             <div>
-                <h2 class="sec-title" style="color:var(--nocode-color);">Roadmap 2025</h2>
-                <p class="sec-sub">Devenir Product Builder (Niveau 1 à 5)</p>
+                <h2 class="sec-title" style="color:var(--nocode-color);">Roadmap & Ressources</h2>
+                <p class="sec-sub">Votre plan de carrière Product Builder</p>
             </div>
         </div>
 
@@ -1486,14 +1893,22 @@
         <div class="roadmap-step">
             <div class="roadmap-num" style="background:var(--nocode-color); color:#fff; border:none;">1</div>
             <div>
-                <h4>🧠 Level 1: The "Data Thinker" (Mindset)</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;">Arrêtez de penser "Outils". Commencez à penser
-                    "Structure de Données".</p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li><strong>Skills :</strong> JSON, Logique Booléenne (IF/ELSE), Relations (One-to-Many).</li>
-                    <li><strong>Challenge :</strong> Connectez un Typeform à un Google Sheet sans erreur de format.
-                    </li>
-                </ul>
+                <h4>🧠 Level 1: The "Data Thinker"</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">Comprendre comment la donnée voyage.</p>
+                <div class="grid2" style="gap:15px;">
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:var(--nocode-color); font-size:0.8rem;">🎯 Capstone Project</strong>
+                        <p style="font-size:0.8rem; margin-top:5px;">Créer un formulaire Typeform qui remplit
+                            automatiquement un Google Sheet PROPREMENT (bonnes colonnes, format date).</p>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#fff; font-size:0.8rem;">📚 Ressources</strong>
+                        <ul class="clean-list" style="font-size:0.75rem; color:#b2bec3;">
+                            <li>Youtube: "Airtable 101"</li>
+                            <li>Concept: Bases de données relationnelles</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1501,13 +1916,22 @@
         <div class="roadmap-step">
             <div class="roadmap-num" style="background:#0984e3; color:#fff; border:none;">2</div>
             <div>
-                <h4>🔗 Level 2: The "Connector" (API & Webhooks)</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;">Faites parler les applications entre elles.</p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li><strong>Skills :</strong> HTTP Request (GET/POST), Webhooks, Make/Zapier.</li>
-                    <li><strong>Challenge :</strong> Envoyez une notif Slack quand une ligne est ajoutée sur
-                        Airtable via Make.</li>
-                </ul>
+                <h4>🔗 Level 2: The "Connector"</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">APIs & Webhooks. Make/Zapier.</p>
+                <div class="grid2" style="gap:15px;">
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#0984e3; font-size:0.8rem;">🎯 Capstone Project</strong>
+                        <p style="font-size:0.8rem; margin-top:5px;">Un bot Slack qui notifie l'équipe quand une
+                            ligne Airtable passe en statut "Gagné", via Make.</p>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#fff; font-size:0.8rem;">📚 Ressources</strong>
+                        <ul class="clean-list" style="font-size:0.75rem; color:#b2bec3;">
+                            <li>Doc: "Introduction to REST APIs"</li>
+                            <li>Tool: Postman (pour tester les APIs)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1515,14 +1939,22 @@
         <div class="roadmap-step">
             <div class="roadmap-num" style="background:#00cec9; color:#fff; border:none;">3</div>
             <div>
-                <h4>🛠️ Level 3: The "Full Stack Builder" (Independence)</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;">Sortez des limites du SaaS. Devenez propriétaire de
-                    votre stack.</p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li><strong>Skills :</strong> Supabase (Postgres), Appsmith (UI), n8n (Self-hosted logic).</li>
-                    <li><strong>Challenge :</strong> Créez un CRM interne avec Login sécurisé et Dashboard admin.
-                    </li>
-                </ul>
+                <h4>🛠️ Level 3: The "Full Stack Builder"</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">Self-Hosting & Logic. n8n & SQL.</p>
+                <div class="grid2" style="gap:15px;">
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#00cec9; font-size:0.8rem;">🎯 Capstone Project</strong>
+                        <p style="font-size:0.8rem; margin-top:5px;">Installer n8n sur Docker. Créer un Dashboard
+                            Clients sur Appsmith connecté à Supabase.</p>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#fff; font-size:0.8rem;">📚 Ressources</strong>
+                        <ul class="clean-list" style="font-size:0.75rem; color:#b2bec3;">
+                            <li>Channel: "The Automator" (n8n experts)</li>
+                            <li>Course: SQL Bolt (Apprendre SQL en 1h)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1530,13 +1962,22 @@
         <div class="roadmap-step">
             <div class="roadmap-num" style="background:#a29bfe; color:#fff; border:none;">4</div>
             <div>
-                <h4>🤖 Level 4: The "AI Architect" (Intelligence)</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;">Ne faites plus le travail. Orchestrez des agents.
-                </p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li><strong>Skills :</strong> Prompt Engineering, RAG Pipelines, Vector DBs, MCP.</li>
-                    <li><strong>Challenge :</strong> "Chat with my PDF" bot avec n8n et un LLM Open Source.</li>
-                </ul>
+                <h4>🤖 Level 4: The "AI Architect"</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">Agents, RAG & Embeddings.</p>
+                <div class="grid2" style="gap:15px;">
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#a29bfe; font-size:0.8rem;">🎯 Capstone Project</strong>
+                        <p style="font-size:0.8rem; margin-top:5px;">Un Chatbot Telegram qui peut répondre à des
+                            questions sur vos PDF personnels (RAG via Vector Store).</p>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#fff; font-size:0.8rem;">📚 Ressources</strong>
+                        <ul class="clean-list" style="font-size:0.75rem; color:#b2bec3;">
+                            <li>LangChain Documentation</li>
+                            <li>Anthropic Prompt Engineering Guide</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1544,108 +1985,121 @@
         <div class="roadmap-step">
             <div class="roadmap-num" style="background:#ff7675; color:#fff; border:none;">5</div>
             <div>
-                <h4>🏭 Level 5: The "Industrialist" (Scale & Ops)</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;">Sécurisez et scalez pour l'entreprise.</p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li><strong>Skills :</strong> Versioning (Git), Error Handling (DLQ), Secrets Mgmt, RBAC.</li>
-                    <li><strong>Challenge :</strong> Passez un audit de sécurité sans sueur froide.</li>
-                </ul>
+                <h4>🏭 Level 5: The "Industrialist"</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">Ops, Scalability, Team.</p>
+                <div class="grid2" style="gap:15px;">
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#ff7675; font-size:0.8rem;">🎯 Capstone Project</strong>
+                        <p style="font-size:0.8rem; margin-top:5px;">Déployer une stack HA (Haute Dispo). Mettre
+                            en place Git Sync pour n8n. Passer un audit de sécurité.</p>
+                    </div>
+                    <div style="background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                        <strong style="color:#fff; font-size:0.8rem;">📚 Ressources</strong>
+                        <ul class="clean-list" style="font-size:0.75rem; color:#b2bec3;">
+                            <li>Book: "The Phoenix Project" (DevOps culture)</li>
+                            <li>Docker & Kubernetes Mastery</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="concept-box" style="margin-top:30px; text-align:center;">
-            <strong style="color:#fff;">Votre objectif 2025 :</strong><br>
-            Ne restez pas bloqué au niveau 2. Le marché est saturé de "Connecteurs".
-            <br>La valeur est au niveau 4 et 5.
+        <div class="concept-box"
+            style="margin-top:30px; border:1px solid rgba(255,255,255,0.2); background: transparent;">
+            <h3 style="color:#fff; text-align:center;">🏆 L'Objectif Final</h3>
+            <p style="text-align:center; color:#b2bec3;">Ne plus être celui qui "clique sur des boutons", mais celui qui
+                "conçoit l'usine qui clique sur les boutons".</p>
         </div>
     </div>
 </section>
-<!-- MODULE 10: BUSINESS & ROI (THE MONEY MODULE) -->
+<!-- MODULE 10: BUSINESS & VENTE (ENRICHIE) -->
 <section id="m10">
     <div class="container">
         <div class="sec-header">
             <div class="sec-num">10</div>
             <div>
-                <h2 class="sec-title">Business & ROI</h2>
-                <p class="sec-sub">L'Automatisation est un Levier Financier</p>
+                <h2 class="sec-title">Business & Vente de Services</h2>
+                <p class="sec-sub">Monétiser l'Automatisation</p>
             </div>
         </div>
 
-        <!-- 10.1 INTRO -->
-        <div class="concept-box" style="margin-bottom:30px;">
-            <strong>L'Équation :</strong> On ne code pas pour "s'amuser". On code pour augmenter la marge.<br>
-            <em>Value = (Temps Gagné x Taux Horaire) x Fréquence.</em>
+        <!-- 10.1 VALUE PROPOSITION -->
+        <div class="concept-box">
+            <strong>La Réalité du Marché :</strong><br>
+            Personne ne veut acheter "un script Python" ou "un scénario Make".<br>
+            Les clients achètent : <strong>Du Temps</strong>, <strong>De la Sérénité</strong>, ou <strong>Du Cash
+                (Leads)</strong>.
         </div>
 
-        <!-- 10.2 ROI CALCULATOR -->
-        <div class="scenario-card"
-            style="border-left: 4px solid #fab1a0; background: linear-gradient(90deg, rgba(250, 177, 160, 0.1) 0%, rgba(0,0,0,0) 100%);">
-            <h4>💰 Le Calcul de Rentabilité (Exemple Réel)</h4>
-            <p style="margin-bottom:15px; font-size:0.9rem;">Processus : "Saisir les factures PDF dans Excel"
-                (1h/jour).</p>
-
-            <div class="grid2">
-                <div>
-                    <strong style="color:#ff7675;">Coût Humain (Avant)</strong>
-                    <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
-                        <li>Temps : 1h/jour x 220 jours = 220h</li>
-                        <li>Coût : 220h x 50€/h = <strong>11 000€ / an</strong></li>
-                        <li><em>+ Erreurs humaines de saisie.</em></li>
-                    </ul>
-                </div>
-                <div>
-                    <strong style="color:#55efc4;">Coût Machine (Après)</strong>
-                    <ul class="clean-list" style="font-size:0.85rem; margin-top:5px;">
-                        <li>Dev (One-shot) : 2 jours = 1 000€</li>
-                        <li>Run : n8n (20€) + GPT-4 (30€) = 600€/an</li>
-                        <li><strong>Total : 1 600€ la 1ère année</strong></li>
-                    </ul>
-                </div>
+        <!-- 10.2 PRICING MODELS DEEP DIVE (Enhanced) -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Comment Facturer ?</h3>
+        <div class="grid3">
+            <div class="scenario-card" style="border-top: 3px solid #ff7675;">
+                <h4>❌ Taux Horaire (Hourly)</h4>
+                <p style="font-size:0.8rem;"><em>"Je coûte 500€ / jour."</em></p>
+                <p style="font-size:0.75rem; color:#b2bec3; margin-top:5px;">
+                    <strong>Pourquoi ça échoue :</strong> Plus vous êtes rapide (via l'IA), moins vous gagnez d'argent.
+                    Vous êtes puni pour votre compétence.
+                </p>
             </div>
-            <div
-                style="margin-top:15px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1); text-align:center; font-weight:bold; color:#55efc4;">
-                GAIN NET : +9 400€ dès la première année.
+            <div class="scenario-card" style="border-top: 3px solid #0984e3;">
+                <h4>✅ Value Based Pricing</h4>
+                <p style="font-size:0.8rem;"><em>"Ce système vous rapporte 100k€/an. Je le vends 10k€."</em></p>
+                <p style="font-size:0.75rem; color:#b2bec3; margin-top:5px;">
+                    <strong>L'idéal :</strong> Déconnecte le temps passé du revenu. Demande de savoir chiffrer la
+                    douleur du client.
+                </p>
+            </div>
+            <div class="scenario-card" style="border-top: 3px solid #55efc4;">
+                <h4>📦 Productized Service</h4>
+                <p style="font-size:0.8rem;"><em>"Pack Scraping LinkedIn : 500€."</em></p>
+                <p style="font-size:0.75rem; color:#b2bec3; margin-top:5px;">
+                    <strong>Le Scalable :</strong> Périmètre fixe, Prix fixe, Délivry standardisée. Vente facile.
+                </p>
             </div>
         </div>
 
-        <!-- 10.3 PRICING MODELS -->
-        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">Modèles de Pricing (Freelances)</h3>
+        <!-- 10.3 PITCHING ARGUMENTS (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Le Pitch Deck (Convaincre)</h3>
         <div class="grid2">
             <div class="scenario-card">
-                <h4>🛠️ Au Projet (One-Shot)</h4>
-                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je te construis ton CRM pour 3000€."</em></p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li>✅ Gros cashflow immédiat.</li>
-                    <li>❌ Revenu instable ("Feast or Famine").</li>
-                    <li>❌ Le client revient râler 6 mois après quand l'API change.</li>
-                </ul>
+                <h4>1. Le "Cost of Inaction" (COI)</h4>
+                <p style="font-size:0.85rem;">Ne dites pas "ça coûte 5000€".</p>
+                <p style="font-size:0.85rem; color:#fab1a0;">Dites : "Chaque mois sans ce système, vous perdez 40h de
+                    salaire commercial, soit ~2000€. En 3 mois, ne rien faire vous coûte plus cher que ma solution."</p>
             </div>
-            <div class="scenario-card" style="border-color: var(--accent);">
-                <h4>🔄 RaaS (Retainer as a Service)</h4>
-                <p style="font-size:0.8rem; margin-bottom:10px;"><em>"Je maintiens et optimise tes ops pour
-                        500€/mois."</em></p>
-                <ul class="clean-list" style="font-size:0.8rem; color:#b2bec3;">
-                    <li>✅ Revenu récurrent (MRR).</li>
-                    <li>✅ Vous vendez la "tranquillité d'esprit", pas du code.</li>
-                    <li>✅ Relation long terme = Upsell facile.</li>
-                </ul>
+            <div class="scenario-card">
+                <h4>2. Scalabilité sans Recrutement</h4>
+                <p style="font-size:0.85rem;">"Voulez-vous doubler votre activité ? Si oui, voulez-vous devoir doubler
+                    vos effectifs et la gestion RH associée ?"</p>
+                <p style="font-size:0.85rem; color:#55efc4;">"L'automatisation permet de doubler le volume sans doubler
+                    la masse salariale."</p>
             </div>
         </div>
 
-        <!-- 10.4 INTERNAL SALES -->
+        <!-- 10.4 CONTRACT CLAUSES (NEW) -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Clauses Contractuelles Vitales</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="scenario-card" style="border-color: #e17055;">
+                <strong style="color:#e17055;">⚠️ API Breaking Changes</strong>
+                <p style="font-size:0.8rem; margin-top:5px;">"Le Prestataire ne peut être tenu responsable si une API
+                    tierce (ex: LinkedIn) change ses règles et casse le workflow."</p>
+                <div
+                    style="margin-top:5px; font-size:0.75rem; color:#fff; background:rgba(225, 112, 85, 0.2); padding:5px; border-radius:4px;">
+                    Solution : Forfait Maintenance Obligatoire (15-20% du setup / mois).</div>
+            </div>
+            <div class="scenario-card" style="border-color: #e17055;">
+                <strong style="color:#e17055;">🔐 Propriété Intellectuelle</strong>
+                <p style="font-size:0.8rem; margin-top:5px;">Le client est-il propriétaire du scénario Make ? Ou lui
+                    louez-vous l'usage ?</p>
+                <p style="font-size:0.8rem; color:#b2bec3;">(En général : Le client paye pour le setup, il est
+                    propriétaire, mais vous gardez le droit de réutiliser vos briques génériques).</p>
+            </div>
+        </div>
+
         <div class="tip" style="margin-top:30px;">
-            <strong>Pitching to the Boss :</strong> Ne vendez pas "J'ai fait un script Python".<br>
-            Vendez : "J'ai économisé l'équivalent de 0.5 ETP (Équivalent Temps Plein) pour qu'on puisse se
-            concentrer sur les ventes."
-        </div>
-
-        <div class="concept-box"
-            style="margin-top:40px; text-align:center; background:transparent; border:1px solid var(--accent);">
-            <h3 style="color:var(--accent);">Conclusion</h3>
-            <p>L'IA et le No-Code ne vont pas remplacer les humains.<br>
-                Les humains qui utilisent l'IA et le No-Code vont remplacer ceux qui ne le font pas.</p>
-            <br>
-            <strong>👋 À vous de jouer.</strong>
+            <strong>Conseil de fin :</strong> Ne commencez jamais un projet sans "Cahier des Charges" validé et signé.
+            Sinon, vous ferez 20 révisions gratuites.
         </div>
     </div>
 </section>

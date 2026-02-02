@@ -1,0 +1,106 @@
+<!-- MODULE 14: CODE SNIPPETS (NEW) -->
+<section id="m14" style="background: #000;">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#fd79a8; border-color:#fd79a8;">14</div>
+            <div>
+                <h2 class="sec-title" style="color:#fd79a8;">Code Snippets (JS)</h2>
+                <p class="sec-sub">Les 20% de code qui font 80% du travail</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #fd79a8; background: rgba(253, 121, 168, 0.05);">
+            <strong>Pourquoi coder ?</strong><br>
+            Les nœuds No-Code sont super, mais parfois un nœud "Code" de 3 lignes remplace 15 nœuds "Loop/If/Filter" et
+            tourne 100x plus vite.
+        </div>
+
+        <!-- 14.1 ARRAY MANIPULATION -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Arrays (Listes)</h3>
+        <div class="grid2">
+            <div>
+                <h4 style="color:#a29bfe;">.map()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Transformer une liste. (ex: Garder juste les emails).</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const users = [
+                    {name: "A", email: "a@test.com"},
+                    {name: "B", email: "b@test.com"}
+                    ];
+
+                    // Résultat: ["a@test.com", "b@test.com"]
+                    const emails = users.map(u => u.email);
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#a29bfe;">.filter()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Garder ce qui matche une condition.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const nums = [1, 5, 10, 2];
+
+                    // Résultat: [5, 10]
+                    const big = nums.filter(n => n > 4);
+                </div>
+            </div>
+        </div>
+
+        <!-- 14.2 STRING MANIPULATION -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">B. Strings (Texte)</h3>
+        <div class="grid2">
+            <div>
+                <h4 style="color:#ffeaa7;">.split()</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Couper du texte.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const name = "Jean Dupont";
+
+                    // Résultat: "Jean"
+                    const firstname = name.split(" ")[0];
+                </div>
+            </div>
+            <div>
+                <h4 style="color:#ffeaa7;">Template Literals</h4>
+                <p style="font-size:0.8rem; color:#b2bec3;">Injecter des variables proprement.</p>
+                <div class="code-block" style="font-size:0.75rem;">
+                    const item = "Pomme";
+                    const price = 10;
+
+                    // "Le prix de Pomme est 10€"
+                    const msg = `Le prix de ${item} est ${price}€`;
+                </div>
+            </div>
+        </div>
+
+        <!-- 14.3 DATE MANIPULATION -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">C. Dates (L'Enfer)</h3>
+        <div class="feature-grid">
+            <div class="scenario-card">
+                <strong>ISO 8601 (Le standard)</strong>
+                <div class="code-block" style="margin-top:5px; font-size:0.75rem; color:#55efc4;">
+                    2025-02-02T14:00:00.000Z</div>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Utilisez toujours ce format en interne dans
+                    n8n.</p>
+            </div>
+            <div class="scenario-card">
+                <strong>Format (Luxon)</strong>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Dans n8n expressions :</p>
+                <div class="code-block" style="margin-top:5px; font-size:0.75rem;">{{ $now.toFormat('dd/MM/yyyy') }}
+                </div>
+                <p style="font-size:0.8rem; color:#a29bfe;">-> 02/02/2025</p>
+            </div>
+        </div>
+
+        <!-- 14.4 REGEX BASICS -->
+        <h3 class="sec-title-small" style="margin-top:30px; color:#fff;">D. Regex (Expressions Régulières)</h3>
+        <p style="font-size:0.85rem; margin-bottom:10px;">Pour extraire des motifs complexes.</p>
+        <div class="code-block" style="font-size:0.8rem;">
+            const text = "Contactez-moi au 06 12 34 56 78 merci.";<br>
+            <span style="color:#636e72;">// Trouve un motif de 10 chiffres (simplifié)</span><br>
+            const phone = text.match(/\d{10,}/);
+        </div>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>Outil indispensable :</strong> Utilisez <a href="https://regex101.com" target="_blank"
+                style="color:#fd79a8;">Regex101.com</a> pour tester vos regex avant de les mettre en prod. L'IA
+            (ChatGPT) est aussi excellente pour générer des Regex.
+        </div>
+    </div>
+</section>

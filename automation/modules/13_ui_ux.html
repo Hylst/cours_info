@@ -1,0 +1,81 @@
+<!-- MODULE 13: UI/UX FOR INTERNAL TOOLS (NEW) -->
+<section id="m13"
+    style="background: radial-gradient(circle at 50% 90%, rgba(225, 112, 85, 0.05) 0%, rgba(0,0,0,0) 60%);">
+    <div class="container">
+        <div class="sec-header">
+            <div class="sec-num" style="color:#e17055; border-color:#e17055;">13</div>
+            <div>
+                <h2 class="sec-title" style="color:#e17055;">UI/UX Tools</h2>
+                <p class="sec-sub">Rendre vos outils utilisables</p>
+            </div>
+        </div>
+
+        <div class="concept-box" style="border-left-color: #e17055;">
+            <strong>La Loi du Moindre Effort :</strong><br>
+            Si votre outil interne est moche et compliqué, vos collègues continueront d'utiliser Excel.<br>
+            L'adoption est le seul KPI qui compte.
+        </div>
+
+        <!-- 13.1 THE DASH FRAMEWORK -->
+        <h3 class="sec-title-small" style="color:#fff;">A. Le Framework D.A.S.H.</h3>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">D - Density (Densité)</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Ne bourrez pas l'écran. Laissez de l'espace blanc. Une info
+                    importante doit respirer.</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">A - Actionable</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Un Dashboard sans boutons ne sert à rien. Ajoutez "Valider",
+                    "Refuser", "Editer" à côté des données.</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">S - Status</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">L'utilisateur doit toujours savoir ce qui se passe.
+                    (Spinners de chargement, Toasts de succès).</p>
+            </div>
+            <div class="scenario-card">
+                <strong style="color:#fab1a0;">H - Hierarchy</strong>
+                <p style="font-size:0.8rem; color:#b2bec3;">Le titre en gros, le détail en petit. La couleur rouge pour
+                    l'urgence.</p>
+            </div>
+        </div>
+
+        <!-- 13.2 FEEDBACK LOOPS -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">B. Les Feedbacks (Dialoguer avec l'User)</h3>
+        <div class="grid2">
+            <div class="scenario-card" style="border-left: 3px solid #55efc4;">
+                <h4>✅ Happy Path (Succès)</h4>
+                <p style="font-size:0.85rem;">Quand l'action marche, affichez un "Toast" vert : <em>"Client sauvegardé
+                        avec succès !"</em>.</p>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Ne laissez pas l'utilisateur deviner si le
+                    clic a fonctionné.</p>
+            </div>
+            <div class="scenario-card" style="border-left: 3px solid #ff7675;">
+                <h4>❌ Unhappy Path (Erreur)</h4>
+                <p style="font-size:0.85rem;">Ne dites pas <em>"Error 500"</em>.</p>
+                <p style="font-size:0.85rem; color:#ff7675;">Dites : <em>"Impossible de sauvegarder car l'email existe
+                        déjà."</em></p>
+                <p style="font-size:0.8rem; margin-top:5px; color:#b2bec3;">Guidez la correction de l'erreur.</p>
+            </div>
+        </div>
+
+        <!-- 13.3 FORM DESIGN -->
+        <h3 class="sec-title-small" style="margin-top:40px; color:#fff;">C. Check-list Formulaires</h3>
+        <ul class="clean-list" style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px;">
+            <li style="margin-bottom:10px;">✅ <strong>Labels clairs :</strong> Pas de "Champ 1". Mettez "Numéro de
+                Facture".</li>
+            <li style="margin-bottom:10px;">✅ <strong>Placeholders :</strong> Donnez un exemple (ex:
+                "J.dupont@email.com").</li>
+            <li style="margin-bottom:10px;">✅ <strong>Validation temps réel :</strong> Dites que l'email est invalide
+                <em>avant</em> le clic sur "Envoyer".</li>
+            <li style="margin-bottom:10px;">✅ <strong>Valeurs par défaut :</strong> Pré-remplissez ce que vous savez
+                déjà (Date d'aujourd'hui, User courant).</li>
+        </ul>
+
+        <div class="tip" style="margin-top:20px;">
+            <strong>Le test "Maman" :</strong> Si vous montrez votre outil à quelqu'un qui ne connaît pas le projet,
+            comprend-il en 5 secondes sur quel bouton cliquer ? Si non, simplifiez.
+        </div>
+    </div>
+</section>

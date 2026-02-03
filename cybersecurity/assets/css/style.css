@@ -152,6 +152,14 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
+    /* Ensure fluid width */
+}
+
+img {
+    max-width: 100%;
+    /* Prevent overflow */
+    height: auto;
 }
 
 /* === HEADER === */
@@ -194,12 +202,13 @@ header {
     font-weight: 700;
 }
 
-nav {
+.nav-menu {
     display: flex;
     gap: 4px;
+    align-items: center;
 }
 
-nav a {
+.nav-link {
     color: var(--muted);
     text-decoration: none;
     padding: 8px 14px;
@@ -208,9 +217,43 @@ nav a {
     transition: all 0.2s;
 }
 
-nav a:hover {
+.nav-link:hover,
+.nav-link.active {
     background: var(--bg2);
     color: var(--primary-bright);
+}
+
+.hamburger {
+    display: none;
+    /* Hidden on Desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
 }
 
 /* === HERO === */
@@ -797,158 +840,189 @@ footer {
         font-size: 2rem;
     }
 
-    nav {
-        display: none;
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        /* Hide the MENU links, not the Navbar container */
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            /* Height of header */
+            left: 0;
+            width: 100%;
+            background: rgba(34, 34, 34, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* When active class is added by JS */
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .sec-header {
+            flex-direction: column;
+        }
+
+        .grid2,
+        .grid3 {
+            grid-template-columns: 1fr;
+        }
     }
 
-    .sec-header {
-        flex-direction: column;
+    /* === NEW ENRICHMENT STYLES === */
+
+    /* Vocabulary Interactive */
+    .vocab-term {
+        border-bottom: 2px dashed rgba(131, 205, 41, 0.4);
+        cursor: help;
+        transition: all 0.2s;
+        position: relative;
     }
-}
 
-/* === NEW ENRICHMENT STYLES === */
+    .vocab-term:hover {
+        border-bottom-color: var(--primary-bright);
+        background: rgba(131, 205, 41, 0.1);
+        color: var(--primary-bright);
+    }
 
-/* Vocabulary Interactive */
-.vocab-term {
-    border-bottom: 2px dashed rgba(131, 205, 41, 0.4);
-    cursor: help;
-    transition: all 0.2s;
-    position: relative;
-}
+    /* Analogy Box */
+    .analogy-box {
+        background: var(--bg2);
+        border-left: 4px solid var(--num);
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 25px 0;
+        position: relative;
+    }
 
-.vocab-term:hover {
-    border-bottom-color: var(--primary-bright);
-    background: rgba(131, 205, 41, 0.1);
-    color: var(--primary-bright);
-}
+    .analogy-box h4 {
+        color: var(--num);
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-/* Analogy Box */
-.analogy-box {
-    background: var(--bg2);
-    border-left: 4px solid var(--num);
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-    margin: 25px 0;
-    position: relative;
-}
+    /* Command Table */
+    .cmd-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        background: var(--bg2);
+        border-radius: 8px;
+        overflow: hidden;
+    }
 
-.analogy-box h4 {
-    color: var(--num);
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+    .cmd-table th {
+        background: rgba(0, 0, 0, 0.2);
+        text-align: left;
+        padding: 12px 16px;
+        color: var(--primary-bright);
+        border-bottom: 2px solid var(--border);
+    }
 
-/* Command Table */
-.cmd-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.9rem;
-    background: var(--bg2);
-    border-radius: 8px;
-    overflow: hidden;
-}
+    .cmd-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+    }
 
-.cmd-table th {
-    background: rgba(0, 0, 0, 0.2);
-    text-align: left;
-    padding: 12px 16px;
-    color: var(--primary-bright);
-    border-bottom: 2px solid var(--border);
-}
+    .cmd-table tr:last-child td {
+        border-bottom: none;
+    }
 
-.cmd-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
-}
+    .cmd-table code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: var(--str);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+    }
 
-.cmd-table tr:last-child td {
-    border-bottom: none;
-}
+    /* Network Flow / Diagrams */
+    .net-flow {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
 
-.cmd-table code {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 4px 8px;
-    border-radius: 4px;
-    color: var(--str);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-}
+    .net-node {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        min-width: 140px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-/* Network Flow / Diagrams */
-.net-flow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
+    .net-arrow {
+        font-size: 1.5rem;
+        color: var(--muted);
+        font-weight: bold;
+    }
 
-.net-node {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 15px;
-    min-width: 140px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    .net-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        display: block;
+    }
 
-.net-arrow {
-    font-size: 1.5rem;
-    color: var(--muted);
-    font-weight: bold;
-}
+    .net-label {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 0.9rem;
+    }
 
-.net-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    display: block;
-}
+    .net-sub {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 4px;
+    }
 
-.net-label {
-    font-weight: 600;
-    color: var(--text);
-    font-size: 0.9rem;
-}
+    /* Attack Card */
+    .attack-card {
+        border: 1px solid #ff5f56;
+        background: rgba(255, 95, 86, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
 
-.net-sub {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 4px;
-}
+    .attack-title {
+        color: #ff5f56;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
 
-/* Attack Card */
-.attack-card {
-    border: 1px solid #ff5f56;
-    background: rgba(255, 95, 86, 0.05);
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
+    .remediation-box {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba(255, 95, 86, 0.3);
+        font-size: 0.9rem;
+        color: #a0a0a0;
+    }
 
-.attack-title {
-    color: #ff5f56;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.remediation-box {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(255, 95, 86, 0.3);
-    font-size: 0.9rem;
-    color: #a0a0a0;
-}
-
-.remediation-box strong {
-    color: var(--primary-bright);
-}
+    .remediation-box strong {
+        color: var(--primary-bright);
+    }

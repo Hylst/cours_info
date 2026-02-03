@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="Sécurité Cloud (AWS/Azure) : Modèle de responsabilité partagée, IaaS vs PaaS vs SaaS, et bonnes pratiques.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 07: CLOUD SECURITY -->
+        <section id="m7"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(116, 185, 255, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #0984e3, #74b9ff); border-color:#0984e3;">07</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#0984e3;">Cloud Security</h2>
+                        <p class="sec-sub">AWS/Azure & Responsabilité Partagée</p>
+                    </div>
+                </div>
+
+                <!-- SHARED RESPONSIBILITY MODEL -->
+                <div class="ref-card" style="margin-bottom:25px; border-left:4px solid #74b9ff;">
+                    <h4 style="color:#74b9ff; margin-bottom:10px;">🤝 Le Modèle de Responsabilité Partagée</h4>
+                    <div class="grid2">
+                        <div>
+                            <strong style="display:block; margin-bottom:5px; color:#fff;">☁️ Amazon (AWS) / Google /
+                                Microsoft</strong>
+                            <p style="font-size:0.85rem; color:#aaa;">Sécurité <strong>DU</strong> Cloud.</p>
+                            <ul class="dense-list" style="margin-top:5px; font-size:0.8rem;">
+                                <li>✅ Datacenters physiques (Caméras, Gardiens).</li>
+                                <li>✅ Réseau Câblé & Hardware.</li>
+                                <li>✅ Hyperviseur (Virtualisation).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="display:block; margin-bottom:5px; color:#fff;">👤 Vous (Le Client)</strong>
+                            <p style="font-size:0.85rem; color:#aaa;">Sécurité <strong>DANS</strong> le Cloud.</p>
+                            <ul class="dense-list" style="margin-top:5px; font-size:0.8rem;">
+                                <li>✅ Vos Données (Chiffrement).</li>
+                                <li>✅ Gestion des accès (IAM, MFA).</li>
+                                <li>✅ Configuration (Firewall, Ports ouverts).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SERVICE MODELS -->
+                <h3 style="color:#fff; margin-bottom:15px;">🍰 IaaS vs PaaS vs SaaS (Qui gère quoi ?)</h3>
+                <div class="grid3">
+                    <div class="tool-card" style="border-top:3px solid #ff7675;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🏗️</div>
+                        <strong style="font-size:1.1rem; color:#ff7675;">IaaS</strong>
+                        <p style="font-size:0.8rem; color:#ccc; margin-bottom:5px;">Infrastructure as a Service</p>
+                        <p style="font-size:0.8rem; font-style:italic; color:#aaa;">Ex: EC2, VM Azure.</p>
+                        <hr style="border:0; border-top:1px dashed #444; margin:10px 0;">
+                        <p style="font-size:0.8rem;"><strong>Vous gérez TOUT</strong> à partir de l'OS : Patchs,
+                            Antivirus,
+                            Firewall.</p>
+                    </div>
+
+                    <div class="tool-card" style="border-top:3px solid #fdcb6e;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🔌</div>
+                        <strong style="font-size:1.1rem; color:#fdcb6e;">PaaS</strong>
+                        <p style="font-size:0.8rem; color:#ccc; margin-bottom:5px;">Platform as a Service</p>
+                        <p style="font-size:0.8rem; font-style:italic; color:#aaa;">Ex: RDS, App Engine.</p>
+                        <hr style="border:0; border-top:1px dashed #444; margin:10px 0;">
+                        <p style="font-size:0.8rem;">AWS gère l'OS. <strong>Vous gérez juste l'App et la Data.</strong>
+                            Plus
+                            simple, moins de contrôle.</p>
+                    </div>
+
+                    <div class="tool-card" style="border-top:3px solid #55efc4;">
+                        <div style="font-size:2rem; margin-bottom:10px;">📦</div>
+                        <strong style="font-size:1.1rem; color:#55efc4;">SaaS</strong>
+                        <p style="font-size:0.8rem; color:#ccc; margin-bottom:5px;">Software as a Service</p>
+                        <p style="font-size:0.8rem; font-style:italic; color:#aaa;">Ex: Gmail, Salesforce.</p>
+                        <hr style="border:0; border-top:1px dashed #444; margin:10px 0;">
+                        <p style="font-size:0.8rem;"><strong>Tout est géré pour vous.</strong> Vous ne gérez que vos
+                            utilisateurs et la configuration.</p>
+                    </div>
+                </div>
+
+                <!-- CLOUD QUICK WINS -->
+                <div class="tip" style="margin-top:25px; background:rgba(9, 132, 227, 0.1); border-left-color:#0984e3;">
+                    <strong style="color:#0984e3;">💡 Quick Wins : Ne soyez pas "cette personne"</strong>
+                    <ul class="dense-list" style="margin-top:10px;">
+                        <li style="margin-bottom:5px;">🔐 <strong>Root Account</strong> : Activez le MFA physique
+                            (YubiKey)
+                            et enfermez la clé dans un coffre. Ne l'utilisez jamais au quotidien.</li>
+                        <li style="margin-bottom:5px;">🚫 <strong>Git Leaks</strong> : Ne commitez jamais d'Access Keys
+                            (AK/SK) sur GitHub. Utilisez des Rôles IAM.</li>
+                        <li>🪣 <strong>S3 Buckets</strong> : Bloquez l'accès public par défaut (Block Public Access =
+                            ON).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

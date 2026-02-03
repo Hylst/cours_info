@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth & Identité | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="Gestion de l'identité numérique : Authentification vs Autorisation, MFA (Multi-Factor), JWT et attaques sur les identifiants.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 04: AUTH & IDENTITY -->
+        <section id="m4"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(0, 184, 148, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #00b894, #55efc4); border-color:#00b894;">04</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#00b894;">Auth & Identité</h2>
+                        <p class="sec-sub">Qui êtes-vous ? (AuthN) vs Que pouvez-vous faire ? (AuthZ)</p>
+                    </div>
+                </div>
+
+                <!-- INTRO M4 -->
+                <div class="intro-box"
+                    style="margin-bottom:30px; border-left:4px solid #00b894; background:rgba(0, 184, 148, 0.05); padding:20px;">
+                    <h4 style="color:#55efc4; margin-bottom:10px;">🆔 L'Identité est le Nouveau Périmètre</h4>
+                    <p style="font-size:0.95rem; line-height:1.6;">
+                        Avec le Cloud et le Télétravail, le "réseau d'entreprise" n'existe plus vraiment. La seule chose
+                        qui
+                        compte, c'est : <strong>Qui êtes-vous ?</strong>.
+                        Une identité compromise (mot de passe volé) contourne tous les pare-feux du monde.
+                    </p>
+                </div>
+
+                <!-- AUTH VS AUTHZ COMPARISON -->
+                <div class="grid2" style="margin-bottom:25px;">
+                    <div class="persona-card" style="border-color:#55efc4;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🆔</div>
+                        <h4 style="color:#55efc4;">Authentication (AuthN)</h4>
+                        <p style="font-size:0.9rem; color:#ccc;">Vérifier l'identité.</p>
+                        <div class="analogy-box" style="margin:10px 0; border-left-color:#55efc4; padding:10px;">
+                            <strong>🛂 Analogie : Le Passeport</strong>
+                            <p style="font-size:0.85rem">Prouve que je suis bien Mr Dupont.</p>
+                        </div>
+                    </div>
+                    <div class="persona-card" style="border-color:#00b894;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🎟️</div>
+                        <h4 style="color:#00b894;">Authorization (AuthZ)</h4>
+                        <p style="font-size:0.9rem; color:#ccc;">Vérifier les permissions.</p>
+                        <div class="analogy-box" style="margin:10px 0; border-left-color:#00b894; padding:10px;">
+                            <strong>💳 Analogie : Le Badge VIP</strong>
+                            <p style="font-size:0.85rem">Prouve que j'ai le droit d'entrer dans la salle Serveur.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MFA TRIAD -->
+                <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🛡️ MFA (Multi-Factor Auth)</h3>
+                <p style="font-size:0.9rem; margin-bottom:15px;">Pour sécuriser, il faut combiner au moins 2 facteurs
+                    différents.</p>
+                <div class="grid3">
+                    <div class="tool-card" style="background:rgba(0,0,0,0.3);">
+                        <div style="color:#ffeaa7; font-size:1.5rem;">🧠</div>
+                        <strong>Ce que je SAIS</strong>
+                        <p style="font-size:0.8rem; margin-top:5px; color:#aaa;">Mot de passe, PIN.</p>
+                    </div>
+                    <div class="tool-card" style="background:rgba(0,0,0,0.3);">
+                        <div style="color:#74b9ff; font-size:1.5rem;">📱</div>
+                        <strong>Ce que j'AI</strong>
+                        <p style="font-size:0.8rem; margin-top:5px; color:#aaa;">Smartphone (App), YubiKey, Carte SIM.
+                        </p>
+                    </div>
+                    <div class="tool-card" style="background:rgba(0,0,0,0.3);">
+                        <div style="color:#ff7675; font-size:1.5rem;">👁️</div>
+                        <strong>Ce que je SUIS</strong>
+                        <p style="font-size:0.8rem; margin-top:5px; color:#aaa;">Biométrie (FaceID, Empreinte).</p>
+                    </div>
+                </div>
+
+                <!-- JWT BREAKDOWN -->
+                <div class="code-block" style="margin-top:25px; border-left:3px solid #e17055;">
+                    <strong style="color:#e17055;">🎫 JWT (JSON Web Token) - Le standard moderne</strong>
+                    <p style="font-size:0.85rem; margin-bottom:10px;">Un token signé envoyé à chaque requête
+                        (Stateless).
+                    </p>
+                    <div
+                        style="font-family:monospace; word-break:break-all; background:#2d3436; padding:10px; border-radius:5px; font-size:0.8rem;">
+                        <span style="color:#ff7675">eyJhbGciOiJIUzI1NiJ9</span>.<span
+                            style="color:#a29bfe">eyJ1c2VyIjoiYWRtaW4iLCJleHAiOjE3MTExMTF9</span>.<span
+                            style="color:#55efc4">SecretSignatureHashes...</span>
+                    </div>
+                    <ul class="dense-list" style="margin-top:10px; font-size:0.8rem;">
+                        <li><span style="color:#ff7675">🔴 Header</span> : L'algo utilisé (HS256).</li>
+                        <li><span style="color:#a29bfe">🟣 Payload</span> : Les data (User ID, Expiration). ⚠️ Lisible
+                            par
+                            tous (Base64) ! Pas de secrets ici.</li>
+                        <li><span style="color:#55efc4">🟢 Signature</span> : Garantit que le token n'a pas été
+                            falsifié.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ATTACKS: CREDENTIAL STUFFING -->
+                <div class="tip" style="margin-top:20px; border-left-color:#d63031;">
+                    <strong style="color:#d63031;">⚠️ L'attaque n°1 : Credential Stuffing</strong>
+                    <p style="font-size:0.85rem;">Les hackers réutilisent des combos Email/Mots de passe volés ailleurs
+                        (LinkedIn, Adobe leaks) car les gens réutilisent leurs passwords.</p>
+                    <div style="margin-top:5px; font-weight:bold;">🛡️ Solution : Password Manager + MFA partout.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

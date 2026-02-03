@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sécurité Réseau | Mémo Cybersécurité</title>
+    <meta name="description" content="Les défenses réseau : Firewall, VPN, Segmentation, IDS/IPS et les attaques MITM.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 03: SÉCURITÉ RÉSEAU -->
+        <section id="m3"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(9, 132, 227, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #0984e3, #74b9ff); border-color:#0984e3;">03</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#0984e3;">Sécurité Réseau</h2>
+                        <p class="sec-sub">Firewall, VPN & Segmentation</p>
+                    </div>
+                </div>
+
+                <!-- INTRO M3 -->
+                <div class="intro-box"
+                    style="margin-bottom:30px; border-left:4px solid #0984e3; background:rgba(9, 132, 227, 0.05); padding:20px;">
+                    <h4 style="color:#74b9ff; margin-bottom:10px;">🌐 Le Champ de Bataille Réseau</h4>
+                    <p style="font-size:0.95rem; line-height:1.6;">
+                        Si vous ne contrôlez pas le trafic, vous avez déjà perdu. La sécurité réseau consiste à
+                        surveiller,
+                        filtrer et segmenter les flux pour que, même si un attaquant rentre, il ne puisse aller nulle
+                        part.
+                    </p>
+                </div>
+
+                <!-- FIREWALL SECTION -->
+                <div class="tip" style="border-left:4px solid #0984e3;">
+                    <h4 style="color:#0984e3; margin-bottom:10px;">🧱 Firewall (Le Portier)</h4>
+                    <p>C'est la première ligne de défense qui filtre le trafic (Port/IP).</p>
+                    <div class="grid2" style="margin-top:15px; gap:15px;">
+                        <div class="persona-card" style="border-color:#55efc4; background:rgba(85, 239, 196, 0.05);">
+                            <strong>🎟️ Stateless (Sans état)</strong>
+                            <p style="font-size:0.85rem; margin-top:5px;">Regarde juste le paquet individuel (ex: "Tu as
+                                un
+                                billet ?"). Rapide mais limité.</p>
+                        </div>
+                        <div class="persona-card" style="border-color:#00b894; background:rgba(0, 184, 148, 0.05);">
+                            <strong>🧠 Stateful (Avec état)</strong>
+                            <p style="font-size:0.85rem; margin-top:5px;">Se souvient de la connexion (ex: "Tu es déjà
+                                rentré et ressorti"). Plus intelligent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOOLS OF THE TRADE: NMAP & WIRESHARK -->
+                <div class="code-block" style="margin-top:25px; border-left:3px solid #0984e3;">
+                    <strong style="color:#74b9ff;">🛠️ Outils Essentiels (Cheatsheet)</strong>
+                    <div class="grid2" style="margin-top:10px; gap:20px;">
+                        <div>
+                            <span style="color:#badc58">Nmap</span> (Network Mapper)
+                            <pre style="background:#000; padding:10px; font-size:0.8rem; color:#fff;"># Scan rapide
+nmap -F 192.168.1.1
+
+# Scan complet (OS + Versions)
+nmap -A -p- 192.168.1.5</pre>
+                        </div>
+                        <div>
+                            <span style="color:#fdcb6e">Wireshark</span> (Sniffer)
+                            <p style="font-size:0.85rem; margin-top:5px;">Analyse les paquets en temps réel. Permet de
+                                voir
+                                tout ce qui passe en "clair" (HTTP, Telnet) et de diagnostiquer les problèmes réseau.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IDS / IPS GRID -->
+                <div class="grid2" style="margin-top:25px;">
+                    <div class="ref-card">
+                        <h4 style="margin-bottom:10px;">🚨 IDS / IPS</h4>
+                        <ul class="dense-list">
+                            <li><strong>IDS (Detection)</strong> : Comme une <span style="color:#fab1a0">Caméra de
+                                    surveillance</span>. Il regarde et alerte si ça bouge, mais n'intervient pas.</li>
+                            <li><strong>IPS (Prevention)</strong> : Comme un <span style="color:#ff7675">Vigile</span>.
+                                Il
+                                détecte l'attaque ET bloque le trafic malveillant.</li>
+                            <li><em>Outils : Snort, Suricata.</em></li>
+                        </ul>
+                    </div>
+
+                    <!-- VPN SECTION -->
+                    <div class="ref-card">
+                        <h4 style="margin-bottom:10px;">🔒 VPN (Tunnel Chiffré)</h4>
+                        <p style="font-size:0.9rem; margin-bottom:10px;">Crée un canal privé sur un réseau public
+                            (Internet).</p>
+                        <table class="cmd-table">
+                            <thead>
+                                <tr>
+                                    <th>Protocole</th>
+                                    <th>Avantage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>WireGuard</strong></td>
+                                    <td><span style="color:#badc58">Moderne</span>, ultra-rapide, code léger.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IPSec / IKEv2</strong></td>
+                                    <td><span style="color:#74b9ff">Robuste</span>, standard entreprise (Site-to-Site).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OpenVPN</strong></td>
+                                    <td>Flexible mais plus lent (Legacy).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SEGMENTATION & DMZ -->
+                <div class="tip" style="background:rgba(9, 132, 227, 0.1); border-left-color:#a29bfe; margin-top:25px;">
+                    <strong>🚧 Segmentation Réseau & DMZ</strong><br>
+                    <p style="font-size:0.9rem; margin-top:5px;">Ne jamais tout mettre dans le même panier (Flat
+                        Network).
+                    </p>
+                    <ul class="dense-list" style="margin-top:10px;">
+                        <li><strong>VLANs</strong> : Découper le réseau local (ex: VLAN RH, VLAN Dev, VLAN IoT). Si
+                            l'imprimante est hackée, le serveur RH est sauf.</li>
+                        <li><strong>DMZ (Demilitarized Zone)</strong> : Zone tampon pour les serveurs exposés au public
+                            (Web). Isolée du réseau interne (LAN) par des firewalls.</li>
+                    </ul>
+                </div>
+
+                <!-- NETWORK ATTACKS VISUALS -->
+                <h3 style="margin-top:30px; border-bottom:1px solid #333; padding-bottom:10px;">☠️ Attaques Réseau</h3>
+
+                <div class="grid2" style="margin-top:20px;">
+                    <!-- MITM -->
+                    <div class="attack-card" style="border-left:3px solid #fdcb6e;">
+                        <div class="attack-title">🕵️ Man-in-the-Middle (MITM)</div>
+                        <p style="font-size:0.9rem;">L'attaquant s'intercepte secrètement entre le Client et le Serveur.
+                        </p>
+
+                        <div class="net-flow"
+                            style="justify-content:center; margin-top:15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
+                            <span class="net-icon">🧑</span>
+                            <div class="net-arrow" style="color:#ff7675;">Données</div>
+                            <span class="net-icon" style="font-size:2rem;">🕵️</span>
+                            <div class="net-arrow" style="color:#ff7675;">Données</div>
+                            <span class="net-icon">☁️</span>
+                        </div>
+                    </div>
+
+                    <!-- DDOS -->
+                    <div class="attack-card" style="border-left:3px solid #d63031;">
+                        <div class="attack-title">🔥 Denial of Service (DDoS)</div>
+                        <p style="font-size:0.9rem;">Une armée de bots (Botnet) submerge le serveur.</p>
+
+                        <div
+                            style="display:flex; justify-content:center; align-items:center; gap:5px; margin-top:15px;">
+                            <div style="font-size:0.8rem; color:#ff7675;">🤖<br>🤖<br>🤖</div>
+                            <div class="net-arrow" style="color:#d63031; font-weight:bold;">TRAFIC!!! ➔</div>
+                            <span class="net-icon" style="filter:grayscale(1) contrast(3);">🔥☁️</span>
+                        </div>
+                        <div class="remediation-box" style="margin-top:10px;">
+                            <strong>🛡️ Fix:</strong> CDN (Cloudflare), Rate Limiting.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOS AND DON'TS GRID FOR MODULE 3 -->
+                <div class="do-dont-grid" style="margin-top:25px;">
+                    <div class="do-col">
+                        <h4 style="color:#55efc4; border-bottom:1px solid #55efc4; padding-bottom:5px;">✅ À FAIRE</h4>
+                        <ul class="dense-list">
+                            <li>Segmenter le réseau (VLANs).</li>
+                            <li>Fermer TOUS les ports non utilisés.</li>
+                            <li>Utiliser un VPN pour l'accès admin.</li>
+                        </ul>
+                    </div>
+                    <div class="dont-col">
+                        <h4 style="color:#ff7675; border-bottom:1px solid #ff7675; padding-bottom:5px;">❌ À ÉVITER</h4>
+                        <ul class="dense-list">
+                            <li>Exposer RDP/SSH direct sur internet.</li>
+                            <li>Utiliser Telnet ou FTP (Non chiffré).</li>
+                            <li>Trust "Internal Network" par défaut.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | Mémo Cybersécurité</title>
+    <meta name="description" content="Testez vos connaissances en cybersécurité avec ce quiz interactif.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- SECTION QUIZ -->
+        <section id="quiz-section" class="quiz-container" style="padding-top:120px; min-height:80vh;">
+            <div class="container">
+                <h2>Testez vos connaissances</h2>
+                <div id="quiz-app"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+
+    <!-- Quiz Engine and Initialization -->
+    <!-- Note: quiz_cyber.json is in parent dir, so path is '../quiz_cyber.json' relative to this file? 
+         No, JS fetches relative to HTML file location usually.
+         If file is in modules/quiz.html, '../quiz_cyber.json' is correct.
+    -->
+    <script type="module">
+        import '../../assets/js/quiz-engine.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if window.QuizEngine is available (loaded as module might need global assignment or import logic)
+            // The previous index.html used a module import but also a script src?
+            // Let's rely on the module import logic.
+            // But wait, the original code had:
+            // import '../../assets/js/quiz-engine.js';
+            // document.addEventListener(..., () => new window.QuizEngine(...));
+            // This implies quiz-engine.js assigns to window.
+
+            // Path adjustment for modules:
+            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: '../quiz_cyber.json', questionsPerSession: 10 });
+        });
+    </script>
+    <!-- Fallback if module fails or for non-module support if needed, but original used module -->
+</body>
+
+</html>

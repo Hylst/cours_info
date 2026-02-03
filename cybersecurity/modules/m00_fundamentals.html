@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fondamentaux | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="Les bases de la cybersécurité : CIA Triad, AAA Framework, Defense in Depth et vocabulaire essentiel.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 00: FONDAMENTAUX -->
+        <section id="m0"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(104, 160, 99, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num">00</div>
+                    <div>
+                        <h2 class="sec-title">Fondamentaux</h2>
+                        <p class="sec-sub">CIA, AAA & Defense in Depth</p>
+                    </div>
+                </div>
+
+                <!-- INTRO M0 -->
+                <div class="intro-box"
+                    style="margin-bottom:30px; border-left:4px solid #74b9ff; background:rgba(116, 185, 255, 0.05); padding:20px;">
+                    <h4 style="color:#74b9ff; margin-bottom:10px;">🛡️ La Sainte Trinité de la Sécurité</h4>
+                    <p style="font-size:0.95rem; line-height:1.6;">
+                        Avant de parler d'outils, il faut comprendre l'objectif. En cybersécurité, tout ce que l'on fait
+                        sert à protéger trois piliers : <strong>La Confidentialité, l'Intégrité et la
+                            Disponibilité</strong>. Si l'un de ces piliers s'effondre, le système est compromis.
+                    </p>
+                </div>
+
+                <!-- CIA TRIAD -->
+                <h3 style="color:#fff; margin-bottom:15px;">🔺 Le Triangle CIA</h3>
+                <div class="grid3">
+                    <div class="analogy-box" style="margin:0; border-left-color:#ff7675;">
+                        <h4>1. Confidentialité</h4>
+                        <p>Seuls les autorisés voient.<br><em>Ex: Chiffrement (AES), ACLs.</em></p>
+                    </div>
+                    <div class="analogy-box" style="margin:0; border-left-color:#74b9ff;">
+                        <h4>2. Intégrité</h4>
+                        <p>La donnée est authentique.<br><em>Ex: Hashing (SHA256), Signatures.</em></p>
+                    </div>
+                    <div class="analogy-box" style="margin:0; border-left-color:#fab1a0;">
+                        <h4>3. Disponibilité</h4>
+                        <p>Le service est accessible.<br><em>Ex: Redondance, Anti-DDoS.</em></p>
+                    </div>
+                </div>
+
+                <!-- AAA & DEFENSE IN DEPTH -->
+                <div class="grid2" style="margin-top:30px;">
+                    <div class="ref-card"
+                        style="border:1px solid var(--border); padding:20px; border-radius:8px; background:var(--card);">
+                        <h4 style="color:var(--primary-bright); margin-bottom:15px;">🔑 Framework AAA</h4>
+                        <ul class="dense-list">
+                            <li><strong>Authentication</strong> : Qui êtes-vous ? (Login)</li>
+                            <li><strong>Authorization</strong> : Que pouvez-vous faire ? (Permissions)</li>
+                            <li><strong>Accounting</strong> : Qu'avez-vous fait ? (Logs/Audit)</li>
+                        </ul>
+                    </div>
+                    <div class="grid2">
+                        <div class="analogy-box">
+                            <h4>👮 Defense in Depth (Oignon)</h4>
+                            <p>La sécurité n'est pas un mur unique, mais une série de couches.</p>
+                            <ul class="dense-list" style="margin-top:10px;">
+                                <li>1. Politiques & Formation (Humain)</li>
+                                <li>2. Sécurité physique (Gardien)</li>
+                                <li>3. Périmètre (Firewall)</li>
+                                <li>4. Réseau (Segmentation)</li>
+                                <li>5. Hôte (Antivirus/EDR)</li>
+                                <li>6. Application (Code review)</li>
+                                <li>7. Donnée (Chiffrement)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <!-- IMAGE: RED vs BLUE TEAM -->
+                            <div class="img-container-premium">
+                                <img src="../assets/img/red-blue.jpg" alt="Red Team vs Blue Team">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VOCABULARY -->
+                <div class="tip" style="margin-top:25px;">
+                    <strong>📚 Vocabulaire Essentiel (+15 termes) :</strong><br>
+                    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <!-- CONCEPTS -->
+                        <span class="vocab-term"
+                            data-def="Menace : Cause potentielle d'incident (Hacker, Virus, Panne).">Threat</span>
+                        <span class="vocab-term"
+                            data-def="Vulnérabilité : Faiblesse dans le système (Bug, Port ouvert).">Vulnerability</span>
+                        <span class="vocab-term"
+                            data-def="Risque : Probabilité qu'une Menace exploite une Vulnérabilité.">Risk</span>
+                        <span class="vocab-term"
+                            data-def="Exploit : Code ou méthode qui profite d'une vulnérabilité.">Exploit</span>
+                        <span class="vocab-term"
+                            data-def="CVE (Common Vulnerabilities and Exposures) : Liste publique des failles connues.">CVE</span>
+                        <span class="vocab-term"
+                            data-def="Zero-Day : Faille exploitée AVANT que le correctif n'existe.">Zero-Day</span>
+                        <!-- ATTAQUES -->
+                        <span class="vocab-term"
+                            data-def="Phishing : Email frauduleux pour voler des identifiants (Hameçonnage).">Phishing</span>
+                        <span class="vocab-term"
+                            data-def="Ransomware : Logiciel qui chiffre vos données et demande une rançon.">Ransomware</span>
+                        <span class="vocab-term"
+                            data-def="DDoS : Attaque par déni de service distribué (saturer un serveur).">DDoS</span>
+                        <span class="vocab-term"
+                            data-def="Botnet : Réseau d'appareils infectés (Zombies) contrôlés par un pirate.">Botnet</span>
+                        <span class="vocab-term"
+                            data-def="Man-in-the-Middle (MitM) : Interception des communications entre deux parties.">MitM</span>
+                        <span class="vocab-term"
+                            data-def="Brute Force : Essayer tous les mots de passe possibles.">Brute
+                            Force</span>
+                        <span class="vocab-term"
+                            data-def="Social Engineering : Manipuler les humains pour obtenir des infos.">Social
+                            Eng.</span>
+                        <!-- DÉFENSE -->
+                        <span class="vocab-term"
+                            data-def="Firewall (Pare-feu) : Filtre le trafic réseau entrant et sortant.">Firewall</span>
+                        <span class="vocab-term"
+                            data-def="VPN : Tunnel chiffré pour masquer l'IP et sécuriser la connexion.">VPN</span>
+                        <span class="vocab-term"
+                            data-def="2FA / MFA : Authentification à double facteur (Mot de passe + Code).">MFA</span>
+                        <span class="vocab-term"
+                            data-def="Hash : Empreinte numérique unique d'un fichier (ex: SHA-256).">Hash</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="La boîte à outils du Pentester : Nmap, Wireshark, Burp Suite, Metasploit et Hashcat.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 09: OUTILS -->
+        <section id="m9"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(162, 155, 254, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #6c5ce7, #a29bfe); border-color:#6c5ce7;">09</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#6c5ce7;">Boîte à Outils</h2>
+                        <p class="sec-sub">Red Team & Blue Team</p>
+                    </div>
+                </div>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th>Outil</th>
+                            <th>Type</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Nmap</strong></td>
+                            <td>Reconnaissance</td>
+                            <td>Scanner de ports, découverte OS/Services.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wireshark</strong></td>
+                            <td>Analyse</td>
+                            <td>Capture et analyse de paquets réseau (Pcap).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Burp Suite</strong></td>
+                            <td>Web Proxy</td>
+                            <td>Scanner vulnérabilités Web, modifier requêtes.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metasploit</strong></td>
+                            <td>Exploitation</td>
+                            <td>Framework de création/exécution d'exploits.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hashcat</strong></td>
+                            <td>Cracking</td>
+                            <td>Cassage de mots de passe (Hash) par GPU.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Splunk / ELK</strong></td>
+                            <td>SIEM</td>
+                            <td>Centralisation et analyse des Logs (Blue Team).</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip" style="margin-top:25px;">
+                    <strong>🎓 Se former (CTF) :</strong>
+                    TryHackMe (Débutant), HackTheBox (Avancé), Root-Me (Francophone). Pratiquez légalement dans des
+                    environnements isolés !
+                </div>
+
+                <!-- INTERACTIVE TERMINAL -->
+                <div style="margin-top:40px;">
+                    <h3 style="color:#27c93f;">🖥️ Simulateur de Terminal</h3>
+                    <p style="font-size:0.9rem; margin-bottom:10px; color:var(--muted);">Essayez les commandes : <span
+                            style="font-family:monospace; color:var(--kw);">help</span>, <span
+                            style="font-family:monospace; color:var(--kw);">scan</span>, <span
+                            style="font-family:monospace; color:var(--kw);">ping</span>, <span
+                            style="font-family:monospace; color:var(--kw);">whoami</span>.</p>
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot red"></div>
+                            <div class="terminal-dot yellow"></div>
+                            <div class="terminal-dot green"></div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-output" id="term-output"></div>
+                            <div class="prompt-line">
+                                <span class="prompt-symbol">➜ ~</span>
+                                <input type="text" id="cmd-input" autocomplete="off" spellcheck="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

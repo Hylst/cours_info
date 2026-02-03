@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptographie | Mémo Cybersécurité</title>
+    <meta name="description"
+        content="Les concepts clés de la cryptographie : Symétrique vs Asymétrique, Hashing, et fonctionnement du TLS Handshake.">
+    <meta name="theme-color" content="#303030">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz-style.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <!-- MODULE 02: CRYPTOGRAPHIE -->
+        <section id="m2"
+            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(162, 155, 254, 0.05) 0%, transparent 60%);">
+            <div class="container">
+                <div class="sec-header">
+                    <div class="sec-num"
+                        style="background:linear-gradient(135deg, #6c5ce7, #a29bfe); border-color:#6c5ce7;">02</div>
+                    <div>
+                        <h2 class="sec-title" style="color:#6c5ce7;">Cryptographie</h2>
+                        <p class="sec-sub">Confidentialité & Intégrité</p>
+                    </div>
+                </div>
+
+                <!-- INTRO M2 -->
+                <div class="intro-box"
+                    style="margin-bottom:30px; border-left:4px solid #6c5ce7; background:rgba(108, 92, 231, 0.05); padding:20px;">
+                    <h4 style="color:#a29bfe; margin-bottom:10px;">🔐 Mathématiques vs Secrets</h4>
+                    <p style="font-size:0.95rem; line-height:1.6;">
+                        Internet est un réseau public où tout circule potentiellement en clair. La cryptographie est la
+                        seule science qui permet de transformer un message lisible en bruit inintelligible.
+                        Ce n'est pas de la magie, c'est des <strong>Maths</strong>.
+                    </p>
+                </div>
+
+                <!-- CONTEXT: WHY CRYPTO? -->
+                <div class="tip" style="background:rgba(108, 92, 231, 0.1); border-left-color:#6c5ce7;">
+                    <strong>💡 Pourquoi chiffrer ?</strong><br>
+                    Par défaut, Internet est un réseau public. Sans chiffrement, vos données voyagent en "clair" (texte
+                    lisible).
+                    On distingue deux états critiques :
+                    <ul class="dense-list" style="margin-top:5px; color:#dcdcdc;">
+                        <li>💾 <strong>Data at Rest</strong> : Données stockées (Disque dur, BDD). <em>Protection:
+                                Chiffrement Disque (BitLocker).</em></li>
+                        <li>📡 <strong>Data in Transit</strong> : Données qui voyagent (Réseau). <em>Protection: TLS
+                                (HTTPS).</em></li>
+                    </ul>
+                </div>
+
+                <!-- METHOD COMPARISON GRID -->
+                <div class="grid3" style="margin-top:25px;">
+
+                    <!-- SYMMETRIC -->
+                    <div class="crypto-widget" style="border-top:3px solid #74b9ff;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🔑</div>
+                        <h4 style="color:#74b9ff;">Symétrique</h4>
+                        <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Une seule clé pour fermer et
+                            ouvrir.
+                        </p>
+
+                        <div class="analogy-box"
+                            style="margin:10px 0; border-left-color:#74b9ff; padding:10px; background:rgba(116, 185, 255, 0.05);">
+                            <strong>🏠 Analogie : La Clé de Maison</strong>
+                            <p style="font-size:0.85rem">Je vous donne une copie de ma clé. Rapide, mais risqué si
+                                copié.
+                            </p>
+                        </div>
+
+                        <!-- CAESAR WIDGET -->
+                        <div style="margin-top:15px; border-top:1px dashed rgba(255,255,255,0.2); padding-top:10px;">
+                            <strong style="font-size:0.8rem; color:#74b9ff;">📜 Code de César (Le concept de
+                                Clé)</strong>
+                            <div style="margin:10px 0;">
+                                <input type="text" id="caesarInput" placeholder="HELLO" maxlength="10"
+                                    style="width:100%; border:none; padding:5px; border-radius:4px; margin-bottom:5px; text-transform:uppercase; font-family:monospace; text-align:center;">
+                                <div style="display:flex; align-items:center; gap:10px; font-size:0.8rem; color:#ccc;">
+                                    <span>Clé (Shift) :</span>
+                                    <input type="range" id="caesarShift" min="1" max="25" value="3"
+                                        style="flex-grow:1;">
+                                    <span id="shiftValue" style="font-weight:bold; color:#74b9ff;">3</span>
+                                </div>
+                            </div>
+                            <div id="caesarOutput" class="caesar-display" style="padding:5px; font-size:1rem;">KHOOR
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ASYMMETRIC -->
+                    <div class="crypto-widget" style="border-top:3px solid #a29bfe;">
+                        <div style="font-size:2rem; margin-bottom:10px;">📫</div>
+                        <h4 style="color:#a29bfe;">Asymétrique</h4>
+                        <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Une clé Publique (cadenas) et une
+                            Privée (clé).</p>
+
+                        <div class="analogy-box"
+                            style="margin:10px 0; border-left-color:#a29bfe; padding:10px; background:rgba(162, 155, 254, 0.05);">
+                            <strong>📮 Analogie : La Boîte aux Lettres</strong>
+                            <p style="font-size:0.85rem">Utilisé pour échanger la clé symétrique en toute sécurité
+                                (Handshake).</p>
+                        </div>
+
+                        <ul class="dense-list" style="font-size:0.85rem;">
+                            <li>🛡️ <strong>Sécurisé</strong> (Échange de clés).</li>
+                            <li>⚙️ <strong>Algos</strong> : <span class="vocab-term"
+                                    data-def="Standard historique (Factorisation).">RSA</span>, <span class="vocab-term"
+                                    data-def="Plus rapide et léger (Elliptic Curve).">ECC</span>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- HASHING -->
+                    <div class="crypto-widget" style="border-top:3px solid #fab1a0;">
+                        <div style="font-size:2rem; margin-bottom:10px;">🧬</div>
+                        <h4 style="color:#fab1a0;">Hashing</h4>
+                        <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Empreinte unique irréversible.</p>
+
+                        <div class="analogy-box"
+                            style="margin:10px 0; border-left-color:#fab1a0; padding:10px; background:rgba(250, 177, 160, 0.05);">
+                            <strong>🥤 Analogie : Le Smoothie</strong>
+                            <p style="font-size:0.85rem">Impossible de recréer les fruits à partir du jus (One-way
+                                function).</p>
+                        </div>
+
+                        <!-- HASH WIDGET -->
+                        <div style="margin-top:15px; border-top:1px dashed rgba(255,255,255,0.2); padding-top:10px;">
+                            <strong style="color:#fab1a0; font-size:0.8rem;">🧪 Testez le SHA-256 (Effet Avalanche)
+                                :</strong>
+                            <input type="text" id="hashInput" placeholder="Tapez un mot..."
+                                style="width:100%; border:none; padding:5px; border-radius:4px; margin:5px 0; font-family:monospace;">
+                            <input type="text" value="Changer une lettre change tout !" disabled
+                                style="width:100%; background:transparent; border:none; color:#636e72; font-size:0.7rem; font-style:italic;">
+                            <div id="hashOutput" class="hash-output-fancy">Le hash apparaîtra ici...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VOCAB & CONCEPTS -->
+                <div class="grid2" style="margin-top:25px;">
+                    <div class="ref-card" style="background:#2d3436; border:1px solid #636e72;">
+                        <h4 style="color:#dfe6e9; margin-bottom:10px;">🧂 Salt & Pepper (Mots de passe)</h4>
+                        <p style="font-size:0.9rem; margin-bottom:10px;">Pour contrer les <em>Rainbow Tables</em>
+                            (dictionnaires de hash pré-calculés).</p>
+                        <ul class="dense-list">
+                            <li><strong>Salt</strong> : Donnée aléatoire ajoutée au password AVANT le hashage. Stocké en
+                                BDD.</li>
+                            <li><strong>Pepper</strong> : Donnée secrète ajoutée au password. Stockée sur le serveur
+                                (pas en
+                                BDD).</li>
+                        </ul>
+                        <div class="code" style="margin-top:10px; font-size:0.8rem;">
+                            Hash = SHA256(Password + Salt + Pepper)
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- IMAGE: ENCRYPTION CONCEPT -->
+                        <div class="img-container-premium">
+                            <img src="../assets/img/crypto-lock.jpg" alt="Encryption Concept">
+                            <div class="img-caption">La sécurité repose sur la mathématique, pas sur le secret de
+                                l'algorithme (Principe de Kerckhoffs).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TLS HANDSHAKE VISUAL -->
+                <h3 style="color:#fff; margin-top:30px; margin-bottom:15px;">🤝 TLS Handshake (Comment HTTPS fonctionne
+                    ?)
+                </h3>
+                <p style="font-size:0.9rem; margin-bottom:15px;">Le meilleur des deux mondes : Asymétrique pour échanger
+                    la
+                    clé, puis Symétrique pour la vitesse.</p>
+
+                <div class="crypto-flow"> <!-- New CSS Class potential, using inline for safe-run -->
+                    <div class="net-flow" style="justify-content:center; flex-wrap:wrap; gap:10px;">
+                        <div class="net-node"><span class="net-icon">💻</span>Client</div>
+                        <div class="net-arrow">1. Hello + Algo ?</div>
+                        <div class="net-node"><span class="net-icon">☁️</span>Serveur</div>
+                        <div class="net-arrow">2. Voici ma Clé Publique (Certificat)</div>
+                        <div class="net-node"><span class="net-icon">💻</span>Client</div>
+                        <div class="net-arrow">3. Je génère une Clé Session, chiffrée avec ta Publique</div>
+                        <div class="net-node"><span class="net-icon">☁️</span>Serveur</div>
+                        <div class="net-arrow">4. Je déchiffre avec ma Privée. On a la même clé !</div>
+                    </div>
+                    <div
+                        style="width:100%; text-align:center; padding:10px; border:1px dashed #55efc4; border-radius:8px; color:#55efc4; margin-top:10px;">
+                        🔒 Tunnel Chiffré (AES) activé
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+    <script src="../assets/js/layout.js"></script>
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+        // Specific Script for Crypto Module (Caesar Cipher)
+        const caesarInput = document.getElementById('caesarInput');
+        const caesarShift = document.getElementById('caesarShift');
+        const shiftValue = document.getElementById('shiftValue');
+        const caesarOutput = document.getElementById('caesarOutput');
+
+        function caesarCipher(str, shift) {
+            return str.replace(/[A-Z]/g, (char) => {
+                const code = char.charCodeAt(0);
+                return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+            });
+        }
+
+        function updateCaesar() {
+            if (!caesarInput) return;
+            const shift = parseInt(caesarShift.value);
+            shiftValue.textContent = shift;
+            caesarOutput.textContent = caesarCipher(caesarInput.value.toUpperCase().replace(/[^A-Z]/g, ''), shift);
+        }
+
+        if (caesarInput) {
+            caesarInput.addEventListener('input', updateCaesar);
+            caesarShift.addEventListener('input', updateCaesar);
+        }
+    </script>
+</body>
+
+</html>

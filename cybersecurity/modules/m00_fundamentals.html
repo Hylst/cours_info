@@ -20,8 +20,7 @@
 
     <main>
         <!-- MODULE 00: FONDAMENTAUX -->
-        <section id="m0"
-            style="padding-top:120px; padding-bottom:60px; min-height:80vh; background: radial-gradient(circle at center, rgba(104, 160, 99, 0.05) 0%, transparent 60%);">
+        <section id="m0" class="module-section">
             <div class="container">
                 <div class="sec-header">
                     <div class="sec-num">00</div>
@@ -32,10 +31,9 @@
                 </div>
 
                 <!-- INTRO M0 -->
-                <div class="intro-box"
-                    style="margin-bottom:30px; border-left:4px solid #74b9ff; background:rgba(116, 185, 255, 0.05); padding:20px;">
-                    <h4 style="color:#74b9ff; margin-bottom:10px;">🛡️ La Sainte Trinité de la Sécurité</h4>
-                    <p style="font-size:0.95rem; line-height:1.6;">
+                <div class="intro-box border-left-blue bg-blue-soft">
+                    <h4 class="text-blue">🛡️ La Sainte Trinité de la Sécurité</h4>
+                    <p>
                         Avant de parler d'outils, il faut comprendre l'objectif. En cybersécurité, tout ce que l'on fait
                         sert à protéger trois piliers : <strong>La Confidentialité, l'Intégrité et la
                             Disponibilité</strong>. Si l'un de ces piliers s'effondre, le système est compromis.
@@ -43,38 +41,37 @@
                 </div>
 
                 <!-- CIA TRIAD -->
-                <h3 style="color:#fff; margin-bottom:15px;">🔺 Le Triangle CIA</h3>
+                <h3 class="section-subtitle">🔺 Le Triangle CIA</h3>
                 <div class="grid3">
-                    <div class="analogy-box" style="margin:0; border-left-color:#ff7675;">
+                    <div class="analogy-box border-left-red">
                         <h4>1. Confidentialité</h4>
                         <p>Seuls les autorisés voient.<br><em>Ex: Chiffrement (AES), ACLs.</em></p>
                     </div>
-                    <div class="analogy-box" style="margin:0; border-left-color:#74b9ff;">
+                    <div class="analogy-box border-left-blue">
                         <h4>2. Intégrité</h4>
                         <p>La donnée est authentique.<br><em>Ex: Hashing (SHA256), Signatures.</em></p>
                     </div>
-                    <div class="analogy-box" style="margin:0; border-left-color:#fab1a0;">
+                    <div class="analogy-box border-left-orange">
                         <h4>3. Disponibilité</h4>
                         <p>Le service est accessible.<br><em>Ex: Redondance, Anti-DDoS.</em></p>
                     </div>
                 </div>
 
                 <!-- AAA & DEFENSE IN DEPTH -->
-                <div class="grid2" style="margin-top:30px;">
-                    <div class="ref-card"
-                        style="border:1px solid var(--border); padding:20px; border-radius:8px; background:var(--card);">
-                        <h4 style="color:var(--primary-bright); margin-bottom:15px;">🔑 Framework AAA</h4>
+                <div class="grid2 mt-30">
+                    <div class="ref-card">
+                        <h4 class="text-primary mb-15">🔑 Framework AAA</h4>
                         <ul class="dense-list">
                             <li><strong>Authentication</strong> : Qui êtes-vous ? (Login)</li>
                             <li><strong>Authorization</strong> : Que pouvez-vous faire ? (Permissions)</li>
                             <li><strong>Accounting</strong> : Qu'avez-vous fait ? (Logs/Audit)</li>
                         </ul>
                     </div>
-                    <div class="grid2">
+                    <div>
                         <div class="analogy-box">
                             <h4>👮 Defense in Depth (Oignon)</h4>
                             <p>La sécurité n'est pas un mur unique, mais une série de couches.</p>
-                            <ul class="dense-list" style="margin-top:10px;">
+                            <ul class="dense-list mt-10">
                                 <li>1. Politiques & Formation (Humain)</li>
                                 <li>2. Sécurité physique (Gardien)</li>
                                 <li>3. Périmètre (Firewall)</li>
@@ -94,9 +91,9 @@
                 </div>
 
                 <!-- VOCABULARY -->
-                <div class="tip" style="margin-top:25px;">
+                <div class="tip mt-25">
                     <strong>📚 Vocabulaire Essentiel (+15 termes) :</strong><br>
-                    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                    <div class="vocab-grid">
                         <!-- CONCEPTS -->
                         <span class="vocab-term"
                             data-def="Menace : Cause potentielle d'incident (Hacker, Virus, Panne).">Threat</span>

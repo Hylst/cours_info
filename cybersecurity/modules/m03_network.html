@@ -4,189 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sécurité Réseau | Mémo Cybersécurité</title>
-    <meta name="description" content="Les défenses réseau : Firewall, VPN, Segmentation, IDS/IPS et les attaques MITM.">
+    <title>Réseau & Sécurité | Mémo Cybersécurité</title>
+    <meta name="description" content="Les bases de la sécurité réseau : Modèle OSI, Firewall, VPN et Handshake TCP.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- MODULE 03: SÉCURITÉ RÉSEAU -->
+        <!-- MODULE 03: NETWORK -->
         <section id="m3" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-blue-soft text-blue border-blue">03</div>
+                    <div class="sec-num bg-blue text-white border-blue">03</div>
                     <div>
-                        <h2 class="sec-title text-blue">Sécurité Réseau</h2>
-                        <p class="sec-sub">Firewall, VPN & Segmentation</p>
+                        <h2 class="sec-title gradient-text-primary">Réseau</h2>
+                        <p class="sec-sub">TCP/IP, le langage d'Internet.</p>
                     </div>
                 </div>
 
-                <!-- INTRO M3 -->
-                <div class="intro-box border-left-blue bg-blue-soft">
-                    <h4 class="text-blue-dark">🌐 Le Champ de Bataille Réseau</h4>
-                    <p>
-                        Si vous ne contrôlez pas le trafic, vous avez déjà perdu. La sécurité réseau consiste à
-                        surveiller,
-                        filtrer et segmenter les flux pour que, même si un attaquant rentre, il ne puisse aller nulle
-                        part.
-                    </p>
-                </div>
-
-                <!-- FIREWALL SECTION -->
-                <div class="tip border-left-blue">
-                    <h4 class="text-blue mb-10">🧱 Firewall (Le Portier)</h4>
-                    <p>C'est la première ligne de défense qui filtre le trafic (Port/IP).</p>
-                    <div class="grid2 mt-15 gap-15">
-                        <div class="persona-card border-green bg-green-soft">
-                            <strong>🎟️ Stateless (Sans état)</strong>
-                            <p class="fs-0-85 mt-5">Regarde juste le paquet individuel (ex: "Tu as un
-                                billet ?"). Rapide mais limité.</p>
-                        </div>
-                        <div class="persona-card border-green-dark bg-green-soft">
-                            <strong>🧠 Stateful (Avec état)</strong>
-                            <p class="fs-0-85 mt-5">Se souvient de la connexion (ex: "Tu es déjà
-                                rentré et ressorti"). Plus intelligent.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TOOLS OF THE TRADE: NMAP & WIRESHARK -->
-                <div class="code-block mt-25 border-left-blue">
-                    <strong class="text-blue">🛠️ Outils Essentiels (Cheatsheet)</strong>
-                    <div class="grid2 mt-10 gap-20">
-                        <div>
-                            <span class="text-green">Nmap</span> (Network Mapper)
-                            <pre class="bg-black p-10 fs-0-8 text-white"># Scan rapide
-nmap -F 192.168.1.1
-
-# Scan complet (OS + Versions)
-nmap -A -p- 192.168.1.5</pre>
-                        </div>
-                        <div>
-                            <span class="text-orange">Wireshark</span> (Sniffer)
-                            <p class="fs-0-85 mt-5">Analyse les paquets en temps réel. Permet de voir
-                                tout ce qui passe en "clair" (HTTP, Telnet) et de diagnostiquer les problèmes réseau.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IDS / IPS GRID -->
-                <div class="grid2 mt-25">
-                    <div class="ref-card">
-                        <h4 class="mb-10">🚨 IDS / IPS</h4>
-                        <ul class="dense-list">
-                            <li><strong>IDS (Detection)</strong> : Comme une <span class="text-orange">Caméra de
-                                    surveillance</span>. Il regarde et alerte si ça bouge, mais n'intervient pas.</li>
-                            <li><strong>IPS (Prevention)</strong> : Comme un <span class="text-red">Vigile</span>. Il
-                                détecte l'attaque ET bloque le trafic malveillant.</li>
-                            <li><em>Outils : Snort, Suricata.</em></li>
-                        </ul>
-                    </div>
-
-                    <!-- VPN SECTION -->
-                    <div class="ref-card">
-                        <h4 class="mb-10">🔒 VPN (Tunnel Chiffré)</h4>
-                        <p class="fs-0-9 mb-10">Crée un canal privé sur un réseau public
-                            (Internet).</p>
-                        <table class="cmd-table">
-                            <thead>
-                                <tr>
-                                    <th>Protocole</th>
-                                    <th>Avantage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>WireGuard</strong></td>
-                                    <td><span class="text-green">Moderne</span>, ultra-rapide, code léger.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>IPSec / IKEv2</strong></td>
-                                    <td><span class="text-blue">Robuste</span>, standard entreprise (Site-to-Site).</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>OpenVPN</strong></td>
-                                    <td>Flexible mais plus lent (Legacy).</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- SEGMENTATION & DMZ -->
-                <div class="tip bg-blue-soft border-left-purple mt-25">
-                    <strong>🚧 Segmentation Réseau & DMZ</strong><br>
-                    <p class="fs-0-9 mt-5">Ne jamais tout mettre dans le même panier (Flat Network).
-                    </p>
-                    <ul class="dense-list mt-10">
-                        <li><strong>VLANs</strong> : Découper le réseau local (ex: VLAN RH, VLAN Dev, VLAN IoT). Si
-                            l'imprimante est hackée, le serveur RH est sauf.</li>
-                        <li><strong>DMZ (Demilitarized Zone)</strong> : Zone tampon pour les serveurs exposés au public
-                            (Web). Isolée du réseau interne (LAN) par des firewalls.</li>
+                <!-- TL;DR -->
+                <div class="tip border-left-blue glass-panel mb-40">
+                    <strong class="text-blue">📌 En Bref</strong>
+                    <ul class="dense-list mt-10 fs-0-9">
+                        <li><strong>Modèle OSI :</strong> Le puzzle en 7 couches. On attaque souvent la couche 7 (App)
+                            ou 2/3 (Réseau).</li>
+                        <li><strong>Firewall :</strong> Le portier. Il filtre qui entre et sort (Allow/Deny).</li>
+                        <li><strong>VPN :</strong> Un tunnel chiffré dans le chaos d'Internet.</li>
                     </ul>
                 </div>
 
-                <!-- NETWORK ATTACKS VISUALS -->
-                <h3 class="section-subtitle mt-30">☠️ Attaques Réseau</h3>
+                <!-- TCP HANDSHAKE VISUAL -->
+                <h3 class="section-subtitle">🤝 Le Three-Way Handshake (TCP)</h3>
+                <p class="text-muted mb-20">Avant de parler, les machines se disent bonjour. Comme un coup de fil.</p>
 
-                <div class="grid2 mt-20">
-                    <!-- MITM -->
-                    <div class="attack-card border-left-orange">
-                        <div class="attack-title">🕵️ Man-in-the-Middle (MITM)</div>
-                        <p class="fs-0-9">L'attaquant s'intercepte secrètement entre le Client et le Serveur.</p>
+                <div class="glass-panel p-20 mb-40">
+                    <div class="net-flow justify-center">
+                        <div class="net-node border-blue">
+                            <span class="fs-1-5">💻</span>
+                            <div class="net-label fs-0-9">Client</div>
+                        </div>
 
-                        <div class="net-flow justify-center mt-15 p-10 rounded bg-dark-soft">
-                            <span class="net-icon">🧑</span>
-                            <div class="net-arrow text-red">Données</div>
-                            <span class="net-icon fs-2">🕵️</span>
-                            <div class="net-arrow text-red">Données</div>
-                            <span class="net-icon">☁️</span>
+                        <div class="flex-col text-center mx-20">
+                            <div class="fs-0-8 text-blue arrow-down">SYN →</div>
+                            <div class="fs-0-8 text-green arrow-up">← SYN-ACK</div>
+                            <div class="fs-0-8 text-blue arrow-down">ACK →</div>
+                        </div>
+
+                        <div class="net-node border-green">
+                            <span class="fs-1-5">🖥️</span>
+                            <div class="net-label fs-0-9">Serveur</div>
                         </div>
                     </div>
+                    <div class="text-center mt-10 fs-0-8 text-muted">
+                        <em>"Je veux te parler" (SYN) — "Ok, je t'écoute" (SYN-ACK) — "C'est parti !" (ACK)</em>
+                    </div>
+                </div>
 
-                    <!-- DDOS -->
-                    <div class="attack-card border-left-red">
-                        <div class="attack-title">🔥 Denial of Service (DDoS)</div>
-                        <p class="fs-0-9">Une armée de bots (Botnet) submerge le serveur.</p>
-
-                        <div class="flex-center gap-5 mt-15">
-                            <div class="text-red fs-0-8">🤖<br>🤖<br>🤖</div>
-                            <div class="net-arrow text-red-dark bold">TRAFIC!!! ➔</div>
-                            <span class="net-icon filter-contrast">🔥☁️</span>
+                <!-- ATTACKS GRID -->
+                <div class="grid2 gap-20 mb-40">
+                    <!-- MITM -->
+                    <div class="attack-card border-top-red">
+                        <h4 class="text-red">🕵️ Man-in-the-Middle (MITM)</h4>
+                        <p class="fs-0-9">
+                            L'attaquant s'interpose entre vous et le routeur. Il écoute tout.
+                        </p>
+                        <hr class="separator opacity-05">
+                        <div class="fs-0-85">
+                            <span class="text-white">Défense :</span> HTTPS (TLS), VPN.
                         </div>
-                        <div class="remediation-box mt-10">
-                            <strong>🛡️ Fix:</strong> CDN (Cloudflare), Rate Limiting.
+                    </div>
+                    <!-- DOS -->
+                    <div class="attack-card border-top-orange">
+                        <h4 class="text-orange">🔥 Denial of Service (DoS)</h4>
+                        <p class="fs-0-9">
+                            Inonder le serveur de fausses demandes (SYN Flood) pour qu'il sature.
+                        </p>
+                        <hr class="separator opacity-05">
+                        <div class="fs-0-85">
+                            <span class="text-white">Défense :</span> Rate Limiting, CDN (Cloudflare).
                         </div>
                     </div>
                 </div>
 
-                <!-- DOS AND DON'TS GRID FOR MODULE 3 -->
-                <div class="do-dont-grid mt-25">
-                    <div class="do-col">
-                        <h4 class="text-green border-bottom-green pb-5">✅ À FAIRE</h4>
-                        <ul class="dense-list">
-                            <li>Segmenter le réseau (VLANs).</li>
-                            <li>Fermer TOUS les ports non utilisés.</li>
-                            <li>Utiliser un VPN pour l'accès admin.</li>
-                        </ul>
+                <!-- VPN VISUAL -->
+                <h3 class="section-subtitle">🚇 Le Tunnel VPN</h3>
+                <div class="glass-panel p-20 bg-dark-soft">
+                    <div class="flex-between align-center">
+                        <div class="text-center">
+                            <span class="fs-2 block">🏠</span>
+                            <small>Maison</small>
+                        </div>
+
+                        <div class="relative w-100 mx-20">
+                            <!-- The Public Internet -->
+                            <div class="h-10 bg-gray op-20 br-5 w-100 abs-center"></div>
+                            <!-- The VPN Tunnel -->
+                            <div class="h-20 bg-green-soft border-green br-10 w-100 flex-center text-green fs-0-8">
+                                🔒 TUNNEL CHIFFRÉ
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <span class="fs-2 block">🏢</span>
+                            <small>Bureau</small>
+                        </div>
                     </div>
-                    <div class="dont-col">
-                        <h4 class="text-red border-bottom-red pb-5">❌ À ÉVITER</h4>
-                        <ul class="dense-list">
-                            <li>Exposer RDP/SSH direct sur internet.</li>
-                            <li>Utiliser Telnet ou FTP (Non chiffré).</li>
-                            <li>Trust "Internal Network" par défaut.</li>
-                        </ul>
-                    </div>
+                    <p class="mt-15 fs-0-9 text-muted text-center">
+                        Même si le FAI ou un Hacker écoute le câble, ils ne voient que du bruit chiffré.
+                    </p>
+                </div>
+
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m02_cryptography.html" class="btn-secondary">← Cryptographie</a>
+                    <a href="m04_auth_identity.html" class="btn-primary">Suivant : Auth →</a>
                 </div>
             </div>
         </section>

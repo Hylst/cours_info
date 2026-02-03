@@ -42,13 +42,12 @@ function initNav(rootPath) {
     const logoLink = document.querySelector('.logo');
     const currentFile = window.location.pathname.split('/').pop() || 'index.html';
 
-    // A. Fix Links
-    const fixLink = (el) => {
-        const originalHref = el.getAttribute('href');
-        // If we are in modules/ and link is NOT absolute, prepend ../
-        // But nav.html links are like "modules/m00.html" or "index.html"
-
+    // A. Fix Links & Active State
+    navLinks.forEach(link => {
+        const originalHref = link.getAttribute('href');
         let newHref = originalHref;
+
+        // 1. Path Correction
         if (rootPath === '../') {
             // We are in modules/
             if (originalHref === 'index.html') {
@@ -57,37 +56,43 @@ function initNav(rootPath) {
                 // modules/m00.html -> m00.html
                 newHref = originalHref.replace('modules/', '');
             }
-        } else {
-            // We are in root
-            // Links are already correct (modules/..., index.html)
         }
-        el.setAttribute('href', newHref);
+        link.setAttribute('href', newHref);
 
-        // B. Active State
-        if (newHref === currentFile || (currentFile === '' && newHref === 'index.html') || (rootPath === '../' && newHref === currentFile)) {
-            el.classList.add('active');
+        // 2. Active State Logic
+        const linkFilename = newHref.split('/').pop();
+
+        // Check exact match
+        if (linkFilename === currentFile) {
+            link.classList.add('active');
         }
-    };
+        // Special case: Landing page (root)
+        else if (currentFile === '' && linkFilename === 'index.html') {
+            link.classList.add('active');
+        }
+        // Special case: When in a module, highlight the "Home" if needed? No.
 
-    navLinks.forEach(fixLink);
-    if (logoLink) fixLink(logoLink);
+    });
 
+    if (logoLink && rootPath === '../') {
+        logoLink.setAttribute('href', '../index.html');
+    }
 
     // C. Hamburger Logic
     const hamburger = document.querySelector('.hamburger');
-    const navWrapper = document.querySelector('.nav-wrapper');
+    const navMenu = document.querySelector('.nav-menu'); // Changed selector from .nav-wrapper to .nav-menu
 
-    if (hamburger && navWrapper) {
+    if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            navWrapper.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
         // Close on link click
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
-                navWrapper.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
     }

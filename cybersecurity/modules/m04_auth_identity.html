@@ -4,112 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auth & Identité | Mémo Cybersécurité</title>
+    <title>Authentification & Identité | Mémo Cybersécurité</title>
     <meta name="description"
-        content="Gestion de l'identité numérique : Authentification vs Autorisation, MFA (Multi-Factor), JWT et attaques sur les identifiants.">
+        content="Gestion des identités : MFA, JWT, OAuth2 et les bonnes pratiques de mots de passe.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- MODULE 04: AUTH & IDENTITY -->
+        <!-- MODULE 04: AUTH -->
         <section id="m4" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-green-soft text-green border-green">04</div>
+                    <div class="sec-num bg-green text-white border-green">04</div>
                     <div>
-                        <h2 class="sec-title text-green-dark">Auth & Identité</h2>
-                        <p class="sec-sub">Qui êtes-vous ? (AuthN) vs Que pouvez-vous faire ? (AuthZ)</p>
+                        <h2 class="sec-title gradient-text-primary">Auth & Identity</h2>
+                        <p class="sec-sub">Je suis qui je prétends être.</p>
                     </div>
                 </div>
 
-                <!-- INTRO M4 -->
-                <div class="intro-box border-left-green bg-green-soft">
-                    <h4 class="text-green">🆔 L'Identité est le Nouveau Périmètre</h4>
-                    <p>
-                        Avec le Cloud et le Télétravail, le "réseau d'entreprise" n'existe plus vraiment. La seule chose
-                        qui
-                        compte, c'est : <strong>Qui êtes-vous ?</strong>.
-                        Une identité compromise (mot de passe volé) contourne tous les pare-feux du monde.
-                    </p>
-                </div>
-
-                <!-- AUTH VS AUTHZ COMPARISON -->
-                <div class="grid2 mb-25">
-                    <div class="persona-card border-green">
-                        <div class="icon-lg mb-10">🆔</div>
-                        <h4 class="text-green">Authentication (AuthN)</h4>
-                        <p class="fs-0-9 text-muted">Vérifier l'identité.</p>
-                        <div class="analogy-box my-10 border-left-green p-10">
-                            <strong>🛂 Analogie : Le Passeport</strong>
-                            <p class="fs-0-85">Prouve que je suis bien Mr Dupont.</p>
-                        </div>
-                    </div>
-                    <div class="persona-card border-green-dark">
-                        <div class="icon-lg mb-10">🎟️</div>
-                        <h4 class="text-green-dark">Authorization (AuthZ)</h4>
-                        <p class="fs-0-9 text-muted">Vérifier les permissions.</p>
-                        <div class="analogy-box my-10 border-left-green-dark p-10">
-                            <strong>💳 Analogie : Le Badge VIP</strong>
-                            <p class="fs-0-85">Prouve que j'ai le droit d'entrer dans la salle Serveur.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MFA TRIAD -->
-                <h3 class="section-subtitle mt-30">🛡️ MFA (Multi-Factor Auth)</h3>
-                <p class="fs-0-9 mb-15">Pour sécuriser, il faut combiner au moins 2 facteurs
-                    différents.</p>
-                <div class="grid3">
-                    <div class="tool-card bg-dark-soft">
-                        <div class="text-yellow fs-1-5">🧠</div>
-                        <strong>Ce que je SAIS</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Mot de passe, PIN.</p>
-                    </div>
-                    <div class="tool-card bg-dark-soft">
-                        <div class="text-blue fs-1-5">📱</div>
-                        <strong>Ce que j'AI</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Smartphone (App), YubiKey, Carte SIM.</p>
-                    </div>
-                    <div class="tool-card bg-dark-soft">
-                        <div class="text-red fs-1-5">👁️</div>
-                        <strong>Ce que je SUIS</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Biométrie (FaceID, Empreinte).</p>
-                    </div>
-                </div>
-
-                <!-- JWT BREAKDOWN -->
-                <div class="code-block mt-25 border-left-orange">
-                    <strong class="text-orange">🎫 JWT (JSON Web Token) - Le standard moderne</strong>
-                    <p class="fs-0-85 mb-10">Un token signé envoyé à chaque requête (Stateless).
-                    </p>
-                    <div class="monospace word-break bg-dark p-10 rounded fs-0-8">
-                        <span class="text-red">eyJhbGciOiJIUzI1NiJ9</span>.<span
-                            class="text-purple">eyJ1c2VyIjoiYWRtaW4iLCJleHAiOjE3MTExMTF9</span>.<span
-                            class="text-green">SecretSignatureHashes...</span>
-                    </div>
-                    <ul class="dense-list mt-10 fs-0-8">
-                        <li><span class="text-red">🔴 Header</span> : L'algo utilisé (HS256).</li>
-                        <li><span class="text-purple">🟣 Payload</span> : Les data (User ID, Expiration). ⚠️ Lisible par
-                            tous (Base64) ! Pas de secrets ici.</li>
-                        <li><span class="text-green">🟢 Signature</span> : Garantit que le token n'a pas été falsifié.
-                        </li>
+                <!-- TL;DR -->
+                <div class="tip border-left-green glass-panel mb-40">
+                    <strong class="text-green">📌 En Bref</strong>
+                    <ul class="dense-list mt-10 fs-0-9">
+                        <li><strong>Identification :</strong> "Je suis Alice".</li>
+                        <li><strong>Authentification :</strong> "Voici mon mot de passe pour le prouver".</li>
+                        <li><strong>MFA (Multi-Factor) :</strong> Quelque chose que je SAIS + que je POSSÈDE.</li>
                     </ul>
                 </div>
 
-                <!-- ATTACKS: CREDENTIAL STUFFING -->
-                <div class="tip mt-20 border-left-red">
-                    <strong class="text-red">⚠️ L'attaque n°1 : Credential Stuffing</strong>
-                    <p class="fs-0-85">Les hackers réutilisent des combos Email/Mots de passe volés ailleurs
-                        (LinkedIn, Adobe leaks) car les gens réutilisent leurs passwords.</p>
-                    <div class="mt-5 bold">🛡️ Solution : Password Manager + MFA partout.</div>
+                <!-- PASSWORD SECURITY -->
+                <div class="grid2 gap-20 mb-40">
+                    <div class="glass-panel p-20 border-left-red">
+                        <h4 class="text-red mb-10">🚫 Mauvaises Pratiques</h4>
+                        <ul class="dense-list fs-0-9 text-muted">
+                            <li>Mots de passe courts (< 12 chars).</li>
+                            <li>Réutilisation (Le même partout).</li>
+                            <li>Stockage en clair ou MD5 simple.</li>
+                        </ul>
+                    </div>
+                    <div class="glass-panel p-20 border-left-green">
+                        <h4 class="text-green mb-10">✅ Bonnes Pratiques</h4>
+                        <ul class="dense-list fs-0-9 text-muted">
+                            <li>Passphrases (ex: Cheval-Pile-Agenda-Rouge).</li>
+                            <li>Gestionnaire de mots de passe (Bitwarden).</li>
+                            <li>MFA activé partout.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SESSION vs JWT COMPARISON -->
+                <h3 class="section-subtitle">🍪 Session ID vs JWT (Token)</h3>
+                <div class="glass-panel p-0 overflow-hidden mb-40">
+                    <table class="cmd-table m-0">
+                        <thead>
+                            <tr>
+                                <th class="w-50">Session (Stateful)</th>
+                                <th class="w-50">JWT (Stateless)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Le serveur stocke tout (RAM/Redis).</td>
+                                <td>Le serveur ne stocke rien. Tout est dans le token.</td>
+                            </tr>
+                            <tr>
+                                <td>Le client garde un ID cookie.</td>
+                                <td>Le client garde le Token (LocalStorage/Cookie).</td>
+                            </tr>
+                            <tr>
+                                <td class="text-green">✅ Révocation facile (On supprime la session)</td>
+                                <td class="text-red">❌ Révocation difficile (Token valide jusqu'à expiration)</td>
+                            </tr>
+                            <tr>
+                                <td>Vieux monde (Monolithe)</td>
+                                <td>Nouveau monde (Microservices, API)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2FA VISUAL -->
+                <h3 class="section-subtitle">🔐 Multi-Factor Auth (MFA)</h3>
+                <div class="net-flow glass-panel p-20 justify-center">
+                    <div class="net-node border-gray">
+                        <span class="fs-1-5">🧠</span>
+                        <div class="net-label fs-0-8">Je sais</div>
+                        <div class="net-sub">(Password)</div>
+                    </div>
+                    <div class="fs-1-5 text-muted mx-10">+</div>
+                    <div class="net-node border-green">
+                        <span class="fs-1-5">📱</span>
+                        <div class="net-label fs-0-8">Je possède</div>
+                        <div class="net-sub">(OTP / Yubikey)</div>
+                    </div>
+                    <div class="fs-1-5 text-muted mx-10">=</div>
+                    <div class="net-node border-primary bg-primary-soft">
+                        <span class="fs-1-5">✅</span>
+                        <div class="net-label fs-0-8 text-primary">Accès</div>
+                        <div class="net-sub">Autorisé</div>
+                    </div>
+                </div>
+
+                <!-- OAUTH2 -->
+                <div class="warning glass-panel mt-40">
+                    <strong class="text-orange">🌐 Et le bouton "Se connecter avec Google" ?</strong>
+                    <p class="mt-10 fs-0-9 text-muted">
+                        C'est <strong>OAuth2 / OIDC</strong>. <br>
+                        Vous ne donnez pas votre mot de passe Google au site. Google envoie juste un jeton disant "C'est
+                        bon, c'est lui".
+                    </p>
+                </div>
+
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m03_network.html" class="btn-secondary">← Réseau</a>
+                    <a href="m05_active_directory.html" class="btn-primary">Suivant : Active Directory →</a>
                 </div>
             </div>
         </section>

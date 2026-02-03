@@ -4,109 +4,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boîte à Outils | Mémo Cybersécurité</title>
+    <title>Boîte à Outils & Certifs | Mémo Cybersécurité</title>
     <meta name="description"
-        content="Les outils indispensables du professionnel : Kali Linux, Burp Suite, Metasploit, Shodan, etc.">
+        content="Les outils indispensables : Kali, Burp, Metasploit. Et les certifications pour se lancer.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- MODULE 09: TOOLS & RESOURCES -->
+        <!-- MODULE 09: TOOLS -->
         <section id="m9" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-purple-soft text-purple border-purple">09</div>
+                    <div class="sec-num bg-orange text-black border-orange">09</div>
                     <div>
-                        <h2 class="sec-title text-purple">Boîte à Outils</h2>
-                        <p class="sec-sub">L'arsenal du Hacker (Éthique)</p>
+                        <h2 class="sec-title gradient-text-primary">Boîte à Outils</h2>
+                        <p class="sec-sub">L'arsenal du Hacker (Éthique).</p>
                     </div>
                 </div>
 
-                <!-- KALI LINUX -->
-                <div class="intro-box border-left-purple bg-purple-soft mb-25">
-                    <h4 class="text-purple">🐉 Kali Linux</h4>
-                    <p>La distribution standard. Tout est préinstallé. Ne l'installez pas en OS principal ("Daily
-                        Driver"),
-                        utilisez-la en VM (VirtualBox) ou Live USB.</p>
+                <!-- KALI LINUX INTRO -->
+                <div class="tip border-left-purple bg-purple-soft glass-panel mb-40">
+                    <div class="flex-between">
+                        <strong class="text-purple">🐉 Kali Linux</strong>
+                        <span class="fs-1-5">🐧</span>
+                    </div>
+                    <p class="mt-5 fs-0-9">
+                        La distribution standard. Tout est préinstallé. <br>
+                        <em>Conseil : Utilisez-la en VM (VirtualBox), pas en OS principal.</em>
+                    </p>
                 </div>
 
                 <!-- TOOLS GRID -->
-                <div class="grid2">
+                <div class="grid2 gap-20 mb-40">
                     <!-- BURP -->
-                    <div class="tool-card border-top-orange">
-                        <strong class="text-orange fs-1-1">🟧 Burp Suite</strong>
-                        <p class="fs-0-8 text-muted mb-5">Web Proxy Interceptor</p>
-                        <hr class="separator">
-                        <p class="fs-0-85">L'outil Roi pour le Web Hacking. Permet d'intercepter les requêtes HTTP, de
-                            les modifier à la volée et de rejouer des attaques (Repeater, Intruder).</p>
+                    <div class="glass-panel p-20 border-top-orange card-hover">
+                        <div class="flex-between mb-10">
+                            <h4 class="text-orange m-0">🟧 Burp Suite</h4>
+                            <span class="fs-0-8 text-muted">WEB</span>
+                        </div>
+                        <p class="fs-0-9 text-muted mb-15">
+                            Le Proxy qui intercepte tout. Modifiez les requêtes HTTP à la volée.
+                        </p>
+                        <code class="block bg-black p-10 br-6 fs-0-8 text-white">127.0.0.1:8080</code>
                     </div>
 
                     <!-- METASPLOIT -->
-                    <div class="tool-card border-top-blue">
-                        <strong class="text-blue fs-1-1">Ⓜ️ Metasploit</strong>
-                        <p class="fs-0-8 text-muted mb-5">Exploitation Framework</p>
-                        <hr class="separator">
-                        <p class="fs-0-85">"Point & Click" hacking. Contient des milliers d'exploits (CVE) prêts à
-                            l'emploi.
-                            <br><code class="fs-0-8">msfconsole > use exploit/multi/handler</code>
+                    <div class="glass-panel p-20 border-top-blue card-hover">
+                        <div class="flex-between mb-10">
+                            <h4 class="text-blue m-0">Ⓜ️ Metasploit</h4>
+                            <span class="fs-0-8 text-muted">EXPLOIT</span>
+                        </div>
+                        <p class="fs-0-9 text-muted mb-15">
+                            Framework d'exploitation. Des milliers de CVE prêtes à l'emploi.
                         </p>
+                        <code class="block bg-black p-10 br-6 fs-0-8 text-white">msfconsole > use exploit/...</code>
                     </div>
 
-                    <!-- SHODAN -->
-                    <div class="tool-card border-top-red">
-                        <strong class="text-red fs-1-1">👁️ Shodan.io</strong>
-                        <p class="fs-0-8 text-muted mb-5">Search Engine for IoT</p>
-                        <hr class="separator">
-                        <p class="fs-0-85">Le "Google" des hackers. Scanne internet 24/7 pour trouver des webcams,
-                            serveurs, feux rouges... connectés et vulnérables.</p>
+                    <!-- NMAP -->
+                    <div class="glass-panel p-20 border-top-green card-hover">
+                        <div class="flex-between mb-10">
+                            <h4 class="text-green m-0">👁️ Nmap</h4>
+                            <span class="fs-0-8 text-muted">NETWORK</span>
+                        </div>
+                        <p class="fs-0-9 text-muted mb-15">
+                            Cartographie le réseau. Trouve les ports ouverts et les versions.
+                        </p>
+                        <code class="block bg-black p-10 br-6 fs-0-8 text-white">nmap -sC -sV 10.10.10.5</code>
                     </div>
 
-                    <!-- WIRESHARK -->
-                    <div class="tool-card border-top-green">
-                        <strong class="text-green fs-1-1">🦈 Wireshark</strong>
-                        <p class="fs-0-8 text-muted mb-5">Network Analyzer</p>
-                        <hr class="separator">
-                        <p class="fs-0-85">"Si ça passe sur le câble, Wireshark le voit". Indispensable pour comprendre
-                            pourquoi un paquet est rejeté ou analyser un malware qui communique.</p>
+                    <!-- HASHCAT -->
+                    <div class="glass-panel p-20 border-top-red card-hover">
+                        <div class="flex-between mb-10">
+                            <h4 class="text-red m-0">🐈 Hashcat</h4>
+                            <span class="fs-0-8 text-muted">CRACKING</span>
+                        </div>
+                        <p class="fs-0-9 text-muted mb-15">
+                            Le craqueur de mots de passe le plus rapide du monde (CPU/GPU).
+                        </p>
+                        <code
+                            class="block bg-black p-10 br-6 fs-0-8 text-white">hashcat -m 0 hash.txt rockyou.txt</code>
                     </div>
                 </div>
 
-                <!-- LEARNING RESOURCES -->
-                <h3 class="section-subtitle mt-30">📚 Où s'entraîner ? (Légalement)</h3>
-                <div class="grid3">
-                    <div class="ref-card text-center">
-                        <strong class="text-green fs-1-1">Hack The Box</strong>
-                        <p class="fs-0-85 mt-5 text-muted">Labs réalistes. CTF.</p>
-                    </div>
-                    <div class="ref-card text-center">
-                        <strong class="text-blue fs-1-1">TryHackMe</strong>
-                        <p class="fs-0-85 mt-5 text-muted">Guidé, parfait pour débuter.</p>
-                    </div>
-                    <div class="ref-card text-center">
-                        <strong class="text-purple fs-1-1">PortSwigger Acad</strong>
-                        <p class="fs-0-85 mt-5 text-muted">La bible du Web Hacking (Gratuit).</p>
-                    </div>
+                <!-- LEARNING PATH -->
+                <h3 class="section-subtitle">🎓 Où s'entraîner ?</h3>
+                <div class="grid3 gap-20 mb-40 text-center">
+                    <a href="#" class="glass-panel p-20 card-hover text-decoration-none">
+                        <div class="fs-2 mb-10">🎁</div>
+                        <strong class="text-green block">Hack The Box</strong>
+                        <span class="text-muted fs-0-8">Labs Réalistes</span>
+                    </a>
+                    <a href="#" class="glass-panel p-20 card-hover text-decoration-none">
+                        <div class="fs-2 mb-10">🦉</div>
+                        <strong class="text-blue block">TryHackMe</strong>
+                        <span class="text-muted fs-0-8">Guidé & Débutant</span>
+                    </a>
+                    <a href="#" class="glass-panel p-20 card-hover text-decoration-none">
+                        <div class="fs-2 mb-10">🕷️</div>
+                        <strong class="text-orange block">PortSwigger</strong>
+                        <span class="text-muted fs-0-8">La Bible Web</span>
+                    </a>
                 </div>
 
-                <!-- CERTIFICATIONS -->
-                <div class="tip border-left-yellow mt-25">
-                    <strong class="text-yellow">🎓 Certifications Reconnues</strong>
-                    <ul class="dense-list mt-10">
-                        <li><strong>eJPT</strong> (Junior) : Pratique, abordable. Très bien pour commencer.</li>
-                        <li><strong>OSCP</strong> (OffSec) : Le "Graal" technique. 24h d'examen pratique. Difficile.
-                        </li>
-                        <li><strong>CISSP</strong> (Management) : Théorique, pour les chefs de projet / RSSI.</li>
-                        <li><strong>CEH</strong> (EC-Council) : Connue des RH, mais moins respectée techniquement (QCM).
-                        </li>
-                    </ul>
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m08_forensics.html" class="btn-secondary">← Forensics</a>
+                    <a href="quiz.html" class="btn-primary">Challenge Final : Quiz →</a>
                 </div>
             </div>
         </section>

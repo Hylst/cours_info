@@ -12,108 +12,107 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
         <!-- MODULE 08: FORENSICS -->
         <section id="m8" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-cyan-soft text-cyan border-cyan">08</div>
+                    <div class="sec-num bg-cyan text-black border-cyan">08</div>
                     <div>
-                        <h2 class="sec-title text-cyan">Digital Forensics</h2>
-                        <p class="sec-sub">L'art de la scène de crime numérique</p>
+                        <h2 class="sec-title gradient-text-primary">Digital Forensics</h2>
+                        <p class="sec-sub">L'art de la scène de crime numérique.</p>
                     </div>
                 </div>
 
-                <!-- INTRO M8 -->
-                <div class="intro-box border-left-cyan bg-cyan-soft">
-                    <h4 class="text-cyan">🔍 CSI: Cyber</h4>
-                    <p>
-                        Une fois le hack terminé, le travail du Forensic commence. Le but n'est pas de réparer, mais de
-                        <strong>répondre à 3 questions</strong> : Quoi ? Qui ? Comment ?
-                        Tout cela en préservant la validité juridique de la preuve.
+                <!-- INTRO -->
+                <div class="tip border-left-cyan glass-panel mb-40">
+                    <strong class="text-cyan">🔍 CSI: Cyber</strong>
+                    <p class="mt-5 fs-0-9">
+                        Répondre à 3 questions : Quoi ? Qui ? Comment ? <br>
+                        Le tout en préservant la validité juridique de la preuve (Chain of Custody).
                     </p>
                 </div>
 
-                <!-- PRINCIPLES -->
-                <div class="grid2 mt-25">
-                    <div class="ref-card">
-                        <h4 class="text-cyan mb-10">🚫 Règle d'Or : Ne touchez à rien !</h4>
-                        <p class="fs-0-9 mb-10">Allumer, éteindre ou même cliquer sur un fichier modifie ses
-                            métadonnées.</p>
-                        <div class="analogy-box my-10 border-left-cyan p-10">
-                            <strong>🩸 Analogie : La Scène de Crime</strong>
-                            <p class="fs-0-85">Si vous marchez dans la flaque de sang, l'ADN est
-                                contaminé. En Numérique, si vous bootez le PC, vous écrasez les logs et la RAM.</p>
-                        </div>
-                    </div>
+                <!-- ORDER OF VOLATILITY PYRAMID -->
+                <h3 class="section-subtitle">⏳ Ordre de Volatilité</h3>
+                <p class="text-muted mb-20">Quoi récupérer en premier avant que ça disparaisse ?</p>
 
-                    <!-- ORDER OF VOLATILITY -->
-                    <div class="ref-card border-top-orange">
-                        <h4 class="text-orange mb-10">⏳ Ordre de Volatilité</h4>
-                        <p class="fs-0-9 mb-10">Quoi récupérer en premier avant que ça disparaisse ?</p>
-                        <ul class="dense-list fs-0-9 monospace">
-                            <li class="text-red">1. CPU Cache & Registres (Nanosecondes)</li>
-                            <li class="text-orange">2. RAM (Disparaît si éteint)</li>
-                            <li class="text-yellow">3. Swap / Pagefile</li>
-                            <li class="text-green">4. Disque Dur (Persistant)</li>
-                            <li class="text-blue">5. Logs à distance / Backups</li>
-                        </ul>
+                <div class="flex-col align-center w-100 mb-40">
+                    <!-- 1 -->
+                    <div class="bg-red-soft border-red p-10 w-40 text-center br-6 mb-5 card-hover">
+                        <strong class="text-red">1. Cache & Registres CPU</strong>
+                        <div class="fs-0-8 text-muted">Nanosecondes</div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="bg-orange-soft border-orange p-10 w-60 text-center br-6 mb-5 card-hover">
+                        <strong class="text-orange">2. RAM (Mémoire Vive)</strong>
+                        <div class="fs-0-8 text-muted">Disparaît au reboot</div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="bg-yellow-soft border-yellow p-10 w-80 text-center br-6 mb-5 card-hover">
+                        <strong class="text-yellow">3. Disque Dur (Files)</strong>
+                        <div class="fs-0-8 text-muted">Persistant</div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="bg-blue-soft border-blue p-10 w-100 text-center br-6 card-hover">
+                        <strong class="text-blue">4. Logs & Backups</strong>
+                        <div class="fs-0-8 text-muted">Archivés ailleurs</div>
                     </div>
                 </div>
 
-                <!-- ARTIFACTS TO HUNT -->
-                <h3 class="section-subtitle mt-30">🕵️ Les Traces (Artefacts)</h3>
-                <div class="grid3">
-                    <div class="tool-card bg-dark-soft">
-                        <strong class="text-purple">🧠 RAM</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Contient les clés de chiffrement, les processus
-                            cachés, les connexions réseau actives, et parfois les mots de passe en clair !</p>
+                <!-- EVIDENCE BAG -->
+                <h3 class="section-subtitle">🚫 Ne touchez à rien !</h3>
+                <div class="grid2 gap-20">
+                    <div class="warning glass-panel border-left-red p-20">
+                        <h4 class="text-red mt-0">La Règle d'Or</h4>
+                        <p class="fs-0-9 text-muted">
+                            Si vous éteignez le PC, vous perdez la RAM.<br>
+                            Si vous l'allumez, vous écrasez les dates de dernier accès.<br>
+                            <strong>Faites une copie (Image Disque) et travaillez sur la copie.</strong>
+                        </p>
                     </div>
-                    <div class="tool-card bg-dark-soft">
-                        <strong class="text-blue">📋 Windows Registry</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Base de données de config. On y trouve :
-                            Programmes lancés (ShimCache), Clés USB connectées (USBStor), Fichiers récents.</p>
-                    </div>
-                    <div class="tool-card bg-dark-soft">
-                        <strong class="text-green">📂 Prefetch / Amcache</strong>
-                        <p class="fs-0-8 mt-5 text-muted">Windows précharge les apps pour aller plus
-                            vite. Preuve qu'un EXE "malware.exe" a été exécuté le JJ/MM à HH:MM.</p>
-                    </div>
-                </div>
-
-                <!-- TOOLS & MEMORY DUMP -->
-                <div class="code-block mt-25 border-left-cyan">
-                    <strong class="text-cyan">🛠️ Outils & Commandes</strong>
-                    <div class="grid2 mt-10 gap-20">
-                        <div>
-                            <span class="text-purple">Volatility</span> (Pour la RAM)
-                            <pre class="bg-black p-10 fs-0-8 text-white"># Lister les processus cachés
+                    <div class="code bg-black p-15 br-6">
+                        <div class="code-head border-bottom-none text-cyan">🛠️ Outils Volatility</div>
+                        <pre class="p-0 bg-transparent text-white fs-0-8">
+# Scanner les processus en RAM
 vol.py -f dump.mem windows.pslist
 
 # Trouver les connexions réseau
-vol.py -f dump.mem windows.netscan</pre>
+vol.py -f dump.mem windows.netscan
+
+# Extraire les hashs de mot de passe
+vol.py -f dump.mem windows.hashdump</pre>
+                    </div>
+                </div>
+
+                <!-- ARTEFACTS -->
+                <div class="glass-panel p-20 mt-40">
+                    <strong class="text-cyan block mb-15">🕵️ Les "Traces" (Artefacts)</strong>
+                    <div class="grid3 gap-10 fs-0-9">
+                        <div class="bg-bg2 p-10 br-6">
+                            <span class="text-purple">ShimCache</span>
+                            <div class="text-muted fs-0-8">Preuve d'exécution (Même si EXE effacé)</div>
                         </div>
-                        <div>
-                            <span class="text-orange">Autopsy / FTK Imager</span> (Pour le Disque)
-                            <p class="fs-0-85 mt-5">Permet de créer une "Image Disque" (Copie bit-à-bit)
-                                et de l'analyser sans altérer l'original (Write Blocker).</p>
+                        <div class="bg-bg2 p-10 br-6">
+                            <span class="text-blue">USBStor</span>
+                            <div class="text-muted fs-0-8">Clés USB connectées (Séries, Dates)</div>
+                        </div>
+                        <div class="bg-bg2 p-10 br-6">
+                            <span class="text-green">Prefetch</span>
+                            <div class="text-muted fs-0-8">Historique des 10 dernières secondes avant plantage</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CHAIN OF CUSTODY -->
-                <div class="tip border-left-green mt-20">
-                    <strong class="text-green">📜 Chaîne de Garde (Chain of Custody)</strong>
-                    <p class="fs-0-85 mt-5">Document légal qui trace <strong>QUI</strong> a eu la preuve,
-                        <strong>QUAND</strong> et <strong>OÙ</strong>.
-                        Si la chaîne est brisée, la preuve est irrecevable au tribunal.
-                    </p>
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m07_cloud_sec.html" class="btn-secondary">← Cloud Sec</a>
+                    <a href="m09_tools.html" class="btn-primary">Suivant : Outils →</a>
                 </div>
             </div>
         </section>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz | Mémo Cybersécurité</title>
-    <meta name="description" content="Testez vos connaissances en cybersécurité avec ce quiz interactif.">
+    <title>Challenge Quiz | Mémo Cybersécurité</title>
+    <meta name="description" content="Testez vos compétences en cybersécurité : Attaque, Défense, Réseau et Outils.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
@@ -14,43 +14,56 @@
     <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- SECTION QUIZ -->
-        <section id="quiz-section" class="quiz-container" style="padding-top:120px; min-height:80vh;">
+        <!-- MODULE QUIZ -->
+        <section id="quiz-section" class="module-section">
             <div class="container">
-                <h2>Testez vos connaissances</h2>
-                <div id="quiz-app"></div>
+                <div class="sec-header flex-center flex-col text-center" style="margin-bottom: 50px;">
+                    <div class="sec-num bg-primary text-white border-primary mb-15">?</div>
+                    <div>
+                        <h2 class="sec-title gradient-text-primary m-0">Challenge Final</h2>
+                        <p class="sec-sub">Prouvez votre valeur.</p>
+                    </div>
+                </div>
+
+                <div class="max-w-700 mx-auto">
+                    <div id="quiz-app">
+                        <!-- Quiz Engine injects interface here -->
+                        <div class="glass-panel p-40 text-center">
+                            <div class="spinner"></div>
+                            <p class="text-muted mt-20">Chargement du moteur...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAV BUTTONS -->
+                <div class="flex-center mt-50">
+                    <a href="m09_tools.html" class="btn-secondary">← Revoir les Outils</a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer></footer>
     <script src="../assets/js/layout.js"></script>
-
-    <!-- Quiz Engine and Initialization -->
-    <!-- Note: quiz_cyber.json is in parent dir, so path is '../quiz_cyber.json' relative to this file? 
-         No, JS fetches relative to HTML file location usually.
-         If file is in modules/quiz.html, '../quiz_cyber.json' is correct.
-    -->
+    <script type="module" src="../assets/js/quiz-engine.js"></script>
     <script type="module">
-        import '../../assets/js/quiz-engine.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if window.QuizEngine is available (loaded as module might need global assignment or import logic)
-            // The previous index.html used a module import but also a script src?
-            // Let's rely on the module import logic.
-            // But wait, the original code had:
-            // import '../../assets/js/quiz-engine.js';
-            // document.addEventListener(..., () => new window.QuizEngine(...));
-            // This implies quiz-engine.js assigns to window.
+        import { QuizEngine } from '../assets/js/quiz-engine.js';
 
-            // Path adjustment for modules:
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: '../quiz_cyber.json', questionsPerSession: 10 });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait slightly for layout or just run
+            setTimeout(() => {
+                new QuizEngine({
+                    containerId: 'quiz-app',
+                    jsonPath: '../quiz_cyber.json',
+                    questionsPerSession: 10
+                });
+            }, 100);
         });
     </script>
-    <!-- Fallback if module fails or for non-module support if needed, but original used module -->
 </body>
 
 </html>

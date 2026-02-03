@@ -6,138 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Active Directory | Mémo Cybersécurité</title>
     <meta name="description"
-        content="Comprendre Active Directory, Kerberos, et les attaques comme Golden Ticket ou Lateral Movement.">
+        content="Comprendre Active Directory, Kerberos, les GPO et les attaques comme le Golden Ticket.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
         <!-- MODULE 05: ACTIVE DIRECTORY -->
         <section id="m5" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-blue-soft border-blue text-blue-dark">05</div>
+                    <div class="sec-num bg-yellow text-black border-yellow">05</div>
                     <div>
-                        <h2 class="sec-title text-blue-dark">Active Directory (AD)</h2>
-                        <p class="sec-sub">L'épine dorsale des entreprises (Microsoft)</p>
+                        <h2 class="sec-title gradient-text-primary">Active Directory</h2>
+                        <p class="sec-sub">Le cerveau de l'entreprise (et la cible #1).</p>
                     </div>
                 </div>
 
-                <!-- AD CONTEXT & ARCHITECTURE -->
-                <div class="grid2 mb-25">
-                    <div class="ref-card">
-                        <h4 class="mb-10">🏢 Pourquoi AD ?</h4>
-                        <p class="fs-0-9">Imaginez devoir gérer 5000 employés et 5000 PC manuellement.
-                            Impossible.</p>
-                        <ul class="dense-list mt-10">
-                            <li><strong>Centralisation</strong> : Un seul endroit pour créer/supprimer des comptes.</li>
-                            <li><strong>Domain Controller (DC)</strong> : Le serveur "Maître" qui détient la base de
-                                données
-                                (NTDS.dit). Si le DC tombe, l'entreprise s'arrête.</li>
-                        </ul>
-                    </div>
-                    <div class="ref-card">
-                        <h4 class="mb-10">🌲 Forêts & Domaines</h4>
-                        <ul class="dense-list">
-                            <li><strong>Domaine</strong> : Frontière de sécurité (ex: <em>corp.google.com</em>).</li>
-                            <li><strong>Forêt</strong> : Ensemble de domaines interconnectés (Trusts).</li>
-                            <li><strong>GPO</strong> : La "Télécommande". Déploie des règles de sécurité (ex: Force le
-                                changement de MDP tous les 90 jours) sur tout le parc.</li>
-                        </ul>
-                    </div>
+                <!-- TL;DR -->
+                <div class="tip border-left-yellow glass-panel mb-40">
+                    <strong class="text-yellow">📌 En Bref</strong>
+                    <ul class="dense-list mt-10 fs-0-9">
+                        <li><strong>Domain Controller (DC) :</strong> Le roi. Il détient toutes les clés (KDC).</li>
+                        <li><strong>Kerberos :</strong> Le protocole d'auth par "Tickets".</li>
+                        <li><strong>GPO :</strong> Les règles qui s'appliquent à tous les PC (ex: Fond d'écran forcé).
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- KERBEROS DEEP DIVE -->
-                <div class="code-block mt-20 border-left-yellow">
-                    <strong class="text-yellow fs-1-1">🐕 Kerberos : Le Gardien à 3 Têtes</strong>
-                    <p class="fs-0-9 mb-15 text-muted">Protocole d'authentification par défaut.
-                        <strong>Concept clé :</strong> "Ne jamais envoyer le mot de passe sur le réseau."
-                    </p>
-
-                    <div class="analogy-box my-10 border-left-yellow bg-yellow-soft">
-                        <h5 class="text-yellow mb-10">🎟️ Analogie Technique : Le Parc d'Attraction</h5>
-
-                        <div class="grid2 p-0 bg-transparent gap-15">
-
-                            <!-- STEP 1 -->
-                            <div class="bg-dark-soft p-10 rounded">
-                                <strong class="text-white">1️⃣ L'Entrée (Authentication Service)</strong>
-                                <p class="fs-0-8 mt-5 text-muted">
-                                    <strong>Action :</strong> Je présente mon ID (Hash du MDP).<br>
-                                    <strong>Reçu :</strong> Un <span class="text-yellow">TGT (Ticket Granting
-                                        Ticket)</span>.<br>
-                                    <em>C'est le "Bracelet VIP" qui prouve que je suis dans le parc.</em>
-                                </p>
-                            </div>
-
-                            <!-- STEP 2 -->
-                            <div class="bg-dark-soft p-10 rounded">
-                                <strong class="text-white">2️⃣ Le Guichet (Ticket Granting Service)</strong>
-                                <p class="fs-0-8 mt-5 text-muted">
-                                    <strong>Action :</strong> Je montre mon TGT et demande l'accès au "Grand Huit" (File
-                                    Server).<br>
-                                    <strong>Reçu :</strong> Un <span class="text-blue">Service Ticket (ST)</span>.<br>
-                                    <em>C'est le "Ticket Manège" unique pour ce service.</em>
-                                </p>
-                            </div>
-
-                            <!-- STEP 3 -->
-                            <div class="bg-dark-soft p-10 rounded span-2">
-                                <strong class="text-white">3️⃣ Le Manège (Application / Service)</strong>
-                                <p class="fs-0-8 mt-5 text-muted">
-                                    <strong>Action :</strong> Je donne mon ST au serveur.<br>
-                                    <strong>Résultat :</strong> J'accède au fichier. Le serveur ne connait pas mon mot
-                                    de
-                                    passe, il fait confiance au Ticket.
-                                </p>
-                            </div>
+                <!-- HIERARCHY VISUAL -->
+                <h3 class="section-subtitle">🌳 La Forêt et les Arbres</h3>
+                <div class="glass-panel p-20 text-center mb-40">
+                    <div class="inline-block border-green p-10 br-6 mb-10 card-hover">
+                        <span class="fs-2 block">🌲</span>
+                        <strong>Forest</strong> ( CORP.LOC )
+                    </div>
+                    <div class="flex-center">
+                        <div class="text-muted fs-1-5">⬇️</div>
+                    </div>
+                    <div class="grid2 gap-20 mt-10">
+                        <div class="border-blue p-10 br-6 card-hover">
+                            <span class="fs-1-5 block">🌿</span>
+                            <strong>Tree</strong> ( EUROPE.CORP.LOC )
+                        </div>
+                        <div class="border-blue p-10 br-6 card-hover">
+                            <span class="fs-1-5 block">🌿</span>
+                            <strong>Tree</strong> ( USA.CORP.LOC )
                         </div>
                     </div>
+                    <p class="mt-20 fs-0-9 text-muted">
+                        Si un attaquant "Domain Admin" compromet la racine (Forest), il possède tout.
+                    </p>
                 </div>
 
-                <!-- NTLM VS KERBEROS -->
-                <div class="grid2 mt-25">
-                    <div class="tool-card border-top-red">
-                        <strong class="text-red">👴 NTLM (Le Vieux)</strong>
-                        <p class="fs-0-85 mt-5">Protocole Legacy (Challenge/Response). Moins sécurisé,
-                            vulnérable au "Pass-the-Hash" et au Relay. Utilisé si Kerberos échoue (IP au lieu de Nom de
-                            domaine).</p>
+                <!-- KERBEROS ATTACK PATH -->
+                <h3 class="section-subtitle">🎟️ Attaques Kerberos</h3>
+                <div class="grid2 gap-20 mb-40">
+                    <div class="attack-card border-top-orange">
+                        <h4 class="text-orange">🔥 Kerberoasting</h4>
+                        <p class="fs-0-9">
+                            L'attaquant demande un ticket pour un Service (SPN). Il le récupère et le craque hors-ligne
+                            (Hashcat) pour trouver le mot de passe du service.
+                        </p>
+                        <code class="block mt-10 p-5 bg-black fs-0-7 text-white">GetUserSPNs.py -request</code>
                     </div>
-                    <div class="tool-card border-top-green">
-                        <strong class="text-green">🆕 Kerberos (Le Standard)</strong>
-                        <p class="fs-0-85 mt-5">Plus robuste, supporte la délégation et
-                            l'authentification mutuelle (Client et Serveur se prouvent leur identité).</p>
+                    <div class="attack-card border-top-red">
+                        <h4 class="text-red">🎫 Golden Ticket</h4>
+                        <p class="fs-0-9">
+                            L'attaquant vole le hash <strong>KRBTGT</strong> (le secret du DC). <br>
+                            Il peut maintenant forger des tickets valides pour 10 ans, pour n'importe qui. C'est l'accès
+                            "Dieu".
+                        </p>
                     </div>
                 </div>
 
-                <!-- AD ATTACKS DEEP DIVE -->
-                <h3 class="section-subtitle mt-30">
-                    ☠️ Menaces & Mouvements Latéraux</h3>
-                <div class="grid3">
-                    <div class="attack-card border-yellow bg-yellow-soft">
-                        <div class="attack-title text-yellow">Golden Ticket</div>
-                        <p class="fs-0-9">Si je pirate le contrôleur de domaine (Compte <strong>KRBTGT</strong>),
-                            je peux forger des TGT valides à vie. Je deviens le "Dieu" du parc, je peux imprimer mes
-                            propres
-                            bracelets VIP.</p>
+                <!-- LATERAL MOVEMENT -->
+                <h3 class="section-subtitle">🦀 Mouvement Latéral</h3>
+                <div class="net-flow glass-panel p-20 justify-center">
+                    <div class="net-node border-gray">
+                        <span class="fs-1-5">💻</span>
+                        <div class="net-label fs-0-8">Patient 0</div>
+                        <div class="net-sub">(Phishing)</div>
                     </div>
-                    <div class="attack-card border-red bg-red-soft">
-                        <div class="attack-title text-red">Silver Ticket</div>
-                        <p class="fs-0-9">Je forge un Service Ticket (ST) pour UN seul service (ex: SQL). Je suis
-                            Admin de ce service, mais pas de tout le domaine.</p>
+                    <div class="fs-1-5 text-red mx-10">→</div>
+                    <div class="net-node border-orange">
+                        <span class="fs-1-5">🖥️</span>
+                        <div class="net-label fs-0-8">Admin PC</div>
+                        <div class="net-sub">(Mimikatz)</div>
                     </div>
-                    <div class="attack-card border-blue bg-blue-soft">
-                        <div class="attack-title text-blue">Lateral Movement</div>
-                        <p class="fs-0-9">Technique du "Saut de puce". Je compromets un PC secrétaire -> Je dump
-                            la mémoire (Mimikatz) -> Je trouve un hash Admin -> Je rebondis sur le Serveur.</p>
+                    <div class="fs-1-5 text-red mx-10">→</div>
+                    <div class="net-node border-red bg-red-soft">
+                        <span class="fs-1-5">👑</span>
+                        <div class="net-label fs-0-8 text-red">DC Confirmed</div>
+                        <div class="net-sub">(Game Over)</div>
                     </div>
+                </div>
+
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m04_auth_identity.html" class="btn-secondary">← Auth</a>
+                    <a href="m06_malware.html" class="btn-primary">Suivant : Malwares →</a>
                 </div>
             </div>
         </section>

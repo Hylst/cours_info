@@ -4,104 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Security | Mémo Cybersécurité</title>
+    <title>Cloud Security (AWS/Azure) | Mémo Cybersécurité</title>
     <meta name="description"
-        content="Sécurité Cloud (AWS/Azure) : Modèle de responsabilité partagée, IaaS vs PaaS vs SaaS, et bonnes pratiques.">
+        content="Sécurité du Cloud : Modèle de responsabilité partagée, IAM et mauvaises configurations S3.">
     <meta name="theme-color" content="#303030">
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/quiz-style.css">
 </head>
 
-<body>
-    <header></header>
+<body class="bg-dots">
+    <header class="glass-header"></header>
 
     <main>
-        <!-- MODULE 07: CLOUD SECURITY -->
+        <!-- MODULE 07: CLOUD -->
         <section id="m7" class="module-section">
             <div class="container">
                 <div class="sec-header">
-                    <div class="sec-num bg-blue-soft text-blue border-blue">07</div>
+                    <div class="sec-num bg-blue-dark text-white border-blue-dark">07</div>
                     <div>
-                        <h2 class="sec-title text-blue">Cloud Security</h2>
-                        <p class="sec-sub">AWS/Azure & Responsabilité Partagée</p>
+                        <h2 class="sec-title gradient-text-primary">Cloud Security</h2>
+                        <p class="sec-sub">Il n'y a pas de nuage, juste l'ordinateur de quelqu'un d'autre.</p>
                     </div>
+                </div>
+
+                <!-- TL;DR -->
+                <div class="tip border-left-blue-dark glass-panel mb-40">
+                    <strong class="text-blue-dark">📌 En Bref</strong>
+                    <ul class="dense-list mt-10 fs-0-9">
+                        <li><strong>Misconfiguration :</strong> La faille #1 (Buckets S3 ouverts).</li>
+                        <li><strong>IAM :</strong> La gestion des accès (Identity and Access Management) est cruciale.
+                        </li>
+                        <li><strong>Responsabilité Partagée :</strong> Amazon sécurise le "Cloud", VOUS sécurisez ce
+                            qu'il y a "dans" le Cloud.</li>
+                    </ul>
                 </div>
 
                 <!-- SHARED RESPONSIBILITY MODEL -->
-                <div class="ref-card mb-25 border-left-blue">
-                    <h4 class="text-blue mb-10">🤝 Le Modèle de Responsabilité Partagée</h4>
-                    <div class="grid2">
-                        <div>
-                            <strong class="block mb-5 text-white">☁️ Amazon (AWS) / Google /
-                                Microsoft</strong>
-                            <p class="fs-0-85 text-muted">Sécurité <strong>DU</strong> Cloud.</p>
-                            <ul class="dense-list mt-5 fs-0-8">
-                                <li>✅ Datacenters physiques (Caméras, Gardiens).</li>
-                                <li>✅ Réseau Câblé & Hardware.</li>
-                                <li>✅ Hyperviseur (Virtualisation).</li>
-                            </ul>
+                <h3 class="section-subtitle">🤝 Modèle de Responsabilité Partagée</h3>
+                <div class="glass-panel p-0 overflow-hidden text-center fs-0-9 mb-40">
+                    <div class="grid3 gap-0">
+                        <!-- IaaS -->
+                        <div class="border-right-gray p-10">
+                            <strong class="block text-blue mb-5">IaaS</strong>
+                            <span class="text-muted fs-0-8">(EC2, VM)</span>
+                            <hr class="separator opacity-05 my-10">
+                            <div class="text-green fs-0-85 mb-5">OS & Apps (Vous)</div>
+                            <div class="text-green fs-0-85 mb-5">Données (Vous)</div>
+                            <div class="text-blue-dark fs-0-85">Matériel (AWS)</div>
                         </div>
-                        <div>
-                            <strong class="block mb-5 text-white">👤 Vous (Le Client)</strong>
-                            <p class="fs-0-85 text-muted">Sécurité <strong>DANS</strong> le Cloud.</p>
-                            <ul class="dense-list mt-5 fs-0-8">
-                                <li>✅ Vos Données (Chiffrement).</li>
-                                <li>✅ Gestion des accès (IAM, MFA).</li>
-                                <li>✅ Configuration (Firewall, Ports ouverts).</li>
-                            </ul>
+                        <!-- PaaS -->
+                        <div class="border-right-gray p-10">
+                            <strong class="block text-purple mb-5">PaaS</strong>
+                            <span class="text-muted fs-0-8">(RDS, App Service)</span>
+                            <hr class="separator opacity-05 my-10">
+                            <div class="text-green fs-0-85 mb-5">Données (Vous)</div>
+                            <div class="text-blue-dark fs-0-85 mb-5">OS & Runtime (AWS)</div>
+                            <div class="text-blue-dark fs-0-85">Matériel (AWS)</div>
+                        </div>
+                        <!-- SaaS -->
+                        <div class="p-10">
+                            <strong class="block text-orange mb-5">SaaS</strong>
+                            <span class="text-muted fs-0-8">(Gmail, Salesforce)</span>
+                            <hr class="separator opacity-05 my-10">
+                            <div class="text-green fs-0-85 mb-5">Config Compte (Vous)</div>
+                            <div class="text-blue-dark fs-0-85 mb-5">Application (AWS)</div>
+                            <div class="text-blue-dark fs-0-85">Matériel (AWS)</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SERVICE MODELS -->
-                <h3 class="text-white mb-15">🍰 IaaS vs PaaS vs SaaS (Qui gère quoi ?)</h3>
-                <div class="grid3">
-                    <div class="tool-card border-top-red">
-                        <div class="icon-lg mb-10">🏗️</div>
-                        <strong class="fs-1-1 text-red">IaaS</strong>
-                        <p class="fs-0-8 text-muted mb-5">Infrastructure as a Service</p>
-                        <p class="fs-0-8 italic text-muted">Ex: EC2, VM Azure.</p>
-                        <hr class="separator">
-                        <p class="fs-0-8"><strong>Vous gérez TOUT</strong> à partir de l'OS : Patchs, Antivirus,
-                            Firewall.</p>
+                <!-- S3 BUCKET LEAK -->
+                <h3 class="section-subtitle">🪣 Le Cas des Buckets S3</h3>
+                <div class="grid2 gap-20 mb-40">
+                    <div class="dont-box">
+                        <strong class="text-red block mb-5">❌ Public Read/Write</strong>
+                        <p class="fs-0-85 text-muted">
+                            Si vous laissez "Authenticated Users" sur "Grant Access", N'IMPORTE QUI avec un compte AWS
+                            peut lire vos fichiers.
+                        </p>
                     </div>
-
-                    <div class="tool-card border-top-orange">
-                        <div class="icon-lg mb-10">🔌</div>
-                        <strong class="fs-1-1 text-orange">PaaS</strong>
-                        <p class="fs-0-8 text-muted mb-5">Platform as a Service</p>
-                        <p class="fs-0-8 italic text-muted">Ex: RDS, App Engine.</p>
-                        <hr class="separator">
-                        <p class="fs-0-8">AWS gère l'OS. <strong>Vous gérez juste l'App et la Data.</strong> Plus
-                            simple, moins de contrôle.</p>
-                    </div>
-
-                    <div class="tool-card border-top-green">
-                        <div class="icon-lg mb-10">📦</div>
-                        <strong class="fs-1-1 text-green">SaaS</strong>
-                        <p class="fs-0-8 text-muted mb-5">Software as a Service</p>
-                        <p class="fs-0-8 italic text-muted">Ex: Gmail, Salesforce.</p>
-                        <hr class="separator">
-                        <p class="fs-0-8"><strong>Tout est géré pour vous.</strong> Vous ne gérez que vos
-                            utilisateurs et la configuration.</p>
+                    <div class="do-box">
+                        <strong class="text-green block mb-5">✅ Block Public Access</strong>
+                        <p class="fs-0-85 text-muted">
+                            Cochez toujours la case "Block all public access" à la création. Utilisez des "Presigned
+                            URLs" pour le partage temporaire.
+                        </p>
                     </div>
                 </div>
 
-                <!-- CLOUD QUICK WINS -->
-                <div class="tip mt-25 bg-blue-soft border-left-blue">
-                    <strong class="text-blue">💡 Quick Wins : Ne soyez pas "cette personne"</strong>
-                    <ul class="dense-list mt-10">
-                        <li class="mb-5">🔐 <strong>Root Account</strong> : Activez le MFA physique (YubiKey)
-                            et enfermez la clé dans un coffre. Ne l'utilisez jamais au quotidien.</li>
-                        <li class="mb-5">🚫 <strong>Git Leaks</strong> : Ne commitez jamais d'Access Keys
-                            (AK/SK) sur GitHub. Utilisez des Rôles IAM.</li>
-                        <li>🪣 <strong>S3 Buckets</strong> : Bloquez l'accès public par défaut (Block Public Access =
-                            ON).
-                        </li>
-                    </ul>
+                <!-- IAM -->
+                <div class="glass-panel border-left-yellow p-20">
+                    <h3 class="text-yellow m-0">🔑 IAM : Identity & Access</h3>
+                    <p class="mt-10 mb-15 text-muted">Ne JAMAIS utiliser le compte "Root" AWS au quotidien.</p>
+                    <div class="flex-center gap-20">
+                        <div class="bg-black p-10 br-6 fs-0-8 mono text-green">
+                            "Effect": "Allow",<br>
+                            "Action": "s3:ListBucket",<br>
+                            "Resource": "arn:aws:s3:::my-bucket"
+                        </div>
+                        <div class="fs-2">👉</div>
+                        <div class="text-muted fs-0-9">
+                            Créez des <strong>Policies</strong> JSON précises et attachez-les à des
+                            <strong>Rôles</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAV BUTTONS -->
+                <div class="flex-between mt-50">
+                    <a href="m06_malware.html" class="btn-secondary">← Malwares</a>
+                    <a href="m08_forensics.html" class="btn-primary">Suivant : Forensics →</a>
                 </div>
             </div>
         </section>

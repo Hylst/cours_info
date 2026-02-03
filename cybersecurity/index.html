@@ -14,29 +14,20 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="bg-dots">
     <!-- HEADER -->
-    <header>
+    <header class="glass-header">
+        <!-- Content will be injected by layout.js, but using fallback for now -->
         <div class="container header-content">
             <a href="index.html" class="logo">
                 <img src="assets/img/icon.svg" alt="CyberIcon" style="height:28px; vertical-align:middle;">
                 CyberMemo
             </a>
-
             <div class="nav-wrapper">
-                <nav id="main-nav">
-                    <!-- Links injected by layout.js, but hardcoded here for Landing Page fallback -->
-                    <a href="modules/m00_fundamentals.html">Bases</a>
-                    <a href="modules/m01_web_attacks.html">Web</a>
-                    <a href="modules/m02_cryptography.html">Crypto</a>
-                    <a href="modules/m03_network.html">Réseau</a>
-                    <a href="modules/m04_auth_identity.html">Auth</a>
-                    <a href="modules/m05_active_directory.html">AD</a>
-                    <a href="modules/m06_malware.html">Malware</a>
-                    <a href="modules/quiz.html" class="btn-quiz">Quiz</a>
+                <nav id="main-nav" class="nav-menu">
+                    <!-- Links injected by JS -->
                 </nav>
             </div>
-
             <button class="hamburger" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -47,120 +38,118 @@
 
     <main>
         <!-- HERO SECTION -->
-        <section class="hero">
+        <section class="hero glass-panel border-bottom-none mb-40">
             <div class="container">
-                <h1 class="gradient-text-00">Mémo Cybersécurité</h1>
-                <p>
-                    Comprendre l'attaque pour mieux défendre.<br>
-                    Un guide interactif pour les développeurs et sysadmins.
+                <h1 class="gradient-text-primary" style="font-size: 3.5rem; line-height: 1.2;">Mémo Cybersécurité</h1>
+                <p class="text-muted mt-25 fs-1-1 max-w-700 mx-auto">
+                    Le guide de survie numérique pour Développeurs & SysAdmins.<br>
+                    <span class="text-white">Comprendre l'attaque pour mieux défendre.</span>
                 </p>
-                <div class="flex-center gap-15 mt-25">
-                    <a href="#modules" class="btn-primary">Commencer</a>
-                    <a href="modules/quiz.html" class="btn-secondary">Testez-vous</a>
+                <div class="flex-center gap-20 mt-40">
+                    <a href="#modules" class="btn-primary">Explorer les Modules</a>
+                    <a href="modules/quiz.html" class="btn-secondary">Challenge Quiz</a>
                 </div>
             </div>
         </section>
 
         <!-- MODULES GRID -->
-        <section id="modules">
+        <section id="modules" class="pt-0 border-none">
             <div class="container">
-                <h2 class="section-title text-center mb-40">Modules d'Apprentissage</h2>
+                <div class="flex-between mb-40">
+                    <h2 class="section-title mb-0">Parcours d'Apprentissage</h2>
+                    <span class="text-muted fs-0-9">10 Modules • 15 min / module</span>
+                </div>
+
                 <div class="grid3 gap-20">
 
                     <!-- M00 -->
-                    <a href="modules/m00_fundamentals.html" class="toc-item block h-100 p-20 hover-scale">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num">00</span>
-                            <span class="fs-1-5">🛡️</span>
-                        </div>
-                        <h3 class="text-primary-bright fs-1-1 mb-5">Fondamentaux</h3>
-                        <p class="fs-0-9 text-muted">CIA Triad, AAA & Defense in Depth.</p>
+                    <a href="modules/m00_fundamentals.html" class="module-card card-hover"
+                        style="--border-color: var(--primary);">
+                        <span class="module-num text-primary">00</span>
+                        <div class="module-icon">🛡️</div>
+                        <h3 class="text-white fs-1-2 mb-10">Fondamentaux</h3>
+                        <p class="fs-0-9 text-muted">Les piliers de la sécurité : CIA Triad, AAA & Defense in Depth.</p>
                     </a>
 
                     <!-- M01 -->
-                    <a href="modules/m01_web_attacks.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-red">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-red border-red">01</span>
-                            <span class="fs-1-5">🌍</span>
-                        </div>
-                        <h3 class="text-red fs-1-1 mb-5">Web Attacks</h3>
-                        <p class="fs-0-9 text-muted">OWASP Top 10, SQLi, XSS.</p>
+                    <a href="modules/m01_web_attacks.html" class="module-card card-hover"
+                        style="--border-color: var(--color-red);">
+                        <span class="module-num text-red">01</span>
+                        <div class="module-icon">🌍</div>
+                        <h3 class="text-white fs-1-2 mb-10">Web Attacks</h3>
+                        <p class="fs-0-9 text-muted">OWASP Top 10 : SQL Injection, XSS et comment les patcher.</p>
                     </a>
 
                     <!-- M02 -->
-                    <a href="modules/m02_cryptography.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-purple">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-purple border-purple">02</span>
-                            <span class="fs-1-5">🔐</span>
-                        </div>
-                        <h3 class="text-purple fs-1-1 mb-5">Cryptographie</h3>
-                        <p class="fs-0-9 text-muted">Hashing, Chiffrement Symétrique/Asymétrique.</p>
+                    <a href="modules/m02_cryptography.html" class="module-card card-hover"
+                        style="--border-color: var(--color-purple);">
+                        <span class="module-num text-purple">02</span>
+                        <div class="module-icon">🔐</div>
+                        <h3 class="text-white fs-1-2 mb-10">Cryptographie</h3>
+                        <p class="fs-0-9 text-muted">Hashing, Chiffrement Symétrique & Asymétrique, TLS.</p>
                     </a>
 
                     <!-- M03 -->
-                    <a href="modules/m03_network.html" class="toc-item block h-100 p-20 hover-scale border-left-blue">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-blue border-blue">03</span>
-                            <span class="fs-1-5">🌐</span>
-                        </div>
-                        <h3 class="text-blue fs-1-1 mb-5">Réseau</h3>
-                        <p class="fs-0-9 text-muted">Firewall, VPN, Segmentation & MITM.</p>
+                    <a href="modules/m03_network.html" class="module-card card-hover"
+                        style="--border-color: var(--color-blue);">
+                        <span class="module-num text-blue">03</span>
+                        <div class="module-icon">🌐</div>
+                        <h3 class="text-white fs-1-2 mb-10">Réseau</h3>
+                        <p class="fs-0-9 text-muted">Firewall, VPN, Segmentation, VLANs & Man-in-the-Middle.</p>
                     </a>
 
                     <!-- M04 -->
-                    <a href="modules/m04_auth_identity.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-green">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-green border-green">04</span>
-                            <span class="fs-1-5">🆔</span>
-                        </div>
-                        <h3 class="text-green fs-1-1 mb-5">Auth & Identity</h3>
-                        <p class="fs-0-9 text-muted">MFA, JWT, OAuth2 & Credential Stuffing.</p>
+                    <a href="modules/m04_auth_identity.html" class="module-card card-hover"
+                        style="--border-color: var(--color-green);">
+                        <span class="module-num text-green">04</span>
+                        <div class="module-icon">🆔</div>
+                        <h3 class="text-white fs-1-2 mb-10">Auth & Identity</h3>
+                        <p class="fs-0-9 text-muted">MFA, JWT, OAuth2, Credential Stuffing & Passwords.</p>
                     </a>
 
                     <!-- M05 -->
-                    <a href="modules/m05_active_directory.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-yellow">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-yellow border-yellow">05</span>
-                            <span class="fs-1-5">🏢</span>
-                        </div>
-                        <h3 class="text-yellow fs-1-1 mb-5">Active Directory</h3>
-                        <p class="fs-0-9 text-muted">Kerberos, Golden Ticket & Lateral Movement.</p>
+                    <a href="modules/m05_active_directory.html" class="module-card card-hover"
+                        style="--border-color: var(--color-yellow);">
+                        <span class="module-num text-yellow">05</span>
+                        <div class="module-icon">🏢</div>
+                        <h3 class="text-white fs-1-2 mb-10">Active Directory</h3>
+                        <p class="fs-0-9 text-muted">Kerberos, Golden Ticket, GPO & Lateral Movement.</p>
                     </a>
 
                     <!-- M06 -->
-                    <a href="modules/m06_malware.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-red-dark">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-red-dark border-red-dark">06</span>
-                            <span class="fs-1-5">🦠</span>
-                        </div>
-                        <h3 class="text-red-dark fs-1-1 mb-5">Malwares</h3>
-                        <p class="fs-0-9 text-muted">Ransomware, Botnets & Kill Chain.</p>
+                    <a href="modules/m06_malware.html" class="module-card card-hover"
+                        style="--border-color: var(--color-red-dark);">
+                        <span class="module-num text-red-dark">06</span>
+                        <div class="module-icon">🦠</div>
+                        <h3 class="text-white fs-1-2 mb-10">Malwares</h3>
+                        <p class="fs-0-9 text-muted">Ransomware, Botnets, Rootkits & Cyber Kill Chain.</p>
                     </a>
 
                     <!-- M07 -->
-                    <a href="modules/m07_cloud_sec.html"
-                        class="toc-item block h-100 p-20 hover-scale border-left-blue-dark">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-blue-dark border-blue-dark">07</span>
-                            <span class="fs-1-5">☁️</span>
-                        </div>
-                        <h3 class="text-blue-dark fs-1-1 mb-5">Cloud Sec</h3>
-                        <p class="fs-0-9 text-muted">AWS/Azure, IaaS/PaaS/SaaS.</p>
+                    <a href="modules/m07_cloud_sec.html" class="module-card card-hover"
+                        style="--border-color: var(--color-blue-dark);">
+                        <span class="module-num text-blue-dark">07</span>
+                        <div class="module-icon">☁️</div>
+                        <h3 class="text-white fs-1-2 mb-10">Cloud Sec</h3>
+                        <p class="fs-0-9 text-muted">AWS/Azure : Shared Responsibility, IAM & S3 Security.</p>
                     </a>
 
                     <!-- M08 -->
-                    <a href="modules/m08_forensics.html" class="toc-item block h-100 p-20 hover-scale border-left-cyan">
-                        <div class="flex-between mb-15">
-                            <span class="toc-num text-cyan border-cyan">08</span>
-                            <span class="fs-1-5">🔍</span>
-                        </div>
-                        <h3 class="text-cyan fs-1-1 mb-5">Forensics</h3>
-                        <p class="fs-0-9 text-muted">Investigation, RAM dump & Artefacts.</p>
+                    <a href="modules/m08_forensics.html" class="module-card card-hover"
+                        style="--border-color: var(--color-cyan);">
+                        <span class="module-num text-cyan">08</span>
+                        <div class="module-icon">🔍</div>
+                        <h3 class="text-white fs-1-2 mb-10">Forensics</h3>
+                        <p class="fs-0-9 text-muted">Investigation numérique, RAM Dump & Artefacts de preuve.</p>
+                    </a>
+
+                    <!-- M09 -->
+                    <a href="modules/m09_tools.html" class="module-card card-hover"
+                        style="--border-color: var(--color-orange);">
+                        <span class="module-num text-orange">09</span>
+                        <div class="module-icon">🧰</div>
+                        <h3 class="text-white fs-1-2 mb-10">Boîte à Outils</h3>
+                        <p class="fs-0-9 text-muted">Kali Linux, Burp Suite, Metasploit, Shodan & Wireshark.</p>
                     </a>
                 </div>
             </div>
@@ -168,23 +157,14 @@
 
         <!-- FOOTER -->
         <footer class="mt-50">
-            <div class="container text-center">
-                <p>CyberMemo © 2025 - <a href="readme.md" class="text-primary">Documentation</a></p>
-            </div>
+            <!-- Injected by JS -->
         </footer>
     </main>
 
+    <script src="assets/js/layout.js"></script>
     <script>
-        // Simple script for Hamburger menu on landing page
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.getElementById('main-nav');
-
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-        }
+        // Force header injection fallback if JS fails (or just for immediate render perception)
+        // But layout.js should handle it.
     </script>
 </body>
 

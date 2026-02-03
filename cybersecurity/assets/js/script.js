@@ -11,6 +11,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hashInput) {
         hashInput.addEventListener('input', updateHash);
     }
+
+    // === CAESAR CIPHER WIDGET ===
+    const caesarInput = document.getElementById('caesarInput');
+    const caesarShift = document.getElementById('caesarShift');
+    const caesarOutput = document.getElementById('caesarOutput');
+    const shiftValue = document.getElementById('shiftValue');
+
+    if (caesarInput && caesarShift && caesarOutput) {
+        const encrypt = () => {
+            const text = caesarInput.value;
+            const shift = parseInt(caesarShift.value);
+            if (shiftValue) shiftValue.textContent = shift;
+
+            // Simple Caesar Shift
+            caesarOutput.textContent = text.replace(/[a-zA-Z]/g, c => {
+                const base = c <= 'Z' ? 65 : 97;
+                const code = c.charCodeAt(0) - base;
+                // Avoid negative modulo issues (though here we only add positive shift)
+                const shifted = (code + shift) % 26;
+                return String.fromCharCode(shifted + base);
+            });
+        };
+
+        caesarInput.addEventListener('input', encrypt);
+        caesarShift.addEventListener('input', encrypt);
+    }
 });
 
 function initVocabulary() {

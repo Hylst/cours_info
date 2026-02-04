@@ -14,6 +14,7 @@
     --js-color: #f7df1e;
     --python-color: #3776ab;
     --net-color: #1abc9c;
+    --java-color: #f89820;
 
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -277,6 +278,10 @@ h1 {
     filter: drop-shadow(0 0 20px var(--net-color));
 }
 
+.card[data-tech="java"]:hover .icon-wrapper {
+    filter: drop-shadow(0 0 20px var(--java-color));
+}
+
 /* Tech-Specific Styles & Data Art */
 .card[data-tech="php"] .card-bg-illu {
     background: radial-gradient(circle, var(--php-color) 0%, transparent 70%);
@@ -300,6 +305,10 @@ h1 {
 
 .card[data-tech="net"] .card-bg-illu {
     background: radial-gradient(circle, var(--net-color) 0%, transparent 70%);
+}
+
+.card[data-tech="java"] .card-bg-illu {
+    background: radial-gradient(circle, var(--java-color) 0%, transparent 70%);
 }
 
 /* Animated Data Art for Data/IA module */
@@ -474,4 +483,13 @@ h1 {
     .grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
+}
+
+/* CogniAI Card Styles */
+.card[data-tech="cogniai"]:hover .icon-wrapper {
+    filter: drop-shadow(0 0 20px #d946ef);
+}
+
+.card[data-tech="cogniai"] .card-bg-illu {
+    background: radial-gradient(circle, #d946ef 0%, transparent 70%);
 }

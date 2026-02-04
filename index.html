@@ -40,6 +40,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/landing.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 </head>
 
 <body>
@@ -160,17 +161,32 @@
                 <p>Django, Flask & API</p>
             </a>
 
-            <!-- INACTIVE MODULES (Coming Soon) -->
+            <!-- CogniAI -->
+            <a href="https://hylst.fr/cogniai/" target="_blank" class="card" data-tech="cogniai">
+                <div class="card-bg-illu">
+                </div>
+                <div class="icon-wrapper">
+                    <div style="font-size:3rem;">🧠</div>
+                </div>
+                <h2>CogniAI</h2>
+                <p>L'Illusion de Compétence</p>
+            </a>
 
-            <div class="card disabled">
-                <span class="badge">Bientôt</span>
-                <div class="icon-wrapper" style="opacity:0.3; filter:grayscale(1);">
-                    <img src="assets/img/icons/java.webp" alt="Java icon"
-                        style="width:100%;height:100%;object-fit:contain;">
+            <!-- Java -->
+            <a href="https://hylst.fr/java/" target="_blank" class="card" data-tech="java">
+                <div class="card-bg-illu"
+                    style="background-image: url('assets/img/icons/java.webp'); background-size: cover;">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="assets/img/icons/java.webp" alt="Java icon">
                 </div>
                 <h2>Java</h2>
                 <p>Backend & OOP</p>
-            </div>
+            </a>
+
+            <!-- INACTIVE MODULES (Coming Soon) -->
+
+            <!-- INACTIVE MODULES (Coming Soon) -->
 
             <div class="card disabled">
                 <span class="badge">Bientôt</span>
@@ -246,43 +262,45 @@
                 <p>Systèmes Embarqués & IoT</p>
             </div>
 
-        </div>
-
-        <section class="author-section">
-            <div class="author-content">
-                <div class="author-img">👨‍💻</div>
-                <h3 class="author-name">Geoffroy Streit <span
-                        style="font-size:0.8em;font-weight:400;color:var(--text-secondary);">alias Hylst</span></h3>
-                <p class="author-bio">
-                    Apprenant en reconversion Développement Web, Data & IA.<br>
-                    Neuro atypique, passioné de technologies, curieux insatiable et grand rêveur, je crée par plaisir du
-                    partage, ces ressources avec l'aide de l'IA pour réunir,
-                    structurer, clarifier et partager les concepts essentiels du développement, de la Data, de l'IA et
-                    de l'IT de manière générale.<br>
-                    <strong>Objectif :</strong> Rassembler en un lieu accessible des mémos clairs, interactifs et
-                    pédagogiques pour aider à apprendre, réviser et découvrir.<br>
-                    <em>Cette plateforme et ses cours sont loins d'être parfaits ou exhaustifs, mais demeurent en
-                        constante évolution. Vos retours me sont précieux !< /em>
-                </p>
-                <p class="author-contact">
-                    📧 <a href="mailto:geoffroy.streit@gmail.com">geoffroy.streit@gmail.com</a> |
-                    <a href="mentions-legales.html" target="_blank"
-                        style="color:var(--text-secondary);text-decoration:underline;">Mentions légales</a>
-                </p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/geoffroy-streit/" target="_blank">LinkedIn</a>
-                    <a href="https://cv.hylst.fr/" target="_blank">Mon CV</a>
+            <section class="author-section">
+                <div class="author-content">
+                    <div class="author-img">👨‍💻</div>
+                    <h3 class="author-name">Geoffroy Streit <span
+                            style="font-size:0.8em;font-weight:400;color:var(--text-secondary);">alias Hylst</span></h3>
+                    <p class="author-bio">
+                        Apprenant en reconversion Développement Web, Data & IA.<br>
+                        Neuro atypique, passioné de technologies, curieux insatiable et grand rêveur, je crée par
+                        plaisir du
+                        partage, ces ressources avec l'aide de l'IA pour réunir,
+                        structurer, clarifier et partager les concepts essentiels du développement, de la Data, de l'IA
+                        et
+                        de l'IT de manière générale.<br>
+                        <strong>Objectif :</strong> Rassembler en un lieu accessible des mémos clairs, interactifs et
+                        pédagogiques pour aider à apprendre, réviser et découvrir.<br>
+                        <em>Cette plateforme et ses cours sont loins d'être parfaits ou exhaustifs, mais demeurent en
+                            constante évolution. Vos retours me sont précieux !< /em>
+                    </p>
+                    <p class="author-contact">
+                        📧 <a href="mailto:geoffroy.streit@gmail.com">geoffroy.streit@gmail.com</a> |
+                        <a href="mentions-legales.html" target="_blank"
+                            style="color:var(--text-secondary);text-decoration:underline;">Mentions légales</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/geoffroy-streit/" target="_blank">LinkedIn</a>
+                        <a href="https://cv.hylst.fr/" target="_blank">Mon CV</a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="announcement-section">
-            <p>🚀 <strong>En constante évolution :</strong> Cette collection s'enrichira régulièrement de nouveaux cours
-                (HTML, CSS, JS, PHP, Python, Réseaux, Cybersécurité, DevOps, Docker, Git et bien plus...), d'outils
-                interactifs et de ressources pour vous accompagner dans votre parcours d'apprentissage. Votre intérêt et
-                vos retours me motivent à améliorer ces contenus pour notre bénéfice commun. Ensemble, apprenons,
-                progressons et partageons ! 🌱</p>
-        </section>
+            <section class="announcement-section">
+                <p>🚀 <strong>En constante évolution :</strong> Cette collection s'enrichira régulièrement de nouveaux
+                    cours
+                    (HTML, CSS, JS, PHP, Python, Réseaux, Cybersécurité, DevOps, Docker, Git et bien plus...), d'outils
+                    interactifs et de ressources pour vous accompagner dans votre parcours d'apprentissage. Votre
+                    intérêt et
+                    vos retours me motivent à améliorer ces contenus pour notre bénéfice commun. Ensemble, apprenons,
+                    progressons et partageons ! 🌱</p>
+            </section>
     </main>
 
     <script src="assets/js/landing.js"></script>

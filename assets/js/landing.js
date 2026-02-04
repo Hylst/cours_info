@@ -61,4 +61,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+
+    // --- Sound FX (Tone.js) ---
+    // Initialize Synth (Volume lowered for subtlety)
+    let synth = null;
+    let isAudioStarted = false;
+
+    const initAudio = async () => {
+        if (isAudioStarted) return;
+
+        try {
+            await Tone.start();
+            synth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "sine" }, // Smooth sine wave
+                envelope: {
+                    attack: 0.01,
+                    decay: 0.1,
+                    sustain: 0.1,
+                    release: 1
+                }
+            }).toDestination();
+            synth.volume.value = -6; // Decibels
+            isAudioStarted = true;
+            console.log("Audio Context Started");
+        } catch (e) {
+            console.warn("Audio start failed", e);
+        }
+    };
+
+    // Start audio on first user interaction anywhere
+    document.body.addEventListener('click', initAudio, { once: true });
+
+    // Add interactions to cards
+    cards.forEach(card => {
+        if (card.classList.contains('disabled')) return;
+
+        // Hover Effect
+        card.addEventListener('mouseenter', () => {
+            if (isAudioStarted && synth) {
+                // Random high pitch "bip" for tech feel
+                // synth.triggerAttackRelease("C6", "32n"); 
+                // Let's use a fixed note for consistency or a very subtle variations
+                synth.triggerAttackRelease("E6", "64n", Tone.now());
+            }
+        });
+
+        // Click Effect
+        card.addEventListener('click', () => {
+            // We generally won't hear this much as it navigates away, but for _blank links it works
+            if (isAudioStarted && synth) {
+                synth.triggerAttackRelease(["C5", "E5"], "16n", Tone.now());
+            }
+        });
+    });
+
 });

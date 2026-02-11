@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <!-- Métadonnées de base -->
     <meta charset="UTF-8">
@@ -7,40 +8,47 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    
+
     <!-- SEO et métadonnées -->
     <title>Bulle Sensorielle - Sanctuaire Numérique Apaisant pour Enfants | Geoffroy Streit</title>
-    <meta name="description" content="Application web apaisante conçue pour les enfants de 6-12 ans avec sensibilités sensorielles (TSA, TDAH). Sons relaxants, visuels thérapeutiques et outils de régulation émotionnelle.">
-    <meta name="keywords" content="autisme, TDAH, sensibilités sensorielles, relaxation enfants, thérapie sensorielle, sons apaisants, application éducative, bien-être numérique, régulation émotionnelle">
+    <base href="/bulle.sensorielle/">
+    <meta name="description"
+        content="Application web apaisante conçue pour les enfants de 6-12 ans avec sensibilités sensorielles (TSA, TDAH). Sons relaxants, visuels thérapeutiques et outils de régulation émotionnelle.">
+    <meta name="keywords"
+        content="autisme, TDAH, sensibilités sensorielles, relaxation enfants, thérapie sensorielle, sons apaisants, application éducative, bien-être numérique, régulation émotionnelle">
     <meta name="author" content="Geoffroy Streit">
     <meta name="creator" content="Geoffroy Streit">
     <meta name="publisher" content="Geoffroy Streit">
     <meta name="robots" content="index, follow">
     <meta name="language" content="French">
     <meta name="revisit-after" content="7 days">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Bulle Sensorielle - Sanctuaire Numérique Apaisant">
-    <meta property="og:description" content="Application web thérapeutique pour enfants avec sensibilités sensorielles. Créez votre bulle de calme personnalisée avec sons et visuels apaisants.">
+    <meta property="og:description"
+        content="Application web thérapeutique pour enfants avec sensibilités sensorielles. Créez votre bulle de calme personnalisée avec sons et visuels apaisants.">
     <meta property="og:image" content="./assets/og-image.jpg">
     <meta property="og:url" content="https://bulle-sensorielle.app">
     <meta property="og:site_name" content="Bulle Sensorielle">
     <meta property="og:locale" content="fr_FR">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bulle Sensorielle - Sanctuaire Numérique Apaisant">
-    <meta name="twitter:description" content="Application thérapeutique pour enfants avec sensibilités sensorielles. Sons relaxants et visuels apaisants.">
+    <meta name="twitter:description"
+        content="Application thérapeutique pour enfants avec sensibilités sensorielles. Sons relaxants et visuels apaisants.">
     <meta name="twitter:image" content="./assets/twitter-card.jpg">
     <meta name="twitter:creator" content="@geoffroystreit">
-    
+
     <!-- Icônes et thème -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫧</text></svg>">
     <meta name="theme-color" content="#E8F4FD">
     <meta name="msapplication-TileColor" content="#E8F4FD">
-    
+
     <!-- Données structurées JSON-LD -->
     <script type="application/ld+json">
     {
@@ -79,10 +87,10 @@
       "browserRequirements": "Navigateur web moderne avec support HTML5, CSS3 et JavaScript ES6+"
     }
     </script>
-    
+
     <!-- Manifest PWA -->
     <link rel="manifest" href="./manifest.json">
-    
+
     <!-- Polices et ressources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,6 +98,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
 </head>
+
 <body>
     <!-- Mascot -->
     <div class="mascot" id="mascot">
@@ -128,7 +137,7 @@
                 <div class="info-content">
                     <h3>✨ Bienvenue dans ton sanctuaire numérique</h3>
                     <p>Cette application a été conçue pour t'offrir un espace de calme et de détente personnalisé.</p>
-                    
+
                     <h4>🎵 Fonctionnalités :</h4>
                     <ul>
                         <li><strong>Sons apaisants</strong> - Mélange tes sons favoris</li>
@@ -137,7 +146,7 @@
                         <li><strong>Profils sauvegardés</strong> - Retrouve tes configurations préférées</li>
                         <li><strong>Mode sombre/clair</strong> - Adapte l'interface à tes besoins</li>
                     </ul>
-                    
+
                     <h4>💡 Conseils d'utilisation :</h4>
                     <ul>
                         <li>Utilise des écouteurs pour une meilleure immersion</li>
@@ -145,12 +154,15 @@
                         <li>Sauvegarde tes combinaisons favorites</li>
                         <li>Ajuste le volume selon ton confort</li>
                     </ul>
-                    
+
                     <div class="creator-info">
                         <p><strong>🧑‍💻 Créé avec 💙 par Geoffroy Streit</strong></p>
                         <p><em>Développeur passionné par l'accessibilité numérique</em></p>
-                        <p>📧 <a href="mailto:geoffroy.streit@gmail.com" style="color: var(--accent-color); text-decoration: none;">geoffroy.streit@gmail.com</a></p>
-                        <p style="font-style: italic; margin-top: 1rem;">"Pour tous ceux qui cherchent un moment de paix dans leur journée"</p>
+                        <p>📧 <a href="mailto:geoffroy.streit@gmail.com"
+                                style="color: var(--accent-color); text-decoration: none;">geoffroy.streit@gmail.com</a>
+                        </p>
+                        <p style="font-style: italic; margin-top: 1rem;">"Pour tous ceux qui cherchent un moment de paix
+                            dans leur journée"</p>
                         <p style="font-size: 0.9em; opacity: 0.8;">Version 2.7.3 - Application web progressive</p>
                     </div>
                 </div>
@@ -216,7 +228,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Saved Profiles Preview -->
                 <div class="saved-profiles-preview" id="savedProfilesPreview">
                     <h3>Mes Bulles Sauvegardées</h3>
@@ -240,7 +252,8 @@
                                     <span class="sound-name">Bruit Blanc</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="white-noise">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="white-noise">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -250,7 +263,8 @@
                                     <span class="sound-name">Bruit Rose</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="pink-noise">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="pink-noise">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -260,7 +274,8 @@
                                     <span class="sound-name">Bruit Brun</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="brown-noise">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="brown-noise">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -278,7 +293,8 @@
                                     <span class="sound-name">Campagne</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="campagne">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="campagne">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -288,7 +304,8 @@
                                     <span class="sound-name">Forêt</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="forest">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="forest">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -298,7 +315,8 @@
                                     <span class="sound-name">Océan</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="ocean">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="ocean">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -308,7 +326,8 @@
                                     <span class="sound-name">Pluie</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="rain">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="rain">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -318,7 +337,8 @@
                                     <span class="sound-name">Chat</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="chat">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="chat">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -328,7 +348,8 @@
                                     <span class="sound-name">Feu</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="feu">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="feu">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -338,7 +359,8 @@
                                     <span class="sound-name">Sous l'eau</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="underwater">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="underwater">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -355,7 +377,8 @@
                                     <span class="sound-name">Piano Doux</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="piano">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="piano">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -365,7 +388,8 @@
                                     <span class="sound-name">Lo-Fi Calme</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="lofi">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="lofi">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -375,7 +399,8 @@
                                     <span class="sound-name">Berceuse</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="berceuse">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="berceuse">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -385,7 +410,8 @@
                                     <span class="sound-name">Ballade</span>
                                 </button>
                                 <div class="volume-control">
-                                    <input type="range" class="volume-slider" min="0" max="100" value="50" data-sound="ballade">
+                                    <input type="range" class="volume-slider" min="0" max="100" value="50"
+                                        data-sound="ballade">
                                     <span class="volume-value">50%</span>
                                 </div>
                             </div>
@@ -415,7 +441,8 @@
                             <span class="visual-icon">🌸</span>
                             <span>Géométrie vivante</span>
                         </button>
-                        <button type="button" class="visual-btn fullscreen-btn" id="fullscreenBtn" title="Mode plein écran">
+                        <button type="button" class="visual-btn fullscreen-btn" id="fullscreenBtn"
+                            title="Mode plein écran">
                             <span class="visual-icon">⛶</span>
                             <span>Plein écran</span>
                         </button>
@@ -477,7 +504,8 @@
                     <div class="tip-card">
                         <div class="tip-icon">🏠</div>
                         <h3>Crée ton espace</h3>
-                        <p>Construis une cabane avec des couvertures et des oreillers pour avoir ton propre petit refuge.</p>
+                        <p>Construis une cabane avec des couvertures et des oreillers pour avoir ton propre petit
+                            refuge.</p>
                     </div>
                     <div class="tip-card">
                         <div class="tip-icon">🧸</div>
@@ -502,7 +530,8 @@
                     <div class="tip-card">
                         <div class="tip-icon">🌿</div>
                         <h3>Objets texturés</h3>
-                        <p>Touche des objets doux comme une balle anti-stress, du sable kinétique ou une couverture lestée.</p>
+                        <p>Touche des objets doux comme une balle anti-stress, du sable kinétique ou une couverture
+                            lestée.</p>
                     </div>
                 </div>
             </section>
@@ -523,4 +552,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

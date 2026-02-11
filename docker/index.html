@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'essentiel de Docker - Guide conteneurisation | Mémo Docker 2025</title>
+    <base href="/docker/">
+
     <meta name="description"
         content="Guide pratique Docker : 11 chapitres pour maîtriser la conteneurisation. Installation, commandes, Images, Compose, Orchestration et Sécurité.">
     <meta name="keywords"
@@ -750,95 +752,99 @@
     </section>
 
     <!-- CHAPTER 1 -->
-<section class="chapter" id="ch1">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">01</div>
-            <div>
-                <h2 class="chapter-title">Découvrir Docker</h2>
-                <p class="chapter-subtitle">Concepts fondamentaux de la conteneurisation</p>
+    <section class="chapter" id="ch1">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">01</div>
+                <div>
+                    <h2 class="chapter-title">Découvrir Docker</h2>
+                    <p class="chapter-subtitle">Concepts fondamentaux de la conteneurisation</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Avant de lancer des commandes, il faut comprendre la philosophie : un conteneur n'est pas une VM. C'est un
-            processus isolé, léger et éphémère. Cette distinction est cruciale pour bien architecturer vos applications.
-        </p>
-
-        <div class="content-block">
-            <h3>Qu'est-ce que Docker ?</h3>
-            <p>Docker est une plateforme de <strong>conteneurisation</strong> qui permet d'empaqueter une
-                application avec toutes ses dépendances dans une unité standardisée appelée
-                <strong>conteneur</strong>.
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Avant de lancer des commandes, il faut comprendre la philosophie : un conteneur n'est pas une VM. C'est
+                un
+                processus isolé, léger et éphémère. Cette distinction est cruciale pour bien architecturer vos
+                applications.
             </p>
-        </div>
 
-        <div class="content-block">
-            <h3>Conteneur vs Machine Virtuelle</h3>
-            <div class="mermaid">
-                graph TD
-                subgraph VM [Machine Virtuelle]
-                Hardware1[Serveur Physique] --> Hypervisor
-                Hypervisor --> GuestOS1[OS Invité 1]
-                Hypervisor --> GuestOS2[OS Invité 2]
-                GuestOS1 --> App1[App A + Libs]
-                GuestOS2 --> App2[App B + Libs]
-                end
-
-                subgraph Container [Docker Conteneurs]
-                Hardware2[Serveur Physique] --> HostOS[OS Hôte]
-                HostOS --> DockerEngine[Docker Engine]
-                DockerEngine --> C1[Conteneur A]
-                DockerEngine --> C2[Conteneur B]
-                end
-
-                style VM fill:#151d2e,stroke:#1e293b,color:#fff
-                style Container fill:#151d2e,stroke:#2496ED,stroke-width:2px,color:#fff
+            <div class="content-block">
+                <h3>Qu'est-ce que Docker ?</h3>
+                <p>Docker est une plateforme de <strong>conteneurisation</strong> qui permet d'empaqueter une
+                    application avec toutes ses dépendances dans une unité standardisée appelée
+                    <strong>conteneur</strong>.
+                </p>
             </div>
-            <p style="margin-top:20px; font-size:0.9rem; color:var(--text-secondary)">
-                Contrairement à la VM qui emporte tout un système d'exploitation (lourd, lent), le conteneur partage le
-                noyau de l'hôte mais isole les processus. Résultat : démarrage instantané et densité plus élevée.
+
+            <div class="content-block">
+                <h3>Conteneur vs Machine Virtuelle</h3>
+                <div class="mermaid">
+                    graph TD
+                    subgraph VM [Machine Virtuelle]
+                    Hardware1[Serveur Physique] --> Hypervisor
+                    Hypervisor --> GuestOS1[OS Invité 1]
+                    Hypervisor --> GuestOS2[OS Invité 2]
+                    GuestOS1 --> App1[App A + Libs]
+                    GuestOS2 --> App2[App B + Libs]
+                    end
+
+                    subgraph Container [Docker Conteneurs]
+                    Hardware2[Serveur Physique] --> HostOS[OS Hôte]
+                    HostOS --> DockerEngine[Docker Engine]
+                    DockerEngine --> C1[Conteneur A]
+                    DockerEngine --> C2[Conteneur B]
+                    end
+
+                    style VM fill:#151d2e,stroke:#1e293b,color:#fff
+                    style Container fill:#151d2e,stroke:#2496ED,stroke-width:2px,color:#fff
+                </div>
+                <p style="margin-top:20px; font-size:0.9rem; color:var(--text-secondary)">
+                    Contrairement à la VM qui emporte tout un système d'exploitation (lourd, lent), le conteneur partage
+                    le
+                    noyau de l'hôte mais isole les processus. Résultat : démarrage instantané et densité plus élevée.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3>Architecture Docker</h3>
+                <ul>
+                    <li><strong>Docker Engine</strong> : le daemon qui gère les conteneurs</li>
+                    <li><strong>Docker CLI</strong> : l'interface en ligne de commande</li>
+                    <li><strong>Images</strong> : templates en lecture seule pour créer des conteneurs</li>
+                    <li><strong>Conteneurs</strong> : instances exécutables d'images</li>
+                    <li><strong>Registry</strong> : dépôt d'images (Docker Hub)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 À retenir</strong>
+                <span>Un conteneur = processus isolé avec son propre système de fichiers, réseau et espace de
+                    noms.</span>
+            </div>
+        </div>
+    </section>
+    <!-- CHAPTER 2 -->
+    <section class="chapter" id="ch2">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">02</div>
+                <div>
+                    <h2 class="chapter-title">Installer Docker</h2>
+                    <p class="chapter-subtitle">Configuration sur différents systèmes</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                L'installation varie selon l'OS, mais l'objectif est le même : obtenir le Docker Engine. Sur Desktop,
+                c'est
+                une application tout-en-un ; sur serveur Linux, c'est un service système optimisé.
             </p>
-        </div>
 
-        <div class="content-block">
-            <h3>Architecture Docker</h3>
-            <ul>
-                <li><strong>Docker Engine</strong> : le daemon qui gère les conteneurs</li>
-                <li><strong>Docker CLI</strong> : l'interface en ligne de commande</li>
-                <li><strong>Images</strong> : templates en lecture seule pour créer des conteneurs</li>
-                <li><strong>Conteneurs</strong> : instances exécutables d'images</li>
-                <li><strong>Registry</strong> : dépôt d'images (Docker Hub)</li>
-            </ul>
-        </div>
-
-        <div class="info-box">
-            <strong>💡 À retenir</strong>
-            <span>Un conteneur = processus isolé avec son propre système de fichiers, réseau et espace de
-                noms.</span>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 2 -->
-<section class="chapter" id="ch2">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">02</div>
-            <div>
-                <h2 class="chapter-title">Installer Docker</h2>
-                <p class="chapter-subtitle">Configuration sur différents systèmes</p>
-            </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            L'installation varie selon l'OS, mais l'objectif est le même : obtenir le Docker Engine. Sur Desktop, c'est
-            une application tout-en-un ; sur serveur Linux, c'est un service système optimisé.
-        </p>
-
-        <div class="content-block">
-            <h3>Installation sur Linux (Ubuntu/Debian)</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Mise à jour et installation des dépendances</span>
+            <div class="content-block">
+                <h3>Installation sur Linux (Ubuntu/Debian)</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Mise à jour et installation des dépendances</span>
 <span class="cmd">sudo apt update</span>
 <span class="cmd">sudo apt install</span> <span class="flag">-y</span> ca-certificates curl gnupg
 
@@ -851,27 +857,27 @@
 <span class="comment"># Installation de Docker Engine</span>
 <span class="cmd">sudo apt update</span>
 <span class="cmd">sudo apt install</span> <span class="flag">-y</span> docker-ce docker-ce-cli containerd.io docker-compose-plugin</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Windows & macOS</h3>
-            <p>Téléchargez et installez <strong>Docker Desktop</strong> depuis <a href="https://docker.com"
-                    style="color: var(--docker-blue);">docker.com</a>. L'installation inclut :</p>
-            <ul>
-                <li>Docker Engine</li>
-                <li>Docker CLI</li>
-                <li>Docker Compose</li>
-                <li>Interface graphique de gestion</li>
-            </ul>
-        </div>
+            <div class="content-block">
+                <h3>Windows & macOS</h3>
+                <p>Téléchargez et installez <strong>Docker Desktop</strong> depuis <a href="https://docker.com"
+                        style="color: var(--docker-blue);">docker.com</a>. L'installation inclut :</p>
+                <ul>
+                    <li>Docker Engine</li>
+                    <li>Docker CLI</li>
+                    <li>Docker Compose</li>
+                    <li>Interface graphique de gestion</li>
+                </ul>
+            </div>
 
-        <div class="content-block">
-            <h3>Post-installation Linux</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Ajouter l'utilisateur au groupe docker (évite sudo)</span>
+            <div class="content-block">
+                <h3>Post-installation Linux</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Ajouter l'utilisateur au groupe docker (évite sudo)</span>
 <span class="cmd">sudo usermod -aG docker</span> $USER
 
 <span class="comment"># Appliquer les changements (ou se reconnecter)</span>
@@ -882,31 +888,31 @@
 <span class="output">Docker version 24.0.7, build afdd53b</span>
 
 <span class="cmd">docker run hello-world</span></pre>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- CHAPTER 3 -->
-<section class="chapter" id="ch3">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">03</div>
-            <div>
-                <h2 class="chapter-title">Utiliser Docker</h2>
-                <p class="chapter-subtitle">Commandes essentielles au quotidien</p>
+    </section>
+    <!-- CHAPTER 3 -->
+    <section class="chapter" id="ch3">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">03</div>
+                <div>
+                    <h2 class="chapter-title">Utiliser Docker</h2>
+                    <p class="chapter-subtitle">Commandes essentielles au quotidien</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            C'est ici que tout commence. Savoir lancer, stopper et inspecter un conteneur est le quotidien du
-            développeur Docker. Maîtrisez ces commandes de base avant d'aller plus loin.
-        </p>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                C'est ici que tout commence. Savoir lancer, stopper et inspecter un conteneur est le quotidien du
+                développeur Docker. Maîtrisez ces commandes de base avant d'aller plus loin.
+            </p>
 
-        <div class="content-block">
-            <h3>Lancer un conteneur</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Lancer un conteneur interactif</span>
+            <div class="content-block">
+                <h3>Lancer un conteneur</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Lancer un conteneur interactif</span>
 <span class="cmd">docker run</span> <span class="flag">-it</span> ubuntu bash
 
 <span class="comment"># Lancer en arrière-plan (détaché)</span>
@@ -920,97 +926,98 @@
 
 <span class="comment"># Supprimer automatiquement à l'arrêt</span>
 <span class="cmd">docker run</span> <span class="flag">--rm</span> alpine echo "Hello"</pre>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3>Commandes de base</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>docker ps</code></td>
+                        <td>Lister les conteneurs en cours</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker ps -a</code></td>
+                        <td>Lister tous les conteneurs</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker stop ID</code></td>
+                        <td>Arrêter un conteneur</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker start ID</code></td>
+                        <td>Démarrer un conteneur arrêté</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker rm ID</code></td>
+                        <td>Supprimer un conteneur</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker logs ID</code></td>
+                        <td>Voir les logs</td>
+                    </tr>
+                    <tr>
+                        <td><code>docker exec -it ID bash</code></td>
+                        <td>Entrer dans un conteneur</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Astuce</strong>
+                <span>Utilisez les premiers caractères de l'ID : <code>docker stop a1b</code> au lieu de l'ID
+                    complet.</span>
             </div>
         </div>
-
-        <div class="content-block">
-            <h3>Commandes de base</h3>
-            <table>
-                <tr>
-                    <th>Commande</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><code>docker ps</code></td>
-                    <td>Lister les conteneurs en cours</td>
-                </tr>
-                <tr>
-                    <td><code>docker ps -a</code></td>
-                    <td>Lister tous les conteneurs</td>
-                </tr>
-                <tr>
-                    <td><code>docker stop ID</code></td>
-                    <td>Arrêter un conteneur</td>
-                </tr>
-                <tr>
-                    <td><code>docker start ID</code></td>
-                    <td>Démarrer un conteneur arrêté</td>
-                </tr>
-                <tr>
-                    <td><code>docker rm ID</code></td>
-                    <td>Supprimer un conteneur</td>
-                </tr>
-                <tr>
-                    <td><code>docker logs ID</code></td>
-                    <td>Voir les logs</td>
-                </tr>
-                <tr>
-                    <td><code>docker exec -it ID bash</code></td>
-                    <td>Entrer dans un conteneur</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="tip-box">
-            <strong>💡 Astuce</strong>
-            <span>Utilisez les premiers caractères de l'ID : <code>docker stop a1b</code> au lieu de l'ID
-                complet.</span>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 4 -->
-<section class="chapter" id="ch4">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">04</div>
-            <div>
-                <h2 class="chapter-title">Gérer les conteneurs</h2>
-                <p class="chapter-subtitle">Cycle de vie et gestion avancée</p>
+    </section>
+    <!-- CHAPTER 4 -->
+    <section class="chapter" id="ch4">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">04</div>
+                <div>
+                    <h2 class="chapter-title">Gérer les conteneurs</h2>
+                    <p class="chapter-subtitle">Cycle de vie et gestion avancée</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Un conteneur a un cycle de vie précis. Savoir le déboguer quand il crashe ou le nettoyer quand il ne sert
-            plus est indispensable pour garder un système propre et fonctionnel.
-        </p>
-
-        <div class="content-block">
-            <h3>Cycle de vie d'un conteneur</h3>
-            <div class="mermaid">
-                stateDiagram-v2
-                [*] --> Created : docker create
-                Created --> Running : docker start
-                Running --> Paused : docker pause
-                Paused --> Running : docker unpause
-                Running --> Stopped : docker stop
-                Stopped --> Running : docker start
-                Stopped --> [*] : docker rm
-                Running --> [*] : docker rm -f
-
-                state Running {
-                [*] --> Executing
-                }
-            </div>
-            <p style="margin-top:10px; font-size:0.95rem;">Le cycle est fluide : un conteneur est conçu pour être
-                <strong>éphémère</strong>. On ne le met pas à jour, on le remplace.
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Un conteneur a un cycle de vie précis. Savoir le déboguer quand il crashe ou le nettoyer quand il ne
+                sert
+                plus est indispensable pour garder un système propre et fonctionnel.
             </p>
-        </div>
 
-        <div class="content-block">
-            <h3>Inspecter et débugger</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Infos détaillées (JSON)</span>
+            <div class="content-block">
+                <h3>Cycle de vie d'un conteneur</h3>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    [*] --> Created : docker create
+                    Created --> Running : docker start
+                    Running --> Paused : docker pause
+                    Paused --> Running : docker unpause
+                    Running --> Stopped : docker stop
+                    Stopped --> Running : docker start
+                    Stopped --> [*] : docker rm
+                    Running --> [*] : docker rm -f
+
+                    state Running {
+                    [*] --> Executing
+                    }
+                </div>
+                <p style="margin-top:10px; font-size:0.95rem;">Le cycle est fluide : un conteneur est conçu pour être
+                    <strong>éphémère</strong>. On ne le met pas à jour, on le remplace.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3>Inspecter et débugger</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Infos détaillées (JSON)</span>
 <span class="cmd">docker inspect</span> mon-conteneur
 
 <span class="comment"># Logs en temps réel</span>
@@ -1025,15 +1032,15 @@
 <span class="comment"># Copier des fichiers</span>
 <span class="cmd">docker cp</span> fichier.txt mon-conteneur:/app/
 <span class="cmd">docker cp</span> mon-conteneur:/app/log.txt ./</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Limiter les ressources</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Limiter la mémoire</span>
+            <div class="content-block">
+                <h3>Limiter les ressources</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Limiter la mémoire</span>
 <span class="cmd">docker run</span> <span class="flag">-d --memory</span> 512m nginx
 
 <span class="comment"># Limiter le CPU</span>
@@ -1042,31 +1049,31 @@
 <span class="comment"># Politique de redémarrage</span>
 <span class="cmd">docker run</span> <span class="flag">-d --restart</span> always nginx
 <span class="cmd">docker run</span> <span class="flag">-d --restart</span> on-failure:3 nginx</pre>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- CHAPTER 5 -->
-<section class="chapter" id="ch5">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">05</div>
-            <div>
-                <h2 class="chapter-title">Maîtriser les images</h2>
-                <p class="chapter-subtitle">Créer et gérer des images Docker</p>
+    </section>
+    <!-- CHAPTER 5 -->
+    <section class="chapter" id="ch5">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">05</div>
+                <div>
+                    <h2 class="chapter-title">Maîtriser les images</h2>
+                    <p class="chapter-subtitle">Créer et gérer des images Docker</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            L'image est le plan de construction de votre conteneur. Apprendre à écrire un Dockerfile efficace,
-            multicouche et léger est une compétence clé pour optimiser les déploiements.
-        </p>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                L'image est le plan de construction de votre conteneur. Apprendre à écrire un Dockerfile efficace,
+                multicouche et léger est une compétence clé pour optimiser les déploiements.
+            </p>
 
-        <div class="content-block">
-            <h3>Gestion des images</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Télécharger une image</span>
+            <div class="content-block">
+                <h3>Gestion des images</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Télécharger une image</span>
 <span class="cmd">docker pull</span> nginx:latest
 
 <span class="comment"># Lister les images locales</span>
@@ -1077,15 +1084,15 @@
 
 <span class="comment"># Nettoyer les images non utilisées</span>
 <span class="cmd">docker image prune</span> <span class="flag">-a</span></pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Créer une image avec Dockerfile</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Dockerfile</div>
-                <pre><span class="comment"># Image de base</span>
+            <div class="content-block">
+                <h3>Créer une image avec Dockerfile</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Dockerfile</div>
+                    <pre><span class="comment"># Image de base</span>
 <span class="cmd">FROM</span> node:18-alpine
 
 <span class="comment"># Répertoire de travail</span>
@@ -1105,15 +1112,15 @@
 
 <span class="comment"># Commande de démarrage</span>
 <span class="cmd">CMD</span> ["node", "server.js"]</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Construire et publier</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Build l'image</span>
+            <div class="content-block">
+                <h3>Construire et publier</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Build l'image</span>
 <span class="cmd">docker build</span> <span class="flag">-t</span> mon-app:1.0 .
 
 <span class="comment"># Tagger pour Docker Hub</span>
@@ -1124,62 +1131,62 @@
 
 <span class="comment"># Publier l'image</span>
 <span class="cmd">docker push</span> username/mon-app:1.0</pre>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important</strong>
+                <span>Ajoutez un fichier <code>.dockerignore</code> pour exclure node_modules, .git, etc.</span>
             </div>
         </div>
-
-        <div class="warning-box">
-            <strong>⚠️ Important</strong>
-            <span>Ajoutez un fichier <code>.dockerignore</code> pour exclure node_modules, .git, etc.</span>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 6 -->
-<section class="chapter" id="ch6">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">06</div>
-            <div>
-                <h2 class="chapter-title">Gérer les volumes</h2>
-                <p class="chapter-subtitle">Persistance et partage de données</p>
+    </section>
+    <!-- CHAPTER 6 -->
+    <section class="chapter" id="ch6">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">06</div>
+                <div>
+                    <h2 class="chapter-title">Gérer les volumes</h2>
+                    <p class="chapter-subtitle">Persistance et partage de données</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Les conteneurs sont éphémères, mais vos données ne doivent pas l'être. Les volumes sont le mécanisme
-            pour persister les bases de données et les fichiers au-delà de la vie du conteneur.
-        </p>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Les conteneurs sont éphémères, mais vos données ne doivent pas l'être. Les volumes sont le mécanisme
+                pour persister les bases de données et les fichiers au-delà de la vie du conteneur.
+            </p>
 
-        <div class="content-block">
-            <h3>Types de stockage</h3>
-            <table>
-                <tr>
-                    <th>Type</th>
-                    <th>Usage</th>
-                    <th>Exemple</th>
-                </tr>
-                <tr>
-                    <td><strong>Volume</strong></td>
-                    <td>Données persistantes gérées par Docker</td>
-                    <td><code>-v data:/app/data</code></td>
-                </tr>
-                <tr>
-                    <td><strong>Bind mount</strong></td>
-                    <td>Partage de fichiers hôte ↔ conteneur</td>
-                    <td><code>-v ./src:/app/src</code></td>
-                </tr>
-                <tr>
-                    <td><strong>tmpfs</strong></td>
-                    <td>Données temporaires en RAM</td>
-                    <td><code>--tmpfs /tmp</code></td>
-                </tr>
-            </table>
-        </div>
+            <div class="content-block">
+                <h3>Types de stockage</h3>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Usage</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Volume</strong></td>
+                        <td>Données persistantes gérées par Docker</td>
+                        <td><code>-v data:/app/data</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bind mount</strong></td>
+                        <td>Partage de fichiers hôte ↔ conteneur</td>
+                        <td><code>-v ./src:/app/src</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>tmpfs</strong></td>
+                        <td>Données temporaires en RAM</td>
+                        <td><code>--tmpfs /tmp</code></td>
+                    </tr>
+                </table>
+            </div>
 
-        <div class="content-block">
-            <h3>Volumes Docker</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Créer un volume</span>
+            <div class="content-block">
+                <h3>Volumes Docker</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Créer un volume</span>
 <span class="cmd">docker volume create</span> mes-donnees
 
 <span class="comment"># Lister les volumes</span>
@@ -1193,15 +1200,15 @@
 
 <span class="comment"># Supprimer les volumes orphelins</span>
 <span class="cmd">docker volume prune</span></pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Bind mounts (développement)</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Monter le dossier courant</span>
+            <div class="content-block">
+                <h3>Bind mounts (développement)</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Monter le dossier courant</span>
 <span class="cmd">docker run</span> <span class="flag">-d -v</span> $(pwd):/app node:18
 
 <span class="comment"># Syntaxe longue (plus explicite)</span>
@@ -1211,62 +1218,62 @@
 
 <span class="comment"># Volume en lecture seule</span>
 <span class="cmd">docker run</span> <span class="flag">-v</span> ./config:/app/config:ro nginx</pre>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Best Practice</strong>
+                <span>Utilisez des volumes nommés en production, des bind mounts en développement.</span>
             </div>
         </div>
-
-        <div class="tip-box">
-            <strong>💡 Best Practice</strong>
-            <span>Utilisez des volumes nommés en production, des bind mounts en développement.</span>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 7 -->
-<section class="chapter" id="ch7">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">07</div>
-            <div>
-                <h2 class="chapter-title">Configurer le réseau</h2>
-                <p class="chapter-subtitle">Communication entre conteneurs</p>
+    </section>
+    <!-- CHAPTER 7 -->
+    <section class="chapter" id="ch7">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">07</div>
+                <div>
+                    <h2 class="chapter-title">Configurer le réseau</h2>
+                    <p class="chapter-subtitle">Communication entre conteneurs</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            L'isolation est bien, mais la communication est mieux. Docker offre un réseau virtuel complet pour faire
-            dialoguer vos conteneurs entre eux ou avec le monde extérieur en toute sécurité.
-        </p>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                L'isolation est bien, mais la communication est mieux. Docker offre un réseau virtuel complet pour faire
+                dialoguer vos conteneurs entre eux ou avec le monde extérieur en toute sécurité.
+            </p>
 
-        <div class="content-block">
-            <h3>Types de réseaux</h3>
-            <table>
-                <tr>
-                    <th>Driver</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td><code>bridge</code></td>
-                    <td>Réseau isolé par défaut (communication via IP)</td>
-                </tr>
-                <tr>
-                    <td><code>host</code></td>
-                    <td>Partage le réseau de l'hôte (pas d'isolation)</td>
-                </tr>
-                <tr>
-                    <td><code>none</code></td>
-                    <td>Aucun réseau</td>
-                </tr>
-                <tr>
-                    <td><code>overlay</code></td>
-                    <td>Communication multi-hôtes (Swarm)</td>
-                </tr>
-            </table>
-        </div>
+            <div class="content-block">
+                <h3>Types de réseaux</h3>
+                <table>
+                    <tr>
+                        <th>Driver</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>bridge</code></td>
+                        <td>Réseau isolé par défaut (communication via IP)</td>
+                    </tr>
+                    <tr>
+                        <td><code>host</code></td>
+                        <td>Partage le réseau de l'hôte (pas d'isolation)</td>
+                    </tr>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td>Aucun réseau</td>
+                    </tr>
+                    <tr>
+                        <td><code>overlay</code></td>
+                        <td>Communication multi-hôtes (Swarm)</td>
+                    </tr>
+                </table>
+            </div>
 
-        <div class="content-block">
-            <h3>Créer un réseau personnalisé</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Créer un réseau</span>
+            <div class="content-block">
+                <h3>Créer un réseau personnalisé</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Créer un réseau</span>
 <span class="cmd">docker network create</span> mon-reseau
 
 <span class="comment"># Lancer des conteneurs sur ce réseau</span>
@@ -1275,15 +1282,15 @@
 
 <span class="comment"># Les conteneurs peuvent se joindre par leur nom</span>
 <span class="comment"># L'app peut accéder à MySQL via "db:3306"</span></pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Exposer les ports</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Port spécifique</span>
+            <div class="content-block">
+                <h3>Exposer les ports</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Port spécifique</span>
 <span class="cmd">docker run</span> <span class="flag">-p</span> 8080:80 nginx
 
 <span class="comment"># Plusieurs ports</span>
@@ -1294,37 +1301,37 @@
 
 <span class="comment"># Restreindre à localhost</span>
 <span class="cmd">docker run</span> <span class="flag">-p</span> 127.0.0.1:8080:80 nginx</pre>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 DNS intégré</strong>
+                <span>Sur un réseau custom, Docker fournit un DNS : les conteneurs se trouvent par leur nom.</span>
             </div>
         </div>
+    </section>
+    <!-- CHAPTER 8 -->
+    <section class="chapter" id="ch8">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">08</div>
+                <div>
+                    <h2 class="chapter-title">Docker Compose</h2>
+                    <p class="chapter-subtitle">Orchestrer plusieurs conteneurs</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Lancer des conteneurs un par un est fastidieux. Docker Compose permet de définir toute votre
+                architecture (frontend, API, DB) dans un seul fichier YAML déclaratif.
+            </p>
 
-        <div class="info-box">
-            <strong>💡 DNS intégré</strong>
-            <span>Sur un réseau custom, Docker fournit un DNS : les conteneurs se trouvent par leur nom.</span>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 8 -->
-<section class="chapter" id="ch8">
-  <div class="container">
-    <div class="chapter-header">
-      <div class="chapter-number">08</div>
-      <div>
-        <h2 class="chapter-title">Docker Compose</h2>
-        <p class="chapter-subtitle">Orchestrer plusieurs conteneurs</p>
-      </div>
-    </div>
-    <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-      Lancer des conteneurs un par un est fastidieux. Docker Compose permet de définir toute votre
-      architecture (frontend, API, DB) dans un seul fichier YAML déclaratif.
-    </p>
-
-    <div class="content-block">
-      <h3>Le fichier docker-compose.yml</h3>
-      <p>Définissez votre infrastructure dans un fichier YAML.</p>
-      <div class="code-block">
-        <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-            class="code-dot g"></span> docker-compose.yml</div>
-        <pre><span class="prop">version:</span> <span class="str">'3.8'</span>
+            <div class="content-block">
+                <h3>Le fichier docker-compose.yml</h3>
+                <p>Définissez votre infrastructure dans un fichier YAML.</p>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> docker-compose.yml</div>
+                    <pre><span class="prop">version:</span> <span class="str">'3.8'</span>
 
 <span class="prop">services:</span>
   <span class="prop">webapp:</span>
@@ -1354,15 +1361,15 @@
 
 <span class="prop">networks:</span>
   <span class="prop">backend:</span></pre>
-      </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="content-block">
-      <h3>Commandes Compose</h3>
-      <div class="code-block">
-        <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-            class="code-dot g"></span> Terminal</div>
-        <pre><span class="comment"># Démarrer toute la stack (détaché)</span>
+            <div class="content-block">
+                <h3>Commandes Compose</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Démarrer toute la stack (détaché)</span>
 <span class="cmd">docker compose up</span> <span class="flag">-d</span>
 
 <span class="comment"># Arrêter et supprimer les conteneurs</span>
@@ -1373,32 +1380,32 @@
 
 <span class="comment"># Reconstruire les images si Dockerfile a changé</span>
 <span class="cmd">docker compose up</span> <span class="flag">-d --build</span></pre>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- CHAPTER 9 -->
-<section class="chapter" id="ch9">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">09</div>
-            <div>
-                <h2 class="chapter-title">Compose Avancé</h2>
-                <p class="chapter-subtitle">Environnements et dépendances</p>
+                </div>
             </div>
         </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Allez plus loin avec Compose : gestion des variables d'environnement pour différents contextes
-            (dev/prod), dépendances entre services et redémarrages automatiques.
-        </p>
+    </section>
+    <!-- CHAPTER 9 -->
+    <section class="chapter" id="ch9">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">09</div>
+                <div>
+                    <h2 class="chapter-title">Compose Avancé</h2>
+                    <p class="chapter-subtitle">Environnements et dépendances</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Allez plus loin avec Compose : gestion des variables d'environnement pour différents contextes
+                (dev/prod), dépendances entre services et redémarrages automatiques.
+            </p>
 
-        <div class="content-block">
-            <h3>Gestion des dépendances</h3>
-            <p>Attendre qu'un service soit réellement prêt (pas juste démarré).</p>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> docker-compose.yml</div>
-                <pre><span class="prop">services:</span>
+            <div class="content-block">
+                <h3>Gestion des dépendances</h3>
+                <p>Attendre qu'un service soit réellement prêt (pas juste démarré).</p>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> docker-compose.yml</div>
+                    <pre><span class="prop">services:</span>
   <span class="prop">web:</span>
     <span class="prop">depends_on:</span>
       <span class="prop">db:</span>
@@ -1411,21 +1418,21 @@
       <span class="prop">interval:</span> 10s
       <span class="prop">timeout:</span> 5s
       <span class="prop">retries:</span> 5</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Profils & Variables</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> .env</div>
-                <pre>APP_PORT=3000
+            <div class="content-block">
+                <h3>Profils & Variables</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> .env</div>
+                    <pre>APP_PORT=3000
 DB_PASSWORD=secure_pass</pre>
-            </div>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> docker-compose.yml</div>
-                <pre><span class="prop">services:</span>
+                </div>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> docker-compose.yml</div>
+                    <pre><span class="prop">services:</span>
   <span class="prop">tools:</span>
     <span class="prop">profiles:</span> ["debug"]  <span class="comment"># Ne démarre que si --profile debug</span>
     <span class="prop">image:</span> adminer
@@ -1433,89 +1440,89 @@ DB_PASSWORD=secure_pass</pre>
   <span class="prop">web:</span>
     <span class="prop">ports:</span>
       - <span class="str">"${APP_PORT}:80"</span></pre>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- CHAPTER 10 -->
-<section class="chapter" id="ch10">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">10</div>
-            <div>
-                <h2 class="chapter-title">Intro Orchestration</h2>
-                <p class="chapter-subtitle">Au-delà du conteneur unique</p>
+    </section>
+    <!-- CHAPTER 10 -->
+    <section class="chapter" id="ch10">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">10</div>
+                <div>
+                    <h2 class="chapter-title">Intro Orchestration</h2>
+                    <p class="chapter-subtitle">Au-delà du conteneur unique</p>
+                </div>
+            </div>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Quand vous avez 100 conteneurs sur 10 serveurs, Compose ne suffit plus. Swarm et Kubernetes entrent en
+                jeu pour automatiser le déploiement, la mise à l'échelle et la résilience.
+            </p>
+
+            <div class="content-block">
+                <h3>Swarm vs Kubernetes</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Docker Swarm</th>
+                        <th>Kubernetes (K8s)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Complexité</strong></td>
+                        <td>Faible (Intégré à Docker)</td>
+                        <td>Élevée (Courbe d'apprentissage)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Installation</strong></td>
+                        <td><code>docker swarm init</code></td>
+                        <td>Cluster complexe (Minikube, K3s)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Usage idéal</strong></td>
+                        <td>PME, Projets simples</td>
+                        <td>Enterprise, Cloud Scale</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Concepts Clés</strong>
+                <ul>
+                    <li><strong>Node</strong> : Serveur du cluster (Manager ou Worker).</li>
+                    <li><strong>Service</strong> : Définition de l'état désiré (ex: 3 répliques de Nginx).</li>
+                    <li><strong>Replica</strong> : Instance d'un conteneur qui tourne sur un Node.</li>
+                </ul>
             </div>
         </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Quand vous avez 100 conteneurs sur 10 serveurs, Compose ne suffit plus. Swarm et Kubernetes entrent en
-            jeu pour automatiser le déploiement, la mise à l'échelle et la résilience.
-        </p>
-
-        <div class="content-block">
-            <h3>Swarm vs Kubernetes</h3>
-            <table>
-                <tr>
-                    <th>Feature</th>
-                    <th>Docker Swarm</th>
-                    <th>Kubernetes (K8s)</th>
-                </tr>
-                <tr>
-                    <td><strong>Complexité</strong></td>
-                    <td>Faible (Intégré à Docker)</td>
-                    <td>Élevée (Courbe d'apprentissage)</td>
-                </tr>
-                <tr>
-                    <td><strong>Installation</strong></td>
-                    <td><code>docker swarm init</code></td>
-                    <td>Cluster complexe (Minikube, K3s)</td>
-                </tr>
-                <tr>
-                    <td><strong>Usage idéal</strong></td>
-                    <td>PME, Projets simples</td>
-                    <td>Enterprise, Cloud Scale</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="info-box">
-            <strong>💡 Concepts Clés</strong>
-            <ul>
-                <li><strong>Node</strong> : Serveur du cluster (Manager ou Worker).</li>
-                <li><strong>Service</strong> : Définition de l'état désiré (ex: 3 répliques de Nginx).</li>
-                <li><strong>Replica</strong> : Instance d'un conteneur qui tourne sur un Node.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- CHAPTER 11 -->
-<section class="chapter" id="ch11">
-    <div class="container">
-        <div class="chapter-header">
-            <div class="chapter-number">11</div>
-            <div>
-                <h2 class="chapter-title">Sécurité & Optimisation</h2>
-                <p class="chapter-subtitle">Production Ready</p>
+    </section>
+    <!-- CHAPTER 11 -->
+    <section class="chapter" id="ch11">
+        <div class="container">
+            <div class="chapter-header">
+                <div class="chapter-number">11</div>
+                <div>
+                    <h2 class="chapter-title">Sécurité & Optimisation</h2>
+                    <p class="chapter-subtitle">Production Ready</p>
+                </div>
             </div>
-        </div>
-        <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
-            Un conteneur mal configuré est une faille de sécurité. Apprenez les bonnes pratiques : utilisateur
-            non-root, images minimales (Alpine) et nettoyage régulier des ressources.
-        </p>
+            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.05rem;">
+                Un conteneur mal configuré est une faille de sécurité. Apprenez les bonnes pratiques : utilisateur
+                non-root, images minimales (Alpine) et nettoyage régulier des ressources.
+            </p>
 
-        <div class="content-block">
-            <h3>Optimiser les images</h3>
-            <ul>
-                <li>Utiliser des images <strong>Alpine</strong> (légères)</li>
-                <li>Grouper les commandes RUN pour réduire les layers</li>
-                <li>Placer les instructions qui changent peu en premier (cache)</li>
-                <li>Utiliser le <strong>multi-stage build</strong> pour séparer build et runtime</li>
-            </ul>
+            <div class="content-block">
+                <h3>Optimiser les images</h3>
+                <ul>
+                    <li>Utiliser des images <strong>Alpine</strong> (légères)</li>
+                    <li>Grouper les commandes RUN pour réduire les layers</li>
+                    <li>Placer les instructions qui changent peu en premier (cache)</li>
+                    <li>Utiliser le <strong>multi-stage build</strong> pour séparer build et runtime</li>
+                </ul>
 
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Dockerfile (Multi-stage)</div>
-                <pre><span class="comment"># Étape 1 : Build</span>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Dockerfile (Multi-stage)</div>
+                    <pre><span class="comment"># Étape 1 : Build</span>
 <span class="cmd">FROM</span> node:18 <span class="flag">AS</span> builder
 <span class="cmd">WORKDIR</span> /app
 <span class="cmd">COPY</span> package*.json ./
@@ -1530,23 +1537,23 @@ DB_PASSWORD=secure_pass</pre>
 <span class="cmd">COPY</span> <span class="flag">--from=</span>builder /app/node_modules ./node_modules
 <span class="cmd">EXPOSE</span> 3000
 <span class="cmd">CMD</span> ["node", "dist/server.js"]</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Sécurité</h3>
-            <ul>
-                <li>Ne pas exécuter en <strong>root</strong> : utiliser <code>USER</code></li>
-                <li>Scanner les images : <code>docker scout</code></li>
-                <li>Utiliser des images officielles et les maintenir à jour</li>
-                <li>Ne jamais stocker de secrets dans l'image</li>
-                <li>Activer les <strong>healthchecks</strong></li>
-            </ul>
+            <div class="content-block">
+                <h3>Sécurité</h3>
+                <ul>
+                    <li>Ne pas exécuter en <strong>root</strong> : utiliser <code>USER</code></li>
+                    <li>Scanner les images : <code>docker scout</code></li>
+                    <li>Utiliser des images officielles et les maintenir à jour</li>
+                    <li>Ne jamais stocker de secrets dans l'image</li>
+                    <li>Activer les <strong>healthchecks</strong></li>
+                </ul>
 
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Dockerfile</div>
-                <pre><span class="cmd">FROM</span> node:18-alpine
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Dockerfile</div>
+                    <pre><span class="cmd">FROM</span> node:18-alpine
 
 <span class="comment"># Créer un utilisateur non-root</span>
 <span class="cmd">RUN</span> addgroup -S appgroup && adduser -S appuser -G appgroup
@@ -1560,15 +1567,15 @@ DB_PASSWORD=secure_pass</pre>
   CMD wget -q --spider http://localhost:3000/health || exit 1
 
 <span class="cmd">CMD</span> ["node", "server.js"]</pre>
+                </div>
             </div>
-        </div>
 
-        <div class="content-block">
-            <h3>Commandes de nettoyage</h3>
-            <div class="code-block">
-                <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
-                        class="code-dot g"></span> Terminal</div>
-                <pre><span class="comment"># Supprimer tous les conteneurs arrêtés</span>
+            <div class="content-block">
+                <h3>Commandes de nettoyage</h3>
+                <div class="code-block">
+                    <div class="code-header"><span class="code-dot r"></span><span class="code-dot y"></span><span
+                            class="code-dot g"></span> Terminal</div>
+                    <pre><span class="comment"># Supprimer tous les conteneurs arrêtés</span>
 <span class="cmd">docker container prune</span>
 
 <span class="comment"># Supprimer les images orphelines</span>
@@ -1579,15 +1586,15 @@ DB_PASSWORD=secure_pass</pre>
 
 <span class="comment"># Voir l'espace disque utilisé</span>
 <span class="cmd">docker system df</span></pre>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Production</strong>
+                <span>Toujours spécifier un tag précis (<code>nginx:1.25</code>) plutôt que <code>latest</code>.</span>
             </div>
         </div>
-
-        <div class="warning-box">
-            <strong>⚠️ Production</strong>
-            <span>Toujours spécifier un tag précis (<code>nginx:1.25</code>) plutôt que <code>latest</code>.</span>
-        </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- SECTION QUIZ -->

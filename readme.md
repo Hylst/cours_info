@@ -1,6 +1,15 @@
-# Docker Course Memo
+# 18 Sites internet mémo synthèses de bases, rappels et aides à l'apprentissage du développement WEB :
+# HTML + CSS + JAVASCRIPT + REACT + NODE JS + PHP + JAVA + NETWORK + PYTHON (BASES/WEB/DATA) + DEVOPS + DOCKER + DATA SCIENCE + AUTOMATION + CYBER SECURITY + EMBEDDED
+# Soit 18 Sites Web d'apprentissages essentiellement vibe codés ou codés assistés par IA (accessibles depuis dossiers distince, statique)
+# + SITES WEB : COGNI AI (apprentissage fantôme) + GREEN IT (Le green IT en clair) + Joyeux Noêl 2025 
+# + WEB APPS : ASCII-Verse + Bulle sensorielle +  + ATARI ST Tools (*) + Melo Dimensions (*) + Explorateur de la NeuroDiversité (*)
+# + fichiers MP3 création musicales personnelles + illustrations (pour synchro avec image docker / serveur NGINX Statique)
+# Langue : français
+#
+# * ancienne version
 
-A comprehensive, modularized course memo for learning Docker, covering everything from basic concepts to orchestration and security. Designed as a static website for easy deployment and access.
+18+ Comprehensives, modularized courses memo for learning ML + CSS + JAVASCRIPT + REACT + NODE JS + PHP + JAVA + NETWORK + PYTHON (BASES/WEB/DATA) + DEVOPS + DOCKER + DATA SCIENCE + AUTOMATION + CYBER SECURITY + EMBEDDED. 
+Designed as a static website for easy deployment and access.
 
 ## Features
 
@@ -10,52 +19,4 @@ A comprehensive, modularized course memo for learning Docker, covering everythin
 - **Code Highlighting**: Clear and readable code snippets for commands and configurations.
 - **SEO Optimized**: Meta tags, Open Graph data, and semantic HTML.
 - **Dark Mode**: Modern dark-themed UI with "Outfit" and "JetBrains Mono" fonts.
-
-## Installation & Usage
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/your-repo/docker-memo.git
-    cd docker-memo
-    ```
-
-2.  **Build the project**:
-    This project uses a Python script to assemble the static HTML file from modules.
-    ```bash
-    python scripts/build.py
-    ```
-    This will generate `docker/index.html`.
-
-3.  **Run locally**:
-    Open `docker/index.html` in your browser.
-    
-    Or serve it with a lightweight server:
-    ```bash
-    cd docker
-    python -m http.server 8000
-    ```
-    Access at `http://localhost:8000`.
-
-## Project Structure
-
-- `docker/`: Main content directory.
-    - `modules/`: Individual HTML chapters.
-    - `templates/`: Base HTML template.
-    - `assets/`: CSS, JS, and images.
-    - `index.html`: Generated final file.
-- `scripts/`: Utility scripts (build system).
-
-## Deployment
-
-The site is designed to be hosted on any static file server (Nginx, Apache, GitHub Pages, Netlify).
-For Docker deployment (ironically):
-
-```dockerfile
-FROM nginx:alpine
-COPY docker /usr/share/nginx/html
-```
-
-## Credits
-
-Created by **Geoffroy Streit**.
-Assisted by AI for content synthesis and code generation.
+ e

@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
     <style>
         /* Specific Module 02 Styles */
         .mem-viz {
@@ -76,11 +77,14 @@
             text-align: center;
             border-radius: 6px;
             transition: transform 0.2s;
+            cursor: pointer;
         }
 
-        .type-card:hover {
+        .type-card:hover,
+        .type-card.active {
             transform: translateY(-2px);
             border-color: var(--primary);
+            background: rgba(119, 123, 180, 0.1);
         }
 
         .type-icon {
@@ -91,6 +95,28 @@
         .type-name {
             font-weight: bold;
             color: var(--text);
+        }
+
+        #type-detail-container {
+            background: var(--bg2);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .matrix-row {
@@ -137,42 +163,45 @@
             </div>
 
             <!-- OVERVIEW -->
-            <p>JavaScript possède <strong>8 types de données</strong>. La distinction fondamentale est comment ils sont
-                stockés en mémoire : par <em>valeur</em> (Stack) ou par <em>référence</em> (Heap).</p>
+            <p>JavaScript possède <strong>8 types de données</strong>. Cliquez sur une carte pour voir un exemple.</p>
 
             <div class="type-grid">
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('Number', this)">
                     <div class="type-icon">🔢</div>
                     <div class="type-name">Number</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('String', this)">
                     <div class="type-icon">🔤</div>
                     <div class="type-name">String</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('Boolean', this)">
                     <div class="type-icon">✅</div>
                     <div class="type-name">Boolean</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('BigInt', this)">
                     <div class="type-icon">🕸️</div>
                     <div class="type-name">BigInt</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('Null', this)">
                     <div class="type-icon">👻</div>
                     <div class="type-name">Null</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('Undefined', this)">
                     <div class="type-icon">❓</div>
                     <div class="type-name">Undefined</div>
                 </div>
-                <div class="type-card">
+                <div class="type-card" onclick="showTypeDetails('Symbol', this)">
                     <div class="type-icon">🔑</div>
                     <div class="type-name">Symbol</div>
                 </div>
-                <div class="type-card" style="border-color:var(--accent)">
+                <div class="type-card" style="border-color:var(--accent)" onclick="showTypeDetails('Object', this)">
                     <div class="type-icon">📦</div>
                     <div class="type-name">Object</div>
                 </div>
+            </div>
+
+            <div id="type-detail-container">
+                <!-- Details injected via JS -->
             </div>
 
             <!-- MEMORY VISUALIZATION -->
@@ -210,32 +239,71 @@
                         </div>
                     </div>
 
-                    <div class="mem-viz">
+                    <div style="background:rgba(0,0,0,0.3); padding:15px; border-radius:8px; margin-bottom:20px;">
+                        <div
+                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <h4 style="margin:0; font-size:0.95rem">⚡ Démo Interactive : Copie de variables</h4>
+                            <button onclick="animateMemoryCopy()" class="demo-btn"
+                                style="font-size:0.8rem; padding:5px 15px;">▶️ Lancer la démo</button>
+                        </div>
+                        <div id="mem-demo-code"
+                            style="background:#0f141c; padding:10px; border-radius:4px; font-family:'JetBrains Mono'; font-size:0.85rem; margin-bottom:10px; border-left:3px solid var(--muted);">
+                            <div>let a = 5;</div>
+                            <div>let b = a; <span style="color:var(--muted)">// Copie la valeur</span></div>
+                            <div style="margin-top:8px">let user1 = {name: "Alice"};</div>
+                            <div>let user2 = user1; <span style="color:var(--muted)">// Copie l'adresse !</span></div>
+                        </div>
+                    </div>
+
+                    <div class="mem-viz" id="animated-mem-viz">
                         <div class="mem-col">
                             <div class="mem-title">Stack (Vos Post-its)</div>
-                            <div class="stack-item"><span>age</span> <span style="color:#a5d6ff">25</span></div>
-                            <div class="stack-item"><span>name</span> <span style="color:#ce9178">"Alo"</span></div>
-                            <div class="stack-item"><span>user</span> <span style="color:var(--accent)">@0x1A4</span>
-                                <span style="font-size:0.7em; color:gray">(adresse)</span></div>
+                            <div class="stack-item" id="stack-a"><span>a</span> <span style="color:#a5d6ff">5</span>
+                            </div>
+                            <div class="stack-item" id="stack-b" style="opacity:0.3"><span>b</span> <span
+                                    style="color:#a5d6ff">5</span></div>
+                            <div class="stack-item" id="stack-user1" style="opacity:0.3"><span>user1</span> <span
+                                    style="color:var(--accent)">@0x1A4</span> <span
+                                    style="font-size:0.7em; color:gray">(adresse)</span></div>
+                            <div class="stack-item" id="stack-user2" style="opacity:0.3"><span>user2</span> <span
+                                    style="color:var(--accent)">@0x1A4</span> <span
+                                    style="font-size:0.7em; color:gray">(adresse)</span></div>
                         </div>
                         <div class="mem-col">
                             <div class="mem-title">Heap (L'Entrepôt)</div>
-                            <div class="heap-obj">
+                            <div class="heap-obj" id="heap-obj" style="opacity:0.3">
                                 <span class="heap-addr">@0x1A4</span>
-                                <div>{ name: "Alice", role: "Admin" }</div>
+                                <div id="heap-content">{ name: "Alice" }</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="warning">
-                        <strong>⚠️ Piège classique :</strong>
-                        <p style="margin-top:5px; font-size:0.9rem">
-                            Quand vous copiez un objet (<code>let user2 = user1</code>), vous copiez seulement le
-                            Post-it avec l'adresse (<strong>@0x1A4</strong>).<br>
-                            Les deux variables pointent vers le <strong>MÊME</strong> carton dans l'entrepôt. Si
-                            <code>user2</code> change le contenu, <code>user1</code> voit le changement !
-                        </p>
+                    <div class="mem-col">
+                        <div class="mem-title">Stack (Vos Post-its)</div>
+                        <div class="stack-item"><span>age</span> <span style="color:#a5d6ff">25</span></div>
+                        <div class="stack-item"><span>name</span> <span style="color:#ce9178">"Alo"</span></div>
+                        <div class="stack-item"><span>user</span> <span style="color:var(--accent)">@0x1A4</span>
+                            <span style="font-size:0.7em; color:gray">(adresse)</span>
+                        </div>
                     </div>
+                    <div class="mem-col">
+                        <div class="mem-title">Heap (L'Entrepôt)</div>
+                        <div class="heap-obj">
+                            <span class="heap-addr">@0x1A4</span>
+                            <div>{ name: "Alice", role: "Admin" }</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Piège classique :</strong>
+                    <p style="margin-top:5px; font-size:0.9rem">
+                        Quand vous copiez un objet (<code>let user2 = user1</code>), vous copiez seulement le
+                        Post-it avec l'adresse (<strong>@0x1A4</strong>).<br>
+                        Les deux variables pointent vers le <strong>MÊME</strong> carton dans l'entrepôt. Si
+                        <code>user2</code> change le contenu, <code>user1</code> voit le changement !
+                    </p>
+                </div>
                 </div>
             </details>
 
@@ -306,6 +374,7 @@ typeof (() => {})   // "function" (Objet appelable)</code></pre>
     </main>
 
     <!-- Footer injected by layout.js -->
+    <script src="../assets/js/prism.js"></script>
     <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/modules/02_types.js"></script>
 </body>

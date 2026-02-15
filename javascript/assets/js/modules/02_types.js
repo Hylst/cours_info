@@ -80,6 +80,75 @@ function showTypeDetails(type, el) {
     container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+// Animated Memory Copy Demonstration
+function animateMemoryCopy() {
+    const codeBlock = document.getElementById('mem-demo-code');
+    const stackB = document.getElementById('stack-b');
+    const stackUser1 = document.getElementById('stack-user1');
+    const stackUser2 = document.getElementById('stack-user2');
+    const heapObj = document.getElementById('heap-obj');
+
+    // Reset
+    [stackB, stackUser1, stackUser2, heapObj].forEach(el => el.style.opacity = '0.3');
+    codeBlock.style.borderLeftColor = 'var(--muted)';
+
+    // Step 1: Highlight primitive copy (300ms delay between steps)
+    setTimeout(() => {
+        codeBlock.children[0].style.color = 'var(--primary)';
+        codeBlock.children[1].style.color = 'var(--primary)';
+        stackB.style.opacity = '1';
+        stackB.style.transform = 'scale(1.05)';
+        setTimeout(() => stackB.style.transform = 'scale(1)', 200);
+    }, 300);
+
+    // Step 2: Show object creation
+    setTimeout(() => {
+        codeBlock.children[0].style.color = '';
+        codeBlock.children[1].style.color = '';
+        codeBlock.children[2].style.color = 'var(--accent)';
+        stackUser1.style.opacity = '1';
+        heapObj.style.opacity = '1';
+        heapObj.style.transform = 'scale(1.05)';
+        setTimeout(() => heapObj.style.transform = 'scale(1)', 200);
+    }, 1500);
+
+    // Step 3: Show reference copy (DANGER!)
+    setTimeout(() => {
+        codeBlock.children[2].style.color = '';
+        codeBlock.children[3].style.color = '#f44336'; // Red for danger
+        codeBlock.style.borderLeftColor = '#f44336';
+        stackUser2.style.opacity = '1';
+        stackUser2.style.transform = 'scale(1.08)';
+        stackUser2.style.borderColor = '#f44336';
+
+        // Pulse the heap object to show it's the SAME reference
+        heapObj.style.borderColor = '#f44336';
+        heapObj.style.transform = 'scale(1.08)';
+
+        setTimeout(() => {
+            stackUser2.style.transform = 'scale(1)';
+            heapObj.style.transform = 'scale(1)';
+        }, 400);
+    }, 2800);
+
+    // Step 4: Demonstrate mutation issue
+    setTimeout(() => {
+        const heapContent = document.getElementById('heap-content');
+        heapContent.innerHTML = '{ name: <span style="color:#f44336">"Bob"</span> } <span style="font-size:0.8em">← Modifié!</span>';
+        heapObj.style.animation = 'pulse 0.5s ease';
+    }, 4200);
+
+    // Reset after demo
+    setTimeout(() => {
+        codeBlock.children[3].style.color = '';
+        codeBlock.style.borderLeftColor = 'var(--muted)';
+        stackUser2.style.borderColor = 'var(--border)';
+        heapObj.style.borderColor = 'var(--accent)';
+        heapObj.style.animation = '';
+        document.getElementById('heap-content').innerHTML = '{ name: "Alice" }';
+    }, 6000);
+}
+
 function demoTypes() {
     // Legacy mapping if needed, but we use analyzeType now directly via input event
     const input = document.getElementById('demo-input');

@@ -177,33 +177,65 @@
 
             <!-- MEMORY VISUALIZATION -->
             <details open>
-                <summary>🧠 Mémoire : Stack vs Heap</summary>
+                <summary>🧠 Mémoire : Stack vs Heap (La Pile vs Le Tas)</summary>
                 <div class="details-content">
-                    <p>C'est LA source de 50% des bugs en JS. Comprendre ceci, c'est maîtriser le langage.</p>
+                    <p>Pour bien comprendre le JavaScript, il faut visualiser comment il stocke les données. On utilise
+                        une analogie simple : <strong>Le Post-it vs Le Carton de Déménagement</strong>.</p>
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin:20px 0;">
+                        <div>
+                            <h3
+                                style="color:var(--primary); border-bottom:2px solid var(--primary); padding-bottom:5px;">
+                                🥞 Stack (La Pile)</h3>
+                            <p style="font-size:0.9rem; color:var(--muted)">Pour les <strong>Primitifs</strong> (Number,
+                                String...)</p>
+                            <ul style="font-size:0.9rem; line-height:1.6">
+                                <li><strong>Analogie :</strong> Une pile de Post-its sur votre bureau.</li>
+                                <li><strong>Caractéristiques :</strong> Rapide, Ordonné, Taille fixe.</li>
+                                <li>Vous écrivez la valeur directement dessus.</li>
+                                <li><em>Exemple :</em> <code>let age = 25;</code></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:5px;">
+                                📦 Heap (Le Tas)</h3>
+                            <p style="font-size:0.9rem; color:var(--muted)">Pour les <strong>Objets</strong> (Object,
+                                Array, Function)</p>
+                            <ul style="font-size:0.9rem; line-height:1.6">
+                                <li><strong>Analogie :</strong> Un entrepôt géant en désordre.</li>
+                                <li><strong>Caractéristiques :</strong> Plus lent, Non-ordonné, Taille dynamique.</li>
+                                <li>Vous avez juste l'adresse de l'étagère sur votre Post-it (Stack).</li>
+                                <li><em>Exemple :</em> <code>let user = { id: 1 };</code></li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="mem-viz">
                         <div class="mem-col">
-                            <div class="mem-title">🥞 Stack (Primitifs)</div>
-                            <div style="font-size:0.8rem; opacity:0.7; margin-bottom:10px">Stocke la valeur directement.
-                                Rapide.</div>
+                            <div class="mem-title">Stack (Vos Post-its)</div>
                             <div class="stack-item"><span>age</span> <span style="color:#a5d6ff">25</span></div>
                             <div class="stack-item"><span>name</span> <span style="color:#ce9178">"Alo"</span></div>
                             <div class="stack-item"><span>user</span> <span style="color:var(--accent)">@0x1A4</span>
-                            </div>
+                                <span style="font-size:0.7em; color:gray">(adresse)</span></div>
                         </div>
                         <div class="mem-col">
-                            <div class="mem-title">📦 Heap (Objets)</div>
-                            <div style="font-size:0.8rem; opacity:0.7; margin-bottom:10px">Stocke les objets lourds.
-                            </div>
+                            <div class="mem-title">Heap (L'Entrepôt)</div>
                             <div class="heap-obj">
                                 <span class="heap-addr">@0x1A4</span>
                                 <div>{ name: "Alice", role: "Admin" }</div>
                             </div>
                         </div>
                     </div>
-                    <p class="tip">Quand vous copiez un objet (<code>let b = a</code>), vous copiez seulement
-                        <strong>l'adresse mémoire</strong> (@0x1A4). Modifier <code>b</code> modifie aussi
-                        <code>a</code> !</p>
+
+                    <div class="warning">
+                        <strong>⚠️ Piège classique :</strong>
+                        <p style="margin-top:5px; font-size:0.9rem">
+                            Quand vous copiez un objet (<code>let user2 = user1</code>), vous copiez seulement le
+                            Post-it avec l'adresse (<strong>@0x1A4</strong>).<br>
+                            Les deux variables pointent vers le <strong>MÊME</strong> carton dans l'entrepôt. Si
+                            <code>user2</code> change le contenu, <code>user1</code> voit le changement !
+                        </p>
+                    </div>
                 </div>
             </details>
 
@@ -260,7 +292,8 @@ typeof (() => {})   // "function" (Objet appelable)</code></pre>
                     </div>
                     <div class="tip" style="margin-top:10px"><strong>Solution :</strong> Utilisez toujours
                         <code>===</code> et faites des conversions explicites (<code>Number()</code>,
-                        <code>String()</code>).</div>
+                        <code>String()</code>).
+                    </div>
                 </div>
             </details>
 

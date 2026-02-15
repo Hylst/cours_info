@@ -66,10 +66,40 @@ function initApp() {
 
     // Generate Navigation
     generateNav();
+    initMobileMenu();
     generateTOC();
 
     // Initialize Router
     new Router(routes, 'app-content');
+}
+
+function initMobileMenu() {
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+
+    if (btn && nav) {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.toggle('open');
+            btn.textContent = nav.classList.contains('open') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== btn) {
+                nav.classList.remove('open');
+                btn.textContent = '☰';
+            }
+        });
+
+        // Close menu when clicking a link
+        nav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                nav.classList.remove('open');
+                btn.textContent = '☰';
+            }
+        });
+    }
 }
 
 function generateNav() {

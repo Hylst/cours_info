@@ -618,3 +618,66 @@ footer {
 .btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); color: var(--foreground); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
 .btn-back:hover { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); transform: translateX(-2px); }
 .btn-back .icon { font-size: 1.1rem; line-height: 1; }
+
+/* === RESPONSIVE MOBILE MENU === */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* Mobile Menu Button */
+    #menu-toggle.mobile-only {
+        display: block !important;
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    /* Mobile Nav Dropdown */
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15, 20, 30, 0.98);
+        text-align: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        flex-direction: column;
+        gap: 15px;
+        backdrop-filter: blur(10px);
+    }
+
+    nav.open {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    nav a {
+        display: block;
+        padding: 12px;
+        width: 100%;
+        font-size: 1.1rem;
+        border: 1px solid transparent;
+    }
+
+    nav a:hover {
+        border-color: var(--primary);
+        background: rgba(119, 123, 180, 0.1);
+    }
+
+    .sec-header {
+        flex-direction: column;
+    }
+
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

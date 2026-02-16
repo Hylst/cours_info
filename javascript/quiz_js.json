@@ -299,10 +299,11 @@
                 "Promise.all()",
                 "Promise.race()",
                 "Promise.any()",
-                "Toutes"
+                "Promise.any()",
+                "Promise.all()"
             ],
             "answer": 3,
-            "explanation": "Chacune gère les promesses multiples différemment."
+            "explanation": "Promise.all() attend que toutes soient résolues (ou qu'une échoue). Promise.race() attend la première."
         },
         {
             "id": 26,

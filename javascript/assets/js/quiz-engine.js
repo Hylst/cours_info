@@ -30,11 +30,45 @@ class QuizEngine {
         }
         const data = await response.json();
 
-        // Shuffle and select questions
         const allQuestions = data.questions || [];
-        this.totalQuestions = allQuestions.length; // Store total available
-        this.questions = this.shuffleArray(allQuestions)
-            .slice(0, this.questionsPerSession);
+        this.totalQuestions = allQuestions.length;
+
+        // --- Persistence Logic ---
+        const STORAGE_KEY = 'quiz_js_mastery';
+        const answeredIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+        // Filter out questions already answered correctly
+        let availableQuestions = allQuestions.filter(q => !answeredIds.includes(q.id));
+
+        console.log(`Questions available: ${availableQuestions.length} / ${this.totalQuestions}`);
+
+        // If not enough questions left, or empty, logic to recycle or reset
+        if (availableQuestions.length < this.questionsPerSession) {
+            if (availableQuestions.length === 0) {
+                // Formatting: "Cycle complete"
+                alert("Félicitations ! Vous avez passé en revue toutes les questions. Le quiz va se réinitialiser.");
+                localStorage.removeItem(STORAGE_KEY);
+                availableQuestions = [...allQuestions];
+            } else {
+                // Fill with some already answered questions to reach the count
+                const needed = this.questionsPerSession - availableQuestions.length;
+                const answeredQuestions = allQuestions.filter(q => answeredIds.includes(q.id));
+                const recycled = this.shuffleArray(answeredQuestions).slice(0, needed);
+                availableQuestions = [...availableQuestions, ...recycled];
+            }
+        }
+
+        // Shuffle and select
+        this.questions = this.shuffleArray(availableQuestions).slice(0, this.questionsPerSession);
+    }
+
+    saveProgress(questionId) {
+        const STORAGE_KEY = 'quiz_js_mastery';
+        let answeredIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (!answeredIds.includes(questionId)) {
+            answeredIds.push(questionId);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(answeredIds));
+        }
     }
 
     shuffleArray(array) {
@@ -107,6 +141,7 @@ class QuizEngine {
 
         if (isCorrect) {
             this.score++;
+            this.saveProgress(question.id);
         }
 
         this.userAnswers.push({

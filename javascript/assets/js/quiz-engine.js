@@ -70,11 +70,21 @@ class QuizEngine {
         const container = document.getElementById(this.containerId);
         const question = this.questions[this.currentQuestion];
 
-        const optionsHTML = question.options.map((option, index) => `
-            <div class="quiz-option" onclick="window.quizInstance.selectAnswer(${index})">
-                ${option}
+        // Shuffle options to avoid pattern bias
+        const optionsIndices = question.options.map((_, i) => i);
+        this.currentShuffledIndices = optionsIndices.sort(() => Math.random() - 0.5);
+
+        const optionsHTML = this.currentShuffledIndices.map((originalIndex, displayIndex) => {
+            const optionText = question.options[originalIndex];
+            const letter = String.fromCharCode(65 + displayIndex); // A, B, C...
+
+            return `
+            <div class="quiz-option" onclick="window.quizInstance.selectAnswer(${originalIndex}, this)">
+                <span class="opt-letter" style="margin-right:10px; font-weight:bold; color:var(--primary)">${letter}.</span>
+                ${optionText}
             </div>
-        `).join('');
+            `;
+        }).join('');
 
         container.innerHTML = `
             <div class="quiz-progress">
@@ -91,9 +101,9 @@ class QuizEngine {
         `;
     }
 
-    selectAnswer(answerIndex) {
+    selectAnswer(originalIndex, element) {
         const question = this.questions[this.currentQuestion];
-        const isCorrect = answerIndex === question.correct;
+        const isCorrect = originalIndex === question.correct;
 
         if (isCorrect) {
             this.score++;
@@ -101,7 +111,7 @@ class QuizEngine {
 
         this.userAnswers.push({
             question: question.question,
-            userAnswer: answerIndex,
+            userAnswer: originalIndex,
             correct: question.correct,
             isCorrect: isCorrect
         });
@@ -109,14 +119,20 @@ class QuizEngine {
         this.showFeedback(answerIndex, question);
     }
 
-    showFeedback(answerIndex, question) {
+    showFeedback(userOriginalIndex, question) {
         const options = document.querySelectorAll('.quiz-option');
-        options.forEach((option, index) => {
-            option.style.pointerEvents = 'none';
-            if (index === question.correct) {
-                option.classList.add('correct');
-            } else if (index === answerIndex) {
-                option.classList.add('incorrect');
+
+        // Disable all clicks
+        options.forEach(opt => opt.style.pointerEvents = 'none');
+
+        // Loop through the displayed options to find which one corresponds to the user's choice and the correct answer
+        this.currentShuffledIndices.forEach((originalIndex, displayIndex) => {
+            const optionElement = options[displayIndex];
+
+            if (originalIndex === question.correct) {
+                optionElement.classList.add('correct');
+            } else if (originalIndex === userOriginalIndex && userOriginalIndex !== question.correct) {
+                optionElement.classList.add('incorrect');
             }
         });
 

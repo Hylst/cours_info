@@ -294,16 +294,15 @@
         },
         {
             "id": 25,
-            "question": "Quelle méthode permet d'attendre plusieurs promesses ?",
+            "question": "Quelle méthode permet d'attendre que toutes les promesses soient résolues ?",
             "options": [
                 "Promise.all()",
                 "Promise.race()",
                 "Promise.any()",
-                "Promise.any()",
-                "Promise.all()"
+                "Promise.allSettled()"
             ],
-            "answer": 3,
-            "explanation": "Promise.all() attend que toutes soient résolues (ou qu'une échoue). Promise.race() attend la première."
+            "answer": 0,
+            "explanation": "Promise.all() attend que toutes les promesses soient résolues (ou qu'une échoue). Promise.race() attend la première, Promise.any() la première réussie, et Promise.allSettled() attend que toutes soient terminées (réussite ou échec)."
         },
         {
             "id": 26,

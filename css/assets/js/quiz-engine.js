@@ -46,8 +46,31 @@ class QuizEngine {
     }
 
     startParams() {
+        // --- Persistence Logic ---
+        const STORAGE_KEY = 'quiz_css_mastery';
+        const answeredIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+        // Filter out questions already answered correctly
+        let availableQuestions = this.state.allQuestions.filter(q => !answeredIds.includes(q.id));
+
+        console.log(`Questions available: ${availableQuestions.length} / ${this.state.allQuestions.length}`);
+
+        // If not enough questions left, or empty, logic to recycle or reset
+        if (availableQuestions.length < this.questionsPerSession) {
+            if (availableQuestions.length === 0) {
+                alert("Félicitations ! Vous avez passé en revue toutes les questions CSS. Le quiz va se réinitialiser.");
+                localStorage.removeItem(STORAGE_KEY);
+                availableQuestions = [...this.state.allQuestions];
+            } else {
+                const needed = this.questionsPerSession - availableQuestions.length;
+                const answeredQuestions = this.state.allQuestions.filter(q => answeredIds.includes(q.id));
+                const recycled = [...answeredQuestions].sort(() => 0.5 - Math.random()).slice(0, needed);
+                availableQuestions = [...availableQuestions, ...recycled];
+            }
+        }
+
         // Shuffle and pick N questions
-        const shuffled = [...this.state.allQuestions].sort(() => 0.5 - Math.random());
+        const shuffled = [...availableQuestions].sort(() => 0.5 - Math.random());
         this.state.currentSession = shuffled.slice(0, this.questionsPerSession);
 
         // Reset state
@@ -75,12 +98,19 @@ class QuizEngine {
         const question = this.state.currentSession[this.state.currentIndex];
         const progress = ((this.state.currentIndex) / this.questionsPerSession) * 100;
 
+        // Shuffle options dynamically
+        const currentQ = this.state.currentSession[this.state.currentIndex];
+        const indices = currentQ.options.map((_, i) => i);
+        const shuffledIndices = indices.sort(() => Math.random() - 0.5);
+        this.state.currentShuffledIndices = shuffledIndices;
+
         let optionsHtml = '';
-        question.options.forEach((opt, idx) => {
+        shuffledIndices.forEach((originalIdx, displayIdx) => {
+            const optText = currentQ.options[originalIdx];
             optionsHtml += `
-                <button class="quiz-option" data-idx="${idx}">
-                    <span class="opt-letter">${String.fromCharCode(65 + idx)}</span>
-                    <span class="opt-text">${this.escapeHtml(opt)}</span>
+                <button class="quiz-option" data-original-idx="${originalIdx}">
+                    <span class="opt-letter">${String.fromCharCode(65 + displayIdx)}</span>
+                    <span class="opt-text">${this.escapeHtml(optText)}</span>
                 </button>
             `;
         });
@@ -115,19 +145,20 @@ class QuizEngine {
     handleAnswer(btn) {
         if (this.elements.container.querySelector('.quiz-option.selected')) return; // Already answered
 
-        const selectedIdx = parseInt(btn.dataset.idx);
+        const selectedOriginalIdx = parseInt(btn.dataset.originalIdx);
         const question = this.state.currentSession[this.state.currentIndex];
-        const isCorrect = selectedIdx === question.answer;
+        const isCorrect = selectedOriginalIdx === question.answer;
 
         // Visuals
         btn.classList.add('selected');
         if (isCorrect) {
             btn.classList.add('correct');
             this.state.score++;
+            this.saveProgress(question.id);
         } else {
             btn.classList.add('wrong');
             // Show correct one
-            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-idx="${question.answer}"]`);
+            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-original-idx="${question.answer}"]`);
             if (correctBtn) correctBtn.classList.add('correct');
         }
 
@@ -201,6 +232,15 @@ class QuizEngine {
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    }
+
+    saveProgress(questionId) {
+        const STORAGE_KEY = 'quiz_css_mastery';
+        let answeredIds = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (!answeredIds.includes(questionId)) {
+            answeredIds.push(questionId);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(answeredIds));
+        }
     }
 }
 

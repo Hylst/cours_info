@@ -151,7 +151,7 @@ class QuizEngine {
             isCorrect: isCorrect
         });
 
-        this.showFeedback(answerIndex, question);
+        this.showFeedback(originalIndex, question);
     }
 
     showFeedback(userOriginalIndex, question) {

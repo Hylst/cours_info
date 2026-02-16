@@ -85,12 +85,24 @@ class QuizEngine {
         const question = this.state.currentSession[this.state.currentIndex];
         const progress = ((this.state.currentIndex) / this.questionsPerSession) * 100;
 
+        // Shuffle options dynamically
+        const currentQ = this.state.currentSession[this.state.currentIndex];
+
+        // Create an array of indices [0, 1, 2, 3...]
+        const indices = currentQ.options.map((_, i) => i);
+        // Shuffle indices
+        const shuffledIndices = indices.sort(() => Math.random() - 0.5);
+
+        // Store the mapping for this specific question instance to checks answers later
+        this.state.currentShuffledIndices = shuffledIndices;
+
         let optionsHtml = '';
-        question.options.forEach((opt, idx) => {
+        shuffledIndices.forEach((originalIdx, displayIdx) => {
+            const optText = currentQ.options[originalIdx];
             optionsHtml += `
-                <button class="quiz-option" data-idx="${idx}">
-                    <span class="opt-letter">${String.fromCharCode(65 + idx)}</span>
-                    <span class="opt-text">${this.escapeHtml(opt)}</span>
+                <button class="quiz-option" data-original-idx="${originalIdx}">
+                    <span class="opt-letter">${String.fromCharCode(65 + displayIdx)}</span>
+                    <span class="opt-text">${this.escapeHtml(optText)}</span>
                 </button>
             `;
         });
@@ -125,9 +137,9 @@ class QuizEngine {
     handleAnswer(btn) {
         if (this.elements.container.querySelector('.quiz-option.selected')) return; // Already answered
 
-        const selectedIdx = parseInt(btn.dataset.idx);
+        const selectedOriginalIdx = parseInt(btn.dataset.originalIdx);
         const question = this.state.currentSession[this.state.currentIndex];
-        const isCorrect = selectedIdx === question.answer;
+        const isCorrect = selectedOriginalIdx === question.answer;
 
         // Visuals
         btn.classList.add('selected');
@@ -136,8 +148,8 @@ class QuizEngine {
             this.state.score++;
         } else {
             btn.classList.add('wrong');
-            // Show correct one
-            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-idx="${question.answer}"]`);
+            // Show correct one by finding the button with the correct original index
+            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-original-idx="${question.answer}"]`);
             if (correctBtn) correctBtn.classList.add('correct');
         }
 

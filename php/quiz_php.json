@@ -14,7 +14,7 @@
                 "People Hate Python"
             ],
             "answer": 0,
-            "explanation": "Acronyme récursif (historiquement Personal Home Page)."
+            "explanation": "PHP signifie 'PHP: Hypertext Preprocessor'. C'est un acronyme récursif (historiquement Personal Home Page)."
         },
         {
             "id": 2,
@@ -26,7 +26,8 @@
                 "variable"
             ],
             "answer": 0,
-            "explanation": "Toujours préfixé par $."
+            "answer": 0,
+            "explanation": "En PHP, toutes les variables commencent par un signe dollar $, suivi du nom de la variable."
         },
         {
             "id": 3,
@@ -530,7 +531,7 @@
                 "check_file()"
             ],
             "answer": 0,
-            "explanation": "Valide aussi les dossiers."
+            "explanation": "Vérifie l'existence de fichiers ET de dossiers. Utiliser is_file() pour cibler uniquement les fichiers."
         },
         {
             "id": 45,
@@ -1202,7 +1203,7 @@
                 "Juin"
             ],
             "answer": 0,
-            "explanation": "Toujours très vivant, performant et évolutif."
+            "explanation": "Absolument pas ! PHP propulse plus de 75% du web (WordPress, Laravel, Symfony...) et continue d'évoluer rapidement."
         },
         {
             "id": 101,
@@ -1214,7 +1215,7 @@
                 "Rien"
             ],
             "answer": 0,
-            "explanation": "Évite les chaînes de vérification if (isset...)."
+            "explanation": "L'opérateur Nullsafe (?->) court-circuite l'évaluation et retourne null si l'objet à gauche est null, évitant ainsi une erreur."
         },
         {
             "id": 102,

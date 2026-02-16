@@ -59,13 +59,17 @@
 }
 
 .quiz-option.correct {
-    border-color: #4caf50;
-    background: rgba(76, 175, 80, 0.1);
+    border-color: #22c55e !important;
+    background: rgba(34, 197, 94, 0.15) !important;
+    color: #15803d;
+    font-weight: 500;
 }
 
 .quiz-option.incorrect {
-    border-color: #f44336;
-    background: rgba(244, 67, 54, 0.1);
+    border-color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #b91c1c;
+    opacity: 0.7;
 }
 
 .quiz-progress {

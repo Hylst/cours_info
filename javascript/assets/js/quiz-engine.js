@@ -164,10 +164,16 @@ class QuizEngine {
         this.currentShuffledIndices.forEach((originalIndex, displayIndex) => {
             const optionElement = options[displayIndex];
 
+            // Remove existing icons if any (idempotency)
+            const existingIcon = optionElement.querySelector('.feedback-status-icon');
+            if (existingIcon) existingIcon.remove();
+
             if (originalIndex === question.correct) {
                 optionElement.classList.add('correct');
+                optionElement.innerHTML += ' <span class="feedback-status-icon" style="float:right">✅</span>';
             } else if (originalIndex === userOriginalIndex && userOriginalIndex !== question.correct) {
                 optionElement.classList.add('incorrect');
+                optionElement.innerHTML += ' <span class="feedback-status-icon" style="float:right">❌</span>';
             }
         });
 

@@ -163,13 +163,18 @@ class QuizEngine {
         btn.classList.add('selected');
         if (isCorrect) {
             btn.classList.add('correct');
+            btn.innerHTML += ' <span style="float:right">✅</span>';
             this.state.score++;
             this.saveProgress(question.id);
         } else {
             btn.classList.add('wrong');
+            btn.innerHTML += ' <span style="float:right">❌</span>';
             // Show correct one
             const correctBtn = this.elements.container.querySelector(`.quiz-option[data-original-idx="${question.answer}"]`);
-            if (correctBtn) correctBtn.classList.add('correct');
+            if (correctBtn) {
+                correctBtn.classList.add('correct');
+                correctBtn.innerHTML += ' <span style="float:right">✅</span>';
+            }
         }
 
         // Show Feedback

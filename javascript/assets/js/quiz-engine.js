@@ -137,7 +137,7 @@ class QuizEngine {
 
     selectAnswer(originalIndex, element) {
         const question = this.questions[this.currentQuestion];
-        const isCorrect = originalIndex === question.correct;
+        const isCorrect = originalIndex === question.answer;
 
         if (isCorrect) {
             this.score++;
@@ -147,7 +147,7 @@ class QuizEngine {
         this.userAnswers.push({
             question: question.question,
             userAnswer: originalIndex,
-            correct: question.correct,
+            correct: question.answer,
             isCorrect: isCorrect
         });
 
@@ -168,10 +168,10 @@ class QuizEngine {
             const existingIcon = optionElement.querySelector('.feedback-status-icon');
             if (existingIcon) existingIcon.remove();
 
-            if (originalIndex === question.correct) {
+            if (originalIndex === question.answer) {
                 optionElement.classList.add('correct');
                 optionElement.innerHTML += ' <span class="feedback-status-icon" style="float:right">✅</span>';
-            } else if (originalIndex === userOriginalIndex && userOriginalIndex !== question.correct) {
+            } else if (originalIndex === userOriginalIndex && userOriginalIndex !== question.answer) {
                 optionElement.classList.add('incorrect');
                 optionElement.innerHTML += ' <span class="feedback-status-icon" style="float:right">❌</span>';
             }

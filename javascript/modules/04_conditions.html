@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
     <style>
         .tf-grid {
             display: grid;
@@ -369,6 +370,262 @@ const perm = permissions[role]
                 </div>
             </div>
 
+            <!-- DETAILED EXPLANATIONS -->
+            <h3 style="margin-top:50px; border-left: 4px solid var(--accent); padding-left: 12px;">📚 Explications
+                Détaillées des Opérateurs Logiques</h3>
+
+            <!-- && OPERATOR -->
+            <details style="margin-top:20px;">
+                <summary
+                    style="cursor:pointer; font-size:1.1rem; font-weight:600; padding:15px; background:var(--card); border-radius:8px; border:1px solid var(--border);">
+                    1️⃣ L'opérateur && (ET logique) - "Si ceci est vrai, fais cela"</summary>
+                <div class="details-content" style="padding:20px; background:var(--bg2); border-radius:0 0 8px 8px;">
+                    <p><strong>Principe :</strong> L'opérateur <code>&&</code> évalue de gauche à droite et s'arrête dès
+                        qu'il trouve une valeur <em>falsy</em>. Si tout est <em>truthy</em>, il retourne la dernière
+                        valeur.</p>
+
+                    <div class="code-container" style="margin:15px 0;">
+                        <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-javascript">// Si isLoggedIn est true, alors showDashboard() s'exécute
+isLoggedIn && showDashboard();
+
+// C'est l'équivalent de :
+if (isLoggedIn) {
+    showDashboard();
+}</code></pre>
+                    </div>
+
+                    <div
+                        style="background:rgba(99,102,241,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid var(--primary);">
+                        <strong>💡 En React on voit souvent ça :</strong>
+                        <pre style="margin-top:10px;"><code class="language-javascript">{user && <p>Bonjour {user.name}</p>}
+// Si user existe, on affiche le paragraphe</code></pre>
+                    </div>
+
+                    <div
+                        style="background:rgba(168,85,247,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid var(--accent);">
+                        <strong>🎯 Cas d'usage typiques :</strong>
+                        <ul style="margin-top:10px; padding-left:20px;">
+                            <li>Rendu conditionnel dans React/Vue</li>
+                            <li>Exécution de fonction uniquement si une condition est remplie</li>
+                            <li>Chaînage de validations</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <!-- || OPERATOR -->
+            <details style="margin-top:15px;">
+                <summary
+                    style="cursor:pointer; font-size:1.1rem; font-weight:600; padding:15px; background:var(--card); border-radius:8px; border:1px solid var(--border);">
+                    2️⃣ L'opérateur || (OU logique) - "Prends ça, sinon prends ça par défaut"</summary>
+                <div class="details-content" style="padding:20px; background:var(--bg2); border-radius:0 0 8px 8px;">
+                    <p><strong>Principe :</strong> L'opérateur <code>||</code> retourne la première valeur
+                        <em>truthy</em> qu'il rencontre. Si tout est <em>falsy</em>, il retourne la dernière valeur.</p>
+
+                    <div class="code-container" style="margin:15px 0;">
+                        <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-javascript">const name = userName || "Anonyme";
+// Si userName existe, on prend userName, SINON on prend "Anonyme"
+
+// C'est comme écrire :
+const name = userName ? userName : "Anonyme";</code></pre>
+                    </div>
+
+                    <div class="pitfall" style="margin:15px 0;">
+                        <div class="pitfall-title">⚠️ Le piège avec 0 et "" (chaîne vide)</div>
+                        <pre><code class="language-javascript">const count = 0;
+const val = count || 10; // Résultat: 10 😱
+
+// Pourquoi ? Parce que 0 est considéré comme "faux" en JavaScript
+// Donc JavaScript pense : "0 c'est faux, je prends 10 à la place"
+
+const text = "";
+const msg = text || "Aucun message"; // Résultat: "Aucun message"
+// Même problème : "" est falsy !</code></pre>
+                    </div>
+
+                    <div
+                        style="background:rgba(76,175,80,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid #4caf50;">
+                        <strong>✅ Quand utiliser || :</strong>
+                        <ul style="margin-top:10px; padding-left:20px;">
+                            <li>Valeurs par défaut pour des chaînes non-vides</li>
+                            <li>Fallback sur des objets/tableaux</li>
+                            <li>Quand 0, false, "" ne sont PAS des valeurs valides</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ?? OPERATOR -->
+            <details style="margin-top:15px;">
+                <summary
+                    style="cursor:pointer; font-size:1.1rem; font-weight:600; padding:15px; background:var(--card); border-radius:8px; border:1px solid var(--border);">
+                    3️⃣ L'opérateur ?? (Nullish Coalescing) - "La version safe"</summary>
+                <div class="details-content" style="padding:20px; background:var(--bg2); border-radius:0 0 8px 8px;">
+                    <div
+                        style="background:linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.2)); padding:20px; border-radius:8px; margin-bottom:20px; border:2px solid #ffa500;">
+                        <div style="font-size:1.2rem; font-weight:bold; color:#ffa500; margin-bottom:10px;">🏆 La Règle
+                            d'Or</div>
+                        <p style="font-size:1.05rem; line-height:1.6;"><code>??</code> ne réagit qu'à <code>null</code>
+                            et <code>undefined</code>. <strong>Tout le reste est accepté !</strong></p>
+                    </div>
+
+                    <div class="code-container" style="margin:15px 0;">
+                        <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-javascript">const speed = 0;
+const v = speed ?? 100; // Résultat: 0 ✅
+
+// Pourquoi ? Parce que ?? ne réagit qu'à null et undefined
+// 0, "", false sont considérés comme des valeurs valides !
+
+const x = "" ?? "default"; // Résultat: "" ✅
+const y = null ?? "default"; // Résultat: "default"
+const z = undefined ?? "default"; // Résultat: "default"</code></pre>
+                    </div>
+
+                    <div style="background:var(--card); padding:20px; border-radius:8px; margin:20px 0;">
+                        <h4 style="color:var(--accent); margin-bottom:15px;">📊 Comparaison || vs ??</h4>
+                        <div class="code-container">
+                            <div class="code-header-mac"><span class="dot red"></span><span
+                                    class="dot yellow"></span><span class="dot green"></span></div>
+                            <pre><code class="language-javascript">// Les valeurs "fausses" en JavaScript (falsy values) :
+// false, 0, "", null, undefined, NaN
+
+// AVEC || (l'ancienne méthode problématique)
+const avecOu = 0 || 10;        // 10 ❌ (perd notre 0)
+const avecOu2 = "" || "rien";   // "rien" ❌ (perd la chaîne vide)
+const avecOu3 = false || true;  // true ❌ (perd false)
+
+// AVEC ?? (la bonne méthode)
+const avecCoalesce = 0 ?? 10;        // 0 ✅ (garde notre 0)
+const avecCoalesce2 = "" ?? "rien";   // "" ✅ (garde la chaîne vide)
+const avecCoalesce3 = false ?? true;  // false ✅ (garde false)
+const avecCoalesce4 = null ?? "default";  // "default" ✅
+const avecCoalesce5 = undefined ?? "default";  // "default" ✅</code></pre>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background:rgba(76,175,80,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid #4caf50;">
+                        <strong>✅ Cas d'usage parfaits pour ?? :</strong>
+                        <ul style="margin-top:10px; padding-left:20px;">
+                            <li>Configuration avec des valeurs numériques (timeout: 0 est valide)</li>
+                            <li>Flags booléens (false est une valeur intentionnelle)</li>
+                            <li>Chaînes vides acceptées ("" peut être un choix valide)</li>
+                            <li>APIs qui retournent null/undefined pour "pas de données"</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <!-- ?. OPERATOR -->
+            <details style="margin-top:15px;">
+                <summary
+                    style="cursor:pointer; font-size:1.1rem; font-weight:600; padding:15px; background:var(--card); border-radius:8px; border:1px solid var(--border);">
+                    4️⃣ L'opérateur ?. (Optional Chaining) - "Pour éviter les erreurs"</summary>
+                <div class="details-content" style="padding:20px; background:var(--bg2); border-radius:0 0 8px 8px;">
+                    <p><strong>Principe :</strong> L'opérateur <code>?.</code> permet d'accéder à des propriétés
+                        imbriquées sans risquer une erreur si une propriété intermédiaire est <code>null</code> ou
+                        <code>undefined</code>.</p>
+
+                    <div class="code-container" style="margin:15px 0;">
+                        <div class="code-header-mac"><span class="dot red"></span><span class="dot yellow"></span><span
+                                class="dot green"></span></div>
+                        <pre><code class="language-javascript">// Sans ?. - La manière dangereuse ⚠️
+if (user && user.address && user.address.city) {
+    console.log(user.address.city);
+}
+
+// Avec ?. - La manière safe ✅
+const city = user?.address?.city; 
+// Si user ou address n'existe pas → city = undefined (pas d'erreur !)</code></pre>
+                    </div>
+
+                    <div style="background:var(--card); padding:20px; border-radius:8px; margin:20px 0;">
+                        <h4 style="color:var(--accent); margin-bottom:15px;">🎯 Trois utilisations de ?.</h4>
+                        <div class="code-container">
+                            <div class="code-header-mac"><span class="dot red"></span><span
+                                    class="dot yellow"></span><span class="dot green"></span></div>
+                            <pre><code class="language-javascript">// 1. Propriétés d'objets
+const city = user?.address?.city;
+
+// 2. Appel de fonction qui existe peut-être pas
+user?.notify?.(); // Appelle notify() seulement si elle existe
+obj.method?.();   // Safe même si method n'existe pas
+
+// 3. Accès aux tableaux
+const first = arr?.[0];     // Retourne undefined si arr n'existe pas
+const item = list?.[index]; // Safe même si list est null</code></pre>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background:rgba(76,175,80,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid #4caf50;">
+                        <strong>✅ Quand utiliser ?. :</strong>
+                        <ul style="margin-top:10px; padding-left:20px;">
+                            <li>Données venant d'APIs externes (structure incertaine)</li>
+                            <li>Objets de configuration optionnels</li>
+                            <li>Callbacks qui peuvent ne pas être définis</li>
+                            <li>Accès à des propriétés profondes dans des objets complexes</li>
+                        </ul>
+                    </div>
+
+                    <div class="pitfall" style="margin:15px 0;">
+                        <div class="pitfall-title">⚠️ Attention : ?. ne remplace pas la validation</div>
+                        <pre><code class="language-javascript">// ❌ Mauvais : masque un vrai problème
+const result = data?.items?.map(x => x.value);
+// Si data.items n'existe pas, result = undefined silencieusement
+
+// ✅ Mieux : validation explicite quand c'est critique
+if (!data?.items) {
+    throw new Error("Items manquants dans la réponse API");
+}
+const result = data.items.map(x => x.value);</code></pre>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SUMMARY TABLE -->
+            <div
+                style="background:linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.1)); padding:25px; border-radius:12px; margin-top:30px;">
+                <h4 style="color:var(--accent); margin-bottom:20px; font-size:1.2rem;">📋 Résumé des Opérateurs Logiques
+                </h4>
+                <div style="display:grid; gap:15px;">
+                    <div
+                        style="background:var(--card); padding:15px; border-radius:8px; border-left:4px solid var(--primary);">
+                        <strong style="color:var(--primary); font-size:1.1rem;">&&</strong> : "Si ceci est vrai, fais
+                        cela"
+                        <div style="margin-top:8px; opacity:0.9;">Retourne la première valeur falsy, ou la dernière si
+                            tout est truthy</div>
+                    </div>
+                    <div
+                        style="background:var(--card); padding:15px; border-radius:8px; border-left:4px solid #ffa500;">
+                        <strong style="color:#ffa500; font-size:1.1rem;">||</strong> : "Prends ça, sinon prends ça par
+                        défaut" (mais attention à 0 et "")
+                        <div style="margin-top:8px; opacity:0.9;">Retourne la première valeur truthy, ou la dernière si
+                            tout est falsy</div>
+                    </div>
+                    <div
+                        style="background:var(--card); padding:15px; border-radius:8px; border-left:4px solid #4caf50;">
+                        <strong style="color:#4caf50; font-size:1.1rem;">??</strong> : "Prends ça, sinon prends ça par
+                        défaut" (sauf si c'est null/undefined)
+                        <div style="margin-top:8px; opacity:0.9;">Ne réagit QU'À null et undefined. Accepte 0, false, ""
+                        </div>
+                    </div>
+                    <div
+                        style="background:var(--card); padding:15px; border-radius:8px; border-left:4px solid var(--accent);">
+                        <strong style="color:var(--accent); font-size:1.1rem;">?.</strong> : "Accède à cette propriété
+                        si elle existe, sinon undefined"
+                        <div style="margin-top:8px; opacity:0.9;">Évite les erreurs lors de l'accès à des propriétés
+                            profondes</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- DECISION TREE -->
             <h3 style="margin-top:40px;">🧭 Arbre de Décision : Quelle Structure Choisir ?</h3>
             <div class="decision-tree">
@@ -470,6 +727,7 @@ const x = a ? (b ? (c ? 1 : 2) : 3) : 4;
         </section>
     </main>
 
+    <script src="../assets/js/prism.js"></script>
     <script src="../assets/js/layout.js"></script>
     <script src="../assets/js/modules/04_conditions.js"></script>
 </body>

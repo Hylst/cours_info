@@ -1,6 +1,10 @@
 /**
  * Moteur de Quiz Générique - AntiGravity
  * Charge un fichier JSON et gère l'affichage des questions/réponses.
+ * Features:
+ * - Persistance (localStorage)
+ * - Aléatoire (Questions + Réponses)
+ * - Feedback Visuel (Icones - Couleurs)
  */
 
 class QuizEngine {
@@ -8,13 +12,15 @@ class QuizEngine {
         this.containerId = config.containerId || 'quiz-app';
         this.jsonPath = config.jsonPath; // Path relative to the HTML file
         this.questionsPerSession = config.questionsPerSession || 10;
+        this.storageKey = `quiz_mastered_${this.jsonPath.replace(/\W/g, '_')}`; // Unique key based on filename
 
         this.state = {
             allQuestions: [],
-            currentSession: [],
+            currentSession: [],     // Array of { ...questionData, shuffledOptions: [], originalIndices: [] }
             currentIndex: 0,
             score: 0,
-            userAnswers: [], // { questionId, answerIndex, isCorrect }
+            userAnswers: [],        // { questionId, answerIndex, isCorrect }
+            masteredIds: this.loadMastered(),
             isFinished: false
         };
 
@@ -26,6 +32,21 @@ class QuizEngine {
             this.init();
         } else {
             console.error('Quiz container not found:', this.containerId);
+        }
+    }
+
+    loadMastered() {
+        try {
+            return JSON.parse(localStorage.getItem(this.storageKey)) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    saveMastered(id) {
+        if (!this.state.masteredIds.includes(id)) {
+            this.state.masteredIds.push(id);
+            localStorage.setItem(this.storageKey, JSON.stringify(this.state.masteredIds));
         }
     }
 
@@ -46,9 +67,28 @@ class QuizEngine {
     }
 
     startParams() {
-        // Shuffle and pick N questions
-        const shuffled = [...this.state.allQuestions].sort(() => 0.5 - Math.random());
-        this.state.currentSession = shuffled.slice(0, this.questionsPerSession);
+        // Filter out mastered questions first (if any remain)
+        let available = this.state.allQuestions.filter(q => !this.state.masteredIds.includes(q.id));
+
+        // If all mastered (or empty), reset !
+        if (available.length === 0) {
+            alert("Bravo ! Vous avez maîtrisé toutes les questions de ce module ! Le quiz va se réinitialiser.");
+            this.state.masteredIds = [];
+            localStorage.removeItem(this.storageKey);
+            available = [...this.state.allQuestions];
+        }
+
+        // Shuffle available questions (Fisher-Yates)
+        const shuffledQuestions = [...available];
+        for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
+        }
+
+        // Pick N questions and PREPARE them (shuffle options immediately)
+        this.state.currentSession = shuffledQuestions
+            .slice(0, this.questionsPerSession)
+            .map(q => this.prepareQuestion(q));
 
         // Reset state
         this.state.currentIndex = 0;
@@ -59,12 +99,48 @@ class QuizEngine {
         this.renderQuestion();
     }
 
+    // Helper to shuffle options and keep track of original index
+    prepareQuestion(question) {
+        // Create an array of indices [0, 1, 2, 3]
+        const indices = question.options.map((_, i) => i);
+
+        // Fisher-Yates Shuffle
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
+        }
+
+        const shuffledIndices = indices;
+
+        // Map to new options array
+        const shuffledOptions = shuffledIndices.map(i => question.options[i]);
+
+        return {
+            ...question,
+            shuffledOptions: shuffledOptions,
+            shuffledIndices: shuffledIndices // shuffledIndices[newIndex] = originalIndex
+        };
+    }
+
     renderIntro(meta) {
+        const masteredCount = this.state.masteredIds.length;
+        const total = meta.total;
+        const percent = Math.round((masteredCount / total) * 100);
+
         this.elements.container.innerHTML = `
             <div class="quiz-intro">
-                <div class="quiz-badge">${meta.total} Questions</div>
+                <div class="quiz-badge">${total} Questions</div>
                 <h3>${meta.title}</h3>
                 <p>Testez vos connaissances avec une série aléatoire de <strong>${this.questionsPerSession} questions</strong>.</p>
+                
+                <div class="mastery-progress" style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <p style="margin-bottom: 5px;">Progression globale : <strong>${percent}%</strong> maîtrisé</p>
+                    <div style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
+                        <div style="width: ${percent}%; height: 100%; background: #10b981;"></div>
+                    </div>
+                    <small style="opacity: 0.7;">Questions déjà réussies : ${masteredCount}/${total}</small>
+                </div>
+
                 <button id="btn-start" class="quiz-btn primary">Commencer le Quiz</button>
             </div>
         `;
@@ -76,9 +152,9 @@ class QuizEngine {
         const progress = ((this.state.currentIndex) / this.questionsPerSession) * 100;
 
         let optionsHtml = '';
-        question.options.forEach((opt, idx) => {
+        question.shuffledOptions.forEach((opt, idx) => {
             optionsHtml += `
-                <button class="quiz-option" data-idx="${idx}">
+                <button class="quiz-option" data-display-idx="${idx}">
                     <span class="opt-letter">${String.fromCharCode(65 + idx)}</span>
                     <span class="opt-text">${this.escapeHtml(opt)}</span>
                 </button>
@@ -109,26 +185,43 @@ class QuizEngine {
             btn.addEventListener('click', (e) => this.handleAnswer(e.currentTarget));
         });
 
-        document.getElementById('btn-next').addEventListener('click', () => this.nextQuestion());
+        const nextBtn = document.getElementById('btn-next');
+        if (nextBtn) nextBtn.addEventListener('click', () => this.nextQuestion());
     }
 
     handleAnswer(btn) {
         if (this.elements.container.querySelector('.quiz-option.selected')) return; // Already answered
 
-        const selectedIdx = parseInt(btn.dataset.idx);
+        const displayIdx = parseInt(btn.dataset.displayIdx);
         const question = this.state.currentSession[this.state.currentIndex];
-        const isCorrect = selectedIdx === question.answer;
+
+        // Retrieve original index from the shuffled map
+        const originalIndex = question.shuffledIndices[displayIdx];
+
+        // Check against the 'answer' property (which is an index)
+        const isCorrect = originalIndex === question.answer;
 
         // Visuals
         btn.classList.add('selected');
+
+        // Mark the selected button
         if (isCorrect) {
             btn.classList.add('correct');
+            btn.innerHTML += ' <span class="feedback-status-icon" style="float:right">✅</span>';
             this.state.score++;
+            this.saveMastered(question.id); // Save persistence
         } else {
             btn.classList.add('wrong');
-            // Show correct one
-            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-idx="${question.answer}"]`);
-            if (correctBtn) correctBtn.classList.add('correct');
+            btn.innerHTML += ' <span class="feedback-status-icon" style="float:right">❌</span>';
+
+            // Find and highlight the correct button
+            // We need to find which display-index corresponds to the original answer index
+            const correctDisplayIndex = question.shuffledIndices.indexOf(question.answer);
+            const correctBtn = this.elements.container.querySelector(`.quiz-option[data-display-idx="${correctDisplayIndex}"]`);
+            if (correctBtn) {
+                correctBtn.classList.add('correct');
+                correctBtn.innerHTML += ' <span class="feedback-status-icon" style="float:right">✅</span>';
+            }
         }
 
         // Show Feedback
@@ -176,6 +269,11 @@ class QuizEngine {
                 </div>
                 <h3>${message}</h3>
                 <p>Vous avez obtenu ${percentage}% de bonnes réponses.</p>
+                
+                 <div class="mastery-summary" style="margin-top:20px; font-size: 0.9em; opacity: 0.8;">
+                    <p>Total questions maîtrisées : ${this.state.masteredIds.length} / ${this.state.allQuestions.length}</p>
+                </div>
+
                 <div class="result-actions">
                     <button id="btn-restart" class="quiz-btn primary">Rejouer</button>
                     <!-- <button id="btn-home" class="quiz-btn secondary">Retour au cours</button> -->

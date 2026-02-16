@@ -1647,13 +1647,12 @@ Port Mapping : Redirige le port 8080 de l'Hôte vers le 80 du Conteneur.</pre>
         </div>
     </section>
 
-    <script type="module">
-        import '../../assets/js/quiz-engine.js';
+    <script src="../../assets/js/quiz-engine.js?v=2"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            new window.QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_networks.json', questionsPerSession: 10 });
+            new QuizEngine({ containerId: 'quiz-app', jsonPath: 'quiz_networks.json', questionsPerSession: 10 });
         });
     </script>
-    <script src="../../assets/js/quiz-engine.js"></script>
     <footer>
         <div class="container">
             <p><strong>Mémo Réseaux</strong> • 2025</p>

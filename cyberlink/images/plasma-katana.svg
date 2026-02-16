@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050505;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0f14;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="plasma" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff2a2a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff2a2a;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g transform="translate(400,300)">
+    <!-- Handle -->
+    <rect x="-30" y="150" width="60" height="120" fill="#1a1a1a" stroke="#00f0ff" stroke-width="2"/>
+    <circle cx="0" cy="150" r="20" fill="#0a0f14" stroke="#00f0ff" stroke-width="2"/>
+    <!-- Blade -->
+    <path d="M -15,150 L -5,-250 L 5,-250 L 15,150 Z" fill="url(#plasma)" stroke="#ff2a2a" stroke-width="2"/>
+    <!-- Glow effect -->
+    <path d="M -15,150 L -5,-250 L 5,-250 L 15,150 Z" fill="url(#plasma)" opacity="0.5" filter="blur(5px)"/>
+    <!-- Tech details on handle -->
+    <line x1="-20" y1="180" x2="20" y2="180" stroke="#00f0ff" stroke-width="1"/>
+    <line x1="-20" y1="210" x2="20" y2="210" stroke="#00f0ff" stroke-width="1"/>
+    <line x1="-20" y1="240" x2="20" y2="240" stroke="#00f0ff" stroke-width="1"/>
+  </g>
+</svg>

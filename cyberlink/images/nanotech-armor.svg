@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050505;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0f14;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="hexPattern" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <polygon points="30,0 60,15 60,37 30,52 0,37 0,15" fill="none" stroke="#00f0ff" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="100" y="50" width="600" height="500" fill="#0a0f14" stroke="#00f0ff" stroke-width="3"/>
+  <rect x="120" y="70" width="560" height="460" fill="url(#hexPattern)"/>
+  <!-- Glowing edges -->
+  <line x1="100" y1="50" x2="700" y2="50" stroke="#00f0ff" stroke-width="2" opacity="0.6"/>
+  <line x1="100" y1="550" x2="700" y2="550" stroke="#00f0ff" stroke-width="2" opacity="0.6"/>
+  <line x1="100" y1="50" x2="100" y2="550" stroke="#00f0ff" stroke-width="2" opacity="0.6"/>
+  <line x1="700" y1="50" x2="700" y2="550" stroke="#00f0ff" stroke-width="2" opacity="0.6"/>
+</svg>

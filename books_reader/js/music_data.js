@@ -20,7 +20,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "upbeat",
     "src": "https://hylst.fr/hml/a_future_bright_and_clear.mp3",
-    "cover": "https://hylst.fr/hml/a_future_bright_and_clear.jpg"
+    "cover": "https://hylst.fr/hml/a_future_bright_and_clear.webp"
   },
   {
     "id": "a_swirling_dream",
@@ -41,7 +41,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "dance",
     "src": "https://hylst.fr/hml/a_swirling_dream.mp3",
-    "cover": "https://hylst.fr/hml/a_swirling_dream.jpg"
+    "cover": "https://hylst.fr/hml/a_swirling_dream.webp"
   },
   {
     "id": "acoustic_reverie",
@@ -62,7 +62,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient,relax,dream",
     "src": "https://hylst.fr/hml/acoustic_reverie.mp3",
-    "cover": "https://hylst.fr/hml/acoustic_reverie.jpg"
+    "cover": "https://hylst.fr/hml/acoustic_reverie.webp"
   },
   {
     "id": "ambient_danceful_fusion",
@@ -83,7 +83,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "dance,trip",
     "src": "https://hylst.fr/hml/ambient_danceful_fusion.mp3",
-    "cover": "https://hylst.fr/hml/ambient_danceful_fusion.jpg"
+    "cover": "https://hylst.fr/hml/ambient_danceful_fusion.webp"
   },
   {
     "id": "ancient_dragon_s_lament",
@@ -104,7 +104,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:58",
     "usage": "rpg",
     "src": "https://hylst.fr/hml/ancient_dragon_s_lament.mp3",
-    "cover": "https://hylst.fr/hml/ancient_dragon_s_lament.jpg"
+    "cover": "https://hylst.fr/hml/ancient_dragon_s_lament.webp"
   },
   {
     "id": "arabic_pleasure",
@@ -125,7 +125,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "azul,lounge,create",
     "src": "https://hylst.fr/hml/arabic_pleasure.mp3",
-    "cover": "https://hylst.fr/hml/arabic_pleasure.jpg"
+    "cover": "https://hylst.fr/hml/arabic_pleasure.webp"
   },
   {
     "id": "ascend_to_glory",
@@ -146,7 +146,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:37",
     "usage": "",
     "src": "https://hylst.fr/hml/ascend_to_glory.mp3",
-    "cover": "https://hylst.fr/hml/ascend_to_glory.jpg"
+    "cover": "https://hylst.fr/hml/ascend_to_glory.webp"
   },
   {
     "id": "ascendancy",
@@ -167,7 +167,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/ascendancy.mp3",
-    "cover": "https://hylst.fr/hml/ascendancy.jpg"
+    "cover": "https://hylst.fr/hml/ascendancy.webp"
   },
   {
     "id": "atmospheric_spiritual_trip",
@@ -188,7 +188,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:44",
     "usage": "psyche,trip,dream",
     "src": "https://hylst.fr/hml/atmospheric_spiritual_trip.mp3",
-    "cover": "https://hylst.fr/hml/atmospheric_spiritual_trip.jpg"
+    "cover": "https://hylst.fr/hml/atmospheric_spiritual_trip.webp"
   },
   {
     "id": "awakening_dreams",
@@ -209,7 +209,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:13",
     "usage": "",
     "src": "https://hylst.fr/hml/awakening_dreams.mp3",
-    "cover": "https://hylst.fr/hml/awakening_dreams.jpg"
+    "cover": "https://hylst.fr/hml/awakening_dreams.webp"
   },
   {
     "id": "awakening_of_the_ancients_ritual",
@@ -230,7 +230,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:39",
     "usage": "",
     "src": "https://hylst.fr/hml/awakening_of_the_ancients_ritual.mp3",
-    "cover": "https://hylst.fr/hml/awakening_of_the_ancients_ritual.jpg"
+    "cover": "https://hylst.fr/hml/awakening_of_the_ancients_ritual.webp"
   },
   {
     "id": "awakening_of_the_titan",
@@ -251,7 +251,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/awakening_of_the_titan.mp3",
-    "cover": "https://hylst.fr/hml/awakening_of_the_titan.jpg"
+    "cover": "https://hylst.fr/hml/awakening_of_the_titan.webp"
   },
   {
     "id": "awakening_tension",
@@ -272,7 +272,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/awakening_tension.mp3",
-    "cover": "https://hylst.fr/hml/awakening_tension.jpg"
+    "cover": "https://hylst.fr/hml/awakening_tension.webp"
   },
   {
     "id": "awakening_the_earth_ritual",
@@ -293,7 +293,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "",
     "src": "https://hylst.fr/hml/awakening_the_earth_ritual.mp3",
-    "cover": "https://hylst.fr/hml/awakening_the_earth_ritual.jpg"
+    "cover": "https://hylst.fr/hml/awakening_the_earth_ritual.webp"
   },
   {
     "id": "azul_dream",
@@ -314,12 +314,12 @@ export const MUSIC_LIBRARY = [
     "duration": "1:52",
     "usage": "azul",
     "src": "https://hylst.fr/hml/azul_dream.mp3",
-    "cover": "https://hylst.fr/hml/azul_dream.jpg"
+    "cover": "https://hylst.fr/hml/azul_dream.webp"
   },
   {
     "id": "balade_de_pipin",
     "title": "Balade De Pipin",
-    "artist": "Hylst using AI",
+    "artist": "Hylst",
     "genre": "dwarven forge ambient",
     "year": "2024",
     "mood": "dreamy",
@@ -335,7 +335,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:51",
     "usage": "dreamy",
     "src": "https://hylst.fr/hml/balade_de_pipin.mp3",
-    "cover": "https://hylst.fr/hml/balade_de_pipin.jpg"
+    "cover": "https://hylst.fr/hml/balade_de_pipin.webp"
   },
   {
     "id": "baroque_elegance_in_twilight",
@@ -356,7 +356,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/baroque_elegance_in_twilight.mp3",
-    "cover": "https://hylst.fr/hml/baroque_elegance_in_twilight.jpg"
+    "cover": "https://hylst.fr/hml/baroque_elegance_in_twilight.webp"
   },
   {
     "id": "battle_of_minds",
@@ -377,7 +377,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:24",
     "usage": "chess",
     "src": "https://hylst.fr/hml/battle_of_minds.mp3",
-    "cover": "https://hylst.fr/hml/battle_of_minds.jpg"
+    "cover": "https://hylst.fr/hml/battle_of_minds.webp"
   },
   {
     "id": "blessed_soldiers_and_dead_heroes",
@@ -398,7 +398,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "rpg,courage,imagination",
     "src": "https://hylst.fr/hml/blessed_soldiers_and_dead_heroes.mp3",
-    "cover": "https://hylst.fr/hml/blessed_soldiers_and_dead_heroes.jpg"
+    "cover": "https://hylst.fr/hml/blessed_soldiers_and_dead_heroes.webp"
   },
   {
     "id": "blood_moon_ritual",
@@ -419,7 +419,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:00",
     "usage": "rpg,ambient,play,create",
     "src": "https://hylst.fr/hml/blood_moon_ritual.mp3",
-    "cover": "https://hylst.fr/hml/blood_moon_ritual.jpg"
+    "cover": "https://hylst.fr/hml/blood_moon_ritual.webp"
   },
   {
     "id": "blues-inflected_jazz",
@@ -440,7 +440,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:41",
     "usage": "focus,work,think,dance,lounge",
     "src": "https://hylst.fr/hml/blues-inflected_jazz.mp3",
-    "cover": "https://hylst.fr/hml/blues-inflected_jazz.jpg"
+    "cover": "https://hylst.fr/hml/blues-inflected_jazz.webp"
   },
   {
     "id": "bluff_beat",
@@ -461,7 +461,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:35",
     "usage": "work,think,strategy",
     "src": "https://hylst.fr/hml/bluff_beat.mp3",
-    "cover": "https://hylst.fr/hml/bluff_beat.jpg"
+    "cover": "https://hylst.fr/hml/bluff_beat.webp"
   },
   {
     "id": "brewmasters_dance",
@@ -482,7 +482,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "brewing,traditions,dance",
     "src": "https://hylst.fr/hml/brewmasters_dance.mp3",
-    "cover": "https://hylst.fr/hml/brewmasters_dance.jpg"
+    "cover": "https://hylst.fr/hml/brewmasters_dance.webp"
   },
   {
     "id": "cafe_paradise",
@@ -502,7 +502,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/cafe_paradise.mp3",
-    "cover": "https://hylst.fr/hml/cafe_paradise.jpg"
+    "cover": "https://hylst.fr/hml/cafe_paradise.webp"
   },
   {
     "id": "canvas_of_dreams",
@@ -523,7 +523,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "uplifting,dream",
     "src": "https://hylst.fr/hml/canvas_of_dreams.mp3",
-    "cover": "https://hylst.fr/hml/canvas_of_dreams.jpg"
+    "cover": "https://hylst.fr/hml/canvas_of_dreams.webp"
   },
   {
     "id": "capital_crescendo",
@@ -544,7 +544,7 @@ export const MUSIC_LIBRARY = [
     "duration": "0:46",
     "usage": "monopoly,game,casino,dinner",
     "src": "https://hylst.fr/hml/capital_crescendo.mp3",
-    "cover": "https://hylst.fr/hml/capital_crescendo.jpg"
+    "cover": "https://hylst.fr/hml/capital_crescendo.webp"
   },
   {
     "id": "celestial_horizons",
@@ -565,7 +565,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:01",
     "usage": "sci fi,game,ambient,rpg",
     "src": "https://hylst.fr/hml/celestial_horizons.mp3",
-    "cover": "https://hylst.fr/hml/celestial_horizons.jpg"
+    "cover": "https://hylst.fr/hml/celestial_horizons.webp"
   },
   {
     "id": "chasing_horizons",
@@ -586,7 +586,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:53",
     "usage": "cinematic, soundtrack",
     "src": "https://hylst.fr/hml/chasing_horizons.mp3",
-    "cover": "https://hylst.fr/hml/chasing_horizons.jpg"
+    "cover": "https://hylst.fr/hml/chasing_horizons.webp"
   },
   {
     "id": "chasing_the_horizon",
@@ -607,7 +607,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:43",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/chasing_the_horizon.mp3",
-    "cover": "https://hylst.fr/hml/chasing_the_horizon.jpg"
+    "cover": "https://hylst.fr/hml/chasing_the_horizon.webp"
   },
   {
     "id": "chasing_the_night",
@@ -628,7 +628,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "upbeat",
     "src": "https://hylst.fr/hml/chasing_the_night.mp3",
-    "cover": "https://hylst.fr/hml/chasing_the_night.jpg"
+    "cover": "https://hylst.fr/hml/chasing_the_night.webp"
   },
   {
     "id": "checkmate_cadence",
@@ -649,7 +649,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:00",
     "usage": "chess",
     "src": "https://hylst.fr/hml/checkmate_cadence.mp3",
-    "cover": "https://hylst.fr/hml/checkmate_cadence.jpg"
+    "cover": "https://hylst.fr/hml/checkmate_cadence.webp"
   },
   {
     "id": "cheerful_life",
@@ -670,7 +670,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "soft",
     "src": "https://hylst.fr/hml/cheerful_life.mp3",
-    "cover": "https://hylst.fr/hml/cheerful_life.jpg"
+    "cover": "https://hylst.fr/hml/cheerful_life.webp"
   },
   {
     "id": "cheerful_peaceful_acoustics",
@@ -691,7 +691,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:49",
     "usage": "relax,chill",
     "src": "https://hylst.fr/hml/cheerful_peaceful_acoustics.mp3",
-    "cover": "https://hylst.fr/hml/cheerful_peaceful_acoustics.jpg"
+    "cover": "https://hylst.fr/hml/cheerful_peaceful_acoustics.webp"
   },
   {
     "id": "chic_n_fresh",
@@ -712,7 +712,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:38",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/chic_n_fresh.mp3",
-    "cover": "https://hylst.fr/hml/chic_n_fresh.jpg"
+    "cover": "https://hylst.fr/hml/chic_n_fresh.webp"
   },
   {
     "id": "cinematic_dreams",
@@ -733,7 +733,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/cinematic_dreams.mp3",
-    "cover": "https://hylst.fr/hml/cinematic_dreams.jpg"
+    "cover": "https://hylst.fr/hml/cinematic_dreams.webp"
   },
   {
     "id": "city_clash",
@@ -754,7 +754,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "",
     "src": "https://hylst.fr/hml/city_clash.mp3",
-    "cover": "https://hylst.fr/hml/city_clash.jpg"
+    "cover": "https://hylst.fr/hml/city_clash.webp"
   },
   {
     "id": "cityscape_serenade",
@@ -775,7 +775,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:58",
     "usage": "monopoly,game,casino,dinner",
     "src": "https://hylst.fr/hml/cityscape_serenade.mp3",
-    "cover": "https://hylst.fr/hml/cityscape_serenade.jpg"
+    "cover": "https://hylst.fr/hml/cityscape_serenade.webp"
   },
   {
     "id": "civilization_symphony",
@@ -796,7 +796,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:48",
     "usage": "7 wonders",
     "src": "https://hylst.fr/hml/civilization_symphony.mp3",
-    "cover": "https://hylst.fr/hml/civilization_symphony.jpg"
+    "cover": "https://hylst.fr/hml/civilization_symphony.webp"
   },
   {
     "id": "coffee_or_tea",
@@ -817,7 +817,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:12",
     "usage": "focus,work,think,dance,lounge",
     "src": "https://hylst.fr/hml/coffee_or_tea.mp3",
-    "cover": "https://hylst.fr/hml/coffee_or_tea.jpg"
+    "cover": "https://hylst.fr/hml/coffee_or_tea.webp"
   },
   {
     "id": "colorful_cadence",
@@ -838,7 +838,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:24",
     "usage": "azul",
     "src": "https://hylst.fr/hml/colorful_cadence.mp3",
-    "cover": "https://hylst.fr/hml/colorful_cadence.jpg"
+    "cover": "https://hylst.fr/hml/colorful_cadence.webp"
   },
   {
     "id": "contagion_cadence",
@@ -859,7 +859,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:34",
     "usage": "focus,work,think",
     "src": "https://hylst.fr/hml/contagion_cadence.mp3",
-    "cover": "https://hylst.fr/hml/contagion_cadence.jpg"
+    "cover": "https://hylst.fr/hml/contagion_cadence.webp"
   },
   {
     "id": "cosmic_rave_dream",
@@ -880,7 +880,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "chill",
     "src": "https://hylst.fr/hml/cosmic_rave_dream.mp3",
-    "cover": "https://hylst.fr/hml/cosmic_rave_dream.jpg"
+    "cover": "https://hylst.fr/hml/cosmic_rave_dream.webp"
   },
   {
     "id": "cosmic_soundwave",
@@ -901,7 +901,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "dance",
     "src": "https://hylst.fr/hml/cosmic_soundwave.mp3",
-    "cover": "https://hylst.fr/hml/cosmic_soundwave.jpg"
+    "cover": "https://hylst.fr/hml/cosmic_soundwave.webp"
   },
   {
     "id": "cosmic_waves",
@@ -922,7 +922,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:10",
     "usage": "dance",
     "src": "https://hylst.fr/hml/cosmic_waves.mp3",
-    "cover": "https://hylst.fr/hml/cosmic_waves.jpg"
+    "cover": "https://hylst.fr/hml/cosmic_waves.webp"
   },
   {
     "id": "countryside_tranquility",
@@ -943,7 +943,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "relax",
     "src": "https://hylst.fr/hml/countryside_tranquility.mp3",
-    "cover": "https://hylst.fr/hml/countryside_tranquility.jpg"
+    "cover": "https://hylst.fr/hml/countryside_tranquility.webp"
   },
   {
     "id": "coup_cadence",
@@ -964,7 +964,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:17",
     "usage": "work,think,strategy,boost",
     "src": "https://hylst.fr/hml/coup_cadence.mp3",
-    "cover": "https://hylst.fr/hml/coup_cadence.jpg"
+    "cover": "https://hylst.fr/hml/coup_cadence.webp"
   },
   {
     "id": "courtesy_and_refinement",
@@ -985,7 +985,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:00",
     "usage": "focus,work,think,dance,lounge",
     "src": "https://hylst.fr/hml/courtesy_and_refinement.mp3",
-    "cover": "https://hylst.fr/hml/courtesy_and_refinement.jpg"
+    "cover": "https://hylst.fr/hml/courtesy_and_refinement.webp"
   },
   {
     "id": "crazy_idm",
@@ -1006,7 +1006,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "boost,trip",
     "src": "https://hylst.fr/hml/crazy_idm.mp3",
-    "cover": "https://hylst.fr/hml/crazy_idm.jpg"
+    "cover": "https://hylst.fr/hml/crazy_idm.webp"
   },
   {
     "id": "crazy_synths_driven_memories",
@@ -1027,7 +1027,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "retro gaming,synth trip",
     "src": "https://hylst.fr/hml/crazy_synths_driven_memories.mp3",
-    "cover": "https://hylst.fr/hml/crazy_synths_driven_memories.jpg"
+    "cover": "https://hylst.fr/hml/crazy_synths_driven_memories.webp"
   },
   {
     "id": "cruising_beats",
@@ -1048,7 +1048,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:35",
     "usage": "chill,relax,travel",
     "src": "https://hylst.fr/hml/cruising_beats.mp3",
-    "cover": "https://hylst.fr/hml/cruising_beats.jpg"
+    "cover": "https://hylst.fr/hml/cruising_beats.webp"
   },
   {
     "id": "crystal_waters",
@@ -1069,7 +1069,7 @@ export const MUSIC_LIBRARY = [
     "duration": "7:59",
     "usage": "bath,relax,meditate",
     "src": "https://hylst.fr/hml/crystal_waters.mp3",
-    "cover": "https://hylst.fr/hml/crystal_waters.jpg"
+    "cover": "https://hylst.fr/hml/crystal_waters.webp"
   },
   {
     "id": "cycladic_echoes",
@@ -1090,7 +1090,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "board game",
     "src": "https://hylst.fr/hml/cycladic_echoes.mp3",
-    "cover": "https://hylst.fr/hml/cycladic_echoes.jpg"
+    "cover": "https://hylst.fr/hml/cycladic_echoes.webp"
   },
   {
     "id": "dans_la_nuit_des_mysteres_je_m_egare",
@@ -1111,7 +1111,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:12",
     "usage": "electro-swing",
     "src": "https://hylst.fr/hml/dans_la_nuit_des_mysteres_je_m_egare.mp3",
-    "cover": "https://hylst.fr/hml/dans_la_nuit_des_mysteres_je_m_egare.jpg"
+    "cover": "https://hylst.fr/hml/dans_la_nuit_des_mysteres_je_m_egare.webp"
   },
   {
     "id": "dans_les_jardins_d_ether_-_variante",
@@ -1132,7 +1132,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:59",
     "usage": "magical",
     "src": "https://hylst.fr/hml/dans_les_jardins_d_ether_-_variante.mp3",
-    "cover": "https://hylst.fr/hml/dans_les_jardins_d_ether_-_variante.jpg"
+    "cover": "https://hylst.fr/hml/dans_les_jardins_d_ether_-_variante.webp"
   },
   {
     "id": "danse_de_la_joie",
@@ -1153,7 +1153,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:49",
     "usage": "electro-swing",
     "src": "https://hylst.fr/hml/danse_de_la_joie.mp3",
-    "cover": "https://hylst.fr/hml/danse_de_la_joie.jpg"
+    "cover": "https://hylst.fr/hml/danse_de_la_joie.webp"
   },
   {
     "id": "danse_et_reve",
@@ -1174,7 +1174,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:31",
     "usage": "party",
     "src": "https://hylst.fr/hml/danse_et_reve.mp3",
-    "cover": "https://hylst.fr/hml/danse_et_reve.jpg"
+    "cover": "https://hylst.fr/hml/danse_et_reve.webp"
   },
   {
     "id": "dark_suspenseful_drama",
@@ -1195,7 +1195,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:52",
     "usage": "film,rpg,drama ambient",
     "src": "https://hylst.fr/hml/dark_suspenseful_drama.mp3",
-    "cover": "https://hylst.fr/hml/dark_suspenseful_drama.jpg"
+    "cover": "https://hylst.fr/hml/dark_suspenseful_drama.webp"
   },
   {
     "id": "darkness_claims_its_throne",
@@ -1216,7 +1216,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:14",
     "usage": "show,imagine,ambient",
     "src": "https://hylst.fr/hml/darkness_claims_its_throne.mp3",
-    "cover": "https://hylst.fr/hml/darkness_claims_its_throne.jpg"
+    "cover": "https://hylst.fr/hml/darkness_claims_its_throne.webp"
   },
   {
     "id": "degrades_de_gris_ou_couleurs_fantasques",
@@ -1230,7 +1230,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/degrades_de_gris_ou_couleurs_fantasques.mp3",
-    "cover": "https://hylst.fr/hml/degrades_de_gris_ou_couleurs_fantasques.jpg"
+    "cover": "https://hylst.fr/hml/degrades_de_gris_ou_couleurs_fantasques.webp"
   },
   {
     "id": "dignified_existence",
@@ -1251,7 +1251,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "rpg",
     "src": "https://hylst.fr/hml/dignified_existence.mp3",
-    "cover": "https://hylst.fr/hml/dignified_existence.jpg"
+    "cover": "https://hylst.fr/hml/dignified_existence.webp"
   },
   {
     "id": "directive_protocol",
@@ -1272,7 +1272,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:10",
     "usage": "",
     "src": "https://hylst.fr/hml/directive_protocol.mp3",
-    "cover": "https://hylst.fr/hml/directive_protocol.jpg"
+    "cover": "https://hylst.fr/hml/directive_protocol.webp"
   },
   {
     "id": "disease_rhythm",
@@ -1293,7 +1293,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:25",
     "usage": "focus,work,think",
     "src": "https://hylst.fr/hml/disease_rhythm.mp3",
-    "cover": "https://hylst.fr/hml/disease_rhythm.jpg"
+    "cover": "https://hylst.fr/hml/disease_rhythm.webp"
   },
   {
     "id": "distorsion_spatiale_temporelle",
@@ -1314,7 +1314,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:07",
     "usage": "imagine,story telling",
     "src": "https://hylst.fr/hml/distorsion_spatiale_temporelle.mp3",
-    "cover": "https://hylst.fr/hml/distorsion_spatiale_temporelle.jpg"
+    "cover": "https://hylst.fr/hml/distorsion_spatiale_temporelle.webp"
   },
   {
     "id": "dreamlike_embracemp3",
@@ -1335,7 +1335,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "",
     "src": "https://hylst.fr/hml/dreamlike_embracemp3.mp3",
-    "cover": "https://hylst.fr/hml/dreamlike_embracemp3.jpg"
+    "cover": "https://hylst.fr/hml/dreamlike_embracemp3.webp"
   },
   {
     "id": "dreams_of_prowess",
@@ -1356,7 +1356,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "",
     "src": "https://hylst.fr/hml/dreams_of_prowess.mp3",
-    "cover": "https://hylst.fr/hml/dreams_of_prowess.jpg"
+    "cover": "https://hylst.fr/hml/dreams_of_prowess.webp"
   },
   {
     "id": "dreamy_aria",
@@ -1377,7 +1377,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "meditative,rpg,hf",
     "src": "https://hylst.fr/hml/dreamy_aria.mp3",
-    "cover": "https://hylst.fr/hml/dreamy_aria.jpg"
+    "cover": "https://hylst.fr/hml/dreamy_aria.webp"
   },
   {
     "id": "drifting_in_the_ethereal",
@@ -1398,7 +1398,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:08",
     "usage": "",
     "src": "https://hylst.fr/hml/drifting_in_the_ethereal.mp3",
-    "cover": "https://hylst.fr/hml/drifting_in_the_ethereal.jpg"
+    "cover": "https://hylst.fr/hml/drifting_in_the_ethereal.webp"
   },
   {
     "id": "drifting_through_dreams",
@@ -1419,7 +1419,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/drifting_through_dreams.mp3",
-    "cover": "https://hylst.fr/hml/drifting_through_dreams.jpg"
+    "cover": "https://hylst.fr/hml/drifting_through_dreams.webp"
   },
   {
     "id": "drop_that,_let_it_thump",
@@ -1440,7 +1440,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "dance",
     "src": "https://hylst.fr/hml/drop_that,_let_it_thump.mp3",
-    "cover": "https://hylst.fr/hml/drop_that,_let_it_thump.jpg"
+    "cover": "https://hylst.fr/hml/drop_that,_let_it_thump.webp"
   },
   {
     "id": "dystopia_groove",
@@ -1461,7 +1461,7 @@ export const MUSIC_LIBRARY = [
     "duration": "5:54",
     "usage": "break,change,rpg",
     "src": "https://hylst.fr/hml/dystopia_groove.mp3",
-    "cover": "https://hylst.fr/hml/dystopia_groove.jpg"
+    "cover": "https://hylst.fr/hml/dystopia_groove.webp"
   },
   {
     "id": "depasser_les_frontieres_et_au_dela",
@@ -1482,7 +1482,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:43",
     "usage": "fantasy, epic",
     "src": "https://hylst.fr/hml/depasser_les_frontieres_et_au_dela.mp3",
-    "cover": "https://hylst.fr/hml/depasser_les_frontieres_et_au_dela.jpg"
+    "cover": "https://hylst.fr/hml/depasser_les_frontieres_et_au_dela.webp"
   },
   {
     "id": "echoes_of_the_crash",
@@ -1502,7 +1502,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:21",
     "usage": "",
     "src": "https://hylst.fr/hml/echoes_of_the_crash.mp3",
-    "cover": "https://hylst.fr/hml/echoes_of_the_crash.jpg"
+    "cover": "https://hylst.fr/hml/echoes_of_the_crash.webp"
   },
   {
     "id": "echoes_of_the_forgotten",
@@ -1523,7 +1523,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:07",
     "usage": "",
     "src": "https://hylst.fr/hml/echoes_of_the_forgotten.mp3",
-    "cover": "https://hylst.fr/hml/echoes_of_the_forgotten.jpg"
+    "cover": "https://hylst.fr/hml/echoes_of_the_forgotten.webp"
   },
   {
     "id": "echoes_of_tomorrow",
@@ -1544,7 +1544,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:17",
     "usage": "synth pop",
     "src": "https://hylst.fr/hml/echoes_of_tomorrow.mp3",
-    "cover": "https://hylst.fr/hml/echoes_of_tomorrow.jpg"
+    "cover": "https://hylst.fr/hml/echoes_of_tomorrow.webp"
   },
   {
     "id": "eclipse_of_fury",
@@ -1565,7 +1565,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "",
     "src": "https://hylst.fr/hml/eclipse_of_fury.mp3",
-    "cover": "https://hylst.fr/hml/eclipse_of_fury.jpg"
+    "cover": "https://hylst.fr/hml/eclipse_of_fury.webp"
   },
   {
     "id": "electric_energy",
@@ -1586,7 +1586,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,trip",
     "src": "https://hylst.fr/hml/electric_energy.mp3",
-    "cover": "https://hylst.fr/hml/electric_energy.jpg"
+    "cover": "https://hylst.fr/hml/electric_energy.webp"
   },
   {
     "id": "electric_fusion",
@@ -1607,7 +1607,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "dance",
     "src": "https://hylst.fr/hml/electric_fusion.mp3",
-    "cover": "https://hylst.fr/hml/electric_fusion.jpg"
+    "cover": "https://hylst.fr/hml/electric_fusion.webp"
   },
   {
     "id": "electric_sunshine",
@@ -1628,7 +1628,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "upbeat,boost",
     "src": "https://hylst.fr/hml/electric_sunshine.mp3",
-    "cover": "https://hylst.fr/hml/electric_sunshine.jpg"
+    "cover": "https://hylst.fr/hml/electric_sunshine.webp"
   },
   {
     "id": "electronic_invention_anthem",
@@ -1649,7 +1649,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:31",
     "usage": "upbeat,gaming,code,pixel",
     "src": "https://hylst.fr/hml/electronic_invention_anthem.mp3",
-    "cover": "https://hylst.fr/hml/electronic_invention_anthem.jpg"
+    "cover": "https://hylst.fr/hml/electronic_invention_anthem.webp"
   },
   {
     "id": "elegant_reverie",
@@ -1670,7 +1670,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:10",
     "usage": "playing,dance,think",
     "src": "https://hylst.fr/hml/elegant_reverie.mp3",
-    "cover": "https://hylst.fr/hml/elegant_reverie.jpg"
+    "cover": "https://hylst.fr/hml/elegant_reverie.webp"
   },
   {
     "id": "elysian_harmony",
@@ -1691,7 +1691,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/elysian_harmony.mp3",
-    "cover": "https://hylst.fr/hml/elysian_harmony.jpg"
+    "cover": "https://hylst.fr/hml/elysian_harmony.webp"
   },
   {
     "id": "elysian_meadows",
@@ -1712,7 +1712,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "travel,rpg,relax",
     "src": "https://hylst.fr/hml/elysian_meadows.mp3",
-    "cover": "https://hylst.fr/hml/elysian_meadows.jpg"
+    "cover": "https://hylst.fr/hml/elysian_meadows.webp"
   },
   {
     "id": "embrace_the_simple_life",
@@ -1733,7 +1733,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:28",
     "usage": "",
     "src": "https://hylst.fr/hml/embrace_the_simple_life.mp3",
-    "cover": "https://hylst.fr/hml/embrace_the_simple_life.jpg"
+    "cover": "https://hylst.fr/hml/embrace_the_simple_life.webp"
   },
   {
     "id": "empire_elegance",
@@ -1754,7 +1754,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:21",
     "usage": "monopoly,game,casino,dinner",
     "src": "https://hylst.fr/hml/empire_elegance.mp3",
-    "cover": "https://hylst.fr/hml/empire_elegance.jpg"
+    "cover": "https://hylst.fr/hml/empire_elegance.webp"
   },
   {
     "id": "empire_s_fury",
@@ -1775,7 +1775,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:46",
     "usage": "board game",
     "src": "https://hylst.fr/hml/empire_s_fury.mp3",
-    "cover": "https://hylst.fr/hml/empire_s_fury.jpg"
+    "cover": "https://hylst.fr/hml/empire_s_fury.webp"
   },
   {
     "id": "en_el_barrio_suena_la_cumbia",
@@ -1796,7 +1796,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "dance",
     "src": "https://hylst.fr/hml/en_el_barrio_suena_la_cumbia.mp3",
-    "cover": "https://hylst.fr/hml/en_el_barrio_suena_la_cumbia.jpg"
+    "cover": "https://hylst.fr/hml/en_el_barrio_suena_la_cumbia.webp"
   },
   {
     "id": "enchanted_quartet",
@@ -1817,7 +1817,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:17",
     "usage": "classy albient",
     "src": "https://hylst.fr/hml/enchanted_quartet.mp3",
-    "cover": "https://hylst.fr/hml/enchanted_quartet.jpg"
+    "cover": "https://hylst.fr/hml/enchanted_quartet.webp"
   },
   {
     "id": "energized_daydreams",
@@ -1838,7 +1838,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,trip",
     "src": "https://hylst.fr/hml/energized_daydreams.mp3",
-    "cover": "https://hylst.fr/hml/energized_daydreams.jpg"
+    "cover": "https://hylst.fr/hml/energized_daydreams.webp"
   },
   {
     "id": "es_el_ritmo_de_la_cumbia",
@@ -1859,7 +1859,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:08",
     "usage": "dance",
     "src": "https://hylst.fr/hml/es_el_ritmo_de_la_cumbia.mp3",
-    "cover": "https://hylst.fr/hml/es_el_ritmo_de_la_cumbia.jpg"
+    "cover": "https://hylst.fr/hml/es_el_ritmo_de_la_cumbia.webp"
   },
   {
     "id": "esoteric_procession",
@@ -1880,7 +1880,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient,rpg",
     "src": "https://hylst.fr/hml/esoteric_procession.mp3",
-    "cover": "https://hylst.fr/hml/esoteric_procession.jpg"
+    "cover": "https://hylst.fr/hml/esoteric_procession.webp"
   },
   {
     "id": "eternal_elegance",
@@ -1901,7 +1901,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "dance,inspiration",
     "src": "https://hylst.fr/hml/eternal_elegance.mp3",
-    "cover": "https://hylst.fr/hml/eternal_elegance.jpg"
+    "cover": "https://hylst.fr/hml/eternal_elegance.webp"
   },
   {
     "id": "eternal_horizon",
@@ -1922,7 +1922,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:47",
     "usage": "cinematic, soundtrack",
     "src": "https://hylst.fr/hml/eternal_horizon.mp3",
-    "cover": "https://hylst.fr/hml/eternal_horizon.jpg"
+    "cover": "https://hylst.fr/hml/eternal_horizon.webp"
   },
   {
     "id": "eternal_reverence",
@@ -1943,7 +1943,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/eternal_reverence.mp3",
-    "cover": "https://hylst.fr/hml/eternal_reverence.jpg"
+    "cover": "https://hylst.fr/hml/eternal_reverence.webp"
   },
   {
     "id": "euphoria_unleashed",
@@ -1964,7 +1964,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "trip,chill",
     "src": "https://hylst.fr/hml/euphoria_unleashed.mp3",
-    "cover": "https://hylst.fr/hml/euphoria_unleashed.jpg"
+    "cover": "https://hylst.fr/hml/euphoria_unleashed.webp"
   },
   {
     "id": "euphoric_escape",
@@ -1985,7 +1985,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,party",
     "src": "https://hylst.fr/hml/euphoric_escape.mp3",
-    "cover": "https://hylst.fr/hml/euphoric_escape.jpg"
+    "cover": "https://hylst.fr/hml/euphoric_escape.webp"
   },
   {
     "id": "euphoric_pulse",
@@ -2006,7 +2006,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,trip",
     "src": "https://hylst.fr/hml/euphoric_pulse.mp3",
-    "cover": "https://hylst.fr/hml/euphoric_pulse.jpg"
+    "cover": "https://hylst.fr/hml/euphoric_pulse.webp"
   },
   {
     "id": "everybody_get_loud",
@@ -2027,7 +2027,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:34",
     "usage": "dance",
     "src": "https://hylst.fr/hml/everybody_get_loud.mp3",
-    "cover": "https://hylst.fr/hml/everybody_get_loud.jpg"
+    "cover": "https://hylst.fr/hml/everybody_get_loud.webp"
   },
   {
     "id": "fantasy_fanfare",
@@ -2048,7 +2048,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:13",
     "usage": "small world",
     "src": "https://hylst.fr/hml/fantasy_fanfare.mp3",
-    "cover": "https://hylst.fr/hml/fantasy_fanfare.jpg"
+    "cover": "https://hylst.fr/hml/fantasy_fanfare.webp"
   },
   {
     "id": "fantasy_frolic",
@@ -2069,7 +2069,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:02",
     "usage": "small world",
     "src": "https://hylst.fr/hml/fantasy_frolic.mp3",
-    "cover": "https://hylst.fr/hml/fantasy_frolic.jpg"
+    "cover": "https://hylst.fr/hml/fantasy_frolic.webp"
   },
   {
     "id": "feel_the_bass_n_lose_control",
@@ -2090,7 +2090,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "dance",
     "src": "https://hylst.fr/hml/feel_the_bass_n_lose_control.mp3",
-    "cover": "https://hylst.fr/hml/feel_the_bass_n_lose_control.jpg"
+    "cover": "https://hylst.fr/hml/feel_the_bass_n_lose_control.webp"
   },
   {
     "id": "feel_the_beat_collide",
@@ -2111,7 +2111,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:09",
     "usage": "dance",
     "src": "https://hylst.fr/hml/feel_the_beat_collide.mp3",
-    "cover": "https://hylst.fr/hml/feel_the_beat_collide.jpg"
+    "cover": "https://hylst.fr/hml/feel_the_beat_collide.webp"
   },
   {
     "id": "feel_the_rush_inside",
@@ -2132,7 +2132,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "dance",
     "src": "https://hylst.fr/hml/feel_the_rush_inside.mp3",
-    "cover": "https://hylst.fr/hml/feel_the_rush_inside.jpg"
+    "cover": "https://hylst.fr/hml/feel_the_rush_inside.webp"
   },
   {
     "id": "festin_des_aventuriers",
@@ -2146,7 +2146,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/festin_des_aventuriers.mp3",
-    "cover": "https://hylst.fr/hml/festin_des_aventuriers.jpg"
+    "cover": "https://hylst.fr/hml/festin_des_aventuriers.webp"
   },
   {
     "id": "french_elegance_jazz",
@@ -2167,7 +2167,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:05",
     "usage": "dinner,meeting",
     "src": "https://hylst.fr/hml/french_elegance_jazz.mp3",
-    "cover": "https://hylst.fr/hml/french_elegance_jazz.jpg"
+    "cover": "https://hylst.fr/hml/french_elegance_jazz.webp"
   },
   {
     "id": "funky_sheet",
@@ -2188,7 +2188,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:33",
     "usage": "",
     "src": "https://hylst.fr/hml/funky_sheet.mp3",
-    "cover": "https://hylst.fr/hml/funky_sheet.jpg"
+    "cover": "https://hylst.fr/hml/funky_sheet.webp"
   },
   {
     "id": "fury_of_the_north",
@@ -2209,7 +2209,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "rpg,imagination",
     "src": "https://hylst.fr/hml/fury_of_the_north.mp3",
-    "cover": "https://hylst.fr/hml/fury_of_the_north.jpg"
+    "cover": "https://hylst.fr/hml/fury_of_the_north.webp"
   },
   {
     "id": "future_chronicles",
@@ -2230,7 +2230,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "upbeat,boost",
     "src": "https://hylst.fr/hml/future_chronicles.mp3",
-    "cover": "https://hylst.fr/hml/future_chronicles.jpg"
+    "cover": "https://hylst.fr/hml/future_chronicles.webp"
   },
   {
     "id": "felicite_retrouvee",
@@ -2251,7 +2251,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient,moody,classical",
     "src": "https://hylst.fr/hml/felicite_retrouvee.mp3",
-    "cover": "https://hylst.fr/hml/felicite_retrouvee.jpg"
+    "cover": "https://hylst.fr/hml/felicite_retrouvee.webp"
   },
   {
     "id": "galaxy_gambit",
@@ -2272,7 +2272,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:14",
     "usage": "board game",
     "src": "https://hylst.fr/hml/galaxy_gambit.mp3",
-    "cover": "https://hylst.fr/hml/galaxy_gambit.jpg"
+    "cover": "https://hylst.fr/hml/galaxy_gambit.webp"
   },
   {
     "id": "games_glitches_psycho",
@@ -2293,7 +2293,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:46",
     "usage": "",
     "src": "https://hylst.fr/hml/games_glitches_psycho.mp3",
-    "cover": "https://hylst.fr/hml/games_glitches_psycho.jpg"
+    "cover": "https://hylst.fr/hml/games_glitches_psycho.webp"
   },
   {
     "id": "gare_aux_sorcieres",
@@ -2307,7 +2307,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/gare_aux_sorcieres.mp3",
-    "cover": "https://hylst.fr/hml/gare_aux_sorcieres.jpg"
+    "cover": "https://hylst.fr/hml/gare_aux_sorcieres.webp"
   },
   {
     "id": "gem_collector_s_rhapsody",
@@ -2328,7 +2328,7 @@ export const MUSIC_LIBRARY = [
     "duration": "0:56",
     "usage": "splendor",
     "src": "https://hylst.fr/hml/gem_collector_s_rhapsody.mp3",
-    "cover": "https://hylst.fr/hml/gem_collector_s_rhapsody.jpg"
+    "cover": "https://hylst.fr/hml/gem_collector_s_rhapsody.webp"
   },
   {
     "id": "gentle_reverie",
@@ -2349,7 +2349,7 @@ export const MUSIC_LIBRARY = [
     "duration": "9:33",
     "usage": "meditation",
     "src": "https://hylst.fr/hml/gentle_reverie.mp3",
-    "cover": "https://hylst.fr/hml/gentle_reverie.jpg"
+    "cover": "https://hylst.fr/hml/gentle_reverie.webp"
   },
   {
     "id": "get_ready_for_success",
@@ -2370,7 +2370,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:18",
     "usage": "upbeat,motivate,show",
     "src": "https://hylst.fr/hml/get_ready_for_success.mp3",
-    "cover": "https://hylst.fr/hml/get_ready_for_success.jpg"
+    "cover": "https://hylst.fr/hml/get_ready_for_success.webp"
   },
   {
     "id": "gone_in_the_wash",
@@ -2391,7 +2391,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "wash",
     "src": "https://hylst.fr/hml/gone_in_the_wash.mp3",
-    "cover": "https://hylst.fr/hml/gone_in_the_wash.jpg"
+    "cover": "https://hylst.fr/hml/gone_in_the_wash.webp"
   },
   {
     "id": "graceful_citadel",
@@ -2412,7 +2412,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:14",
     "usage": "citadels,rpg,game",
     "src": "https://hylst.fr/hml/graceful_citadel.mp3",
-    "cover": "https://hylst.fr/hml/graceful_citadel.jpg"
+    "cover": "https://hylst.fr/hml/graceful_citadel.webp"
   },
   {
     "id": "guiding_star",
@@ -2433,7 +2433,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:09",
     "usage": "bedroom",
     "src": "https://hylst.fr/hml/guiding_star.mp3",
-    "cover": "https://hylst.fr/hml/guiding_star.jpg"
+    "cover": "https://hylst.fr/hml/guiding_star.webp"
   },
   {
     "id": "harmony_of_nature",
@@ -2454,7 +2454,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "uplift,cinematic,ambient",
     "src": "https://hylst.fr/hml/harmony_of_nature.mp3",
-    "cover": "https://hylst.fr/hml/harmony_of_nature.jpg"
+    "cover": "https://hylst.fr/hml/harmony_of_nature.webp"
   },
   {
     "id": "haunted_cello_chamber",
@@ -2475,7 +2475,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/haunted_cello_chamber.mp3",
-    "cover": "https://hylst.fr/hml/haunted_cello_chamber.jpg"
+    "cover": "https://hylst.fr/hml/haunted_cello_chamber.webp"
   },
   {
     "id": "haunted_manor",
@@ -2496,7 +2496,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:31",
     "usage": "dark fantasy rpg ambient",
     "src": "https://hylst.fr/hml/haunted_manor.mp3",
-    "cover": "https://hylst.fr/hml/haunted_manor.jpg"
+    "cover": "https://hylst.fr/hml/haunted_manor.webp"
   },
   {
     "id": "heureux_denouement",
@@ -2517,7 +2517,7 @@ export const MUSIC_LIBRARY = [
     "duration": "5:19",
     "usage": "dark fantasy rpg ambient",
     "src": "https://hylst.fr/hml/heureux_denouement.mp3",
-    "cover": "https://hylst.fr/hml/heureux_denouement.jpg"
+    "cover": "https://hylst.fr/hml/heureux_denouement.webp"
   },
   {
     "id": "ignite_the_chaos",
@@ -2538,7 +2538,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/ignite_the_chaos.mp3",
-    "cover": "https://hylst.fr/hml/ignite_the_chaos.jpg"
+    "cover": "https://hylst.fr/hml/ignite_the_chaos.webp"
   },
   {
     "id": "ignite_the_night",
@@ -2559,7 +2559,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "dance",
     "src": "https://hylst.fr/hml/ignite_the_night.mp3",
-    "cover": "https://hylst.fr/hml/ignite_the_night.jpg"
+    "cover": "https://hylst.fr/hml/ignite_the_night.webp"
   },
   {
     "id": "in_dreams",
@@ -2580,7 +2580,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "chill",
     "src": "https://hylst.fr/hml/in_dreams.mp3",
-    "cover": "https://hylst.fr/hml/in_dreams.jpg"
+    "cover": "https://hylst.fr/hml/in_dreams.webp"
   },
   {
     "id": "in_game",
@@ -2601,7 +2601,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "",
     "src": "https://hylst.fr/hml/in_game.mp3",
-    "cover": "https://hylst.fr/hml/in_game.jpg"
+    "cover": "https://hylst.fr/hml/in_game.webp"
   },
   {
     "id": "in_the_classroom",
@@ -2622,7 +2622,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "rock",
     "src": "https://hylst.fr/hml/in_the_classroom.mp3",
-    "cover": "https://hylst.fr/hml/in_the_classroom.jpg"
+    "cover": "https://hylst.fr/hml/in_the_classroom.webp"
   },
   {
     "id": "in_the_joys_we_ve_found",
@@ -2643,7 +2643,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "rock out",
     "src": "https://hylst.fr/hml/in_the_joys_we_ve_found.mp3",
-    "cover": "https://hylst.fr/hml/in_the_joys_we_ve_found.jpg"
+    "cover": "https://hylst.fr/hml/in_the_joys_we_ve_found.webp"
   },
   {
     "id": "in_the_silence_of_twilight",
@@ -2664,7 +2664,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "chill,sing",
     "src": "https://hylst.fr/hml/in_the_silence_of_twilight.mp3",
-    "cover": "https://hylst.fr/hml/in_the_silence_of_twilight.jpg"
+    "cover": "https://hylst.fr/hml/in_the_silence_of_twilight.webp"
   },
   {
     "id": "in_this_moment",
@@ -2685,7 +2685,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:12",
     "usage": "",
     "src": "https://hylst.fr/hml/in_this_moment.mp3",
-    "cover": "https://hylst.fr/hml/in_this_moment.jpg"
+    "cover": "https://hylst.fr/hml/in_this_moment.webp"
   },
   {
     "id": "industrial_electric_release",
@@ -2706,7 +2706,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "dance",
     "src": "https://hylst.fr/hml/industrial_electric_release.mp3",
-    "cover": "https://hylst.fr/hml/industrial_electric_release.jpg"
+    "cover": "https://hylst.fr/hml/industrial_electric_release.webp"
   },
   {
     "id": "infinite_roads",
@@ -2727,12 +2727,12 @@ export const MUSIC_LIBRARY = [
     "duration": "3:31",
     "usage": "upbeat,chill,drive,sf,rpg",
     "src": "https://hylst.fr/hml/infinite_roads.mp3",
-    "cover": "https://hylst.fr/hml/infinite_roads.jpg"
+    "cover": "https://hylst.fr/hml/infinite_roads.webp"
   },
   {
     "id": "innovation_insight_electro_pop",
     "title": "Innovation Insight Electro Pop",
-    "artist": "Hylst using AI",
+    "artist": "Hylst",
     "genre": "energetic electronic,idm,progressive",
     "year": "2025",
     "mood": "dance,party,creat",
@@ -2748,7 +2748,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,party,create",
     "src": "https://hylst.fr/hml/innovation_insight_electro_pop.mp3",
-    "cover": "https://hylst.fr/hml/innovation_insight_electro_pop.jpg"
+    "cover": "https://hylst.fr/hml/innovation_insight_electro_pop.webp"
   },
   {
     "id": "innovation_vibes",
@@ -2769,7 +2769,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:33",
     "usage": "art,creative",
     "src": "https://hylst.fr/hml/innovation_vibes.mp3",
-    "cover": "https://hylst.fr/hml/innovation_vibes.jpg"
+    "cover": "https://hylst.fr/hml/innovation_vibes.webp"
   },
   {
     "id": "intergalactic_pleasures_lounge_bar",
@@ -2790,7 +2790,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/intergalactic_pleasures_lounge_bar.mp3",
-    "cover": "https://hylst.fr/hml/intergalactic_pleasures_lounge_bar.jpg"
+    "cover": "https://hylst.fr/hml/intergalactic_pleasures_lounge_bar.webp"
   },
   {
     "id": "jazzy_acoustic",
@@ -2811,7 +2811,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:05",
     "usage": "focus,work,think,dance,lounge",
     "src": "https://hylst.fr/hml/jazzy_acoustic.mp3",
-    "cover": "https://hylst.fr/hml/jazzy_acoustic.jpg"
+    "cover": "https://hylst.fr/hml/jazzy_acoustic.webp"
   },
   {
     "id": "jazzy_harmony_impro",
@@ -2832,7 +2832,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "lounge,night,club",
     "src": "https://hylst.fr/hml/jazzy_harmony_impro.mp3",
-    "cover": "https://hylst.fr/hml/jazzy_harmony_impro.jpg"
+    "cover": "https://hylst.fr/hml/jazzy_harmony_impro.webp"
   },
   {
     "id": "je_perds_mon_chemin",
@@ -2853,7 +2853,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:00",
     "usage": "poésie, prose",
     "src": "https://hylst.fr/hml/je_perds_mon_chemin.mp3",
-    "cover": "https://hylst.fr/hml/je_perds_mon_chemin.jpg"
+    "cover": "https://hylst.fr/hml/je_perds_mon_chemin.webp"
   },
   {
     "id": "jive_in_the_bayou",
@@ -2874,7 +2874,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/jive_in_the_bayou.mp3",
-    "cover": "https://hylst.fr/hml/jive_in_the_bayou.jpg"
+    "cover": "https://hylst.fr/hml/jive_in_the_bayou.webp"
   },
   {
     "id": "journey_into_a_wilderness",
@@ -2895,7 +2895,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:25",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/journey_into_a_wilderness.mp3",
-    "cover": "https://hylst.fr/hml/journey_into_a_wilderness.jpg"
+    "cover": "https://hylst.fr/hml/journey_into_a_wilderness.webp"
   },
   {
     "id": "juke_in_motion",
@@ -2916,7 +2916,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "dance,party",
     "src": "https://hylst.fr/hml/juke_in_motion.mp3",
-    "cover": "https://hylst.fr/hml/juke_in_motion.jpg"
+    "cover": "https://hylst.fr/hml/juke_in_motion.webp"
   },
   {
     "id": "keep_on_nagging",
@@ -2937,7 +2937,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:12",
     "usage": "synth pop",
     "src": "https://hylst.fr/hml/keep_on_nagging.mp3",
-    "cover": "https://hylst.fr/hml/keep_on_nagging.jpg"
+    "cover": "https://hylst.fr/hml/keep_on_nagging.webp"
   },
   {
     "id": "knightly_prowess",
@@ -2958,7 +2958,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "",
     "src": "https://hylst.fr/hml/knightly_prowess.mp3",
-    "cover": "https://hylst.fr/hml/knightly_prowess.jpg"
+    "cover": "https://hylst.fr/hml/knightly_prowess.webp"
   },
   {
     "id": "l_atelier_de_l_artisan",
@@ -2979,7 +2979,7 @@ export const MUSIC_LIBRARY = [
     "duration": "6:01",
     "usage": "dreamy",
     "src": "https://hylst.fr/hml/l_atelier_de_l_artisan.mp3",
-    "cover": "https://hylst.fr/hml/l_atelier_de_l_artisan.jpg"
+    "cover": "https://hylst.fr/hml/l_atelier_de_l_artisan.webp"
   },
   {
     "id": "l_eveil_des_lycanthropes",
@@ -3000,7 +3000,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:26",
     "usage": "dark fantasy rpg ambient",
     "src": "https://hylst.fr/hml/l_eveil_des_lycanthropes.mp3",
-    "cover": "https://hylst.fr/hml/l_eveil_des_lycanthropes.jpg"
+    "cover": "https://hylst.fr/hml/l_eveil_des_lycanthropes.webp"
   },
   {
     "id": "la_chanson_des_gobelins",
@@ -3021,7 +3021,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:19",
     "usage": "fantasy, epic",
     "src": "https://hylst.fr/hml/la_chanson_des_gobelins.mp3",
-    "cover": "https://hylst.fr/hml/la_chanson_des_gobelins.jpg"
+    "cover": "https://hylst.fr/hml/la_chanson_des_gobelins.webp"
   },
   {
     "id": "la_danse_envoutee",
@@ -3042,7 +3042,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:30",
     "usage": "electro-swing",
     "src": "https://hylst.fr/hml/la_danse_envoutee.mp3",
-    "cover": "https://hylst.fr/hml/la_danse_envoutee.jpg"
+    "cover": "https://hylst.fr/hml/la_danse_envoutee.webp"
   },
   {
     "id": "la_halle_de_guilde_doree",
@@ -3063,7 +3063,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:24",
     "usage": "splendor",
     "src": "https://hylst.fr/hml/la_halle_de_guilde_doree.mp3",
-    "cover": "https://hylst.fr/hml/la_halle_de_guilde_doree.jpg"
+    "cover": "https://hylst.fr/hml/la_halle_de_guilde_doree.webp"
   },
   {
     "id": "la_marche_des_corps_silencieux",
@@ -3084,7 +3084,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:35",
     "usage": "dark fantasy rpg ambient",
     "src": "https://hylst.fr/hml/la_marche_des_corps_silencieux.mp3",
-    "cover": "https://hylst.fr/hml/la_marche_des_corps_silencieux.jpg"
+    "cover": "https://hylst.fr/hml/la_marche_des_corps_silencieux.webp"
   },
   {
     "id": "la_marche_des_possedes",
@@ -3098,7 +3098,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/la_marche_des_possedes.mp3",
-    "cover": "https://hylst.fr/hml/la_marche_des_possedes.jpg"
+    "cover": "https://hylst.fr/hml/la_marche_des_possedes.webp"
   },
   {
     "id": "la_peste_noire",
@@ -3112,7 +3112,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/la_peste_noire.mp3",
-    "cover": "https://hylst.fr/hml/la_peste_noire.jpg"
+    "cover": "https://hylst.fr/hml/la_peste_noire.webp"
   },
   {
     "id": "laundry_anarchy",
@@ -3133,7 +3133,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "wash",
     "src": "https://hylst.fr/hml/laundry_anarchy.mp3",
-    "cover": "https://hylst.fr/hml/laundry_anarchy.jpg"
+    "cover": "https://hylst.fr/hml/laundry_anarchy.webp"
   },
   {
     "id": "le_cantique_des_profondeurs",
@@ -3154,7 +3154,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/le_cantique_des_profondeurs.mp3",
-    "cover": "https://hylst.fr/hml/le_cantique_des_profondeurs.jpg"
+    "cover": "https://hylst.fr/hml/le_cantique_des_profondeurs.webp"
   },
   {
     "id": "le_vortex_du_temps",
@@ -3175,7 +3175,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:10",
     "usage": "imagine,story telling",
     "src": "https://hylst.fr/hml/le_vortex_du_temps.mp3",
-    "cover": "https://hylst.fr/hml/le_vortex_du_temps.jpg"
+    "cover": "https://hylst.fr/hml/le_vortex_du_temps.webp"
   },
   {
     "id": "legacy_of_lies",
@@ -3196,7 +3196,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:49",
     "usage": "rpg,ambient,film",
     "src": "https://hylst.fr/hml/legacy_of_lies.mp3",
-    "cover": "https://hylst.fr/hml/legacy_of_lies.jpg"
+    "cover": "https://hylst.fr/hml/legacy_of_lies.webp"
   },
   {
     "id": "legends_rise_together",
@@ -3217,7 +3217,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "",
     "src": "https://hylst.fr/hml/legends_rise_together.mp3",
-    "cover": "https://hylst.fr/hml/legends_rise_together.jpg"
+    "cover": "https://hylst.fr/hml/legends_rise_together.webp"
   },
   {
     "id": "les_machines_revent-elles_de_musique",
@@ -3238,7 +3238,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:30",
     "usage": "fiction,existential,ambient",
     "src": "https://hylst.fr/hml/les_machines_revent-elles_de_musique.mp3",
-    "cover": "https://hylst.fr/hml/les_machines_revent-elles_de_musique.jpg"
+    "cover": "https://hylst.fr/hml/les_machines_revent-elles_de_musique.webp"
   },
   {
     "id": "let_it_take_control",
@@ -3259,7 +3259,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,party",
     "src": "https://hylst.fr/hml/let_it_take_control.mp3",
-    "cover": "https://hylst.fr/hml/let_it_take_control.jpg"
+    "cover": "https://hylst.fr/hml/let_it_take_control.webp"
   },
   {
     "id": "license_to_groove",
@@ -3280,7 +3280,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "",
     "src": "https://hylst.fr/hml/license_to_groove.mp3",
-    "cover": "https://hylst.fr/hml/license_to_groove.jpg"
+    "cover": "https://hylst.fr/hml/license_to_groove.webp"
   },
   {
     "id": "light_swing_time",
@@ -3301,7 +3301,7 @@ export const MUSIC_LIBRARY = [
     "duration": "0:52",
     "usage": "swing,dinner,lounge",
     "src": "https://hylst.fr/hml/light_swing_time.mp3",
-    "cover": "https://hylst.fr/hml/light_swing_time.jpg"
+    "cover": "https://hylst.fr/hml/light_swing_time.webp"
   },
   {
     "id": "loft_brunch",
@@ -3322,7 +3322,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:02",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/loft_brunch.mp3",
-    "cover": "https://hylst.fr/hml/loft_brunch.jpg"
+    "cover": "https://hylst.fr/hml/loft_brunch.webp"
   },
   {
     "id": "l’envol_du_dernier_phoenix",
@@ -3343,7 +3343,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:18",
     "usage": "courage,fantasy",
     "src": "https://hylst.fr/hml/l’envol_du_dernier_phoenix.mp3",
-    "cover": "https://hylst.fr/hml/l’envol_du_dernier_phoenix.jpg"
+    "cover": "https://hylst.fr/hml/l’envol_du_dernier_phoenix.webp"
   },
   {
     "id": "l’huile_suinte_comme_du_sang_sur_mes_doigts",
@@ -3364,7 +3364,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:00",
     "usage": "madness,imaginativr",
     "src": "https://hylst.fr/hml/l’huile_suinte_comme_du_sang_sur_mes_doigts.mp3",
-    "cover": "https://hylst.fr/hml/l’huile_suinte_comme_du_sang_sur_mes_doigts.jpg"
+    "cover": "https://hylst.fr/hml/l’huile_suinte_comme_du_sang_sur_mes_doigts.webp"
   },
   {
     "id": "majestic_underwater_reflections",
@@ -3385,7 +3385,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient, trip,deconnection,rpg",
     "src": "https://hylst.fr/hml/majestic_underwater_reflections.mp3",
-    "cover": "https://hylst.fr/hml/majestic_underwater_reflections.jpg"
+    "cover": "https://hylst.fr/hml/majestic_underwater_reflections.webp"
   },
   {
     "id": "market_day_revelry",
@@ -3406,7 +3406,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "rpg,ambient,folk",
     "src": "https://hylst.fr/hml/market_day_revelry.mp3",
-    "cover": "https://hylst.fr/hml/market_day_revelry.jpg"
+    "cover": "https://hylst.fr/hml/market_day_revelry.webp"
   },
   {
     "id": "merchant_s_harmony",
@@ -3427,7 +3427,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:08",
     "usage": "splendor",
     "src": "https://hylst.fr/hml/merchant_s_harmony.mp3",
-    "cover": "https://hylst.fr/hml/merchant_s_harmony.jpg"
+    "cover": "https://hylst.fr/hml/merchant_s_harmony.webp"
   },
   {
     "id": "midnight_groove",
@@ -3448,7 +3448,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:26",
     "usage": "relax,lounge,dinner",
     "src": "https://hylst.fr/hml/midnight_groove.mp3",
-    "cover": "https://hylst.fr/hml/midnight_groove.jpg"
+    "cover": "https://hylst.fr/hml/midnight_groove.webp"
   },
   {
     "id": "mimosa_morning",
@@ -3469,7 +3469,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:52",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/mimosa_morning.mp3",
-    "cover": "https://hylst.fr/hml/mimosa_morning.jpg"
+    "cover": "https://hylst.fr/hml/mimosa_morning.webp"
   },
   {
     "id": "mind_s_duel",
@@ -3490,7 +3490,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:13",
     "usage": "chess",
     "src": "https://hylst.fr/hml/mind_s_duel.mp3",
-    "cover": "https://hylst.fr/hml/mind_s_duel.jpg"
+    "cover": "https://hylst.fr/hml/mind_s_duel.webp"
   },
   {
     "id": "mindful_awakening_koto",
@@ -3511,7 +3511,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "bedroom, morning, gentle awake,relax,meditation",
     "src": "https://hylst.fr/hml/mindful_awakening_koto.mp3",
-    "cover": "https://hylst.fr/hml/mindful_awakening_koto.jpg"
+    "cover": "https://hylst.fr/hml/mindful_awakening_koto.webp"
   },
   {
     "id": "miniature_majesty",
@@ -3532,7 +3532,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:09",
     "usage": "small world",
     "src": "https://hylst.fr/hml/miniature_majesty.mp3",
-    "cover": "https://hylst.fr/hml/miniature_majesty.jpg"
+    "cover": "https://hylst.fr/hml/miniature_majesty.webp"
   },
   {
     "id": "miniature_medley",
@@ -3553,7 +3553,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:57",
     "usage": "small world",
     "src": "https://hylst.fr/hml/miniature_medley.mp3",
-    "cover": "https://hylst.fr/hml/miniature_medley.jpg"
+    "cover": "https://hylst.fr/hml/miniature_medley.webp"
   },
   {
     "id": "money_moves",
@@ -3574,7 +3574,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:49",
     "usage": "monopoly,game,casino,dinner",
     "src": "https://hylst.fr/hml/money_moves.mp3",
-    "cover": "https://hylst.fr/hml/money_moves.jpg"
+    "cover": "https://hylst.fr/hml/money_moves.webp"
   },
   {
     "id": "morning_energy",
@@ -3594,7 +3594,7 @@ export const MUSIC_LIBRARY = [
     "duration": "0:46",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/morning_energy.mp3",
-    "cover": "https://hylst.fr/hml/morning_energy.jpg"
+    "cover": "https://hylst.fr/hml/morning_energy.webp"
   },
   {
     "id": "mysterious_juncture_echo",
@@ -3615,7 +3615,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/mysterious_juncture_echo.mp3",
-    "cover": "https://hylst.fr/hml/mysterious_juncture_echo.jpg"
+    "cover": "https://hylst.fr/hml/mysterious_juncture_echo.webp"
   },
   {
     "id": "melancolie_mystique",
@@ -3636,7 +3636,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:54",
     "usage": "mystical",
     "src": "https://hylst.fr/hml/melancolie_mystique.mp3",
-    "cover": "https://hylst.fr/hml/melancolie_mystique.jpg"
+    "cover": "https://hylst.fr/hml/melancolie_mystique.webp"
   },
   {
     "id": "natural_life_trap",
@@ -3657,7 +3657,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:39",
     "usage": "",
     "src": "https://hylst.fr/hml/natural_life_trap.mp3",
-    "cover": "https://hylst.fr/hml/natural_life_trap.jpg"
+    "cover": "https://hylst.fr/hml/natural_life_trap.webp"
   },
   {
     "id": "neon_pulse",
@@ -3678,7 +3678,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "upbeat",
     "src": "https://hylst.fr/hml/neon_pulse.mp3",
-    "cover": "https://hylst.fr/hml/neon_pulse.jpg"
+    "cover": "https://hylst.fr/hml/neon_pulse.webp"
   },
   {
     "id": "new_age_dark_meditation",
@@ -3699,7 +3699,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:49",
     "usage": "sleep,trip,meditation",
     "src": "https://hylst.fr/hml/new_age_dark_meditation.mp3",
-    "cover": "https://hylst.fr/hml/new_age_dark_meditation.jpg"
+    "cover": "https://hylst.fr/hml/new_age_dark_meditation.webp"
   },
   {
     "id": "neydis_night_party",
@@ -3720,7 +3720,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:38",
     "usage": "lounge",
     "src": "https://hylst.fr/hml/neydis_night_party.mp3",
-    "cover": "https://hylst.fr/hml/neydis_night_party.jpg"
+    "cover": "https://hylst.fr/hml/neydis_night_party.webp"
   },
   {
     "id": "noble_ascendancy",
@@ -3741,7 +3741,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "rpg",
     "src": "https://hylst.fr/hml/noble_ascendancy.mp3",
-    "cover": "https://hylst.fr/hml/noble_ascendancy.jpg"
+    "cover": "https://hylst.fr/hml/noble_ascendancy.webp"
   },
   {
     "id": "noche_de_alegria",
@@ -3762,7 +3762,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/noche_de_alegria.mp3",
-    "cover": "https://hylst.fr/hml/noche_de_alegria.jpg"
+    "cover": "https://hylst.fr/hml/noche_de_alegria.webp"
   },
   {
     "id": "ocean_brunch",
@@ -3782,7 +3782,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:39",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/ocean_brunch.mp3",
-    "cover": "https://hylst.fr/hml/ocean_brunch.jpg"
+    "cover": "https://hylst.fr/hml/ocean_brunch.webp"
   },
   {
     "id": "oh_come_on",
@@ -3803,7 +3803,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:07",
     "usage": "dance",
     "src": "https://hylst.fr/hml/oh_come_on.mp3",
-    "cover": "https://hylst.fr/hml/oh_come_on.jpg"
+    "cover": "https://hylst.fr/hml/oh_come_on.webp"
   },
   {
     "id": "oh_mami",
@@ -3824,7 +3824,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:57",
     "usage": "",
     "src": "https://hylst.fr/hml/oh_mami.mp3",
-    "cover": "https://hylst.fr/hml/oh_mami.jpg"
+    "cover": "https://hylst.fr/hml/oh_mami.webp"
   },
   {
     "id": "out_here_judging_styles",
@@ -3845,7 +3845,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "chill",
     "src": "https://hylst.fr/hml/out_here_judging_styles.mp3",
-    "cover": "https://hylst.fr/hml/out_here_judging_styles.jpg"
+    "cover": "https://hylst.fr/hml/out_here_judging_styles.webp"
   },
   {
     "id": "outbreak_anthem",
@@ -3866,7 +3866,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:20",
     "usage": "focus,work,think",
     "src": "https://hylst.fr/hml/outbreak_anthem.mp3",
-    "cover": "https://hylst.fr/hml/outbreak_anthem.jpg"
+    "cover": "https://hylst.fr/hml/outbreak_anthem.webp"
   },
   {
     "id": "peaceful_&_graceful_moments",
@@ -3887,7 +3887,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "lounge,chill",
     "src": "https://hylst.fr/hml/peaceful_&_graceful_moments.mp3",
-    "cover": "https://hylst.fr/hml/peaceful_&_graceful_moments.jpg"
+    "cover": "https://hylst.fr/hml/peaceful_&_graceful_moments.webp"
   },
   {
     "id": "peaceful_citadel",
@@ -3908,7 +3908,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:05",
     "usage": "citadels,rpg,game",
     "src": "https://hylst.fr/hml/peaceful_citadel.mp3",
-    "cover": "https://hylst.fr/hml/peaceful_citadel.jpg"
+    "cover": "https://hylst.fr/hml/peaceful_citadel.webp"
   },
   {
     "id": "pixelated_warriors",
@@ -3929,7 +3929,7 @@ export const MUSIC_LIBRARY = [
     "duration": "6:27",
     "usage": "dance",
     "src": "https://hylst.fr/hml/pixelated_warriors.mp3",
-    "cover": "https://hylst.fr/hml/pixelated_warriors.jpg"
+    "cover": "https://hylst.fr/hml/pixelated_warriors.webp"
   },
   {
     "id": "power_play",
@@ -3950,7 +3950,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:38",
     "usage": "break,change,rpg",
     "src": "https://hylst.fr/hml/power_play.mp3",
-    "cover": "https://hylst.fr/hml/power_play.jpg"
+    "cover": "https://hylst.fr/hml/power_play.webp"
   },
   {
     "id": "property_pulse",
@@ -3971,7 +3971,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:05",
     "usage": "monopoly,game,casino,dinner",
     "src": "https://hylst.fr/hml/property_pulse.mp3",
-    "cover": "https://hylst.fr/hml/property_pulse.jpg"
+    "cover": "https://hylst.fr/hml/property_pulse.webp"
   },
   {
     "id": "protocole_d_eveil_active",
@@ -3992,7 +3992,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:38",
     "usage": "fiction,existential,ambient",
     "src": "https://hylst.fr/hml/protocole_d_eveil_active.mp3",
-    "cover": "https://hylst.fr/hml/protocole_d_eveil_active.jpg"
+    "cover": "https://hylst.fr/hml/protocole_d_eveil_active.webp"
   },
   {
     "id": "psy_euphoria_unleashed",
@@ -4013,7 +4013,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:10",
     "usage": "dance",
     "src": "https://hylst.fr/hml/psy_euphoria_unleashed.mp3",
-    "cover": "https://hylst.fr/hml/psy_euphoria_unleashed.jpg"
+    "cover": "https://hylst.fr/hml/psy_euphoria_unleashed.webp"
   },
   {
     "id": "pure_extase",
@@ -4034,7 +4034,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:34",
     "usage": "electro-swing",
     "src": "https://hylst.fr/hml/pure_extase.mp3",
-    "cover": "https://hylst.fr/hml/pure_extase.jpg"
+    "cover": "https://hylst.fr/hml/pure_extase.webp"
   },
   {
     "id": "quest_for_the_unknown",
@@ -4055,7 +4055,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:02",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/quest_for_the_unknown.mp3",
-    "cover": "https://hylst.fr/hml/quest_for_the_unknown.jpg"
+    "cover": "https://hylst.fr/hml/quest_for_the_unknown.webp"
   },
   {
     "id": "quiet_fantasia_fabric",
@@ -4076,7 +4076,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "relax,create",
     "src": "https://hylst.fr/hml/quiet_fantasia_fabric.mp3",
-    "cover": "https://hylst.fr/hml/quiet_fantasia_fabric.jpg"
+    "cover": "https://hylst.fr/hml/quiet_fantasia_fabric.webp"
   },
   {
     "id": "quiet_jazz_moments",
@@ -4097,7 +4097,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:26",
     "usage": "focus,work,think,dance,lounge",
     "src": "https://hylst.fr/hml/quiet_jazz_moments.mp3",
-    "cover": "https://hylst.fr/hml/quiet_jazz_moments.jpg"
+    "cover": "https://hylst.fr/hml/quiet_jazz_moments.webp"
   },
   {
     "id": "rnb_city_lights",
@@ -4118,7 +4118,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:41",
     "usage": "dance,vibe",
     "src": "https://hylst.fr/hml/rnb_city_lights.mp3",
-    "cover": "https://hylst.fr/hml/rnb_city_lights.jpg"
+    "cover": "https://hylst.fr/hml/rnb_city_lights.webp"
   },
   {
     "id": "realm_rhythms",
@@ -4139,7 +4139,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:02",
     "usage": "small world",
     "src": "https://hylst.fr/hml/realm_rhythms.mp3",
-    "cover": "https://hylst.fr/hml/realm_rhythms.jpg"
+    "cover": "https://hylst.fr/hml/realm_rhythms.webp"
   },
   {
     "id": "realm_rumble",
@@ -4160,7 +4160,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:16",
     "usage": "small world",
     "src": "https://hylst.fr/hml/realm_rumble.mp3",
-    "cover": "https://hylst.fr/hml/realm_rumble.jpg"
+    "cover": "https://hylst.fr/hml/realm_rumble.webp"
   },
   {
     "id": "relaxed_sunday",
@@ -4180,7 +4180,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:15",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/relaxed_sunday.mp3",
-    "cover": "https://hylst.fr/hml/relaxed_sunday.jpg"
+    "cover": "https://hylst.fr/hml/relaxed_sunday.webp"
   },
   {
     "id": "resilience_in_battle",
@@ -4201,7 +4201,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "action",
     "src": "https://hylst.fr/hml/resilience_in_battle.mp3",
-    "cover": "https://hylst.fr/hml/resilience_in_battle.jpg"
+    "cover": "https://hylst.fr/hml/resilience_in_battle.webp"
   },
   {
     "id": "resonant_moods",
@@ -4222,7 +4222,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:50",
     "usage": "classy albient",
     "src": "https://hylst.fr/hml/resonant_moods.mp3",
-    "cover": "https://hylst.fr/hml/resonant_moods.jpg"
+    "cover": "https://hylst.fr/hml/resonant_moods.webp"
   },
   {
     "id": "retour_en_ville",
@@ -4243,7 +4243,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dancing, club",
     "src": "https://hylst.fr/hml/retour_en_ville.mp3",
-    "cover": "https://hylst.fr/hml/retour_en_ville.jpg"
+    "cover": "https://hylst.fr/hml/retour_en_ville.webp"
   },
   {
     "id": "rhythmic_ascendancy",
@@ -4264,7 +4264,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:37",
     "usage": "",
     "src": "https://hylst.fr/hml/rhythmic_ascendancy.mp3",
-    "cover": "https://hylst.fr/hml/rhythmic_ascendancy.jpg"
+    "cover": "https://hylst.fr/hml/rhythmic_ascendancy.webp"
   },
   {
     "id": "rising_conflict",
@@ -4285,7 +4285,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "rpg,imagination",
     "src": "https://hylst.fr/hml/rising_conflict.mp3",
-    "cover": "https://hylst.fr/hml/rising_conflict.jpg"
+    "cover": "https://hylst.fr/hml/rising_conflict.webp"
   },
   {
     "id": "rising_together",
@@ -4306,7 +4306,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "rpg,uplifting, creation,courage",
     "src": "https://hylst.fr/hml/rising_together.mp3",
-    "cover": "https://hylst.fr/hml/rising_together.jpg"
+    "cover": "https://hylst.fr/hml/rising_together.webp"
   },
   {
     "id": "romance_tragique",
@@ -4326,7 +4326,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "classical,emo",
     "src": "https://hylst.fr/hml/romance_tragique.mp3",
-    "cover": "https://hylst.fr/hml/romance_tragique.jpg"
+    "cover": "https://hylst.fr/hml/romance_tragique.webp"
   },
   {
     "id": "salsa_de_pasionl",
@@ -4347,7 +4347,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/salsa_de_pasionl.mp3",
-    "cover": "https://hylst.fr/hml/salsa_de_pasionl.jpg"
+    "cover": "https://hylst.fr/hml/salsa_de_pasionl.webp"
   },
   {
     "id": "seaside_relaxation",
@@ -4367,7 +4367,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:17",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/seaside_relaxation.mp3",
-    "cover": "https://hylst.fr/hml/seaside_relaxation.jpg"
+    "cover": "https://hylst.fr/hml/seaside_relaxation.webp"
   },
   {
     "id": "shadow_garage",
@@ -4388,7 +4388,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "chill,trip",
     "src": "https://hylst.fr/hml/shadow_garage.mp3",
-    "cover": "https://hylst.fr/hml/shadow_garage.jpg"
+    "cover": "https://hylst.fr/hml/shadow_garage.webp"
   },
   {
     "id": "shadows_of_dread",
@@ -4409,7 +4409,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/shadows_of_dread.mp3",
-    "cover": "https://hylst.fr/hml/shadows_of_dread.jpg"
+    "cover": "https://hylst.fr/hml/shadows_of_dread.webp"
   },
   {
     "id": "silent_conquest",
@@ -4430,7 +4430,7 @@ export const MUSIC_LIBRARY = [
     "duration": "5:57",
     "usage": "chess",
     "src": "https://hylst.fr/hml/silent_conquest.mp3",
-    "cover": "https://hylst.fr/hml/silent_conquest.jpg"
+    "cover": "https://hylst.fr/hml/silent_conquest.webp"
   },
   {
     "id": "sirenes_echoes",
@@ -4451,7 +4451,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "trip,inspirational,chill,relax,rpg",
     "src": "https://hylst.fr/hml/sirenes_echoes.mp3",
-    "cover": "https://hylst.fr/hml/sirenes_echoes.jpg"
+    "cover": "https://hylst.fr/hml/sirenes_echoes.webp"
   },
   {
     "id": "ska_beats_lifting_high",
@@ -4472,7 +4472,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "rock out",
     "src": "https://hylst.fr/hml/ska_beats_lifting_high.mp3",
-    "cover": "https://hylst.fr/hml/ska_beats_lifting_high.jpg"
+    "cover": "https://hylst.fr/hml/ska_beats_lifting_high.webp"
   },
   {
     "id": "small_world_serenade",
@@ -4493,7 +4493,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:27",
     "usage": "small world",
     "src": "https://hylst.fr/hml/small_world_serenade.mp3",
-    "cover": "https://hylst.fr/hml/small_world_serenade.jpg"
+    "cover": "https://hylst.fr/hml/small_world_serenade.webp"
   },
   {
     "id": "smooth_jazz_ambient",
@@ -4507,7 +4507,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/smooth_jazz_ambient.mp3",
-    "cover": "https://hylst.fr/hml/smooth_jazz_ambient.jpg"
+    "cover": "https://hylst.fr/hml/smooth_jazz_ambient.webp"
   },
   {
     "id": "soothing_acoustic_pop",
@@ -4528,7 +4528,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dream,relax,chill,bath",
     "src": "https://hylst.fr/hml/soothing_acoustic_pop.mp3",
-    "cover": "https://hylst.fr/hml/soothing_acoustic_pop.jpg"
+    "cover": "https://hylst.fr/hml/soothing_acoustic_pop.webp"
   },
   {
     "id": "soulful_echoes",
@@ -4549,7 +4549,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,vibe,lounge",
     "src": "https://hylst.fr/hml/soulful_echoes.mp3",
-    "cover": "https://hylst.fr/hml/soulful_echoes.jpg"
+    "cover": "https://hylst.fr/hml/soulful_echoes.webp"
   },
   {
     "id": "space_retro_cowboy",
@@ -4570,7 +4570,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:45",
     "usage": "cinematic, soundtrack",
     "src": "https://hylst.fr/hml/space_retro_cowboy.mp3",
-    "cover": "https://hylst.fr/hml/space_retro_cowboy.jpg"
+    "cover": "https://hylst.fr/hml/space_retro_cowboy.webp"
   },
   {
     "id": "spatial_grand_hotel",
@@ -4591,7 +4591,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/spatial_grand_hotel.mp3",
-    "cover": "https://hylst.fr/hml/spatial_grand_hotel.jpg"
+    "cover": "https://hylst.fr/hml/spatial_grand_hotel.webp"
   },
   {
     "id": "splendor_serenade",
@@ -4612,7 +4612,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "splendor",
     "src": "https://hylst.fr/hml/splendor_serenade.mp3",
-    "cover": "https://hylst.fr/hml/splendor_serenade.jpg"
+    "cover": "https://hylst.fr/hml/splendor_serenade.webp"
   },
   {
     "id": "strategy_sonata",
@@ -4633,7 +4633,7 @@ export const MUSIC_LIBRARY = [
     "duration": "6:05",
     "usage": "chess",
     "src": "https://hylst.fr/hml/strategy_sonata.mp3",
-    "cover": "https://hylst.fr/hml/strategy_sonata.jpg"
+    "cover": "https://hylst.fr/hml/strategy_sonata.webp"
   },
   {
     "id": "symphony_of_mayhem",
@@ -4651,7 +4651,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:10",
     "usage": "hard rock",
     "src": "https://hylst.fr/hml/symphony_of_mayhem.mp3",
-    "cover": "https://hylst.fr/hml/symphony_of_mayhem.jpg"
+    "cover": "https://hylst.fr/hml/symphony_of_mayhem.webp"
   },
   {
     "id": "synthetic_waves_flow",
@@ -4672,7 +4672,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "boost,bass vibes",
     "src": "https://hylst.fr/hml/synthetic_waves_flow.mp3",
-    "cover": "https://hylst.fr/hml/synthetic_waves_flow.jpg"
+    "cover": "https://hylst.fr/hml/synthetic_waves_flow.webp"
   },
   {
     "id": "the_hand_of_the_heavens",
@@ -4693,7 +4693,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "ambient,rpg",
     "src": "https://hylst.fr/hml/the_hand_of_the_heavens.mp3",
-    "cover": "https://hylst.fr/hml/the_hand_of_the_heavens.jpg"
+    "cover": "https://hylst.fr/hml/the_hand_of_the_heavens.webp"
   },
   {
     "id": "the_monks_uprising",
@@ -4714,7 +4714,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/the_monks_uprising.mp3",
-    "cover": "https://hylst.fr/hml/the_monks_uprising.jpg"
+    "cover": "https://hylst.fr/hml/the_monks_uprising.webp"
   },
   {
     "id": "the_umbral_descent",
@@ -4735,7 +4735,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient,rpg",
     "src": "https://hylst.fr/hml/the_umbral_descent.mp3",
-    "cover": "https://hylst.fr/hml/the_umbral_descent.jpg"
+    "cover": "https://hylst.fr/hml/the_umbral_descent.webp"
   },
   {
     "id": "through_haunted_halls",
@@ -4756,7 +4756,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "rpg,haunting",
     "src": "https://hylst.fr/hml/through_haunted_halls.mp3",
-    "cover": "https://hylst.fr/hml/through_haunted_halls.jpg"
+    "cover": "https://hylst.fr/hml/through_haunted_halls.webp"
   },
   {
     "id": "tile_rhapsody",
@@ -4777,7 +4777,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:15",
     "usage": "azul",
     "src": "https://hylst.fr/hml/tile_rhapsody.mp3",
-    "cover": "https://hylst.fr/hml/tile_rhapsody.jpg"
+    "cover": "https://hylst.fr/hml/tile_rhapsody.webp"
   },
   {
     "id": "tile_tango",
@@ -4798,7 +4798,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:16",
     "usage": "azul",
     "src": "https://hylst.fr/hml/tile_tango.mp3",
-    "cover": "https://hylst.fr/hml/tile_tango.jpg"
+    "cover": "https://hylst.fr/hml/tile_tango.webp"
   },
   {
     "id": "time_portal_temple_discovery",
@@ -4819,7 +4819,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "ambient,rpg,game",
     "src": "https://hylst.fr/hml/time_portal_temple_discovery.mp3",
-    "cover": "https://hylst.fr/hml/time_portal_temple_discovery.jpg"
+    "cover": "https://hylst.fr/hml/time_portal_temple_discovery.webp"
   },
   {
     "id": "timeless_overture",
@@ -4840,7 +4840,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:07",
     "usage": "waltz,creation",
     "src": "https://hylst.fr/hml/timeless_overture.mp3",
-    "cover": "https://hylst.fr/hml/timeless_overture.jpg"
+    "cover": "https://hylst.fr/hml/timeless_overture.webp"
   },
   {
     "id": "timeless_tactics",
@@ -4861,7 +4861,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:59",
     "usage": "chess",
     "src": "https://hylst.fr/hml/timeless_tactics.mp3",
-    "cover": "https://hylst.fr/hml/timeless_tactics.jpg"
+    "cover": "https://hylst.fr/hml/timeless_tactics.webp"
   },
   {
     "id": "toons_in_town",
@@ -4875,7 +4875,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/toons_in_town.mp3",
-    "cover": "https://hylst.fr/hml/toons_in_town.jpg"
+    "cover": "https://hylst.fr/hml/toons_in_town.webp"
   },
   {
     "id": "toons_swing",
@@ -4896,7 +4896,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/toons_swing.mp3",
-    "cover": "https://hylst.fr/hml/toons_swing.jpg"
+    "cover": "https://hylst.fr/hml/toons_swing.webp"
   },
   {
     "id": "trancy_trip",
@@ -4917,7 +4917,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,trip",
     "src": "https://hylst.fr/hml/trancy_trip.mp3",
-    "cover": "https://hylst.fr/hml/trancy_trip.jpg"
+    "cover": "https://hylst.fr/hml/trancy_trip.webp"
   },
   {
     "id": "treacherous_echoes",
@@ -4938,7 +4938,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "rpg,ambient",
     "src": "https://hylst.fr/hml/treacherous_echoes.mp3",
-    "cover": "https://hylst.fr/hml/treacherous_echoes.jpg"
+    "cover": "https://hylst.fr/hml/treacherous_echoes.webp"
   },
   {
     "id": "tribal_circuits",
@@ -4952,7 +4952,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/tribal_circuits.mp3",
-    "cover": "https://hylst.fr/hml/tribal_circuits.jpg"
+    "cover": "https://hylst.fr/hml/tribal_circuits.webp"
   },
   {
     "id": "tribal_ritual",
@@ -4973,7 +4973,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/tribal_ritual.mp3",
-    "cover": "https://hylst.fr/hml/tribal_ritual.jpg"
+    "cover": "https://hylst.fr/hml/tribal_ritual.webp"
   },
   {
     "id": "trippy_synth_pop",
@@ -4994,7 +4994,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "psyche,trip,dance",
     "src": "https://hylst.fr/hml/trippy_synth_pop.mp3",
-    "cover": "https://hylst.fr/hml/trippy_synth_pop.jpg"
+    "cover": "https://hylst.fr/hml/trippy_synth_pop.webp"
   },
   {
     "id": "tropical_rhythm",
@@ -5015,7 +5015,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/tropical_rhythm.mp3",
-    "cover": "https://hylst.fr/hml/tropical_rhythm.jpg"
+    "cover": "https://hylst.fr/hml/tropical_rhythm.webp"
   },
   {
     "id": "un_air_de_minuit",
@@ -5036,7 +5036,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:47",
     "usage": "electro-swing",
     "src": "https://hylst.fr/hml/un_air_de_minuit.mp3",
-    "cover": "https://hylst.fr/hml/un_air_de_minuit.jpg"
+    "cover": "https://hylst.fr/hml/un_air_de_minuit.webp"
   },
   {
     "id": "unbound_legend_pulse",
@@ -5057,7 +5057,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "",
     "src": "https://hylst.fr/hml/unbound_legend_pulse.mp3",
-    "cover": "https://hylst.fr/hml/unbound_legend_pulse.jpg"
+    "cover": "https://hylst.fr/hml/unbound_legend_pulse.webp"
   },
   {
     "id": "underneath_a_baroque_moonlight",
@@ -5078,7 +5078,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:43",
     "usage": "ambient",
     "src": "https://hylst.fr/hml/underneath_a_baroque_moonlight.mp3",
-    "cover": "https://hylst.fr/hml/underneath_a_baroque_moonlight.jpg"
+    "cover": "https://hylst.fr/hml/underneath_a_baroque_moonlight.webp"
   },
   {
     "id": "underneath_the_willow",
@@ -5099,7 +5099,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "",
     "src": "https://hylst.fr/hml/underneath_the_willow.mp3",
-    "cover": "https://hylst.fr/hml/underneath_the_willow.jpg"
+    "cover": "https://hylst.fr/hml/underneath_the_willow.webp"
   },
   {
     "id": "unyielding_forces",
@@ -5113,7 +5113,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/unyielding_forces.mp3",
-    "cover": "https://hylst.fr/hml/unyielding_forces.jpg"
+    "cover": "https://hylst.fr/hml/unyielding_forces.webp"
   },
   {
     "id": "uptempo_electronic_surge",
@@ -5134,7 +5134,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:49",
     "usage": "upbeat,create",
     "src": "https://hylst.fr/hml/uptempo_electronic_surge.mp3",
-    "cover": "https://hylst.fr/hml/uptempo_electronic_surge.jpg"
+    "cover": "https://hylst.fr/hml/uptempo_electronic_surge.webp"
   },
   {
     "id": "urban_chill_house",
@@ -5155,7 +5155,7 @@ export const MUSIC_LIBRARY = [
     "duration": "1:47",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/urban_chill_house.mp3",
-    "cover": "https://hylst.fr/hml/urban_chill_house.jpg"
+    "cover": "https://hylst.fr/hml/urban_chill_house.webp"
   },
   {
     "id": "urban_drive",
@@ -5176,7 +5176,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:19",
     "usage": "chill, upbeat",
     "src": "https://hylst.fr/hml/urban_drive.mp3",
-    "cover": "https://hylst.fr/hml/urban_drive.jpg"
+    "cover": "https://hylst.fr/hml/urban_drive.webp"
   },
   {
     "id": "veil_of_intrigue",
@@ -5197,7 +5197,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:15",
     "usage": "",
     "src": "https://hylst.fr/hml/veil_of_intrigue.mp3",
-    "cover": "https://hylst.fr/hml/veil_of_intrigue.jpg"
+    "cover": "https://hylst.fr/hml/veil_of_intrigue.webp"
   },
   {
     "id": "veil_of_peril",
@@ -5218,7 +5218,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:42",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/veil_of_peril.mp3",
-    "cover": "https://hylst.fr/hml/veil_of_peril.jpg"
+    "cover": "https://hylst.fr/hml/veil_of_peril.webp"
   },
   {
     "id": "velours_et_poison",
@@ -5239,7 +5239,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:02",
     "usage": "seductive,ambient",
     "src": "https://hylst.fr/hml/velours_et_poison.mp3",
-    "cover": "https://hylst.fr/hml/velours_et_poison.jpg"
+    "cover": "https://hylst.fr/hml/velours_et_poison.webp"
   },
   {
     "id": "velvet_nights",
@@ -5260,7 +5260,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:14",
     "usage": "relax,lounge,dinner",
     "src": "https://hylst.fr/hml/velvet_nights.mp3",
-    "cover": "https://hylst.fr/hml/velvet_nights.jpg"
+    "cover": "https://hylst.fr/hml/velvet_nights.webp"
   },
   {
     "id": "vintage_chamber",
@@ -5281,7 +5281,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:07",
     "usage": "classy albient",
     "src": "https://hylst.fr/hml/vintage_chamber.mp3",
-    "cover": "https://hylst.fr/hml/vintage_chamber.jpg"
+    "cover": "https://hylst.fr/hml/vintage_chamber.webp"
   },
   {
     "id": "vintage_cinema",
@@ -5302,7 +5302,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "film,cinema",
     "src": "https://hylst.fr/hml/vintage_cinema.mp3",
-    "cover": "https://hylst.fr/hml/vintage_cinema.jpg"
+    "cover": "https://hylst.fr/hml/vintage_cinema.webp"
   },
   {
     "id": "vintage_space_pirate_adventure",
@@ -5323,7 +5323,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:36",
     "usage": "gaming,reading,drawing",
     "src": "https://hylst.fr/hml/vintage_space_pirate_adventure.mp3",
-    "cover": "https://hylst.fr/hml/vintage_space_pirate_adventure.jpg"
+    "cover": "https://hylst.fr/hml/vintage_space_pirate_adventure.webp"
   },
   {
     "id": "vintage_tv",
@@ -5344,7 +5344,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:49",
     "usage": "memories,back in time",
     "src": "https://hylst.fr/hml/vintage_tv.mp3",
-    "cover": "https://hylst.fr/hml/vintage_tv.jpg"
+    "cover": "https://hylst.fr/hml/vintage_tv.webp"
   },
   {
     "id": "virtual_disruptive_dance",
@@ -5365,7 +5365,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,party,create",
     "src": "https://hylst.fr/hml/virtual_disruptive_dance.mp3",
-    "cover": "https://hylst.fr/hml/virtual_disruptive_dance.jpg"
+    "cover": "https://hylst.fr/hml/virtual_disruptive_dance.webp"
   },
   {
     "id": "visionary_canvas",
@@ -5386,7 +5386,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:19",
     "usage": "art,creative",
     "src": "https://hylst.fr/hml/visionary_canvas.mp3",
-    "cover": "https://hylst.fr/hml/visionary_canvas.jpg"
+    "cover": "https://hylst.fr/hml/visionary_canvas.webp"
   },
   {
     "id": "vitamin_groove",
@@ -5406,7 +5406,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:53",
     "usage": "dinner,lounge",
     "src": "https://hylst.fr/hml/vitamin_groove.mp3",
-    "cover": "https://hylst.fr/hml/vitamin_groove.jpg"
+    "cover": "https://hylst.fr/hml/vitamin_groove.webp"
   },
   {
     "id": "wait_4_this_energetic_breakbeat",
@@ -5427,7 +5427,7 @@ export const MUSIC_LIBRARY = [
     "duration": "7:11",
     "usage": "upbeat",
     "src": "https://hylst.fr/hml/wait_4_this_energetic_breakbeat.mp3",
-    "cover": "https://hylst.fr/hml/wait_4_this_energetic_breakbeat.jpg"
+    "cover": "https://hylst.fr/hml/wait_4_this_energetic_breakbeat.webp"
   },
   {
     "id": "we_are",
@@ -5448,7 +5448,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:40",
     "usage": "dance",
     "src": "https://hylst.fr/hml/we_are.mp3",
-    "cover": "https://hylst.fr/hml/we_are.jpg"
+    "cover": "https://hylst.fr/hml/we_are.webp"
   },
   {
     "id": "we_are_the_dancers_now",
@@ -5469,7 +5469,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "dance,party",
     "src": "https://hylst.fr/hml/we_are_the_dancers_now.mp3",
-    "cover": "https://hylst.fr/hml/we_are_the_dancers_now.jpg"
+    "cover": "https://hylst.fr/hml/we_are_the_dancers_now.webp"
   },
   {
     "id": "we_electrify",
@@ -5490,7 +5490,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:09",
     "usage": "dance",
     "src": "https://hylst.fr/hml/we_electrify.mp3",
-    "cover": "https://hylst.fr/hml/we_electrify.jpg"
+    "cover": "https://hylst.fr/hml/we_electrify.webp"
   },
   {
     "id": "we_move_we_groove",
@@ -5511,7 +5511,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "dance,party",
     "src": "https://hylst.fr/hml/we_move_we_groove.mp3",
-    "cover": "https://hylst.fr/hml/we_move_we_groove.jpg"
+    "cover": "https://hylst.fr/hml/we_move_we_groove.webp"
   },
   {
     "id": "when_i_wake_from_the_dreams",
@@ -5532,7 +5532,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "bedroom",
     "src": "https://hylst.fr/hml/when_i_wake_from_the_dreams.mp3",
-    "cover": "https://hylst.fr/hml/when_i_wake_from_the_dreams.jpg"
+    "cover": "https://hylst.fr/hml/when_i_wake_from_the_dreams.webp"
   },
   {
     "id": "when_the_night_is_fading",
@@ -5553,7 +5553,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:42",
     "usage": "dance",
     "src": "https://hylst.fr/hml/when_the_night_is_fading.mp3",
-    "cover": "https://hylst.fr/hml/when_the_night_is_fading.jpg"
+    "cover": "https://hylst.fr/hml/when_the_night_is_fading.webp"
   },
   {
     "id": "whimsy_waltz",
@@ -5574,7 +5574,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:56",
     "usage": "small world",
     "src": "https://hylst.fr/hml/whimsy_waltz.mp3",
-    "cover": "https://hylst.fr/hml/whimsy_waltz.jpg"
+    "cover": "https://hylst.fr/hml/whimsy_waltz.webp"
   },
   {
     "id": "whispers_of_betrayal",
@@ -5595,7 +5595,7 @@ export const MUSIC_LIBRARY = [
     "duration": "4:21",
     "usage": "rpg,ambient",
     "src": "https://hylst.fr/hml/whispers_of_betrayal.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_betrayal.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_betrayal.webp"
   },
   {
     "id": "whispers_of_enchantment",
@@ -5616,7 +5616,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:16",
     "usage": "rpg,writing,creattion",
     "src": "https://hylst.fr/hml/whispers_of_enchantment.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_enchantment.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_enchantment.webp"
   },
   {
     "id": "whispers_of_history",
@@ -5637,7 +5637,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:44",
     "usage": "film,rpg,relax",
     "src": "https://hylst.fr/hml/whispers_of_history.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_history.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_history.webp"
   },
   {
     "id": "whispers_of_home",
@@ -5658,7 +5658,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:09",
     "usage": "relax,meditate,sleep",
     "src": "https://hylst.fr/hml/whispers_of_home.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_home.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_home.webp"
   },
   {
     "id": "whispers_of_serenity",
@@ -5679,7 +5679,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/whispers_of_serenity.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_serenity.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_serenity.webp"
   },
   {
     "id": "whispers_of_the_ancient_forest",
@@ -5693,7 +5693,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/whispers_of_the_ancient_forest.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_the_ancient_forest.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_the_ancient_forest.webp"
   },
   {
     "id": "whispers_of_the_divine",
@@ -5714,7 +5714,7 @@ export const MUSIC_LIBRARY = [
     "duration": "3:10",
     "usage": "",
     "src": "https://hylst.fr/hml/whispers_of_the_divine.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_the_divine.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_the_divine.webp"
   },
   {
     "id": "whispers_of_the_tide",
@@ -5728,7 +5728,7 @@ export const MUSIC_LIBRARY = [
     "duration": "",
     "usage": "",
     "src": "https://hylst.fr/hml/whispers_of_the_tide.mp3",
-    "cover": "https://hylst.fr/hml/whispers_of_the_tide.jpg"
+    "cover": "https://hylst.fr/hml/whispers_of_the_tide.webp"
   },
   {
     "id": "won't_you_feel_the_beat_with_me",
@@ -5749,7 +5749,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:11",
     "usage": "dance",
     "src": "https://hylst.fr/hml/won't_you_feel_the_beat_with_me.mp3",
-    "cover": "https://hylst.fr/hml/won't_you_feel_the_beat_with_me.jpg"
+    "cover": "https://hylst.fr/hml/won't_you_feel_the_beat_with_me.webp"
   },
   {
     "id": "x-gene_awakening",
@@ -5770,7 +5770,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:41",
     "usage": "",
     "src": "https://hylst.fr/hml/x-gene_awakening.mp3",
-    "cover": "https://hylst.fr/hml/x-gene_awakening.jpg"
+    "cover": "https://hylst.fr/hml/x-gene_awakening.webp"
   },
   {
     "id": "your_turn",
@@ -5791,7 +5791,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:56",
     "usage": "think,play,chill",
     "src": "https://hylst.fr/hml/your_turn.mp3",
-    "cover": "https://hylst.fr/hml/your_turn.jpg"
+    "cover": "https://hylst.fr/hml/your_turn.webp"
   },
   {
     "id": "y_a_du_sang_sur_mon_holster",
@@ -5812,7 +5812,7 @@ export const MUSIC_LIBRARY = [
     "duration": "2:33",
     "usage": "imagine",
     "src": "https://hylst.fr/hml/y_a_du_sang_sur_mon_holster.mp3",
-    "cover": "https://hylst.fr/hml/y_a_du_sang_sur_mon_holster.jpg"
+    "cover": "https://hylst.fr/hml/y_a_du_sang_sur_mon_holster.webp"
   },
   {
     "id": "zydeco_vibes",
@@ -5833,6 +5833,6 @@ export const MUSIC_LIBRARY = [
     "duration": "2:39",
     "usage": "upbeat",
     "src": "https://hylst.fr/hml/zydeco_vibes.mp3",
-    "cover": "https://hylst.fr/hml/zydeco_vibes.jpg"
+    "cover": "https://hylst.fr/hml/zydeco_vibes.webp"
   }
 ];

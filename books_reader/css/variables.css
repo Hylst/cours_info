@@ -1,0 +1,117 @@
+/* ─── Root Tokens ─────────────────────────────────────────── */
+:root {
+    /* App palette (UI chrome) */
+    --app-bg: #f4f1eb;
+    --app-text: #1c1917;
+    --app-muted: #78716c;
+    --app-card-bg: #ffffff;
+    --app-card-border: rgba(0, 0, 0, 0.07);
+    --app-primary: #8b5a2b;
+    --app-primary-hover: #6d4521;
+    --app-primary-glow: rgba(139, 90, 43, 0.25);
+    --app-surface: #ffffff;
+    --app-surface-hover: #f7f3ee;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, .10), 0 2px 6px rgba(0, 0, 0, .06);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, .12), 0 4px 10px rgba(0, 0, 0, .06);
+    --shadow-xl: 0 24px 48px rgba(0, 0, 0, .16), 0 8px 16px rgba(0, 0, 0, .08);
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Libre Baskerville', Georgia, serif;
+
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Default Book Variables (overridden by book's config.json) */
+    --book-bg: #faf4e8;
+    --book-text: #2e2b28;
+    --book-accent: #c47c3a;
+    --book-accent-dark: #8b5a2b;
+    --book-surface: #f0e6cc;
+    --book-border: rgba(139, 90, 43, 0.15);
+    --book-font-body: 'Libre Baskerville', Georgia, serif;
+    --book-font-heading: 'Cormorant Garamond', Georgia, serif;
+    --book-font-title: 'Cormorant Garamond', Georgia, serif;
+    --book-font-size: 1.05rem;
+    --book-line-height: 1.85;
+    --book-max-width: 700px;
+    --book-dropcap-size: 4.5em;
+    --book-h1-size: 2.72rem;
+    --book-h2-size: 2.08rem;
+    --book-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Sepia Theme (Explicite) ─────────────────────────────── */
+[data-theme='sepia'] {
+    --app-bg: #f4f1eb;
+    --app-text: #1c1917;
+    --app-muted: #78716c;
+    --app-card-bg: #ffffff;
+    --app-card-border: rgba(0, 0, 0, 0.07);
+    --app-surface: #ffffff;
+    --app-surface-hover: #f7f3ee;
+    --app-primary: #8b5a2b;
+    --app-primary-hover: #6d4521;
+    --app-primary-glow: rgba(139, 90, 43, 0.25);
+
+    --book-bg: #faf4e8;
+    --book-text: #2e2b28;
+    --book-accent: #c47c3a;
+    --book-accent-dark: #8b5a2b;
+    --book-surface: #f0e6cc;
+    --book-border: rgba(139, 90, 43, 0.15);
+    --book-h1-size: 2.72rem;
+    --book-h2-size: 2.08rem;
+    --book-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Dark Theme ──────────────────────────────────────────── */
+[data-theme='dark'] {
+    --app-bg: #0f0e0c;
+    --app-text: #e8e2d9;
+    --app-muted: #a09080;
+    --app-card-bg: #1c1917;
+    --app-card-border: rgba(255, 255, 255, 0.06);
+    --app-surface: #1c1917;
+    --app-surface-hover: #2a2622;
+    --app-primary: #d4955a;
+    --app-primary-hover: #e8a870;
+    --app-primary-glow: rgba(212, 149, 90, 0.3);
+
+    --book-bg: #17120e;
+    --book-text: #d4c9b8;
+    --book-accent: #d4955a;
+    --book-accent-dark: #e8b870;
+    --book-surface: #201a14;
+    --book-border: rgba(212, 149, 90, 0.15);
+    --book-h1-size: 2.46rem;
+    --book-h2-size: 1.9rem;
+    --book-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── Light Theme ─────────────────────────────────────────── */
+[data-theme='light'] {
+    --app-bg: #fafaf8;
+    --app-text: #1c1917;
+    --app-muted: #78716c;
+    --app-card-bg: #ffffff;
+    --app-card-border: rgba(0.0, 0, 0.06);
+    --app-surface: #ffffff;
+    --app-surface-hover: #f5f5f0;
+    --app-primary: #7c3d12;
+    --app-primary-hover: #6b2f0a;
+    --app-primary-glow: rgba(124, 61, 18, 0.2);
+
+    --book-bg: #ffffff;
+    --book-text: #1c1917;
+    --book-accent: #7c3d12;
+    --book-accent-dark: #5c2d0a;
+    --book-surface: #f8f8f6;
+    --book-border: rgba(120, 60, 20, 0.12);
+    --book-h1-size: 2.58rem;
+    --book-h2-size: 1.96rem;
+    --book-text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}

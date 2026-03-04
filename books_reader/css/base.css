@@ -1,0 +1,446 @@
+/* ─── Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-sans);
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    overflow: hidden;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ─── View Transition (fade-slide) ───────────────────────── */
+.view-enter {
+    animation: viewEnter 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+}
+
+@keyframes viewEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Visual Ambience ────────────────────────────────────── */
+.ambience-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 6;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+}
+
+/* Force higher opacity for visibility */
+.ambience-overlay.ambience-sepia {
+    opacity: 1;
+}
+
+.ambience-overlay.ambience-light {
+    opacity: 0.85;
+}
+
+.ambience-overlay.ambience-dark {
+    opacity: 0.9;
+}
+
+/* Specific visibility for Reader View */
+.ambience-reader {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* Ensure it is behind content (z=5) but above bg (z=0) */
+    pointer-events: none;
+    display: block !important;
+    visibility: visible !important;
+    /* Extra opacity boost for reader view specifically */
+    filter: contrast(1.1) brightness(1.05);
+}
+
+.ambience-reader.ambience-sepia {
+    opacity: 0.95;
+}
+
+.ambience-reader.ambience-light {
+    opacity: 0.85;
+}
+
+.ambience-reader.ambience-dark {
+    opacity: 0.85;
+}
+
+.ambience-grain {
+    position: absolute;
+    inset: -150%;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAEVBMVEUAAAACAgICAgICAgICAgICAgI7nNYZAAAABnRSTlMAAAAAAADKED9JAAABLUlEQVQ4y2NgQAUGBgUGP3//wA1EBb///H8fN6DBwO//z8A80EAGQ0OD/xAGBgeD///N4A4ygA1g+P/fD24jQ4OB/3//wU0kGgA08P/3PyAHDgYGCA2M////Z8CA1P////8HNyP///+//+A2MjAAO+f///9wE4kGYAfi/8HNxMjA4A8X4MRA8B9sAhMHg///1eBmojTq/w/yUANEA0gDUQ2QBgIBoIFYANJAtIEMIHh//9sPbiI2N8IEIEBMAO//w0wUB0R6ADGQBgIAoAaIBiAEEANpIAAAaiAigBgIJQANEDaQByAGEgKgAcIGcQJiIJAAboBIAyEBYiAMQAiEA7gBIgPEQAiAEEgIQAKiDQQHiIHQACFA2EAOQAxEGkAa4DQgB0AMRBxAGkAciA2IG+Am4gcAAI6x2Q2ludD+AAAAAElFTkSuQmCC");
+    background-repeat: repeat;
+    background-size: 152px;
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    animation: ambience-grain 26s steps(10) infinite;
+}
+
+.ambience-gradient {
+    position: absolute;
+    inset: 0;
+    animation: ambience-pan 24s ease-in-out infinite alternate;
+}
+
+.ambience-sepia .ambience-gradient {
+    background:
+        radial-gradient(120vw 120vh at 14% -18%, color-mix(in srgb, var(--book-accent) 26%, transparent), transparent 70%),
+        radial-gradient(100vw 100vh at 86% 112%, color-mix(in srgb, var(--book-accent-dark) 22%, transparent), transparent 72%);
+}
+
+.ambience-light .ambience-gradient {
+    background:
+        radial-gradient(110vw 110vh at 0% 0%, rgba(255, 255, 255, 0.75), transparent 66%),
+        radial-gradient(100vw 100vh at 100% 100%, color-mix(in srgb, var(--app-primary) 22%, transparent), transparent 74%);
+}
+
+.ambience-dark .ambience-gradient {
+    background:
+        radial-gradient(130vw 130vh at 50% -10%, rgba(212, 149, 90, 0.16), transparent 70%),
+        radial-gradient(100vw 100vh at 82% 108%, rgba(73, 48, 27, 0.22), transparent 72%);
+}
+
+.ambience-sepia-wave,
+.ambience-dark-aura,
+.ambience-light-haze {
+    position: absolute;
+    inset: -24% -10%;
+    pointer-events: none;
+}
+
+.ambience-sepia-wave {
+    background:
+        radial-gradient(780px 320px at 24% 24%, rgba(196, 140, 74, 0.28), transparent 62%),
+        radial-gradient(700px 300px at 80% 70%, rgba(160, 110, 62, 0.22), transparent 64%);
+    mix-blend-mode: multiply;
+    animation: sepia-wave 24s ease-in-out infinite alternate;
+}
+
+.ambience-dark-aura {
+    background: radial-gradient(circle at 18% 16%, rgba(255, 173, 96, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 82% 86%, rgba(255, 220, 170, 0.12) 0%, transparent 44%);
+    mix-blend-mode: screen;
+    animation: dark-aura 20s ease-in-out infinite alternate;
+}
+
+.ambience-light-haze {
+    background: radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.72) 0%, transparent 42%),
+        radial-gradient(circle at 82% 14%, rgba(249, 232, 210, 0.45) 0%, transparent 42%);
+    mix-blend-mode: screen;
+    animation: light-haze 18s ease-in-out infinite alternate;
+}
+
+.ambience-particles {
+    position: absolute;
+    inset: 0;
+}
+
+.ambience-particle {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    opacity: var(--opacity);
+    transform: translate3d(0, 0, 0);
+    animation: ambience-float var(--duration) linear infinite;
+    animation-delay: var(--delay);
+}
+
+.sepia-particle {
+    background: color-mix(in srgb, var(--book-accent) 22%, rgba(255, 236, 199, 0.65));
+    filter: blur(0.4px);
+    box-shadow: 0 0 8px rgba(255, 200, 100, 0.25);
+}
+
+.light-particle {
+    background: color-mix(in srgb, var(--app-primary) 16%, rgba(255, 255, 255, 0.95));
+    filter: blur(0.25px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.dark-particle {
+    background: rgba(255, 226, 176, 0.55);
+    box-shadow: 0 0 6px rgba(255, 200, 130, 0.35);
+    animation-name: ambience-float, dark-twinkle;
+    animation-duration: var(--duration), calc(var(--duration) * 0.45);
+    animation-iteration-count: infinite, infinite;
+    animation-timing-function: linear, ease-in-out;
+    animation-delay: var(--delay), calc(var(--delay) * -0.35);
+}
+
+@keyframes ambience-grain {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(-5%, 6%, 0);
+    }
+
+    50% {
+        transform: translate3d(4%, -5%, 0);
+    }
+
+    75% {
+        transform: translate3d(3%, 2%, 0);
+    }
+}
+
+@keyframes ambience-pan {
+    0% {
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: scale(1.015) translate3d(-1%, 1%, 0);
+    }
+}
+
+@keyframes sepia-wave {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(-1.8%, 1.2%, 0) scale(1.03);
+    }
+}
+
+@keyframes dark-aura {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(1.2%, -1.2%, 0) scale(1.02);
+    }
+}
+
+@keyframes light-haze {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(-1.3%, 1.1%, 0) scale(1.02);
+    }
+}
+
+@keyframes ambience-float {
+    0% {
+        transform: translate3d(0, 12px, 0) scale(0.82);
+        opacity: 0;
+    }
+
+    16% {
+        opacity: var(--opacity);
+    }
+
+    84% {
+        opacity: var(--opacity);
+    }
+
+    100% {
+        transform: translate3d(var(--drift), -36px, 0) scale(1.02);
+        opacity: 0;
+    }
+}
+
+@keyframes dark-twinkle {
+
+    0%,
+    100% {
+        background-color: rgba(255, 226, 176, 0.15);
+        box-shadow: 0 0 2px rgba(255, 200, 130, 0.1);
+    }
+
+    50% {
+        background-color: rgba(255, 226, 176, 0.45);
+        box-shadow: 0 0 5px rgba(255, 200, 130, 0.3);
+    }
+}
+
+/* ─── Initial Loader ──────────────────────────────────────── */
+.initial-loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 1.25rem;
+    background: var(--app-bg);
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--app-card-border);
+    border-top: 3px solid var(--app-primary);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Buttons ───────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--app-card-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+    background: var(--app-surface);
+    color: var(--app-text);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    user-select: none;
+}
+
+.btn:hover {
+    background: var(--app-surface-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn svg {
+    flex-shrink: 0;
+}
+
+.btn-primary {
+    background: var(--app-primary);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 4px 14px var(--app-primary-glow);
+}
+
+.btn-primary:hover {
+    background: var(--app-primary-hover);
+    box-shadow: 0 6px 20px var(--app-primary-glow);
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    color: var(--app-muted);
+}
+
+.btn-ghost:hover {
+    background: var(--app-surface-hover);
+    color: var(--app-text);
+    box-shadow: none;
+}
+
+.btn-icon {
+    padding: 0.55rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+/* ─── Selection ────────────────────────────────────────── */
+::selection {
+    background: color-mix(in srgb, var(--book-accent, var(--app-primary)) 25%, transparent);
+    color: var(--book-text, var(--app-text));
+}
+
+/* ─── Focus Visible ────────────────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--app-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ─── Scrollbar Styling ────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--app-card-border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--app-muted);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hylst Books & Reader</title>
+
+    <!-- Meta/SEO -->
+    <meta name="description"
+        content="Bibliothèque numérique de Geoffroy Streit et liseuse web hors-ligne (PWA). Lisez vos EPUB, TXT, JSON librement dans une interface personnalisée.">
+    <meta name="author" content="Geoffroy Streit (geoffroy.streit@gmail.com)">
+    <meta name="keywords"
+        content="liseuse, ebook, epub, hors-ligne, pwa, Hylst, Geoffroy Streit, lecture, web reader, offline, livre audio">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Hylst Books & Reader">
+    <meta property="og:description"
+        content="Bibliothèque numérique de Geoffroy Streit et liseuse web élégante offline-first.">
+    <meta property="og:image" content="./public/social-share.png">
+    <meta property="og:type" content="website">
+
+    <!-- Theme & PWA Settings -->
+    <meta name="theme-color" content="#faf4e8" id="theme-color-meta">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Hylst Reader">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='60' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle'%3EHR%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='60' font-family='sans-serif' font-size='40' fill='white' text-anchor='middle'%3EHR%3C/text%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Georgia&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <!-- Design System -->
+    <link rel="stylesheet" href="css/variables.css?v=1.1.20">
+    <link rel="stylesheet" href="css/base.css?v=1.1.20">
+    <link rel="stylesheet" href="css/layout.css?v=1.1.20">
+    <link rel="stylesheet" href="css/components.css?v=1.1.20">
+    <link rel="stylesheet" href="css/modals.css?v=1.1.20">
+    <link rel="stylesheet" href="css/music.css?v=1.1.20">
+    <link rel="stylesheet" href="css/reader.css?v=1.1.20">
+    <link rel="stylesheet" href="css/responsive.css?v=1.1.20">
+
+    <!-- External Dependencies via CDN (No Build) -->
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel for in-browser JSX transpilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- idb-keyval for IndexedDB storage -->
+    <script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script>
+    <!-- JSZip for zip import fallback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/epub.js/0.3.88/epub.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="root">
+        <div class="initial-loader">
+            <div class="spinner"></div>
+            <p>Chargement de la liseuse...</p>
+        </div>
+    </div>
+
+    <!-- Application Scripts -->
+    <script type="text/babel" data-type="module" src="js/db.js?v=1.1.20"></script>
+    <script type="text/babel" data-type="module" src="js/importAPI.js?v=1.1.20"></script>
+    <script type="text/babel" data-type="module" src="js/app.jsx?v=1.1.20"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('ServiceWorker registration successful', reg.scope);
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

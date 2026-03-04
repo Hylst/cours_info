@@ -1,0 +1,317 @@
+/* ─── Generic Modal ───────────────────────────────────────── */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    padding: 1.5rem;
+}
+
+.modal-content {
+    background: var(--app-surface);
+    width: min(520px, 96vw);
+    max-height: 90vh;
+    border-radius: 18px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    padding: 2rem;
+    overflow-y: auto;
+    border: 1px solid var(--app-card-border);
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--app-card-border);
+}
+
+.modal-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 10;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ─── Settings Modal ───────────────────────────────────── */
+.settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: center;
+}
+
+.settings-modal {
+    width: min(560px, 96vw);
+    padding: 2.25rem;
+    background: linear-gradient(180deg, var(--app-surface), var(--app-surface-hover));
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid var(--app-card-border);
+    background: color-mix(in srgb, var(--app-surface) 70%, var(--app-surface-hover));
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    align-items: center;
+    text-align: center;
+}
+
+.setting-group:hover {
+    border-color: var(--app-primary-glow);
+    box-shadow: var(--shadow-md);
+}
+
+.setting-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--app-muted);
+}
+
+.setting-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.setting-options span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--app-muted);
+}
+
+.setting-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--app-muted);
+}
+
+.setting-control {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.theme-animation-grid {
+    display: grid;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.theme-animation-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+    border: 1px solid var(--app-card-border);
+    background: color-mix(in srgb, var(--app-surface) 74%, var(--app-surface-hover));
+}
+
+.theme-animation-label {
+    font-size: 0.85rem;
+    color: var(--app-text);
+    font-weight: 600;
+}
+
+/* ─── Search Modal ─────────────────────────────────────── */
+.search-modal {
+    width: min(600px, 95vw);
+}
+
+.search-input-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
+    background: var(--app-surface-hover);
+    border: 1px solid var(--app-card-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--app-text);
+}
+
+/* ─── About Modal ────────────────────────────────────────── */
+.about-modal {
+    width: min(560px, 95vw);
+    max-height: 85vh;
+}
+
+.about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.about-tagline {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--app-muted);
+    border-left: 3px solid var(--app-primary);
+    padding-left: 0.85rem;
+    line-height: 1.6;
+}
+
+.about-section h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--app-muted);
+    margin-bottom: 0.6rem;
+}
+
+.about-creator {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, var(--app-surface-hover), color-mix(in srgb, var(--app-primary) 8%, var(--app-surface)));
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--app-primary) 20%, var(--app-card-border));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.about-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.about-list li {
+    background: linear-gradient(90deg, var(--app-surface), var(--app-surface-hover));
+    border-left: 3px solid var(--app-primary);
+    border-top: 1px solid var(--app-card-border);
+    border-right: 1px solid var(--app-card-border);
+    border-bottom: 1px solid var(--app-card-border);
+    border-radius: 0 12px 12px 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--app-text);
+    line-height: 1.6;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--app-primary) 5%, var(--app-surface)), var(--app-surface-hover));
+}
+
+.creator-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--app-primary), #d49a50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px var(--app-primary-glow);
+    border: 2px solid var(--app-surface);
+}
+
+.creator-role {
+    font-size: 0.85rem;
+    color: var(--app-muted);
+    margin-top: 0.25rem;
+}
+
+.creator-mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    color: var(--app-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.creator-mail:hover {
+    color: var(--app-primary-hover);
+    text-decoration: underline;
+}
+
+.about-wip {
+    font-size: 0.8rem;
+    color: var(--app-muted);
+    text-align: center;
+    padding: 0.65rem 0.9rem;
+    background: var(--app-surface-hover);
+    border-radius: 999px;
+    border: 1px dashed var(--app-card-border);
+}
+
+/* About Modal V2 layout override */
+.modal-content.about-modal-v2 {
+    width: clamp(560px, 90vw, 1100px);
+    max-width: none;
+    height: 80vh;
+    max-height: 88vh;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--app-card-bg);
+    border: 1px solid var(--app-card-border);
+    box-shadow: var(--shadow-2xl);
+}

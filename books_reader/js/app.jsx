@@ -858,7 +858,7 @@ function AboutModal({ onClose }) {
                                     <div className="feature-icon"><Icon.Music /></div>
                                     <div className="feature-details">
                                         <strong>Lecteur Audio Intégré</strong>
-                                        <p>Contrôles avancés, mode boucle, et mini-player accessible partout.</p>
+                                        <p>Contrôles audio, mode boucle, et mini-player accessible partout.</p>
                                     </div>
                                 </div>
                             </div>
@@ -911,7 +911,7 @@ function AboutModal({ onClose }) {
                                 <div className="creator-disclaimer stagger-5">
                                     <Icon.Info size={14} />
                                     <span>
-                                        Les pochettes des musiques sont générées par IA.
+                                        Les pochettes des musiques et des livres sont générées par IA.
                                         Le développement de cette application est assisté par IA.
                                         Une majorité des créations musicales de la musicothèque (avec mention Hylst Using IA) ont été créées avec assistance IA.
                                     </span>

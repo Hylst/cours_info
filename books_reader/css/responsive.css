@@ -5,6 +5,7 @@
     .music-player-layout {
         grid-template-columns: 1fr 300px;
     }
+
     .reader-content {
         max-width: calc(var(--book-content-max, var(--book-max-width)) + 80px);
     }
@@ -99,5 +100,50 @@
     .current-track-cover-container {
         width: 120px;
         height: 120px;
+    }
+}
+
+/* ─── Header Responsive (Mobile Portrait) ───────────────────── */
+
+/* ≤ 640px : compresser les espaces du header */
+@media (max-width: 640px) {
+    .app-header {
+        padding: 0 0.75rem;
+    }
+
+    .header-actions {
+        gap: 0.2rem;
+    }
+
+    .music-mini-bar {
+        padding: 0.3rem 0.5rem;
+        gap: 0.35rem;
+        margin-right: 0.2rem;
+    }
+
+    .mini-title {
+        max-width: 70px;
+    }
+}
+
+/* ≤ 480px (portrait smartphone) : masquer les éléments non critiques */
+@media (max-width: 480px) {
+    .music-mini-bar {
+        display: none;
+    }
+
+    .btn-theme-toggle {
+        display: none;
+    }
+
+    .header-actions {
+        gap: 0.15rem;
+    }
+}
+
+/* ≤ 360px : cacher le label texte du bouton Nouveau, rester icône seule */
+@media (max-width: 360px) {
+    .btn-new-label {
+        display: none;
     }
 }

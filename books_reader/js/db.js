@@ -60,8 +60,12 @@ export async function saveProgress(bookId, chapterIndex, scrollRatio) {
 }
 
 // --- Bookmarks (Signets) ---
+export async function getSignetsAll() {
+    return (await idb.get(STORE_KEYS.SIGNETS)) || {};
+}
+
 export async function getSignets(bookId) {
-    const all = await idb.get(STORE_KEYS.SIGNETS) || {};
+    const all = await getSignetsAll();
     return all[bookId] || [];
 }
 
@@ -84,7 +88,7 @@ export async function removeSignet(bookId, signetId) {
 // --- Global Settings ---
 export async function getSettings() {
     return (await idb.get(STORE_KEYS.SETTINGS)) || {
-        theme: 'sepia',
+        theme: 'dark',
         fontScale: 1.0,
         alignment: 'left',
         focusMode: false,

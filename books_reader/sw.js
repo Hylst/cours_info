@@ -1,21 +1,21 @@
 // sw.js
 // Service Worker Minimal pour Hylst Reader
 
-const CACHE_NAME = 'hylst-reader-v28';
+const CACHE_NAME = 'hylst-reader-v29';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
-    './css/variables.css?v=1.1.28',
-    './css/base.css?v=1.1.28',
-    './css/layout.css?v=1.1.28',
-    './css/components.css?v=1.1.28',
-    './css/modals.css?v=1.1.28',
-    './css/music.css?v=1.1.28',
-    './css/reader.css?v=1.1.28',
-    './css/responsive.css?v=1.1.28',
-    './js/db.js?v=1.1.28',
-    './js/importAPI.js?v=1.1.28',
-    './js/app.jsx?v=1.1.28'
+    './css/variables.css?v=1.1.29',
+    './css/base.css?v=1.1.29',
+    './css/layout.css?v=1.1.29',
+    './css/components.css?v=1.1.29',
+    './css/modals.css?v=1.1.29',
+    './css/music.css?v=1.1.29',
+    './css/reader.css?v=1.1.29',
+    './css/responsive.css?v=1.1.29',
+    './js/db.js?v=1.1.29',
+    './js/importAPI.js?v=1.1.29',
+    './js/app.jsx?v=1.1.29'
 ];
 
 self.addEventListener('install', (event) => {

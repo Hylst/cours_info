@@ -1,29 +1,12 @@
-// sw.js
-// Service Worker Minimal pour Hylst Reader
+// sw.js - Service Worker Hylst Reader v1.1.29
+// Stratégie: Network-First avec fallback cache (robuste)
 
-const CACHE_NAME = 'hylst-reader-v29';
-const ASSETS_TO_CACHE = [
-    './',
-    './index.html',
-    './css/variables.css?v=1.1.29',
-    './css/base.css?v=1.1.29',
-    './css/layout.css?v=1.1.29',
-    './css/components.css?v=1.1.29',
-    './css/modals.css?v=1.1.29',
-    './css/music.css?v=1.1.29',
-    './css/reader.css?v=1.1.29',
-    './css/responsive.css?v=1.1.29',
-    './js/db.js?v=1.1.29',
-    './js/importAPI.js?v=1.1.29',
-    './js/app.jsx?v=1.1.29'
-];
+const CACHE_NAME = 'hylst-reader-v30';
 
+// Lors de l'activation, nettoyer les anciens caches
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(ASSETS_TO_CACHE);
-        })
-    );
+    // Pas de cache.addAll() bloquant - on laisse le réseau servir les assets
+    // et on les met en cache au fil des requêtes dans le fetch handler
     self.skipWaiting();
 });
 
@@ -32,6 +15,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((keys) => Promise.all(
             keys.map((key) => {
                 if (key !== CACHE_NAME) {
+                    console.log('[SW] Suppression de l\'ancien cache:', key);
                     return caches.delete(key);
                 }
             })
@@ -41,34 +25,45 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    // Only intercept basic GET requests
+    // Ignorer les méthodes non-GET
     if (event.request.method !== 'GET') return;
 
-    // Ignore Blob URLs (IndexDB objects) and Chrome Extension URLs
-    if (event.request.url.startsWith('blob:') || event.request.url.startsWith('chrome-extension:')) return;
+    // Ignorer les URLs non-HTTP (blob:, chrome-extension:, etc.)
+    const url = event.request.url;
+    if (!url.startsWith('http')) return;
 
-    // NETWORK FIRST STRATEGY (solves the issue of old content sticking around)
+    // Ignorer les requêtes cross-origin (CDN, fonts, etc.) sauf jsdelivr/unpkg
+    // pour les CDNs on fait un simple passthrough sans mise en cache SW
+    const isCDN = url.includes('fonts.googleapis.com') ||
+        url.includes('fonts.gstatic.com') ||
+        url.includes('unpkg.com') ||
+        url.includes('cdn.jsdelivr.net');
+
+    // Pour les CDNs, simple passthrough
+    if (isCDN) return;
+
+    // NETWORK-FIRST pour tous les assets locaux
     event.respondWith(
-        fetch(event.request).then((networkResponse) => {
-            // Cache the new response if valid
-            if (networkResponse && networkResponse.status === 200) {
-                if (networkResponse.type === 'basic' || event.request.url.includes('cdn.jsdelivr.net') || event.request.url.includes('unpkg.com')) {
+        fetch(event.request)
+            .then((networkResponse) => {
+                // Mettre en cache si réponse valide
+                if (networkResponse && networkResponse.ok && networkResponse.type === 'basic') {
                     const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache));
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
                 }
-            }
-            return networkResponse;
-        }).catch(() => {
-            // Fallback to cache if offline
-            return caches.match(event.request).then((cachedResponse) => {
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
-                // Offline fallback for HTML
-                if (event.request.url.includes('.html') || event.request.mode === 'navigate') {
-                    return caches.match('./index.html');
-                }
-            });
-        })
+                return networkResponse;
+            })
+            .catch(() => {
+                // Fallback sur le cache en cas d'erreur réseau
+                return caches.match(event.request).then((cached) => {
+                    if (cached) return cached;
+                    // Pour les navigations HTML, retourner index.html
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('./index.html');
+                    }
+                });
+            })
     );
 });

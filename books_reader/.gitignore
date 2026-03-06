@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project specific
+livres_pour_import/
+*.zip
+*.tar.gz

@@ -1,7 +1,7 @@
 // sw.js - Service Worker Hylst Reader v1.1.29
 // Stratégie: Network-First avec fallback cache (robuste)
 
-const CACHE_NAME = 'hylst-reader-v30';
+const CACHE_NAME = 'hylst-reader-v31';
 
 // Lors de l'activation, nettoyer les anciens caches
 self.addEventListener('install', (event) => {

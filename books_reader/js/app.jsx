@@ -1,7 +1,7 @@
 // js/app.jsx
-import { getBooks, saveBook, deleteBook, getProgress, getProgressAll, saveProgress, getSettings, saveSettings, getSignets, getSignetsAll, saveSignet, removeSignet } from '/js/db.js';
-import { importBookFromDirectory } from '/js/importAPI.js';
-import { MUSIC_LIBRARY } from '/js/music_data.js';
+import { getBooks, saveBook, deleteBook, getProgress, getProgressAll, saveProgress, getSettings, saveSettings, getSignets, getSignetsAll, saveSignet, removeSignet } from './db.js';
+import { importBookFromDirectory } from './importAPI.js';
+import { MUSIC_LIBRARY } from './music_data.js';
 
 const { useState, useEffect, useMemo, useRef, useCallback } = React;
 

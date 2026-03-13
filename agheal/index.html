@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGHeal — Explications</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <h1>AGHeal & Adapt'Movement</h1>
+          <p class="subtitle">
+            Une vue claire et simple du logiciel, pensée pour les coachs et l’administration.
+          </p>
+        </div>
+        <div class="badges">
+          <span class="badge">Coachs</span>
+          <span class="badge">Admins</span>
+          <span class="badge">Base de données</span>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="coach" role="tab" aria-selected="true">Vue Coach</button>
+        <button class="tab" data-tab="admin" role="tab" aria-selected="false">Vue Admin</button>
+        <button class="tab" data-tab="architecture" role="tab" aria-selected="false">Architecture</button>
+        <button class="tab" data-tab="database" role="tab" aria-selected="false">Base de données</button>
+      </nav>
+
+      <main>
+        <section id="tab-coach" class="tab-panel active" role="tabpanel">
+          <div class="grid two">
+            <div class="card">
+              <h2>Ce que fait AGHeal</h2>
+              <p>
+                AGHeal organise les séances sportives, les inscriptions et le suivi des adhérents.
+                Tout est pensé pour que le coach gère son planning, ses clients et ses groupes en quelques clics.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Logique métier</h2>
+              <ul class="list">
+                <li>Un adhérent s’inscrit à une séance publiée.</li>
+                <li>Un coach crée activités, lieux et séances.</li>
+                <li>Les groupes permettent d’organiser les adhérents.</li>
+                <li>Les remarques coach restent privées.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Parcours coach — en pratique</h2>
+            <div class="steps">
+              <button class="step" data-step="start">
+                <span>1</span>
+                <div>
+                  <strong>Ouvrir le tableau de bord</strong>
+                  <small>Tout commence ici</small>
+                </div>
+              </button>
+              <button class="step" data-step="create">
+                <span>2</span>
+                <div>
+                  <strong>Créer activités & lieux</strong>
+                  <small>Les modèles de séances</small>
+                </div>
+              </button>
+              <button class="step" data-step="plan">
+                <span>3</span>
+                <div>
+                  <strong>Planifier une séance</strong>
+                  <small>Date, horaire, capacité</small>
+                </div>
+              </button>
+              <button class="step" data-step="follow">
+                <span>4</span>
+                <div>
+                  <strong>Suivre les inscriptions</strong>
+                  <small>Voir qui participe</small>
+                </div>
+              </button>
+            </div>
+            <div class="step-detail" id="step-detail">
+              Sélectionnez une étape pour lire les détails concrets.
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Modules clés pour les coachs</h2>
+            <div class="grid three">
+              <div class="pill">Séances</div>
+              <div class="pill">Planification</div>
+              <div class="pill">Clients</div>
+              <div class="pill">Groupes</div>
+              <div class="pill">Activités</div>
+              <div class="pill">Lieux</div>
+              <div class="pill">Historique</div>
+              <div class="pill">Profil</div>
+              <div class="pill">Informations</div>
+            </div>
+          </div>
+
+          <div class="card dialogue">
+            <h2>Mini-dialogue pour expliquer aux coachs</h2>
+            <div class="bubble left">
+              « Je veux créer un atelier Pilates pour la semaine prochaine. »
+            </div>
+            <div class="bubble right">
+              « Tu vas d’abord créer l’activité Pilates, puis choisir un lieu, et planifier la séance. »
+            </div>
+            <div class="bubble left">
+              « Et si je veux suivre qui est inscrit ? »
+            </div>
+            <div class="bubble right">
+              « Ouvre la séance : la liste des participants est visible, et tu peux limiter les places. »
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h2>Conseils d’utilisation rapides</h2>
+              <ul class="list">
+                <li>Crée d’abord activités et lieux pour accélérer la planification.</li>
+                <li>Renseigne date, horaires et capacité avant publication.</li>
+                <li>Utilise les remarques coach pour les précautions privées.</li>
+                <li>Le statut “bloqué” empêche toute inscription.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h2>Rappels utiles</h2>
+              <ul class="list">
+                <li>Mot de passe oublié : lien dédié sur la page de connexion.</li>
+                <li>Notifications : rappels de séances et renouvellements via les paramètres.</li>
+                <li>Formulaire de contact : accessible dans la page Informations.</li>
+                <li>Annuler une séance : changer le statut en “Annulée”.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Questions fréquentes</h2>
+            <ul class="list">
+              <li>Adhérent invisible : vérifier qu’il a créé son compte et complété son profil.</li>
+              <li>Inscription impossible : statut actif, séance publiée et places disponibles.</li>
+              <li>Besoin d’aide : contacter l’équipe coach via les contacts internes.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="tab-admin" class="tab-panel" role="tabpanel">
+          <div class="grid two">
+            <div class="card">
+              <h2>Rôle admin</h2>
+              <p>
+                L’admin supervise l’ensemble : utilisateurs, rôles, cohérence des données,
+                contenu d’information publique, et sécurité des accès.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Ce que l’admin pilote</h2>
+              <ul class="list">
+                <li>Gestion des rôles : admin, coach, adhérent.</li>
+                <li>Suivi des comptes : activation, blocage, statut de règlement.</li>
+                <li>Configuration des messages publics (page Informations).</li>
+                <li>Journalisation des actions clés.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Flux métier côté admin</h2>
+            <div class="flow">
+              <div class="flow-item">Création utilisateur</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">Profil auto-créé</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">Rôle adhérent par défaut</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">Attribution coach/admin si besoin</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Bonnes pratiques d’administration</h2>
+            <ul class="list">
+              <li>Vérifier que chaque coach possède le rôle adéquat.</li>
+              <li>Créer au moins une activité et un lieu par période.</li>
+              <li>Contrôler les groupes pour éviter les doublons.</li>
+              <li>Relire les contenus publics régulièrement.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="tab-architecture" class="tab-panel" role="tabpanel">
+          <div class="grid three">
+            <div class="card">
+              <h2>Frontend</h2>
+              <p>
+                Application React : navigation, formulaires, tableaux, calendrier.
+                Elle consomme l’API et affiche les données.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Backend</h2>
+              <p>
+                API PHP : authentification, règles d’accès, création et mise à jour des
+                séances, clients, groupes et lieux.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Base MySQL</h2>
+              <p>
+                Stockage des profils, séances, inscriptions et rôles. Le cœur des données métier.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Règles d’accès (simplifiées)</h2>
+            <ul class="list">
+              <li>Adhérent : s’inscrire, voir ses séances et son profil.</li>
+              <li>Coach : gérer séances, clients, activités, lieux et groupes.</li>
+              <li>Admin : tout + gestion des rôles et supervision.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Modules visibles selon le rôle</h2>
+            <div class="grid two">
+              <div class="module-card">
+                <h3>Coach</h3>
+                <p>Planification, Clients, Groupes, Activités, Lieux, Séances, Historique.</p>
+              </div>
+              <div class="module-card">
+                <h3>Admin</h3>
+                <p>Tout le périmètre coach + gestion des utilisateurs et paramètres.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Schéma animé interactif</h2>
+            <p>
+              Sélectionnez un scénario pour voir le trajet des données et comprendre le rôle de l’app.
+            </p>
+            <div class="schema">
+              <div class="schema-nodes">
+                <div class="node" data-node="frontend">Frontend</div>
+                <div class="node" data-node="backend">API PHP</div>
+                <div class="node" data-node="database">MySQL</div>
+                <div class="node" data-node="notifications">Emails</div>
+              </div>
+              <div class="schema-lines">
+                <div class="line" data-line="front-back"></div>
+                <div class="line" data-line="back-db"></div>
+                <div class="line" data-line="back-mail"></div>
+              </div>
+            </div>
+            <div class="schema-actions">
+              <button class="schema-btn active" data-flow="login">Connexion</button>
+              <button class="schema-btn" data-flow="plan">Planification</button>
+              <button class="schema-btn" data-flow="register">Inscription</button>
+              <button class="schema-btn" data-flow="info">Messages publics</button>
+            </div>
+            <div class="schema-detail" id="schema-detail">
+              L’app sert d’atelier central : elle orchestre les séances, les inscriptions et la communication.
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-database" class="tab-panel" role="tabpanel">
+          <div class="card">
+            <h2>Recherche rapide</h2>
+            <input id="db-search" type="text" placeholder="Filtrer une table ou un rôle..." />
+          </div>
+
+          <div class="grid two" id="db-cards">
+            <div class="table-card" data-tags="users authentification comptes">
+              <h3>users</h3>
+              <p>Comptes d’accès, email, mot de passe, timestamps de connexion.</p>
+              <div class="relations">1 ↔ 1 avec profiles (même id)</div>
+            </div>
+            <div class="table-card" data-tags="profiles personnes clients coachs">
+              <h3>profiles</h3>
+              <p>Identité, santé, statut, préférences de notifications.</p>
+              <div class="relations">Référencée par sessions, groups, user_roles</div>
+            </div>
+            <div class="table-card" data-tags="user_roles roles admin coach adherent">
+              <h3>user_roles</h3>
+              <p>Rôles d’accès : admin, coach, adhérent.</p>
+              <div class="relations">FK → profiles.id</div>
+            </div>
+            <div class="table-card" data-tags="session_types activites">
+              <h3>session_types</h3>
+              <p>Types d’activités et descriptions.</p>
+              <div class="relations">FK → locations (lieu par défaut)</div>
+            </div>
+            <div class="table-card" data-tags="locations lieux">
+              <h3>locations</h3>
+              <p>Lieux des séances, adresses, notes.</p>
+              <div class="relations">FK → profiles (created_by)</div>
+            </div>
+            <div class="table-card" data-tags="sessions seances planning">
+              <h3>sessions</h3>
+              <p>Séances planifiées : date, horaire, capacité, statut.</p>
+              <div class="relations">FK → session_types, locations, profiles (created_by)</div>
+            </div>
+            <div class="table-card" data-tags="registrations inscriptions">
+              <h3>registrations</h3>
+              <p>Inscriptions des adhérents aux séances.</p>
+              <div class="relations">FK → sessions et profiles</div>
+            </div>
+            <div class="table-card" data-tags="groups groupes">
+              <h3>groups</h3>
+              <p>Groupes d’adhérents et leurs descriptions.</p>
+              <div class="relations">FK → profiles (created_by)</div>
+            </div>
+            <div class="table-card" data-tags="user_groups assignations">
+              <h3>user_groups</h3>
+              <p>Association adhérent ↔ groupe.</p>
+              <div class="relations">FK → groups et profiles, assigned_by</div>
+            </div>
+            <div class="table-card" data-tags="app_info configuration">
+              <h3>app_info</h3>
+              <p>Paramètres de communication (infos, précisions, message spécial).</p>
+              <div class="relations">Clés uniques par type de contenu</div>
+            </div>
+            <div class="table-card" data-tags="logs journalisation">
+              <h3>logs</h3>
+              <p>Journal des actions, utile pour l’admin.</p>
+              <div class="relations">FK → profiles (user_id)</div>
+            </div>
+            <div class="table-card" data-tags="password_resets">
+              <h3>password_resets</h3>
+              <p>Réinitialisations de mot de passe.</p>
+              <div class="relations">FK → users</div>
+            </div>
+            <div class="table-card" data-tags="refresh_tokens">
+              <h3>refresh_tokens</h3>
+              <p>Gestion des tokens de session.</p>
+              <div class="relations">FK → users</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Mécanismes automatiques</h2>
+            <div class="accordion">
+              <button class="accordion-trigger" aria-expanded="false">
+                Trigger après création d’utilisateur
+              </button>
+              <div class="accordion-panel">
+                Lorsqu’un compte est créé, un profil est généré automatiquement et le rôle
+                adhérent est ajouté par défaut.
+              </div>
+            </div>
+            <div class="accordion">
+              <button class="accordion-trigger" aria-expanded="false">
+                Vues pratiques pour l’admin
+              </button>
+              <div class="accordion-panel">
+                v_sessions_full donne une vue enrichie des séances. v_profiles_with_roles
+                regroupe les rôles associés à chaque profil.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        AGHeal — Explications claires pour les coachs et l’administration.
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

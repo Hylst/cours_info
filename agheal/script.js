@@ -35,7 +35,7 @@ const schemaFlows = {
     lines: ["front-back", "back-db"],
   },
   info: {
-    text: "Messages publics : l’admin met à jour les infos, l’API stocke en base et alimente la page.",
+    text: "Communications : le coach/admin rédige un message ciblé (urgent, groupe, individuel), l’API l’enregistre et notifie au besoin.",
     nodes: ["frontend", "backend", "database"],
     lines: ["front-back", "back-db"],
   },

@@ -90,15 +90,15 @@
           <div class="card">
             <h2>Modules clés pour les coachs</h2>
             <div class="grid three">
-              <div class="pill">Séances</div>
-              <div class="pill">Planification</div>
-              <div class="pill">Clients</div>
-              <div class="pill">Groupes</div>
-              <div class="pill">Activités</div>
-              <div class="pill">Lieux</div>
+              <div class="pill">Séances & Planning</div>
+              <div class="pill">Ciblage & Groupes</div>
+              <div class="pill">Suivi Santé & Certifs</div>
+              <div class="pill">Suivi Financier</div>
+              <div class="pill">Modèles d'Activités</div>
+              <div class="pill">Gestion Lieux</div>
               <div class="pill">Historique</div>
-              <div class="pill">Profil</div>
-              <div class="pill">Informations</div>
+              <div class="pill">Mails & Communications</div>
+              <div class="pill">Profil & Préférences</div>
             </div>
           </div>
 
@@ -123,10 +123,10 @@
               <h2>Conseils d’utilisation rapides</h2>
               <ul class="list">
                 <li>Crée d’abord activités et lieux pour accélérer la planification.</li>
-                <li>Renseigne date, horaires et capacité avant publication.</li>
-                <li>Utilise les remarques coach pour les précautions privées.</li>
-                <li>Le statut “bloqué” empêche toute inscription.</li>
-              </ul>
+                <li>Renseigne avec précision les horaires et la capacité de ta séance avant publication.</li>
+                <li>Le statut “bloqué” (dans Profil) empêche un adhérent de s'inscrire à de futures séances.</li>
+                <li>Utilise la page Informations pour envoyer des e-mails ou des alertes ciblées (urgentes, par groupe ou individuelles).</li>
+                <li>Assure toi de garder à jour la date de validité du Certificat Médical de tes adhérents sur leur fiche.</li>
             </div>
             <div class="card">
               <h2>Rappels utiles</h2>
@@ -163,7 +163,7 @@
               <ul class="list">
                 <li>Gestion des rôles : admin, coach, adhérent.</li>
                 <li>Suivi des comptes : activation, blocage, statut de règlement.</li>
-                <li>Configuration des messages publics (page Informations).</li>
+                <li>Création de messages ciblés ou urgents (groupes, individus, globaux).</li>
                 <li>Journalisation des actions clés.</li>
               </ul>
             </div>
@@ -322,10 +322,10 @@
               <p>Association adhérent ↔ groupe.</p>
               <div class="relations">FK → groups et profiles, assigned_by</div>
             </div>
-            <div class="table-card" data-tags="app_info configuration">
-              <h3>app_info</h3>
-              <p>Paramètres de communication (infos, précisions, message spécial).</p>
-              <div class="relations">Clés uniques par type de contenu</div>
+            <div class="table-card" data-tags="communications messages alertes notifications">
+              <h3>communications</h3>
+              <p>Mails in-app et alertes ciblées (urgentes, globales, par groupe ou adhérent).</p>
+              <div class="relations">FK → profiles (author_id)</div>
             </div>
             <div class="table-card" data-tags="logs journalisation">
               <h3>logs</h3>

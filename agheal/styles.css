@@ -29,9 +29,10 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: "Outfit", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
+  line-height: 1.5;
 }
 
 .page {
@@ -131,6 +132,18 @@ body {
   border-radius: 16px;
   padding: 18px;
   box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .card h2 {
@@ -197,6 +210,26 @@ body {
   border-radius: 999px;
   text-align: center;
   font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.pill:hover {
+  filter: brightness(0.95);
+  transform: scale(1.02);
+}
+
+.pill.active {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+.mt-3 {
+  margin-top: 16px;
 }
 
 .dialogue {
@@ -217,23 +250,43 @@ body {
   background: var(--accent-soft);
 }
 
-.flow {
+.flow-admin {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
 }
 
-.flow-item {
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--accent-soft);
+.flow-admin-step {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 13px;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.flow-admin-step:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.flow-admin-step .icon {
+  font-size: 24px;
 }
 
 .flow-arrow {
-  color: var(--muted);
+  color: var(--accent);
+  font-weight: bold;
 }
 
 .module-card h3 {
@@ -433,4 +486,25 @@ body {
     opacity: 0.4;
     transform: scaleX(0.9);
   }
+}
+
+.highlights {
+  background: linear-gradient(135deg, var(--card), var(--accent-soft));
+  border: 1px solid var(--accent);
+}
+
+.highlight-item h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: var(--accent);
+}
+
+.highlight-item p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--muted);
+}
+
+strong {
+  color: var(--accent);
 }

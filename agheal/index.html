@@ -35,8 +35,7 @@
             <div class="card">
               <h2>Ce que fait AGHeal</h2>
               <p>
-                AGHeal organise les séances sportives, les inscriptions et le suivi des adhérents.
-                Tout est pensé pour que le coach gère son planning, ses clients et ses groupes en quelques clics.
+                AGHeal est bien plus qu'un simple agenda : c'est l'assistant numérique de votre activité. Il centralise la logistique, automatise les rappels et sécurise les données de santé de vos adhérents, vous permettant de vous concentrer sur l'essentiel : l'accompagnement sportif.
               </p>
             </div>
             <div class="card">
@@ -89,16 +88,19 @@
 
           <div class="card">
             <h2>Modules clés pour les coachs</h2>
-            <div class="grid three">
-              <div class="pill">Séances & Planning</div>
-              <div class="pill">Ciblage & Groupes</div>
-              <div class="pill">Suivi Santé & Certifs</div>
-              <div class="pill">Suivi Financier</div>
-              <div class="pill">Modèles d'Activités</div>
-              <div class="pill">Gestion Lieux</div>
-              <div class="pill">Historique</div>
-              <div class="pill">Mails & Communications</div>
-              <div class="pill">Profil & Préférences</div>
+            <div class="grid three" id="modules-list">
+              <button class="pill module-btn active" data-module="planning">Séances & Planning</button>
+              <button class="pill module-btn" data-module="communications">Ciblage & Communications</button>
+              <button class="pill module-btn" data-module="health">Suivi Santé & Certifs</button>
+              <button class="pill module-btn" data-module="finance">Suivi Financier</button>
+              <button class="pill module-btn" data-module="templates">Modèles d'Activités</button>
+              <button class="pill module-btn" data-module="locations">Gestion Lieux</button>
+              <button class="pill module-btn" data-module="history">Historique & Logs</button>
+              <button class="pill module-btn" data-module="groups">Ciblage & Groupes</button>
+              <button class="pill module-btn" data-module="preferences">Profil & Préférences</button>
+            </div>
+            <div class="step-detail mt-3" id="module-detail">
+              <strong>Séances & Planning :</strong> Créez et gérez votre planning de séances, limitez le nombre de participants, et suivez les inscriptions en temps réel.
             </div>
           </div>
 
@@ -142,10 +144,32 @@
           <div class="card">
             <h2>Questions fréquentes</h2>
             <ul class="list">
-              <li>Adhérent invisible : vérifier qu’il a créé son compte et complété son profil.</li>
-              <li>Inscription impossible : statut actif, séance publiée et places disponibles.</li>
-              <li>Besoin d’aide : contacter l’équipe coach via les contacts internes.</li>
+              <li><strong>Adhérent invisible :</strong> Vérifier qu’il a créé son compte et complété son profil via le lien d'inscription sécurisé.</li>
+              <li><strong>Inscription impossible :</strong> Le système vérifie automatiquement le statut (actif), si la séance est publiée, s'il reste des places et si le règlement est à jour.</li>
+              <li><strong>Besoin d’aide :</strong> Un formulaire de contact direct est intégré à l'application pour une réactivité maximale.</li>
             </ul>
+          </div>
+
+          <div class="card highlights">
+            <h2>Pourquoi AGHeal ?</h2>
+            <div class="grid two">
+              <div class="highlight-item">
+                <h3>🚀 Gain de temps</h3>
+                <p>Automatisation des listes d'attente et des rappels de séances (E-mail).</p>
+              </div>
+              <div class="highlight-item">
+                <h3>🔒 Sécurité & Santé</h3>
+                <p>Suivi rigoureux des certificats médicaux et des contre-indications.</p>
+              </div>
+              <div class="highlight-item">
+                <h3>📊 Pilotage</h3>
+                <p>Statistiques de participation et historique complet des séances.</p>
+              </div>
+              <div class="highlight-item">
+                <h3>📱 Mobilité</h3>
+                <p>Application PWA utilisable sur smartphone, tablette ou PC, même avec peu de réseau.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -161,24 +185,37 @@
             <div class="card">
               <h2>Ce que l’admin pilote</h2>
               <ul class="list">
-                <li>Gestion des rôles : admin, coach, adhérent.</li>
-                <li>Suivi des comptes : activation, blocage, statut de règlement.</li>
-                <li>Création de messages ciblés ou urgents (groupes, individus, globaux).</li>
-                <li>Journalisation des actions clés.</li>
+                <li><strong>Gestion des rôles :</strong> Attribution des pouvoirs (Admin, Coach ou Adhérent) avec protection contre l'auto-blocage.</li>
+                <li><strong>Statut financier :</strong> Suivi des règlements (À jour / En défaut) avec affichage de bandeaux d'alerte automatiques pour les membres.</li>
+                <li><strong>Santé & Sécurité :</strong> Contrôle des dates de validité des certificats médicaux.</li>
+                <li><strong>Communications d'urgence :</strong> Diffusion immédiate d'alertes globales ou ciblées sur tous les terminaux.</li>
+                <li><strong>Audit & Logs :</strong> Traçabilité complète des actions critiques pour garantir l'intégrité des données.</li>
               </ul>
             </div>
           </div>
 
           <div class="card">
-            <h2>Flux métier côté admin</h2>
-            <div class="flow">
-              <div class="flow-item">Création utilisateur</div>
+            <h2>Processus d'Administration</h2>
+            <div class="flow-admin">
+              <div class="flow-admin-step">
+                <div class="icon">👤</div>
+                <span>Inscription Adhérent</span>
+              </div>
               <div class="flow-arrow">→</div>
-              <div class="flow-item">Profil auto-créé</div>
+              <div class="flow-admin-step">
+                <div class="icon">📑</div>
+                <span>Validation Profil (Santé/Paiement)</span>
+              </div>
               <div class="flow-arrow">→</div>
-              <div class="flow-item">Rôle adhérent par défaut</div>
+              <div class="flow-admin-step">
+                <div class="icon">🔓</div>
+                <span>Attribution Droits (Coach/Admin)</span>
+              </div>
               <div class="flow-arrow">→</div>
-              <div class="flow-item">Attribution coach/admin si besoin</div>
+              <div class="flow-admin-step">
+                <div class="icon">🛡️</div>
+                <span>Supervision Active</span>
+              </div>
             </div>
           </div>
 

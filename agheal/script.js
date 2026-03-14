@@ -5,39 +5,65 @@ const stepDetail = document.getElementById("step-detail");
 const steps = Array.from(document.querySelectorAll(".step"));
 const stepText = {
   start:
-    "Le tableau de bord affiche les accès rapides : séances, clients, groupes, activités, lieux et historique.",
+    "Le tableau de bord centralisé offre une vision immédiate sur l'activité du jour : séances à venir, nouveaux inscrits, et alertes urgentes concernant les adhérents (paiements ou certificats expirés).",
   create:
-    "Crée les activités et les lieux pour gagner du temps lors de la planification.",
+    "La base de votre organisation : définissez vos types d'activités (Durée, Intensité, Matériel requis) et vos lieux de pratique habituels pour les réutiliser instantanément lors du planning.",
   plan:
-    "Choisis le type d’activité, la date, les horaires et la capacité, puis publie la séance.",
+    "Planifiez vos séances de façon granulaire : fixez la capacité maximale (bloquante ou illustrative), l'heure précise, le coach référent, et publiez-la pour la rendre visible aux adhérents.",
   follow:
-    "Ouvre une séance pour voir les inscrits, les places restantes et l’historique.",
+    "Suivez l'engagement de vos membres : consultez la liste des participants, gérez les absences et accédez à l'historique de présence pour chaque séance passée.",
 };
 
 const schemaButtons = Array.from(document.querySelectorAll(".schema-btn"));
 const schemaNodes = Array.from(document.querySelectorAll(".node"));
 const schemaLines = Array.from(document.querySelectorAll(".line"));
 const schemaDetail = document.getElementById("schema-detail");
+
+// Ajout Interaction Modules
+const moduleDetail = document.getElementById("module-detail");
+const moduleButtons = Array.from(document.querySelectorAll(".module-btn"));
+const moduleText = {
+  planning: "Séances & Planning : Créez et gérez votre planning de séances, paramétrez la récurrence, limitez le nombre de participants, et suivez les inscriptions en temps réel.",
+  communications: "Ciblage & Communications : Rédigez des messages importants ciblés pour un groupe entier, pour un adhérent précis, ou de façon globale. Gère aussi les emails automatiques in-app.",
+  health: "Suivi Santé & Certifs : Gardez un œil sur la date d'expiration des certificats médicaux, recevez des alertes automatiques à J-30 et suivez les précisions de santé pour adapter vos conseils.",
+  finance: "Suivi Financier : Fini les relances manuelles ! Visualisez en un clin d'œil le statut des règlements de chaque profil. Un bandeau d'alerte s'affiche chez les utilisateurs en défaut.",
+  templates: "Modèles d'Activités : Créez des templates réutilisables d'activités (Pilates, Yoga...) avec des descriptions types et des équipements requis ou optionnels.",
+  locations: "Gestion Lieux : Référencez toutes vos salles, parcs, ou studios afin de planifier plus vite vos séances sans avoir à retaper l'adresse.",
+  history: "Historique & Logs : Accédez à l'historique complet des séances passées et d'un journal des connexions/actions.",
+  groups: "Ciblage & Groupes : Classez vos adhérents par niveaux ou centres d'intérêts pour les cibler facilement lors de l'envoi d'informations.",
+  preferences: "Profil & Préférences : Chaque utilisateur gère de façon autonome ses notifications (urgences, expiration paiements, certificats) et son consentement RGPD."
+};
+
+moduleButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    moduleButtons.forEach((item) => item.classList.remove("active"));
+    btn.classList.add("active");
+    const key = btn.dataset.module;
+    if (moduleDetail && key && moduleText[key]) {
+      moduleDetail.innerHTML = `<strong>${btn.textContent} :</strong> ${moduleText[key].split(" : ")[1]}`;
+    }
+  });
+});
 const schemaFlows = {
   login: {
-    text: "Connexion : le frontend envoie les identifiants à l’API, qui valide en base et renvoie la session.",
+    text: "Sécurité : Vos identifiants sont transmis via un canal sécurisé à l’API. Celle-ci vérifie le hash du mot de passe en base et génère un jeton de session (JWT/Cookies) pour maintenir votre connexion.",
     nodes: ["frontend", "backend", "database"],
     lines: ["front-back", "back-db"],
   },
   plan: {
-    text: "Planification : le coach crée une séance, l’API l’enregistre en base et la renvoie pour affichage.",
+    text: "Synchronisation : Lors de la création d'une séance, l'API valide les règles métier (matériel, disponibilité du lieu) avant de persister les données. Le frontend rafraîchit alors instantanément le calendrier.",
     nodes: ["frontend", "backend", "database"],
     lines: ["front-back", "back-db"],
   },
   register: {
-    text: "Inscription : l’adhérent s’inscrit, l’API vérifie la capacité et enregistre l’inscription.",
+    text: "Transactionnel : L'inscription vérifie en temps réel le quota de places. Si la séance est pleine, l'inscription est refusée. En cas de succès, la base de données décompte une place et notifie le coach.",
     nodes: ["frontend", "backend", "database"],
     lines: ["front-back", "back-db"],
   },
   info: {
-    text: "Communications : le coach/admin rédige un message ciblé (urgent, groupe, individuel), l’API l’enregistre et notifie au besoin.",
-    nodes: ["frontend", "backend", "database"],
-    lines: ["front-back", "back-db"],
+    text: "Omnicanal : Un message rédigé par un coach est enregistré en base. L'API déclenche alors le MailerService pour les notifications externes et marque le message pour affichage prioritaire sur le dashboard des cibles.",
+    nodes: ["frontend", "backend", "database", "notifications"],
+    lines: ["front-back", "back-db", "back-mail"],
   },
 };
 
